@@ -27,3 +27,4 @@ javaOptions += "-XX:+UseConcMarkSweepGC"
 
 fork in run := true
 
+packageArchetype.java_application

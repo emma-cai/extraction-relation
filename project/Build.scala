@@ -3,7 +3,7 @@ import Keys._
 
 import spray.revolver.RevolverPlugin._
 
-object TaggerBuild extends Build {
+object ExtractionBuild extends Build {
   val sprayVersion = "1.2.0"
 
   val akkaVersion = "2.2.3"
