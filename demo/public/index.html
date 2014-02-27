@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="extraction">
+<head>
+<title>Extraction Demo</title>
+<link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">
+<link rel="stylesheet" media="screen" href="/css/style.css">
+<script src="/js/angular.min.js" type="text/javascript"></script>
+<script src="/js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Extraction Demo</h1>
+  <tabset>
+    <tab heading='Text input'>
+      <form action="/text" method="POST" >
+        <dl class=" " id="text_field">
+          <dt><label for="text">Text:</label></dt>
+          <dd>
+          <textarea id="text" name="text" rows="20" class="field span8"></textarea>
+          </dd>
+          <dd class="info">Required</dd>
+        </dl>
+        <button>Submit</button>
+      </form>
+    </tab>
+    <tab heading='File upload'>
+      <form action="/file" method="POST" enctype="multipart/form-data">
+        <p><input type="file" name="file"></p>
+        <button>Submit</button>
+      </form>
+    </tab>
+    <tab heading='Web URL'>
+      <form action="/url" method="POST" >
+        <dl class=" " id="url_field">
+          <dt><label for="url">URL:</label></dt>
+          <dd>
+          <input type="text" id="url" name="url" value="" placeholder="http://www.google.com/">
+          </dd>
+        </dl>
+        <button>Submit</button>
+      </form>
+    </tab>
+  </tabset>
+</div>
+</body>
+</html>
+

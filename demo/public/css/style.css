@@ -1,0 +1,9 @@
+.nav-tabs a {
+  cursor: pointer;
+}
+
+textarea {
+  width: 80%;
+  white-space: pre;
+  word-wrap: normal;
+}
