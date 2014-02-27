@@ -31,7 +31,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
       // Fire off requests to extractors.
-      val extractionsFuture: Seq[Future[(String, String)]] = 
+      val extractionsFuture: Seq[Future[(String, String)]] =
         for (extractor <- extractors) yield {
           val future = extractor(sentence)
           future.map((extractor.name, _))
@@ -42,18 +42,18 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
           (extractor, response) <- f
           extractions = (response split "\n")
         } yield ExtractorResults(extractor, extractions)
-        
+
         ExtractedSentence(sentence, extractorResults)
       }
     }
-    
+
     Future.sequence(processed) map (Response(_))
   }
-  
+
   case class Response(sentences: Seq[ExtractedSentence])
   case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
   case class ExtractorResults(name: String, extractions: Seq[String])
-  
+
   implicit val extractorResults = jsonFormat2(ExtractorResults)
   implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
   implicit val responseFormat = jsonFormat1(Response)
@@ -132,7 +132,7 @@ object ExtractionDemoMain extends App with Logging {
   val extractors = config.getStringList("extractors").iterator().asScala.map { url =>
       new Extractor(new URL(url))
     }.toSeq
-    
+
   logger.info("Configured with extractors: " + extractors.mkString(", "))
 
   val server = new ExtractionDemo(extractors)(config.getInt("port"))
