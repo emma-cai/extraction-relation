@@ -28,3 +28,8 @@ javaOptions += "-XX:+UseConcMarkSweepGC"
 fork in run := true
 
 packageArchetype.java_application
+
+// Add root run script.
+mappings in Universal += {
+  file("util/bin/run-class.sh") -> "bin/run-class.sh"
+}
