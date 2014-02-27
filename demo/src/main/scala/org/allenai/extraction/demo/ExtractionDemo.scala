@@ -26,7 +26,7 @@ import scala.util.{ Try, Success, Failure }
 class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
   val timeout = 1.minute
 
-  def extractSentences(sentences: Seq[String]): Future[Seq[ExtractedSentence]] = {
+  def extractSentences(sentences: Seq[String]): Future[Response] = {
     val processed = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
@@ -47,14 +47,16 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       }
     }
     
-    Future.sequence(processed)
+    Future.sequence(processed) map (Response(_))
   }
   
-  case class ExtractedSentence(sentence: String, extractors: Seq[ExtractorResults])
-  case class ExtractorResults(extractor: String, extractions: Seq[String])
+  case class Response(sentences: Seq[ExtractedSentence])
+  case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
+  case class ExtractorResults(name: String, extractions: Seq[String])
   
   implicit val extractorResults = jsonFormat2(ExtractorResults)
   implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
+  implicit val responseFormat = jsonFormat1(Response)
 
   def run() {
     val staticContentRoot = "public"
@@ -72,7 +74,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         } ~
         post {
           path ("text") {
-            formFields("text") { text =>
+            entity(as[String]) { text =>
               val sentences = text split "\n"
               val sampleText = (sentences.headOption map (s => (s take 32) + "...")).getOrElse("")
               logger.info(s"Request to extract ${sentences.size} sentences: " + sampleText)
@@ -82,7 +84,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
             }
           } ~
           path ("file") {
-            formFields("file") { fileString =>
+            entity(as[String]) { fileString =>
               val file = new File(fileString)
               logger.info("Request to extract file: " + file)
               using(Source.fromFile(file)) { source =>
@@ -93,7 +95,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
             }
           } ~
           path ("url") {
-            formFields("url") { urlString =>
+            entity(as[String]) { urlString =>
               logger.info("Request to extract url: " + urlString)
               val url = new URL(urlString)
               val text = ArticleExtractor.INSTANCE.getText(url)
