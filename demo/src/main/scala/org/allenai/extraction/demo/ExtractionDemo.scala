@@ -11,6 +11,7 @@ import spray.http._
 import spray.http.StatusCodes._
 import spray.httpx.SprayJsonSupport
 import spray.json._
+import spray.json.DefaultJsonProtocol._
 import spray.routing._
 import de.l3s.boilerpipe.extractors.ArticleExtractor
 
@@ -25,7 +26,7 @@ import scala.util.{ Try, Success, Failure }
 class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
   val timeout = 1.minute
 
-  def extractSentences(sentences: Iterator[String]): String = {
+  def extractSentences(sentences: Seq[String]): Future[Seq[ExtractedSentence]] = {
     val processed = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
@@ -36,22 +37,24 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
           future.map((extractor.name, _))
         }
 
-      // Wait for the results.
-      val extractions: Seq[(String, String)] = 
-        Await.result(Future.sequence(extractionsFuture), timeout)
+      Future.sequence(extractionsFuture) map { f =>
+        val extractorResults = for {
+          (extractor, response) <- f
+          extractions = (response split "\n")
+        } yield ExtractorResults(extractor, extractions)
         
-      // Split the responses into multiple extractions.
-      extractions map { case (extractor, response) =>
-        (extractor, (response split "\n").toSeq)
+        ExtractedSentence(sentence, extractorResults)
       }
     }
     
-    processed mkString "\n"
+    Future.sequence(processed)
   }
-
-  def extractSentences(sentences: Seq[String]): String = {
-    extractSentences(sentences.iterator)
-  }
+  
+  case class ExtractedSentence(sentence: String, extractors: Seq[ExtractorResults])
+  case class ExtractorResults(extractor: String, extractions: Seq[String])
+  
+  implicit val extractorResults = jsonFormat2(ExtractorResults)
+  implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
 
   def run() {
     val staticContentRoot = "public"
@@ -84,7 +87,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
               logger.info("Request to extract file: " + file)
               using(Source.fromFile(file)) { source =>
                 complete {
-                  extractSentences(source.getLines)
+                  extractSentences(source.getLines.toSeq)
                 }
               }
             }
