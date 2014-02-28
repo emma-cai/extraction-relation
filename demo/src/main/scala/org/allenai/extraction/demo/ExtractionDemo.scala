@@ -60,6 +60,12 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
 
   def run() {
     val staticContentRoot = "public"
+    val staticContentRootFile = new File(staticContentRoot)
+    val defaultContent = "index.html"
+    val defaultContentRootFile = new File(staticContentRootFile, defaultContent)
+
+    require(staticContentRootFile.exists, "Static content root not found: " + staticContentRootFile.getAbsolutePath)
+    require(defaultContentRootFile.exists, "Static default content not found: " + defaultContentRootFile.getAbsolutePath)
 
     val cacheControlMaxAge = HttpHeaders.`Cache-Control`(CacheDirectives.`max-age`(60))
 

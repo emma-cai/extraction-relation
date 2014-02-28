@@ -41,4 +41,5 @@ mappings in Universal ++=
   (sourceDirectory.value / "main" / "resources" ** "*" x
     rebase(sourceDirectory.value / "main" / "resources", "conf/")) ++
   (sourceDirectory.value / "main" / "bin" ** "*" x
-    relativeTo(sourceDirectory.value / "main"))
+    relativeTo(sourceDirectory.value / "main")) ++
+  (baseDirectory.value / "public" ** "*" x relativeTo(baseDirectory.value))

@@ -3,7 +3,7 @@ addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8")
 addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.2.1")
 
 // Native packager, for doing deploys.
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.6.4")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.0-M2")
 
 // Revolver, for auto-reloading of changed files in sbt.
 // See https://github.com/spray/sbt-revolver .
