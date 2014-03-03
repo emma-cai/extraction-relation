@@ -27,18 +27,7 @@ javaOptions += "-XX:+UseConcMarkSweepGC"
 
 fork in run := true
 
-packageArchetype.java_application
-
-// Add root run script.
-mappings in Universal += {
-  file("util/bin/run-class.sh") -> "bin/run-class.sh"
-}
-
-// Map src/main/resources => conf and src/main/bin => bin.
-// See http://www.scala-sbt.org/0.12.3/docs/Detailed-Topics/Mapping-Files.html
-// for more info on sbt mappings.
 mappings in Universal ++=
-  (sourceDirectory.value / "main" / "resources" ** "*" x
-    rebase(sourceDirectory.value / "main" / "resources", "conf/")) ++
-  (sourceDirectory.value / "main" / "bin" ** "*" x
-    relativeTo(sourceDirectory.value / "main"))
+  (baseDirectory.value / "public" ** "*" pair relativeTo(baseDirectory.value))
+
+Deploy.settings
