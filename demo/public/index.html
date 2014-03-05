@@ -23,24 +23,18 @@
           </dd>
           <dd class="info">Required</dd>
         </dl>
-        <button ng-click="submit('text')" class="btn btn-default">Submit</button>
-      </form>
-      </tab>
-      <tab heading='File upload'>
-      <form>
-        <p><input ng-model="model.file" type="file" name="file"></p>
-        <button ng-click="submit('file')" class="btn btn-default">Submit</button>
+        <button ng-click="submitText()" class="btn btn-default">Submit</button>
       </form>
       </tab>
       <tab heading='Web URL'>
-      <form action="/url" method="POST" >
+      <form>
         <dl class=" " id="url_field">
           <dt><label for="url">URL:</label></dt>
           <dd>
           <input ng-model="model.url" type="text" id="url" name="url" value="" placeholder="http://www.google.com/">
           </dd>
         </dl>
-        <button ng-click="submit('url')" class="btn btn-default">Submit</button>
+        <button ng-click="submitUrl()" class="btn btn-default">Submit</button>
       </form>
       </tab>
       </tabset>
