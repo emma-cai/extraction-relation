@@ -24,4 +24,4 @@ addSbtPlugin("org.allenai.plugins" % "sbt-travis-publisher" % ai2PluginsVersion)
 
 addSbtPlugin("org.allenai.plugins" % "sbt-shared-ui" % ai2PluginsVersion)
 
-addSbtPlugin("org.allenai.plugins" % "sbt-deploy" % "2014.3.3-2-SNAPSHOT")
+addSbtPlugin("org.allenai.plugins" % "sbt-deploy" % "2014.2.24-1-SNAPSHOT")
