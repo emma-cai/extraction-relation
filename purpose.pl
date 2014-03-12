@@ -4,8 +4,6 @@
 :- [tuple].
 :- [output].
 
-:- rdf_register_prefix(mod, 'http://halo.vulcan.com/mod/').
-
 
 %:- rdf_load('barrons.txt.rnn.ttl').
 
@@ -14,28 +12,39 @@ purpose :-
 	% pick a sentence
 	rdf(_Sentence,dep:root,Root),
 %	write('processing: '), write(Root), nl,
-%	purpose(Root).
-%	write_sentence(Root),
+	write_sentence(Root),
 	% descend through every node checking for relations
-	( purpose(Root)
+	( top_purpose(Root)
 	; constit(Root,Node),
 	  purpose(Node) ).
+
+
+top_purpose(Root) :-
+	purpose(Root), !.
+top_purpose(Root) :-
+	write_simple_tuple(Root).
+
+write_simple_tuple(Node) :-
+	rdf(Node,dep:nsubj,_),
+	\+rdf(Node,dep:cop,_),
+	tuple(Node,Tuple),
+	write_tuple(Tuple),
+	nl.
+write_simple_tuple(_).
 
 
 % cause (tuple-NP)
 purpose(Root) :-
 	cause(Root,Entity,Rel),
 	tuple(Root,Action),
-	write_relation(Entity,'CAUSE',Action).
+	write_relation(Entity,Rel,Action).
 % purpose (tuple-NP)
 purpose(Root) :-
 	purpose(Root,Entity,Rel),
 	tuple(Root,Action),
 	\+ filter_action(Root,Action),
-	\+ rdf(Entity,dep:det,_),
-	\+ rdf(Entity,dep:num,_),
-	\+ rdf(Entity,dep:poss,_),
-	write_relation(Action,'PURPOSE',Entity).
+	\+ filter_entity(Entity),
+	write_relation(Action,Rel,Entity).
 % effect (tuple-tuple)
 purpose(Root) :-
 	effect(Root,Comp,Rel),
@@ -43,55 +52,59 @@ purpose(Root) :-
 	\+ filter_action(Root,Action),
 	tuple(Comp,Purpose),
 	distribute_args(Action,Purpose,Action2,Purpose2),
-	write_relation(Action2,'EFFECT',Purpose2).
+	write_relation(Action2,Rel,Purpose2).
 % function (NP-tuple)
 purpose(Root) :-
 	function(Root,Comp,Rel),
 	\+ rdf(_,dep:prep_for,Comp), % responsible for
 	tuple(Comp,Purpose),
 	distribute_args([Root],Purpose,_,Purpose2),
-	write_relation(Root,'FUNCTION',Purpose2).
+	write_relation(Root,Rel,Purpose2).
 % function (NP-NP)
 purpose(Root) :-
 	function(Root,Comp,Rel),
 	rdf(_,dep:prep_for,Comp), % responsible for
-	write_relation(Root,'FUNCTION',Comp).
+	write_relation(Root,Rel,Comp).
 % example (NP-tuple)
 purpose(Root) :-
 	example(Root,Comp,Rel),
-	tuple(Comp,Action),
+	tuple(Comp,[Subj|Action]),
+	Subj \= Root, % from rcmod
 	write_entity(Root),
-	write('\tEXAMPLE\t'),
-	write_tuple(Action),
+	write_rel(Rel),
+	write_tuple([Subj|Action]),
 	nl.
 % example (tuple-NP)
 purpose(Root) :-
 	example2(Root,Comp,Rel),
 	tuple(Comp,Action),
 	write_tuple(Action),
-	write('\tEXAMPLE\t'),
+	write_rel(Rel),
 	write_entity(Root),
 	nl.
 % example (NP-NP)
 purpose(Root) :-
 	example3(Root,Entity,Rel),
 	write_entity(Root),
-	write('\tEXAMPLE\t'),
+	write_rel(Rel),
 	write_entity(Entity),
 	nl.
 
 write_relation(Action,Rel,Purpose) :-
 	write_tuple(Action),
-	write('\t'),
-	%write_tokens(Rel),
-	write(Rel),
-	write('\t'),
+	write_rel(Rel),
 	write_tuple(Purpose),
 	nl.
+write_rel([Rel|Tokens]) :-
+	write('\t"'),
+	write_tokens(Tokens),
+	write('"/'),
+	write(Rel),
+	write('\t').
 
 
 % EXAMPLE: NP is example (of how) Tuple
-example(Entity,Comp,[Example]) :-
+example(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Entity,dep:cop,_),
 	rdf(Entity,dep:nsubj,Example),
 	rdf(Example,token:lemma,literal(example)),
@@ -103,25 +116,25 @@ example(Entity,Comp,Rel) :-
 	; rdf(Entity2,dep:rcmod,Comp) ).
 
 % EXAMPLE: Tuple is example of NP
-example2(Entity,Comp,[Example]) :-
+example2(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Example,dep:prep_of,Entity),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Be,dep:nsubj,Example),
 	rdf(Be,token:lemma,literal(be)),
 	rdf(Be,dep:advcl,Comp).
-example2(Entity,Comp,[Example]) :-
+example2(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Example,dep:prep_of,Entity),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Example,dep:cop,_),
 	rdf(Example,dep:csubj,Comp).
 % EXAMPLE: NP example includes Tuple
-example2(Entity,Comp,[Example]) :-
+example2(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Example,dep:nn,Entity),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Include,dep:nsubj,Example),
 	rdf(Include,token:lemma,literal(include)),
 	rdf(Include,dep:ccomp,Comp).
-example2(Entity,Comp,[Example]) :-
+example2(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Example,dep:nn,Entity),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Include,dep:nsubj,Example),
@@ -129,40 +142,46 @@ example2(Entity,Comp,[Example]) :-
 	rdf(Include,dep:conj_and,Comp).
 
 % EXAMPLE: NP is a NP
-example3(Entity1,Entity2,[Example]) :-
-	rdf(Entity2,dep:cop,_),
-	rdf(Entity2,dep:det,_),
+example3(Entity1,Entity2,['EXAMPLE',Cop,Det]) :-
 	rdf(Entity2,dep:nsubj,Entity1),
-	\+ rdf(Entity2,token:lemma,literal(example)).
+	\+ rdf(Entity2,token:lemma,literal(example)),
+	rdf(Entity2,dep:cop,Cop),
+	rdf(Entity2,dep:det,Det).
+% EXAMPLE: NPs are NPs
+example3(Entity1,Entity2,['EXAMPLE',Cop]) :-
+	rdf(Entity2,dep:nsubj,Entity1),
+	\+ rdf(Entity2,token:lemma,literal(example)),
+	rdf(Entity2,dep:cop,Cop),
+	rdf(Entity2,token:pos,literal('NNS')). % plural
 % EXAMPLE: NP such as NP
-example3(Entity1,Entity2,['such as']) :-
+example3(Entity1,Entity2,['EXAMPLE','such as']) :-
 	rdf(Entity2,dep:prep_such_as,Entity1).
 % EXAMPLE: NP is example of NP
-example3(Entity1,Entity2,[Example]) :-
+example3(Entity1,Entity2,['EXAMPLE',Example]) :-
 	rdf(Entity1,dep:cop,_),
 	rdf(Entity1,dep:nsubj,Example),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Example,dep:prep_of,Entity2).
-example3(Entity1,Entity2,[Example]) :-
+example3(Entity1,Entity2,['EXAMPLE',Example]) :-
 	rdf(Example,dep:nsubj,Entity1),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Example,dep:cop,_),
 	rdf(Example,dep:prep_of,Entity2).
-example3(Entity1,Entity2,[Example]) :-
+example3(Entity1,Entity2,['EXAMPLE',Example]) :-
 	rdf(Ent,dep:conj_and,Entity1),
 	rdf(Ent,dep:cop,_),
 	rdf(Ent,dep:nsubj,Example),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Example,dep:prep_of,Entity2).
 % failed cop
-example3(Entity1,Entity2,[Example]) :-
+example3(Entity1,Entity2,['EXAMPLE',Example]) :-
 	rdf(Be,dep:nsubj,Entity1),
 	rdf(Be,token:lemma,literal(be)),
 	rdf(Be,dep:tmod,Example),
 	rdf(Example,token:lemma,literal(example)),
 	rdf(Example,dep:prep_of,Entity2).
 % EXAMPLE: example of NP includes NP
-example3(Entity1,Entity2,[Example]) :-
+example3(Entity1,Entity2,['EXAMPLE',Example]) :-
 	rdf(Include,dep:dobj,Entity1),
 	rdf(Include,token:lemma,literal(include)),
 	rdf(Include,dep:nsubj,Example),
@@ -171,22 +190,28 @@ example3(Entity1,Entity2,[Example]) :-
 
 
 % CAUSE: NP "causes" Tuple
-cause(Root,Entity,[Cause]) :-
+cause(Root,Entity,['CAUSE',Cause]) :-
 	rdf(Cause,dep:xcomp,Root),
 	causes(Cause),
 	( rdf(Entity,dep:rcmod,Cause)
 	; rdf(Cause,dep:nsubj,Entity) ), !.
+% CAUSE: NP-RelC "is caused by" NP
+cause(Root,Entity,['CAUSE',Cause]) :-
+	rdf(Subj,dep:rcmod,Root),
+	rdf(Cause,dep:nsubjpass,Subj),
+	causes(Cause),
+	rdf(Cause,dep:agent,Entity), !.
 % CAUSE: Tuple "because of" NP
-cause(Root,Entity,['because of']) :-
+cause(Root,Entity,['CAUSE','because of']) :-
 	rdf(Root,dep:prep_because_of,Entity).
 /*
 % NP "results from" Tuple
-cause2(Root,Entity,['results from']) :-
+cause2(Root,Entity,['CAUSE','results from']) :-
 	rdf(Result,dep:prepc_from,Root),
 	rdf(Result,token:lemma,literal(result)),
 	rdf(Result,dep:nsubj,Entity).
 % Tuple "results in" NP
-cause2(Root,Entity,['results in']) :-
+cause2(Root,Entity,['CAUSE','results in']) :-
 	rdf(Root,dep:xcomp,Result),
 	rdf(Result,token:lemma,literal(result)),
 	rdf(Result,dep:prep_in,Entity).
@@ -194,77 +219,82 @@ cause2(Root,Entity,['results in']) :-
 
 
 % PURPOSE: Tuple "is for" NP
-purpose(Root,Entity,['for']) :-
+purpose(Root,Entity,['PURPOSE','for']) :-
 	rdf(Root,dep:cop,_),
 	rdf(Root,dep:prep_for,Entity).
 % PURPOSE: Tuple "for" NP
-purpose(Root,Entity,['for']) :- % dobj-PP
+purpose(Root,Entity,['PURPOSE','for']) :- % dobj-PP
 	rdf(Root,dep:dobj,Dobj),
 	rdf(Dobj,dep:prep_for,Entity).
-purpose(Root,Entity,['for']) :- % pobj-PP
+purpose(Root,Entity,['PURPOSE','for']) :- % pobj-PP
 	\+ rdf(Root,dep:dobj,_),
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pobj,Pobj),
 	rdf(Pobj,dep:prep_for,Entity).
 
 
+% ENABLE: Tuple "by" NP
+function(Entity,Root,['ENABLE','by']) :-
+	rdf(Root,dep:prep_by,Entity),
+	rdf(Root,token:pos,literal('VBG')),
+	rdf(Entity,token:pos,literal('NN')).
 % copular
 function(Entity,Comp,Rel) :-
 	rdf(Root,dep:nsubj,Entity),
 	rdf(Root,dep:cop,_),
 	function(Root,Comp,Rel).
 % FUNCTION: NP "helps" Tuple
-function(Entity,Comp,[Help]) :-
+function(Entity,Comp,['FUNCTION',Help]) :-
 	rdf(Help,dep:nsubj,Entity),
 	\+ rdf(_,dep:rcmod,Help),
 	helps(Help),
 	( rdf(Help,dep:ccomp,Comp)
 	; rdf(Help,dep:xcomp,Comp) ).
-function(Entity,Comp,[Help]) :-
+function(Entity,Comp,['FUNCTION',Help]) :-
 	rdf(Entity,dep:rcmod,Help),
 	helps(Help),
 	( rdf(Help,dep:ccomp,Comp)
 	; rdf(Help,dep:xcomp,Comp) ).
 % FUNCTION: NP "helps in" Tuple
-function(Entity,Comp,[Help]) :-
+function(Entity,Comp,['FUNCTION',Help]) :-
 	rdf(Help,dep:nsubj,Entity),
 	\+ rdf(_,dep:rcmod,Help),
 	helps(Help),
 	rdf(Help,dep:prepc_in,Comp),
 	rdf(Comp,token:pos,literal('VBG')).
 % FUNCTION: NP "is used to" Tuple
-function(Entity,Comp,[Aux,Rel]) :-
+function(Entity,Comp,['FUNCTION',Aux,Rel]) :-
 	rdf(Rel,dep:nsubjpass,Entity),
 	rdf(Rel,dep:auxpass,Aux),
 	rdf(Rel,token:lemma,literal(use)),
 	\+ rdf(_,dep:rcmod,Rel),
 	rdf(Rel,dep:xcomp,Comp).
-function(Entity,Comp,[Aux,Rel]) :-
+function(Entity,Comp,['FUNCTION',Aux,Rel]) :-
 	rdf(Entity,dep:cop,_),
 	rdf(Entity,dep:nsubj,Subj),
 	rdf(Subj,dep:infmod,Rel),
 	rdf(Rel,token:lemma,literal(use)),
 	rdf(Rel,dep:xcomp,Comp),
 	aux(Rel,Aux).
-function(Entity,Comp,[Rel,Aux]) :-
+function(Entity,Comp,['FUNCTION',Rel,Aux]) :-
 	rdf(Entity,dep:partmod,Rel),
 	rdf(Rel,token:lemma,literal(use)),
 	\+ rdf(_,dep:rcmod,Rel),
 	rdf(Rel,dep:xcomp,Comp),
 	aux(Comp,Aux).
 % FUNCTION: NP "to" Tuple
-function(Entity,Comp,[]) :-
+function(Entity,Comp,['FUNCTION','to']) :-
 	rdf(Entity,dep:nsubj,Subj),
 	\+ rdf(Entity,dep:cop,_),
 	\+ rdf(Entity,token:lemma,literal(be)),
 	rdf(Subj,dep:infmod,Comp),
 	\+ rdf(Comp,token:lemma,literal(use)).
 % FUNCTION: NP "measures" NP
-function(Entity,Measure,[]) :-
+function(Entity,Measure,['FUNCTION',Measure]) :-
 	rdf(Measure,dep:nsubj,Entity),
 	rdf(Measure,token:lemma,literal(measure)).
 % FUNCTION: NP "by which" Tuple
-function(Entity,Comp,[By,Which]) :-
+function(Entity,Comp,['FUNCTION',By,Which]) :-
 	rdf(Root,dep:nsubj,Entity),
 	rdf(Root,dep:cop,_),
 	rdf(Root,dep:rcmod,Comp),
@@ -273,60 +303,85 @@ function(Entity,Comp,[By,Which]) :-
 	rdf(By,basic:pobj,Which),
 	rdf(Which,token:lemma,literal(which)).
 % FUNCTION: "function of" NP is Tuple
-function(Entity,Comp,[Function]) :-
+function(Entity,Comp,['FUNCTION',Function]) :-
 	rdf(Function,dep:prep_of,Entity),
 	rdf(Function,token:lemma,literal(function)),
 	rdf(Comp,dep:nsubj,Function),
 	\+ rdf(Comp,token:lemma,literal(be)).
-function(Entity,Comp,[Function]) :-
+function(Entity,Comp,['FUNCTION',Function]) :-
 	rdf(Function,dep:prep_of,Entity),
 	rdf(Function,token:lemma,literal(function)),
 	rdf(Be,dep:nsubj,Function),
 	rdf(Be,token:lemma,literal(be)),
 	rdf(Be,dep:xcomp,Comp).
 % FUNCTION: NP "is responsible for" Tuple
-function(Entity,Comp,[Responsible]) :-
+function(Entity,Comp,['FUNCTION',Responsible]) :-
 	rdf(Responsible,dep:nsubj,Entity),
 	rdf(Responsible,token:lemma,literal(responsible)),
 	rdf(Responsible,dep:cop,_),
 	rdf(Responsible,dep:prepc_for,Comp).
 % FUNCTION: NP "is responsible for" NP
-function(Entity,Comp,[Responsible]) :-
+function(Entity,Comp,['FUNCTION',Responsible]) :-
 	rdf(Responsible,dep:nsubj,Entity),
 	rdf(Responsible,token:lemma,literal(responsible)),
 	rdf(Responsible,dep:cop,_),
 	rdf(Responsible,dep:prep_for,Comp).
+% FUNCTION: NP "is necessary for" Tuple
+function(Entity,Comp,['REQUIREMENT',Necessary]) :-
+	rdf(Necessary,dep:nsubj,Entity),
+	rdf(Necessary,token:lemma,literal(necessary)),
+	rdf(Necessary,dep:cop,_),
+	rdf(Necessary,dep:advcl,Comp).
 	
 
-%%%effect(Root,Comp,[Aux]) :-
+%%%effect(Root,Comp,['EFFECT',Aux]) :-
 %%%	argument(Root,dep:purpcl,Comp), % Sapir
 %%%	Comp \= [],
 %%%	aux(Comp,Aux).
-%%%effect(Root,Comp,[]) :-
+%%%effect(Root,Comp,['EFFECT']) :-
 %%%	argument(Root,dep:advcl,Comp), % Sapir
 %%%	Comp \= [].
 
 
+% PART: Tuple is part of Tuple
+effect(Root,Comp,['PART',Part]) :-
+	rdf(Be,dep:advcl,Root),
+	rdf(Be,token:lemma,literal(be)),
+	rdf(Be,dep:nsubj,Part),
+	rdf(Part,token:lemma,literal(part)),
+	rdf(Part,dep:prep_of,Comp).
+effect(Root,Comp,['PART',Part]) :-
+	rdf(Part,dep:csubj,Root),
+	rdf(Part,dep:cop,_),
+	rdf(Part,token:lemma,literal(part)),
+	rdf(Part,dep:prep_of,Comp).
+effect(Root,Comp,['PART',Part]) :-
+	rdf(Part,dep:csubj,Root),
+	rdf(Part,dep:cop,_),
+	rdf(Part,token:lemma,literal(part)),
+	rdf(Part,basic:prep,Prep),
+	rdf(Prep,basic:dep,Comp). % failed PP
+		    
 % EFFECT: Tuple "in preparation for" Tuple
-effect(Root,Comp,[]) :-
+effect(Root,Comp,['EFFECT','in',Comp,'for']) :-
 	rdf(Root,dep:prep_in,Comp),
 	rdf(Comp,token:lemma,literal(preparation)),
 	rdf(Comp,dep:prep_for,_).
 
 % EFFECT: Tuple "helps to" Tuple
-effect(Root,Comp,[Aux,Help]) :-
+effect(Root,Comp,['EFFECT',Aux,Help]) :-
 	rdf(Root,dep:xcomp,Help),
 	helps(Help), !,
 	aux(Help,Aux),
 	( rdf(Help,dep:xcomp,Comp)
 	; rdf(Help,dep:ccomp,Comp)).
-effect(Root,Comp,[Aux,Help]) :- % infmod on dobj
+effect(Root,Comp,['EFFECT',Aux,Help]) :- % infmod on dobj
 	rdf(Root,dep:dobj,Dobj),
 	rdf(Dobj,dep:infmod,Help),
 	helps(Help),
 	rdf(Help,dep:ccomp,Comp),
 	aux(Help,Aux).
-effect(Root,Comp,[Aux,Help]) :- % infmod on pobj
+effect(Root,Comp,['EFFECT',Aux,Help]) :- % infmod on pobj
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pobj,Pobj),
 	rdf(Pobj,dep:infmod,Help),
@@ -334,7 +389,7 @@ effect(Root,Comp,[Aux,Help]) :- % infmod on pobj
 	rdf(Help,dep:ccomp,Comp),
 	aux(Help,Aux).
 % EFFECT: Tuple "in order to" Tuple
-effect(Root,Comp,[Prep,Pobj,Aux]) :- % xcomp on pobj
+effect(Root,Comp,['EFFECT',Prep,Pobj,Aux]) :- % xcomp on pobj
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
 	rdf(Prep,basic:pobj,Pobj),
@@ -342,7 +397,7 @@ effect(Root,Comp,[Prep,Pobj,Aux]) :- % xcomp on pobj
 	rdf(Root,dep:xcomp,Comp),
 	\+ rdf(Pobj,dep:xcomp,_), !,
 	aux(Comp,Aux).
-effect(Root,Comp,[Prep,Pobj,Aux]) :- % infmod on dobj
+effect(Root,Comp,['EFFECT',Prep,Pobj,Aux]) :- % infmod on dobj
 	rdf(Root,dep:dobj,Dobj),
 	rdf(Dobj,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
@@ -352,7 +407,7 @@ effect(Root,Comp,[Prep,Pobj,Aux]) :- % infmod on dobj
 	rdf(Dobj,dep:infmod,Comp),
 	\+ rdf(Pobj,dep:xcomp,_),
 	aux(Comp,Aux).
-effect(Root,Comp,[Mark,Dep,Aux]) :- % advcl
+effect(Root,Comp,['EFFECT',Mark,Dep,Aux]) :- % advcl
 	( rdf(Root,dep:advcl,Comp)
 	; rdf(Root,dep:dep,Comp)),
 	mark(Comp,Mark),
@@ -362,45 +417,55 @@ effect(Root,Comp,[Mark,Dep,Aux]) :- % advcl
 	aux(Comp,Aux),
 	rdf(Aux,token:lemma,literal(to)).
 % EFFECT: Tuple "to" Tuple
-effect(Root,Comp,[Aux]) :-
+effect(Root,Comp,['REQUIREMENT',Aux]) :-
 	rdf(Root,dep:xcomp,Comp),
+	aux(Root,Modal),
+	rdf(Modal,token:lemma,literal(must)),
 	\+ rdf(_,dep:rcmod,Root),
 	\+ rdf(Comp,dep:cop,_),
 	aux(Comp,Aux).
-effect(Root,Comp,[Aux]) :-
+effect(Root,Comp,['EFFECT',Aux]) :-
+	rdf(Root,dep:xcomp,Comp),
+	( (aux(Root,Modal),
+	   \+ rdf(Modal,token:lemma,literal(must)))
+	; \+ aux(Root,Modal) ),
+	\+ rdf(_,dep:rcmod,Root),
+	\+ rdf(Comp,dep:cop,_),
+	aux(Comp,Aux).
+effect(Root,Comp,['EFFECT',Aux]) :-
 	rdf(Root,dep:xcomp,Comp),
 	\+ rdf(_,dep:rcmod,Root),
 	rdf(Comp,dep:cop,Cop),
 	\+ rdf(Cop,token:lemma,literal(be)),
 	aux(Comp,Aux).
-effect(Root,Comp,[]) :-
+effect(Root,Comp,['EFFECT']) :-
 	rdf(Root,dep:xcomp,Comp),
 	rdf(Comp,token:pos,literal('VBG')),
 	\+ rdf(Comp,dep:ccomp,_).
-effect(Root,Comp,[Aux]) :- % infmod on dobj
+effect(Root,Comp,['EFFECT',Aux]) :- % infmod on dobj
 	rdf(Root,dep:dobj,Dobj),
 	rdf(Dobj,dep:infmod,Comp),
 	\+ rdf(Dobj,token:lemma,literal(ability)),
 	\+ helps(Comp),
 	aux(Comp,Aux).
-effect(Root,Comp,[Prep]) :- % infmod on pobj
+effect(Root,Comp,['EFFECT',Prep]) :- % infmod on pobj
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pobj,Pobj),
 	rdf(Pobj,dep:infmod,Comp),
 	\+ helps(Comp).
-effect(Root,Comp,[Mod|Aux]) :- % rcmod on dobj
+effect(Root,Comp,['EFFECT',Mod|Aux]) :- % rcmod on dobj
 	\+ rdf(Root,dep:cop,_),
 	rdf(Root,basic:dobj,Dobj),
 	rdf(Dobj,dep:rcmod,Mod),
 	rdf(Mod,dep:ccomp,Comp),
 	(aux(Comp,Aux) ; Aux = []). % optional aux
-effect(Root,Comp,[Mod|Aux]) :- % rcmod on dobj
+effect(Root,Comp,['EFFECT',Mod|Aux]) :- % rcmod on dobj
 	\+ rdf(Root,dep:cop,_),
 	rdf(Root,basic:dobj,Dobj),
 	rdf(Dobj,dep:rcmod,Mod),
 	rdf(Mod,dep:xcomp,Comp),
 	aux(Comp,Aux). % required aux
-effect(Root,Comp,[Mod|Aux]) :- % rcmod on pobj
+effect(Root,Comp,['EFFECT',Mod|Aux]) :- % rcmod on pobj
 	\+ rdf(Root,dep:cop,_),
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pobj,Pobj),
@@ -408,36 +473,34 @@ effect(Root,Comp,[Mod|Aux]) :- % rcmod on pobj
 	rdf(Mod,dep:ccomp,Comp),
 	(aux(Comp,Aux) ; Aux = []). % optional aux
 % EFFECT: Tuple "by" Tuple
-effect(Root,Comp,[]) :- % by-VBG
-	rdf(Prep,basic:pcomp,Root),
-	rdf(Prep,token:lemma,literal(by)),
-	rdf(Root,token:pos,literal('VBG')),
-	rdf(Comp,basic:prep,Prep).
-effect(Root,Comp,[]) :- % passive by-VBG
+effect(Root,Comp,['ENABLE','by']) :- % by-VBG
+	rdf(Comp,dep:prepc_by,Root),
+	rdf(Root,token:pos,literal('VBG')).
+effect(Root,Comp,['ENABLE','by']) :- % passive by-VBG
 	rdf(Comp,dep:agent,Root),
 	rdf(Comp,token:pos,literal('VBG')),
 	rdf(Comp,dep:auxpass,_).
 % EFFECT: Tuple "in" Tuple
-effect(Root,Comp,[Prep]) :-
+effect(Root,Comp,['EFFECT',Prep]) :-
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
 	rdf(Prep,basic:pcomp,Comp),
 	rdf(Comp,token:pos,literal('VBG')).
 % EFFECT: Tuple "is for" Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Root,dep:cop,_),
 	rdf(Root,dep:advcl,Comp),
 	mark(Comp,Mark),
 	rdf(Mark,token:lemma,literal(for)), !.
 % EFFECT: Tuple "for there" Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Root,dep:advcl,Comp),
 	mark(Comp,Mark),
 	rdf(Mark,token:lemma,literal(for)),
 	rdf(Comp,dep:expl,Expl),
 	rdf(Expl,token:lemma,literal(there)).
 % EFFECT: Tuple "for" Tuple
-effect(Root,Comp,[Aux]) :-
+effect(Root,Comp,['EFFECT',Aux]) :-
 	rdf(Root,dep:advcl,Comp),
 	mark(Comp,Mark),
 	rdf(Mark,token:lemma,literal(for)),
@@ -445,22 +508,22 @@ effect(Root,Comp,[Aux]) :-
 	rdf(Comp,dep:aux,Aux),
 	rdf(Aux,token:lemma,literal(to)).
 % EFFECT: Tuple "because" Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Comp,dep:advcl,Root),
 	mark(Root,Mark),
 	rdf(Mark,token:lemma,literal(because)).
 % EFFECT: "As" Tuple Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Comp,dep:advcl,Root),
 	mark(Root,Mark),
 	rdf(Mark,token:text,literal('As')).
 % EFFECT: "If" Tuple Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Comp,dep:advcl,Root),
 	mark(Root,Mark),
 	rdf(Mark,token:text,literal('If')).
 % EFFECT: Tuple "because of" Tuple
-effect(Root,Comp,[Mwe,Prep]) :-
+effect(Root,Comp,['EFFECT',Mwe,Prep]) :-
 	rdf(Pobj,dep:rcmod,Root),
 	rdf(Prep,basic:pobj,Pobj),
 	rdf(Prep,token:lemma,literal(of)),
@@ -468,12 +531,20 @@ effect(Root,Comp,[Mwe,Prep]) :-
 	rdf(Mwe,token:lemma,literal(because)),
 	rdf(Comp,basic:prep,Prep).
 % EFFECT: Tuple "when" Tuple
-effect(Root,Comp,[Adv]) :-
-	rdf(Comp,dep:advcl,Root),
-	( rdf(Root,dep:advmod,Adv) ; rdf(Root,dep:mark,Adv) ), % for Sapir
+effect(Comp,Root,['WHEN',Adv]) :-
+	rdf(Help,dep:advcl,Comp),
+	( rdf(Comp,dep:advmod,Adv) ; rdf(Comp,dep:mark,Adv) ), % for Sapir
+	rdf(Adv,token:lemma,literal(when)),
+	helps(Help), !,
+	( rdf(Help,dep:xcomp,Root)
+	; rdf(Help,dep:ccomp,Root)).
+% EFFECT: Tuple "when" Tuple
+effect(Comp,Root,['WHEN',Adv]) :-
+	rdf(Root,dep:advcl,Comp),
+	( rdf(Comp,dep:advmod,Adv) ; rdf(Comp,dep:mark,Adv) ), % for Sapir
 	rdf(Adv,token:lemma,literal(when)).
 % EFFECT: Tuple "in order for" Tuple
-effect(Root,Comp,[Prep,Pobj,Prep2]) :-
+effect(Root,Comp,['EFFECT',Prep,Pobj,Prep2]) :-
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
 	rdf(Prep,basic:pobj,Pobj),
@@ -482,7 +553,7 @@ effect(Root,Comp,[Prep,Pobj,Prep2]) :-
 	( rdf(Pobj,basic:prep,Prep2)
 	; rdf(Comp,basic:mark,Prep2) ),
 	rdf(Prep2,token:lemma,literal(for)).
-effect(Root,Comp,[Prep,Pobj,Prep2]) :- % via xcomp
+effect(Root,Comp,['EFFECT',Prep,Pobj,Prep2]) :- % via xcomp
 	rdf(Root2,dep:xcomp,Root),
 	rdf(Root2,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
@@ -493,43 +564,43 @@ effect(Root,Comp,[Prep,Pobj,Prep2]) :- % via xcomp
 	; mark(Comp,Prep2) ),
 	rdf(Prep2,token:lemma,literal(for)).
 % EFFECT: Tuple "and helps" Tuple
-effect(Root,Comp,[Csubj]) :-
+effect(Root,Comp,['EFFECT',Csubj]) :-
 	rdf(Root,dep:conj_and,Comp),
 	rdf(Comp,dep:csubj,Csubj),
 	helps(Csubj).
-effect(Root,Comp,[Help]) :-
+effect(Root,Comp,['EFFECT',Help]) :-
 	( rdf(Root,dep:conj_and,Help)
 	; rdf(Root,dep:ccomp,Help)
 	; rdf(Help,dep:csubj,Root) ),
 	helps(Help),
 	rdf(Help,dep:ccomp,Comp).
 % EFFECT: Tuple "to help" Tuple
-effect(Root,Comp,[Help]) :-
+effect(Root,Comp,['EFFECT',Help]) :-
 	rdf(Root,dep:csubj,Help),
 	helps(Help),
 	rdf(Help,dep:ccomp,Comp).
 % EFFECT: Tuple "results in" Tuple
-effect(Root,Comp,[Result,Prep]) :-
+effect(Root,Comp,['EFFECT',Result,Prep]) :-
 	rdf(Result,dep:csubj,Root),
 	rdf(Result,token:lemma,literal(result)),
 	rdf(Result,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(in)),
 	rdf(Prep,basic:pcomp,Comp).
 % EFFECT: Tuple "so that" Tuple
-effect(Root,Comp,[So,Mark]) :-
+effect(Root,Comp,['EFFECT',So,Mark]) :-
 	rdf(Root,dep:advcl,Adv),
 	mark(Adv,Mark),
 	rdf(Mark,token:lemma,literal(that)),
 	( rdf(Adv,dep:advmod,So) ; rdf(Adv,dep:mark,So)),
 	rdf(So,token:lemma,literal(so)), !,
 	argument(Root,dep:advcl,Comp). % allow conjuncts
-effect(Root,Adv,[So,Mark]) :-
+effect(Root,Adv,['EFFECT',So,Mark]) :-
 	rdf(Root,dep:dep,Adv), % unknown dep
 	mark(Adv,Mark),
 	rdf(Mark,token:lemma,literal(that)),
 	( rdf(Adv,dep:advmod,So) ; rdf(Adv,dep:mark,So)),
 	rdf(So,token:lemma,literal(so)), !.
-effect(Root,Comp,[So,Mark]) :-
+effect(Root,Comp,['EFFECT',So,Mark]) :-
 	rdf(Root,dep:advmod,So),
 	rdf(So,token:lemma,literal(so)),
 	rdf(Root,dep:ccomp,Ccomp),
@@ -537,12 +608,12 @@ effect(Root,Comp,[So,Mark]) :-
 	rdf(Mark,token:lemma,literal(that)), !,
 	argument(Root,dep:ccomp,Comp). % allow conjuncts
 % EFFECT: Tuple "so" Tuple
-effect(Root,Comp,[Mark]) :-
+effect(Root,Comp,['EFFECT',Mark]) :-
 	rdf(Root,dep:advcl,Comp),
 	rdf(Comp,dep:mark,Mark),
 	rdf(Mark,token:lemma,literal(so)).
 % EFFECT: Tuple "and by doing so" Tuple
-effect(Root,Comp,[Prep,Pcomp,So]) :-
+effect(Root,Comp,['EFFECT',Prep,Pcomp,So]) :-
 	rdf(Root,dep:conj_and,Comp),
 	rdf(Comp,basic:prep,Prep),
 	rdf(Prep,token:lemma,literal(by)),
@@ -551,13 +622,16 @@ effect(Root,Comp,[Prep,Pcomp,So]) :-
 	( rdf(Pcomp,dep:advmod,So) ; rdf(Pcomp,dep:mark,So)),
 	rdf(So,token:lemma,literal(so)).
 % EFFECT: Tuple "is a/one/another way that' Tuple
-effect(Root,Comp,[Cop,Way]) :-
-	rdf(Way,dep:csubj,Root),
+effect(Root,Comp,['EFFECT',Cop,Way]) :-
+	( rdf(Way,dep:csubj,Root)
+	; rdf(Way,dep:nsubj,Root) ),
 	rdf(Way,dep:cop,Cop),
 	rdf(Way,token:lemma,literal(way)),
 	rdf(Way,dep:rcmod,Comp), !.
-effect(Root,Comp,[Cop,Way]) :-
-	rdf(Way,dep:nsubj,Root),
+% EFFECT: Tuple "is a/one/another way to' Tuple
+effect(Root,Comp,['EXAMPLE',Cop,Way]) :-
+	( rdf(Way,dep:csubj,Root)
+	; rdf(Way,dep:nsubj,Root) ),
 	rdf(Way,dep:cop,Cop),
 	rdf(Way,token:lemma,literal(way)),
 	rdf(Way,dep:infmod,Comp), !.
@@ -672,6 +746,17 @@ filter_action(Root,[_,_,[]|_]) :- % empty object
 filter_action(_,[_,_,Obj|_]) :-
 	rdf(Obj,token:pos,literal('WRB')). % 'why'
 
+
+filter_entity(Entity) :-
+	rdf(Entity,token:lemma,literal(Lemma)),
+	wn-denom(Lemma,_Verb),
+	!, fail.
+filter_entity(Entity) :-
+	rdf(Entity,dep:det,_).
+filter_entity(Entity) :-
+	rdf(Entity,dep:num,_).
+filter_entity(Entity) :-
+	rdf(Entity,dep:poss,_).
 
 % aux from any xcomp at same level
 aux(Comp,Aux) :-

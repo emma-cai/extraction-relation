@@ -3510,7 +3510,7 @@ wn-denom('step-up','step up').
 wn-denom('tickling','tickle').
 wn-denom('counteraction','counteract').
 wn-denom('mythologisation','mythologise').
-wn-denom('gravity','gravitate').
+%wn-denom('gravity','gravitate').
 wn-denom('allocation','allocate').
 wn-denom('refueling','refuel').
 wn-denom('seizure','seize').
