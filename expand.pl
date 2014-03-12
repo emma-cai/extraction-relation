@@ -60,6 +60,8 @@ coref(E,C) :-
 
 write_text(E) :-
 	rdf(E,token:text,literal(T)),
+	write(T), !.
+write_text(T) :-
 	write(T).
 
 write_token(T) :-
@@ -88,5 +90,16 @@ write_tokens0([T]) :-
 write_tokens0([T|Rest]) :-
 	write_text(T), write(' '),
 	write_tokens0(Rest).
+
+
+write_lemmas([]).
+write_lemmas([T]) :-
+	rdf(T,token:lemma,literal(L)),
+	write(L),
+	!.
+write_lemmas([T|Rest]) :-
+	write_lemmas([T]),
+	write(' '),
+	write_lemmas(Rest).
 
 

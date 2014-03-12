@@ -1,5 +1,22 @@
 
 
+% normalize to verb if possible
+write_tuple(Ent) :-
+	atom(Ent),
+	rdf(Ent,token:lemma,literal(Lemma)),
+	( (wn-denom(Lemma,Verb), !)
+	; (rdf(Ent,token:pos,literal('VBG')), Verb = Lemma) ),
+	argument(Ent,dep:prep_of,Obj),
+	argument(Ent,dep:prep_by,Subj),
+	write('("'),
+	write_arg(Subj),
+	write('" "'),
+	write(Verb),
+	write('" "'),
+	write_arg(Obj),
+	write('")'),
+	!.
+
 write_tuple(Ent) :-
 	atom(Ent), !,
 	write('"'),
@@ -8,18 +25,18 @@ write_tuple(Ent) :-
 write_tuple([S,V]) :-
 	write_tuple([S,V,[]]).
 write_tuple([S,V,Arg|Mods]) :-
-	write('('),
+	write('("'),
 	write_arg(S),
-	write(', '),
+	write('" "'),
 	write_verb(V),
-	write(', '),
+	write('" "'),
 	( (rdf(_,basic:cop,V),
 	   write_verb(Arg)) % copula
 	; write_arg(Arg) ), % dobj
 	( Mods = []
-	; (write(', '),
+	; (write('" "'),
 	   write_mods(Mods)) ),
-	write(')'), !.
+	write('")'), !.
 
 write_arg([]) :- !.
 % special case for prep to apply exclusion list to pobj
@@ -39,13 +56,13 @@ write_entity(Arg) :-
 	rdf(Prep,basic:pobj,Pobj),
 	rdf(Prep,basic:mwe,As), !,
 	tokens(Pobj,PobjTokens,[]),
-	tokens(Arg,ArgTokens,[conj,cc,appos,xcomp,advmod,cop,nsubj,aux]),
+	tokens(Arg,ArgTokens,[conj,cc,appos,xcomp,advmod,rcmod,partmod,cop,nsubj,aux]),
 	subtract(ArgTokens,[Prep,As|PobjTokens],Tokens),
 	write('"'),
 	write_tokens(Tokens),
 	write('"').
 write_entity(Arg) :-
-	tokens(Arg,Tokens,[conj,cc,appos,xcomp,advmod,cop,nsubj,aux]),
+	tokens(Arg,Tokens,[conj,cc,appos,xcomp,advmod,rcmod,partmod,cop,nsubj,aux]),
 	write('"'),
 	write_tokens(Tokens),
 	write('"').
@@ -69,7 +86,7 @@ write_verb(Arg) :-
 	write(Verb), !.
 write_verb(Arg) :-
 	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl]),
-	write_tokens(Tokens).
+	write_lemmas(Tokens).
 
 write_mods([]).
 write_mods([Arg]) :- !,
