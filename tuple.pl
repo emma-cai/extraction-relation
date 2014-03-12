@@ -2,6 +2,9 @@
 :- rdf_meta argument(r,r,-).
 :- rdf_meta dep(r,r,-).
 
+:- rdf_register_prefix(mod, 'http://halo.vulcan.com/mod/').
+
+
 % copular
 tuple(Root,[Subj,Cop,Root|Mods]) :-
 	rdf(Root,basic:cop,Cop),
@@ -133,12 +136,20 @@ modifiers(Root,Mod) :-
 	modifiers1(Root,Mod).
 modifiers(_,[]).
 
-modifiers1(Root,[Prep]) :-
-	rdf(Root,basic:prep,Prep),
-	rdf(Prep,basic:pobj,Pobj),
+prep(Pobj,Prep) :-
+	rdf(Prep,basic:pobj,Pobj), !.	
+prep(Pobj,Prep) :-
+	rdf(Pobj2,basic:conj,Pobj),
+	rdf(Prep,basic:pobj,Pobj2).
+
+modifiers1(Root,[Prep]) :- %%% TODO: return Pobj not Prep
+	rdf(Root,PrepRel,Pobj),
+	atom_concat('http://nlp.stanford.edu/dep/prep_',_,PrepRel),
+	prep(Pobj,Prep),
 	\+ rdf(Root,dep:agent,Pobj), % exclude agent
 	\+ purpose(Root,Pobj,_),
 	\+ effect(Root,Pobj,_), % "in preparation for"
+	\+ function(Pobj,Root,_), % "by Pobj"
 	\+ ( rdf(Prep,token:lemma,literal(in)),
 	     rdf(Pobj,token:lemma,literal(order)) ),
 	\+ ( rdf(Prep,token:lemma,literal(by)),
