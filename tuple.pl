@@ -105,6 +105,11 @@ argument(Root,dep:nsubj,Parent) :-
 argument(Root,dep:nsubj,Parent) :-
 	\+ rdf(Root,dep:nsubj,_),
 	rdf(Parent,dep:partmod,Root), !.
+% inherit missing subj from parent partmod
+argument(Root,dep:nsubj,Subj) :-
+	\+ rdf(Root,dep:nsubj,_),
+	rdf(Parent,dep:ccomp,Root),
+	argument(Parent,dep:nsubj,Subj), !.
 
 argument(Root,Dep,Arg) :-
 	dep(Root,Dep,Arg).

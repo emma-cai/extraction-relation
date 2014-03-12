@@ -22,11 +22,12 @@ purpose :-
 top_purpose(Root) :-
 	purpose(Root), !.
 top_purpose(Root) :-
+	\+ helps(Root),
 	write_simple_tuple(Root).
 
 write_simple_tuple(Node) :-
-	rdf(Node,dep:nsubj,_),
-	\+rdf(Node,dep:cop,_),
+	argument(Node,dep:nsubj,Subj), Subj \= [],
+	argument(Node,dep:dobj,Obj), Obj \= [],
 	tuple(Node,Tuple),
 	write_tuple(Tuple),
 	nl.
@@ -531,16 +532,17 @@ effect(Root,Comp,['EFFECT',Mwe,Prep]) :-
 	rdf(Mwe,token:lemma,literal(because)),
 	rdf(Comp,basic:prep,Prep).
 % EFFECT: Tuple "when" Tuple
-effect(Comp,Root,['WHEN',Adv]) :-
+effect(Root,Comp,['WHEN',Adv]) :-
+	( rdf(Help,dep:xcomp,Root)
+	; rdf(Help,dep:ccomp,Root)),
+	helps(Help),
 	rdf(Help,dep:advcl,Comp),
 	( rdf(Comp,dep:advmod,Adv) ; rdf(Comp,dep:mark,Adv) ), % for Sapir
-	rdf(Adv,token:lemma,literal(when)),
-	helps(Help), !,
-	( rdf(Help,dep:xcomp,Root)
-	; rdf(Help,dep:ccomp,Root)).
+	rdf(Adv,token:lemma,literal(when)).
 % EFFECT: Tuple "when" Tuple
-effect(Comp,Root,['WHEN',Adv]) :-
+effect(Root,Comp,['WHEN',Adv]) :-
 	rdf(Root,dep:advcl,Comp),
+	\+ helps(Root),
 	( rdf(Comp,dep:advmod,Adv) ; rdf(Comp,dep:mark,Adv) ), % for Sapir
 	rdf(Adv,token:lemma,literal(when)).
 % EFFECT: Tuple "in order for" Tuple
@@ -690,6 +692,7 @@ filter_action(Root,_) :-
 	member(Token,[
 		      ability,
 		      able,
+		      necessary,
 		      responsible,
 		      similar
 		     ]).
