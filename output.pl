@@ -8,48 +8,55 @@ write_tuple(Ent) :-
 	; (rdf(Ent,token:pos,literal('VBG')), Verb = Lemma) ),
 	argument(Ent,dep:prep_of,Obj),
 	argument(Ent,dep:prep_by,Subj),
-	write('("'),
+	write('('),
 	write_arg(Subj),
-	write('" "'),
+	write(' '),
 	write(Verb),
-	write('" "'),
+	write(' '),
 	write_arg(Obj),
-	write('")'),
+	write(')'),
 	!.
 
 write_tuple(Ent) :-
 	atom(Ent), !,
-	write('"'),
-	write_arg(Ent),
-	write('"').
+	write_arg(Ent).
 write_tuple([S,V]) :-
 	write_tuple([S,V,[]]).
 write_tuple([S,V,Arg|Mods]) :-
-	write('("'),
+	write('('),
 	write_arg(S),
-	write('" "'),
+	write(' '),
 	write_verb(V),
-	write('" "'),
+	write(' '),
 	( (rdf(_,basic:cop,V),
 	   write_verb(Arg)) % copula
 	; write_arg(Arg) ), % dobj
 	( Mods = []
-	; (write('" [ '),
+	; (write(' [ '),
 	   write_mods(Mods),
 	   write(' ] ')) ),
-	write('")'), !.
+	write(')'), !.
 
-write_arg([]) :- !.
+write_arg([]) :- !,
+	write('""').
+write_arg(Arg-Var) :- !,
+	write_arg(Arg),
+	write('/?'),
+	write(Var).
 % special case for prep to apply exclusion list to pobj
 write_arg(Arg) :-
 	rdf(_,basic:prep,Arg),
 	( rdf(Arg,basic:pobj,Obj)
 	; rdf(Arg,basic:pcomp,Obj)), !,
+	write('"'),
 	write_token(Arg), write(' '),
-	write_arg(Obj).
+	write_arg(Obj),
+	write('"').
 write_arg(Arg) :-
 	tokens(Arg,Tokens,[conj,cc,appos,dep,xcomp,infmod,rcmod,partmod,advmod,cop,nsubj,aux,ref]),
-	write_tokens(Tokens).
+	write('"'),
+	write_tokens(Tokens),
+	write('"').
 
 write_entity(Arg) :-
 	% remove 'such as' PP
@@ -84,10 +91,15 @@ write_verb([]) :- !.
 write_verb(Arg) :-
 	rdf(Arg,token:lemma,literal(Lemma)),
 	wn-denom(Lemma,Verb),
-	write(Verb), !.
+	write('"'),
+	write(Verb),
+	write('"'),
+	!.
 write_verb(Arg) :-
 	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl]),
-	write_lemmas(Tokens).
+	write('"'),
+	write_lemmas(Tokens),
+	write('"').
 
 write_mods([]).
 write_mods([Arg]) :- !,

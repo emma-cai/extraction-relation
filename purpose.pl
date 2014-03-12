@@ -20,7 +20,8 @@ purpose :-
 
 
 top_purpose(Root) :-
-	purpose(Root), !.
+	findall(Root,purpose(Root),Roots),
+	Roots \= [], !.
 top_purpose(Root) :-
 	\+ helps(Root),
 	write_simple_tuple(Root).
@@ -794,12 +795,19 @@ distribute_args([[],V1,Obj1|Rest],[Subj2|Rest2], [[],V1,Obj1|Rest],[Subj2|Rest2]
 	; (rdf(A,coref:ref,Subj2),
 	   rdf(A,coref:ref,Obj1))), !.
 % use subject from parent clause
-distribute_args([S|Rest],[[],V2|Rest2], [S|Rest],[S,V2|Rest2]) :-
+distribute_args([S|Rest],[[],V2|Rest2], [S-x|Rest],[S-x,V2|Rest2]) :-
 	\+ rdf(V2,dep:auxpass,_), % not passive
 	S \= [], !.
 % use subject from child clause
-distribute_args([[]|Rest],[S2|Rest2], [S2|Rest],[S2|Rest2]) :-
+distribute_args([[]|Rest],[S2|Rest2], [S2-x|Rest],[S2-x|Rest2]) :-
 	S2 \= [], !.
+% find shared values
+distribute_args([S1,V1,O1],[S1,V2,O1], [S1-x,V1,O1-y],[S1-x,V2,O1-y]) :-
+	S1 \= [], O1 \= [], !.
+distribute_args([S1,V1,O1],[S1,V2,O2], [S1-x,V1,O1],[S1-x,V2,O2]) :-
+	S1 \= [], !.
+distribute_args([S1,V1,O1],[S2,V2,O1], [S1,V1,O1-y],[S2,V2,O1-y]) :-
+	O1 \= [], !.
 % write unchanged
 distribute_args(Action,Purpose, Action,Purpose).
 
