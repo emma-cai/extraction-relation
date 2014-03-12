@@ -34,8 +34,9 @@ write_tuple([S,V,Arg|Mods]) :-
 	   write_verb(Arg)) % copula
 	; write_arg(Arg) ), % dobj
 	( Mods = []
-	; (write('" "'),
-	   write_mods(Mods)) ),
+	; (write('" [ '),
+	   write_mods(Mods),
+	   write(' ] ')) ),
 	write('")'), !.
 
 write_arg([]) :- !.
@@ -90,9 +91,11 @@ write_verb(Arg) :-
 
 write_mods([]).
 write_mods([Arg]) :- !,
-	write_mod(Arg).
-write_mods([Arg|Rest]) :-
+	write('"'),
 	write_mod(Arg),
+	write('"').
+write_mods([Arg|Rest]) :-
+	write_mods([Arg]),
 	write(', '),
 	write_mods(Rest).
 

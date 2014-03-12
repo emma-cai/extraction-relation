@@ -136,10 +136,8 @@ modifiers(Root,[]) :-
 	rdf(Prep,basic:pobj,Pobj),
 	rdf_assert(Comp,mod:nsubj,Pobj),
 	fail.
-modifiers(Root,Mod) :-
-	modifiers1(Root,_), !,
-	modifiers1(Root,Mod).
-modifiers(_,[]).
+modifiers(Root,Mods) :-
+	findall(Mod,modifiers1(Root,Mod),Mods).
 
 prep(Pobj,Prep) :-
 	rdf(Prep,basic:pobj,Pobj), !.	
@@ -147,7 +145,7 @@ prep(Pobj,Prep) :-
 	rdf(Pobj2,basic:conj,Pobj),
 	rdf(Prep,basic:pobj,Pobj2).
 
-modifiers1(Root,[Prep]) :- %%% TODO: return Pobj not Prep
+modifiers1(Root,Prep) :- %%% TODO: return Pobj not Prep
 	rdf(Root,PrepRel,Pobj),
 	atom_concat('http://nlp.stanford.edu/dep/prep_',_,PrepRel),
 	prep(Pobj,Prep),
@@ -161,29 +159,29 @@ modifiers1(Root,[Prep]) :- %%% TODO: return Pobj not Prep
 	     rdf(Pobj,token:lemma,literal(which)) ),
 	\+ ( rdf(Prep,token:lemma,literal(for)),
 	     rdf(Pobj,dep:infmod,_)).
-modifiers1(Root,[Prep]) :-
+modifiers1(Root,Prep) :-
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pcomp,Comp),
 	\+ effect(Comp,Root,_), % exclude purpose relations
 	\+ effect(Root,Comp,_). % exclude purpose relations
-modifiers1(Root,[Comp]) :-
+modifiers1(Root,Comp) :-
 	argument(Root,dep:xcomp,Comp), Comp \= [],
 	\+ effect(Root,Comp,_), % exclude purpose relations
 	\+ effect(Root,_,[_,Comp]). % exclude purpose relations
-modifiers1(Root,[Comp]) :-
+modifiers1(Root,Comp) :-
 	argument(Root,dep:ccomp,Comp), Comp \= [],
 	\+ effect(Root,Comp,_). % exclude purpose relations
-modifiers1(Root,[Adv]) :-
+modifiers1(Root,Adv) :-
 	argument(Root,dep:advcl,Adv), Adv \= [],
 	\+ effect(Adv,Root,_), % exclude purpose relations
 	\+ effect(Root,Adv,_). % exclude purpose relations
-modifiers1(Root,[Mod]) :-
+modifiers1(Root,Mod) :-
 	argument(Root,dep:advmod,Mod), Mod \= [],
 	rdf(Mod,token:lemma,literal(Lemma)),
 	( \+ memberchk(Lemma,[so,when,also,often,still,very])
 	; (rdf(Mod,token:lemma,literal(so)),
 	   rdf(Mod,basic:prep,_Prep)) ).
-modifiers1(Root,[Comp]) :-
+modifiers1(Root,Comp) :-
 	argument(Root,dep:acomp,Comp), Comp \= [].
 
 
