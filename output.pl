@@ -96,7 +96,7 @@ write_verb(Arg) :-
 	write('"'),
 	!.
 write_verb(Arg) :-
-	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl]),
+	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,npadvmod,tmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl]),
 	write('"'),
 	write_lemmas(Tokens),
 	write('"').

@@ -114,8 +114,14 @@ example(Entity,Comp,['EXAMPLE',Example]) :-
 % EXAMPLE: NP is example of Tuple
 example(Entity,Comp,Rel) :-
 	example3(Entity,Entity2,Rel),
-	( rdf(Entity2,dep:partmod,Comp)
-	; rdf(Entity2,dep:rcmod,Comp) ).
+ 	( rdf(Entity2,dep:partmod,Comp)
+ 	; rdf(Entity2,dep:rcmod,Comp) ).
+example(Entity,Comp,['EXAMPLE',Cop,Way]) :-
+	rdf(Way,dep:nsubj,Entity),
+	rdf(Way,dep:cop,Cop),
+	rdf(Way,token:lemma,literal(way)),
+	( rdf(Way,dep:partmod,Comp)
+	; rdf(Way,dep:rcmod,Comp) ).
 
 % EXAMPLE: Tuple is example of NP
 example2(Entity,Comp,['EXAMPLE',Example]) :-
@@ -142,19 +148,34 @@ example2(Entity,Comp,['EXAMPLE',Example]) :-
 	rdf(Include,dep:nsubj,Example),
 	rdf(Include,token:lemma,literal(include)),
 	rdf(Include,dep:conj_and,Comp).
+% EXAMPLE: Tuple is called NP
+example2(Entity,Comp,['EXAMPLE',Is,Called]) :-
+	rdf(Called,dep:xcomp,Entity),
+	rdf(Called,token:text,literal(called)),
+	rdf(Called,dep:auxpass,Is),
+	rdf(Called,dep:advcl,Comp).
 
 % EXAMPLE: NP is a NP
 example3(Entity1,Entity2,['EXAMPLE',Cop,Det]) :-
 	rdf(Entity2,dep:nsubj,Entity1),
 	\+ rdf(Entity2,token:lemma,literal(example)),
+	\+ rdf(Entity2,token:lemma,literal(way)),
 	rdf(Entity2,dep:cop,Cop),
 	rdf(Entity2,dep:det,Det).
 % EXAMPLE: NPs are NPs
 example3(Entity1,Entity2,['EXAMPLE',Cop]) :-
 	rdf(Entity2,dep:nsubj,Entity1),
 	\+ rdf(Entity2,token:lemma,literal(example)),
+	\+ rdf(Entity2,token:lemma,literal(way)),
 	rdf(Entity2,dep:cop,Cop),
 	rdf(Entity2,token:pos,literal('NNS')). % plural
+% EXAMPLE: NP is called NP
+example3(Entity1,Entity2,['EXAMPLE',Is,Called]) :-
+	rdf(Called,dep:nsubjpass,Entity1),
+	\+ rdf(Called,dep:advcl,_),
+	rdf(Called,token:text,literal(called)),
+	rdf(Called,dep:auxpass,Is),
+	rdf(Called,dep:xcomp,Entity2).
 % EXAMPLE: NP such as NP
 example3(Entity1,Entity2,['EXAMPLE','such as']) :-
 	rdf(Entity2,dep:prep_such_as,Entity1).
@@ -482,6 +503,11 @@ effect(Root,Comp,['ENABLE','by']) :- % passive by-VBG
 	rdf(Comp,dep:agent,Root),
 	rdf(Comp,token:pos,literal('VBG')),
 	rdf(Comp,dep:auxpass,_).
+% EFFECT: partmod
+effect(Root,Comp,['EFFECT']) :-
+	rdf(Root,token:pos,literal('VBG')),
+	rdf(Subj,dep:partmod,Root),
+	rdf(Comp,dep:nsubj,Subj).
 % EFFECT: Tuple "in" Tuple
 effect(Root,Comp,['EFFECT',Prep]) :-
 	rdf(Root,basic:prep,Prep),
@@ -711,6 +737,7 @@ filter_action(Root,[[]|_]) :- % empty subject
 	rdf(Root,basic:nsubjpass,_), !,
 	rdf(Root,token:text,literal(Token)),
 	member(Token,[
+		      called,
 		      committed,
 		      considered,
 		      used
@@ -802,11 +829,11 @@ distribute_args([S|Rest],[[],V2|Rest2], [S-x|Rest],[S-x,V2|Rest2]) :-
 distribute_args([[]|Rest],[S2|Rest2], [S2-x|Rest],[S2-x|Rest2]) :-
 	S2 \= [], !.
 % find shared values
-distribute_args([S1,V1,O1],[S1,V2,O1], [S1-x,V1,O1-y],[S1-x,V2,O1-y]) :-
+distribute_args([S1,V1,O1|Rest1],[S1,V2,O1|Rest2], [S1-x,V1,O1-y|Rest1],[S1-x,V2,O1-y|Rest2]) :-
 	S1 \= [], O1 \= [], !.
-distribute_args([S1,V1,O1],[S1,V2,O2], [S1-x,V1,O1],[S1-x,V2,O2]) :-
+distribute_args([S1,V1,O1|Rest1],[S1,V2,O2|Rest2], [S1-x,V1,O1|Rest1],[S1-x,V2,O2|Rest2]) :-
 	S1 \= [], !.
-distribute_args([S1,V1,O1],[S2,V2,O1], [S1,V1,O1-y],[S2,V2,O1-y]) :-
+distribute_args([S1,V1,O1|Rest1],[S2,V2,O1|Rest2], [S1,V1,O1-y|Rest1],[S2,V2,O1-y|Rest2]) :-
 	O1 \= [], !.
 % write unchanged
 distribute_args(Action,Purpose, Action,Purpose).

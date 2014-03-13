@@ -183,6 +183,10 @@ modifiers1(Root,Mod) :-
 	   rdf(Mod,basic:prep,_Prep)) ).
 modifiers1(Root,Comp) :-
 	argument(Root,dep:acomp,Comp), Comp \= [].
+modifiers1(Root,Comp) :-
+	argument(Root,dep:npadvmod,Comp), Comp \= [].
+modifiers1(Root,Comp) :-
+	argument(Root,dep:tmod,Comp), Comp \= [].
 
 
 dep(Root,Dep,Ref) :-
