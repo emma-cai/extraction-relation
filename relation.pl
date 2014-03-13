@@ -8,22 +8,22 @@
 %:- rdf_load('barrons.txt.rnn.ttl').
 
 
-purpose :-
+relation :-
 	% pick a sentence
 	rdf(_Sentence,dep:root,Root),
 %	write('processing: '), write(Root), nl,
 	write_sentence(Root),
 	% descend through every node checking for relations
-	( top_purpose(Root)
+	( top_relation(Root)
 	; constit(Root,Node),
-	  purpose(Node) ).
+	  relation(Node) ).
 
 % find related tuples
-top_purpose(Root) :-
-	findall(Root,purpose(Root),Roots),
+top_relation(Root) :-
+	findall(Root,relation(Root),Roots),
 	Roots \= [], !.
 % else write simple top-level tuple
-top_purpose(Root) :-
+top_relation(Root) :-
 	argument(Root,dep:nsubj,Subj), Subj \= [],
 	argument(Root,dep:dobj,Obj), Obj \= [],
 	\+ helps(Root),
@@ -31,50 +31,50 @@ top_purpose(Root) :-
 
 
 % cause (tuple-NP)
-purpose(Root) :-
+relation(Root) :-
 	cause(Root,Entity,Rel),
-	tuple(Root,Action),
-	write_relation(Entity,Rel,Action).
+	tuple(Root,Tuple),
+	write_relation(Entity,Rel,Tuple).
 % purpose (tuple-NP)
-purpose(Root) :-
+relation(Root) :-
 	purpose(Root,Entity,Rel),
-	tuple(Root,Action),
-	\+ filter_action(Root,Action),
+	tuple(Root,Tuple),
+	\+ filter_tuple(Root,Tuple),
 	\+ filter_entity(Entity),
-	write_relation(Action,Rel,Entity).
+	write_relation(Tuple,Rel,Entity).
 % effect (tuple-tuple)
-purpose(Root) :-
+relation(Root) :-
 	effect(Root,Comp,Rel),
-	tuple(Root,Action),
-	\+ filter_action(Root,Action),
-	tuple(Comp,Purpose),
-	distribute_args(Action,Purpose,Action2,Purpose2),
-	write_relation(Action2,Rel,Purpose2).
+	tuple(Root,Tuple1),
+	\+ filter_tuple(Root,Tuple1),
+	tuple(Comp,Tuple2),
+	distribute_args(Tuple1,Tuple2,Tuple1Out,Tuple2Out),
+	write_relation(Tuple1Out,Rel,Tuple2Out).
 % function (NP-tuple)
-purpose(Root) :-
+relation(Root) :-
 	function(Root,Comp,Rel),
 	\+ rdf(_,dep:prep_for,Comp), % responsible for
-	tuple(Comp,Purpose),
-	distribute_args([Root],Purpose,_,Purpose2),
-	write_relation(Root,Rel,Purpose2).
+	tuple(Comp,Tuple),
+	distribute_args([Root],Tuple,_,TupleOut),
+	write_relation(Root,Rel,TupleOut).
 % function (NP-NP)
-purpose(Root) :-
+relation(Root) :-
 	function(Root,Comp,Rel),
 	rdf(_,dep:prep_for,Comp), % responsible for
 	write_relation(Root,Rel,Comp).
 % example (NP-tuple)
-purpose(Root) :-
+relation(Root) :-
 	example(Root,Comp,Rel),
-	tuple(Comp,[Subj|Action]),
+	tuple(Comp,[Subj|Rest]),
 	Subj \= Root, % from rcmod
-	write_entity_relation(Root,Rel,[Subj|Action]).
+	write_entity_relation(Root,Rel,[Subj|Rest]).
 % example (tuple-NP)
-purpose(Root) :-
+relation(Root) :-
 	example2(Root,Comp,Rel),
-	tuple(Comp,Action),
-	write_entity_relation(Action,Rel,Root).
+	tuple(Comp,Tuple),
+	write_entity_relation(Tuple,Rel,Root).
 % example (NP-NP)
-purpose(Root) :-
+relation(Root) :-
 	example3(Root,Entity,Rel),
 	write_entity_relation(Root,Rel,Entity).
 
@@ -685,14 +685,14 @@ causes(Cause) :-
 
 
 % exclude cases
-filter_action(Root,_) :-
+filter_tuple(Root,_) :-
 	\+ rdf(Root,basic:cop,_),
 	\+ rdf(Root,dep:aux,_),
 	\+ rdf(Root,dep:dobj,_),
 	\+ rdf(_,dep:xcomp,Root),
 	rdf(Root,token:pos,literal(Pos)),
 	atom_concat('NN',_,Pos). % nominal as verb
-filter_action(Root,_) :-
+filter_tuple(Root,_) :-
 	rdf(Root,basic:cop,_),
 	rdf(Root,token:lemma,literal(Token)),
 	member(Token,[
@@ -702,7 +702,7 @@ filter_action(Root,_) :-
 		      responsible,
 		      similar
 		     ]).
-filter_action(Root,_) :-
+filter_tuple(Root,_) :-
 	rdf(Root,basic:cop,_),
 	rdf(Root,basic:nsubj,Subj),
 	rdf(Subj,token:lemma,literal(it)), % pleonastic
@@ -712,7 +712,7 @@ filter_action(Root,_) :-
 		      nice,
 		      possible
 		     ]).
-filter_action(Root,[[]|_]) :- % empty subject
+filter_tuple(Root,[[]|_]) :- % empty subject
 	rdf(Root,basic:nsubjpass,_), !,
 	rdf(Root,token:text,literal(Token)),
 	member(Token,[
@@ -721,17 +721,17 @@ filter_action(Root,[[]|_]) :- % empty subject
 		      considered,
 		      used
 		     ]).
-filter_action(Root,_) :-
+filter_tuple(Root,_) :-
 	rdf(Root,token:lemma,literal(Token)),
 	member(Token,[
 		      be,
 		      cause
 		     ]).
-filter_action(Root,[S,V]) :- % empty object
-	filter_action(Root,[S,V,[]]).
-filter_action(Root,[_,_,[]|_]) :- % empty object
+filter_tuple(Root,[S,V]) :- % empty object
+	filter_tuple(Root,[S,V,[]]).
+filter_tuple(Root,[_,_,[]|_]) :- % empty object
 	helps(Root).
-filter_action(Root,[_,_,[]|_]) :- % empty object
+filter_tuple(Root,[_,_,[]|_]) :- % empty object
 	rdf(Root,token:lemma,literal(Token)),
 	member(Token,[
 		      appear,
@@ -753,7 +753,7 @@ filter_action(Root,[_,_,[]|_]) :- % empty object
 		      want,
 		      wish
 		     ]).
-filter_action(_,[_,_,Obj|_]) :-
+filter_tuple(_,[_,_,Obj|_]) :-
 	rdf(Obj,token:pos,literal('WRB')). % 'why'
 
 
