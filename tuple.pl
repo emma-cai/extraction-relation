@@ -1,8 +1,19 @@
 
+:- rdf_meta dependency(r,r,-).
 :- rdf_meta argument(r,r,-).
 :- rdf_meta dep(r,r,-).
 
 :- rdf_register_prefix(mod, 'http://halo.vulcan.com/mod/').
+
+% rdf access
+dependency(Arg1,Dep,Arg2) :-
+	rdf(Arg1,Dep,Arg2).
+text(Token,Value) :-
+	rdf(Token,token:text,literal(Value)).
+lemma(Token,Value) :-
+	rdf(Token,token:lemma,literal(Value)).
+pos(Token,Value) :-
+	rdf(Token,token:pos,literal(Value)).
 
 
 % copular
