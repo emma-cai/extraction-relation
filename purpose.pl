@@ -18,21 +18,16 @@ purpose :-
 	; constit(Root,Node),
 	  purpose(Node) ).
 
-
+% find related tuples
 top_purpose(Root) :-
 	findall(Root,purpose(Root),Roots),
 	Roots \= [], !.
+% else write simple top-level tuple
 top_purpose(Root) :-
+	argument(Root,dep:nsubj,Subj), Subj \= [],
+	argument(Root,dep:dobj,Obj), Obj \= [],
 	\+ helps(Root),
 	write_simple_tuple(Root).
-
-write_simple_tuple(Node) :-
-	argument(Node,dep:nsubj,Subj), Subj \= [],
-	argument(Node,dep:dobj,Obj), Obj \= [],
-	tuple(Node,Tuple),
-	write_tuple(Tuple),
-	nl.
-write_simple_tuple(_).
 
 
 % cause (tuple-NP)
@@ -72,37 +67,16 @@ purpose(Root) :-
 	example(Root,Comp,Rel),
 	tuple(Comp,[Subj|Action]),
 	Subj \= Root, % from rcmod
-	write_entity(Root),
-	write_rel(Rel),
-	write_tuple([Subj|Action]),
-	nl.
+	write_entity_relation(Root,Rel,[Subj|Action]).
 % example (tuple-NP)
 purpose(Root) :-
 	example2(Root,Comp,Rel),
 	tuple(Comp,Action),
-	write_tuple(Action),
-	write_rel(Rel),
-	write_entity(Root),
-	nl.
+	write_entity_relation(Action,Rel,Root).
 % example (NP-NP)
 purpose(Root) :-
 	example3(Root,Entity,Rel),
-	write_entity(Root),
-	write_rel(Rel),
-	write_entity(Entity),
-	nl.
-
-write_relation(Action,Rel,Purpose) :-
-	write_tuple(Action),
-	write_rel(Rel),
-	write_tuple(Purpose),
-	nl.
-write_rel([Rel|Tokens]) :-
-	write('\t"'),
-	write_tokens(Tokens),
-	write('"/'),
-	write(Rel),
-	write('\t').
+	write_entity_relation(Root,Rel,Entity).
 
 
 % EXAMPLE: NP is example (of how) Tuple
@@ -154,6 +128,11 @@ example2(Entity,Comp,['EXAMPLE',Is,Called]) :-
 	rdf(Called,token:text,literal(called)),
 	rdf(Called,dep:auxpass,Is),
 	rdf(Called,dep:advcl,Comp).
+example2(Entity,Comp,['EXAMPLE',Is,Called]) :-
+	rdf(Called,dep:xcomp,Entity),
+	rdf(Called,token:text,literal(called)),
+	rdf(Called,dep:auxpass,Is),
+	rdf(Called,dep:csubjpass,Comp).
 
 % EXAMPLE: NP is a NP
 example3(Entity1,Entity2,['EXAMPLE',Cop,Det]) :-
@@ -788,27 +767,6 @@ filter_entity(Entity) :-
 	rdf(Entity,dep:num,_).
 filter_entity(Entity) :-
 	rdf(Entity,dep:poss,_).
-
-% aux from any xcomp at same level
-aux(Comp,Aux) :-
-	rdf(Comp,dep:aux,Aux), !.
-aux(Comp,Aux) :-
-	rdf(Root,dep:infmod,Comp),
-	rdf(Root,dep:infmod,Comp2),
-	rdf(Comp2,dep:aux,Aux), !.
-aux(Comp,Aux) :-
-	rdf(Root,dep:xcomp,Comp),
-	rdf(Root,dep:xcomp,Comp2),
-	rdf(Comp2,dep:aux,Aux).
-
-mark(Comp,Mark) :-
-	rdf(Comp,dep:mark,Mark).
-mark(Comp,Mark) :-
-	rdf(Comp,dep:conj_and,Comp2),
-	rdf(Comp2,dep:mark,Mark).
-mark(Comp,Mark) :-
-	rdf(Comp2,dep:conj_and,Comp),
-	rdf(Comp2,dep:mark,Mark).
 
 
 % don't use subject from parent clause if already object

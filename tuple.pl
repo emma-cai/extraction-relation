@@ -139,12 +139,6 @@ modifiers(Root,[]) :-
 modifiers(Root,Mods) :-
 	findall(Mod,modifiers1(Root,Mod),Mods).
 
-prep(Pobj,Prep) :-
-	rdf(Prep,basic:pobj,Pobj), !.	
-prep(Pobj,Prep) :-
-	rdf(Pobj2,basic:conj,Pobj),
-	rdf(Prep,basic:pobj,Pobj2).
-
 modifiers1(Root,Prep) :- %%% TODO: return Pobj not Prep
 	rdf(Root,PrepRel,Pobj),
 	atom_concat('http://nlp.stanford.edu/dep/prep_',_,PrepRel),
@@ -215,4 +209,31 @@ dep(Root,Dep,Appos) :-
 	rdf(Root,Dep,Arg),
 	rdf(Arg,dep:appos,Appos).
 
+
+% aux from any xcomp at same level
+aux(Comp,Aux) :-
+	rdf(Comp,dep:aux,Aux), !.
+aux(Comp,Aux) :-
+	rdf(Root,dep:infmod,Comp),
+	rdf(Root,dep:infmod,Comp2),
+	rdf(Comp2,dep:aux,Aux), !.
+aux(Comp,Aux) :-
+	rdf(Root,dep:xcomp,Comp),
+	rdf(Root,dep:xcomp,Comp2),
+	rdf(Comp2,dep:aux,Aux).
+
+mark(Comp,Mark) :-
+	rdf(Comp,dep:mark,Mark).
+mark(Comp,Mark) :-
+	rdf(Comp,dep:conj_and,Comp2),
+	rdf(Comp2,dep:mark,Mark).
+mark(Comp,Mark) :-
+	rdf(Comp2,dep:conj_and,Comp),
+	rdf(Comp2,dep:mark,Mark).
+
+prep(Pobj,Prep) :-
+	rdf(Prep,basic:pobj,Pobj), !.	
+prep(Pobj,Prep) :-
+	rdf(Pobj2,basic:conj,Pobj),
+	rdf(Prep,basic:pobj,Pobj2).
 

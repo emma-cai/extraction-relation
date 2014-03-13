@@ -1,4 +1,32 @@
 
+write_relation(Action,Rel,Purpose) :-
+	write_tuple(Action),
+	write_rel(Rel),
+	write_tuple(Purpose),
+	nl.
+
+write_entity_relation(Entity1,Rel,Entity2) :-
+	( (atom(Entity1),
+	   write_entity(Entity1))
+	; write_tuple(Entity1) ),
+	write_rel(Rel),
+	( (atom(Entity2),
+	   write_entity(Entity2))
+	; write_tuple(Entity2) ),
+	!, nl.
+
+write_rel([Rel|Tokens]) :-
+	write('\t"'),
+	write_tokens(Tokens),
+	write('"/'),
+	write(Rel),
+	write('\t').
+
+write_simple_tuple(Node) :-
+	tuple(Node,Tuple),
+	write_tuple(Tuple),
+	nl.
+write_simple_tuple(_).
 
 % normalize to verb if possible
 write_tuple(Ent) :-
@@ -16,10 +44,10 @@ write_tuple(Ent) :-
 	write_arg(Obj),
 	write(')'),
 	!.
-
 write_tuple(Ent) :-
 	atom(Ent), !,
 	write_arg(Ent).
+
 write_tuple([S,V]) :-
 	write_tuple([S,V,[]]).
 write_tuple([S,V,Arg|Mods]) :-
