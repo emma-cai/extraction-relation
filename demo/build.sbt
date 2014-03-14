@@ -27,7 +27,7 @@ javaOptions += "-XX:+UseConcMarkSweepGC"
 
 fork in run := true
 
+Deploy.settings
+
 mappings in Universal ++=
   (baseDirectory.value / "public" ** "*" pair relativeTo(baseDirectory.value))
-
-Deploy.settings
