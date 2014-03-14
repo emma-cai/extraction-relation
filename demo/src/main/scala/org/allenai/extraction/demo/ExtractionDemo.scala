@@ -22,6 +22,7 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scala.io.Source
 import scala.util.{ Try, Success, Failure }
+import scala.util.control.NonFatal
 
 class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
   val timeout = 1.minute
@@ -117,12 +118,19 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   }
 }
 
-case class Extractor(url: URL) {
+case class Extractor(url: URL) extends Logging {
   override def toString = s"$name($url)"
 
   val name: String = {
     val svc = dispatch.url(url.toString) / "info" / "name"
-    Await.result(Http(svc OK as.String), 10.seconds)
+    try {
+      Await.result(Http(svc OK as.String), 10.seconds)
+    }
+    catch {
+      case NonFatal(e) =>
+        logger.error("Could not access /info/name at: " + url.toString, e)
+        throw e
+    }
   }
 
   def apply(sentence: String): Future[String] = {
