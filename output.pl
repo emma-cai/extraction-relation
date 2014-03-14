@@ -15,6 +15,17 @@ write_entity_relation(Entity1,Rel,Entity2) :-
 	; write_tuple(Entity2) ),
 	!, nl.
 
+write_rel([Rel-_Id|Tokens]) :- !,
+	write_rel([Rel|Tokens]).
+% write rule Ids (comment out previous clause)
+write_rel([Rel-Id|Tokens]) :- !,
+	write('\tRULE-'),
+	write(Id),
+	write(':"'),
+	write_tokens(Tokens),
+	write('"/'),
+	write(Rel),
+	write('\t').
 write_rel([Rel|Tokens]) :-
 	write('\t"'),
 	write_tokens(Tokens),
