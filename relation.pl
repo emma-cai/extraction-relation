@@ -163,7 +163,7 @@ example3(Entity1,Entity2,['EXAMPLE',Example,'of']) :-
 	lemma(Example,example),
 	dependency(Example,dep:prep_of,Entity2).
 % failed cop
-example3(Entity1,Entity2,['EXAMPLE',Example],'of') :-
+example3(Entity1,Entity2,['EXAMPLE',Example,'of']) :-
 	dependency(Be,dep:nsubj,Entity1),
 	lemma(Be,be),
 	dependency(Be,dep:tmod,Example),
@@ -283,13 +283,11 @@ function(Entity,Measure,['FUNCTION',Measure]) :-
 	dependency(Measure,dep:nsubj,Entity),
 	lemma(Measure,measure).
 % FUNCTION: NP "by which" Tuple
-function(Entity,Comp,['FUNCTION',By,Which]) :-
+function(Entity,Comp,['FUNCTION','by',Which]) :-
 	dependency(Root,dep:nsubj,Entity),
 	dependency(Root,dep:cop,_),
 	dependency(Root,dep:rcmod,Comp),
-	dependency(Comp,basic:prep,By),
-	lemma(By,by),
-	dependency(By,basic:pobj,Which),
+	dependency(Comp,dep:prep_by,Which),
 	lemma(Which,which).
 % FUNCTION: "function of" NP is Tuple
 function(Entity,Comp,['FUNCTION',Function]) :-
@@ -297,20 +295,20 @@ function(Entity,Comp,['FUNCTION',Function]) :-
 	lemma(Function,function),
 	dependency(Comp,dep:nsubj,Function),
 	\+ lemma(Comp,be).
-function(Entity,Comp,['FUNCTION',Function]) :-
+function(Entity,Comp,['FUNCTION',Function,'of']) :-
 	dependency(Function,dep:prep_of,Entity),
 	lemma(Function,function),
 	dependency(Be,dep:nsubj,Function),
 	lemma(Be,be),
 	dependency(Be,dep:xcomp,Comp).
 % FUNCTION: NP "is responsible for" Tuple
-function(Entity,Comp,['FUNCTION',Responsible]) :-
+function(Entity,Comp,['FUNCTION',Responsible,'for']) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	lemma(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),
 	dependency(Responsible,dep:prepc_for,Comp).
 % FUNCTION: NP "is responsible for" NP
-function(Entity,Comp,['FUNCTION',Responsible]) :-
+function(Entity,Comp,['FUNCTION',Responsible,'for']) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	lemma(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),
@@ -333,18 +331,18 @@ function(Entity,Comp,['REQUIREMENT',Necessary]) :-
 
 
 % PART: Tuple is part of Tuple
-effect(Root,Comp,['PART',Part]) :-
+effect(Root,Comp,['PART',Part,'of']) :-
 	dependency(Be,dep:advcl,Root),
 	lemma(Be,be),
 	dependency(Be,dep:nsubj,Part),
 	lemma(Part,part),
 	dependency(Part,dep:prep_of,Comp).
-effect(Root,Comp,['PART',Part]) :-
+effect(Root,Comp,['PART',Part,'of']) :-
 	dependency(Part,dep:csubj,Root),
 	dependency(Part,dep:cop,_),
 	lemma(Part,part),
 	dependency(Part,dep:prep_of,Comp).
-effect(Root,Comp,['PART',Part]) :-
+effect(Root,Comp,['PART',Part,Prep]) :-
 	dependency(Part,dep:csubj,Root),
 	dependency(Part,dep:cop,_),
 	lemma(Part,part),
@@ -378,19 +376,15 @@ effect(Root,Comp,['EFFECT',Aux,Help]) :- % infmod on pobj
 	dependency(Help,dep:ccomp,Comp),
 	aux(Help,Aux).
 % EFFECT: Tuple "in order to" Tuple
-effect(Root,Comp,['EFFECT',Prep,Pobj,Aux]) :- % xcomp on pobj
-	dependency(Root,basic:prep,Prep),
-	lemma(Prep,in),
-	dependency(Prep,basic:pobj,Pobj),
+effect(Root,Comp,['EFFECT','in',Pobj,Aux]) :- % xcomp on pobj
+	dependency(Root,dep:prep_in,Pobj),
 	lemma(Pobj,order),
 	dependency(Root,dep:xcomp,Comp),
 	\+ dependency(Pobj,dep:xcomp,_), !,
 	aux(Comp,Aux).
-effect(Root,Comp,['EFFECT',Prep,Pobj,Aux]) :- % infmod on dobj
+effect(Root,Comp,['EFFECT','in',Pobj,Aux]) :- % infmod on dobj
 	dependency(Root,dep:dobj,Dobj),
-	dependency(Dobj,basic:prep,Prep),
-	lemma(Prep,in),
-	dependency(Prep,basic:pobj,Pobj),
+	dependency(Dobj,dep:prep_in,Pobj),
 	lemma(Pobj,order),
 	dependency(Dobj,dep:infmod,_), !,
 	dependency(Dobj,dep:infmod,Comp),
@@ -475,10 +469,8 @@ effect(Root,Comp,['EFFECT']) :-
 	dependency(Subj,dep:partmod,Root),
 	dependency(Comp,dep:nsubj,Subj).
 % EFFECT: Tuple "in" Tuple
-effect(Root,Comp,['EFFECT',Prep]) :-
-	dependency(Root,basic:prep,Prep),
-	pos(Prep,in),
-	dependency(Prep,basic:pcomp,Comp),
+effect(Root,Comp,['EFFECT','in']) :-
+	dependency(Root,dep:prepc_in,Comp),
 	pos(Comp,'VBG').
 % EFFECT: Tuple "is for" Tuple
 effect(Root,Comp,['EFFECT',Mark]) :-
@@ -540,20 +532,16 @@ effect(Root,Comp,['WHEN',Adv]) :-
 	( dependency(Comp,dep:advmod,Adv) ; dependency(Comp,dep:mark,Adv) ), % for Sapir
 	lemma(Adv,when).
 % EFFECT: Tuple "in order for" Tuple
-effect(Root,Comp,['EFFECT',Prep,Pobj,Prep2]) :-
-	dependency(Root,basic:prep,Prep),
-	lemma(Prep,in),
-	dependency(Prep,basic:pobj,Pobj),
+effect(Root,Comp,['EFFECT','in',Pobj,Prep2]) :-
+	dependency(Root,dep:prep_in,Pobj),
 	lemma(Pobj,order),
 	dependency(Pobj,dep:infmod,Comp),
 	( dependency(Pobj,basic:prep,Prep2)
 	; dependency(Comp,basic:mark,Prep2) ),
 	lemma(Prep2,for).
-effect(Root,Comp,['EFFECT',Prep,Pobj,Prep2]) :- % via xcomp
+effect(Root,Comp,['EFFECT','in',Pobj,Prep2]) :- % via xcomp
 	dependency(Root2,dep:xcomp,Root),
-	dependency(Root2,basic:prep,Prep),
-	lemma(Prep,in),
-	dependency(Prep,basic:pobj,Pobj),
+	dependency(Root2,dep:prep_in,Pobj),
 	lemma(Pobj,order),
 	dependency(Pobj,dep:infmod,Comp),
 	( dependency(Pobj,basic:prep,Prep2)
@@ -576,12 +564,10 @@ effect(Root,Comp,['EFFECT',Help]) :-
 	helps(Help),
 	dependency(Help,dep:ccomp,Comp).
 % EFFECT: Tuple "results in" Tuple
-effect(Root,Comp,['EFFECT',Result,Prep]) :-
+effect(Root,Comp,['EFFECT',Result,'in']) :-
 	dependency(Result,dep:csubj,Root),
 	lemma(Result,result),
-	dependency(Result,basic:prep,Prep),
-	lemma(Prep,in),
-	dependency(Prep,basic:pcomp,Comp).
+	dependency(Result,dep:prepc_in,Comp).
 % EFFECT: Tuple "so that" Tuple
 effect(Root,Comp,['EFFECT',So,Mark]) :-
 	dependency(Root,dep:advcl,Adv),
@@ -612,11 +598,9 @@ effect(Root,Comp,['EFFECT',Mark]) :-
 	dependency(Comp,dep:mark,Mark),
 	lemma(Mark,so).
 % EFFECT: Tuple "and by doing so" Tuple
-effect(Root,Comp,['EFFECT',Prep,Pcomp,So]) :-
+effect(Root,Comp,['EFFECT','by',Pcomp,So]) :-
 	dependency(Root,dep:conj_and,Comp),
-	dependency(Comp,basic:prep,Prep),
-	lemma(Prep,by),
-	dependency(Prep,basic:pcomp,Pcomp),
+	dependency(Comp,dep:prepc_by,Pcomp),
 	text(Pcomp,doing),
 	( dependency(Pcomp,dep:advmod,So) ; dependency(Pcomp,dep:mark,So)),
 	lemma(So,so).
