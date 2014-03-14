@@ -1,0 +1,2468 @@
+;;; Living things are both similar to and different from each_other and from nonliving things.
+;;; The world around us is made up of both living and nonliving things.
+;;; Living things depend upon each_other and the nonliving environment to survive.
+("Living things"/?x "depend" "")	"to"/EFFECT	("Living things"/?x "survive" "")
+;;; Animals and plants are living things.
+;;; They have basic needs necessities in_order to survive.
+("They"/?x "have" "basic needs")	"to"/EFFECT	("They"/?x "survive" "")
+("They"/?x "have" "necessities")	"to"/EFFECT	("They"/?x "survive" "")
+;;; We often say that living things organisms are alive.
+;;; Animals need air water and food to live and survive.
+("Animals"/?x "need" "air")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "live" "")
+;;; Animals take in air by breathing.
+("Animals" "take in" "air")
+;;; They need oxygen which is in the air.
+("They" "need which is in the air" "oxygen")
+;;; Oxygen allows the animal to make and use energy which it needs to survive.
+("it"/?x "needs" "energy")	"to"/EFFECT	("it"/?x "survive" "")
+("it"/?x "needs" "energy")	"to"/EFFECT	("it"/?x "survive" "")
+;;; Animals also need water to survive.
+("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
+;;; Water is used to break down and move materials throughout the body.
+;;; Animals cannot make their own food so they must eat to get nutrients.
+("Animals" "make" "their own food")	""/EFFECT	("they" "eat" "")
+("Animals" "make" "their own food")	"so"/EFFECT	("they" "eat" "")
+("they"/?x "eat" "")	"to"/EFFECT	("they"/?x "get" "nutrients")
+;;; Nutrients are necessary for growth and energy.
+;;; Plants need air water nutrients and light to live and survive.
+("Plants"/?x "need" "air")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "need" "light")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "need" "nutrients")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "need" "water")	"to"/EFFECT	("Plants"/?x "live" "")
+;;; Plants take in air through their leaves.
+("Plants" "take in" "air")
+;;; The type of air that plants take in and use is carbon_dioxide.
+;;; This is necessary for plant to create food.
+;;; Plants make their own food by a process called photosynthesis.
+("Plants" "make" "their own food")
+;;; Water is used by the plant to move materials up from the roots to make food.
+("" "move up" "materials")	"to"/EFFECT	("" "make" "food")
+;;; Nutrients from the soil enter the plant through its roots.
+("Nutrients from the soil" "enter" "the plant")
+;;; Nutrients are necessary for plant to survive.
+;;; Light is one of the most important things for a plant.
+;;; Light gives the plant the energy it needs to survive.
+("Light" "gives" "the plant" [ "the energy" ] )
+("it"/?x "needs" "the energy")	"to"/EFFECT	("it"/?x "survive" "")
+;;; If the living organism does_not get the air water food nutrients or light it needs to survive it will die.
+("it" "die" "")	""/EFFECT	("the living organism" "get" "the air")
+("it" "die" "")	""/EFFECT	("the living organism" "get" "light")
+("it" "die" "")	""/EFFECT	("the living organism" "get" "nutrients")
+("it" "die" "")	""/EFFECT	("the living organism" "get" "food")
+("it" "die" "")	""/EFFECT	("the living organism" "get" "water")
+("the living organism" "get" "the air")	"If"/EFFECT	("it" "die" "")
+("the living organism" "get" "light")	"If"/EFFECT	("it" "die" "")
+("the living organism" "get" "nutrients")	"If"/EFFECT	("it" "die" "")
+("the living organism" "get" "food")	"If"/EFFECT	("it" "die" "")
+("the living organism" "get" "water")	"If"/EFFECT	("it" "die" "")
+("it"/?x "needs" "the air")	"to"/EFFECT	("it"/?x "survive" "")
+("it"/?x "needs" "light")	"to"/EFFECT	("it"/?x "survive" "")
+("it"/?x "needs" "nutrients")	"to"/EFFECT	("it"/?x "survive" "")
+("it"/?x "needs" "food")	"to"/EFFECT	("it"/?x "survive" "")
+("it"/?x "needs" "water")	"to"/EFFECT	("it"/?x "survive" "")
+;;; Nonliving things are all_around us.
+;;; They are present in nature or can be made by humans.
+;;; They do_not have a life cycle.
+("They" "have" "a life cycle")
+;;; A rock is considered a nonliving thing.
+;;; It exists in nature.
+;;; A nonliving thing does_not need anything to exist.
+;;; It does_not grow or reproduce it is_not alive.
+;;; A swing set is a nonliving thing that is man-made.
+"A swing set"	"is"/EXAMPLE	("a nonliving thing" "is" "a nonliving thing" [ "man-made" ] )
+"A swing set"	"is"/EXAMPLE	"a nonliving thing that"
+;;; Your desk pencil and paper are nonliving things.
+;;; They were made by humans cannot change or grow on their own.
+;;; Air and water are nonliving are necessary for things to live and survive.
+;;; All living things are able to go through certain life processes.
+("" "able" "")	"to"/EFFECT	("" "go" "")
+;;; They can grow take in nutrients breathe reproduce eliminate waste and die.
+;;; These life processes are also known as the requirements for life.
+;;; Most animals are born as a smaller version of what an adult looks like.
+;;; As they grow their bones get longer and bigger they grow more hair are able to take care of themselves by getting food shelter and water.
+("their bones" "get" "" [ "longer", "bigger" ] )	""/EFFECT	("they" "grow" "")
+("they" "grow" "")	"As"/EFFECT	("their bones" "get" "" [ "longer", "bigger" ] )
+("" "able" "" [ "by getting food shelter and water" ] )	"to"/EFFECT	("" "take" "care of themselves")
+;;; All living things grow and have a life cycle.
+;;; Some animals are born as one type of organism and as they grow they go into a changing stage called metamorphosis.
+("they" "go" "")	""/EFFECT	("they" "grow" "")
+;;; Tadpoles change into frogs caterpillars change into butterflies and mealworms turn into beetles.
+;;; This is their way of growing and changing.
+;;; Plants can grow from a seed into a flower tree or bush.
+;;; Plants reproduce by producing flowers and fruits that have seeds.
+;;; The seeds then grow into plants.
+;;; Other plants develop outgrowths that can grow into adult plants.
+("Other plants" "develop" "outgrowths")
+;;; All living things need nutrients to survive.
+("All living things"/?x "need" "nutrients")	"to"/EFFECT	("All living things"/?x "survive" "")
+;;; Animals take in food as a nutrient to give them energy and help them grow.
+("Animals"/?x "take in" "food")	"to"/EFFECT	("Animals"/?x "give" "them" [ "energy" ] )
+;;; Plants get their nutrients from the soil which helps them grow and perform photosynthesis.
+("Plants" "get which helps them grow and perform photosynthesis" "their nutrients")
+;;; Photosynthesis is the process by which plants make their own food.
+"Photosynthesis"	"is"/EXAMPLE	("plants" "make" "their own food")
+"Photosynthesis"	"is"/EXAMPLE	"the process which"
+;;; All living things do some type of breathing.
+("All living things" "do" "some type of breathing")
+;;; Most animals take in oxygen through their mouths.
+("Most animals" "take in" "oxygen")
+;;; Fish breathe through gills.
+;;; Both inhale oxygen which is used to create energy.
+("Both" "inhale which is used to create energy" "oxygen")
+;;; Oxygen is found in the air all_around us.
+;;; Animals exhale carbon_dioxide which is used by plants.
+("Animals" "exhale which is used by plants" "carbon_dioxide")
+;;; Plants take in carbon_dioxide and give off oxygen.
+("Plants" "take in" "carbon_dioxide")
+;;; All living things are able to produce offspring.
+("" "able" "")	"to"/EFFECT	("" "produce" "offspring")
+;;; We usually call them babies.
+;;; Some offspring are born looking like their parents.
+;;; Some offspring are born as one form and change over time into an adult form.
+;;; All living things must be able to get rid of the solid waste that they produce.
+("" "able" "")	"to"/EFFECT	("" "rid" "")
+;;; Animals take in food to get nutrients.
+("Animals"/?x "take in" "food")	"to"/EFFECT	("Animals"/?x "get" "nutrients")
+;;; After their bodies have used the nutritious parts of the food they must get rid of the leftover material that they cannot use.
+("their bodies"/?x "rid" "they")	""/EFFECT	("their bodies"/?x "used" "the nutritious parts of the food")
+;;; All animals get rid of this solid waste after passing food through their digestive_system.
+;;; The waste leaves the body in the form of feces.
+("The waste" "leaves" "the body")
+;;; This waste can be very helpful to growing plants.
+;;; Animals get rid of their gaseous waste by exhaling carbon_dioxide through their mouth and nose.
+;;; Plants get rid of chemical waste through their roots.
+;;; Plants get rid of gaseous waste through their leaves in the form of oxygen.
+;;; Plants are living organisms.
+;;; Plants require air water nutrients and light in_order to live and survive.
+("Plants"/?x "require" "air")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "light")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "nutrients")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "water")	"to"/EFFECT	("Plants"/?x "live" "")
+;;; Plants contain little green particles called chloroplasts which are made up of chlorophyll.
+("Plants" "contain which are made up of chlorophyll" "little green particles called chloroplasts")
+;;; Plants are the only living organism that can make its own food.
+"Plants"	"are"/EXAMPLE	("the only living organism" "make" "its own food")
+"Plants"	"are"/EXAMPLE	"the only living organism that"
+;;; Chlorophyll is used for photosynthesis the process by which plants make food.
+;;; Other living organisms depend on plants to survive.
+("Other living organisms"/?x "depend" "")	"to"/EFFECT	("Other living organisms"/?x "survive" "")
+;;; Plants provide animals with food gases oxygen that their bodies need to grow breathe and make energy.
+("Plants" "provide" "animals")
+;;; Photosynthesis is a process by which plants make their own food give off oxygen and water that they are_not using.
+"Photosynthesis"	"is"/EXAMPLE	("plants" "make" "their own food")
+"Photosynthesis"	"is"/EXAMPLE	"a process which"
+;;; The food made by the plant is a form of sugar called glucose.
+"The food made by the plant"	"is"/EXAMPLE	"a form of sugar called glucose"
+;;; Oxygen is a gas that is needed by many animals in_order to survive.
+"Oxygen"	"is"/EXAMPLE	("" "needed" "a gas")
+"Oxygen"	"is"/EXAMPLE	"a gas that"
+;;; Humans inhale oxygen and exhale carbon_dioxide.
+("Humans" "inhale" "oxygen")
+;;; The leaves of the plants take in carbon_dioxide from the environment.
+("The leaves of the plants" "take in" "carbon_dioxide")
+;;; They give off oxygen which animals need to survive.
+("They" "give off" "oxygen")
+("animals"/?x "need" "oxygen")	"to"/EFFECT	("animals"/?x "survive" "")
+;;; Water is taken in from the environment through the roots in the ground and is necessary for plant to produce food.
+;;; Nutrients are taken in through the roots from the soil and help the plant survive.
+;;; Light is provided by the sun.
+;;; It is absorbed taken in by the leaves and is necessary for plant to produce food.
+;;; Light provides the energy for the entire process of photosynthesis.
+("Light" "provides" "the energy")
+;;; There are four major parts of a plant roots stem leaves and flower.
+;;; Each part of a plant has a specific job function.
+("Each part of a plant" "has" "a specific job")
+("Each part of a plant" "has" "function")
+("Each part of a plant" "has" "a specific job")
+("Each part of a plant" "has" "function")
+;;; Roots grow underground.
+;;; Roots anchor the plant in the soil.
+("Roots" "anchor" "the plant")
+;;; Roots absorb water and nutrients from the soil into the plant.
+("Roots" "absorb" "water")
+("Roots" "absorb" "nutrients from the soil into the plant")
+("Roots" "absorb" "water")
+("Roots" "absorb" "nutrients from the soil into the plant")
+;;; Stem stalk or trunk - extends from the roots up_to the leaves and flower.
+;;; The stem is the pathway of water nutrients from roots to leaves and flower.
+"The stem"	"is"/EXAMPLE	"the pathway of water"
+;;; The stem supports and holds up the plant.
+("The stem" "supports" "the plant")
+;;; The stem is the pathway for transporting carrying water and nutrients.
+"The stem"	"is"/EXAMPLE	"the pathway for transporting carrying water and nutrients"
+;;; The stem transports extra food glucose made in the leaves to the roots to be stored for later use.
+("The stem" "transports" "extra food made in the leaves to the roots to be stored for later use")
+("The stem" "transports" "glucose")
+("The stem" "transports" "extra food made in the leaves to the roots to be stored for later use")
+("The stem" "transports" "glucose")
+;;; Leaves extend from the stem.
+;;; Leaves are the food-making factory of the plant.
+"Leaves"	"are"/EXAMPLE	"the food-making factory of the plant"
+;;; Leaves make food using water sunlight nutrients and chlorophyll.
+("Leaves" "make" "food using water sunlight nutrients and chlorophyll")
+;;; The flower is found atop the stem or stalk.
+;;; The flower is responsible for reproduction.
+;;; With the help of animals insects and birds rain wind flowers can be pollinated fertilized so_that seeds can be formed that will grow into new plants.
+("" "pollinated" "flowers")	""/EFFECT	("" "formed" "seeds")
+;;; The flower is the reproductive part of the plant.
+"The flower"	"is"/EXAMPLE	"the reproductive part of the plant"
+;;; Flowers are usually bright colors and have nice scents for a reason.
+;;; These colors and smells attract birds and insects to visit them and help with the reproduction process.
+("These colors"/?x "attract" "birds")	"to"/EFFECT	("These colors"/?x "visit" "them")
+("These colors"/?x "attract" "birds")	"to"/EFFECT	("These colors"/?x "visit" "help with the reproduction process")
+("smells"/?x "attract" "birds")	"to"/EFFECT	("smells"/?x "visit" "them")
+("smells"/?x "attract" "birds")	"to"/EFFECT	("smells"/?x "visit" "help with the reproduction process")
+("These colors"/?x "attract" "insects")	"to"/EFFECT	("These colors"/?x "visit" "them")
+("These colors"/?x "attract" "insects")	"to"/EFFECT	("These colors"/?x "visit" "help with the reproduction process")
+("smells"/?x "attract" "insects")	"to"/EFFECT	("smells"/?x "visit" "them")
+("smells"/?x "attract" "insects")	"to"/EFFECT	("smells"/?x "visit" "help with the reproduction process")
+;;; In the flower there are male and female reproductive parts.
+;;; The male organ of the flower is called the stamen containing pollen.
+;;; The female organ of the flower is called the pistil containing eggs.
+;;; When plants reproduce the offspring has characteristics similar to the parents.
+("the offspring" "has" "" [ "characteristics similar to the parents" ] )	""/EFFECT	("plants" "reproduce" "")
+;;; Seeds are formed when cells from the male and female parts of the plant combine.
+("cells from the male and female parts of the plant"/?x "formed" "Seeds")	""/EFFECT	("cells from the male and female parts of the plant"/?x "combine" "")
+("cells from the male and female parts of the plant"/?x "formed" "Seeds")	"when"/WHEN	("cells from the male and female parts of the plant"/?x "combine" "")
+;;; Seeds grow in the center of a flower and continue to develop after the petals fall off the plant.
+("" "continue" "")	"to"/EFFECT	("" "develop" "")
+("the petals"/?x "develop" "")	""/EFFECT	("the petals"/?x "fall" "")
+;;; If the seed surroundings swell up they can form a fruit.
+("they" "form" "a fruit")	""/EFFECT	("the seed surroundings" "swell up" "")
+("the seed surroundings" "swell up" "")	"If"/EFFECT	("they" "form" "a fruit")
+;;; All fruits have seeds.
+("All fruits" "have" "seeds")
+;;; Some have one big seed called the pit like a peach.
+;;; Some fruits have a_few seeds like an apple.
+("Some fruits" "have" "a_few seeds")
+;;; Some fruits have many little seeds like a kiwi.
+("Some fruits" "have" "many little seeds")
+;;; Seeds can be spread out or dispersed by the plant itself.
+;;; The seeds can also be distributed in a variety of ways that can include wind water and animals.
+;;; Seeds contain stored food that aids in germination sprouting and the growth of new young plants.
+("Seeds" "contain" "stored food")
+;;; Adaptation is an organism s ability to adjust to its surroundings.
+;;; Some plant adaptations might include.
+;;; Thorns on stems to protect the plant from being eaten.
+;;; Large leaves to increase surface area for photosynthesis.
+;;; Colored or patterned leaves flowers in_order to blend into the environment.
+;;; Roots grow longer to reach the water supply.
+("Roots"/?x "grow" "" [ "longer" ] )	"to"/EFFECT	("Roots"/?x "reach" "the water supply")
+;;; Leaves and stems develop tough outer coatings to protect the plant from the environment.
+("Leaves"/?x "develop" "tough outer coatings")	"to"/EFFECT	("Leaves"/?x "protect" "the plant")
+("stems"/?x "develop" "tough outer coatings")	"to"/EFFECT	("stems"/?x "protect" "the plant")
+;;; Stems become thicker to prevent water loss.
+("Stems"/?x "become" "" [ "thicker" ] )	"to"/EFFECT	("Stems"/?x "prevent" "water loss")
+;;; Plants have life cycles that may include beginning of life development into an adult reproduction as an adult and death.
+("Plants" "have" "life cycles")
+;;; The length of time from the beginning of the plant to its death is called its life_span.
+("The length of time from the beginning of the plant to its death is" "called" "its life_span")
+;;; Each kind of plant goes through its own stages of growth and development which includes seed young plant or seedling mature plant.
+;;; Growth is the process by which plants increase in size.
+"Growth"	"is"/EXAMPLE	("plants" "increase" "the process")
+"Growth"	"is"/EXAMPLE	"the process which"
+;;; Animals are living organisms.
+;;; Animals require air water and food in_order to live and survive.
+("Animals"/?x "require" "air")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "require" "food")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "require" "water")	"to"/EFFECT	("Animals"/?x "live" "")
+;;; All animals grow take in nutrients breathe reproduce eliminate waste and die.
+;;; Each animal has different structures that serve different functions for growth survival and reproduction.
+("Each animal" "has" "different structures")
+;;; All animals are made up of cells that have specific functions jobs.
+;;; Groups of cells make up tissues.
+("Groups of cells" "make up" "tissues")
+;;; Muscles and skin are examples of tissues.
+;;; Groups of tissues working together are called organs.
+;;; The lungs are an organ in the body.
+"The lungs"	"are"/EXAMPLE	"an organ in the body"
+;;; Different organs working together are called organ systems.
+;;; These organ systems work together to make up the organism.
+("These organ systems"/?x "work" "")	"to"/EFFECT	("These organ systems"/?x "make up" "the organism")
+;;; Each organ system has a specific function that helps the organism to survive.
+("Each organ system" "has" "a specific function")	"helps ("Each organ system" "has" "a specific function")	"helps"/EFFECT	("the organism" "survive" "")
+;;; The body systems work like a machine and each system works to help the animal grow create energy and survive.
+("The body systems"/?x "work" "")	"to"/EFFECT	("The body systems"/?x "help" "" [ "the animal grow" ] )
+;;; All animals need to take in food water nutrients vitamins and minerals to survive.
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "survive" "")
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "take in" "food")
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "take in" "nutrients")
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "take in" "water")
+;;; They take food into their mouth where the teeth and tongue break up the food into smaller pieces so_that it can be swallowed.
+("They" "take" "food")
+("the teeth" "break up" "the food")	""/EFFECT	("" "swallowed" "it")
+("tongue" "break up" "the food")	""/EFFECT	("" "swallowed" "it")
+;;; The food then goes through a tube called the esophagus to the stomach where it is broken down more.
+;;; The digested food then moves into the intestine where the nutrients are absorbed into the blood.
+;;; Any undigested food exits the body as feces through the anus.
+("Any undigested food" "exits" "the body")
+;;; During ingestion food is taken into the body.
+;;; During digestion nutrients are taken into the body.
+;;; During egestion undigested food leaves the body.
+("undigested food" "leaves" "the body")
+;;; All animals need to take in oxygen in_order to survive.
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "survive" "")
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "take in" "oxygen")
+;;; We do this by breathing.
+("We" "do" "this")
+;;; Animals take in air which contains oxygen through the nose.
+("Animals" "take in" "air")
+;;; After we inhale the air it moves through a tube called the trachea to the lungs.
+("it" "moves" "")	""/EFFECT	("we" "inhale" "the air")
+;;; In the lungs the oxygen enters the blood so_that the oxygen is carried throughout the body.
+("the oxygen" "enters" "the blood")	""/EFFECT	("the oxygen" "is" "" [ "carried throughout the body" ] )
+;;; All cells need oxygen to survive.
+("All cells"/?x "need" "oxygen")	"to"/EFFECT	("All cells"/?x "survive" "")
+;;; After the cells use the oxygen the blood carries the waste carbon_dioxide back to the lungs.
+;;; The lungs send the carbon_dioxide out of the body when we exhale.
+("The lungs" "send" "the carbon_dioxide out of the body")	""/EFFECT	("we" "exhale" "")
+("The lungs" "send" "the carbon_dioxide out of the body")	"when"/WHEN	("we" "exhale" "")
+;;; The diaphragm is a muscle that moves up and down as we inhale exhale helps the lungs take in and let out air.
+"The diaphragm"	"is"/EXAMPLE	("a muscle" "moves up and down" "a muscle")
+"The diaphragm"	"is"/EXAMPLE	"a muscle that"
+("a muscle" "moves up and down" "a muscle")	""/EFFECT	("we" "inhale" "")
+;;; The body must get nutrients and oxygen to all of its cells tissues and organs.
+("The body" "get" "nutrients")
+("The body" "get" "oxygen to all")
+("The body" "get" "nutrients")
+("The body" "get" "oxygen to all")
+;;; It does this by circulating blood throughout the body.
+("It" "does" "this" [ "by circulating blood throughout the body" ] )
+;;; The blood carries the nutrients through tubes called vessels.
+("The blood" "carries" "the nutrients")
+;;; The blood is circulated carried all_over the body because_of a strong muscle that continuously pumps the blood called the heart.
+;;; When you put your fingertips against the inside of your wrist you can feel the blood pulsing through your vessels.
+("you" "feel" "" [ "the blood pulsing through your vessels" ] )	""/EFFECT	("you" "put" "your fingertips")
+;;; After the blood carries nutrients and oxygen throughout the body we need to get rid of the chemical waste.
+("we" "need" "")	"to"/EFFECT	("" "rid" "we")
+;;; The blood takes the chemical waste and excess water to the kidneys where it is collected and sent to the bladder until the body excretes it as urine.
+("The blood" "takes" "the chemical waste")
+("The blood" "takes" "excess water")
+("The blood" "takes" "the chemical waste")
+("The blood" "takes" "excess water")
+("the body"/?x "sent" "")	""/EFFECT	("the body"/?x "excretes" "it")
+;;; Animals need to move around to find shelter and food.
+("Animals"/?x "need" "")	"to"/EFFECT	("Animals"/?x "find" "shelter")
+("Animals"/?x "need" "")	"to"/EFFECT	("Animals"/?x "find" "food")
+("Animals"/?x "need" "")	"to"/EFFECT	("Animals"/?x "move around" "")
+;;; They do this by moving muscles and bones.
+("They" "do" "this")
+;;; The skeleton provides support and protects the body s organs.
+("The skeleton" "provides" "support")
+;;; All animals need to sense their surroundings know where how to find food care for their young and many other things.
+("All animals"/?x "need" "")	"to"/EFFECT	("All animals"/?x "sense" "" [ "their surroundings know where", "how to find food care for their young and many other things" ] )
+;;; They do all of this with their brain and nerves.
+("They" "do" "all")
+;;; Humans have five senses taste touch smell sight and hearing.
+("Humans" "have" "taste")
+("Humans" "have" "hearing")
+("Humans" "have" "sight")
+("Humans" "have" "smell")
+("Humans" "have" "touch")
+("Humans" "have" "taste")
+("Humans" "have" "hearing")
+("Humans" "have" "sight")
+("Humans" "have" "smell")
+("Humans" "have" "touch")
+("Humans" "have" "taste")
+("Humans" "have" "hearing")
+("Humans" "have" "sight")
+("Humans" "have" "smell")
+("Humans" "have" "touch")
+("Humans" "have" "taste")
+("Humans" "have" "hearing")
+("Humans" "have" "sight")
+("Humans" "have" "smell")
+("Humans" "have" "touch")
+("Humans" "have" "taste")
+("Humans" "have" "hearing")
+("Humans" "have" "sight")
+("Humans" "have" "smell")
+("Humans" "have" "touch")
+;;; The senses tell the organism all that is happening around them.
+("The senses" "tell" "the organism" [ "all that" ] )
+;;; We hear with our ears.
+;;; The vibrations from sound move tiny bones in our ears which send a message through the auditory nerve to the brain so_that we understand what is being heard.
+("The vibrations from sound" "move" "tiny bones")
+("our ears" "send" "a message")	""/EFFECT	("we" "understand" "" [ "what is being heard" ] )
+;;; We taste with our tongue.
+;;; There are tiny sensors on the tongue called taste_buds that identify different tastes such_as sweet sour bitter and tart.
+;;; The taste_buds send information to the brain so_that we can decide if we like or dislike the taste.
+("The taste_buds" "send" "information to the brain")	""/EFFECT	("we" "decide" "")
+("we" "decide" "")	""/EFFECT	("we" "like" "the taste")
+("we"/?x "decide" "")	""/EFFECT	("we"/?x "dislike" "the taste")
+;;; We see with our eyes.
+;;; The eyes take in light through the lenses transmit the shapes and images through the optic_nerve to the brain.
+("The eyes" "take in" "light")
+;;; We touch with our fingers and skin.
+;;; All_over the skin there are tiny spots that feel things transmit texture temperature and other characteristics to the brain by way of the nerves.
+;;; We smell with our nose.
+;;; Tiny hairs and nerves in our nose sense different smells send them to the brain so_that we can decide if it is a familiar scent or a new one.
+("Tiny hairs in our nose" "sense" "different smells")
+("nerves" "sense" "different smells")
+("Tiny hairs in our nose" "sense" "different smells")
+("nerves" "sense" "different smells")
+("we" "decide" "")	""/EFFECT	("it" "is" "")
+"it"	"is"/EXAMPLE	"a familiar scent"
+;;; All animals have different structures that have different jobs or functions to help with growth survival and reproduction.
+("All animals" "have" "different structures")
+("different structures"/?x "have" "different jobs")	"to"/EFFECT	("different structures"/?x "help" "")
+("different structures"/?x "have" "functions")	"to"/EFFECT	("different structures"/?x "help" "")
+;;; Animals have different ways of movement.
+("Animals" "have" "different ways of movement")
+;;; Birds use their wings fish use their fins and others use their legs.
+("Birds" "use" "their wings")
+;;; Animals need to move so_that they can find a safe place for shelter find food and escape predators enemies.
+("Animals"/?x "need" "")	"to"/EFFECT	("Animals"/?x "move" "")
+("Animals" "move" "")	""/EFFECT	("they" "find" "a safe place")
+("Animals"/?x "move" "")	""/EFFECT	("Animals"/?x "escape" "predators")
+("Animals"/?x "move" "")	""/EFFECT	("Animals"/?x "escape" "enemies")
+("Animals"/?x "move" "")	""/EFFECT	("Animals"/?x "find" "food")
+;;; Lobsters and crabs protect themselves with their claws turtles have shells porcupines have spines birds use their feathers others have fur or scales to help protect them from predators.
+("others"/?x "have" "fur")	"to"/EFFECT	("others"/?x "help" "")
+("others"/?x "have" "scales")	"to"/EFFECT	("others"/?x "help" "")
+;;; Some animals are able to change the color of their body covering to that of their surroundings.
+("" "able" "")	"to"/EFFECT	("" "change" "the color of their body covering to that of their surroundings")
+;;; We call this camouflage which helps protect the animal from enemies.
+("We" "call which helps protect the animal from enemies" "this camouflage")
+;;; Think of a lion s golden fur which helps it blend into the desert landscape.
+("it"/?x "Think" "")	"helps"/EFFECT	("it"/?x "blend" "")
+;;; Chameleons are lizards that can change colors based on the color of their surroundings.
+;;; On the sand it will turn a tan color and on grass it will turn green to allow it to hide from predators.
+("it" "turn" "a tan color")
+("it"/?x "turn" "green")	"to"/EFFECT	("it"/?x "allow" "" [ "it to hide from predators" ] )
+;;; Some animals protect themselves by sending out special sounds or smells which is another type of defense mechanism.
+("Some animals" "protect which is another type of defense mechanism" "themselves")
+"which"	"is"/EXAMPLE	"another type of defense mechanism"
+;;; These smells and sounds can attract other animals so_that they can mate or they can help them fight an enemy.
+("These smells" "attract" "other animals")	""/EFFECT	("they" "mate" "")
+("sounds" "attract" "other animals")	""/EFFECT	("they" "mate" "")
+("These smells" "attract" "other animals")	""/EFFECT	("they" "help" "" [ "them fight an enemy" ] )
+("sounds" "attract" "other animals")	""/EFFECT	("they" "help" "" [ "them fight an enemy" ] )
+;;; Skunks are able to give off a very foul smell when in danger.
+("" "able" "")	"to"/EFFECT	("" "give off" "a very foul smell")
+;;; This is how they protect themselves.
+;;; Behavior is the way that organisms respond to changes in their environment or to a stimulus.
+"Behavior"	"is"/EXAMPLE	"the way that organisms respond to changes in their environment or to a stimulus"
+;;; Humans shiver when it is cold and by doing so we create more heat in an attempt to warm our bodies.
+("Humans" "shiver" "")	""/EFFECT	("it" "is" "" [ "cold" ] )
+("Humans" "shiver" "")	"when"/WHEN	("it" "is" "" [ "cold" ] )
+;;; In the hot weather our bodies sweat perspiration bringing water to our skin.
+;;; When air brushes across our wet skin it cools down our body.
+("it" "cools down" "our body")	""/EFFECT	("air" "brushes" "")
+;;; When we get nervous scared or upset our body responds by increasing our heart rate.
+("our body" "responds" "" [ "by increasing our heart rate" ] )	""/EFFECT	("we" "get" "" [ "nervous", "scared" ] )
+;;; We breathe faster and begin to sweat.
+("" "begin" "")	"to"/EFFECT	("" "sweat" "")
+;;; This is how our body prepares itself for whatever danger may be coming.
+("our body" "prepares" "itself")	""/EFFECT	("whatever danger" "coming" "")
+;;; Some animal behaviors are influenced by environmental conditions.
+;;; These behaviors may include nest building hibernating hunting migrating and communicating.
+("These behaviors" "include" "nest building hibernating hunting migrating and communicating")
+;;; Many animals are able to change their body with the seasons.
+("" "able" "")	"to"/EFFECT	("" "change" "their body")
+;;; We wear winter coats gloves and hats when the weather is cold.
+("We" "wear" "winter coats")	""/EFFECT	("the weather" "is" "" [ "cold" ] )
+("We" "wear" "hats")	""/EFFECT	("the weather" "is" "" [ "cold" ] )
+("We" "wear" "gloves")	""/EFFECT	("the weather" "is" "" [ "cold" ] )
+("We" "wear" "winter coats")	"when"/WHEN	("the weather" "is" "" [ "cold" ] )
+("We" "wear" "hats")	"when"/WHEN	("the weather" "is" "" [ "cold" ] )
+("We" "wear" "gloves")	"when"/WHEN	("the weather" "is" "" [ "cold" ] )
+;;; Some animals grow thicker fur in the winter and shed it in the warmer months.
+("Some animals" "grow" "thicker fur")
+;;; This helps to regulate their body heat.
+("This"/?x "helps" "")	"to"/EFFECT	("This"/?x "regulate" "their body heat")
+;;; Other animals change their amount of body fat with the seasons.
+;;; Body fat is a form of stored energy and helps animals get through long periods of time with little food.
+"Body fat"	"is"/EXAMPLE	"a form of stored energy"
+;;; Some animals gather food in_preparation_for the long winter.
+("Some animals" "gather" "food")
+;;; Squirrels collect acorns.
+("Squirrels" "collect" "acorns")
+;;; Some animals live a very different life in the warm weather than in the cold weather.
+("Some animals" "live" "a very different life")
+;;; Some animals hibernate during the winter months.
+;;; Their bodies slow down and go into a dormant inactive state.
+;;; Bears hibernate but before doing so they eat a great deal of food to increase their body fat.
+("they"/?x "eat" "a great deal of food")	"to"/EFFECT	("they"/?x "increase" "their body")
+;;; They are able to go for a long period of time with little food and will sleep until the cold winter months pass.
+("" "able" "")	"to"/EFFECT	("" "go" "")
+("the cold winter months"/?x "sleep" "")	""/EFFECT	("the cold winter months"/?x "pass" "")
+;;; Moving to a warmer climate in the cold months is another way some animals deal with changes in the weather.
+;;; This is called migration.
+;;; Birds are known for fly ing south in the winter to avoid the cold months.
+;;; Individual organisms and species change over long periods of time.
+("Individual organisms" "change over" "long periods of time")
+("species" "change over" "long periods of time")
+("Individual organisms" "change over" "long periods of time")
+("species" "change over" "long periods of time")
+;;; These changes adaptations depend on the environment.
+;;; Adaptations are passed from one generation to the next so_that the species can survive and thrive.
+("the species"/?x "passed" "Adaptations")	""/EFFECT	("the species"/?x "survive" "")
+("" "passed" "Adaptations")	""/EFFECT	("" "thrive" "")
+;;; One example of how organisms have adapted to their environment is the fish.
+;;; Because fish live in the water and need to breathe they developed gills.
+("they" "developed" "gills")	""/EFFECT	("fish" "live" "")
+("fish"/?x "live" "")	"to"/EFFECT	("fish"/?x "breathe" "")
+;;; Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming.
+;;; Camels are able to go for long periods of time with little water.
+("" "able" "")	"to"/EFFECT	("" "go" "")
+;;; This makes them the best type of animal to live in the desert.
+("This"/?x "makes" "them" [ "the best type of animal" ] )	"to"/EFFECT	("This"/?x "live" "")
+;;; Cactus plants can also go for long periods of time with little water which is why they survive in the desert.
+;;; Look at the similarities and differences between animals arms and/or wings.
+;;; Depending on how the organism lives their arm and/or wing adapted to help it survive.
+("their arm"/?x "adapted" "")	"to"/EFFECT	("their arm"/?x "help" "" [ "it survive" ] )
+("wing"/?x "adapted" "")	"to"/EFFECT	("wing"/?x "help" "" [ "it survive" ] )
+("their arm"/?x "adapted" "")	""/EFFECT	("their arm"/?x "Depending" "")
+("wing"/?x "adapted" "")	""/EFFECT	("wing"/?x "Depending" "")
+;;; A bird s beak functions like human lips and teeth.
+;;; A beak helps the bird capture and take in food.
+("A beak" "helps" "the bird capture")
+("A beak" "helps" "take")
+("A beak" "helps" "the bird capture")
+("A beak" "helps" "take")
+;;; Compare the various beaks shown below and think about what type of food each bird eats.
+;;; The shape strength and design of the beak varies depending on whether it is a bird of prey a seed-eater or a fish-eater.
+"it"	"is"/EXAMPLE	"a bird of prey a seed-eater or a fish-eater"
+;;; Elephants have long trunks that enable them to grab food and drink water.
+("Elephants" "have" "long trunks")	"enable ("Elephants" "have" "long trunks")	"enable"/EFFECT	("them" "grab" "food")
+;;; They also have very large ear flaps that help them hear.
+("They" "have" "very large ear flaps")	"help"/EFFECT	("them" "hear" "")
+;;; Because_of their size elephants move very slowly so having good hearing helps protect them from predators.
+;;; All organisms have variations because_of these variations individuals of a species may have an advantage in surviving and reproducing.
+("All organisms" "have" "variations")
+;;; Diversity is the many different types of animals within the same species.
+"Diversity"	"is"/EXAMPLE	"the many different types of animals within the same species"
+;;; There are many different breeds of dogs but there are variations within the same breed.
+;;; You could have three beagles that look similar but their markings are different.
+;;; All living things go through different stages in its life.
+;;; They are born grow develop have babies offspring and die.
+;;; This is called the continuity of life or life cycle.
+;;; When an organism has an offspring baby it is called reproduction.
+("it" "is" "")	""/EFFECT	("an organism" "has" "an offspring")
+("it" "is" "")	""/EFFECT	("an organism" "has" "baby")
+;;; As they grow and change over time it is called development.
+("it" "is" "")	""/EFFECT	("they" "grow" "")
+("it"/?x "is" "")	""/EFFECT	("it"/?x "change" "")
+("they" "grow" "")	"As"/EFFECT	("it" "is" "")
+;;; Living things must reproduce and have babies so_that their species will continue.
+("Living things" "reproduce" "babies")	""/EFFECT	("their species" "continue" "")
+;;; If they are_not able to reproduce their species will become extinct.
+("their species" "become" "" [ "extinct" ] )	""/EFFECT	("they" "are_not" "" [ "able" ] )
+("they" "are_not" "" [ "able" ] )	"If"/EFFECT	("their species" "become" "" [ "extinct" ] )
+("" "able" "")	"to"/EFFECT	("" "reproduce" "")
+;;; Extinction is when the species no_longer exists such_as the dinosaurs.
+;;; All living things have specific patterns of reproduction growth and development that are called stages in its life cycle.
+("All living things" "have" "specific patterns of reproduction growth and development")
+;;; Life cycle stages go in a certain order and occur throughout the life_span of the organism.
+;;; The characteristics of the cycle of life vary from organism to organism.
+;;; You may have had a pet or witnessed some of the following organisms life cycles.
+("You" "had" "a pet")
+;;; Some animals are born as one type of organism and as they grow they go into a changing stage called metamorphosis.
+("they" "go" "")	""/EFFECT	("they" "grow" "")
+;;; Some examples are the frog beetle and ladybug.
+"Some examples"	"are"/EXAMPLE	"the frog"
+;;; The length of time from an animal s birth to its death is called its life_span.
+("The length of time from an animal s birth to its death is" "called" "its life_span")
+;;; The type of environment they live in and various environment al factors can have a direct effect on organisms.
+("The type of environment they live in and various environment al factors" "have" "a direct effect on organisms")
+;;; Life_spans of different animals vary.
+;;; The average life_span of a fruit fly is 72 hours.
+;;; The average life_span of a worker ant is 6 months.
+;;; The average life_span of a worker bee is 1 year.
+;;; The average life_span of a rabbit is 9 years.
+;;; The average life_span of a frog is 10 years.
+;;; The average life_span of an elephant is 70 years.
+;;; The average life_span of a human is 79 years.
+;;; The average life_span of an Amazon parrot is 80 years.
+;;; The average life_span of a turtle is 100 years.
+;;; The health growth and development of organisms are affected by environmental conditions such_as the availability of food air water space shelter heat and sunlight.
+;;; Growth is the process by which plants and animals increase in size.
+"Growth"	"is"/EXAMPLE	("plants" "increase" "the process")
+"Growth"	"is"/EXAMPLE	("animals" "increase" "the process")
+"Growth"	"is"/EXAMPLE	"the process which"
+;;; All living things are constantly going through some form of growth and repair.
+;;; When young the overall body is growing and developing.
+("the overall body"/?x "growing" "")	""/EFFECT	("the overall body"/?x "When" "")
+;;; This is evident by how tall or big the organism grows.
+;;; As an organism moves into an adult stage of life they continue to grow.
+("they" "continue" "")	""/EFFECT	("an organism" "moves" "")
+("they"/?x "continue" "")	"to"/EFFECT	("they"/?x "grow" "")
+("an organism" "moves" "")	"As"/EFFECT	("they" "continue" "")
+;;; This is proven by how their hair and nails continue to grow and need to be maintained.
+("their hair"/?x "continue" "")	"to"/EFFECT	("their hair"/?x "grow" "")
+("their hair" "continue" "")	"to"/EFFECT	("nails" "grow" "")
+("nails" "continue" "")	"to"/EFFECT	("their hair" "grow" "")
+("nails"/?x "continue" "")	"to"/EFFECT	("nails"/?x "grow" "")
+("" "need" "")	"to"/EFFECT	("" "maintained" "")
+;;; When an animal breaks a bone it is able to heal over time.
+("it" "is" "" [ "able" ] )	""/EFFECT	("an animal" "breaks" "a bone")
+("" "able" "")	"to"/EFFECT	("" "heal" "")
+;;; This healing is done by the body growing new bone cells to repair the break.
+("" "growing" "new bone cells")	"to"/EFFECT	("" "repair" "the break")
+;;; Think about you may have cut yourself and after a short period of time the cut healed.
+;;; Usually your body can heal from a cut without any scar remaining.
+;;; This happens because your body is always growing and making new skin cells.
+("This" "happens" "")	""/EFFECT	("your body" "growing" "cells")
+("This"/?x "happens" "")	""/EFFECT	("This"/?x "making" "new skin" [ "cells" ] )
+("your body" "growing" "cells")	"because"/EFFECT	("This" "happens" "")
+;;; Have you ever noticed that some children look like their parents and some may also look like their grandparents.
+("some children" "look" "")	""/EFFECT	("their parents" "look" "")
+("some children" "look" "")	""/EFFECT	("some" "look" "")
+;;; How does this happen.
+;;; All living things get the information their body needs from their parents.
+("All living things" "get" "the information" [ "their body needs" ] )
+;;; This information is called traits.
+;;; A trait could be the color of your hair skin eyes your height the shape of your face ears and nose.
+"A trait"	"be"/EXAMPLE	"the color of your hair skin eyes your height the shape of your face ears and nose"
+;;; These are characteristics traits that you are born with.
+;;; When a trait is passed from parent to child we say that it is inherited.
+("we" "say" "" [ "that it is inherited" ] )	""/EFFECT	("a trait" "is" "" [ "passed from parent to child" ] )
+;;; Inheritance is passing characteristics from parent to child.
+("Inheritance" "passing" "characteristics")
+;;; Genetics is the branch of science that studies how hereditary information is passed from one generation to the next generation in a family.
+"Genetics"	"is"/EXAMPLE	("the branch of science" "studies" "the branch of science" [ "how hereditary information is passed from one generation to the next generation in a family" ] )
+"Genetics"	"is"/EXAMPLE	"the branch of science that"
+;;; A family tree is a chart that shows a family s relatives over time.
+"A family tree"	"is"/EXAMPLE	("a chart" "shows" "a family s relatives")
+"A family tree"	"is"/EXAMPLE	"a chart that"
+;;; In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation.
+"the grandparents"	"are"/EXAMPLE	"the first generation"
+"the children"	"are"/EXAMPLE	"the third generation"
+"the parents"	"are"/EXAMPLE	"the second generation"
+;;; A pedigree chart shows each level of a family tree in a chart format.
+("A pedigree chart" "shows" "each level of a family tree in a chart format")
+;;; Lines and boxes connect parents and children from one level to the next as shown below.
+("Lines" "connect" "parents")
+("boxes" "connect" "parents")
+("Lines" "connect" "children from one level to the next")
+("boxes" "connect" "children from one level to the next")
+("Lines" "connect" "parents")
+("boxes" "connect" "parents")
+("Lines" "connect" "children from one level to the next")
+("boxes" "connect" "children from one level to the next")
+("Lines" "connect" "parents")
+("boxes" "connect" "parents")
+("Lines" "connect" "children from one level to the next")
+("boxes" "connect" "children from one level to the next")
+("Lines" "connect" "parents")
+("boxes" "connect" "parents")
+("Lines" "connect" "children from one level to the next")
+("boxes" "connect" "children from one level to the next")
+;;; Gregor Mendel was a scientist who is known as father of genetics ..
+"Gregor Mendel"	"was"/EXAMPLE	("a scientist" "is" "a scientist" [ "known as father of genetics ." ] )
+"Gregor Mendel"	"was"/EXAMPLE	"a scientist who"
+;;; Mendel researched how pea plants pass on their traits from one generation of plant to the next.
+;;; Inherited traits for a plant are flower color leaf shape seed shape color and overall plant height.
+;;; Organisms reproduce an equal amount of genetic information DNA from the mother and father.
+;;; This information is combined to form the new offspring.
+("" "combined" "This information")	"to"/EFFECT	("" "form" "the new offspring")
+;;; Traits are carried on structures called genes.
+;;; Genes are found in all cells.
+;;; Genetic information is organized on very tiny structures in the cell called DNA DeoxyriboNucleic_Acid.
+;;; DNA is a bundle of chemicals that are considered the map for all living things.
+"DNA"	"is"/EXAMPLE	"a bundle of chemicals that are considered the map for all living things"
+;;; Every organism s DNA is different.
+;;; Just_as you have your own fingerprint you also have your own DNA.
+("you" "have" "your own DNA")	""/EFFECT	("you" "have" "your own fingerprint")
+;;; DNA tells all living things what it should look like.
+;;; DNA looks like a twisted ladder.
+;;; Each step of the ladder controls different traits.
+("Each step of the ladder" "controls" "different traits")
+;;; Each strand of DNA contains hundreds of pieces of information.
+("Each strand of DNA" "contains" "hundreds of pieces of information")
+;;; There are many strands of DNA in our body.
+;;; The number of DNA strands chromosomes an organism has is the same for all members of a species.
+"The number of DNA strands chromosomes an organism has"	"is"/EXAMPLE	"the same for all members of a species"
+;;; For_example humans have 46 chromosomes and a fruit fly has only 8 chromosomes.
+("humans" "have" "46 chromosomes")
+;;; Many organisms look very similar to other organisms because they may be from the same species.
+("Many organisms" "look" "" [ "very similar to other organisms" ] )	""/EFFECT	("they" "be" "")
+("they" "be" "")	"because"/EFFECT	("Many organisms" "look" "" [ "very similar to other organisms" ] )
+;;; When organisms are of the same species they can mate and produce an offspring like themselves.
+("they" "mate" "an offspring like themselves")	""/EFFECT	("organisms" "are" "")
+;;; A child or baby is called an offspring.
+;;; An offspring grows up to look like its parents.
+("An offspring"/?x "grows up" "")	"to"/EFFECT	("An offspring"/?x "look" "")
+("its"/?x "look" "")	""/EFFECT	("its"/?x "parents" "")
+;;; Plants and animals closely resemble their parents and other individuals in their species because_of their DNA.
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+;;; Animals reproduce their own kind.
+("Animals" "reproduce" "their own kind")
+;;; They may have different markings but you can tell that they are related.
+("They" "have" "different markings")
+;;; rabbits have rabbits.
+("rabbits" "have" "rabbits")
+;;; cats have kittens.
+("cats" "have" "kittens")
+;;; goldfish have guppies.
+("goldfish" "have" "guppies")
+;;; frogs have tadpoles.
+("frogs" "have" "tadpoles")
+;;; dogs have puppies.
+("dogs" "have" "puppies")
+;;; An organism can only have an offspring from their own species.
+("An organism" "have" "an offspring")
+;;; Dogs cannot have kittens and rabbits cannot have guppies.
+("Dogs" "have" "kittens")
+;;; Some characteristics come from living in the environment and cannot be inherited by the next generation.
+;;; For_example if you fall and get a deep cut that leaves a scar you would_not pass the scar to your offspring.
+("you" "pass" "the scar")	""/EFFECT	("you" "fall" "")
+("you"/?x "pass" "the scar")	""/EFFECT	("you"/?x "get" "a deep cut")
+;;; Do you know how to jump rope read play an instrument or sing.
+;;; These are_not traits from your parents.
+;;; These are called learned or acquired behaviors.
+;;; You cannot pass these traits to your offspring through your genes.
+("You" "pass" "these traits")
+;;; You could teach them how to do each behavior but they are_not born knowing how to do them.
+("You"/?x "teach" "them")	"to"/EFFECT	("You"/?x "do" "each behavior")
+;;; Your body is like a very delicate machine that needs to be cared for to work and feel its best.
+("a very delicate machine"/?x "needs" "a very delicate machine" [ "that to be cared for" ] )	"to"/EFFECT	("a very delicate machine"/?x "work" "its")
+;;; In order for humans to grow have energy and be healthy they need to eat healthy foods exercise and get regular rest.
+("they"/?x "need" "")	"to"/EFFECT	("they"/?x "eat" "healthy foods")
+("they"/?x "need" "")	"to"/EFFECT	("they"/?x "eat" "exercise")
+;;; Being healthy also includes good health habits.
+;;; Hand_washing and personal cleanliness are necessary to prevent disease and infection.
+("" "necessary" "")	"to"/EFFECT	("" "prevent" "disease")
+("" "necessary" "")	"to"/EFFECT	("" "prevent" "infection")
+;;; There are many germs that can be transmitted from touching things and then placing your hands by your face.
+;;; This is why you need to wash your hands often to remove any harmful germs.
+("you"/?x "need" "")	"to"/EFFECT	("you"/?x "remove" "any harmful germs")
+("you"/?x "need" "")	"to"/EFFECT	("you"/?x "wash" "your hands")
+;;; The body needs to be cleaned regularly to prevent germs and bacteria from growing and making us sick.
+("The body"/?x "needs" "")	"to"/EFFECT	("The body"/?x "prevent" "")
+("The body" "needs" "")	"to"/EFFECT	("" "cleaned" "The body")
+;;; Brushing your teeth in the morning and bed is another important part of having good health.
+;;; Our teeth build up food throughout the day and overnight while we sleep.
+("Our teeth" "build up" "food")
+;;; Brushing our teeth removes the food and helps keep them strong.
+;;; Covering your mouth when you cough or sneeze is another way to prevent your germs from passing to someone_else.
+("you"/?x "Covering" "your mouth")	""/EFFECT	("you"/?x "cough" "")
+("" "Covering" "your mouth")	""/EFFECT	("" "sneeze" "")
+("you"/?x "Covering" "your mouth")	"when"/WHEN	("you"/?x "cough" "")
+;;; If you get a cut it must be cleaned to prevent any bacteria from creating an infection disease.
+("" "cleaned" "it")	"to"/EFFECT	("" "prevent" "any bacteria" [ "from creating an infection" ] )
+("you"/?x "cleaned" "it")	""/EFFECT	("you"/?x "get" "a cut")
+("you" "get" "a cut")	"If"/EFFECT	("" "cleaned" "it")
+;;; After the wound is cleaned it should be covered with a bandage to reduce the chance of getting infected.
+("" "covered" "it")	"to"/EFFECT	("" "reduce" "the chance of getting infected")
+("" "covered" "it")	""/EFFECT	("" "cleaned" "the wound")
+;;; You have only one chance to live a healthy life style.
+("one"/?x "chance" "")	"to"/EFFECT	("one"/?x "live" "a healthy life style")
+;;; The best way to do this in_addition_to eating healthfully exercising and getting rest is to avoid do not take or try.
+;;; Smoking cigarettes tobacco or illegal drugs is very harmful to your body.
+("tobacco"/?x "is" "" [ "very harmful to your body" ] )	""/EFFECT	("tobacco"/?x "Smoking" "cigarettes")
+("illegal drugs"/?x "is" "" [ "very harmful to your body" ] )	""/EFFECT	("illegal drugs"/?x "Smoking" "cigarettes")
+;;; When a person smokes there are chemicals released by the tobacco that enter the lungs.
+("chemicals released by the tobacco" "are" "")	""/EFFECT	("a person" "smokes" "")
+;;; Because the lungs have to work harder to remove the chemicals the body has to work harder to get the air needed to survive.
+("the body"/?x "has" "")	"to"/EFFECT	("the body"/?x "get" "the body the air needed to survive")
+("the body" "has" "")	""/EFFECT	("the lungs" "have" "")
+("the body"/?x "has" "")	"to"/EFFECT	("the body"/?x "work" "")
+("the lungs"/?x "have" "")	"to"/EFFECT	("the lungs"/?x "remove" "the chemicals")
+("the lungs"/?x "have" "")	"to"/EFFECT	("the lungs"/?x "work" "")
+("" "needed" "")	"to"/EFFECT	("" "survive" "")
+;;; The chemicals from smoking can also cause very serious diseases such_as lung cancer.
+("The chemicals from smoking" "cause" "very serious diseases")
+;;; Smoking can also cause skin and teeth to turn an unhealthy color.
+;;; Drinking alcohol and/or taking illicit not prescribed drugs are also very harmful to your body.
+;;; In order for alcohol and drugs to get out of your body the blood takes it to the liver which is the organ that cleans the blood.
+("the blood" "takes which is the organ that cleans the blood" "it")
+"which"	"is"/EXAMPLE	("the organ" "cleans" "the blood")
+"which"	"is"/EXAMPLE	"the organ that"
+;;; The liver has to work harder to remove these foreign substances.
+("The liver"/?x "has" "")	"to"/EFFECT	("The liver"/?x "remove" "these foreign substances")
+("The liver"/?x "has" "")	"to"/EFFECT	("The liver"/?x "work" "")
+;;; As a result your body may develop some serious illnesses.
+("your body" "develop" "some serious illnesses")
+;;; Eating a balanced_diet is one of the most important steps toward having good heath.
+;;; It is important to take in the proper foods and nutrients everyday can grow have energy and repair itself.
+;;; A balanced_diet includes.
+;;; Grains - bread rice pasta cereal.
+;;; Milk - cheese yogurt cream dairy.
+;;; Oils and Sweets - butter oil sugars in very limited amounts.
+;;; The MyPyramid is an easy way to plan the foods you are going to eat.
+"The MyPyramid"	"is"/EXAMPLE	"an easy way to plan the foods you are going to eat"
+("you"/?x "going" "")	"to"/EFFECT	("you"/?x "eat" "")
+;;; Each part of the pyramid represents the proper amounts of each type of food that will help you stay healthy.
+("Each part of the pyramid" "represents" "the proper amounts of each type of food")	"help"/EFFECT	("you" "stay" "" [ "healthy" ] )
+;;; Also you should keep_in_mind that regular exercise is necessary to live a healthy lifestyle.
+("you"/?x "keep_in_mind" "" [ "that regular exercise is necessary to live a healthy lifestyle" ] )	""/EFFECT	("you"/?x "Also" "")
+("" "necessary" "")	"to"/EFFECT	("" "live" "a healthy lifestyle")
+;;; When we run jump walk play sports or ride our bike we are exercising.
+("we" "exercising" "")	""/EFFECT	("we" "run" "")
+("we"/?x "exercising" "")	""/EFFECT	("we"/?x "ride" "our bike")
+("we"/?x "exercising" "")	""/EFFECT	("we"/?x "play" "sports")
+("we"/?x "exercising" "")	""/EFFECT	("we"/?x "walk" "")
+("we"/?x "exercising" "")	""/EFFECT	("we"/?x "jump" "")
+;;; Not only is it fun but it is healthy for our bodies.
+;;; When we exercise our body is working hard moving the nutrients water and air throughout our body.
+("our body" "working" "")	""/EFFECT	("we" "exercise" "")
+;;; Getting enough rest is also an important part of living a healthy life.
+;;; Our bodies need time to rest and recover from our busy day.
+;;; While we sleep our body gives the cells time to grow and repair.
+("our body" "gives" "" [ "the cells time to grow and repair", "to grow" ] )	""/EFFECT	("we" "sleep" "")
+;;; When we get a good night s sleep we are able to better concentrate in school and find it easier to complete our work.
+("we" "are" "" [ "able" ] )	""/EFFECT	("we" "get" "a good night s sleep")
+("" "find" "" [ "it easier" ] )	"to"/EFFECT	("" "complete" "our work")
+;;; Ecology is the science that studies the relationships between organisms and their environments.
+"Ecology"	"is"/EXAMPLE	("the science" "studies" "the relationships between organisms and their environments")
+"Ecology"	"is"/EXAMPLE	"the science that"
+;;; These interconnected relationships are called ecosystems.
+;;; An ecosystem is a community of all the living and nonliving parts of an environment.
+"An ecosystem"	"is"/EXAMPLE	"a community of all the living"
+;;; Plants and animals depend on each_other and the nonliving environment for survival.
+;;; Living things need specific resources for survival such_as air food and water.
+("Living things" "need" "specific resources")
+;;; While plants are able to make their own food by photosynthesis they need sunlight and water to do so.
+("they" "need" "" [ "sunlight and water to do so" ] )	""/EFFECT	("plants" "are" "" [ "able" ] )
+("" "able" "")	"to"/EFFECT	("" "make" "their own food")
+;;; Plants also take in carbon_dioxide from the environment and return oxygen to the air for animals to use.
+("Plants" "take in" "carbon_dioxide")
+;;; Green plants are called producers because they provide the basic food supply for themselves and animals.
+("they" "provide" "the basic food supply")	"because"/EFFECT	("" "called" "Green plants")
+;;; The sun is the ultimate source of energy for all life and physical cycles on Earth.
+"The sun"	"is"/EXAMPLE	"the ultimate source of energy for all life and physical cycles on Earth"
+;;; The sun s energy is transferred on Earth from plants to animals through the food chain.
+;;; Plants and animals interact in a number of ways that affect their survival.
+;;; The survival of plants and animals varies in_response_to their particular environment.
+;;; Provided there are enough resources for plants and animals they can survive in a successful balanced ecosystem community for long periods of time.
+("they" "survive" "")	""/EFFECT	("enough resources for plants and animals" "are" "")
+;;; The U.S. National Park Service is committed to preserving protecting and sharing the beauty of successful ecosystems.
+;;; These protected areas are all_over the United_States in deserts forests prairies tropical areas and arctic regions.
+;;; Individuals in a species may compete with each_other for food mates space water and shelter within their environment.
+;;; Problems arise when the balance between the organisms the available resources and space changes.
+("Problems" "arise" "")	""/EFFECT	("the balance between the organisms the available resources and space" "changes" "")
+("Problems" "arise" "")	"when"/WHEN	("the balance between the organisms the available resources and space" "changes" "")
+;;; Building homes stores factories growing food crops and pollution are some causes of ecosystem failure.
+("stores"/?x "are" "")	""/EFFECT	("stores"/?x "Building" "" [ "homes" ] )
+("growing food crops"/?x "are" "")	""/EFFECT	("growing food crops"/?x "Building" "" [ "homes" ] )
+("factories"/?x "are" "")	""/EFFECT	("factories"/?x "Building" "" [ "homes" ] )
+"stores"	"are"/EXAMPLE	"some causes of ecosystem failure"
+;;; As the physical environment changes over time plants and animals change and do the relationships within the ecosystem.
+("plants" "change" "")	""/EFFECT	("the physical environment" "changes" "")
+("animals" "change" "")	""/EFFECT	("the physical environment" "changes" "")
+("the physical environment" "changes" "")	"As"/EFFECT	("plants" "change" "")
+("the physical environment" "changes" "")	"As"/EFFECT	("animals" "change" "")
+;;; An organism s pattern of behavior is related to the nature of that organism s environment.
+;;; This includes the kinds and numbers of other organisms present the availability of food other resources and the physical characteristics of the environment.
+("This" "includes" "the kinds of other organisms present the availability of food other resources and the physical characteristics of the environment")
+("This" "includes" "numbers")
+("This" "includes" "the kinds of other organisms present the availability of food other resources and the physical characteristics of the environment")
+("This" "includes" "numbers")
+;;; Changes in the weather too much rainfall severe cold or heat affect plants and animals.
+("Changes in the weather too much rainfall severe cold or heat" "affect" "plants")
+("Changes in the weather too much rainfall severe cold or heat" "affect" "animals")
+("Changes in the weather too much rainfall severe cold or heat" "affect" "plants")
+("Changes in the weather too much rainfall severe cold or heat" "affect" "animals")
+;;; When there are environmental changes some plants and animals survive reproduce and increase in number while others die or move to new locations.
+("some plants" "survive" "")	""/EFFECT	("environmental changes" "are" "")
+("animals" "survive" "")	""/EFFECT	("environmental changes" "are" "")
+("others"/?x "reproduce" "")	""/EFFECT	("others"/?x "die" "")
+;;; This can have a major impact on the resources available.
+;;; There may_not be enough food or shelter.
+;;; Another example of an environmental change would be such_as a flood or fire.
+;;; Some plants and animals are able to survive the changes while others may_not.
+("" "able" "")	"to"/EFFECT	("" "survive" "the changes")
+("others"/?x "survive" "the changes")	""/EFFECT	("others"/?x "may_not" "")
+;;; Many things in our living environment go through cycles.
+;;; All animals depend on plants either as a direct source of food and energy or because plants are food for another animal that they eat.
+;;; Some animals predators eat other animals prey.
+("Some animals" "eat" "other animals")
+("predators" "eat" "other animals")
+("Some animals" "eat" "prey")
+("predators" "eat" "prey")
+("Some animals" "eat" "other animals")
+("predators" "eat" "other animals")
+("Some animals" "eat" "prey")
+("predators" "eat" "prey")
+("Some animals" "eat" "other animals")
+("predators" "eat" "other animals")
+("Some animals" "eat" "prey")
+("predators" "eat" "prey")
+("Some animals" "eat" "other animals")
+("predators" "eat" "other animals")
+("Some animals" "eat" "prey")
+("predators" "eat" "prey")
+;;; In the photo below the cat is considered a predator and the fish is its prey.
+;;; Animals that eat plants for food may in_turn become food for other animals.
+;;; This sequence is called a food chain.
+;;; There are three terms used in a food chain.
+;;; Producers are living things that change the sun s energy to make their own food.
+("living things"/?x "change" "the sun s energy")	"to"/EFFECT	("living things"/?x "make" "their own food")
+;;; Green plants do this by photosynthesis.
+("Green plants" "do" "this")
+;;; Consumers are living things that feed on others.
+;;; A primary 1 st consumer eats producers plants.
+("A primary 1 st consumer" "eats" "producers")
+("A primary 1 st consumer" "eats" "plants")
+("A primary 1 st consumer" "eats" "producers")
+("A primary 1 st consumer" "eats" "plants")
+;;; A secondary 2 nd consumer eats primary consumers.
+("A secondary 2 nd consumer" "eats" "primary consumers")
+;;; A tertiary 3 rd consumer eats secondary consumers.
+("A tertiary 3 rd consumer" "eats" "secondary consumers")
+;;; Decomposers are living things that break down dead organisms and recycle their nutrients into the soil.
+;;; They help in plant growth.
+;;; Some food chains crisscross and create a food web.
+("Some food chains" "crisscross" "a food web")
+;;; They can be simple.
+;;; Human decisions and activities have had a major impact on the physical and living environments.
+("Human decisions" "had" "a major impact")
+("activities" "had" "a major impact")
+("Human decisions" "had" "a major impact")
+("activities" "had" "a major impact")
+;;; Humans are dependent upon the environment for food shelter and energy.
+;;; Humans can live in many different environments.
+;;; Some people live in very cold regions.
+;;; Others live in tropical areas where it can get very warm.
+;;; Humans can live in areas with forests prairies deserts or at the beach.
+;;; Humans use resources from the environment to create shelters and energy.
+("Humans"/?x "use" "resources")	"to"/EFFECT	("Humans"/?x "create" "shelters")
+("Humans"/?x "use" "resources")	"to"/EFFECT	("Humans"/?x "create" "energy")
+;;; By using materials that are found naturally in the environment humans must be responsible and make sure that they do_not create problems for nature.
+;;; Humans use wood to build homes which comes from trees.
+("Humans"/?x "use which comes from trees" "wood")	"to"/EFFECT	("Humans"/?x "build" "" [ "homes" ] )
+;;; Cutting down too many trees has resulted in many forest animals no_longer having homes.
+;;; Humans also use materials found to create energy.
+("Humans" "use" "Humans materials found to create energy")
+("" "found" "")	"to"/EFFECT	("" "create" "energy")
+;;; We use fossil fuels to make gasoline so_that we can drive cars and trucks fly planes.
+("We"/?x "use" "fossil fuels")	"to"/EFFECT	("We"/?x "make" "gasoline")
+("we"/?x "make" "gasoline")	""/EFFECT	("we"/?x "drive" "cars")
+("we"/?x "make" "gasoline")	""/EFFECT	("we"/?x "drive" "trucks")
+;;; Fossil fuels like oil and natural_gas are used to heat our homes and power factories to make items that we purchase.
+;;; It can take thousands of years for certain fossil fuels to be created.
+("It" "take" "thousands of years for certain fossil fuels")	"to"/EFFECT	("" "created" "")
+;;; Humans must learn how to conserve our planet s natural resources.
+;;; Humans depend on natural and constructed environments.
+;;; The way that humans treat the environment has a large effect on the survival of all living and nonliving things.
+("The way" "has" "a large effect on the survival of all living and nonliving things")
+;;; As humans build homes stores and communities they displace the animals that live in those areas.
+("they" "displace" "the animals")	""/EFFECT	("humans" "build" "homes")
+("they" "displace" "the animals")	""/EFFECT	("humans" "build" "communities")
+("they" "displace" "the animals")	""/EFFECT	("humans" "build" "stores")
+("humans" "build" "homes")	"As"/EFFECT	("they" "displace" "the animals")
+("humans" "build" "communities")	"As"/EFFECT	("they" "displace" "the animals")
+("humans" "build" "stores")	"As"/EFFECT	("they" "displace" "the animals")
+;;; The animals have to move to new areas.
+("The animals"/?x "have" "")	"to"/EFFECT	("The animals"/?x "move" "")
+;;; If they find new homes the animals could have difficulty finding food could be in_danger_of predators or might_not adapt to the new environment.
+("the animals" "have" "difficulty finding food")	""/EFFECT	("they" "find" "new homes")
+("they" "find" "new homes")	"If"/EFFECT	("the animals" "have" "difficulty finding food")
+;;; If they are unsuccessful in their new location they may die.
+("they" "die" "")	""/EFFECT	("they" "are" "" [ "unsuccessful in their new location" ] )
+("they" "are" "" [ "unsuccessful in their new location" ] )	"If"/EFFECT	("they" "die" "")
+;;; If organisms in a species are_not able to reproduce that species may become extinct.
+("that species" "become" "" [ "extinct" ] )	""/EFFECT	("organisms in a species" "are_not" "" [ "able" ] )
+("organisms in a species" "are_not" "" [ "able" ] )	"If"/EFFECT	("that species" "become" "" [ "extinct" ] )
+("" "able" "")	"to"/EFFECT	("" "reproduce" "")
+;;; As humans construct new homes and buildings they change the landscape of the nonliving environment.
+("they" "change" "the landscape of the nonliving environment")	""/EFFECT	("humans" "construct" "new homes")
+("they" "change" "the landscape of the nonliving environment")	""/EFFECT	("humans" "construct" "buildings")
+("humans" "construct" "new homes")	"As"/EFFECT	("they" "change" "the landscape of the nonliving environment")
+("humans" "construct" "buildings")	"As"/EFFECT	("they" "change" "the landscape of the nonliving environment")
+;;; Floods can result from altering the flow of water in the environment.
+;;; Humans have also changed the environment by cultivating growing crops and raising animals.
+("Humans" "changed" "the environment")
+;;; Humans need food to survive and since the human population increases in size every day there is a greater demand for food.
+("Humans"/?x "need" "food")	"to"/EFFECT	("Humans"/?x "survive" "")
+("a greater demand for food" "is" "")	""/EFFECT	("the human population" "increases" "" [ "every day" ] )
+;;; Animals are raised on farms for human consumption to eat.
+;;; In addition to food shelter and energy humans manufacture goods that make life more comfortable.
+("humans" "manufacture" "goods")
+;;; Factories are built and materials are taken from the environment to create many different products.
+("" "taken" "materials")	"to"/EFFECT	("" "create" "many different products")
+;;; Humans developed various means of transportation so_that they could live in one place bring food energy and other goods to them rather_than living at the site where they are made.
+("Humans" "developed" "various means of transportation")	""/EFFECT	("they" "live" "")
+("Humans"/?x "developed" "various means of transportation")	""/EFFECT	("Humans"/?x "bring" "food" [ "to them" ] )
+("Humans"/?x "developed" "various means of transportation")	""/EFFECT	("Humans"/?x "bring" "other goods" [ "to them" ] )
+("Humans"/?x "developed" "various means of transportation")	""/EFFECT	("Humans"/?x "bring" "energy" [ "to them" ] )
+;;; While it is nice to have cars planes and trains for transportation these machines give off gases that are_not helpful to the atmosphere.
+("these machines"/?x "give off" "gases")	""/EFFECT	("these machines"/?x "is" "" [ "nice to have cars planes and trains for transportation" ] )
+;;; Building shelters using energy manufacturing goods and the various forms of transportation are some of the ways humans have created pollution.
+("manufacturing goods"/?x "are" "")	""/EFFECT	("manufacturing goods"/?x "Building" "shelters")
+("the various forms of transportation"/?x "are" "")	""/EFFECT	("the various forms of transportation"/?x "Building" "shelters")
+("manufacturing goods"/?x "are" "")	""/EFFECT	("manufacturing goods"/?x "using" "energy")
+("the various forms of transportation"/?x "are" "")	""/EFFECT	("the various forms of transportation"/?x "using" "energy")
+;;; Pollution is found in the air on the land and in the water.
+;;; Humans have changed their environment by developing communities in areas where living things had to struggle to survive.
+("living things"/?x "had" "")	"to"/EFFECT	("living things"/?x "struggle" "")
+("living things"/?x "struggle" "")	"to"/EFFECT	("living things"/?x "survive" "their environment by developing communities in areas where")
+;;; When a new community is built in the desert humans may bring in plants that are_not familiar to that environment.
+("humans" "bring in" "plants")	""/EFFECT	("a new community" "is" "" [ "built in the desert" ] )
+;;; Watering their imported lawns increases the moisture in the dry air.
+;;; This can change the air quality and lead to pollution.
+("This" "change" "the air quality")
+;;; Humans can help the environment in many ways.
+("Humans" "help" "the environment")
+;;; Feeding animals that have lost their natural resources due_to the development of stores and homes.
+;;; Cleaning litter from beaches parks and forests.
+;;; Recycling and reusing papers plastics and metals to reduce the amount of waste in landfills.
+("" "Recycling" "papers")	"to"/EFFECT	("" "reduce" "" [ "the amount of waste in landfills" ] )
+("" "Recycling" "metals")	"to"/EFFECT	("" "reduce" "" [ "the amount of waste in landfills" ] )
+("" "Recycling" "plastics")	"to"/EFFECT	("" "reduce" "" [ "the amount of waste in landfills" ] )
+;;; Using appliances that conserve energy energy efficient.
+;;; Creating new clean forms of energy to conserve fossil fuels.
+("" "Creating" "new clean forms of energy")	"to"/EFFECT	("" "conserve" "fossil fuels")
+;;; Matter is anything that has mass and takes up space.
+;;; Mass is the amount of material present in an object.
+"Mass"	"is"/EXAMPLE	"the amount of material present in an object"
+;;; To measure mass scientists use a balance.
+("scientists" "use" "a balance")
+;;; Volume is defined as the amount of space an object takes up.
+;;; To measure liquid volume scientists use a graduated_cylinder.
+("scientists" "use" "a graduated_cylinder")
+;;; To measure the volume of a solid scientists use a ruler.
+("scientists" "use" "a ruler")
+;;; Think of this book.
+;;; It has mass as_well_as volume therefore it is considered matter.
+("It" "has" "mass")
+("It" "has" "volume")
+("It" "has" "mass")
+("It" "has" "volume")
+;;; Matter exists in three phases solid liquid and gas.
+;;; Solids have a definite shape and volume.
+("Solids" "have" "a definite shape")
+("Solids" "have" "volume")
+("Solids" "have" "a definite shape")
+("Solids" "have" "volume")
+;;; Liquids take the shape of the container they are placed in and have a definite volume.
+("Liquids" "take in" "the shape of the container they are placed")
+;;; Gases take the shape and volume of whatever container they occupy.
+("Gases" "take" "the shape of whatever container they occupy")
+("Gases" "take" "volume")
+("Gases" "take" "the shape of whatever container they occupy")
+("Gases" "take" "volume")
+;;; The simplest way to observe matter is to use your senses sight sound taste touch and hearing.
+;;; In_addition_to their senses scientists often use tools and/or instruments to observe matter.
+("scientists"/?x "use" "tools")	"to"/EFFECT	("scientists"/?x "observe" "matter")
+("scientists"/?x "use" "instruments")	"to"/EFFECT	("scientists"/?x "observe" "matter")
+;;; Some tools include.
+;;; A ruler measures length.
+("A ruler" "measures" "length")
+;;; A balance measures mass.
+("A balance" "measures" "mass")
+;;; A thermometer measures temperature.
+("A thermometer" "measures" "temperature")
+;;; A graduated_Cylinder measures volume.
+("A graduated_Cylinder" "measures" "volume")
+;;; Properties of matter can be considered physical or chemical.
+;;; Physical properties are those that can be observed and/or measured without changing the object.
+;;; Physical properties include color hardness odor sound taste texture and size.
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+("Physical properties" "include" "color")
+("Physical properties" "include" "size")
+("Physical properties" "include" "texture")
+("Physical properties" "include" "taste")
+("Physical properties" "include" "sound")
+("Physical properties" "include" "odor")
+("Physical properties" "include" "hardness")
+;;; Chemical properties are those that involve a change in the object.
+;;; An example of a chemical property would be rusting.
+;;; Scientists often classify or organize different objects based on their physical properties.
+("Scientists" "classify" "different objects based on their physical properties")
+;;; Just_as we can describe physical and chemical properties of matter we can describe the physical and chemical changes to matter.
+("we" "describe" "the physical and chemical changes")	""/EFFECT	("we" "describe" "physical and chemical properties of matter")
+;;; Physical changes are those that involve changing one or more of the physical properties of matter.
+;;; Consider a piece of notebook paper.
+;;; What are some of the physical properties of the paper.
+;;; We can describe the paper in_terms_of its color white its size 21 centimeters wide and 27 centimeters long.
+("We" "describe" "the paper")
+;;; How can we change the paper in_order to give it different properties but still consider it to be paper.
+("we"/?x "change" "the paper")	"to"/EFFECT	("we"/?x "give" "it" [ "different properties" ] )
+;;; We can rip the paper into little pieces.
+("We" "rip" "the paper")
+;;; We can color the paper using crayons or markers.
+("We" "color" "the paper using crayons")
+("We" "color" "markers")
+("We" "color" "the paper using crayons")
+("We" "color" "markers")
+;;; We can fold the paper into a smaller size.
+("We" "fold" "the paper")
+;;; Chemical changes involve changing the composition of an object resulting in entirely different properties.
+("Chemical changes" "involve" "changing the composition of an object")
+;;; Consider our piece of notebook paper.
+;;; We have seen how we can change a physical property of the paper but still have it remain as paper.
+;;; How might we change the paper chemically.
+("we" "change" "the paper")
+;;; One way to change the paper would be to burn it.
+;;; The white sheet of paper would become a pile of black ashes.
+"The white sheet of paper"	"become"/EXAMPLE	"a pile of black ashes"
+;;; The ashes are chemically different from the paper so this is considered a chemical change.
+;;; Energy is the ability to do work.
+"Energy"	"is"/EXAMPLE	"the ability to do work"
+;;; Work involves the changing of an object s position moving up and down from side to side.
+("Work" "involves" "the changing of an object s position moving up and down from side to side")
+;;; Without energy no work can be done.
+;;; Think about going a whole day at school without eating.
+;;; You would feel tired and not want to do anything.
+("" "want" "")	"to"/EFFECT	("" "do" "anything")
+;;; It would be energy.
+;;; Energy for humans comes from the foods we eat.
+;;; Food is converted to energy so_that we can work and play.
+;;; Energy can be classified in a number of ways.
+;;; An object could have potential energy which is stored or kinetic energy meaning that the object is in motion while using its energy.
+("An object" "have" "potential energy meaning that the object is in motion")
+;;; A rock at the top of a hill that is standing still has potential energy.
+("A rock at the top of a hill that is standing" "has" "potential energy")
+;;; If you give that rock a push and it begins to move down the hill the potential energy is changed to kinetic energy allowing the rock to move.
+("you"/?x "changed" "the potential energy")	""/EFFECT	("you"/?x "give" "that rock" [ "a push" ] )
+("it"/?x "changed" "the potential energy")	""/EFFECT	("it"/?x "begins" "")
+("you" "give" "that rock" [ "a push" ] )	"If"/EFFECT	("" "changed" "the potential energy")
+("it"/?x "begins" "")	"to"/EFFECT	("it"/?x "move down" "the hill")
+;;; Energy exists in many forms.
+;;; Heat electric sound chemical mechanical and light are examples of different forms of energy.
+;;; Heat is the energy that gives us warmth.
+"Heat"	"is"/EXAMPLE	("the energy" "gives" "us" [ "warmth" ] )
+"Heat"	"is"/EXAMPLE	"the energy that"
+;;; We can get heat energy from the sun.
+("We" "get" "heat energy")
+;;; Electric energy is energy that allows us to turn on lights ring door bells and_so_on.
+;;; Sound is energy noise that we hear when matter vibrates and the particles in the matter hit each_other.
+("we" "hear" "energy")	""/EFFECT	("matter" "vibrates" "")
+("we" "hear" "energy")	""/EFFECT	("the particles in the matter" "hit" "each_other")
+("we" "hear" "energy")	"when"/WHEN	("matter" "vibrates" "")
+;;; Chemical energy is energy that is released when a chemical reaction takes_place.
+("a chemical reaction"/?x "released" "energy")	""/EFFECT	("a chemical reaction"/?x "takes_place" "")
+("a chemical reaction"/?x "released" "energy")	"when"/WHEN	("a chemical reaction"/?x "takes_place" "")
+;;; Mechanical energy is produced when two objects move together.
+("two objects"/?x "produced" "Mechanical energy")	""/EFFECT	("two objects"/?x "move together" "")
+("two objects"/?x "produced" "Mechanical energy")	"when"/WHEN	("two objects"/?x "move together" "")
+;;; Light energy is energy that is given off from a light source such_as the sun or a light_bulb.
+;;; Energy can be transferred from one place to another and one object to another.
+;;; Have you ever put a metal spoon in a pot that is being heated on the stove and then tried to touch the spoon.
+("" "tried" "")	"to"/EFFECT	("" "touch" "the spoon")
+;;; It gets hot.
+;;; The heat from the pot is transferred to the metal spoon.
+;;; If you were to put a wooden_spoon in the same pot and then tried to touch it the wooden_spoon would_not be hot.
+("the wooden_spoon" "be" "" [ "hot" ] )	""/EFFECT	("you" "put" "a wooden_spoon")
+("the wooden_spoon"/?x "be" "" [ "hot" ] )	""/EFFECT	("the wooden_spoon"/?x "tried" "")
+("you" "put" "a wooden_spoon")	"If"/EFFECT	("the wooden_spoon" "be" "" [ "hot" ] )
+("" "tried" "")	"to"/EFFECT	("" "touch" "it")
+;;; Why.
+;;; Some materials transfer energy better than others.
+("Some materials" "transfer" "energy")
+;;; Examples of some forms of energy transfer are.
+;;; Mechanical energy exerted by one object can push or pull another object.
+("Mechanical energy exerted by one object" "push" "another object")
+;;; Heat energy can be transferred from one object to another object.
+;;; Magnetism can be caused in some kinds of materials by a magnet.
+;;; Light can be reflected from one object to another.
+;;; Sound can be reflected from an object causing an echo.
+;;; In everyday life different forms of energy interact with matter.
+;;; Much of this interaction results in energy changing from one form to another.
+;;; Examples of interactions and conversions changes include.
+;;; Light energy changes to electrical energy in a solar calculator.
+;;; Mechanical energy changes to sound energy by clapping your hands together.
+("Mechanical energy"/?x "changes" "")	"to"/EFFECT	("Mechanical energy"/?x "sound" "energy" [ "by clapping your hands together" ] )
+;;; Electrical energy changes to sound energy in a door buzzer.
+("Electrical energy"/?x "changes" "")	"to"/EFFECT	("Electrical energy"/?x "sound" "energy")
+;;; Mechanical energy changes to sound energy by playing a musical instrument.
+("Mechanical energy"/?x "changes" "")	"to"/EFFECT	("Mechanical energy"/?x "sound" "energy" [ "by playing a musical instrument" ] )
+;;; Chemical energy changes to electric energy in a battery.
+;;; Some other changes in energy include.
+;;; Mechanical energy changes to heat in bicycle brakes.
+("Mechanical energy"/?x "changes" "")	"to"/EFFECT	("Mechanical energy"/?x "heat" "")
+;;; Mechanical energy changes to sound in a piano.
+;;; Heat changes to sound in a tea kettle.
+;;; Heat changes to light in a flame.
+;;; Electrical energy changes to mechanical energy in a food mixer.
+;;; Electrical energy changes to sound in a radio speaker.
+;;; Chemical energy changes to electrical energy in a battery.
+;;; Chemical energy changes to mechanical energy in a gasoline engine.
+;;; Magnetic energy changes to mechanical energy in a magnetic door_latch.
+;;; Light changes to electrical energy in solar path_lights.
+;;; Energy can move from one object to another through different materials and through space.
+;;; Some materials allow energy to be transferred more easily than others.
+;;; For_example some metal objects allow heat and electricity to transfer better than do plastic or rubber objects.
+;;; Iron and steel are more magnetic than wood or plastic.
+;;; Light energy travels in straight paths through space.
+;;; Light energy can move through glass much better than through paper.
+;;; Electricity is one form of energy.
+;;; Electrical energy results from positive and negative charges.
+;;; A complete circuit allows electrical energy to flow.
+;;; The amount of energy transferred during a flow of electrical energy depends on the energy source and the properties of the object.
+;;; Electricity powers many objects in our homes television radio lights computer and other appliances.
+("Electricity" "powers" "many objects")
+;;; Electricity travels in a path called a circuit.
+;;; A simple circuit generally involves a battery or other source of electrons wires through which the energy can flow and the object that needs the energy to work such_as a light_bulb.
+("A simple circuit" "involves" "a battery of electrons wires through which the energy can flow and the object")
+("A simple circuit" "involves" "other source")
+("A simple circuit" "involves" "a battery of electrons wires through which the energy can flow and the object")
+("A simple circuit" "involves" "other source")
+;;; The circuit or path must be complete in order for the object to work.
+;;; This is an example of a simple circuit.
+"This"	"is"/EXAMPLE	"an example of a simple circuit"
+;;; One end of a wire is attached to a battery and the other end is attached to the base of the light_bulb.
+;;; From the light_bulb there is another wire that runs back to the battery.
+;;; When all the wires are attached the bulb will give off light.
+("the bulb" "give off" "light")	""/EFFECT	("the wires" "are" "" [ "attached" ] )
+;;; When one of the wires is_not attached as in the diagram below the circuit will_not be complete and the bulb will_not give off light.
+("the circuit" "be" "")	""/EFFECT	("one of the wires" "is_not" "" [ "attached" ] )
+;;; A force is a push or pull.
+"A force"	"is"/EXAMPLE	"a push"
+;;; A force is what makes it possible to change the position of an object.
+("it"/?x "possible" "")	"to"/EFFECT	("it"/?x "change" "the position of an object")
+;;; A force can also be used to change the direction that an object is moving.
+;;; The amount of force put on an object will determine how far and fast the object will move.
+;;; The weight of the object will also effect how far and fast it will move.
+;;; Think about moving a box across a wood floor.
+;;; If the box were empty and you gave it a push it would easily move across the floor.
+("it" "move" "")	""/EFFECT	("the box" "were" "" [ "empty" ] )
+("it" "move" "")	""/EFFECT	("you" "gave" "it" [ "a push" ] )
+("the box" "were" "" [ "empty" ] )	"If"/EFFECT	("it" "move" "")
+;;; If the same box were full of marbles you would need more force to move it across the floor.
+;;; Friction is a force that provides resistance whenever two surfaces are in contact.
+"Friction"	"is"/EXAMPLE	("a force" "provides" "resistance")
+"Friction"	"is"/EXAMPLE	"a force that"
+("a force" "provides" "resistance")	""/EFFECT	("two surfaces" "are" "")
+;;; The box pushed across the floor will eventually stop because_of the force or friction the floor has on the box.
+;;; The amount of friction that an object encounters depends on its smoothness.
+;;; The smoother the surface the less friction against an object the faster it will move.
+;;; Skiers and surfers often apply wax to their skis boards in_order to make them smoother so they will glide along the surface of the snow or water faster.
+("Skiers" "apply" "wax to their skis")
+("surfers" "apply" "wax to their skis")
+("Skiers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("surfers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("Skiers" "apply" "wax to their skis")
+("surfers" "apply" "wax to their skis")
+("Skiers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("surfers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("Skiers" "apply" "wax to their skis")
+("surfers" "apply" "wax to their skis")
+("Skiers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("surfers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("Skiers" "apply" "wax to their skis")
+("surfers" "apply" "wax to their skis")
+("Skiers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("surfers" "apply" "boards in_order to make them smoother so they will glide along the surface of the snow or water")
+("they"/?x "make" "" [ "them smoother" ] )	""/EFFECT	("they"/?x "glide" "")
+("they"/?x "make" "" [ "them smoother" ] )	"so"/EFFECT	("they"/?x "glide" "")
+;;; Friction is also the force exerted by brakes on a bicycle or car in_order to stop.
+"Friction"	"is"/EXAMPLE	"the force exerted by brakes on a bicycle or car"
+;;; Take the same box from the previous diagram.
+;;; What would happen if we were to try and push the box along the sand.
+("What" "happen" "")	""/EFFECT	("we" "try" "")
+("What"/?x "happen" "")	""/EFFECT	("What"/?x "push" "the box")
+;;; Another type of force is magnetism.
+;;; A magnet is an object that attracts metals.
+"A magnet"	"is"/EXAMPLE	("an object" "attracts" "metals")
+"A magnet"	"is"/EXAMPLE	"an object that"
+;;; The magnet works because the forces in it are all moving in the same direction resulting in two different poles ends.
+("The magnet" "works" "")	""/EFFECT	("the forces in it" "moving in" "" [ "the same direction" ] )
+("the forces in it" "moving in" "" [ "the same direction" ] )	"because"/EFFECT	("The magnet" "works" "")
+;;; The space around the magnet is called the magnetic_field.
+;;; If you were to place a magnet under a piece of paper and sprinkle iron filings on the paper you would be able to see the magnetic_field of the magnet.
+("you" "be" "" [ "able" ] )	""/EFFECT	("you" "place" "a magnet")
+("you" "place" "a magnet")	"If"/EFFECT	("you" "be" "" [ "able" ] )
+("" "able" "")	"to"/EFFECT	("" "see" "the magnetic_field of the magnet")
+;;; The different poles of a magnet are attracted to one_another.
+;;; The poles are labeled north and south.
+;;; If you were to take two magnets the north end of one magnet would be attracted to the south end of the other.
+("you"/?x "attracted" "the north end of one magnet")	""/EFFECT	("you"/?x "take" "two magnets")
+("you" "take" "two magnets")	"If"/EFFECT	("" "attracted" "the north end of one magnet")
+;;; If you were to try and put the two north ends of two different magnets together you would feel the force that causes the magnets to be repelled pushed away from one_another.
+("you" "feel" "the force")	""/EFFECT	("you" "try" "")
+("you"/?x "feel" "the force")	""/EFFECT	("you"/?x "put together" "the two north ends of two different magnets")
+("you" "feel" "the force")	"causes ("you" "feel" "the force")	"causes"/EFFECT	("" "repelled" "")
+("you" "try" "")	"If"/EFFECT	("you" "feel" "the force")
+;;; The distance between two magnets a magnet and another metal object has an effect on the force of attraction.
+("The distance between two magnets a magnet and another metal object" "has" "an effect on the force of attraction")
+;;; The smaller the distance between the objects the greater the force of attraction.
+;;; As the distance between the objects increases the magnetic force of attraction decreases.
+("the magnetic force of attraction" "decreases" "")	""/EFFECT	("the distance between the objects" "increases" "")
+("the distance between the objects" "increases" "")	"As"/EFFECT	("the magnetic force of attraction" "decreases" "")
+;;; Gravity is also a force that acts on objects here on Earth.
+"Gravity"	"is"/EXAMPLE	("a force" "acts" "a force")
+"Gravity"	"is"/EXAMPLE	"a force that"
+;;; Gravity is the force that pulls an object toward the center of the Earth.
+"Gravity"	"is"/EXAMPLE	("the force" "pulls" "an object")
+"Gravity"	"is"/EXAMPLE	"the force that"
+;;; It is gravity that keeps everything from flying away.
+;;; If an object is thrown into the air the force used will only allow it to travel a certain distance before the gravitational attraction between the object and the Earth causes it to fall back down to Earth s surface.
+("it" "travel" "" [ "a certain distance" ] )	""/EFFECT	("the gravitational attraction between the object and the Earth" "causes" "" [ "it to fall" ] )
+;;; In the previous chapter we learned about work and energy.
+;;; Mechanical energy is the energy produced when two objects move together.
+"Mechanical energy"	"is"/EXAMPLE	"the energy produced when two objects move together"
+("two objects"/?x "produced" "")	""/EFFECT	("two objects"/?x "move together" "")
+("two objects"/?x "produced" "")	"when"/WHEN	("two objects"/?x "move together" "")
+;;; We have also learned that in_order to do work an object must move that a force is a push or pull.
+"a force"	"is"/EXAMPLE	"a push"
+;;; In our everyday lives we exert force to do work.
+("we"/?x "exert" "force")	"to"/EFFECT	("we"/?x "do" "work")
+;;; Often the force we need in_order to do the work is too much for one person and we need help.
+("we"/?x "need" "the force")	"to"/EFFECT	("we"/?x "do" "the work")
+;;; When this happens we use tools or machines to help us do work.
+("we"/?x "use" "tools")	"to"/EFFECT	("we"/?x "help" "" [ "us do work" ] )
+("we"/?x "use" "machines")	"to"/EFFECT	("we"/?x "help" "" [ "us do work" ] )
+("we" "use" "tools")	""/EFFECT	("this" "happens" "")
+("we" "use" "machines")	""/EFFECT	("this" "happens" "")
+;;; Simple machines are tools with very few parts that help us work.
+;;; There are a variety of simple machines.
+;;; A lever is a flat structure that is placed on a fixed point.
+"A lever"	"is"/EXAMPLE	("" "placed" "a flat structure")
+"A lever"	"is"/EXAMPLE	"a flat structure that"
+;;; The lever can assist in moving an object that is too heavy such_as a big weight or can assist in opening an object such_as a paint can.
+;;; The seesaw in a playground is also considered a lever.
+;;; An inclined plane is a ramp that extends from one level to another.
+"An inclined plane"	"is"/EXAMPLE	("a ramp" "extends" "a ramp")
+"An inclined plane"	"is"/EXAMPLE	"a ramp that"
+;;; A wheelchair ramp into your school is an example of an inclined plane.
+"A wheelchair ramp into your school"	"is"/EXAMPLE	"an example of an inclined plane"
+;;; A pulley is composed of a wheel with a piece of rope or chain around it.
+;;; Pulleys are used to lift objects.
+;;; By pulling down on one end the opposite end is raised.
+;;; A pulley is used to raise the flag up the flagpole at your school each day.
+;;; Pulling down on the rope at side A will cause the box on the end of the rope at side B to be raised.
+;;; A wheel and axle involves a wheel turning on a straight bar or axle.
+("A wheel" "involves" "a wheel turning on a straight bar or axle")
+("axle" "involves" "a wheel turning on a straight bar or axle")
+("A wheel" "involves" "a wheel turning on a straight bar or axle")
+("axle" "involves" "a wheel turning on a straight bar or axle")
+;;; Examples of this type of machine are a door knob and the wheel on a wheelbarrow.
+"Examples of this type of machine"	"are"/EXAMPLE	"a door knob"
+;;; A wedge is a type of inclined plane that can be forced into another object.
+"A wedge"	"is"/EXAMPLE	"a type of inclined plane"
+;;; The blade of an ax is considered to be a wedge.
+;;; A screw is another type of inclined plane that is wrapped around a cylinder.
+"A screw"	"is"/EXAMPLE	("another type of inclined plane" "is" "another type of inclined plane" [ "wrapped around a cylinder" ] )
+"A screw"	"is"/EXAMPLE	"another type of inclined plane that"
+;;; By turning the screw you insert it into another object.
+("you" "insert" "it" [ "By turning the screw" ] )
+;;; There are a number of different objects called celestial objects that appear in the sky each day and night.
+;;; The sun stars moon planets and comets are celestial objects.
+;;; The apparent movement of these objects gives us an indication of the passage of time.
+("The apparent movement of these objects" "gives" "us" [ "an indication of the passage of time" ] )
+;;; The sun moon and certain stars can be seen every day and night in our sky.
+;;; We see different planets throughout the year because_of the motion of the Earth and the movement of the planets around the sun.
+("We" "see" "different planets")
+;;; The sun is considered the center of our solar_system and all objects move around the sun.
+;;; This is_not because_of the motion of the sun but the motion of the Earth.
+;;; The Earth rotates or spins on its axis once every 24 hours.
+;;; This rotation is what results in day and night on Earth.
+;;; It is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west.
+"It"	"is"/EXAMPLE	"the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west"
+("the sun"/?x "appear" "")	"to"/EFFECT	("the sun"/?x "move" "")
+;;; We measure time on Earth based on both the rotation of the Earth on its axis and its revolution around the sun.
+("We" "measure" "time")
+"We"	"measure"/FUNCTION	("We" "measure" "time")
+;;; The passage of time in different units is based on the smallest unit being a second.
+;;; 1 minute equals 60 seconds.
+("1 minute" "equals" "60 seconds")
+;;; 1 hour equals 60 minutes.
+("1 hour" "equals" "60 minutes")
+;;; 1 day equals 24 hours.
+("1 day" "equals" "24 hours")
+;;; 1 month equals approximately 30 or 31 days.
+("1 month" "equals" "30 or 31 days")
+;;; 1 year equals 12 months or 365 days.
+("1 year" "equals" "12 months")
+("1 year" "equals" "365 days")
+("1 year" "equals" "12 months")
+("1 year" "equals" "365 days")
+;;; As the Earth revolves around the sun its position changes and the amount of sunlight received by Earth also changes.
+("its position" "changes" "")	""/EFFECT	("the Earth" "revolves" "")
+("the Earth" "revolves" "")	"As"/EFFECT	("its position" "changes" "")
+;;; The Earth is divided into two halves or hemispheres the equator being the dividing line.
+;;; Anything north_of the equator is in the northern hemisphere and anything south_of the equator is in the southern hemisphere.
+;;; The Earth is tilted on its axis.
+;;; As a result one part of the Earth is always pointed toward the sun.
+;;; Because_of the tilt and the Earth s position around the sun during its revolution the Earth experiences four distinct seasons winter spring summer and fall.
+("the Earth" "experiences" "spring")
+;;; In the northern hemisphere where New_York_State is located the seasons are divided as_follows.
+;;; Winter lasts from December 22 to March 19.
+;;; Spring lasts from March 20 to June 19.
+;;; Summer lasts from June 20 to September 21.
+;;; Fall lasts from September 22 to December 22.
+;;; Each season has its distinct weather conditions which will be discussed in the next chapter.
+("Each season" "has which will be discussed in the next chapter" "its distinct weather conditions")
+;;; The moon is a satellite of the Earth.
+"The moon"	"is"/EXAMPLE	"a satellite of the Earth"
+;;; This means that the moon orbits the Earth in a path.
+;;; The movement of the moon around the Earth is called revolution.
+;;; The moon does_not give off its own light.
+("The moon" "give off" "its own light")
+;;; We see the moon in the sky because it reflects light from the sun.
+("We" "see" "the moon in the sky")	""/EFFECT	("it" "reflects" "light")
+("it" "reflects" "light")	"because"/EFFECT	("We" "see" "the moon in the sky")
+;;; Half of the moon s surface is continually lit by reflected sunlight.
+;;; The moon makes a complete orbit around the Earth once every 29 1 / 2 days.
+("The moon" "makes" "a complete orbit around the Earth" [ "every 29 1 / 2 days" ] )
+;;; This means that it takes approximately one month for the moon to completely revolve around the Earth.
+;;; Because_of the moon s movement and the reflected light from the sun we see different portions of the moon at different times during the 29 1 / 2 days.
+("we" "see" "different portions of the moon at different times during the 29 1 / 2 days")
+;;; The different portions of the moon that we see are called phases.
+;;; There are five phases of the moon.
+;;; Full - a complete circle of the moon is visible.
+;;; Gibbous - almost a complete circle of the moon is visible.
+;;; Quarter - half a circle of the moon is visible.
+;;; Crescent - only a small portion of the moon is visible.
+;;; New - the moon is_not visible at all.
+;;; Because the moon and Earth are constantly moving it is possible for each to move into the shadow created by the other.
+("the moon"/?x "is" "" [ "possible for each to move into the shadow created by the other" ] )	""/EFFECT	("the moon"/?x "moving" "")
+("Earth"/?x "is" "" [ "possible for each to move into the shadow created by the other" ] )	""/EFFECT	("Earth"/?x "moving" "")
+;;; When one celestial body moves into the shadow of another the event is known as an eclipse.
+("the event" "is" "" [ "known as an eclipse" ] )	""/EFFECT	("one celestial body" "moves" "")
+;;; There are two types of eclipses involving the sun moon and Earth.
+;;; A lunar eclipse occurs when the Earth comes between the sun and a full moon.
+("A lunar eclipse" "occurs" "")	""/EFFECT	("the Earth" "comes" "")
+("A lunar eclipse" "occurs" "")	"when"/WHEN	("the Earth" "comes" "")
+;;; During a lunar eclipse the moon appears to be a reddish-orange color when viewed from Earth.
+("the moon"/?x "appears" "")	"to"/EFFECT	("the moon"/?x "be" "")
+;;; A solar eclipse occurs when the moon comes between the sun and the Earth.
+("A solar eclipse" "occurs" "")	""/EFFECT	("the moon" "comes" "")
+("A solar eclipse" "occurs" "")	"when"/WHEN	("the moon" "comes" "")
+;;; Solar eclipses occur during new_moons.
+;;; The moon blocks the sun s light from reaching Earth.
+("The moon" "blocks" "the sun s light")
+;;; The sky appears to darken as it moves in_front_of the sun and then lightens as the moon moves away.
+("The sky"/?x "appears" "")	"to"/EFFECT	("The sky"/?x "darken" "")
+("The sky" "darken" "")	""/EFFECT	("it" "moves" "")
+("the moon"/?x "lightens" "")	""/EFFECT	("the moon"/?x "moves away" "")
+;;; Weather describes the conditions in the sky on any particular day.
+("Weather" "describes" "the conditions")
+;;; Climate describes the weather conditions in an area over time.
+("Climate" "describes" "the weather conditions")
+;;; Weather observations are made using human senses as well a variety of instruments.
+("Weather" "made" "using human senses" [ "a variety of instruments" ] )
+;;; Some weather instruments include.
+;;; A barometer measures air_pressure.
+("A barometer" "measures" "air_pressure")
+;;; An anemometer measures wind speed.
+("An anemometer" "measures" "wind speed")
+;;; A rain gauge measures rainfall.
+("A rain gauge" "measures" "rainfall")
+;;; A thermometer measures temperature.
+("A thermometer" "measures" "temperature")
+;;; Air_pressure is the pressure against the surface of the Earth by the atmosphere.
+"Air_pressure"	"is"/EXAMPLE	"the pressure against the surface of the Earth by the atmosphere"
+;;; Differences in air_pressure over the surface of the Earth result in wind.
+;;; The greater the differences in air_pressures the stronger the wind.
+;;; Air_pressure is measured with a barometer.
+;;; Scientists use an anemometer to determine wind speed.
+("Scientists"/?x "use" "an anemometer")	"to"/EFFECT	("Scientists"/?x "determine" "wind speed")
+;;; Wind speed is usually measured in miles_per_hour.
+;;; A gentle breeze might be measured at a speed of 2 miles_per_hour whereas the winds from a hurricane could be measured at 100 miles_per_hour.
+("" "measured" "A gentle breeze")	""/EFFECT	("" "measured" "the winds from a hurricane")
+;;; Wind direction is also important because it can indicate the temperature and moisture level of the wind.
+;;; A southwest wind would bring warm air to New_York from the south but a northeast wind would most likely bring cold wet winds.
+("A southwest wind" "bring" "warm air")
+;;; A rain gauge is used to measure rainfall.
+;;; The amount of rain that falls can be important in areas that need rainwater for everyday use especially farmers who need rainwater for their crops.
+;;; Rainfall amounts are usually measured in inches.
+;;; The rate at which rain falls can be measured in inches per hour.
+;;; Temperature is a measure of how hot or cold the air is.
+"Temperature"	"is"/EXAMPLE	"a measure of how hot or cold the air is"
+;;; A thermometer is the instrument used to measure temperature.
+"A thermometer"	"is"/EXAMPLE	"the instrument used to measure temperature"
+("" "used" "")	"to"/EFFECT	("" "measure" "temperature")
+;;; Temperature is measured in degrees on either the Fahrenheit or Celsius scale.
+;;; The information provided by these weather instruments is very useful in determining current or future weather conditions.
+;;; Precipitation is the term used to describe water moisture that falls from the sky.
+"Precipitation"	"is"/EXAMPLE	("the term used to describe water moisture" "falls" "the term used to describe water moisture")
+"Precipitation"	"is"/EXAMPLE	"the term used to describe water moisture that"
+("" "used" "")	"to"/EFFECT	("" "describe" "water")
+("" "used" "")	"to"/EFFECT	("" "describe" "moisture")
+;;; Different forms of precipitation include.
+;;; Rain is liquid water falling from the sky.
+;;; Sleet is freezing rain falling from the sky.
+("Sleet" "freezing" "rain falling from the sky")
+;;; Snow is solid water falling from the sky.
+;;; Hail is solid balls of water and dust falling from the sky.
+;;; Sleet and snow are more common in the winter months when the temperature is cold enough to freeze water.
+;;; Hail is commonly associated with thunderstorms in the spring and summer.
+;;; Rain can occur anytime during the year as_long_as the outside temperature is above the freezing_point of water.
+("Rain" "occur" "")	""/EFFECT	("the outside temperature" "is" "")
+;;; Once the outside temperature drops below the freezing_point of water it is more likely that the precipitation will be in the form of snow.
+("the outside temperature"/?x "is" "" [ "more likely that the precipitation will be in the form of snow" ] )	""/EFFECT	("the outside temperature"/?x "drops" "")
+;;; Other conditions used to describe the weather include humidity and cloud cover.
+("" "used" "")	"to"/EFFECT	("" "describe" "the weather humidity")
+("" "used" "")	"to"/EFFECT	("" "describe" "cloud")
+;;; Humidity is the amount of moisture in the atmosphere.
+"Humidity"	"is"/EXAMPLE	"the amount of moisture in the atmosphere"
+;;; When the humidity reaches 100 percent it is very likely that some form of precipitation will occur depending on the temperature.
+("the humidity"/?x "is" "" [ "very likely that some form of precipitation will occur depending on the temperature" ] )	""/EFFECT	("the humidity"/?x "reaches" "")
+;;; Clouds form when water in the atmosphere condenses on dust particles suspended in the air.
+("Clouds" "form" "")	""/EFFECT	("water in the atmosphere" "condenses" "")
+("Clouds" "form" "")	"when"/WHEN	("water in the atmosphere" "condenses" "")
+;;; Different clouds are associated with different weather conditions.
+;;; Clouds can block the Earth s ability to absorb light heat from the sun and can affect temperature.
+("Clouds"/?x "block" "the Earth s ability")	"to"/EFFECT	("Clouds"/?x "absorb" "light")
+;;; A meteorologist is a scientist who uses the information from weather instruments to predict weather.
+"A meteorologist"	"is"/EXAMPLE	("a scientist" "uses" "the information")
+"A meteorologist"	"is"/EXAMPLE	"a scientist who"
+("a scientist"/?x "uses" "the information")	"to"/EFFECT	("a scientist"/?x "predict" "weather")
+;;; Have you ever watched the news and seen the weatherperson in_front_of a map explaining the weather.
+("you" "watched" "the news")
+;;; He or she usually gives the temperature sky conditions and precipitation.
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+("He" "gives" "the temperature")
+("she" "gives" "the temperature")
+("He" "gives" "precipitation")
+("she" "gives" "precipitation")
+("He" "gives" "sky conditions")
+("she" "gives" "sky conditions")
+;;; He or she can also make predictions as_to what might happen the next day.
+("He" "make" "predictions")
+("she" "make" "predictions")
+("He" "make" "predictions")
+("she" "make" "predictions")
+;;; Weatherpersons use the simple instruments already discussed information provided by satellites and computer models.
+("Weatherpersons" "use" "the simple instruments already discussed")
+("Weatherpersons" "use" "information provided by satellites and computer models")
+("Weatherpersons" "use" "the simple instruments already discussed")
+("Weatherpersons" "use" "information provided by satellites and computer models")
+;;; There are a number of conditions that will result in specific types of storms.
+;;; Some of these include.
+;;; Hurricanes usually occur between June and November.
+;;; Hurricanes have very high winds over 74 miles_per_hour and rain.
+("Hurricanes" "have" "very high winds")
+("Hurricanes" "have" "rain")
+("Hurricanes" "have" "over 74 miles_per_hour")
+("Hurricanes" "have" "very high winds")
+("Hurricanes" "have" "rain")
+("Hurricanes" "have" "over 74 miles_per_hour")
+("Hurricanes" "have" "very high winds")
+("Hurricanes" "have" "rain")
+("Hurricanes" "have" "over 74 miles_per_hour")
+;;; Hurricanes develop in the Atlantic Ocean.
+;;; A hurricane can exist for many days as it moves across water and land.
+("A hurricane" "exist" "")	""/EFFECT	("it" "moves" "")
+;;; Tornados can happen at any time of the year.
+;;; Tornados are most common in spring and summer.
+"Tornados"	"are"/EXAMPLE	"most common in spring"
+;;; Tornados usually develop over land.
+;;; Tornados have very short lives seconds to minutes.
+("Tornados" "have" "very short lives")
+;;; Most severe thunderstorms occur in summer when air is hot and moist.
+("Most severe thunderstorms" "occur" "")	""/EFFECT	("air" "is" "" [ "hot", "moist" ] )
+("Most severe thunderstorms" "occur" "")	"when"/WHEN	("air" "is" "" [ "hot", "moist" ] )
+;;; Lightning hail and tornados are associated with severe thunderstorms.
+;;; Floods can occur during periods of heavy rain.
+;;; If the ground is too hard or full of water it rains for a long period of time the ground cannot soak up the water.
+("the ground" "soak" "")	""/EFFECT	("the ground" "is" "" [ "too hard of water", "full" ] )
+("the ground" "soak" "")	""/EFFECT	("it" "rains" "")
+("the ground" "is" "" [ "too hard of water", "full" ] )	"If"/EFFECT	("the ground" "soak" "")
+;;; Droughts occur in areas where there has been little_or_no rain for a long period of time.
+;;; These storms / conditions can have a harmful effect on the areas involved.
+;;; Buildings can be damaged.
+;;; Crops and vegetation can be damaged or destroyed.
+;;; Humans and animals can be displaced from their homes and injured.
+;;; Each season that occurs in New_York_state experiences specific climate conditions.
+("Each season" "experiences" "specific climate conditions")
+;;; The amount of daylight hours increases throughout Spring.
+;;; During Spring the temperature starts out cold and gradually warms.
+("the temperature" "starts out" "cold")
+;;; Spring has high amounts of rainfall.
+("Spring" "has" "high amounts of rainfall")
+;;; The longest period of daylight hours occurs at the beginning of Summer.
+;;; During Summer temperatures get warmer through the month of August.
+;;; The amount of daylight hours decreases throughout Fall.
+;;; Temperatures gradually decrease throughout Fall.
+;;; The shortest period of daylight hours occurs at the beginning of Winter.
+;;; Temperatures get colder throughout Winter.
+;;; Because_of the tilt and position of the Earth around the sun at different times of the year the two hemispheres experience opposite seasons.
+("the two hemispheres" "experience" "opposite seasons")
+;;; For_example when it is winter in the northern hemisphere the southern hemisphere experiences summer.
+("the southern hemisphere" "experiences" "summer")	""/EFFECT	("it" "is" "")
+("the southern hemisphere" "experiences" "summer")	"when"/WHEN	("it" "is" "")
+;;; Water is a substance that is found all_over the Earth in the ground on the surface and in the air.
+"Water"	"is"/EXAMPLE	("" "found" "a substance")
+"Water"	"is"/EXAMPLE	"a substance that"
+;;; Water exists in three phases solid liquid and gas.
+;;; Water in the solid phase is often called ice.
+;;; Water in the liquid phase is called water.
+;;; Water in the gaseous phase is often called water vapor or steam.
+;;; Water can easily be changed from one phase to another by the addition or removal of heat.
+;;; Each phase change that water goes through has a specific name.
+("Each phase change" "has" "a specific name")
+;;; Freezing involves changing water from its liquid state to its solid state ice by the removal of heat.
+("Freezing" "involves" "changing water")
+;;; Melting is the opposite of freezing and involves changing water from its solid state ice to a liquid state by the addition of heat.
+"Melting"	"is"/EXAMPLE	"the opposite of freezing"
+;;; Evaporation involves changing water from its liquid state to a gaseous state vapor.
+("Evaporation" "involves" "changing water")
+;;; Imagine the puddles that form on your street after a heavy rain.
+;;; After a_few hours or days those puddles disappear.
+;;; Where did they go.
+;;; The energy from the sun heated the water and caused it to evaporate - change from liquid water to water vapor.
+("The energy from the sun" "heated" "the water")
+;;; The water vapor then entered the air.
+("The water vapor" "entered" "the air")
+;;; Condensation involves changing water from its gaseous state vapor to its liquid state.
+("Condensation" "involves" "changing water")
+;;; Think back to a hot summer day when you poured a glass of cold water and took it outside.
+;;; After a_few minutes water droplets appeared on the outside of your glass.
+;;; This is because the water vapor in the air came in_contact_with the cool glass.
+;;; The water vapor cooled and changed from its gaseous state to a liquid state droplets on your glass.
+;;; Precipitation is often defined as water falling from the sky.
+;;; The water that falls can be in liquid form such_as rain or in solid form such_as snow.
+;;; Examples of precipitation include rain snow sleet and hail.
+("Examples of precipitation" "include" "rain")
+("Examples of precipitation" "include" "hail")
+("Examples of precipitation" "include" "sleet")
+("Examples of precipitation" "include" "snow")
+("Examples of precipitation" "include" "rain")
+("Examples of precipitation" "include" "hail")
+("Examples of precipitation" "include" "sleet")
+("Examples of precipitation" "include" "snow")
+("Examples of precipitation" "include" "rain")
+("Examples of precipitation" "include" "hail")
+("Examples of precipitation" "include" "sleet")
+("Examples of precipitation" "include" "snow")
+("Examples of precipitation" "include" "rain")
+("Examples of precipitation" "include" "hail")
+("Examples of precipitation" "include" "sleet")
+("Examples of precipitation" "include" "snow")
+;;; The movement of water between the ground surface and air is referred to as the water cycle.
+;;; Water found on the surface of the Earth is referred to as surface water.
+;;; Surface water can be fresh.
+;;; When precipitation falls to the Earth the water is eventually absorbed taken in by the ground.
+("precipitation"/?x "absorbed" "the water")	""/EFFECT	("precipitation"/?x "falls" "")
+;;; Sometimes the precipitation happens too quickly and the ground cannot absorb all of the water.
+;;; As a result the water moves across the surface of the ground.
+;;; Water flowing on the Earth s surface is referred to as runoff.
+;;; When the ground absorbs the water and it settles below the surface it is called groundwater.
+("it" "is" "")	""/EFFECT	("the ground" "absorbs" "the water")
+("it" "is" "")	""/EFFECT	("it" "settles" "")
+;;; Weathering erosion and deposition result from the interactions between air land and water.
+;;; The processes of weathering and erosion change the landscape of the Earth on a daily basis.
+("The processes of weathering and erosion" "change" "the landscape of the Earth on a daily basis")
+;;; Weathering is a process that breaks rocks and other surface materials into small pieces.
+"Weathering"	"is"/EXAMPLE	("a process" "breaks" "rocks")
+"Weathering"	"is"/EXAMPLE	("a process" "breaks" "other surface materials into small pieces")
+"Weathering"	"is"/EXAMPLE	"a process that"
+;;; This can be done through the action of different forces including water and plant life.
+;;; Water exists in many phases.
+;;; Water in the liquid phase often sinks into the cracks between rocks.
+;;; When the water freezes it expands making the crack even larger and in some cases breaks the rock.
+("it" "expands" "")	""/EFFECT	("the water" "freezes" "")
+;;; This process continues over long periods of time breaking down rocks.
+;;; Plants can also break down rocks by the action of their roots which are constantly growing to secure the plant and seek water.
+("Plants" "break down which are constantly growing to secure the plant and seek water" "rocks")
+("which"/?x "growing" "")	"to"/EFFECT	("which"/?x "secure" "the plant")
+("which"/?x "growing" "")	"to"/EFFECT	("which"/?x "secure" "seek water")
+;;; As the rocks break they can be further broken down through continued weathering eventually becoming very small pieces that combine with other Earth materials to create soil.
+("they" "be" "")	""/EFFECT	("the rocks" "break" "")
+("the rocks" "break" "")	"As"/EFFECT	("they" "be" "")
+("very small pieces"/?x "combine" "very small pieces")	"to"/EFFECT	("very small pieces"/?x "create" "soil")
+;;; Soil is composed of pieces of Earth materials both living and nonliving.
+;;; Weathering of rock and landforms can also take_place through the action of running water and waves.
+;;; The flow of water through a landform can create valleys in large rocks.
+("The flow of water through a landform" "create" "valleys")
+;;; The Grand Canyon in Arizona was created by the flow of the Colorado River over a long period of time.
+;;; The force of waves breaking on beaches and cliffs can also change landforms.
+("The force of waves breaking on beaches and cliffs" "change" "landforms")
+;;; Erosion is the process by which soil and_or other Earth materials are moved from one place to another.
+"Erosion"	"is"/EXAMPLE	"the process by which soil and_or other Earth materials are moved from one place to another"
+"materials"	"are"/EXAMPLE	"which soil"
+;;; Water wind and gravity are forces involved in erosion.
+;;; Examples of erosion include.
+;;; movement of sand along a beach by wave action.
+;;; Wave action can move sand along a beach.
+("Wave action" "move" "sand")
+;;; widening of a riverbed by increased water flow.
+;;; Increased water flow can widen a riverbed.
+("Increased water flow" "widen" "a riverbed")
+;;; The processes of weathering and erosion work together over time.
+;;; Rocks are weathered broken down and then carried away through the action of erosion.
+;;; Eventually the particles that are being moved by water wind and/or gravity will stop moving.
+("the particles"/?x "stop" "")	""/EFFECT	("the particles"/?x "Eventually" "")
+;;; Deposition occurs when the particles stop moving.
+("Deposition" "occurs" "")	""/EFFECT	("the particles" "stop" "")
+("Deposition" "occurs" "")	"when"/WHEN	("the particles" "stop" "")
+;;; Earthquakes are caused by the shifting of the plates that make up the Earth s crust.
+;;; Earthquakes occur every day all_over Earth.
+;;; Most of the time people do_not feel the earthquakes.
+("Most of the time people" "feel" "the earthquakes")
+;;; However powerful earthquakes can cause damage to landscapes and buildings.
+("powerful earthquakes" "cause" "damage")
+;;; A volcano is a mountain through which hot liquid material from inside the Earth can reach the surface.
+"A volcano"	"is"/EXAMPLE	("hot liquid" "reach" "the surface")
+"A volcano"	"is"/EXAMPLE	"a mountain which"
+;;; The hot liquid rock on the surface is called lava.
+;;; Many islands around the world including the Hawaiian islands were formed as a result of volcanic action.
+;;; One of the most useful tools that a scientist has is the power of observation.
+"One of the most useful tools that"	"is"/EXAMPLE	"the power of observation"
+;;; Simple observations can be made with the five senses taste touch smell sight and hearing.
+;;; The sense of taste is one sense that we typically do_not use in a science laboratory or during a science experiment.
+;;; Scientists often record their observations in a journal or notebook in_order to keep accurate records for future review.
+("Scientists"/?x "record" "their observations")	"to"/EFFECT	("Scientists"/?x "keep" "accurate records")
+;;; To help make more detailed observations scientists often use tools.
+("scientists" "use" "tools")
+;;; Tools that a scientist might use include.
+;;; A ruler measures length.
+("A ruler" "measures" "length")
+;;; A meter stick measures length.
+("A meter stick" "measures" "length")
+;;; A balance measures mass.
+("A balance" "measures" "mass")
+;;; A spring_scale measures weight.
+("A spring_scale" "measures" "weight")
+;;; A thermometer measures temperature.
+("A thermometer" "measures" "temperature")
+;;; A microscope is used to view small objects.
+;;; A hand lens used to view objects in more detail.
+;;; A magnet detects magnetic properties.
+("A magnet" "detects" "magnetic properties")
+;;; Each tool has a specific use and should_not be used without proper directions.
+;;; The scientific method is a process by which scientists investigate a problem or situation.
+"The scientific method"	"is"/EXAMPLE	("scientists" "investigate" "a problem")
+"The scientific method"	"is"/EXAMPLE	("scientists" "investigate" "situation")
+"The scientific method"	"is"/EXAMPLE	"a process which"
+;;; The steps of the scientific method follow.
+;;; 1.
+;;; Define the problem.
+;;; 2.
+;;; Research background information.
+;;; 3.
+;;; Form a hypothesis educated guess.
+;;; 4.
+;;; Experimentation.
+;;; 5.
+;;; Evaluation.
+;;; Although the scientific method can be simplified into a series of steps each step can involve a great deal of work.
+("each step" "involve" "a great deal of work")	""/EFFECT	("" "simplified" "the scientific method")
+;;; Once the problem is defined it is important to research information before determining what you wish to study.
+("" "is" "" [ "important to research information before determining what you wish to study" ] )	""/EFFECT	("" "defined" "the problem")
+("you"/?x "wish" "")	"to"/EFFECT	("you"/?x "study" "what")
+;;; In some cases the problem can be solved based on the background research.
+;;; In other cases it is necessary to form a hypothesis.
+;;; Once a hypothesis is decided upon you can conduct an experiment to prove the hypothesis.
+("you"/?x "conduct" "an experiment")	"to"/EFFECT	("you"/?x "prove" "the hypothesis")
+("you" "conduct" "an experiment")	""/EFFECT	("" "decided" "a hypothesis")
+;;; After experimentation it will become necessary to evaluate the results to determine whether your hypothesis was correct.
+("" "evaluate" "the results")	"to"/EFFECT	("" "determine" "" [ "whether your hypothesis was correct" ] )
+;;; Students wanted to determine if music affected the growth of sunflowers in the classroom.
+("Students"/?x "wanted" "")	"to"/EFFECT	("Students"/?x "determine" "" [ "if music affected the growth of sunflowers in the classroom" ] )
+;;; They researched information to find the best soil nutrients and light source needed in_order to grow sunflowers.
+("They"/?x "researched" "information")	"to"/EFFECT	("They"/?x "find" "")
+("" "find" "")	"to"/EFFECT	("" "grow" "sunflowers")
+;;; One hypothesis was that music caused sunflowers to grow faster than no music ..
+"One hypothesis"	"was"/EXAMPLE	"that sunflowers to grow faster than no music ."
+;;; Students set up an experiment in which they exposed some sunflower seeds to rock music and some to no music.
+("Students" "set up" "an experiment")
+;;; Plant growth was measured every day for two weeks after the first appearance of a seedling.
+;;; Data was put into a chart and the students concluded that the sunflower plants that were exposed to rock music were taller than the plants that were_not exposed to any music.
+;;; Safety is a very important aspect in the study of science.
+"Safety"	"is"/EXAMPLE	"a very important aspect in the study of science"
+;;; There are a number of important safety rules to follow every time you are in a science laboratory.
+;;; 1.
+;;; Read all directions before beginning a science investigation.
+;;; 2.
+;;; Do only those steps described in the instructions or by the teacher.
+;;; 3.
+;;; Never work in the laboratory area alone.
+;;; Make sure a teacher is always present.
+;;; 4.
+;;; Use proper safety equipment.
+;;; Eye goggles protect eyes from chemicals and/or flying objects.
+("Eye goggles" "protect" "eyes")
+;;; An apron protects clothing.
+("An apron" "protects" "clothing")
+;;; Gloves protect hands / skin from harm.
+("Gloves" "protect" "skin")
+;;; 5.
+;;; Food and drink do_not belong in laboratory areas.
+;;; 6.
+;;; Immediately report all accidents to the teacher.
+;;; The graph is a very useful method of displaying data obtained from a number of sources.
+"The graph"	"is"/EXAMPLE	"a very useful method of displaying data obtained from a number of sources"
+;;; There are different graphs that you will see and use in your science experiences.
+;;; A line graph shows the change in information between two variables.
+("A line graph" "shows" "the change in information between two variables")
+;;; This could be air temperature at different times of the day or the temperature of water as it is heated.
+("This" "be" "")	""/EFFECT	("" "heated" "it")
+;;; The two axes of the line graph are labeled with a description of what they measure and the unit_of_measure.
+"they"	"measure"/FUNCTION	("they" "measure" "what")
+;;; A bar graph is another form of graph used to present information.
+"A bar graph"	"is"/EXAMPLE	"another form of graph used to present information"
+;;; In this case the information is shown in the form of bars that are drawn from the x-axis horizontal axis.
+;;; A graph such_as this might be used to show the number of students with different eye color for your entire class.
+;;; A pie graph is often used to show percentages of variables that equal 100.
+;;; For_example a pie graph can be used to show the percentage of students in each grade in a high_school.
+;;; In_addition_to the information that we can obtain from graphs data tables also provide us with a great deal of information.
+("data tables" "provide" "us")
+;;; Three things that you need to live and survive are air water and food.
+;;; Examples of nonliving things are tire swing ropes drink and air.
+;;; Examples of living things are children and plants.
+;;; Water helps living things survive by moving materials.
+;;; Air and water are necessary for plants to survive.
+;;; A mountain is a nonliving thing that occurs in nature.
+"A mountain"	"is"/EXAMPLE	("a nonliving thing" "occurs" "a nonliving thing")
+"A mountain"	"is"/EXAMPLE	"a nonliving thing that"
+;;; Air and water are two nonliving things that all living things need to survive.
+;;; The life process where animal bones get longer and bigger is called growth.
+;;; The changes frogs and butterflies go through are called metamorphosis.
+;;; Living things need to take in nutrients so_that they can grow and create energy.
+("Living things"/?x "need" "")	"to"/EFFECT	("Living things"/?x "take in" "nutrients")
+("Living things" "take in" "nutrients")	""/EFFECT	("they" "grow" "energy")
+("Living things"/?x "take in" "nutrients")	""/EFFECT	("Living things"/?x "create" "energy")
+;;; Oxygen is given off by plants and taken in by animals.
+;;; Fecal wastes are made from unused foods that an animal has eaten.
+;;; A house is nonliving.
+;;; A dog is living.
+;;; Flowers are living.
+;;; A mountain is nonliving.
+;;; A butterfly is living.
+;;; A chair is nonliving.
+;;; Plants need air water nutrients and light to grow and survive.
+("Plants"/?x "need" "air")	"to"/EFFECT	("Plants"/?x "grow" "")
+("Plants"/?x "need" "light")	"to"/EFFECT	("Plants"/?x "grow" "")
+("Plants"/?x "need" "nutrients")	"to"/EFFECT	("Plants"/?x "grow" "")
+("Plants"/?x "need" "water")	"to"/EFFECT	("Plants"/?x "grow" "")
+;;; Nonliving thing can be man-made.
+;;; Animals need air food and water to live and survive.
+("Animals"/?x "need" "air")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "live" "")
+("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "live" "")
+;;; Plants are able to make their own food by a process called photosynthesis.
+("" "able" "")	"to"/EFFECT	("" "make" "their own food")
+;;; A seed growing into a plant is a form of reproduction.
+"A seed growing into a plant"	"is"/EXAMPLE	"a form of reproduction"
+;;; All living things need air and water to survive.
+("All living things"/?x "need" "air")	"to"/EFFECT	("All living things"/?x "survive" "")
+("All living things"/?x "need" "water")	"to"/EFFECT	("All living things"/?x "survive" "")
+;;; Air and water are nonliving.
+;;; Plants need light to survive.
+("Plants"/?x "need" "light")	"to"/EFFECT	("Plants"/?x "survive" "")
+;;; Light is nonliving.
+;;; Some nutrients can also be considered nonliving.
+;;; Plants require air water light and nutrients in_order to live and survive.
+("Plants"/?x "require" "air")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "nutrients")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "light")	"to"/EFFECT	("Plants"/?x "live" "")
+("Plants"/?x "require" "water")	"to"/EFFECT	("Plants"/?x "live" "")
+;;; Chlorophyll is used for photosynthesis.
+;;; Examples of plants plant products include lettuce oranges celery broccoli carrots apples and potatoes.
+;;; Animals can use plants for food.
+("Animals" "use" "plants")
+;;; Examples of an animal using plants for food are a cow eating grass and a horse eating hay.
+"Examples of an animal using plants for food"	"are"/EXAMPLE	"a cow eating grass and a horse eating hay"
+;;; Animals can use plants for shelter.
+("Animals" "use" "plants")
+;;; Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk.
+;;; The process that plants use to make food is photosynthesis.
+("plants"/?x "use" "The process")	"to"/EFFECT	("plants"/?x "make" "food")
+;;; When plants make food they give off oxygen and water.
+("they" "give" "")	""/EFFECT	("plants" "make" "food")
+;;; The plant gets the energy to go through photosynthesis from sunlight.
+;;; The leaves of the plant absorb carbon_dioxide.
+("The leaves of the plant" "absorb" "carbon_dioxide")
+;;; The roots of the plant take in water.
+("The roots of the plant" "take in" "water")
+;;; The leaves of the plant absorb sunlight.
+("The leaves of the plant" "absorb" "sunlight")
+;;; The two functions of the roots are to anchor and absorb.
+;;; The stem is the pathway of water and nutrients from the roots to the leaves.
+"The stem"	"is"/EXAMPLE	"the pathway of water"
+;;; The stem also supports the plant.
+("The stem" "supports" "the plant")
+;;; The leaves are the food-making factory of the plant.
+"The leaves"	"are"/EXAMPLE	"the food-making factory of the plant"
+;;; The leaves contain chlorophyll and are able to move toward the sun to collect light for the plant to perform photosynthesis.
+("The leaves" "contain" "chlorophyll")
+("" "able" "")	"to"/EFFECT	("" "move" "")
+("" "move" "")	"to"/EFFECT	("" "collect" "light")
+("" "collect" "light")	"to"/EFFECT	("" "perform" "photosynthesis")
+;;; The flower helps the plant reproduce because it contains the pollen and eggs.
+("the plant" "reproduce" "")	""/EFFECT	("it" "contains" "the pollen")
+("the plant" "reproduce" "")	""/EFFECT	("it" "contains" "eggs")
+("it" "contains" "the pollen")	"because"/EFFECT	("the plant" "reproduce" "")
+("it" "contains" "eggs")	"because"/EFFECT	("the plant" "reproduce" "")
+;;; The flower is colorful has a pleasant scent that attracts birds and insects to help with fertilization.
+("a pleasant scent"/?x "attracts" "birds")	"to"/EFFECT	("a pleasant scent"/?x "help" "")
+("a pleasant scent"/?x "attracts" "insects")	"to"/EFFECT	("a pleasant scent"/?x "help" "")
+;;; Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit.
+;;; Fruit develops around the seed and comes from a flower.
+;;; Seeds can be spread by wind water birds and insects.
+;;; When a fruit is moved by an animal falls to the ground and breaks open the seeds can fall out and grow into new plants.
+("the seeds" "fall out" "")	""/EFFECT	("" "moved" "a fruit")
+("the seeds"/?x "fall out" "")	""/EFFECT	("the seeds"/?x "falls" "")
+;;; Adaptation examples can include roses have thorns for protection cactus hold water to survive in the desert and palm trees have wide leaves to absorb extra sunlight.
+("Adaptation examples" "include" "roses have thorns")
+("palm trees"/?x "have" "wide leaves")	"to"/EFFECT	("palm trees"/?x "absorb" "extra sunlight")
+;;; Plants need water light air and food to survive.
+("Plants"/?x "need" "water")	"to"/EFFECT	("Plants"/?x "survive" "")
+("Plants"/?x "need" "food")	"to"/EFFECT	("Plants"/?x "survive" "")
+("Plants"/?x "need" "air")	"to"/EFFECT	("Plants"/?x "survive" "")
+("Plants"/?x "need" "light")	"to"/EFFECT	("Plants"/?x "survive" "")
+;;; Plants reproduce by forming seeds from the male pollen and female eggs cells found in the flower.
+;;; A fruit can be found near the seeds of a plant usually in the flower.
+;;; A plant that lives in the desert might have a large root system to find water deep within the ground.
+("A plant"/?x "have" "a large root system")	"to"/EFFECT	("A plant"/?x "find" "" [ "water deep within the ground" ] )
+;;; The stems might have a tough outer coating to prevent the loss of water and the leaves if they have any might be very large.
+("" "coating" "")	"to"/EFFECT	("" "prevent" "the loss of water")
+("" "coating" "")	"to"/EFFECT	("" "prevent" "the leaves")
+("they"/?x "prevent" "the loss of water")	""/EFFECT	("they"/?x "have" "any")
+("they"/?x "prevent" "the leaves")	""/EFFECT	("they"/?x "have" "any")
+;;; Roots secure the plant in the soil bring in water and nutrients for survival.
+("Roots" "secure" "the plant")
+;;; Airplanes are_not a common method for the dispersal of seeds.
+"Airplanes"	"are_not"/EXAMPLE	"a common method for the dispersal of seeds"
+;;; The typical life cycle of a plant is seed seedling and plant.
+;;; An example of a plant responding to a change in its environment is leaves falling off trees in fall.
+;;; The part of a plant that is responsible for reproduction is the flower.
+"The part of a plant that"	"is"/EXAMPLE	"the flower"
+;;; The stem provides support for the plant.
+("The stem" "provides" "support")
+;;; The process by which a plant increases in size is known as growth.
+;;; The digestive_system takes in nutrients.
+("The digestive_system" "takes in" "nutrients")
+;;; The respiratory_system is responsible for breathing.
+;;; The circulatory system pumps blood.
+("The circulatory system" "pumps" "blood")
+;;; The Locomotion system is responsible for movement.
+;;; The urinary system eliminates chemical waste.
+("The urinary system" "eliminates" "chemical waste")
+;;; The five senses are controlled by the nervous system.
+;;; Animals need air water and food to survive.
+("Animals"/?x "need" "air")	"to"/EFFECT	("Animals"/?x "survive" "")
+("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "survive" "")
+("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
+;;; The mouth helps in digestion and respiration.
+;;; The urinary system is responsible for getting rid of chemical waste and water.
+;;; The locomotion system protects the organs and provides structure for the body.
+("The locomotion system" "protects" "the organs")
+;;; All animals have different structures that have different jobs or functions to help in growth survival and reproduction.
+("All animals" "have" "different structures")
+;;; Ways that animals respond to changes in their environment such as seasonal changes include hibernation migration growing thick fur or shivering.
+;;; Hibernation is going into a dormant state for the winter.
+;;; Migration is moving to warmer climates.
+;;; Some animals grow thick fur in winter to stay warm.
+("Some animals"/?x "grow" "thick fur")	"to"/EFFECT	("Some animals"/?x "stay" "" [ "warm" ] )
+;;; Some animals increase body fat in winter to stay warm.
+("Some animals"/?x "increase" "body fat")	"to"/EFFECT	("Some animals"/?x "stay" "" [ "warm" ] )
+;;; Shivering is shaking in_order to keep the body warm.
+;;; When animals move to a warmer climate to avoid the change in seasons we call this migration.
+("we" "call" "this migration")	""/EFFECT	("animals" "move" "")
+("animals"/?x "move" "")	"to"/EFFECT	("animals"/?x "avoid" "the change in seasons")
+;;; Some animals prepare for the long winter by going into hibernation.
+("Some animals" "prepare" "")	""/EFFECT	("the long" "winter" "")
+;;; Dogs have legs to help them move.
+("Dogs"/?x "have" "legs")	"to"/EFFECT	("Dogs"/?x "help" "" [ "them move" ] )
+;;; Birds have wings to help them move.
+("Birds"/?x "have" "wings")	"to"/EFFECT	("Birds"/?x "help" "" [ "them move" ] )
+;;; Fish have fins to help them move.
+("Fish"/?x "have" "fins")	"to"/EFFECT	("Fish"/?x "help" "" [ "them move" ] )
+;;; Some animals have claws spines or shells as a defense mechanism.
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+;;; Some animals give off a smell as a defense mechanism.
+("Some animals" "give off" "a smell")
+;;; Animals that change color or are of a color similar to their environment can camouflage themselves so_that they cannot be easily seen.
+("Animals" "camouflage" "themselves")	""/EFFECT	("" "seen" "they")
+;;; A giraffe s long neck is a trait that can be considered an adaptation.
+"A giraffe s long neck"	"is"/EXAMPLE	("" "considered" "a trait")
+"A giraffe s long neck"	"is"/EXAMPLE	"a trait that"
+;;; Pelicans swoop into the water and are able to collect many fish in their large beaks.
+("" "able" "")	"to"/EFFECT	("" "collect" "many fish")
+;;; The environment that animals with gills live in is water.
+;;; A fish has a flipper or fin that helps them swim.
+("A fish" "has" "a flipper")	"helps"/EFFECT	("them" "swim" "")
+("A fish" "has" "fin")	"helps"/EFFECT	("them" "swim" "")
+;;; Birds have wings that are long and angled to help them fly.
+("Birds" "have" "wings")
+("" "angled" "")	"to"/EFFECT	("" "help" "" [ "them fly" ] )
+;;; Horses have strong legs and hooves that enable them to run on many different landscapes.
+("Horses" "have" "strong legs")	"enable ("Horses" "have" "hooves")	"enable ("Horses" "have" "strong legs")	"enable"/EFFECT	("them" "run" "")
+("Horses" "have" "hooves")	"enable"/EFFECT	("them" "run" "")
+;;; Cats distinct colors and patterns are an example of diversity.
+"Cats distinct colors"	"are"/EXAMPLE	"an example of diversity"
+;;; The major stages in the life cycle of humans are Baby toddler child teenager adult and elderly.
+;;; The life cycle continues through reproduction and development.
+;;; Frogs are able to swim with the help of a tail during the tadpole phase.
+("" "able" "")	"to"/EFFECT	("" "swim" "")
+;;; The length of time from an animal s birth until its death is called its life_span.
+("The length of time from an animal s birth until its death is" "called" "its life_span")
+;;; The ladybug and the frog both start as eggs and go through metamorphosis.
+;;; The tadpole swims and the frog matures to a land animal.
+;;; The ladybug grows from a larva that crawls to a ladybug that can fly.
+;;; A defense mechanism is a way in which animals protect themselves.
+;;; Rabbits grow into adults.
+;;; They have bones that grow.
+("They" "have" "bones")
+;;; Reproduction is most important for the survival of a species.
+;;; A bear s fur would be thickest during winter.
+;;; Since the dolphin swims its flipper has adapted so_that it can act as a paddle.
+("its flipper" "adapted" "")	""/EFFECT	("the dolphin" "swims" "")
+("its flipper" "adapted" "")	""/EFFECT	("it" "act" "")
+;;; The human uses its fingers and arms for many tasks.
+("The human" "uses" "its fingers")
+("The human" "uses" "arms")
+("The human" "uses" "its fingers")
+("The human" "uses" "arms")
+;;; The brain and spinal_cord are part of the nervous system.
+;;; The four senses that can be used to observe an orange are sight smell touch and taste.
+;;; When organisms pass on characteristics from parent to offspring it is called inheritance.
+("it" "is" "")	""/EFFECT	("organisms" "pass on" "characteristics")
+;;; Characteristics that are passed from a parent to child are called traits.
+;;; A baby can inherit a trait from a parent.
+("A baby" "inherit" "a trait")
+;;; Some traits that can be inherited are color of hair color of skin color of eyes and height.
+;;; Some traits that can be inherited are shape of face shape of ears and shape of nose.
+;;; Some traits that can be inherited are color of flowers shape of leaves shape os seeds and color of seeds.
+;;; Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring.
+("Organisms" "reproduce" "DNA")
+("" "combined" "")	"to"/EFFECT	("" "form" "the genetic information")
+;;; DNA is like a fingerprint because it is different from all others.
+;;; Genes are found in cells.
+;;; DNA looks like a twisted ladder.
+;;; Genes carry traits.
+("Genes" "carry" "traits")
+;;; Plants and animals closely resemble their parents and other individuals in their species because_of DNA.
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+;;; DNA is found in the cells of our body.
+;;; DNA is responsible for telling our body what to look like or can give the body information.
+;;; All living things have DNA.
+("All living things" "have" "DNA")
+;;; Rolling your tongue is inherited.
+;;; Scars are_not inherited.
+;;; DNA are the bundles of chemicals in our body that control what we look like.
+"DNA"	"are"/EXAMPLE	("the bundles of chemicals in our body" "control" "the bundles of chemicals in our body" [ "what we look like" ] )
+"DNA"	"are"/EXAMPLE	"the bundles of chemicals in our body that"
+;;; Chromosomes contain hundreds of pieces of information.
+("Chromosomes" "contain" "hundreds of pieces of information")
+;;; Parents DNA parents genes are our genes come from determine hair eye and skin color.
+;;; DNA is found in the cells of our bodies.
+;;; In order for humans to grow and be healthy they need to eat healthy foods exercise and get regular rest.
+("they"/?x "need" "")	"to"/EFFECT	("they"/?x "eat" "healthy foods")
+("they"/?x "need" "")	"to"/EFFECT	("they"/?x "eat" "exercise")
+;;; To avoid getting germs and illnesses from other people you should wash your hands frequently.
+("you" "wash" "your hands")
+;;; A cigarette is a harmful substance.
+"A cigarette"	"is"/EXAMPLE	"a harmful substance"
+;;; The food pyramid shows us which foods make a balanced_diet.
+;;; Eating candy for dinner is an example of a poor health habit.
+;;; The sun is the ultimate source of energy for all life and physical cycles on Earth.
+"The sun"	"is"/EXAMPLE	"the ultimate source of energy for all life and physical cycles on Earth"
+;;; The cactus is a producer.
+"The cactus"	"is"/EXAMPLE	"a producer"
+;;; The butterfly is a consumer.
+"The butterfly"	"is"/EXAMPLE	"a consumer"
+;;; The snake is a predator.
+"The snake"	"is"/EXAMPLE	"a predator"
+;;; Plants depend on the sun for energy on the water and soil for nutrients to survive perform photosynthesis.
+("Plants"/?x "depend" "")	"to"/EFFECT	("Plants"/?x "survive" "")
+;;; Animals need plants for food and energy.
+("Animals" "need" "plants")
+;;; Plants give off oxygen for animals to breathe in.
+("Plants"/?x "give off" "oxygen")	"to"/EFFECT	("Plants"/?x "breathe in" "")
+;;; Animals give off carbon_dioxide for plants to take in.
+("Animals" "give off" "carbon_dioxide")
+;;; Humans need plant and animals for nutrition.
+("Humans" "need" "plant")
+("Humans" "need" "animals for nutrition")
+("Humans" "need" "plant")
+("Humans" "need" "animals for nutrition")
+;;; Some animals use nonliving materials for shelter.
+("Some animals" "use" "nonliving materials")
+;;; A bird or snake is a predator.
+"A bird"	"is"/EXAMPLE	"a predator"
+;;; A rabbit frog or fish is a prey.
+"A rabbit"	"is"/EXAMPLE	"a prey"
+;;; Parental care results in better chances of the young surviving.
+;;; Water animals produce very large numbers of eggs because there are very few young that survive.
+("Water animals" "produce" "very large numbers of eggs")	""/EFFECT	("few" "are" "")
+("few" "are" "")	"because"/EFFECT	("Water animals" "produce" "very large numbers of eggs")
+;;; Animals that do_not have parental care have less success in survival.
+("Animals" "have" "less success")
+;;; Humans are dependent upon their environment for food shelter and energy.
+;;; Cars and trucks create gases that are harmful to the atmosphere.
+("Cars" "create" "gases")
+("trucks" "create" "gases")
+("Cars" "create" "gases")
+("trucks" "create" "gases")
+;;; Humans can help save their environment by recycling planting trees preventing litter limiting use of cars creating new forms of energy and conserving energy.
+;;; Pollution is created from harmful gases.
+;;; Harm to the environment can be caused when animals are displaced and the landscape is changed.
+("animals"/?x "caused" "Harm to the environment")	""/EFFECT	("animals"/?x "are" "" [ "displaced" ] )
+("animals"/?x "caused" "Harm to the environment")	"when"/WHEN	("animals"/?x "are" "" [ "displaced" ] )
+;;; In a glass of water that contains ice cubes we find two phases of matter liquid and solid.
+;;; The five senses are sight smell taste touch and hearing.
+;;; To determine the volume of a book you would use a ruler.
+("you" "use" "a ruler")
+;;; To determine the volume of milk used in a recipe you would use a graduated_cylinder.
+("you" "use" "a graduated_cylinder")
+;;; The physical properties of a book are color size and shape.
+;;; Examples of chemical properties include the souring of milk and the ability to burn in the presence of oxygen.
+("Examples of chemical properties"/?x "include" "the souring of milk and the ability")	"to"/EFFECT	("Examples of chemical properties"/?x "burn" "")
+;;; A scientist would use a graduated_cylinder to measure the volume of a liquid.
+("A scientist"/?x "use" "a graduated_cylinder")	"to"/EFFECT	("A scientist"/?x "measure" "the volume of a liquid")
+;;; Rusting is an example of a chemical property.
+"Rusting"	"is"/EXAMPLE	"an example of a chemical property"
+;;; The particles of matter have the most definite shape in the solid phase.
+("The particles of matter" "have" "the most definite shape")
+;;; Using your eyes to see that a banana is yellow is an example of using your senses to make an observation.
+("" "Using" "your eyes")	"to"/EFFECT	("" "see" "" [ "that a banana is yellow" ] )
+("" "using" "your senses")	"to"/EFFECT	("" "make" "an observation")
+;;; A balance measures mass.
+("A balance" "measures" "mass")
+;;; Melting of ice is a physical change not a chemical change.
+"Melting of ice"	"is"/EXAMPLE	"a physical change"
+;;; The gas phase of matter will take the shape of a closed container.
+("The gas phase of matter" "take" "the shape of a closed container")
+;;; A bike rolling down a hill is an example of kinetic energy.
+"A bike rolling down a hill"	"is"/EXAMPLE	"an example of kinetic energy"
+;;; A plane flying is an example of kinetic energy.
+"A plane flying"	"is"/EXAMPLE	"an example of kinetic energy"
+;;; A snowball melting in your hand is an example of heat energy.
+"A snowball melting in your hand"	"is"/EXAMPLE	"an example of heat energy"
+;;; Banging a drum is an example of mechanical energy.
+;;; Pounding a fist on a table is an example of mechanical energy changing to to sound energy.
+;;; Drying clothes in a clothes dryer is an example of electrical energy changing to heat energy.
+("" "changing" "")	"to"/EFFECT	("" "heat" "energy")
+;;; A battery is an example of chemical energy changing to electrical energy.
+"A battery"	"is"/EXAMPLE	"an example of chemical energy changing to electrical energy"
+;;; Playing a guitar is an example of mechanical energy changing to sound energy.
+;;; A blender is an example of electrical energy changing to mechanical energy.
+"A blender"	"is"/EXAMPLE	"an example of electrical energy changing to mechanical energy"
+;;; A car engine is an example of chemical energy changing to mechanical energy.
+"A car engine"	"is"/EXAMPLE	"an example of chemical energy changing to mechanical energy"
+;;; A ball rolling down a hill is an example of kinetic energy.
+"A ball rolling down a hill"	"is"/EXAMPLE	"an example of kinetic energy"
+;;; Energy from the sun is called solar energy.
+;;; The energy transformation that occurs when you ring a door bell is electrical energy to sound.
+("The energy transformation" "occurs" "The energy transformation")	""/EFFECT	("you" "ring" "a door bell")
+("The energy transformation" "occurs" "The energy transformation")	"when"/WHEN	("you" "ring" "a door bell")
+;;; Energy of motion is kinetic energy.
+;;; Stored energy is called potential energy.
+;;; Friction is the force that slows down or stops the motion of a bicycle.
+"Friction"	"is"/EXAMPLE	("the force" "slows down" "the force")
+"Friction"	"is"/EXAMPLE	"the force that"
+;;; The seesaw in a playground is an example of a lever.
+"The seesaw in a playground"	"is"/EXAMPLE	"an example of a lever"
+;;; Gravity is the force that brings objects toward the Earth.
+"Gravity"	"is"/EXAMPLE	("the force" "brings" "objects")
+"Gravity"	"is"/EXAMPLE	"the force that"
+;;; A push or a pull is called a force.
+;;; When two objects slide over one_another friction can occur.
+("friction" "occur" "")	""/EFFECT	("two objects" "slide" "")
+;;; Examples of objects that are attracted by magnet are a staple an iron nail and a pin.
+"Examples of objects that"	"are"/EXAMPLE	"a staple"
+;;; The Earth makes a complete rotation on its axis once every 24 hours.
+("The Earth" "makes" "a complete rotation on its axis" [ "every 24 hours" ] )
+;;; The rising and setting of the sun is due_to the Earth s rotation.
+;;; We are able to see the moon in the sky because the sun s light is reflected off_of the moon.
+("" "able" "")	"to"/EFFECT	("" "see" "the moon in the sky")
+("" "see" "the moon in the sky")	""/EFFECT	("" "reflected" "the sun s light")
+("" "reflected" "the sun s light")	"because"/EFFECT	("" "see" "the moon in the sky")
+;;; The shortest number of daylight hours in New_York_State occurs during December.
+;;; The moon revolves around the Earth.
+;;; Day and year both units of time are based on the motion of the Earth.
+;;; One complete revolution of the moon around the Earth takes approximately one month.
+("One complete revolution of the moon around the Earth" "takes" "one month")
+;;; The different phases of the moon as seen from Earth are caused by the revolution of the moon around the Earth.
+;;; The full moon appears in our sky as a completely lit circle of light.
+;;; The rising and setting of the sun as viewed from Earth is the result of the Earth s rotation.
+"The rising of the sun as viewed from Earth"	"is"/EXAMPLE	"the result of the Earth s rotation"
+;;; The Earth takes one year to completely revolve around the sun.
+("The Earth" "takes" "one year")
+;;; Tracking the weather is most important for people who plant crops.
+;;; A flood can be caused by heavy rain.
+;;; A barometer is used to measure air_pressure.
+;;; Precipitation is the term used to describe water falling from the sky.
+"Precipitation"	"is"/EXAMPLE	"the term used to describe water falling from the sky"
+("" "used" "")	"to"/EFFECT	("" "describe" "" [ "water falling from the sky" ] )
+;;; Snow is a form of precipitation.
+"Snow"	"is"/EXAMPLE	"a form of precipitation"
+;;; A meteorologist is a scientist who studies weather.
+"A meteorologist"	"is"/EXAMPLE	("a scientist" "studies" "weather")
+"A meteorologist"	"is"/EXAMPLE	"a scientist who"
+;;; Winds are caused by differences in air_pressure.
+;;; Ice changing to liquid water is called melting.
+;;; Liquid water changing to water vapor is evaporation.
+;;; Water vapor changing to liquid water is condensation.
+;;; Liquid water changing to ice is called freezing.
+;;; Liquid water is changed to water vapor by adding heat.
+;;; Water vapor is changed to liquid water by removing heat.
+;;; Condensation is defined as the phase change from gas vapor to liquid.
+;;; Water falling from the sky is called precipitation.
+;;; Evaporation is defined as the change of water from its liquid phase to its gaseous phase.
+;;; The water cycle involves movement of water between air and land.
+("The water cycle" "involves" "movement of water between air and land")
+;;; Fog is_not a form of precipitation.
+"Fog"	"is_not"/EXAMPLE	"a form of precipitation"
+;;; When liquid water changes to water vapor it is called evaporation.
+("it" "is" "")	""/EFFECT	("liquid water" "changes" "")
+;;; When water vapor changes to liquid water it is called condensation.
+("it" "is" "")	""/EFFECT	("water vapor" "changes" "")
+;;; When liquid water falls to the Earth from the sky it is called precipitation.
+("it" "is" "")	""/EFFECT	("liquid water" "falls" "")
+;;; Water from the oceans enters the atmosphere through evaporation.
+("Water from the oceans" "enters" "the atmosphere")
+;;; Surface waters are heated by the radiation from the sun which causes the phase change.
+;;; Water from the atmosphere returns to the rivers and lakes on the surface of the Earth as the air cools and water molecules condense.
+("Water from the atmosphere" "returns" "")	""/EFFECT	("the air" "cools" "")
+("Water from the atmosphere" "returns" "")	""/EFFECT	("water molecules" "condense" "")
+;;; When the molecules become too heavy to stay in the air they fall to the ground in the form of precipitation.
+("they" "fall" "")	""/EFFECT	("the molecules" "become" "" [ "too heavy" ] )
+("the molecules"/?x "become" "" [ "too heavy" ] )	"to"/EFFECT	("the molecules"/?x "stay" "")
+;;; Water trapped inside the cracks of rocks may freeze and cause the rocks to break apart.
+;;; Weathering is the process that breaks down rocks into small pieces.
+"Weathering"	"is"/EXAMPLE	("the process" "breaks down" "rocks")
+"Weathering"	"is"/EXAMPLE	"the process that"
+;;; Weathering involves the breaking down of a large object into smaller pieces.
+("Weathering" "involves" "the breaking down of a large object into smaller pieces")
+;;; Erosion involves moving pieces from one location to another.
+("Erosion" "involves" "moving pieces from one location to another")
+;;; A balance is used to determine the mass of an object.
+;;; You can observe an orange s color with your sense of sight.
+("You" "observe" "an orange s color")
+;;; You can observe an orange s odor with your sense of smell.
+("You" "observe" "an orange s odor")
+;;; You can observe an orange s texture with your sense of touch.
+("You" "observe" "an orange s texture")
+;;; You can observe an orange s taste with your sense of taste.
+("You" "observe" "an orange s taste")
+;;; The best tool to use to measure temperature is a thermometer.
+"The best tool to use to measure temperature"	"is"/EXAMPLE	"a thermometer"
+("" "use" "")	"to"/EFFECT	("" "measure" "temperature")
+;;; A thermometer is used to measure air temperature.
+;;; A metric ruler can be used to measure the length of a stick.
+;;; A metric ruler and a balance will measure the size and mass of an object.
+("A metric ruler" "measure" "the size of an object")
+("a balance" "measure" "the size of an object")
+("A metric ruler" "measure" "mass")
+("a balance" "measure" "mass")
+("A metric ruler" "measure" "the size of an object")
+("a balance" "measure" "the size of an object")
+("A metric ruler" "measure" "mass")
+("a balance" "measure" "mass")
+("A metric ruler" "measure" "the size of an object")
+("a balance" "measure" "the size of an object")
+("A metric ruler" "measure" "mass")
+("a balance" "measure" "mass")
+("A metric ruler" "measure" "the size of an object")
+("a balance" "measure" "the size of an object")
+("A metric ruler" "measure" "mass")
+("a balance" "measure" "mass")
+"A metric ruler"	"measure"/FUNCTION	("A metric ruler" "measure" "the size of an object")
+"A metric ruler"	"measure"/FUNCTION	("a balance" "measure" "the size of an object")
+"A metric ruler"	"measure"/FUNCTION	("A metric ruler" "measure" "mass")
+"A metric ruler"	"measure"/FUNCTION	("a balance" "measure" "mass")
+;;; A journal is useful to a scientist to record observations made during an experiment.
+;;; The best instrument to measure the growth of a plant s stem is a ruler.
+"The best instrument to measure the growth of a plant s stem"	"is"/EXAMPLE	"a ruler"
+;;; The most important safety rule is to follow all directions.
+;;; Students should wear safety goggles in the laboratory when they are using fire or handling chemicals.
+("Students" "wear" "safety goggles")	""/EFFECT	("they" "using" "fire")
+("Students"/?x "wear" "safety goggles")	""/EFFECT	("Students"/?x "handling" "chemicals")
+("Students" "wear" "safety goggles")	"when"/WHEN	("they" "using" "fire")
+;;; Snow and rain are forms of precipitation.
+;;; The main function of a turtle s shell is to protect the turtle.
+;;; Being able to read a book is_not an inherited characteristic.
+("" "able" "")	"to"/EFFECT	("" "read" "a book")
+;;; The Earth s main source of energy is the sun.
+"The Earth s main source of energy"	"is"/EXAMPLE	"the sun"
+;;; A bear would hibernate during the winter season.
+;;; When you jump up in the air you come back down_to the ground due_to gravity.
+("you" "come back" "")	""/EFFECT	("you" "jump up" "")
+;;; A ramp is a simple machine known as an inclined plane.
+"A ramp"	"is"/EXAMPLE	"a simple machine known as an inclined plane"
+;;; The roots of the plant take in water and nutrients.
+("The roots of the plant" "take in" "water")
+("The roots of the plant" "take in" "nutrients")
+("The roots of the plant" "take in" "water")
+("The roots of the plant" "take in" "nutrients")
+;;; The tool that is used to measure the volume of a liquid is a graduated_cylinder.
+"The tool that"	"is"/EXAMPLE	"a graduated_cylinder"
+;;; The process that results in an animal producing offspring is reproduction.
+;;; A plant in a food chain is called the producer.
+;;; Eating candy for diner is an example of a poor health habit.
+;;; Objects being pushed over a smooth surface will move easier due_to less friction.
+;;; The force that pulls objects toward the Earth is gravity.
+;;; The force identified by a north and south pole is magnetism.
+;;; Sound waves and light energy are similar because they move energy from one place to another.
+;;; When an object joins two wires and a bulb lights the object is able to conduct electricity.
+("the object" "is" "" [ "able" ] )	""/EFFECT	("an object" "joins" "two wires")
+("the object" "is" "" [ "able" ] )	""/EFFECT	("an object" "joins" "bulb lights")
+("" "able" "")	"to"/EFFECT	("" "conduct" "electricity")
+;;; A pulley is a simple machine that moves a sail up the mast of a ship.
+"A pulley"	"is"/EXAMPLE	("a simple machine" "moves" "a sail")
+"A pulley"	"is"/EXAMPLE	"a simple machine that"
+;;; The length of time from an animal s birth until its death is called its life_span.
+("The length of time from an animal s birth until its death is" "called" "its life_span")
+;;; Living things need food water and air to survive.
+("Living things"/?x "need" "food")	"to"/EFFECT	("Living things"/?x "survive" "")
+("Living things"/?x "need" "air")	"to"/EFFECT	("Living things"/?x "survive" "")
+("Living things"/?x "need" "water")	"to"/EFFECT	("Living things"/?x "survive" "")
+;;; Water is found in nature as a solid liquid and gas.
+;;; To change an object from a solid to a liquid you must increase the temperature.
+;;; When you turn on your television electrical energy is transferred into sound and light energy.
+("electrical energy" "is" "" [ "transferred into sound and light energy" ] )	""/EFFECT	("you" "turn on" "your television")
+;;; A thermometer is used to measure heat energy.
+;;; The flower is the part of the plant responsible for the production of seeds.
+"The flower"	"is"/EXAMPLE	"the part of the plant responsible for the production of seeds"
+;;; Photosynthesis takes_place in the leaves of the plant.
+;;; A rock is_not a living thing.
+"A rock"	"is_not"/EXAMPLE	"a living thing"
+;;; Hail is a form of precipitation.
+"Hail"	"is"/EXAMPLE	"a form of precipitation"
+;;; An example of a predator and prey is a hawk and a mouse.
+;;; The phases of matter are solid liquid gas.
+;;; Growth is a process by which plants and animals increase in size.
+"Growth"	"is"/EXAMPLE	("plants" "increase" "a process")
+"Growth"	"is"/EXAMPLE	("animals" "increase" "a process")
+"Growth"	"is"/EXAMPLE	"a process which"
+;;; Time units such_as seconds minutes hours weeks and months are based on the natural motions of the Earth.
+;;; The force of magnetism decreases as the magnets are pulled apart.
+("The force of magnetism" "decreases" "")	""/EFFECT	("" "pulled apart" "the magnets")
+;;; The leaves are the part of the plant that is responsible for making food.
+"The leaves"	"are"/EXAMPLE	("the part of the plant" "is" "the part of the plant" [ "responsible for making food" ] )
+"The leaves"	"are"/EXAMPLE	"the part of the plant that"
+;;; Growth taking in nutrients breathing and reproduction are the life processes of all living things.
+;;; An example of the transfer of chemical energy to electrical energy is between battery and light_bulb.
+;;; When an object travels slowly over a bumpy surface and fast over a smooth surface the difference is due_to friction.
+("the difference" "is" "")	""/EFFECT	("an object" "travels" "")
+;;; When some animals prepare for the long winters by storing food and going dormant it is called hibernation.
+("it" "is" "")	""/EFFECT	("some animals" "prepare" "")
+("some animals" "prepare" "")	""/EFFECT	("the long" "winters" "" [ "by storing food" ] )
+;;; The length of time from an animal s birth until its death is called its life_span.
+("The length of time from an animal s birth until its death is" "called" "its life_span")
+;;; Some animals have claws spines or shells give off a smell as a defense mechanism.
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+("Some animals" "have" "claws")
+("Some animals" "have" "shells")
+("Some animals" "have" "spines")
+;;; Cigarettes are harmful to the human body.
+;;; Plants and animals closely resemble their parents and other individuals in their species because_of their DNA.
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+("Plants" "resemble" "their parents")
+("animals" "resemble" "their parents")
+("Plants" "resemble" "other individuals")
+("animals" "resemble" "other individuals")
+;;; Soil is composed of broken down pieces of living and nonliving Earth materials.
+;;; A ruler is used to measure the length of a piece of wood.
+;;; Erosion and deposition result from the interaction between air water and land.
+;;; The astronaut does_not experience gravity while in outer space.
+("The astronaut" "experience" "gravity")
+;;; It takes the moon 1 month to circle the Earth.
+("It"/?x "takes" "the moon" [ "1 month" ] )	"to"/EFFECT	("It"/?x "circle" "the Earth")

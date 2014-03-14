@@ -1,0 +1,2632 @@
+
+@prefix : <http://halo.vulcan.com/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+:1.1 token:text "In" .
+:1.1 token:lemma "in" .
+:1.1 token:pos "IN" .
+:1.1 token:begin 0 .
+:1.1 token:end 2 .
+
+:1.2 token:text "the" .
+:1.2 token:lemma "the" .
+:1.2 token:pos "DT" .
+:1.2 token:begin 3 .
+:1.2 token:end 6 .
+
+:1.3 token:text "hot" .
+:1.3 token:lemma "hot" .
+:1.3 token:pos "JJ" .
+:1.3 token:begin 7 .
+:1.3 token:end 10 .
+
+:1.4 token:text "weather" .
+:1.4 token:lemma "weather" .
+:1.4 token:pos "NN" .
+:1.4 token:begin 11 .
+:1.4 token:end 18 .
+
+:1.5 token:text "our" .
+:1.5 token:lemma "we" .
+:1.5 token:pos "PRP$" .
+:1.5 token:begin 19 .
+:1.5 token:end 22 .
+
+:1.6 token:text "bodies" .
+:1.6 token:lemma "body" .
+:1.6 token:pos "NNS" .
+:1.6 token:begin 23 .
+:1.6 token:end 29 .
+
+:1.7 token:text "sweat" .
+:1.7 token:lemma "sweat" .
+:1.7 token:pos "VBP" .
+:1.7 token:begin 30 .
+:1.7 token:end 35 .
+
+:1.8 token:text "-LRB-" .
+:1.8 token:lemma "-lrb-" .
+:1.8 token:pos "-LRB-" .
+:1.8 token:begin 36 .
+:1.8 token:end 37 .
+
+:1.9 token:text "perspiration" .
+:1.9 token:lemma "perspiration" .
+:1.9 token:pos "NN" .
+:1.9 token:begin 37 .
+:1.9 token:end 49 .
+
+:1.10 token:text "-RRB-" .
+:1.10 token:lemma "-rrb-" .
+:1.10 token:pos "-RRB-" .
+:1.10 token:begin 49 .
+:1.10 token:end 50 .
+
+:1.11 token:text "," .
+:1.11 token:lemma "," .
+:1.11 token:pos "," .
+:1.11 token:begin 50 .
+:1.11 token:end 51 .
+
+:1.12 token:text "bringing" .
+:1.12 token:lemma "bring" .
+:1.12 token:pos "VBG" .
+:1.12 token:begin 52 .
+:1.12 token:end 60 .
+
+:1.13 token:text "water" .
+:1.13 token:lemma "water" .
+:1.13 token:pos "NN" .
+:1.13 token:begin 61 .
+:1.13 token:end 66 .
+
+:1.14 token:text "to" .
+:1.14 token:lemma "to" .
+:1.14 token:pos "TO" .
+:1.14 token:begin 67 .
+:1.14 token:end 69 .
+
+:1.15 token:text "our" .
+:1.15 token:lemma "we" .
+:1.15 token:pos "PRP$" .
+:1.15 token:begin 70 .
+:1.15 token:end 73 .
+
+:1.16 token:text "skin" .
+:1.16 token:lemma "skin" .
+:1.16 token:pos "NN" .
+:1.16 token:begin 74 .
+:1.16 token:end 78 .
+
+:1.17 token:text "." .
+:1.17 token:lemma "." .
+:1.17 token:pos "." .
+:1.17 token:begin 78 .
+:1.17 token:end 79 .
+
+:1.0 basic:root :1.7 .
+:1.7 basic:prep :1.1 .
+:1.4 basic:det :1.2 .
+:1.4 basic:amod :1.3 .
+:1.1 basic:pobj :1.4 .
+:1.6 basic:poss :1.5 .
+:1.7 basic:nsubj :1.6 .
+:1.7 basic:dobj :1.9 .
+:1.7 basic:xcomp :1.12 .
+:1.12 basic:dobj :1.13 .
+:1.12 basic:prep :1.14 .
+:1.16 basic:poss :1.15 .
+:1.14 basic:pobj :1.16 .
+
+:1.0 dep:root :1.7 .
+:1.4 dep:det :1.2 .
+:1.4 dep:amod :1.3 .
+:1.7 dep:prep_in :1.4 .
+:1.6 dep:poss :1.5 .
+:1.7 dep:nsubj :1.6 .
+:1.7 dep:dobj :1.9 .
+:1.7 dep:xcomp :1.12 .
+:1.12 dep:dobj :1.13 .
+:1.16 dep:poss :1.15 .
+:1.12 dep:prep_to :1.16 .
+
+:2.1 token:text "When" .
+:2.1 token:lemma "when" .
+:2.1 token:pos "WRB" .
+:2.1 token:begin 80 .
+:2.1 token:end 84 .
+
+:2.2 token:text "some" .
+:2.2 token:lemma "some" .
+:2.2 token:pos "DT" .
+:2.2 token:begin 85 .
+:2.2 token:end 89 .
+
+:2.3 token:text "animals" .
+:2.3 token:lemma "animal" .
+:2.3 token:pos "NNS" .
+:2.3 token:begin 90 .
+:2.3 token:end 97 .
+
+:2.4 token:text "prepare" .
+:2.4 token:lemma "prepare" .
+:2.4 token:pos "VB" .
+:2.4 token:begin 98 .
+:2.4 token:end 105 .
+
+:2.5 token:text "for" .
+:2.5 token:lemma "for" .
+:2.5 token:pos "IN" .
+:2.5 token:begin 106 .
+:2.5 token:end 109 .
+
+:2.6 token:text "the" .
+:2.6 token:lemma "the" .
+:2.6 token:pos "DT" .
+:2.6 token:begin 110 .
+:2.6 token:end 113 .
+
+:2.7 token:text "long" .
+:2.7 token:lemma "long" .
+:2.7 token:pos "JJ" .
+:2.7 token:begin 114 .
+:2.7 token:end 118 .
+
+:2.8 token:text "winters" .
+:2.8 token:lemma "winter" .
+:2.8 token:pos "NNS" .
+:2.8 token:begin 119 .
+:2.8 token:end 126 .
+:2.8 ne:type "SET" .
+
+:2.9 token:text "by" .
+:2.9 token:lemma "by" .
+:2.9 token:pos "IN" .
+:2.9 token:begin 127 .
+:2.9 token:end 129 .
+
+:2.10 token:text "storing" .
+:2.10 token:lemma "store" .
+:2.10 token:pos "VBG" .
+:2.10 token:begin 130 .
+:2.10 token:end 137 .
+
+:2.11 token:text "food" .
+:2.11 token:lemma "food" .
+:2.11 token:pos "NN" .
+:2.11 token:begin 138 .
+:2.11 token:end 142 .
+
+:2.12 token:text "and" .
+:2.12 token:lemma "and" .
+:2.12 token:pos "CC" .
+:2.12 token:begin 143 .
+:2.12 token:end 146 .
+
+:2.13 token:text "going" .
+:2.13 token:lemma "go" .
+:2.13 token:pos "VBG" .
+:2.13 token:begin 147 .
+:2.13 token:end 152 .
+
+:2.14 token:text "dormant" .
+:2.14 token:lemma "dormant" .
+:2.14 token:pos "JJ" .
+:2.14 token:begin 153 .
+:2.14 token:end 160 .
+
+:2.15 token:text "it" .
+:2.15 token:lemma "it" .
+:2.15 token:pos "PRP" .
+:2.15 token:begin 161 .
+:2.15 token:end 163 .
+
+:2.16 token:text "is" .
+:2.16 token:lemma "be" .
+:2.16 token:pos "VBZ" .
+:2.16 token:begin 164 .
+:2.16 token:end 166 .
+
+:2.17 token:text "called" .
+:2.17 token:lemma "call" .
+:2.17 token:pos "VBN" .
+:2.17 token:begin 167 .
+:2.17 token:end 173 .
+
+:2.18 token:text "hibernation" .
+:2.18 token:lemma "hibernation" .
+:2.18 token:pos "NN" .
+:2.18 token:begin 174 .
+:2.18 token:end 185 .
+
+:2.19 token:text "." .
+:2.19 token:lemma "." .
+:2.19 token:pos "." .
+:2.19 token:begin 185 .
+:2.19 token:end 186 .
+
+:2.0 basic:root :2.17 .
+:2.4 basic:advmod :2.1 .
+:2.3 basic:det :2.2 .
+:2.4 basic:nsubj :2.3 .
+:2.17 basic:advcl :2.4 .
+:2.4 basic:prep :2.5 .
+:2.8 basic:det :2.6 .
+:2.8 basic:amod :2.7 .
+:2.5 basic:pobj :2.8 .
+:2.4 basic:prep :2.9 .
+:2.9 basic:pcomp :2.10 .
+:2.10 basic:dobj :2.11 .
+:2.10 basic:cc :2.12 .
+:2.10 basic:conj :2.13 .
+:2.13 basic:acomp :2.14 .
+:2.17 basic:nsubjpass :2.15 .
+:2.17 basic:auxpass :2.16 .
+:2.17 basic:xcomp :2.18 .
+
+:2.0 dep:root :2.17 .
+:2.4 dep:advmod :2.1 .
+:2.3 dep:det :2.2 .
+:2.4 dep:nsubj :2.3 .
+:2.17 dep:advcl :2.4 .
+:2.8 dep:det :2.6 .
+:2.8 dep:amod :2.7 .
+:2.4 dep:prep_for :2.8 .
+:2.4 dep:prepc_by :2.10 .
+:2.10 dep:dobj :2.11 .
+:2.4 dep:prepc_by :2.13 .
+:2.10 dep:conj_and :2.13 .
+:2.13 dep:acomp :2.14 .
+:2.17 dep:nsubjpass :2.15 .
+:2.17 dep:auxpass :2.16 .
+:2.17 dep:xcomp :2.18 .
+
+:3.1 token:text "A" .
+:3.1 token:lemma "a" .
+:3.1 token:pos "DT" .
+:3.1 token:begin 187 .
+:3.1 token:end 188 .
+
+:3.2 token:text "hand" .
+:3.2 token:lemma "hand" .
+:3.2 token:pos "NN" .
+:3.2 token:begin 189 .
+:3.2 token:end 193 .
+
+:3.3 token:text "lens" .
+:3.3 token:lemma "lens" .
+:3.3 token:pos "NN" .
+:3.3 token:begin 194 .
+:3.3 token:end 198 .
+
+:3.4 token:text "is" .
+:3.4 token:lemma "be" .
+:3.4 token:pos "VBZ" .
+:3.4 token:begin 199 .
+:3.4 token:end 201 .
+
+:3.5 token:text "used" .
+:3.5 token:lemma "use" .
+:3.5 token:pos "VBN" .
+:3.5 token:begin 202 .
+:3.5 token:end 206 .
+
+:3.6 token:text "to" .
+:3.6 token:lemma "to" .
+:3.6 token:pos "TO" .
+:3.6 token:begin 207 .
+:3.6 token:end 209 .
+
+:3.7 token:text "view" .
+:3.7 token:lemma "view" .
+:3.7 token:pos "VB" .
+:3.7 token:begin 210 .
+:3.7 token:end 214 .
+
+:3.8 token:text "objects" .
+:3.8 token:lemma "object" .
+:3.8 token:pos "NNS" .
+:3.8 token:begin 215 .
+:3.8 token:end 222 .
+
+:3.9 token:text "in" .
+:3.9 token:lemma "in" .
+:3.9 token:pos "IN" .
+:3.9 token:begin 223 .
+:3.9 token:end 225 .
+
+:3.10 token:text "more" .
+:3.10 token:lemma "more" .
+:3.10 token:pos "JJR" .
+:3.10 token:begin 226 .
+:3.10 token:end 230 .
+
+:3.11 token:text "detail" .
+:3.11 token:lemma "detail" .
+:3.11 token:pos "NN" .
+:3.11 token:begin 231 .
+:3.11 token:end 237 .
+
+:3.12 token:text "." .
+:3.12 token:lemma "." .
+:3.12 token:pos "." .
+:3.12 token:begin 237 .
+:3.12 token:end 238 .
+
+:3.0 basic:root :3.5 .
+:3.3 basic:det :3.1 .
+:3.3 basic:nn :3.2 .
+:3.5 basic:nsubjpass :3.3 .
+:3.5 basic:auxpass :3.4 .
+:3.7 basic:aux :3.6 .
+:3.5 basic:xcomp :3.7 .
+:3.7 basic:dobj :3.8 .
+:3.7 basic:prep :3.9 .
+:3.11 basic:amod :3.10 .
+:3.9 basic:pobj :3.11 .
+
+:3.0 dep:root :3.5 .
+:3.3 dep:det :3.1 .
+:3.3 dep:nn :3.2 .
+:3.5 dep:nsubjpass :3.3 .
+:3.5 dep:auxpass :3.4 .
+:3.7 dep:aux :3.6 .
+:3.5 dep:xcomp :3.7 .
+:3.7 dep:dobj :3.8 .
+:3.11 dep:amod :3.10 .
+:3.7 dep:prep_in :3.11 .
+
+:4.1 token:text "Freezing" .
+:4.1 token:lemma "freezing" .
+:4.1 token:pos "NN" .
+:4.1 token:begin 239 .
+:4.1 token:end 247 .
+
+:4.2 token:text "involves" .
+:4.2 token:lemma "involve" .
+:4.2 token:pos "VBZ" .
+:4.2 token:begin 248 .
+:4.2 token:end 256 .
+
+:4.3 token:text "changing" .
+:4.3 token:lemma "change" .
+:4.3 token:pos "VBG" .
+:4.3 token:begin 257 .
+:4.3 token:end 265 .
+
+:4.4 token:text "water" .
+:4.4 token:lemma "water" .
+:4.4 token:pos "NN" .
+:4.4 token:begin 266 .
+:4.4 token:end 271 .
+
+:4.5 token:text "from" .
+:4.5 token:lemma "from" .
+:4.5 token:pos "IN" .
+:4.5 token:begin 272 .
+:4.5 token:end 276 .
+
+:4.6 token:text "its" .
+:4.6 token:lemma "its" .
+:4.6 token:pos "PRP$" .
+:4.6 token:begin 277 .
+:4.6 token:end 280 .
+
+:4.7 token:text "liquid" .
+:4.7 token:lemma "liquid" .
+:4.7 token:pos "JJ" .
+:4.7 token:begin 281 .
+:4.7 token:end 287 .
+
+:4.8 token:text "state" .
+:4.8 token:lemma "state" .
+:4.8 token:pos "NN" .
+:4.8 token:begin 288 .
+:4.8 token:end 293 .
+
+:4.9 token:text "to" .
+:4.9 token:lemma "to" .
+:4.9 token:pos "TO" .
+:4.9 token:begin 294 .
+:4.9 token:end 296 .
+
+:4.10 token:text "its" .
+:4.10 token:lemma "its" .
+:4.10 token:pos "PRP$" .
+:4.10 token:begin 297 .
+:4.10 token:end 300 .
+
+:4.11 token:text "solid" .
+:4.11 token:lemma "solid" .
+:4.11 token:pos "JJ" .
+:4.11 token:begin 301 .
+:4.11 token:end 306 .
+
+:4.12 token:text "state" .
+:4.12 token:lemma "state" .
+:4.12 token:pos "NN" .
+:4.12 token:begin 307 .
+:4.12 token:end 312 .
+
+:4.13 token:text "-LRB-" .
+:4.13 token:lemma "-lrb-" .
+:4.13 token:pos "-LRB-" .
+:4.13 token:begin 313 .
+:4.13 token:end 314 .
+
+:4.14 token:text "ice" .
+:4.14 token:lemma "ice" .
+:4.14 token:pos "NN" .
+:4.14 token:begin 314 .
+:4.14 token:end 317 .
+
+:4.15 token:text "-RRB-" .
+:4.15 token:lemma "-rrb-" .
+:4.15 token:pos "-RRB-" .
+:4.15 token:begin 317 .
+:4.15 token:end 318 .
+
+:4.16 token:text "by" .
+:4.16 token:lemma "by" .
+:4.16 token:pos "IN" .
+:4.16 token:begin 319 .
+:4.16 token:end 321 .
+
+:4.17 token:text "the" .
+:4.17 token:lemma "the" .
+:4.17 token:pos "DT" .
+:4.17 token:begin 322 .
+:4.17 token:end 325 .
+
+:4.18 token:text "removal" .
+:4.18 token:lemma "removal" .
+:4.18 token:pos "NN" .
+:4.18 token:begin 326 .
+:4.18 token:end 333 .
+
+:4.19 token:text "of" .
+:4.19 token:lemma "of" .
+:4.19 token:pos "IN" .
+:4.19 token:begin 334 .
+:4.19 token:end 336 .
+
+:4.20 token:text "heat" .
+:4.20 token:lemma "heat" .
+:4.20 token:pos "NN" .
+:4.20 token:begin 337 .
+:4.20 token:end 341 .
+
+:4.21 token:text "." .
+:4.21 token:lemma "." .
+:4.21 token:pos "." .
+:4.21 token:begin 341 .
+:4.21 token:end 342 .
+
+:4.0 basic:root :4.2 .
+:4.2 basic:nsubj :4.1 .
+:4.2 basic:xcomp :4.3 .
+:4.3 basic:dobj :4.4 .
+:4.3 basic:prep :4.5 .
+:4.8 basic:poss :4.6 .
+:4.8 basic:amod :4.7 .
+:4.5 basic:pobj :4.8 .
+:4.5 basic:prep :4.9 .
+:4.12 basic:poss :4.10 .
+:4.12 basic:amod :4.11 .
+:4.9 basic:pobj :4.12 .
+:4.12 basic:appos :4.14 .
+:4.3 basic:prep :4.16 .
+:4.18 basic:det :4.17 .
+:4.16 basic:pobj :4.18 .
+:4.18 basic:prep :4.19 .
+:4.19 basic:pobj :4.20 .
+
+:4.0 dep:root :4.2 .
+:4.2 dep:nsubj :4.1 .
+:4.2 dep:xcomp :4.3 .
+:4.3 dep:dobj :4.4 .
+:4.8 dep:poss :4.6 .
+:4.8 dep:amod :4.7 .
+:4.3 dep:prep_from :4.8 .
+:4.12 dep:poss :4.10 .
+:4.12 dep:amod :4.11 .
+:4.3 dep:prep_to :4.12 .
+:4.12 dep:appos :4.14 .
+:4.18 dep:det :4.17 .
+:4.3 dep:prep_by :4.18 .
+:4.18 dep:prep_of :4.20 .
+
+:5.1 token:text "Animals" .
+:5.1 token:lemma "animal" .
+:5.1 token:pos "NNS" .
+:5.1 token:begin 343 .
+:5.1 token:end 350 .
+
+:5.2 token:text "can" .
+:5.2 token:lemma "can" .
+:5.2 token:pos "MD" .
+:5.2 token:begin 351 .
+:5.2 token:end 354 .
+
+:5.3 token:text "not" .
+:5.3 token:lemma "not" .
+:5.3 token:pos "RB" .
+:5.3 token:begin 354 .
+:5.3 token:end 357 .
+
+:5.4 token:text "make" .
+:5.4 token:lemma "make" .
+:5.4 token:pos "VB" .
+:5.4 token:begin 358 .
+:5.4 token:end 362 .
+
+:5.5 token:text "their" .
+:5.5 token:lemma "they" .
+:5.5 token:pos "PRP$" .
+:5.5 token:begin 363 .
+:5.5 token:end 368 .
+
+:5.6 token:text "own" .
+:5.6 token:lemma "own" .
+:5.6 token:pos "JJ" .
+:5.6 token:begin 369 .
+:5.6 token:end 372 .
+
+:5.7 token:text "food" .
+:5.7 token:lemma "food" .
+:5.7 token:pos "NN" .
+:5.7 token:begin 373 .
+:5.7 token:end 377 .
+
+:5.8 token:text "so" .
+:5.8 token:lemma "so" .
+:5.8 token:pos "IN" .
+:5.8 token:begin 378 .
+:5.8 token:end 380 .
+
+:5.9 token:text "they" .
+:5.9 token:lemma "they" .
+:5.9 token:pos "PRP" .
+:5.9 token:begin 381 .
+:5.9 token:end 385 .
+
+:5.10 token:text "must" .
+:5.10 token:lemma "must" .
+:5.10 token:pos "MD" .
+:5.10 token:begin 386 .
+:5.10 token:end 390 .
+
+:5.11 token:text "eat" .
+:5.11 token:lemma "eat" .
+:5.11 token:pos "VB" .
+:5.11 token:begin 391 .
+:5.11 token:end 394 .
+
+:5.12 token:text "to" .
+:5.12 token:lemma "to" .
+:5.12 token:pos "TO" .
+:5.12 token:begin 395 .
+:5.12 token:end 397 .
+
+:5.13 token:text "get" .
+:5.13 token:lemma "get" .
+:5.13 token:pos "VB" .
+:5.13 token:begin 398 .
+:5.13 token:end 401 .
+
+:5.14 token:text "nutrients" .
+:5.14 token:lemma "nutrient" .
+:5.14 token:pos "NNS" .
+:5.14 token:begin 402 .
+:5.14 token:end 411 .
+
+:5.15 token:text "." .
+:5.15 token:lemma "." .
+:5.15 token:pos "." .
+:5.15 token:begin 411 .
+:5.15 token:end 412 .
+
+:5.0 basic:root :5.4 .
+:5.4 basic:nsubj :5.1 .
+:5.4 basic:aux :5.2 .
+:5.4 basic:neg :5.3 .
+:5.7 basic:poss :5.5 .
+:5.7 basic:amod :5.6 .
+:5.4 basic:dobj :5.7 .
+:5.11 basic:mark :5.8 .
+:5.11 basic:nsubj :5.9 .
+:5.11 basic:aux :5.10 .
+:5.4 basic:advcl :5.11 .
+:5.13 basic:aux :5.12 .
+:5.11 basic:xcomp :5.13 .
+:5.13 basic:dobj :5.14 .
+
+:5.0 dep:root :5.4 .
+:5.4 dep:nsubj :5.1 .
+:5.4 dep:aux :5.2 .
+:5.4 dep:neg :5.3 .
+:5.7 dep:poss :5.5 .
+:5.7 dep:amod :5.6 .
+:5.4 dep:dobj :5.7 .
+:5.11 dep:mark :5.8 .
+:5.11 dep:nsubj :5.9 .
+:5.11 dep:aux :5.10 .
+:5.4 dep:advcl :5.11 .
+:5.13 dep:aux :5.12 .
+:5.11 dep:xcomp :5.13 .
+:5.13 dep:dobj :5.14 .
+
+:6.1 token:text "The" .
+:6.1 token:lemma "the" .
+:6.1 token:pos "DT" .
+:6.1 token:begin 413 .
+:6.1 token:end 416 .
+
+:6.2 token:text "friction" .
+:6.2 token:lemma "friction" .
+:6.2 token:pos "NN" .
+:6.2 token:begin 417 .
+:6.2 token:end 425 .
+
+:6.3 token:text "between" .
+:6.3 token:lemma "between" .
+:6.3 token:pos "IN" .
+:6.3 token:begin 426 .
+:6.3 token:end 433 .
+
+:6.4 token:text "the" .
+:6.4 token:lemma "the" .
+:6.4 token:pos "DT" .
+:6.4 token:begin 434 .
+:6.4 token:end 437 .
+
+:6.5 token:text "two" .
+:6.5 token:lemma "two" .
+:6.5 token:pos "CD" .
+:6.5 token:begin 438 .
+:6.5 token:end 441 .
+:6.5 ne:type "NUMBER" .
+:6.5 ne:norm "2.0" .
+
+:6.6 token:text "surfaces" .
+:6.6 token:lemma "surface" .
+:6.6 token:pos "NNS" .
+:6.6 token:begin 442 .
+:6.6 token:end 450 .
+
+:6.7 token:text "converts" .
+:6.7 token:lemma "convert" .
+:6.7 token:pos "VBZ" .
+:6.7 token:begin 451 .
+:6.7 token:end 459 .
+
+:6.8 token:text "kinetic" .
+:6.8 token:lemma "kinetic" .
+:6.8 token:pos "JJ" .
+:6.8 token:begin 460 .
+:6.8 token:end 467 .
+
+:6.9 token:text "energy" .
+:6.9 token:lemma "energy" .
+:6.9 token:pos "NN" .
+:6.9 token:begin 468 .
+:6.9 token:end 474 .
+
+:6.10 token:text "into" .
+:6.10 token:lemma "into" .
+:6.10 token:pos "IN" .
+:6.10 token:begin 475 .
+:6.10 token:end 479 .
+
+:6.11 token:text "heat" .
+:6.11 token:lemma "heat" .
+:6.11 token:pos "NN" .
+:6.11 token:begin 480 .
+:6.11 token:end 484 .
+
+:6.12 token:text "." .
+:6.12 token:lemma "." .
+:6.12 token:pos "." .
+:6.12 token:begin 484 .
+:6.12 token:end 485 .
+
+:6.0 basic:root :6.7 .
+:6.2 basic:det :6.1 .
+:6.7 basic:nsubj :6.2 .
+:6.2 basic:prep :6.3 .
+:6.6 basic:det :6.4 .
+:6.6 basic:num :6.5 .
+:6.3 basic:pobj :6.6 .
+:6.9 basic:amod :6.8 .
+:6.7 basic:dobj :6.9 .
+:6.7 basic:prep :6.10 .
+:6.10 basic:pobj :6.11 .
+
+:6.0 dep:root :6.7 .
+:6.2 dep:det :6.1 .
+:6.7 dep:nsubj :6.2 .
+:6.6 dep:det :6.4 .
+:6.6 dep:num :6.5 .
+:6.2 dep:prep_between :6.6 .
+:6.9 dep:amod :6.8 .
+:6.7 dep:dobj :6.9 .
+:6.7 dep:prep_into :6.11 .
+
+:7.1 token:text "Getting" .
+:7.1 token:lemma "get" .
+:7.1 token:pos "VBG" .
+:7.1 token:begin 486 .
+:7.1 token:end 493 .
+
+:7.2 token:text "enough" .
+:7.2 token:lemma "enough" .
+:7.2 token:pos "RB" .
+:7.2 token:begin 494 .
+:7.2 token:end 500 .
+
+:7.3 token:text "rest" .
+:7.3 token:lemma "rest" .
+:7.3 token:pos "NN" .
+:7.3 token:begin 501 .
+:7.3 token:end 505 .
+
+:7.4 token:text "is" .
+:7.4 token:lemma "be" .
+:7.4 token:pos "VBZ" .
+:7.4 token:begin 506 .
+:7.4 token:end 508 .
+
+:7.5 token:text "also" .
+:7.5 token:lemma "also" .
+:7.5 token:pos "RB" .
+:7.5 token:begin 509 .
+:7.5 token:end 513 .
+
+:7.6 token:text "an" .
+:7.6 token:lemma "a" .
+:7.6 token:pos "DT" .
+:7.6 token:begin 514 .
+:7.6 token:end 516 .
+
+:7.7 token:text "important" .
+:7.7 token:lemma "important" .
+:7.7 token:pos "JJ" .
+:7.7 token:begin 517 .
+:7.7 token:end 526 .
+
+:7.8 token:text "part" .
+:7.8 token:lemma "part" .
+:7.8 token:pos "NN" .
+:7.8 token:begin 527 .
+:7.8 token:end 531 .
+
+:7.9 token:text "of" .
+:7.9 token:lemma "of" .
+:7.9 token:pos "IN" .
+:7.9 token:begin 532 .
+:7.9 token:end 534 .
+
+:7.10 token:text "living" .
+:7.10 token:lemma "live" .
+:7.10 token:pos "VBG" .
+:7.10 token:begin 535 .
+:7.10 token:end 541 .
+
+:7.11 token:text "a" .
+:7.11 token:lemma "a" .
+:7.11 token:pos "DT" .
+:7.11 token:begin 542 .
+:7.11 token:end 543 .
+
+:7.12 token:text "healthy" .
+:7.12 token:lemma "healthy" .
+:7.12 token:pos "JJ" .
+:7.12 token:begin 544 .
+:7.12 token:end 551 .
+
+:7.13 token:text "life" .
+:7.13 token:lemma "life" .
+:7.13 token:pos "NN" .
+:7.13 token:begin 552 .
+:7.13 token:end 556 .
+
+:7.14 token:text "." .
+:7.14 token:lemma "." .
+:7.14 token:pos "." .
+:7.14 token:begin 556 .
+:7.14 token:end 557 .
+
+:7.0 basic:root :7.8 .
+:7.8 basic:csubj :7.1 .
+:7.3 basic:advmod :7.2 .
+:7.1 basic:dobj :7.3 .
+:7.8 basic:cop :7.4 .
+:7.8 basic:advmod :7.5 .
+:7.8 basic:det :7.6 .
+:7.8 basic:amod :7.7 .
+:7.8 basic:prep :7.9 .
+:7.9 basic:dep :7.10 .
+:7.13 basic:det :7.11 .
+:7.13 basic:amod :7.12 .
+:7.10 basic:dobj :7.13 .
+
+:7.0 dep:root :7.8 .
+:7.8 dep:csubj :7.1 .
+:7.3 dep:advmod :7.2 .
+:7.1 dep:dobj :7.3 .
+:7.8 dep:cop :7.4 .
+:7.8 dep:advmod :7.5 .
+:7.8 dep:det :7.6 .
+:7.8 dep:amod :7.7 .
+:7.8 dep:prep :7.9 .
+:7.9 dep:dep :7.10 .
+:7.13 dep:det :7.11 .
+:7.13 dep:amod :7.12 .
+:7.10 dep:dobj :7.13 .
+
+:8.1 token:text "The" .
+:8.1 token:lemma "the" .
+:8.1 token:pos "DT" .
+:8.1 token:begin 558 .
+:8.1 token:end 561 .
+
+:8.2 token:text "tool" .
+:8.2 token:lemma "tool" .
+:8.2 token:pos "NN" .
+:8.2 token:begin 562 .
+:8.2 token:end 566 .
+
+:8.3 token:text "that" .
+:8.3 token:lemma "that" .
+:8.3 token:pos "WDT" .
+:8.3 token:begin 567 .
+:8.3 token:end 571 .
+
+:8.4 token:text "is" .
+:8.4 token:lemma "be" .
+:8.4 token:pos "VBZ" .
+:8.4 token:begin 572 .
+:8.4 token:end 574 .
+
+:8.5 token:text "used" .
+:8.5 token:lemma "use" .
+:8.5 token:pos "VBN" .
+:8.5 token:begin 575 .
+:8.5 token:end 579 .
+
+:8.6 token:text "to" .
+:8.6 token:lemma "to" .
+:8.6 token:pos "TO" .
+:8.6 token:begin 580 .
+:8.6 token:end 582 .
+
+:8.7 token:text "measure" .
+:8.7 token:lemma "measure" .
+:8.7 token:pos "VB" .
+:8.7 token:begin 583 .
+:8.7 token:end 590 .
+
+:8.8 token:text "the" .
+:8.8 token:lemma "the" .
+:8.8 token:pos "DT" .
+:8.8 token:begin 591 .
+:8.8 token:end 594 .
+
+:8.9 token:text "volume" .
+:8.9 token:lemma "volume" .
+:8.9 token:pos "NN" .
+:8.9 token:begin 595 .
+:8.9 token:end 601 .
+
+:8.10 token:text "of" .
+:8.10 token:lemma "of" .
+:8.10 token:pos "IN" .
+:8.10 token:begin 602 .
+:8.10 token:end 604 .
+
+:8.11 token:text "a" .
+:8.11 token:lemma "a" .
+:8.11 token:pos "DT" .
+:8.11 token:begin 605 .
+:8.11 token:end 606 .
+
+:8.12 token:text "liquid" .
+:8.12 token:lemma "liquid" .
+:8.12 token:pos "NN" .
+:8.12 token:begin 607 .
+:8.12 token:end 613 .
+
+:8.13 token:text "is" .
+:8.13 token:lemma "be" .
+:8.13 token:pos "VBZ" .
+:8.13 token:begin 614 .
+:8.13 token:end 616 .
+
+:8.14 token:text "a" .
+:8.14 token:lemma "a" .
+:8.14 token:pos "DT" .
+:8.14 token:begin 617 .
+:8.14 token:end 618 .
+
+:8.15 token:text "graduated" .
+:8.15 token:lemma "graduate" .
+:8.15 token:pos "VBN" .
+:8.15 token:begin 619 .
+:8.15 token:end 628 .
+
+:8.16 token:text "cylinder" .
+:8.16 token:lemma "cylinder" .
+:8.16 token:pos "NN" .
+:8.16 token:begin 629 .
+:8.16 token:end 637 .
+
+:8.17 token:text "." .
+:8.17 token:lemma "." .
+:8.17 token:pos "." .
+:8.17 token:begin 637 .
+:8.17 token:end 638 .
+
+:8.0 basic:root :8.16 .
+:8.2 basic:det :8.1 .
+:8.16 basic:nsubj :8.2 .
+:8.5 basic:nsubjpass :8.3 .
+:8.5 basic:auxpass :8.4 .
+:8.2 basic:rcmod :8.5 .
+:8.7 basic:aux :8.6 .
+:8.5 basic:xcomp :8.7 .
+:8.9 basic:det :8.8 .
+:8.7 basic:dobj :8.9 .
+:8.9 basic:prep :8.10 .
+:8.12 basic:det :8.11 .
+:8.10 basic:pobj :8.12 .
+:8.16 basic:dep :8.13 .
+:8.16 basic:det :8.14 .
+:8.16 basic:amod :8.15 .
+
+:8.0 dep:root :8.16 .
+:8.2 dep:det :8.1 .
+:8.16 dep:nsubj :8.2 .
+:8.5 dep:nsubjpass :8.3 .
+:8.5 dep:auxpass :8.4 .
+:8.2 dep:rcmod :8.5 .
+:8.7 dep:aux :8.6 .
+:8.5 dep:xcomp :8.7 .
+:8.9 dep:det :8.8 .
+:8.7 dep:dobj :8.9 .
+:8.12 dep:det :8.11 .
+:8.9 dep:prep_of :8.12 .
+:8.16 dep:dep :8.13 .
+:8.16 dep:det :8.14 .
+:8.16 dep:amod :8.15 .
+
+:9.1 token:text "camouflage" .
+:9.1 token:lemma "camouflage" .
+:9.1 token:pos "NN" .
+:9.1 token:begin 639 .
+:9.1 token:end 649 .
+
+:9.2 token:text ":" .
+:9.2 token:lemma ":" .
+:9.2 token:pos ":" .
+:9.2 token:begin 649 .
+:9.2 token:end 650 .
+
+:9.3 token:text "The" .
+:9.3 token:lemma "the" .
+:9.3 token:pos "DT" .
+:9.3 token:begin 651 .
+:9.3 token:end 654 .
+
+:9.4 token:text "disguising" .
+:9.4 token:lemma "disguising" .
+:9.4 token:pos "NN" .
+:9.4 token:begin 655 .
+:9.4 token:end 665 .
+
+:9.5 token:text "of" .
+:9.5 token:lemma "of" .
+:9.5 token:pos "IN" .
+:9.5 token:begin 666 .
+:9.5 token:end 668 .
+
+:9.6 token:text "military" .
+:9.6 token:lemma "military" .
+:9.6 token:pos "JJ" .
+:9.6 token:begin 669 .
+:9.6 token:end 677 .
+
+:9.7 token:text "personnel" .
+:9.7 token:lemma "personnel" .
+:9.7 token:pos "NNS" .
+:9.7 token:begin 678 .
+:9.7 token:end 687 .
+
+:9.8 token:text "to" .
+:9.8 token:lemma "to" .
+:9.8 token:pos "TO" .
+:9.8 token:begin 688 .
+:9.8 token:end 690 .
+
+:9.9 token:text "make" .
+:9.9 token:lemma "make" .
+:9.9 token:pos "VB" .
+:9.9 token:begin 691 .
+:9.9 token:end 695 .
+
+:9.10 token:text "them" .
+:9.10 token:lemma "they" .
+:9.10 token:pos "PRP" .
+:9.10 token:begin 696 .
+:9.10 token:end 700 .
+
+:9.11 token:text "blend" .
+:9.11 token:lemma "blend" .
+:9.11 token:pos "VB" .
+:9.11 token:begin 701 .
+:9.11 token:end 706 .
+
+:9.12 token:text "in" .
+:9.12 token:lemma "in" .
+:9.12 token:pos "IN" .
+:9.12 token:begin 707 .
+:9.12 token:end 709 .
+
+:9.13 token:text "with" .
+:9.13 token:lemma "with" .
+:9.13 token:pos "IN" .
+:9.13 token:begin 710 .
+:9.13 token:end 714 .
+
+:9.14 token:text "their" .
+:9.14 token:lemma "they" .
+:9.14 token:pos "PRP$" .
+:9.14 token:begin 715 .
+:9.14 token:end 720 .
+
+:9.15 token:text "surroundings" .
+:9.15 token:lemma "surroundings" .
+:9.15 token:pos "NNS" .
+:9.15 token:begin 721 .
+:9.15 token:end 733 .
+
+:9.16 token:text "." .
+:9.16 token:lemma "." .
+:9.16 token:pos "." .
+:9.16 token:begin 733 .
+:9.16 token:end 734 .
+
+:9.0 basic:root :9.1 .
+:9.4 basic:det :9.3 .
+:9.1 basic:dep :9.4 .
+:9.4 basic:prep :9.5 .
+:9.7 basic:amod :9.6 .
+:9.5 basic:pobj :9.7 .
+:9.9 basic:aux :9.8 .
+:9.4 basic:infmod :9.9 .
+:9.11 basic:nsubj :9.10 .
+:9.9 basic:ccomp :9.11 .
+:9.11 basic:advmod :9.12 .
+:9.11 basic:prep :9.13 .
+:9.15 basic:poss :9.14 .
+:9.13 basic:pobj :9.15 .
+
+:9.0 dep:root :9.1 .
+:9.4 dep:det :9.3 .
+:9.1 dep:dep :9.4 .
+:9.7 dep:amod :9.6 .
+:9.4 dep:prep_of :9.7 .
+:9.9 dep:aux :9.8 .
+:9.4 dep:infmod :9.9 .
+:9.11 dep:nsubj :9.10 .
+:9.9 dep:ccomp :9.11 .
+:9.11 dep:advmod :9.12 .
+:9.15 dep:poss :9.14 .
+:9.11 dep:prep_with :9.15 .
+
+:10.1 token:text "Decomposers" .
+:10.1 token:lemma "decomposer" .
+:10.1 token:pos "NNS" .
+:10.1 token:begin 735 .
+:10.1 token:end 746 .
+
+:10.2 token:text "are" .
+:10.2 token:lemma "be" .
+:10.2 token:pos "VBP" .
+:10.2 token:begin 747 .
+:10.2 token:end 750 .
+
+:10.3 token:text "living" .
+:10.3 token:lemma "live" .
+:10.3 token:pos "VBG" .
+:10.3 token:begin 751 .
+:10.3 token:end 757 .
+
+:10.4 token:text "things" .
+:10.4 token:lemma "thing" .
+:10.4 token:pos "NNS" .
+:10.4 token:begin 758 .
+:10.4 token:end 764 .
+
+:10.5 token:text "that" .
+:10.5 token:lemma "that" .
+:10.5 token:pos "WDT" .
+:10.5 token:begin 765 .
+:10.5 token:end 769 .
+
+:10.6 token:text "break" .
+:10.6 token:lemma "break" .
+:10.6 token:pos "VBP" .
+:10.6 token:begin 770 .
+:10.6 token:end 775 .
+
+:10.7 token:text "down" .
+:10.7 token:lemma "down" .
+:10.7 token:pos "RP" .
+:10.7 token:begin 776 .
+:10.7 token:end 780 .
+
+:10.8 token:text "dead" .
+:10.8 token:lemma "dead" .
+:10.8 token:pos "JJ" .
+:10.8 token:begin 781 .
+:10.8 token:end 785 .
+
+:10.9 token:text "organisms" .
+:10.9 token:lemma "organism" .
+:10.9 token:pos "NNS" .
+:10.9 token:begin 786 .
+:10.9 token:end 795 .
+
+:10.10 token:text "and" .
+:10.10 token:lemma "and" .
+:10.10 token:pos "CC" .
+:10.10 token:begin 796 .
+:10.10 token:end 799 .
+
+:10.11 token:text "recycle" .
+:10.11 token:lemma "recycle" .
+:10.11 token:pos "VB" .
+:10.11 token:begin 800 .
+:10.11 token:end 807 .
+
+:10.12 token:text "their" .
+:10.12 token:lemma "they" .
+:10.12 token:pos "PRP$" .
+:10.12 token:begin 808 .
+:10.12 token:end 813 .
+
+:10.13 token:text "nutrients" .
+:10.13 token:lemma "nutrient" .
+:10.13 token:pos "NNS" .
+:10.13 token:begin 814 .
+:10.13 token:end 823 .
+
+:10.14 token:text "into" .
+:10.14 token:lemma "into" .
+:10.14 token:pos "IN" .
+:10.14 token:begin 824 .
+:10.14 token:end 828 .
+
+:10.15 token:text "the" .
+:10.15 token:lemma "the" .
+:10.15 token:pos "DT" .
+:10.15 token:begin 829 .
+:10.15 token:end 832 .
+
+:10.16 token:text "soil" .
+:10.16 token:lemma "soil" .
+:10.16 token:pos "NN" .
+:10.16 token:begin 833 .
+:10.16 token:end 837 .
+
+:10.17 token:text "." .
+:10.17 token:lemma "." .
+:10.17 token:pos "." .
+:10.17 token:begin 837 .
+:10.17 token:end 838 .
+
+:10.0 basic:root :10.4 .
+:10.4 basic:nsubj :10.1 .
+:10.4 basic:cop :10.2 .
+:10.4 basic:amod :10.3 .
+:10.6 basic:nsubj :10.5 .
+:10.4 basic:rcmod :10.6 .
+:10.6 basic:prt :10.7 .
+:10.9 basic:amod :10.8 .
+:10.6 basic:dobj :10.9 .
+:10.6 basic:cc :10.10 .
+:10.6 basic:conj :10.11 .
+:10.13 basic:poss :10.12 .
+:10.11 basic:dobj :10.13 .
+:10.11 basic:prep :10.14 .
+:10.16 basic:det :10.15 .
+:10.14 basic:pobj :10.16 .
+
+:10.0 dep:root :10.4 .
+:10.4 dep:nsubj :10.1 .
+:10.4 dep:cop :10.2 .
+:10.4 dep:amod :10.3 .
+:10.6 dep:nsubj :10.5 .
+:10.11 dep:nsubj :10.5 .
+:10.4 dep:rcmod :10.6 .
+:10.6 dep:prt :10.7 .
+:10.9 dep:amod :10.8 .
+:10.6 dep:dobj :10.9 .
+:10.4 dep:rcmod :10.11 .
+:10.6 dep:conj_and :10.11 .
+:10.13 dep:poss :10.12 .
+:10.11 dep:dobj :10.13 .
+:10.16 dep:det :10.15 .
+:10.11 dep:prep_into :10.16 .
+
+:11.1 token:text "Gravity" .
+:11.1 token:lemma "gravity" .
+:11.1 token:pos "NN" .
+:11.1 token:begin 839 .
+:11.1 token:end 846 .
+
+:11.2 token:text "is" .
+:11.2 token:lemma "be" .
+:11.2 token:pos "VBZ" .
+:11.2 token:begin 847 .
+:11.2 token:end 849 .
+
+:11.3 token:text "the" .
+:11.3 token:lemma "the" .
+:11.3 token:pos "DT" .
+:11.3 token:begin 850 .
+:11.3 token:end 853 .
+
+:11.4 token:text "force" .
+:11.4 token:lemma "force" .
+:11.4 token:pos "NN" .
+:11.4 token:begin 854 .
+:11.4 token:end 859 .
+
+:11.5 token:text "that" .
+:11.5 token:lemma "that" .
+:11.5 token:pos "WDT" .
+:11.5 token:begin 860 .
+:11.5 token:end 864 .
+
+:11.6 token:text "pulls" .
+:11.6 token:lemma "pull" .
+:11.6 token:pos "VBZ" .
+:11.6 token:begin 865 .
+:11.6 token:end 870 .
+
+:11.7 token:text "an" .
+:11.7 token:lemma "a" .
+:11.7 token:pos "DT" .
+:11.7 token:begin 871 .
+:11.7 token:end 873 .
+
+:11.8 token:text "object" .
+:11.8 token:lemma "object" .
+:11.8 token:pos "NN" .
+:11.8 token:begin 874 .
+:11.8 token:end 880 .
+
+:11.9 token:text "toward" .
+:11.9 token:lemma "toward" .
+:11.9 token:pos "IN" .
+:11.9 token:begin 881 .
+:11.9 token:end 887 .
+
+:11.10 token:text "the" .
+:11.10 token:lemma "the" .
+:11.10 token:pos "DT" .
+:11.10 token:begin 888 .
+:11.10 token:end 891 .
+
+:11.11 token:text "center" .
+:11.11 token:lemma "center" .
+:11.11 token:pos "NN" .
+:11.11 token:begin 892 .
+:11.11 token:end 898 .
+
+:11.12 token:text "of" .
+:11.12 token:lemma "of" .
+:11.12 token:pos "IN" .
+:11.12 token:begin 899 .
+:11.12 token:end 901 .
+
+:11.13 token:text "the" .
+:11.13 token:lemma "the" .
+:11.13 token:pos "DT" .
+:11.13 token:begin 902 .
+:11.13 token:end 905 .
+
+:11.14 token:text "Earth" .
+:11.14 token:lemma "Earth" .
+:11.14 token:pos "NNP" .
+:11.14 token:begin 906 .
+:11.14 token:end 911 .
+:11.14 ne:type "LOCATION" .
+
+:11.15 token:text "." .
+:11.15 token:lemma "." .
+:11.15 token:pos "." .
+:11.15 token:begin 911 .
+:11.15 token:end 912 .
+
+:11.0 basic:root :11.4 .
+:11.4 basic:nsubj :11.1 .
+:11.4 basic:cop :11.2 .
+:11.4 basic:det :11.3 .
+:11.6 basic:nsubj :11.5 .
+:11.4 basic:rcmod :11.6 .
+:11.8 basic:det :11.7 .
+:11.6 basic:dobj :11.8 .
+:11.8 basic:prep :11.9 .
+:11.11 basic:det :11.10 .
+:11.9 basic:pobj :11.11 .
+:11.11 basic:prep :11.12 .
+:11.14 basic:det :11.13 .
+:11.12 basic:pobj :11.14 .
+
+:11.0 dep:root :11.4 .
+:11.4 dep:nsubj :11.1 .
+:11.4 dep:cop :11.2 .
+:11.4 dep:det :11.3 .
+:11.6 dep:nsubj :11.5 .
+:11.4 dep:rcmod :11.6 .
+:11.8 dep:det :11.7 .
+:11.6 dep:dobj :11.8 .
+:11.11 dep:det :11.10 .
+:11.8 dep:prep_toward :11.11 .
+:11.14 dep:det :11.13 .
+:11.11 dep:prep_of :11.14 .
+
+:12.1 token:text "A" .
+:12.1 token:lemma "a" .
+:12.1 token:pos "DT" .
+:12.1 token:begin 913 .
+:12.1 token:end 914 .
+
+:12.2 token:text "human" .
+:12.2 token:lemma "human" .
+:12.2 token:pos "JJ" .
+:12.2 token:begin 915 .
+:12.2 token:end 920 .
+
+:12.3 token:text "'s" .
+:12.3 token:lemma "'s" .
+:12.3 token:pos "POS" .
+:12.3 token:begin 920 .
+:12.3 token:end 922 .
+
+:12.4 token:text "body" .
+:12.4 token:lemma "body" .
+:12.4 token:pos "NN" .
+:12.4 token:begin 923 .
+:12.4 token:end 927 .
+
+:12.5 token:text "produces" .
+:12.5 token:lemma "produce" .
+:12.5 token:pos "VBZ" .
+:12.5 token:begin 928 .
+:12.5 token:end 936 .
+
+:12.6 token:text "sweat" .
+:12.6 token:lemma "sweat" .
+:12.6 token:pos "NN" .
+:12.6 token:begin 937 .
+:12.6 token:end 942 .
+
+:12.7 token:text "is" .
+:12.7 token:lemma "be" .
+:12.7 token:pos "VBZ" .
+:12.7 token:begin 943 .
+:12.7 token:end 945 .
+
+:12.8 token:text "a" .
+:12.8 token:lemma "a" .
+:12.8 token:pos "DT" .
+:12.8 token:begin 946 .
+:12.8 token:end 947 .
+
+:12.9 token:text "way" .
+:12.9 token:lemma "way" .
+:12.9 token:pos "NN" .
+:12.9 token:begin 948 .
+:12.9 token:end 951 .
+
+:12.10 token:text "that" .
+:12.10 token:lemma "that" .
+:12.10 token:pos "IN" .
+:12.10 token:begin 952 .
+:12.10 token:end 956 .
+
+:12.11 token:text "an" .
+:12.11 token:lemma "a" .
+:12.11 token:pos "DT" .
+:12.11 token:begin 957 .
+:12.11 token:end 959 .
+
+:12.12 token:text "organism" .
+:12.12 token:lemma "organism" .
+:12.12 token:pos "NN" .
+:12.12 token:begin 960 .
+:12.12 token:end 968 .
+
+:12.13 token:text "may" .
+:12.13 token:lemma "may" .
+:12.13 token:pos "MD" .
+:12.13 token:begin 969 .
+:12.13 token:end 972 .
+
+:12.14 token:text "adjust" .
+:12.14 token:lemma "adjust" .
+:12.14 token:pos "VB" .
+:12.14 token:begin 973 .
+:12.14 token:end 979 .
+
+:12.15 token:text "to" .
+:12.15 token:lemma "to" .
+:12.15 token:pos "TO" .
+:12.15 token:begin 980 .
+:12.15 token:end 982 .
+
+:12.16 token:text "hot" .
+:12.16 token:lemma "hot" .
+:12.16 token:pos "JJ" .
+:12.16 token:begin 983 .
+:12.16 token:end 986 .
+
+:12.17 token:text "temperatures" .
+:12.17 token:lemma "temperature" .
+:12.17 token:pos "NNS" .
+:12.17 token:begin 987 .
+:12.17 token:end 999 .
+
+:12.18 token:text "." .
+:12.18 token:lemma "." .
+:12.18 token:pos "." .
+:12.18 token:begin 999 .
+:12.18 token:end 1000 .
+
+:12.0 basic:root :12.5 .
+:12.2 basic:det :12.1 .
+:12.4 basic:poss :12.2 .
+:12.2 basic:possessive :12.3 .
+:12.5 basic:nsubj :12.4 .
+:12.9 basic:nsubj :12.6 .
+:12.9 basic:cop :12.7 .
+:12.9 basic:det :12.8 .
+:12.5 basic:ccomp :12.9 .
+:12.14 basic:dobj :12.10 .
+:12.12 basic:det :12.11 .
+:12.14 basic:nsubj :12.12 .
+:12.14 basic:aux :12.13 .
+:12.9 basic:rcmod :12.14 .
+:12.14 basic:prep :12.15 .
+:12.17 basic:amod :12.16 .
+:12.15 basic:pobj :12.17 .
+
+:12.0 dep:root :12.5 .
+:12.2 dep:det :12.1 .
+:12.4 dep:poss :12.2 .
+:12.5 dep:nsubj :12.4 .
+:12.9 dep:nsubj :12.6 .
+:12.9 dep:cop :12.7 .
+:12.9 dep:det :12.8 .
+:12.5 dep:ccomp :12.9 .
+:12.14 dep:dobj :12.10 .
+:12.12 dep:det :12.11 .
+:12.14 dep:nsubj :12.12 .
+:12.14 dep:aux :12.13 .
+:12.9 dep:rcmod :12.14 .
+:12.17 dep:amod :12.16 .
+:12.14 dep:prep_to :12.17 .
+
+:13.1 token:text "A" .
+:13.1 token:lemma "a" .
+:13.1 token:pos "DT" .
+:13.1 token:begin 1001 .
+:13.1 token:end 1002 .
+
+:13.2 token:text "squirrel" .
+:13.2 token:lemma "squirrel" .
+:13.2 token:pos "NN" .
+:13.2 token:begin 1003 .
+:13.2 token:end 1011 .
+
+:13.3 token:text "storing" .
+:13.3 token:lemma "store" .
+:13.3 token:pos "VBG" .
+:13.3 token:begin 1012 .
+:13.3 token:end 1019 .
+
+:13.4 token:text "nuts" .
+:13.4 token:lemma "nut" .
+:13.4 token:pos "NNS" .
+:13.4 token:begin 1020 .
+:13.4 token:end 1024 .
+
+:13.5 token:text "is" .
+:13.5 token:lemma "be" .
+:13.5 token:pos "VBZ" .
+:13.5 token:begin 1025 .
+:13.5 token:end 1027 .
+
+:13.6 token:text "preparing" .
+:13.6 token:lemma "prepare" .
+:13.6 token:pos "VBG" .
+:13.6 token:begin 1028 .
+:13.6 token:end 1037 .
+
+:13.7 token:text "for" .
+:13.7 token:lemma "for" .
+:13.7 token:pos "IN" .
+:13.7 token:begin 1038 .
+:13.7 token:end 1041 .
+
+:13.8 token:text "a" .
+:13.8 token:lemma "a" .
+:13.8 token:pos "DT" .
+:13.8 token:begin 1042 .
+:13.8 token:end 1043 .
+
+:13.9 token:text "seasonal" .
+:13.9 token:lemma "seasonal" .
+:13.9 token:pos "JJ" .
+:13.9 token:begin 1044 .
+:13.9 token:end 1052 .
+
+:13.10 token:text "change" .
+:13.10 token:lemma "change" .
+:13.10 token:pos "NN" .
+:13.10 token:begin 1053 .
+:13.10 token:end 1059 .
+
+:13.11 token:text "in" .
+:13.11 token:lemma "in" .
+:13.11 token:pos "IN" .
+:13.11 token:begin 1060 .
+:13.11 token:end 1062 .
+
+:13.12 token:text "the" .
+:13.12 token:lemma "the" .
+:13.12 token:pos "DT" .
+:13.12 token:begin 1063 .
+:13.12 token:end 1066 .
+
+:13.13 token:text "environment" .
+:13.13 token:lemma "environment" .
+:13.13 token:pos "NN" .
+:13.13 token:begin 1067 .
+:13.13 token:end 1078 .
+
+:13.14 token:text "." .
+:13.14 token:lemma "." .
+:13.14 token:pos "." .
+:13.14 token:begin 1078 .
+:13.14 token:end 1079 .
+
+:13.0 basic:root :13.6 .
+:13.2 basic:det :13.1 .
+:13.6 basic:nsubj :13.2 .
+:13.2 basic:partmod :13.3 .
+:13.3 basic:dobj :13.4 .
+:13.6 basic:aux :13.5 .
+:13.6 basic:prep :13.7 .
+:13.10 basic:det :13.8 .
+:13.10 basic:amod :13.9 .
+:13.7 basic:pobj :13.10 .
+:13.10 basic:prep :13.11 .
+:13.13 basic:det :13.12 .
+:13.11 basic:pobj :13.13 .
+
+:13.0 dep:root :13.6 .
+:13.2 dep:det :13.1 .
+:13.6 dep:nsubj :13.2 .
+:13.2 dep:partmod :13.3 .
+:13.3 dep:dobj :13.4 .
+:13.6 dep:aux :13.5 .
+:13.10 dep:det :13.8 .
+:13.10 dep:amod :13.9 .
+:13.6 dep:prep_for :13.10 .
+:13.13 dep:det :13.12 .
+:13.10 dep:prep_in :13.13 .
+
+:14.1 token:text "A" .
+:14.1 token:lemma "a" .
+:14.1 token:pos "DT" .
+:14.1 token:begin 1080 .
+:14.1 token:end 1081 .
+
+:14.2 token:text "student" .
+:14.2 token:lemma "student" .
+:14.2 token:pos "NN" .
+:14.2 token:begin 1082 .
+:14.2 token:end 1089 .
+
+:14.3 token:text "should" .
+:14.3 token:lemma "should" .
+:14.3 token:pos "MD" .
+:14.3 token:begin 1090 .
+:14.3 token:end 1096 .
+
+:14.4 token:text "use" .
+:14.4 token:lemma "use" .
+:14.4 token:pos "VB" .
+:14.4 token:begin 1097 .
+:14.4 token:end 1100 .
+
+:14.5 token:text "a" .
+:14.5 token:lemma "a" .
+:14.5 token:pos "DT" .
+:14.5 token:begin 1101 .
+:14.5 token:end 1102 .
+
+:14.6 token:text "hand" .
+:14.6 token:lemma "hand" .
+:14.6 token:pos "NN" .
+:14.6 token:begin 1103 .
+:14.6 token:end 1107 .
+
+:14.7 token:text "lens" .
+:14.7 token:lemma "lens" .
+:14.7 token:pos "NN" .
+:14.7 token:begin 1108 .
+:14.7 token:end 1112 .
+
+:14.8 token:text "to" .
+:14.8 token:lemma "to" .
+:14.8 token:pos "TO" .
+:14.8 token:begin 1113 .
+:14.8 token:end 1115 .
+
+:14.9 token:text "get" .
+:14.9 token:lemma "get" .
+:14.9 token:pos "VB" .
+:14.9 token:begin 1116 .
+:14.9 token:end 1119 .
+
+:14.10 token:text "a" .
+:14.10 token:lemma "a" .
+:14.10 token:pos "DT" .
+:14.10 token:begin 1120 .
+:14.10 token:end 1121 .
+
+:14.11 token:text "better" .
+:14.11 token:lemma "better" .
+:14.11 token:pos "JJR" .
+:14.11 token:begin 1122 .
+:14.11 token:end 1128 .
+
+:14.12 token:text "look" .
+:14.12 token:lemma "look" .
+:14.12 token:pos "NN" .
+:14.12 token:begin 1129 .
+:14.12 token:end 1133 .
+
+:14.13 token:text "at" .
+:14.13 token:lemma "at" .
+:14.13 token:pos "IN" .
+:14.13 token:begin 1134 .
+:14.13 token:end 1136 .
+
+:14.14 token:text "the" .
+:14.14 token:lemma "the" .
+:14.14 token:pos "DT" .
+:14.14 token:begin 1137 .
+:14.14 token:end 1140 .
+
+:14.15 token:text "spots" .
+:14.15 token:lemma "spot" .
+:14.15 token:pos "NNS" .
+:14.15 token:begin 1141 .
+:14.15 token:end 1146 .
+
+:14.16 token:text "." .
+:14.16 token:lemma "." .
+:14.16 token:pos "." .
+:14.16 token:begin 1146 .
+:14.16 token:end 1147 .
+
+:14.0 basic:root :14.4 .
+:14.2 basic:det :14.1 .
+:14.4 basic:nsubj :14.2 .
+:14.4 basic:aux :14.3 .
+:14.7 basic:det :14.5 .
+:14.7 basic:nn :14.6 .
+:14.4 basic:dobj :14.7 .
+:14.9 basic:aux :14.8 .
+:14.4 basic:xcomp :14.9 .
+:14.12 basic:det :14.10 .
+:14.12 basic:amod :14.11 .
+:14.9 basic:tmod :14.12 .
+:14.12 basic:prep :14.13 .
+:14.15 basic:det :14.14 .
+:14.13 basic:pobj :14.15 .
+
+:14.0 dep:root :14.4 .
+:14.2 dep:det :14.1 .
+:14.4 dep:nsubj :14.2 .
+:14.4 dep:aux :14.3 .
+:14.7 dep:det :14.5 .
+:14.7 dep:nn :14.6 .
+:14.4 dep:dobj :14.7 .
+:14.9 dep:aux :14.8 .
+:14.4 dep:xcomp :14.9 .
+:14.12 dep:det :14.10 .
+:14.12 dep:amod :14.11 .
+:14.9 dep:tmod :14.12 .
+:14.15 dep:det :14.14 .
+:14.12 dep:prep_at :14.15 .
+
+:15.1 token:text "Decreasing" .
+:15.1 token:lemma "decrease" .
+:15.1 token:pos "VBG" .
+:15.1 token:begin 1148 .
+:15.1 token:end 1158 .
+
+:15.2 token:text "the" .
+:15.2 token:lemma "the" .
+:15.2 token:pos "DT" .
+:15.2 token:begin 1159 .
+:15.2 token:end 1162 .
+
+:15.3 token:text "temperature" .
+:15.3 token:lemma "temperature" .
+:15.3 token:pos "NN" .
+:15.3 token:begin 1163 .
+:15.3 token:end 1174 .
+
+:15.4 token:text "is" .
+:15.4 token:lemma "be" .
+:15.4 token:pos "VBZ" .
+:15.4 token:begin 1175 .
+:15.4 token:end 1177 .
+
+:15.5 token:text "one" .
+:15.5 token:lemma "one" .
+:15.5 token:pos "CD" .
+:15.5 token:begin 1178 .
+:15.5 token:end 1181 .
+:15.5 ne:type "NUMBER" .
+:15.5 ne:norm "1.0" .
+
+:15.6 token:text "way" .
+:15.6 token:lemma "way" .
+:15.6 token:pos "NN" .
+:15.6 token:begin 1182 .
+:15.6 token:end 1185 .
+
+:15.7 token:text "to" .
+:15.7 token:lemma "to" .
+:15.7 token:pos "TO" .
+:15.7 token:begin 1186 .
+:15.7 token:end 1188 .
+
+:15.8 token:text "change" .
+:15.8 token:lemma "change" .
+:15.8 token:pos "VB" .
+:15.8 token:begin 1189 .
+:15.8 token:end 1195 .
+
+:15.9 token:text "water" .
+:15.9 token:lemma "water" .
+:15.9 token:pos "NN" .
+:15.9 token:begin 1196 .
+:15.9 token:end 1201 .
+
+:15.10 token:text "from" .
+:15.10 token:lemma "from" .
+:15.10 token:pos "IN" .
+:15.10 token:begin 1202 .
+:15.10 token:end 1206 .
+
+:15.11 token:text "a" .
+:15.11 token:lemma "a" .
+:15.11 token:pos "DT" .
+:15.11 token:begin 1207 .
+:15.11 token:end 1208 .
+
+:15.12 token:text "liquid" .
+:15.12 token:lemma "liquid" .
+:15.12 token:pos "NN" .
+:15.12 token:begin 1209 .
+:15.12 token:end 1215 .
+
+:15.13 token:text "to" .
+:15.13 token:lemma "to" .
+:15.13 token:pos "TO" .
+:15.13 token:begin 1216 .
+:15.13 token:end 1218 .
+
+:15.14 token:text "a" .
+:15.14 token:lemma "a" .
+:15.14 token:pos "DT" .
+:15.14 token:begin 1219 .
+:15.14 token:end 1220 .
+
+:15.15 token:text "solid" .
+:15.15 token:lemma "solid" .
+:15.15 token:pos "JJ" .
+:15.15 token:begin 1221 .
+:15.15 token:end 1226 .
+
+:15.16 token:text "." .
+:15.16 token:lemma "." .
+:15.16 token:pos "." .
+:15.16 token:begin 1226 .
+:15.16 token:end 1227 .
+
+:15.0 basic:root :15.6 .
+:15.6 basic:csubj :15.1 .
+:15.3 basic:det :15.2 .
+:15.1 basic:dobj :15.3 .
+:15.6 basic:cop :15.4 .
+:15.6 basic:num :15.5 .
+:15.8 basic:aux :15.7 .
+:15.6 basic:infmod :15.8 .
+:15.8 basic:dobj :15.9 .
+:15.8 basic:prep :15.10 .
+:15.12 basic:det :15.11 .
+:15.10 basic:pobj :15.12 .
+:15.10 basic:prep :15.13 .
+:15.15 basic:det :15.14 .
+:15.13 basic:pobj :15.15 .
+
+:15.0 dep:root :15.6 .
+:15.6 dep:csubj :15.1 .
+:15.3 dep:det :15.2 .
+:15.1 dep:dobj :15.3 .
+:15.6 dep:cop :15.4 .
+:15.6 dep:num :15.5 .
+:15.8 dep:aux :15.7 .
+:15.6 dep:infmod :15.8 .
+:15.8 dep:dobj :15.9 .
+:15.12 dep:det :15.11 .
+:15.8 dep:prep_from :15.12 .
+:15.15 dep:det :15.14 .
+:15.8 dep:prep_to :15.15 .
+
+:16.1 token:text "Animals" .
+:16.1 token:lemma "animal" .
+:16.1 token:pos "NNS" .
+:16.1 token:begin 1228 .
+:16.1 token:end 1235 .
+
+:16.2 token:text "get" .
+:16.2 token:lemma "get" .
+:16.2 token:pos "VBP" .
+:16.2 token:begin 1236 .
+:16.2 token:end 1239 .
+
+:16.3 token:text "energy" .
+:16.3 token:lemma "energy" .
+:16.3 token:pos "NN" .
+:16.3 token:begin 1240 .
+:16.3 token:end 1246 .
+
+:16.4 token:text "for" .
+:16.4 token:lemma "for" .
+:16.4 token:pos "IN" .
+:16.4 token:begin 1247 .
+:16.4 token:end 1250 .
+
+:16.5 token:text "growth" .
+:16.5 token:lemma "growth" .
+:16.5 token:pos "NN" .
+:16.5 token:begin 1251 .
+:16.5 token:end 1257 .
+
+:16.6 token:text "and" .
+:16.6 token:lemma "and" .
+:16.6 token:pos "CC" .
+:16.6 token:begin 1258 .
+:16.6 token:end 1261 .
+
+:16.7 token:text "repair" .
+:16.7 token:lemma "repair" .
+:16.7 token:pos "NN" .
+:16.7 token:begin 1262 .
+:16.7 token:end 1268 .
+
+:16.8 token:text "from" .
+:16.8 token:lemma "from" .
+:16.8 token:pos "IN" .
+:16.8 token:begin 1269 .
+:16.8 token:end 1273 .
+
+:16.9 token:text "food" .
+:16.9 token:lemma "food" .
+:16.9 token:pos "NN" .
+:16.9 token:begin 1274 .
+:16.9 token:end 1278 .
+
+:16.10 token:text "." .
+:16.10 token:lemma "." .
+:16.10 token:pos "." .
+:16.10 token:begin 1278 .
+:16.10 token:end 1279 .
+
+:16.0 basic:root :16.2 .
+:16.2 basic:nsubj :16.1 .
+:16.2 basic:dobj :16.3 .
+:16.2 basic:prep :16.4 .
+:16.4 basic:pobj :16.5 .
+:16.5 basic:cc :16.6 .
+:16.5 basic:conj :16.7 .
+:16.5 basic:prep :16.8 .
+:16.8 basic:pobj :16.9 .
+
+:16.0 dep:root :16.2 .
+:16.2 dep:nsubj :16.1 .
+:16.2 dep:dobj :16.3 .
+:16.2 dep:prep_for :16.5 .
+:16.2 dep:prep_for :16.7 .
+:16.5 dep:conj_and :16.7 .
+:16.5 dep:prep_from :16.9 .
+
+:17.1 token:text "The" .
+:17.1 token:lemma "the" .
+:17.1 token:pos "DT" .
+:17.1 token:begin 1280 .
+:17.1 token:end 1283 .
+
+:17.2 token:text "heat" .
+:17.2 token:lemma "heat" .
+:17.2 token:pos "NN" .
+:17.2 token:begin 1284 .
+:17.2 token:end 1288 .
+
+:17.3 token:text "that" .
+:17.3 token:lemma "that" .
+:17.3 token:pos "WDT" .
+:17.3 token:begin 1289 .
+:17.3 token:end 1293 .
+
+:17.4 token:text "produces" .
+:17.4 token:lemma "produce" .
+:17.4 token:pos "VBZ" .
+:17.4 token:begin 1294 .
+:17.4 token:end 1302 .
+
+:17.5 token:text "the" .
+:17.5 token:lemma "the" .
+:17.5 token:pos "DT" .
+:17.5 token:begin 1303 .
+:17.5 token:end 1306 .
+
+:17.6 token:text "smoke" .
+:17.6 token:lemma "smoke" .
+:17.6 token:pos "NN" .
+:17.6 token:begin 1307 .
+:17.6 token:end 1312 .
+
+:17.7 token:text "is" .
+:17.7 token:lemma "be" .
+:17.7 token:pos "VBZ" .
+:17.7 token:begin 1313 .
+:17.7 token:end 1315 .
+
+:17.8 token:text "caused" .
+:17.8 token:lemma "cause" .
+:17.8 token:pos "VBN" .
+:17.8 token:begin 1316 .
+:17.8 token:end 1322 .
+
+:17.9 token:text "by" .
+:17.9 token:lemma "by" .
+:17.9 token:pos "IN" .
+:17.9 token:begin 1323 .
+:17.9 token:end 1325 .
+
+:17.10 token:text "friction" .
+:17.10 token:lemma "friction" .
+:17.10 token:pos "NN" .
+:17.10 token:begin 1326 .
+:17.10 token:end 1334 .
+
+:17.11 token:text "." .
+:17.11 token:lemma "." .
+:17.11 token:pos "." .
+:17.11 token:begin 1334 .
+:17.11 token:end 1335 .
+
+:17.0 basic:root :17.8 .
+:17.2 basic:det :17.1 .
+:17.8 basic:nsubjpass :17.2 .
+:17.4 basic:nsubj :17.3 .
+:17.2 basic:rcmod :17.4 .
+:17.6 basic:det :17.5 .
+:17.4 basic:dobj :17.6 .
+:17.8 basic:auxpass :17.7 .
+:17.8 basic:prep :17.9 .
+:17.9 basic:pobj :17.10 .
+
+:17.0 dep:root :17.8 .
+:17.2 dep:det :17.1 .
+:17.8 dep:nsubjpass :17.2 .
+:17.4 dep:nsubj :17.3 .
+:17.2 dep:rcmod :17.4 .
+:17.6 dep:det :17.5 .
+:17.4 dep:dobj :17.6 .
+:17.8 dep:auxpass :17.7 .
+:17.8 dep:agent :17.10 .
+
+:18.1 token:text "Resting" .
+:18.1 token:lemma "rest" .
+:18.1 token:pos "VBG" .
+:18.1 token:begin 1336 .
+:18.1 token:end 1343 .
+
+:18.2 token:text "is" .
+:18.2 token:lemma "be" .
+:18.2 token:pos "VBZ" .
+:18.2 token:begin 1344 .
+:18.2 token:end 1346 .
+
+:18.3 token:text "necessary" .
+:18.3 token:lemma "necessary" .
+:18.3 token:pos "JJ" .
+:18.3 token:begin 1347 .
+:18.3 token:end 1356 .
+
+:18.4 token:text "for" .
+:18.4 token:lemma "for" .
+:18.4 token:pos "IN" .
+:18.4 token:begin 1357 .
+:18.4 token:end 1360 .
+
+:18.5 token:text "humans" .
+:18.5 token:lemma "human" .
+:18.5 token:pos "NNS" .
+:18.5 token:begin 1361 .
+:18.5 token:end 1367 .
+
+:18.6 token:text "to" .
+:18.6 token:lemma "to" .
+:18.6 token:pos "TO" .
+:18.6 token:begin 1368 .
+:18.6 token:end 1370 .
+
+:18.7 token:text "maintain" .
+:18.7 token:lemma "maintain" .
+:18.7 token:pos "VB" .
+:18.7 token:begin 1371 .
+:18.7 token:end 1379 .
+
+:18.8 token:text "good" .
+:18.8 token:lemma "good" .
+:18.8 token:pos "JJ" .
+:18.8 token:begin 1380 .
+:18.8 token:end 1384 .
+
+:18.9 token:text "health" .
+:18.9 token:lemma "health" .
+:18.9 token:pos "NN" .
+:18.9 token:begin 1385 .
+:18.9 token:end 1391 .
+
+:18.10 token:text "." .
+:18.10 token:lemma "." .
+:18.10 token:pos "." .
+:18.10 token:begin 1391 .
+:18.10 token:end 1392 .
+
+:18.0 basic:root :18.3 .
+:18.3 basic:nsubj :18.1 .
+:18.3 basic:cop :18.2 .
+:18.7 basic:mark :18.4 .
+:18.7 basic:nsubj :18.5 .
+:18.7 basic:aux :18.6 .
+:18.3 basic:advcl :18.7 .
+:18.9 basic:amod :18.8 .
+:18.7 basic:dobj :18.9 .
+
+:18.0 dep:root :18.3 .
+:18.3 dep:nsubj :18.1 .
+:18.3 dep:cop :18.2 .
+:18.7 dep:mark :18.4 .
+:18.7 dep:nsubj :18.5 .
+:18.7 dep:aux :18.6 .
+:18.3 dep:advcl :18.7 .
+:18.9 dep:amod :18.8 .
+:18.7 dep:dobj :18.9 .
+
+:19.1 token:text "A" .
+:19.1 token:lemma "a" .
+:19.1 token:pos "DT" .
+:19.1 token:begin 1393 .
+:19.1 token:end 1394 .
+
+:19.2 token:text "student" .
+:19.2 token:lemma "student" .
+:19.2 token:pos "NN" .
+:19.2 token:begin 1395 .
+:19.2 token:end 1402 .
+
+:19.3 token:text "should" .
+:19.3 token:lemma "should" .
+:19.3 token:pos "MD" .
+:19.3 token:begin 1403 .
+:19.3 token:end 1409 .
+
+:19.4 token:text "use" .
+:19.4 token:lemma "use" .
+:19.4 token:pos "VB" .
+:19.4 token:begin 1410 .
+:19.4 token:end 1413 .
+
+:19.5 token:text "a" .
+:19.5 token:lemma "a" .
+:19.5 token:pos "DT" .
+:19.5 token:begin 1414 .
+:19.5 token:end 1415 .
+
+:19.6 token:text "graduated" .
+:19.6 token:lemma "graduate" .
+:19.6 token:pos "VBN" .
+:19.6 token:begin 1416 .
+:19.6 token:end 1425 .
+
+:19.7 token:text "cylinder" .
+:19.7 token:lemma "cylinder" .
+:19.7 token:pos "NN" .
+:19.7 token:begin 1426 .
+:19.7 token:end 1434 .
+
+:19.8 token:text "to" .
+:19.8 token:lemma "to" .
+:19.8 token:pos "TO" .
+:19.8 token:begin 1435 .
+:19.8 token:end 1437 .
+
+:19.9 token:text "measure" .
+:19.9 token:lemma "measure" .
+:19.9 token:pos "VB" .
+:19.9 token:begin 1438 .
+:19.9 token:end 1445 .
+
+:19.10 token:text "exactly" .
+:19.10 token:lemma "exactly" .
+:19.10 token:pos "RB" .
+:19.10 token:begin 1446 .
+:19.10 token:end 1453 .
+
+:19.11 token:text "10" .
+:19.11 token:lemma "10" .
+:19.11 token:pos "CD" .
+:19.11 token:begin 1454 .
+:19.11 token:end 1456 .
+:19.11 ne:type "NUMBER" .
+:19.11 ne:norm "10.0" .
+
+:19.12 token:text "milliliters" .
+:19.12 token:lemma "milliliter" .
+:19.12 token:pos "NNS" .
+:19.12 token:begin 1457 .
+:19.12 token:end 1468 .
+
+:19.13 token:text "-LRB-" .
+:19.13 token:lemma "-lrb-" .
+:19.13 token:pos "-LRB-" .
+:19.13 token:begin 1469 .
+:19.13 token:end 1470 .
+
+:19.14 token:text "mL" .
+:19.14 token:lemma "ml" .
+:19.14 token:pos "NN" .
+:19.14 token:begin 1470 .
+:19.14 token:end 1472 .
+
+:19.15 token:text "-RRB-" .
+:19.15 token:lemma "-rrb-" .
+:19.15 token:pos "-RRB-" .
+:19.15 token:begin 1472 .
+:19.15 token:end 1473 .
+
+:19.16 token:text "of" .
+:19.16 token:lemma "of" .
+:19.16 token:pos "IN" .
+:19.16 token:begin 1474 .
+:19.16 token:end 1476 .
+
+:19.17 token:text "water" .
+:19.17 token:lemma "water" .
+:19.17 token:pos "NN" .
+:19.17 token:begin 1477 .
+:19.17 token:end 1482 .
+
+:19.18 token:text "." .
+:19.18 token:lemma "." .
+:19.18 token:pos "." .
+:19.18 token:begin 1482 .
+:19.18 token:end 1483 .
+
+:19.0 basic:root :19.4 .
+:19.2 basic:det :19.1 .
+:19.4 basic:nsubj :19.2 .
+:19.4 basic:aux :19.3 .
+:19.7 basic:det :19.5 .
+:19.7 basic:amod :19.6 .
+:19.4 basic:dobj :19.7 .
+:19.9 basic:aux :19.8 .
+:19.4 basic:xcomp :19.9 .
+:19.12 basic:advmod :19.10 .
+:19.12 basic:num :19.11 .
+:19.9 basic:dobj :19.12 .
+:19.12 basic:appos :19.14 .
+:19.12 basic:prep :19.16 .
+:19.16 basic:pobj :19.17 .
+
+:19.0 dep:root :19.4 .
+:19.2 dep:det :19.1 .
+:19.4 dep:nsubj :19.2 .
+:19.4 dep:aux :19.3 .
+:19.7 dep:det :19.5 .
+:19.7 dep:amod :19.6 .
+:19.4 dep:dobj :19.7 .
+:19.9 dep:aux :19.8 .
+:19.4 dep:xcomp :19.9 .
+:19.12 dep:advmod :19.10 .
+:19.12 dep:num :19.11 .
+:19.9 dep:dobj :19.12 .
+:19.12 dep:appos :19.14 .
+:19.12 dep:prep_of :19.17 .
+
+:20.1 token:text "The" .
+:20.1 token:lemma "the" .
+:20.1 token:pos "DT" .
+:20.1 token:begin 1484 .
+:20.1 token:end 1487 .
+
+:20.2 token:text "white" .
+:20.2 token:lemma "white" .
+:20.2 token:pos "JJ" .
+:20.2 token:begin 1488 .
+:20.2 token:end 1493 .
+
+:20.3 token:text "fur" .
+:20.3 token:lemma "fur" .
+:20.3 token:pos "NN" .
+:20.3 token:begin 1494 .
+:20.3 token:end 1497 .
+
+:20.4 token:text "of" .
+:20.4 token:lemma "of" .
+:20.4 token:pos "IN" .
+:20.4 token:begin 1498 .
+:20.4 token:end 1500 .
+
+:20.5 token:text "an" .
+:20.5 token:lemma "a" .
+:20.5 token:pos "DT" .
+:20.5 token:begin 1501 .
+:20.5 token:end 1503 .
+
+:20.6 token:text "arctic" .
+:20.6 token:lemma "arctic" .
+:20.6 token:pos "JJ" .
+:20.6 token:begin 1504 .
+:20.6 token:end 1510 .
+
+:20.7 token:text "fox" .
+:20.7 token:lemma "fox" .
+:20.7 token:pos "NN" .
+:20.7 token:begin 1511 .
+:20.7 token:end 1514 .
+
+:20.8 token:text "blends" .
+:20.8 token:lemma "blend" .
+:20.8 token:pos "NNS" .
+:20.8 token:begin 1515 .
+:20.8 token:end 1521 .
+
+:20.9 token:text "in" .
+:20.9 token:lemma "in" .
+:20.9 token:pos "IN" .
+:20.9 token:begin 1522 .
+:20.9 token:end 1524 .
+
+:20.10 token:text "with" .
+:20.10 token:lemma "with" .
+:20.10 token:pos "IN" .
+:20.10 token:begin 1525 .
+:20.10 token:end 1529 .
+
+:20.11 token:text "the" .
+:20.11 token:lemma "the" .
+:20.11 token:pos "DT" .
+:20.11 token:begin 1530 .
+:20.11 token:end 1533 .
+
+:20.12 token:text "snow" .
+:20.12 token:lemma "snow" .
+:20.12 token:pos "NN" .
+:20.12 token:begin 1534 .
+:20.12 token:end 1538 .
+
+:20.13 token:text "is" .
+:20.13 token:lemma "be" .
+:20.13 token:pos "VBZ" .
+:20.13 token:begin 1539 .
+:20.13 token:end 1541 .
+
+:20.14 token:text "called" .
+:20.14 token:lemma "call" .
+:20.14 token:pos "VBN" .
+:20.14 token:begin 1542 .
+:20.14 token:end 1548 .
+
+:20.15 token:text "camouflage" .
+:20.15 token:lemma "camouflage" .
+:20.15 token:pos "NN" .
+:20.15 token:begin 1549 .
+:20.15 token:end 1559 .
+
+:20.16 token:text "." .
+:20.16 token:lemma "." .
+:20.16 token:pos "." .
+:20.16 token:begin 1559 .
+:20.16 token:end 1560 .
+
+:20.0 basic:root :20.14 .
+:20.3 basic:det :20.1 .
+:20.3 basic:amod :20.2 .
+:20.14 basic:nsubjpass :20.3 .
+:20.3 basic:prep :20.4 .
+:20.8 basic:det :20.5 .
+:20.8 basic:amod :20.6 .
+:20.8 basic:nn :20.7 .
+:20.4 basic:pobj :20.8 .
+:20.14 basic:advmod :20.9 .
+:20.9 basic:prep :20.10 .
+:20.12 basic:det :20.11 .
+:20.10 basic:pobj :20.12 .
+:20.14 basic:auxpass :20.13 .
+:20.14 basic:xcomp :20.15 .
+
+:20.0 dep:root :20.14 .
+:20.3 dep:det :20.1 .
+:20.3 dep:amod :20.2 .
+:20.14 dep:nsubjpass :20.3 .
+:20.8 dep:det :20.5 .
+:20.8 dep:amod :20.6 .
+:20.8 dep:nn :20.7 .
+:20.3 dep:prep_of :20.8 .
+:20.14 dep:advmod :20.9 .
+:20.12 dep:det :20.11 .
+:20.9 dep:prep_with :20.12 .
+:20.14 dep:auxpass :20.13 .
+:20.14 dep:xcomp :20.15 .
+
+:21.1 token:text "When" .
+:21.1 token:lemma "when" .
+:21.1 token:pos "WRB" .
+:21.1 token:begin 1561 .
+:21.1 token:end 1565 .
+
+:21.2 token:text "plants" .
+:21.2 token:lemma "plant" .
+:21.2 token:pos "NNS" .
+:21.2 token:begin 1566 .
+:21.2 token:end 1572 .
+
+:21.3 token:text "and" .
+:21.3 token:lemma "and" .
+:21.3 token:pos "CC" .
+:21.3 token:begin 1573 .
+:21.3 token:end 1576 .
+
+:21.4 token:text "animals" .
+:21.4 token:lemma "animal" .
+:21.4 token:pos "NNS" .
+:21.4 token:begin 1577 .
+:21.4 token:end 1584 .
+
+:21.5 token:text "die" .
+:21.5 token:lemma "die" .
+:21.5 token:pos "VB" .
+:21.5 token:begin 1585 .
+:21.5 token:end 1588 .
+
+:21.6 token:text "," .
+:21.6 token:lemma "," .
+:21.6 token:pos "," .
+:21.6 token:begin 1588 .
+:21.6 token:end 1589 .
+
+:21.7 token:text "decomposers" .
+:21.7 token:lemma "decomposer" .
+:21.7 token:pos "NNS" .
+:21.7 token:begin 1590 .
+:21.7 token:end 1601 .
+
+:21.8 token:text "help" .
+:21.8 token:lemma "help" .
+:21.8 token:pos "VBP" .
+:21.8 token:begin 1602 .
+:21.8 token:end 1606 .
+
+:21.9 token:text "return" .
+:21.9 token:lemma "return" .
+:21.9 token:pos "VB" .
+:21.9 token:begin 1607 .
+:21.9 token:end 1613 .
+
+:21.10 token:text "nutrients" .
+:21.10 token:lemma "nutrient" .
+:21.10 token:pos "NNS" .
+:21.10 token:begin 1614 .
+:21.10 token:end 1623 .
+
+:21.11 token:text "to" .
+:21.11 token:lemma "to" .
+:21.11 token:pos "TO" .
+:21.11 token:begin 1624 .
+:21.11 token:end 1626 .
+
+:21.12 token:text "the" .
+:21.12 token:lemma "the" .
+:21.12 token:pos "DT" .
+:21.12 token:begin 1627 .
+:21.12 token:end 1630 .
+
+:21.13 token:text "food" .
+:21.13 token:lemma "food" .
+:21.13 token:pos "NN" .
+:21.13 token:begin 1631 .
+:21.13 token:end 1635 .
+
+:21.14 token:text "chain" .
+:21.14 token:lemma "chain" .
+:21.14 token:pos "NN" .
+:21.14 token:begin 1636 .
+:21.14 token:end 1641 .
+
+:21.15 token:text "." .
+:21.15 token:lemma "." .
+:21.15 token:pos "." .
+:21.15 token:begin 1641 .
+:21.15 token:end 1642 .
+
+:21.0 basic:root :21.8 .
+:21.5 basic:advmod :21.1 .
+:21.5 basic:nsubj :21.2 .
+:21.2 basic:cc :21.3 .
+:21.2 basic:conj :21.4 .
+:21.8 basic:advcl :21.5 .
+:21.8 basic:nsubj :21.7 .
+:21.8 basic:ccomp :21.9 .
+:21.9 basic:dobj :21.10 .
+:21.9 basic:prep :21.11 .
+:21.14 basic:det :21.12 .
+:21.14 basic:nn :21.13 .
+:21.11 basic:pobj :21.14 .
+
+:21.0 dep:root :21.8 .
+:21.5 dep:advmod :21.1 .
+:21.5 dep:nsubj :21.2 .
+:21.2 dep:conj_and :21.4 .
+:21.5 dep:nsubj :21.4 .
+:21.8 dep:advcl :21.5 .
+:21.8 dep:nsubj :21.7 .
+:21.8 dep:ccomp :21.9 .
+:21.9 dep:dobj :21.10 .
+:21.14 dep:det :21.12 .
+:21.14 dep:nn :21.13 .
+:21.9 dep:prep_to :21.14 .
+
+:22.1 token:text "Gravity" .
+:22.1 token:lemma "gravity" .
+:22.1 token:pos "NN" .
+:22.1 token:begin 1643 .
+:22.1 token:end 1650 .
+
+:22.2 token:text "causes" .
+:22.2 token:lemma "cause" .
+:22.2 token:pos "VBZ" .
+:22.2 token:begin 1651 .
+:22.2 token:end 1657 .
+
+:22.3 token:text "the" .
+:22.3 token:lemma "the" .
+:22.3 token:pos "DT" .
+:22.3 token:begin 1658 .
+:22.3 token:end 1661 .
+
+:22.4 token:text "ball" .
+:22.4 token:lemma "ball" .
+:22.4 token:pos "NN" .
+:22.4 token:begin 1662 .
+:22.4 token:end 1666 .
+
+:22.5 token:text "to" .
+:22.5 token:lemma "to" .
+:22.5 token:pos "TO" .
+:22.5 token:begin 1667 .
+:22.5 token:end 1669 .
+
+:22.6 token:text "fall" .
+:22.6 token:lemma "fall" .
+:22.6 token:pos "VB" .
+:22.6 token:begin 1670 .
+:22.6 token:end 1674 .
+
+:22.7 token:text "to" .
+:22.7 token:lemma "to" .
+:22.7 token:pos "TO" .
+:22.7 token:begin 1675 .
+:22.7 token:end 1677 .
+
+:22.8 token:text "the" .
+:22.8 token:lemma "the" .
+:22.8 token:pos "DT" .
+:22.8 token:begin 1678 .
+:22.8 token:end 1681 .
+
+:22.9 token:text "ground" .
+:22.9 token:lemma "ground" .
+:22.9 token:pos "NN" .
+:22.9 token:begin 1682 .
+:22.9 token:end 1688 .
+
+:22.10 token:text "." .
+:22.10 token:lemma "." .
+:22.10 token:pos "." .
+:22.10 token:begin 1688 .
+:22.10 token:end 1689 .
+
+:22.0 basic:root :22.2 .
+:22.2 basic:nsubj :22.1 .
+:22.4 basic:det :22.3 .
+:22.6 basic:nsubj :22.4 .
+:22.6 basic:aux :22.5 .
+:22.2 basic:xcomp :22.6 .
+:22.6 basic:prep :22.7 .
+:22.9 basic:det :22.8 .
+:22.7 basic:pobj :22.9 .
+
+:22.0 dep:root :22.2 .
+:22.2 dep:nsubj :22.1 .
+:22.4 dep:det :22.3 .
+:22.6 dep:nsubj :22.4 .
+:22.6 dep:aux :22.5 .
+:22.2 dep:xcomp :22.6 .
+:22.9 dep:det :22.8 .
+:22.6 dep:prep_to :22.9 .
+
+:1.5 coref:ref :1.5 .
+:1.5 coref:ref :1.15 .
+:1.9 coref:ref :1.9 .
+:1.9 coref:ref :1.9 .
+:2.3 coref:ref :2.3 .
+:2.3 coref:ref :5.1 .
+:2.3 coref:ref :5.5 .
+:2.3 coref:ref :5.9 .
+:2.3 coref:ref :16.1 .
+:3.3 coref:ref :3.3 .
+:3.3 coref:ref :4.6 .
+:3.3 coref:ref :14.7 .
+:4.8 coref:ref :4.8 .
+:4.8 coref:ref :4.10 .
+:10.13 coref:ref :10.13 .
+:10.13 coref:ref :5.14 .
+:10.13 coref:ref :21.10 .
+:8.16 coref:ref :8.16 .
+:8.16 coref:ref :8.2 .
+:8.16 coref:ref :19.7 .
+:8.12 coref:ref :8.12 .
+:8.12 coref:ref :15.12 .
+:9.7 coref:ref :9.7 .
+:9.7 coref:ref :9.10 .
+:9.7 coref:ref :9.14 .
+:10.4 coref:ref :10.4 .
+:10.4 coref:ref :10.1 .
+:10.4 coref:ref :21.7 .
+:10.9 coref:ref :10.9 .
+:10.9 coref:ref :10.12 .
+:14.2 coref:ref :14.2 .
+:14.2 coref:ref :19.2 .
