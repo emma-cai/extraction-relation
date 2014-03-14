@@ -94,7 +94,8 @@ write_tokens0([T|Rest]) :-
 
 write_lemmas([]).
 write_lemmas([T]) :-
-	rdf(T,token:lemma,literal(L)),
+	( rdf(T,token:lemma,literal(L))
+	; rdf(T,token:text,literal(L)) ), % allow for missing lemmas in Sapir
 	write(L),
 	!.
 write_lemmas([T|Rest]) :-
