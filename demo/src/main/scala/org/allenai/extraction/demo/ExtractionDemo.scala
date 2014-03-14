@@ -4,16 +4,19 @@ import org.allenai.common.Resource.using
 import org.allenai.common.Logging
 
 import akka.actor._
+import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
-import dispatch.{ Future => _, _ }
-import dispatch.Defaults._
-import spray.http._
-import spray.http.StatusCodes._
-import spray.httpx.SprayJsonSupport
-import spray.json._
-import spray.json.DefaultJsonProtocol._
-import spray.routing._
+import com.typesafe.config.ConfigObject
+import com.typesafe.config.ConfigRenderOptions
 import de.l3s.boilerpipe.extractors.ArticleExtractor
+import dispatch.Defaults._
+import dispatch.{ Future => _, _ }
+import spray.http.StatusCodes._
+import spray.http._
+import spray.httpx.SprayJsonSupport
+import spray.json.DefaultJsonProtocol._
+import spray.json._
+import spray.routing._
 
 import java.io.File
 import java.net.URL
@@ -60,6 +63,8 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   implicit val responseFormat = jsonFormat1(Response)
 
   def run() {
+    val config = ConfigFactory.load().getConfig("extraction")
+
     val staticContentRoot = "public"
     val staticContentRootFile = new File(staticContentRoot)
     val defaultContent = "index.html"
@@ -77,6 +82,12 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         path ("") {
           get {
             getFromFile(staticContentRoot + "/index.html")
+          }
+        } ~
+        path("config") {
+          get {
+            val asJsonOptions = ConfigRenderOptions.defaults().setJson(true)
+            complete(config.root.render(asJsonOptions))
           }
         } ~
         post {
