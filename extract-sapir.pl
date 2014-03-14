@@ -7,7 +7,8 @@
 %%% process library
 :- use_module(library(filesex)).
 
-:- ['purpose-sapir'].
+:- [relation].
+:- ['patterns-sapir'].
 
 % set up server
 server(Port) :-
@@ -16,12 +17,17 @@ server(Port) :-
 :- http_handler(root('info/name'), info_name, []).
 info_name(_Request) :-
         format('Content-type: text/plain~n~n', []),
+        format('Prolog-Sapir~n').
+
+:- http_handler(root('info/description'), info_description, []).
+info_description(_Request) :-
+        format('Content-type: text/plain~n~n', []),
         format('Prolog Extraction from Sapir dependencies~n').
 
 :- http_handler(root('info/version'), info_version, []).
 info_version(_Request) :-
         format('Content-type: text/plain~n~n', []),
-        format('2014-03-05~n').
+        format('2014-03-14~n').
 
 :- http_handler(root(.), request, []).
 request(Request) :-
@@ -39,7 +45,7 @@ extract(Text) :-
         turtle(Deps, Turtle),
         write_tmp_file(Turtle, File),
         rdf_load(File, [format(turtle)]),
-        findall(_,purpose,_),
+        findall(_,relation,_),
         rdf_unload(File),
         delete_file(File).
 
