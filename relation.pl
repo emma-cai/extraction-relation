@@ -9,7 +9,7 @@ relation :-
 	% pick a sentence
 	rdf(_Sentence,dep:root,Root),
 %	write('processing: '), write(Root), nl,
-	write_sentence(Root),
+%	write_sentence(Root),
 	% descend through every node checking for relations
 	( top_relation(Root)
 	; constit(Root,Node),

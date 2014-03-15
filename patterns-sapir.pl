@@ -6,7 +6,7 @@ example_NP_Tuple(Entity,Comp,['EXAMPLE'-1,Example]) :-
 	text(Example,example),
 	dependency(Example,dep:ccomp,Comp).
 % EXAMPLE: NP is NP that Tuple
-example_NP_Tuple(Entity,Comp,Rel-2) :-
+example_NP_Tuple(Entity,Comp,Rel) :-
 	example_NP_NP(Entity,Entity2,Rel),
  	( dependency(Entity2,dep:partmod,Comp)
  	; dependency(Entity2,dep:rcmod,Comp) ).
@@ -153,7 +153,7 @@ function(Entity,Root,['ENABLE'-24,'by']) :-
 	pos(Root,'VBG'),
 	pos(Entity,'NN').
 % copular
-function(Entity,Comp,Rel-25) :-
+function(Entity,Comp,Rel) :-
 	dependency(Root,dep:nsubj,Entity),
 	dependency(Root,dep:cop,_),
 	function(Root,Comp,Rel).
