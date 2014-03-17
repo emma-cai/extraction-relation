@@ -9,7 +9,14 @@ var ExtractionCtrl = function($scope, $http) {
     $http.post("/text", $scope.model.text)
       .success(function(data, status, headers, config) {
         $scope.response = data;
+        $scope.errorResponse = undefined;
         $scope.responseString = angular.toJson(data, pretty=true);
+        $scope.working = false
+      })
+      .error(function(data, status, headers, config) {
+        $scope.response = undefined;
+        $scope.errorResponse = data;
+        $scope.errorResponse.status = status;
         $scope.working = false
       });
   };
