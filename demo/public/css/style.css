@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+summary {
+  cursor: pointer;
+}
+
 textarea {
   width: 80%;
   white-space: pre;
