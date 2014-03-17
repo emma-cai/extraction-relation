@@ -43,7 +43,7 @@
       <div ng-repeat="sentence in response.sentences track by $index" class="panel">
         <h3>{{ sentence.text }}</h3>
         <dl ng-repeat="extractor in sentence.extractors">
-          <dt>{{ extractor.name }}</dt>
+          <dt>{{ extractor.name }} <small>{{ response.extractors[extractor.name] }}</small></dt>
           <dl>
             <ul ng-repeat="extraction in extractor.extractions">
               {{ extraction }}

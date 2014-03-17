@@ -51,16 +51,20 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       }
     }
 
-    Future.sequence(processed) map (Response(_))
+    val extractorMap = extractors.map { extractor: Extractor =>
+      extractor.name -> extractor.description.getOrElse("")
+    }.toMap
+
+    Future.sequence(processed) map (Response(_, extractorMap))
   }
 
-  case class Response(sentences: Seq[ExtractedSentence])
+  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String])
   case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
   case class ExtractorResults(name: String, extractions: Seq[String])
 
   implicit val extractorResults = jsonFormat2(ExtractorResults)
   implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
-  implicit val responseFormat = jsonFormat1(Response)
+  implicit val responseFormat = jsonFormat2(Response)
 
   def run() {
     val config = ConfigFactory.load().getConfig("extraction")
@@ -135,7 +139,7 @@ case class Extractor(url: URL) extends Logging {
   val name: String = {
     val svc = dispatch.url(url.toString) / "info" / "name"
     try {
-      Await.result(Http(svc OK as.String), 10.seconds)
+      Await.result(Http(svc OK as.String), 10.seconds).trim
     }
     catch {
       case NonFatal(e) =>
@@ -146,7 +150,7 @@ case class Extractor(url: URL) extends Logging {
 
   val description: Option[String] = {
     val svc = dispatch.url(url.toString) / "info" / "description"
-    Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption
+    Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption map (_.trim)
   }
 
   def apply(sentence: String): Future[String] = {
