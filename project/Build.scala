@@ -4,14 +4,14 @@ import Keys._
 import spray.revolver.RevolverPlugin._
 
 object ExtractionBuild extends Build {
-  val sprayVersion = "1.2.0"
+  val sprayVersion = "1.3.1"
 
-  val akkaVersion = "2.2.3"
+  val akkaVersion = "2.3.0"
   def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-$id" % akkaVersion
   val akkaActor = akkaModule("actor")
   val akkaLogging = akkaModule("slf4j")
 
-  val logbackVersion = "1.0.13"
+  val logbackVersion = "1.1.1"
   val logbackCore = "ch.qos.logback" % "logback-core" % logbackVersion
   val logbackClassic = "ch.qos.logback" % "logback-classic" % logbackVersion
   val loggingImplementations = Seq(logbackCore, logbackClassic)

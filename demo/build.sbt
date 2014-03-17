@@ -5,8 +5,8 @@ description := "An interactive demo for extractors."
 libraryDependencies ++= Seq(
     "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT",
     // for command line arguments and configuration
-    "com.github.scopt" %% "scopt" % "3.1.0",
-    "com.typesafe" % "config" % "1.0.2",
+    "com.github.scopt" %% "scopt" % "3.2.0",
+    "com.typesafe" % "config" % "1.2.0",
     // for web serving
     akkaLogging,
     akkaActor,
