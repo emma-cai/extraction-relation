@@ -144,6 +144,11 @@ case class Extractor(url: URL) extends Logging {
     }
   }
 
+  val description: Option[String] = {
+    val svc = dispatch.url(url.toString) / "info" / "description"
+    Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption
+  }
+
   def apply(sentence: String): Future[String] = {
     val svc = dispatch.url(url.toString) << sentence
     Http(svc OK as.String)
