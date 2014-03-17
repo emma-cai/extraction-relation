@@ -37,7 +37,8 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       // Fire off requests to extractors.
       val extractionsFuture: Seq[Future[(String, String)]] =
         for (extractor <- extractors) yield {
-          val future = extractor(sentence)
+          val future = extractor(sentence).transform(x => x, throwable =>
+            new ExtractorException(s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
           future.map((extractor.name, _))
         }
 
@@ -51,16 +52,20 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       }
     }
 
-    Future.sequence(processed) map (Response(_))
+    val extractorMap = extractors.map { extractor: Extractor =>
+      extractor.name -> extractor.description.getOrElse("")
+    }.toMap
+
+    Future.sequence(processed) map (Response(_, extractorMap))
   }
 
-  case class Response(sentences: Seq[ExtractedSentence])
+  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String])
   case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
   case class ExtractorResults(name: String, extractions: Seq[String])
 
   implicit val extractorResults = jsonFormat2(ExtractorResults)
   implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
-  implicit val responseFormat = jsonFormat1(Response)
+  implicit val responseFormat = jsonFormat2(Response)
 
   def run() {
     val config = ConfigFactory.load().getConfig("extraction")
@@ -77,57 +82,94 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
 
     implicit val system = ActorSystem("extraction-demo")
 
+    implicit val throwableWriter = new RootJsonWriter[Throwable] {
+      /** Write a throwable as an object with 'message' and 'stackTrace' fields. */
+      def write(t: Throwable) = {
+        def getMessageChain(throwable: Throwable): List[String] = {
+          Option(throwable) match {
+            case Some(throwable) => Option(throwable.getMessage) match {
+              case Some(message) => (throwable.getClass + ": " + message) :: getMessageChain(throwable.getCause)
+              case None => getMessageChain(throwable.getCause)
+            }
+            case None => Nil
+          }
+        }
+        val stackTrace = {
+          val stackTraceWriter = new java.io.StringWriter()
+          t.printStackTrace(new java.io.PrintWriter(stackTraceWriter))
+          stackTraceWriter.toString
+        }
+        JsObject(
+          "messages" -> JsArray(getMessageChain(t) map (JsString(_))),
+          "stackTrace" -> JsString(stackTrace))
+      }
+    }
+
+    implicit def exceptionHandler(implicit log: spray.util.LoggingContext) =
+        ExceptionHandler {
+          case e: Throwable => ctx =>
+            // log in akka, which is configured to use slf4j
+            log.error(e, "Unexpected Error.")
+
+            // return the error formatted as json
+            ctx.complete((InternalServerError, e.toJson.prettyPrint))
+        }
+
     startServer(interface = "0.0.0.0", port = port) {
-      respondWithHeader(cacheControlMaxAge) {
-        path ("") {
-          get {
-            getFromFile(staticContentRoot + "/index.html")
-          }
-        } ~
-        path("config") {
-          get {
-            val asJsonOptions = ConfigRenderOptions.defaults().setJson(true)
-            complete(config.root.render(asJsonOptions))
-          }
-        } ~
-        post {
-          path ("text") {
-            entity(as[String]) { text =>
-              val sentences = text split "\n"
-              val sampleText = (sentences.headOption map (s => (s take 32) + "...")).getOrElse("")
-              logger.info(s"Request to extract ${sentences.size} sentences: " + sampleText)
-              complete {
-                extractSentences(text split "\n")
-              }
+      handleExceptions(exceptionHandler) {
+        respondWithHeader(cacheControlMaxAge) {
+          path ("") {
+            get {
+              getFromFile(staticContentRoot + "/index.html")
             }
           } ~
-          path ("file") {
-            entity(as[String]) { fileString =>
-              val file = new File(fileString)
-              logger.info("Request to extract file: " + file)
-              using(Source.fromFile(file)) { source =>
+          path("config") {
+            get {
+              val asJsonOptions = ConfigRenderOptions.defaults().setJson(true)
+              complete(config.root.render(asJsonOptions))
+            }
+          } ~
+          post {
+            path ("text") {
+              entity(as[String]) { text =>
+                val sentences = text split "\n"
+                val sampleText = (sentences.headOption map (s => (s take 32) + "...")).getOrElse("")
+                logger.info(s"Request to extract ${sentences.size} sentences: " + sampleText)
                 complete {
-                  extractSentences(source.getLines.toSeq)
+                  extractSentences(text split "\n")
+                }
+              }
+            } ~
+            path ("file") {
+              entity(as[String]) { fileString =>
+                val file = new File(fileString)
+                logger.info("Request to extract file: " + file)
+                using(Source.fromFile(file)) { source =>
+                  complete {
+                    extractSentences(source.getLines.toSeq)
+                  }
+                }
+              }
+            } ~
+            path ("url") {
+              entity(as[String]) { urlString =>
+                logger.info("Request to extract url: " + urlString)
+                val url = new URL(urlString)
+                val text = ArticleExtractor.INSTANCE.getText(url)
+                complete {
+                  extractSentences(text split "\n")
                 }
               }
             }
           } ~
-          path ("url") {
-            entity(as[String]) { urlString =>
-              logger.info("Request to extract url: " + urlString)
-              val url = new URL(urlString)
-              val text = ArticleExtractor.INSTANCE.getText(url)
-              complete {
-                extractSentences(text split "\n")
-              }
-            }
-          }
-        } ~
-        unmatchedPath { p => getFromFile(staticContentRoot + p) }
+          unmatchedPath { p => getFromFile(staticContentRoot + p) }
+        }
       }
     }
   }
 }
+
+class ExtractorException(message: String, cause: Throwable) extends Exception(message, cause)
 
 case class Extractor(url: URL) extends Logging {
   override def toString = s"$name($url)"
@@ -135,13 +177,18 @@ case class Extractor(url: URL) extends Logging {
   val name: String = {
     val svc = dispatch.url(url.toString) / "info" / "name"
     try {
-      Await.result(Http(svc OK as.String), 10.seconds)
+      Await.result(Http(svc OK as.String), 10.seconds).trim
     }
     catch {
       case NonFatal(e) =>
         logger.error("Could not access /info/name at: " + url.toString, e)
         throw e
     }
+  }
+
+  val description: Option[String] = {
+    val svc = dispatch.url(url.toString) / "info" / "description"
+    Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption map (_.trim)
   }
 
   def apply(sentence: String): Future[String] = {
