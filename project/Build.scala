@@ -33,6 +33,11 @@ object ExtractionBuild extends Build {
         "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases"),
       homepage := Some(url("http://github.com/allenai/extraction")))
 
+  lazy val interface = Project(
+    id = "interface",
+    base = file("interface"),
+    settings = buildSettings)
+
   lazy val demo = Project(
     id = "demo",
     base = file("demo"),
