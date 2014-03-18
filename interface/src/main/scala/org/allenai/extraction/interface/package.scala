@@ -81,9 +81,13 @@ package object interface {
     implicit val relationJsonFormat = jsonFormat2(Relation.apply)
   }
 
-  /** A single extracted relation. This is essentially a recursive Tuple of depth 2. */
-  case class ExtractionRule(antecedent: ExtractionTuple, relation: Relation,
-    consequent: ExtractionTuple, confidence: Double)
+  /** A single extracted relation. This is essentially a recursive Tuple of depth 2. If multiple
+    * antecedents or consequents are present, they should be considered logical conjunctions - all
+    * antecedents must be true for the relation to exist; and if it does, all consequents have the
+    * relation.
+    */
+  case class ExtractionRule(antecedents: Seq[ExtractionTuple], relation: Relation,
+    consequents: Seq[ExtractionTuple], confidence: Double)
   object ExtractionRule {
     implicit val extractionRuleJsonFormat = jsonFormat4(ExtractionRule.apply)
   }
