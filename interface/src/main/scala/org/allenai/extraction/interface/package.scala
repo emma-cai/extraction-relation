@@ -45,15 +45,25 @@ package object interface {
     }
   }
 
-  /** The subject or the object of a tuple.
+  /** A coreference in a range of tokens. This will contain a label matching at least one other
+    * coreference in the parent Rule.
+    * @param sourceRange the range of the coreference in the containing phrase's tokens
+    * @param label the variable label for this coreference, matching at least one other coference in
+    *     the containing Rule
+    */
+  case class Coreference(sourceRange: Range, label: String)
+
+
+  /** The subject or the object of a tuple. May be inferred, such as the object in the fragment
+    * "animals eat" => ("animals", "eat", "").
     * @param string the tokenized text from the original source. May be empty in the case where this
     *     is an inferred NounPhrase.
-    * @param variableLabel a label for this subject or object. Present if it's referred to in
-    *     another related NounPhrase, or if this is an inferred NounPhrase.
-    * @param pronounResolution what this resolves to, if it's a pronoun
+    * @param coreferences a list of all coreferences occuring within this phrase. The sourceRange
+    *     values in these coreferences map into the 'string' token list.
+    * @param isInferred if true, this is an inferred noun (and by implication, 'string' will be
+    *     empty)
     */
-  case class NounPhrase(string: Seq[Token], variableLabel: Option[String],
-    pronounResolution: Seq[Token])
+  case class NounPhrase(string: Seq[Token], coreferences: Seq[Coreference], isInferred: Boolean)
   object NounPhrase {
     implicit val nounPhraseJsonFormat = jsonFormat3(NounPhrase.apply)
   }
