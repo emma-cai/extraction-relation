@@ -66,12 +66,13 @@ package object interface {
     implicit val coreferenceJsonFormat = jsonFormat2(Coreference.apply)
   }
 
-  /** The subject or the object of a tuple.
+  /** The subject or the object of a tuple. May be inferred, such as the object in the fragment
+    * "animals eat" => ("animals", "eat", "").
     * @param string the tokenized text from the original source. May be empty in the case where this
     *     is an inferred NounPhrase.
     * @param coreferences a list of all coreferences occuring within this phrase. The sourceRange
     *     values in these coreferences map into the 'string' token list.
-    * @param isInferred if true, this is an inferred variable (and my implication, 'string' will be
+    * @param isInferred if true, this is an inferred noun (and by implication, 'string' will be
     *     empty)
     */
   case class NounPhrase(string: Seq[Token], coreferences: Seq[Coreference], isInferred: Boolean)
