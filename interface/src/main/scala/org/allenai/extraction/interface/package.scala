@@ -45,15 +45,36 @@ package object interface {
     }
   }
 
+  /** A coreference in a range of tokens. This will contain a label matching at least one other
+    * coreference in the parent Rule.
+    * @param sourceRange the range of the coreference in the containing phrase's tokens
+    * @param label the variable label for this coreference, matching at least one other coference in
+    *     the containing Rule
+    */
+  case class Coreference(sourceRange: Range, label: String)
+  object Coreference {
+    implicit val rangeJsonFormat = new RootJsonFormat[Range] {
+      def write(value: Range): JsObject = {
+        JsObject("start" -> JsNumber(value.start), "end" -> JsNumber(value.end))
+      }
+
+      def read(value: JsValue): Range = value.asJsObject.getFields("start", "end") match {
+        case Seq(JsNumber(start), JsNumber(end)) => (start.toInt until end.toInt)
+        case _ => throw new DeserializationException("Range expected")
+      }
+    }
+    implicit val coreferenceJsonFormat = jsonFormat2(Coreference.apply)
+  }
+
   /** The subject or the object of a tuple.
     * @param string the tokenized text from the original source. May be empty in the case where this
     *     is an inferred NounPhrase.
-    * @param variableLabel a label for this subject or object. Present if it's referred to in
-    *     another related NounPhrase, or if this is an inferred NounPhrase.
-    * @param pronounResolution what this resolves to, if it's a pronoun
+    * @param coreferences a list of all coreferences occuring within this phrase. The sourceRange
+    *     values in these coreferences map into the 'string' token list.
+    * @param isInferred if true, this is an inferred variable (and my implication, 'string' will be
+    *     empty)
     */
-  case class NounPhrase(string: Seq[Token], variableLabel: Option[String],
-    pronounResolution: Seq[Token])
+  case class NounPhrase(string: Seq[Token], coreferences: Seq[Coreference], isInferred: Boolean)
   object NounPhrase {
     implicit val nounPhraseJsonFormat = jsonFormat3(NounPhrase.apply)
   }
@@ -76,8 +97,39 @@ package object interface {
     * @param normalizedRelation the normalized form of the relation. None if the relation couldn't
     *     be normalized.
     */
-  case class Relation(string: Seq[Token], normalizedRelation: Option[Symbol])
+  case class Relation(string: Seq[Token], normalizedRelation: Option[Relation.Normalized])
   object Relation {
+    sealed class Normalized {
+      def name = this.getClass.getSimpleName
+    }
+    object Normalized {
+      def fromString(value: String): Normalized = value match {
+        case "Cause" => Cause()
+        case "Enable" => Enable()
+        case "ExampleOf" => ExampleOf()
+        case "Purpose" => Purpose()
+        case _ => throw new IllegalArgumentException("unknown Relation.Normalized value: " + value)
+      }
+
+      /** Format for serializing our enum-like Normalized case classes. */
+      implicit val normalizedJsonFormat = new JsonFormat[Normalized] {
+        def write(value: Normalized) = JsString(value.name)
+
+        def read(value: JsValue): Normalized = value match {
+          case JsString(name) => try {
+            fromString(name)
+          } catch {
+            case e: IllegalArgumentException => throw new DeserializationException(e.getMessage())
+          }
+          case _ => throw new DeserializationException("JsString expected")
+        }
+      }
+    }
+    case class Cause() extends Normalized
+    case class Enable() extends Normalized
+    case class ExampleOf() extends Normalized
+    case class Purpose() extends Normalized
+
     implicit val relationJsonFormat = jsonFormat2(Relation.apply)
   }
 
