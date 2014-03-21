@@ -107,7 +107,7 @@ package object interface {
       def fromString(value: String): Normalized = value match {
         case "Cause" => Cause
         case "Enable" => Enable
-        case "ExampleOf" => ExampleOf
+        case "Example" => Example
         case "Purpose" => Purpose
         case _ => throw new IllegalArgumentException("unknown Relation.Normalized value: " + value)
       }
@@ -128,7 +128,7 @@ package object interface {
     }
     case object Cause extends Normalized
     case object Enable extends Normalized
-    case object ExampleOf extends Normalized
+    case object Example extends Normalized
     case object Purpose extends Normalized
 
     implicit val relationJsonFormat = jsonFormat2(Relation.apply)
