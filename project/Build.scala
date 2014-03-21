@@ -16,6 +16,9 @@ object ExtractionBuild extends Build {
   val logbackClassic = "ch.qos.logback" % "logback-classic" % logbackVersion
   val loggingImplementations = Seq(logbackCore, logbackClassic)
 
+  val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
+  val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
+
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },
     publishTo := Some("bogus" at "http://nowhere.com"),
@@ -30,8 +33,15 @@ object ExtractionBuild extends Build {
       scalacOptions ++= Seq("-unchecked", "-deprecation"),
       resolvers ++= Seq(
         "AllenAI Snapshots" at "http://utility.allenai.org:8081/nexus/content/repositories/snapshots",
-        "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases"),
+        "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
+        "spray" at "http://repo.spray.io",
+        "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/"),
       homepage := Some(url("http://github.com/allenai/extraction")))
+
+  lazy val interface = Project(
+    id = "interface",
+    base = file("interface"),
+    settings = buildSettings)
 
   lazy val demo = Project(
     id = "demo",
