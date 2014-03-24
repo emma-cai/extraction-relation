@@ -6,7 +6,7 @@
 :- rdf_register_prefix(basic, 'http://nlp.stanford.edu/basic/').
 :- rdf_register_prefix(dep, 'http://nlp.stanford.edu/dep/').
 :- rdf_register_prefix(coref, 'http://nlp.stanford.edu/coref/').
-:- rdf_register_prefix(id, 'http://halo.vulcan.com/id#').
+:- rdf_register_prefix(id, 'http://aristo.allenai.org/id#').
 
 
 expand :-
@@ -35,7 +35,7 @@ constit(Node,Constit,Exclude) :-
 	; constit(C,Constit) ). % filter top-level only
 
 token_id(E1,N1) :-
-	atom_concat('http://halo.vulcan.com/id#', S1, E1),
+	atom_concat('http://aristo.allenai.org/id#', S1, E1),
 	sub_atom(S1,B1,_,_,'.'), BS1 is B1 + 1, sub_atom(S1,BS1,_,0,T1),
 	atom_number(T1,N1).
 

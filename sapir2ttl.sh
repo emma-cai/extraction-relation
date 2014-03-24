@@ -1,4 +1,4 @@
-echo "@prefix : <http://halo.vulcan.com/id#> ."
+echo "@prefix id: <http://aristo.allenai.org/id#> ."
 echo "@prefix token: <http://nlp.stanford.edu/token/> ."
 echo "@prefix basic: <http://nlp.stanford.edu/basic/> ."
 echo "@prefix dep: <http://nlp.stanford.edu/dep/> ."

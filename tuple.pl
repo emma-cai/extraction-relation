@@ -3,7 +3,7 @@
 :- rdf_meta argument(r,r,-).
 :- rdf_meta dep(r,r,-).
 
-:- rdf_register_prefix(mod, 'http://halo.vulcan.com/mod/').
+:- rdf_register_prefix(mod, 'http://aristo.allenai.org/mod/').
 
 % rdf access
 dependency(Arg1,Dep,Arg2) :-
@@ -86,7 +86,7 @@ argument(Root,basic:dobj,Arg) :-
 % check for modified xcomp nsubj
 argument(Root,Dep,Arg) :-
 	atom_concat('http://nlp.stanford.edu/basic/',DepType,Dep),
-	atom_concat('http://halo.vulcan.com/mod/',DepType,ModDep),
+	atom_concat('http://aristo.allenai.org/mod/',DepType,ModDep),
 	rdf(Root,ModDep,_Arg), !,
 	argument(Root,ModDep,Arg).
 

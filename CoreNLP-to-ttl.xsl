@@ -7,7 +7,7 @@ xmlns:d="http://nlp.stanford.edu/CoreNLP/v1">
 <xsl:output method="text"/>
 
 <xsl:template match="/">
-@prefix : &lt;http://halo.vulcan.com/id#<xsl:value-of select="$filename"/>&gt; .
+@prefix id: &lt;http://aristo.allenai.org/id#<xsl:value-of select="$filename"/>&gt; .
 <xsl:text>
 @prefix token: &lt;http://nlp.stanford.edu/token/&gt; .
 @prefix ne: &lt;http://nlp.stanford.edu/ne/&gt; .
