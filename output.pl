@@ -49,15 +49,12 @@ json_entity_relation(Entity1,Rel,Entity2,json([class='ExtractionRule',antecedent
 	; json_tuple(Entity2,Json2) ),
 	!.
 
+% comment to write rule ids
 text_rel([Rel-_Id|Tokens],Text) :- !,
 	text_rel([Rel|Tokens],Text).
-% write rule Ids (comment out previous clause)
-text_rel([Rel-Id|Tokens],Text) :-
-	tokens_text(Tokens,TokensText),
-	atomic_list_concat(['RULE-',Id,':"',TokensText,'"/',Rel],Text).
 text_rel([Rel|Tokens],Text) :-
-	tokens_text(Tokens,TokensText),
-	atomic_list_concat(['"',TokensText,'"/',Rel],Text).
+	tokens_text_quoted(Tokens,TokensText),
+	format(atom(Text), '~w/~w', [TokensText,Rel]).
 
 json_rel([Rel-_Id|Tokens],Json) :- !,
 	json_rel([Rel|Tokens],Json).
@@ -77,22 +74,9 @@ write_json_simple_tuple(Node) :-
 write_json_simple_tuple(_).
 
 
-% normalize to verb if possible
-text_tuple(Ent,Text) :-
-	atom(Ent),
-	rdf(Ent,token:lemma,literal(Lemma)),
-	( (wn-denom(Lemma,Verb), !)
-	; (rdf(Ent,token:pos,literal('VBG')), Verb = Lemma) ),
-	argument(Ent,dep:prep_of,Obj),
-	argument(Ent,dep:prep_by,Subj),
-	text_arg(Subj,SubjText),
-	text_arg(Obj,ObjText),
-	format(atom(Text),'(~w ~w ~w)',[SubjText,Verb,ObjText]),
-	!.
 text_tuple(Ent,Text) :-
 	atom(Ent), !,
 	text_arg(Ent,Text).
-
 text_tuple([S,V],Text) :-
 	text_tuple([S,V,[]],Text).
 text_tuple([S,V,Arg|Mods],Text) :-
@@ -103,7 +87,8 @@ text_tuple([S,V,Arg|Mods],Text) :-
 	; text_arg(Arg,ObjText) ), % dobj
 	( (Mods = [],
 	   format(atom(Text), '(~w ~w ~w)', [SubjText, VerbText, ObjText]))
-	; (text_mods(Mods,ModsText),
+	; (text_mods(Mods,ModsList),
+	   atomic_list_concat(ModsList,ModsText),
 	   format(atom(Text), '(~w ~w ~w [ ~w ] )', [SubjText, VerbText, ObjText, ModsText])) ),
 	!.
 
@@ -120,20 +105,9 @@ text_tuple([S,V,Arg|Mods],Text) :-
 %	!.
 
 
-json_tuple(Ent,json([class='ExtractionTuple',subject=SubjJson,verbPhrase=Verb,directObject=ObjJson])) :-
-	atom(Ent),
-	rdf(Ent,token:lemma,literal(Lemma)),
-	( (wn-denom(Lemma,Verb), !)
-	; (rdf(Ent,token:pos,literal('VBG')), Verb = Lemma) ),
-	argument(Ent,dep:prep_of,Obj),
-	argument(Ent,dep:prep_by,Subj),
-	json_arg(Subj,SubjJson),
-	json_arg(Obj,ObjJson),
-	!.
 json_tuple(Ent,Json) :-
 	atom(Ent), !,
 	json_arg(Ent,Json).
-
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).
 json_tuple([S,V,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verbPhrase=VerbTokenIds,directObject=ObjJson|ExtraPhrases])) :-
@@ -156,8 +130,7 @@ text_arg(Arg-Var,Text) :- !,
 	format(atom(Text), '~w/?~w', [ArgText, Var]).
 text_arg(Arg,Text) :-
 	arg_tokens(Arg,Tokens),
-	tokens_text(Tokens,TokensText),
-	format(atom(Text), '"~w"', [TokensText]).
+	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
 json_arg(Arg-Var,json([class=Class,string=TokenIds,coreferences=Var])) :- !,
@@ -178,8 +151,7 @@ arg_tokens(Arg,Tokens) :-
 
 text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
-	tokens_text(Tokens,TokensText),
-	format(atom(Text), '"~w"', [TokensText]).
+	tokens_text_quoted(Tokens,Text).
 
 json_entity(Arg,json([class='NounPhrase',string=TokenIds])) :-
 	entity_tokens(Arg,Tokens),
@@ -197,31 +169,27 @@ entity_tokens(Arg,Tokens) :-
 	tokens(Arg,Tokens,[conj,cc,appos,xcomp,advmod,rcmod,partmod,cop,nsubj,aux]).
 
 
-text_mods_list([],[]).
-text_mods_list([Arg],[Text]) :- !,
+text_mods([],[]).
+text_mods([Arg],[Text]) :- !,
+	text_mod(Arg,Text).
+text_mods([Arg|Rest],[ArgText,', '|RestText]) :-
 	text_mod(Arg,ArgText),
-	format(atom(Text), '"~w"', [ArgText]).
-text_mods_list([Arg|Rest],[ArgText,', '|RestText]) :-
-	text_mods_list([Arg],[ArgText]),
-	text_mods_list(Rest,RestText).
+	text_mods(Rest,RestText).
 
-text_mods(Args,Text) :-
-	text_mods_list(Args,List),
-	atomic_list_concat(List,Text).
+text_mod(Mod,Text) :-
+	mod_tokens(Mod,Tokens),
+	tokens_text_quoted(Tokens,Text).
+
 
 json_mods([],[]).
 json_mods([Arg|Rest],[TokenIds|RestTokenIds]) :-
 	json_mod(Arg,TokenIds),
 	json_mods(Rest,RestTokenIds).
 
-
-text_mod(Mod,Text) :-
-	mod_tokens(Mod,Tokens),
-	tokens_text(Tokens,Text).
-
 json_mod(Mod,TokenIds) :-
 	mod_tokens(Mod,Tokens),
 	prefixed_ids(Tokens,TokenIds).
+
 
 mod_tokens([],[]) :- !.
 % special case for prep to apply exclusion list to pobj
@@ -236,8 +204,7 @@ mod_tokens(Mod,Tokens) :-
 
 text_verb(Arg,Text) :-
 	verb_tokens(Arg,Tokens),
-	lemmas_text(Tokens,TokensText),
-	format(atom(Text),'"~w"',[TokensText]).
+	lemmas_text_quoted(Tokens,Text).
 
 json_verb(Arg,TokenIds) :-
 	verb_tokens(Arg,Tokens),

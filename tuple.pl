@@ -16,6 +16,18 @@ pos(Token,Value) :-
 	rdf(Token,token:pos,literal(Value)).
 
 
+% normalize to verb if possible
+denominalize(Ent,[Subj,Verb,Obj]) :-
+	atom(Ent),
+	lemma(Ent,Lemma),
+	( (wn-denom(Lemma,Verb), !)
+	; (rdf(Ent,token:pos,literal('VBG')), Verb = Lemma) ),
+	argument(Ent,dep:prep_of,Obj),
+	argument(Ent,dep:prep_by,Subj),
+	!.
+denominalize(Ent,Ent).
+
+
 % copular
 tuple(Root,[Subj,Cop,Root|Mods]) :-
 	rdf(Root,basic:cop,Cop),

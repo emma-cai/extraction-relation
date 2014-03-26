@@ -1,29 +1,51 @@
+;;; In the hot weather our bodies sweat perspiration bringing water to our[our] skin.
 ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
+;;; When some animals prepare for the long winters by storing food and going dormant it is called hibernation.
 ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
 ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
+;;; A hand lens is used to view objects in more detail.
 "A hand lens"	"is used"/FUNCTION	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
-("" remove "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
+;;; Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat.
+("" "remove" "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
+;;; Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients.
 ("Animals" "not make" "their[some animals] own food")	"so"/EFFECT	("some animals" "eat" "")
 ("some animals"/?x "eat" "")	"to"/REQUIREMENT	("some animals"/?x "get" "nutrients")
+;;; The friction between the two surfaces converts kinetic energy into heat.
 ("The friction between the two surfaces" "convert" "kinetic energy" [ "into heat" ] )
+;;; Getting enough rest is also an important part of living a healthy life.
 ("" "get" "rest")	"part of"/PART	("" "live" "a healthy life")
+;;; The tool that is used to measure the volume of a liquid is a graduated cylinder.
+;;; camouflage The disguising of military personnel to make them[military personnel] blend in with their[military personnel] surroundings.
+;;; Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil.
 "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 "Decomposers"	"are"/EXAMPLE	"living things"
+;;; Gravity is the force that pulls an object toward the center of the Earth.
 "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 "Gravity"	"is"/EXAMPLE	"the force"
+;;; A human 's body produces sweat is a way that an organism may adjust to hot temperatures.
 "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
 "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
+;;; A squirrel storing nuts is preparing for a seasonal change in the environment.
 ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
+;;; A student should use a hand lens to get a better look at the spots.
 ("A student"/?x "use" "a hand lens")	"to"/EFFECT	("A student"/?x "get" "" [ "a better look at the spots" ] )
+;;; Decreasing the temperature is one way to change water from a liquid to a solid.
 ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
+;;; Animals get energy for growth and repair from food.
 ("Animals" "get" "energy" [ "for growth from food", "for growth from food" ] )
+;;; The heat that produces the smoke is caused by friction.
 "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
-("" rest "")	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
+;;; Resting is necessary for humans to maintain good health.
+("" "rest" "")	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
+;;; A student should use a graduated cylinder to measure exactly 10 milliliters mL of water.
 ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "mL")
+;;; The white fur of an arctic fox blends in with the snow is called camouflage.
 "The white fur of an arctic fox blends"	"is called"/EXAMPLE	"camouflage"
+;;; When plants and animals die decomposers help return nutrients to the food chain.
 "decomposers"	"help"/FUNCTION	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
+;;; Gravity causes the ball to fall to the ground.
 "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )

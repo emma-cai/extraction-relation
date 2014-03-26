@@ -53,12 +53,15 @@ relation(Root) :-
 	\+ dependency(_,dep:prep_for,Comp), % responsible for
 	tuple(Comp,Tuple),
 	distribute_args([Root],Tuple,_,TupleOut),
-	write_relation(Root,Rel,TupleOut).
+	denominalize(Root,RootTuple),
+	write_relation(RootTuple,Rel,TupleOut).
 % function (NP-NP)
 relation(Root) :-
 	function(Root,Comp,Rel),
 	dependency(_,dep:prep_for,Comp), % responsible for
-	write_relation(Root,Rel,Comp).
+	denominalize(Root,RootTuple),
+	denominalize(Comp,CompTuple),
+	write_relation(RootTuple,Rel,CompTuple).
 % example (NP-tuple)
 relation(Root) :-
 	example_NP_Tuple(Root,Comp,Rel),

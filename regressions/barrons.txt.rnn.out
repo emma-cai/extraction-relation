@@ -24,7 +24,7 @@
 ;;; Oxygen allows the animal to make and use energy which it[the animal] needs to survive.
 "Oxygen"	"allows"/FUNCTION	("the animal" "make" "energy")
 "Oxygen"	"allows"/FUNCTION	("the animal" "use" "")
-("the animal"/?x "make" "energy")	"needs ;;; Animals also need water to survive.
+;;; Animals also need water to survive.
 ("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
 ;;; Water is used to break down and move materials throughout the body.
 "Water"	"is used"/FUNCTION	("Water"/?x "break down" "")
@@ -109,7 +109,7 @@
 ("All living things"/?x "need" "nutrients")	"to"/EFFECT	("All living things"/?x "survive" "")
 ;;; Animals take in food as a nutrient to give them[Animals] energy and help them[Animals] grow.
 ("Animals" "take in" "food" [ "as a nutrient" ] )	"to help"/EFFECT	("Animals" "grow" "")
-("Animals" "take in" "food" [ "as a nutrient" ] )	"as"/EFFECT	("" "give" "Animals" [ "energy" ] )
+("Animals" "take in" "food" [ "as a nutrient" ] )	"to"/EFFECT	("" "give" "Animals" [ "energy" ] )
 ("" "give" "Animals" [ "energy" ] )	"help"/EFFECT	("Animals" "grow" "")
 ;;; Plants get their[Plants] nutrients from the soil which helps them[Plants] grow and perform photosynthesis.
 ("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "grow" "")
@@ -117,7 +117,7 @@
 "the soil"	"helps"/FUNCTION	("Plants" "grow" "")
 "the soil"	"helps"/FUNCTION	("Plants" "perform" "photosynthesis")
 ;;; Photosynthesis is the process by which plants make their[Plants] own food.
-("" photosynthesize "")	"by which"/FUNCTION	("plants" "make" "")
+("" "photosynthesize" "")	"by which"/FUNCTION	("plants" "make" "")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "")
 "Photosynthesis"	"is"/EXAMPLE	"the process"
 ;;; All living things do some type of breathing.
@@ -126,7 +126,7 @@
 ("Most animals" "take in" "oxygen" [ "through their[Most animals] mouths" ] )
 ;;; Fish breathe through gills.
 ;;; Both inhale take in oxygen which is used to create energy.
-("Both"/?x "inhale take in" "oxygen")	"used ("Both" "inhale take in" "oxygen")
+("Both" "inhale take in" "oxygen")
 ;;; Oxygen is found in the air all around us.
 ;;; Animals exhale give off carbon dioxide which is used by plants.
 ("Animals" "exhale give off" "carbon dioxide")
@@ -171,7 +171,7 @@
 ;;; Plants provide animals with food and gases oxygen that their[Plants are living organisms] bodies need to grow breathe and make energy.
 ("Plants" "provide" "animals with food and gases oxygen")
 ;;; Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using.
-("" photosynthesize "")	"by which"/FUNCTION	("plants" "make" "their[Plants are living organisms] own food")
+("" "photosynthesize" "")	"by which"/FUNCTION	("plants" "make" "their[Plants are living organisms] own food")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "their[Plants are living organisms] own food")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "oxygen")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "water")
@@ -192,7 +192,7 @@
 ("Humans" "inhale breathe in" "exhale breathe out carbon dioxide")
 ;;; The leaves of the plants take in carbon dioxide from the environment.
 ;;; They[The leaves of the plants] give off oxygen which animals need to survive.
-("The leaves of the plants" "give off" "oxygen")	"need ("The leaves of the plants" "give off" "oxygen")
+("The leaves of the plants" "give off" "oxygen")
 ;;; Water is taken in from the environment through the roots in the ground and is necessary for the plant to produce food.
 ;;; Nutrients are taken in through the roots from the soil and help the plant survive.
 ("the plant"/?x "take" "Nutrients" [ "through the roots", "from the soil" ] )	"help"/EFFECT	("the plant"/?x "survive" "")
@@ -230,7 +230,7 @@
 ;;; Leaves make food using water sunlight nutrients and chlorophyll.
 ;;; The flower is found atop the stem or stalk.
 ;;; The flower is responsible for reproduction.
-"The flower"	"responsible for"/FUNCTION	("" reproduce "")
+"The flower"	"responsible for"/FUNCTION	("" "reproduce" "")
 ;;; With the help of animals insects and birds rain and wind flowers can be pollinated fertilized so that seeds can be formed that will grow into new plants.
 ("" "pollinate" "flowers" [ "With the help of animals insects and birds rain and wind" ] )	"so that"/EFFECT	("" "form" "seeds" [ "that will grow into new plants" ] )
 ;;; The flower is the reproductive part of the plant.
@@ -284,7 +284,7 @@
 "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death"	"is called"/EXAMPLE	"its[The length of time from the beginning of the plant to its death] life span"
 ;;; Each kind of plant goes through its[Each kind of plant] own stages of growth and development which includes seed young plant or seedling and mature plant.
 ;;; Growth is the process by which plants increase in size.
-("" grow "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
+("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	"the process"
 ;;; Animals are living organisms.
@@ -311,7 +311,7 @@
 ;;; These organ systems work together to make up the organism.
 ("These organ systems"/?x "work" "" [ "together" ] )	"to"/EFFECT	("These organ systems"/?x "make up" "the organism")
 ;;; Each organ system has a specific function that helps the organism to survive.
-("Each organ system" "have" "a specific function")	"helps ("Each organ system" "have" "a specific function")
+("Each organ system" "have" "a specific function")
 "a specific function"	"helps"/FUNCTION	("the organism" "survive" "")
 ;;; The body systems work like a machine and each system works to help the animal grow create energy and survive.
 ("each system" "work" "" [ "to help the animal grow create energy and survive" ] )	"to help"/EFFECT	("the animal" "grow" "")
@@ -461,7 +461,7 @@
 ;;; Humans shiver when it[Behavior is the way that organisms respond to changes in their environment or to a stimulus] is cold and by doing so we create more heat in an attempt to warm our[we] bodies.
 ("Humans" "shiver" "")	"when"/WHEN	("the way" "be" "cold")
 ("Humans" "shiver" "")	"by doing so"/EFFECT	("we" "create" "heat" [ "in an attempt" ] )
-("we"/?x "create" "heat" [ "in an attempt" ] )	"in"/EFFECT	("we"/?x "warm" "our[we] bodies")
+("we"/?x "create" "heat" [ "in an attempt" ] )	"to"/EFFECT	("we"/?x "warm" "our[we] bodies")
 ;;; In the hot weather our[we] bodies sweat perspiration bringing water to our[we] skin.
 ("our[we] bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our[we] bodies"/?x "bring" "water" [ "to our[we] skin" ] )
 ;;; When air brushes across our[we] wet skin it[our wet skin] cools down our[we] body.
@@ -521,7 +521,7 @@
 "Body fat"	"helps"/FUNCTION	("animals" "get" "long periods of time with little food" [ "through" ] )
 "Body fat"	"is"/EXAMPLE	"a form of stored energy"
 ;;; Some animals gather food in preparation for the long winter.
-("Some animals"/?x "gather" "food")	"in preparation for"/EFFECT	("Some animals"/?x "prepare" "" [ "for the long winter" ] )
+("Some animals" "gather" "food")
 ;;; Squirrels collect acorns.
 ("Squirrels" "collect" "acorns")
 ;;; Some animals live a very different life in the warm weather than in the cold weather.
@@ -572,10 +572,10 @@
 "very large ear flaps"	"help"/FUNCTION	("Elephants" "hear" "")
 ;;; Because of their[Elephants] size elephants move very slowly so having good hearing helps protect them[Elephants] from predators.
 "their[Elephants] size"	"because of"/CAUSE	("elephants" "move" "" [ "of their[Elephants] size", "so having good hearing helps protect them[Elephants] from predators", "very slowly" ] )
-("" hear "")	"helps"/FUNCTION	("good hearing" "protect" "Elephants" [ "from predators" ] )
+("" "hear" "")	"helps"/FUNCTION	("good hearing" "protect" "Elephants" [ "from predators" ] )
 ;;; All organisms have variations and because of these variations individuals of a species may have an advantage in surviving and reproducing.
 ("All organisms" "have" "variations")
-("" vary "")	"because of"/CAUSE	("individuals of a species" "have" "an advantage" [ "of these variations", "in surviving", "in surviving" ] )
+"these variations"	"because of"/CAUSE	("individuals of a species" "have" "an advantage" [ "of these variations", "in surviving", "in surviving" ] )
 ;;; Diversity is the many different types of animals within the same species.
 "Diversity"	"is"/EXAMPLE	"the many different types of animals within the same species"
 "Diversity"	"is"/EXAMPLE	"the many different types of animals within the same species"
@@ -626,8 +626,8 @@
 ;;; The health growth and development of organisms are affected by environmental conditions such as the availability of food air water space shelter heat and sunlight.
 "the availability of food air water space shelter heat and sunlight"	"such as"/EXAMPLE	"environmental conditions"
 ;;; Growth is the process by which plants and animals increase in size.
-("" grow "")	"by which"/FUNCTION	("plants" "increase" "in size")
-("" grow "")	"by which"/FUNCTION	("animals" "increase" "in size")
+("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "in size")
+("" "grow" "")	"by which"/FUNCTION	("animals" "increase" "in size")
 "Growth"	"is"/EXAMPLE	("plants" "increase" "in size")
 "Growth"	"is"/EXAMPLE	("animals" "increase" "in size")
 "Growth"	"is"/EXAMPLE	"the process"
@@ -638,7 +638,7 @@
 ("an organism" "move" "" [ "into an adult stage of life" ] )	"As"/EFFECT	("they" "continue" "")
 ;;; This is proven by how their[they] hair and nails continue to grow and need to be maintained.
 ;;; When an animal breaks a bone it is able to heal over time.
-("an animal"/?x "break" "a bone")	"able ("an animal" "break" "a bone")
+("an animal" "break" "a bone")
 ;;; This healing is done by the body growing new bone cells to repair the break.
 ("the body"/?x "do" "This healing")	""/EFFECT	("the body"/?x "grow" "")
 ("the body" "grow" "")	"to"/EFFECT	("new bone cells" "repair" "the break")
@@ -794,7 +794,7 @@
 ("" "clean" "it")	"to"/REQUIREMENT	("" "prevent" "any bacteria" [ "from creating an infection disease" ] )
 ("you" "get" "a cut")	"If"/EFFECT	("" "clean" "it")
 ;;; After the wound is cleaned it[the wound] should be covered with a bandage to reduce the chance of getting infected.
-("" "cover" "" [ "with a bandage" ] )	"with"/EFFECT	("" "reduce" "the chance of getting infected")
+("" "cover" "" [ "with a bandage" ] )	"to"/EFFECT	("" "reduce" "the chance of getting infected")
 ;;; You have only one chance to live a healthy life style.
 ("You"/?x "have" "one chance")	"to"/EFFECT	("You"/?x "live" "a healthy life style")
 ;;; The best way to do this in addition to eating healthfully exercising and getting rest is to avoid do not take or try harmful substances.
@@ -806,11 +806,11 @@
 ;;; The chemicals from smoking can also cause very serious diseases such as lung cancer.
 "lung cancer"	"such as"/EXAMPLE	"very serious diseases"
 ;;; Smoking can also cause skin and teeth to turn an unhealthy color.
-("" smoke "")	"cause"/CAUSE	("skin" "turn" "an unhealthy color")
-("" smoke "")	"cause"/CAUSE	("teeth" "turn" "an unhealthy color")
+"Smoking"	"cause"/CAUSE	("skin" "turn" "an unhealthy color")
+"Smoking"	"cause"/CAUSE	("teeth" "turn" "an unhealthy color")
 ;;; Drinking alcohol and/or taking illicit not prescribed drugs are also very harmful to your body.
 ;;; In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood.
-("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"In"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
+("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"to"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
 ("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"in order for"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
 "which"	"is"/EXAMPLE	("the liver" "clean" "the blood")
 "which"	"is"/EXAMPLE	("the organ" "clean" "the blood")
@@ -834,7 +834,7 @@
 ;;; Meats and Beans hamburger chicken eggs tuna nuts.
 ;;; Oils and Sweets butter oil sugars in very limited amounts.
 ;;; The MyPyramid is an easy way to plan the foods you are going to eat.
-("you"/?x "plan" "the foods")	"going ;;; Each part of the pyramid represents the proper amounts of each type of food that will help you stay healthy.
+;;; Each part of the pyramid represents the proper amounts of each type of food that will help you stay healthy.
 ("Each part of the pyramid" "represent" "the proper amounts of each type of food that will help you stay healthy")
 "each type of food"	"help"/FUNCTION	("you" "stay" "healthy")
 ;;; Also you should keep in mind that regular exercise is necessary to live a healthy lifestyle.
@@ -1022,7 +1022,7 @@
 ;;; Humans are dependent upon the environment for food shelter and energy.
 ("Humans" "be" "dependent" [ "upon the environment for food shelter and energy" ] )	"for"/PURPOSE	"food"
 ("Humans" "be" "dependent" [ "upon the environment for food shelter and energy" ] )	"for"/PURPOSE	"shelter"
-("Humans" "be" "dependent" [ "upon the environment for food shelter and energy" ] )	"for"/PURPOSE	("" energize "")
+("Humans" "be" "dependent" [ "upon the environment for food shelter and energy" ] )	"for"/PURPOSE	"energy"
 ;;; Humans can live in many different environments.
 ;;; Some people live in very cold regions.
 ;;; Others live in tropical areas where it[the environment for food shelter and energy] can get very warm.
@@ -1085,7 +1085,7 @@
 ("farmers" "plant" "fruits")	"For"/EFFECT	("there" "be" "enough food")
 ("farmers" "plant" "vegetables")	"For"/EFFECT	("there" "be" "enough food")
 ;;; Animals are raised on farms for human consumption to eat.
-("" "raise to eat" "Animals" [ "on farms for human consumption" ] )	"for"/PURPOSE	("" consume "")
+("" "raise to eat" "Animals" [ "on farms for human consumption" ] )	"for"/PURPOSE	"human consumption"
 ;;; In addition to food shelter and energy humans manufacture produce goods that make life more comfortable.
 ("humans" "manufacture" "goods" [ "to food", "to food", "to food" ] )
 ("humans" "manufacture" "produce" [ "to food", "to food", "to food" ] )
@@ -1100,9 +1100,9 @@
 ("Humans" "develop" "various means of transportation")	"so that"/EFFECT	("humans" "bring" "other goods" [ "to them[humans]", "than living at the site where they[humans] are made", "rather" ] )
 ;;; While it is nice to have cars planes and trains for transportation these machines give off gases that are not helpful to the atmosphere.
 ("these machines" "give off" "gases" [ "While it is nice" ] )
-("" "have" "cars for transportation")	"for"/PURPOSE	("" transport "")
-("" "have" "planes")	"for"/PURPOSE	("" transport "")
-("" "have" "trains")	"for"/PURPOSE	("" transport "")
+("" "have" "cars for transportation")	"for"/PURPOSE	"transportation"
+("" "have" "planes")	"for"/PURPOSE	"transportation"
+("" "have" "trains")	"for"/PURPOSE	"transportation"
 ;;; Building shelters using energy manufacturing goods and the various forms of transportation are some of the ways humans have created pollution.
 ;;; Pollution is found in the air on the land and in the water.
 ;;; Humans have changed their[humans] environment by developing communities in areas where living things had to struggle to survive.
@@ -1298,10 +1298,10 @@
 ;;; Heat is the energy that gives us warmth.
 ;;; We[us] can get heat energy from the sun.
 ;;; Electric energy is energy that allows us[us] to turn on lights ring door bells and so on.
-("" energize "")	"allows"/FUNCTION	("us" "turn on" "lights")
-("" energize "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
-("" energize "")	"allows"/FUNCTION	("us" "turn on" "lights")
-("" energize "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
+("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "lights")
+("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
+("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "lights")
+("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
 ;;; Sound is energy noise that we[us] hear when matter vibrates and the particles in the matter hit each other.
 ("us" "hear" "Sound" [ "the particles in the matter hit each other" ] )	"when"/WHEN	("matter" "vibrate" "")
 ("us" "hear" "energy" [ "the particles in the matter hit each other" ] )	"when"/WHEN	("matter" "vibrate" "")
@@ -1428,7 +1428,7 @@
 ;;; The poles are labeled north and south.
 ;;; If you were to take two magnets the north end of one magnet would be attracted to the south end of the other.
 ;;; If however you were to try and put the two north ends of two different magnets together you would feel the force that causes the magnets to be repelled pushed away from one another.
-("you" "feel" "the force")	"causes ("you" "feel" "the force")
+("you" "feel" "the force")
 "the force"	"causes"/CAUSE	("" "repel" "the magnets" [ "from one another" ] )
 ;;; The distance between two magnets or a magnet and another metal object has an effect on the force of attraction.
 ("The distance between two magnets or a magnet and another metal object" "have" "an effect on the force of attraction")
@@ -1443,7 +1443,7 @@
 ;;; If an object is thrown into the air the force used will only allow it[A magnet is an object that attracts metals] to travel a certain distance before the gravitational attraction between the object and the Earth causes it[the gravitational attraction between the object and the Earth] to fall back down to Earth 's surface.
 ("the force"/?x "throw" "an object" [ "into the air" ] )	"If"/EFFECT	("the force"/?x "allow" "" [ "only" ] )
 "the force"	"allow"/FUNCTION	("an object" "travel" "a certain distance" [ "before the gravitational attraction between the object and the Earth causes" ] )
-("" attract "")	"causes"/CAUSE	("the gravitational attraction between the object and the Earth" "fall" "" [ "back", "down to Earth 's surface" ] )
+"the gravitational attraction between the object and the Earth"	"causes"/CAUSE	("the gravitational attraction between the object and the Earth" "fall" "" [ "back", "down to Earth 's surface" ] )
 ;;; In the previous chapter we learned about work and energy.
 ;;; Mechanical energy is the energy produced when two objects move together.
 "Mechanical energy"	"is"/EXAMPLE	("the energy" "produce" "")
@@ -1455,7 +1455,7 @@
 ;;; In our[we] everyday lives we[we] exert force to do work.
 ("we"/?x "exert" "force" [ "In our[we] everyday lives" ] )	"to"/EFFECT	("we"/?x "do" "work")
 ;;; Often the force we[we] need in order to do the work is too much for one person and we[we] need help.
-("the force" "be" "much" [ "too" ] )	"for"/PURPOSE	("" personify "")
+("the force" "be" "much" [ "too" ] )	"for"/PURPOSE	"one person"
 ("we"/?x "need" "the force")	"in order to"/EFFECT	("we"/?x "do" "the work")
 ;;; When this happens we[we] use tools or machines to help us[we] do work.
 ("we"/?x "use" "tools" [ "to help us[we] do work", "When this happens" ] )	"to help"/EFFECT	("we"/?x "work" "")
@@ -1521,13 +1521,13 @@
 ("The apparent movement of these objects" "give" "us" [ "an indication of the passage of time" ] )
 ;;; The sun moon and certain stars can be seen every day and night in our[us] sky.
 ;;; We[us] see different planets throughout the year because of the motion of the Earth and the movement of the planets around the sun.
-("" move "the Earth")	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the motion of the Earth" ] )
-("" move "the planets around the sun")	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the motion of the Earth" ] )
+"the motion of the Earth"	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the motion of the Earth" ] )
+"the movement of the planets around the sun"	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the motion of the Earth" ] )
 ;;; The sun is considered the center of our[us] solar system and all objects move around the sun.
 ;;; But the sun appears to rise and set each day.
 ;;; This is not because of the motion of the sun but rather the motion of the Earth.
-("" move "the sun")	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the sun" ] )
-("" move "the Earth")	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the sun" ] )
+"the motion of the sun"	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the sun" ] )
+"the motion of the Earth"	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the sun" ] )
 ;;; The Earth rotates or spins on its[Earth] axis once every 24 hours.
 ;;; This rotation is what results in day and night on Earth.
 ;;; It[This rotation] is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west.
@@ -1571,7 +1571,7 @@
 ;;; The moon makes a complete orbit around the Earth once every 29 1/2 days.
 ;;; This means that it[This] takes approximately one month for the moon to completely revolve around the Earth.
 ;;; Because of the moon 's movement and the reflected light from the sun we see different portions of the moon at different times during the 29 1/2 days.
-("" move "")	"because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
+"the moon 's movement from the sun"	"because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
 "the reflected light"	"because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
 ;;; The different portions of the moon that we[we] see are called phases.
 "The different portions of the moon"	"are called"/EXAMPLE	"phases"
@@ -1647,7 +1647,7 @@
 ("The information"/?x "be" "useful")	"in"/EFFECT	("The information"/?x "determine" "future weather conditions")
 ;;; Precipitation is the term used to describe water moisture that falls from the sky.
 "the term"	"used to"/FUNCTION	("the term"/?x "describe" "water")
-("" precipitate "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "water")
+("" "precipitate" "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "water")
 "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
 "Precipitation"	"is"/EXAMPLE	"the term"
 ;;; Different forms of precipitation include.
@@ -1762,17 +1762,17 @@
 ;;; Each phase change that water goes through has a specific name.
 ("Each phase change" "have" "a specific name")
 ;;; Freezing involves changing water from its[Each phase change that water goes through] liquid state to its[its liquid state] solid state ice by the removal of heat.
-("" remove "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[Each phase change that water goes through] liquid state", "to its[its liquid state] solid state" ] )
+("" "remove" "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[Each phase change that water goes through] liquid state", "to its[its liquid state] solid state" ] )
 ;;; Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat.
 "Melting"	"is"/EXAMPLE	"the opposite of freezing"
-("" add "heat")	"by"/ENABLE	("Melting" "change" "water" [ "from its[Melting] solid state", "to a liquid state" ] )
+("" "add" "heat")	"by"/ENABLE	("Melting" "change" "water" [ "from its[Melting] solid state", "to a liquid state" ] )
 ;;; Evaporation involves changing water from its[Melting] liquid state to a gaseous state vapor.
 ;;; Imagine the puddles that form on your street after a heavy rain.
 ;;; After a few hours or days those puddles disappear.
 ;;; Where did they[the puddles that form on your street after a heavy rain] go.
 ;;; The energy from the sun heated the water and caused it[energy which it needs to survive] to evaporate change from liquid water to water vapor.
 ("The energy from the sun" "heat" "the water")
-("" energize "")	"caused"/CAUSE	("energy" "evaporate" "change from liquid water to water vapor")
+"The energy from the sun"	"caused"/CAUSE	("energy" "evaporate" "change from liquid water to water vapor")
 ;;; The water vapor then entered the air.
 ("The water vapor" "enter" "the air" [ "then" ] )
 ;;; Condensation involves changing water from its[The water vapor] gaseous state vapor to its[its gaseous state vapor] liquid state.
@@ -1838,7 +1838,7 @@
 ;;; The force of waves breaking on beaches and cliffs can also change landforms.
 ("The force of waves" "change" "landforms")
 ;;; Erosion is the process by which soil and or other Earth materials are moved from one place to another.
-("" erode "")	"by which"/FUNCTION	("Erosion"/?x "soil" "")
+("" "erode" "")	"by which"/FUNCTION	("Erosion"/?x "soil" "")
 "Erosion"	"is"/EXAMPLE	("" "soil" "")
 "Erosion"	"is"/EXAMPLE	("" "move" "other Earth materials" [ "from one place", "to another" ] )
 "Erosion"	"is"/EXAMPLE	"the process"
@@ -2201,24 +2201,24 @@
 ;;; Roots secure the plant in the soil and bring in water and nutrients for survival.
 ("Roots" "secure" "the plant" [ "in the soil" ] )
 ;;; Airplanes are not a common method for the dispersal of seeds.
-("Airplanes" "be" "not a common method")	"for"/PURPOSE	("" disperse "seeds")
+("Airplanes" "be" "not a common method")	"for"/PURPOSE	"the dispersal of seeds"
 "Airplanes"	"are"/EXAMPLE	"not a common method for the dispersal of seeds"
 ;;; The typical life cycle of a plant is seed seedling and plant.
 ;;; An example of a plant responding to a change in its[The typical life cycle of a plant] environment is leaves falling off trees in fall.
 ("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "leave" "")	""/EFFECT	("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "fall off" "trees" [ "in fall" ] )
 ;;; The part of a plant that is responsible for reproduction is the flower.
 "The part of a plant"	"is"/EXAMPLE	"the flower"
-"that"	"responsible for"/FUNCTION	("" reproduce "")
+"that"	"responsible for"/FUNCTION	("" "reproduce" "")
 ;;; The stem provides support for the plant.
 ("The stem" "provide" "support for the plant")
 ;;; The process by which a plant increases in size is known as growth.
 ;;; The digestive system takes in nutrients.
 ("The digestive system" "take" "in nutrients")
 ;;; The respiratory system is responsible for breathing.
-("" systemize "")	"responsible for"/FUNCTION	("" breathe "")
+("" "systemize" "")	"responsible for"/FUNCTION	("" "breathe" "")
 ;;; The circulatory system pumps blood.
 ;;; The Locomotion system is responsible for movement.
-("" systemize "")	"responsible for"/FUNCTION	("" move "")
+("" "systemize" "")	"responsible for"/FUNCTION	("" "move" "")
 ;;; The urinary system eliminates chemical waste.
 ("The urinary system" "eliminate" "chemical waste")
 ;;; The five senses are controlled by the nervous system.
@@ -2228,7 +2228,7 @@
 ("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "survive" "")
 ;;; The mouth helps in digestion and respiration.
 ;;; The urinary system is responsible for getting rid of chemical waste and water.
-("" systemize "")	"responsible for"/FUNCTION	("The urinary system"/?x "rid" "" [ "of chemical waste", "of chemical waste" ] )
+("" "systemize" "")	"responsible for"/FUNCTION	("The urinary system"/?x "rid" "" [ "of chemical waste", "of chemical waste" ] )
 ;;; The locomotion system protects the organs and provides structure for the body.
 ("The locomotion system" "protect" "the organs")
 ;;; All animals have different structures that have different jobs or functions to help in growth survival and reproduction.
@@ -2294,10 +2294,10 @@
 ("A fish" "have" "fin")	"helps"/EFFECT	("animals with gills" "swim" "")
 "a flipper"	"helps"/FUNCTION	("animals with gills" "swim" "")
 ;;; Birds have wings that are long and angled to help them[birds] fly.
-("Birds"/?x "have" "wings")	"long ("Birds" "have" "wings")
+("Birds" "have" "wings")
 ("wings" "be" "long" [ "to help them[birds] fly" ] )	"to help"/EFFECT	("birds" "fly" "")
 ;;; Horses have strong legs and hooves that enable them[Horses] to run on many different landscapes.
-("Horses"/?x "have" "strong legs")	"enable ("Horses"/?x "have" "hooves")	"enable ("Horses" "have" "strong legs")
+("Horses" "have" "strong legs")
 ("Horses" "have" "hooves")
 ("Horses" "have" "strong legs")
 ("Horses" "have" "hooves")
@@ -2389,17 +2389,17 @@
 ;;; The snake is a predator.
 "The snake"	"is"/EXAMPLE	"a predator"
 ;;; Plants depend on the sun for energy and on the water and soil for nutrients to survive and perform photosynthesis.
-("Plants" "depend" "" [ "on the sun for energy", "on the water and soil for nutrients to survive and perform photosynthesis" ] )	"for"/PURPOSE	("" energize "")
+("Plants" "depend" "" [ "on the sun for energy", "on the water and soil for nutrients to survive and perform photosynthesis" ] )	"for"/PURPOSE	"energy"
 ;;; Animals need plants for food and energy.
 ("Animals" "need" "plants for food and energy")	"for"/PURPOSE	"food"
-("Animals" "need" "plants for food and energy")	"for"/PURPOSE	("" energize "")
+("Animals" "need" "plants for food and energy")	"for"/PURPOSE	"energy"
 ;;; Plants give off oxygen for animals to breathe in.
-("Plants" "give off" "oxygen")	"for"/EFFECT	("animals" "breathe" "")
+("Plants" "give off" "oxygen")	"to"/EFFECT	("animals" "breathe" "")
 ;;; Animals give off carbon dioxide for plants to take in.
-("Animals" "give off" "carbon dioxide")	"for"/EFFECT	("plants" "take in" "")
+("Animals" "give off" "carbon dioxide")	"to"/EFFECT	("plants" "take in" "")
 ;;; Humans need plant and animals for nutrition.
-("Humans" "need" "plant for nutrition")	"for"/PURPOSE	("" nutrify "")
-("Humans" "need" "animals")	"for"/PURPOSE	("" nutrify "")
+("Humans" "need" "plant for nutrition")	"for"/PURPOSE	"nutrition"
+("Humans" "need" "animals")	"for"/PURPOSE	"nutrition"
 ;;; Some animals use nonliving materials for shelter.
 ("Some animals" "use" "nonliving materials" [ "for shelter" ] )
 ;;; A bird or snake is a predator.
@@ -2417,7 +2417,7 @@
 ;;; Humans are dependent upon their[humans] environment for food shelter and energy.
 ("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	"food"
 ("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	"shelter"
-("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	("" energize "")
+("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	"energy"
 ;;; Cars and trucks create gases that are harmful to the atmosphere.
 ;;; Humans can help save their[humans] environment by recycling planting trees preventing litter limiting use of cars creating new forms of energy and conserving energy.
 "Humans"	"help"/FUNCTION	("Humans" "save" "their[humans] environment")
@@ -2460,11 +2460,11 @@
 ("The gas phase of matter" "take" "the shape of a closed container")
 ;;; A bike rolling down a hill is an example of kinetic energy.
 "A bike"	"example of"/EXAMPLE	"kinetic energy"
-("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "exemplify" [ "of kinetic energy" ] )
+("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
 ;;; A plane flying is an example of kinetic energy.
 "A plane"	"example of"/EXAMPLE	"kinetic energy"
-("A plane"/?x "fly" "A plane")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
-("A plane"/?x "fly" "")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
+("A plane"/?x "fly" "A plane")	""/EFFECT	("A plane"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
+("A plane"/?x "fly" "")	""/EFFECT	("A plane"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
 ;;; A snowball melting in your hand is an example of heat energy.
 "A snowball melting in your hand"	"example of"/EXAMPLE	"heat energy"
 ;;; Banging a drum is an example of mechanical energy.
@@ -2485,7 +2485,7 @@
 "A car engine"	"example of"/EXAMPLE	"chemical energy changing to mechanical energy"
 ;;; A ball rolling down a hill is an example of kinetic energy.
 "A ball"	"example of"/EXAMPLE	"kinetic energy"
-("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "exemplify" [ "of kinetic energy" ] )
+("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
 ;;; Energy from the sun is called solar energy.
 "Energy from the sun"	"is called"/EXAMPLE	"solar energy"
 ;;; The energy transformation that occurs when you ring a door bell is electrical energy to sound.
@@ -2537,7 +2537,7 @@
 "A barometer"	"is used"/FUNCTION	("A barometer"/?x "measure" "air pressure")
 ;;; Precipitation is the term used to describe water falling from the sky.
 "the term"	"used to"/FUNCTION	("the term"/?x "describe" "")
-("" precipitate "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "")
+("" "precipitate" "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "")
 "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
 "Precipitation"	"is"/EXAMPLE	"the term"
 ;;; Snow is a form of precipitation.
@@ -2665,8 +2665,8 @@
 "An example of a predator and prey"	"is"/EXAMPLE	"a hawk and a mouse"
 ;;; The phases of matter are solid liquid gas.
 ;;; Growth is a process by which plants and animals increase in size.
-("" grow "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
-("" grow "")	"by which"/FUNCTION	("animals" "increase" "" [ "in size" ] )
+("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
+("" "grow" "")	"by which"/FUNCTION	("animals" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("animals" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	"a process"
@@ -2676,7 +2676,6 @@
 "The leaves"	"are"/EXAMPLE	"the part of the plant that is responsible for making food"
 "that"	"responsible for"/FUNCTION	("that"/?x "make" "food")
 ;;; Growth taking in nutrients breathing and reproduction are the life processes of all living things.
-("Growth"/?x "take in" "nutrients")	""/EFFECT	("Growth"/?x "breathe" "")
 "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
 "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
 ;;; An example of the transfer of chemical energy to electrical energy is between battery and light bulb.

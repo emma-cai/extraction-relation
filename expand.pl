@@ -80,6 +80,9 @@ tokens_text_list([Token|Rest],[TokenText,' '|RestText]) :-
 tokens_text(Tokens,Text) :-
 	tokens_text_list(Tokens,List),
 	atomic_list_concat(List,Text).
+tokens_text_quoted(Tokens,QuotedText) :-
+	tokens_text(Tokens,Text),
+	format(atom(QuotedText), '"~w"', [Text]).
 
 write_tokens(Tokens) :-
 	tokens_text(Tokens,Text),
@@ -113,6 +116,7 @@ lemmas_text_list([T],[L]) :-
 	( rdf(T,token:lemma,literal(L))
 	; rdf(T,token:text,literal(L)) ), % allow for missing lemmas in Sapir
 	!.
+lemmas_text_list([T],[T]) :- !. % not a token
 lemmas_text_list([T|Rest],[Text,' '|RestText]) :-
 	lemmas_text_list([T],[Text]),
 	lemmas_text_list(Rest,RestText).
@@ -120,7 +124,10 @@ lemmas_text_list([T|Rest],[Text,' '|RestText]) :-
 lemmas_text(Tokens,Text) :-
 	lemmas_text_list(Tokens,List),
 	atomic_list_concat(List,Text).
+lemmas_text_quoted(Tokens,QuotedText) :-
+	lemmas_text(Tokens,Text),
+	format(atom(QuotedText), '"~w"', [Text]).
 
 write_lemmas(Lemmas) :-
-	lemmas_text(Lemmas,Text),
+	lemmas_text0(Lemmas,Text),
 	write(Text).
