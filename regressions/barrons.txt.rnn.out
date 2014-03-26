@@ -24,6 +24,7 @@
 ;;; Oxygen allows the animal to make and use energy which it[the animal] needs to survive.
 "Oxygen"	"allows"/FUNCTION	("the animal" "make" "energy")
 "Oxygen"	"allows"/FUNCTION	("the animal" "use" "")
+("the animal"/?x "make" "energy")	"needs to"/EFFECT	("the animal"/?x "survive" "")
 ;;; Animals also need water to survive.
 ("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
 ;;; Water is used to break down and move materials throughout the body.
@@ -112,8 +113,8 @@
 ("Animals" "take in" "food" [ "as a nutrient" ] )	"to"/EFFECT	("" "give" "Animals" [ "energy" ] )
 ("" "give" "Animals" [ "energy" ] )	"help"/EFFECT	("Animals" "grow" "")
 ;;; Plants get their[Plants] nutrients from the soil which helps them[Plants] grow and perform photosynthesis.
-("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "grow" "")
-("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "perform" "photosynthesis")
+("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps "/EFFECT	("Plants" "grow" "")
+("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps "/EFFECT	("Plants" "perform" "photosynthesis")
 "the soil"	"helps"/FUNCTION	("Plants" "grow" "")
 "the soil"	"helps"/FUNCTION	("Plants" "perform" "photosynthesis")
 ;;; Photosynthesis is the process by which plants make their[Plants] own food.
@@ -126,7 +127,7 @@
 ("Most animals" "take in" "oxygen" [ "through their[Most animals] mouths" ] )
 ;;; Fish breathe through gills.
 ;;; Both inhale take in oxygen which is used to create energy.
-("Both" "inhale take in" "oxygen")
+("Both"/?x "inhale take in" "oxygen")	"used to"/EFFECT	("Both"/?x "create" "energy")
 ;;; Oxygen is found in the air all around us.
 ;;; Animals exhale give off carbon dioxide which is used by plants.
 ("Animals" "exhale give off" "carbon dioxide")
@@ -192,7 +193,7 @@
 ("Humans" "inhale breathe in" "exhale breathe out carbon dioxide")
 ;;; The leaves of the plants take in carbon dioxide from the environment.
 ;;; They[The leaves of the plants] give off oxygen which animals need to survive.
-("The leaves of the plants" "give off" "oxygen")
+("The leaves of the plants" "give off" "oxygen")	"need to"/EFFECT	("animals" "survive" "")
 ;;; Water is taken in from the environment through the roots in the ground and is necessary for the plant to produce food.
 ;;; Nutrients are taken in through the roots from the soil and help the plant survive.
 ("the plant"/?x "take" "Nutrients" [ "through the roots", "from the soil" ] )	"help"/EFFECT	("the plant"/?x "survive" "")
@@ -311,7 +312,7 @@
 ;;; These organ systems work together to make up the organism.
 ("These organ systems"/?x "work" "" [ "together" ] )	"to"/EFFECT	("These organ systems"/?x "make up" "the organism")
 ;;; Each organ system has a specific function that helps the organism to survive.
-("Each organ system" "have" "a specific function")
+("Each organ system" "have" "a specific function")	"helps to"/EFFECT	("the organism" "survive" "")
 "a specific function"	"helps"/FUNCTION	("the organism" "survive" "")
 ;;; The body systems work like a machine and each system works to help the animal grow create energy and survive.
 ("each system" "work" "" [ "to help the animal grow create energy and survive" ] )	"to help"/EFFECT	("the animal" "grow" "")
@@ -437,7 +438,7 @@
 ;;; We call this camouflage which helps protect the animal from enemies.
 "this camouflage"	"helps"/FUNCTION	("this camouflage" "protect" "the animal" [ "from enemies" ] )
 ;;; Think of a lion 's golden fur which helps it[a lion 's golden fur which helps it blend into the desert landscape] blend into the desert landscape.
-("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps"/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
+("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps "/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
 "a lion 's golden fur"	"helps"/FUNCTION	("a lion 's golden fur" "blend" "" [ "into the desert landscape" ] )
 ;;; Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings.
 "Chameleons"	"are"/EXAMPLE	("lizards" "change" "colors")
@@ -568,7 +569,7 @@
 ;;; Elephants have long trunks that enable them[Elephants] to grab food and drink water.
 "long trunks"	"enable"/FUNCTION	("Elephants" "grab" "food and drink water")
 ;;; They[Elephants] also have very large ear flaps that help them[Elephants] hear.
-("Elephants"/?x "have" "very large ear flaps")	"help"/EFFECT	("Elephants"/?x "hear" "")
+("Elephants"/?x "have" "very large ear flaps")	"help "/EFFECT	("Elephants"/?x "hear" "")
 "very large ear flaps"	"help"/FUNCTION	("Elephants" "hear" "")
 ;;; Because of their[Elephants] size elephants move very slowly so having good hearing helps protect them[Elephants] from predators.
 "their[Elephants] size"	"because of"/CAUSE	("elephants" "move" "" [ "of their[Elephants] size", "so having good hearing helps protect them[Elephants] from predators", "very slowly" ] )
@@ -638,7 +639,7 @@
 ("an organism" "move" "" [ "into an adult stage of life" ] )	"As"/EFFECT	("they" "continue" "")
 ;;; This is proven by how their[they] hair and nails continue to grow and need to be maintained.
 ;;; When an animal breaks a bone it is able to heal over time.
-("an animal" "break" "a bone")
+("an animal"/?x "break" "a bone")	"able to"/EFFECT	("an animal"/?x "heal" "" [ "over time" ] )
 ;;; This healing is done by the body growing new bone cells to repair the break.
 ("the body"/?x "do" "This healing")	""/EFFECT	("the body"/?x "grow" "")
 ("the body" "grow" "")	"to"/EFFECT	("new bone cells" "repair" "the break")
@@ -834,6 +835,7 @@
 ;;; Meats and Beans hamburger chicken eggs tuna nuts.
 ;;; Oils and Sweets butter oil sugars in very limited amounts.
 ;;; The MyPyramid is an easy way to plan the foods you are going to eat.
+("you"/?x "plan" "the foods")	"going to"/EFFECT	("you"/?x "eat" "")
 ;;; Each part of the pyramid represents the proper amounts of each type of food that will help you stay healthy.
 ("Each part of the pyramid" "represent" "the proper amounts of each type of food that will help you stay healthy")
 "each type of food"	"help"/FUNCTION	("you" "stay" "healthy")
@@ -1428,7 +1430,7 @@
 ;;; The poles are labeled north and south.
 ;;; If you were to take two magnets the north end of one magnet would be attracted to the south end of the other.
 ;;; If however you were to try and put the two north ends of two different magnets together you would feel the force that causes the magnets to be repelled pushed away from one another.
-("you" "feel" "the force")
+("you" "feel" "the force")	"causes to"/EFFECT	("" "repel" "the magnets" [ "from one another" ] )
 "the force"	"causes"/CAUSE	("" "repel" "the magnets" [ "from one another" ] )
 ;;; The distance between two magnets or a magnet and another metal object has an effect on the force of attraction.
 ("The distance between two magnets or a magnet and another metal object" "have" "an effect on the force of attraction")
@@ -2290,17 +2292,15 @@
 ;;; Pelicans swoop into the water and are able to collect many fish in their[Feeding animals that have lost their natural resources due to the development of stores and homes] large beaks.
 ;;; The environment that animals with gills live in is water.
 ;;; A fish has a flipper or fin that helps them[animals with gills] swim.
-("A fish" "have" "a flipper")	"helps"/EFFECT	("animals with gills" "swim" "")
-("A fish" "have" "fin")	"helps"/EFFECT	("animals with gills" "swim" "")
+("A fish" "have" "a flipper")	"helps "/EFFECT	("animals with gills" "swim" "")
+("A fish" "have" "fin")	"helps "/EFFECT	("animals with gills" "swim" "")
 "a flipper"	"helps"/FUNCTION	("animals with gills" "swim" "")
 ;;; Birds have wings that are long and angled to help them[birds] fly.
-("Birds" "have" "wings")
+("Birds"/?x "have" "wings")	"long to"/EFFECT	("Birds"/?x "help" "" [ "them[birds] fly" ] )
 ("wings" "be" "long" [ "to help them[birds] fly" ] )	"to help"/EFFECT	("birds" "fly" "")
 ;;; Horses have strong legs and hooves that enable them[Horses] to run on many different landscapes.
-("Horses" "have" "strong legs")
-("Horses" "have" "hooves")
-("Horses" "have" "strong legs")
-("Horses" "have" "hooves")
+("Horses"/?x "have" "strong legs")	"enable to"/EFFECT	("Horses"/?x "run" "" [ "on many different landscapes" ] )
+("Horses"/?x "have" "hooves")	"enable to"/EFFECT	("Horses"/?x "run" "" [ "on many different landscapes" ] )
 "strong legs"	"enable"/FUNCTION	("Horses" "run" "" [ "on many different landscapes" ] )
 ;;; Cats distinct colors and patterns are an example of diversity.
 "Cats distinct colors"	"example of"/EXAMPLE	"diversity"

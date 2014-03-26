@@ -356,19 +356,19 @@ effect(Root,Comp,['EFFECT'-57,Aux]) :- % infmod on pobj
 	dependency(Pobj,dep:infmod,Comp),
 	\+ helps(Comp),
 	aux(Comp,Aux).
-effect(Root,Comp,['EFFECT'-58,Mod|Aux]) :- % rcmod on dobj
+effect(Root,Comp,['EFFECT'-58,Mod,Aux]) :- % rcmod on dobj
 	\+ dependency(Root,dep:cop,_),
 	dependency(Root,basic:dobj,Dobj),
 	dependency(Dobj,dep:rcmod,Mod),
 	dependency(Mod,dep:ccomp,Comp),
 	(aux(Comp,Aux) ; Aux = []). % optional aux
-effect(Root,Comp,['EFFECT'-59,Mod|Aux]) :- % rcmod on dobj
+effect(Root,Comp,['EFFECT'-59,Mod,Aux]) :- % rcmod on dobj
 	\+ dependency(Root,dep:cop,_),
 	dependency(Root,basic:dobj,Dobj),
 	dependency(Dobj,dep:rcmod,Mod),
 	dependency(Mod,dep:xcomp,Comp),
 	aux(Comp,Aux). % required aux
-effect(Root,Comp,['EFFECT'-60,Mod|Aux]) :- % rcmod on pobj
+effect(Root,Comp,['EFFECT'-60,Mod,Aux]) :- % rcmod on pobj
 	\+ dependency(Root,dep:cop,_),
 	dependency(Root,basic:prep,Prep),
 	dependency(Prep,basic:pobj,Pobj),
