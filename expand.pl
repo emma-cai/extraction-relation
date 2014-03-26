@@ -63,7 +63,7 @@ token_text(Token,Text) :-
 	coref(Token,Coref),
 	token_text0(Token,TokenText),
 	tokens(Coref,CorefTokens),
-	tokens_text(CorefTokens,CorefText),
+	tokens_text0(CorefTokens,CorefText),
 	format(atom(Text), '~w[~w]', [TokenText, CorefText]),
 	!.
 token_text(T,Text) :-

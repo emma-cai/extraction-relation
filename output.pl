@@ -2,7 +2,7 @@
 
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
-	format(user_output, '~w	~w	~w', Text), nl.
+	format(user_output, '~w\t~w\t~w', Text), nl.
 %	write_json_relation(Action,Rel,Purpose), nl.
 
 write_json_relation(Action,Rel,Purpose) :-
@@ -22,7 +22,7 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
-	format(user_output, '~w	~w	~w', Text), nl.
+	format(user_output, '~w\t~w\t~w', Text), nl.
 %	write_json_entity_relation(Action,Rel,Purpose), nl.
 
 write_json_entity_relation(Action,Rel,Purpose) :-
@@ -54,10 +54,10 @@ text_rel([Rel-_Id|Tokens],Text) :- !,
 % write rule Ids (comment out previous clause)
 text_rel([Rel-Id|Tokens],Text) :-
 	tokens_text(Tokens,TokensText),
-	atomic_list_concat(['\tRULE-',Id,':"',TokensText,'"/',Rel,'\t'],Text).
+	atomic_list_concat(['RULE-',Id,':"',TokensText,'"/',Rel],Text).
 text_rel([Rel|Tokens],Text) :-
 	tokens_text(Tokens,TokensText),
-	atomic_list_concat(['\t"',TokensText,'"/',Rel,'\t'],Text).
+	atomic_list_concat(['"',TokensText,'"/',Rel],Text).
 
 json_rel([Rel-_Id|Tokens],Json) :- !,
 	json_rel([Rel|Tokens],Json).
