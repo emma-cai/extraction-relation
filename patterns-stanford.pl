@@ -330,7 +330,7 @@ effect(Root,Comp,['EFFECT'-53,Aux]) :-
 	dependency(Root,dep:xcomp,Comp),
 	( (aux(Root,Modal),
 	   \+ lemma(Modal,must))
-	; \+ aux(Root,Modal) ),
+	; \+ aux(Root,_Modal) ),
 	\+ dependency(_,dep:rcmod,Root),
 	\+ dependency(Comp,dep:cop,_),
 	aux(Comp,Aux).
@@ -350,11 +350,12 @@ effect(Root,Comp,['EFFECT'-56,Aux]) :- % infmod on dobj
 	\+ lemma(Dobj,ability),
 	\+ helps(Comp),
 	aux(Comp,Aux).
-effect(Root,Comp,['EFFECT'-57,Prep]) :- % infmod on pobj
+effect(Root,Comp,['EFFECT'-57,Aux]) :- % infmod on pobj
 	dependency(Root,basic:prep,Prep),
 	dependency(Prep,basic:pobj,Pobj),
 	dependency(Pobj,dep:infmod,Comp),
-	\+ helps(Comp).
+	\+ helps(Comp),
+	aux(Comp,Aux).
 effect(Root,Comp,['EFFECT'-58,Mod|Aux]) :- % rcmod on dobj
 	\+ dependency(Root,dep:cop,_),
 	dependency(Root,basic:dobj,Dobj),

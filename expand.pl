@@ -58,49 +58,69 @@ coref(E,C) :-
 	compare_offsets(<,C,E),
 	!.
 
-write_text(E) :-
-	rdf(E,token:text,literal(T)),
-	write(T), !.
-write_text(T) :-
-	write(T).
-
-write_token(T) :-
-	coref(T,Coref),
-	tokens(Coref,CorefT),
-	write_text(T),
-	write('['), write_tokens0(CorefT), write(']'),
-	!.
-write_token(T) :-
-	write_text(T).
-
 % expand coref
-write_tokens([]).
-write_tokens([T]) :-
-	write_token(T),
+token_text(Token,Text) :-
+	coref(Token,Coref),
+	token_text0(Token,TokenText),
+	tokens(Coref,CorefTokens),
+	tokens_text(CorefTokens,CorefText),
+	format(atom(Text), '~w[~w]', [TokenText, CorefText]),
 	!.
-write_tokens([T|Rest]) :-
-	write_token(T), write(' '),
-	write_tokens(Rest).
+token_text(T,Text) :-
+	token_text0(T,Text).
+
+tokens_text_list([],[]).
+tokens_text_list([Token],[Text]) :-
+	token_text(Token,Text),
+	!.
+tokens_text_list([Token|Rest],[TokenText,' '|RestText]) :-
+	token_text(Token,TokenText),
+	tokens_text_list(Rest,RestText).
+
+tokens_text(Tokens,Text) :-
+	tokens_text_list(Tokens,List),
+	atomic_list_concat(List,Text).
+
+write_tokens(Tokens) :-
+	tokens_text(Tokens,Text),
+	write(Text).
 
 % don't expand
-write_tokens0([]).
-write_tokens0([T]) :-
-	write_text(T),
+token_text0(Token,Text) :-
+	rdf(Token,token:text,literal(Text)),
 	!.
-write_tokens0([T|Rest]) :-
-	write_text(T), write(' '),
-	write_tokens0(Rest).
+token_text0(Text,Text).
 
+tokens_text0_list([],[]).
+tokens_text0_list([Token],[Text]) :-
+	token_text0(Token,Text),
+	!.
+tokens_text0_list([Token|Rest],[TokenText,' '|RestText]) :-
+	token_text0(Token,TokenText),
+	tokens_text0_list(Rest,RestText).
 
-write_lemmas([]).
-write_lemmas([T]) :-
+tokens_text0(Tokens,Text) :-
+	tokens_text0_list(Tokens,List),
+	atomic_list_concat(List,Text).
+
+write_tokens0(Tokens) :-
+	tokens_text0(Tokens,Text),
+	write(Text).
+
+% lemmas if available
+lemmas_text_list([],[]).
+lemmas_text_list([T],[L]) :-
 	( rdf(T,token:lemma,literal(L))
 	; rdf(T,token:text,literal(L)) ), % allow for missing lemmas in Sapir
-	write(L),
 	!.
-write_lemmas([T|Rest]) :-
-	write_lemmas([T]),
-	write(' '),
-	write_lemmas(Rest).
+lemmas_text_list([T|Rest],[Text,' '|RestText]) :-
+	lemmas_text_list([T],[Text]),
+	lemmas_text_list(Rest,RestText).
 
+lemmas_text(Tokens,Text) :-
+	lemmas_text_list(Tokens,List),
+	atomic_list_concat(List,Text).
 
+write_lemmas(Lemmas) :-
+	lemmas_text(Lemmas,Text),
+	write(Text).
