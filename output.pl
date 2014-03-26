@@ -3,7 +3,7 @@
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
 	format(user_output, '~w\t~w\t~w', Text), nl.
-%	write_json_relation(Action,Rel,Purpose), nl.
+%	write_json_relation(Action,Rel,Purpose).
 
 write_json_relation(Action,Rel,Purpose) :-
 	json_relation(Action,Rel,Purpose,Json),
@@ -23,7 +23,7 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
 	format(user_output, '~w\t~w\t~w', Text), nl.
-%	write_json_entity_relation(Action,Rel,Purpose), nl.
+%	write_json_entity_relation(Action,Rel,Purpose).
 
 write_json_entity_relation(Action,Rel,Purpose) :-
 	json_entity_relation(Action,Rel,Purpose,Json),
@@ -53,7 +53,8 @@ json_entity_relation(Entity1,Rel,Entity2,json([class='ExtractionRule',antecedent
 text_rel([Rel-_Id|Tokens],Text) :- !,
 	text_rel([Rel|Tokens],Text).
 text_rel([Rel|Tokens],Text) :-
-	tokens_text_quoted(Tokens,TokensText),
+	subtract(Tokens,[[]],Tokens2),
+	tokens_text_quoted(Tokens2,TokensText),
 	format(atom(Text), '~w/~w', [TokensText,Rel]).
 
 json_rel([Rel-_Id|Tokens],Json) :- !,

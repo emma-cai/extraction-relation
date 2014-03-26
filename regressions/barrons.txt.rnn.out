@@ -113,8 +113,8 @@
 ("Animals" "take in" "food" [ "as a nutrient" ] )	"to"/EFFECT	("" "give" "Animals" [ "energy" ] )
 ("" "give" "Animals" [ "energy" ] )	"help"/EFFECT	("Animals" "grow" "")
 ;;; Plants get their[Plants] nutrients from the soil which helps them[Plants] grow and perform photosynthesis.
-("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps "/EFFECT	("Plants" "grow" "")
-("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps "/EFFECT	("Plants" "perform" "photosynthesis")
+("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "grow" "")
+("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "perform" "photosynthesis")
 "the soil"	"helps"/FUNCTION	("Plants" "grow" "")
 "the soil"	"helps"/FUNCTION	("Plants" "perform" "photosynthesis")
 ;;; Photosynthesis is the process by which plants make their[Plants] own food.
@@ -438,7 +438,7 @@
 ;;; We call this camouflage which helps protect the animal from enemies.
 "this camouflage"	"helps"/FUNCTION	("this camouflage" "protect" "the animal" [ "from enemies" ] )
 ;;; Think of a lion 's golden fur which helps it[a lion 's golden fur which helps it blend into the desert landscape] blend into the desert landscape.
-("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps "/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
+("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps"/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
 "a lion 's golden fur"	"helps"/FUNCTION	("a lion 's golden fur" "blend" "" [ "into the desert landscape" ] )
 ;;; Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings.
 "Chameleons"	"are"/EXAMPLE	("lizards" "change" "colors")
@@ -569,7 +569,7 @@
 ;;; Elephants have long trunks that enable them[Elephants] to grab food and drink water.
 "long trunks"	"enable"/FUNCTION	("Elephants" "grab" "food and drink water")
 ;;; They[Elephants] also have very large ear flaps that help them[Elephants] hear.
-("Elephants"/?x "have" "very large ear flaps")	"help "/EFFECT	("Elephants"/?x "hear" "")
+("Elephants"/?x "have" "very large ear flaps")	"help"/EFFECT	("Elephants"/?x "hear" "")
 "very large ear flaps"	"help"/FUNCTION	("Elephants" "hear" "")
 ;;; Because of their[Elephants] size elephants move very slowly so having good hearing helps protect them[Elephants] from predators.
 "their[Elephants] size"	"because of"/CAUSE	("elephants" "move" "" [ "of their[Elephants] size", "so having good hearing helps protect them[Elephants] from predators", "very slowly" ] )
@@ -2292,8 +2292,8 @@
 ;;; Pelicans swoop into the water and are able to collect many fish in their[Feeding animals that have lost their natural resources due to the development of stores and homes] large beaks.
 ;;; The environment that animals with gills live in is water.
 ;;; A fish has a flipper or fin that helps them[animals with gills] swim.
-("A fish" "have" "a flipper")	"helps "/EFFECT	("animals with gills" "swim" "")
-("A fish" "have" "fin")	"helps "/EFFECT	("animals with gills" "swim" "")
+("A fish" "have" "a flipper")	"helps"/EFFECT	("animals with gills" "swim" "")
+("A fish" "have" "fin")	"helps"/EFFECT	("animals with gills" "swim" "")
 "a flipper"	"helps"/FUNCTION	("animals with gills" "swim" "")
 ;;; Birds have wings that are long and angled to help them[birds] fly.
 ("Birds"/?x "have" "wings")	"long to"/EFFECT	("Birds"/?x "help" "" [ "them[birds] fly" ] )

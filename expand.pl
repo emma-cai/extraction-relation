@@ -59,7 +59,7 @@ coref(E,C) :-
 	!.
 
 % expand coref
-token_text([],'') :- !.
+token_text([],[]) :- !.
 token_text(Token,Text) :-
 	coref(Token,Coref),
 	token_text0(Token,TokenText),
