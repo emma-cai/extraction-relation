@@ -1,18 +1,10 @@
 :- use_module(library(http/json)).
 
-write_relation(Action,Rel,Purpose) :-
-	write_relation(Action,Rel,Purpose,Json),
-	json:json_write(user_output,Json), nl.
-
 write_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[ActionJson],relation=RelJson,consequents=[PurposeJson]])) :-
 	write_tuple(Action,ActionJson),
 	write_rel(Rel,RelJson),
 	write_tuple(Purpose,PurposeJson), nl.
 
-
-write_entity_relation(Action,Rel,Purpose) :-
-	write_entity_relation(Action,Rel,Purpose,Json),
-	json:json_write(user_output,Json), nl.
 
 write_entity_relation(Entity1,Rel,Entity2,json([class='ExtractionRule',antecedents=[Json1],relation=RelJson,consequents=[Json2]])) :-
 	( (atom(Entity1),
@@ -43,12 +35,6 @@ write_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation
 	write('"/'),
 	write(Rel),
 	write('\t').
-
-write_simple_tuple(Node) :-
-	tuple(Node,Tuple),
-	write_tuple(Tuple,Json), nl,
-	json:json_write(user_output,Json), nl.
-write_simple_tuple(_).
 
 
 % normalize to verb if possible
