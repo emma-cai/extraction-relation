@@ -8,8 +8,9 @@
 
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
+	write(';;; '),
 	format(user_output, '~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose).
+	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_relation(Action,Rel,Purpose).
 
 write_json_relation(Action,Rel,Purpose) :-
@@ -28,8 +29,9 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
+	write(';;; '),
 	format(user_output, '~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose).
+	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_entity_relation(Action,Rel,Purpose).
 
 write_json_entity_relation(Action,Rel,Purpose) :-
@@ -72,6 +74,7 @@ json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=
 write_simple_tuple(Node) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
+	write(';;; '),
 	write(Text), nl,
 	write_inf_simple_tuple(Node).
 write_simple_tuple(_).
@@ -87,30 +90,27 @@ write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
 	inf_tuple(Purpose,PurposeId),
 	stripped_ids([ActionId, PurposeId], Ids),
+	downcase_atom(Rel,LRel),
 	% left to right
-	write_inf_tuple(ActionId),
-	format('-> ~w(~w, ~w) ', [Rel|Ids]),
-	write_inf_tuple(PurposeId),
-	nl,
+	write_inf_relation0(ActionId,[LRel|Ids],PurposeId),
 	% right to left
-	write_inf_tuple(PurposeId),
-	format('-> ~w(~w, ~w) ', [Rel|Ids]),
-	write_inf_tuple(ActionId),
-	nl,
+	write_inf_relation0(PurposeId,[LRel|Ids],ActionId),
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
+
+write_inf_relation0(Left,Rel,Right) :-
+	write_inf_tuple(Left),
+	format(' -> ~w(~w, ~w), ', Rel),
+	write_inf_tuple(Right),
+	write('.'), nl.
 
 
 %write_inf_tuple(GraphId) :-
 %	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
 %	fail.
 write_inf_tuple(GraphId) :-
-	rdf(S,P,O,GraphId),
-	write_rdf(S,P,O,GraphId),
-	write(' '),
-	fail.
-write_inf_tuple(_).
-
+	findall([S,P,O], rdf(S,P,O,GraphId), Ts),
+	write_rdf_list(Ts,GraphId).
 
 write_inf_simple_tuple(Node) :-
 	tuple(Node,Tuple),
@@ -119,23 +119,31 @@ write_inf_simple_tuple(Node) :-
 	rdf_unload_graph(Id).
 write_inf_simple_tuple(_).
 
-%write_inf_simple_tuple(GraphId) :-
+%write_inf_simple_tuple0(GraphId) :-
 %	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
 %	fail.
 write_inf_simple_tuple0(GraphId) :-
 	rdf(S,pred:isa,O,GraphId),
 	% write first
-	nl,
 	write_rdf(S,pred:isa,O,GraphId),
-	write(' ->'),
+	write(' -> '),
 	% rest excluding first
-	rdf(S2,P2,O2,GraphId),
-	\+ (S2 = S, O2 = O),
-	write(' '),
-	write_rdf(S2,P2,O2,GraphId),
+	findall([S2,P2,O2], (rdf(S2,P2,O2,GraphId), \+ (S2 = S, O2 = O)), Ts),
+	write_rdf_list(Ts,GraphId),
+	write('.'), nl,
 	fail.
-write_inf_simple_tuple0(_).
+write_inf_simple_tuple0(_) :-
+	nl.
 
+% comma separated list
+write_rdf_list([],_) :- !.
+write_rdf_list([[S,P,O]],GraphId) :-
+	write_rdf(S,P,O,GraphId),
+	!.
+write_rdf_list([[S,P,O]|Rest],GraphId) :-
+	write_rdf(S,P,O,GraphId),
+	write(', '),
+	write_rdf_list(Rest,GraphId).
 
 write_rdf(S,P,O,GraphId) :-
 	rdf(S,P,O,GraphId),
@@ -322,7 +330,8 @@ stripped_ids(Tokens,TokenIds) :-
 	maplist(stripped_id,Tokens,TokenIds),
 	!.
 stripped_id(Token,TokenId) :-
-	rdf_global_id(id:Id,Token),
+	rdf_global_id(id:_,Token),
+	token_id(Token,Id),
 	atomic_list_concat(['E',Id],TokenId).
 stripped_id(Token,TokenId) :-
 	rdf_global_id(_:TokenId,Token).
