@@ -1,0 +1,4 @@
+;;; ("Some animals"/?x "grow" "fur" [ "in winter" ] )	"to"/EFFECT	("Some animals"/?x "keep" "" [ "warm" ] )
+isa(E3, "grow"), isa(E2, "Some animals"), isa(E4, "fur"), agent(E3, E2), object(E3, E4) -> effect(E3, E8), isa(E8, "keep"), isa(E2, "Some animals"), agent(E8, E2).
+isa(E8, "keep"), isa(E2, "Some animals"), agent(E8, E2) -> effect(E3, E8), isa(E3, "grow"), isa(E2, "Some animals"), isa(E4, "fur"), agent(E3, E2), object(E3, E4).
+
