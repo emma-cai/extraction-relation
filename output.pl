@@ -28,7 +28,8 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
-	format(user_output, '~w\t~w\t~w', Text), nl.
+	format(user_output, '~w\t~w\t~w', Text), nl,
+	write_inf_relation(Action,Rel,Purpose).
 %	write_json_entity_relation(Action,Rel,Purpose).
 
 write_json_entity_relation(Action,Rel,Purpose) :-
@@ -85,15 +86,15 @@ write_json_simple_tuple(_).
 write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
 	inf_tuple(Purpose,PurposeId),
-	prefixed_ids([ActionId, PurposeId], Ids),
+	stripped_ids([ActionId, PurposeId], Ids),
 	% left to right
 	write_inf_tuple(ActionId),
-	format('--> pred:~w(~w, ~w) ', [Rel|Ids]),
+	format('-> ~w(~w, ~w) ', [Rel|Ids]),
 	write_inf_tuple(PurposeId),
 	nl,
 	% right to left
 	write_inf_tuple(PurposeId),
-	format('--> pred:~w(~w, ~w) ', [Rel|Ids]),
+	format('-> ~w(~w, ~w) ', [Rel|Ids]),
 	write_inf_tuple(ActionId),
 	nl,
 	rdf_unload_graph(ActionId),
@@ -126,7 +127,7 @@ write_inf_simple_tuple0(GraphId) :-
 	% write first
 	nl,
 	write_rdf(S,pred:isa,O,GraphId),
-	write(' -->'),
+	write(' ->'),
 	% rest excluding first
 	rdf(S2,P2,O2,GraphId),
 	\+ (S2 = S, O2 = O),
@@ -139,7 +140,7 @@ write_inf_simple_tuple0(_).
 write_rdf(S,P,O,GraphId) :-
 	rdf(S,P,O,GraphId),
 	(O = literal(Val); Val = O),
-	prefixed_ids([P,S,Val],Ids),
+	stripped_ids([P,S,Val],Ids),
 	format('~w(~w, ~w)',Ids), !.
 
 
@@ -316,3 +317,13 @@ prefixed_ids(Tokens,TokenIds) :-
 prefixed_id(Token,TokenId) :-
 	rdf_global_id(Term,Token),
 	term_to_atom(Term,TokenId).
+
+stripped_ids(Tokens,TokenIds) :-
+	maplist(stripped_id,Tokens,TokenIds),
+	!.
+stripped_id(Token,TokenId) :-
+	rdf_global_id(id:Id,Token),
+	atomic_list_concat(['E',Id],TokenId).
+stripped_id(Token,TokenId) :-
+	rdf_global_id(_:TokenId,Token).
+stripped_id(Token,Token). % literal
