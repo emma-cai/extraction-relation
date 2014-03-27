@@ -168,17 +168,28 @@ inf_tuple([S,Verb,Arg|Mods],V) :-
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
-	( (Mods = [],
-	   ModsText = [])
-	; (text_mods(Mods,ModsList),
-	   atomic_list_concat(ModsList,ModsText)) ),
 	rdf_assert(V,pred:isa,literal(VerbText),V),
 	(S = [] ; rdf_assert(S,pred:isa,literal(SubjText),V)),
 	(Arg = [] ; rdf_assert(Arg,pred:isa,literal(ObjText),V)),
 	(S = [] ; rdf_assert(V,pred:agent,S,V)),
 	(Arg = [] ; rdf_assert(V,pred:object,Arg,V)),
+	inf_mods(V,Mods),
 	!.
 
+inf_mods(_V, []) :- !.
+inf_mods(V, [Prep|Rest]) :-
+	prep(Mod,Prep),
+	rdf(V,PrepRel,Mod),
+	atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
+	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
+	!,
+	text_mod(Mod, Text),
+	rdf_assert(V,NewPrepRel,Text,V),
+	inf_mods(V, Rest).
+inf_mods(V, [Mod|Rest]) :-
+	text_mod(Mod, Text),
+	rdf_assert(V,pred:arg,Text,V),
+	inf_mods(V, Rest).
 
 text_tuple(Ent,Text) :-
 	atom(Ent), !,
