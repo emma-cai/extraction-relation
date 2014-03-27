@@ -21,6 +21,12 @@ object ExtractionBuild extends Build {
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
 
+  // Kevin's patches of the Stanford parser.
+  val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
+  // Dependency that the Stanford parser relies on. This also pulls in the
+  // other dependencies the parser needs.
+  val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
+
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },
     publishTo := Some("bogus" at "http://nowhere.com"),

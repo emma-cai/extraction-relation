@@ -3,13 +3,13 @@ package org.allenai.extraction.stanford
 import scala.xml.Node
 import scala.xml.XML
 
-import java.io.InputStream
+import java.io.Reader
 import java.io.OutputStream
 import java.io.PrintStream
 
 /** Filter to convert stanford XML to TTL format. */
 object StanfordXmlToTtl {
-  def apply(input: InputStream, output: OutputStream): Unit = {
+  def apply(input: Reader, output: OutputStream): Unit = {
     val xml = XML.load(input)
     val outputPrinter = new PrintStream(output)
     printHeaders(outputPrinter)
