@@ -18,7 +18,7 @@ relation :-
 
 relation(JsonString) :-
 	rdf(_Sentence,dep:root,Root),
-	( relation(Root,Json), !
+	( relation(Root,Json)
 	; top_relation(Root,Json)
 	; constit(Root,Node),
 	  relation(Node,Json) ),
