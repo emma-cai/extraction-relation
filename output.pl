@@ -1,8 +1,15 @@
 :- use_module(library(http/json)).
+:- use_module(library(semweb/rdf_turtle_write)).
+
+:- rdf_meta write_rdf(r,r,-,-).
+
+:- rdf_register_prefix(pred, 'http://aristo.allenai.org/pred/').
+
 
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
-	format(user_output, '~w\t~w\t~w', Text), nl.
+	format(user_output, '~w\t~w\t~w', Text), nl,
+	write_inf_relation(Action,Rel,Purpose).
 %	write_json_relation(Action,Rel,Purpose).
 
 write_json_relation(Action,Rel,Purpose) :-
@@ -18,7 +25,6 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 	json_tuple(Action,ActionJson),
 	json_rel(Rel,RelJson),
 	json_tuple(Purpose,PurposeJson).
-
 
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
@@ -65,7 +71,8 @@ json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=
 write_simple_tuple(Node) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
-	write(Text), nl.
+	write(Text), nl,
+	write_inf_simple_tuple(Node).
 write_simple_tuple(_).
 
 write_json_simple_tuple(Node) :-
@@ -73,6 +80,95 @@ write_json_simple_tuple(Node) :-
 	json_tuple(Tuple,Json),
 	json:json_write(user_output,Json), nl.
 write_json_simple_tuple(_).
+
+
+write_inf_relation(Action,[Rel-_|_],Purpose) :-
+	inf_tuple(Action,ActionId),
+	inf_tuple(Purpose,PurposeId),
+	prefixed_ids([ActionId, PurposeId], Ids),
+	% left to right
+	write_inf_tuple(ActionId),
+	format('--> pred:~w(~w, ~w) ', [Rel|Ids]),
+	write_inf_tuple(PurposeId),
+	nl,
+	% right to left
+	write_inf_tuple(PurposeId),
+	format('--> pred:~w(~w, ~w) ', [Rel|Ids]),
+	write_inf_tuple(ActionId),
+	nl,
+	rdf_unload_graph(ActionId),
+	rdf_unload_graph(PurposeId).
+
+
+%write_inf_tuple(GraphId) :-
+%	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
+%	fail.
+write_inf_tuple(GraphId) :-
+	rdf(S,P,O,GraphId),
+	write_rdf(S,P,O,GraphId),
+	write(' '),
+	fail.
+write_inf_tuple(_).
+
+
+write_inf_simple_tuple(Node) :-
+	tuple(Node,Tuple),
+	inf_tuple(Tuple,Id),
+	write_inf_simple_tuple0(Id),
+	rdf_unload_graph(Id).
+write_inf_simple_tuple(_).
+
+%write_inf_simple_tuple(GraphId) :-
+%	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
+%	fail.
+write_inf_simple_tuple0(GraphId) :-
+	rdf(S,pred:isa,O,GraphId),
+	% write first
+	nl,
+	write_rdf(S,pred:isa,O,GraphId),
+	write(' -->'),
+	% rest excluding first
+	rdf(S2,P2,O2,GraphId),
+	\+ (S2 = S, O2 = O),
+	write(' '),
+	write_rdf(S2,P2,O2,GraphId),
+	fail.
+write_inf_simple_tuple0(_).
+
+
+write_rdf(S,P,O,GraphId) :-
+	rdf(S,P,O,GraphId),
+	(O = literal(Val); Val = O),
+	prefixed_ids([P,S,Val],Ids),
+	format('~w(~w, ~w)',Ids), !.
+
+
+inf_tuple(Ent,Ent) :-
+	atom(Ent), !,
+	text_arg(Ent,Text),
+	rdf_assert(Ent,pred:isa,Text,Ent).
+inf_tuple([S,V,O-_|Rest],Id) :- !, % ignore vars
+	inf_tuple([S,V,O|Rest],Id).
+inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
+	inf_tuple([S,V|Rest],Id).
+inf_tuple([S,V],Id) :-
+	inf_tuple([S,V,[]],Id).
+inf_tuple([S,V,Arg|Mods],V) :-
+	text_arg(S,SubjText),
+	text_verb(V,VerbText),
+	( (rdf(_,basic:cop,V),
+	   text_verb(Arg,ObjText)) % copula
+	; text_arg(Arg,ObjText) ), % dobj
+	( (Mods = [],
+	   ModsText = [])
+	; (text_mods(Mods,ModsList),
+	   atomic_list_concat(ModsList,ModsText)) ),
+	rdf_assert(V,pred:isa,literal(VerbText),V),
+	(S = [] ; rdf_assert(S,pred:isa,literal(SubjText),V)),
+	(Arg = [] ; rdf_assert(Arg,pred:isa,literal(ObjText),V)),
+	(S = [] ; rdf_assert(V,pred:agent,S,V)),
+	(Arg = [] ; rdf_assert(V,pred:object,Arg,V)),
+	!.
 
 
 text_tuple(Ent,Text) :-
@@ -92,18 +188,6 @@ text_tuple([S,V,Arg|Mods],Text) :-
 	   atomic_list_concat(ModsList,ModsText),
 	   format(atom(Text), '(~w ~w ~w [ ~w ] )', [SubjText, VerbText, ObjText, ModsText])) ),
 	!.
-
-%	gensym(id,VerbId),
-%	write('isa('), write(VerbId), write(', '), write_verb(V,_), write(')'),
-%	gensym(id,SubjId),
-%	write(', isa('), write(SubjId), write(', '), write_arg(S,_), write(')'),
-%	(Arg = []
-%	; (gensym(id,ArgId),
-%	   write(', isa('), write(ArgId), write(', '), write_arg(Arg,_), write(')')) ),
-%	write(', agent('), write(VerbId), write(', '), write(SubjId), write(')'),
-%	(Arg = []
-%	; (write(', object('), write(VerbId), write(', '), write(ArgId), write(')')) ),
-%	!.
 
 
 json_tuple(Ent,Json) :-
