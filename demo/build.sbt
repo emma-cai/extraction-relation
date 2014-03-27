@@ -6,7 +6,7 @@ libraryDependencies ++= Seq(
     "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT",
     // for command line arguments and configuration
     "com.github.scopt" %% "scopt" % "3.2.0",
-    "com.typesafe" % "config" % "1.2.0",
+    typesafeConfig,
     // for web serving
     akkaLogging,
     akkaActor,
@@ -17,7 +17,7 @@ libraryDependencies ++= Seq(
     // for extracting text from URLs
     "com.syncthemall" % "boilerpipe" % "1.2.2",
     // for parsing/writing json
-    "io.spray" %% "spray-json" % "1.2.5") ++ loggingImplementations
+    sprayJson) ++ loggingImplementations
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
