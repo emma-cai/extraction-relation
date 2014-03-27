@@ -17,7 +17,7 @@ pos(Token,Value) :-
 
 
 % normalize to verb if possible
-denominalize(Ent,[Subj,Verb,Obj]) :-
+denominalize(Ent,[Subj,Ent-Verb,Obj]) :-
 	atom(Ent),
 	lemma(Ent,Lemma),
 	( (wn-denom(Lemma,Verb), !)

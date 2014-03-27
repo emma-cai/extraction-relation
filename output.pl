@@ -162,9 +162,9 @@ inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
 	inf_tuple([S,V|Rest],Id).
 inf_tuple([S,V],Id) :-
 	inf_tuple([S,V,[]],Id).
-inf_tuple([S,V,Arg|Mods],V) :-
+inf_tuple([S,Verb,Arg|Mods],V) :-
 	text_arg(S,SubjText),
-	text_verb(V,VerbText),
+	text_verb(Verb,VerbText,V),
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
@@ -185,9 +185,9 @@ text_tuple(Ent,Text) :-
 	text_arg(Ent,Text).
 text_tuple([S,V],Text) :-
 	text_tuple([S,V,[]],Text).
-text_tuple([S,V,Arg|Mods],Text) :-
+text_tuple([S,Verb,Arg|Mods],Text) :-
 	text_arg(S,SubjText),
-	text_verb(V,VerbText),
+	text_verb(Verb,VerbText,V),
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
@@ -204,9 +204,9 @@ json_tuple(Ent,Json) :-
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).
-json_tuple([S,V,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verbPhrase=VerbTokenIds,directObject=ObjJson|ExtraPhrases])) :-
+json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verbPhrase=VerbTokenIds,directObject=ObjJson|ExtraPhrases])) :-
 	json_arg(S,SubjJson),
-	json_verb(V,VerbTokenIds),
+	json_verb(Verb,VerbTokenIds,V),
 	( (rdf(_,basic:cop,V),
 	   json_verb(Arg,ArgTokenIds), % copula
 	   ObjJson=json([class='Other',string=ArgTokenIds]))
@@ -296,11 +296,14 @@ mod_tokens(Mod,Tokens) :-
 	tokens(Mod,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]).
 
 
-text_verb(Arg,Text) :-
+text_verb(Arg-Norm,Text,Arg) :- !, % denominalized
+	format(atom(Text), '"~w"', [Norm]).
+text_verb(Arg,Text,Arg) :-
 	verb_tokens(Arg,Tokens),
 	lemmas_text_quoted(Tokens,Text).
 
-json_verb(Arg,TokenIds) :-
+json_verb(Arg-Norm,Norm,Arg) :- !. % denominalized
+json_verb(Arg,TokenIds,Arg) :-
 	verb_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
