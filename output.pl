@@ -8,7 +8,7 @@
 
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
-	write(';;; '),
+	write('% '),
 	format(user_output, '~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_relation(Action,Rel,Purpose).
@@ -29,7 +29,7 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
-	write(';;; '),
+	write('% '),
 	format(user_output, '~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_entity_relation(Action,Rel,Purpose).
@@ -74,7 +74,7 @@ json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=
 write_simple_tuple(Node) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
-	write(';;; '),
+	write('% '),
 	write(Text), nl,
 	write_inf_simple_tuple(Node).
 write_simple_tuple(_).
@@ -99,18 +99,19 @@ write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	rdf_unload_graph(PurposeId).
 
 write_inf_relation0(Left,Rel,Right) :-
-	write_inf_tuple(Left),
+	write_inf_tuple(Left,[],LeftTriples),
 	format(' -> ~w(~w, ~w), ', Rel),
-	write_inf_tuple(Right),
+	write_inf_tuple(Right,LeftTriples,_),
 	write('.'), nl.
 
 
-%write_inf_tuple(GraphId) :-
+%write_inf_tuple(GraphId,Remove,Out) :-
 %	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
 %	fail.
-write_inf_tuple(GraphId) :-
+write_inf_tuple(GraphId,Remove,Triples) :-
 	findall([S,P,O], rdf(S,P,O,GraphId), Ts),
-	write_rdf_list(Ts,GraphId).
+	subtract(Ts,Remove,Triples),
+	write_rdf_list(Triples,GraphId).
 
 write_inf_simple_tuple(Node) :-
 	tuple(Node,Tuple),
@@ -127,9 +128,8 @@ write_inf_simple_tuple0(GraphId) :-
 	% write first
 	write_rdf(S,pred:isa,O,GraphId),
 	write(' -> '),
-	% rest excluding first
-	findall([S2,P2,O2], (rdf(S2,P2,O2,GraphId), \+ (S2 = S, O2 = O)), Ts),
-	write_rdf_list(Ts,GraphId),
+	% write rest
+	write_inf_tuple(GraphId,[[S,_,O]],_),
 	write('.'), nl,
 	fail.
 write_inf_simple_tuple0(_) :-
@@ -166,7 +166,7 @@ inf_tuple([S,Verb,Arg|Mods],V) :-
 	text_arg(S,SubjText),
 	text_verb(Verb,VerbText,V),
 	( (rdf(_,basic:cop,V),
-	   text_verb(Arg,ObjText)) % copula
+	   text_verb(Arg,ObjText,_)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
 	rdf_assert(V,pred:isa,literal(VerbText),V),
 	(S = [] ; rdf_assert(S,pred:isa,literal(SubjText),V)),
@@ -200,7 +200,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 	text_arg(S,SubjText),
 	text_verb(Verb,VerbText,V),
 	( (rdf(_,basic:cop,V),
-	   text_verb(Arg,ObjText)) % copula
+	   text_verb(Arg,ObjText,_)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
 	( (Mods = [],
 	   format(atom(Text), '(~w ~w ~w)', [SubjText, VerbText, ObjText]))
@@ -329,7 +329,7 @@ verb_tokens(Arg,Tokens) :-
 
 write_sentence(Root) :-	
 	tokens(Root,Tokens),
-	write(';;; '),
+	write('% '),
 	write_tokens(Tokens),
 	write('.\n').
 
