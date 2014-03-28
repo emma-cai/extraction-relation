@@ -6,14 +6,10 @@
 :- rdf_register_prefix(pred, 'http://aristo.allenai.org/pred/').
 
 
-write_relation(Action,Rel,Purpose) :-
+write_relation(Action,Rel,Purpose,Json) :-
 	text_relation(Action,Rel,Purpose,Text),
-	write('% '),
-	format(current_output, '~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose), nl.
-%	write_json_relation(Action,Rel,Purpose).
-
-write_json_relation(Action,Rel,Purpose) :-
+	format(current_output, '% ~w\t~w\t~w', Text), nl,
+	write_inf_relation(Action,Rel,Purpose), nl,
 	json_relation(Action,Rel,Purpose,Json),
 	json:json_write(current_output,Json), nl.
 
@@ -27,14 +23,10 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 	json_rel(Rel,RelJson),
 	json_tuple(Purpose,PurposeJson).
 
-write_entity_relation(Action,Rel,Purpose) :-
+write_entity_relation(Action,Rel,Purpose,Json) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
-	write('% '),
-	format(current_output, '~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose), nl.
-%	write_json_entity_relation(Action,Rel,Purpose).
-
-write_json_entity_relation(Action,Rel,Purpose) :-
+	format(current_output, '% ~w\t~w\t~w', Text), nl,
+	write_inf_relation(Action,Rel,Purpose), nl,
 	json_entity_relation(Action,Rel,Purpose,Json),
 	json:json_write(current_output,Json), nl.
 
@@ -71,19 +63,13 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	prefixed_ids(Tokens,TokenIds).
 
-write_simple_tuple(Node) :-
+write_simple_tuple(Node,Json) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
-	write('% '),
-	write(Text), nl,
-	write_inf_simple_tuple(Node).
-write_simple_tuple(_).
-
-write_json_simple_tuple(Node) :-
-	tuple(Node,Tuple),
+	write('% '), write(Text), nl,
+	write_inf_simple_tuple(Tuple),
 	json_tuple(Tuple,Json),
 	json:json_write(current_output,Json), nl.
-write_json_simple_tuple(_).
 
 
 write_inf_relation(Action,[Rel-_|_],Purpose) :-
@@ -113,12 +99,11 @@ write_inf_tuple(GraphId,Remove,Triples) :-
 	subtract(Ts,Remove,Triples),
 	write_rdf_list(Triples,GraphId).
 
-write_inf_simple_tuple(Node) :-
-	tuple(Node,Tuple),
+write_inf_simple_tuple(Tuple) :-
 	inf_tuple(Tuple,Id),
 	write_inf_simple_tuple0(Id),
 	rdf_unload_graph(Id).
-write_inf_simple_tuple(_).
+
 
 %write_inf_simple_tuple0(GraphId) :-
 %	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
@@ -210,7 +195,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 	!.
 
 
-json_tuple(Ent,Json) :-
+json_tuple(Ent,json([class='ExtractionTuple',subject=Json])) :-
 	atom(Ent), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
@@ -258,7 +243,7 @@ text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_entity(Arg,json([class='NounPhrase',string=TokenIds])) :-
+json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds])])) :-
 	entity_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
@@ -335,7 +320,10 @@ write_sentence(Root) :-
 
 
 prefixed_ids(Tokens,TokenIds) :-
-	maplist(prefixed_id,Tokens,TokenIds).
+	maplist(prefixed_id,Tokens,TokenIds), !.
+prefixed_id(Token,TokenId) :-
+	rdf_global_id(id:Val,Token),
+	atomic_list_concat([id,':',Val],TokenId).
 prefixed_id(Token,TokenId) :-
 	rdf_global_id(Term,Token),
 	term_to_atom(Term,TokenId).
