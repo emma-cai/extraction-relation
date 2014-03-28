@@ -21,6 +21,10 @@ object ExtractionBuild extends Build {
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
 
+  // Prolog interface jar. This also requires having prolog installed to work -
+  // see http://www.swi-prolog.org/build/macos.html
+  val jpl = "jpl" % "jpl" % "3.1.4-alpha"
+
   // Kevin's patches of the Stanford parser.
   val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
   // Dependency that the Stanford parser relies on. This also pulls in the

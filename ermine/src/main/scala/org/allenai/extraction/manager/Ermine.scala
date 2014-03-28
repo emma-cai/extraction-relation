@@ -1,5 +1,6 @@
 package org.allenai.extraction.manager
 
+import org.allenai.extraction.stanford.PrologExtractor
 import org.allenai.extraction.stanford.StanfordParser
 import org.allenai.extraction.stanford.StanfordXmlToTtl
 
@@ -32,11 +33,18 @@ object Ermine {
       // input file reside in memory.
       val stringWriter = new StringWriter(Math.min(1024 * 1024, (infile.length() * 2).toInt))
       parser.processFile(infile, stringWriter)
-      val tmpFile = new PrintStream(new FileOutputStream(new File(outfile.getName() + ".xml")))
-      tmpFile.println(stringWriter.toString())
-      tmpFile.close()
-      StanfordXmlToTtl(new StringReader(stringWriter.toString()), new FileOutputStream(outfile))
-      println("wrote output to " + outfile)
+      val tmpTtlFile = File.createTempFile("output", ".ttl")
+      val tmpFileWriter = new FileOutputStream(tmpTtlFile)
+      val tokenMap = try {
+        StanfordXmlToTtl(
+          new StringReader(stringWriter.toString()), new FileOutputStream(tmpTtlFile))
+      } finally {
+        tmpFileWriter.close()
+      }
+      println("wrote ttl output to " + tmpTtlFile)
+
+      // Run Prolog on the ttl output file.
+      val results = PrologExtractor(tmpTtlFile, tokenMap)
     }
   }
 }
