@@ -9,13 +9,13 @@
 write_relation(Action,Rel,Purpose) :-
 	text_relation(Action,Rel,Purpose,Text),
 	write('% '),
-	format(user_output, '~w\t~w\t~w', Text), nl,
+	format(current_output, '~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_relation(Action,Rel,Purpose).
 
 write_json_relation(Action,Rel,Purpose) :-
 	json_relation(Action,Rel,Purpose,Json),
-	json:json_write(user_output,Json), nl.
+	json:json_write(current_output,Json), nl.
 
 text_relation(Action,Rel,Purpose,[ActionText,RelText,PurposeText]) :-
 	text_tuple(Action,ActionText),
@@ -30,13 +30,13 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 write_entity_relation(Action,Rel,Purpose) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
 	write('% '),
-	format(user_output, '~w\t~w\t~w', Text), nl,
+	format(current_output, '~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl.
 %	write_json_entity_relation(Action,Rel,Purpose).
 
 write_json_entity_relation(Action,Rel,Purpose) :-
 	json_entity_relation(Action,Rel,Purpose,Json),
-	json:json_write(user_output,Json), nl.
+	json:json_write(current_output,Json), nl.
 
 text_entity_relation(Entity1,Rel,Entity2,[Entity1Text,RelText,Entity2Text]) :-
 	( (atom(Entity1),
@@ -82,7 +82,7 @@ write_simple_tuple(_).
 write_json_simple_tuple(Node) :-
 	tuple(Node,Tuple),
 	json_tuple(Tuple,Json),
-	json:json_write(user_output,Json), nl.
+	json:json_write(current_output,Json), nl.
 write_json_simple_tuple(_).
 
 
@@ -106,7 +106,7 @@ write_inf_relation0(Left,Rel,Right) :-
 
 
 %write_inf_tuple(GraphId,Remove,Out) :-
-%	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
+%	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
 %	fail.
 write_inf_tuple(GraphId,Remove,Triples) :-
 	findall([S,P,O], rdf(S,P,O,GraphId), Ts),
@@ -121,7 +121,7 @@ write_inf_simple_tuple(Node) :-
 write_inf_simple_tuple(_).
 
 %write_inf_simple_tuple0(GraphId) :-
-%	rdf_save_turtle(stream(user_output),[graph(GraphId),silent(true)]),
+%	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
 %	fail.
 write_inf_simple_tuple0(GraphId) :-
 	rdf(S,pred:isa,O,GraphId),

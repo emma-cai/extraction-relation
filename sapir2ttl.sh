@@ -14,4 +14,4 @@ awk '
 m=/^token:/{print ":" s+0 "." t " " $0} # add id to token info
 !m{gsub(/(^:| :)/, "&" s+0 "."); print} # expand ids in non-token info
 ' | \
-sed 's/\^//'
+sed 's/\^//;s/^:/id:/;s/ :/ id:/'

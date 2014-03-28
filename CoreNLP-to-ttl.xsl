@@ -62,20 +62,20 @@ Sentence #<xsl:value-of select="$position"/><xsl:text>
 <xsl:template match="tokens">
   <xsl:param name="position" select="'0'"/>
   <xsl:for-each select="token">
-:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:text "<xsl:value-of select="translate(word, '\\', '')"/>" .
-:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:lemma "<xsl:value-of select="translate(lemma, '\\', '')"/>" .
-:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:pos "<xsl:value-of select="POS"/>" .
-:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:begin <xsl:value-of select="CharacterOffsetBegin"/> .
-:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:end <xsl:value-of select="CharacterOffsetEnd"/> .
-<xsl:if test="not(NER='O')">:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> ne:type "<xsl:value-of select="NER"/>" .
-<xsl:if test="NormalizedNER">:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> ne:norm "<xsl:value-of select="NormalizedNER"/>" .
+id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:text "<xsl:value-of select="translate(word, '\\', '')"/>" .
+id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:lemma "<xsl:value-of select="translate(lemma, '\\', '')"/>" .
+id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:pos "<xsl:value-of select="POS"/>" .
+id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:begin <xsl:value-of select="CharacterOffsetBegin"/> .
+id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> token:end <xsl:value-of select="CharacterOffsetEnd"/> .
+<xsl:if test="not(NER='O')">id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> ne:type "<xsl:value-of select="NER"/>" .
+<xsl:if test="NormalizedNER">id:<xsl:value-of select="$position"/>.<xsl:value-of select="@id"/> ne:norm "<xsl:value-of select="NormalizedNER"/>" .
 </xsl:if>
 </xsl:if>
 </xsl:for-each>
 </xsl:template>
 
 <xsl:template match="dep">
-  <xsl:param name="position" select="'0'"/><xsl:param name="prefix" select="'1'"/>:<xsl:value-of select="$position"/>.<xsl:value-of select="governor/@idx"/><xsl:text> </xsl:text><xsl:value-of select="$prefix"/>:<xsl:value-of select="translate(@type, '\\/', '_')"/> :<xsl:value-of select="$position"/>.<xsl:value-of select="dependent/@idx"/> .
+  <xsl:param name="position" select="'0'"/><xsl:param name="prefix" select="'1'"/>id:<xsl:value-of select="$position"/>.<xsl:value-of select="governor/@idx"/><xsl:text> </xsl:text><xsl:value-of select="$prefix"/>:<xsl:value-of select="translate(@type, '\\/', '_')"/> id:<xsl:value-of select="$position"/>.<xsl:value-of select="dependent/@idx"/> .
 </xsl:template>
 
 <xsl:template match="coreference">
@@ -84,7 +84,7 @@ Sentence #<xsl:value-of select="$position"/><xsl:text>
       <xsl:value-of select='mention[@representative="true"]/sentence'/>.<xsl:value-of select='mention[@representative="true"]/head'/>
     </xsl:variable>
     <xsl:for-each select="mention">
-:<xsl:value-of select="$gov"/> coref:ref :<xsl:value-of select="sentence"/>.<xsl:value-of select="head"/> .</xsl:for-each>
+id:<xsl:value-of select="$gov"/> coref:ref id:<xsl:value-of select="sentence"/>.<xsl:value-of select="head"/> .</xsl:for-each>
   </xsl:for-each>
 </xsl:template>
 
