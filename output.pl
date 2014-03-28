@@ -53,7 +53,7 @@ write_tuple(Ent,json([class='ExtractionTuple',subject=SubjJson,verbPhrase=Verb,d
 	write_arg(Obj,ObjJson),
 	write(')'),
 	!.
-write_tuple(Ent,Json) :-
+write_tuple(Ent,json([class='ExtractionTuple',subject=Json])) :-
 	atom(Ent), !,
 	write_arg(Ent,Json).
 
@@ -99,7 +99,7 @@ write_arg(Arg,json([class='NounPhrase',string=TokenIds])) :-
 	write_tokens(Tokens),
 	write('"').
 
-write_entity(Arg,json([class='NounPhrase',string=TokenIds])) :-
+write_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds])])) :-
 	% remove 'such as' PP
 	rdf(Arg,dep:prep_such_as,Pobj),
 	rdf(Prep,basic:pobj,Pobj),
@@ -111,7 +111,7 @@ write_entity(Arg,json([class='NounPhrase',string=TokenIds])) :-
 	write('"'),
 	write_tokens(Tokens),
 	write('"').
-write_entity(Arg,json([class='NounPhrase',string=TokenIds])) :-
+write_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds])])) :-
 	tokens(Arg,Tokens,[conj,cc,appos,xcomp,advmod,rcmod,partmod,cop,nsubj,aux]),
 	prefixed_ids(Tokens,TokenIds),
 	write('"'),
