@@ -1,5 +1,8 @@
 package org.allenai.extraction.stanford
 
+import org.allenai.extraction.interface.Token
+
+import scala.collection.mutable
 import scala.xml.Node
 import scala.xml.XML
 
@@ -9,13 +12,17 @@ import java.io.PrintStream
 
 /** Filter to convert stanford XML to TTL format. */
 object StanfordXmlToTtl {
-  def apply(input: Reader, output: OutputStream): Unit = {
+  /** Reads stanford XML from the given reader, and writes TTL output to the given writer.
+    * @return a map of all tokens encountered, keyed by output ID
+    */
+  def apply(input: Reader, output: OutputStream): Map[String, Token] = {
     val xml = XML.load(input)
     val outputPrinter = new PrintStream(output)
     printHeaders(outputPrinter)
 
+    val tokenMap: mutable.Map[String, Token] = new mutable.HashMap
     for (sentence <- (xml \\ "sentences" \ "sentence")) {
-      processSentence(sentence, outputPrinter)
+      processSentence(sentence, outputPrinter, tokenMap)
       outputPrinter.println
     }
 
@@ -24,18 +31,24 @@ object StanfordXmlToTtl {
       processCoreference(coreference, outputPrinter)
       outputPrinter.println
     }
+
+    // Return an immutable copy of the token map.
+    tokenMap.toMap
   }
 
   /** A sentence in the stanford output consists of tokens, "basic" dependencies, and "collapsed"
     * dependencies.
+    *
+    * @param tokenMap map to store encountered tokens
     */
-  def processSentence(sentence: Node, output: PrintStream): Unit = {
+  def processSentence(sentence: Node, output: PrintStream, tokenMap: mutable.Map[String, Token]):
+    Unit = {
     // We need a sentence ID to proceed.
     for (idAttr <- sentence \ "@id") {
       val sentenceId = idAttr.text
 
       for (token <- sentence \ "tokens" \ "token") {
-        for (line <- processToken(sentenceId, token)) {
+        for (line <- processToken(sentenceId, token, tokenMap)) {
           output.println(line)
         }
         output.println
@@ -127,31 +140,49 @@ object StanfordXmlToTtl {
     *
     * with the first number being the provided sentence ID.
     */
-  def processToken(sentenceId: String, token: Node): Seq[String] = {
+  def processToken(sentenceId: String, token: Node, tokenMap: mutable.Map[String, Token]):
+    Seq[String] = {
+  // case class Token(string: String, lemma: String, posTag: Symbol, chunk: Symbol, offset: Int)
     (for (idAttr <- token \ "@id") yield {
       val tokenId = s"id:${sentenceId}.${idAttr.text}"
-      // Start of each token declaration.
-      val words = childrenToTtl(token, "word", tokenId, "token:text", quoteValue = true)
-      val lemmas = childrenToTtl(token, "lemma", tokenId, "token:lemma", quoteValue = true)
-      val posTags = childrenToTtl(token, "POS", tokenId, "token:pos", quoteValue = true)
-      val begins = childrenToTtl(token, "CharacterOffsetBegin", tokenId, "token:begin",
-        quoteValue = false)
-      val ends = childrenToTtl(token, "CharacterOffsetEnd", tokenId, "token:end",
-        quoteValue = false)
+      val tokenLines = (for {
+        string <- getChildText(token, "word")
+        lemma <- getChildText(token, "lemma")
+        posTag <- getChildText(token, "POS")
+        offsetBegin <- getChildText(token, "CharacterOffsetBegin")
+        offsetEnd <- getChildText(token, "CharacterOffsetEnd")
+      } yield {
+        // Side-effect: Save token.
+        tokenMap.put(tokenId, Token(string, lemma, Symbol(posTag), '??, offsetBegin.toInt))
+
+        Seq(
+          s"""${tokenId} token:text  "${string}"     .""",
+          s"""${tokenId} token:lemma "${lemma}"      .""",
+          s"""${tokenId} token:pos   "${posTag}"     .""",
+          s"""${tokenId} token:begin  ${offsetBegin} .""",
+          s"""${tokenId} token:end    ${offsetEnd}   ."""
+        )
+      }).getOrElse(Seq.empty)
 
       // Ignore NER=O, otherwise print NE stuff.
-      val nerText = ((token \ "NER").headOption map { _.text }).getOrElse("O")
-      val nes: Seq[String] = nerText match {
+      val nerText = getChildText(token, "NER").getOrElse("O")
+      val neLines: Seq[String] = nerText match {
         case "O" => Seq.empty
         case _: String => {
           // Process type and normalization.
-          Seq(childrenToTtl(token, "NER", tokenId, "ne:type", quoteValue = true),
-            childrenToTtl(token, "NormalizedNER", tokenId, "ne:norm", quoteValue = true)).flatten
+          val typeLine = Some(s"""${tokenId} ne:type "${nerText}" .""")
+          val normLine = for {
+            norm <- getChildText(token, "NormalizedNER")
+          } yield {
+            s"""${tokenId} ne:norm "${norm}" ."""
+          }
+
+          Seq(typeLine, normLine).flatten
         }
         case _ => Seq.empty
       }
 
-      Seq.concat(words, lemmas, posTags, begins, ends, nes)
+      Seq.concat(tokenLines, neLines)
     }).flatten
   }
 
@@ -196,24 +227,9 @@ object StanfordXmlToTtl {
 """)
   }
 
-  /** Parses all child nodes with a given name out of a node, and returns them as ttl statements.
-    *
-    * @param node the parent node to look in
-    * @param childName the name of the child node to look for
-    * @param tokenId the ID of the token
-    * @param outputName the output name
-    * @param quoteValue if true, quote the child node's value
-    */
-  def childrenToTtl(node: Node, childName: String, tokenId: String, outputName: String,
-    quoteValue: Boolean): Seq[String] = {
-    for {
-      child <- node \ childName
-      value = child.text
-    } yield if (quoteValue) {
-      s"""${tokenId} ${outputName} "${value}" ."""
-    } else {
-      s"${tokenId} ${outputName} ${value} ."
-    }
+  /** Gets the text contents of the first child node with the given name. */
+  def getChildText(node: Node, childName: String): Option[String] = {
+    (node \ childName).headOption map { _.text }
   }
 
   /** Returns the ID for a given mention element. This pulls the values of the 'sentence' and 'head'
