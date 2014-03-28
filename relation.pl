@@ -22,8 +22,8 @@ relation(JsonString) :-
 	; top_relation(Root,Json)
 	; constit(Root,Node),
 	  relation(Node,Json) ),
-	atom_json_term(JsonString,Json,[as(atom)]).
-
+	with_output_to(atom(JsonString),
+		       json_write(current_output,Json,[width(0)])).
 
 % find related tuples
 top_relation(Root) :-

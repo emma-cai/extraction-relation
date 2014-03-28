@@ -166,7 +166,10 @@ write_sentence(Root) :-
 
 
 prefixed_ids(Tokens,TokenIds) :-
-	maplist(prefixed_id,Tokens,TokenIds).
+	maplist(prefixed_id,Tokens,TokenIds), !.
+prefixed_id(Token,TokenId) :-
+	rdf_global_id(id:Val,Token),
+	atomic_list_concat([id,':',Val],TokenId).
 prefixed_id(Token,TokenId) :-
 	rdf_global_id(Term,Token),
 	term_to_atom(Term,TokenId).
