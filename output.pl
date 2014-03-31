@@ -10,8 +10,8 @@ write_relation(Action,Rel,Purpose,Json) :-
 	text_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl,
-	json_relation(Action,Rel,Purpose,Json),
-	json:json_write(current_output,Json), nl.
+	json_relation(Action,Rel,Purpose,Json).
+%	json:json_write(current_output,Json), nl.
 
 text_relation(Action,Rel,Purpose,[ActionText,RelText,PurposeText]) :-
 	text_tuple(Action,ActionText),
@@ -27,8 +27,8 @@ write_entity_relation(Action,Rel,Purpose,Json) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
 	write_inf_relation(Action,Rel,Purpose), nl,
-	json_entity_relation(Action,Rel,Purpose,Json),
-	json:json_write(current_output,Json), nl.
+	json_entity_relation(Action,Rel,Purpose,Json).
+%	json:json_write(current_output,Json), nl.
 
 text_entity_relation(Entity1,Rel,Entity2,[Entity1Text,RelText,Entity2Text]) :-
 	( (atom(Entity1),
@@ -68,8 +68,8 @@ write_simple_tuple(Node,Json) :-
 	text_tuple(Tuple,Text),
 	write('% '), write(Text), nl,
 	write_inf_simple_tuple(Tuple),
-	json_tuple(Tuple,Json),
-	json:json_write(current_output,Json), nl.
+	json_tuple(Tuple,Json).
+%	json:json_write(current_output,Json), nl.
 
 
 write_inf_relation(Action,[Rel-_|_],Purpose) :-

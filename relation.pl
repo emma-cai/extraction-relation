@@ -11,27 +11,25 @@ relation :-
 %	write('processing: '), write(Root), nl,
 %	write_sentence(Root),
 	% descend through every node checking for relations
-	( top_relation(Root)
+	( top_relation(Root,_)
 	; constit(Root,Node),
 	  relation(Node,_Json) ).
 
+% top level to call from JPL and backtrack for all values
 relation(JsonString) :-
 	rdf(_Sentence,dep:root,Root),
-	( relation(Root,Json)
-	; top_relation(Root,Json)
+	( top_relation(Root,Json)
 	; constit(Root,Node),
 	  relation(Node,Json) ),
 	with_output_to(atom(JsonString),
 		       json_write(current_output,Json,[width(0)])).
 
-% find related tuples
-top_relation(Root) :-
-	findall(Root, relation(Root,_Json), Roots),
-	Roots \= [], !.
+% find top-level related tuples
+top_relation(Root,Json) :-
+	findall(Json, relation(Root,Json), Jsons),
+	Jsons \= [], !,
+	member(Json, Jsons).
 % else write simple top-level tuple
-top_relation(Root) :-
-	top_relation(Root,_Json).
-
 top_relation(Root,Json) :-
 	argument(Root,dep:nsubj,Subj), Subj \= [],
 	argument(Root,dep:dobj,Obj), Obj \= [],
