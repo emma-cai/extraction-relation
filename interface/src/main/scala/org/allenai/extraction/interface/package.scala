@@ -35,7 +35,7 @@ package object interface {
       * the same quantity of spaces.
       * @param leftJustify if set to true, remove any leading whitespace before the first token
       */
-    def originalText(tokens: Seq[Token], leftJustify: Boolean = false) = {
+    def originalText(tokens: Seq[Token], leftJustify: Boolean = true) = {
       val nlpTokens = tokens map { _.toNlpToken.token }
       if (leftJustify && tokens.nonEmpty) {
         Tokenizer.originalText(nlpTokens, nlpTokens.head.offset)
@@ -105,16 +105,16 @@ package object interface {
     }
     object Normalized {
       def fromString(value: String): Normalized = value match {
-        case "Cause" => Cause
-        case "Enable" => Enable
-        case "Example" => Example
-        case "Purpose" => Purpose
+        case "CAUSE" => Cause
+        case "ENABLE" => Enable
+        case "EXAMPLE" => Example
+        case "PURPOSE" => Purpose
         case _ => throw new IllegalArgumentException("unknown Relation.Normalized value: " + value)
       }
 
       /** Format for serializing our enum-like Normalized case classes. */
       implicit val normalizedJsonFormat = new JsonFormat[Normalized] {
-        def write(value: Normalized) = JsString(value.name)
+        def write(value: Normalized) = JsString(value.name.toUpperCase)
 
         def read(value: JsValue): Normalized = value match {
           case JsString(name) => try {
