@@ -200,7 +200,7 @@ json_tuple(Ent,json([class='ExtractionTuple',subject=Json])) :-
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).
-json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verbPhrase=VerbTokenIds,directObject=ObjJson|ExtraPhrases])) :-
+json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verbPhrase=VerbTokenIds|RestJson])) :-
 	json_arg(S,SubjJson),
 	json_verb(Verb,VerbTokenIds,V),
 	( (rdf(_,basic:cop,V),
@@ -211,6 +211,9 @@ json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verb
 	   ExtraPhrases = [])
 	; (json_mods(Mods,ModsTokens),
 	   ExtraPhrases = [extraPhrases=ModsTokens]) ),
+	( (ObjJson = json([]),
+	   RestJson = ExtraPhrases)
+	; (RestJson = [directObject=ObjJson|ExtraPhrases]) ),
 	!.
 
 
