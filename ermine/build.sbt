@@ -6,6 +6,8 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
-libraryDependencies ++= Seq(akkaActor, typesafeConfig, sprayClient, stanfordModels, stanfordPatched)
+libraryDependencies ++= Seq(akkaActor, jpl, typesafeConfig, sprayClient, sprayJson,
+  stanfordModels, stanfordPatched)
 
-javaOptions ++= Seq("-Xmx3G", "-Xms3G")
+// Up memory and add prolog path.
+javaOptions ++= prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")

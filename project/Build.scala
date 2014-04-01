@@ -3,7 +3,52 @@ import Keys._
 
 import spray.revolver.RevolverPlugin._
 
+import java.io.File
+import java.io.IOException
+
 object ExtractionBuild extends Build {
+  /** Returns the path the prolog installation, or None if a prolog installation can't be found. */
+  def getPrologPath(): Option[String] = {
+    try {
+      // --dump-runtime-variables returns an eval-able string; so the values are quoted & have
+      // semicolons at the end.
+      val ShellAssignment = """([^=]+)="(.*)";""".r
+      val envMap = (for {
+        // TODO(jkinkead): The script that comes bundled with swi-prolog also checks `swi-prolog`
+        // and `pl`, which we could do here.
+        line <- Process(Seq("swipl", "--dump-runtime-variables")).lines
+        (key, value) <- line match {
+          case ShellAssignment(key, value) => Some(key -> value)
+          case _ => None
+        }
+      } yield (key -> value)).toMap
+      for {
+        // Base install directory.
+        plbase <- envMap.get("PLBASE")
+        // Architecture label.
+        plarch <- envMap.get("PLARCH")
+      } yield s"${plbase}/lib/${plarch}"
+    } catch {
+        // Occurs if "swipl" isn't found.
+        case ioe: IOException => None
+    }
+  }
+
+  // Seq of the required flag, or empty if we failed to find prolog.
+  val prologLibraryFlags = getPrologPath() match {
+    case Some(path) => {
+      println(s"Using swipl at ${path}")
+      if (!(new File(s"${path}/libjpl.jnilib").exists)) {
+        println("WARNING: Couldn't find libjpl - did you install swipl --with-jpl?")
+      }
+      Seq(s"-Djava.library.path=${path}")
+    }
+    case None => {
+      println("WARNING: Couldn't find swipl - prolog will fail at runtime!")
+      Seq.empty
+    }
+  }
+
   val sprayVersion = "1.3.1"
 
   val akkaVersion = "2.3.0"
@@ -20,6 +65,10 @@ object ExtractionBuild extends Build {
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
+
+  // Prolog interface jar. This also requires having prolog installed to work -
+  // see http://www.swi-prolog.org/build/macos.html
+  val jpl = "jpl" % "jpl" % "3.1.4-alpha"
 
   // Kevin's patches of the Stanford parser.
   val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
