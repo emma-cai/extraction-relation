@@ -216,6 +216,8 @@ json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verb
 
 
 text_arg([],'""') :- !.
+text_arg(Arg-Var-true,Text) :- !,
+	text_arg(Arg-Var,Text).
 text_arg(Arg-Var,Text) :- !,
 	text_arg(Arg,ArgText),
 	format(atom(Text), '~w/?~w', [ArgText, Var]).
@@ -224,9 +226,10 @@ text_arg(Arg,Text) :-
 	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
-json_arg(Arg-Var,json([class=Class,string=TokenIds,coreferences=[Var]])) :- !,
+json_arg(_Arg-Var-true,json([class='NounPhrase',string=[],isInferred=true,coreferences=[Var]])) :- !.
+json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred=false,coreferences=[Var]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg,json([class='NounPhrase',string=TokenIds,coreferences=[]])) :-
+json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred=false,coreferences=[]])) :-
 	arg_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
