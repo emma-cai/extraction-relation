@@ -204,7 +204,7 @@ json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',confidence='1.0',subj
 	json_arg(S,SubjJson),
 	json_verb(Verb,VerbTokenIds,V),
 	( (rdf(_,basic:cop,V),
-	   json_verb(Arg,ArgTokenIds), % copula
+	   json_verb(Arg,ArgTokenIds,_), % copula
 	   ObjJson=json([class='Other',string=ArgTokenIds]))
 	; json_arg(Arg,ObjJson) ), % dobj
 	json_mods(Mods,ModsTokens),
@@ -226,10 +226,10 @@ text_arg(Arg,Text) :-
 	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
-json_arg(_Arg-Var-true,json([class='NounPhrase',string=[],isInferred=true,coreferences=[Var]])) :- !.
-json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred=false,coreferences=[Var]])) :- !,
+json_arg(_Arg-Var-true,json([class='NounPhrase',string=[],isInferred=(@true),coreferences=[Var]])) :- !.
+json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred=(@false),coreferences=[Var]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred=false,coreferences=[]])) :-
+json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred=(@false),coreferences=[]])) :-
 	arg_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
@@ -318,7 +318,7 @@ verb_tokens(Arg,Tokens) :-
 
 write_sentence(Root) :-	
 	tokens(Root,Tokens),
-	write('% '),
+	write(';;; '),
 	write_tokens(Tokens),
 	write('.\n').
 
