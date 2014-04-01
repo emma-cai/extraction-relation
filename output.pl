@@ -224,9 +224,9 @@ text_arg(Arg,Text) :-
 	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
-json_arg(Arg-Var,json([class=Class,string=TokenIds,coreferences=Var])) :- !,
-	json_arg(Arg,json([class=Class,string=TokenIds])).
-json_arg(Arg,json([class='NounPhrase',string=TokenIds])) :-
+json_arg(Arg-Var,json([class=Class,string=TokenIds,coreferences=[Var]])) :- !,
+	json_arg(Arg,json([class=Class,string=TokenIds|_])).
+json_arg(Arg,json([class='NounPhrase',string=TokenIds,coreferences=[]])) :-
 	arg_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
