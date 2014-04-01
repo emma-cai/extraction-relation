@@ -207,10 +207,8 @@ json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verb
 	   json_verb(Arg,ArgTokenIds), % copula
 	   ObjJson=json([class='Other',string=ArgTokenIds]))
 	; json_arg(Arg,ObjJson) ), % dobj
-	( (Mods = [],
-	   ExtraPhrases = [])
-	; (json_mods(Mods,ModsTokens),
-	   ExtraPhrases = [extraPhrases=ModsTokens]) ),
+	json_mods(Mods,ModsTokens),
+	ExtraPhrases = [extraPhrases=ModsTokens],
 	( (ObjJson = json([]),
 	   RestJson = ExtraPhrases)
 	; (RestJson = [directObject=ObjJson|ExtraPhrases]) ),
