@@ -244,7 +244,7 @@ text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds])])) :-
+json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[]])) :-
 	entity_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
 
