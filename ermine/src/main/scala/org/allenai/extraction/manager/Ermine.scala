@@ -6,10 +6,10 @@ import org.allenai.extraction.stanford.StanfordXmlToTtl
 
 import com.typesafe.config.ConfigFactory
 
+import scala.io.Source
+
 import java.io.File
-import java.io.FileOutputStream
-import java.io.PrintStream
-import java.io.StringReader
+import java.io.FileWriter
 import java.io.StringWriter
 
 /** Main app to run extractions. */
@@ -32,19 +32,10 @@ object Ermine {
       // A streaming API would be more efficient; but the parser already requires that the whole
       // input file reside in memory.
       val stringWriter = new StringWriter(Math.min(1024 * 1024, (infile.length() * 2).toInt))
-      parser.processFile(infile, stringWriter)
-      val tmpTtlFile = File.createTempFile("output", ".ttl")
-      val tmpFileWriter = new FileOutputStream(tmpTtlFile)
-      val tokenMap = try {
-        StanfordXmlToTtl(
-          new StringReader(stringWriter.toString()), new FileOutputStream(tmpTtlFile))
-      } finally {
-        tmpFileWriter.close()
-      }
-      println("wrote ttl output to " + tmpTtlFile)
+      parser.extract(Source.fromFile(infile), stringWriter)
 
-      // Run Prolog on the ttl output file.
-      val results = PrologExtractor(tmpTtlFile, tokenMap)
+      // Run Prolog on the Stanford parse.
+      PrologExtractor.extract(Source.fromString(stringWriter.toString()), new FileWriter(outfile))
     }
   }
 }

@@ -3,10 +3,10 @@ package org.allenai.extraction.stanford
 import org.allenai.extraction.interface.Token
 
 import scala.collection.mutable
+import scala.io.Source
 import scala.xml.Node
 import scala.xml.XML
 
-import java.io.Reader
 import java.io.OutputStream
 import java.io.PrintStream
 
@@ -15,8 +15,8 @@ object StanfordXmlToTtl {
   /** Reads stanford XML from the given reader, and writes TTL output to the given writer.
     * @return a map of all tokens encountered, keyed by output ID
     */
-  def apply(input: Reader, output: OutputStream): Map[String, Token] = {
-    val xml = XML.load(input)
+  def apply(input: Source, output: OutputStream): Map[String, Token] = {
+    val xml = XML.loadString(input.getLines.mkString)
     val outputPrinter = new PrintStream(output)
     printHeaders(outputPrinter)
 
