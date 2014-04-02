@@ -16,6 +16,12 @@
       <tabset>
       <tab heading='Text input'>
       <form>
+        <dl>
+          <dt>Examples:</dt>
+          <dd ng-repeat="example in examples">
+            <a href="#" ng-click="showExample(example)">{{ example.substring(0, 40) }}...</a>
+          </dd>
+        </dl>
         <dl class=" " id="text_field">
           <dt><label for="text">Text:</label></dt>
           <dd>
