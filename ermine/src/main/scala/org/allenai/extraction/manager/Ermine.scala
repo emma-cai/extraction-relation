@@ -1,5 +1,6 @@
 package org.allenai.extraction.manager
 
+import org.allenai.common.Logging
 import org.allenai.extraction.stanford.PrologExtractor
 import org.allenai.extraction.stanford.StanfordParser
 import org.allenai.extraction.stanford.StanfordXmlToTtl
@@ -13,7 +14,7 @@ import java.io.FileWriter
 import java.io.StringWriter
 
 /** Main app to run extractions. */
-object Ermine {
+object Ermine extends Logging {
   def main(args: Array[String]): Unit = {
     // Load up a config file.
     val config = ConfigFactory.load()
@@ -24,11 +25,11 @@ object Ermine {
 
     if (!infile.canRead()) {
       // TODO(jkinkead): Better error handling.
-      println("bad infile: " + infile)
+      logger.error("bad infile: " + infile)
     } else {
-      println("loading parser")
+      logger.info("loading parser")
       val parser = new StanfordParser()
-      println("processing file")
+      logger.info("processing file")
       // A streaming API would be more efficient; but the parser already requires that the whole
       // input file reside in memory.
       val stringWriter = new StringWriter(Math.min(1024 * 1024, (infile.length() * 2).toInt))

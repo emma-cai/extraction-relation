@@ -56,25 +56,34 @@ object ExtractionBuild extends Build {
   val akkaActor = akkaModule("actor")
   val akkaLogging = akkaModule("slf4j")
 
-  val logbackVersion = "1.1.1"
-  val logbackCore = "ch.qos.logback" % "logback-core" % logbackVersion
-  val logbackClassic = "ch.qos.logback" % "logback-classic" % logbackVersion
-  val loggingImplementations = Seq(logbackCore, logbackClassic)
+  val loggingImplementations = {
+    val logbackVersion = "1.1.1"
+    val logbackCore = "ch.qos.logback" % "logback-core" % logbackVersion
+    val logbackClassic = "ch.qos.logback" % "logback-classic" % logbackVersion
+    Seq(logbackCore, logbackClassic)
+  }
 
   val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
 
-  // Prolog interface jar. This also requires having prolog installed to work -
-  // see http://www.swi-prolog.org/build/macos.html
-  val jpl = "jpl" % "jpl" % "3.1.4-alpha"
+  // Full requirements for Stanford + Prolog extractions.
+  val ferretDeps = {
+    // Prolog interface jar. This also requires having prolog installed to work -
+    // see http://www.swi-prolog.org/build/macos.html
+    val jpl = "jpl" % "jpl" % "3.1.4-alpha"
 
-  // Kevin's patches of the Stanford parser.
-  val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
-  // Dependency that the Stanford parser relies on. This also pulls in the
-  // other dependencies the parser needs.
-  val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
+    // Kevin's patches of the Stanford parser.
+    val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
+    // Dependency that the Stanford parser relies on. This also pulls in the
+    // other dependencies the parser needs.
+    val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
+
+    Seq(jpl, stanfordPatched, stanfordModels)
+  }
+
+  val allenaiCommon = "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT"
 
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },
