@@ -9,8 +9,8 @@ import scala.io.Source
 import java.io.Writer
 import java.util.Properties
 
-/** Wrapper around stanford parser, with static configs. Note that this takes a very long time to
-  * construct, and uses about 1.5G of memory.
+/** Wrapper around stanford parser, with static configs. Note that this takes a substantial (more
+  * than 10 seconds) time to construct, and uses about 600MB of memory.
   */
 class StanfordParser extends Extractor {
   val pipeline = {
