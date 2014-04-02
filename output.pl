@@ -195,12 +195,12 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 	!.
 
 
-json_tuple(Ent,json([class='ExtractionTuple',confidence='1.0',subject=Json,verbPhrase=[]])) :-
+json_tuple(Ent,json([class='ExtractionTuple',confidence=1.0,subject=Json,verbPhrase=[]])) :-
 	atom(Ent), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).
-json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',confidence='1.0',subject=SubjJson,verbPhrase=VerbTokenIds|RestJson])) :-
+json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',confidence=1.0,subject=SubjJson,verbPhrase=VerbTokenIds|RestJson])) :-
 	json_arg(S,SubjJson),
 	json_verb(Verb,VerbTokenIds,V),
 	( (rdf(_,basic:cop,V),
@@ -251,7 +251,7 @@ text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_entity(Arg,json([class='ExtractionTuple',confidence='1.0',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[]])) :-
+json_entity(Arg,json([class='ExtractionTuple',confidence=1.0,subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[]])) :-
 	entity_tokens(Arg,Tokens),
 	json_ids(Tokens,TokenIds).
 
