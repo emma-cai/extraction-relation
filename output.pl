@@ -71,7 +71,29 @@ write_simple_tuple(Node,Json) :-
 	json_tuple(Tuple,Json).
 %	json:json_write(current_output,Json), nl.
 
+entity_id(Entity,Id) :-
+	(Id-_-_ = Entity ; Id-_ = Entity ; Id = Entity),
+	!.
 
+write_inf_relation(Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
+	atom(Entity),
+	entity_id(Subj,E),
+	% isa relative clause
+	rdf(E,dep:nsubj,Entity),
+	rdf(E,dep:rcmod,Verb), !,
+	inf_tuple(Entity,ActionId),
+	inf_tuple([Subj,Verb|Rest],PurposeId),
+	stripped_ids([ActionId, PurposeId], Ids),
+	downcase_atom(Rel,LRel),
+	% left to right
+	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
+	write_inf_relation0(ActionId,[LRel|Ids],PurposeId),
+	rdf_retractall(Entity,pred:isa,Subj,PurposeId), % RHS
+	% right to left
+	rdf_assert(Entity,pred:isa,Subj,ActionId), %LHS
+	write_inf_relation0(PurposeId,[LRel|Ids],ActionId),
+	rdf_unload_graph(ActionId),
+	rdf_unload_graph(PurposeId).
 write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
 	inf_tuple(Purpose,PurposeId),

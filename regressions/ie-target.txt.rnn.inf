@@ -36,20 +36,20 @@ isa(E1, "get"), isa(E3, "rest"), object(E1, E3) -> part(E1, E10), isa(E10, "live
 isa(E10, "live"), isa(E13, "a healthy life"), object(E10, E13) -> part(E1, E10), isa(E1, "get"), isa(E3, "rest"), object(E1, E3).
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
-isa(E1, "Decomposers") -> example(E1, E6), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9).
-isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E6), isa(E1, "Decomposers").
+isa(E1, "Decomposers") -> example(E1, E6), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
+isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E6), isa(E1, "Decomposers"), isa(E1, E4).
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
-isa(E1, "Decomposers") -> example(E1, E11), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil").
-isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E11), isa(E1, "Decomposers").
+isa(E1, "Decomposers") -> example(E1, E11), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
+isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E11), isa(E1, "Decomposers"), isa(E1, E4).
 
 % "Decomposers"	"are"/EXAMPLE	"living things"
 isa(E1, "Decomposers") -> example(E1, E4), isa(E4, "living things").
 isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
 
 % "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
-isa(E1, "Gravity") -> example(E1, E6), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8).
-isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E6), isa(E1, "Gravity").
+isa(E1, "Gravity") -> example(E1, E6), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8), isa(E1, E4).
+isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E6), isa(E1, "Gravity"), isa(E1, E4).
 
 % "Gravity"	"is"/EXAMPLE	"the force"
 isa(E1, "Gravity") -> example(E1, E4), isa(E4, "the force").
