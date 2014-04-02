@@ -109,6 +109,7 @@ package object interface {
         case "ENABLE" => Enable
         case "EXAMPLE" => Example
         case "PURPOSE" => Purpose
+        case "REQUIREMENT" => Requirement
         case _ => throw new IllegalArgumentException("unknown Relation.Normalized value: " + value)
       }
 
@@ -130,6 +131,7 @@ package object interface {
     case object Enable extends Normalized
     case object Example extends Normalized
     case object Purpose extends Normalized
+    case object Requirement extends Normalized
 
     implicit val relationJsonFormat = jsonFormat2(Relation.apply)
   }
