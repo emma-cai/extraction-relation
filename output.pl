@@ -226,13 +226,13 @@ text_arg(Arg,Text) :-
 	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
-json_arg(Arg-Var-true,json([class=Class,string=[],isInferred=(@true),
+json_arg(Arg-Var-true,json([class=Class,string=[],isInferred= @(true),
 			    coreferences=[json([class='Coreference',label=Var,sourceTokens=TokenIds])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred=(@false),
+json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred= @(false),
 		       coreferences=[json([class='Coreference',label=Var])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred=(@false),
+json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred= @(false),
 		   coreferences=[]])) :-
 	arg_tokens(Arg,Tokens),
 	prefixed_ids(Tokens,TokenIds).
