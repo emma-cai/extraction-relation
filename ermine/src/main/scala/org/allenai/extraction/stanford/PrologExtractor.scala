@@ -60,8 +60,8 @@ object PrologExtractor extends Extractor with Logging {
       implicit val seqTokenJsonFormat = new PrologTokenFormat(tokenMap)
 
       // Redefine implicits that use (or transitively use) Seq[Token], so that we can use the
-      // Seq[Token] we defined, including the other Seq[T] that we need, since we didn't import the
-      // parameterized seqFormat (doing so will cause a compile error).
+      // Seq[Token] we defined. Include the other Seq[T] that we need, since we didn't import the
+      // parameterized seqFormat - doing so will cause a compile error.
       //
       // Note that *order matters* here - we need the implicits from this local file in all cases,
       // which means re-defining implicits in the order that they are needed by the object
@@ -78,18 +78,24 @@ object PrologExtractor extends Extractor with Logging {
       jsonFormat4(ExtractionRule.apply)
     }
 
-    val unflattenedExtractions = (for {
+    val unflattenedExtractions: Seq[Option[ExtractionRule]] = (for {
       rawRule <- jsonResults
     } yield try {
-      // TODO(jkinkead): Document other missing fields / errors in issues.
-      Some(rawRule.convertTo[ExtractionRule])
+      rawRule.asJsObject.fields.get("class") match {
+        // TODO(jkinkead): Remove when https://github.com/allenai/prototyping/issues/16 is resolved.
+        case Some(JsString("ExtractionTuple")) => {
+          logger.warn("skpping top-level ExtractionTuple")
+          None
+        }
+        case _ => Some(rawRule.convertTo[ExtractionRule])
+      }
     } catch {
       case e: DeserializationException => {
-        logger.warn(s"failure parsing ${rawRule}: ", e)
+        logger.warn(s"failure parsing ${rawRule}: ${e.getMessage}")
         None
       }
     })
-    val flattenedExtractions = unflattenedExtractions.flatten
+    val flattenedExtractions: Seq[ExtractionRule] = unflattenedExtractions.flatten
     logger.info(s"successfully converted ${flattenedExtractions.size} of " +
       s"${unflattenedExtractions.size} extractions to JSON")
     flattenedExtractions
