@@ -31,16 +31,27 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   val timeout = 1.minute
 
   def extractSentences(sentences: Seq[String]): Future[Response] = {
-    val processed = for (sentence <- sentences) yield {
+    val processed: Seq[Future[(ExtractedSentence, Seq[Throwable])]] = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
+      type Extractor = String
+      type Extraction = String
+
       // Fire off requests to all extractors for the particular sentence.
-      // We use a Try so that we can aggregate failures, instead of failing the whole future.
-      val extractionsFuture: Seq[Future[Try[(String, String)]]] =
+      // We use a Try so that we can keep all failures, instead of failing
+      // the whole future for a single failure.
+      val extractionsFuture: Seq[Future[Try[(Extractor, Extraction)]]] =
         for (extractor <- extractors) yield {
-          val future = extractor(sentence).transform(x => x, throwable =>
-            new ExtractorException(s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
-          future map { extractions =>
+          // Run the extractor
+          val attempt: Future[Extraction] = extractor(sentence)
+
+          // Wrap with a cleaner exception
+          val wrapped: Future[Extraction] = attempt.transform(x => x, throwable =>
+            new ExtractorException(
+              s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
+
+          // Convert future value to Try.
+          wrapped map { extractions =>
             Success((extractor.name, extractions))
           } recover {
             case NonFatal(e) =>
@@ -51,14 +62,16 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
 
       // Change responses into an ExtractedSentence and failures.
       Future.sequence(extractionsFuture) map { seq: Seq[Try[(String, String)]] =>
-        val extractorResults = for {
-          tr <- seq
-          success <- tr.toOption
+        val successfulExtractions = for {
+          tryValue <- seq
+          success <- tryValue.toOption
           (extractor, response) = success
           extractions = (response split "\n")
         } yield ExtractorResults(extractor, extractions)
 
-        (ExtractedSentence(sentence, extractorResults), seq collect { case fail: Failure[_] => fail.exception })
+        val exceptions = seq collect { case fail: Failure[_] => fail.exception }
+
+        (ExtractedSentence(sentence, successfulExtractions), exceptions)
       }
     }
 
