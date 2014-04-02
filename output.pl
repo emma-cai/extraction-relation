@@ -140,7 +140,7 @@ write_rdf(S,P,O,GraphId) :-
 inf_tuple(Ent,Ent) :-
 	atom(Ent), !,
 	text_arg(Ent,Text),
-	rdf_assert(Ent,pred:isa,Text,Ent).
+	rdf_assert(Ent,pred:isa,literal(Text),Ent).
 inf_tuple([S,V,O-_|Rest],Id) :- !, % ignore vars
 	inf_tuple([S,V,O|Rest],Id).
 inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
