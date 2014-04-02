@@ -230,7 +230,7 @@ json_arg(Arg-Var-true,json([class=Class,string=[],isInferred= @(true),
 			    coreferences=[json([class='Coreference',label=Var,sourceTokens=TokenIds])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
 json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred= @(false),
-		       coreferences=[json([class='Coreference',label=Var])]])) :- !,
+		       coreferences=[json([class='Coreference',label=Var,sourceTokens=TokenIds])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
 json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred= @(false),
 		   coreferences=[]])) :-
