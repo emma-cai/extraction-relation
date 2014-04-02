@@ -35,6 +35,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
       // Fire off requests to all extractors for the particular sentence.
+      // We use a Try so that we can aggregate failures, instead of failing the whole future.
       val extractionsFuture: Seq[Future[Try[(String, String)]]] =
         for (extractor <- extractors) yield {
           val future = extractor(sentence).transform(x => x, throwable =>
