@@ -251,7 +251,7 @@ text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[],extraPhrases=[]])) :-
+json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds,isInferred= @(false),coreferences=[]]),verbPhrase=[],extraPhrases=[]])) :-
 	entity_tokens(Arg,Tokens),
 	json_ids(Tokens,TokenIds).
 
