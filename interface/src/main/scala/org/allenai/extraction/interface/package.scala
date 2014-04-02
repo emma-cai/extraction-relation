@@ -47,22 +47,12 @@ package object interface {
 
   /** A coreference in a range of tokens. This will contain a label matching at least one other
     * coreference in the parent Rule.
-    * @param sourceRange the range of the coreference in the containing phrase's tokens
+    * @param sourceTokens the tokens for this coreference
     * @param label the variable label for this coreference, matching at least one other coference in
     *     the containing Rule
     */
-  case class Coreference(sourceRange: Range, label: String)
+  case class Coreference(sourceTokens: Seq[Token], label: String)
   object Coreference {
-    implicit val rangeJsonFormat = new RootJsonFormat[Range] {
-      def write(value: Range): JsObject = {
-        JsObject("start" -> JsNumber(value.start), "end" -> JsNumber(value.end))
-      }
-
-      def read(value: JsValue): Range = value.asJsObject.getFields("start", "end") match {
-        case Seq(JsNumber(start), JsNumber(end)) => (start.toInt until end.toInt)
-        case _ => throw new DeserializationException("Range expected")
-      }
-    }
     implicit val coreferenceJsonFormat = jsonFormat2(Coreference.apply)
   }
 

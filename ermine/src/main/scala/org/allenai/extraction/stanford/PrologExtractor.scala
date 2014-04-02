@@ -91,7 +91,7 @@ object PrologExtractor extends Extractor {
       override def write(value: Coreference) = JsString(value.label)
 
       override def read(value: JsValue): Coreference = value match {
-        case JsString(label) => Coreference(0 until 1, label)
+        case JsString(label) => Coreference(Seq.empty, label)
         case _ => throw new DeserializationException("JsString expected for Coreference")
       }
     }
