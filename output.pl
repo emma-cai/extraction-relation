@@ -195,7 +195,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 	!.
 
 
-json_tuple(Ent,json([class='ExtractionTuple',subject=Json,verbPhrase=[]])) :-
+json_tuple(Ent,json([class='ExtractionTuple',subject=Json,verbPhrase=[],extraPhrases=[]])) :-
 	atom(Ent), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
@@ -251,7 +251,7 @@ text_entity(Arg,Text) :-
 	entity_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[]])) :-
+json_entity(Arg,json([class='ExtractionTuple',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[],extraPhrases=[]])) :-
 	entity_tokens(Arg,Tokens),
 	json_ids(Tokens,TokenIds).
 
