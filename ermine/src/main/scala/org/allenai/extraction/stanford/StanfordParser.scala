@@ -28,7 +28,7 @@ class StanfordParser extends Extractor {
     // Stanford requires we load the entire text to process in memory.
     val sourceText = source.getLines().mkString("\n")
     // Run the processing.
-    val annotation = pipeline.process(sourceText);
+    val annotation = pipeline.process(sourceText)
     // Output the results.
     pipeline.xmlPrint(annotation, destination)
   }
