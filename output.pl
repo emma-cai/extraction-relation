@@ -1,5 +1,4 @@
 :- use_module(library(http/json)).
-:- use_module(library(http/json_convert)).
 :- use_module(library(semweb/rdf_turtle_write)).
 
 :- rdf_meta write_rdf(r,r,-,-).
@@ -62,7 +61,7 @@ text_rel([Rel|Tokens],Text) :-
 json_rel([Rel-_Id|Tokens],Json) :- !,
 	json_rel([Rel|Tokens],Json).
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
-	prefixed_ids(Tokens,TokenIds).
+	json_ids(Tokens,TokenIds).
 
 write_simple_tuple(Node,Json) :-
 	tuple(Node,Tuple),
@@ -196,7 +195,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 	!.
 
 
-json_tuple(Ent,json([class='ExtractionTuple',confidence='1.0',subject=Json])) :-
+json_tuple(Ent,json([class='ExtractionTuple',confidence='1.0',subject=Json,verbPhrase=[]])) :-
 	atom(Ent), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
@@ -227,16 +226,16 @@ text_arg(Arg,Text) :-
 	tokens_text_quoted(Tokens,Text).
 
 json_arg([],json([])) :- !.
-json_arg(Arg-Var-true,json([class=Class,string=[],isInferred= @true,
+json_arg(Arg-Var-true,json([class=Class,string=[],isInferred= @(true),
 			    coreferences=[json([class='Coreference',label=Var,sourceTokens=TokenIds])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred= @false,
+json_arg(Arg-Var,json([class=Class,string=TokenIds,isInferred= @(false),
 		       coreferences=[json([class='Coreference',label=Var])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
-json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred= @false,
+json_arg(Arg,json([class='NounPhrase',string=TokenIds,isInferred= @(false),
 		   coreferences=[]])) :-
 	arg_tokens(Arg,Tokens),
-	prefixed_ids(Tokens,TokenIds).
+	json_ids(Tokens,TokenIds).
 
 % special case for prep to apply exclusion list to pobj
 arg_tokens(Arg,[Arg|Tokens]) :-
@@ -254,7 +253,7 @@ text_entity(Arg,Text) :-
 
 json_entity(Arg,json([class='ExtractionTuple',confidence='1.0',subject=json([class='NounPhrase',string=TokenIds]),verbPhrase=[]])) :-
 	entity_tokens(Arg,Tokens),
-	prefixed_ids(Tokens,TokenIds).
+	json_ids(Tokens,TokenIds).
 
 entity_tokens(Arg,Tokens) :-
 	% remove 'such as' PP
@@ -287,7 +286,7 @@ json_mods([Arg|Rest],[TokenIds|RestTokenIds]) :-
 
 json_mod(Mod,TokenIds) :-
 	mod_tokens(Mod,Tokens),
-	prefixed_ids(Tokens,TokenIds).
+	json_ids(Tokens,TokenIds).
 
 
 mod_tokens([],[]) :- !.
@@ -307,13 +306,14 @@ text_verb(Arg,Text,Arg) :-
 	verb_tokens(Arg,Tokens),
 	lemmas_text_quoted(Tokens,Text).
 
-json_verb(Arg-Norm,Norm,Arg) :- !. % denominalized
+json_verb(Arg-Norm,[Json],Arg) :- !, % denominalized
+	json_id(Arg-Norm,Json).
 json_verb(Arg,TokenIds,Arg) :-
 	verb_tokens(Arg,Tokens),
-	prefixed_ids(Tokens,TokenIds).
+	json_lemma_ids(Tokens,TokenIds).
 
 verb_tokens([],[]) :- !.
-verb_tokens(Arg,Verb) :-
+verb_tokens(Arg,[Arg-Verb]) :-
 	rdf(Arg,token:lemma,literal(Lemma)),
 	wn-denom(Lemma,Verb),
 	!.
@@ -328,12 +328,29 @@ write_sentence(Root) :-
 	write('.\n').
 
 
-prefixed_ids(Tokens,TokenIds) :-
-	maplist(prefixed_id,Tokens,TokenIds), !.
-prefixed_id(Token,TokenId) :-
+json_ids(Tokens,TokenIds) :-
+	maplist(json_id,Tokens,TokenIds), !.
+json_id(Token-Text,json([token=TokenId,text=Text])) :- !,
 	rdf_global_id(id:Val,Token),
 	atomic_list_concat([id,':',Val],TokenId).
-prefixed_id(Token,TokenId) :-
+json_id(Token,json([token=TokenId,text=Text])) :-
+	rdf_global_id(id:Val,Token),
+	atomic_list_concat([id,':',Val],TokenId),
+	token_text(Token,Text).
+json_id(Token,json([token=TokenId])) :-
+	rdf_global_id(Term,Token),
+	term_to_atom(Term,TokenId).
+
+json_lemma_ids(Tokens,TokenIds) :-
+	maplist(json_lemma_id,Tokens,TokenIds), !.
+json_lemma_id(Token-Val,json([token=TokenId,text=Val])) :- !,
+	rdf_global_id(id:Val,Token),
+	atomic_list_concat([id,':',Val],TokenId).
+json_lemma_id(Token,json([token=TokenId,text=Text])) :-
+	rdf_global_id(id:Val,Token),
+	atomic_list_concat([id,':',Val],TokenId),
+	lemma_text(Token,Text).
+json_lemma_id(Token,json([token=TokenId])) :-
 	rdf_global_id(Term,Token),
 	term_to_atom(Term,TokenId).
 
