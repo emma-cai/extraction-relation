@@ -34,25 +34,24 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
     val processed: Seq[Future[(ExtractedSentence, Seq[Throwable])]] = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
-      type Extractor = String
-      type Extraction = String
+      case class ExtractorResponse(extractor: String, response: String)
 
       // Fire off requests to all extractors for the particular sentence.
       // We use a Try so that we can keep all failures, instead of failing
       // the whole future for a single failure.
-      val extractionsFuture: Seq[Future[Try[(Extractor, Extraction)]]] =
+      val extractionsFuture: Seq[Future[Try[ExtractorResponse]]] =
         for (extractor <- extractors) yield {
           // Run the extractor
-          val attempt: Future[Extraction] = extractor(sentence)
+          val attempt: Future[String] = extractor(sentence)
 
           // Wrap with a cleaner exception
-          val wrapped: Future[Extraction] = attempt.transform(x => x, throwable =>
+          val wrapped: Future[String] = attempt.transform(x => x, throwable =>
             new ExtractorException(
               s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
 
           // Convert future value to Try.
           wrapped map { extractions =>
-            Success((extractor.name, extractions))
+            Success(ExtractorResponse(extractor.name, extractions))
           } recover {
             case NonFatal(e) =>
               logger.error(e.getMessage, e)
@@ -61,11 +60,11 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         }
 
       // Change responses into an ExtractedSentence and failures.
-      Future.sequence(extractionsFuture) map { seq: Seq[Try[(String, String)]] =>
+      Future.sequence(extractionsFuture) map { seq: Seq[Try[ExtractorResponse]] =>
         val successfulExtractions = for {
           tryValue <- seq
           success <- tryValue.toOption
-          (extractor, response) = success
+          ExtractorResponse(extractor, response) = success
           extractions = (response split "\n")
         } yield ExtractorResults(extractor, extractions)
 
