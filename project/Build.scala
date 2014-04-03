@@ -17,8 +17,8 @@ object ExtractionBuild extends Build {
       val envMap = (for {
         // TODO(jkinkead): The script that comes bundled with swi-prolog also checks `swi-prolog`
         // and `pl`, which we could do here.
-        success <- Try(Process(Seq("swipl", "--dump-runtime-variables")).lines).toOption.toSeq
-        line <- success
+        output <- Try(Process(Seq("swipl", "--dump-runtime-variables")).lines).toOption.toSeq
+        line <- output
         (key, value) <- line match {
           case ShellAssignment(key, value) => Some(key -> value)
           case _ => None
