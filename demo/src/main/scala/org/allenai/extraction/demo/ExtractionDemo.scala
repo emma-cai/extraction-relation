@@ -31,24 +31,46 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   val timeout = 1.minute
 
   def extractSentences(sentences: Seq[String]): Future[Response] = {
-    val processed = for (sentence <- sentences) yield {
+    val processed: Seq[Future[(ExtractedSentence, Seq[Throwable])]] = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
 
-      // Fire off requests to extractors.
-      val extractionsFuture: Seq[Future[(String, String)]] =
+      case class ExtractorResponse(extractor: String, response: String)
+
+      // Fire off requests to all extractors for the particular sentence.
+      // We use a Try so that we can keep all failures, instead of failing
+      // the whole future for a single failure.
+      val extractionFutures: Seq[Future[Try[ExtractorResponse]]] =
         for (extractor <- extractors) yield {
-          val future = extractor(sentence).transform(x => x, throwable =>
-            new ExtractorException(s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
-          future.map((extractor.name, _))
+          // Run the extractor
+          val attempt: Future[String] = extractor(sentence)
+
+          // Wrap with a cleaner exception
+          val wrapped: Future[String] = attempt.transform(x => x, throwable =>
+            new ExtractorException(
+              s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
+
+          // Convert future value to Try.
+          wrapped map { extractions =>
+            Success(ExtractorResponse(extractor.name, extractions))
+          } recover {
+            case NonFatal(e) =>
+              logger.error(e.getMessage, e)
+              Failure(e)
+          }
         }
 
-      Future.sequence(extractionsFuture) map { f =>
-        val extractorResults = for {
-          (extractor, response) <- f
+      // Change responses into an ExtractedSentence and failures.
+      Future.sequence(extractionFutures) map { seq: Seq[Try[ExtractorResponse]] =>
+        val successfulExtractions = for {
+          tryValue <- seq
+          success <- tryValue.toOption
+          ExtractorResponse(extractor, response) = success
           extractions = (response split "\n")
         } yield ExtractorResults(extractor, extractions)
 
-        ExtractedSentence(sentence, extractorResults)
+        val exceptions = seq collect { case fail: Failure[_] => fail.exception }
+
+        (ExtractedSentence(sentence, successfulExtractions), exceptions)
       }
     }
 
@@ -56,16 +78,43 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       extractor.name -> extractor.description.getOrElse("")
     }.toMap
 
-    Future.sequence(processed) map (Response(_, extractorMap))
+    Future.sequence(processed) map { seq =>
+      val successes: Seq[ExtractedSentence] = seq map (_._1)
+      val exceptions: Seq[Throwable] = seq flatMap (_._2)
+      Response(successes, extractorMap, exceptions)
+    }
   }
 
-  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String])
+  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String], failures: Seq[Throwable])
   case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
   case class ExtractorResults(name: String, extractions: Seq[String])
 
+  implicit val throwableWriter = new RootJsonFormat[Throwable] {
+    def read(v: JsValue): Throwable = throw new UnsupportedOperationException
+    /** Write a throwable as an object with 'message' and 'stackTrace' fields. */
+    def write(t: Throwable) = {
+      def getMessageChain(throwable: Throwable): List[String] = {
+        Option(throwable) match {
+          case Some(throwable) => Option(throwable.getMessage) match {
+            case Some(message) => (throwable.getClass + ": " + message) :: getMessageChain(throwable.getCause)
+            case None => getMessageChain(throwable.getCause)
+          }
+          case None => Nil
+        }
+      }
+      val stackTrace = {
+        val stackTraceWriter = new java.io.StringWriter()
+        t.printStackTrace(new java.io.PrintWriter(stackTraceWriter))
+        stackTraceWriter.toString
+      }
+      JsObject(
+        "messages" -> JsArray(getMessageChain(t) map (JsString(_))),
+        "stackTrace" -> JsString(stackTrace))
+    }
+  }
   implicit val extractorResults = jsonFormat2(ExtractorResults)
   implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
-  implicit val responseFormat = jsonFormat2(Response)
+  implicit val responseFormat = jsonFormat3(Response)
 
   def run() {
     val config = ConfigFactory.load().getConfig("extraction")
@@ -81,29 +130,6 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
     val cacheControlMaxAge = HttpHeaders.`Cache-Control`(CacheDirectives.`max-age`(60))
 
     implicit val system = ActorSystem("extraction-demo")
-
-    implicit val throwableWriter = new RootJsonWriter[Throwable] {
-      /** Write a throwable as an object with 'message' and 'stackTrace' fields. */
-      def write(t: Throwable) = {
-        def getMessageChain(throwable: Throwable): List[String] = {
-          Option(throwable) match {
-            case Some(throwable) => Option(throwable.getMessage) match {
-              case Some(message) => (throwable.getClass + ": " + message) :: getMessageChain(throwable.getCause)
-              case None => getMessageChain(throwable.getCause)
-            }
-            case None => Nil
-          }
-        }
-        val stackTrace = {
-          val stackTraceWriter = new java.io.StringWriter()
-          t.printStackTrace(new java.io.PrintWriter(stackTraceWriter))
-          stackTraceWriter.toString
-        }
-        JsObject(
-          "messages" -> JsArray(getMessageChain(t) map (JsString(_))),
-          "stackTrace" -> JsString(stackTrace))
-      }
-    }
 
     implicit def exceptionHandler(implicit log: spray.util.LoggingContext) =
         ExceptionHandler {
