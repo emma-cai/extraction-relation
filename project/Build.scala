@@ -5,6 +5,7 @@ import spray.revolver.RevolverPlugin._
 
 import java.io.File
 import java.io.IOException
+import scala.util.Try
 
 object ExtractionBuild extends Build {
   /** Returns the path the prolog installation, or None if a prolog installation can't be found. */
@@ -16,7 +17,8 @@ object ExtractionBuild extends Build {
       val envMap = (for {
         // TODO(jkinkead): The script that comes bundled with swi-prolog also checks `swi-prolog`
         // and `pl`, which we could do here.
-        line <- Process(Seq("swipl", "--dump-runtime-variables")).lines
+        success <- Try(Process(Seq("swipl", "--dump-runtime-variables")).lines).toOption.toSeq
+        line <- success
         (key, value) <- line match {
           case ShellAssignment(key, value) => Some(key -> value)
           case _ => None
@@ -38,6 +40,7 @@ object ExtractionBuild extends Build {
   val prologLibraryFlags = getPrologPath() match {
     case Some(path) => {
       println(s"Using swipl at ${path}")
+
       if (!(new File(s"${path}/libjpl.jnilib").exists)) {
         println("WARNING: Couldn't find libjpl - did you install swipl --with-jpl?")
       }
