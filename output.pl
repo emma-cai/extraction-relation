@@ -63,7 +63,7 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	json_ids(Tokens,TokenIds).
 
-write_simple_tuple(Node,Json) :-
+write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[]])) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
 	write('% '), write(Text), nl,
