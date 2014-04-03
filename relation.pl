@@ -62,9 +62,9 @@ relation(Root,Json) :-
 	function(Root,Comp,Rel),
 	\+ dependency(_,dep:prep_for,Comp), % responsible for
 	tuple(Comp,Tuple),
-	distribute_args([Root],Tuple,_,TupleOut),
 	denominalize(Root,RootTuple),
-	write_relation(RootTuple,Rel,TupleOut,Json).
+	distribute_args(RootTuple,Tuple,RootTupleOut,TupleOut),
+	write_relation(RootTupleOut,Rel,TupleOut,Json).
 % function (NP-NP)
 relation(Root,Json) :-
 	function(Root,Comp,Rel),
@@ -214,6 +214,9 @@ filter_entity(Entity) :-
 	rdf(Entity,dep:poss,_).
 
 
+distribute_args(Entity,Tuple, EntityOut,TupleOut) :-
+	atom(Entity), !,
+	distribute_args([Entity],Tuple, [EntityOut],TupleOut).
 % don't use subject from parent clause if already object
 distribute_args([Subj1|Rest],[[],V2,Obj2|Rest2], [Subj1|Rest],[[],V2,Obj2|Rest2]) :-
 	(Subj1 = Obj2

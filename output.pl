@@ -159,6 +159,8 @@ write_rdf(S,P,O,GraphId) :-
 	format('~w(~w, ~w)',Ids), !.
 
 
+inf_tuple(Ent-_,Ent) :- !,
+	inf_tuple(Ent,Ent).
 inf_tuple(Ent,Ent) :-
 	atom(Ent), !,
 	text_arg(Ent,Text),
@@ -199,7 +201,7 @@ inf_mods(V, [Mod|Rest]) :-
 	inf_mods(V, Rest).
 
 text_tuple(Ent,Text) :-
-	atom(Ent), !,
+	(atom(Ent) ; Ent = _-_), !,
 	text_arg(Ent,Text).
 text_tuple([S,V],Text) :-
 	text_tuple([S,V,[]],Text).
@@ -218,7 +220,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 
 
 json_tuple(Ent,json([class='ExtractionTuple',subject=Json,verbPhrase=[],extraPhrases=[]])) :-
-	atom(Ent), !,
+	(atom(Ent) ; Ent = _-_), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).

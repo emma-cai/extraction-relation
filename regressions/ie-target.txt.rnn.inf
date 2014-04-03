@@ -10,13 +10,13 @@ isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long wi
 isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters") -> example(E4, E18), isa(E18, "hibernation").
 isa(E18, "hibernation") -> example(E4, E18), isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters").
 
-% "A hand lens"	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
 isa(E3, "A hand lens") -> purpose(E3, E7), isa(E7, "view"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail").
 isa(E7, "view"), isa(E3, "A hand lens"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail") -> purpose(E3, E7), .
 
-% ("" "remove" "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
-isa(E18, "remove"), isa(E20, "heat"), object(E18, E20) -> enable(E18, E3), isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state").
-isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(E20, "heat"), object(E18, E20).
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
+isa(E18, "remove"), isa(E1, "Freezing"), isa(E20, "heat"), agent(E18, E1), object(E18, E20) -> enable(E18, E3), isa(E3, "change"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state").
+isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(E20, "heat"), agent(E18, E1), object(E18, E20).
 
 % ("Animals" "not make" "their[some animals] own food")	"so"/EFFECT	("some animals" "eat" "")
 isa(E4, "not make"), isa(E1, "Animals"), isa(E7, "their[some animals] own food"), agent(E4, E1), object(E4, E7) -> effect(E4, E11), isa(E11, "eat"), isa(E3, "some animals"), agent(E11, E3).
@@ -84,9 +84,9 @@ isa(E3, "energy") -> isa(E2, "get"), isa(E1, "Animals"), agent(E2, E1), object(E
 isa(E10, "friction") -> cause(E10, E4), isa(E4, "produce"), isa(E2, "The heat"), isa(E6, "the smoke"), agent(E4, E2), object(E4, E6).
 isa(E4, "produce"), isa(E2, "The heat"), isa(E6, "the smoke"), agent(E4, E2), object(E4, E6) -> cause(E10, E4), isa(E10, "friction").
 
-% ("" "rest" "")	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
-isa(E1, "rest") -> requirement(E1, E7), isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9).
-isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9) -> requirement(E1, E7), isa(E1, "rest").
+% ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
+isa(E1, "rest"), isa(E5, "humans"), agent(E1, E5) -> requirement(E1, E7), isa(E7, "maintain"), isa(E9, "good health"), agent(E7, E5), object(E7, E9).
+isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9) -> requirement(E1, E7), isa(E1, "rest"), agent(E1, E5).
 
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 isa(E4, "use"), isa(E2, "A student"), isa(E7, "a graduated cylinder"), agent(E4, E2), object(E4, E7) -> effect(E4, E9), isa(E9, "measure"), isa(E12, "10 milliliters of water"), agent(E9, E2), object(E9, E12).
