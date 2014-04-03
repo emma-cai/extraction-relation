@@ -39,7 +39,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
       // Fire off requests to all extractors for the particular sentence.
       // We use a Try so that we can keep all failures, instead of failing
       // the whole future for a single failure.
-      val extractionsFuture: Seq[Future[Try[ExtractorResponse]]] =
+      val extractionFutures: Seq[Future[Try[ExtractorResponse]]] =
         for (extractor <- extractors) yield {
           // Run the extractor
           val attempt: Future[String] = extractor(sentence)
@@ -60,7 +60,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         }
 
       // Change responses into an ExtractedSentence and failures.
-      Future.sequence(extractionsFuture) map { seq: Seq[Try[ExtractorResponse]] =>
+      Future.sequence(extractionFutures) map { seq: Seq[Try[ExtractorResponse]] =>
         val successfulExtractions = for {
           tryValue <- seq
           success <- tryValue.toOption
