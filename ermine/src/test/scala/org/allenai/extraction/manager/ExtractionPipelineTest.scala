@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.stanford.PrologExtractor
+import org.allenai.extraction.extractors.PrologExtractor
 
 import com.typesafe.config.ConfigFactory
 

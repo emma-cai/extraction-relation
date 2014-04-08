@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.extraction.Extractor
-import org.allenai.extraction.stanford._
+import org.allenai.extraction.extractors._
 
 import com.typesafe.config.{ Config, ConfigException }
 

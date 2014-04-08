@@ -1,4 +1,4 @@
-package org.allenai.extraction.stanford
+package org.allenai.extraction.extractors
 
 import org.allenai.common.Logging
 import org.allenai.extraction.FlatExtractor

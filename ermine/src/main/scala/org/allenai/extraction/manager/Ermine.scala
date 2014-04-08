@@ -1,17 +1,8 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Logging
-import org.allenai.extraction.stanford.PrologExtractor
-import org.allenai.extraction.stanford.StanfordParser
-import org.allenai.extraction.stanford.StanfordXmlToTtl
 
 import com.typesafe.config.ConfigFactory
-
-import scala.io.Source
-
-import java.io.File
-import java.io.FileWriter
-import java.io.StringWriter
 
 /** Main app to run extractions. */
 object Ermine extends Logging {
