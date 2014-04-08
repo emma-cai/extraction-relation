@@ -70,6 +70,7 @@ object ExtractionBuild extends Build {
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
+  val mockito = "org.mockito" % "mockito-all" % "1.9.5"
 
   // Full requirements for Stanford + Prolog extractions.
   val ferretDeps = {
@@ -87,6 +88,8 @@ object ExtractionBuild extends Build {
   }
 
   val allenaiCommon = "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT"
+  val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.1-SNAPSHOT"
+  val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
 
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },

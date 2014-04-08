@@ -7,7 +7,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
 libraryDependencies ++= loggingImplementations ++ ferretDeps ++ Seq(akkaActor, typesafeConfig,
-  sprayJson, allenaiCommon)
+  sprayJson, allenaiCommon) ++ testLibs
 
 // Up memory and add prolog path.
 javaOptions ++= prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")
