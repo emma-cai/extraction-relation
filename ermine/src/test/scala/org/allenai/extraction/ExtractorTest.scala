@@ -12,8 +12,8 @@ import java.io.Writer
 
 class ExtractorTest extends UnitSpec with MockitoSugar {
   object ConcreteExtractor extends Extractor {
-    override val numInputs = 2 
-    override val numOutputs = 1 
+    override val numInputs = 2
+    override val numOutputs = 1
     override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]):
         Unit = {
       sources(1).getLines
