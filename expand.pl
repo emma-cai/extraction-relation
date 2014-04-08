@@ -60,6 +60,7 @@ coref(E,C) :-
 
 % expand coref
 token_text([],[]) :- !.
+token_text(_Token-Text,Text) :- !.
 token_text(Token,Text) :-
 	coref(Token,Coref),
 	token_text0(Token,TokenText),
@@ -112,6 +113,7 @@ write_tokens0(Tokens) :-
 	write(Text).
 
 % lemmas if available
+lemma_text(_T-L,L) :- !.
 lemma_text(T,L) :-
 	rdf(T,token:lemma,literal(L)),
 	!.

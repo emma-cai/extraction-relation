@@ -10,13 +10,13 @@ isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long wi
 isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters") -> example(E4, E18), isa(E18, "hibernation").
 isa(E18, "hibernation") -> example(E4, E18), isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters").
 
-% "A hand lens"	"is used"/FUNCTION	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
-isa(E3, "A hand lens") -> function(E3, E7), isa(E7, "view"), isa(E3, "A hand lens"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail").
-isa(E7, "view"), isa(E3, "A hand lens"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail") -> function(E3, E7), isa(E3, "A hand lens").
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+isa(E3, "A hand lens") -> purpose(E3, E7), isa(E7, "view"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail").
+isa(E7, "view"), isa(E3, "A hand lens"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail") -> purpose(E3, E7), .
 
-% ("" "remove" "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
-isa(E18, "remove"), isa(E20, "heat"), object(E18, E20) -> enable(E18, E3), isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state").
-isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(E20, "heat"), object(E18, E20).
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
+isa(E18, "remove"), isa(E1, "Freezing"), isa(E20, "heat"), agent(E18, E1), object(E18, E20) -> enable(E18, E3), isa(E3, "change"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state").
+isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(E20, "heat"), agent(E18, E1), object(E18, E20).
 
 % ("Animals" "not make" "their[some animals] own food")	"so"/EFFECT	("some animals" "eat" "")
 isa(E4, "not make"), isa(E1, "Animals"), isa(E7, "their[some animals] own food"), agent(E4, E1), object(E4, E7) -> effect(E4, E11), isa(E11, "eat"), isa(E3, "some animals"), agent(E11, E3).
@@ -36,28 +36,28 @@ isa(E1, "get"), isa(E3, "rest"), object(E1, E3) -> part(E1, E10), isa(E10, "live
 isa(E10, "live"), isa(E13, "a healthy life"), object(E10, E13) -> part(E1, E10), isa(E1, "get"), isa(E3, "rest"), object(E1, E3).
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
-isa(E1, "Decomposers") -> example(E1, E6), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9).
-isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E6), isa(E1, "Decomposers").
+isa(E1, "Decomposers") -> example(E1, E6), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
+isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E6), isa(E1, "Decomposers"), isa(E1, E4).
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
-isa(E1, "Decomposers") -> example(E1, E11), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil").
-isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E11), isa(E1, "Decomposers").
+isa(E1, "Decomposers") -> example(E1, E11), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
+isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E11), isa(E1, "Decomposers"), isa(E1, E4).
 
 % "Decomposers"	"are"/EXAMPLE	"living things"
 isa(E1, "Decomposers") -> example(E1, E4), isa(E4, "living things").
 isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
 
 % "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
-isa(E1, "Gravity") -> example(E1, E6), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8).
-isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E6), isa(E1, "Gravity").
+isa(E1, "Gravity") -> example(E1, E6), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8), isa(E1, E4).
+isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E6), isa(E1, "Gravity"), isa(E1, E4).
 
 % "Gravity"	"is"/EXAMPLE	"the force"
 isa(E1, "Gravity") -> example(E1, E4), isa(E4, "the force").
 isa(E4, "the force") -> example(E1, E4), isa(E1, "Gravity").
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
-isa(E6, "sweat") -> example(E6, E14), isa(E14, "adjust"), isa(E12, "an organism"), isa(E6, "sweat"), agent(E14, E12), object(E14, E6), to(E14, "hot temperatures").
-isa(E14, "adjust"), isa(E12, "an organism"), isa(E6, "sweat"), agent(E14, E12), object(E14, E6), to(E14, "hot temperatures") -> example(E6, E14), isa(E6, "sweat").
+isa(E6, "sweat") -> example(E6, E14), isa(E14, "adjust"), isa(E12, "an organism"), agent(E14, E12), object(E14, E6), to(E14, "hot temperatures").
+isa(E14, "adjust"), isa(E12, "an organism"), isa(E6, "sweat"), agent(E14, E12), object(E14, E6), to(E14, "hot temperatures") -> example(E6, E14), .
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
 isa(E6, "sweat") -> example(E6, E14), isa(E14, "adjust"), isa(E12, "an organism"), isa(E9, "a way"), agent(E14, E12), object(E14, E9), to(E14, "hot temperatures").
@@ -84,9 +84,9 @@ isa(E3, "energy") -> isa(E2, "get"), isa(E1, "Animals"), agent(E2, E1), object(E
 isa(E10, "friction") -> cause(E10, E4), isa(E4, "produce"), isa(E2, "The heat"), isa(E6, "the smoke"), agent(E4, E2), object(E4, E6).
 isa(E4, "produce"), isa(E2, "The heat"), isa(E6, "the smoke"), agent(E4, E2), object(E4, E6) -> cause(E10, E4), isa(E10, "friction").
 
-% ("" "rest" "")	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
-isa(E1, "rest") -> requirement(E1, E7), isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9).
-isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9) -> requirement(E1, E7), isa(E1, "rest").
+% ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
+isa(E1, "rest"), isa(E5, "humans"), agent(E1, E5) -> requirement(E1, E7), isa(E7, "maintain"), isa(E9, "good health"), agent(E7, E5), object(E7, E9).
+isa(E7, "maintain"), isa(E5, "humans"), isa(E9, "good health"), agent(E7, E5), object(E7, E9) -> requirement(E1, E7), isa(E1, "rest"), agent(E1, E5).
 
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 isa(E4, "use"), isa(E2, "A student"), isa(E7, "a graduated cylinder"), agent(E4, E2), object(E4, E7) -> effect(E4, E9), isa(E9, "measure"), isa(E12, "10 milliliters of water"), agent(E9, E2), object(E9, E12).
@@ -100,9 +100,9 @@ isa(E9, "measure"), isa(E2, "A student"), isa(E14, "mL"), agent(E9, E2), object(
 isa(E3, "The white fur of an arctic fox blends") -> example(E3, E15), isa(E15, "camouflage").
 isa(E15, "camouflage") -> example(E3, E15), isa(E3, "The white fur of an arctic fox blends").
 
-% "decomposers"	"help"/FUNCTION	("decomposers" "return" "nutrients" [ "to the food chain" ] )
-isa(E7, "decomposers") -> function(E7, E9), isa(E9, "return"), isa(E7, "decomposers"), isa(E10, "nutrients"), agent(E9, E7), object(E9, E10), to(E9, "the food chain").
-isa(E9, "return"), isa(E7, "decomposers"), isa(E10, "nutrients"), agent(E9, E7), object(E9, E10), to(E9, "the food chain") -> function(E7, E9), isa(E7, "decomposers").
+% "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
+isa(E7, "decomposers") -> purpose(E7, E9), isa(E9, "return"), isa(E10, "nutrients"), agent(E9, E7), object(E9, E10), to(E9, "the food chain").
+isa(E9, "return"), isa(E7, "decomposers"), isa(E10, "nutrients"), agent(E9, E7), object(E9, E10), to(E9, "the food chain") -> purpose(E7, E9), .
 
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 isa(E9, "return"), isa(E7, "decomposers"), isa(E10, "nutrients"), agent(E9, E7), object(E9, E10), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), isa(E2, "plants"), agent(E5, E2).

@@ -152,82 +152,82 @@ function(Entity,Comp,Rel) :-
 	dependency(Root,dep:cop,_),
 	function(Root,Comp,Rel).
 % FUNCTION: NP "helps" Tuple
-function(Entity,Comp,['FUNCTION'-26,Help]) :-
+function(Entity,Comp,['PURPOSE'-26,Help]) :-
 	dependency(Help,dep:nsubj,Entity),
 	\+ dependency(_,dep:rcmod,Help),
 	helps(Help),
 	( dependency(Help,dep:ccomp,Comp)
 	; dependency(Help,dep:xcomp,Comp) ).
-function(Entity,Comp,['FUNCTION'-27,Help]) :-
+function(Entity,Comp,['PURPOSE'-27,Help]) :-
 	dependency(Entity,dep:rcmod,Help),
 	helps(Help),
 	( dependency(Help,dep:ccomp,Comp)
 	; dependency(Help,dep:xcomp,Comp) ).
 % FUNCTION: NP "helps in" Tuple
-function(Entity,Comp,['FUNCTION'-28,Help]) :-
+function(Entity,Comp,['PURPOSE'-28,Help]) :-
 	dependency(Help,dep:nsubj,Entity),
 	\+ dependency(_,dep:rcmod,Help),
 	helps(Help),
 	dependency(Help,dep:prepc_in,Comp),
 	pos(Comp,'VBG').
 % FUNCTION: NP "is used to" Tuple
-function(Entity,Comp,['FUNCTION'-29,Aux,Rel]) :-
+function(Entity,Comp,['PURPOSE'-29,Aux,Rel]) :-
 	dependency(Rel,dep:nsubjpass,Entity),
 	dependency(Rel,dep:auxpass,Aux),
 	lemma(Rel,use),
 	\+ dependency(_,dep:rcmod,Rel),
 	dependency(Rel,dep:xcomp,Comp).
-function(Entity,Comp,['FUNCTION'-30,Aux,Rel]) :-
+function(Entity,Comp,['PURPOSE'-30,Aux,Rel]) :-
 	dependency(Entity,dep:cop,_),
 	dependency(Entity,dep:nsubj,Subj),
 	dependency(Subj,dep:infmod,Rel),
 	lemma(Rel,use),
 	dependency(Rel,dep:xcomp,Comp),
 	aux(Rel,Aux).
-function(Entity,Comp,['FUNCTION'-31,Rel,Aux]) :-
+function(Entity,Comp,['PURPOSE'-31,Rel,Aux]) :-
 	dependency(Entity,dep:partmod,Rel),
 	lemma(Rel,use),
 	\+ dependency(_,dep:rcmod,Rel),
 	dependency(Rel,dep:xcomp,Comp),
 	aux(Comp,Aux).
 % FUNCTION: NP "to" Tuple
-function(Entity,Comp,['FUNCTION'-32,'to']) :-
+function(Entity,Comp,['PURPOSE'-32,'to']) :-
 	dependency(Entity,dep:nsubj,Subj),
 	\+ dependency(Entity,dep:cop,_),
 	\+ lemma(Entity,be),
 	dependency(Subj,dep:infmod,Comp),
 	\+ lemma(Comp,use).
 % FUNCTION: NP "measures" NP
-function(Entity,Measure,['FUNCTION'-33,Measure]) :-
+function(Entity,Measure,['PURPOSE'-33,Measure]) :-
 	dependency(Measure,dep:nsubj,Entity),
 	lemma(Measure,measure).
 % FUNCTION: NP "by which" Tuple
-function(Entity,Comp,['FUNCTION'-34,'by',Which]) :-
+function(Entity,Comp,['PURPOSE'-34,'by',Which]) :-
 	dependency(Root,dep:nsubj,Entity),
 	dependency(Root,dep:cop,_),
 	dependency(Root,dep:rcmod,Comp),
 	dependency(Comp,dep:prep_by,Which),
 	lemma(Which,which).
 % FUNCTION: "function of" NP is Tuple
-function(Entity,Comp,['FUNCTION'-35,Function]) :-
+function(Entity,Comp,['PURPOSE'-35,Function]) :-
 	dependency(Function,dep:prep_of,Entity),
 	lemma(Function,function),
 	dependency(Comp,dep:nsubj,Function),
 	\+ lemma(Comp,be).
-function(Entity,Comp,['FUNCTION'-36,Function,'of']) :-
+function(Entity,Comp,['PURPOSE'-36,Function,'of']) :-
 	dependency(Function,dep:prep_of,Entity),
 	lemma(Function,function),
 	dependency(Be,dep:nsubj,Function),
 	lemma(Be,be),
 	dependency(Be,dep:xcomp,Comp).
 % FUNCTION: NP "is responsible for" Tuple
-function(Entity,Comp,['FUNCTION'-37,Responsible,'for']) :-
+function(Entity,Comp,['PURPOSE'-37,Responsible,'for']) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	lemma(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),
 	dependency(Responsible,dep:prepc_for,Comp).
 % FUNCTION: NP "is responsible for" NP
-function(Entity,Comp,['FUNCTION'-38,Responsible,'for']) :-
+function(Entity,Comp,['PURPOSE'-38,Responsible,'for']) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	lemma(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),

@@ -71,7 +71,29 @@ write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],conseque
 	json_tuple(Tuple,Json).
 %	json:json_write(current_output,Json), nl.
 
+entity_id(Entity,Id) :-
+	(Id-_-_ = Entity ; Id-_ = Entity ; Id = Entity),
+	!.
 
+write_inf_relation(Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
+	atom(Entity),
+	entity_id(Subj,E),
+	% isa relative clause
+	rdf(E,dep:nsubj,Entity),
+	rdf(E,dep:rcmod,Verb), !,
+	inf_tuple(Entity,ActionId),
+	inf_tuple([Subj,Verb|Rest],PurposeId),
+	stripped_ids([ActionId, PurposeId], Ids),
+	downcase_atom(Rel,LRel),
+	% left to right
+	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
+	write_inf_relation0(ActionId,[LRel|Ids],PurposeId),
+	rdf_retractall(Entity,pred:isa,Subj,PurposeId), % RHS
+	% right to left
+	rdf_assert(Entity,pred:isa,Subj,ActionId), %LHS
+	write_inf_relation0(PurposeId,[LRel|Ids],ActionId),
+	rdf_unload_graph(ActionId),
+	rdf_unload_graph(PurposeId).
 write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
 	inf_tuple(Purpose,PurposeId),
@@ -137,10 +159,12 @@ write_rdf(S,P,O,GraphId) :-
 	format('~w(~w, ~w)',Ids), !.
 
 
+inf_tuple(Ent-_,Ent) :- !,
+	inf_tuple(Ent,Ent).
 inf_tuple(Ent,Ent) :-
 	atom(Ent), !,
 	text_arg(Ent,Text),
-	rdf_assert(Ent,pred:isa,Text,Ent).
+	rdf_assert(Ent,pred:isa,literal(Text),Ent).
 inf_tuple([S,V,O-_|Rest],Id) :- !, % ignore vars
 	inf_tuple([S,V,O|Rest],Id).
 inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
@@ -177,7 +201,7 @@ inf_mods(V, [Mod|Rest]) :-
 	inf_mods(V, Rest).
 
 text_tuple(Ent,Text) :-
-	atom(Ent), !,
+	(atom(Ent) ; Ent = _-_), !,
 	text_arg(Ent,Text).
 text_tuple([S,V],Text) :-
 	text_tuple([S,V,[]],Text).
@@ -196,7 +220,7 @@ text_tuple([S,Verb,Arg|Mods],Text) :-
 
 
 json_tuple(Ent,json([class='ExtractionTuple',subject=Json,verbPhrase=[],extraPhrases=[]])) :-
-	atom(Ent), !,
+	(atom(Ent) ; Ent = _-_), !,
 	json_arg(Ent,Json).
 json_tuple([S,V],Json) :-
 	json_tuple([S,V,[]],Json).
