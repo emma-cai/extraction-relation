@@ -90,9 +90,7 @@ package object interface {
     */
   case class Relation(string: Seq[Token], normalizedRelation: Option[Relation.Normalized])
   object Relation {
-    sealed class Normalized {
-      def name = this.getClass.getSimpleName
-    }
+    sealed class Normalized(val name: String)
     object Normalized {
       def fromString(value: String): Normalized = value match {
         case "CAUSE" => Cause
@@ -117,11 +115,11 @@ package object interface {
         }
       }
     }
-    case object Cause extends Normalized
-    case object Enable extends Normalized
-    case object Example extends Normalized
-    case object Purpose extends Normalized
-    case object Requirement extends Normalized
+    case object Cause extends Normalized("CAUSE")
+    case object Enable extends Normalized("ENABLE")
+    case object Example extends Normalized("EXAMPLE")
+    case object Purpose extends Normalized("PURPOSE")
+    case object Requirement extends Normalized("REQUIREMENT")
 
     implicit val relationJsonFormat = jsonFormat2(Relation.apply)
   }
@@ -129,9 +127,10 @@ package object interface {
   /** A single extracted relation. This is essentially a recursive Tuple of depth 2. If multiple
     * antecedents or consequents are present, they should be considered logical conjunctions - all
     * antecedents must be true for the relation to exist; and if it does, all consequents have the
-    * relation.
+    * relation. If relation is missing, only consequants will be considered,
+    * and they will be assumed to be simple truthful assertions.
     */
-  case class ExtractionRule(antecedents: Seq[ExtractionTuple], relation: Relation,
+  case class ExtractionRule(antecedents: Seq[ExtractionTuple], relation: Option[Relation],
     consequents: Seq[ExtractionTuple], confidence: Double)
   object ExtractionRule {
     implicit val extractionRuleJsonFormat = jsonFormat4(ExtractionRule.apply)
