@@ -63,7 +63,7 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	json_ids(Tokens,TokenIds).
 
-write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[]])) :-
+write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
 	write('% '), write(Text), nl,
@@ -209,7 +209,7 @@ json_tuple([S,Verb,Arg|Mods],json([class='ExtractionTuple',subject=SubjJson,verb
 	; json_arg(Arg,ObjJson) ), % dobj
 	json_mods(Mods,ModsTokens),
 	ExtraPhrases = [extraPhrases=ModsTokens],
-	( (ObjJson = json([]),
+	( (ObjJson = json([string=[]|_]), % empty
 	   RestJson = ExtraPhrases)
 	; (RestJson = [directObject=ObjJson|ExtraPhrases]) ),
 	!.
@@ -225,7 +225,7 @@ text_arg(Arg,Text) :-
 	arg_tokens(Arg,Tokens),
 	tokens_text_quoted(Tokens,Text).
 
-json_arg([],json([])) :- !.
+json_arg([],json([string=[],isInferred= @(false),coreferences=[]])) :- !.
 json_arg(Arg-Var-true,json([class=Class,string=[],isInferred= @(true),
 			    coreferences=[json([class='Coreference',label=Var,sourceTokens=TokenIds])]])) :- !,
 	json_arg(Arg,json([class=Class,string=TokenIds|_])).
