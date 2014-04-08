@@ -1,6 +1,5 @@
 package org.allenai.extraction.extractors
 
-import org.allenai.common.Logging
 import org.allenai.extraction.FlatExtractor
 
 import jpl.Term
@@ -15,7 +14,7 @@ import java.io.File
 import java.io.FileWriter
 import java.io.Writer
 
-object PrologExtractor extends FlatExtractor with Logging {
+object PrologExtractor extends FlatExtractor {
   override protected def extractInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")

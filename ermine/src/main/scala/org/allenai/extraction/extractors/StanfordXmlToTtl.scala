@@ -1,6 +1,5 @@
 package org.allenai.extraction.extractors
 
-import org.allenai.common.Logging
 import org.allenai.extraction.Extractor
 import org.allenai.extraction.interface.Token
 
@@ -17,7 +16,7 @@ import java.io.PrintWriter
 import java.io.Writer
 
 /** Filter to convert stanford XML to TTL format. */
-object StanfordXmlToTtl extends Extractor with Logging {
+object StanfordXmlToTtl extends Extractor {
   override val numInputs = 1
   override val numOutputs = 2
 
@@ -25,7 +24,6 @@ object StanfordXmlToTtl extends Extractor with Logging {
     * Reads a single XML file, and writes output to a TTL file and a JSON file.
     */
   override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    logger.warn("Yay")
     val xml = XML.loadString(sources.head.getLines.mkString)
     val ttlOut = destinations(0)
 
