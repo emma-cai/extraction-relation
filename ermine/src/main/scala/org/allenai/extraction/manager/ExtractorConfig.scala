@@ -24,7 +24,7 @@ object ExtractorConfig {
 
   /** Builds an ExtractorConfig from a config with required key `name` and optional `inputs` and
     * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the value
-    * `$default`.
+    * `$$default`.
     */
   def fromConfig(config: Config): ExtractorConfig = {
     if (!config.hasPath("name")) {
@@ -35,8 +35,8 @@ object ExtractorConfig {
       case _: MatchError => throw new ExtractionException(s"unknown extractor '${extractorName}'")
     }
 
-    val inputs = getIOValues(config, "inputs")
-    val outputs = getIOValues(config, "outputs")
+    val inputs = getIOValues(config, "inputs", extractor.numInputs)
+    val outputs = getIOValues(config, "outputs", extractor.numOutputs)
 
     if (inputs.size != extractor.numInputs) {
       throw new ExtractionException(s"extrator ${extractorName} requires ${extractor.numInputs} " +
@@ -54,13 +54,13 @@ object ExtractorConfig {
     * path to be an array of strings.
     * @throws ExtractionException if the path is not an array of strings
     */
-  def getIOValues(config: Config, path: String): Seq[ExtractorIO] = {
-    val values: Seq[ExtractorIO] = try {
+  def getIOValues(config: Config, path: String, numExpected: Int): Seq[ExtractorIO] = {
+    val configuredValues: Seq[ExtractorIO] = try {
       // Check for an object at the given path.
       if (config.hasPath(path)) {
         for {
           (configValue, index) <- config.getList(path).asScala.zipWithIndex
-        } yield ExtractorIO.fromConfig(configValue, index)
+        } yield ExtractorIO.fromConfigValue(configValue, index)
       } else {
         Seq.empty
       }
@@ -70,12 +70,12 @@ object ExtractorConfig {
       }
     }
 
-    if (values.size == 0) {
-      // If there were no IO objects configured, return the default (pipe from the previous
+    if (configuredValues.size == 0) {
+      // If there were no IO objects configured, use the defaults (pipe from the previous
       // operation).
-      Seq(ExtractorIO.defaultIO(0, None))
+      for (i <- 0 until numExpected) yield ExtractorIO.defaultIO(i.toString)
     } else {
-      values
+      configuredValues
     }
   }
 }
