@@ -120,6 +120,7 @@ object ExtractionBuild extends Build {
     base = file("demo"),
     settings = buildSettings)
 
+  val ermineJavaOptions = prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
