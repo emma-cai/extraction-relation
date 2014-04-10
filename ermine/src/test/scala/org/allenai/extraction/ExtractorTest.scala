@@ -3,12 +3,10 @@ package org.allenai.extraction
 import org.allenai.common.testkit.UnitSpec
 
 import org.scalatest.mock.MockitoSugar
-
 import org.mockito.Mockito.verify
 
-import scala.io.Source
-
 import java.io.Writer
+import scala.io.Source
 
 class ExtractorTest extends UnitSpec with MockitoSugar {
   object ConcreteExtractor extends Extractor {
