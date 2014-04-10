@@ -15,6 +15,10 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.Writer
 
+/** Extractor converting the ferret output (JSON with incomplete tokens) into complete
+  * ExtractionRules. This expects two input streams - the ferret output, and the output tokens from
+  * the StanfordXmlToTtl extractor.
+  */
 object FerretToExtractionRule extends Extractor with Logging {
   override val numInputs = 2
   override val numOutputs = 1

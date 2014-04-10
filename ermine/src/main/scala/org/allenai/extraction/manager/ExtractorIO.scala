@@ -7,6 +7,9 @@ import java.net.URISyntaxException
 
 case class ExtractorIO(name: String, uri: Option[URI])
 object ExtractorIO {
+  /** Creates a default IO stream using the given ordinal.
+    * @param ordinal the index of this default stream in the extractors input, starting at zero
+    */
   def defaultIO(ordinal: Int, uri: Option[URI]) = ExtractorIO("$default-" + ordinal, uri)
 
   /** Parses an IO value from a config value. This can be either an object with optional `name` and

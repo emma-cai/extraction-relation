@@ -1,5 +1,6 @@
 package org.allenai.extraction.extractors
 
+import org.allenai.common.Resource
 import org.allenai.extraction.FlatExtractor
 
 import jpl.Term
@@ -19,14 +20,11 @@ object PrologExtractor extends FlatExtractor {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
     ttlFile.deleteOnExit
-    val ttlFileWriter = new FileWriter(ttlFile)
-    try {
+    Resource.using(new FileWriter(ttlFile)) { ttlFileWriter =>
       for (line <- source.getLines) {
         ttlFileWriter.write(line)
         ttlFileWriter.write("\n")
       }
-    } finally {
-      ttlFileWriter.close()
     }
 
     // Next, run the prolog extractor and generate output rules.
