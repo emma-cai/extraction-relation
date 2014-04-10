@@ -51,8 +51,8 @@ object ExtractorConfig {
   }
 
   /** Gets an input or output label set from a config using the given config path. This expects the
-    * path to be an array of strings.
-    * @throws ExtractionException if the path is not an array of strings
+    * value at the given path to be an array of strings.
+    * @throws ExtractionException if the value at the path is not an array of strings
     */
   def getIOValues(config: Config, path: String, numExpected: Int): Seq[ExtractorIO] = {
     val configuredValues: Seq[ExtractorIO] = try {

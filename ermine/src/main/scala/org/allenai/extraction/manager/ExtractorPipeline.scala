@@ -66,9 +66,9 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
     } System.out.println(line)
     case next +: rest => {
       // Get the input(s) that the current extractor stage needs.
-      val inputs = next.inputs.map { openSource(_, sources, defaults) }
+      val inputs = next.inputs map { openSource(_, sources, defaults) }
       // Get or create output files for the next extractor to write to.
-      val outputFiles = next.outputs.map { getOutputFile }
+      val outputFiles = next.outputs map { getOutputFile }
 
       // Open writers for the extractors.
       val outputs = outputFiles map { new FileWriter(_) }
@@ -77,9 +77,9 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
       try {
         next.extractor.extract(inputs, outputs)
       } finally {
-        inputs.foreach { _.close }
-        defaults.values.foreach { _.close }
-        outputs.foreach { _.close }
+        inputs foreach { _.close }
+        defaults.values foreach { _.close }
+        outputs foreach { _.close }
       }
 
       // Build up the new sources for the next round of iteration.

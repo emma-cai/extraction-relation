@@ -25,12 +25,17 @@ case class ExtractorIO(name: String, uri: URI) {
 }
 object ExtractorIO {
   /** Creates a URI with a name and value, aka "scheme-specific part".  As a string, this looks like
-  * "scheme:value".
-  */
+    * "scheme:value".
+    */
   def simpleUri(scheme: String, value: String) = new URI(scheme, value, null)
 
+  /** Returns the default name for a stream with the given ordinal.
+    * @param ordinal the index of this default stream in the extractors input, starting at zero
+    */
   def defaultName(ordinal: String) = "$default-" + ordinal
-  /** Creates an extractor with a default name and a default-schemed URI (e.g. "default:0"). */
+  /** Creates an extractor with a default name and a default-schemed URI (e.g. "default:0").
+    * @param ordinal the index of this default stream in the extractors input, starting at zero
+    */
   def defaultIO(ordinal: String) = ExtractorIO(defaultName(ordinal), simpleUri("default", ordinal))
 
   /** Parses an IO value from a config value. This can be either an object with optional `name` and
