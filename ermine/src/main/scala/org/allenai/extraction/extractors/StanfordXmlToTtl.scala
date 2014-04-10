@@ -1,6 +1,10 @@
-package org.allenai.extraction.stanford
+package org.allenai.extraction.extractors
 
+import org.allenai.extraction.Extractor
 import org.allenai.extraction.interface.Token
+
+import spray.json._
+import spray.json.DefaultJsonProtocol._
 
 import scala.collection.mutable
 import scala.io.Source
@@ -8,16 +12,22 @@ import scala.xml.Node
 import scala.xml.XML
 
 import java.io.OutputStream
-import java.io.PrintStream
+import java.io.PrintWriter
+import java.io.Writer
 
 /** Filter to convert stanford XML to TTL format. */
-object StanfordXmlToTtl {
-  /** Reads stanford XML from the given reader, and writes TTL output to the given writer.
-    * @return a map of all tokens encountered, keyed by output ID
+object StanfordXmlToTtl extends Extractor {
+  override val numInputs = 1
+  override val numOutputs = 2
+
+  /** Converts a stanford XML parse tree into TTL and a companion tokens map.
+    * Reads a single XML file, and writes output to a TTL file and a JSON file.
     */
-  def apply(input: Source, output: OutputStream): Map[String, Token] = {
-    val xml = XML.loadString(input.getLines.mkString)
-    val outputPrinter = new PrintStream(output)
+  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+    val xml = XML.loadString(sources.head.getLines.mkString)
+    val ttlOut = destinations(0)
+
+    val outputPrinter = new PrintWriter(ttlOut)
     printHeaders(outputPrinter)
 
     val tokenMap: mutable.Map[String, Token] = new mutable.HashMap
@@ -32,8 +42,10 @@ object StanfordXmlToTtl {
       outputPrinter.println
     }
 
-    // Return an immutable copy of the token map.
-    tokenMap.toMap
+    // Write out our tokens.  Note that we only have a JSON implicit from immutable.Map, so we need
+    // to convert to an immutable.Map via toMap.
+    val jsonOut = destinations(1)
+    jsonOut.write(tokenMap.toMap.toJson.prettyPrint)
   }
 
   /** A sentence in the stanford output consists of tokens, "basic" dependencies, and "collapsed"
@@ -41,7 +53,7 @@ object StanfordXmlToTtl {
     *
     * @param tokenMap map to store encountered tokens
     */
-  def processSentence(sentence: Node, output: PrintStream, tokenMap: mutable.Map[String, Token]):
+  def processSentence(sentence: Node, output: PrintWriter, tokenMap: mutable.Map[String, Token]):
     Unit = {
     // We need a sentence ID to proceed.
     for (idAttr <- sentence \ "@id") {
@@ -96,7 +108,7 @@ object StanfordXmlToTtl {
     * id:2.4 coref:ref id:2.4 .
     * id:2.4 coref:ref id:5.10 .
     */
-  def processCoreference(coreference: Node, output: PrintStream): Unit = {
+  def processCoreference(coreference: Node, output: PrintWriter): Unit = {
     // Find the representative mention's ID.
     val rootIdOption: Option[String] = {
       val representativeMention = (coreference \ "mention") find { mention =>
@@ -214,7 +226,7 @@ object StanfordXmlToTtl {
   }
 
   /** Prints declaration headers. */
-  def printHeaders(outputPrinter: PrintStream): Unit = {
+  def printHeaders(outputPrinter: PrintWriter): Unit = {
     outputPrinter.print("""
 @prefix id: <http://aristo.allenai.org/id#> .
 

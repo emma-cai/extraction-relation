@@ -1,11 +1,8 @@
-package org.allenai.extraction.stanford
+package org.allenai.extraction.extractors
 
 import org.allenai.common.Logging
 import org.allenai.extraction.Extractor
 import org.allenai.extraction.interface._
-
-import jpl.Term
-import jpl.Query
 
 import spray.json._
 // Implicits hack: We want to use a custom JSON reader for Seq[Token], so we need to not import the
@@ -18,41 +15,34 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.Writer
 
-object PrologExtractor extends Extractor with Logging {
-  override def extract(source: Source, destination: Writer): Unit = {
-    // First step: Convert the Stanford XML of the parse to a TTL file for input to the prolog
-    // system.
-    val tmpTtlFile = File.createTempFile("output", ".ttl")
-    val tmpFileWriter = new FileOutputStream(tmpTtlFile)
-    val tokenMap = try {
-      StanfordXmlToTtl(source, new FileOutputStream(tmpTtlFile))
-    } finally {
-      tmpFileWriter.close()
+/** Extractor converting the ferret output (JSON with incomplete tokens) into complete
+  * ExtractionRules. This expects two input streams - the ferret output, and the output tokens from
+  * the StanfordXmlToTtl extractor.
+  */
+object FerretToExtractionRule extends Extractor with Logging {
+  override val numInputs = 2
+  override val numOutputs = 1
+
+  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+    // Local seq format for de/serializing in this function.
+    import spray.json.DefaultJsonProtocol.seqFormat
+
+    val ferretSource = sources(0)
+    val ferretResults: Seq[JsValue] = {
+      JsonParser(ferretSource.getLines.mkString("")).convertTo[Seq[JsValue]]
     }
-    logger.debug(s"wrote ttl output to ${tmpTtlFile.getAbsolutePath}")
+    val tokensSource = sources(1)
+    val tokenMap = JsonParser(tokensSource.getLines.mkString("")).convertTo[Map[String, Token]]
 
-    // Next, run the prolog extractor and generate output rules.
-    val extractions = runTtlFile(tmpTtlFile, tokenMap)
+    // Convert to our extraction rule type.
+    val extractions = convertFerret(ferretResults, tokenMap)
 
-    // TODO(jkinkead): Serialize JSON to outfile!
+    // TODO(jkinkead): Output resulting JSON.
+    destinations.head.write(extractions.toJson.prettyPrint)
   }
 
-  def runTtlFile(ttlFile: File, tokenMap: Map[String, Token]): Seq[ExtractionRule] = {
-    // TODO(jkinkead): Take from config?
-    val prefixPath = "/Users/jkinkead/work/prototyping/prolog/extraction"
-    val loadProlog = new Query(
-      s"consult(['${prefixPath}/relation.pl', '${prefixPath}/patterns-stanford.pl'])," +
-      s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
-      // Magic here: Fill in the Json variable with all relations.
-      "relation(Json)")
-
-    val jsonResults = (for {
-      result <- loadProlog.allSolutions
-      // TODO(jkinkead): This isn't robust to prolog failures - have a sensible default.
-      jsonString = result.get("Json") match {
-        case term: Term => term.name
-      }
-    } yield JsonParser(jsonString)).toSeq
+  def convertFerret(ferretResults: Seq[JsValue], tokenMap: Map[String, Token]):
+      Seq[ExtractionRule] = {
 
     // Custom implicit for converting from the prolog output.
     implicit val extractionRuleJsonFormat: JsonFormat[ExtractionRule] = {
@@ -66,6 +56,8 @@ object PrologExtractor extends Extractor with Logging {
       // Note that *order matters* here - we need the implicits from this local file in all cases,
       // which means re-defining implicits in the order that they are needed by the object
       // hierarchy.
+      implicit val coreferenceJsonFormat = jsonFormat2(Coreference.apply)
+
       implicit val seqCoreferenceJsonFormat = DefaultJsonProtocol.seqFormat[Coreference]
       implicit val nounPhraseJsonFormat = jsonFormat3(NounPhrase.apply)
 
@@ -79,25 +71,19 @@ object PrologExtractor extends Extractor with Logging {
     }
 
     val unflattenedExtractions: Seq[Option[ExtractionRule]] = (for {
-      rawRule <- jsonResults
+      rawRule <- ferretResults
     } yield try {
-      rawRule.asJsObject.fields.get("class") match {
-        // TODO(jkinkead): Remove when https://github.com/allenai/prototyping/issues/16 is resolved.
-        case Some(JsString("ExtractionTuple")) => {
-          logger.warn("skpping top-level ExtractionTuple")
-          None
-        }
-        case _ => Some(rawRule.convertTo[ExtractionRule])
-      }
+      Some(rawRule.convertTo[ExtractionRule])
     } catch {
       case e: DeserializationException => {
-        logger.warn(s"failure parsing ${rawRule}: ${e.getMessage}")
+        logger.warn(s"failure parsing ${rawRule.prettyPrint}: ${e.getMessage}")
         None
       }
     })
     val flattenedExtractions: Seq[ExtractionRule] = unflattenedExtractions.flatten
     logger.info(s"successfully converted ${flattenedExtractions.size} of " +
       s"${unflattenedExtractions.size} extractions to JSON")
+
     flattenedExtractions
   }
 
@@ -106,12 +92,13 @@ object PrologExtractor extends Extractor with Logging {
     override def write(value: Seq[Token]) = JsArray()
 
     override def read(value: JsValue): Seq[Token] = value match {
-      case JsArray(ids) => (for {
-          id <- ids
-          idString <- id match {
-            case JsString(tokenId) => Some(tokenId)
-            // TODO(jkinkead): Warn?
-            case _ => None
+      case JsArray(tokens) => (for {
+          token <- tokens
+          // TODO(jkinkead): Don't throw away 'text' -
+          // https://github.com/allenai/extraction/issues/24
+          idString <- token.asJsObject.getFields("token", "text") match {
+            case Seq(JsString(tokenId), JsString(text)) => Some(tokenId)
+            case _ => throw new DeserializationException(s"malformed token: ${token}")
           }
         } yield tokenMap.get(idString)).flatten
       case _ => throw new DeserializationException("JsArray expected for Seq[Token]")
