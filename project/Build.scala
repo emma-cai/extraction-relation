@@ -67,6 +67,7 @@ object ExtractionBuild extends Build {
   }
 
   val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
+  val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
   val typesafeConfig = "com.typesafe" % "config" % "1.0.2"

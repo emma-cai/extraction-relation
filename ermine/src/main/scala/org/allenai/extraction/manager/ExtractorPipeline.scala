@@ -42,10 +42,9 @@ object ConfigHelper {
 
 /** Class representing a pipeline. */
 class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) extends Logging {
-  def run(): Unit = {
-    // Run the first extractor, using STDIN as the default stream.
+  def run(defaultInput: Source, defaultOutput: Writer): Unit = {
     val defaultName = ExtractorIO.defaultName("0")
-    runExtractors(extractors, Map.empty, Map(defaultName -> Source.fromInputStream(System.in)))
+    runExtractors(extractors, Map.empty, Map(defaultName -> defaultInput), defaultOutput)
     // TODO(jkinkead): Sources should probably be returned from runExtractors & closed here.
   }
 
@@ -57,42 +56,55 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
     * @param defaults the default sources for the current extractor run
     */
   @tailrec final def runExtractors(extractors: Seq[ExtractorConfig],
-      sources: Map[String, Source], defaults: Map[String, Source]): Unit = extractors match {
-    // Base case: We've run all the extractors; now, if there was a default out from the last
-    // step, pipe to STDOUT.
-    case Seq() => for {
-      defaultOut <- defaults.get(ExtractorIO.defaultName("0")) if defaults.size == 1
-      line <- defaultOut.getLines
-    } System.out.println(line)
-    case next +: rest => {
-      // Get the input(s) that the current extractor stage needs.
-      val inputs = next.inputs map { openSource(_, sources, defaults) }
-      // Get or create output files for the next extractor to write to.
-      val outputFiles = next.outputs map { getOutputFile }
-
-      // Open writers for the extractors.
-      val outputs = outputFiles map { new FileWriter(_) }
-
-      // Run the extractor, closing all IO at the end.
-      try {
-        next.extractor.extract(inputs, outputs)
-      } finally {
-        inputs foreach { _.close }
-        defaults.values foreach { _.close }
-        outputs foreach { _.close }
-      }
-
-      // Build up the new sources for the next round of iteration.
-      val (newSources, newDefaults) = (for ((output, file) <- next.outputs zip outputFiles) yield {
-        val pair = Some(output.name -> Source.fromFile(file))
-        if (output.isDefault) {
-          (None, pair)
-        } else {
-          (pair, None)
+      sources: Map[String, Source], defaults: Map[String, Source], defaultOutput: Writer): Unit = {
+    extractors match {
+      // Base case: We've run all the extractors; now, if there was a default out from the last
+      // step, pipe to STDOUT.
+      case Seq() => {
+        for {
+          lastOutput <- defaults.get(ExtractorIO.defaultName("0")) if defaults.size == 1
+          line <- lastOutput.getLines
+        } {
+          defaultOutput.write(line)
+          defaultOutput.write('\n')
         }
-      }).unzip
+        defaultOutput.flush
+      }
+      case next +: rest => {
+        // Get the input(s) that the current extractor stage needs.
+        val inputs = next.inputs map { openSource(_, sources, defaults) }
+        // Get or create output files for the next extractor to write to.
+        val outputFiles = next.outputs map { getOutputFile }
 
-      runExtractors(rest, sources ++ newSources.flatten, newDefaults.flatten.toMap)
+        // Open writers for the extractors.
+        val outputs = outputFiles map { new FileWriter(_) }
+
+        // Run the extractor, closing all IO at the end.
+        try {
+          next.extractor.extract(inputs, outputs)
+        } finally {
+          inputs foreach { _.close }
+          defaults.values foreach { _.close }
+          outputs foreach { output =>
+            output.flush
+            output.close
+          }
+        }
+
+        // Build up the new sources for the next round of iteration.
+        val (newSources, newDefaults) = (for {
+          (output, file) <- next.outputs zip outputFiles
+        } yield {
+          val pair = Some(output.name -> Source.fromFile(file))
+          if (output.isDefault) {
+            (None, pair)
+          } else {
+            (pair, None)
+          }
+        }).unzip
+
+        runExtractors(rest, sources ++ newSources.flatten, newDefaults.flatten.toMap, defaultOutput)
+      }
     }
   }
 

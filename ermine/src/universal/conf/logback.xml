@@ -1,5 +1,5 @@
 <configuration>
-  <!-- "Production" logback config with no STDOUT appender. -->
+  <!-- "Production" logback config with file & STDOUT appenders. -->
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>logs/${logback.appname:-ermine}.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -15,8 +15,15 @@
     </encoder>
   </appender>
 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5level [%date{HH:mm:ss.SSS}] %logger{35}: %msg%n</pattern>
+    </encoder>
+  </appender>
+
   <root level="INFO">
     <appender-ref ref="FILE" />
+    <appender-ref ref="STDOUT" />
   </root>
 
   <logger name="org.allenai" level="INFO" />

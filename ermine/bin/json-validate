@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd `dirname $0`/..
+
+# This assumes that you've run `sbt 'project ermine' stage
+./target/universal/stage/bin/extraction-manager -c examples/json_validator.conf -o /dev/null
