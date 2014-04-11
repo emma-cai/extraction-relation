@@ -107,6 +107,8 @@ write_inf_relation(Action,[Rel-_|_],Purpose) :-
 	rdf_unload_graph(PurposeId).
 
 write_inf_relation0(Left,Rel,Right) :-
+	gensym(rule,Id),
+	format('~w:: ', [Id]),
 	write_inf_tuple(Left,[],LeftTriples),
 	format(' -> ~w(~w, ~w), ', Rel),
 	write_inf_tuple(Right,LeftTriples,_),
@@ -133,6 +135,8 @@ write_inf_simple_tuple(Tuple) :-
 write_inf_simple_tuple0(GraphId) :-
 	rdf(S,pred:isa,O,GraphId),
 	% write first
+	gensym(rule,Id),
+	format('~w:: ', [Id]),
 	write_rdf(S,pred:isa,O,GraphId),
 	write(' -> '),
 	% write rest
