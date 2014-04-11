@@ -13,20 +13,20 @@ relation :-
 	% descend through every node checking for relations
 	( top_relation(Root,_)
 	; constit(Root,Node),
-	  relation(Node,_Json) ).
+	  relation(Root,Node,_Json) ).
 
 % top level to call from JPL and backtrack for all values
 relation(JsonString) :-
 	rdf(_Sentence,dep:root,Root),
 	( top_relation(Root,Json)
 	; constit(Root,Node),
-	  relation(Node,Json) ),
+	  relation(Root,Node,Json) ),
 	with_output_to(atom(JsonString),
 		       json_write(current_output,Json,[width(0)])).
 
 % find top-level related tuples
 top_relation(Root,Json) :-
-	findall(Json, relation(Root,Json), Jsons),
+	findall(Json, relation(Root,Root,Json), Jsons),
 	Jsons \= [], !,
 	member(Json, Jsons).
 % else write simple top-level tuple
@@ -38,55 +38,55 @@ top_relation(Root,Json) :-
 
 
 % cause (tuple-NP)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	cause(Root,Entity,Rel),
 	tuple(Root,Tuple),
-	write_relation(Entity,Rel,Tuple,Json).
+	write_relation(Top,Entity,Rel,Tuple,Json).
 % purpose (tuple-NP)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	purpose(Root,Entity,Rel),
 	tuple(Root,Tuple),
 	\+ filter_tuple(Root,Tuple),
 	\+ filter_entity(Entity),
-	write_relation(Tuple,Rel,Entity,Json).
+	write_relation(Top,Tuple,Rel,Entity,Json).
 % effect (tuple-tuple)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	effect(Root,Comp,Rel),
 	tuple(Root,Tuple1),
 	\+ filter_tuple(Root,Tuple1),
 	tuple(Comp,Tuple2),
 	distribute_args(Tuple1,Tuple2,Tuple1Out,Tuple2Out),
-	write_relation(Tuple1Out,Rel,Tuple2Out,Json).
+	write_relation(Top,Tuple1Out,Rel,Tuple2Out,Json).
 % function (NP-tuple)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	function(Root,Comp,Rel),
 	\+ dependency(_,dep:prep_for,Comp), % responsible for
 	tuple(Comp,Tuple),
 	denominalize(Root,RootTuple),
 	distribute_args(RootTuple,Tuple,RootTupleOut,TupleOut),
-	write_relation(RootTupleOut,Rel,TupleOut,Json).
+	write_relation(Top,RootTupleOut,Rel,TupleOut,Json).
 % function (NP-NP)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	function(Root,Comp,Rel),
 	dependency(_,dep:prep_for,Comp), % responsible for
 	denominalize(Root,RootTuple),
 	denominalize(Comp,CompTuple),
-	write_relation(RootTuple,Rel,CompTuple,Json).
+	write_relation(Top,RootTuple,Rel,CompTuple,Json).
 % example (NP-tuple)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	example_NP_Tuple(Root,Comp,Rel),
 	tuple(Comp,[Subj|Rest]),
 	Subj \= Root, % from rcmod
-	write_entity_relation(Root,Rel,[Subj|Rest],Json).
+	write_entity_relation(Top,Root,Rel,[Subj|Rest],Json).
 % example (tuple-NP)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	example_Tuple_NP(Root,Comp,Rel),
 	tuple(Comp,Tuple),
-	write_entity_relation(Tuple,Rel,Root,Json).
+	write_entity_relation(Top,Tuple,Rel,Root,Json).
 % example (NP-NP)
-relation(Root,Json) :-
+relation(Top,Root,Json) :-
 	example_NP_NP(Root,Entity,Rel),
-	write_entity_relation(Root,Rel,Entity,Json).
+	write_entity_relation(Top,Root,Rel,Entity,Json).
 
 
 % synonym sets

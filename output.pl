@@ -6,10 +6,10 @@
 :- rdf_register_prefix(pred, 'http://aristo.allenai.org/pred/').
 
 
-write_relation(Action,Rel,Purpose,Json) :-
+write_relation(Top,Action,Rel,Purpose,Json) :-
 	text_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose), nl,
+	write_inf_relation(Top,Action,Rel,Purpose), nl,
 	json_relation(Action,Rel,Purpose,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -23,10 +23,10 @@ json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[Actio
 	json_rel(Rel,RelJson),
 	json_tuple(Purpose,PurposeJson).
 
-write_entity_relation(Action,Rel,Purpose,Json) :-
+write_entity_relation(Top,Action,Rel,Purpose,Json) :-
 	text_entity_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_inf_relation(Action,Rel,Purpose), nl,
+	write_inf_relation(Top,Action,Rel,Purpose), nl,
 	json_entity_relation(Action,Rel,Purpose,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -67,7 +67,7 @@ write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],conseque
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
 	write('% '), write(Text), nl,
-	write_inf_simple_tuple(Tuple),
+	write_inf_simple_tuple(Node,Tuple),
 	json_tuple(Tuple,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -75,7 +75,7 @@ entity_id(Entity,Id) :-
 	(Id-_-_ = Entity ; Id-_ = Entity ; Id = Entity),
 	!.
 
-write_inf_relation(Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
+write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	atom(Entity),
 	entity_id(Subj,E),
 	% isa relative clause
@@ -87,27 +87,28 @@ write_inf_relation(Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	downcase_atom(Rel,LRel),
 	% left to right
 	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
-	write_inf_relation0(ActionId,[LRel|Ids],PurposeId),
+	write_inf_relation0(Top,ActionId,[LRel|Ids],PurposeId),
 	rdf_retractall(Entity,pred:isa,Subj,PurposeId), % RHS
 	% right to left
 	rdf_assert(Entity,pred:isa,Subj,ActionId), %LHS
-	write_inf_relation0(PurposeId,[LRel|Ids],ActionId),
+	write_inf_relation0(Top,PurposeId,[LRel|Ids],ActionId),
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
-write_inf_relation(Action,[Rel-_|_],Purpose) :-
+write_inf_relation(Top,Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
 	inf_tuple(Purpose,PurposeId),
 	stripped_ids([ActionId, PurposeId], Ids),
 	downcase_atom(Rel,LRel),
 	% left to right
-	write_inf_relation0(ActionId,[LRel|Ids],PurposeId),
+	write_inf_relation0(Top,ActionId,[LRel|Ids],PurposeId),
 	% right to left
-	write_inf_relation0(PurposeId,[LRel|Ids],ActionId),
+	write_inf_relation0(Top,PurposeId,[LRel|Ids],ActionId),
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
 
-write_inf_relation0(Left,Rel,Right) :-
+write_inf_relation0(Top,Left,Rel,Right) :-
 	gensym(rule,Id),
+	write_inf_rule_text(Top,Id),
 	format('~w:: ', [Id]),
 	write_inf_tuple(Left,[],LeftTriples),
 	format(' -> ~w(~w, ~w), ', Rel),
@@ -123,19 +124,20 @@ write_inf_tuple(GraphId,Remove,Triples) :-
 	subtract(Ts,Remove,Triples),
 	write_rdf_list(Triples,GraphId).
 
-write_inf_simple_tuple(Tuple) :-
+write_inf_simple_tuple(Root,Tuple) :-
 	inf_tuple(Tuple,Id),
-	write_inf_simple_tuple0(Id),
+	write_inf_simple_tuple0(Root,Id),
 	rdf_unload_graph(Id).
 
 
 %write_inf_simple_tuple0(GraphId) :-
 %	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
 %	fail.
-write_inf_simple_tuple0(GraphId) :-
+write_inf_simple_tuple0(Root,GraphId) :-
 	rdf(S,pred:isa,O,GraphId),
 	% write first
 	gensym(rule,Id),
+	write_inf_rule_text(Root,Id),
 	format('~w:: ', [Id]),
 	write_rdf(S,pred:isa,O,GraphId),
 	write(' -> '),
@@ -143,8 +145,15 @@ write_inf_simple_tuple0(GraphId) :-
 	write_inf_tuple(GraphId,[[S,_,O]],_),
 	write('.'), nl,
 	fail.
-write_inf_simple_tuple0(_) :-
+write_inf_simple_tuple0(_,_) :-
 	nl.
+
+write_inf_rule_text(Root,Id) :-
+	tokens(Root,Tokens),
+	format('english(~w, "', [Id]),
+	write_tokens(Tokens),
+	write('").'), nl, !.
+
 
 % comma separated list
 write_rdf_list([],_) :- !.
