@@ -22,14 +22,14 @@
 ;;; They[Animals] need oxygen which is in the air.
 ("Animals" "need" "oxygen")
 ;;; Oxygen allows the animal to make and use energy which it[the animal] needs to survive.
-"Oxygen"	"allows"/FUNCTION	("the animal" "make" "energy")
-"Oxygen"	"allows"/FUNCTION	("the animal" "use" "")
+"Oxygen"	"allows"/PURPOSE	("the animal" "make" "energy")
+"Oxygen"	"allows"/PURPOSE	("the animal" "use" "")
 ("the animal"/?x "make" "energy")	"needs to"/EFFECT	("the animal"/?x "survive" "")
 ;;; Animals also need water to survive.
 ("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
 ;;; Water is used to break down and move materials throughout the body.
-"Water"	"is used"/FUNCTION	("Water"/?x "break down" "")
-"Water"	"is used"/FUNCTION	("Water"/?x "move" "materials" [ "throughout the body" ] )
+"Water"/?x	"is used"/PURPOSE	("Water"/?x "break down" "")
+"Water"/?x	"is used"/PURPOSE	("Water"/?x "move" "materials" [ "throughout the body" ] )
 ;;; Animals can not make their[Animals] own food so they[Animals] must eat to get nutrients.
 ("Animals" "not make" "their[Animals] own food")	"so"/EFFECT	("Animals" "eat" "")
 ("Animals"/?x "eat" "")	"to"/REQUIREMENT	("Animals"/?x "get" "nutrients")
@@ -52,7 +52,7 @@
 ("Plants" "make" "their[Plants] own food" [ "by a process called photosynthesis" ] )
 ;;; Water is used by the plant to move materials up from the roots to make food.
 ("the plant"/?x "use" "Water")	"to"/EFFECT	("the plant"/?x "move" "materials" [ "up from the roots" ] )
-"Water"	"is used"/FUNCTION	("the plant" "move" "materials" [ "up from the roots" ] )
+"Water"	"is used"/PURPOSE	("the plant" "move" "materials" [ "up from the roots" ] )
 ("the plant"/?x "move" "materials" [ "up from the roots" ] )	"to"/EFFECT	("the plant"/?x "make" "food")
 ;;; Nutrients from the soil enter the plant through its[the soil] roots.
 ("Nutrients from the soil" "enter" "the plant" [ "through its[the soil] roots" ] )
@@ -115,10 +115,10 @@
 ;;; Plants get their[Plants] nutrients from the soil which helps them[Plants] grow and perform photosynthesis.
 ("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "grow" "")
 ("Plants" "get" "their[Plants] nutrients" [ "from the soil" ] )	"helps"/EFFECT	("Plants" "perform" "photosynthesis")
-"the soil"	"helps"/FUNCTION	("Plants" "grow" "")
-"the soil"	"helps"/FUNCTION	("Plants" "perform" "photosynthesis")
+"the soil"	"helps"/PURPOSE	("Plants" "grow" "")
+"the soil"	"helps"/PURPOSE	("Plants" "perform" "photosynthesis")
 ;;; Photosynthesis is the process by which plants make their[Plants] own food.
-("" "photosynthesize" "")	"by which"/FUNCTION	("plants" "make" "")
+("plants"/?x "photosynthesize" "")	"by which"/PURPOSE	("plants"/?x "make" "")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "")
 "Photosynthesis"	"is"/EXAMPLE	"the process"
 ;;; All living things do some type of breathing.
@@ -172,7 +172,7 @@
 ;;; Plants provide animals with food and gases oxygen that their[Plants are living organisms] bodies need to grow breathe and make energy.
 ("Plants" "provide" "animals with food and gases oxygen")
 ;;; Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using.
-("" "photosynthesize" "")	"by which"/FUNCTION	("plants" "make" "their[Plants are living organisms] own food")
+("plants"/?x "photosynthesize" "")	"by which"/PURPOSE	("plants"/?x "make" "their[Plants are living organisms] own food")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "their[Plants are living organisms] own food")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "oxygen")
 "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "water")
@@ -197,7 +197,7 @@
 ;;; Water is taken in from the environment through the roots in the ground and is necessary for the plant to produce food.
 ;;; Nutrients are taken in through the roots from the soil and help the plant survive.
 ("the plant"/?x "take" "Nutrients" [ "through the roots", "from the soil" ] )	"help"/EFFECT	("the plant"/?x "survive" "")
-"Nutrients"	"help"/FUNCTION	("the plant" "survive" "")
+"Nutrients"	"help"/PURPOSE	("the plant" "survive" "")
 ;;; Light is provided by the sun.
 ;;; It[the sun] is absorbed taken in by the leaves and is necessary for the plant to produce food.
 ;;; Light provides the energy for the entire process of photosynthesis.
@@ -231,7 +231,7 @@
 ;;; Leaves make food using water sunlight nutrients and chlorophyll.
 ;;; The flower is found atop the stem or stalk.
 ;;; The flower is responsible for reproduction.
-"The flower"	"responsible for"/FUNCTION	("" "reproduce" "")
+"The flower"	"responsible for"/PURPOSE	("" "reproduce" "")
 ;;; With the help of animals insects and birds rain and wind flowers can be pollinated fertilized so that seeds can be formed that will grow into new plants.
 ("" "pollinate" "flowers" [ "With the help of animals insects and birds rain and wind" ] )	"so that"/EFFECT	("" "form" "seeds" [ "that will grow into new plants" ] )
 ;;; The flower is the reproductive part of the plant.
@@ -285,7 +285,7 @@
 "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death"	"is called"/EXAMPLE	"its[The length of time from the beginning of the plant to its death] life span"
 ;;; Each kind of plant goes through its[Each kind of plant] own stages of growth and development which includes seed young plant or seedling and mature plant.
 ;;; Growth is the process by which plants increase in size.
-("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
+("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	"the process"
 ;;; Animals are living organisms.
@@ -313,7 +313,7 @@
 ("These organ systems"/?x "work" "" [ "together" ] )	"to"/EFFECT	("These organ systems"/?x "make up" "the organism")
 ;;; Each organ system has a specific function that helps the organism to survive.
 ("Each organ system" "have" "a specific function")	"helps to"/EFFECT	("the organism" "survive" "")
-"a specific function"	"helps"/FUNCTION	("the organism" "survive" "")
+"a specific function"	"helps"/PURPOSE	("the organism" "survive" "")
 ;;; The body systems work like a machine and each system works to help the animal grow create energy and survive.
 ("each system" "work" "" [ "to help the animal grow create energy and survive" ] )	"to help"/EFFECT	("the animal" "grow" "")
 ("each system" "work" "" [ "to help the animal grow create energy and survive" ] )	"to help"/EFFECT	("the animal" "create" "energy")
@@ -436,10 +436,10 @@
 ("others"/?x "have" "scales" [ "to help protect them[others] from predators" ] )	"to help"/EFFECT	("others"/?x "protect" "others" [ "from predators" ] )
 ;;; Some animals are able to change the color of their[Some animals] body covering to that of their[Some animals] surroundings.
 ;;; We call this camouflage which helps protect the animal from enemies.
-"this camouflage"	"helps"/FUNCTION	("this camouflage" "protect" "the animal" [ "from enemies" ] )
+"this camouflage"	"helps"/PURPOSE	("this camouflage" "protect" "the animal" [ "from enemies" ] )
 ;;; Think of a lion 's golden fur which helps it[a lion 's golden fur which helps it blend into the desert landscape] blend into the desert landscape.
 ("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps"/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
-"a lion 's golden fur"	"helps"/FUNCTION	("a lion 's golden fur" "blend" "" [ "into the desert landscape" ] )
+"a lion 's golden fur"	"helps"/PURPOSE	("a lion 's golden fur" "blend" "" [ "into the desert landscape" ] )
 ;;; Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings.
 "Chameleons"	"are"/EXAMPLE	("lizards" "change" "colors")
 "Chameleons"	"are"/EXAMPLE	"lizards"
@@ -453,7 +453,7 @@
 ;;; These smells and sounds can attract other animals so that they[other animals] can mate or they[other animals] can help them[other animals] fight an enemy.
 ("These" "attract" "other animals")	"so that"/EFFECT	("other animals" "mate" "")
 ("These" "attract" "other animals")	"so that"/EFFECT	("other animals" "help" "" [ "them[other animals] fight an enemy" ] )
-"they[other animals]"	"help"/FUNCTION	("other animals" "fight" "an enemy")
+"they[other animals]"	"help"/PURPOSE	("other animals" "fight" "an enemy")
 ;;; Skunks are able to give off a very foul smell when in danger.
 ;;; This is how they[Skunks] protect themselves[These].
 ;;; Behavior is the way that organisms respond to changes in their[living things organisms] environment or to a stimulus.
@@ -514,14 +514,15 @@
 ;;; Some animals grow thicker fur in the winter and shed it[thicker fur] in the warmer months.
 ("Some animals" "grow" "thicker fur" [ "in the winter" ] )
 ;;; This helps to regulate their[Some animals] body heat.
-"This"	"helps"/FUNCTION	("This" "regulate" "their[Some animals] body heat")
+"This"	"helps"/PURPOSE	("This" "regulate" "their[Some animals] body heat")
 ;;; Other animals change their[Other animals] amount of body fat with the seasons.
 ("Other animals" "change" "their[Other animals] amount of body fat" [ "with the seasons" ] )
 ;;; Body fat is a form of stored energy and helps animals get through long periods of time with little food.
 ("Body fat" "be" "a form" [ "of stored energy" ] )	"helps"/EFFECT	("animals" "get" "long periods of time with little food" [ "through" ] )
-"Body fat"	"helps"/FUNCTION	("animals" "get" "long periods of time with little food" [ "through" ] )
+"Body fat"	"helps"/PURPOSE	("animals" "get" "long periods of time with little food" [ "through" ] )
 "Body fat"	"is"/EXAMPLE	"a form of stored energy"
 ;;; Some animals gather food in preparation for the long winter.
+("Some animals"/?x "gather" "food")	"in preparation for"/EFFECT	("Some animals"/?x "prepare" "" [ "for the long winter" ] )
 ("Some animals" "gather" "food")
 ;;; Squirrels collect acorns.
 ("Squirrels" "collect" "acorns")
@@ -552,7 +553,7 @@
 ("fish" "live" "" [ "in the water" ] )	"Because"/EFFECT	("living things" "develop" "gills")
 ;;; Gills are slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming.
 "Gills"	"are"/EXAMPLE	"slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming"
-"the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body"	"allow"/FUNCTION	("the fish" "get" "oxygen" [ "from the water while swimming" ] )
+"the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body"	"allow"/PURPOSE	("the fish" "get" "oxygen" [ "from the water while swimming" ] )
 ;;; Camels are able to go for long periods of time with little water.
 ;;; This makes them[Camels] the best type of animal to live in the desert.
 ;;; Cactus plants can also go for long periods of time with little water which is why they[Cactus plants] survive in the desert.
@@ -562,18 +563,18 @@
 ("wing" "adapt" "" [ "Depending on how the organism lives", "to help it[an organism 's] survive" ] )	"to help"/EFFECT	("an organism 's" "survive" "")
 ;;; A bird 's beak functions like human lips and teeth.
 ;;; A beak helps the bird capture and take in food.
-"A beak"	"helps"/FUNCTION	("the bird" "capture" "")
+"A beak"	"helps"/PURPOSE	("the bird" "capture" "")
 ;;; Compare the various beaks shown below and think about what type of food each bird eats.
 ;;; The shape strength and design of the beak varies depending on whether it[The shape strength and design of the beak] is a bird of prey a seed-eater or a fish-eater.
 "it[The shape strength and design of the beak]"	"is"/EXAMPLE	"whether a bird of prey"
 ;;; Elephants have long trunks that enable them[Elephants] to grab food and drink water.
-"long trunks"	"enable"/FUNCTION	("Elephants" "grab" "food and drink water")
+"long trunks"	"enable"/PURPOSE	("Elephants" "grab" "food and drink water")
 ;;; They[Elephants] also have very large ear flaps that help them[Elephants] hear.
 ("Elephants"/?x "have" "very large ear flaps")	"help"/EFFECT	("Elephants"/?x "hear" "")
-"very large ear flaps"	"help"/FUNCTION	("Elephants" "hear" "")
+"very large ear flaps"	"help"/PURPOSE	("Elephants" "hear" "")
 ;;; Because of their[Elephants] size elephants move very slowly so having good hearing helps protect them[Elephants] from predators.
-"their[Elephants] size"	"because of"/CAUSE	("elephants" "move" "" [ "of their[Elephants] size", "so having good hearing helps protect them[Elephants] from predators", "very slowly" ] )
-("" "hear" "")	"helps"/FUNCTION	("good hearing" "protect" "Elephants" [ "from predators" ] )
+"their[Elephants] size"	"Because of"/CAUSE	("elephants" "move" "" [ "of their[Elephants] size", "so having good hearing helps protect them[Elephants] from predators", "very slowly" ] )
+("good hearing"/?x "hear" "")	"helps"/PURPOSE	("good hearing"/?x "protect" "Elephants" [ "from predators" ] )
 ;;; All organisms have variations and because of these variations individuals of a species may have an advantage in surviving and reproducing.
 ("All organisms" "have" "variations")
 "these variations"	"because of"/CAUSE	("individuals of a species" "have" "an advantage" [ "of these variations", "in surviving", "in surviving" ] )
@@ -627,8 +628,8 @@
 ;;; The health growth and development of organisms are affected by environmental conditions such as the availability of food air water space shelter heat and sunlight.
 "the availability of food air water space shelter heat and sunlight"	"such as"/EXAMPLE	"environmental conditions"
 ;;; Growth is the process by which plants and animals increase in size.
-("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "in size")
-("" "grow" "")	"by which"/FUNCTION	("animals" "increase" "in size")
+("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "in size")
+("animals"/?x "grow" "")	"by which"/PURPOSE	("animals"/?x "increase" "in size")
 "Growth"	"is"/EXAMPLE	("plants" "increase" "in size")
 "Growth"	"is"/EXAMPLE	("animals" "increase" "in size")
 "Growth"	"is"/EXAMPLE	"the process"
@@ -765,19 +766,19 @@
 ("You" "teach" "their[pea plants] traits" [ "how to do each behavior" ] )
 ;;; Your body is like a very delicate machine that needs to be cared for to work and feel its[the body 's] best.
 ;;; In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest.
-("humans" "eat" "healthy foods")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "eat" "healthy foods")	"in order for"/EFFECT	("humans" "have" "energy")
-("humans" "eat" "healthy foods")	"in order for"/EFFECT	("humans" "be" "healthy")
-("humans" "exercise" "")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "exercise" "")	"in order for"/EFFECT	("humans" "have" "energy")
-("humans" "exercise" "")	"in order for"/EFFECT	("humans" "be" "healthy")
-("humans" "get" "regular rest")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "get" "regular rest")	"in order for"/EFFECT	("humans" "have" "energy")
-("humans" "get" "regular rest")	"in order for"/EFFECT	("humans" "be" "healthy")
+("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "have" "energy")
+("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "be" "healthy")
+("humans" "exercise" "")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "exercise" "")	"In order for"/EFFECT	("humans" "have" "energy")
+("humans" "exercise" "")	"In order for"/EFFECT	("humans" "be" "healthy")
+("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "have" "energy")
+("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "be" "healthy")
 ;;; Being healthy also includes good health habits.
 ;;; Hand washing and personal cleanliness are necessary to prevent disease and infection.
 ;;; There are many germs that can be transmitted from touching things and then placing your hands by your face.
-"your face"	"by"/ENABLE	("your face"/?x "place" "your hands")
+"your face"/?x	"by"/ENABLE	("your face"/?x "place" "your hands")
 ;;; This is why you need to wash your hands often to remove any harmful germs.
 ("you"/?x "wash" "your hands")	"to"/EFFECT	("you"/?x "remove" "any harmful germs")
 ;;; The body needs to be cleaned regularly to prevent germs and bacteria from growing and making us sick.
@@ -812,7 +813,7 @@
 ;;; Drinking alcohol and/or taking illicit not prescribed drugs are also very harmful to your body.
 ;;; In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood.
 ("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"to"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
-("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"in order for"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
+("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"In order for"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
 "which"	"is"/EXAMPLE	("the liver" "clean" "the blood")
 "which"	"is"/EXAMPLE	("the organ" "clean" "the blood")
 "which"	"is"/EXAMPLE	"the organ"
@@ -838,7 +839,7 @@
 ("you"/?x "plan" "the foods")	"going to"/EFFECT	("you"/?x "eat" "")
 ;;; Each part of the pyramid represents the proper amounts of each type of food that will help you stay healthy.
 ("Each part of the pyramid" "represent" "the proper amounts of each type of food that will help you stay healthy")
-"each type of food"	"help"/FUNCTION	("you" "stay" "healthy")
+"each type of food"	"help"/PURPOSE	("you" "stay" "healthy")
 ;;; Also you should keep in mind that regular exercise is necessary to live a healthy lifestyle.
 ;;; When we run jump walk play sports or ride our[we] bike we[we] are exercising.
 ("we"/?x "exercise" "")	"When"/WHEN	("we"/?x "run" "")
@@ -1033,7 +1034,7 @@
 ("Humans"/?x "use" "resources" [ "from the environment" ] )	"to"/EFFECT	("Humans"/?x "create" "shelters")
 ("Humans"/?x "use" "resources" [ "from the environment" ] )	"to"/EFFECT	("Humans"/?x "create" "energy")
 ;;; By using materials that are found naturally in the environment humans must be responsible and make sure that they[materials that are found naturally in the environment] do not create problems for nature.
-("humans"/?x "use" "materials")	"by"/ENABLE	("humans"/?x "be" "responsible")
+("humans"/?x "use" "materials")	"By"/ENABLE	("humans"/?x "be" "responsible")
 ("materials" "not create" "problems for nature")	"for"/PURPOSE	"nature"
 ;;; Humans use wood to build homes which comes from trees.
 ("Humans"/?x "use" "wood")	"to"/EFFECT	("Humans"/?x "build" "homes")
@@ -1047,8 +1048,8 @@
 ("We"/?x "make" "gasoline")	"so that"/EFFECT	("We"/?x "drive" "trucks")
 ("We"/?x "make" "gasoline")	"so that"/EFFECT	("We"/?x "fly" "planes")
 ;;; Fossil fuels like oil and natural gas are used to heat our[We] homes and power factories to make items that we[We] purchase.
-"Fossil fuels like oil and natural gas"	"are used"/FUNCTION	("Fossil fuels like oil and natural gas"/?x "heat" "our[We] homes")
-"Fossil fuels like oil and natural gas"	"are used"/FUNCTION	("Fossil fuels like oil and natural gas"/?x "power factory" "")
+"Fossil fuels like oil and natural gas"/?x	"are used"/PURPOSE	("Fossil fuels like oil and natural gas"/?x "heat" "our[We] homes")
+"Fossil fuels like oil and natural gas"/?x	"are used"/PURPOSE	("Fossil fuels like oil and natural gas"/?x "power factory" "")
 ("" "power factory" "")	"to"/EFFECT	("" "make" "items")
 ;;; It[oil and natural gas] can take thousands of years for certain fossil fuels to be created.
 ("oil" "take" "thousands of years for certain fossil fuels to be created")
@@ -1180,13 +1181,13 @@
 ;;; Some tools include.
 ;;; A ruler measures length.
 ("A ruler" "measure" "length")
-"A ruler"	"measures"/FUNCTION	("A ruler" "measure" "length")
+"A ruler"	"measures"/PURPOSE	("A ruler" "measure" "length")
 ;;; A balance measures mass.
 ("A balance" "measure" "mass")
-"A balance"	"measures"/FUNCTION	("A balance" "measure" "mass")
+"A balance"	"measures"/PURPOSE	("A balance" "measure" "mass")
 ;;; A thermometer measures temperature.
 ("A thermometer" "measure" "temperature")
-"A thermometer"	"measures"/FUNCTION	("A thermometer" "measure" "temperature")
+"A thermometer"	"measures"/PURPOSE	("A thermometer" "measure" "temperature")
 ;;; A graduated Cylinder measures volume.
 ;;; Properties of matter can be considered physical or chemical.
 ;;; Physical properties are those that can be observed and/or measured without changing the object.
@@ -1300,10 +1301,10 @@
 ;;; Heat is the energy that gives us warmth.
 ;;; We[us] can get heat energy from the sun.
 ;;; Electric energy is energy that allows us[us] to turn on lights ring door bells and so on.
-("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "lights")
-("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
-("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "lights")
-("" "energize" "")	"allows"/FUNCTION	("us" "turn on" "ring door bells")
+("us"/?x "energize" "")	"allows"/PURPOSE	("us"/?x "turn on" "lights")
+("us"/?x "energize" "")	"allows"/PURPOSE	("us"/?x "turn on" "ring door bells")
+("us"/?x "energize" "")	"allows"/PURPOSE	("us"/?x "turn on" "lights")
+("us"/?x "energize" "")	"allows"/PURPOSE	("us"/?x "turn on" "ring door bells")
 ;;; Sound is energy noise that we[us] hear when matter vibrates and the particles in the matter hit each other.
 ("us" "hear" "Sound" [ "the particles in the matter hit each other" ] )	"when"/WHEN	("matter" "vibrate" "")
 ("us" "hear" "energy" [ "the particles in the matter hit each other" ] )	"when"/WHEN	("matter" "vibrate" "")
@@ -1355,17 +1356,17 @@
 ;;; Light changes to electrical energy in solar path lights.
 ;;; Energy can move from one object to another through different materials and through space.
 ;;; Some materials allow energy to be transferred more easily than others.
-"Some materials"	"allow"/FUNCTION	("" "transfer" "energy" [ "more easily than others" ] )
+"Some materials"	"allow"/PURPOSE	("" "transfer" "energy" [ "more easily than others" ] )
 ;;; For example some metal objects allow heat and electricity to transfer better than do plastic or rubber objects.
-"some metal objects"	"allow"/FUNCTION	("heat" "transfer" "" [ "better than do plastic or rubber objects" ] )
-"some metal objects"	"allow"/FUNCTION	("electricity" "transfer" "" [ "better than do plastic or rubber objects" ] )
+"some metal objects"	"allow"/PURPOSE	("heat" "transfer" "" [ "better than do plastic or rubber objects" ] )
+"some metal objects"	"allow"/PURPOSE	("electricity" "transfer" "" [ "better than do plastic or rubber objects" ] )
 ;;; Iron and steel are more magnetic than wood or plastic.
 ;;; Light energy travels in straight paths through space.
 ;;; Light energy can move through glass much better than through paper.
 ;;; Electricity is one form of energy.
 ;;; Electrical energy results from positive and negative charges.
 ;;; A complete circuit allows electrical energy to flow.
-"A complete circuit"	"allows"/FUNCTION	("electrical energy" "flow" "")
+"A complete circuit"	"allows"/PURPOSE	("electrical energy" "flow" "")
 ;;; The amount of energy transferred during a flow of electrical energy depends on the energy source and the properties of the object.
 ;;; Electricity powers many objects in our homes television radio lights computer and other appliances.
 ;;; Electricity travels in a path called a circuit.
@@ -1390,7 +1391,7 @@
 "A force"	"is"/EXAMPLE	"a push or pull"
 ;;; A force is what makes it[A force is a push or pull] possible to change the position of an object.
 ;;; A force can also be used to change the direction that an object is moving.
-"A force"	"be used"/FUNCTION	("A force"/?x "change" "the direction")
+"A force"/?x	"be used"/PURPOSE	("A force"/?x "change" "the direction")
 ;;; The amount of force put on an object will determine how far and fast the object will move.
 ;;; The weight of the object will also effect how far and fast it[The weight of the object] will move.
 ;;; Think about moving a box across a wood floor.
@@ -1444,7 +1445,7 @@
 ;;; It is gravity that keeps everything from flying away.
 ;;; If an object is thrown into the air the force used will only allow it[A magnet is an object that attracts metals] to travel a certain distance before the gravitational attraction between the object and the Earth causes it[the gravitational attraction between the object and the Earth] to fall back down to Earth 's surface.
 ("the force"/?x "throw" "an object" [ "into the air" ] )	"If"/EFFECT	("the force"/?x "allow" "" [ "only" ] )
-"the force"	"allow"/FUNCTION	("an object" "travel" "a certain distance" [ "before the gravitational attraction between the object and the Earth causes" ] )
+"the force"	"allow"/PURPOSE	("an object" "travel" "a certain distance" [ "before the gravitational attraction between the object and the Earth causes" ] )
 "the gravitational attraction between the object and the Earth"	"causes"/CAUSE	("the gravitational attraction between the object and the Earth" "fall" "" [ "back", "down to Earth 's surface" ] )
 ;;; In the previous chapter we learned about work and energy.
 ;;; Mechanical energy is the energy produced when two objects move together.
@@ -1464,14 +1465,14 @@
 ("we"/?x "use" "machines" [ "to help us[we] do work", "When this happens" ] )	"to help"/EFFECT	("we"/?x "work" "")
 ;;; Simple machines are tools with very few parts that help us[we] work.
 "Simple machines"	"are"/EXAMPLE	"tools with very few parts that help us[we] work"
-"very few parts"	"help"/FUNCTION	("we" "work" "")
+"very few parts"	"help"/PURPOSE	("we" "work" "")
 ;;; There are a variety of simple machines.
 ;;; A lever is a flat structure that is placed on a fixed point.
 "A lever"	"is"/EXAMPLE	("" "place" "A lever" [ "on a fixed point" ] )
 "A lever"	"is"/EXAMPLE	("" "place" "a flat structure" [ "on a fixed point" ] )
 "A lever"	"is"/EXAMPLE	"a flat structure"
 ;;; The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can.
-"The lever"	"assist"/FUNCTION	("The lever"/?x "move" "an object")
+"The lever"/?x	"assist"/PURPOSE	("The lever"/?x "move" "an object")
 "a big weight"	"such as"/EXAMPLE	"heavy"
 "a paint can"	"such as"/EXAMPLE	"an object"
 ;;; The seesaw in a playground is also considered a lever.
@@ -1482,10 +1483,10 @@
 "A wheelchair ramp into your school"	"example of"/EXAMPLE	"an inclined plane"
 ;;; A pulley is composed of a wheel with a piece of rope or chain around it[A pulley].
 ;;; Pulleys are used to lift objects.
-"Pulleys"	"are used"/FUNCTION	("Pulleys"/?x "lift" "objects")
+"Pulleys"/?x	"are used"/PURPOSE	("Pulleys"/?x "lift" "objects")
 ;;; By pulling down on one end the opposite end is raised.
 ;;; A pulley is used to raise the flag up the flagpole at your school each day.
-"A pulley"	"is used"/FUNCTION	("A pulley"/?x "raise" "the flag" [ "up the flagpole", "at your school", "each day" ] )
+"A pulley"/?x	"is used"/PURPOSE	("A pulley"/?x "raise" "the flag" [ "up the flagpole", "at your school", "each day" ] )
 ;;; Pulling down on the rope at side A will cause the box on the end of the rope at side B to be raised.
 ;;; A wheel and axle involves a wheel turning on a straight bar or axle.
 ("A wheel" "involve" "a wheel")
@@ -1506,7 +1507,7 @@
 "A screw"	"is"/EXAMPLE	"another type of inclined plane"
 ;;; By turning the screw you insert it[A screw] into another object.
 ("you" "insert" "A screw" [ "into another object" ] )
-("you"/?x "turn" "the screw")	"by"/ENABLE	("you"/?x "insert" "A screw" [ "into another object" ] )
+("you"/?x "turn" "the screw")	"By"/ENABLE	("you"/?x "insert" "A screw" [ "into another object" ] )
 ;;; There are a number of different objects called celestial objects that appear in the sky each day and night.
 ;;; The sun stars moon planets and comets are all celestial objects.
 "The sun"	"are"/EXAMPLE	"all celestial objects"
@@ -1537,7 +1538,7 @@
 ("the sun"/?x "move" "" [ "through the sky", "during the day" ] )	""/EFFECT	("the sun"/?x "rise" "" [ "in the east in the west", "in the east in the west" ] )
 ;;; We measure time on Earth based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun.
 ("We" "measure" "time on Earth" [ "based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun" ] )
-"We"	"measure"/FUNCTION	("We" "measure" "time on Earth" [ "based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun" ] )
+"We"	"measure"/PURPOSE	("We" "measure" "time on Earth" [ "based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun" ] )
 ;;; The passage of time in different units is based on the smallest unit being a second.
 ;;; 1 minute equals 60 seconds.
 ("1 minute" "equal" "60 seconds")
@@ -1573,8 +1574,8 @@
 ;;; The moon makes a complete orbit around the Earth once every 29 1/2 days.
 ;;; This means that it[This] takes approximately one month for the moon to completely revolve around the Earth.
 ;;; Because of the moon 's movement and the reflected light from the sun we see different portions of the moon at different times during the 29 1/2 days.
-"the moon 's movement from the sun"	"because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
-"the reflected light"	"because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
+"the moon 's movement from the sun"	"Because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
+"the reflected light"	"Because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the moon 's movement from the sun", "at different times during the 29 1/2 days" ] )
 ;;; The different portions of the moon that we[we] see are called phases.
 "The different portions of the moon"	"are called"/EXAMPLE	"phases"
 ;;; There are five phases of the moon.
@@ -1608,14 +1609,14 @@
 ;;; Some weather instruments include.
 ;;; A barometer measures air pressure.
 ("A barometer" "measure" "air pressure")
-"A barometer"	"measures"/FUNCTION	("A barometer" "measure" "air pressure")
+"A barometer"	"measures"/PURPOSE	("A barometer" "measure" "air pressure")
 ;;; An anemometer measures wind speed.
 ("An anemometer" "measure" "wind speed")
-"An anemometer"	"measures"/FUNCTION	("An anemometer" "measure" "wind speed")
+"An anemometer"	"measures"/PURPOSE	("An anemometer" "measure" "wind speed")
 ;;; A rain gauge measures rainfall.
 ;;; A thermometer measures temperature.
 ("A thermometer" "measure" "temperature")
-"A thermometer"	"measures"/FUNCTION	("A thermometer" "measure" "temperature")
+"A thermometer"	"measures"/PURPOSE	("A thermometer" "measure" "temperature")
 ;;; Air pressure is the pressure against the surface of the Earth by the atmosphere.
 "Air pressure"	"is"/EXAMPLE	"the pressure against the surface of the Earth by the atmosphere"
 ;;; Differences in air pressure over the surface of the Earth result in wind.
@@ -1630,17 +1631,17 @@
 ;;; A southwest wind would bring warm air to New York from the south but a northeast wind would most likely bring cold wet winds.
 ("A southwest wind" "bring" "warm air" [ "to New York", "from the south" ] )
 ;;; A rain gauge is used to measure rainfall.
-"A rain gauge"	"is used"/FUNCTION	("A rain gauge"/?x "measure" "rainfall")
+"A rain gauge"/?x	"is used"/PURPOSE	("A rain gauge"/?x "measure" "rainfall")
 ;;; The amount of rain that falls can be important in areas that need rainwater for everyday use especially farmers who need rainwater for their[too much rainfall] crops.
 ("areas" "need" "rainwater for everyday use especially farmers who need rainwater for their[too much rainfall] crops")	"for"/PURPOSE	"everyday use"
 ;;; Rainfall amounts are usually measured in inches.
 ;;; The rate at which rain falls can be measured in inches per hour.
 ;;; Temperature is a measure of how hot or cold the air is.
-"Temperature"	"measure"/FUNCTION	("Temperature" "be" "a measure" [ "of how hot or cold the air is" ] )
+"Temperature"	"measure"/PURPOSE	("Temperature" "be" "a measure" [ "of how hot or cold the air is" ] )
 "Temperature"	"is"/EXAMPLE	"a measure of how hot or cold the air is"
 ;;; A thermometer is the instrument used to measure temperature.
-"the instrument"	"used to"/FUNCTION	("the instrument"/?x "measure" "temperature")
-"A thermometer"	"used to"/FUNCTION	("A thermometer"/?x "measure" "temperature")
+"the instrument"/?x	"used to"/PURPOSE	("the instrument"/?x "measure" "temperature")
+"A thermometer"/?x	"used to"/PURPOSE	("A thermometer"/?x "measure" "temperature")
 "A thermometer"	"is"/EXAMPLE	("the instrument" "use" "")
 "A thermometer"	"is"/EXAMPLE	"the instrument"
 ;;; Temperature is measured in degrees on either the Fahrenheit or Celsius scale.
@@ -1648,8 +1649,8 @@
 ("The information"/?x "be" "useful")	"in"/EFFECT	("The information"/?x "determine" "current")
 ("The information"/?x "be" "useful")	"in"/EFFECT	("The information"/?x "determine" "future weather conditions")
 ;;; Precipitation is the term used to describe water moisture that falls from the sky.
-"the term"	"used to"/FUNCTION	("the term"/?x "describe" "water")
-("" "precipitate" "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "water")
+"the term"/?x	"used to"/PURPOSE	("the term"/?x "describe" "water")
+("" "precipitate" "")	"used to"/PURPOSE	("" "describe" "water")
 "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
 "Precipitation"	"is"/EXAMPLE	"the term"
 ;;; Different forms of precipitation include.
@@ -1665,7 +1666,7 @@
 ;;; Once the outside temperature drops below the freezing point of water it is more likely that the precipitation will be in the form of snow.
 ;;; Other conditions used to describe the weather include humidity and cloud cover.
 ("Other conditions" "include" "humidity and cloud cover")
-"Other conditions"	"used to"/FUNCTION	("Other conditions"/?x "describe" "the weather")
+"Other conditions"/?x	"used to"/PURPOSE	("Other conditions"/?x "describe" "the weather")
 ("Other conditions"/?x "use" "Other conditions")	"to"/EFFECT	("Other conditions"/?x "describe" "the weather")
 ;;; Humidity is the amount of moisture in the atmosphere.
 "Humidity"	"is"/EXAMPLE	"the amount of moisture in the atmosphere"
@@ -1764,10 +1765,10 @@
 ;;; Each phase change that water goes through has a specific name.
 ("Each phase change" "have" "a specific name")
 ;;; Freezing involves changing water from its[Each phase change that water goes through] liquid state to its[its liquid state] solid state ice by the removal of heat.
-("" "remove" "heat")	"by"/ENABLE	("Freezing" "change" "water" [ "from its[Each phase change that water goes through] liquid state", "to its[its liquid state] solid state" ] )
+("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[Each phase change that water goes through] liquid state", "to its[its liquid state] solid state" ] )
 ;;; Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat.
 "Melting"	"is"/EXAMPLE	"the opposite of freezing"
-("" "add" "heat")	"by"/ENABLE	("Melting" "change" "water" [ "from its[Melting] solid state", "to a liquid state" ] )
+("Melting"/?x "add" "heat")	"by"/ENABLE	("Melting"/?x "change" "water" [ "from its[Melting] solid state", "to a liquid state" ] )
 ;;; Evaporation involves changing water from its[Melting] liquid state to a gaseous state vapor.
 ;;; Imagine the puddles that form on your street after a heavy rain.
 ;;; After a few hours or days those puddles disappear.
@@ -1840,7 +1841,7 @@
 ;;; The force of waves breaking on beaches and cliffs can also change landforms.
 ("The force of waves" "change" "landforms")
 ;;; Erosion is the process by which soil and or other Earth materials are moved from one place to another.
-("" "erode" "")	"by which"/FUNCTION	("Erosion"/?x "soil" "")
+("" "erode" "")	"by which"/PURPOSE	("" "soil" "")
 "Erosion"	"is"/EXAMPLE	("" "soil" "")
 "Erosion"	"is"/EXAMPLE	("" "move" "other Earth materials" [ "from one place", "to another" ] )
 "Erosion"	"is"/EXAMPLE	"the process"
@@ -1894,16 +1895,16 @@
 ;;; Tools that a scientist might use include.
 ;;; A ruler measures length.
 ("A ruler" "measure" "length")
-"A ruler"	"measures"/FUNCTION	("A ruler" "measure" "length")
+"A ruler"	"measures"/PURPOSE	("A ruler" "measure" "length")
 ;;; A meter stick measures length.
 ;;; A balance measures mass.
-"A balance"	"measures"/FUNCTION	("A balance" "measure" "" [ "mass" ] )
+"A balance"	"measures"/PURPOSE	("A balance" "measure" "" [ "mass" ] )
 ;;; A spring scale measures weight.
 ;;; A thermometer measures temperature.
 ("A thermometer" "measure" "temperature")
-"A thermometer"	"measures"/FUNCTION	("A thermometer" "measure" "temperature")
+"A thermometer"	"measures"/PURPOSE	("A thermometer" "measure" "temperature")
 ;;; A microscope is used to view small objects.
-"A microscope"	"is used"/FUNCTION	("A microscope"/?x "view" "small objects")
+"A microscope"/?x	"is used"/PURPOSE	("A microscope"/?x "view" "small objects")
 ;;; A hand lens used to view objects in more detail.
 ;;; A magnet detects magnetic properties.
 ("A magnet" "detect" "magnetic properties")
@@ -1974,17 +1975,17 @@
 ("A line graph" "show" "the change" [ "in information between two variables" ] )
 ;;; This could be air temperature at different times of the day or the temperature of water as it[This could be air temperature at different times of the day or the temperature of water as it is heated] is heated.
 ;;; The two axes of the line graph are labeled with a description of what they[The two axes of the line graph] measure and the unit of measure.
-"they[The two axes of the line graph]"	"measure"/FUNCTION	("The two axes of the line graph" "measure" "what")
+"they[The two axes of the line graph]"	"measure"/PURPOSE	("The two axes of the line graph" "measure" "what")
 ;;; A bar graph is another form of graph used to present information.
 "A bar graph"	"is"/EXAMPLE	"another form of graph used to present information"
 ;;; In this case the information is shown in the form of bars that are drawn from the x-axis horizontal axis.
 ;;; A graph such as this might be used to show the number of students with different eye color for your entire class.
-"A graph such as this"	"be used"/FUNCTION	("A graph such as this"/?x "show" "the number of students with different eye color for your entire class")
+"A graph such as this"/?x	"be used"/PURPOSE	("A graph such as this"/?x "show" "the number of students with different eye color for your entire class")
 "this"	"such as"/EXAMPLE	"A graph"
 ;;; A pie graph is often used to show percentages of variables that equal 100.
-"A pie graph"	"is used"/FUNCTION	("A pie graph"/?x "show" "percentages of variables that equal 100")
+"A pie graph"/?x	"is used"/PURPOSE	("A pie graph"/?x "show" "percentages of variables that equal 100")
 ;;; For example a pie graph can be used to show the percentage of students in each grade in a high school.
-"a pie graph"	"be used"/FUNCTION	("a pie graph"/?x "show" "the percentage of students in each grade in a high school")
+"a pie graph"/?x	"be used"/PURPOSE	("a pie graph"/?x "show" "the percentage of students in each grade in a high school")
 ;;; In addition to the information that we can obtain from graphs data tables also provide us[we] with a great deal of information.
 ("data tables" "provide" "we" [ "to the information", "with a great deal of information" ] )
 ;;; Three things that you need to live and survive are air water and food.
@@ -1998,7 +1999,7 @@
 "Examples of living things"	"are"/EXAMPLE	"children"
 "plants"	"Examples of"/EXAMPLE	"living things"
 ;;; Water helps living things survive by moving materials.
-"Water"	"helps"/FUNCTION	("living things" "survive" "" [ "by moving materials" ] )
+"Water"	"helps"/PURPOSE	("living things" "survive" "" [ "by moving materials" ] )
 ;;; Air and water are necessary for both plants and animals to survive.
 "Air"	"necessary"/REQUIREMENT	("both plants" "survive" "")
 "Air"	"necessary"/REQUIREMENT	("animals" "survive" "")
@@ -2152,8 +2153,8 @@
 ;;; The leaves of the plant absorb sunlight.
 ("The leaves of the plant" "absorb" "sunlight")
 ;;; The two functions of the roots are to anchor and absorb.
-"the roots"	"functions"/FUNCTION	("The two functions of the roots" "be" "anchor")
-"the roots"	"functions"/FUNCTION	("The two functions of the roots" "absorb" "")
+"the roots"	"functions"/PURPOSE	("The two functions of the roots" "be" "anchor")
+"the roots"	"functions"/PURPOSE	("The two functions of the roots" "absorb" "")
 ;;; The stem is the pathway of water and nutrients from the roots to the leaves.
 "The stem"	"is"/EXAMPLE	"the pathway of water and nutrients from the roots to the leaves"
 ;;; The stem also supports the plant.
@@ -2164,7 +2165,7 @@
 ("" "move" "" [ "toward the sun" ] )	"to"/EFFECT	("" "collect" "light")
 ("the plant"/?x "collect" "light")	"to"/EFFECT	("the plant"/?x "perform" "photosynthesis")
 ;;; The flower helps the plant reproduce because it[the plant] contains the pollen and eggs.
-"The flower"	"helps"/FUNCTION	("the plant" "reproduce" "")
+"The flower"	"helps"/PURPOSE	("the plant" "reproduce" "")
 ("the plant" "contain" "the pollen")	"because"/EFFECT	("the plant" "reproduce" "")
 ("the plant" "contain" "eggs")	"because"/EFFECT	("the plant" "reproduce" "")
 ;;; The flower is colorful and has a pleasant scent that attracts birds and insects to help with fertilization.
@@ -2210,17 +2211,17 @@
 ("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "leave" "")	""/EFFECT	("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "fall off" "trees" [ "in fall" ] )
 ;;; The part of a plant that is responsible for reproduction is the flower.
 "The part of a plant"	"is"/EXAMPLE	"the flower"
-"that"	"responsible for"/FUNCTION	("" "reproduce" "")
+"that"	"responsible for"/PURPOSE	("" "reproduce" "")
 ;;; The stem provides support for the plant.
 ("The stem" "provide" "support for the plant")
 ;;; The process by which a plant increases in size is known as growth.
 ;;; The digestive system takes in nutrients.
 ("The digestive system" "take" "in nutrients")
 ;;; The respiratory system is responsible for breathing.
-("" "systemize" "")	"responsible for"/FUNCTION	("" "breathe" "")
+("" "systemize" "")	"responsible for"/PURPOSE	("" "breathe" "")
 ;;; The circulatory system pumps blood.
 ;;; The Locomotion system is responsible for movement.
-("" "systemize" "")	"responsible for"/FUNCTION	("" "move" "")
+("" "systemize" "")	"responsible for"/PURPOSE	("" "move" "")
 ;;; The urinary system eliminates chemical waste.
 ("The urinary system" "eliminate" "chemical waste")
 ;;; The five senses are controlled by the nervous system.
@@ -2230,7 +2231,7 @@
 ("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "survive" "")
 ;;; The mouth helps in digestion and respiration.
 ;;; The urinary system is responsible for getting rid of chemical waste and water.
-("" "systemize" "")	"responsible for"/FUNCTION	("The urinary system"/?x "rid" "" [ "of chemical waste", "of chemical waste" ] )
+("" "systemize" "")	"responsible for"/PURPOSE	("" "rid" "" [ "of chemical waste", "of chemical waste" ] )
 ;;; The locomotion system protects the organs and provides structure for the body.
 ("The locomotion system" "protect" "the organs")
 ;;; All animals have different structures that have different jobs or functions to help in growth survival and reproduction.
@@ -2294,14 +2295,14 @@
 ;;; A fish has a flipper or fin that helps them[animals with gills] swim.
 ("A fish" "have" "a flipper")	"helps"/EFFECT	("animals with gills" "swim" "")
 ("A fish" "have" "fin")	"helps"/EFFECT	("animals with gills" "swim" "")
-"a flipper"	"helps"/FUNCTION	("animals with gills" "swim" "")
+"a flipper"	"helps"/PURPOSE	("animals with gills" "swim" "")
 ;;; Birds have wings that are long and angled to help them[birds] fly.
 ("Birds"/?x "have" "wings")	"long to"/EFFECT	("Birds"/?x "help" "" [ "them[birds] fly" ] )
 ("wings" "be" "long" [ "to help them[birds] fly" ] )	"to help"/EFFECT	("birds" "fly" "")
 ;;; Horses have strong legs and hooves that enable them[Horses] to run on many different landscapes.
 ("Horses"/?x "have" "strong legs")	"enable to"/EFFECT	("Horses"/?x "run" "" [ "on many different landscapes" ] )
 ("Horses"/?x "have" "hooves")	"enable to"/EFFECT	("Horses"/?x "run" "" [ "on many different landscapes" ] )
-"strong legs"	"enable"/FUNCTION	("Horses" "run" "" [ "on many different landscapes" ] )
+"strong legs"	"enable"/PURPOSE	("Horses" "run" "" [ "on many different landscapes" ] )
 ;;; Cats distinct colors and patterns are an example of diversity.
 "Cats distinct colors"	"example of"/EXAMPLE	"diversity"
 "patterns"	"example of"/EXAMPLE	"diversity"
@@ -2353,7 +2354,7 @@
 "animals"	"resemble"/EXAMPLE	"their[plants and animals] parents because of DNA"
 ;;; DNA is found in the cells of our body.
 ;;; DNA is responsible for telling our[our] body what to look like or can give the body information.
-"DNA"	"responsible for"/FUNCTION	("DNA"/?x "tell" "our[our] body")
+"DNA"/?x	"responsible for"/PURPOSE	("DNA"/?x "tell" "our[our] body")
 ("what"/?x "tell" "our[our] body")	"to"/EFFECT	("what"/?x "look" "")
 ("what"/?x "tell" "our[our] body")	"can"/EFFECT	("what"/?x "give" "the body information")
 ;;; All living things have DNA.
@@ -2367,12 +2368,12 @@
 ;;; Parents DNA parents genes are where our[our] genes come from and determine hair eye and skin color.
 ;;; DNA is found in the cells of our[our] bodies.
 ;;; In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest.
-("humans" "eat" "healthy foods")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "eat" "healthy foods")	"in order for"/EFFECT	("humans" "be" "healthy")
-("humans" "exercise" "")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "exercise" "")	"in order for"/EFFECT	("humans" "be" "healthy")
-("humans" "get" "regular rest")	"in order for"/EFFECT	("humans" "grow" "")
-("humans" "get" "regular rest")	"in order for"/EFFECT	("humans" "be" "healthy")
+("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "be" "healthy")
+("humans" "exercise" "")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "exercise" "")	"In order for"/EFFECT	("humans" "be" "healthy")
+("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "grow" "")
+("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "be" "healthy")
 ;;; To avoid getting germs and illnesses from other people you should wash your hands frequently.
 ("you" "wash" "your hands" [ "frequently" ] )
 ;;; A cigarette is a harmful substance.
@@ -2420,7 +2421,7 @@
 ("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	"energy"
 ;;; Cars and trucks create gases that are harmful to the atmosphere.
 ;;; Humans can help save their[humans] environment by recycling planting trees preventing litter limiting use of cars creating new forms of energy and conserving energy.
-"Humans"	"help"/FUNCTION	("Humans" "save" "their[humans] environment")
+"Humans"	"help"/PURPOSE	("Humans" "save" "their[humans] environment")
 ("Humans"/?x "recycle" "")	"by"/ENABLE	("Humans"/?x "save" "their[humans] environment")
 ("Humans"/?x "plant" "trees")	"by"/ENABLE	("Humans"/?x "save" "their[humans] environment")
 ("Humans"/?x "prevent" "litter")	"by"/ENABLE	("Humans"/?x "save" "their[humans] environment")
@@ -2453,18 +2454,18 @@
 ("" "use" "your senses")	"to"/EFFECT	("" "make" "an observation")
 ;;; A balance measures mass.
 ("A balance" "measure" "mass")
-"A balance"	"measures"/FUNCTION	("A balance" "measure" "mass")
+"A balance"	"measures"/PURPOSE	("A balance" "measure" "mass")
 ;;; Melting of ice is a physical change not a chemical change.
 "Melting of ice"	"is"/EXAMPLE	"a physical change not a chemical change"
 ;;; The gas phase of matter will take the shape of a closed container.
 ("The gas phase of matter" "take" "the shape of a closed container")
 ;;; A bike rolling down a hill is an example of kinetic energy.
 "A bike"	"example of"/EXAMPLE	"kinetic energy"
-("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
+("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "exemplify" [ "of kinetic energy" ] )
 ;;; A plane flying is an example of kinetic energy.
 "A plane"	"example of"/EXAMPLE	"kinetic energy"
-("A plane"/?x "fly" "A plane")	""/EFFECT	("A plane"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
-("A plane"/?x "fly" "")	""/EFFECT	("A plane"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
+("A plane"/?x "fly" "A plane")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
+("A plane"/?x "fly" "")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
 ;;; A snowball melting in your hand is an example of heat energy.
 "A snowball melting in your hand"	"example of"/EXAMPLE	"heat energy"
 ;;; Banging a drum is an example of mechanical energy.
@@ -2485,7 +2486,7 @@
 "A car engine"	"example of"/EXAMPLE	"chemical energy changing to mechanical energy"
 ;;; A ball rolling down a hill is an example of kinetic energy.
 "A ball"	"example of"/EXAMPLE	"kinetic energy"
-("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "an example of kinetic energy" [ "of kinetic energy" ] )
+("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "exemplify" [ "of kinetic energy" ] )
 ;;; Energy from the sun is called solar energy.
 "Energy from the sun"	"is called"/EXAMPLE	"solar energy"
 ;;; The energy transformation that occurs when you ring a door bell is electrical energy to sound.
@@ -2534,10 +2535,10 @@
 ("" "be" "important" [ "most" ] )	"for"/PURPOSE	"people"
 ;;; A flood can be caused by heavy rain.
 ;;; A barometer is used to measure air pressure.
-"A barometer"	"is used"/FUNCTION	("A barometer"/?x "measure" "air pressure")
+"A barometer"/?x	"is used"/PURPOSE	("A barometer"/?x "measure" "air pressure")
 ;;; Precipitation is the term used to describe water falling from the sky.
-"the term"	"used to"/FUNCTION	("the term"/?x "describe" "")
-("" "precipitate" "")	"used to"/FUNCTION	("Precipitation"/?x "describe" "")
+"the term"/?x	"used to"/PURPOSE	("the term"/?x "describe" "")
+("" "precipitate" "")	"used to"/PURPOSE	("" "describe" "")
 "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
 "Precipitation"	"is"/EXAMPLE	"the term"
 ;;; Snow is a form of precipitation.
@@ -2578,7 +2579,7 @@
 ;;; Weathering involves the breaking down of a large object into smaller pieces.
 ;;; Erosion involves moving pieces from one location to another.
 ;;; A balance is used to determine the mass of an object.
-"A balance"	"is used"/FUNCTION	("A balance"/?x "determine" "" [ "the mass of an object" ] )
+"A balance"/?x	"is used"/PURPOSE	("A balance"/?x "determine" "" [ "the mass of an object" ] )
 ;;; You can observe an orange 's color with your sense of sight.
 ("You" "observe" "an orange 's color" [ "with your sense of sight" ] )
 ;;; You can observe an orange 's odor with your sense of smell.
@@ -2588,18 +2589,18 @@
 ;;; You can observe an orange 's taste with your sense of taste.
 ("You" "observe" "an orange 's taste" [ "with your sense of taste" ] )
 ;;; The best tool to use to measure temperature is a thermometer.
-"a thermometer"	"to use"/FUNCTION	("a thermometer"/?x "measure" "temperature")
-"The best tool"	"to use"/FUNCTION	("The best tool"/?x "measure" "temperature")
+"a thermometer"/?x	"to use"/PURPOSE	("a thermometer"/?x "measure" "temperature")
+"The best tool"/?x	"to use"/PURPOSE	("The best tool"/?x "measure" "temperature")
 "The best tool to use to measure temperature"	"is"/EXAMPLE	"a thermometer"
 ;;; A thermometer is used to measure air temperature.
-"A thermometer"	"is used"/FUNCTION	("A thermometer"/?x "measure" "air temperature")
+"A thermometer"/?x	"is used"/PURPOSE	("A thermometer"/?x "measure" "air temperature")
 ;;; A metric ruler can be used to measure the length of a stick.
-"A metric ruler"	"be used"/FUNCTION	("A metric ruler"/?x "measure" "the length of a stick")
+"A metric ruler"/?x	"be used"/PURPOSE	("A metric ruler"/?x "measure" "the length of a stick")
 ;;; A metric ruler and a balance will measure the size and mass of an object.
-"A metric ruler"	"measure"/FUNCTION	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
-"A metric ruler"	"measure"/FUNCTION	("a balance" "measure" "" [ "the size of an object", "mass" ] )
-"a balance"	"measure"/FUNCTION	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
-"a balance"	"measure"/FUNCTION	("a balance" "measure" "" [ "the size of an object", "mass" ] )
+"A metric ruler"	"measure"/PURPOSE	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
+"A metric ruler"	"measure"/PURPOSE	("a balance" "measure" "" [ "the size of an object", "mass" ] )
+"a balance"	"measure"/PURPOSE	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
+"a balance"	"measure"/PURPOSE	("a balance" "measure" "" [ "the size of an object", "mass" ] )
 ;;; A journal is useful to a scientist to record observations made during an experiment.
 ("A journal"/?x "be" "useful" [ "to a scientist" ] )	"to"/EFFECT	("A journal"/?x "record" "observations")
 ;;; The best instrument to measure the growth of a plant 's stem is a ruler.
@@ -2611,7 +2612,7 @@
 "Snow"	"are"/EXAMPLE	"forms of precipitation"
 "rain"	"are"/EXAMPLE	"forms of precipitation"
 ;;; The main function of a turtle 's shell is to protect the turtle.
-"a turtle 's shell"	"function of"/FUNCTION	("The main function of a turtle 's shell" "protect" "the turtle")
+"a turtle 's shell"	"function of"/PURPOSE	("The main function of a turtle 's shell" "protect" "the turtle")
 ;;; Being able to read a book is not an inherited characteristic.
 ;;; The Earth 's main source of energy is the sun.
 "The Earth 's main source of energy"	"is"/EXAMPLE	"the sun"
@@ -2650,7 +2651,7 @@
 ;;; When you turn on your television electrical energy is transferred into sound and light energy.
 ("you"/?x "transfer" "electrical energy" [ "into sound and light energy" ] )	"When"/WHEN	("you"/?x "turn" "")
 ;;; A thermometer is used to measure heat energy.
-"A thermometer"	"is used"/FUNCTION	("A thermometer"/?x "measure" "heat energy")
+"A thermometer"/?x	"is used"/PURPOSE	("A thermometer"/?x "measure" "heat energy")
 ;;; The flower is the part of the plant responsible for the production of seeds.
 "The flower"	"is"/EXAMPLE	"the part of the plant responsible for the production of seeds"
 ;;; Photosynthesis takes place in the leaves of the plant.
@@ -2665,8 +2666,8 @@
 "An example of a predator and prey"	"is"/EXAMPLE	"a hawk and a mouse"
 ;;; The phases of matter are solid liquid gas.
 ;;; Growth is a process by which plants and animals increase in size.
-("" "grow" "")	"by which"/FUNCTION	("plants" "increase" "" [ "in size" ] )
-("" "grow" "")	"by which"/FUNCTION	("animals" "increase" "" [ "in size" ] )
+("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "" [ "in size" ] )
+("animals"/?x "grow" "")	"by which"/PURPOSE	("animals"/?x "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	("animals" "increase" "" [ "in size" ] )
 "Growth"	"is"/EXAMPLE	"a process"
@@ -2674,8 +2675,9 @@
 ;;; The force of magnetism decreases as the magnets are pulled apart.
 ;;; The leaves are the part of the plant that is responsible for making food.
 "The leaves"	"are"/EXAMPLE	"the part of the plant that is responsible for making food"
-"that"	"responsible for"/FUNCTION	("that"/?x "make" "food")
+"that"/?x	"responsible for"/PURPOSE	("that"/?x "make" "food")
 ;;; Growth taking in nutrients breathing and reproduction are the life processes of all living things.
+("Growth"/?x "take in" "nutrients")	""/EFFECT	("Growth"/?x "breathe" "")
 "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
 "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
 ;;; An example of the transfer of chemical energy to electrical energy is between battery and light bulb.
@@ -2704,7 +2706,7 @@
 "animals"	"resemble"/EXAMPLE	"their[plants and animals] parents because of their[plants and animals] DNA"
 ;;; Soil is composed of broken down pieces of living and nonliving Earth materials.
 ;;; A ruler is used to measure the length of a piece of wood.
-"A ruler"	"is used"/FUNCTION	("A ruler"/?x "measure" "the length of a piece of wood")
+"A ruler"/?x	"is used"/PURPOSE	("A ruler"/?x "measure" "the length of a piece of wood")
 ;;; Erosion and deposition result from the interaction between air water and land.
 ;;; The astronaut does not experience gravity while in outer space.
 ("The astronaut" "not experience" "gravity" [ "while in outer space" ] )

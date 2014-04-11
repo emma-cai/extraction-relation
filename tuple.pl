@@ -257,6 +257,8 @@ mark(Comp,Mark) :-
 prep(Pobj,Prep) :-
 	rdf(Prep,basic:pobj,Pobj), !.	
 prep(Pobj,Prep) :-
+	rdf(Prep,basic:pcomp,Pobj), !.	
+prep(Pobj,Prep) :-
 	rdf(Pobj2,basic:conj,Pobj),
-	rdf(Prep,basic:pobj,Pobj2).
+	prep(Pobj2,Prep).
 

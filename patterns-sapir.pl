@@ -19,14 +19,16 @@ example_NP_Tuple(Entity,Comp,['EXAMPLE'-3,Cop,Way]) :-
 	; dependency(Way,dep:rcmod,Comp) ).
 
 % EXAMPLE: Tuple is example of NP
-example_Tuple_NP(Entity,Comp,['EXAMPLE'-4,Example,'of']) :-
+example_Tuple_NP(Entity,Comp,['EXAMPLE'-4,Example,Of]) :-
 	dependency(Example,dep:prep_of,Entity),
+	prep(Entity,Of),
 	text(Example,example),
 	dependency(Be,dep:nsubj,Example),
 	text(Be,be),
 	dependency(Be,dep:advcl,Comp).
-example_Tuple_NP(Entity,Comp,['EXAMPLE'-5,Example,'of']) :-
+example_Tuple_NP(Entity,Comp,['EXAMPLE'-5,Example,Of]) :-
 	dependency(Example,dep:prep_of,Entity),
+	prep(Entity,Of),
 	text(Example,example),
 	dependency(Example,dep:cop,_),
 	dependency(Example,dep:csubj,Comp).
@@ -62,39 +64,46 @@ example_NP_NP(Entity1,Entity2,['EXAMPLE'-9,Is,Called]) :-
 	dependency(Called,dep:auxpass,Is),
 	dependency(Called,dep:xcomp,Entity2).
 % EXAMPLE: NP such as NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-10,'such as']) :-
-	dependency(Entity2,dep:prep_such_as,Entity1).
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-10,Such,As]) :-
+	dependency(Entity2,dep:prep_such_as,Entity1),
+	prep(Entity1,As),
+	dependency(As,basic:mwe,Such).
 % EXAMPLE: NP is example of NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-11,Example,'of']) :-
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-11,Example,Of]) :-
 	dependency(Entity1,dep:cop,_),
 	dependency(Entity1,dep:nsubj,Example),
 	text(Example,example),
-	dependency(Example,dep:prep_of,Entity2).
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-12,Example,'of']) :-
+	dependency(Example,dep:prep_of,Entity2),
+	prep(Entity2,Of).
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-12,Example,Of]) :-
 	dependency(Example,dep:nsubj,Entity1),
 	text(Example,example),
 	dependency(Example,dep:cop,_),
-	dependency(Example,dep:prep_of,Entity2).
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-13,Example,'of']) :-
+	dependency(Example,dep:prep_of,Entity2),
+	prep(Entity2,Of).
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-13,Example,Of]) :-
 	dependency(Ent,dep:conj_and,Entity1),
 	dependency(Ent,dep:cop,_),
 	dependency(Ent,dep:nsubj,Example),
 	text(Example,example),
-	dependency(Example,dep:prep_of,Entity2).
+	dependency(Example,dep:prep_of,Entity2),
+	prep(Entity2,Of).
 % failed cop
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-14,Example,'of']) :-
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-14,Example,Of]) :-
 	dependency(Be,dep:nsubj,Entity1),
 	text(Be,be),
 	dependency(Be,dep:tmod,Example),
 	text(Example,example),
-	dependency(Example,dep:prep_of,Entity2).
+	dependency(Example,dep:prep_of,Entity2),
+	prep(Entity2,Of).
 % EXAMPLE: example of NP includes NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-15,Example,'of']) :-
+example_NP_NP(Entity1,Entity2,['EXAMPLE'-15,Example,Of]) :-
 	dependency(Include,dep:dobj,Entity1),
 	text(Include,include),
 	dependency(Include,dep:nsubj,Example),
 	text(Example,example),
-	dependency(Example,dep:prep_of,Entity2).
+	dependency(Example,dep:prep_of,Entity2),
+	prep(Entity2,Of).
 % EXAMPLE: NP is a NP - Sapir
 example_NP_NP(Entity1,Entity2,['EXAMPLE'-155,Cop]) :-
       rdf(Cop,dep:attr,Entity2),
@@ -120,36 +129,42 @@ cause(Root,Entity,['CAUSE'-18,'because of']) :-
 	dependency(Root,dep:prep_because_of,Entity).
 /*
 % NP "results from" Tuple
-cause2(Root,Entity,['CAUSE'-19,'results from']) :-
+cause2(Root,Entity,['CAUSE'-19,Result,From]) :-
 	dependency(Result,dep:prepc_from,Root),
         text(Result,result),
+        prep(Root,From),
 	dependency(Result,dep:nsubj,Entity).
 % Tuple "results in" NP
-cause2(Root,Entity,['CAUSE'-20,'results in']) :-
+cause2(Root,Entity,['CAUSE'-20,Result,In]) :-
 	dependency(Root,dep:xcomp,Result),
         text(Result,result),
-	dependency(Result,dep:prep_in,Entity).
+	dependency(Result,dep:prep_in,Entity),
+        prep(Entity,In).
 */	
 
 
 % PURPOSE: Tuple "is for" NP
-purpose(Root,Entity,['PURPOSE'-21,'for']) :-
+purpose(Root,Entity,['PURPOSE'-21,For]) :-
 	dependency(Root,dep:cop,_),
-	dependency(Root,dep:prep_for,Entity).
+	dependency(Root,dep:prep_for,Entity),
+	prep(Entity,For).
 % PURPOSE: Tuple "for" NP
-purpose(Root,Entity,['PURPOSE'-22,'for']) :- % dobj-PP
+purpose(Root,Entity,['PURPOSE'-22,For]) :- % dobj-PP
 	dependency(Root,dep:dobj,Dobj),
-	dependency(Dobj,dep:prep_for,Entity).
-purpose(Root,Entity,['PURPOSE'-23,'for']) :- % pobj-PP
+	dependency(Dobj,dep:prep_for,Entity),
+	prep(Entity,For).
+purpose(Root,Entity,['PURPOSE'-23,For]) :- % pobj-PP
 	\+ dependency(Root,dep:dobj,_),
 	dependency(Root,basic:prep,Prep),
 	dependency(Prep,basic:pobj,Pobj),
-	dependency(Pobj,dep:prep_for,Entity).
+	dependency(Pobj,dep:prep_for,Entity),
+	prep(Entity,For).
 
 
 % ENABLE: Tuple "by" NP
-function(Entity,Root,['ENABLE'-24,'by']) :-
+function(Entity,Root,['ENABLE'-24,By]) :-
 	dependency(Root,dep:prep_by,Entity),
+	prep(Entity,By),
 	pos(Root,'VBG'),
 	pos(Entity,'NN').
 % copular
@@ -197,22 +212,24 @@ function(Entity,Comp,['PURPOSE'-31,Rel,Aux]) :-
 	dependency(Rel,dep:xcomp,Comp),
 	aux(Comp,Aux).
 % FUNCTION: NP "to" Tuple
-function(Entity,Comp,['PURPOSE'-32,'to']) :-
+function(Entity,Comp,['PURPOSE'-32,Aux]) :-
 	dependency(Entity,dep:nsubj,Subj),
 	\+ dependency(Entity,dep:cop,_),
 	\+ text(Entity,be),
 	dependency(Subj,dep:infmod,Comp),
+	aux(Comp,Aux),
 	\+ text(Comp,use).
 % FUNCTION: NP "measures" NP
 function(Entity,Measure,['PURPOSE'-33,Measure]) :-
 	dependency(Measure,dep:nsubj,Entity),
 	text(Measure,measures).
 % FUNCTION: NP "by which" Tuple
-function(Entity,Comp,['PURPOSE'-34,'by',Which]) :-
+function(Entity,Comp,['PURPOSE'-34,By,Which]) :-
 	dependency(Root,dep:nsubj,Entity),
 	dependency(Root,dep:cop,_),
 	dependency(Root,dep:rcmod,Comp),
 	dependency(Comp,dep:prep_by,Which),
+	prep(Which,By),
 	text(Which,which).
 % FUNCTION: "function of" NP is Tuple
 function(Entity,Comp,['PURPOSE'-35,Function]) :-
@@ -220,24 +237,27 @@ function(Entity,Comp,['PURPOSE'-35,Function]) :-
 	text(Function,function),
 	dependency(Comp,dep:nsubj,Function),
 	\+ text(Comp,be).
-function(Entity,Comp,['PURPOSE'-36,Function,'of']) :-
+function(Entity,Comp,['PURPOSE'-36,Function,Of]) :-
 	dependency(Function,dep:prep_of,Entity),
+	prep(Entity,Of),
 	text(Function,function),
 	dependency(Be,dep:nsubj,Function),
 	text(Be,be),
 	dependency(Be,dep:xcomp,Comp).
 % FUNCTION: NP "is responsible for" Tuple
-function(Entity,Comp,['PURPOSE'-37,Responsible,'for']) :-
+function(Entity,Comp,['PURPOSE'-37,Responsible,For]) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	text(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),
-	dependency(Responsible,dep:prepc_for,Comp).
+	dependency(Responsible,dep:prepc_for,Comp),
+	prep(Comp,For).
 % FUNCTION: NP "is responsible for" NP
-function(Entity,Comp,['PURPOSE'-38,Responsible,'for']) :-
+function(Entity,Comp,['PURPOSE'-38,Responsible,For]) :-
 	dependency(Responsible,dep:nsubj,Entity),
 	text(Responsible,responsible),
 	dependency(Responsible,dep:cop,_),
-	dependency(Responsible,dep:prep_for,Comp).
+	dependency(Responsible,dep:prep_for,Comp),
+	prep(Comp,For).
 % FUNCTION: NP "is necessary for" Tuple
 function(Entity,Comp,['REQUIREMENT'-39,Necessary]) :-
 	dependency(Necessary,dep:nsubj,Entity),
@@ -256,29 +276,33 @@ effect(Root,Comp,['EFFECT'-41]) :-
 
 
 % PART: Tuple is part of Tuple
-effect(Root,Comp,['PART'-42,Part,'of']) :-
+effect(Root,Comp,['PART'-42,Part,Of]) :-
 	dependency(Be,dep:advcl,Root),
 	text(Be,be),
 	dependency(Be,dep:nsubj,Part),
 	text(Part,part),
-	dependency(Part,dep:prep_of,Comp).
-effect(Root,Comp,['PART'-43,Part,'of']) :-
+	dependency(Part,dep:prep_of,Comp),
+	prep(Comp,Of).
+effect(Root,Comp,['PART'-43,Part,Of]) :-
 	dependency(Part,dep:csubj,Root),
 	dependency(Part,dep:cop,_),
 	text(Part,part),
-	dependency(Part,dep:prep_of,Comp).
-effect(Root,Comp,['PART'-44,Part,Prep]) :-
+	dependency(Part,dep:prep_of,Comp),
+	prep(Comp,Of).
+effect(Root,Comp,['PART'-44,Part,Of]) :-
 	dependency(Part,dep:csubj,Root),
 	dependency(Part,dep:cop,_),
 	text(Part,part),
-	dependency(Part,basic:prep,Prep),
-	dependency(Prep,basic:dep,Comp). % failed PP
+	dependency(Part,basic:prep,Of),
+	dependency(Of,basic:dep,Comp). % failed PP
 		    
 % EFFECT: Tuple "in preparation for" Tuple
-effect(Root,Comp,['EFFECT'-45,'in',Comp,'for']) :-
+effect(Root,Comp,['EFFECT'-45,In,Comp,Prep]) :-
 	dependency(Root,dep:prep_in,Comp),
 	text(Comp,preparation),
-	dependency(Comp,dep:prep_for,_).
+	prep(Comp,In),
+	dependency(Comp,dep:prep_for,For),
+	prep(For,Prep).
 
 % EFFECT: Tuple "helps to" Tuple
 effect(Root,Comp,['EFFECT'-46,Aux,Help]) :-
@@ -301,16 +325,18 @@ effect(Root,Comp,['EFFECT'-48,Aux,Help]) :- % infmod on pobj
 	dependency(Help,dep:ccomp,Comp),
 	aux(Help,Aux).
 % EFFECT: Tuple "in order to" Tuple
-effect(Root,Comp,['EFFECT'-49,'in',Pobj,Aux]) :- % xcomp on pobj
+effect(Root,Comp,['EFFECT'-49,In,Pobj,Aux]) :- % xcomp on pobj
 	dependency(Root,dep:prep_in,Pobj),
 	text(Pobj,order),
+	prep(Pobj,In),
 	dependency(Root,dep:xcomp,Comp),
 	\+ dependency(Pobj,dep:xcomp,_), !,
 	aux(Comp,Aux).
-effect(Root,Comp,['EFFECT'-50,'in',Pobj,Aux]) :- % infmod on dobj
+effect(Root,Comp,['EFFECT'-50,In,Pobj,Aux]) :- % infmod on dobj
 	dependency(Root,dep:dobj,Dobj),
 	dependency(Dobj,dep:prep_in,Pobj),
 	text(Pobj,order),
+	prep(Pobj,In),
 	dependency(Dobj,dep:infmod,_), !,
 	dependency(Dobj,dep:infmod,Comp),
 	\+ dependency(Pobj,dep:xcomp,_),
@@ -336,7 +362,7 @@ effect(Root,Comp,['EFFECT'-53,Aux]) :-
 	dependency(Root,dep:xcomp,Comp),
 	( (aux(Root,Modal),
 	   \+ text(Modal,must))
-	; \+ aux(Root,Modal) ),
+	; \+ aux(Root,_Modal) ),
 	\+ dependency(_,dep:rcmod,Root),
 	\+ dependency(Comp,dep:cop,_),
 	aux(Comp,Aux).
@@ -381,11 +407,13 @@ effect(Root,Comp,['EFFECT'-60,Mod|Aux]) :- % rcmod on pobj
 	dependency(Mod,dep:ccomp,Comp),
 	(aux(Comp,Aux) ; Aux = []). % optional aux
 % EFFECT: Tuple "by" Tuple
-effect(Root,Comp,['ENABLE'-61,'by']) :- % by-VBG
+effect(Root,Comp,['ENABLE'-61,By]) :- % by-VBG
 	dependency(Comp,dep:prepc_by,Root),
+	prep(Root,By),
 	pos(Root,'VBG').
-effect(Root,Comp,['ENABLE'-62,'by']) :- % passive by-VBG
+effect(Root,Comp,['ENABLE'-62,By]) :- % passive by-VBG
 	dependency(Comp,dep:agent,Root),
+	dependency(By,basic:pobj,Root),
 	pos(Comp,'VBG'),
 	dependency(Comp,dep:auxpass,_).
 % EFFECT: partmod
@@ -394,8 +422,9 @@ effect(Root,Comp,['EFFECT'-63]) :-
 	dependency(Subj,dep:partmod,Root),
 	dependency(Comp,dep:nsubj,Subj).
 % EFFECT: Tuple "in" Tuple
-effect(Root,Comp,['EFFECT'-64,'in']) :-
+effect(Root,Comp,['EFFECT'-64,In]) :-
 	dependency(Root,dep:prepc_in,Comp),
+	prep(Comp,In),
 	pos(Comp,'VBG').
 % EFFECT: Tuple "is for" Tuple
 effect(Root,Comp,['EFFECT'-65,Mark]) :-
@@ -435,13 +464,13 @@ effect(Root,Comp,['EFFECT'-70,Mark]) :-
 	mark(Root,Mark),
 	text(Mark,'If').
 % EFFECT: Tuple "because of" Tuple
-effect(Root,Comp,['EFFECT'-71,Mwe,Prep]) :-
+effect(Root,Comp,['EFFECT'-71,Because,Of]) :-
 	dependency(Pobj,dep:rcmod,Root),
-	dependency(Prep,basic:pobj,Pobj),
-	text(Prep,of),
-	dependency(Prep,basic:mwe,Mwe),
-	text(Mwe,because),
-	dependency(Comp,basic:prep,Prep).
+	dependency(Of,basic:pobj,Pobj),
+	text(Of,of),
+	dependency(Of,basic:mwe,Because),
+	text(Because,because),
+	dependency(Comp,basic:prep,Of).
 % EFFECT: Tuple "when" Tuple
 effect(Root,Comp,['WHEN'-72,Adv]) :-
 	( dependency(Help,dep:xcomp,Root)
@@ -457,21 +486,23 @@ effect(Root,Comp,['WHEN'-73,Adv]) :-
 	( dependency(Comp,dep:advmod,Adv) ; dependency(Comp,dep:mark,Adv) ), % for Sapir
 	text(Adv,when).
 % EFFECT: Tuple "in order for" Tuple
-effect(Root,Comp,['EFFECT'-74,'in',Pobj,Prep2]) :-
-	dependency(Root,dep:prep_in,Pobj),
-	text(Pobj,order),
-	dependency(Pobj,dep:infmod,Comp),
-	( dependency(Pobj,basic:prep,Prep2)
-	; dependency(Comp,basic:mark,Prep2) ),
-	text(Prep2,for).
-effect(Root,Comp,['EFFECT'-75,'in',Pobj,Prep2]) :- % via xcomp
+effect(Root,Comp,['EFFECT'-74,In,Order,For]) :-
+	dependency(Root,dep:prep_in,Order),
+	prep(Order,In),
+	text(Order,order),
+	dependency(Order,dep:infmod,Comp),
+	( dependency(Order,basic:prep,For)
+	; dependency(Comp,basic:mark,For) ),
+	text(For,for).
+effect(Root,Comp,['EFFECT'-75,In,Order,For]) :- % via xcomp
 	dependency(Root2,dep:xcomp,Root),
-	dependency(Root2,dep:prep_in,Pobj),
-	text(Pobj,order),
-	dependency(Pobj,dep:infmod,Comp),
-	( dependency(Pobj,basic:prep,Prep2)
-	; mark(Comp,Prep2) ),
-	text(Prep2,for).
+	dependency(Root2,dep:prep_in,Order),
+	prep(Order,In),
+	text(Order,order),
+	dependency(Order,dep:infmod,Comp),
+	( dependency(Order,basic:prep,For)
+	; mark(Comp,For) ),
+	text(For,for).
 % EFFECT: Tuple "and helps" Tuple
 effect(Root,Comp,['EFFECT'-76,Csubj]) :-
 	dependency(Root,dep:conj_and,Comp),
@@ -489,10 +520,11 @@ effect(Root,Comp,['EFFECT'-78,Help]) :-
 	helps(Help),
 	dependency(Help,dep:ccomp,Comp).
 % EFFECT: Tuple "results in" Tuple
-effect(Root,Comp,['EFFECT'-79,Result,'in']) :-
+effect(Root,Comp,['EFFECT'-79,Result,In]) :-
 	dependency(Result,dep:csubj,Root),
 	text(Result,result),
-	dependency(Result,dep:prepc_in,Comp).
+	dependency(Result,dep:prepc_in,Comp),
+	prep(Comp,In).
 % EFFECT: Tuple "so that" Tuple
 effect(Root,Comp,['EFFECT'-80,So,Mark]) :-
 	dependency(Root,dep:advcl,Adv),
@@ -523,9 +555,10 @@ effect(Root,Comp,['EFFECT'-83,Mark]) :-
 	dependency(Comp,dep:mark,Mark),
 	text(Mark,so).
 % EFFECT: Tuple "and by doing so" Tuple
-effect(Root,Comp,['EFFECT'-84,'by',Pcomp,So]) :-
+effect(Root,Comp,['EFFECT'-84,By,Pcomp,So]) :-
 	dependency(Root,dep:conj_and,Comp),
 	dependency(Comp,dep:prepc_by,Pcomp),
+	prep(Pcomp,By),
 	text(Pcomp,doing),
 	( dependency(Pcomp,dep:advmod,So) ; dependency(Pcomp,dep:mark,So)),
 	text(So,so).
