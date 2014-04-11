@@ -10,6 +10,7 @@ import scala.io.Source
 import java.io.File
 import java.io.FileWriter
 import java.io.PrintWriter
+import java.io.Writer
 
 /** Commandline options.
   * @param configFile the (required) config file to load
@@ -18,7 +19,20 @@ import java.io.PrintWriter
   * @param output if set, the final default output to use instead of STDOUT
   */
 case class ErmineOptions(configFile: File = new File("."), pipelineName: String = "ermine.pipeline",
-  input: Option[File] = None, output: Option[File] = None)
+  input: Option[File] = None, output: Option[File] = None) {
+  /** Use the file option as input, default to STDIN. */
+  def defaultInput: Source = input map {
+    Source.fromFile
+  } getOrElse {
+    Source.fromInputStream(System.in)
+  }
+  /** Use the file option as output, default to STDOUT. */
+  def defaultOutput: Writer = output map {
+    new FileWriter(_)
+  } getOrElse {
+    new PrintWriter(System.out)
+  }
+}
 
 /** Main app to run extractions. */
 object Ermine extends Logging {
@@ -42,7 +56,7 @@ object Ermine extends Logging {
       help("help") text("Prints this help.")
     }
 
-    optionParser.parse(args, ErmineOptions()) map { options =>
+    optionParser.parse(args, ErmineOptions()) foreach { options =>
       logger.info("loading pipeline configuration")
 
       // Load up a config file.
@@ -55,19 +69,7 @@ object Ermine extends Logging {
 
       logger.info("running pipeline")
 
-      // Use the file given as input, default to STDIN.
-      val defaultInput = options.input map {
-        Source.fromFile
-      } getOrElse {
-        Source.fromInputStream(System.in)
-      }
-      // Use the file given as output, default to STDOUT.
-      val defaultOutput = options.output map {
-        new FileWriter(_)
-      } getOrElse {
-        new PrintWriter(System.out)
-      }
-      pipeline.run(defaultInput, defaultOutput)
+      pipeline.run(options.defaultInput, options.defaultOutput)
     }
   }
 }
