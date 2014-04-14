@@ -52,6 +52,7 @@ example_Tuple_NP(Entity,Comp,['EXAMPLE'-7,Is,Called]) :-
 example_NP_NP(Entity1,Entity2,['EXAMPLE'-8,Cop]) :-
 	dependency(Entity2,dep:nsubj,Entity1),
 	\+ lemma(Entity2,example),
+	\+ lemma(Entity2,cause),
 	\+ lemma(Entity2,way),
 	dependency(Entity2,dep:cop,Cop),
 	( dependency(Entity2,dep:det,_)
@@ -104,7 +105,13 @@ example_NP_NP(Entity1,Entity2,['EXAMPLE'-15,Example,Of]) :-
 	lemma(Example,example),
 	dependency(Example,dep:prep_of,Entity2),
 	prep(Entity2,Of).
-
+% CAUSE: NP "is cause of" NP
+example_NP_NP(Entity1,Entity2,['CAUSE'-19,Cause,Of]) :-
+	dependency(Cause,dep:nsubj,Entity1),
+	dependency(Cause,dep:cop,_),
+	lemma(Cause,cause),
+	dependency(Cause,dep:prep_of,Entity2),
+	prep(Entity2,Of).
 
 % CAUSE: NP "causes" Tuple
 cause(Root,Entity,['CAUSE'-16,Cause]) :-

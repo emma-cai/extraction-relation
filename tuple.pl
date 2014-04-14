@@ -162,7 +162,7 @@ modifiers(Root,[]) :-
 modifiers(Root,Mods) :-
 	findall(Mod,modifiers1(Root,Mod),Mods).
 
-modifiers1(Root,Prep) :- %%% TODO: return Pobj not Prep
+modifiers1(Root,Pobj) :-
 	rdf(Root,PrepRel,Pobj),
 	atom_concat('http://nlp.stanford.edu/dep/prep_',_,PrepRel),
 	prep(Pobj,Prep),

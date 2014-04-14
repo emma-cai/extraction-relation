@@ -83,7 +83,7 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	rdf(E,dep:rcmod,Verb), !,
 	inf_tuple(Entity,ActionId),
 	inf_tuple([Subj,Verb|Rest],PurposeId),
-	stripped_ids([ActionId, PurposeId], Ids),
+	stripped_ids([ActionId, Subj], Ids),
 	downcase_atom(Rel,LRel),
 	% left to right
 	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
@@ -199,12 +199,21 @@ inf_tuple([S,Verb,Arg|Mods],V) :-
 	!.
 
 inf_mods(_V, []) :- !.
+inf_mods(V, [Pobj|Rest]) :-
+	prep(Pobj,Prep),
+	!,
+	lemma(Prep,P),
+	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
+	tokens(Pobj,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]),
+	tokens_text_quoted(Tokens,Text),
+	rdf_assert(V,NewPrepRel,Text,V),
+	inf_mods(V, Rest).
 inf_mods(V, [Prep|Rest]) :-
 	prep(Mod,Prep),
 	rdf(V,PrepRel,Mod),
 	atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
-	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	!,
+	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	text_mod(Mod, Text),
 	rdf_assert(V,NewPrepRel,Text,V),
 	inf_mods(V, Rest).
@@ -333,6 +342,10 @@ mod_tokens(Mod,[Mod|ObjTokens]) :-
 	( rdf(Mod,basic:pobj,Obj)
 	; rdf(Mod,basic:pcomp,Obj)), !,
 	mod_tokens(Obj,ObjTokens).
+% include prep with pobj
+mod_tokens(Obj,[Prep|ObjTokens]) :-
+	prep(Obj,Prep), !,
+	tokens(Obj,ObjTokens,[conj,cc,appos,xcomp,infmod,rcmod]).
 mod_tokens(Mod,Tokens) :-
 	tokens(Mod,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]).
 

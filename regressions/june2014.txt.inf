@@ -1,0 +1,280 @@
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
+english(rule1, "Gravity is the force that pulls an object toward the center of the Earth").
+rule1:: isa(E1, "Gravity") -> example(E1, E4), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8), isa(E1, E4).
+english(rule2, "Gravity is the force that pulls an object toward the center of the Earth").
+rule2:: isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E4), isa(E1, "Gravity"), isa(E1, E4).
+
+% "Gravity"	"is"/EXAMPLE	"the force"
+english(rule3, "Gravity is the force that pulls an object toward the center of the Earth").
+rule3:: isa(E1, "Gravity") -> example(E1, E4), isa(E4, "the force").
+english(rule4, "Gravity is the force that pulls an object toward the center of the Earth").
+rule4:: isa(E4, "the force") -> example(E1, E4), isa(E1, "Gravity").
+
+% "Exercise"	"example of"/EXAMPLE	"good health habit"
+english(rule5, "Exercise is an example of good health habit").
+rule5:: isa(E1, "Exercise") -> example(E1, E8), isa(E8, "good health habit").
+english(rule6, "Exercise is an example of good health habit").
+rule6:: isa(E8, "good health habit") -> example(E1, E8), isa(E1, "Exercise").
+
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "grow" "")
+english(rule7, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule7:: isa(E17, "eat"), isa(E4, "humans"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19) -> effect(E17, E6), isa(E6, "grow"), agent(E6, E4).
+english(rule8, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule8:: isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4) -> effect(E17, E6), isa(E17, "eat"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19).
+
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+english(rule9, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule9:: isa(E17, "eat"), isa(E4, "humans"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19) -> effect(E17, E8), isa(E8, "have"), isa(E9, "energy"), agent(E8, E4), object(E8, E9).
+english(rule10, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule10:: isa(E8, "have"), isa(E4, "humans"), isa(E9, "energy"), agent(E8, E4), object(E8, E9) -> effect(E17, E8), isa(E17, "eat"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19).
+
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+english(rule11, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule11:: isa(E17, "eat"), isa(E4, "humans"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19) -> effect(E17, E12), isa(E12, "be"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13).
+english(rule12, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule12:: isa(E12, "be"), isa(E4, "humans"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13) -> effect(E17, E12), isa(E17, "eat"), isa(E19, "healthy foods"), agent(E17, E4), object(E17, E19).
+
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "grow" "")
+english(rule13, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule13:: isa(E21, "exercise"), isa(E4, "humans"), agent(E21, E4) -> effect(E21, E6), isa(E6, "grow"), agent(E6, E4).
+english(rule14, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule14:: isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4) -> effect(E21, E6), isa(E21, "exercise"), agent(E21, E4).
+
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+english(rule15, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule15:: isa(E21, "exercise"), isa(E4, "humans"), agent(E21, E4) -> effect(E21, E8), isa(E8, "have"), isa(E9, "energy"), agent(E8, E4), object(E8, E9).
+english(rule16, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule16:: isa(E8, "have"), isa(E4, "humans"), isa(E9, "energy"), agent(E8, E4), object(E8, E9) -> effect(E21, E8), isa(E21, "exercise"), agent(E21, E4).
+
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+english(rule17, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule17:: isa(E21, "exercise"), isa(E4, "humans"), agent(E21, E4) -> effect(E21, E12), isa(E12, "be"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13).
+english(rule18, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule18:: isa(E12, "be"), isa(E4, "humans"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13) -> effect(E21, E12), isa(E21, "exercise"), agent(E21, E4).
+
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "grow" "")
+english(rule19, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule19:: isa(E24, "get"), isa(E4, "humans"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26) -> effect(E24, E6), isa(E6, "grow"), agent(E6, E4).
+english(rule20, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule20:: isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4) -> effect(E24, E6), isa(E24, "get"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26).
+
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+english(rule21, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule21:: isa(E24, "get"), isa(E4, "humans"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26) -> effect(E24, E8), isa(E8, "have"), isa(E9, "energy"), agent(E8, E4), object(E8, E9).
+english(rule22, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule22:: isa(E8, "have"), isa(E4, "humans"), isa(E9, "energy"), agent(E8, E4), object(E8, E9) -> effect(E24, E8), isa(E24, "get"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26).
+
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+english(rule23, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule23:: isa(E24, "get"), isa(E4, "humans"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26) -> effect(E24, E12), isa(E12, "be"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13).
+english(rule24, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule24:: isa(E12, "be"), isa(E4, "humans"), isa(E13, "healthy"), agent(E12, E4), object(E12, E13) -> effect(E24, E12), isa(E24, "get"), isa(E26, "regular rest"), agent(E24, E4), object(E24, E26).
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
+english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule25:: isa(E1, "Decomposers") -> example(E1, E4), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
+english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule26:: isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+english(rule27, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule27:: isa(E1, "Decomposers") -> example(E1, E4), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
+english(rule28, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule28:: isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
+
+% "Decomposers"	"are"/EXAMPLE	"living things"
+english(rule29, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule29:: isa(E1, "Decomposers") -> example(E1, E4), isa(E4, "living things").
+english(rule30, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule30:: isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
+
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[the soil] liquid state", "to its[its liquid state] solid state" ] )
+english(rule31, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
+rule31:: isa(E18, "remove"), isa(E1, "Freezing"), isa(E20, "heat"), agent(E18, E1), object(E18, E20) -> enable(E18, E3), isa(E3, "change"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[the soil] liquid state"), to(E3, "its[its liquid state] solid state").
+english(rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
+rule32:: isa(E3, "change"), isa(E1, "Freezing"), isa(E4, "water"), agent(E3, E1), object(E3, E4), from(E3, "its[the soil] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(E20, "heat"), agent(E18, E1), object(E18, E20).
+
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "" [ "an object toward the center of the Earth" ] )
+english(rule33, "Gravity is the force that pulls an object toward the center of the Earth").
+rule33:: isa(E1, "Gravity") -> example(E1, E4), isa(E6, "pull"), isa(E4, "the force"), agent(E6, E4), arg(E6, "an object toward the center of the Earth"), isa(E1, E4).
+english(rule34, "Gravity is the force that pulls an object toward the center of the Earth").
+rule34:: isa(E6, "pull"), isa(E4, "the force"), agent(E6, E4), arg(E6, "an object toward the center of the Earth") -> example(E1, E4), isa(E1, "Gravity"), isa(E1, E4).
+
+% "Gravity"	"is"/EXAMPLE	"the force"
+english(rule35, "Gravity is the force that pulls an object toward the center of the Earth").
+rule35:: isa(E1, "Gravity") -> example(E1, E4), isa(E4, "the force").
+english(rule36, "Gravity is the force that pulls an object toward the center of the Earth").
+rule36:: isa(E4, "the force") -> example(E1, E4), isa(E1, "Gravity").
+
+% ("A scientist"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A scientist"/?x "measure" "the volume of a liquid")
+english(rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
+rule37:: isa(E4, "use"), isa(E2, "A scientist"), isa(E7, "a graduated cylinder"), agent(E4, E2), object(E4, E7) -> effect(E4, E9), isa(E9, "measure"), isa(E11, "the volume of a liquid"), agent(E9, E2), object(E9, E11).
+english(rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
+rule38:: isa(E9, "measure"), isa(E2, "A scientist"), isa(E11, "the volume of a liquid"), agent(E9, E2), object(E9, E11) -> effect(E4, E9), isa(E4, "use"), isa(E7, "a graduated cylinder"), agent(E4, E2), object(E4, E7).
+
+% ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "grow" "")
+english(rule39, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule39:: isa(E13, "eat"), isa(E4, "humans"), isa(E16, "healthy foods exercise"), agent(E13, E4), object(E13, E16) -> effect(E13, E6), isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4).
+english(rule40, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule40:: isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4) -> effect(E13, E6), isa(E13, "eat"), isa(E4, "humans"), isa(E16, "healthy foods exercise"), agent(E13, E4), object(E13, E16).
+
+% ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "be" "healthy")
+english(rule41, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule41:: isa(E13, "eat"), isa(E4, "humans"), isa(E16, "healthy foods exercise"), agent(E13, E4), object(E13, E16) -> effect(E13, E8), isa(E8, "be"), isa(E4, "humans"), isa(E9, "healthy"), agent(E8, E4), object(E8, E9).
+english(rule42, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule42:: isa(E8, "be"), isa(E4, "humans"), isa(E9, "healthy"), agent(E8, E4), object(E8, E9) -> effect(E13, E8), isa(E13, "eat"), isa(E4, "humans"), isa(E16, "healthy foods exercise"), agent(E13, E4), object(E13, E16).
+
+% ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "grow" "")
+english(rule43, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule43:: isa(E18, "get"), isa(E4, "humans"), isa(E20, "regular rest"), agent(E18, E4), object(E18, E20) -> effect(E18, E6), isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4).
+english(rule44, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule44:: isa(E6, "grow"), isa(E4, "humans"), agent(E6, E4) -> effect(E18, E6), isa(E18, "get"), isa(E4, "humans"), isa(E20, "regular rest"), agent(E18, E4), object(E18, E20).
+
+% ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "be" "healthy")
+english(rule45, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule45:: isa(E18, "get"), isa(E4, "humans"), isa(E20, "regular rest"), agent(E18, E4), object(E18, E20) -> effect(E18, E8), isa(E8, "be"), isa(E4, "humans"), isa(E9, "healthy"), agent(E8, E4), object(E8, E9).
+english(rule46, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
+rule46:: isa(E8, "be"), isa(E4, "humans"), isa(E9, "healthy"), agent(E8, E4), object(E8, E9) -> effect(E18, E8), isa(E18, "get"), isa(E4, "humans"), isa(E20, "regular rest"), agent(E18, E4), object(E18, E20).
+
+% ("The plant"/?x "get" "the energy")	"to"/EFFECT	("The plant"/?x "go" "" [ "through photosynthesis", "from sunlight" ] )
+english(rule47, "The plant gets the energy to go through photosynthesis from sunlight").
+rule47:: isa(E3, "get"), isa(E2, "The plant"), isa(E5, "the energy"), agent(E3, E2), object(E3, E5) -> effect(E3, E7), isa(E7, "go"), agent(E7, E2), through(E7, "photosynthesis"), from(E7, "sunlight").
+english(rule48, "The plant gets the energy to go through photosynthesis from sunlight").
+rule48:: isa(E7, "go"), isa(E2, "The plant"), agent(E7, E2), through(E7, "photosynthesis"), from(E7, "sunlight") -> effect(E3, E7), isa(E3, "get"), isa(E5, "the energy"), agent(E3, E2), object(E3, E5).
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
+english(rule49, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule49:: isa(E1, "Decomposers") -> example(E1, E4), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
+english(rule50, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule50:: isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+english(rule51, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule51:: isa(E1, "Decomposers") -> example(E1, E4), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
+english(rule52, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule52:: isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
+
+% "Decomposers"	"are"/EXAMPLE	"living things"
+english(rule53, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule53:: isa(E1, "Decomposers") -> example(E1, E4), isa(E4, "living things").
+english(rule54, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule54:: isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
+
+% ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
+english(rule55, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule55:: isa(E10, "store"), isa(E3, "some animals"), isa(E11, "food"), agent(E10, E3), object(E10, E11) -> enable(E10, E4), isa(E4, "prepare"), agent(E4, E3), for(E4, "the long winters").
+english(rule56, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule56:: isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters") -> enable(E10, E4), isa(E10, "store"), isa(E11, "food"), agent(E10, E3), object(E10, E11).
+
+% ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
+english(rule57, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule57:: isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters") -> example(E4, E18), isa(E18, "hibernation").
+english(rule58, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule58:: isa(E18, "hibernation") -> example(E4, E18), isa(E4, "prepare"), isa(E3, "some animals"), agent(E4, E3), for(E4, "the long winters").
+
+% ("Mechanical energy" "push" "another object")
+english(rule59, "Mechanical energy exerted by one object can push or pull another object").
+rule59:: isa(E8, "push") -> isa(E2, "Mechanical energy"), isa(E12, "another object"), agent(E8, E2), object(E8, E12).
+english(rule60, "Mechanical energy exerted by one object can push or pull another object").
+rule60:: isa(E2, "Mechanical energy") -> isa(E8, "push"), isa(E12, "another object"), agent(E8, E2), object(E8, E12).
+english(rule61, "Mechanical energy exerted by one object can push or pull another object").
+rule61:: isa(E12, "another object") -> isa(E8, "push"), isa(E2, "Mechanical energy"), agent(E8, E2), object(E8, E12).
+
+% "Producers"	"are"/EXAMPLE	("living things" "change" "the sun 's energy" [ "to make their[Producers] own food" ] )
+english(rule62, "Producers are living things that change the sun 's energy to make their[Producers] own food").
+rule62:: isa(E1, "Producers") -> example(E1, E4), isa(E6, "change"), isa(E4, "living things"), isa(E10, "the sun 's energy"), agent(E6, E4), object(E6, E10), arg(E6, "to make their[Producers] own food"), isa(E1, E4).
+english(rule63, "Producers are living things that change the sun 's energy to make their[Producers] own food").
+rule63:: isa(E6, "change"), isa(E4, "living things"), isa(E10, "the sun 's energy"), agent(E6, E4), object(E6, E10), arg(E6, "to make their[Producers] own food") -> example(E1, E4), isa(E1, "Producers"), isa(E1, E4).
+
+% "Producers"	"are"/EXAMPLE	"living things"
+english(rule64, "Producers are living things that change the sun 's energy to make their[Producers] own food").
+rule64:: isa(E1, "Producers") -> example(E1, E4), isa(E4, "living things").
+english(rule65, "Producers are living things that change the sun 's energy to make their[Producers] own food").
+rule65:: isa(E4, "living things") -> example(E1, E4), isa(E1, "Producers").
+
+% ("Green plants" "provide" "the basic food supply" [ "for themselves[Producers]", "for animals" ] )	"are called"/EXAMPLE	"producers"
+english(rule66, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
+rule66:: isa(E8, "provide"), isa(E2, "Green plants"), isa(E12, "the basic food supply"), agent(E8, E2), object(E8, E12), for(E8, "themselves[Producers]"), for(E8, "animals") -> example(E8, E5), isa(E5, "producers").
+english(rule67, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
+rule67:: isa(E5, "producers") -> example(E8, E5), isa(E8, "provide"), isa(E2, "Green plants"), isa(E12, "the basic food supply"), agent(E8, E2), object(E8, E12), for(E8, "themselves[Producers]"), for(E8, "animals").
+
+% ("Green plants" "provide" "the basic food supply" [ "for themselves[Producers]", "for animals" ] )	"because"/EFFECT	("" "call" "Green plants" [ "producers" ] )
+english(rule68, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
+rule68:: isa(E8, "provide"), isa(E2, "Green plants"), isa(E12, "the basic food supply"), agent(E8, E2), object(E8, E12), for(E8, "themselves[Producers]"), for(E8, "animals") -> effect(E8, E4), isa(E4, "call"), object(E4, E2), arg(E4, "producers").
+english(rule69, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
+rule69:: isa(E4, "call"), isa(E2, "Green plants"), object(E4, E2), arg(E4, "producers") -> effect(E8, E4), isa(E8, "provide"), isa(E12, "the basic food supply"), agent(E8, E2), object(E8, E12), for(E8, "themselves[Producers]"), for(E8, "animals").
+
+% "Building homes"	"causes of"/CAUSE	"ecosystem failure"
+english(rule70, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule70:: isa(E2, "Building homes") -> cause(E2, E19), isa(E19, "ecosystem failure").
+english(rule71, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule71:: isa(E19, "ecosystem failure") -> cause(E2, E19), isa(E2, "Building homes").
+
+% "stores"	"causes of"/CAUSE	"ecosystem failure"
+english(rule72, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule72:: isa(E4, "stores") -> cause(E4, E19), isa(E19, "ecosystem failure").
+english(rule73, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule73:: isa(E19, "ecosystem failure") -> cause(E4, E19), isa(E4, "stores").
+
+% "factories"	"causes of"/CAUSE	"ecosystem failure"
+english(rule74, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule74:: isa(E6, "factories") -> cause(E6, E19), isa(E19, "ecosystem failure").
+english(rule75, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule75:: isa(E19, "ecosystem failure") -> cause(E6, E19), isa(E6, "factories").
+
+% "growing food crops"	"causes of"/CAUSE	"ecosystem failure"
+english(rule76, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule76:: isa(E10, "growing food crops") -> cause(E10, E19), isa(E19, "ecosystem failure").
+english(rule77, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule77:: isa(E19, "ecosystem failure") -> cause(E10, E19), isa(E10, "growing food crops").
+
+% "pollution"	"causes of"/CAUSE	"ecosystem failure"
+english(rule78, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule78:: isa(E13, "pollution") -> cause(E13, E19), isa(E19, "ecosystem failure").
+english(rule79, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
+rule79:: isa(E19, "ecosystem failure") -> cause(E13, E19), isa(E13, "pollution").
+
+% ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
+english(rule80, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+rule80:: isa(E7, "sweat"), isa(E6, "our bodies"), isa(E8, "perspiration"), agent(E7, E6), object(E7, E8), in(E7, "the hot weather") -> effect(E7, E9), isa(E9, "bring"), isa(E10, "water"), agent(E9, E6), object(E9, E10), to(E9, "our[our] skin").
+english(rule81, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+rule81:: isa(E9, "bring"), isa(E6, "our bodies"), isa(E10, "water"), agent(E9, E6), object(E9, E10), to(E9, "our[our] skin") -> effect(E7, E9), isa(E7, "sweat"), isa(E8, "perspiration"), agent(E7, E6), object(E7, E8), in(E7, "the hot weather").
+
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+english(rule82, "A hand lens is used to view objects in more detail").
+rule82:: isa(E3, "A hand lens") -> purpose(E3, E7), isa(E7, "view"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail").
+english(rule83, "A hand lens is used to view objects in more detail").
+rule83:: isa(E7, "view"), isa(E3, "A hand lens"), isa(E8, "objects"), agent(E7, E3), object(E7, E8), in(E7, "more detail") -> purpose(E3, E7), .
+
+% ("Some animals"/?x "grow" "fur")	"to"/EFFECT	("Some animals"/?x "stay" "warm")
+english(rule84, "Some animals grow thick fur in winter to stay warm").
+rule84:: isa(E3, "grow"), isa(E2, "Some animals"), isa(E5, "fur"), agent(E3, E2), object(E3, E5) -> effect(E3, E9), isa(E9, "stay"), isa(E10, "warm"), agent(E9, E2), object(E9, E10).
+english(rule85, "Some animals grow thick fur in winter to stay warm").
+rule85:: isa(E9, "stay"), isa(E2, "Some animals"), isa(E10, "warm"), agent(E9, E2), object(E9, E10) -> effect(E3, E9), isa(E3, "grow"), isa(E5, "fur"), agent(E3, E2), object(E3, E5).
+
+% ("Animals" "take in" "food" [ "as a nutrient" ] )	"to help"/EFFECT	("Some animals" "grow" "")
+english(rule86, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule86:: isa(E2, "take in"), isa(E1, "Animals"), isa(E4, "food"), agent(E2, E1), object(E2, E4), as(E2, "a nutrient") -> effect(E2, E15), isa(E15, "grow"), isa(E2, "Some animals"), agent(E15, E2).
+english(rule87, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule87:: isa(E15, "grow"), isa(E2, "Some animals"), agent(E15, E2) -> effect(E2, E15), isa(E2, "take in"), isa(E1, "Animals"), isa(E4, "food"), agent(E2, E1), object(E2, E4), as(E2, "a nutrient").
+
+% ("Animals" "take in" "food" [ "as a nutrient" ] )	"to"/EFFECT	("" "give" "Some animals" [ "energy" ] )
+english(rule88, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule88:: isa(E2, "take in"), isa(E1, "Animals"), isa(E4, "food"), agent(E2, E1), object(E2, E4), as(E2, "a nutrient") -> effect(E2, E9), isa(E9, "give"), isa(E2, "Some animals"), object(E9, E2), arg(E9, "energy").
+english(rule89, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule89:: isa(E9, "give"), isa(E2, "Some animals"), object(E9, E2), arg(E9, "energy") -> effect(E2, E9), isa(E2, "take in"), isa(E1, "Animals"), isa(E4, "food"), agent(E2, E1), object(E2, E4), as(E2, "a nutrient").
+
+% ("" "give" "Some animals" [ "energy" ] )	"help"/EFFECT	("Some animals" "grow" "")
+english(rule90, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule90:: isa(E9, "give"), isa(E2, "Some animals"), object(E9, E2), arg(E9, "energy") -> effect(E9, E15), isa(E15, "grow"), agent(E15, E2).
+english(rule91, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
+rule91:: isa(E15, "grow"), isa(E2, "Some animals"), agent(E15, E2) -> effect(E9, E15), isa(E9, "give"), object(E9, E2), arg(E9, "energy").
+
+% ("Plants" "provide" "animals" [ "with food", "with gases oxygen that their[Green plants] bodies need to grow breathe and make energy" ] )
+english(rule92, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+rule92:: isa(E2, "provide") -> isa(E1, "Plants"), isa(E3, "animals"), agent(E2, E1), object(E2, E3), with(E2, "food"), with(E2, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+english(rule93, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+rule93:: isa(E1, "Plants") -> isa(E2, "provide"), isa(E3, "animals"), agent(E2, E1), object(E2, E3), with(E2, "food"), with(E2, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+english(rule94, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+rule94:: isa(E3, "animals") -> isa(E2, "provide"), isa(E1, "Plants"), agent(E2, E1), object(E2, E3), with(E2, "food"), with(E2, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
+
