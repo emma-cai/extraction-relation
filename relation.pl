@@ -33,6 +33,7 @@ top_relation(Root,Json) :-
 top_relation(Root,Json) :-
 	argument(Root,dep:nsubj,Subj), Subj \= [],
 	argument(Root,dep:dobj,Obj), Obj \= [],
+	!,
 	\+ helps(Root),
 	write_simple_tuple(Root,Json).
 
