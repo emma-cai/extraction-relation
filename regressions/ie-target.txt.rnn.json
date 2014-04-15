@@ -74,17 +74,17 @@ rule19:: isa(E10, "live"), isa(E13, "a healthy life"), object(E10, E13) -> part(
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 english(rule20, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule20:: isa(E1, "Decomposers") -> example(E1, E6), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
+rule20:: isa(E1, "Decomposers") -> example(E1, E4), isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9), isa(E1, E4).
 english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule21:: isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E6), isa(E1, "Decomposers"), isa(E1, E4).
+rule21:: isa(E6, "break down"), isa(E4, "living things"), isa(E9, "dead organisms"), agent(E6, E4), object(E6, E9) -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.6", "text":"break"},  {"token":"id:10.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.8", "text":"dead"},  {"token":"id:10.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule22:: isa(E1, "Decomposers") -> example(E1, E11), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
+rule22:: isa(E1, "Decomposers") -> example(E1, E4), isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil"), isa(E1, E4).
 english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule23:: isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E11), isa(E1, "Decomposers"), isa(E1, E4).
+rule23:: isa(E11, "recycle"), isa(E4, "living things"), isa(E13, "their[dead organisms] nutrients"), agent(E11, E4), object(E11, E13), into(E11, "the soil") -> example(E1, E4), isa(E1, "Decomposers"), isa(E1, E4).
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.12", "text":"their[dead organisms]"},  {"token":"id:10.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:10.14", "text":"into"},  {"token":"id:10.15", "text":"the"},  {"token":"id:10.16", "text":"soil"} ] ]} ], "confidence":1.0}
 
@@ -98,9 +98,9 @@ rule25:: isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
 
 % "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 english(rule26, "Gravity is the force that pulls an object toward the center of the Earth").
-rule26:: isa(E1, "Gravity") -> example(E1, E6), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8), isa(E1, E4).
+rule26:: isa(E1, "Gravity") -> example(E1, E4), isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8), isa(E1, E4).
 english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-rule27:: isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E6), isa(E1, "Gravity"), isa(E1, E4).
+rule27:: isa(E6, "pull"), isa(E4, "the force"), isa(E8, "an object toward the center of the Earth"), agent(E6, E4), object(E6, E8) -> example(E1, E4), isa(E1, "Gravity"), isa(E1, E4).
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.7", "text":"an"},  {"token":"id:11.8", "text":"object"},  {"token":"id:11.9", "text":"toward"},  {"token":"id:11.10", "text":"the"},  {"token":"id:11.11", "text":"center"},  {"token":"id:11.12", "text":"of"},  {"token":"id:11.13", "text":"the"},  {"token":"id:11.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -152,15 +152,15 @@ rule39:: isa(E8, "change"), isa(E9, "water"), object(E8, E9), from(E8, "a liquid
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.1", "text":"decrease"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.2", "text":"the"},  {"token":"id:15.3", "text":"temperature"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:15.4", "text":"is"},  {"token":"id:15.6", "text":"way"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.8", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.9", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:15.10", "text":"from"},  {"token":"id:15.11", "text":"a"},  {"token":"id:15.12", "text":"liquid"} ],  [ {"token":"id:15.13", "text":"to"},  {"token":"id:15.14", "text":"a"},  {"token":"id:15.15", "text":"solid"} ] ]} ], "confidence":1.0}
 
-% ("Animals" "get" "energy" [ "for growth from food", "for growth from food" ] )
+% ("Animals" "get" "energy" [ "for growth from food", "for repair" ] )
 english(rule40, "Animals get energy for growth and repair from food").
-rule40:: isa(E2, "get") -> isa(E1, "Animals"), isa(E3, "energy"), agent(E2, E1), object(E2, E3), for(E2, "growth from food").
+rule40:: isa(E2, "get") -> isa(E1, "Animals"), isa(E3, "energy"), agent(E2, E1), object(E2, E3), for(E2, "growth from food"), for(E2, "repair").
 english(rule41, "Animals get energy for growth and repair from food").
-rule41:: isa(E1, "Animals") -> isa(E2, "get"), isa(E3, "energy"), agent(E2, E1), object(E2, E3), for(E2, "growth from food").
+rule41:: isa(E1, "Animals") -> isa(E2, "get"), isa(E3, "energy"), agent(E2, E1), object(E2, E3), for(E2, "growth from food"), for(E2, "repair").
 english(rule42, "Animals get energy for growth and repair from food").
-rule42:: isa(E3, "energy") -> isa(E2, "get"), isa(E1, "Animals"), agent(E2, E1), object(E2, E3), for(E2, "growth from food").
+rule42:: isa(E3, "energy") -> isa(E2, "get"), isa(E1, "Animals"), agent(E2, E1), object(E2, E3), for(E2, "growth from food"), for(E2, "repair").
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:16.2", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:16.3", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.5", "text":"growth"},  {"token":"id:16.8", "text":"from"},  {"token":"id:16.9", "text":"food"} ],  [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.5", "text":"growth"},  {"token":"id:16.8", "text":"from"},  {"token":"id:16.9", "text":"food"} ] ]} ], "consequents": [], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:16.2", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:16.3", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.5", "text":"growth"},  {"token":"id:16.8", "text":"from"},  {"token":"id:16.9", "text":"food"} ],  [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.7", "text":"repair"} ] ]} ], "consequents": [], "confidence":1.0}
 
 % "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(rule43, "The heat that produces the smoke is caused by friction").
