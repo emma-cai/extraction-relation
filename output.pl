@@ -324,7 +324,7 @@ mod_tokens(Mod,[Mod|ObjTokens]) :-
 	rdf(_,basic:prep,Mod),
 	( rdf(Mod,basic:pobj,Obj)
 	; rdf(Mod,basic:pcomp,Obj)), !,
-	mod_tokens(Obj,ObjTokens).
+	tokens(Obj,ObjTokens,[conj,cc,appos,xcomp,infmod,rcmod]).
 % include prep with pobj
 mod_tokens(Obj,[Prep|ObjTokens]) :-
 	prep(Obj,Prep), !,
