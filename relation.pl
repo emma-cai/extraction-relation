@@ -78,16 +78,16 @@ relation(Top,Root,Json) :-
 	example_NP_Tuple(Root,Comp,Rel),
 	tuple(Comp,[Subj|Rest]),
 	Subj \= Root, % from rcmod
-	write_entity_relation(Top,Root,Rel,[Subj|Rest],Json).
+	write_relation(Top,Root,Rel,[Subj|Rest],Json).
 % example (tuple-NP)
 relation(Top,Root,Json) :-
 	example_Tuple_NP(Root,Comp,Rel),
 	tuple(Comp,Tuple),
-	write_entity_relation(Top,Tuple,Rel,Root,Json).
+	write_relation(Top,Tuple,Rel,Root,Json).
 % example (NP-NP)
 relation(Top,Root,Json) :-
 	example_NP_NP(Root,Entity,Rel),
-	write_entity_relation(Top,Root,Rel,Entity,Json).
+	write_relation(Top,Root,Rel,Entity,Json).
 
 
 % synonym sets

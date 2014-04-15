@@ -13,24 +13,7 @@ write_relation(Top,Action,Rel,Purpose,Json) :-
 	json_relation(Action,Rel,Purpose,Json).
 %	json:json_write(current_output,Json), nl.
 
-text_relation(Action,Rel,Purpose,[ActionText,RelText,PurposeText]) :-
-	text_tuple(Action,ActionText),
-	text_rel(Rel,RelText),
-	text_tuple(Purpose,PurposeText).
-
-json_relation(Action,Rel,Purpose,json([class='ExtractionRule',antecedents=[ActionJson],relation=RelJson,consequents=[PurposeJson],confidence=1.0])) :-
-	json_tuple(Action,ActionJson),
-	json_rel(Rel,RelJson),
-	json_tuple(Purpose,PurposeJson).
-
-write_entity_relation(Top,Action,Rel,Purpose,Json) :-
-	text_entity_relation(Action,Rel,Purpose,Text),
-	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_inf_relation(Top,Action,Rel,Purpose), nl,
-	json_entity_relation(Action,Rel,Purpose,Json).
-%	json:json_write(current_output,Json), nl.
-
-text_entity_relation(Entity1,Rel,Entity2,[Entity1Text,RelText,Entity2Text]) :-
+text_relation(Entity1,Rel,Entity2,[Entity1Text,RelText,Entity2Text]) :-
 	( (atom(Entity1),
 	   text_entity(Entity1,Entity1Text))
 	; text_tuple(Entity1,Entity1Text) ),
@@ -40,7 +23,7 @@ text_entity_relation(Entity1,Rel,Entity2,[Entity1Text,RelText,Entity2Text]) :-
 	; text_tuple(Entity2,Entity2Text) ),
 	!.
 
-json_entity_relation(Entity1,Rel,Entity2,json([class='ExtractionRule',antecedents=[Json1],relation=RelJson,consequents=[Json2],confidence=1.0])) :-
+json_relation(Entity1,Rel,Entity2,json([class='ExtractionRule',antecedents=[Json1],relation=RelJson,consequents=[Json2],confidence=1.0])) :-
 	( (atom(Entity1),
 	   json_entity(Entity1,Json1))
 	; json_tuple(Entity1,Json1) ),
