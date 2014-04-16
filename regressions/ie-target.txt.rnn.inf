@@ -4,6 +4,7 @@ rule1:: isa(E7, "sweat"), isa(A6, "our bodies"), isa(A9, "perspiration"), agent(
 english(rule2, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
 rule2:: isa(E12, "bring"), isa(A6, "our bodies"), isa(A13, "water"), agent(E12, A6), object(E12, A13), to(E12, "our[our] skin") -> effect(E7, E12), isa(E7, "sweat"), isa(A9, "perspiration"), agent(E7, A6), object(E7, A9), in(E7, "the hot weather").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -15,14 +16,15 @@ rule2:: isa(E12, "bring"), isa(A6, "our bodies"), isa(A13, "water"), agent(E12, 
 	pred:agent <http://aristo.allenai.org/id#1.6> ;
 	pred:in <"the hot weather"> ;
 	pred:isa "\"sweat\"" ;
-	pred:object <http://aristo.allenai.org/id#1.9> .
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	rel:effect <http://aristo.allenai.org/id#1.12> .
 
 <http://aristo.allenai.org/id#1.9>
 	pred:isa "\"perspiration\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#1.12>
 	pred:agent <http://aristo.allenai.org/id#1.6> ;
@@ -36,15 +38,13 @@ rule2:: isa(E12, "bring"), isa(A6, "our bodies"), isa(A13, "water"), agent(E12, 
 <http://aristo.allenai.org/id#1.6>
 	pred:isa "\"our bodies\"" .
 
-<http://aristo.allenai.org/id#1.7>
-	pred:effect <http://aristo.allenai.org/id#1.12> .
-
 % ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
 english(rule3, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
 rule3:: isa(E10, "store"), isa(A3, "some animals"), isa(A11, "food"), agent(E10, A3), object(E10, A11) -> enable(E10, E4), isa(E4, "prepare"), agent(E4, A3), for(E4, "the long winters").
 english(rule4, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
 rule4:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the long winters") -> enable(E10, E4), isa(E10, "store"), isa(A11, "food"), agent(E10, A3), object(E10, A11).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -52,7 +52,8 @@ rule4:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the
 <http://aristo.allenai.org/id#2.10>
 	pred:agent <http://aristo.allenai.org/id#2.3> ;
 	pred:isa "\"store\"" ;
-	pred:object <http://aristo.allenai.org/id#2.11> .
+	pred:object <http://aristo.allenai.org/id#2.11> ;
+	rel:enable <http://aristo.allenai.org/id#2.4> .
 
 <http://aristo.allenai.org/id#2.11>
 	pred:isa "\"food\"" .
@@ -62,10 +63,7 @@ rule4:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#2.10>
-	pred:enable <http://aristo.allenai.org/id#2.4> .
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#2.3>
 	pred:isa "\"some animals\"" .
@@ -77,10 +75,11 @@ rule4:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the
 
 % ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
 english(rule5, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule5:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the long winters") -> example(E4, E18), isa(E18, "hibernation").
+rule5:: isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the long winters") -> example(E4, A18), isa(A18, "hibernation").
 english(rule6, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule6:: isa(E18, "hibernation") -> example(E4, E18), isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the long winters").
+rule6:: isa(A18, "hibernation") -> example(E4, A18), isa(E4, "prepare"), isa(A3, "some animals"), agent(E4, A3), for(E4, "the long winters").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (2)
@@ -91,38 +90,37 @@ rule6:: isa(E18, "hibernation") -> example(E4, E18), isa(E4, "prepare"), isa(A3,
 <http://aristo.allenai.org/id#2.4>
 	pred:agent <http://aristo.allenai.org/id#2.3> ;
 	pred:for <"the long winters"> ;
-	pred:isa "\"prepare\"" .
-
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#2.18>
-	pred:isa "\"hibernation\"" .
-
-<http://aristo.allenai.org/id#2.4>
-	pred:example <http://aristo.allenai.org/id#2.18> .
-
-% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
-english(rule7, "A hand lens is used to view objects in more detail").
-rule7:: isa(E3, "A hand lens") -> purpose(E3, E7), isa(E7, "view"), isa(A8, "objects"), agent(E7, A3), object(E7, A8), in(E7, "more detail").
-english(rule8, "A hand lens is used to view objects in more detail").
-rule8:: isa(E7, "view"), isa(A3, "A hand lens"), isa(A8, "objects"), agent(E7, A3), object(E7, A8), in(E7, "more detail") -> purpose(E3, E7), .
+	pred:isa "\"prepare\"" ;
+	rel:example <http://aristo.allenai.org/id#2.18> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
+<http://aristo.allenai.org/id#2.18>
+	pred:isa "\"hibernation\"" .
+
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+english(rule7, "A hand lens is used to view objects in more detail").
+rule7:: isa(A3, "A hand lens") -> purpose(A3, E7), isa(E7, "view"), isa(A8, "objects"), agent(E7, A3), object(E7, A8), in(E7, "more detail").
+english(rule8, "A hand lens is used to view objects in more detail").
+rule8:: isa(E7, "view"), isa(A3, "A hand lens"), isa(A8, "objects"), agent(E7, A3), object(E7, A8), in(E7, "more detail") -> purpose(A3, E7), .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
 <http://aristo.allenai.org/id#3.3>
-	pred:isa "\"A hand lens\"" .
+	pred:isa "\"A hand lens\"" ;
+	rel:purpose <http://aristo.allenai.org/id#3.7> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#3.3>
-	pred:isa "\"A hand lens\"" ;
-	pred:purpose <http://aristo.allenai.org/id#3.7> .
+	pred:isa "\"A hand lens\"" .
 
 <http://aristo.allenai.org/id#3.7>
 	pred:agent <http://aristo.allenai.org/id#3.3> ;
@@ -139,6 +137,7 @@ rule9:: isa(E18, "remove"), isa(A1, "Freezing"), isa(A20, "heat"), agent(E18, A1
 english(rule10, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
 rule10:: isa(E3, "change"), isa(A1, "Freezing"), isa(A4, "water"), agent(E3, A1), object(E3, A4), from(E3, "its[A hand lens] liquid state"), to(E3, "its[its liquid state] solid state") -> enable(E18, E3), isa(E18, "remove"), isa(A20, "heat"), agent(E18, A1), object(E18, A20).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -149,20 +148,18 @@ rule10:: isa(E3, "change"), isa(A1, "Freezing"), isa(A4, "water"), agent(E3, A1)
 <http://aristo.allenai.org/id#4.18>
 	pred:agent <http://aristo.allenai.org/id#4.1> ;
 	pred:isa "\"remove\"" ;
-	pred:object <http://aristo.allenai.org/id#4.20> .
+	pred:object <http://aristo.allenai.org/id#4.20> ;
+	rel:enable <http://aristo.allenai.org/id#4.3> .
 
 <http://aristo.allenai.org/id#4.20>
 	pred:isa "\"heat\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#4.1>
 	pred:isa "\"Freezing\"" .
-
-<http://aristo.allenai.org/id#4.18>
-	pred:enable <http://aristo.allenai.org/id#4.3> .
 
 <http://aristo.allenai.org/id#4.3>
 	pred:agent <http://aristo.allenai.org/id#4.1> ;
@@ -180,6 +177,7 @@ rule11:: isa(E4, "not make"), isa(A1, "Animals"), isa(A7, "their[some animals] o
 english(rule12, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
 rule12:: isa(E11, "eat"), isa(A3, "some animals"), agent(E11, A3) -> effect(E4, E11), isa(E4, "not make"), isa(A1, "Animals"), isa(A7, "their[some animals] own food"), agent(E4, A1), object(E4, A7).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -190,30 +188,11 @@ rule12:: isa(E11, "eat"), isa(A3, "some animals"), agent(E11, A3) -> effect(E4, 
 <http://aristo.allenai.org/id#5.4>
 	pred:agent <http://aristo.allenai.org/id#5.1> ;
 	pred:isa "\"not make\"" ;
-	pred:object <http://aristo.allenai.org/id#5.7> .
+	pred:object <http://aristo.allenai.org/id#5.7> ;
+	rel:effect <http://aristo.allenai.org/id#5.11> .
 
 <http://aristo.allenai.org/id#5.7>
 	pred:isa "\"their[some animals] own food\"" .
-
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#2.3>
-	pred:isa "\"some animals\"" .
-
-<http://aristo.allenai.org/id#5.11>
-	pred:agent <http://aristo.allenai.org/id#2.3> ;
-	pred:isa "\"eat\"" .
-
-<http://aristo.allenai.org/id#5.4>
-	pred:effect <http://aristo.allenai.org/id#5.11> .
-
-% ("some animals"/?x "eat" "")	"to"/REQUIREMENT	("some animals"/?x "get" "nutrients")
-english(rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule13:: isa(E11, "eat"), isa(A3, "some animals"), agent(E11, A3) -> requirement(E11, E13), isa(E13, "get"), isa(A14, "nutrients"), agent(E13, A3), object(E13, A14).
-english(rule14, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule14:: isa(E13, "get"), isa(A3, "some animals"), isa(A14, "nutrients"), agent(E13, A3), object(E13, A14) -> requirement(E11, E13), isa(E11, "eat"), agent(E11, A3).
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
@@ -226,15 +205,31 @@ rule14:: isa(E13, "get"), isa(A3, "some animals"), isa(A14, "nutrients"), agent(
 	pred:agent <http://aristo.allenai.org/id#2.3> ;
 	pred:isa "\"eat\"" .
 
+% ("some animals"/?x "eat" "")	"to"/REQUIREMENT	("some animals"/?x "get" "nutrients")
+english(rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule13:: isa(E11, "eat"), isa(A3, "some animals"), agent(E11, A3) -> requirement(E11, E13), isa(E13, "get"), isa(A14, "nutrients"), agent(E13, A3), object(E13, A14).
+english(rule14, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule14:: isa(E13, "get"), isa(A3, "some animals"), isa(A14, "nutrients"), agent(E13, A3), object(E13, A14) -> requirement(E11, E13), isa(E11, "eat"), agent(E11, A3).
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#2.3>
 	pred:isa "\"some animals\"" .
 
 <http://aristo.allenai.org/id#5.11>
-	pred:requirement <http://aristo.allenai.org/id#5.13> .
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:isa "\"eat\"" ;
+	rel:requirement <http://aristo.allenai.org/id#5.13> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.3>
+	pred:isa "\"some animals\"" .
 
 <http://aristo.allenai.org/id#5.13>
 	pred:agent <http://aristo.allenai.org/id#2.3> ;
@@ -274,23 +269,22 @@ rule18:: isa(E1, "get"), isa(A3, "rest"), object(E1, A3) -> part(E1, E10), isa(E
 english(rule19, "Getting enough rest is also an important part of living a healthy life").
 rule19:: isa(E10, "live"), isa(A13, "a healthy life"), object(E10, A13) -> part(E1, E10), isa(E1, "get"), isa(A3, "rest"), object(E1, A3).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#7.1>
 	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#7.3> .
+	pred:object <http://aristo.allenai.org/id#7.3> ;
+	rel:part <http://aristo.allenai.org/id#7.10> .
 
 <http://aristo.allenai.org/id#7.3>
 	pred:isa "\"rest\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#7.1>
-	pred:part <http://aristo.allenai.org/id#7.10> .
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#7.10>
 	pred:isa "\"live\"" ;
@@ -301,24 +295,23 @@ rule19:: isa(E10, "live"), isa(A13, "a healthy life"), object(E10, A13) -> part(
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 english(rule20, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule20:: isa(E1, "Decomposers") -> example(E1, A4), isa(E6, "break down"), isa(A4, "living things"), isa(A9, "dead organisms"), agent(E6, A4), object(E6, A9), isa(A1, A4).
+rule20:: isa(A1, "Decomposers") -> example(A1, A4), isa(E6, "break down"), isa(A4, "living things"), isa(A9, "dead organisms"), agent(E6, A4), object(E6, A9), isa(A1, A4).
 english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule21:: isa(E6, "break down"), isa(A4, "living things"), isa(A9, "dead organisms"), agent(E6, A4), object(E6, A9) -> example(E1, A4), isa(E1, "Decomposers"), isa(E1, A4).
+rule21:: isa(E6, "break down"), isa(A4, "living things"), isa(A9, "dead organisms"), agent(E6, A4), object(E6, A9) -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#10.1>
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
-		 "\"Decomposers\"" .
+		 "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#10.1>
-	pred:example <http://aristo.allenai.org/id#10.4> .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#10.4>
 	pred:isa "\"living things\"" .
@@ -333,24 +326,23 @@ rule21:: isa(E6, "break down"), isa(A4, "living things"), isa(A9, "dead organism
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule22:: isa(E1, "Decomposers") -> example(E1, A4), isa(E11, "recycle"), isa(A4, "living things"), isa(A13, "their[dead organisms] nutrients"), agent(E11, A4), object(E11, A13), into(E11, "the soil"), isa(A1, A4).
+rule22:: isa(A1, "Decomposers") -> example(A1, A4), isa(E11, "recycle"), isa(A4, "living things"), isa(A13, "their[dead organisms] nutrients"), agent(E11, A4), object(E11, A13), into(E11, "the soil"), isa(A1, A4).
 english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule23:: isa(E11, "recycle"), isa(A4, "living things"), isa(A13, "their[dead organisms] nutrients"), agent(E11, A4), object(E11, A13), into(E11, "the soil") -> example(E1, A4), isa(E1, "Decomposers"), isa(E1, A4).
+rule23:: isa(E11, "recycle"), isa(A4, "living things"), isa(A13, "their[dead organisms] nutrients"), agent(E11, A4), object(E11, A13), into(E11, "the soil") -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#10.1>
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
-		 "\"Decomposers\"" .
+		 "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#10.1>
-	pred:example <http://aristo.allenai.org/id#10.4> .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#10.11>
 	pred:agent <http://aristo.allenai.org/id#10.4> ;
@@ -366,47 +358,45 @@ rule23:: isa(E11, "recycle"), isa(A4, "living things"), isa(A13, "their[dead org
 
 % "Decomposers"	"are"/EXAMPLE	"living things"
 english(rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule24:: isa(E1, "Decomposers") -> example(E1, E4), isa(E4, "living things").
+rule24:: isa(A1, "Decomposers") -> example(A1, A4), isa(A4, "living things").
 english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule25:: isa(E4, "living things") -> example(E1, E4), isa(E1, "Decomposers").
+rule25:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Decomposers").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#10.1>
-	pred:isa "\"Decomposers\"" .
+	pred:isa "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#10.1>
-	pred:example <http://aristo.allenai.org/id#10.4> .
+# Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#10.4>
 	pred:isa "\"living things\"" .
 
 % "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 english(rule26, "Gravity is the force that pulls an object toward the center of the Earth").
-rule26:: isa(E1, "Gravity") -> example(E1, A4), isa(E6, "pull"), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), agent(E6, A4), object(E6, A8), isa(A1, A4).
+rule26:: isa(A1, "Gravity") -> example(A1, A4), isa(E6, "pull"), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), agent(E6, A4), object(E6, A8), isa(A1, A4).
 english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-rule27:: isa(E6, "pull"), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), agent(E6, A4), object(E6, A8) -> example(E1, A4), isa(E1, "Gravity"), isa(E1, A4).
+rule27:: isa(E6, "pull"), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), agent(E6, A4), object(E6, A8) -> example(A1, A4), isa(A1, "Gravity"), isa(A1, A4).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#11.1>
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
-		 "\"Gravity\"" .
+		 "\"Gravity\"" ;
+	rel:example <http://aristo.allenai.org/id#11.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#11.1>
-	pred:example <http://aristo.allenai.org/id#11.4> .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#11.4>
 	pred:isa "\"the force\"" .
@@ -421,39 +411,40 @@ rule27:: isa(E6, "pull"), isa(A4, "the force"), isa(A8, "an object toward the ce
 
 % "Gravity"	"is"/EXAMPLE	"the force"
 english(rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-rule28:: isa(E1, "Gravity") -> example(E1, E4), isa(E4, "the force").
+rule28:: isa(A1, "Gravity") -> example(A1, A4), isa(A4, "the force").
 english(rule29, "Gravity is the force that pulls an object toward the center of the Earth").
-rule29:: isa(E4, "the force") -> example(E1, E4), isa(E1, "Gravity").
+rule29:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#11.1>
-	pred:isa "\"Gravity\"" .
+	pred:isa "\"Gravity\"" ;
+	rel:example <http://aristo.allenai.org/id#11.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#11.1>
-	pred:example <http://aristo.allenai.org/id#11.4> .
+# Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#11.4>
 	pred:isa "\"the force\"" .
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
 english(rule30, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule30:: isa(E6, "sweat") -> example(E6, E14), isa(E14, "adjust"), isa(A12, "an organism"), agent(E14, A12), object(E14, A6), to(E14, "hot temperatures").
+rule30:: isa(A6, "sweat") -> example(A6, E14), isa(E14, "adjust"), isa(A12, "an organism"), agent(E14, A12), object(E14, A6), to(E14, "hot temperatures").
 english(rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule31:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A6, "sweat"), agent(E14, A12), object(E14, A6), to(E14, "hot temperatures") -> example(E6, E14), .
+rule31:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A6, "sweat"), agent(E14, A12), object(E14, A6), to(E14, "hot temperatures") -> example(A6, E14), .
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#12.6>
-	pred:isa "\"sweat\"" .
+	pred:isa "\"sweat\"" ;
+	rel:example <http://aristo.allenai.org/id#12.14> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
@@ -469,25 +460,26 @@ rule31:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A6, "sweat"), agent(E1
 	pred:to <"hot temperatures"> .
 
 <http://aristo.allenai.org/id#12.6>
-	pred:example <http://aristo.allenai.org/id#12.14> ;
 	pred:isa "\"sweat\"" .
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
 english(rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule32:: isa(E6, "sweat") -> example(E6, E14), isa(E14, "adjust"), isa(A12, "an organism"), isa(A9, "a way"), agent(E14, A12), object(E14, A9), to(E14, "hot temperatures").
+rule32:: isa(A6, "sweat") -> example(A6, E14), isa(E14, "adjust"), isa(A12, "an organism"), isa(A9, "a way"), agent(E14, A12), object(E14, A9), to(E14, "hot temperatures").
 english(rule33, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule33:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A9, "a way"), agent(E14, A12), object(E14, A9), to(E14, "hot temperatures") -> example(E6, E14), isa(E6, "sweat").
+rule33:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A9, "a way"), agent(E14, A12), object(E14, A9), to(E14, "hot temperatures") -> example(A6, E14), isa(A6, "sweat").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#12.6>
-	pred:isa "\"sweat\"" .
+	pred:isa "\"sweat\"" ;
+	rel:example <http://aristo.allenai.org/id#12.14> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#12.12>
 	pred:isa "\"an organism\"" .
@@ -498,9 +490,6 @@ rule33:: isa(E14, "adjust"), isa(A12, "an organism"), isa(A9, "a way"), agent(E1
 	pred:object <http://aristo.allenai.org/id#12.9> ;
 	pred:to <"hot temperatures"> .
 
-<http://aristo.allenai.org/id#12.6>
-	pred:example <http://aristo.allenai.org/id#12.14> .
-
 <http://aristo.allenai.org/id#12.9>
 	pred:isa "\"a way\"" .
 
@@ -510,6 +499,7 @@ rule34:: isa(E3, "store"), isa(A2, "A squirrel"), isa(A4, "nuts"), agent(E3, A2)
 english(rule35, "A squirrel storing nuts is preparing for a seasonal change in the environment").
 rule35:: isa(E6, "prepare"), isa(A2, "A squirrel"), agent(E6, A2), for(E6, "a seasonal change in the environment") -> effect(E3, E6), isa(E3, "store"), isa(A4, "nuts"), agent(E3, A2), object(E3, A4).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -520,20 +510,18 @@ rule35:: isa(E6, "prepare"), isa(A2, "A squirrel"), agent(E6, A2), for(E6, "a se
 <http://aristo.allenai.org/id#13.3>
 	pred:agent <http://aristo.allenai.org/id#13.2> ;
 	pred:isa "\"store\"" ;
-	pred:object <http://aristo.allenai.org/id#13.4> .
+	pred:object <http://aristo.allenai.org/id#13.4> ;
+	rel:effect <http://aristo.allenai.org/id#13.6> .
 
 <http://aristo.allenai.org/id#13.4>
 	pred:isa "\"nuts\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#13.2>
 	pred:isa "\"A squirrel\"" .
-
-<http://aristo.allenai.org/id#13.3>
-	pred:effect <http://aristo.allenai.org/id#13.6> .
 
 <http://aristo.allenai.org/id#13.6>
 	pred:agent <http://aristo.allenai.org/id#13.2> ;
@@ -546,6 +534,7 @@ rule36:: isa(E4, "use"), isa(A2, "A student"), isa(A7, "a hand lens"), agent(E4,
 english(rule37, "A student should use a hand lens to get a better look at the spots").
 rule37:: isa(E9, "get"), isa(A2, "A student"), agent(E9, A2), arg(E9, "a better look at the spots") -> effect(E4, E9), isa(E4, "use"), isa(A7, "a hand lens"), agent(E4, A2), object(E4, A7).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -556,20 +545,18 @@ rule37:: isa(E9, "get"), isa(A2, "A student"), agent(E9, A2), arg(E9, "a better 
 <http://aristo.allenai.org/id#14.4>
 	pred:agent <http://aristo.allenai.org/id#14.2> ;
 	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#14.7> .
+	pred:object <http://aristo.allenai.org/id#14.7> ;
+	rel:effect <http://aristo.allenai.org/id#14.9> .
 
 <http://aristo.allenai.org/id#14.7>
 	pred:isa "\"a hand lens\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#14.2>
 	pred:isa "\"A student\"" .
-
-<http://aristo.allenai.org/id#14.4>
-	pred:effect <http://aristo.allenai.org/id#14.9> .
 
 <http://aristo.allenai.org/id#14.9>
 	pred:agent <http://aristo.allenai.org/id#14.2> ;
@@ -582,23 +569,22 @@ rule38:: isa(E1, "decrease"), isa(A3, "the temperature"), object(E1, A3) -> effe
 english(rule39, "Decreasing the temperature is one way to change water from a liquid to a solid").
 rule39:: isa(E8, "change"), isa(A9, "water"), object(E8, A9), from(E8, "a liquid"), to(E8, "a solid") -> effect(E1, E8), isa(E1, "decrease"), isa(A3, "the temperature"), object(E1, A3).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#15.1>
 	pred:isa "\"decrease\"" ;
-	pred:object <http://aristo.allenai.org/id#15.3> .
+	pred:object <http://aristo.allenai.org/id#15.3> ;
+	rel:effect <http://aristo.allenai.org/id#15.8> .
 
 <http://aristo.allenai.org/id#15.3>
 	pred:isa "\"the temperature\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#15.1>
-	pred:effect <http://aristo.allenai.org/id#15.8> .
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#15.8>
 	pred:from <"a liquid"> ;
@@ -636,23 +622,22 @@ rule42:: isa(A3, "energy") -> isa(E2, "get"), isa(A1, "Animals"), agent(E2, A1),
 
 % "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(rule43, "The heat that produces the smoke is caused by friction").
-rule43:: isa(E10, "friction") -> cause(E10, E4), isa(E4, "produce"), isa(A2, "The heat"), isa(A6, "the smoke"), agent(E4, A2), object(E4, A6).
+rule43:: isa(A10, "friction") -> cause(A10, E4), isa(E4, "produce"), isa(A2, "The heat"), isa(A6, "the smoke"), agent(E4, A2), object(E4, A6).
 english(rule44, "The heat that produces the smoke is caused by friction").
-rule44:: isa(E4, "produce"), isa(A2, "The heat"), isa(A6, "the smoke"), agent(E4, A2), object(E4, A6) -> cause(E10, E4), isa(E10, "friction").
+rule44:: isa(E4, "produce"), isa(A2, "The heat"), isa(A6, "the smoke"), agent(E4, A2), object(E4, A6) -> cause(A10, E4), isa(A10, "friction").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#17.10>
-	pred:isa "\"friction\"" .
+	pred:isa "\"friction\"" ;
+	rel:cause <http://aristo.allenai.org/id#17.4> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#17.10>
-	pred:cause <http://aristo.allenai.org/id#17.4> .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#17.2>
 	pred:isa "\"The heat\"" .
@@ -671,23 +656,22 @@ rule45:: isa(E1, "rest"), isa(A5, "humans"), agent(E1, A5) -> requirement(E1, E7
 english(rule46, "Resting is necessary for humans to maintain good health").
 rule46:: isa(E7, "maintain"), isa(A5, "humans"), isa(A9, "good health"), agent(E7, A5), object(E7, A9) -> requirement(E1, E7), isa(E1, "rest"), agent(E1, A5).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#18.1>
 	pred:agent <http://aristo.allenai.org/id#18.5> ;
-	pred:isa "\"rest\"" .
+	pred:isa "\"rest\"" ;
+	rel:requirement <http://aristo.allenai.org/id#18.7> .
 
 <http://aristo.allenai.org/id#18.5>
 	pred:isa "\"humans\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#18.1>
-	pred:requirement <http://aristo.allenai.org/id#18.7> .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#18.5>
 	pred:isa "\"humans\"" .
@@ -706,6 +690,7 @@ rule47:: isa(E4, "use"), isa(A2, "A student"), isa(A7, "a graduated cylinder"), 
 english(rule48, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 rule48:: isa(E9, "measure"), isa(A2, "A student"), isa(A12, "10 milliliters of water"), agent(E9, A2), object(E9, A12) -> effect(E4, E9), isa(E4, "use"), isa(A7, "a graduated cylinder"), agent(E4, A2), object(E4, A7).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -716,23 +701,21 @@ rule48:: isa(E9, "measure"), isa(A2, "A student"), isa(A12, "10 milliliters of w
 <http://aristo.allenai.org/id#19.4>
 	pred:agent <http://aristo.allenai.org/id#19.2> ;
 	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#19.7> .
+	pred:object <http://aristo.allenai.org/id#19.7> ;
+	rel:effect <http://aristo.allenai.org/id#19.9> .
 
 <http://aristo.allenai.org/id#19.7>
 	pred:isa "\"a graduated cylinder\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#19.12>
 	pred:isa "\"10 milliliters of water\"" .
 
 <http://aristo.allenai.org/id#19.2>
 	pred:isa "\"A student\"" .
-
-<http://aristo.allenai.org/id#19.4>
-	pred:effect <http://aristo.allenai.org/id#19.9> .
 
 <http://aristo.allenai.org/id#19.9>
 	pred:agent <http://aristo.allenai.org/id#19.2> ;
@@ -745,6 +728,7 @@ rule49:: isa(E4, "use"), isa(A2, "A student"), isa(A7, "a graduated cylinder"), 
 english(rule50, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 rule50:: isa(E9, "measure"), isa(A2, "A student"), isa(A14, "mL"), agent(E9, A2), object(E9, A14) -> effect(E4, E9), isa(E4, "use"), isa(A7, "a graduated cylinder"), agent(E4, A2), object(E4, A7).
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -755,23 +739,21 @@ rule50:: isa(E9, "measure"), isa(A2, "A student"), isa(A14, "mL"), agent(E9, A2)
 <http://aristo.allenai.org/id#19.4>
 	pred:agent <http://aristo.allenai.org/id#19.2> ;
 	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#19.7> .
+	pred:object <http://aristo.allenai.org/id#19.7> ;
+	rel:effect <http://aristo.allenai.org/id#19.9> .
 
 <http://aristo.allenai.org/id#19.7>
 	pred:isa "\"a graduated cylinder\"" .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#19.14>
 	pred:isa "\"mL\"" .
 
 <http://aristo.allenai.org/id#19.2>
 	pred:isa "\"A student\"" .
-
-<http://aristo.allenai.org/id#19.4>
-	pred:effect <http://aristo.allenai.org/id#19.9> .
 
 <http://aristo.allenai.org/id#19.9>
 	pred:agent <http://aristo.allenai.org/id#19.2> ;
@@ -780,39 +762,40 @@ rule50:: isa(E9, "measure"), isa(A2, "A student"), isa(A14, "mL"), agent(E9, A2)
 
 % "The white fur of an arctic fox blends"	"is called"/EXAMPLE	"camouflage"
 english(rule51, "The white fur of an arctic fox blends in with the snow is called camouflage").
-rule51:: isa(E3, "The white fur of an arctic fox blends") -> example(E3, E15), isa(E15, "camouflage").
+rule51:: isa(A3, "The white fur of an arctic fox blends") -> example(A3, A15), isa(A15, "camouflage").
 english(rule52, "The white fur of an arctic fox blends in with the snow is called camouflage").
-rule52:: isa(E15, "camouflage") -> example(E3, E15), isa(E3, "The white fur of an arctic fox blends").
+rule52:: isa(A15, "camouflage") -> example(A3, A15), isa(A3, "The white fur of an arctic fox blends").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#20.3>
-	pred:isa "\"The white fur of an arctic fox blends\"" .
+	pred:isa "\"The white fur of an arctic fox blends\"" ;
+	rel:example <http://aristo.allenai.org/id#20.15> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#20.15>
 	pred:isa "\"camouflage\"" .
 
-<http://aristo.allenai.org/id#20.3>
-	pred:example <http://aristo.allenai.org/id#20.15> .
-
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 english(rule53, "When plants and animals die decomposers help return nutrients to the food chain").
-rule53:: isa(E7, "decomposers") -> purpose(E7, E9), isa(E9, "return"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain").
+rule53:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain").
 english(rule54, "When plants and animals die decomposers help return nutrients to the food chain").
-rule54:: isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain") -> purpose(E7, E9), .
+rule54:: isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain") -> purpose(A7, E9), .
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#21.7>
-	pred:isa "\"decomposers\"" .
+	pred:isa "\"decomposers\"" ;
+	rel:purpose <http://aristo.allenai.org/id#21.9> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
@@ -822,8 +805,7 @@ rule54:: isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent
 	pred:isa "\"nutrients\"" .
 
 <http://aristo.allenai.org/id#21.7>
-	pred:isa "\"decomposers\"" ;
-	pred:purpose <http://aristo.allenai.org/id#21.9> .
+	pred:isa "\"decomposers\"" .
 
 <http://aristo.allenai.org/id#21.9>
 	pred:agent <http://aristo.allenai.org/id#21.7> ;
@@ -837,6 +819,7 @@ rule55:: isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent
 english(rule56, "When plants and animals die decomposers help return nutrients to the food chain").
 rule56:: isa(E5, "die"), isa(A2, "plants"), agent(E5, A2) -> when(E9, E5), isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -851,11 +834,12 @@ rule56:: isa(E5, "die"), isa(A2, "plants"), agent(E5, A2) -> when(E9, E5), isa(E
 	pred:agent <http://aristo.allenai.org/id#21.7> ;
 	pred:isa "\"return\"" ;
 	pred:object <http://aristo.allenai.org/id#21.10> ;
-	pred:to <"the food chain"> .
+	pred:to <"the food chain"> ;
+	rel:when <http://aristo.allenai.org/id#21.5> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#21.2>
 	pred:isa "\"plants\"" .
@@ -864,15 +848,13 @@ rule56:: isa(E5, "die"), isa(A2, "plants"), agent(E5, A2) -> when(E9, E5), isa(E
 	pred:agent <http://aristo.allenai.org/id#21.2> ;
 	pred:isa "\"die\"" .
 
-<http://aristo.allenai.org/id#21.9>
-	pred:when <http://aristo.allenai.org/id#21.5> .
-
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(rule57, "When plants and animals die decomposers help return nutrients to the food chain").
 rule57:: isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), isa(A4, "animals"), agent(E5, A4).
 english(rule58, "When plants and animals die decomposers help return nutrients to the food chain").
 rule58:: isa(E5, "die"), isa(A4, "animals"), agent(E5, A4) -> when(E9, E5), isa(E9, "return"), isa(A7, "decomposers"), isa(A10, "nutrients"), agent(E9, A7), object(E9, A10), to(E9, "the food chain").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
@@ -887,11 +869,12 @@ rule58:: isa(E5, "die"), isa(A4, "animals"), agent(E5, A4) -> when(E9, E5), isa(
 	pred:agent <http://aristo.allenai.org/id#21.7> ;
 	pred:isa "\"return\"" ;
 	pred:object <http://aristo.allenai.org/id#21.10> ;
-	pred:to <"the food chain"> .
+	pred:to <"the food chain"> ;
+	rel:when <http://aristo.allenai.org/id#21.5> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#21.4>
 	pred:isa "\"animals\"" .
@@ -900,28 +883,24 @@ rule58:: isa(E5, "die"), isa(A4, "animals"), agent(E5, A4) -> when(E9, E5), isa(
 	pred:agent <http://aristo.allenai.org/id#21.4> ;
 	pred:isa "\"die\"" .
 
-<http://aristo.allenai.org/id#21.9>
-	pred:when <http://aristo.allenai.org/id#21.5> .
-
 % "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
 english(rule59, "Gravity causes the ball to fall to the ground").
-rule59:: isa(E1, "Gravity") -> cause(E1, E6), isa(E6, "fall"), isa(A4, "the ball"), agent(E6, A4), to(E6, "the ground").
+rule59:: isa(A1, "Gravity") -> cause(A1, E6), isa(E6, "fall"), isa(A4, "the ball"), agent(E6, A4), to(E6, "the ground").
 english(rule60, "Gravity causes the ball to fall to the ground").
-rule60:: isa(E6, "fall"), isa(A4, "the ball"), agent(E6, A4), to(E6, "the ground") -> cause(E1, E6), isa(E1, "Gravity").
+rule60:: isa(E6, "fall"), isa(A4, "the ball"), agent(E6, A4), to(E6, "the ground") -> cause(A1, E6), isa(A1, "Gravity").
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#22.1>
-	pred:isa "\"Gravity\"" .
+	pred:isa "\"Gravity\"" ;
+	rel:cause <http://aristo.allenai.org/id#22.6> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#22.1>
-	pred:cause <http://aristo.allenai.org/id#22.6> .
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#22.4>
 	pred:isa "\"the ball\"" .
