@@ -1,13 +1,13 @@
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8")
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8.2")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.2.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.3.0")
 
 // Native packager, for doing deploys.
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "0.7.0-M2")
 
 // Revolver, for auto-reloading of changed files in sbt.
 // See https://github.com/spray/sbt-revolver .
-addSbtPlugin("io.spray" % "sbt-revolver" % "0.7.1")
+addSbtPlugin("io.spray" % "sbt-revolver" % "0.7.2")
 
 resolvers += "allenai nexus repository" at "http://utility.allenai.org:8081/nexus/content/repositories/releases"
 
