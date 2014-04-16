@@ -5,9 +5,11 @@ import org.allenai.extraction.extractors.PrologExtractor
 
 import com.typesafe.config.ConfigFactory
 
+import java.net.URI
+
 class ExtractorConfigTest extends UnitSpec {
   val validExtractor = "PrologExtractor"
-  val defaultIO = ExtractorIO.defaultIO(0, None)
+  val defaultIO = ExtractorIO.defaultIO("0")
 
   // Test that a simple extractor works.
   "ExtractorConfig.fromConfig" should "handle a name-only config" in {
@@ -28,7 +30,7 @@ class ExtractorConfigTest extends UnitSpec {
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (PrologExtractor)
-    extractor.inputs should be (Seq(ExtractorIO("a", None)))
+    extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(defaultIO))
   }
   it should "handle an extractor with only outputs configured" in {
@@ -39,7 +41,7 @@ class ExtractorConfigTest extends UnitSpec {
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (PrologExtractor)
     extractor.inputs should be (Seq(defaultIO))
-    extractor.outputs should be (Seq(ExtractorIO("b", None)))
+    extractor.outputs should be (Seq(ExtractorIO("b", new URI("name:b"))))
   }
   it should "handle an extractor with both inputs and outputs" in {
     val extractorWithInputs = ConfigFactory.parseString(s"""
@@ -49,8 +51,8 @@ class ExtractorConfigTest extends UnitSpec {
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (PrologExtractor)
-    extractor.inputs should be (Seq(ExtractorIO("a", None)))
-    extractor.outputs should be (Seq(ExtractorIO("x", None)))
+    extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
+    extractor.outputs should be (Seq(ExtractorIO("x", new URI("name:x"))))
   }
 
   // Test that we handle bad names gracefully.
@@ -91,6 +93,6 @@ class ExtractorConfigTest extends UnitSpec {
     ary = [ ]
     """)
 
-    ExtractorConfig.getIOValues(emptyInputsConfig, "ary") should be (Seq(defaultIO))
+    ExtractorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
   }
 }

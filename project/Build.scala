@@ -54,7 +54,7 @@ object ExtractionBuild extends Build {
 
   val sprayVersion = "1.3.1"
 
-  val akkaVersion = "2.3.0"
+  val akkaVersion = "2.3.2"
   def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-$id" % akkaVersion
   val akkaActor = akkaModule("actor")
   val akkaLogging = akkaModule("slf4j")
@@ -67,9 +67,10 @@ object ExtractionBuild extends Build {
   }
 
   val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
+  val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
-  val sprayJson = "io.spray" %%  "spray-json" % "1.2.5"
-  val typesafeConfig = "com.typesafe" % "config" % "1.0.2"
+  val sprayJson = "io.spray" %%  "spray-json" % "1.2.6"
+  val typesafeConfig = "com.typesafe" % "config" % "1.2.0"
   val mockito = "org.mockito" % "mockito-all" % "1.9.5"
 
   // Full requirements for Stanford + Prolog extractions.
@@ -88,7 +89,7 @@ object ExtractionBuild extends Build {
   }
 
   val allenaiCommon = "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT"
-  val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.1-SNAPSHOT"
+  val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.2-SNAPSHOT"
   val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
 
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
@@ -100,9 +101,10 @@ object ExtractionBuild extends Build {
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
     Seq(
       organization := "org.allenai.extraction.demo",
-      crossScalaVersions := Seq("2.10.3"),
+      crossScalaVersions := Seq("2.10.4"),
       scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
       scalacOptions ++= Seq("-unchecked", "-deprecation"),
+      conflictManager := ConflictManager.strict,
       resolvers ++= Seq(
         "AllenAI Snapshots" at "http://utility.allenai.org:8081/nexus/content/repositories/snapshots",
         "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
@@ -120,6 +122,7 @@ object ExtractionBuild extends Build {
     base = file("demo"),
     settings = buildSettings)
 
+  val ermineJavaOptions = prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),

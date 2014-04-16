@@ -3,9 +3,8 @@ name := "extraction-demo"
 description := "An interactive demo for extractors."
 
 libraryDependencies ++= Seq(
-    "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT",
-    // for command line arguments and configuration
-    "com.github.scopt" %% "scopt" % "3.2.0",
+    allenaiCommon,
+    scopt,
     typesafeConfig,
     // for web serving
     akkaLogging,
@@ -18,6 +17,11 @@ libraryDependencies ++= Seq(
     "com.syncthemall" % "boilerpipe" % "1.2.2",
     // for parsing/writing json
     sprayJson) ++ loggingImplementations
+
+dependencyOverrides ++= Set(
+  "org.scala-lang" % "scala-library" % "2.10.4",
+  "org.slf4j" % "slf4j-api" % "1.7.6"
+)
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
