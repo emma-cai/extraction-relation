@@ -65,9 +65,9 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	rdf(E,dep:nsubj,Entity),
 	rdf(E,dep:rcmod,Verb), !,
 	inf_tuple(Entity,ActionId),
-	stripped_id(Entity,ActionId,StrippedActionId,ActionId),
+	stripped_id(ActionId,StrippedActionId,ActionId),
 	inf_tuple([Subj,Verb|Rest],PurposeId),
-	stripped_id([Subj,Verb|Rest],Subj,StrippedSubjId,PurposeId),
+	stripped_id(Subj,StrippedSubjId,PurposeId),
 	downcase_atom(Rel,LRel),
 	% left to right
 	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
@@ -82,9 +82,9 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	rdf_unload_graph(PurposeId).
 write_inf_relation(Top,Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
-	stripped_id(Action,ActionId,StrippedActionId,ActionId),
+	stripped_id(ActionId,StrippedActionId,ActionId),
 	inf_tuple(Purpose,PurposeId),
-	stripped_id(Purpose,PurposeId,StrippedPurposeId,PurposeId),
+	stripped_id(PurposeId,StrippedPurposeId,PurposeId),
 	downcase_atom(Rel,LRel),
 	% left to right
 	write_inf_relation0(Top,ActionId,[LRel,StrippedActionId,StrippedPurposeId],PurposeId),
