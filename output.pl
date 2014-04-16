@@ -65,29 +65,43 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	rdf(E,dep:nsubj,Entity),
 	rdf(E,dep:rcmod,Verb), !,
 	inf_tuple(Entity,ActionId),
+	stripped_id(Entity,ActionId,StrippedActionId,ActionId),
 	inf_tuple([Subj,Verb|Rest],PurposeId),
-	stripped_ids([ActionId, Subj], Ids),
+	stripped_id([Subj,Verb|Rest],Subj,StrippedSubjId,PurposeId),
 	downcase_atom(Rel,LRel),
 	% left to right
 	rdf_assert(Entity,pred:isa,Subj,PurposeId), % RHS
-	write_inf_relation0(Top,ActionId,[LRel|Ids],PurposeId),
+	write_inf_relation0(Top,ActionId,[LRel,StrippedActionId,StrippedSubjId],PurposeId),
 	rdf_retractall(Entity,pred:isa,Subj,PurposeId), % RHS
 	% right to left
 	rdf_assert(Entity,pred:isa,Subj,ActionId), %LHS
-	write_inf_relation0(Top,PurposeId,[LRel|Ids],ActionId),
+	write_inf_relation0(Top,PurposeId,[LRel,StrippedActionId,StrippedSubjId],ActionId),
+	% write turtle
+	write_turtle_relation(ActionId,LRel,PurposeId,Subj),
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
 write_inf_relation(Top,Action,[Rel-_|_],Purpose) :-
 	inf_tuple(Action,ActionId),
+	stripped_id(Action,ActionId,StrippedActionId,ActionId),
 	inf_tuple(Purpose,PurposeId),
-	stripped_ids([ActionId, PurposeId], Ids),
+	stripped_id(Purpose,PurposeId,StrippedPurposeId,PurposeId),
 	downcase_atom(Rel,LRel),
 	% left to right
-	write_inf_relation0(Top,ActionId,[LRel|Ids],PurposeId),
+	write_inf_relation0(Top,ActionId,[LRel,StrippedActionId,StrippedPurposeId],PurposeId),
 	% right to left
-	write_inf_relation0(Top,PurposeId,[LRel|Ids],ActionId),
+	write_inf_relation0(Top,PurposeId,[LRel,StrippedActionId,StrippedPurposeId],ActionId),
+	% write turtle
+	write_turtle_relation(ActionId,LRel,PurposeId,PurposeId),
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
+
+write_turtle_relation(ActionId,Rel,PurposeId,RHS) :-
+	nl,
+	rdf_save_turtle(stream(current_output),[graph(ActionId),silent(true)]),
+	rdf_global_id(pred:Rel,RelId),
+	rdf_assert(ActionId,RelId,RHS,PurposeId),
+	nl,
+	rdf_save_turtle(stream(current_output),[graph(PurposeId),silent(true)]).
 
 write_inf_relation0(Top,Left,Rel,Right) :-
 	gensym(rule,Id),
@@ -98,10 +112,6 @@ write_inf_relation0(Top,Left,Rel,Right) :-
 	write_inf_tuple(Right,LeftTriples,_),
 	write('.'), nl.
 
-
-%write_inf_tuple(GraphId,Remove,Out) :-
-%	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
-%	fail.
 write_inf_tuple(GraphId,Remove,Triples) :-
 	findall([S,P,O], rdf(S,P,O,GraphId), Ts),
 	subtract(Ts,Remove,Triples),
@@ -113,9 +123,6 @@ write_inf_simple_tuple(Root,Tuple) :-
 	rdf_unload_graph(Id).
 
 
-%write_inf_simple_tuple0(GraphId) :-
-%	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
-%	fail.
 write_inf_simple_tuple0(Root,GraphId) :-
 	rdf(S,pred:isa,O,GraphId),
 	% write first
@@ -128,7 +135,9 @@ write_inf_simple_tuple0(Root,GraphId) :-
 	write_inf_tuple(GraphId,[[S,_,O]],_),
 	write('.'), nl,
 	fail.
-write_inf_simple_tuple0(_,_) :-
+write_inf_simple_tuple0(_,GraphId) :-
+	nl,
+	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
 	nl.
 
 write_inf_rule_text(Root,Id) :-
@@ -151,7 +160,7 @@ write_rdf_list([[S,P,O]|Rest],GraphId) :-
 write_rdf(S,P,O,GraphId) :-
 	rdf(S,P,O,GraphId),
 	(O = literal(Val); Val = O),
-	stripped_ids([P,S,Val],Ids),
+	stripped_ids([P,S,Val],Ids,GraphId),
 	format('~w(~w, ~w)',Ids), !.
 
 
@@ -387,13 +396,22 @@ json_lemma_id(Token,json([token=TokenId])) :-
 	rdf_global_id(Term,Token),
 	term_to_atom(Term,TokenId).
 
-stripped_ids(Tokens,TokenIds) :-
-	maplist(stripped_id,Tokens,TokenIds),
-	!.
-stripped_id(Token,TokenId) :-
+stripped_ids([],[],_) :- !.
+stripped_ids([Token|Rest],[TokenId|RestIds],GraphId) :-
+	stripped_id(Token,TokenId,GraphId),
+	stripped_ids(Rest,RestIds,GraphId).
+
+stripped_id(Token,TokenId,Token) :- % verb id = graph id
 	rdf_global_id(id:_,Token),
 	token_id(Token,Id),
-	atomic_list_concat(['E',Id],TokenId).
-stripped_id(Token,TokenId) :-
-	rdf_global_id(_:TokenId,Token).
-stripped_id(Token,Token). % literal
+	atomic_list_concat(['E',Id],TokenId),
+	!.
+stripped_id(Token,TokenId,_) :-
+	rdf_global_id(id:_,Token),
+	token_id(Token,Id),
+	atomic_list_concat(['A',Id],TokenId),
+	!.
+stripped_id(Token,TokenId,_) :-
+	rdf_global_id(_:TokenId,Token),
+	!.
+stripped_id(Token,Token,_). % literal
