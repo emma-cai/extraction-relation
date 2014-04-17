@@ -114,7 +114,10 @@ write_inf_relation0(Top,Left,Rel,Right) :-
 	write('.'), nl.
 
 write_inf_tuple(GraphId,Remove,Triples) :-
-	findall([S,P,O], rdf(S,P,O,GraphId), Ts),
+	findall([S,P,O],
+		(rdf(S,P,O,GraphId),
+		 \+ rdf_global_id(rdf:type,P)),
+		Ts),
 	subtract(Ts,Remove,Triples),
 	write_rdf_list(Triples,GraphId).
 
@@ -170,7 +173,8 @@ inf_tuple(Ent-_,Ent) :- !,
 inf_tuple(Ent,Ent) :-
 	atom(Ent), !,
 	text_arg(Ent,Text),
-	rdf_assert(Ent,pred:isa,literal(Text),Ent).
+	rdf_assert(Ent,pred:isa,literal(Text),Ent),
+	rdf_assert(Ent,rdf:type,entity,Ent).
 inf_tuple([S,V,O-_|Rest],Id) :- !, % ignore vars
 	inf_tuple([S,V,O|Rest],Id).
 inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
@@ -184,10 +188,15 @@ inf_tuple([S,Verb,Arg|Mods],V) :-
 	   text_verb(Arg,ObjText,_)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
 	rdf_assert(V,pred:isa,literal(VerbText),V),
-	(S = [] ; rdf_assert(S,pred:isa,literal(SubjText),V)),
-	(Arg = [] ; rdf_assert(Arg,pred:isa,literal(ObjText),V)),
-	(S = [] ; rdf_assert(V,pred:agent,S,V)),
-	(Arg = [] ; rdf_assert(V,pred:object,Arg,V)),
+	rdf_assert(V,rdf:type,event,V),
+	(S = []
+	; (rdf_assert(V,pred:agent,S,V),
+	   rdf_assert(S,pred:isa,literal(SubjText),V),
+	   rdf_assert(S,rdf:type,entity,V)) ),
+	(Arg = []
+	; (rdf_assert(V,pred:object,Arg,V),
+	   rdf_assert(Arg,pred:isa,literal(ObjText),V),
+	   rdf_assert(Arg,rdf:type,entity,V)) ),
 	inf_mods(V,Mods),
 	!.
 
@@ -199,7 +208,7 @@ inf_mods(V, [Pobj|Rest]) :-
 	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	tokens(Pobj,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]),
 	tokens_text_quoted(Tokens,Text),
-	rdf_assert(V,NewPrepRel,Text,V),
+	rdf_assert(V,NewPrepRel,literal(Text),V),
 	inf_mods(V, Rest).
 inf_mods(V, [Prep|Rest]) :-
 	prep(Mod,Prep),
@@ -208,11 +217,11 @@ inf_mods(V, [Prep|Rest]) :-
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	text_mod(Mod, Text),
-	rdf_assert(V,NewPrepRel,Text,V),
+	rdf_assert(V,NewPrepRel,literal(Text),V),
 	inf_mods(V, Rest).
 inf_mods(V, [Mod|Rest]) :-
 	text_mod(Mod, Text),
-	rdf_assert(V,pred:arg,Text,V),
+	rdf_assert(V,pred:arg,literal(Text),V),
 	inf_mods(V, Rest).
 
 text_tuple(Ent,Text) :-
@@ -403,8 +412,7 @@ stripped_ids([Token|Rest],[TokenId|RestIds]) :-
 	stripped_ids(Rest,RestIds).
 
 stripped_id(Token,TokenId) :- % event
-	( rdf(Token,pred:agent,_)
-	; rdf(Token,pred:object,_) ),
+	rdf(Token,rdf:type,event),
 	rdf_global_id(id:_,Token),
 	token_id(Token,Id),
 	atomic_list_concat(['E',Id],TokenId).

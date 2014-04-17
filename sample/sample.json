@@ -1,37 +1,44 @@
 % ("Some animals"/?x "grow" "fur" [ "in winter" ] )	"to"/EFFECT	("Some animals"/?x "keep" "" [ "warm" ] )
 english(rule1, "Some animals grow fur in winter to keep warm").
-rule1:: isa(E3, "grow"), isa(A2, "Some animals"), isa(A4, "fur"), agent(E3, A2), object(E3, A4), in(E3, "winter") -> effect(E3, E8), isa(E8, "keep"), agent(E8, A2), arg(E8, "warm").
+rule1:: isa(E3, "grow"), agent(E3, A2), isa(A2, "Some animals"), object(E3, A4), isa(A4, "fur"), in(E3, "winter") -> effect(E3, E8), isa(E8, "keep"), agent(E8, A2), arg(E8, "warm").
 english(rule2, "Some animals grow fur in winter to keep warm").
-rule2:: isa(E8, "keep"), isa(A2, "Some animals"), agent(E8, A2), arg(E8, "warm") -> effect(E3, E8), isa(E3, "grow"), isa(A4, "fur"), agent(E3, A2), object(E3, A4), in(E3, "winter").
+rule2:: isa(E8, "keep"), agent(E8, A2), isa(A2, "Some animals"), arg(E8, "warm") -> effect(E3, E8), isa(E3, "grow"), agent(E3, A2), object(E3, A4), isa(A4, "fur"), in(E3, "winter").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#1.2>
+	a <entity> ;
 	pred:isa "\"Some animals\"" .
 
 <http://aristo.allenai.org/id#1.3>
+	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:in <"winter"> ;
+	pred:in "\"winter\"" ;
 	pred:isa "\"grow\"" ;
 	pred:object <http://aristo.allenai.org/id#1.4> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 
 <http://aristo.allenai.org/id#1.4>
+	a <entity> ;
 	pred:isa "\"fur\"" .
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#1.2>
+	a <entity> ;
 	pred:isa "\"Some animals\"" .
 
 <http://aristo.allenai.org/id#1.8>
+	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:arg <"warm"> ;
+	pred:arg "\"warm\"" ;
 	pred:isa "\"keep\"" .
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:1.3", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"fur"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.5", "text":"in"},  {"token":"id:1.6", "text":"winter"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.7", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:1.8", "text":"keep"} ], "extraPhrases": [ [ {"token":"id:1.9", "text":"warm"} ] ]} ], "confidence":1.0}
