@@ -1,0 +1,4 @@
+english(rule1, "Some animals grow fur in winter to keep warm").
+rule1:: isa(E3, "grow"), agent(E3, A2), isa(A2, "Some animals"), object(E3, A4), isa(A4, "fur"), in(E3, "winter") -> effect(E3, E8), isa(E8, "keep"), agent(E8, A2), arg(E8, "warm").
+english(rule2, "Some animals grow fur in winter to keep warm").
+rule2:: isa(E8, "keep"), agent(E8, A2), isa(A2, "Some animals"), arg(E8, "warm") -> effect(E3, E8), isa(E3, "grow"), agent(E3, A2), object(E3, A4), isa(A4, "fur"), in(E3, "winter").

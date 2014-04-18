@@ -1,0 +1,1 @@
+% ("Some animals"/?x "grow" "fur" [ "in winter" ] )	"to"/EFFECT	("Some animals"/?x "keep" "" [ "warm" ] )
