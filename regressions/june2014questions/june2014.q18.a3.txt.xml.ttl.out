@@ -1,8 +1,8 @@
 % ("" "increase" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule1, "Increasing the temperature is one way to change water from a liquid to a solid").
-rule1:: isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), from(E8, "a liquid"), to(E8, "a solid").
+rule1:: isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
 english(rule2, "Increasing the temperature is one way to change water from a liquid to a solid").
-rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), from(E8, "a liquid"), to(E8, "a solid") -> effect(E1, E8), isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature").
+rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -23,16 +23,24 @@ rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), from(E8, "a liquid"
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#1.15>
+	pred:isa "\"a solid\"" .
 
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
-	pred:from "\"a liquid\"" ;
+	pred:from <http://aristo.allenai.org/id#1.12> ;
 	pred:isa "\"change\"" ;
 	pred:object <http://aristo.allenai.org/id#1.9> ;
-	pred:to "\"a solid\"" .
+	pred:to <http://aristo.allenai.org/id#1.15> .
 
 <http://aristo.allenai.org/id#1.9>
 	a <entity> ;
 	pred:isa "\"water\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.1", "text":"increase"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.2", "text":"the"},  {"token":"id:1.3", "text":"temperature"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.4", "text":"is"},  {"token":"id:1.6", "text":"way"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.8", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.9", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.10", "text":"from"},  {"token":"id:1.11", "text":"a"},  {"token":"id:1.12", "text":"liquid"} ],  [ {"token":"id:1.13", "text":"to"},  {"token":"id:1.14", "text":"a"},  {"token":"id:1.15", "text":"solid"} ] ]} ], "confidence":1.0}
 

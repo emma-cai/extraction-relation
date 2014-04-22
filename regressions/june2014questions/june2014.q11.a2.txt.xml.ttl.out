@@ -34,3 +34,5 @@ rule2:: isa(A12, "predators") -> example(E4, A12), isa(E4, "make"), agent(E4, A3
 	a <entity> ;
 	pred:isa "\"predators\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.2", "text":"green"},  {"token":"id:1.3", "text":"plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.4", "text":"make"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"their[green plants]"},  {"token":"id:1.6", "text":"own"},  {"token":"id:1.7", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.10", "text":"are"},  {"token":"id:1.11", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.12", "text":"predators"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+

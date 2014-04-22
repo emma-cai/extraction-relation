@@ -24,3 +24,5 @@ rule2:: isa(A10, "a good health habit") -> example(A2, A10), isa(A2, "Watching t
 	a <entity> ;
 	pred:isa "\"a good health habit\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Watching"},  {"token":"id:1.2", "text":"television"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.5", "text":"example"},  {"token":"id:1.6", "text":"of"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"a"},  {"token":"id:1.8", "text":"good"},  {"token":"id:1.9", "text":"health"},  {"token":"id:1.10", "text":"habit"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+

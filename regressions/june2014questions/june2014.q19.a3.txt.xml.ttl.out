@@ -34,3 +34,5 @@ rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), 
 	a <entity> ;
 	pred:isa "\"the smoke\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.10", "text":"sound"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.8", "text":"caused"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"The"},  {"token":"id:2.2", "text":"heat"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.4", "text":"produce"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:2.5", "text":"the"},  {"token":"id:2.6", "text":"smoke"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+

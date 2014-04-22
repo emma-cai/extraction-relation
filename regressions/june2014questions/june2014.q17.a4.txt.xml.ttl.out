@@ -1,15 +1,17 @@
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(rule1, "A student is growing some plants for an experiment").
-rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, "an experiment").
+rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
 english(rule2, "A student is growing some plants for an experiment").
-rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), for(E4, "an experiment").
+rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
 english(rule3, "A student is growing some plants for an experiment").
-rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), for(E4, "an experiment").
+rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+english(rule4, "A student is growing some plants for an experiment").
+rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -18,7 +20,7 @@ rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A stu
 <http://aristo.allenai.org/id#1.4>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:for "\"an experiment\"" ;
+	pred:for <http://aristo.allenai.org/id#1.9> ;
 	pred:isa "\"grow\"" ;
 	pred:object <http://aristo.allenai.org/id#1.6> .
 
@@ -26,18 +28,25 @@ rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A stu
 	a <entity> ;
 	pred:isa "\"some plants\"" .
 
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"an experiment\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"student"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.4", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"some"},  {"token":"id:1.6", "text":"plants"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.7", "text":"for"},  {"token":"id:1.8", "text":"an"},  {"token":"id:1.9", "text":"experiment"} ] ]} ], "consequents": [], "confidence":1.0}
+
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-english(rule4, "She notices small white spots on the leaves").
-rule4:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, "the leaves").
 english(rule5, "She notices small white spots on the leaves").
-rule5:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), on(E2, "the leaves").
+rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
 english(rule6, "She notices small white spots on the leaves").
-rule6:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), on(E2, "the leaves").
+rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+english(rule7, "She notices small white spots on the leaves").
+rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+english(rule8, "She notices small white spots on the leaves").
+rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#2.1>
 	a <entity> ;
@@ -48,17 +57,20 @@ rule6:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
 	pred:isa "\"notify\"" ;
 	pred:object <http://aristo.allenai.org/id#2.5> ;
-	pred:on "\"the leaves\"" .
+	pred:on <http://aristo.allenai.org/id#2.8> .
 
 <http://aristo.allenai.org/id#2.5>
 	a <entity> ;
 	pred:isa "\"small white spots\"" .
 
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the leaves\"" .
+
 % ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots")
-english(rule7, "She[She] should use a graduated cylinder to get a better look at the spots").
-rule7:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A6), isa(A6, "a graduated cylinder") -> effect(E3, E8), isa(E8, "get"), agent(E8, A1), object(E8, A11), isa(A11, "a better look at the spots").
-english(rule8, "She[She] should use a graduated cylinder to get a better look at the spots").
-rule8:: isa(E8, "get"), agent(E8, A1), isa(A1, "She"), object(E8, A11), isa(A11, "a better look at the spots") -> effect(E3, E8), isa(E3, "use"), agent(E3, A1), object(E3, A6), isa(A6, "a graduated cylinder").
+english(rule9, "She[She] should use a graduated cylinder to get a better look at the spots").
+rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A6), isa(A6, "a graduated cylinder") -> effect(E3, E8), isa(E8, "get"), agent(E8, A1), object(E8, A11), isa(A11, "a better look at the spots").
+english(rule10, "She[She] should use a graduated cylinder to get a better look at the spots").
+rule10:: isa(E8, "get"), agent(E8, A1), isa(A1, "She"), object(E8, A11), isa(A11, "a better look at the spots") -> effect(E3, E8), isa(E3, "use"), agent(E3, A1), object(E3, A6), isa(A6, "a graduated cylinder").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -99,4 +111,6 @@ rule8:: isa(E8, "get"), agent(E8, A1), isa(A1, "She"), object(E8, A11), isa(A11,
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
 	pred:isa "\"get\"" ;
 	pred:object <http://aristo.allenai.org/id#3.11> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.3", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"a"},  {"token":"id:3.5", "text":"graduated"},  {"token":"id:3.6", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.7", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.9", "text":"a"},  {"token":"id:3.10", "text":"better"},  {"token":"id:3.11", "text":"look"},  {"token":"id:3.12", "text":"at"},  {"token":"id:3.13", "text":"the"},  {"token":"id:3.14", "text":"spots"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 

@@ -39,3 +39,5 @@ rule2:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), i
 	a <entity> ;
 	pred:isa "\"good health\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.5", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:1.1", "text":"rest"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"necessary"} ], "normalizedRelation":"REQUIREMENT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.5", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:1.7", "text":"maintain"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.8", "text":"good"},  {"token":"id:1.9", "text":"health"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+

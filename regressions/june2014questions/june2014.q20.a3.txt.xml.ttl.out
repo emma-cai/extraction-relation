@@ -25,3 +25,5 @@ rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent
 	a <entity> ;
 	pred:isa "\"a harmful effect on the environment\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Growing"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.4", "text":"have"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"a"},  {"token":"id:1.6", "text":"harmful"},  {"token":"id:1.7", "text":"effect"},  {"token":"id:1.8", "text":"on"},  {"token":"id:1.9", "text":"the"},  {"token":"id:1.10", "text":"environment"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
+

@@ -1,15 +1,19 @@
 % ("Animals" "get" "energy" [ "for growth from water", "for repair" ] )
 english(rule1, "Animals get energy for growth and repair from water").
-rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, "growth from water"), for(E2, "repair").
+rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
 english(rule2, "Animals get energy for growth and repair from water").
-rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), for(E2, "growth from water"), for(E2, "repair").
+rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
 english(rule3, "Animals get energy for growth and repair from water").
-rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), for(E2, "growth from water"), for(E2, "repair").
+rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+english(rule4, "Animals get energy for growth and repair from water").
+rule4:: isa(A5, "growth from water") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+english(rule5, "Animals get energy for growth and repair from water").
+rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), for(E2, A7).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (5)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
@@ -18,12 +22,20 @@ rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), 
 <http://aristo.allenai.org/id#1.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.1> ;
-	pred:for "\"growth from water\"" ,
-		 "\"repair\"" ;
+	pred:for <http://aristo.allenai.org/id#1.5> ,
+		 <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"get\"" ;
 	pred:object <http://aristo.allenai.org/id#1.3> .
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"energy\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"growth from water\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"repair\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.2", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.4", "text":"for"},  {"token":"id:1.5", "text":"growth"},  {"token":"id:1.8", "text":"from"},  {"token":"id:1.9", "text":"water"} ],  [ {"token":"id:1.4", "text":"for"},  {"token":"id:1.7", "text":"repair"} ] ]} ], "consequents": [], "confidence":1.0}
 

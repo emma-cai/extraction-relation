@@ -34,3 +34,5 @@ rule2:: isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), 
 	pred:isa "\"maintain\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Talking"},  {"token":"id:1.2", "text":"activity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.4", "text":"necessary"} ], "normalizedRelation":"REQUIREMENT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.6", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.8", "text":"maintain"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.9", "text":"good"},  {"token":"id:1.10", "text":"health"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+

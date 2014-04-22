@@ -1,8 +1,8 @@
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 english(rule1, "When plants and animals die decomposers help return nutrients to the food chain").
-rule1:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
+rule1:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
 english(rule2, "When plants and animals die decomposers help return nutrients to the food chain").
-rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9), .
+rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -18,11 +18,14 @@ rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.10>
 	a <entity> ;
 	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
 
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
@@ -33,23 +36,28 @@ rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10
 	pred:agent <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"return\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> ;
-	pred:to "\"the food chain\"" .
+	pred:to <http://aristo.allenai.org/id#1.14> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.8", "text":"help"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.11", "text":"to"},  {"token":"id:1.12", "text":"the"},  {"token":"id:1.13", "text":"food"},  {"token":"id:1.14", "text":"chain"} ] ]} ], "confidence":1.0}
 
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(rule3, "When plants and animals die decomposers help return nutrients to the food chain").
-rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
 english(rule4, "When plants and animals die decomposers help return nutrients to the food chain").
-rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
+rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.10>
 	a <entity> ;
 	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
 
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
@@ -60,7 +68,7 @@ rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9
 	pred:agent <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"return\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> ;
-	pred:to "\"the food chain\"" ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
 	rel:when <http://aristo.allenai.org/id#1.5> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -77,21 +85,26 @@ rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:isa "\"die\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.11", "text":"to"},  {"token":"id:1.12", "text":"the"},  {"token":"id:1.13", "text":"food"},  {"token":"id:1.14", "text":"chain"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.1", "text":"When"} ], "normalizedRelation":"WHEN"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.2", "text":"plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.5", "text":"die"} ], "extraPhrases": []} ], "confidence":1.0}
+
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(rule5, "When plants and animals die decomposers help return nutrients to the food chain").
-rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
 english(rule6, "When plants and animals die decomposers help return nutrients to the food chain").
-rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
+rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.10>
 	a <entity> ;
 	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
 
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
@@ -102,7 +115,7 @@ rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E
 	pred:agent <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"return\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> ;
-	pred:to "\"the food chain\"" ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
 	rel:when <http://aristo.allenai.org/id#1.5> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -118,4 +131,6 @@ rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.4> ;
 	pred:isa "\"die\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.11", "text":"to"},  {"token":"id:1.12", "text":"the"},  {"token":"id:1.13", "text":"food"},  {"token":"id:1.14", "text":"chain"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.1", "text":"When"} ], "normalizedRelation":"WHEN"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.5", "text":"die"} ], "extraPhrases": []} ], "confidence":1.0}
 

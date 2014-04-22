@@ -1,8 +1,8 @@
 % "Magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(rule1, "Magnetism causes rocks to roll downhill").
-rule1:: isa(A1, "Magnetism") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), arg(E5, "downhill").
+rule1:: isa(A1, "Magnetism") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
 english(rule2, "Magnetism causes rocks to roll downhill").
-rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), arg(E5, "downhill") -> cause(A1, E5), isa(A1, "Magnetism").
+rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Magnetism").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -18,7 +18,7 @@ rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), arg(E5, "downhill") ->
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
@@ -27,6 +27,11 @@ rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), arg(E5, "downhill") ->
 <http://aristo.allenai.org/id#1.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.3> ;
-	pred:arg "\"downhill\"" ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
 	pred:isa "\"roll\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"downhill\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Magnetism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.2", "text":"causes"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"rocks"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.5", "text":"roll"} ], "extraPhrases": [ [ {"token":"id:1.6", "text":"downhill"} ] ]} ], "confidence":1.0}
 

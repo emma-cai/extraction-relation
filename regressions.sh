@@ -22,3 +22,13 @@ for f in regressions/*.out
      head $f | grep '^@' > $f.ttl
      grep -E '^[<	]' $f >> $f.ttl
 done
+
+
+for f in regressions/june2014questions/*.xml.ttl
+  do swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('$f'),findall(_,(relation(J),write(J),nl,nl),_),halt" > $f.out
+done
+
+for f in regressions/june2014questions/*.out
+  do grep -E '^(%|english\(|rule[0-9]+:: )' $f | gsed -E "s/^(english[(])?rule/\1`basename $f`.rule/;s/\.txt\.xml\.ttl\.out//"
+done > regressions/june2014questions/june2014questions.inf.txt
+

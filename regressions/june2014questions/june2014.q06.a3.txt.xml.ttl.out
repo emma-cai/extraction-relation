@@ -24,3 +24,5 @@ rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, 
 	a <entity> ;
 	pred:isa "\"the main source of energy for the water cycle\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Erosion"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"the"},  {"token":"id:1.4", "text":"main"},  {"token":"id:1.5", "text":"source"},  {"token":"id:1.6", "text":"of"},  {"token":"id:1.7", "text":"energy"},  {"token":"id:1.8", "text":"for"},  {"token":"id:1.9", "text":"the"},  {"token":"id:1.10", "text":"water"},  {"token":"id:1.11", "text":"cycle"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+

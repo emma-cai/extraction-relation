@@ -35,6 +35,8 @@ rule2:: isa(E7, "hunt"), agent(E7, A5), isa(A5, "an organism"), object(E7, A10),
 	pred:isa "\"hunt\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.7", "text":"hunt"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.10", "text":"animals"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
 % "A decomposer"	"is"/EXAMPLE	("an organism" "eat" "")
 english(rule3, "A decomposer is an organism that hunts and eats animals").
 rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(E9, "eat"), agent(E9, A5), isa(A5, "an organism"), isa(A2, A5).
@@ -67,6 +69,8 @@ rule4:: isa(E9, "eat"), agent(E9, A5), isa(A5, "an organism") -> example(A2, A5)
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
 	pred:isa "\"eat\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.9", "text":"eat"} ], "extraPhrases": []} ], "confidence":1.0}
+
 % "A decomposer"	"is"/EXAMPLE	"an organism"
 english(rule5, "A decomposer is an organism that hunts and eats animals").
 rule5:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
@@ -92,4 +96,6 @@ rule6:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
 	pred:isa "\"an organism\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 

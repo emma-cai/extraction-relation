@@ -25,6 +25,8 @@ rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog")
 	a <entity> ;
 	pred:isa "\"its mouth\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"dog"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.3", "text":"open"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"its"},  {"token":"id:1.5", "text":"mouth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
+
 % ("A human 's body" "produce" "sweat")
 english(rule4, "A human 's body produces sweat").
 rule4:: isa(E5, "produce") -> agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6), isa(A6, "sweat").
@@ -52,11 +54,13 @@ rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 
 	a <entity> ;
 	pred:isa "\"sweat\"" .
 
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"A"},  {"token":"id:2.2", "text":"human"},  {"token":"id:2.3", "text":"'s"},  {"token":"id:2.4", "text":"body"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.5", "text":"produce"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:2.6", "text":"sweat"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
+
 % ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to cold temperatures" ] )
 english(rule7, "These are two ways that organisms may adjust to cold temperatures").
-rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), to(E8, "cold temperatures").
+rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "cold temperatures"), to(E8, A11).
 english(rule8, "These are two ways that organisms may adjust to cold temperatures").
-rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), to(E8, "cold temperatures") -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
+rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "cold temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -77,11 +81,14 @@ rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#3.1>
 	a <entity> ;
 	pred:isa "\"These\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
 
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
@@ -92,13 +99,15 @@ rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), 
 	pred:agent <http://aristo.allenai.org/id#3.6> ;
 	pred:isa "\"adjust\"" ;
 	pred:object <http://aristo.allenai.org/id#3.1> ;
-	pred:to "\"cold temperatures\"" .
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"cold"},  {"token":"id:3.11", "text":"temperatures"} ] ]} ], "confidence":1.0}
 
 % ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to cold temperatures" ] )
 english(rule9, "These are two ways that organisms may adjust to cold temperatures").
-rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), to(E8, "cold temperatures").
+rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11).
 english(rule10, "These are two ways that organisms may adjust to cold temperatures").
-rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), to(E8, "cold temperatures") -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
+rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -119,7 +128,10 @@ rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
 
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
@@ -134,13 +146,15 @@ rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 	pred:agent <http://aristo.allenai.org/id#3.6> ;
 	pred:isa "\"adjust\"" ;
 	pred:object <http://aristo.allenai.org/id#3.4> ;
-	pred:to "\"cold temperatures\"" .
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"cold"},  {"token":"id:3.11", "text":"temperatures"} ] ]} ], "confidence":1.0}
 
 % "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to cold temperatures" ] )
 english(rule11, "These are two ways that organisms may adjust to cold temperatures").
-rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), to(E8, "cold temperatures").
+rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "cold temperatures"), to(E8, A11).
 english(rule12, "These are two ways that organisms may adjust to cold temperatures").
-rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), to(E8, "cold temperatures") -> example(A1, E8), .
+rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "cold temperatures"), to(E8, A11) -> example(A1, E8).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -156,11 +170,14 @@ rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1),
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#3.1>
 	a <entity> ;
 	pred:isa "\"These\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
 
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
@@ -171,13 +188,15 @@ rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1),
 	pred:agent <http://aristo.allenai.org/id#3.6> ;
 	pred:isa "\"adjust\"" ;
 	pred:object <http://aristo.allenai.org/id#3.1> ;
-	pred:to "\"cold temperatures\"" .
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"cold"},  {"token":"id:3.11", "text":"temperatures"} ] ]} ], "confidence":1.0}
 
 % "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to cold temperatures" ] )
 english(rule13, "These are two ways that organisms may adjust to cold temperatures").
-rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), to(E8, "cold temperatures").
+rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11).
 english(rule14, "These are two ways that organisms may adjust to cold temperatures").
-rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), to(E8, "cold temperatures") -> example(A1, E8), isa(A1, "These").
+rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -193,7 +212,10 @@ rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
 
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
@@ -208,5 +230,7 @@ rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 	pred:agent <http://aristo.allenai.org/id#3.6> ;
 	pred:isa "\"adjust\"" ;
 	pred:object <http://aristo.allenai.org/id#3.4> ;
-	pred:to "\"cold temperatures\"" .
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"cold"},  {"token":"id:3.11", "text":"temperatures"} ] ]} ], "confidence":1.0}
 

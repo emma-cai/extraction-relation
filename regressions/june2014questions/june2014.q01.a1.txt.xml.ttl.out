@@ -1,8 +1,8 @@
 % "Magnetism"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
 english(rule1, "Magnetism causes the ball to fall to the ground").
-rule1:: isa(A1, "Magnetism") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground").
+rule1:: isa(A1, "Magnetism") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
 english(rule2, "Magnetism causes the ball to fall to the ground").
-rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground") -> cause(A1, E6), isa(A1, "Magnetism").
+rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Magnetism").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -18,7 +18,7 @@ rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground"
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#2.4>
 	a <entity> ;
@@ -28,5 +28,10 @@ rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground"
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.4> ;
 	pred:isa "\"fall\"" ;
-	pred:to "\"the ground\"" .
+	pred:to <http://aristo.allenai.org/id#2.9> .
+
+<http://aristo.allenai.org/id#2.9>
+	pred:isa "\"the ground\"" .
+
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"Magnetism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.2", "text":"causes"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.3", "text":"the"},  {"token":"id:2.4", "text":"ball"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.6", "text":"fall"} ], "extraPhrases": [ [ {"token":"id:2.7", "text":"to"},  {"token":"id:2.8", "text":"the"},  {"token":"id:2.9", "text":"ground"} ] ]} ], "confidence":1.0}
 
