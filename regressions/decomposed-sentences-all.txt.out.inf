@@ -249,7 +249,7 @@ rule124:: isa(E9, "make"), agent(E9, A3), isa(A3, "green plants"), arg(E9, "food
 english(rule125, "When plants and animals die decomposers help return nutrients to the food chain").
 rule125:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
 english(rule126, "When plants and animals die decomposers help return nutrients to the food chain").
-rule126:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9), .
+rule126:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9).
 english(rule127, "When plants and animals die decomposers help return nutrients to the food chain").
 rule127:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
 english(rule128, "When plants and animals die decomposers help return nutrients to the food chain").
@@ -261,7 +261,7 @@ rule130:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa
 english(rule131, "When plants and animals die predators help return nutrients to the food chain").
 rule131:: isa(A7, "predators") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
 english(rule132, "When plants and animals die predators help return nutrients to the food chain").
-rule132:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9), .
+rule132:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9).
 english(rule133, "When plants and animals die predators help return nutrients to the food chain").
 rule133:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
 english(rule134, "When plants and animals die predators help return nutrients to the food chain").
@@ -281,7 +281,7 @@ rule140:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E7, E5), isa
 english(rule141, "When plants and animals die producers help return nutrients to the food chain").
 rule141:: isa(A7, "producers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
 english(rule142, "When plants and animals die producers help return nutrients to the food chain").
-rule142:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9), .
+rule142:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9).
 english(rule143, "When plants and animals die producers help return nutrients to the food chain").
 rule143:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
 english(rule144, "When plants and animals die producers help return nutrients to the food chain").
@@ -343,7 +343,7 @@ rule171:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4)
 english(rule172, "These are two ways that organisms may adjust to hot temperatures").
 rule172:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), to(E8, "hot temperatures").
 english(rule173, "These are two ways that organisms may adjust to hot temperatures").
-rule173:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), to(E8, "hot temperatures") -> example(A1, E8), .
+rule173:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), to(E8, "hot temperatures") -> example(A1, E8).
 english(rule174, "These are two ways that organisms may adjust to hot temperatures").
 rule174:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), to(E8, "hot temperatures").
 english(rule175, "These are two ways that organisms may adjust to hot temperatures").
@@ -371,7 +371,7 @@ rule185:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4)
 english(rule186, "These are two ways that organisms may adjust to a shortage of food").
 rule186:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), to(E8, "a shortage of food").
 english(rule187, "These are two ways that organisms may adjust to a shortage of food").
-rule187:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), to(E8, "a shortage of food") -> example(A1, E8), .
+rule187:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), to(E8, "a shortage of food") -> example(A1, E8).
 english(rule188, "These are two ways that organisms may adjust to a shortage of food").
 rule188:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), to(E8, "a shortage of food").
 english(rule189, "These are two ways that organisms may adjust to a shortage of food").

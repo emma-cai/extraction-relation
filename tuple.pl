@@ -176,7 +176,7 @@ modifiers1(Root,Pobj) :-
 	     rdf(Pobj,token:lemma,literal(which)) ),
 	\+ ( rdf(Prep,token:lemma,literal(for)),
 	     rdf(Pobj,dep:infmod,_)).
-modifiers1(Root,Prep) :-
+modifiers1(Root,Comp) :-
 	rdf(Root,basic:prep,Prep),
 	rdf(Prep,basic:pcomp,Comp),
 	\+ effect(Comp,Root,_), % exclude purpose relations

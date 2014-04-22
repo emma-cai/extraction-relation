@@ -130,7 +130,7 @@ rule6:: isa(A18, "hibernation") -> example(E4, A18), isa(E4, "prepare"), agent(E
 english(rule7, "A hand lens is used to view objects in more detail").
 rule7:: isa(A3, "A hand lens") -> purpose(A3, E7), isa(E7, "view"), agent(E7, A3), object(E7, A8), isa(A8, "objects"), in(E7, "more detail").
 english(rule8, "A hand lens is used to view objects in more detail").
-rule8:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), in(E7, "more detail") -> purpose(A3, E7), .
+rule8:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), in(E7, "more detail") -> purpose(A3, E7).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -547,7 +547,7 @@ rule29:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
 english(rule30, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
 rule30:: isa(A6, "sweat") -> example(A6, E14), isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A6), to(E14, "hot temperatures").
 english(rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule31:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A6), isa(A6, "sweat"), to(E14, "hot temperatures") -> example(A6, E14), .
+rule31:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A6), isa(A6, "sweat"), to(E14, "hot temperatures") -> example(A6, E14).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -989,7 +989,7 @@ rule52:: isa(A15, "camouflage") -> example(A3, A15), isa(A3, "The white fur of a
 english(rule53, "When plants and animals die decomposers help return nutrients to the food chain").
 rule53:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain").
 english(rule54, "When plants and animals die decomposers help return nutrients to the food chain").
-rule54:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9), .
+rule54:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), to(E9, "the food chain") -> purpose(A7, E9).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

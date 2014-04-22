@@ -211,7 +211,7 @@
 <http://aristo.allenai.org/id#8.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#8.1> ;
-	pred:arg "\"by breathing\"" ;
+	pred:by "\"breathing\"" ;
 	pred:isa "\"take in\"" ;
 	pred:object <http://aristo.allenai.org/id#8.4> .
 <http://aristo.allenai.org/id#8.4>
@@ -2103,7 +2103,7 @@
 <http://aristo.allenai.org/id#127.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#127.1> ;
-	pred:arg "\"from being eaten\"" ;
+	pred:from "\"being eaten\"" ;
 	pred:isa "\"protect\"" ;
 	pred:object <http://aristo.allenai.org/id#127.7> .
 <http://aristo.allenai.org/id#127.7>
@@ -2583,7 +2583,7 @@
 <http://aristo.allenai.org/id#159.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#159.1> ;
-	pred:arg "\"by breathing\"" ;
+	pred:by "\"breathing\"" ;
 	pred:isa "\"do\"" ;
 	pred:object <http://aristo.allenai.org/id#159.3> .
 <http://aristo.allenai.org/id#159.3>
@@ -2658,9 +2658,9 @@
 <http://aristo.allenai.org/id#165.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#165.2> ;
-	pred:arg "\"out of the body\"" ;
 	pred:isa "\"send\"" ;
 	pred:object <http://aristo.allenai.org/id#165.6> ;
+	pred:out "\"of the body\"" ;
 	rel:when <http://aristo.allenai.org/id#165.13> .
 <http://aristo.allenai.org/id#165.6>
 	a <entity> ;
@@ -3934,7 +3934,7 @@
 <http://aristo.allenai.org/id#226.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#226.1> ;
-	pred:arg "\"before doing so\"" ;
+	pred:before "\"doing so\"" ;
 	pred:isa "\"eat\"" ;
 	pred:object <http://aristo.allenai.org/id#226.11> ;
 	rel:effect <http://aristo.allenai.org/id#226.15> .
@@ -4112,8 +4112,8 @@
 <http://aristo.allenai.org/id#242.12>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#242.9> ;
-	pred:arg "\"Depending on how the organism lives\"" ,
-		 "\"to help it[an organism 's] survive\"" ;
+	pred:arg "\"to help it[an organism 's] survive\"" ;
+	pred:depend "\"on how the organism lives\"" ;
 	pred:isa "\"adapt\"" ;
 	rel:effect <http://aristo.allenai.org/id#242.16> .
 <http://aristo.allenai.org/id#242.9>
@@ -4132,8 +4132,8 @@
 <http://aristo.allenai.org/id#242.12>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#242.11> ;
-	pred:arg "\"Depending on how the organism lives\"" ,
-		 "\"to help it[an organism 's] survive\"" ;
+	pred:arg "\"to help it[an organism 's] survive\"" ;
+	pred:depend "\"on how the organism lives\"" ;
 	pred:isa "\"adapt\"" ;
 	rel:effect <http://aristo.allenai.org/id#242.16> .
 <http://aristo.allenai.org/id#125.4>
@@ -5375,7 +5375,7 @@
 	pred:isa "\"germs\"" .
 <http://aristo.allenai.org/id#351.9>
 	a <event> ;
-	pred:arg "\"from growing\"" ;
+	pred:from "\"growing\"" ;
 	pred:isa "\"prevent\"" ;
 	pred:object <http://aristo.allenai.org/id#351.10> .
 <http://aristo.allenai.org/id#351.2>
@@ -5392,7 +5392,7 @@
 	pred:isa "\"bacteria\"" .
 <http://aristo.allenai.org/id#351.9>
 	a <event> ;
-	pred:arg "\"from growing\"" ;
+	pred:from "\"growing\"" ;
 	pred:isa "\"prevent\"" ;
 	pred:object <http://aristo.allenai.org/id#351.12> .
 <http://aristo.allenai.org/id#352.1>
@@ -5455,7 +5455,7 @@
 	rel:requirement <http://aristo.allenai.org/id#356.11> .
 <http://aristo.allenai.org/id#356.11>
 	a <event> ;
-	pred:arg "\"from creating an infection disease\"" ;
+	pred:from "\"creating an infection disease\"" ;
 	pred:isa "\"prevent\"" ;
 	pred:object <http://aristo.allenai.org/id#356.13> .
 <http://aristo.allenai.org/id#356.13>
@@ -5607,8 +5607,8 @@
 <http://aristo.allenai.org/id#366.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#366.14> ;
-	pred:arg "\"out of your body\"" ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:out "\"of your body\"" .
 <http://aristo.allenai.org/id#366.14>
 	a <entity> ;
 	pred:isa "\"the blood\"" .
@@ -5628,8 +5628,8 @@
 <http://aristo.allenai.org/id#366.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#366.14> ;
-	pred:arg "\"out of your body\"" ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:out "\"of your body\"" .
 <http://aristo.allenai.org/id#366.21>
 	a <entity> ;
 	pred:isa "\"which\"" ;
@@ -7348,10 +7348,10 @@
 <http://aristo.allenai.org/id#463.16>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#27.11> ;
-	pred:arg "\"rather\"" ,
-		 "\"than living at the site where they[humans] are made\"" ;
+	pred:arg "\"rather\"" ;
 	pred:isa "\"bring\"" ;
 	pred:object <http://aristo.allenai.org/id#463.17> ;
+	pred:than "\"living at the site where they[humans] are made\"" ;
 	pred:to "\"them[humans]\"" .
 <http://aristo.allenai.org/id#463.17>
 	a <entity> ;
@@ -7374,10 +7374,10 @@
 <http://aristo.allenai.org/id#463.16>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#27.11> ;
-	pred:arg "\"rather\"" ,
-		 "\"than living at the site where they[humans] are made\"" ;
+	pred:arg "\"rather\"" ;
 	pred:isa "\"bring\"" ;
 	pred:object <http://aristo.allenai.org/id#463.19> ;
+	pred:than "\"living at the site where they[humans] are made\"" ;
 	pred:to "\"them[humans]\"" .
 <http://aristo.allenai.org/id#463.19>
 	a <entity> ;
@@ -7400,10 +7400,10 @@
 <http://aristo.allenai.org/id#463.16>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#27.11> ;
-	pred:arg "\"rather\"" ,
-		 "\"than living at the site where they[humans] are made\"" ;
+	pred:arg "\"rather\"" ;
 	pred:isa "\"bring\"" ;
 	pred:object <http://aristo.allenai.org/id#463.23> ;
+	pred:than "\"living at the site where they[humans] are made\"" ;
 	pred:to "\"them[humans]\"" .
 <http://aristo.allenai.org/id#463.23>
 	a <entity> ;
@@ -8656,7 +8656,7 @@
 <http://aristo.allenai.org/id#589.20>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#589.17> ;
-	pred:arg "\"as in the diagram below\"" ;
+	pred:as "\"in the diagram below\"" ;
 	pred:isa "\"be\"" ;
 	pred:object <http://aristo.allenai.org/id#589.21> ;
 	rel:when <http://aristo.allenai.org/id#589.8> .
@@ -9697,7 +9697,7 @@
 <http://aristo.allenai.org/id#657.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#657.1> ;
-	pred:arg "\"based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun\"" ;
+	pred:base "\"on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun\"" ;
 	pred:isa "\"measure\"" ;
 	pred:object <http://aristo.allenai.org/id#657.3> .
 <http://aristo.allenai.org/id#657.3>
@@ -9713,7 +9713,7 @@
 <http://aristo.allenai.org/id#657.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#657.1> ;
-	pred:arg "\"based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun\"" ;
+	pred:base "\"on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun\"" ;
 	pred:isa "\"measure\"" ;
 	pred:object <http://aristo.allenai.org/id#657.3> .
 <http://aristo.allenai.org/id#657.3>
@@ -9984,7 +9984,7 @@
 <http://aristo.allenai.org/id#699.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#699.2> ;
-	pred:arg "\"from reaching Earth\"" ;
+	pred:from "\"reaching Earth\"" ;
 	pred:isa "\"block\"" ;
 	pred:object <http://aristo.allenai.org/id#699.7> .
 <http://aristo.allenai.org/id#699.7>
@@ -10210,9 +10210,9 @@
 <http://aristo.allenai.org/id#722.2>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#722.1> ;
-	pred:arg "\"of how hot or cold the air is\"" ;
 	pred:isa "\"be\"" ;
-	pred:object <http://aristo.allenai.org/id#722.4> .
+	pred:object <http://aristo.allenai.org/id#722.4> ;
+	pred:of "\"how hot or cold the air is\"" .
 <http://aristo.allenai.org/id#722.4>
 	a <entity> ;
 	pred:isa "\"a measure\"" .
@@ -10567,7 +10567,7 @@
 <http://aristo.allenai.org/id#745.6>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#743.10> ;
-	pred:arg "\"as to what might happen the next day\"" ;
+	pred:as "\"to what might happen the next day\"" ;
 	pred:isa "\"make\"" ;
 	pred:object <http://aristo.allenai.org/id#745.7> .
 <http://aristo.allenai.org/id#745.7>
@@ -15675,9 +15675,9 @@
 	pred:isa "\"the sun 's light\"" .
 <http://aristo.allenai.org/id#1105.17>
 	a <event> ;
-	pred:arg "\"off of the moon\"" ;
 	pred:isa "\"reflect\"" ;
 	pred:object <http://aristo.allenai.org/id#1105.15> ;
+	pred:off "\"of the moon\"" ;
 	rel:effect <http://aristo.allenai.org/id#1105.5> .
 <http://aristo.allenai.org/id#1105.5>
 	a <event> ;

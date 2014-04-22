@@ -59,6 +59,8 @@ entity_id(Entity,Id) :-
 	(Id-_-_ = Entity ; Id-_ = Entity ; Id = Entity),
 	!.
 
+write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
+	write_inf_relation(Top,Ent,Rel,Tuple).
 write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	atom(Entity),
 	entity_id(Subj,E),
@@ -108,18 +110,21 @@ write_inf_relation0(Top,Left,Rel,Right) :-
 	gensym(rule,Id),
 	write_inf_rule_text(Top,Id),
 	format('~w:: ', [Id]),
-	write_inf_tuple(Left,[],LeftTriples),
-	format(' -> ~w(~w, ~w), ', Rel),
-	write_inf_tuple(Right,LeftTriples,_),
+	write_inf_tuple(Left,[],LeftTriples,true),
+	format(' -> ~w(~w, ~w)', Rel),
+	write_inf_tuple(Right,LeftTriples,_,false),
 	write('.'), nl.
 
-write_inf_tuple(GraphId,Remove,Triples) :-
+write_inf_tuple(GraphId,Remove,Triples,First) :-
 	findall([S,P,O],
 		(rdf(S,P,O,GraphId),
 		 \+ rdf_global_id(rdf:type,P)),
 		Ts),
 	subtract(Ts,Remove,Triples),
-	write_rdf_list(Triples,GraphId).
+	( Triples = []
+	; ( (First = true ; write(', ')),
+	   write_rdf_list(Triples,GraphId)) ),
+	!.
 
 write_inf_simple_tuple(Root,Tuple) :-
 	inf_tuple(Tuple,Id),
@@ -136,7 +141,7 @@ write_inf_simple_tuple0(Root,GraphId) :-
 	write_rdf(S,pred:isa,O,GraphId),
 	write(' -> '),
 	% write rest
-	write_inf_tuple(GraphId,[[S,_,O]],_),
+	write_inf_tuple(GraphId,[[S,_,O]],_,true),
 	write('.'), nl,
 	fail.
 write_inf_simple_tuple0(_,GraphId) :-
@@ -213,9 +218,12 @@ inf_mods(V, [Pobj|Rest]) :-
 inf_mods(V, [Prep|Rest]) :-
 	prep(Mod,Prep),
 	rdf(V,PrepRel,Mod),
-	atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
+	( (atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
+	   NewP = P)
+	; (atom_concat('http://nlp.stanford.edu/dep/prepc_',PC,PrepRel),
+	   NewP = PC) ),
 	!,
-	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
+	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
 	text_mod(Mod, Text),
 	rdf_assert(V,NewPrepRel,literal(Text),V),
 	inf_mods(V, Rest).

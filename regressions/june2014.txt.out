@@ -1552,7 +1552,7 @@ rule81:: isa(E9, "bring"), agent(E9, A6), isa(A6, "our bodies"), object(E9, A10)
 english(rule82, "A hand lens is used to view objects in more detail").
 rule82:: isa(A3, "A hand lens") -> purpose(A3, E7), isa(E7, "view"), agent(E7, A3), object(E7, A8), isa(A8, "objects"), in(E7, "more detail").
 english(rule83, "A hand lens is used to view objects in more detail").
-rule83:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), in(E7, "more detail") -> purpose(A3, E7), .
+rule83:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), in(E7, "more detail") -> purpose(A3, E7).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
