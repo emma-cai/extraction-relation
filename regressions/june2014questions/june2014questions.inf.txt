@@ -1,713 +1,720 @@
-% "Magnetism"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
-english(june2014.q01.a1.rule1, "Magnetism causes the ball to fall to the ground").
-june2014.q01.a1.rule1:: isa(A1, "Magnetism") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
-english(june2014.q01.a1.rule2, "Magnetism causes the ball to fall to the ground").
-june2014.q01.a1.rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Magnetism").
+% ("A student" "drop" "a ball")
+english(june2014.q01.a1.rule1, "A student drops a ball").
+june2014.q01.a1.rule1:: isa(E3S1, "drop") -> agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1), isa(A5S1, "a ball").
+english(june2014.q01.a1.rule2, "A student drops a ball").
+june2014.q01.a1.rule2:: isa(A2S1, "A student") -> isa(E3S1, "drop"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "a ball").
+english(june2014.q01.a1.rule3, "A student drops a ball").
+june2014.q01.a1.rule3:: isa(A5S1, "a ball") -> isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1).
+% "Magnetism"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
+english(june2014.q01.a1.rule4, "Magnetism causes the ball[a ball] to fall to the ground").
+june2014.q01.a1.rule4:: isa(A1S2, "Magnetism") -> cause(A1S2, E6S2), isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2).
+english(june2014.q01.a1.rule5, "Magnetism causes the ball[a ball] to fall to the ground").
+june2014.q01.a1.rule5:: isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2) -> cause(A1S2, E6S2), isa(A1S2, "Magnetism").
 % ("A student" "drop" "a ball")
 english(june2014.q01.a2.rule1, "A student drops a ball").
-june2014.q01.a2.rule1:: isa(E3, "drop") -> agent(E3, A2), isa(A2, "A student"), object(E3, A5), isa(A5, "a ball").
+june2014.q01.a2.rule1:: isa(E3S1, "drop") -> agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1), isa(A5S1, "a ball").
 english(june2014.q01.a2.rule2, "A student drops a ball").
-june2014.q01.a2.rule2:: isa(A2, "A student") -> isa(E3, "drop"), agent(E3, A2), object(E3, A5), isa(A5, "a ball").
+june2014.q01.a2.rule2:: isa(A2S1, "A student") -> isa(E3S1, "drop"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "a ball").
 english(june2014.q01.a2.rule3, "A student drops a ball").
-june2014.q01.a2.rule3:: isa(A5, "a ball") -> isa(E3, "drop"), agent(E3, A2), isa(A2, "A student"), object(E3, A5).
-% "Electricity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
-english(june2014.q01.a2.rule4, "Electricity causes the ball to fall to the ground").
-june2014.q01.a2.rule4:: isa(A1, "Electricity") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
-english(june2014.q01.a2.rule5, "Electricity causes the ball to fall to the ground").
-june2014.q01.a2.rule5:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Electricity").
-% "Friction"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
-english(june2014.q01.a3.rule1, "Friction causes the ball to fall to the ground").
-june2014.q01.a3.rule1:: isa(A1, "Friction") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
-english(june2014.q01.a3.rule2, "Friction causes the ball to fall to the ground").
-june2014.q01.a3.rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Friction").
+june2014.q01.a2.rule3:: isa(A5S1, "a ball") -> isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1).
+% "Electricity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
+english(june2014.q01.a2.rule4, "Electricity causes the ball[a ball] to fall to the ground").
+june2014.q01.a2.rule4:: isa(A1S2, "Electricity") -> cause(A1S2, E6S2), isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2).
+english(june2014.q01.a2.rule5, "Electricity causes the ball[a ball] to fall to the ground").
+june2014.q01.a2.rule5:: isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2) -> cause(A1S2, E6S2), isa(A1S2, "Electricity").
+% "Friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
+english(june2014.q01.a3.rule1, "Friction causes the ball[a ball] to fall to the ground").
+june2014.q01.a3.rule1:: isa(A1S2, "Friction") -> cause(A1S2, E6S2), isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2).
+english(june2014.q01.a3.rule2, "Friction causes the ball[a ball] to fall to the ground").
+june2014.q01.a3.rule2:: isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2) -> cause(A1S2, E6S2), isa(A1S2, "Friction").
 % ("A student" "drop" "a ball")
 english(june2014.q01.a4.rule1, "A student drops a ball").
-june2014.q01.a4.rule1:: isa(E3, "drop") -> agent(E3, A2), isa(A2, "A student"), object(E3, A5), isa(A5, "a ball").
+june2014.q01.a4.rule1:: isa(E3S1, "drop") -> agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1), isa(A5S1, "a ball").
 english(june2014.q01.a4.rule2, "A student drops a ball").
-june2014.q01.a4.rule2:: isa(A2, "A student") -> isa(E3, "drop"), agent(E3, A2), object(E3, A5), isa(A5, "a ball").
+june2014.q01.a4.rule2:: isa(A2S1, "A student") -> isa(E3S1, "drop"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "a ball").
 english(june2014.q01.a4.rule3, "A student drops a ball").
-june2014.q01.a4.rule3:: isa(A5, "a ball") -> isa(E3, "drop"), agent(E3, A2), isa(A2, "A student"), object(E3, A5).
-% "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
-english(june2014.q01.a4.rule4, "Gravity causes the ball to fall to the ground").
-june2014.q01.a4.rule4:: isa(A1, "Gravity") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
-english(june2014.q01.a4.rule5, "Gravity causes the ball to fall to the ground").
-june2014.q01.a4.rule5:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Gravity").
+june2014.q01.a4.rule3:: isa(A5S1, "a ball") -> isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1).
+% "Gravity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
+english(june2014.q01.a4.rule4, "Gravity causes the ball[a ball] to fall to the ground").
+june2014.q01.a4.rule4:: isa(A1S2, "Gravity") -> cause(A1S2, E6S2), isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2).
+english(june2014.q01.a4.rule5, "Gravity causes the ball[a ball] to fall to the ground").
+june2014.q01.a4.rule5:: isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2) -> cause(A1S2, E6S2), isa(A1S2, "Gravity").
 % "Magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(june2014.q02.a1.rule1, "Magnetism causes rocks to roll downhill").
-june2014.q02.a1.rule1:: isa(A1, "Magnetism") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
+june2014.q02.a1.rule1:: isa(A1S1, "Magnetism") -> cause(A1S1, E5S1), isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1).
 english(june2014.q02.a1.rule2, "Magnetism causes rocks to roll downhill").
-june2014.q02.a1.rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Magnetism").
+june2014.q02.a1.rule2:: isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1) -> cause(A1S1, E5S1), isa(A1S1, "Magnetism").
 % "Gravity"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(june2014.q02.a2.rule1, "Gravity causes rocks to roll downhill").
-june2014.q02.a2.rule1:: isa(A1, "Gravity") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
+june2014.q02.a2.rule1:: isa(A1S1, "Gravity") -> cause(A1S1, E5S1), isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1).
 english(june2014.q02.a2.rule2, "Gravity causes rocks to roll downhill").
-june2014.q02.a2.rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Gravity").
+june2014.q02.a2.rule2:: isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1) -> cause(A1S1, E5S1), isa(A1S1, "Gravity").
 % "Friction"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(june2014.q02.a3.rule1, "Friction causes rocks to roll downhill").
-june2014.q02.a3.rule1:: isa(A1, "Friction") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
+june2014.q02.a3.rule1:: isa(A1S1, "Friction") -> cause(A1S1, E5S1), isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1).
 english(june2014.q02.a3.rule2, "Friction causes rocks to roll downhill").
-june2014.q02.a3.rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Friction").
+june2014.q02.a3.rule2:: isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1) -> cause(A1S1, E5S1), isa(A1S1, "Friction").
 % "Erosion"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(june2014.q02.a4.rule1, "Erosion causes rocks to roll downhill").
-june2014.q02.a4.rule1:: isa(A1, "Erosion") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
+june2014.q02.a4.rule1:: isa(A1S1, "Erosion") -> cause(A1S1, E5S1), isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1).
 english(june2014.q02.a4.rule2, "Erosion causes rocks to roll downhill").
-june2014.q02.a4.rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Erosion").
+june2014.q02.a4.rule2:: isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1) -> cause(A1S1, E5S1), isa(A1S1, "Erosion").
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 english(june2014.q03.a1.rule1, "A fox grows thicker fur as a season changes").
-june2014.q03.a1.rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a1.rule1:: isa(E3S1, "grow") -> agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a1.rule2, "A fox grows thicker fur as a season changes").
-june2014.q03.a1.rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a1.rule2:: isa(A2S1, "A fox") -> isa(E3S1, "grow"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a1.rule3, "A fox grows thicker fur as a season changes").
-june2014.q03.a1.rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a1.rule3:: isa(A5S1, "thicker fur") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a1.rule4, "A fox grows thicker fur as a season changes").
-june2014.q03.a1.rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, A9).
-% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "escape" "from predators")
-english(june2014.q03.a1.rule5, "This adaptation helps the fox to escape from predators").
-june2014.q03.a1.rule5:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "escape"), agent(E7, A5), object(E7, A8), isa(A8, "from predators").
-english(june2014.q03.a1.rule6, "This adaptation helps the fox to escape from predators").
-june2014.q03.a1.rule6:: isa(E7, "escape"), agent(E7, A5), isa(A5, "the fox"), object(E7, A8), isa(A8, "from predators") -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+june2014.q03.a1.rule4:: isa(A9S1, "a season changes") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), as(E3S1, A9S1).
+% ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "escape" "from predators")
+english(june2014.q03.a1.rule5, "This adaptation helps the fox[A fox] to escape from predators").
+june2014.q03.a1.rule5:: isa(E2S2, "adapt"), agent(E2S2, A2S1), isa(A2S1, "A fox") -> purpose(E2S2, E7S2), isa(E7S2, "escape"), agent(E7S2, A2S1), object(E7S2, A8S2), isa(A8S2, "from predators").
+english(june2014.q03.a1.rule6, "This adaptation helps the fox[A fox] to escape from predators").
+june2014.q03.a1.rule6:: isa(E7S2, "escape"), agent(E7S2, A2S1), isa(A2S1, "A fox"), object(E7S2, A8S2), isa(A8S2, "from predators") -> purpose(E2S2, E7S2), isa(E2S2, "adapt"), agent(E2S2, A2S1).
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 english(june2014.q03.a2.rule1, "A fox grows thicker fur as a season changes").
-june2014.q03.a2.rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a2.rule1:: isa(E3S1, "grow") -> agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a2.rule2, "A fox grows thicker fur as a season changes").
-june2014.q03.a2.rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a2.rule2:: isa(A2S1, "A fox") -> isa(E3S1, "grow"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a2.rule3, "A fox grows thicker fur as a season changes").
-june2014.q03.a2.rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a2.rule3:: isa(A5S1, "thicker fur") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a2.rule4, "A fox grows thicker fur as a season changes").
-june2014.q03.a2.rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, A9).
-% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "find" "food")
-english(june2014.q03.a2.rule5, "This adaptation helps the fox to find food").
-june2014.q03.a2.rule5:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "find"), agent(E7, A5), object(E7, A8), isa(A8, "food").
-english(june2014.q03.a2.rule6, "This adaptation helps the fox to find food").
-june2014.q03.a2.rule6:: isa(E7, "find"), agent(E7, A5), isa(A5, "the fox"), object(E7, A8), isa(A8, "food") -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+june2014.q03.a2.rule4:: isa(A9S1, "a season changes") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), as(E3S1, A9S1).
+% ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "find" "food")
+english(june2014.q03.a2.rule5, "This adaptation helps the fox[A fox] to find food").
+june2014.q03.a2.rule5:: isa(E2S2, "adapt"), agent(E2S2, A2S1), isa(A2S1, "A fox") -> purpose(E2S2, E7S2), isa(E7S2, "find"), agent(E7S2, A2S1), object(E7S2, A8S2), isa(A8S2, "food").
+english(june2014.q03.a2.rule6, "This adaptation helps the fox[A fox] to find food").
+june2014.q03.a2.rule6:: isa(E7S2, "find"), agent(E7S2, A2S1), isa(A2S1, "A fox"), object(E7S2, A8S2), isa(A8S2, "food") -> purpose(E2S2, E7S2), isa(E2S2, "adapt"), agent(E2S2, A2S1).
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 english(june2014.q03.a3.rule1, "A fox grows thicker fur as a season changes").
-june2014.q03.a3.rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a3.rule1:: isa(E3S1, "grow") -> agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a3.rule2, "A fox grows thicker fur as a season changes").
-june2014.q03.a3.rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a3.rule2:: isa(A2S1, "A fox") -> isa(E3S1, "grow"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a3.rule3, "A fox grows thicker fur as a season changes").
-june2014.q03.a3.rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a3.rule3:: isa(A5S1, "thicker fur") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a3.rule4, "A fox grows thicker fur as a season changes").
-june2014.q03.a3.rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, A9).
-% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "keep" "" [ "warmer" ] )
-english(june2014.q03.a3.rule5, "This adaptation helps the fox to keep warmer").
-june2014.q03.a3.rule5:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "keep"), agent(E7, A5), isa(A8, "warmer"), arg(E7, A8).
-english(june2014.q03.a3.rule6, "This adaptation helps the fox to keep warmer").
-june2014.q03.a3.rule6:: isa(E7, "keep"), agent(E7, A5), isa(A5, "the fox"), isa(A8, "warmer"), arg(E7, A8) -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+june2014.q03.a3.rule4:: isa(A9S1, "a season changes") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), as(E3S1, A9S1).
+% ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "keep" "" [ "warmer" ] )
+english(june2014.q03.a3.rule5, "This adaptation helps the fox[A fox] to keep warmer").
+june2014.q03.a3.rule5:: isa(E2S2, "adapt"), agent(E2S2, A2S1), isa(A2S1, "A fox") -> purpose(E2S2, E7S2), isa(E7S2, "keep"), agent(E7S2, A2S1), isa(A8S2, "warmer"), arg(E7S2, A8S2).
+english(june2014.q03.a3.rule6, "This adaptation helps the fox[A fox] to keep warmer").
+june2014.q03.a3.rule6:: isa(E7S2, "keep"), agent(E7S2, A2S1), isa(A2S1, "A fox"), isa(A8S2, "warmer"), arg(E7S2, A8S2) -> purpose(E2S2, E7S2), isa(E2S2, "adapt"), agent(E2S2, A2S1).
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 english(june2014.q03.a4.rule1, "A fox grows thicker fur as a season changes").
-june2014.q03.a4.rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a4.rule1:: isa(E3S1, "grow") -> agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a4.rule2, "A fox grows thicker fur as a season changes").
-june2014.q03.a4.rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a4.rule2:: isa(A2S1, "A fox") -> isa(E3S1, "grow"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a4.rule3, "A fox grows thicker fur as a season changes").
-june2014.q03.a4.rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A9, "a season changes"), as(E3, A9).
+june2014.q03.a4.rule3:: isa(A5S1, "thicker fur") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(june2014.q03.a4.rule4, "A fox grows thicker fur as a season changes").
-june2014.q03.a4.rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, A9).
-% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "grow" "" [ "stronger" ] )
-english(june2014.q03.a4.rule5, "This adaptation helps the fox to grow stronger").
-june2014.q03.a4.rule5:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "grow"), agent(E7, A5), isa(A8, "stronger"), arg(E7, A8).
-english(june2014.q03.a4.rule6, "This adaptation helps the fox to grow stronger").
-june2014.q03.a4.rule6:: isa(E7, "grow"), agent(E7, A5), isa(A5, "the fox"), isa(A8, "stronger"), arg(E7, A8) -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+june2014.q03.a4.rule4:: isa(A9S1, "a season changes") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), as(E3S1, A9S1).
+% ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "grow" "" [ "stronger" ] )
+english(june2014.q03.a4.rule5, "This adaptation helps the fox[A fox] to grow stronger").
+june2014.q03.a4.rule5:: isa(E2S2, "adapt"), agent(E2S2, A2S1), isa(A2S1, "A fox") -> purpose(E2S2, E7S2), isa(E7S2, "grow"), agent(E7S2, A2S1), isa(A8S2, "stronger"), arg(E7S2, A8S2).
+english(june2014.q03.a4.rule6, "This adaptation helps the fox[A fox] to grow stronger").
+june2014.q03.a4.rule6:: isa(E7S2, "grow"), agent(E7S2, A2S1), isa(A2S1, "A fox"), isa(A8S2, "stronger"), arg(E7S2, A8S2) -> purpose(E2S2, E7S2), isa(E2S2, "adapt"), agent(E2S2, A2S1).
 % ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
 english(june2014.q04.a1.rule1, "Exercising every day is an example of a good health habit").
-june2014.q04.a1.rule1:: isa(E1, "exercise"), isa(A3, "every day"), arg(E1, A3) -> example(E1, A11), isa(A11, "a good health habit").
+june2014.q04.a1.rule1:: isa(E1S1, "exercise"), isa(A3S1, "every day"), arg(E1S1, A3S1) -> example(E1S1, A11S1), isa(A11S1, "a good health habit").
 english(june2014.q04.a1.rule2, "Exercising every day is an example of a good health habit").
-june2014.q04.a1.rule2:: isa(A11, "a good health habit") -> example(E1, A11), isa(E1, "exercise"), isa(A3, "every day"), arg(E1, A3).
-% "Watching television"	"example of"/EXAMPLE	"a good health habit"
-english(june2014.q04.a2.rule1, "Watching television is an example of a good health habit").
-june2014.q04.a2.rule1:: isa(A2, "Watching television") -> example(A2, A10), isa(A10, "a good health habit").
-english(june2014.q04.a2.rule2, "Watching television is an example of a good health habit").
-june2014.q04.a2.rule2:: isa(A10, "a good health habit") -> example(A2, A10), isa(A2, "Watching television").
+june2014.q04.a1.rule2:: isa(A11S1, "a good health habit") -> example(E1S1, A11S1), isa(E1S1, "exercise"), isa(A3S1, "every day"), arg(E1S1, A3S1).
+% "Watching television"	"example[Watching television] of"/EXAMPLE	"a good health habit"
+english(june2014.q04.a2.rule1, "Watching television is an example[Watching television] of a good health habit").
+june2014.q04.a2.rule1:: isa(A2S1, "Watching television") -> example(A2S1, A10S1), isa(A10S1, "a good health habit").
+english(june2014.q04.a2.rule2, "Watching television is an example[Watching television] of a good health habit").
+june2014.q04.a2.rule2:: isa(A10S1, "a good health habit") -> example(A2S1, A10S1), isa(A2S1, "Watching television").
 % "Smoking cigarettes"	"example of"/EXAMPLE	"a good health habit"
 english(june2014.q04.a3.rule1, "Smoking cigarettes is an example of a good health habit").
-june2014.q04.a3.rule1:: isa(A2, "Smoking cigarettes") -> example(A2, A10), isa(A10, "a good health habit").
+june2014.q04.a3.rule1:: isa(A2S1, "Smoking cigarettes") -> example(A2S1, A10S1), isa(A10S1, "a good health habit").
 english(june2014.q04.a3.rule2, "Smoking cigarettes is an example of a good health habit").
-june2014.q04.a3.rule2:: isa(A10, "a good health habit") -> example(A2, A10), isa(A2, "Smoking cigarettes").
-% "Eating candy"	"example of"/EXAMPLE	"a good health habit"
-english(june2014.q04.a4.rule1, "Eating candy is an example of a good health habit").
-june2014.q04.a4.rule1:: isa(A2, "Eating candy") -> example(A2, A10), isa(A10, "a good health habit").
-english(june2014.q04.a4.rule2, "Eating candy is an example of a good health habit").
-june2014.q04.a4.rule2:: isa(A10, "a good health habit") -> example(A2, A10), isa(A2, "Eating candy").
-% "A decomposer"	"is"/EXAMPLE	("an organism" "use" "water" [ "to make food" ] )
-english(june2014.q05.a1.rule1, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule1:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "use"), agent(E7, A5), isa(A5, "an organism"), object(E7, A8), isa(A8, "water"), isa(A12, "to make food"), arg(E7, A12), isa(A2, A5).
-english(june2014.q05.a1.rule2, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule2:: isa(E7, "use"), agent(E7, A5), isa(A5, "an organism"), object(E7, A8), isa(A8, "water"), isa(A12, "to make food"), arg(E7, A12) -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
-% "A decomposer"	"is"/EXAMPLE	("an organism" "use" "sunlight" [ "to make food" ] )
-english(june2014.q05.a1.rule3, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "use"), agent(E7, A5), isa(A5, "an organism"), object(E7, A10), isa(A10, "sunlight"), isa(A12, "to make food"), arg(E7, A12), isa(A2, A5).
-english(june2014.q05.a1.rule4, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule4:: isa(E7, "use"), agent(E7, A5), isa(A5, "an organism"), object(E7, A10), isa(A10, "sunlight"), isa(A12, "to make food"), arg(E7, A12) -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
-% "A decomposer"	"is"/EXAMPLE	"an organism"
-english(june2014.q05.a1.rule5, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule5:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
-english(june2014.q05.a1.rule6, "A decomposer is an organism that uses water and sunlight to make food").
-june2014.q05.a1.rule6:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
-% "A decomposer"	"is"/EXAMPLE	("an organism" "hunt" "animals")
-english(june2014.q05.a2.rule1, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule1:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "hunt"), agent(E7, A5), isa(A5, "an organism"), object(E7, A10), isa(A10, "animals"), isa(A2, A5).
-english(june2014.q05.a2.rule2, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule2:: isa(E7, "hunt"), agent(E7, A5), isa(A5, "an organism"), object(E7, A10), isa(A10, "animals") -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
-% "A decomposer"	"is"/EXAMPLE	("an organism" "eat" "")
-english(june2014.q05.a2.rule3, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(E9, "eat"), agent(E9, A5), isa(A5, "an organism"), isa(A2, A5).
-english(june2014.q05.a2.rule4, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule4:: isa(E9, "eat"), agent(E9, A5), isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
-% "A decomposer"	"is"/EXAMPLE	"an organism"
-english(june2014.q05.a2.rule5, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule5:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
-english(june2014.q05.a2.rule6, "A decomposer is an organism that hunts and eats animals").
-june2014.q05.a2.rule6:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
-% "A decomposer"	"is"/EXAMPLE	("an organism" "break" "")
-english(june2014.q05.a4.rule1, "A decomposer is an organism that breaks down dead plants and animals").
-june2014.q05.a4.rule1:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "break"), agent(E7, A5), isa(A5, "an organism"), isa(A2, A5).
-english(june2014.q05.a4.rule2, "A decomposer is an organism that breaks down dead plants and animals").
-june2014.q05.a4.rule2:: isa(E7, "break"), agent(E7, A5), isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
-% "A decomposer"	"is"/EXAMPLE	"an organism"
-english(june2014.q05.a4.rule3, "A decomposer is an organism that breaks down dead plants and animals").
-june2014.q05.a4.rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
-english(june2014.q05.a4.rule4, "A decomposer is an organism that breaks down dead plants and animals").
-june2014.q05.a4.rule4:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
+june2014.q04.a3.rule2:: isa(A10S1, "a good health habit") -> example(A2S1, A10S1), isa(A2S1, "Smoking cigarettes").
+% "Eating candy"	"example[Eating candy] of"/EXAMPLE	"a good health habit"
+english(june2014.q04.a4.rule1, "Eating candy is an example[Eating candy] of a good health habit").
+june2014.q04.a4.rule1:: isa(A2S1, "Eating candy") -> example(A2S1, A10S1), isa(A10S1, "a good health habit").
+english(june2014.q04.a4.rule2, "Eating candy is an example[Eating candy] of a good health habit").
+june2014.q04.a4.rule2:: isa(A10S1, "a good health habit") -> example(A2S1, A10S1), isa(A2S1, "Eating candy").
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "use" "water" [ "to make food" ] )
+english(june2014.q05.a1.rule1, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule1:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E7S1, "use"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A8S1), isa(A8S1, "water"), isa(A12S1, "to make food"), arg(E7S1, A12S1), isa(A2S1, A5S1).
+english(june2014.q05.a1.rule2, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule2:: isa(E7S1, "use"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A8S1), isa(A8S1, "water"), isa(A12S1, "to make food"), arg(E7S1, A12S1) -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "use" "sunlight" [ "to make food" ] )
+english(june2014.q05.a1.rule3, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule3:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E7S1, "use"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A10S1), isa(A10S1, "sunlight"), isa(A12S1, "to make food"), arg(E7S1, A12S1), isa(A2S1, A5S1).
+english(june2014.q05.a1.rule4, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule4:: isa(E7S1, "use"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A10S1), isa(A10S1, "sunlight"), isa(A12S1, "to make food"), arg(E7S1, A12S1) -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
+% "A decomposer"	"is"/EXAMPLE	"an organism[A decomposer]"
+english(june2014.q05.a1.rule5, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule5:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(A5S1, "an organism[A decomposer]").
+english(june2014.q05.a1.rule6, "A decomposer is an organism[A decomposer] that uses water and sunlight to make food").
+june2014.q05.a1.rule6:: isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer").
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "hunt" "animals")
+english(june2014.q05.a2.rule1, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule1:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E7S1, "hunt"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A10S1), isa(A10S1, "animals"), isa(A2S1, A5S1).
+english(june2014.q05.a2.rule2, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule2:: isa(E7S1, "hunt"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), object(E7S1, A10S1), isa(A10S1, "animals") -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "eat" "")
+english(june2014.q05.a2.rule3, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule3:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E9S1, "eat"), agent(E9S1, A5S1), isa(A5S1, "an organism[A decomposer]"), isa(A2S1, A5S1).
+english(june2014.q05.a2.rule4, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule4:: isa(E9S1, "eat"), agent(E9S1, A5S1), isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
+% "A decomposer"	"is"/EXAMPLE	"an organism[A decomposer]"
+english(june2014.q05.a2.rule5, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule5:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(A5S1, "an organism[A decomposer]").
+english(june2014.q05.a2.rule6, "A decomposer is an organism[A decomposer] that hunts and eats animals").
+june2014.q05.a2.rule6:: isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer").
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "break" "")
+english(june2014.q05.a4.rule1, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+june2014.q05.a4.rule1:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E7S1, "break"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), isa(A2S1, A5S1).
+english(june2014.q05.a4.rule2, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+june2014.q05.a4.rule2:: isa(E7S1, "break"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
+% "A decomposer"	"is"/EXAMPLE	"an organism[A decomposer]"
+english(june2014.q05.a4.rule3, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+june2014.q05.a4.rule3:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(A5S1, "an organism[A decomposer]").
+english(june2014.q05.a4.rule4, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+june2014.q05.a4.rule4:: isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer").
 % "Sunlight"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(june2014.q06.a1.rule1, "Sunlight is the main source of energy for the water cycle").
-june2014.q06.a1.rule1:: isa(A1, "Sunlight") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
+june2014.q06.a1.rule1:: isa(A1S1, "Sunlight") -> example(A1S1, A5S1), isa(A5S1, "the main source of energy for the water cycle").
 english(june2014.q06.a1.rule2, "Sunlight is the main source of energy for the water cycle").
-june2014.q06.a1.rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Sunlight").
-% "Electricity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
-english(june2014.q06.a2.rule1, "Electricity is the main source of energy for the water cycle").
-june2014.q06.a2.rule1:: isa(A1, "Electricity") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
-english(june2014.q06.a2.rule2, "Electricity is the main source of energy for the water cycle").
-june2014.q06.a2.rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Electricity").
+june2014.q06.a1.rule2:: isa(A5S1, "the main source of energy for the water cycle") -> example(A1S1, A5S1), isa(A1S1, "Sunlight").
+% "Electricity"	"is"/EXAMPLE	"the main source[Electricity] of energy for the water cycle"
+english(june2014.q06.a2.rule1, "Electricity is the main source[Electricity] of energy for the water cycle").
+june2014.q06.a2.rule1:: isa(A1S1, "Electricity") -> example(A1S1, A5S1), isa(A5S1, "the main source[Electricity] of energy for the water cycle").
+english(june2014.q06.a2.rule2, "Electricity is the main source[Electricity] of energy for the water cycle").
+june2014.q06.a2.rule2:: isa(A5S1, "the main source[Electricity] of energy for the water cycle") -> example(A1S1, A5S1), isa(A1S1, "Electricity").
 % "Erosion"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(june2014.q06.a3.rule1, "Erosion is the main source of energy for the water cycle").
-june2014.q06.a3.rule1:: isa(A1, "Erosion") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
+june2014.q06.a3.rule1:: isa(A1S1, "Erosion") -> example(A1S1, A5S1), isa(A5S1, "the main source of energy for the water cycle").
 english(june2014.q06.a3.rule2, "Erosion is the main source of energy for the water cycle").
-june2014.q06.a3.rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Erosion").
+june2014.q06.a3.rule2:: isa(A5S1, "the main source of energy for the water cycle") -> example(A1S1, A5S1), isa(A1S1, "Erosion").
 % "Gravity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(june2014.q06.a4.rule1, "Gravity is the main source of energy for the water cycle").
-june2014.q06.a4.rule1:: isa(A1, "Gravity") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
+june2014.q06.a4.rule1:: isa(A1S1, "Gravity") -> example(A1S1, A5S1), isa(A5S1, "the main source of energy for the water cycle").
 english(june2014.q06.a4.rule2, "Gravity is the main source of energy for the water cycle").
-june2014.q06.a4.rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Gravity").
+june2014.q06.a4.rule2:: isa(A5S1, "the main source of energy for the water cycle") -> example(A1S1, A5S1), isa(A1S1, "Gravity").
 % ("A student"/?x "use" "a thermometer")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(june2014.q07.a1.rule1, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
-june2014.q07.a1.rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a thermometer") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A11), isa(A11, "10 milliliters of water").
+june2014.q07.a1.rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a thermometer") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water").
 english(june2014.q07.a1.rule2, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
-june2014.q07.a1.rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11), isa(A11, "10 milliliters of water") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a thermometer").
+june2014.q07.a1.rule2:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a thermometer").
 % ("A student"/?x "use" "a thermometer")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(june2014.q07.a1.rule3, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
-june2014.q07.a1.rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a thermometer") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A13), isa(A13, "mL").
+june2014.q07.a1.rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a thermometer") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A13S1), isa(A13S1, "mL").
 english(june2014.q07.a1.rule4, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
-june2014.q07.a1.rule4:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A13), isa(A13, "mL") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a thermometer").
+june2014.q07.a1.rule4:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A13S1), isa(A13S1, "mL") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a thermometer").
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(june2014.q07.a2.rule1, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-june2014.q07.a2.rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A12), isa(A12, "10 milliliters of water").
+june2014.q07.a2.rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder") -> effect(E4S1, E9S1), isa(E9S1, "measure"), agent(E9S1, A2S1), object(E9S1, A12S1), isa(A12S1, "10 milliliters of water").
 english(june2014.q07.a2.rule2, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-june2014.q07.a2.rule2:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A12), isa(A12, "10 milliliters of water") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+june2014.q07.a2.rule2:: isa(E9S1, "measure"), agent(E9S1, A2S1), isa(A2S1, "A student"), object(E9S1, A12S1), isa(A12S1, "10 milliliters of water") -> effect(E4S1, E9S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder").
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(june2014.q07.a2.rule3, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-june2014.q07.a2.rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A14), isa(A14, "mL").
+june2014.q07.a2.rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder") -> effect(E4S1, E9S1), isa(E9S1, "measure"), agent(E9S1, A2S1), object(E9S1, A14S1), isa(A14S1, "mL").
 english(june2014.q07.a2.rule4, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-june2014.q07.a2.rule4:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A14), isa(A14, "mL") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+june2014.q07.a2.rule4:: isa(E9S1, "measure"), agent(E9S1, A2S1), isa(A2S1, "A student"), object(E9S1, A14S1), isa(A14S1, "mL") -> effect(E4S1, E9S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder").
 % ("A student"/?x "use" "pan balance")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(june2014.q07.a3.rule1, "A student should use pan balance to measure exactly 10 milliliters mL of water").
-june2014.q07.a3.rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "pan balance") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A11), isa(A11, "10 milliliters of water").
+june2014.q07.a3.rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "pan balance") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water").
 english(june2014.q07.a3.rule2, "A student should use pan balance to measure exactly 10 milliliters mL of water").
-june2014.q07.a3.rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11), isa(A11, "10 milliliters of water") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "pan balance").
+june2014.q07.a3.rule2:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "pan balance").
 % ("A student"/?x "use" "pan balance")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(june2014.q07.a3.rule3, "A student should use pan balance to measure exactly 10 milliliters mL of water").
-june2014.q07.a3.rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "pan balance") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A13), isa(A13, "mL").
+june2014.q07.a3.rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "pan balance") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A13S1), isa(A13S1, "mL").
 english(june2014.q07.a3.rule4, "A student should use pan balance to measure exactly 10 milliliters mL of water").
-june2014.q07.a3.rule4:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A13), isa(A13, "mL") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "pan balance").
+june2014.q07.a3.rule4:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A13S1), isa(A13S1, "mL") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "pan balance").
 % ("A student"/?x "use" "a ruler")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(june2014.q07.a4.rule1, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-june2014.q07.a4.rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a ruler") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A11), isa(A11, "10 milliliters of water").
+june2014.q07.a4.rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a ruler") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water").
 english(june2014.q07.a4.rule2, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-june2014.q07.a4.rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11), isa(A11, "10 milliliters of water") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a ruler").
+june2014.q07.a4.rule2:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a ruler").
 % ("A student"/?x "use" "a ruler")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(june2014.q07.a4.rule3, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-june2014.q07.a4.rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a ruler") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A13), isa(A13, "mL").
+june2014.q07.a4.rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a ruler") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A13S1), isa(A13S1, "mL").
 english(june2014.q07.a4.rule4, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-june2014.q07.a4.rule4:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A13), isa(A13, "mL") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a ruler").
+june2014.q07.a4.rule4:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A13S1), isa(A13S1, "mL") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a ruler").
 % "Talking activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 english(june2014.q08.a1.rule1, "Talking activity is necessary for humans to maintain good health").
-june2014.q08.a1.rule1:: isa(A2, "Talking activity") -> requirement(A2, E8), isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health").
+june2014.q08.a1.rule1:: isa(A2S1, "Talking activity") -> requirement(A2S1, E8S1), isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health").
 english(june2014.q08.a1.rule2, "Talking activity is necessary for humans to maintain good health").
-june2014.q08.a1.rule2:: isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health") -> requirement(A2, E8), isa(A2, "Talking activity").
+june2014.q08.a1.rule2:: isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health") -> requirement(A2S1, E8S1), isa(A2S1, "Talking activity").
 % ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 english(june2014.q08.a2.rule1, "Reading is necessary for humans to maintain good health").
-june2014.q08.a2.rule1:: isa(E1, "read"), agent(E1, A5), isa(A5, "humans") -> requirement(E1, E7), isa(E7, "maintain"), agent(E7, A5), object(E7, A9), isa(A9, "good health").
+june2014.q08.a2.rule1:: isa(E1S1, "read"), agent(E1S1, A5S1), isa(A5S1, "humans") -> requirement(E1S1, E7S1), isa(E7S1, "maintain"), agent(E7S1, A5S1), object(E7S1, A9S1), isa(A9S1, "good health").
 english(june2014.q08.a2.rule2, "Reading is necessary for humans to maintain good health").
-june2014.q08.a2.rule2:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), isa(A9, "good health") -> requirement(E1, E7), isa(E1, "read"), agent(E1, A5).
+june2014.q08.a2.rule2:: isa(E7S1, "maintain"), agent(E7S1, A5S1), isa(A5S1, "humans"), object(E7S1, A9S1), isa(A9S1, "good health") -> requirement(E1S1, E7S1), isa(E1S1, "read"), agent(E1S1, A5S1).
 % ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 english(june2014.q08.a3.rule1, "Resting is necessary for humans to maintain good health").
-june2014.q08.a3.rule1:: isa(E1, "rest"), agent(E1, A5), isa(A5, "humans") -> requirement(E1, E7), isa(E7, "maintain"), agent(E7, A5), object(E7, A9), isa(A9, "good health").
+june2014.q08.a3.rule1:: isa(E1S1, "rest"), agent(E1S1, A5S1), isa(A5S1, "humans") -> requirement(E1S1, E7S1), isa(E7S1, "maintain"), agent(E7S1, A5S1), object(E7S1, A9S1), isa(A9S1, "good health").
 english(june2014.q08.a3.rule2, "Resting is necessary for humans to maintain good health").
-june2014.q08.a3.rule2:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), isa(A9, "good health") -> requirement(E1, E7), isa(E1, "rest"), agent(E1, A5).
+june2014.q08.a3.rule2:: isa(E7S1, "maintain"), agent(E7S1, A5S1), isa(A5S1, "humans"), object(E7S1, A9S1), isa(A9S1, "good health") -> requirement(E1S1, E7S1), isa(E1S1, "rest"), agent(E1S1, A5S1).
 % "Driving activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 english(june2014.q08.a4.rule1, "Driving activity is necessary for humans to maintain good health").
-june2014.q08.a4.rule1:: isa(A2, "Driving activity") -> requirement(A2, E8), isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health").
+june2014.q08.a4.rule1:: isa(A2S1, "Driving activity") -> requirement(A2S1, E8S1), isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health").
 english(june2014.q08.a4.rule2, "Driving activity is necessary for humans to maintain good health").
-june2014.q08.a4.rule2:: isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health") -> requirement(A2, E8), isa(A2, "Driving activity").
+june2014.q08.a4.rule2:: isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health") -> requirement(A2S1, E8S1), isa(A2S1, "Driving activity").
 % ("an animal"/?x "migrate" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 english(june2014.q09.a1.rule1, "Migration often helps an animal attract a mate").
-june2014.q09.a1.rule1:: isa(E1, "migrate"), agent(E1, A5), isa(A5, "an animal") -> purpose(E1, E6), isa(E6, "attract"), agent(E6, A5), object(E6, A8), isa(A8, "a mate").
+june2014.q09.a1.rule1:: isa(E1S1, "migrate"), agent(E1S1, A5S1), isa(A5S1, "an animal") -> purpose(E1S1, E6S1), isa(E6S1, "attract"), agent(E6S1, A5S1), object(E6S1, A8S1), isa(A8S1, "a mate").
 english(june2014.q09.a1.rule2, "Migration often helps an animal attract a mate").
-june2014.q09.a1.rule2:: isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate") -> purpose(E1, E6), isa(E1, "migrate"), agent(E1, A5).
+june2014.q09.a1.rule2:: isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate") -> purpose(E1S1, E6S1), isa(E1S1, "migrate"), agent(E1S1, A5S1).
 % ("an animal"/?x "hibernate" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 english(june2014.q09.a2.rule1, "Hibernation often helps an animal attract a mate").
-june2014.q09.a2.rule1:: isa(E1, "hibernate"), agent(E1, A5), isa(A5, "an animal") -> purpose(E1, E6), isa(E6, "attract"), agent(E6, A5), object(E6, A8), isa(A8, "a mate").
+june2014.q09.a2.rule1:: isa(E1S1, "hibernate"), agent(E1S1, A5S1), isa(A5S1, "an animal") -> purpose(E1S1, E6S1), isa(E6S1, "attract"), agent(E6S1, A5S1), object(E6S1, A8S1), isa(A8S1, "a mate").
 english(june2014.q09.a2.rule2, "Hibernation often helps an animal attract a mate").
-june2014.q09.a2.rule2:: isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate") -> purpose(E1, E6), isa(E1, "hibernate"), agent(E1, A5).
+june2014.q09.a2.rule2:: isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate") -> purpose(E1S1, E6S1), isa(E1S1, "hibernate"), agent(E1S1, A5S1).
 % "Camouflage"	"helps"/PURPOSE	("an animal" "attract" "a mate")
 english(june2014.q09.a3.rule1, "Camouflage often helps an animal attract a mate").
-june2014.q09.a3.rule1:: isa(A1, "Camouflage") -> purpose(A1, E6), isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate").
+june2014.q09.a3.rule1:: isa(A1S1, "Camouflage") -> purpose(A1S1, E6S1), isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate").
 english(june2014.q09.a3.rule2, "Camouflage often helps an animal attract a mate").
-june2014.q09.a3.rule2:: isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate") -> purpose(A1, E6), isa(A1, "Camouflage").
+june2014.q09.a3.rule2:: isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate") -> purpose(A1S1, E6S1), isa(A1S1, "Camouflage").
 % "Coloration"	"helps"/PURPOSE	("an animal" "attract" "a mate")
 english(june2014.q09.a4.rule1, "Coloration often helps an animal attract a mate").
-june2014.q09.a4.rule1:: isa(A1, "Coloration") -> purpose(A1, E6), isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate").
+june2014.q09.a4.rule1:: isa(A1S1, "Coloration") -> purpose(A1S1, E6S1), isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate").
 english(june2014.q09.a4.rule2, "Coloration often helps an animal attract a mate").
-june2014.q09.a4.rule2:: isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate") -> purpose(A1, E6), isa(A1, "Coloration").
+june2014.q09.a4.rule2:: isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate") -> purpose(A1S1, E6S1), isa(A1S1, "Coloration").
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"producers"
 english(june2014.q11.a1.rule1, "Since green plants make their[green plants] own food they[green plants] are called producers").
-june2014.q11.a1.rule1:: isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food") -> example(E4, A12), isa(A12, "producers").
+june2014.q11.a1.rule1:: isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food") -> example(E4S1, A12S1), isa(A12S1, "producers").
 english(june2014.q11.a1.rule2, "Since green plants make their[green plants] own food they[green plants] are called producers").
-june2014.q11.a1.rule2:: isa(A12, "producers") -> example(E4, A12), isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food").
+june2014.q11.a1.rule2:: isa(A12S1, "producers") -> example(E4S1, A12S1), isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food").
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"predators"
 english(june2014.q11.a2.rule1, "Since green plants make their[green plants] own food they[green plants] are called predators").
-june2014.q11.a2.rule1:: isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food") -> example(E4, A12), isa(A12, "predators").
+june2014.q11.a2.rule1:: isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food") -> example(E4S1, A12S1), isa(A12S1, "predators").
 english(june2014.q11.a2.rule2, "Since green plants make their[green plants] own food they[green plants] are called predators").
-june2014.q11.a2.rule2:: isa(A12, "predators") -> example(E4, A12), isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food").
+june2014.q11.a2.rule2:: isa(A12S1, "predators") -> example(E4S1, A12S1), isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food").
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"decomposers"
 english(june2014.q11.a4.rule1, "Since green plants make their[green plants] own food they[green plants] are called decomposers").
-june2014.q11.a4.rule1:: isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food") -> example(E4, A12), isa(A12, "decomposers").
+june2014.q11.a4.rule1:: isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food") -> example(E4S1, A12S1), isa(A12S1, "decomposers").
 english(june2014.q11.a4.rule2, "Since green plants make their[green plants] own food they[green plants] are called decomposers").
-june2014.q11.a4.rule2:: isa(A12, "decomposers") -> example(E4, A12), isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food").
+june2014.q11.a4.rule2:: isa(A12S1, "decomposers") -> example(E4S1, A12S1), isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food").
 % ("Green plants"/?x "get" "the energy")	"need to"/EFFECT	("Green plants"/?x "make" "" [ "food from soil" ] )
 english(june2014.q12.a1.rule1, "Green plants get the energy they[Green plants] need to make food from soil").
-june2014.q12.a1.rule1:: isa(E3, "get"), agent(E3, A2), isa(A2, "Green plants"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E9), isa(E9, "make"), agent(E9, A2), isa(A10, "food from soil"), arg(E9, A10).
+june2014.q12.a1.rule1:: isa(E3S1, "get"), agent(E3S1, A2S1), isa(A2S1, "Green plants"), object(E3S1, A5S1), isa(A5S1, "the energy") -> effect(E3S1, E9S1), isa(E9S1, "make"), agent(E9S1, A2S1), isa(A10S1, "food from soil"), arg(E9S1, A10S1).
 english(june2014.q12.a1.rule2, "Green plants get the energy they[Green plants] need to make food from soil").
-june2014.q12.a1.rule2:: isa(E9, "make"), agent(E9, A2), isa(A2, "Green plants"), isa(A10, "food from soil"), arg(E9, A10) -> effect(E3, E9), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+june2014.q12.a1.rule2:: isa(E9S1, "make"), agent(E9S1, A2S1), isa(A2S1, "Green plants"), isa(A10S1, "food from soil"), arg(E9S1, A10S1) -> effect(E3S1, E9S1), isa(E3S1, "get"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "the energy").
 % ("Green plants"/?x "get" "the energy")	"need to"/EFFECT	("Green plants"/?x "make" "" [ "food from air" ] )
 english(june2014.q12.a2.rule1, "Green plants get the energy they[Green plants] need to make food from air").
-june2014.q12.a2.rule1:: isa(E3, "get"), agent(E3, A2), isa(A2, "Green plants"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E9), isa(E9, "make"), agent(E9, A2), isa(A10, "food from air"), arg(E9, A10).
+june2014.q12.a2.rule1:: isa(E3S1, "get"), agent(E3S1, A2S1), isa(A2S1, "Green plants"), object(E3S1, A5S1), isa(A5S1, "the energy") -> effect(E3S1, E9S1), isa(E9S1, "make"), agent(E9S1, A2S1), isa(A10S1, "food from air"), arg(E9S1, A10S1).
 english(june2014.q12.a2.rule2, "Green plants get the energy they[Green plants] need to make food from air").
-june2014.q12.a2.rule2:: isa(E9, "make"), agent(E9, A2), isa(A2, "Green plants"), isa(A10, "food from air"), arg(E9, A10) -> effect(E3, E9), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+june2014.q12.a2.rule2:: isa(E9S1, "make"), agent(E9S1, A2S1), isa(A2S1, "Green plants"), isa(A10S1, "food from air"), arg(E9S1, A10S1) -> effect(E3S1, E9S1), isa(E3S1, "get"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "the energy").
 % ("Green plants"/?x "get" "the energy")	"need to"/EFFECT	("Green plants"/?x "make" "food" [ "from sunlight" ] )
 english(june2014.q12.a3.rule1, "Green plants get the energy they[Green plants] need to make food from sunlight").
-june2014.q12.a3.rule1:: isa(E3, "get"), agent(E3, A2), isa(A2, "Green plants"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E9), isa(E9, "make"), agent(E9, A2), object(E9, A10), isa(A10, "food"), isa(A12, "sunlight"), from(E9, A12).
+june2014.q12.a3.rule1:: isa(E3S1, "get"), agent(E3S1, A2S1), isa(A2S1, "Green plants"), object(E3S1, A5S1), isa(A5S1, "the energy") -> effect(E3S1, E9S1), isa(E9S1, "make"), agent(E9S1, A2S1), object(E9S1, A10S1), isa(A10S1, "food"), isa(A12S1, "sunlight"), from(E9S1, A12S1).
 english(june2014.q12.a3.rule2, "Green plants get the energy they[Green plants] need to make food from sunlight").
-june2014.q12.a3.rule2:: isa(E9, "make"), agent(E9, A2), isa(A2, "Green plants"), object(E9, A10), isa(A10, "food"), isa(A12, "sunlight"), from(E9, A12) -> effect(E3, E9), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+june2014.q12.a3.rule2:: isa(E9S1, "make"), agent(E9S1, A2S1), isa(A2S1, "Green plants"), object(E9S1, A10S1), isa(A10S1, "food"), isa(A12S1, "sunlight"), from(E9S1, A12S1) -> effect(E3S1, E9S1), isa(E3S1, "get"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "the energy").
 % ("Green plants"/?x "get" "the energy")	"need to"/EFFECT	("Green plants"/?x "make" "" [ "food from water" ] )
 english(june2014.q12.a4.rule1, "Green plants get the energy they[Green plants] need to make food from water").
-june2014.q12.a4.rule1:: isa(E3, "get"), agent(E3, A2), isa(A2, "Green plants"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E9), isa(E9, "make"), agent(E9, A2), isa(A10, "food from water"), arg(E9, A10).
+june2014.q12.a4.rule1:: isa(E3S1, "get"), agent(E3S1, A2S1), isa(A2S1, "Green plants"), object(E3S1, A5S1), isa(A5S1, "the energy") -> effect(E3S1, E9S1), isa(E9S1, "make"), agent(E9S1, A2S1), isa(A10S1, "food from water"), arg(E9S1, A10S1).
 english(june2014.q12.a4.rule2, "Green plants get the energy they[Green plants] need to make food from water").
-june2014.q12.a4.rule2:: isa(E9, "make"), agent(E9, A2), isa(A2, "Green plants"), isa(A10, "food from water"), arg(E9, A10) -> effect(E3, E9), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+june2014.q12.a4.rule2:: isa(E9S1, "make"), agent(E9S1, A2S1), isa(A2S1, "Green plants"), isa(A10S1, "food from water"), arg(E9S1, A10S1) -> effect(E3S1, E9S1), isa(E3S1, "get"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "the energy").
 % "producers"	"help"/PURPOSE	("producers" "return" "nutrients" [ "to the food chain" ] )
 english(june2014.q13.a1.rule1, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule1:: isa(A7, "producers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a1.rule1:: isa(A7S1, "producers") -> purpose(A7S1, E9S1), isa(E9S1, "return"), agent(E9S1, A7S1), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 english(june2014.q13.a1.rule2, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
+june2014.q13.a1.rule2:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "producers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> purpose(A7S1, E9S1).
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(june2014.q13.a1.rule3, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+june2014.q13.a1.rule3:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "producers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants").
 english(june2014.q13.a1.rule4, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a1.rule4:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "producers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(june2014.q13.a1.rule5, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+june2014.q13.a1.rule5:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "producers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals").
 english(june2014.q13.a1.rule6, "When plants and animals die producers help return nutrients to the food chain").
-june2014.q13.a1.rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "producers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a1.rule6:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "producers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 english(june2014.q13.a2.rule1, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule1:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a2.rule1:: isa(A7S1, "decomposers") -> purpose(A7S1, E9S1), isa(E9S1, "return"), agent(E9S1, A7S1), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 english(june2014.q13.a2.rule2, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
+june2014.q13.a2.rule2:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "decomposers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> purpose(A7S1, E9S1).
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(june2014.q13.a2.rule3, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+june2014.q13.a2.rule3:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "decomposers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants").
 english(june2014.q13.a2.rule4, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a2.rule4:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "decomposers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(june2014.q13.a2.rule5, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+june2014.q13.a2.rule5:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "decomposers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals").
 english(june2014.q13.a2.rule6, "When plants and animals die decomposers help return nutrients to the food chain").
-june2014.q13.a2.rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a2.rule6:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "decomposers"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % "predators"	"help"/PURPOSE	("predators" "return" "nutrients" [ "to the food chain" ] )
 english(june2014.q13.a3.rule1, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule1:: isa(A7, "predators") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a3.rule1:: isa(A7S1, "predators") -> purpose(A7S1, E9S1), isa(E9S1, "return"), agent(E9S1, A7S1), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 english(june2014.q13.a3.rule2, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
+june2014.q13.a3.rule2:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> purpose(A7S1, E9S1).
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(june2014.q13.a3.rule3, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+june2014.q13.a3.rule3:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants").
 english(june2014.q13.a3.rule4, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a3.rule4:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(june2014.q13.a3.rule5, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+june2014.q13.a3.rule5:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals").
 english(june2014.q13.a3.rule6, "When plants and animals die predators help return nutrients to the food chain").
-june2014.q13.a3.rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+june2014.q13.a3.rule6:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 % ("plants"/?x "prey" "help")	"When"/WHEN	("plants"/?x "die" "")
 english(june2014.q13.a4.rule1, "When plants and animals die prey help return nutrients to the food chain").
-june2014.q13.a4.rule1:: isa(E7, "prey"), agent(E7, A2), isa(A2, "plants"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A2).
+june2014.q13.a4.rule1:: isa(E7S1, "prey"), agent(E7S1, A2S1), isa(A2S1, "plants"), object(E7S1, A8S1), isa(A8S1, "help") -> when(E7S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1).
 english(june2014.q13.a4.rule2, "When plants and animals die prey help return nutrients to the food chain").
-june2014.q13.a4.rule2:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E7, E5), isa(E7, "prey"), agent(E7, A2), object(E7, A8), isa(A8, "help").
+june2014.q13.a4.rule2:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E7S1, E5S1), isa(E7S1, "prey"), agent(E7S1, A2S1), object(E7S1, A8S1), isa(A8S1, "help").
 % ("animals"/?x "prey" "help")	"When"/WHEN	("animals"/?x "die" "")
 english(june2014.q13.a4.rule3, "When plants and animals die prey help return nutrients to the food chain").
-june2014.q13.a4.rule3:: isa(E7, "prey"), agent(E7, A4), isa(A4, "animals"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A4).
+june2014.q13.a4.rule3:: isa(E7S1, "prey"), agent(E7S1, A4S1), isa(A4S1, "animals"), object(E7S1, A8S1), isa(A8S1, "help") -> when(E7S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1).
 english(june2014.q13.a4.rule4, "When plants and animals die prey help return nutrients to the food chain").
-june2014.q13.a4.rule4:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E7, E5), isa(E7, "prey"), agent(E7, A4), object(E7, A8), isa(A8, "help").
+june2014.q13.a4.rule4:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E7S1, E5S1), isa(E7S1, "prey"), agent(E7S1, A4S1), object(E7S1, A8S1), isa(A8S1, "help").
 % ("Animals" "get" "energy" [ "for growth from air", "for repair" ] )
 english(june2014.q14.a1.rule1, "Animals get energy for growth and repair from air").
-june2014.q14.a1.rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from air"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a1.rule1:: isa(E2S1, "get") -> agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from air"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a1.rule2, "Animals get energy for growth and repair from air").
-june2014.q14.a1.rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from air"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a1.rule2:: isa(A1S1, "Animals") -> isa(E2S1, "get"), agent(E2S1, A1S1), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from air"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a1.rule3, "Animals get energy for growth and repair from air").
-june2014.q14.a1.rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from air"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a1.rule3:: isa(A3S1, "energy") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A5S1, "growth from air"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a1.rule4, "Animals get energy for growth and repair from air").
-june2014.q14.a1.rule4:: isa(A5, "growth from air") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a1.rule4:: isa(A5S1, "growth from air") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a1.rule5, "Animals get energy for growth and repair from air").
-june2014.q14.a1.rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from air"), for(E2, A5), for(E2, A7).
+june2014.q14.a1.rule5:: isa(A7S1, "repair") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from air"), for(E2S1, A5S1), for(E2S1, A7S1).
 % ("Animals" "get" "energy" [ "for growth from soil", "for repair" ] )
 english(june2014.q14.a2.rule1, "Animals get energy for growth and repair from soil").
-june2014.q14.a2.rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a2.rule1:: isa(E2S1, "get") -> agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a2.rule2, "Animals get energy for growth and repair from soil").
-june2014.q14.a2.rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a2.rule2:: isa(A1S1, "Animals") -> isa(E2S1, "get"), agent(E2S1, A1S1), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a2.rule3, "Animals get energy for growth and repair from soil").
-june2014.q14.a2.rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a2.rule3:: isa(A3S1, "energy") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a2.rule4, "Animals get energy for growth and repair from soil").
-june2014.q14.a2.rule4:: isa(A5, "growth from soil") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a2.rule4:: isa(A5S1, "growth from soil") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a2.rule5, "Animals get energy for growth and repair from soil").
-june2014.q14.a2.rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), for(E2, A7).
+june2014.q14.a2.rule5:: isa(A7S1, "repair") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), for(E2S1, A7S1).
 % ("Animals" "get" "energy" [ "for growth from food", "for repair" ] )
 english(june2014.q14.a3.rule1, "Animals get energy for growth and repair from food").
-june2014.q14.a3.rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a3.rule1:: isa(E2S1, "get") -> agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from food"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a3.rule2, "Animals get energy for growth and repair from food").
-june2014.q14.a3.rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a3.rule2:: isa(A1S1, "Animals") -> isa(E2S1, "get"), agent(E2S1, A1S1), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from food"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a3.rule3, "Animals get energy for growth and repair from food").
-june2014.q14.a3.rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a3.rule3:: isa(A3S1, "energy") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A5S1, "growth from food"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a3.rule4, "Animals get energy for growth and repair from food").
-june2014.q14.a3.rule4:: isa(A5, "growth from food") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a3.rule4:: isa(A5S1, "growth from food") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a3.rule5, "Animals get energy for growth and repair from food").
-june2014.q14.a3.rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), for(E2, A7).
+june2014.q14.a3.rule5:: isa(A7S1, "repair") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from food"), for(E2S1, A5S1), for(E2S1, A7S1).
 % ("Animals" "get" "energy" [ "for growth from water", "for repair" ] )
 english(june2014.q14.a4.rule1, "Animals get energy for growth and repair from water").
-june2014.q14.a4.rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a4.rule1:: isa(E2S1, "get") -> agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from water"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a4.rule2, "Animals get energy for growth and repair from water").
-june2014.q14.a4.rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a4.rule2:: isa(A1S1, "Animals") -> isa(E2S1, "get"), agent(E2S1, A1S1), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from water"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a4.rule3, "Animals get energy for growth and repair from water").
-june2014.q14.a4.rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from water"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a4.rule3:: isa(A3S1, "energy") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A5S1, "growth from water"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a4.rule4, "Animals get energy for growth and repair from water").
-june2014.q14.a4.rule4:: isa(A5, "growth from water") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+june2014.q14.a4.rule4:: isa(A5S1, "growth from water") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(june2014.q14.a4.rule5, "Animals get energy for growth and repair from water").
-june2014.q14.a4.rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from water"), for(E2, A5), for(E2, A7).
+june2014.q14.a4.rule5:: isa(A7S1, "repair") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from water"), for(E2S1, A5S1), for(E2S1, A7S1).
 % ("A dog" "open" "its mouth")
 english(june2014.q15.a1.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a1.rule1:: isa(E3, "open") -> agent(E3, A2), isa(A2, "A dog"), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a1.rule1:: isa(E3S1, "open") -> agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a1.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a1.rule2:: isa(A2, "A dog") -> isa(E3, "open"), agent(E3, A2), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a1.rule2:: isa(A2S1, "A dog") -> isa(E3S1, "open"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a1.rule3, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a1.rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog"), object(E3, A5).
+june2014.q15.a1.rule3:: isa(A5S1, "its mouth") -> isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1).
 % ("A human 's body" "produce" "sweat")
 english(june2014.q15.a1.rule4, "A human 's body produces sweat").
-june2014.q15.a1.rule4:: isa(E5, "produce") -> agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a1.rule4:: isa(E5S2, "produce") -> agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a1.rule5, "A human 's body produces sweat").
-june2014.q15.a1.rule5:: isa(A4, "A human 's body") -> isa(E5, "produce"), agent(E5, A4), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a1.rule5:: isa(A4S2, "A human 's body") -> isa(E5S2, "produce"), agent(E5S2, A4S2), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a1.rule6, "A human 's body produces sweat").
-june2014.q15.a1.rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of drinking water" ] )
-english(june2014.q15.a1.rule7, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(june2014.q15.a1.rule8, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to a shortage of drinking water" ] )
-english(june2014.q15.a1.rule9, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(june2014.q15.a1.rule10, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of drinking water" ] )
-english(june2014.q15.a1.rule11, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(june2014.q15.a1.rule12, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> example(A1, E8).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to a shortage of drinking water" ] )
-english(june2014.q15.a1.rule13, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(june2014.q15.a1.rule14, "These are two ways that organisms may adjust to a shortage of drinking water").
-june2014.q15.a1.rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
+june2014.q15.a1.rule6:: isa(A6S2, "sweat") -> isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of drinking water" ] )
+english(june2014.q15.a1.rule7, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule7:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(june2014.q15.a1.rule8, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule8:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "two ways[These]" [ "to a shortage of drinking water" ] )
+english(june2014.q15.a1.rule9, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule9:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(june2014.q15.a1.rule10, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule10:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of drinking water" ] )
+english(june2014.q15.a1.rule11, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule11:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(june2014.q15.a1.rule12, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule12:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> example(A1S3, E8S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "two ways[These]" [ "to a shortage of drinking water" ] )
+english(june2014.q15.a1.rule13, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule13:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(june2014.q15.a1.rule14, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+june2014.q15.a1.rule14:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> example(A1S3, E8S3), isa(A1S3, "These").
 % ("A dog" "open" "its mouth")
 english(june2014.q15.a2.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a2.rule1:: isa(E3, "open") -> agent(E3, A2), isa(A2, "A dog"), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a2.rule1:: isa(E3S1, "open") -> agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a2.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a2.rule2:: isa(A2, "A dog") -> isa(E3, "open"), agent(E3, A2), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a2.rule2:: isa(A2S1, "A dog") -> isa(E3S1, "open"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a2.rule3, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a2.rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog"), object(E3, A5).
+june2014.q15.a2.rule3:: isa(A5S1, "its mouth") -> isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1).
 % ("A human 's body" "produce" "sweat")
 english(june2014.q15.a2.rule4, "A human 's body produces sweat").
-june2014.q15.a2.rule4:: isa(E5, "produce") -> agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a2.rule4:: isa(E5S2, "produce") -> agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a2.rule5, "A human 's body produces sweat").
-june2014.q15.a2.rule5:: isa(A4, "A human 's body") -> isa(E5, "produce"), agent(E5, A4), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a2.rule5:: isa(A4S2, "A human 's body") -> isa(E5S2, "produce"), agent(E5S2, A4S2), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a2.rule6, "A human 's body produces sweat").
-june2014.q15.a2.rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to cold temperatures" ] )
-english(june2014.q15.a2.rule7, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "cold temperatures"), to(E8, A11).
-english(june2014.q15.a2.rule8, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "cold temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to cold temperatures" ] )
-english(june2014.q15.a2.rule9, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11).
-english(june2014.q15.a2.rule10, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to cold temperatures" ] )
-english(june2014.q15.a2.rule11, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "cold temperatures"), to(E8, A11).
-english(june2014.q15.a2.rule12, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "cold temperatures"), to(E8, A11) -> example(A1, E8).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to cold temperatures" ] )
-english(june2014.q15.a2.rule13, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11).
-english(june2014.q15.a2.rule14, "These are two ways that organisms may adjust to cold temperatures").
-june2014.q15.a2.rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "cold temperatures"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
+june2014.q15.a2.rule6:: isa(A6S2, "sweat") -> isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "These" [ "to cold temperatures" ] )
+english(june2014.q15.a2.rule7, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule7:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a2.rule8, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule8:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "two ways[These]" [ "to cold temperatures" ] )
+english(june2014.q15.a2.rule9, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule9:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a2.rule10, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule10:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "These" [ "to cold temperatures" ] )
+english(june2014.q15.a2.rule11, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule11:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A11S3, "cold temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a2.rule12, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule12:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A1S3, "These"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3) -> example(A1S3, E8S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "two ways[These]" [ "to cold temperatures" ] )
+english(june2014.q15.a2.rule13, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule13:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a2.rule14, "These are two ways[These] that organisms may adjust to cold temperatures").
+june2014.q15.a2.rule14:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "cold temperatures"), to(E8S3, A11S3) -> example(A1S3, E8S3), isa(A1S3, "These").
 % ("A dog" "open" "its mouth")
 english(june2014.q15.a3.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a3.rule1:: isa(E3, "open") -> agent(E3, A2), isa(A2, "A dog"), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a3.rule1:: isa(E3S1, "open") -> agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a3.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a3.rule2:: isa(A2, "A dog") -> isa(E3, "open"), agent(E3, A2), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a3.rule2:: isa(A2S1, "A dog") -> isa(E3S1, "open"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a3.rule3, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a3.rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog"), object(E3, A5).
+june2014.q15.a3.rule3:: isa(A5S1, "its mouth") -> isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1).
 % ("A human 's body" "produce" "sweat")
 english(june2014.q15.a3.rule4, "A human 's body produces sweat").
-june2014.q15.a3.rule4:: isa(E5, "produce") -> agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a3.rule4:: isa(E5S2, "produce") -> agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a3.rule5, "A human 's body produces sweat").
-june2014.q15.a3.rule5:: isa(A4, "A human 's body") -> isa(E5, "produce"), agent(E5, A4), object(E5, A6), isa(A6, "sweat").
+june2014.q15.a3.rule5:: isa(A4S2, "A human 's body") -> isa(E5S2, "produce"), agent(E5S2, A4S2), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(june2014.q15.a3.rule6, "A human 's body produces sweat").
-june2014.q15.a3.rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to hot temperatures" ] )
-english(june2014.q15.a3.rule7, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "hot temperatures"), to(E8, A11).
-english(june2014.q15.a3.rule8, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "hot temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to hot temperatures" ] )
-english(june2014.q15.a3.rule9, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "hot temperatures"), to(E8, A11).
-english(june2014.q15.a3.rule10, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "hot temperatures"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to hot temperatures" ] )
-english(june2014.q15.a3.rule11, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "hot temperatures"), to(E8, A11).
-english(june2014.q15.a3.rule12, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "hot temperatures"), to(E8, A11) -> example(A1, E8).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to hot temperatures" ] )
-english(june2014.q15.a3.rule13, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "hot temperatures"), to(E8, A11).
-english(june2014.q15.a3.rule14, "These are two ways that organisms may adjust to hot temperatures").
-june2014.q15.a3.rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "hot temperatures"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
+june2014.q15.a3.rule6:: isa(A6S2, "sweat") -> isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "These" [ "to hot temperatures" ] )
+english(june2014.q15.a3.rule7, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule7:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a3.rule8, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule8:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "two ways[These]" [ "to hot temperatures" ] )
+english(june2014.q15.a3.rule9, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule9:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a3.rule10, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule10:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "These" [ "to hot temperatures" ] )
+english(june2014.q15.a3.rule11, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule11:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A11S3, "hot temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a3.rule12, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule12:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A1S3, "These"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3) -> example(A1S3, E8S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "two ways[These]" [ "to hot temperatures" ] )
+english(june2014.q15.a3.rule13, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule13:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3).
+english(june2014.q15.a3.rule14, "These are two ways[These] that organisms may adjust to hot temperatures").
+june2014.q15.a3.rule14:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "hot temperatures"), to(E8S3, A11S3) -> example(A1S3, E8S3), isa(A1S3, "These").
 % ("A dog" "open" "its mouth")
 english(june2014.q15.a4.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a4.rule1:: isa(E3, "open") -> agent(E3, A2), isa(A2, "A dog"), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a4.rule1:: isa(E3S1, "open") -> agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a4.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a4.rule2:: isa(A2, "A dog") -> isa(E3, "open"), agent(E3, A2), object(E3, A5), isa(A5, "its mouth").
+june2014.q15.a4.rule2:: isa(A2S1, "A dog") -> isa(E3S1, "open"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(june2014.q15.a4.rule3, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-june2014.q15.a4.rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog"), object(E3, A5).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of food" ] )
-english(june2014.q15.a4.rule4, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule4:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of food"), to(E8, A11).
-english(june2014.q15.a4.rule5, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule5:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of food"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to a shortage of food" ] )
-english(june2014.q15.a4.rule6, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule6:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of food"), to(E8, A11).
-english(june2014.q15.a4.rule7, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule7:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of food"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of food" ] )
-english(june2014.q15.a4.rule8, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule8:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "a shortage of food"), to(E8, A11).
-english(june2014.q15.a4.rule9, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule9:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "a shortage of food"), to(E8, A11) -> example(A1, E8).
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to a shortage of food" ] )
-english(june2014.q15.a4.rule10, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule10:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of food"), to(E8, A11).
-english(june2014.q15.a4.rule11, "These are two ways that organisms may adjust to a shortage of food").
-june2014.q15.a4.rule11:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of food"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
+june2014.q15.a4.rule3:: isa(A5S1, "its mouth") -> isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of food" ] )
+english(june2014.q15.a4.rule4, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule4:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3).
+english(june2014.q15.a4.rule5, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule5:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "two ways[These]" [ "to a shortage of food" ] )
+english(june2014.q15.a4.rule6, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule6:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3).
+english(june2014.q15.a4.rule7, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule7:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of food" ] )
+english(june2014.q15.a4.rule8, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule8:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A11S3, "a shortage of food"), to(E8S3, A11S3).
+english(june2014.q15.a4.rule9, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule9:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A1S3, "These"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3) -> example(A1S3, E8S3).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "two ways[These]" [ "to a shortage of food" ] )
+english(june2014.q15.a4.rule10, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule10:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3).
+english(june2014.q15.a4.rule11, "These are two ways[These] that organisms may adjust to a shortage of food").
+june2014.q15.a4.rule11:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of food"), to(E8S3, A11S3) -> example(A1S3, E8S3), isa(A1S3, "These").
 % ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(june2014.q16.a1.rule1, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-june2014.q16.a1.rule1:: isa(E3, "store"), agent(E3, A2), isa(A2, "A squirrel"), object(E3, A4), isa(A4, "nuts") -> effect(E3, E6), isa(E6, "prepare"), agent(E6, A2), isa(A10, "a seasonal change in the environment"), for(E6, A10).
+june2014.q16.a1.rule1:: isa(E3S1, "store"), agent(E3S1, A2S1), isa(A2S1, "A squirrel"), object(E3S1, A4S1), isa(A4S1, "nuts") -> effect(E3S1, E6S1), isa(E6S1, "prepare"), agent(E6S1, A2S1), isa(A10S1, "a seasonal change in the environment"), for(E6S1, A10S1).
 english(june2014.q16.a1.rule2, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-june2014.q16.a1.rule2:: isa(E6, "prepare"), agent(E6, A2), isa(A2, "A squirrel"), isa(A10, "a seasonal change in the environment"), for(E6, A10) -> effect(E3, E6), isa(E3, "store"), agent(E3, A2), object(E3, A4), isa(A4, "nuts").
+june2014.q16.a1.rule2:: isa(E6S1, "prepare"), agent(E6S1, A2S1), isa(A2S1, "A squirrel"), isa(A10S1, "a seasonal change in the environment"), for(E6S1, A10S1) -> effect(E3S1, E6S1), isa(E3S1, "store"), agent(E3S1, A2S1), object(E3S1, A4S1), isa(A4S1, "nuts").
 % ("A bat"/?x "fly" "A bat" [ "at night" ] )	""/EFFECT	("A bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(june2014.q16.a2.rule1, "A bat flying at night is preparing for a seasonal change in the environment").
-june2014.q16.a2.rule1:: isa(E3, "fly"), agent(E3, A2), isa(A2, "A bat"), object(E3, A2), isa(A5, "night"), at(E3, A5) -> effect(E3, E7), isa(E7, "prepare"), agent(E7, A2), isa(A11, "a seasonal change in the environment"), for(E7, A11).
+june2014.q16.a2.rule1:: isa(E3S1, "fly"), agent(E3S1, A2S1), isa(A2S1, "A bat"), object(E3S1, A2S1), isa(A5S1, "night"), at(E3S1, A5S1) -> effect(E3S1, E7S1), isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1).
 english(june2014.q16.a2.rule2, "A bat flying at night is preparing for a seasonal change in the environment").
-june2014.q16.a2.rule2:: isa(E7, "prepare"), agent(E7, A2), isa(A2, "A bat"), isa(A11, "a seasonal change in the environment"), for(E7, A11) -> effect(E3, E7), isa(E3, "fly"), agent(E3, A2), object(E3, A2), isa(A5, "night"), at(E3, A5).
+june2014.q16.a2.rule2:: isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A2S1, "A bat"), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1) -> effect(E3S1, E7S1), isa(E3S1, "fly"), agent(E3S1, A2S1), object(E3S1, A2S1), isa(A5S1, "night"), at(E3S1, A5S1).
 % ("A bat"/?x "fly" "" [ "at night" ] )	""/EFFECT	("A bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(june2014.q16.a2.rule3, "A bat flying at night is preparing for a seasonal change in the environment").
-june2014.q16.a2.rule3:: isa(E3, "fly"), agent(E3, A2), isa(A2, "A bat"), isa(A5, "night"), at(E3, A5) -> effect(E3, E7), isa(E7, "prepare"), agent(E7, A2), isa(A11, "a seasonal change in the environment"), for(E7, A11).
+june2014.q16.a2.rule3:: isa(E3S1, "fly"), agent(E3S1, A2S1), isa(A2S1, "A bat"), isa(A5S1, "night"), at(E3S1, A5S1) -> effect(E3S1, E7S1), isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1).
 english(june2014.q16.a2.rule4, "A bat flying at night is preparing for a seasonal change in the environment").
-june2014.q16.a2.rule4:: isa(E7, "prepare"), agent(E7, A2), isa(A2, "A bat"), isa(A11, "a seasonal change in the environment"), for(E7, A11) -> effect(E3, E7), isa(E3, "fly"), agent(E3, A2), isa(A5, "night"), at(E3, A5).
+june2014.q16.a2.rule4:: isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A2S1, "A bat"), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1) -> effect(E3S1, E7S1), isa(E3S1, "fly"), agent(E3S1, A2S1), isa(A5S1, "night"), at(E3S1, A5S1).
 % ("An owl"/?x "eat" "a mouse")	""/EFFECT	("An owl"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(june2014.q16.a4.rule1, "An owl eating a mouse is preparing for a seasonal change in the environment").
-june2014.q16.a4.rule1:: isa(E3, "eat"), agent(E3, A2), isa(A2, "An owl"), object(E3, A5), isa(A5, "a mouse") -> effect(E3, E7), isa(E7, "prepare"), agent(E7, A2), isa(A11, "a seasonal change in the environment"), for(E7, A11).
+june2014.q16.a4.rule1:: isa(E3S1, "eat"), agent(E3S1, A2S1), isa(A2S1, "An owl"), object(E3S1, A5S1), isa(A5S1, "a mouse") -> effect(E3S1, E7S1), isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1).
 english(june2014.q16.a4.rule2, "An owl eating a mouse is preparing for a seasonal change in the environment").
-june2014.q16.a4.rule2:: isa(E7, "prepare"), agent(E7, A2), isa(A2, "An owl"), isa(A11, "a seasonal change in the environment"), for(E7, A11) -> effect(E3, E7), isa(E3, "eat"), agent(E3, A2), object(E3, A5), isa(A5, "a mouse").
+june2014.q16.a4.rule2:: isa(E7S1, "prepare"), agent(E7S1, A2S1), isa(A2S1, "An owl"), isa(A11S1, "a seasonal change in the environment"), for(E7S1, A11S1) -> effect(E3S1, E7S1), isa(E3S1, "eat"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "a mouse").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(june2014.q17.a1.rule1, "A student is growing some plants for an experiment").
-june2014.q17.a1.rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a1.rule1:: isa(E4S1, "grow") -> agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a1.rule2, "A student is growing some plants for an experiment").
-june2014.q17.a1.rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a1.rule2:: isa(A2S1, "A student") -> isa(E4S1, "grow"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a1.rule3, "A student is growing some plants for an experiment").
-june2014.q17.a1.rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a1.rule3:: isa(A6S1, "some plants") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a1.rule4, "A student is growing some plants for an experiment").
-june2014.q17.a1.rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
+june2014.q17.a1.rule4:: isa(A9S1, "an experiment") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1).
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 english(june2014.q17.a1.rule5, "She notices small white spots on the leaves").
-june2014.q17.a1.rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a1.rule5:: isa(E2S2, "notify") -> agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a1.rule6, "She notices small white spots on the leaves").
-june2014.q17.a1.rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a1.rule6:: isa(A1S2, "She") -> isa(E2S2, "notify"), agent(E2S2, A1S2), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a1.rule7, "She notices small white spots on the leaves").
-june2014.q17.a1.rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a1.rule7:: isa(A5S2, "small white spots") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a1.rule8, "She notices small white spots on the leaves").
-june2014.q17.a1.rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
-% ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots" ] )
-english(june2014.q17.a1.rule9, "She[She] should use a balance to get a better look at the spots").
-june2014.q17.a1.rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A5), isa(A5, "a balance") -> effect(E3, E7), isa(E7, "get"), agent(E7, A1), isa(A10, "a better look at the spots"), arg(E7, A10).
-english(june2014.q17.a1.rule10, "She[She] should use a balance to get a better look at the spots").
-june2014.q17.a1.rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), isa(A10, "a better look at the spots"), arg(E7, A10) -> effect(E3, E7), isa(E3, "use"), agent(E3, A1), object(E3, A5), isa(A5, "a balance").
+june2014.q17.a1.rule8:: isa(A8S2, "the leaves") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2).
+% ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
+english(june2014.q17.a1.rule9, "She[She] should use a balance to get a better look at the spots[small white spots]").
+june2014.q17.a1.rule9:: isa(E3S3, "use"), agent(E3S3, A1S2), isa(A1S2, "She"), object(E3S3, A5S3), isa(A5S3, "a balance") -> effect(E3S3, E7S3), isa(E7S3, "get"), agent(E7S3, A1S2), isa(A10S3, "a better look at the spots[small white spots]"), arg(E7S3, A10S3).
+english(june2014.q17.a1.rule10, "She[She] should use a balance to get a better look at the spots[small white spots]").
+june2014.q17.a1.rule10:: isa(E7S3, "get"), agent(E7S3, A1S2), isa(A1S2, "She"), isa(A10S3, "a better look at the spots[small white spots]"), arg(E7S3, A10S3) -> effect(E3S3, E7S3), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(A5S3, "a balance").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(june2014.q17.a2.rule1, "A student is growing some plants for an experiment").
-june2014.q17.a2.rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a2.rule1:: isa(E4S1, "grow") -> agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a2.rule2, "A student is growing some plants for an experiment").
-june2014.q17.a2.rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a2.rule2:: isa(A2S1, "A student") -> isa(E4S1, "grow"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a2.rule3, "A student is growing some plants for an experiment").
-june2014.q17.a2.rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a2.rule3:: isa(A6S1, "some plants") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a2.rule4, "A student is growing some plants for an experiment").
-june2014.q17.a2.rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
+june2014.q17.a2.rule4:: isa(A9S1, "an experiment") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1).
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 english(june2014.q17.a2.rule5, "She notices small white spots on the leaves").
-june2014.q17.a2.rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a2.rule5:: isa(E2S2, "notify") -> agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a2.rule6, "She notices small white spots on the leaves").
-june2014.q17.a2.rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a2.rule6:: isa(A1S2, "She") -> isa(E2S2, "notify"), agent(E2S2, A1S2), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a2.rule7, "She notices small white spots on the leaves").
-june2014.q17.a2.rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a2.rule7:: isa(A5S2, "small white spots") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a2.rule8, "She notices small white spots on the leaves").
-june2014.q17.a2.rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
-% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots")
-english(june2014.q17.a2.rule9, "She[She] should use a thermometer to get a better look at the spots").
-june2014.q17.a2.rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A5), isa(A5, "a thermometer") -> effect(E3, E7), isa(E7, "get"), agent(E7, A1), object(E7, A10), isa(A10, "a better look at the spots").
-english(june2014.q17.a2.rule10, "She[She] should use a thermometer to get a better look at the spots").
-june2014.q17.a2.rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), object(E7, A10), isa(A10, "a better look at the spots") -> effect(E3, E7), isa(E3, "use"), agent(E3, A1), object(E3, A5), isa(A5, "a thermometer").
+june2014.q17.a2.rule8:: isa(A8S2, "the leaves") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2).
+% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+english(june2014.q17.a2.rule9, "She[She] should use a thermometer to get a better look at the spots[small white spots]").
+june2014.q17.a2.rule9:: isa(E3S3, "use"), agent(E3S3, A1S2), isa(A1S2, "She"), object(E3S3, A5S3), isa(A5S3, "a thermometer") -> effect(E3S3, E7S3), isa(E7S3, "get"), agent(E7S3, A1S2), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]").
+english(june2014.q17.a2.rule10, "She[She] should use a thermometer to get a better look at the spots[small white spots]").
+june2014.q17.a2.rule10:: isa(E7S3, "get"), agent(E7S3, A1S2), isa(A1S2, "She"), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]") -> effect(E3S3, E7S3), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(A5S3, "a thermometer").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(june2014.q17.a3.rule1, "A student is growing some plants for an experiment").
-june2014.q17.a3.rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a3.rule1:: isa(E4S1, "grow") -> agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a3.rule2, "A student is growing some plants for an experiment").
-june2014.q17.a3.rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a3.rule2:: isa(A2S1, "A student") -> isa(E4S1, "grow"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a3.rule3, "A student is growing some plants for an experiment").
-june2014.q17.a3.rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a3.rule3:: isa(A6S1, "some plants") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a3.rule4, "A student is growing some plants for an experiment").
-june2014.q17.a3.rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
+june2014.q17.a3.rule4:: isa(A9S1, "an experiment") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1).
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 english(june2014.q17.a3.rule5, "She notices small white spots on the leaves").
-june2014.q17.a3.rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a3.rule5:: isa(E2S2, "notify") -> agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a3.rule6, "She notices small white spots on the leaves").
-june2014.q17.a3.rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a3.rule6:: isa(A1S2, "She") -> isa(E2S2, "notify"), agent(E2S2, A1S2), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a3.rule7, "She notices small white spots on the leaves").
-june2014.q17.a3.rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a3.rule7:: isa(A5S2, "small white spots") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a3.rule8, "She notices small white spots on the leaves").
-june2014.q17.a3.rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
-% ("She"/?x "use" "hand lens")	"to"/EFFECT	("She"/?x "get" "a better look at the spots")
-english(june2014.q17.a3.rule9, "She[She] should use hand lens to get a better look at the spots").
-june2014.q17.a3.rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A5), isa(A5, "hand lens") -> effect(E3, E7), isa(E7, "get"), agent(E7, A1), object(E7, A10), isa(A10, "a better look at the spots").
-english(june2014.q17.a3.rule10, "She[She] should use hand lens to get a better look at the spots").
-june2014.q17.a3.rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), object(E7, A10), isa(A10, "a better look at the spots") -> effect(E3, E7), isa(E3, "use"), agent(E3, A1), object(E3, A5), isa(A5, "hand lens").
+june2014.q17.a3.rule8:: isa(A8S2, "the leaves") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2).
+% ("She"/?x "use" "hand lens")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+english(june2014.q17.a3.rule9, "She[She] should use hand lens to get a better look at the spots[small white spots]").
+june2014.q17.a3.rule9:: isa(E3S3, "use"), agent(E3S3, A1S2), isa(A1S2, "She"), object(E3S3, A5S3), isa(A5S3, "hand lens") -> effect(E3S3, E7S3), isa(E7S3, "get"), agent(E7S3, A1S2), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]").
+english(june2014.q17.a3.rule10, "She[She] should use hand lens to get a better look at the spots[small white spots]").
+june2014.q17.a3.rule10:: isa(E7S3, "get"), agent(E7S3, A1S2), isa(A1S2, "She"), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]") -> effect(E3S3, E7S3), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(A5S3, "hand lens").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(june2014.q17.a4.rule1, "A student is growing some plants for an experiment").
-june2014.q17.a4.rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a4.rule1:: isa(E4S1, "grow") -> agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a4.rule2, "A student is growing some plants for an experiment").
-june2014.q17.a4.rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a4.rule2:: isa(A2S1, "A student") -> isa(E4S1, "grow"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a4.rule3, "A student is growing some plants for an experiment").
-june2014.q17.a4.rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+june2014.q17.a4.rule3:: isa(A6S1, "some plants") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(june2014.q17.a4.rule4, "A student is growing some plants for an experiment").
-june2014.q17.a4.rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
+june2014.q17.a4.rule4:: isa(A9S1, "an experiment") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1).
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 english(june2014.q17.a4.rule5, "She notices small white spots on the leaves").
-june2014.q17.a4.rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a4.rule5:: isa(E2S2, "notify") -> agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a4.rule6, "She notices small white spots on the leaves").
-june2014.q17.a4.rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a4.rule6:: isa(A1S2, "She") -> isa(E2S2, "notify"), agent(E2S2, A1S2), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a4.rule7, "She notices small white spots on the leaves").
-june2014.q17.a4.rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+june2014.q17.a4.rule7:: isa(A5S2, "small white spots") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(june2014.q17.a4.rule8, "She notices small white spots on the leaves").
-june2014.q17.a4.rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
-% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots")
-english(june2014.q17.a4.rule9, "She[She] should use a graduated cylinder to get a better look at the spots").
-june2014.q17.a4.rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A6), isa(A6, "a graduated cylinder") -> effect(E3, E8), isa(E8, "get"), agent(E8, A1), object(E8, A11), isa(A11, "a better look at the spots").
-english(june2014.q17.a4.rule10, "She[She] should use a graduated cylinder to get a better look at the spots").
-june2014.q17.a4.rule10:: isa(E8, "get"), agent(E8, A1), isa(A1, "She"), object(E8, A11), isa(A11, "a better look at the spots") -> effect(E3, E8), isa(E3, "use"), agent(E3, A1), object(E3, A6), isa(A6, "a graduated cylinder").
+june2014.q17.a4.rule8:: isa(A8S2, "the leaves") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2).
+% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+english(june2014.q17.a4.rule9, "She[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
+june2014.q17.a4.rule9:: isa(E3S3, "use"), agent(E3S3, A1S2), isa(A1S2, "She"), object(E3S3, A6S3), isa(A6S3, "a graduated cylinder") -> effect(E3S3, E8S3), isa(E8S3, "get"), agent(E8S3, A1S2), object(E8S3, A11S3), isa(A11S3, "a better look at the spots[small white spots]").
+english(june2014.q17.a4.rule10, "She[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
+june2014.q17.a4.rule10:: isa(E8S3, "get"), agent(E8S3, A1S2), isa(A1S2, "She"), object(E8S3, A11S3), isa(A11S3, "a better look at the spots[small white spots]") -> effect(E3S3, E8S3), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A6S3), isa(A6S3, "a graduated cylinder").
 % ("" "increase" "the mass")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(june2014.q18.a1.rule1, "Increasing the mass is one way to change water from a liquid to a solid").
-june2014.q18.a1.rule1:: isa(E1, "increase"), object(E1, A3), isa(A3, "the mass") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+june2014.q18.a1.rule1:: isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the mass") -> effect(E1S1, E8S1), isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1).
 english(june2014.q18.a1.rule2, "Increasing the mass is one way to change water from a liquid to a solid").
-june2014.q18.a1.rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "increase"), object(E1, A3), isa(A3, "the mass").
+june2014.q18.a1.rule2:: isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1) -> effect(E1S1, E8S1), isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the mass").
 % ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(june2014.q18.a2.rule1, "Decreasing the temperature is one way to change water from a liquid to a solid").
-june2014.q18.a2.rule1:: isa(E1, "decrease"), object(E1, A3), isa(A3, "the temperature") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+june2014.q18.a2.rule1:: isa(E1S1, "decrease"), object(E1S1, A3S1), isa(A3S1, "the temperature") -> effect(E1S1, E8S1), isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1).
 english(june2014.q18.a2.rule2, "Decreasing the temperature is one way to change water from a liquid to a solid").
-june2014.q18.a2.rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "decrease"), object(E1, A3), isa(A3, "the temperature").
+june2014.q18.a2.rule2:: isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1) -> effect(E1S1, E8S1), isa(E1S1, "decrease"), object(E1S1, A3S1), isa(A3S1, "the temperature").
 % ("" "increase" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(june2014.q18.a3.rule1, "Increasing the temperature is one way to change water from a liquid to a solid").
-june2014.q18.a3.rule1:: isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+june2014.q18.a3.rule1:: isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the temperature") -> effect(E1S1, E8S1), isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1).
 english(june2014.q18.a3.rule2, "Increasing the temperature is one way to change water from a liquid to a solid").
-june2014.q18.a3.rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "increase"), object(E1, A3), isa(A3, "the temperature").
+june2014.q18.a3.rule2:: isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1) -> effect(E1S1, E8S1), isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the temperature").
 % ("" "decrease" "the mass")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(june2014.q18.a4.rule1, "Decreasing the mass is one way to change water from a liquid to a solid").
-june2014.q18.a4.rule1:: isa(E1, "decrease"), object(E1, A3), isa(A3, "the mass") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+june2014.q18.a4.rule1:: isa(E1S1, "decrease"), object(E1S1, A3S1), isa(A3S1, "the mass") -> effect(E1S1, E8S1), isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1).
 english(june2014.q18.a4.rule2, "Decreasing the mass is one way to change water from a liquid to a solid").
-june2014.q18.a4.rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "decrease"), object(E1, A3), isa(A3, "the mass").
+june2014.q18.a4.rule2:: isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1) -> effect(E1S1, E8S1), isa(E1S1, "decrease"), object(E1S1, A3S1), isa(A3S1, "the mass").
 % "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(june2014.q19.a1.rule1, "The heat that produces the smoke is caused by friction").
-june2014.q19.a1.rule1:: isa(A10, "friction") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+june2014.q19.a1.rule1:: isa(A10S2, "friction") -> cause(A10S2, E4S2), isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke").
 english(june2014.q19.a1.rule2, "The heat that produces the smoke is caused by friction").
-june2014.q19.a1.rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "friction").
+june2014.q19.a1.rule2:: isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke") -> cause(A10S2, E4S2), isa(A10S2, "friction").
 % "magnetism"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(june2014.q19.a2.rule1, "The heat that produces the smoke is caused by magnetism").
-june2014.q19.a2.rule1:: isa(A10, "magnetism") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+june2014.q19.a2.rule1:: isa(A10S2, "magnetism") -> cause(A10S2, E4S2), isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke").
 english(june2014.q19.a2.rule2, "The heat that produces the smoke is caused by magnetism").
-june2014.q19.a2.rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "magnetism").
+june2014.q19.a2.rule2:: isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke") -> cause(A10S2, E4S2), isa(A10S2, "magnetism").
 % "sound"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(june2014.q19.a3.rule1, "The heat that produces the smoke is caused by sound").
-june2014.q19.a3.rule1:: isa(A10, "sound") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+june2014.q19.a3.rule1:: isa(A10S2, "sound") -> cause(A10S2, E4S2), isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke").
 english(june2014.q19.a3.rule2, "The heat that produces the smoke is caused by sound").
-june2014.q19.a3.rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "sound").
+june2014.q19.a3.rule2:: isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke") -> cause(A10S2, E4S2), isa(A10S2, "sound").
 % "light"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(june2014.q19.a4.rule1, "The heat that produces the smoke is caused by light").
-june2014.q19.a4.rule1:: isa(A10, "light") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+june2014.q19.a4.rule1:: isa(A10S2, "light") -> cause(A10S2, E4S2), isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke").
 english(june2014.q19.a4.rule2, "The heat that produces the smoke is caused by light").
-june2014.q19.a4.rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "light").
+june2014.q19.a4.rule2:: isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke") -> cause(A10S2, E4S2), isa(A10S2, "light").
 % ("Polluting" "have" "a harmful effect on the environment")
 english(june2014.q20.a1.rule1, "Polluting most often has a harmful effect on the environment").
-june2014.q20.a1.rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Polluting"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a1.rule1:: isa(E4S1, "have") -> agent(E4S1, A1S1), isa(A1S1, "Polluting"), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a1.rule2, "Polluting most often has a harmful effect on the environment").
-june2014.q20.a1.rule2:: isa(A1, "Polluting") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a1.rule2:: isa(A1S1, "Polluting") -> isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a1.rule3, "Polluting most often has a harmful effect on the environment").
-june2014.q20.a1.rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Polluting"), object(E4, A7).
+june2014.q20.a1.rule3:: isa(A7S1, "a harmful effect on the environment") -> isa(E4S1, "have"), agent(E4S1, A1S1), isa(A1S1, "Polluting"), object(E4S1, A7S1).
 % ("Breathing" "have" "a harmful effect on the environment")
 english(june2014.q20.a2.rule1, "Breathing most often has a harmful effect on the environment").
-june2014.q20.a2.rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Breathing"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a2.rule1:: isa(E4S1, "have") -> agent(E4S1, A1S1), isa(A1S1, "Breathing"), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a2.rule2, "Breathing most often has a harmful effect on the environment").
-june2014.q20.a2.rule2:: isa(A1, "Breathing") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a2.rule2:: isa(A1S1, "Breathing") -> isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a2.rule3, "Breathing most often has a harmful effect on the environment").
-june2014.q20.a2.rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Breathing"), object(E4, A7).
+june2014.q20.a2.rule3:: isa(A7S1, "a harmful effect on the environment") -> isa(E4S1, "have"), agent(E4S1, A1S1), isa(A1S1, "Breathing"), object(E4S1, A7S1).
 % ("Growing" "have" "a harmful effect on the environment")
 english(june2014.q20.a3.rule1, "Growing most often has a harmful effect on the environment").
-june2014.q20.a3.rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Growing"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a3.rule1:: isa(E4S1, "have") -> agent(E4S1, A1S1), isa(A1S1, "Growing"), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a3.rule2, "Growing most often has a harmful effect on the environment").
-june2014.q20.a3.rule2:: isa(A1, "Growing") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a3.rule2:: isa(A1S1, "Growing") -> isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a3.rule3, "Growing most often has a harmful effect on the environment").
-june2014.q20.a3.rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Growing"), object(E4, A7).
+june2014.q20.a3.rule3:: isa(A7S1, "a harmful effect on the environment") -> isa(E4S1, "have"), agent(E4S1, A1S1), isa(A1S1, "Growing"), object(E4S1, A7S1).
 % ("Planting" "have" "a harmful effect on the environment")
 english(june2014.q20.a4.rule1, "Planting most often has a harmful effect on the environment").
-june2014.q20.a4.rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Planting"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a4.rule1:: isa(E4S1, "have") -> agent(E4S1, A1S1), isa(A1S1, "Planting"), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a4.rule2, "Planting most often has a harmful effect on the environment").
-june2014.q20.a4.rule2:: isa(A1, "Planting") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+june2014.q20.a4.rule2:: isa(A1S1, "Planting") -> isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(june2014.q20.a4.rule3, "Planting most often has a harmful effect on the environment").
-june2014.q20.a4.rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Planting"), object(E4, A7).
+june2014.q20.a4.rule3:: isa(A7S1, "a harmful effect on the environment") -> isa(E4S1, "have"), agent(E4S1, A1S1), isa(A1S1, "Planting"), object(E4S1, A7S1).

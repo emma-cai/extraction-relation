@@ -1,8 +1,8 @@
 % "predators"	"help"/PURPOSE	("predators" "return" "nutrients" [ "to the food chain" ] )
 english(rule1, "When plants and animals die predators help return nutrients to the food chain").
-rule1:: isa(A7, "predators") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule1:: isa(A7S1, "predators") -> purpose(A7S1, E9S1), isa(E9S1, "return"), agent(E9S1, A7S1), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 english(rule2, "When plants and animals die predators help return nutrients to the food chain").
-rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
+rule2:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> purpose(A7S1, E9S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -42,9 +42,9 @@ rule2:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10),
 
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(rule3, "When plants and animals die predators help return nutrients to the food chain").
-rule3:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+rule3:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants").
 english(rule4, "When plants and animals die predators help return nutrients to the food chain").
-rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule4:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -89,9 +89,9 @@ rule4:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9
 
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(rule5, "When plants and animals die predators help return nutrients to the food chain").
-rule5:: isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+rule5:: isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1) -> when(E9S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals").
 english(rule6, "When plants and animals die predators help return nutrients to the food chain").
-rule6:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "predators"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule6:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E9S1, E5S1), isa(E9S1, "return"), agent(E9S1, A7S1), isa(A7S1, "predators"), object(E9S1, A10S1), isa(A10S1, "nutrients"), isa(A14S1, "the food chain"), to(E9S1, A14S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

@@ -1,8 +1,8 @@
-% "Friction"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
-english(rule1, "Friction causes the ball to fall to the ground").
-rule1:: isa(A1, "Friction") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
-english(rule2, "Friction causes the ball to fall to the ground").
-rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Friction").
+% "Friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
+english(rule1, "Friction causes the ball[a ball] to fall to the ground").
+rule1:: isa(A1S2, "Friction") -> cause(A1S2, E6S2), isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2).
+english(rule2, "Friction causes the ball[a ball] to fall to the ground").
+rule2:: isa(E6S2, "fall"), agent(E6S2, A5S1), isa(A5S1, "a ball"), isa(A9S2, "the ground"), to(E6S2, A9S2) -> cause(A1S2, E6S2), isa(A1S2, "Friction").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -20,18 +20,18 @@ rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground
 
 # Named toplevel resources (3)
 
-<http://aristo.allenai.org/id#2.4>
+<http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"the ball\"" .
+	pred:isa "\"a ball\"" .
 
 <http://aristo.allenai.org/id#2.6>
 	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
 	pred:isa "\"fall\"" ;
 	pred:to <http://aristo.allenai.org/id#2.9> .
 
 <http://aristo.allenai.org/id#2.9>
 	pred:isa "\"the ground\"" .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"Friction"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.2", "text":"causes"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.3", "text":"the"},  {"token":"id:2.4", "text":"ball"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.6", "text":"fall"} ], "extraPhrases": [ [ {"token":"id:2.7", "text":"to"},  {"token":"id:2.8", "text":"the"},  {"token":"id:2.9", "text":"ground"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"Friction"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.2", "text":"causes"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"a"},  {"token":"id:1.5", "text":"ball"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.6", "text":"fall"} ], "extraPhrases": [ [ {"token":"id:2.7", "text":"to"},  {"token":"id:2.8", "text":"the"},  {"token":"id:2.9", "text":"ground"} ] ]} ], "confidence":1.0}
 

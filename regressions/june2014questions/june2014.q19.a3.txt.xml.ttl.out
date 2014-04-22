@@ -1,8 +1,8 @@
 % "sound"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(rule1, "The heat that produces the smoke is caused by sound").
-rule1:: isa(A10, "sound") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+rule1:: isa(A10S2, "sound") -> cause(A10S2, E4S2), isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke").
 english(rule2, "The heat that produces the smoke is caused by sound").
-rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "sound").
+rule2:: isa(E4S2, "produce"), agent(E4S2, A2S2), isa(A2S2, "The heat"), object(E4S2, A6S2), isa(A6S2, "the smoke") -> cause(A10S2, E4S2), isa(A10S2, "sound").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

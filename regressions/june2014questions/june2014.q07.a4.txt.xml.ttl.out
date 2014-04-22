@@ -1,8 +1,8 @@
 % ("A student"/?x "use" "a ruler")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(rule1, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a ruler") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A11), isa(A11, "10 milliliters of water").
+rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a ruler") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water").
 english(rule2, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11), isa(A11, "10 milliliters of water") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a ruler").
+rule2:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a ruler").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -46,9 +46,9 @@ rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11)
 
 % ("A student"/?x "use" "a ruler")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(rule3, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a ruler") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A13), isa(A13, "mL").
+rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "a ruler") -> effect(E4S1, E8S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A13S1), isa(A13S1, "mL").
 english(rule4, "A student should use a ruler to measure exactly 10 milliliters mL of water").
-rule4:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A13), isa(A13, "mL") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a ruler").
+rule4:: isa(E8S1, "measure"), agent(E8S1, A2S1), isa(A2S1, "A student"), object(E8S1, A13S1), isa(A13S1, "mL") -> effect(E4S1, E8S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "a ruler").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

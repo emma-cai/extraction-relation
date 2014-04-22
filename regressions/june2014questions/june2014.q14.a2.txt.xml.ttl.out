@@ -1,14 +1,14 @@
 % ("Animals" "get" "energy" [ "for growth from soil", "for repair" ] )
 english(rule1, "Animals get energy for growth and repair from soil").
-rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule1:: isa(E2S1, "get") -> agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(rule2, "Animals get energy for growth and repair from soil").
-rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule2:: isa(A1S1, "Animals") -> isa(E2S1, "get"), agent(E2S1, A1S1), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(rule3, "Animals get energy for growth and repair from soil").
-rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from soil"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule3:: isa(A3S1, "energy") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A5S1, "growth from soil"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(rule4, "Animals get energy for growth and repair from soil").
-rule4:: isa(A5, "growth from soil") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule4:: isa(A5S1, "growth from soil") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), for(E2S1, A5S1), isa(A7S1, "repair"), for(E2S1, A7S1).
 english(rule5, "Animals get energy for growth and repair from soil").
-rule5:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from soil"), for(E2, A5), for(E2, A7).
+rule5:: isa(A7S1, "repair") -> isa(E2S1, "get"), agent(E2S1, A1S1), isa(A1S1, "Animals"), object(E2S1, A3S1), isa(A3S1, "energy"), isa(A5S1, "growth from soil"), for(E2S1, A5S1), for(E2S1, A7S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .

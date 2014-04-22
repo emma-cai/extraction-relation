@@ -1,8 +1,8 @@
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(rule1, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A12), isa(A12, "10 milliliters of water").
+rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder") -> effect(E4S1, E9S1), isa(E9S1, "measure"), agent(E9S1, A2S1), object(E9S1, A12S1), isa(A12S1, "10 milliliters of water").
 english(rule2, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule2:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A12), isa(A12, "10 milliliters of water") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+rule2:: isa(E9S1, "measure"), agent(E9S1, A2S1), isa(A2S1, "A student"), object(E9S1, A12S1), isa(A12S1, "10 milliliters of water") -> effect(E4S1, E9S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -46,9 +46,9 @@ rule2:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A12)
 
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(rule3, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A14), isa(A14, "mL").
+rule3:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder") -> effect(E4S1, E9S1), isa(E9S1, "measure"), agent(E9S1, A2S1), object(E9S1, A14S1), isa(A14S1, "mL").
 english(rule4, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule4:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A14), isa(A14, "mL") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+rule4:: isa(E9S1, "measure"), agent(E9S1, A2S1), isa(A2S1, "A student"), object(E9S1, A14S1), isa(A14S1, "mL") -> effect(E4S1, E9S1), isa(E4S1, "use"), agent(E4S1, A2S1), object(E4S1, A7S1), isa(A7S1, "a graduated cylinder").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

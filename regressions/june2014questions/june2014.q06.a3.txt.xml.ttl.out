@@ -1,8 +1,8 @@
 % "Erosion"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(rule1, "Erosion is the main source of energy for the water cycle").
-rule1:: isa(A1, "Erosion") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
+rule1:: isa(A1S1, "Erosion") -> example(A1S1, A5S1), isa(A5S1, "the main source of energy for the water cycle").
 english(rule2, "Erosion is the main source of energy for the water cycle").
-rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Erosion").
+rule2:: isa(A5S1, "the main source of energy for the water cycle") -> example(A1S1, A5S1), isa(A1S1, "Erosion").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

@@ -1,8 +1,8 @@
 % "Talking activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 english(rule1, "Talking activity is necessary for humans to maintain good health").
-rule1:: isa(A2, "Talking activity") -> requirement(A2, E8), isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health").
+rule1:: isa(A2S1, "Talking activity") -> requirement(A2S1, E8S1), isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health").
 english(rule2, "Talking activity is necessary for humans to maintain good health").
-rule2:: isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health") -> requirement(A2, E8), isa(A2, "Talking activity").
+rule2:: isa(E8S1, "maintain"), agent(E8S1, A6S1), isa(A6S1, "humans"), object(E8S1, A10S1), isa(A10S1, "good health") -> requirement(A2S1, E8S1), isa(A2S1, "Talking activity").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

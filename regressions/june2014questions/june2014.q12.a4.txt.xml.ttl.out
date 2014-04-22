@@ -1,8 +1,8 @@
 % ("Green plants"/?x "get" "the energy")	"need to"/EFFECT	("Green plants"/?x "make" "" [ "food from water" ] )
 english(rule1, "Green plants get the energy they[Green plants] need to make food from water").
-rule1:: isa(E3, "get"), agent(E3, A2), isa(A2, "Green plants"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E9), isa(E9, "make"), agent(E9, A2), isa(A10, "food from water"), arg(E9, A10).
+rule1:: isa(E3S1, "get"), agent(E3S1, A2S1), isa(A2S1, "Green plants"), object(E3S1, A5S1), isa(A5S1, "the energy") -> effect(E3S1, E9S1), isa(E9S1, "make"), agent(E9S1, A2S1), isa(A10S1, "food from water"), arg(E9S1, A10S1).
 english(rule2, "Green plants get the energy they[Green plants] need to make food from water").
-rule2:: isa(E9, "make"), agent(E9, A2), isa(A2, "Green plants"), isa(A10, "food from water"), arg(E9, A10) -> effect(E3, E9), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+rule2:: isa(E9S1, "make"), agent(E9S1, A2S1), isa(A2S1, "Green plants"), isa(A10S1, "food from water"), arg(E9S1, A10S1) -> effect(E3S1, E9S1), isa(E3S1, "get"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "the energy").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

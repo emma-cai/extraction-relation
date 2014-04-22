@@ -1,12 +1,12 @@
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 english(rule1, "A fox grows thicker fur as a season changes").
-rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+rule1:: isa(E3S1, "grow") -> agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(rule2, "A fox grows thicker fur as a season changes").
-rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), isa(A9, "a season changes"), as(E3, A9).
+rule2:: isa(A2S1, "A fox") -> isa(E3S1, "grow"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "thicker fur"), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(rule3, "A fox grows thicker fur as a season changes").
-rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A9, "a season changes"), as(E3, A9).
+rule3:: isa(A5S1, "thicker fur") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A9S1, "a season changes"), as(E3S1, A9S1).
 english(rule4, "A fox grows thicker fur as a season changes").
-rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, A9).
+rule4:: isa(A9S1, "a season changes") -> isa(E3S1, "grow"), agent(E3S1, A2S1), isa(A2S1, "A fox"), object(E3S1, A5S1), isa(A5S1, "thicker fur"), as(E3S1, A9S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -33,11 +33,11 @@ rule4:: isa(A9, "a season changes") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"fox"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.3", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"thicker"},  {"token":"id:1.5", "text":"fur"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.6", "text":"as"},  {"token":"id:1.7", "text":"a"},  {"token":"id:1.8", "text":"season"},  {"token":"id:1.9", "text":"changes"} ] ]} ], "consequents": [], "confidence":1.0}
 
-% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "keep" "" [ "warmer" ] )
-english(rule5, "This adaptation helps the fox to keep warmer").
-rule5:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "keep"), agent(E7, A5), isa(A8, "warmer"), arg(E7, A8).
-english(rule6, "This adaptation helps the fox to keep warmer").
-rule6:: isa(E7, "keep"), agent(E7, A5), isa(A5, "the fox"), isa(A8, "warmer"), arg(E7, A8) -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+% ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "keep" "" [ "warmer" ] )
+english(rule5, "This adaptation helps the fox[A fox] to keep warmer").
+rule5:: isa(E2S2, "adapt"), agent(E2S2, A2S1), isa(A2S1, "A fox") -> purpose(E2S2, E7S2), isa(E7S2, "keep"), agent(E7S2, A2S1), isa(A8S2, "warmer"), arg(E7S2, A8S2).
+english(rule6, "This adaptation helps the fox[A fox] to keep warmer").
+rule6:: isa(E7S2, "keep"), agent(E7S2, A2S1), isa(A2S1, "A fox"), isa(A8S2, "warmer"), arg(E7S2, A8S2) -> purpose(E2S2, E7S2), isa(E2S2, "adapt"), agent(E2S2, A2S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -45,33 +45,33 @@ rule6:: isa(E7, "keep"), agent(E7, A5), isa(A5, "the fox"), isa(A8, "warmer"), a
 
 # Named toplevel resources (2)
 
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
 <http://aristo.allenai.org/id#2.2>
 	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.5> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:isa "\"adapt\"" ;
 	rel:purpose <http://aristo.allenai.org/id#2.7> .
-
-<http://aristo.allenai.org/id#2.5>
-	a <entity> ;
-	pred:isa "\"the fox\"" .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (3)
 
-<http://aristo.allenai.org/id#2.5>
+<http://aristo.allenai.org/id#1.2>
 	a <entity> ;
-	pred:isa "\"the fox\"" .
+	pred:isa "\"A fox\"" .
 
 <http://aristo.allenai.org/id#2.7>
 	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.5> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:arg <http://aristo.allenai.org/id#2.8> ;
 	pred:isa "\"keep\"" .
 
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"warmer\"" .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.4", "text":"the"},  {"token":"id:2.5", "text":"fox"} ]} ]}, "verbPhrase": [ {"token":"id:2.2", "text":"adapt"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.3", "text":"helps"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.4", "text":"the"},  {"token":"id:2.5", "text":"fox"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.4", "text":"the"},  {"token":"id:2.5", "text":"fox"} ]} ]}, "verbPhrase": [ {"token":"id:2.7", "text":"keep"} ], "extraPhrases": [ [ {"token":"id:2.8", "text":"warmer"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"fox"} ]} ]}, "verbPhrase": [ {"token":"id:2.2", "text":"adapt"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.3", "text":"helps"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"fox"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"fox"} ]} ]}, "verbPhrase": [ {"token":"id:2.7", "text":"keep"} ], "extraPhrases": [ [ {"token":"id:2.8", "text":"warmer"} ] ]} ], "confidence":1.0}
 

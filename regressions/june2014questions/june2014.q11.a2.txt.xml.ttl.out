@@ -1,8 +1,8 @@
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"predators"
 english(rule1, "Since green plants make their[green plants] own food they[green plants] are called predators").
-rule1:: isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food") -> example(E4, A12), isa(A12, "predators").
+rule1:: isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food") -> example(E4S1, A12S1), isa(A12S1, "predators").
 english(rule2, "Since green plants make their[green plants] own food they[green plants] are called predators").
-rule2:: isa(A12, "predators") -> example(E4, A12), isa(E4, "make"), agent(E4, A3), isa(A3, "green plants"), object(E4, A7), isa(A7, "their[green plants] own food").
+rule2:: isa(A12S1, "predators") -> example(E4S1, A12S1), isa(E4S1, "make"), agent(E4S1, A3S1), isa(A3S1, "green plants"), object(E4S1, A7S1), isa(A7S1, "their[green plants] own food").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

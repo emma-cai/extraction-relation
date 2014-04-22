@@ -1,8 +1,8 @@
 % "Magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(rule1, "Magnetism causes rocks to roll downhill").
-rule1:: isa(A1, "Magnetism") -> cause(A1, E5), isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6).
+rule1:: isa(A1S1, "Magnetism") -> cause(A1S1, E5S1), isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1).
 english(rule2, "Magnetism causes rocks to roll downhill").
-rule2:: isa(E5, "roll"), agent(E5, A3), isa(A3, "rocks"), isa(A6, "downhill"), arg(E5, A6) -> cause(A1, E5), isa(A1, "Magnetism").
+rule2:: isa(E5S1, "roll"), agent(E5S1, A3S1), isa(A3S1, "rocks"), isa(A6S1, "downhill"), arg(E5S1, A6S1) -> cause(A1S1, E5S1), isa(A1S1, "Magnetism").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

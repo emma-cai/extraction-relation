@@ -1,8 +1,8 @@
 % ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
 english(rule1, "Exercising every day is an example of a good health habit").
-rule1:: isa(E1, "exercise"), isa(A3, "every day"), arg(E1, A3) -> example(E1, A11), isa(A11, "a good health habit").
+rule1:: isa(E1S1, "exercise"), isa(A3S1, "every day"), arg(E1S1, A3S1) -> example(E1S1, A11S1), isa(A11S1, "a good health habit").
 english(rule2, "Exercising every day is an example of a good health habit").
-rule2:: isa(A11, "a good health habit") -> example(E1, A11), isa(E1, "exercise"), isa(A3, "every day"), arg(E1, A3).
+rule2:: isa(A11S1, "a good health habit") -> example(E1S1, A11S1), isa(E1S1, "exercise"), isa(A3S1, "every day"), arg(E1S1, A3S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

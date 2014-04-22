@@ -30,14 +30,21 @@ constit(Node,Constit,Exclude) :-
 	rdf(Node,Dep,C),
 	atom_concat('http://nlp.stanford.edu/basic/',DepType,Dep),
 	\+ member(DepType, Exclude),
-	\+ token_id(C,0), % Sapir: exclude that1-0
+	\+ token_number(C,0), % Sapir: exclude that1-0
 	( Constit=C
 	; constit(C,Constit) ). % filter top-level only
 
-token_id(E1,N1) :-
+token_number(E1,N1) :-
 	atom_concat('http://aristo.allenai.org/id#', S1, E1),
 	sub_atom(S1,B1,_,_,'.'), BS1 is B1 + 1, sub_atom(S1,BS1,_,0,T1),
 	atom_number(T1,N1).
+
+token_id(E1,N1) :-
+	atom_concat('http://aristo.allenai.org/id#', S1, E1),
+	sub_atom(S1,B1,_,_,'.'), BS1 is B1 + 1,
+	sub_atom(S1,BS1,_,0,TokenId),
+	sub_atom(S1,0,B1,_,SentId),
+	atomic_list_concat([TokenId,'S',SentId],N1).
 
 compare_offsets(Delta,E1,E2) :-
 	offset(E1,N1),
@@ -50,7 +57,7 @@ offset(E1,N1) :-
 
 coref(E,C) :-
 	rdf(E,token:pos,literal(Pos)),
-	member(Pos, ['PRP', 'PRP$']),
+%	member(Pos, ['PRP', 'PRP$']),
 	rdf(A,coref:ref,E),
 	( C = A
 	; rdf(A,coref:ref,C) ),

@@ -1,8 +1,8 @@
 % ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule1, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-rule1:: isa(E3, "store"), agent(E3, A2), isa(A2, "A squirrel"), object(E3, A4), isa(A4, "nuts") -> effect(E3, E6), isa(E6, "prepare"), agent(E6, A2), isa(A10, "a seasonal change in the environment"), for(E6, A10).
+rule1:: isa(E3S1, "store"), agent(E3S1, A2S1), isa(A2S1, "A squirrel"), object(E3S1, A4S1), isa(A4S1, "nuts") -> effect(E3S1, E6S1), isa(E6S1, "prepare"), agent(E6S1, A2S1), isa(A10S1, "a seasonal change in the environment"), for(E6S1, A10S1).
 english(rule2, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-rule2:: isa(E6, "prepare"), agent(E6, A2), isa(A2, "A squirrel"), isa(A10, "a seasonal change in the environment"), for(E6, A10) -> effect(E3, E6), isa(E3, "store"), agent(E3, A2), object(E3, A4), isa(A4, "nuts").
+rule2:: isa(E6S1, "prepare"), agent(E6S1, A2S1), isa(A2S1, "A squirrel"), isa(A10S1, "a seasonal change in the environment"), for(E6S1, A10S1) -> effect(E3S1, E6S1), isa(E3S1, "store"), agent(E3S1, A2S1), object(E3S1, A4S1), isa(A4S1, "nuts").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

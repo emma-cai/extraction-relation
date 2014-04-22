@@ -1,12 +1,12 @@
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 english(rule1, "A student is growing some plants for an experiment").
-rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+rule1:: isa(E4S1, "grow") -> agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(rule2, "A student is growing some plants for an experiment").
-rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), isa(A9, "an experiment"), for(E4, A9).
+rule2:: isa(A2S1, "A student") -> isa(E4S1, "grow"), agent(E4S1, A2S1), object(E4S1, A6S1), isa(A6S1, "some plants"), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(rule3, "A student is growing some plants for an experiment").
-rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A9, "an experiment"), for(E4, A9).
+rule3:: isa(A6S1, "some plants") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A9S1, "an experiment"), for(E4S1, A9S1).
 english(rule4, "A student is growing some plants for an experiment").
-rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, A9).
+rule4:: isa(A9S1, "an experiment") -> isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -35,13 +35,13 @@ rule4:: isa(A9, "an experiment") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A s
 
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 english(rule5, "She notices small white spots on the leaves").
-rule5:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+rule5:: isa(E2S2, "notify") -> agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(rule6, "She notices small white spots on the leaves").
-rule6:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), isa(A8, "the leaves"), on(E2, A8).
+rule6:: isa(A1S2, "She") -> isa(E2S2, "notify"), agent(E2S2, A1S2), object(E2S2, A5S2), isa(A5S2, "small white spots"), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(rule7, "She notices small white spots on the leaves").
-rule7:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A8, "the leaves"), on(E2, A8).
+rule7:: isa(A5S2, "small white spots") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A8S2, "the leaves"), on(E2S2, A8S2).
 english(rule8, "She notices small white spots on the leaves").
-rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, A8).
+rule8:: isa(A8S2, "the leaves") -> isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -66,11 +66,11 @@ rule8:: isa(A8, "the leaves") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 
-% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots")
-english(rule9, "She[She] should use a thermometer to get a better look at the spots").
-rule9:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A5), isa(A5, "a thermometer") -> effect(E3, E7), isa(E7, "get"), agent(E7, A1), object(E7, A10), isa(A10, "a better look at the spots").
-english(rule10, "She[She] should use a thermometer to get a better look at the spots").
-rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), object(E7, A10), isa(A10, "a better look at the spots") -> effect(E3, E7), isa(E3, "use"), agent(E3, A1), object(E3, A5), isa(A5, "a thermometer").
+% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+english(rule9, "She[She] should use a thermometer to get a better look at the spots[small white spots]").
+rule9:: isa(E3S3, "use"), agent(E3S3, A1S2), isa(A1S2, "She"), object(E3S3, A5S3), isa(A5S3, "a thermometer") -> effect(E3S3, E7S3), isa(E7S3, "get"), agent(E7S3, A1S2), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]").
+english(rule10, "She[She] should use a thermometer to get a better look at the spots[small white spots]").
+rule10:: isa(E7S3, "get"), agent(E7S3, A1S2), isa(A1S2, "She"), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]") -> effect(E3S3, E7S3), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(A5S3, "a thermometer").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -104,7 +104,7 @@ rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), object(E7, A10), isa(A10
 
 <http://aristo.allenai.org/id#3.10>
 	a <entity> ;
-	pred:isa "\"a better look at the spots\"" .
+	pred:isa "\"a better look at the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.7>
 	a <event> ;
@@ -112,5 +112,5 @@ rule10:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), object(E7, A10), isa(A10
 	pred:isa "\"get\"" ;
 	pred:object <http://aristo.allenai.org/id#3.10> .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.3", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"a"},  {"token":"id:3.5", "text":"thermometer"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.6", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.7", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.8", "text":"a"},  {"token":"id:3.9", "text":"better"},  {"token":"id:3.10", "text":"look"},  {"token":"id:3.11", "text":"at"},  {"token":"id:3.12", "text":"the"},  {"token":"id:3.13", "text":"spots"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.3", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"a"},  {"token":"id:3.5", "text":"thermometer"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.6", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"She"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.1", "text":"She"} ]} ]}, "verbPhrase": [ {"token":"id:3.7", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.8", "text":"a"},  {"token":"id:3.9", "text":"better"},  {"token":"id:3.10", "text":"look"},  {"token":"id:3.11", "text":"at"},  {"token":"id:3.12", "text":"the"},  {"token":"id:3.13", "text":"spots[small white spots]"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 

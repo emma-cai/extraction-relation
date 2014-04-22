@@ -1,8 +1,8 @@
 % ("" "increase" "the mass")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule1, "Increasing the mass is one way to change water from a liquid to a solid").
-rule1:: isa(E1, "increase"), object(E1, A3), isa(A3, "the mass") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+rule1:: isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the mass") -> effect(E1S1, E8S1), isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1).
 english(rule2, "Increasing the mass is one way to change water from a liquid to a solid").
-rule2:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "increase"), object(E1, A3), isa(A3, "the mass").
+rule2:: isa(E8S1, "change"), object(E8S1, A9S1), isa(A9S1, "water"), isa(A12S1, "a liquid"), from(E8S1, A12S1), isa(A15S1, "a solid"), to(E8S1, A15S1) -> effect(E1S1, E8S1), isa(E1S1, "increase"), object(E1S1, A3S1), isa(A3S1, "the mass").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

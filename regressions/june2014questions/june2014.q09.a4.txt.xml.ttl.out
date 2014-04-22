@@ -1,8 +1,8 @@
 % "Coloration"	"helps"/PURPOSE	("an animal" "attract" "a mate")
 english(rule1, "Coloration often helps an animal attract a mate").
-rule1:: isa(A1, "Coloration") -> purpose(A1, E6), isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate").
+rule1:: isa(A1S1, "Coloration") -> purpose(A1S1, E6S1), isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate").
 english(rule2, "Coloration often helps an animal attract a mate").
-rule2:: isa(E6, "attract"), agent(E6, A5), isa(A5, "an animal"), object(E6, A8), isa(A8, "a mate") -> purpose(A1, E6), isa(A1, "Coloration").
+rule2:: isa(E6S1, "attract"), agent(E6S1, A5S1), isa(A5S1, "an animal"), object(E6S1, A8S1), isa(A8S1, "a mate") -> purpose(A1S1, E6S1), isa(A1S1, "Coloration").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

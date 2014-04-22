@@ -1,8 +1,8 @@
 % ("plants"/?x "prey" "help")	"When"/WHEN	("plants"/?x "die" "")
 english(rule1, "When plants and animals die prey help return nutrients to the food chain").
-rule1:: isa(E7, "prey"), agent(E7, A2), isa(A2, "plants"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A2).
+rule1:: isa(E7S1, "prey"), agent(E7S1, A2S1), isa(A2S1, "plants"), object(E7S1, A8S1), isa(A8S1, "help") -> when(E7S1, E5S1), isa(E5S1, "die"), agent(E5S1, A2S1).
 english(rule2, "When plants and animals die prey help return nutrients to the food chain").
-rule2:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E7, E5), isa(E7, "prey"), agent(E7, A2), object(E7, A8), isa(A8, "help").
+rule2:: isa(E5S1, "die"), agent(E5S1, A2S1), isa(A2S1, "plants") -> when(E7S1, E5S1), isa(E7S1, "prey"), agent(E7S1, A2S1), object(E7S1, A8S1), isa(A8S1, "help").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -41,9 +41,9 @@ rule2:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E7, E5), isa(E7
 
 % ("animals"/?x "prey" "help")	"When"/WHEN	("animals"/?x "die" "")
 english(rule3, "When plants and animals die prey help return nutrients to the food chain").
-rule3:: isa(E7, "prey"), agent(E7, A4), isa(A4, "animals"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A4).
+rule3:: isa(E7S1, "prey"), agent(E7S1, A4S1), isa(A4S1, "animals"), object(E7S1, A8S1), isa(A8S1, "help") -> when(E7S1, E5S1), isa(E5S1, "die"), agent(E5S1, A4S1).
 english(rule4, "When plants and animals die prey help return nutrients to the food chain").
-rule4:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E7, E5), isa(E7, "prey"), agent(E7, A4), object(E7, A8), isa(A8, "help").
+rule4:: isa(E5S1, "die"), agent(E5S1, A4S1), isa(A4S1, "animals") -> when(E7S1, E5S1), isa(E7S1, "prey"), agent(E7S1, A4S1), object(E7S1, A8S1), isa(A8S1, "help").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

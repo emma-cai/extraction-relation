@@ -1,8 +1,8 @@
-% "A decomposer"	"is"/EXAMPLE	("an organism" "break" "")
-english(rule1, "A decomposer is an organism that breaks down dead plants and animals").
-rule1:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "break"), agent(E7, A5), isa(A5, "an organism"), isa(A2, A5).
-english(rule2, "A decomposer is an organism that breaks down dead plants and animals").
-rule2:: isa(E7, "break"), agent(E7, A5), isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
+% "A decomposer"	"is"/EXAMPLE	("an organism[A decomposer]" "break" "")
+english(rule1, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+rule1:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(E7S1, "break"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]"), isa(A2S1, A5S1).
+english(rule2, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+rule2:: isa(E7S1, "break"), agent(E7S1, A5S1), isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer"), isa(A2S1, A5S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -23,20 +23,20 @@ rule2:: isa(E7, "break"), agent(E7, A5), isa(A5, "an organism") -> example(A2, A
 
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"an organism\"" .
+	pred:isa "\"an organism[A decomposer]\"" .
 
 <http://aristo.allenai.org/id#1.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
 	pred:isa "\"break\"" .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.7", "text":"break"} ], "extraPhrases": []} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism[A decomposer]"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.7", "text":"break"} ], "extraPhrases": []} ], "confidence":1.0}
 
-% "A decomposer"	"is"/EXAMPLE	"an organism"
-english(rule3, "A decomposer is an organism that breaks down dead plants and animals").
-rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
-english(rule4, "A decomposer is an organism that breaks down dead plants and animals").
-rule4:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
+% "A decomposer"	"is"/EXAMPLE	"an organism[A decomposer]"
+english(rule3, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+rule3:: isa(A2S1, "A decomposer") -> example(A2S1, A5S1), isa(A5S1, "an organism[A decomposer]").
+english(rule4, "A decomposer is an organism[A decomposer] that breaks down dead plants and animals").
+rule4:: isa(A5S1, "an organism[A decomposer]") -> example(A2S1, A5S1), isa(A2S1, "A decomposer").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -56,7 +56,7 @@ rule4:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
 
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"an organism\"" .
+	pred:isa "\"an organism[A decomposer]\"" .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"A"},  {"token":"id:1.2", "text":"decomposer"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.3", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"an"},  {"token":"id:1.5", "text":"organism[A decomposer]"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 

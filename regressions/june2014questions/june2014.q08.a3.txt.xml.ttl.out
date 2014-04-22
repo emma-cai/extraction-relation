@@ -1,8 +1,8 @@
 % ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 english(rule1, "Resting is necessary for humans to maintain good health").
-rule1:: isa(E1, "rest"), agent(E1, A5), isa(A5, "humans") -> requirement(E1, E7), isa(E7, "maintain"), agent(E7, A5), object(E7, A9), isa(A9, "good health").
+rule1:: isa(E1S1, "rest"), agent(E1S1, A5S1), isa(A5S1, "humans") -> requirement(E1S1, E7S1), isa(E7S1, "maintain"), agent(E7S1, A5S1), object(E7S1, A9S1), isa(A9S1, "good health").
 english(rule2, "Resting is necessary for humans to maintain good health").
-rule2:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), isa(A9, "good health") -> requirement(E1, E7), isa(E1, "rest"), agent(E1, A5).
+rule2:: isa(E7S1, "maintain"), agent(E7S1, A5S1), isa(A5S1, "humans"), object(E7S1, A9S1), isa(A9S1, "good health") -> requirement(E1S1, E7S1), isa(E1S1, "rest"), agent(E1S1, A5S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

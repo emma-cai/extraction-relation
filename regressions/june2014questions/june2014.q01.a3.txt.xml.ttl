@@ -47,13 +47,13 @@ id:1.0 basic:root id:1.3 .
 id:1.2 basic:det id:1.1 .
 id:1.3 basic:nsubj id:1.2 .
 id:1.5 basic:det id:1.4 .
-id:1.3 basic:tmod id:1.5 .
+id:1.3 basic:dobj id:1.5 .
 
 id:1.0 dep:root id:1.3 .
 id:1.2 dep:det id:1.1 .
 id:1.3 dep:nsubj id:1.2 .
 id:1.5 dep:det id:1.4 .
-id:1.3 dep:tmod id:1.5 .
+id:1.3 dep:dobj id:1.5 .
 
 id:2.1 token:text "Friction" .
 id:2.1 token:lemma "friction" .

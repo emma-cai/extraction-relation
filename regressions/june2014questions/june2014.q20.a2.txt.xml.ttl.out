@@ -1,10 +1,10 @@
 % ("Breathing" "have" "a harmful effect on the environment")
 english(rule1, "Breathing most often has a harmful effect on the environment").
-rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Breathing"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+rule1:: isa(E4S1, "have") -> agent(E4S1, A1S1), isa(A1S1, "Breathing"), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(rule2, "Breathing most often has a harmful effect on the environment").
-rule2:: isa(A1, "Breathing") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+rule2:: isa(A1S1, "Breathing") -> isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a harmful effect on the environment").
 english(rule3, "Breathing most often has a harmful effect on the environment").
-rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Breathing"), object(E4, A7).
+rule3:: isa(A7S1, "a harmful effect on the environment") -> isa(E4S1, "have"), agent(E4S1, A1S1), isa(A1S1, "Breathing"), object(E4S1, A7S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .

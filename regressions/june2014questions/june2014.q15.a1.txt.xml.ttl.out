@@ -1,10 +1,10 @@
 % ("A dog" "open" "its mouth")
 english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-rule1:: isa(E3, "open") -> agent(E3, A2), isa(A2, "A dog"), object(E3, A5), isa(A5, "its mouth").
+rule1:: isa(E3S1, "open") -> agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-rule2:: isa(A2, "A dog") -> isa(E3, "open"), agent(E3, A2), object(E3, A5), isa(A5, "its mouth").
+rule2:: isa(A2S1, "A dog") -> isa(E3S1, "open"), agent(E3S1, A2S1), object(E3S1, A5S1), isa(A5S1, "its mouth").
 english(rule3, "A dog opens its mouth and lets its[its mouth] tongue hang out").
-rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog"), object(E3, A5).
+rule3:: isa(A5S1, "its mouth") -> isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -29,11 +29,11 @@ rule3:: isa(A5, "its mouth") -> isa(E3, "open"), agent(E3, A2), isa(A2, "A dog")
 
 % ("A human 's body" "produce" "sweat")
 english(rule4, "A human 's body produces sweat").
-rule4:: isa(E5, "produce") -> agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6), isa(A6, "sweat").
+rule4:: isa(E5S2, "produce") -> agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(rule5, "A human 's body produces sweat").
-rule5:: isa(A4, "A human 's body") -> isa(E5, "produce"), agent(E5, A4), object(E5, A6), isa(A6, "sweat").
+rule5:: isa(A4S2, "A human 's body") -> isa(E5S2, "produce"), agent(E5S2, A4S2), object(E5S2, A6S2), isa(A6S2, "sweat").
 english(rule6, "A human 's body produces sweat").
-rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 's body"), object(E5, A6).
+rule6:: isa(A6S2, "sweat") -> isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -56,11 +56,11 @@ rule6:: isa(A6, "sweat") -> isa(E5, "produce"), agent(E5, A4), isa(A4, "A human 
 
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"A"},  {"token":"id:2.2", "text":"human"},  {"token":"id:2.3", "text":"'s"},  {"token":"id:2.4", "text":"body"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.5", "text":"produce"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:2.6", "text":"sweat"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
 
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of drinking water" ] )
-english(rule7, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule7:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(rule8, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), isa(E1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "These" [ "to a shortage of drinking water" ] )
+english(rule7, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule7:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(rule8, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule8:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, E1S3), isa(E1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -101,13 +101,13 @@ rule8:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, E1), 
 	pred:object <http://aristo.allenai.org/id#3.1> ;
 	pred:to <http://aristo.allenai.org/id#3.11> .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways[These]"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
 
-% ("organisms"/?x "these" "")	"are ways"/EFFECT	("organisms"/?x "adjust" "two ways" [ "to a shortage of drinking water" ] )
-english(rule9, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule9:: isa(E1, "these"), agent(E1, A6), isa(A6, "organisms") -> effect(E1, E8), isa(E8, "adjust"), agent(E8, A6), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(rule10, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> effect(E1, E8), isa(E1, "these"), agent(E1, A6).
+% ("organisms"/?x "these" "")	"are ways[These]"/EFFECT	("organisms"/?x "adjust" "two ways[These]" [ "to a shortage of drinking water" ] )
+english(rule9, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule9:: isa(E1S3, "these"), agent(E1S3, A6S3), isa(A6S3, "organisms") -> effect(E1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(rule10, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule10:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> effect(E1S3, E8S3), isa(E1S3, "these"), agent(E1S3, A6S3).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -135,7 +135,7 @@ rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
-	pred:isa "\"two ways\"" .
+	pred:isa "\"two ways[These]\"" .
 
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
@@ -148,13 +148,13 @@ rule10:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 	pred:object <http://aristo.allenai.org/id#3.4> ;
 	pred:to <http://aristo.allenai.org/id#3.11> .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.1", "text":"these"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways[These]"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.6", "text":"organisms"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways[These]"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
 
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of drinking water" ] )
-english(rule11, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule11:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(rule12, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1), isa(A1, "These"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> example(A1, E8).
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "These" [ "to a shortage of drinking water" ] )
+english(rule11, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule11:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(rule12, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule12:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), isa(A1S3, "These"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> example(A1S3, E8S3).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -190,13 +190,13 @@ rule12:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A1),
 	pred:object <http://aristo.allenai.org/id#3.1> ;
 	pred:to <http://aristo.allenai.org/id#3.11> .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways[These]"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
 
-% "These"	"are ways"/EXAMPLE	("organisms" "adjust" "two ways" [ "to a shortage of drinking water" ] )
-english(rule13, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule13:: isa(A1, "These") -> example(A1, E8), isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11).
-english(rule14, "These are two ways that organisms may adjust to a shortage of drinking water").
-rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4), isa(A4, "two ways"), isa(A11, "a shortage of drinking water"), to(E8, A11) -> example(A1, E8), isa(A1, "These").
+% "These"	"are ways[These]"/EXAMPLE	("organisms" "adjust" "two ways[These]" [ "to a shortage of drinking water" ] )
+english(rule13, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule13:: isa(A1S3, "These") -> example(A1S3, E8S3), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3).
+english(rule14, "These are two ways[These] that organisms may adjust to a shortage of drinking water").
+rule14:: isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A4S3), isa(A4S3, "two ways[These]"), isa(A11S3, "a shortage of drinking water"), to(E8S3, A11S3) -> example(A1S3, E8S3), isa(A1S3, "These").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -219,7 +219,7 @@ rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
-	pred:isa "\"two ways\"" .
+	pred:isa "\"two ways[These]\"" .
 
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
@@ -232,5 +232,5 @@ rule14:: isa(E8, "adjust"), agent(E8, A6), isa(A6, "organisms"), object(E8, A4),
 	pred:object <http://aristo.allenai.org/id#3.4> ;
 	pred:to <http://aristo.allenai.org/id#3.11> .
 
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"These"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.2", "text":"are"},  {"token":"id:3.4", "text":"ways[These]"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.6", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:3.8", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.3", "text":"two"},  {"token":"id:3.4", "text":"ways[These]"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"to"},  {"token":"id:3.10", "text":"a"},  {"token":"id:3.11", "text":"shortage"},  {"token":"id:3.12", "text":"of"},  {"token":"id:3.13", "text":"drinking"},  {"token":"id:3.14", "text":"water"} ] ]} ], "confidence":1.0}
 
