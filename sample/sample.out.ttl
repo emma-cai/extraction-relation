@@ -7,18 +7,22 @@
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:in "\"winter\"" ;
+	pred:in <http://aristo.allenai.org/id#1.6> ;
 	pred:isa "\"grow\"" ;
 	pred:object <http://aristo.allenai.org/id#1.4> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.4>
 	a <entity> ;
 	pred:isa "\"fur\"" .
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"winter\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa "\"Some animals\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:arg "\"warm\"" ;
+	pred:arg <http://aristo.allenai.org/id#1.9> ;
 	pred:isa "\"keep\"" .
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"warm\"" .

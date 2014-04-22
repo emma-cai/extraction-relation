@@ -213,7 +213,8 @@ inf_mods(V, [Pobj|Rest]) :-
 	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	tokens(Pobj,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]),
 	tokens_text_quoted(Tokens,Text),
-	rdf_assert(V,NewPrepRel,literal(Text),V),
+	rdf_assert(Pobj,pred:isa,literal(Text),V),
+	rdf_assert(V,NewPrepRel,Pobj,V),
 	inf_mods(V, Rest).
 inf_mods(V, [Prep|Rest]) :-
 	prep(Mod,Prep),
@@ -225,11 +226,13 @@ inf_mods(V, [Prep|Rest]) :-
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
 	text_mod(Mod, Text),
-	rdf_assert(V,NewPrepRel,literal(Text),V),
+	rdf_assert(Mod,pred:isa,literal(Text),V),
+	rdf_assert(V,NewPrepRel,Mod,V),
 	inf_mods(V, Rest).
 inf_mods(V, [Mod|Rest]) :-
 	text_mod(Mod, Text),
-	rdf_assert(V,pred:arg,literal(Text),V),
+	rdf_assert(Mod,pred:isa,literal(Text),V),
+	rdf_assert(V,pred:arg,Mod,V),
 	inf_mods(V, Rest).
 
 text_tuple(Ent,Text) :-
