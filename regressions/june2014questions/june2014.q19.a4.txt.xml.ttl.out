@@ -1,0 +1,36 @@
+% "light"	"caused"/CAUSE	("The heat" "produce" "the smoke")
+english(rule1, "The heat that produces the smoke is caused by light").
+rule1:: isa(A10, "light") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+english(rule2, "The heat that produces the smoke is caused by light").
+rule2:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "light").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.10>
+	a <entity> ;
+	pred:isa "\"light\"" ;
+	rel:cause <http://aristo.allenai.org/id#2.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.2>
+	a <entity> ;
+	pred:isa "\"The heat\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+

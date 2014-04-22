@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>A</word>
+            <lemma>a</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>1</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>student</word>
+            <lemma>student</lemma>
+            <CharacterOffsetBegin>2</CharacterOffsetBegin>
+            <CharacterOffsetEnd>9</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>should</word>
+            <lemma>should</lemma>
+            <CharacterOffsetBegin>10</CharacterOffsetBegin>
+            <CharacterOffsetEnd>16</CharacterOffsetEnd>
+            <POS>MD</POS>
+            <NER>O</NER>
+          </token>
+          <token id="4">
+            <word>use</word>
+            <lemma>use</lemma>
+            <CharacterOffsetBegin>17</CharacterOffsetBegin>
+            <CharacterOffsetEnd>20</CharacterOffsetEnd>
+            <POS>VB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="5">
+            <word>pan</word>
+            <lemma>pan</lemma>
+            <CharacterOffsetBegin>21</CharacterOffsetBegin>
+            <CharacterOffsetEnd>24</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>balance</word>
+            <lemma>balance</lemma>
+            <CharacterOffsetBegin>25</CharacterOffsetBegin>
+            <CharacterOffsetEnd>32</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="7">
+            <word>to</word>
+            <lemma>to</lemma>
+            <CharacterOffsetBegin>33</CharacterOffsetBegin>
+            <CharacterOffsetEnd>35</CharacterOffsetEnd>
+            <POS>TO</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>measure</word>
+            <lemma>measure</lemma>
+            <CharacterOffsetBegin>36</CharacterOffsetBegin>
+            <CharacterOffsetEnd>43</CharacterOffsetEnd>
+            <POS>VB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>exactly</word>
+            <lemma>exactly</lemma>
+            <CharacterOffsetBegin>44</CharacterOffsetBegin>
+            <CharacterOffsetEnd>51</CharacterOffsetEnd>
+            <POS>RB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>10</word>
+            <lemma>10</lemma>
+            <CharacterOffsetBegin>52</CharacterOffsetBegin>
+            <CharacterOffsetEnd>54</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>NUMBER</NER>
+            <NormalizedNER>10.0</NormalizedNER>
+          </token>
+          <token id="11">
+            <word>milliliters</word>
+            <lemma>milliliter</lemma>
+            <CharacterOffsetBegin>55</CharacterOffsetBegin>
+            <CharacterOffsetEnd>66</CharacterOffsetEnd>
+            <POS>NNS</POS>
+            <NER>O</NER>
+          </token>
+          <token id="12">
+            <word>-LRB-</word>
+            <lemma>-lrb-</lemma>
+            <CharacterOffsetBegin>67</CharacterOffsetBegin>
+            <CharacterOffsetEnd>68</CharacterOffsetEnd>
+            <POS>-LRB-</POS>
+            <NER>O</NER>
+          </token>
+          <token id="13">
+            <word>mL</word>
+            <lemma>ml</lemma>
+            <CharacterOffsetBegin>68</CharacterOffsetBegin>
+            <CharacterOffsetEnd>70</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="14">
+            <word>-RRB-</word>
+            <lemma>-rrb-</lemma>
+            <CharacterOffsetBegin>70</CharacterOffsetBegin>
+            <CharacterOffsetEnd>71</CharacterOffsetEnd>
+            <POS>-RRB-</POS>
+            <NER>O</NER>
+          </token>
+          <token id="15">
+            <word>of</word>
+            <lemma>of</lemma>
+            <CharacterOffsetBegin>72</CharacterOffsetBegin>
+            <CharacterOffsetEnd>74</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="16">
+            <word>water</word>
+            <lemma>water</lemma>
+            <CharacterOffsetBegin>75</CharacterOffsetBegin>
+            <CharacterOffsetEnd>80</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="17">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>80</CharacterOffsetBegin>
+            <CharacterOffsetEnd>81</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (DT A) (NN student)) (VP (MD should) (VP (VB use) (NP (NN pan) (NN balance)) (S (VP (TO to) (VP (VB measure) (NP (NP (RB exactly) (CD 10) (NNS milliliters)) (PRN (-LRB- -LRB-) (NP (NN mL)) (-RRB- -RRB-)) (PP (IN of) (NP (NN water))))))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">use</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">student</governor>
+            <dependent idx="1">A</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">use</governor>
+            <dependent idx="2">student</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="4">use</governor>
+            <dependent idx="3">should</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="6">balance</governor>
+            <dependent idx="5">pan</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">use</governor>
+            <dependent idx="6">balance</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">measure</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="xcomp">
+            <governor idx="4">use</governor>
+            <dependent idx="8">measure</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="9">exactly</dependent>
+          </dep>
+          <dep type="num">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="10">10</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">measure</governor>
+            <dependent idx="11">milliliters</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="13">mL</dependent>
+          </dep>
+          <dep type="prep">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="15">of</dependent>
+          </dep>
+          <dep type="pobj">
+            <governor idx="15">of</governor>
+            <dependent idx="16">water</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">use</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">student</governor>
+            <dependent idx="1">A</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">use</governor>
+            <dependent idx="2">student</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="4">use</governor>
+            <dependent idx="3">should</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="6">balance</governor>
+            <dependent idx="5">pan</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">use</governor>
+            <dependent idx="6">balance</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">measure</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="xcomp">
+            <governor idx="4">use</governor>
+            <dependent idx="8">measure</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="9">exactly</dependent>
+          </dep>
+          <dep type="num">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="10">10</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">measure</governor>
+            <dependent idx="11">milliliters</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="13">mL</dependent>
+          </dep>
+          <dep type="prep_of">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="16">water</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">use</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">student</governor>
+            <dependent idx="1">A</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">use</governor>
+            <dependent idx="2">student</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="4">use</governor>
+            <dependent idx="3">should</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="6">balance</governor>
+            <dependent idx="5">pan</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">use</governor>
+            <dependent idx="6">balance</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">measure</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="xcomp">
+            <governor idx="4">use</governor>
+            <dependent idx="8">measure</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="9">exactly</dependent>
+          </dep>
+          <dep type="num">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="10">10</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">measure</governor>
+            <dependent idx="11">milliliters</dependent>
+          </dep>
+          <dep type="appos">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="13">mL</dependent>
+          </dep>
+          <dep type="prep_of">
+            <governor idx="11">milliliters</governor>
+            <dependent idx="16">water</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+  </document>
+</root>

@@ -1,0 +1,82 @@
+% ("plants"/?x "prey" "help")	"When"/WHEN	("plants"/?x "die" "")
+english(rule1, "When plants and animals die prey help return nutrients to the food chain").
+rule1:: isa(E7, "prey"), agent(E7, A2), isa(A2, "plants"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A2).
+english(rule2, "When plants and animals die prey help return nutrients to the food chain").
+rule2:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E7, E5), isa(E7, "prey"), agent(E7, A2), object(E7, A8), isa(A8, "help").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"help\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"die\"" .
+
+% ("animals"/?x "prey" "help")	"When"/WHEN	("animals"/?x "die" "")
+english(rule3, "When plants and animals die prey help return nutrients to the food chain").
+rule3:: isa(E7, "prey"), agent(E7, A4), isa(A4, "animals"), object(E7, A8), isa(A8, "help") -> when(E7, E5), isa(E5, "die"), agent(E5, A4).
+english(rule4, "When plants and animals die prey help return nutrients to the food chain").
+rule4:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E7, E5), isa(E7, "prey"), agent(E7, A4), object(E7, A8), isa(A8, "help").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"help\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"die\"" .
+

@@ -1,0 +1,69 @@
+% ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
+english(rule1, "A fox grows thicker fur as a season changes").
+rule1:: isa(E3, "grow") -> agent(E3, A2), isa(A2, "A fox"), object(E3, A5), isa(A5, "thicker fur"), as(E3, "a season changes").
+english(rule2, "A fox grows thicker fur as a season changes").
+rule2:: isa(A2, "A fox") -> isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "thicker fur"), as(E3, "a season changes").
+english(rule3, "A fox grows thicker fur as a season changes").
+rule3:: isa(A5, "thicker fur") -> isa(E3, "grow"), agent(E3, A2), isa(A2, "A fox"), object(E3, A5), as(E3, "a season changes").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:as "\"a season changes\"" ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"thicker fur\"" .
+
+% ("the fox"/?x "adapt" "")	"helps"/PURPOSE	("the fox"/?x "escape" "from predators")
+english(rule4, "This adaptation helps the fox to escape from predators").
+rule4:: isa(E2, "adapt"), agent(E2, A5), isa(A5, "the fox") -> purpose(E2, E7), isa(E7, "escape"), agent(E7, A5), object(E7, A8), isa(A8, "from predators").
+english(rule5, "This adaptation helps the fox to escape from predators").
+rule5:: isa(E7, "escape"), agent(E7, A5), isa(A5, "the fox"), object(E7, A8), isa(A8, "from predators") -> purpose(E2, E7), isa(E2, "adapt"), agent(E2, A5).
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.5> ;
+	pred:isa "\"adapt\"" ;
+	rel:purpose <http://aristo.allenai.org/id#2.7> .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"the fox\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"the fox\"" .
+
+<http://aristo.allenai.org/id#2.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.5> ;
+	pred:isa "\"escape\"" ;
+	pred:object <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.8>
+	a <entity> ;
+	pred:isa "\"from predators\"" .
+

@@ -1,0 +1,126 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1.1 token:text "When" .
+id:1.1 token:lemma "when" .
+id:1.1 token:pos "WRB" .
+id:1.1 token:begin 0 .
+id:1.1 token:end 4 .
+
+id:1.2 token:text "plants" .
+id:1.2 token:lemma "plant" .
+id:1.2 token:pos "NNS" .
+id:1.2 token:begin 5 .
+id:1.2 token:end 11 .
+
+id:1.3 token:text "and" .
+id:1.3 token:lemma "and" .
+id:1.3 token:pos "CC" .
+id:1.3 token:begin 12 .
+id:1.3 token:end 15 .
+
+id:1.4 token:text "animals" .
+id:1.4 token:lemma "animal" .
+id:1.4 token:pos "NNS" .
+id:1.4 token:begin 16 .
+id:1.4 token:end 23 .
+
+id:1.5 token:text "die" .
+id:1.5 token:lemma "die" .
+id:1.5 token:pos "VB" .
+id:1.5 token:begin 24 .
+id:1.5 token:end 27 .
+
+id:1.6 token:text "," .
+id:1.6 token:lemma "," .
+id:1.6 token:pos "," .
+id:1.6 token:begin 27 .
+id:1.6 token:end 28 .
+
+id:1.7 token:text "decomposers" .
+id:1.7 token:lemma "decomposer" .
+id:1.7 token:pos "NNS" .
+id:1.7 token:begin 29 .
+id:1.7 token:end 40 .
+
+id:1.8 token:text "help" .
+id:1.8 token:lemma "help" .
+id:1.8 token:pos "VBP" .
+id:1.8 token:begin 41 .
+id:1.8 token:end 45 .
+
+id:1.9 token:text "return" .
+id:1.9 token:lemma "return" .
+id:1.9 token:pos "VB" .
+id:1.9 token:begin 46 .
+id:1.9 token:end 52 .
+
+id:1.10 token:text "nutrients" .
+id:1.10 token:lemma "nutrient" .
+id:1.10 token:pos "NNS" .
+id:1.10 token:begin 53 .
+id:1.10 token:end 62 .
+
+id:1.11 token:text "to" .
+id:1.11 token:lemma "to" .
+id:1.11 token:pos "TO" .
+id:1.11 token:begin 63 .
+id:1.11 token:end 65 .
+
+id:1.12 token:text "the" .
+id:1.12 token:lemma "the" .
+id:1.12 token:pos "DT" .
+id:1.12 token:begin 66 .
+id:1.12 token:end 69 .
+
+id:1.13 token:text "food" .
+id:1.13 token:lemma "food" .
+id:1.13 token:pos "NN" .
+id:1.13 token:begin 70 .
+id:1.13 token:end 74 .
+
+id:1.14 token:text "chain" .
+id:1.14 token:lemma "chain" .
+id:1.14 token:pos "NN" .
+id:1.14 token:begin 75 .
+id:1.14 token:end 80 .
+
+id:1.15 token:text "." .
+id:1.15 token:lemma "." .
+id:1.15 token:pos "." .
+id:1.15 token:begin 80 .
+id:1.15 token:end 81 .
+
+id:1.0 basic:root id:1.8 .
+id:1.5 basic:advmod id:1.1 .
+id:1.5 basic:nsubj id:1.2 .
+id:1.2 basic:cc id:1.3 .
+id:1.2 basic:conj id:1.4 .
+id:1.8 basic:advcl id:1.5 .
+id:1.8 basic:nsubj id:1.7 .
+id:1.8 basic:ccomp id:1.9 .
+id:1.9 basic:dobj id:1.10 .
+id:1.9 basic:prep id:1.11 .
+id:1.14 basic:det id:1.12 .
+id:1.14 basic:nn id:1.13 .
+id:1.11 basic:pobj id:1.14 .
+
+id:1.0 dep:root id:1.8 .
+id:1.5 dep:advmod id:1.1 .
+id:1.5 dep:nsubj id:1.2 .
+id:1.2 dep:conj_and id:1.4 .
+id:1.5 dep:nsubj id:1.4 .
+id:1.8 dep:advcl id:1.5 .
+id:1.8 dep:nsubj id:1.7 .
+id:1.8 dep:ccomp id:1.9 .
+id:1.9 dep:dobj id:1.10 .
+id:1.14 dep:det id:1.12 .
+id:1.14 dep:nn id:1.13 .
+id:1.9 dep:prep_to id:1.14 .
+

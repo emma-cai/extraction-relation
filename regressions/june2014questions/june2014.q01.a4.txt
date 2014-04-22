@@ -1,0 +1,2 @@
+A student drops a ball.
+Gravity causes the ball to fall to the ground.

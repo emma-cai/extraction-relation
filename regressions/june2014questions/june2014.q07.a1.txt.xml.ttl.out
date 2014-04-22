@@ -1,0 +1,92 @@
+% ("A student"/?x "use" "a thermometer")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
+english(rule1, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
+rule1:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a thermometer") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A11), isa(A11, "10 milliliters of water").
+english(rule2, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
+rule2:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A11), isa(A11, "10 milliliters of water") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a thermometer").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"a thermometer\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> .
+
+% ("A student"/?x "use" "a thermometer")	"to"/EFFECT	("A student"/?x "measure" "mL")
+english(rule3, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
+rule3:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "a thermometer") -> effect(E4, E8), isa(E8, "measure"), agent(E8, A2), object(E8, A13), isa(A13, "mL").
+english(rule4, "A student should use a thermometer to measure exactly 10 milliliters mL of water").
+rule4:: isa(E8, "measure"), agent(E8, A2), isa(A2, "A student"), object(E8, A13), isa(A13, "mL") -> effect(E4, E8), isa(E4, "use"), agent(E4, A2), object(E4, A6), isa(A6, "a thermometer").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"a thermometer\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.13>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.13> .
+

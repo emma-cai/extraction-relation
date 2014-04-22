@@ -1,0 +1,59 @@
+% ("A student" "drop" "a ball")
+english(rule1, "A student drops a ball").
+rule1:: isa(E3, "drop") -> agent(E3, A2), isa(A2, "A student"), object(E3, A5), isa(A5, "a ball").
+english(rule2, "A student drops a ball").
+rule2:: isa(A2, "A student") -> isa(E3, "drop"), agent(E3, A2), object(E3, A5), isa(A5, "a ball").
+english(rule3, "A student drops a ball").
+rule3:: isa(A5, "a ball") -> isa(E3, "drop"), agent(E3, A2), isa(A2, "A student"), object(E3, A5).
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a ball\"" .
+
+% "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
+english(rule4, "Gravity causes the ball to fall to the ground").
+rule4:: isa(A1, "Gravity") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground").
+english(rule5, "Gravity causes the ball to fall to the ground").
+rule5:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground") -> cause(A1, E6), isa(A1, "Gravity").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"Gravity\"" ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"the ball\"" .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"fall\"" ;
+	pred:to "\"the ground\"" .
+

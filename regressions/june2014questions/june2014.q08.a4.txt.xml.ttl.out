@@ -1,0 +1,36 @@
+% "Driving activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
+english(rule1, "Driving activity is necessary for humans to maintain good health").
+rule1:: isa(A2, "Driving activity") -> requirement(A2, E8), isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health").
+english(rule2, "Driving activity is necessary for humans to maintain good health").
+rule2:: isa(E8, "maintain"), agent(E8, A6), isa(A6, "humans"), object(E8, A10), isa(A10, "good health") -> requirement(A2, E8), isa(A2, "Driving activity").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"Driving activity\"" ;
+	rel:requirement <http://aristo.allenai.org/id#1.8> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"good health\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"humans\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"maintain\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> .
+

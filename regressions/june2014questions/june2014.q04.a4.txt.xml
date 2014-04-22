@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>Eating</word>
+            <lemma>Eating</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>6</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>candy</word>
+            <lemma>candy</lemma>
+            <CharacterOffsetBegin>7</CharacterOffsetBegin>
+            <CharacterOffsetEnd>12</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>is</word>
+            <lemma>be</lemma>
+            <CharacterOffsetBegin>13</CharacterOffsetBegin>
+            <CharacterOffsetEnd>15</CharacterOffsetEnd>
+            <POS>VBZ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="4">
+            <word>an</word>
+            <lemma>a</lemma>
+            <CharacterOffsetBegin>16</CharacterOffsetBegin>
+            <CharacterOffsetEnd>18</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="5">
+            <word>example</word>
+            <lemma>example</lemma>
+            <CharacterOffsetBegin>19</CharacterOffsetBegin>
+            <CharacterOffsetEnd>26</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>of</word>
+            <lemma>of</lemma>
+            <CharacterOffsetBegin>27</CharacterOffsetBegin>
+            <CharacterOffsetEnd>29</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="7">
+            <word>a</word>
+            <lemma>a</lemma>
+            <CharacterOffsetBegin>30</CharacterOffsetBegin>
+            <CharacterOffsetEnd>31</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>good</word>
+            <lemma>good</lemma>
+            <CharacterOffsetBegin>32</CharacterOffsetBegin>
+            <CharacterOffsetEnd>36</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>health</word>
+            <lemma>health</lemma>
+            <CharacterOffsetBegin>37</CharacterOffsetBegin>
+            <CharacterOffsetEnd>43</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>habit</word>
+            <lemma>habit</lemma>
+            <CharacterOffsetBegin>44</CharacterOffsetBegin>
+            <CharacterOffsetEnd>49</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="11">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>49</CharacterOffsetBegin>
+            <CharacterOffsetEnd>50</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (ADJP (NNP Eating)) (NN candy)) (VP (VBZ is) (NP (NP (DT an) (NN example)) (PP (IN of) (NP (DT a) (JJ good) (NN health) (NN habit))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">example</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="2">candy</governor>
+            <dependent idx="1">Eating</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">example</governor>
+            <dependent idx="2">candy</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">example</governor>
+            <dependent idx="3">is</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="5">example</governor>
+            <dependent idx="4">an</dependent>
+          </dep>
+          <dep type="prep">
+            <governor idx="5">example</governor>
+            <dependent idx="6">of</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">habit</governor>
+            <dependent idx="7">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="10">habit</governor>
+            <dependent idx="8">good</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="10">habit</governor>
+            <dependent idx="9">health</dependent>
+          </dep>
+          <dep type="pobj">
+            <governor idx="6">of</governor>
+            <dependent idx="10">habit</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">example</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="2">candy</governor>
+            <dependent idx="1">Eating</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">example</governor>
+            <dependent idx="2">candy</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">example</governor>
+            <dependent idx="3">is</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="5">example</governor>
+            <dependent idx="4">an</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">habit</governor>
+            <dependent idx="7">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="10">habit</governor>
+            <dependent idx="8">good</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="10">habit</governor>
+            <dependent idx="9">health</dependent>
+          </dep>
+          <dep type="prep_of">
+            <governor idx="5">example</governor>
+            <dependent idx="10">habit</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">example</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="2">candy</governor>
+            <dependent idx="1">Eating</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">example</governor>
+            <dependent idx="2">candy</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">example</governor>
+            <dependent idx="3">is</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="5">example</governor>
+            <dependent idx="4">an</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">habit</governor>
+            <dependent idx="7">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="10">habit</governor>
+            <dependent idx="8">good</dependent>
+          </dep>
+          <dep type="nn">
+            <governor idx="10">habit</governor>
+            <dependent idx="9">health</dependent>
+          </dep>
+          <dep type="prep_of">
+            <governor idx="5">example</governor>
+            <dependent idx="10">habit</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+    <coreference>
+      <coreference>
+        <mention representative="true">
+          <sentence>1</sentence>
+          <start>4</start>
+          <end>11</end>
+          <head>5</head>
+        </mention>
+        <mention>
+          <sentence>1</sentence>
+          <start>1</start>
+          <end>3</end>
+          <head>2</head>
+        </mention>
+      </coreference>
+    </coreference>
+  </document>
+</root>

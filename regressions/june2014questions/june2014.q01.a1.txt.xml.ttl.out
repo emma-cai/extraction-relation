@@ -1,0 +1,32 @@
+% "Magnetism"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
+english(rule1, "Magnetism causes the ball to fall to the ground").
+rule1:: isa(A1, "Magnetism") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground").
+english(rule2, "Magnetism causes the ball to fall to the ground").
+rule2:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), to(E6, "the ground") -> cause(A1, E6), isa(A1, "Magnetism").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"Magnetism\"" ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"the ball\"" .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"fall\"" ;
+	pred:to "\"the ground\"" .
+

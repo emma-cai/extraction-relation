@@ -1,0 +1,170 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1.1 token:text "A" .
+id:1.1 token:lemma "a" .
+id:1.1 token:pos "DT" .
+id:1.1 token:begin 0 .
+id:1.1 token:end 1 .
+
+id:1.2 token:text "fox" .
+id:1.2 token:lemma "fox" .
+id:1.2 token:pos "NN" .
+id:1.2 token:begin 2 .
+id:1.2 token:end 5 .
+
+id:1.3 token:text "grows" .
+id:1.3 token:lemma "grow" .
+id:1.3 token:pos "VBZ" .
+id:1.3 token:begin 6 .
+id:1.3 token:end 11 .
+
+id:1.4 token:text "thicker" .
+id:1.4 token:lemma "thicker" .
+id:1.4 token:pos "JJR" .
+id:1.4 token:begin 12 .
+id:1.4 token:end 19 .
+
+id:1.5 token:text "fur" .
+id:1.5 token:lemma "fur" .
+id:1.5 token:pos "NN" .
+id:1.5 token:begin 20 .
+id:1.5 token:end 23 .
+
+id:1.6 token:text "as" .
+id:1.6 token:lemma "as" .
+id:1.6 token:pos "IN" .
+id:1.6 token:begin 24 .
+id:1.6 token:end 26 .
+
+id:1.7 token:text "a" .
+id:1.7 token:lemma "a" .
+id:1.7 token:pos "DT" .
+id:1.7 token:begin 27 .
+id:1.7 token:end 28 .
+
+id:1.8 token:text "season" .
+id:1.8 token:lemma "season" .
+id:1.8 token:pos "NN" .
+id:1.8 token:begin 29 .
+id:1.8 token:end 35 .
+
+id:1.9 token:text "changes" .
+id:1.9 token:lemma "change" .
+id:1.9 token:pos "NNS" .
+id:1.9 token:begin 36 .
+id:1.9 token:end 43 .
+
+id:1.10 token:text "." .
+id:1.10 token:lemma "." .
+id:1.10 token:pos "." .
+id:1.10 token:begin 43 .
+id:1.10 token:end 44 .
+
+id:1.0 basic:root id:1.3 .
+id:1.2 basic:det id:1.1 .
+id:1.3 basic:nsubj id:1.2 .
+id:1.5 basic:amod id:1.4 .
+id:1.3 basic:dobj id:1.5 .
+id:1.3 basic:prep id:1.6 .
+id:1.9 basic:det id:1.7 .
+id:1.9 basic:nn id:1.8 .
+id:1.6 basic:pobj id:1.9 .
+
+id:1.0 dep:root id:1.3 .
+id:1.2 dep:det id:1.1 .
+id:1.3 dep:nsubj id:1.2 .
+id:1.5 dep:amod id:1.4 .
+id:1.3 dep:dobj id:1.5 .
+id:1.9 dep:det id:1.7 .
+id:1.9 dep:nn id:1.8 .
+id:1.3 dep:prep_as id:1.9 .
+
+id:2.1 token:text "This" .
+id:2.1 token:lemma "this" .
+id:2.1 token:pos "DT" .
+id:2.1 token:begin 45 .
+id:2.1 token:end 49 .
+
+id:2.2 token:text "adaptation" .
+id:2.2 token:lemma "adaptation" .
+id:2.2 token:pos "NN" .
+id:2.2 token:begin 50 .
+id:2.2 token:end 60 .
+
+id:2.3 token:text "helps" .
+id:2.3 token:lemma "help" .
+id:2.3 token:pos "VBZ" .
+id:2.3 token:begin 61 .
+id:2.3 token:end 66 .
+
+id:2.4 token:text "the" .
+id:2.4 token:lemma "the" .
+id:2.4 token:pos "DT" .
+id:2.4 token:begin 67 .
+id:2.4 token:end 70 .
+
+id:2.5 token:text "fox" .
+id:2.5 token:lemma "fox" .
+id:2.5 token:pos "NN" .
+id:2.5 token:begin 71 .
+id:2.5 token:end 74 .
+
+id:2.6 token:text "to" .
+id:2.6 token:lemma "to" .
+id:2.6 token:pos "TO" .
+id:2.6 token:begin 75 .
+id:2.6 token:end 77 .
+
+id:2.7 token:text "escape" .
+id:2.7 token:lemma "escape" .
+id:2.7 token:pos "VB" .
+id:2.7 token:begin 78 .
+id:2.7 token:end 84 .
+
+id:2.8 token:text "from" .
+id:2.8 token:lemma "from" .
+id:2.8 token:pos "IN" .
+id:2.8 token:begin 85 .
+id:2.8 token:end 89 .
+
+id:2.9 token:text "predators" .
+id:2.9 token:lemma "predator" .
+id:2.9 token:pos "NNS" .
+id:2.9 token:begin 90 .
+id:2.9 token:end 99 .
+
+id:2.10 token:text "." .
+id:2.10 token:lemma "." .
+id:2.10 token:pos "." .
+id:2.10 token:begin 99 .
+id:2.10 token:end 100 .
+
+id:2.0 basic:root id:2.3 .
+id:2.2 basic:det id:2.1 .
+id:2.3 basic:nsubj id:2.2 .
+id:2.5 basic:det id:2.4 .
+id:2.7 basic:nsubj id:2.5 .
+id:2.7 basic:aux id:2.6 .
+id:2.3 basic:xcomp id:2.7 .
+id:2.7 basic:dobj id:2.8 .
+id:2.8 basic:pobj id:2.9 .
+
+id:2.0 dep:root id:2.3 .
+id:2.2 dep:det id:2.1 .
+id:2.3 dep:nsubj id:2.2 .
+id:2.5 dep:det id:2.4 .
+id:2.7 dep:nsubj id:2.5 .
+id:2.7 dep:aux id:2.6 .
+id:2.3 dep:xcomp id:2.7 .
+id:2.7 dep:dobj id:2.8 .
+id:2.8 dep:pobj id:2.9 .
+
+id:1.2 coref:ref id:1.2 .
+id:1.2 coref:ref id:2.5 .

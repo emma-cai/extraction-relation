@@ -1,0 +1,27 @@
+% ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
+english(rule1, "Exercising every day is an example of a good health habit").
+rule1:: isa(E1, "exercise"), arg(E1, "every day") -> example(E1, A11), isa(A11, "a good health habit").
+english(rule2, "Exercising every day is an example of a good health habit").
+rule2:: isa(A11, "a good health habit") -> example(E1, A11), isa(E1, "exercise"), arg(E1, "every day").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	pred:arg "\"every day\"" ;
+	pred:isa "\"exercise\"" ;
+	rel:example <http://aristo.allenai.org/id#1.11> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+

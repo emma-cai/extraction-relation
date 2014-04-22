@@ -1,0 +1,26 @@
+% "Watching television"	"example of"/EXAMPLE	"a good health habit"
+english(rule1, "Watching television is an example of a good health habit").
+rule1:: isa(A2, "Watching television") -> example(A2, A10), isa(A10, "a good health habit").
+english(rule2, "Watching television is an example of a good health habit").
+rule2:: isa(A10, "a good health habit") -> example(A2, A10), isa(A2, "Watching television").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"Watching television\"" ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+

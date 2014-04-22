@@ -1,0 +1,98 @@
+% ("A student" "grow" "some plants" [ "for an experiment" ] )
+english(rule1, "A student is growing some plants for an experiment").
+rule1:: isa(E4, "grow") -> agent(E4, A2), isa(A2, "A student"), object(E4, A6), isa(A6, "some plants"), for(E4, "an experiment").
+english(rule2, "A student is growing some plants for an experiment").
+rule2:: isa(A2, "A student") -> isa(E4, "grow"), agent(E4, A2), object(E4, A6), isa(A6, "some plants"), for(E4, "an experiment").
+english(rule3, "A student is growing some plants for an experiment").
+rule3:: isa(A6, "some plants") -> isa(E4, "grow"), agent(E4, A2), isa(A2, "A student"), object(E4, A6), for(E4, "an experiment").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for "\"an experiment\"" ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"some plants\"" .
+
+% ("She" "notify" "small white spots" [ "on the leaves" ] )
+english(rule4, "She notices small white spots on the leaves").
+rule4:: isa(E2, "notify") -> agent(E2, A1), isa(A1, "She"), object(E2, A5), isa(A5, "small white spots"), on(E2, "the leaves").
+english(rule5, "She notices small white spots on the leaves").
+rule5:: isa(A1, "She") -> isa(E2, "notify"), agent(E2, A1), object(E2, A5), isa(A5, "small white spots"), on(E2, "the leaves").
+english(rule6, "She notices small white spots on the leaves").
+rule6:: isa(A5, "small white spots") -> isa(E2, "notify"), agent(E2, A1), isa(A1, "She"), object(E2, A5), on(E2, "the leaves").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"notify\"" ;
+	pred:object <http://aristo.allenai.org/id#2.5> ;
+	pred:on "\"the leaves\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"small white spots\"" .
+
+% ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots" ] )
+english(rule7, "She[She] should use a balance to get a better look at the spots").
+rule7:: isa(E3, "use"), agent(E3, A1), isa(A1, "She"), object(E3, A5), isa(A5, "a balance") -> effect(E3, E7), isa(E7, "get"), agent(E7, A1), arg(E7, "a better look at the spots").
+english(rule8, "She[She] should use a balance to get a better look at the spots").
+rule8:: isa(E7, "get"), agent(E7, A1), isa(A1, "She"), arg(E7, "a better look at the spots") -> effect(E3, E7), isa(E3, "use"), agent(E3, A1), object(E3, A5), isa(A5, "a balance").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#3.5> ;
+	rel:effect <http://aristo.allenai.org/id#3.7> .
+
+<http://aristo.allenai.org/id#3.5>
+	a <entity> ;
+	pred:isa "\"a balance\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#3.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:arg "\"a better look at the spots\"" ;
+	pred:isa "\"get\"" .
+

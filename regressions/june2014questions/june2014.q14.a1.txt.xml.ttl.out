@@ -1,0 +1,29 @@
+% ("Animals" "get" "energy" [ "for growth from air", "for repair" ] )
+english(rule1, "Animals get energy for growth and repair from air").
+rule1:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, "growth from air"), for(E2, "repair").
+english(rule2, "Animals get energy for growth and repair from air").
+rule2:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), for(E2, "growth from air"), for(E2, "repair").
+english(rule3, "Animals get energy for growth and repair from air").
+rule3:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), for(E2, "growth from air"), for(E2, "repair").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	pred:isa "\"Animals\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:for "\"growth from air\"" ,
+		 "\"repair\"" ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"energy\"" .
+

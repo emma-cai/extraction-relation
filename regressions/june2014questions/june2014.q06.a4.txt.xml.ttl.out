@@ -1,0 +1,26 @@
+% "Gravity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
+english(rule1, "Gravity is the main source of energy for the water cycle").
+rule1:: isa(A1, "Gravity") -> example(A1, A5), isa(A5, "the main source of energy for the water cycle").
+english(rule2, "Gravity is the main source of energy for the water cycle").
+rule2:: isa(A5, "the main source of energy for the water cycle") -> example(A1, A5), isa(A1, "Gravity").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	pred:isa "\"Gravity\"" ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"the main source of energy for the water cycle\"" .
+

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>Growing</word>
+            <lemma>grow</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>7</CharacterOffsetEnd>
+            <POS>VBG</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>most</word>
+            <lemma>most</lemma>
+            <CharacterOffsetBegin>8</CharacterOffsetBegin>
+            <CharacterOffsetEnd>12</CharacterOffsetEnd>
+            <POS>RBS</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>often</word>
+            <lemma>often</lemma>
+            <CharacterOffsetBegin>13</CharacterOffsetBegin>
+            <CharacterOffsetEnd>18</CharacterOffsetEnd>
+            <POS>RB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="4">
+            <word>has</word>
+            <lemma>have</lemma>
+            <CharacterOffsetBegin>19</CharacterOffsetBegin>
+            <CharacterOffsetEnd>22</CharacterOffsetEnd>
+            <POS>VBZ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="5">
+            <word>a</word>
+            <lemma>a</lemma>
+            <CharacterOffsetBegin>23</CharacterOffsetBegin>
+            <CharacterOffsetEnd>24</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>harmful</word>
+            <lemma>harmful</lemma>
+            <CharacterOffsetBegin>25</CharacterOffsetBegin>
+            <CharacterOffsetEnd>32</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="7">
+            <word>effect</word>
+            <lemma>effect</lemma>
+            <CharacterOffsetBegin>33</CharacterOffsetBegin>
+            <CharacterOffsetEnd>39</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>on</word>
+            <lemma>on</lemma>
+            <CharacterOffsetBegin>40</CharacterOffsetBegin>
+            <CharacterOffsetEnd>42</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>the</word>
+            <lemma>the</lemma>
+            <CharacterOffsetBegin>43</CharacterOffsetBegin>
+            <CharacterOffsetEnd>46</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>environment</word>
+            <lemma>environment</lemma>
+            <CharacterOffsetBegin>47</CharacterOffsetBegin>
+            <CharacterOffsetEnd>58</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="11">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>58</CharacterOffsetBegin>
+            <CharacterOffsetEnd>59</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (VBG Growing)) (ADVP (RBS most) (RB often)) (VP (VBZ has) (NP (NP (DT a) (JJ harmful) (NN effect)) (PP (IN on) (NP (DT the) (NN environment))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">has</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">has</governor>
+            <dependent idx="1">Growing</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="3">often</governor>
+            <dependent idx="2">most</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="4">has</governor>
+            <dependent idx="3">often</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="7">effect</governor>
+            <dependent idx="5">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="7">effect</governor>
+            <dependent idx="6">harmful</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">has</governor>
+            <dependent idx="7">effect</dependent>
+          </dep>
+          <dep type="prep">
+            <governor idx="7">effect</governor>
+            <dependent idx="8">on</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">environment</governor>
+            <dependent idx="9">the</dependent>
+          </dep>
+          <dep type="pobj">
+            <governor idx="8">on</governor>
+            <dependent idx="10">environment</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">has</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">has</governor>
+            <dependent idx="1">Growing</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="3">often</governor>
+            <dependent idx="2">most</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="4">has</governor>
+            <dependent idx="3">often</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="7">effect</governor>
+            <dependent idx="5">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="7">effect</governor>
+            <dependent idx="6">harmful</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">has</governor>
+            <dependent idx="7">effect</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">environment</governor>
+            <dependent idx="9">the</dependent>
+          </dep>
+          <dep type="prep_on">
+            <governor idx="7">effect</governor>
+            <dependent idx="10">environment</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="4">has</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="4">has</governor>
+            <dependent idx="1">Growing</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="3">often</governor>
+            <dependent idx="2">most</dependent>
+          </dep>
+          <dep type="advmod">
+            <governor idx="4">has</governor>
+            <dependent idx="3">often</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="7">effect</governor>
+            <dependent idx="5">a</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="7">effect</governor>
+            <dependent idx="6">harmful</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="4">has</governor>
+            <dependent idx="7">effect</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="10">environment</governor>
+            <dependent idx="9">the</dependent>
+          </dep>
+          <dep type="prep_on">
+            <governor idx="7">effect</governor>
+            <dependent idx="10">environment</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+  </document>
+</root>

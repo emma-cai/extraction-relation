@@ -1,0 +1,77 @@
+% ("A bat"/?x "fly" "A bat" [ "at night" ] )	""/EFFECT	("A bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
+english(rule1, "A bat flying at night is preparing for a seasonal change in the environment").
+rule1:: isa(E3, "fly"), agent(E3, A2), isa(A2, "A bat"), object(E3, A2), at(E3, "night") -> effect(E3, E7), isa(E7, "prepare"), agent(E7, A2), for(E7, "a seasonal change in the environment").
+english(rule2, "A bat flying at night is preparing for a seasonal change in the environment").
+rule2:: isa(E7, "prepare"), agent(E7, A2), isa(A2, "A bat"), for(E7, "a seasonal change in the environment") -> effect(E3, E7), isa(E3, "fly"), agent(E3, A2), object(E3, A2), at(E3, "night").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A bat\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:at "\"night\"" ;
+	pred:isa "\"fly\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A bat\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for "\"a seasonal change in the environment\"" ;
+	pred:isa "\"prepare\"" .
+
+% ("A bat"/?x "fly" "" [ "at night" ] )	""/EFFECT	("A bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
+english(rule3, "A bat flying at night is preparing for a seasonal change in the environment").
+rule3:: isa(E3, "fly"), agent(E3, A2), isa(A2, "A bat"), at(E3, "night") -> effect(E3, E7), isa(E7, "prepare"), agent(E7, A2), for(E7, "a seasonal change in the environment").
+english(rule4, "A bat flying at night is preparing for a seasonal change in the environment").
+rule4:: isa(E7, "prepare"), agent(E7, A2), isa(A2, "A bat"), for(E7, "a seasonal change in the environment") -> effect(E3, E7), isa(E3, "fly"), agent(E3, A2), at(E3, "night").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A bat\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:at "\"night\"" ;
+	pred:isa "\"fly\"" ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A bat\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for "\"a seasonal change in the environment\"" ;
+	pred:isa "\"prepare\"" .
+

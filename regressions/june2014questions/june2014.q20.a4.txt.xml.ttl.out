@@ -1,0 +1,27 @@
+% ("Planting" "have" "a harmful effect on the environment")
+english(rule1, "Planting most often has a harmful effect on the environment").
+rule1:: isa(E4, "have") -> agent(E4, A1), isa(A1, "Planting"), object(E4, A7), isa(A7, "a harmful effect on the environment").
+english(rule2, "Planting most often has a harmful effect on the environment").
+rule2:: isa(A1, "Planting") -> isa(E4, "have"), agent(E4, A1), object(E4, A7), isa(A7, "a harmful effect on the environment").
+english(rule3, "Planting most often has a harmful effect on the environment").
+rule3:: isa(A7, "a harmful effect on the environment") -> isa(E4, "have"), agent(E4, A1), isa(A1, "Planting"), object(E4, A7).
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	pred:isa "\"Planting\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"have\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"a harmful effect on the environment\"" .
+

@@ -1,0 +1,42 @@
+% ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
+english(rule1, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+rule1:: isa(E3, "store"), agent(E3, A2), isa(A2, "A squirrel"), object(E3, A4), isa(A4, "nuts") -> effect(E3, E6), isa(E6, "prepare"), agent(E6, A2), for(E6, "a seasonal change in the environment").
+english(rule2, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+rule2:: isa(E6, "prepare"), agent(E6, A2), isa(A2, "A squirrel"), for(E6, "a seasonal change in the environment") -> effect(E3, E6), isa(E3, "store"), agent(E3, A2), object(E3, A4), isa(A4, "nuts").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A squirrel\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"store\"" ;
+	pred:object <http://aristo.allenai.org/id#1.4> ;
+	rel:effect <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"nuts\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A squirrel\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for "\"a seasonal change in the environment\"" ;
+	pred:isa "\"prepare\"" .
+

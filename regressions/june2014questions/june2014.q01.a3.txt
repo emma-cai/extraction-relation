@@ -1,0 +1,2 @@
+A student drops a ball.
+Friction causes the ball to fall to the ground.

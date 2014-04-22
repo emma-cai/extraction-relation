@@ -1,0 +1,58 @@
+% "A decomposer"	"is"/EXAMPLE	("an organism" "break" "")
+english(rule1, "A decomposer is an organism that breaks down dead plants and animals").
+rule1:: isa(A2, "A decomposer") -> example(A2, A5), isa(E7, "break"), agent(E7, A5), isa(A5, "an organism"), isa(A2, A5).
+english(rule2, "A decomposer is an organism that breaks down dead plants and animals").
+rule2:: isa(E7, "break"), agent(E7, A5), isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer"), isa(A2, A5).
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa <http://aristo.allenai.org/id#1.5> ,
+		 "\"A decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an organism\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"break\"" .
+
+% "A decomposer"	"is"/EXAMPLE	"an organism"
+english(rule3, "A decomposer is an organism that breaks down dead plants and animals").
+rule3:: isa(A2, "A decomposer") -> example(A2, A5), isa(A5, "an organism").
+english(rule4, "A decomposer is an organism that breaks down dead plants and animals").
+rule4:: isa(A5, "an organism") -> example(A2, A5), isa(A2, "A decomposer").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an organism\"" .
+
