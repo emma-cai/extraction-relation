@@ -1,0 +1,161 @@
+[
+    {
+        "key": "(A)",
+        "question": "a decomposer is an organism that hunts and eats animals.",
+        "focus": "hunts and eats animals"
+    },
+    {
+        "key": "(B)",
+        "question": "a decomposer is an organism that migrates for the winter.",
+        "focus": "migrates for the winter"
+    },
+    {
+        "key": "(C)",
+        "question": "a decomposer is an organism that breaks down dead plants and animals.",
+        "focus": "breaks down dead plants and animals"
+    },
+    {
+        "key": "(D)",
+        "question": "a decomposer is an organism that uses water and sunlight to make food.",
+        "focus": "uses water and sunlight to make food"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "green plants get the energy they need to make food from air.",
+        "focus": "air"
+    },
+    {
+        "key": "(B)",
+        "question": "green plants get the energy they need to make food from sunlight.",
+        "focus": "sunlight"
+    },
+    {
+        "key": "(C)",
+        "question": "green plants get the energy they need to make food from water.",
+        "focus": "water"
+    },
+    {
+        "key": "(D)",
+        "question": "green plants get the energy they need to make food from soil.",
+        "focus": "soil"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "since green plants make their own food, they are called predators.",
+        "focus": "predators"
+    },
+    {
+        "key": "(B)",
+        "question": "since green plants make their own food, they are called prey.",
+        "focus": "prey"
+    },
+    {
+        "key": "(C)",
+        "question": "since green plants make their own food, they are called decomposers.",
+        "focus": "decomposers"
+    },
+    {
+        "key": "(D)",
+        "question": "since green plants make their own food, they are called producers.",
+        "focus": "producers"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. these are two ways that organisms may adjust to cold temperatures.",
+        "focus": "cold temperatures"
+    },
+    {
+        "key": "(B)",
+        "question": "A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. these are two ways that organisms may adjust to hot temperatures.",
+        "focus": "hot temperatures"
+    },
+    {
+        "key": "(C)",
+        "question": "A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. these are two ways that organisms may adjust to a shortage of food.",
+        "focus": "a shortage of food"
+    },
+    {
+        "key": "(D)",
+        "question": "A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. these are two ways that organisms may adjust to a shortage of drinking water.",
+        "focus": "a shortage of drinking water"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to find food.",
+        "focus": "find food"
+    },
+    {
+        "key": "(B)",
+        "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to keep warmer.",
+        "focus": "keep warmer"
+    },
+    {
+        "key": "(C)",
+        "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to grow stronger.",
+        "focus": "grow stronger"
+    },
+    {
+        "key": "(D)",
+        "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to escape from predators.",
+        "focus": "escape from predators"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "animals get energy for growth and repair from soil.",
+        "focus": "soil"
+    },
+    {
+        "key": "(B)",
+        "question": "animals get energy for growth and repair from food.",
+        "focus": "food"
+    },
+    {
+        "key": "(C)",
+        "question": "animals get energy for growth and repair from water.",
+        "focus": "water"
+    },
+    {
+        "key": "(D)",
+        "question": "animals get energy for growth and repair from air.",
+        "focus": "air"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by magnetism.",
+        "focus": "magnetism"
+    },
+    {
+        "key": "(B)",
+        "question": "A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by sound.",
+        "focus": "sound"
+    },
+    {
+        "key": "(C)",
+        "question": "A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by light.",
+        "focus": "light"
+    },
+    {
+        "key": "(D)",
+        "question": "A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by friction.",
+        "focus": "friction"
+    }
+]
+
