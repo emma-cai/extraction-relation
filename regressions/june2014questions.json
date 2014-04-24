@@ -1,6 +1,52 @@
 [
     {
         "key": "(A)",
+        "question": "gravity causes rocks to roll downhill.",
+        "focus": "gravity"
+    },
+    {
+        "key": "(B)",
+        "question": "friction causes rocks to roll downhill.",
+        "focus": "friction"
+    },
+    {
+        "key": "(C)",
+        "question": "erosion causes rocks to roll downhill.",
+        "focus": "erosion"
+    },
+    {
+        "key": "(D)",
+        "question": "magnetism causes rocks to roll downhill.",
+        "focus": "magnetism"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "watching television is an example of a good health habit.",
+        "focus": "watching television"
+    },
+    {
+        "key": "(B)",
+        "question": "smoking cigarettes is an example of a good health habit.",
+        "focus": "smoking cigarettes"
+    },
+    {
+        "key": "(C)",
+        "question": "eating candy is an example of a good health habit.",
+        "focus": "eating candy"
+    },
+    {
+        "key": "(D)",
+        "question": "exercising every day is an example of a good health habit.",
+        "focus": "exercising every day"
+    }
+]
+
+[
+    {
+        "key": "(A)",
         "question": "a decomposer is an organism that hunts and eats animals.",
         "focus": "hunts and eats animals"
     },
@@ -18,6 +64,98 @@
         "key": "(D)",
         "question": "a decomposer is an organism that uses water and sunlight to make food.",
         "focus": "uses water and sunlight to make food"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "decreasing the temperature is one way to change water from a liquid to a solid.",
+        "focus": "decrease the temperature"
+    },
+    {
+        "key": "(B)",
+        "question": "increasing the temperature is one way to change water from a liquid to a solid.",
+        "focus": "increase the temperature"
+    },
+    {
+        "key": "(C)",
+        "question": "decreasing the mass is one way to change water from a liquid to a solid.",
+        "focus": "decrease the mass"
+    },
+    {
+        "key": "(D)",
+        "question": "increasing the mass is one way to change water from a liquid to a solid.",
+        "focus": "increase the mass"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "A student drops a ball. electricity causes the ball to fall to the ground.",
+        "focus": "electricity"
+    },
+    {
+        "key": "(B)",
+        "question": "A student drops a ball. friction causes the ball to fall to the ground.",
+        "focus": "friction"
+    },
+    {
+        "key": "(C)",
+        "question": "A student drops a ball. gravity causes the ball to fall to the ground.",
+        "focus": "gravity"
+    },
+    {
+        "key": "(D)",
+        "question": "A student drops a ball. magnetism causes the ball to fall to the ground.",
+        "focus": "magnetism"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "electricity is the main source of energy for the water cycle.",
+        "focus": "electricity"
+    },
+    {
+        "key": "(B)",
+        "question": "erosion is the main source of energy for the water cycle.",
+        "focus": "erosion"
+    },
+    {
+        "key": "(C)",
+        "question": "gravity is the main source of energy for the water cycle.",
+        "focus": "gravity"
+    },
+    {
+        "key": "(D)",
+        "question": "sunlight is the main source of energy for the water cycle.",
+        "focus": "sunlight"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "a student should use a graduated cylinder to measure exactly 10 milliliters (mL) of water.",
+        "focus": "graduated cylinder"
+    },
+    {
+        "key": "(B)",
+        "question": "a student should use pan balance to measure exactly 10 milliliters (mL) of water.",
+        "focus": "pan balance"
+    },
+    {
+        "key": "(C)",
+        "question": "a student should use a ruler to measure exactly 10 milliliters (mL) of water.",
+        "focus": "ruler"
+    },
+    {
+        "key": "(D)",
+        "question": "a student should use a thermometer to measure exactly 10 milliliters (mL) of water.",
+        "focus": "thermometer"
     }
 ]
 
@@ -47,6 +185,75 @@
 [
     {
         "key": "(A)",
+        "question": "when plants and animals die, decomposers help return nutrients to the food chain.",
+        "focus": "decomposers"
+    },
+    {
+        "key": "(B)",
+        "question": "when plants and animals die, predators help return nutrients to the food chain.",
+        "focus": "predators"
+    },
+    {
+        "key": "(C)",
+        "question": "when plants and animals die, prey help return nutrients to the food chain.",
+        "focus": "prey"
+    },
+    {
+        "key": "(D)",
+        "question": "when plants and animals die, producers help return nutrients to the food chain.",
+        "focus": "producers"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "a bat flying at night is preparing for a seasonal change in the environment.",
+        "focus": "a bat flying at night"
+    },
+    {
+        "key": "(B)",
+        "question": "a deer drinking water is preparing for a seasonal change in the environment.",
+        "focus": "a deer drinking water"
+    },
+    {
+        "key": "(C)",
+        "question": "an owl eating a mouse is preparing for a seasonal change in the environment.",
+        "focus": "an owl eating a mouse"
+    },
+    {
+        "key": "(D)",
+        "question": "a squirrel storing nuts is preparing for a seasonal change in the environment.",
+        "focus": "a squirrel storing nuts"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "mechanical energy is being used when a person pushes a wooden block across the floor.",
+        "focus": "mechanical"
+    },
+    {
+        "key": "(B)",
+        "question": "magnetic energy is being used when a person pushes a wooden block across the floor.",
+        "focus": "magnetic"
+    },
+    {
+        "key": "(C)",
+        "question": "sound is being used when a person pushes a wooden block across the floor.",
+        "focus": "sound"
+    },
+    {
+        "key": "(D)",
+        "question": "electrical energy is being used when a person pushes a wooden block across the floor.",
+        "focus": "electrical"
+    }
+]
+
+[
+    {
+        "key": "(A)",
         "question": "since green plants make their own food, they are called predators.",
         "focus": "predators"
     },
@@ -64,6 +271,29 @@
         "key": "(D)",
         "question": "since green plants make their own food, they are called producers.",
         "focus": "producers"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "breathing most often has a harmful effect on the environment.",
+        "focus": "breathing"
+    },
+    {
+        "key": "(B)",
+        "question": "growing most often has a harmful effect on the environment.",
+        "focus": "growing"
+    },
+    {
+        "key": "(C)",
+        "question": "planting most often has a harmful effect on the environment.",
+        "focus": "planting"
+    },
+    {
+        "key": "(D)",
+        "question": "polluting most often has a harmful effect on the environment.",
+        "focus": "polluting"
     }
 ]
 
@@ -93,6 +323,29 @@
 [
     {
         "key": "(A)",
+        "question": "A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a thermometer to get a better look at the spots.",
+        "focus": "thermometer"
+    },
+    {
+        "key": "(B)",
+        "question": "A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a hand lens to get a better look at the spots.",
+        "focus": "hand lens"
+    },
+    {
+        "key": "(C)",
+        "question": "A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a graduated cylinder to get a better look at the spots.",
+        "focus": "graduated cylinder"
+    },
+    {
+        "key": "(D)",
+        "question": "A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a balance to get a better look at the spots.",
+        "focus": "balance"
+    }
+]
+
+[
+    {
+        "key": "(A)",
         "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to find food.",
         "focus": "find food"
     },
@@ -110,6 +363,29 @@
         "key": "(D)",
         "question": "A fox grows thicker fur as a season changes. this adaptation helps the fox to escape from predators.",
         "focus": "escape from predators"
+    }
+]
+
+[
+    {
+        "key": "(A)",
+        "question": "hibernation often helps an animal attract a mate.",
+        "focus": "hibernation"
+    },
+    {
+        "key": "(B)",
+        "question": "camouflage often helps an animal attract a mate.",
+        "focus": "camouflage"
+    },
+    {
+        "key": "(C)",
+        "question": "coloration often helps an animal attract a mate.",
+        "focus": "coloration"
+    },
+    {
+        "key": "(D)",
+        "question": "migration often helps an animal attract a mate.",
+        "focus": "migration"
     }
 ]
 
