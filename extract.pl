@@ -52,10 +52,19 @@ extract(Text) :-
         findall(_,relation,_),
         rdf_unload(File),
         delete_file(File).
+% process string as question
+extract(Text,Focus) :-
+        corenlp_jsonrpc(Text, Xml),
+        turtle(Xml, Turtle),
+        write_tmp_file(Turtle, File),
+        rdf_load(File, [format(turtle)]),
+        question(Focus),
+        rdf_unload(File),
+        delete_file(File).
 
 % call corenlp jsonrpc service
 corenlp_jsonrpc(Text, Xml) :-
-        URL = 'http://localhost:9621',
+        URL = 'http://extraction.allenai.org:9621',
         Command = json([jsonrpc='2.0', id=1, method=raw_parse, params=[Text]]),
         http_post(URL, json(Command), Json, []),
         atom_json_term(Json, JsonTerm, []),
@@ -64,7 +73,7 @@ corenlp_jsonrpc(Text, Xml) :-
 % convert corenlp output to turtle using xsltproc
 turtle(Xml, Ttl) :-
         process_create(path('xsltproc'),
-                       ['--stringparam', 'filename', '\'\'',
+                       ['--stringparam', 'filename', '',
                         'CoreNLP-to-ttl.xsl',
                         '-'],
                        [stdin(pipe(Stdin)),

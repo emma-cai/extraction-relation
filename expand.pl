@@ -57,7 +57,8 @@ offset(E1,N1) :-
 
 coref(E,C) :-
 	rdf(E,token:pos,literal(Pos)),
-%	member(Pos, ['PRP', 'PRP$']),
+	( member(Pos, ['PRP', 'PRP$'])
+	; current_question_focus(_) ), % use all coref for questions
 	rdf(A,coref:ref,E),
 	( C = A
 	; rdf(A,coref:ref,C) ),
