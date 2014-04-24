@@ -35,7 +35,10 @@ top_relation(Root,Json) :-
 	argument(Root,dep:dobj,Obj), Obj \= [],
 	!,
 	\+ helps(Root),
-	write_simple_tuple(Root,Json).
+	write_question_tuple(Root,Json).
+%	write_simple_tuple(Root,Json).
+%%% TODO: top level for question processing, with focus param
+current_question_focus('http://aristo.allenai.org/id#2.1').
 
 
 % cause (tuple-NP)

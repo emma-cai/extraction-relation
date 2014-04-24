@@ -10,7 +10,8 @@
 write_relation(Top,Action,Rel,Purpose,Json) :-
 	text_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_inf_relation(Top,Action,Rel,Purpose), nl,
+	write_question_relation(Top,Action,Rel,Purpose), nl,
+%	write_inf_relation(Top,Action,Rel,Purpose), nl,
 	json_relation(Action,Rel,Purpose,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -47,6 +48,15 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	json_ids(Tokens,TokenIds).
 
+write_question_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
+	tuple(Node,Tuple),
+	text_tuple(Tuple,Text),
+	write('% '), write(Text), nl,
+	inf_tuple(Tuple,_,setup),
+%	write_inf_simple_tuple0(Root,setup),
+	json_tuple(Tuple,Json).
+%	json:json_write(current_output,Json), nl.
+
 write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
@@ -59,6 +69,43 @@ entity_id(Entity,Id) :-
 	(Id-_-_ = Entity ; Id-_ = Entity ; Id = Entity),
 	!.
 
+% move focus statements out of setup
+question_focus(Ent-_) :-
+	question_focus(Ent).
+question_focus(Ent) :-
+	atom(Ent), !,
+	current_question_focus(Ent),
+	rdf(Ent,pred:isa,literal(Text),setup),
+	rdf_retractall(Ent,pred:isa,literal(Text),setup),
+	rdf_assert(Ent,pred:isa,literal(Text),focus).
+question_focus([_,Event|_]) :-
+	question_focus(Event).
+%%% TODO: handle args
+
+write_question_relation(Top,Ent-_,Rel,Tuple) :- !,
+	write_question_relation(Top,Ent,Rel,Tuple).
+write_question_relation(Top,Action,[Rel-_|_],Purpose) :-
+	inf_tuple(Action,ActionId,setup),
+	inf_tuple(Purpose,PurposeId,setup),
+	downcase_atom(Rel,LRel),
+	rdf_global_id(rel:LRel,RelId),
+	rdf_assert(ActionId,RelId,PurposeId,setup),
+	write_question_relation0(Action,Purpose).
+
+write_question_relation0(Left,Right) :-
+	( question_focus(Left) ; question_focus(Right) ),
+	gensym(rule,Id),
+	write_inf_rule_text(Top,Id),
+	format('~w:: ', [Id]),
+	write_inf_tuple(setup,[],LeftTriples,true),
+	write(' -> '),
+	write_inf_tuple(focus,LeftTriples,_,true),
+	write('.'), nl,
+	rdf_unload_graph(setup),
+	rdf_unload_graph(focus),
+	!.
+write_question_relation0(_,_). % setup only, don't write
+
 write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
 	write_inf_relation(Top,Ent,Rel,Tuple).
 write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
@@ -67,9 +114,9 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	% isa relative clause
 	rdf(E,dep:nsubj,Entity),
 	rdf(E,dep:rcmod,Verb), !,
-	inf_tuple(Entity,ActionId),
+	inf_tuple(Entity,_,ActionId),
 	once(stripped_id(ActionId,StrippedActionId)),
-	inf_tuple([Subj,Verb|Rest],PurposeId),
+	inf_tuple([Subj,Verb|Rest],_,PurposeId),
 	once(stripped_id(Subj,StrippedSubjId)),
 	downcase_atom(Rel,LRel),
 	% left to right
@@ -84,9 +131,9 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	rdf_unload_graph(ActionId),
 	rdf_unload_graph(PurposeId).
 write_inf_relation(Top,Action,[Rel-_|_],Purpose) :-
-	inf_tuple(Action,ActionId),
+	inf_tuple(Action,_,ActionId),
 	once(stripped_id(ActionId,StrippedActionId)),
-	inf_tuple(Purpose,PurposeId),
+	inf_tuple(Purpose,_,PurposeId),
 	once(stripped_id(PurposeId,StrippedPurposeId)),
 	downcase_atom(Rel,LRel),
 	% left to right
@@ -127,10 +174,9 @@ write_inf_tuple(GraphId,Remove,Triples,First) :-
 	!.
 
 write_inf_simple_tuple(Root,Tuple) :-
-	inf_tuple(Tuple,Id),
+	inf_tuple(Tuple,_,Id),
 	write_inf_simple_tuple0(Root,Id),
 	rdf_unload_graph(Id).
-
 
 write_inf_simple_tuple0(Root,GraphId) :-
 	rdf(S,pred:isa,O,GraphId),
@@ -172,51 +218,52 @@ write_rdf(S,P,O,GraphId) :-
 	stripped_ids([P,S,Val],Ids),
 	format('~w(~w, ~w)',Ids), !.
 
-
-inf_tuple(Ent-_,Ent) :- !,
-	inf_tuple(Ent,Ent).
-inf_tuple(Ent,Ent) :-
+inf_tuple(Ent-_,EntId,GraphId) :- !,
+	inf_tuple(Ent,EntId,GraphId).
+inf_tuple(Ent,Ent,GraphId) :-
 	atom(Ent), !,
+	( nonvar(GraphId) ; GraphId = Ent ), !,
 	text_arg(Ent,Text),
-	rdf_assert(Ent,pred:isa,literal(Text),Ent),
-	rdf_assert(Ent,rdf:type,entity,Ent).
-inf_tuple([S,V,O-_|Rest],Id) :- !, % ignore vars
-	inf_tuple([S,V,O|Rest],Id).
-inf_tuple([S-_,V|Rest],Id) :- !, % ignore vars
-	inf_tuple([S,V|Rest],Id).
-inf_tuple([S,V],Id) :-
-	inf_tuple([S,V,[]],Id).
-inf_tuple([S,Verb,Arg|Mods],V) :-
+	rdf_assert(Ent,pred:isa,literal(Text),GraphId),
+	rdf_assert(Ent,rdf:type,entity,GraphId).
+inf_tuple([S,V,O-_|Rest],TupleId,GraphId) :- !, % ignore vars
+	inf_tuple([S,V,O|Rest],TupleId,GraphId).
+inf_tuple([S-_,V|Rest],TupleId,GraphId) :- !, % ignore vars
+	inf_tuple([S,V|Rest],TupleId,GraphId).
+inf_tuple([S,V],TupleId,GraphId) :-
+	inf_tuple([S,V,[]],TupleId,GraphId).
+inf_tuple([S,Verb,Arg|Mods],V,GraphId) :-
 	text_arg(S,SubjText),
 	text_verb(Verb,VerbText,V),
+	( nonvar(GraphId) ; GraphId = V), !,
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText,_)) % copula
 	; text_arg(Arg,ObjText) ), % dobj
-	rdf_assert(V,pred:isa,literal(VerbText),V),
-	rdf_assert(V,rdf:type,event,V),
+	rdf_assert(V,pred:isa,literal(VerbText),GraphId),
+	rdf_assert(V,rdf:type,event,GraphId),
 	(S = []
-	; (rdf_assert(V,pred:agent,S,V),
-	   rdf_assert(S,pred:isa,literal(SubjText),V),
-	   rdf_assert(S,rdf:type,entity,V)) ),
+	; (rdf_assert(V,pred:agent,S,GraphId),
+	   rdf_assert(S,pred:isa,literal(SubjText),GraphId),
+	   rdf_assert(S,rdf:type,entity,GraphId)) ),
 	(Arg = []
-	; (rdf_assert(V,pred:object,Arg,V),
-	   rdf_assert(Arg,pred:isa,literal(ObjText),V),
-	   rdf_assert(Arg,rdf:type,entity,V)) ),
-	inf_mods(V,Mods),
+	; (rdf_assert(V,pred:object,Arg,GraphId),
+	   rdf_assert(Arg,pred:isa,literal(ObjText),GraphId),
+	   rdf_assert(Arg,rdf:type,entity,GraphId)) ),
+	inf_mods(V,Mods,GraphId),
 	!.
 
-inf_mods(_V, []) :- !.
-inf_mods(V, [Pobj|Rest]) :-
+inf_mods(_V, [], _GraphId) :- !.
+inf_mods(V, [Pobj|Rest], GraphId) :-
 	prep(Pobj,Prep),
 	!,
 	lemma(Prep,P),
 	atom_concat('http://aristo.allenai.org/pred/',P,NewPrepRel),
 	tokens(Pobj,Tokens,[conj,cc,appos,xcomp,infmod,rcmod]),
 	tokens_text_quoted(Tokens,Text),
-	rdf_assert(Pobj,pred:isa,literal(Text),V),
-	rdf_assert(V,NewPrepRel,Pobj,V),
-	inf_mods(V, Rest).
-inf_mods(V, [Prep|Rest]) :-
+	rdf_assert(V,NewPrepRel,Pobj,GraphId),
+	rdf_assert(Pobj,pred:isa,literal(Text),GraphId),
+	inf_mods(V,Rest,GraphId).
+inf_mods(V, [Prep|Rest], GraphId) :-
 	prep(Mod,Prep),
 	rdf(V,PrepRel,Mod),
 	( (atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
@@ -226,14 +273,14 @@ inf_mods(V, [Prep|Rest]) :-
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
 	text_mod(Mod, Text),
-	rdf_assert(Mod,pred:isa,literal(Text),V),
-	rdf_assert(V,NewPrepRel,Mod,V),
-	inf_mods(V, Rest).
-inf_mods(V, [Mod|Rest]) :-
+	rdf_assert(V,NewPrepRel,Mod,GraphId),
+	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
+	inf_mods(V,Rest,GraphId).
+inf_mods(V, [Mod|Rest], GraphId) :-
 	text_mod(Mod, Text),
-	rdf_assert(Mod,pred:isa,literal(Text),V),
-	rdf_assert(V,pred:arg,Mod,V),
-	inf_mods(V, Rest).
+	rdf_assert(V,pred:arg,Mod,GraphId),
+	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
+	inf_mods(V,Rest,GraphId).
 
 text_tuple(Ent,Text) :-
 	(atom(Ent) ; Ent = _-_), !,
