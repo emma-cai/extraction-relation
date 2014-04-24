@@ -24,6 +24,14 @@ relation(JsonString) :-
 	with_output_to(atom(JsonString),
 		       json_write(current_output,Json,[width(0)])).
 
+% top level to process all input as single question
+question(id:Focus) :-
+	atom_number(FocusAtom,Focus),
+	rdf_global_id(id:FocusAtom,FocusId),
+	asserta(current_question_focus(FocusId)),
+	findall(_,relation,_),
+	retract(current_question_focus(FocusId)).
+
 % find top-level related tuples
 top_relation(Root,Json) :-
 	findall(Json, relation(Root,Root,Json), Jsons),
@@ -35,10 +43,7 @@ top_relation(Root,Json) :-
 	argument(Root,dep:dobj,Obj), Obj \= [],
 	!,
 	\+ helps(Root),
-	write_question_tuple(Root,Json).
-%	write_simple_tuple(Root,Json).
-%%% TODO: top level for question processing, with focus param
-current_question_focus('http://aristo.allenai.org/id#2.1').
+	write_simple_tuple(Root,Json).
 
 
 % cause (tuple-NP)

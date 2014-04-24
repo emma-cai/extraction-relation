@@ -10,8 +10,7 @@
 write_relation(Top,Action,Rel,Purpose,Json) :-
 	text_relation(Action,Rel,Purpose,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_question_relation(Top,Action,Rel,Purpose), nl,
-%	write_inf_relation(Top,Action,Rel,Purpose), nl,
+	write_inf_relation(Top,Action,Rel,Purpose), nl,
 	json_relation(Action,Rel,Purpose,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -48,15 +47,6 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	json_ids(Tokens,TokenIds).
 
-write_question_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
-	tuple(Node,Tuple),
-	text_tuple(Tuple,Text),
-	write('% '), write(Text), nl,
-	inf_tuple(Tuple,_,setup),
-%	write_inf_simple_tuple0(Root,setup),
-	json_tuple(Tuple,Json).
-%	json:json_write(current_output,Json), nl.
-
 write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
@@ -82,32 +72,16 @@ question_focus([_,Event|_]) :-
 	question_focus(Event).
 %%% TODO: handle args
 
-write_question_relation(Top,Ent-_,Rel,Tuple) :- !,
-	write_question_relation(Top,Ent,Rel,Tuple).
-write_question_relation(Top,Action,[Rel-_|_],Purpose) :-
+write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
+	write_inf_relation(Top,Ent,Rel,Tuple).
+write_inf_relation(Top,Action,[Rel-_|_],Purpose) :- % question-specific
+	current_question_focus(_), !,
 	inf_tuple(Action,ActionId,setup),
 	inf_tuple(Purpose,PurposeId,setup),
 	downcase_atom(Rel,LRel),
 	rdf_global_id(rel:LRel,RelId),
 	rdf_assert(ActionId,RelId,PurposeId,setup),
 	write_question_relation0(Action,Purpose).
-
-write_question_relation0(Left,Right) :-
-	( question_focus(Left) ; question_focus(Right) ),
-	gensym(rule,Id),
-	write_inf_rule_text(Top,Id),
-	format('~w:: ', [Id]),
-	write_inf_tuple(setup,[],LeftTriples,true),
-	write(' -> '),
-	write_inf_tuple(focus,LeftTriples,_,true),
-	write('.'), nl,
-	rdf_unload_graph(setup),
-	rdf_unload_graph(focus),
-	!.
-write_question_relation0(_,_). % setup only, don't write
-
-write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
-	write_inf_relation(Top,Ent,Rel,Tuple).
 write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	atom(Entity),
 	entity_id(Subj,E),
@@ -162,6 +136,20 @@ write_inf_relation0(Top,Left,Rel,Right) :-
 	write_inf_tuple(Right,LeftTriples,_,false),
 	write('.'), nl.
 
+write_question_relation0(Left,Right) :-
+	( question_focus(Left) ; question_focus(Right) ),
+	gensym(rule,Id),
+	write_inf_rule_text(Top,Id),
+	format('~w:: ', [Id]),
+	write_inf_tuple(setup,[],LeftTriples,true),
+	write(' -> '),
+	write_inf_tuple(focus,LeftTriples,_,true),
+	write('.'), nl,
+	rdf_unload_graph(setup),
+	rdf_unload_graph(focus),
+	!.
+write_question_relation0(_,_). % setup only, don't write
+
 write_inf_tuple(GraphId,Remove,Triples,First) :-
 	findall([S,P,O],
 		(rdf(S,P,O,GraphId),
@@ -173,6 +161,10 @@ write_inf_tuple(GraphId,Remove,Triples,First) :-
 	   write_rdf_list(Triples,GraphId)) ),
 	!.
 
+write_inf_simple_tuple(Root,Tuple) :-
+	current_question_focus(_), !, % question-specific
+	inf_tuple(Tuple,_,setup).
+%%% TODO: check for focus
 write_inf_simple_tuple(Root,Tuple) :-
 	inf_tuple(Tuple,_,Id),
 	write_inf_simple_tuple0(Root,Id),
