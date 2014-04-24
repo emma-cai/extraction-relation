@@ -30,6 +30,8 @@ question(id:Focus) :-
 	rdf_global_id(id:FocusAtom,FocusId),
 	asserta(current_question_focus(FocusId)),
 	findall(_,relation,_),
+	rdf_unload_graph(setup),
+	rdf_unload_graph(focus),
 	retract(current_question_focus(FocusId)).
 
 % find top-level related tuples

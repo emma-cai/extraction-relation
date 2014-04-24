@@ -65,16 +65,30 @@ question_focus(Ent-_) :-
 question_focus(Ent) :-
 	atom(Ent), !,
 	current_question_focus(Ent),
-	rdf(Ent,pred:isa,literal(Text),setup),
-	rdf_retractall(Ent,pred:isa,literal(Text),setup),
-	rdf_assert(Ent,pred:isa,literal(Text),focus).
+	( rdf(Ent,pred:isa,Type,setup),
+	  rdf_update(Ent,pred:isa,Type,setup,graph(focus)),
+	  fail
+	; true ).
 question_focus([_,Event|_]) :-
-	question_focus(Event).
-%%% TODO: handle args
+	current_question_focus(Event),
+	( rdf(Event,Pred,Arg,setup),
+	  rdf_global_id(pred:_,Pred),
+	  rdf_update(Event,Pred,Arg,setup,graph(focus)),
+	  % move Arg to focus if not referenced elsewhere in setup
+	  \+ (rdf(_,Pred2,Arg,setup),
+	      rdf_global_id(pred:_,Pred2)),
+	  rdf(Arg,pred:isa,Type,setup),
+	  rdf_update(Arg,pred:isa,Type,setup,graph(focus)),
+	  fail
+	; true ).
+question_focus([Subj,_Event,Obj|Args]) :-
+	member(Arg,[Subj,Obj|Args]), Arg \= [],
+	question_focus(Arg).
+
 
 write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
 	write_inf_relation(Top,Ent,Rel,Tuple).
-write_inf_relation(Top,Action,[Rel-_|_],Purpose) :- % question-specific
+write_inf_relation(_Top,Action,[Rel-_|_],Purpose) :- % question-specific
 	current_question_focus(_), !,
 	inf_tuple(Action,ActionId,setup),
 	inf_tuple(Purpose,PurposeId,setup),
@@ -139,14 +153,12 @@ write_inf_relation0(Top,Left,Rel,Right) :-
 write_question_relation0(Left,Right) :-
 	( question_focus(Left) ; question_focus(Right) ),
 	gensym(rule,Id),
-	write_inf_rule_text(Top,Id),
+	write_inf_rule_text(_Top,Id), % all input
 	format('~w:: ', [Id]),
 	write_inf_tuple(setup,[],LeftTriples,true),
 	write(' -> '),
 	write_inf_tuple(focus,LeftTriples,_,true),
 	write('.'), nl,
-	rdf_unload_graph(setup),
-	rdf_unload_graph(focus),
 	!.
 write_question_relation0(_,_). % setup only, don't write
 
@@ -161,10 +173,10 @@ write_inf_tuple(GraphId,Remove,Triples,First) :-
 	   write_rdf_list(Triples,GraphId)) ),
 	!.
 
-write_inf_simple_tuple(Root,Tuple) :-
-	current_question_focus(_), !, % question-specific
-	inf_tuple(Tuple,_,setup).
-%%% TODO: check for focus
+write_inf_simple_tuple(Root,Tuple) :- % question-specific
+	current_question_focus(_), !,
+	inf_tuple(Tuple,_,setup),
+	write_question_relation0(Tuple,[]).
 write_inf_simple_tuple(Root,Tuple) :-
 	inf_tuple(Tuple,_,Id),
 	write_inf_simple_tuple0(Root,Id),
