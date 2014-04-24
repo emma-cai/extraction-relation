@@ -568,8 +568,16 @@ effect(Root,Comp,['EFFECT'-84,By,Pcomp,So]) :-
 	lemma(So,so).
 % EFFECT: Tuple "is a/one/another way that/to' Tuple
 effect(Root,Comp,['EFFECT'-85,Cop,Way]) :-
-	( dependency(Way,dep:csubj,Root)
-	; dependency(Way,dep:nsubj,Root) ),
+	dependency(Way,dep:csubj,Root),
+	dependency(Way,dep:cop,Cop),
+	lemma(Way,way),
+	( dependency(Way,dep:rcmod,Comp)
+	; dependency(Way,dep:infmod,Comp) ),
+	!.
+% EFFECT: Tuple "is a/one/another way that/to' Tuple
+effect(Root,Comp,['EFFECT'-85,Cop,Way]) :-
+	dependency(Way,dep:nsubj,Root),
+	pos(Root,'VBG'),
 	dependency(Way,dep:cop,Cop),
 	lemma(Way,way),
 	( dependency(Way,dep:rcmod,Comp)
