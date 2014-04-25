@@ -10,29 +10,52 @@ relation :-
 	rdf(_Sentence,dep:root,Root),
 %	write('processing: '), write(Root), nl,
 %	write_sentence(Root),
+	relation(Root,_Json).
+
+relation(Root,Json) :-
 	% descend through every node checking for relations
 	( top_relation(Root,_)
 	; constit(Root,Node),
-	  relation(Root,Node,_Json) ).
+	  relation(Root,Node,Json) ).
+relation(Root,Json) :- % question-specific
+	current_question_focus(_),
+	\+ rdf(_,_,_,focus),
+	write_simple_tuple(Root,Json).
 
 % top level to call from JPL and backtrack for all values
 relation(JsonString) :-
 	rdf(_Sentence,dep:root,Root),
-	( top_relation(Root,Json)
-	; constit(Root,Node),
-	  relation(Root,Node,Json) ),
+	relation(Root,Json),
 	with_output_to(atom(JsonString),
 		       json_write(current_output,Json,[width(0)])).
 
+:- dynamic current_question_focus/1.
 % top level to process all input as single question
-question(id:Focus) :-
-	atom_number(FocusAtom,Focus),
-	rdf_global_id(id:FocusAtom,FocusId),
-	asserta(current_question_focus(FocusId)),
+question(Focus) :-
+	once(focus_root(Focus,FocusRoot)),
+	asserta(current_question_focus(FocusRoot)),
 	findall(_,relation,_),
 	rdf_unload_graph(setup),
 	rdf_unload_graph(focus),
-	retract(current_question_focus(FocusId)).
+	retract(current_question_focus(FocusRoot)).
+
+focus_root(FocusString,Root) :-
+	% find subsequence of input text
+	atomic_list_concat(FocusText,' ',FocusString),
+	tokens(_,AllTokens),
+	maplist(token_text0,AllTokens,AllText),
+	append([Before,FocusText,_],AllText),
+	% find tokens of subsequence
+	length(Before,Start),
+	length(FocusText,Length),
+	findall(T, % sublist
+		(nth0(I,AllTokens,T), I >= Start, I < Start + Length),
+		FocusTokens),
+	root_token(FocusTokens,Root).
+root_token(TokenIds,TokenId) :-
+	member(TokenId,TokenIds),
+	findall(Constit,constit(TokenId,Constit,[]),Constits),
+	subtract(TokenIds,[TokenId|Constits],[]).
 
 % find top-level related tuples
 top_relation(Root,Json) :-
@@ -41,6 +64,7 @@ top_relation(Root,Json) :-
 	member(Json, Jsons).
 % else write simple top-level tuple
 top_relation(Root,Json) :-
+	\+ current_question_focus(_),
 	argument(Root,dep:nsubj,Subj), Subj \= [],
 	argument(Root,dep:dobj,Obj), Obj \= [],
 	!,

@@ -66,19 +66,22 @@ question_focus(Ent) :-
 	atom(Ent), !,
 	current_question_focus(Ent),
 	( rdf(Ent,pred:isa,Type,setup),
-	  rdf_update(Ent,pred:isa,Type,setup,graph(focus)),
+	  rdf_retractall(Ent,pred:isa,Type,setup),
+	  rdf_assert(Ent,pred:isa,Type,focus),
 	  fail
 	; true ).
 question_focus([_,Event|_]) :-
 	current_question_focus(Event),
 	( rdf(Event,Pred,Arg,setup),
 	  rdf_global_id(pred:_,Pred),
-	  rdf_update(Event,Pred,Arg,setup,graph(focus)),
+	  rdf_retractall(Event,Pred,Arg,setup),
+	  rdf_assert(Event,Pred,Arg,focus),
 	  % move Arg to focus if not referenced elsewhere in setup
 	  \+ (rdf(_,Pred2,Arg,setup),
 	      rdf_global_id(pred:_,Pred2)),
 	  rdf(Arg,pred:isa,Type,setup),
-	  rdf_update(Arg,pred:isa,Type,setup,graph(focus)),
+	  rdf_retractall(Arg,pred:isa,Type,setup),
+	  rdf_assert(Arg,pred:isa,Type,focus),
 	  fail
 	; true ).
 question_focus([Subj,_Event,Obj|Args]) :-
@@ -173,7 +176,7 @@ write_inf_tuple(GraphId,Remove,Triples,First) :-
 	   write_rdf_list(Triples,GraphId)) ),
 	!.
 
-write_inf_simple_tuple(Root,Tuple) :- % question-specific
+write_inf_simple_tuple(_,Tuple) :- % question-specific
 	current_question_focus(_), !,
 	inf_tuple(Tuple,_,setup),
 	write_question_relation0(Tuple,[]).
