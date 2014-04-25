@@ -71,22 +71,22 @@
     {
         "key": "(A)",
         "question": "decreasing the temperature is one way to change water from a liquid to a solid.",
-        "focus": "decrease the temperature"
+        "focus": "decreasing the temperature"
     },
     {
         "key": "(B)",
         "question": "increasing the temperature is one way to change water from a liquid to a solid.",
-        "focus": "increase the temperature"
+        "focus": "increasing the temperature"
     },
     {
         "key": "(C)",
         "question": "decreasing the mass is one way to change water from a liquid to a solid.",
-        "focus": "decrease the mass"
+        "focus": "decreasing the mass"
     },
     {
         "key": "(D)",
         "question": "increasing the mass is one way to change water from a liquid to a solid.",
-        "focus": "increase the mass"
+        "focus": "increasing the mass"
     }
 ]
 
