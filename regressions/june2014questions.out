@@ -96,10 +96,10 @@ rule1:: isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S
 english(rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
 rule1:: isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1), isa(A5S1, "a ball"), isa(E6S2, "fall"), agent(E6S2, A5S1), to(E6S2, A9S2), isa(A9S2, "the ground"), cause(A1S2, E6S2) -> isa(A1S2, "gravity").
 
-% ("A student" "drop" "" [ "a ball" ] )
+% ("A student" "drop" "a ball")
 % "magnetism"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 english(rule1, "A student drops a ball magnetism causes the ball[a ball] to fall to the ground").
-rule1:: isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), arg(E3S1, A5S1), isa(A5S1, "a ball"), isa(E6S2, "fall"), agent(E6S2, A5S1), to(E6S2, A9S2), isa(A9S2, "the ground"), cause(A1S2, E6S2) -> isa(A1S2, "magnetism").
+rule1:: isa(E3S1, "drop"), agent(E3S1, A2S1), isa(A2S1, "A student"), object(E3S1, A5S1), isa(A5S1, "a ball"), isa(E6S2, "fall"), agent(E6S2, A5S1), to(E6S2, A9S2), isa(A9S2, "the ground"), cause(A1S2, E6S2) -> isa(A1S2, "magnetism").
 
 QUESTION: What is the main source of energy for the water cycle? (A) electricity(B) erosion(C) gravity(D) sunlight
 % "electricity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
@@ -151,6 +151,23 @@ rule1:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "a student"), object(E4S1
 english(rule2, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
 rule2:: isa(E4S1, "use"), agent(E4S1, A2S1), isa(A2S1, "a student"), object(E4S1, A6S1), isa(E8S1, "measure"), agent(E8S1, A2S1), object(E8S1, A11S1), isa(A11S1, "10 milliliters of water"), effect(E4S1, E8S1), object(E8S1, A13S1), isa(A13S1, "mL") -> isa(A6S1, "a thermometer").
 
+QUESTION: Which activity is necessary for humans to maintain good health? (A) reading (B) resting (C) driving (D) talking
+% ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
+
+% ("reading" "be" "necessary")
+english(rule1, "reading is necessary for humans to maintain good health").
+rule1:: agent(E1S1, A5S1), isa(A5S1, "humans"), isa(E7S1, "maintain"), agent(E7S1, A5S1), object(E7S1, A9S1), isa(A9S1, "good health"), requirement(E1S1, E7S1), isa(E2S1, "be"), agent(E2S1, E1S1), object(E2S1, A3S1), isa(A3S1, "necessary") -> isa(E1S1, "read"), isa(E1S1, "reading").
+% ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
+
+% ("resting" "be" "necessary")
+english(rule1, "resting is necessary for humans to maintain good health").
+rule1:: agent(E1S1, A5S1), isa(A5S1, "humans"), isa(E7S1, "maintain"), agent(E7S1, A5S1), object(E7S1, A9S1), isa(A9S1, "good health"), requirement(E1S1, E7S1), isa(E2S1, "be"), agent(E2S1, E1S1), object(E2S1, A3S1), isa(A3S1, "necessary") -> isa(E1S1, "rest"), isa(E1S1, "resting").
+% "driving activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
+
+% ("driving activity" "be" "necessary")
+% "talking activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
+
+% ("talking activity" "be" "necessary")
 QUESTION: Green plants get the energy they need to make food from (A) air (B) sunlight (C) water (D) soil
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from air" ] )
 
@@ -265,7 +282,14 @@ rule1:: isa(E4S1, "have"), agent(E4S1, A1S1), object(E4S1, A7S1), isa(A7S1, "a h
 QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. These are two ways that organisms may adjust to (A) cold temperatures (B) hot temperatures (C) a shortage of food (D) a shortage of drinking water
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
-% ("these" "be" "" [ "two ways" ] )
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to cold temperatures" ] )
+english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+rule1:: isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth"), isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat"), isa(A1S3, "these"), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), to(E8S3, A11S3), example(A1S3, E8S3) -> isa(A11S3, "cold temperatures").
+
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to cold temperatures" ] )
+english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+rule2:: isa(E3S1, "open"), agent(E3S1, A2S1), isa(A2S1, "A dog"), object(E3S1, A5S1), isa(A5S1, "its mouth"), isa(E5S2, "produce"), agent(E5S2, A4S2), isa(A4S2, "A human 's body"), object(E5S2, A6S2), isa(A6S2, "sweat"), isa(A1S3, "these"), isa(E8S3, "adjust"), agent(E8S3, A6S3), isa(A6S3, "organisms"), object(E8S3, A1S3), to(E8S3, A11S3), example(A1S3, E8S3), object(E8S3, A4S3), isa(A4S3, "two ways[these]") -> isa(A11S3, "cold temperatures").
+
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "" [ "sweat" ] )
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to hot temperatures" ] )
@@ -317,9 +341,9 @@ rule1:: isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S
 
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+% ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
-rule1:: isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1), isa(A9S1, "an experiment"), isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2), isa(A8S2, "the leaves"), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(E7S3, "get"), agent(E7S3, A1S2), object(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]"), effect(E3S3, E7S3) -> isa(A5S3, "a balance").
+rule1:: isa(E4S1, "grow"), agent(E4S1, A2S1), isa(A2S1, "A student"), object(E4S1, A6S1), isa(A6S1, "some plants"), for(E4S1, A9S1), isa(A9S1, "an experiment"), isa(E2S2, "notify"), agent(E2S2, A1S2), isa(A1S2, "She"), object(E2S2, A5S2), isa(A5S2, "small white spots"), on(E2S2, A8S2), isa(A8S2, "the leaves"), isa(E3S3, "use"), agent(E3S3, A1S2), object(E3S3, A5S3), isa(E7S3, "get"), agent(E7S3, A1S2), arg(E7S3, A10S3), isa(A10S3, "a better look at the spots[small white spots]"), effect(E3S3, E7S3) -> isa(A5S3, "a balance").
 
 QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the fox to (A) find food(B) keep warmer(C) grow stronger(D) escape from predators
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
