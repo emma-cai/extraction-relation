@@ -1,8 +1,9 @@
 package org.allenai.extraction.manager
 
+import org.allenai.common.Config._
 import org.allenai.common.Logging
 
-import com.typesafe.config.{ Config, ConfigException, ConfigValueType }
+import com.typesafe.config.Config
 
 import scala.annotation.tailrec
 import scala.collection.JavaConverters._
@@ -12,33 +13,6 @@ import java.io.File
 import java.io.FileWriter
 import java.io.Writer
 import java.net.URI
-
-object ConfigHelper {
-  /** Gets a string value at a given config path.
-    * @throws ExtractionException if the path is missing or isn't a string
-    */
-  def getString(config: Config, path: String): String = try {
-    config.getString(path)
-  } catch {
-    case e: ConfigException => throw new ExtractionException(s"expected string for key ${path}")
-  }
-
-  /** Gets a string value at a given config path, or None if it's missing.
-    * @throws ExtractionException if the path is present but not a string
-    */
-  def getStringOption(config: Config, path: String): Option[String] = {
-    if (config.hasPath(path)) {
-      val valueType = config.getValue(path).valueType
-      if (valueType == ConfigValueType.STRING) {
-        Some(config.getString(path))
-      } else {
-        throw new ExtractionException(s"expected STRING for key ${path}, but was ${valueType}")
-       }
-    } else {
-      None
-    }
-  }
-}
 
 /** Class representing a pipeline. */
 class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) extends Logging {
@@ -134,7 +108,8 @@ object ExtractorPipeline {
     * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
     */
   def fromConfig(config: Config): ExtractorPipeline = {
-    val name = ConfigHelper.getString(config, "name")
+    val name = config.get[String]("name").getOrElse(
+      throw new ExtractionException("pipeline name is required"))
 
     val extractors: Seq[ExtractorConfig] = {
       config.getConfigList("extractors").asScala map { ExtractorConfig.fromConfig }

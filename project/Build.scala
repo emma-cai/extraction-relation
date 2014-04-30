@@ -88,7 +88,7 @@ object ExtractionBuild extends Build {
     Seq(jpl, stanfordPatched, stanfordModels)
   }
 
-  val allenaiCommon = "org.allenai.common" %% "common" % "0.0.1-SNAPSHOT"
+  val allenaiCommon = "org.allenai.common" %% "common" % "2014.04.28-SNAPSHOT"
   val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.2-SNAPSHOT"
   val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
 
