@@ -1,6 +1,8 @@
 package org.allenai.extraction.manager
 
-import com.typesafe.config.{ Config, ConfigObject, ConfigValue }
+import org.allenai.common.Config._
+
+import com.typesafe.config.{ Config, ConfigException, ConfigObject, ConfigValue }
 
 import java.net.URI
 import java.net.URISyntaxException
@@ -53,11 +55,16 @@ object ExtractorIO {
   }
 
   def fromConfig(config: Config, ordinalString: String): ExtractorIO = {
-    val nameOption = ConfigHelper.getStringOption(config, "name")
-    val uriOption = try {
-      ConfigHelper.getStringOption(config, "uri") map { new URI(_) }
+    val (nameOption, uriOption) = try {
+      val name = config.get[String]("name")
+      val uri = try {
+        config.get[String]("uri") map { new URI(_) }
+      } catch {
+        case e: URISyntaxException => throw new ExtractionException("bad uri in config:", e)
+      }
+      (name, uri)
     } catch {
-      case e: URISyntaxException => throw new ExtractionException("bad uri in config:", e)
+      case e: ConfigException => throw new ExtractionException("bad config:", e)
     }
 
     (nameOption, uriOption) match {
