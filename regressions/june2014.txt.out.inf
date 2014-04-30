@@ -1,192 +1,192 @@
 english(june2014.rule1, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule1:: isa(A1, "Gravity") -> example(A1, A4), isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), object(E6, A8), isa(A8, "an object toward the center of the Earth"), isa(A1, A4).
+june2014.rule1:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth"), isa(A1S1-gravity, A4S1-force).
 english(june2014.rule2, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule2:: isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), object(E6, A8), isa(A8, "an object toward the center of the Earth") -> example(A1, A4), isa(A1, "Gravity"), isa(A1, A4).
+june2014.rule2:: isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity"), isa(A1S1-gravity, A4S1-force).
 english(june2014.rule3, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule3:: isa(A1, "Gravity") -> example(A1, A4), isa(A4, "the force").
+june2014.rule3:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), isa(A4S1-force, "the force").
 english(june2014.rule4, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule4:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
+june2014.rule4:: isa(A4S1-force, "the force") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity").
 english(june2014.rule5, "Exercise is an example of good health habit").
-june2014.rule5:: isa(A1, "Exercise") -> example(A1, A8), isa(A8, "good health habit").
+june2014.rule5:: isa(A1S2-exercise, "Exercise") -> example(A1S2-exercise, A8S2-habit), isa(A8S2-habit, "good health habit").
 english(june2014.rule6, "Exercise is an example of good health habit").
-june2014.rule6:: isa(A8, "good health habit") -> example(A1, A8), isa(A1, "Exercise").
+june2014.rule6:: isa(A8S2-habit, "good health habit") -> example(A1S2-exercise, A8S2-habit), isa(A1S2-exercise, "Exercise").
 english(june2014.rule7, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule7:: isa(E17, "eat"), agent(E17, A4), isa(A4, "humans"), object(E17, A19), isa(A19, "healthy foods") -> effect(E17, E6), isa(E6, "grow"), agent(E6, A4).
+june2014.rule7:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(june2014.rule8, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule8:: isa(E6, "grow"), agent(E6, A4), isa(A4, "humans") -> effect(E17, E6), isa(E17, "eat"), agent(E17, A4), object(E17, A19), isa(A19, "healthy foods").
+june2014.rule8:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E17S3-eat, E6S3-grow), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 english(june2014.rule9, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule9:: isa(E17, "eat"), agent(E17, A4), isa(A4, "humans"), object(E17, A19), isa(A19, "healthy foods") -> effect(E17, E8), isa(E8, "have"), agent(E8, A4), object(E8, A9), isa(A9, "energy").
+june2014.rule9:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(june2014.rule10, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule10:: isa(E8, "have"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "energy") -> effect(E17, E8), isa(E17, "eat"), agent(E17, A4), object(E17, A19), isa(A19, "healthy foods").
+june2014.rule10:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E17S3-eat, E8S3-have), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 english(june2014.rule11, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule11:: isa(E17, "eat"), agent(E17, A4), isa(A4, "humans"), object(E17, A19), isa(A19, "healthy foods") -> effect(E17, E12), isa(E12, "be"), agent(E12, A4), object(E12, A13), isa(A13, "healthy").
+june2014.rule11:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(june2014.rule12, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule12:: isa(E12, "be"), agent(E12, A4), isa(A4, "humans"), object(E12, A13), isa(A13, "healthy") -> effect(E17, E12), isa(E17, "eat"), agent(E17, A4), object(E17, A19), isa(A19, "healthy foods").
+june2014.rule12:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E17S3-eat, E12S3-be), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 english(june2014.rule13, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule13:: isa(E21, "exercise"), agent(E21, A4), isa(A4, "humans") -> effect(E21, E6), isa(E6, "grow"), agent(E6, A4).
+june2014.rule13:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(june2014.rule14, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule14:: isa(E6, "grow"), agent(E6, A4), isa(A4, "humans") -> effect(E21, E6), isa(E21, "exercise"), agent(E21, A4).
+june2014.rule14:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E6S3-grow), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 english(june2014.rule15, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule15:: isa(E21, "exercise"), agent(E21, A4), isa(A4, "humans") -> effect(E21, E8), isa(E8, "have"), agent(E8, A4), object(E8, A9), isa(A9, "energy").
+june2014.rule15:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(june2014.rule16, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule16:: isa(E8, "have"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "energy") -> effect(E21, E8), isa(E21, "exercise"), agent(E21, A4).
+june2014.rule16:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E21S3-exercise, E8S3-have), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 english(june2014.rule17, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule17:: isa(E21, "exercise"), agent(E21, A4), isa(A4, "humans") -> effect(E21, E12), isa(E12, "be"), agent(E12, A4), object(E12, A13), isa(A13, "healthy").
+june2014.rule17:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(june2014.rule18, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule18:: isa(E12, "be"), agent(E12, A4), isa(A4, "humans"), object(E12, A13), isa(A13, "healthy") -> effect(E21, E12), isa(E21, "exercise"), agent(E21, A4).
+june2014.rule18:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E21S3-exercise, E12S3-be), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 english(june2014.rule19, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule19:: isa(E24, "get"), agent(E24, A4), isa(A4, "humans"), object(E24, A26), isa(A26, "regular rest") -> effect(E24, E6), isa(E6, "grow"), agent(E6, A4).
+june2014.rule19:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(june2014.rule20, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule20:: isa(E6, "grow"), agent(E6, A4), isa(A4, "humans") -> effect(E24, E6), isa(E24, "get"), agent(E24, A4), object(E24, A26), isa(A26, "regular rest").
+june2014.rule20:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E24S3-get, E6S3-grow), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 english(june2014.rule21, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule21:: isa(E24, "get"), agent(E24, A4), isa(A4, "humans"), object(E24, A26), isa(A26, "regular rest") -> effect(E24, E8), isa(E8, "have"), agent(E8, A4), object(E8, A9), isa(A9, "energy").
+june2014.rule21:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(june2014.rule22, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule22:: isa(E8, "have"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "energy") -> effect(E24, E8), isa(E24, "get"), agent(E24, A4), object(E24, A26), isa(A26, "regular rest").
+june2014.rule22:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E24S3-get, E8S3-have), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 english(june2014.rule23, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule23:: isa(E24, "get"), agent(E24, A4), isa(A4, "humans"), object(E24, A26), isa(A26, "regular rest") -> effect(E24, E12), isa(E12, "be"), agent(E12, A4), object(E12, A13), isa(A13, "healthy").
+june2014.rule23:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(june2014.rule24, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule24:: isa(E12, "be"), agent(E12, A4), isa(A4, "humans"), object(E12, A13), isa(A13, "healthy") -> effect(E24, E12), isa(E24, "get"), agent(E24, A4), object(E24, A26), isa(A26, "regular rest").
+june2014.rule24:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E24S3-get, E12S3-be), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 english(june2014.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule25:: isa(A1, "Decomposers") -> example(A1, A4), isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms"), isa(A1, A4).
+june2014.rule25:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule26:: isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms") -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+june2014.rule26:: isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule27, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule27:: isa(A1, "Decomposers") -> example(A1, A4), isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16), isa(A1, A4).
+june2014.rule27:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(E11S4-recycle, "recycle"), agent(E11S4-recycle, A4S4-thing), isa(A4S4-thing, "living things"), object(E11S4-recycle, A13S4-nutrient), isa(A13S4-nutrient, "their[dead organisms] nutrients"), into(E11S4-recycle, A16S4-soil), isa(A16S4-soil, "the soil"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule28, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule28:: isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16) -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+june2014.rule28:: isa(E11S4-recycle, "recycle"), agent(E11S4-recycle, A4S4-thing), isa(A4S4-thing, "living things"), object(E11S4-recycle, A13S4-nutrient), isa(A13S4-nutrient, "their[dead organisms] nutrients"), into(E11S4-recycle, A16S4-soil), isa(A16S4-soil, "the soil") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule29, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule29:: isa(A1, "Decomposers") -> example(A1, A4), isa(A4, "living things").
+june2014.rule29:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(A4S4-thing, "living things").
 english(june2014.rule30, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule30:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Decomposers").
+june2014.rule30:: isa(A4S4-thing, "living things") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers").
 english(june2014.rule31, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-june2014.rule31:: isa(E18, "remove"), agent(E18, A1), isa(A1, "Freezing"), object(E18, A20), isa(A20, "heat") -> enable(E18, E3), isa(E3, "change"), agent(E3, A1), object(E3, A4), isa(A4, "water"), isa(A8, "its[the soil] liquid state"), from(E3, A8), isa(A12, "its[its liquid state] solid state"), to(E3, A12).
+june2014.rule31:: isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat") -> enable(E18S5-removal, E3S5-change), isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state").
 english(june2014.rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-june2014.rule32:: isa(E3, "change"), agent(E3, A1), isa(A1, "Freezing"), object(E3, A4), isa(A4, "water"), isa(A8, "its[the soil] liquid state"), from(E3, A8), isa(A12, "its[its liquid state] solid state"), to(E3, A12) -> enable(E18, E3), isa(E18, "remove"), agent(E18, A1), object(E18, A20), isa(A20, "heat").
+june2014.rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state") -> enable(E18S5-removal, E3S5-change), isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat").
 english(june2014.rule33, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule33:: isa(A1, "Gravity") -> example(A1, A4), isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), arg(E6, A8), isa(A1, A4).
+june2014.rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth"), isa(A1S7-gravity, A4S7-force).
 english(june2014.rule34, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule34:: isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), isa(A8, "an object toward the center of the Earth"), arg(E6, A8) -> example(A1, A4), isa(A1, "Gravity"), isa(A1, A4).
+june2014.rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
 english(june2014.rule35, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule35:: isa(A1, "Gravity") -> example(A1, A4), isa(A4, "the force").
+june2014.rule35:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(A4S7-force, "the force").
 english(june2014.rule36, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule36:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
+june2014.rule36:: isa(A4S7-force, "the force") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity").
 english(june2014.rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-june2014.rule37:: isa(E4, "use"), agent(E4, A2), isa(A2, "A scientist"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A11), isa(A11, "the volume of a liquid").
+june2014.rule37:: isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder") -> effect(E4S8-use, E9S8-measure), isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid").
 english(june2014.rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-june2014.rule38:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A scientist"), object(E9, A11), isa(A11, "the volume of a liquid") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+june2014.rule38:: isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid") -> effect(E4S8-use, E9S8-measure), isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder").
 english(june2014.rule39, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule39:: isa(E13, "eat"), agent(E13, A4), isa(A4, "humans"), object(E13, A16), isa(A16, "healthy foods exercise") -> effect(E13, E6), isa(E6, "grow"), agent(E6, A4), isa(A4, "humans").
+june2014.rule39:: isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise") -> effect(E13S9-eat, E6S9-grow), isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans").
 english(june2014.rule40, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule40:: isa(E6, "grow"), agent(E6, A4), isa(A4, "humans") -> effect(E13, E6), isa(E13, "eat"), agent(E13, A4), isa(A4, "humans"), object(E13, A16), isa(A16, "healthy foods exercise").
+june2014.rule40:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans") -> effect(E13S9-eat, E6S9-grow), isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise").
 english(june2014.rule41, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule41:: isa(E13, "eat"), agent(E13, A4), isa(A4, "humans"), object(E13, A16), isa(A16, "healthy foods exercise") -> effect(E13, E8), isa(E8, "be"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "healthy").
+june2014.rule41:: isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise") -> effect(E13S9-eat, E8S9-be), isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy").
 english(june2014.rule42, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule42:: isa(E8, "be"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "healthy") -> effect(E13, E8), isa(E13, "eat"), agent(E13, A4), isa(A4, "humans"), object(E13, A16), isa(A16, "healthy foods exercise").
+june2014.rule42:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy") -> effect(E13S9-eat, E8S9-be), isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise").
 english(june2014.rule43, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule43:: isa(E18, "get"), agent(E18, A4), isa(A4, "humans"), object(E18, A20), isa(A20, "regular rest") -> effect(E18, E6), isa(E6, "grow"), agent(E6, A4), isa(A4, "humans").
+june2014.rule43:: isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest") -> effect(E18S9-get, E6S9-grow), isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans").
 english(june2014.rule44, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule44:: isa(E6, "grow"), agent(E6, A4), isa(A4, "humans") -> effect(E18, E6), isa(E18, "get"), agent(E18, A4), isa(A4, "humans"), object(E18, A20), isa(A20, "regular rest").
+june2014.rule44:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans") -> effect(E18S9-get, E6S9-grow), isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest").
 english(june2014.rule45, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule45:: isa(E18, "get"), agent(E18, A4), isa(A4, "humans"), object(E18, A20), isa(A20, "regular rest") -> effect(E18, E8), isa(E8, "be"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "healthy").
+june2014.rule45:: isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest") -> effect(E18S9-get, E8S9-be), isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy").
 english(june2014.rule46, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-june2014.rule46:: isa(E8, "be"), agent(E8, A4), isa(A4, "humans"), object(E8, A9), isa(A9, "healthy") -> effect(E18, E8), isa(E18, "get"), agent(E18, A4), isa(A4, "humans"), object(E18, A20), isa(A20, "regular rest").
+june2014.rule46:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy") -> effect(E18S9-get, E8S9-be), isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest").
 english(june2014.rule47, "The plant gets the energy to go through photosynthesis from sunlight").
-june2014.rule47:: isa(E3, "get"), agent(E3, A2), isa(A2, "The plant"), object(E3, A5), isa(A5, "the energy") -> effect(E3, E7), isa(E7, "go"), agent(E7, A2), isa(A9, "photosynthesis"), through(E7, A9), isa(A11, "sunlight"), from(E7, A11).
+june2014.rule47:: isa(E3S10-get, "get"), agent(E3S10-get, A2S10-plant), isa(A2S10-plant, "The plant"), object(E3S10-get, A5S10-energy), isa(A5S10-energy, "the energy") -> effect(E3S10-get, E7S10-go), isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), through(E7S10-go, A9S10-photosynthesis), isa(A9S10-photosynthesis, "photosynthesis"), from(E7S10-go, A11S10-sunlight), isa(A11S10-sunlight, "sunlight").
 english(june2014.rule48, "The plant gets the energy to go through photosynthesis from sunlight").
-june2014.rule48:: isa(E7, "go"), agent(E7, A2), isa(A2, "The plant"), isa(A9, "photosynthesis"), through(E7, A9), isa(A11, "sunlight"), from(E7, A11) -> effect(E3, E7), isa(E3, "get"), agent(E3, A2), object(E3, A5), isa(A5, "the energy").
+june2014.rule48:: isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), isa(A2S10-plant, "The plant"), through(E7S10-go, A9S10-photosynthesis), isa(A9S10-photosynthesis, "photosynthesis"), from(E7S10-go, A11S10-sunlight), isa(A11S10-sunlight, "sunlight") -> effect(E3S10-get, E7S10-go), isa(E3S10-get, "get"), agent(E3S10-get, A2S10-plant), object(E3S10-get, A5S10-energy), isa(A5S10-energy, "the energy").
 english(june2014.rule49, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule49:: isa(A1, "Decomposers") -> example(A1, A4), isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms"), isa(A1, A4).
+june2014.rule49:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule50, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule50:: isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms") -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+june2014.rule50:: isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule51, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule51:: isa(A1, "Decomposers") -> example(A1, A4), isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16), isa(A1, A4).
+june2014.rule51:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(E11S11-recycle, "recycle"), agent(E11S11-recycle, A4S11-thing), isa(A4S11-thing, "living things"), object(E11S11-recycle, A13S11-nutrient), isa(A13S11-nutrient, "their[dead organisms] nutrients"), into(E11S11-recycle, A16S11-soil), isa(A16S11-soil, "the soil"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule52, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule52:: isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16) -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+june2014.rule52:: isa(E11S11-recycle, "recycle"), agent(E11S11-recycle, A4S11-thing), isa(A4S11-thing, "living things"), object(E11S11-recycle, A13S11-nutrient), isa(A13S11-nutrient, "their[dead organisms] nutrients"), into(E11S11-recycle, A16S11-soil), isa(A16S11-soil, "the soil") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule53, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule53:: isa(A1, "Decomposers") -> example(A1, A4), isa(A4, "living things").
+june2014.rule53:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(A4S11-thing, "living things").
 english(june2014.rule54, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule54:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Decomposers").
+june2014.rule54:: isa(A4S11-thing, "living things") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers").
 english(june2014.rule55, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-june2014.rule55:: isa(E10, "store"), agent(E10, A3), isa(A3, "some animals"), object(E10, A11), isa(A11, "food") -> enable(E10, E4), isa(E4, "prepare"), agent(E4, A3), isa(A8, "the long winters"), for(E4, A8).
+june2014.rule55:: isa(E10S12-store, "store"), agent(E10S12-store, A3S12-animal), isa(A3S12-animal, "some animals"), object(E10S12-store, A11S12-food), isa(A11S12-food, "food") -> enable(E10S12-store, E4S12-prepare), isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters").
 english(june2014.rule56, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-june2014.rule56:: isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8) -> enable(E10, E4), isa(E10, "store"), agent(E10, A3), object(E10, A11), isa(A11, "food").
+june2014.rule56:: isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters") -> enable(E10S12-store, E4S12-prepare), isa(E10S12-store, "store"), agent(E10S12-store, A3S12-animal), object(E10S12-store, A11S12-food), isa(A11S12-food, "food").
 english(june2014.rule57, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-june2014.rule57:: isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8) -> example(E4, A18), isa(A18, "hibernation").
+june2014.rule57:: isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters") -> example(E4S12-prepare, A18S12-hibernation), isa(A18S12-hibernation, "hibernation").
 english(june2014.rule58, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-june2014.rule58:: isa(A18, "hibernation") -> example(E4, A18), isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8).
+june2014.rule58:: isa(A18S12-hibernation, "hibernation") -> example(E4S12-prepare, A18S12-hibernation), isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters").
 english(june2014.rule59, "Mechanical energy exerted by one object can push or pull another object").
-june2014.rule59:: isa(E8, "push") -> agent(E8, A2), isa(A2, "Mechanical energy"), object(E8, A12), isa(A12, "another object").
+june2014.rule59:: isa(E8S13-push, "push") -> agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(june2014.rule60, "Mechanical energy exerted by one object can push or pull another object").
-june2014.rule60:: isa(A2, "Mechanical energy") -> isa(E8, "push"), agent(E8, A2), object(E8, A12), isa(A12, "another object").
+june2014.rule60:: isa(A2S13-energy, "Mechanical energy") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(june2014.rule61, "Mechanical energy exerted by one object can push or pull another object").
-june2014.rule61:: isa(A12, "another object") -> isa(E8, "push"), agent(E8, A2), isa(A2, "Mechanical energy"), object(E8, A12).
+june2014.rule61:: isa(A12S13-object, "another object") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object).
 english(june2014.rule62, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule62:: isa(A1, "Producers") -> example(A1, A4), isa(E6, "change"), agent(E6, A4), isa(A4, "living things"), object(E6, A10), isa(A10, "the sun 's energy"), isa(A12, "to make their[Producers] own food"), arg(E6, A12), isa(A1, A4).
+june2014.rule62:: isa(A1S14-producer, "Producers") -> example(A1S14-producer, A4S14-thing), isa(E6S14-change, "change"), agent(E6S14-change, A4S14-thing), isa(A4S14-thing, "living things"), object(E6S14-change, A10S14-energy), isa(A10S14-energy, "the sun 's energy"), arg(E6S14-change, A12S14-make), isa(A12S14-make, "to make their[Producers] own food"), isa(A1S14-producer, A4S14-thing).
 english(june2014.rule63, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule63:: isa(E6, "change"), agent(E6, A4), isa(A4, "living things"), object(E6, A10), isa(A10, "the sun 's energy"), isa(A12, "to make their[Producers] own food"), arg(E6, A12) -> example(A1, A4), isa(A1, "Producers"), isa(A1, A4).
+june2014.rule63:: isa(E6S14-change, "change"), agent(E6S14-change, A4S14-thing), isa(A4S14-thing, "living things"), object(E6S14-change, A10S14-energy), isa(A10S14-energy, "the sun 's energy"), arg(E6S14-change, A12S14-make), isa(A12S14-make, "to make their[Producers] own food") -> example(A1S14-producer, A4S14-thing), isa(A1S14-producer, "Producers"), isa(A1S14-producer, A4S14-thing).
 english(june2014.rule64, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule64:: isa(A1, "Producers") -> example(A1, A4), isa(A4, "living things").
+june2014.rule64:: isa(A1S14-producer, "Producers") -> example(A1S14-producer, A4S14-thing), isa(A4S14-thing, "living things").
 english(june2014.rule65, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule65:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Producers").
+june2014.rule65:: isa(A4S14-thing, "living things") -> example(A1S14-producer, A4S14-thing), isa(A1S14-producer, "Producers").
 english(june2014.rule66, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-june2014.rule66:: isa(E8, "provide"), agent(E8, A2), isa(A2, "Green plants"), object(E8, A12), isa(A12, "the basic food supply"), isa(A14, "themselves[Producers]"), for(E8, A14), isa(A16, "animals"), for(E8, A16) -> example(E8, A5), isa(A5, "producers").
+june2014.rule66:: isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals") -> example(E8S15-provide, A5S15-producer), isa(A5S15-producer, "producers").
 english(june2014.rule67, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-june2014.rule67:: isa(A5, "producers") -> example(E8, A5), isa(E8, "provide"), agent(E8, A2), isa(A2, "Green plants"), object(E8, A12), isa(A12, "the basic food supply"), isa(A14, "themselves[Producers]"), for(E8, A14), isa(A16, "animals"), for(E8, A16).
+june2014.rule67:: isa(A5S15-producer, "producers") -> example(E8S15-provide, A5S15-producer), isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals").
 english(june2014.rule68, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-june2014.rule68:: isa(E8, "provide"), agent(E8, A2), isa(A2, "Green plants"), object(E8, A12), isa(A12, "the basic food supply"), isa(A14, "themselves[Producers]"), for(E8, A14), isa(A16, "animals"), for(E8, A16) -> effect(E8, E4), isa(E4, "call"), object(E4, A2), isa(A5, "producers"), arg(E4, A5).
+june2014.rule68:: isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals") -> effect(E8S15-provide, E4S15-call), isa(E4S15-call, "call"), object(E4S15-call, A2S15-plant), arg(E4S15-call, A5S15-producer), isa(A5S15-producer, "producers").
 english(june2014.rule69, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-june2014.rule69:: isa(E4, "call"), object(E4, A2), isa(A2, "Green plants"), isa(A5, "producers"), arg(E4, A5) -> effect(E8, E4), isa(E8, "provide"), agent(E8, A2), object(E8, A12), isa(A12, "the basic food supply"), isa(A14, "themselves[Producers]"), for(E8, A14), isa(A16, "animals"), for(E8, A16).
+june2014.rule69:: isa(E4S15-call, "call"), object(E4S15-call, A2S15-plant), isa(A2S15-plant, "Green plants"), arg(E4S15-call, A5S15-producer), isa(A5S15-producer, "producers") -> effect(E8S15-provide, E4S15-call), isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals").
 english(june2014.rule70, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule70:: isa(A2, "Building homes") -> cause(A2, A19), isa(A19, "ecosystem failure").
+june2014.rule70:: isa(A2S16-home, "Building homes") -> cause(A2S16-home, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(june2014.rule71, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule71:: isa(A19, "ecosystem failure") -> cause(A2, A19), isa(A2, "Building homes").
+june2014.rule71:: isa(A19S16-failure, "ecosystem failure") -> cause(A2S16-home, A19S16-failure), isa(A2S16-home, "Building homes").
 english(june2014.rule72, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule72:: isa(A4, "stores") -> cause(A4, A19), isa(A19, "ecosystem failure").
+june2014.rule72:: isa(A4S16-store, "stores") -> cause(A4S16-store, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(june2014.rule73, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule73:: isa(A19, "ecosystem failure") -> cause(A4, A19), isa(A4, "stores").
+june2014.rule73:: isa(A19S16-failure, "ecosystem failure") -> cause(A4S16-store, A19S16-failure), isa(A4S16-store, "stores").
 english(june2014.rule74, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule74:: isa(A6, "factories") -> cause(A6, A19), isa(A19, "ecosystem failure").
+june2014.rule74:: isa(A6S16-factory, "factories") -> cause(A6S16-factory, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(june2014.rule75, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule75:: isa(A19, "ecosystem failure") -> cause(A6, A19), isa(A6, "factories").
+june2014.rule75:: isa(A19S16-failure, "ecosystem failure") -> cause(A6S16-factory, A19S16-failure), isa(A6S16-factory, "factories").
 english(june2014.rule76, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule76:: isa(A10, "growing food crops") -> cause(A10, A19), isa(A19, "ecosystem failure").
+june2014.rule76:: isa(A10S16-crop, "growing food crops") -> cause(A10S16-crop, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(june2014.rule77, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule77:: isa(A19, "ecosystem failure") -> cause(A10, A19), isa(A10, "growing food crops").
+june2014.rule77:: isa(A19S16-failure, "ecosystem failure") -> cause(A10S16-crop, A19S16-failure), isa(A10S16-crop, "growing food crops").
 english(june2014.rule78, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule78:: isa(A13, "pollution") -> cause(A13, A19), isa(A19, "ecosystem failure").
+june2014.rule78:: isa(A13S16-pollution, "pollution") -> cause(A13S16-pollution, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(june2014.rule79, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-june2014.rule79:: isa(A19, "ecosystem failure") -> cause(A13, A19), isa(A13, "pollution").
+june2014.rule79:: isa(A19S16-failure, "ecosystem failure") -> cause(A13S16-pollution, A19S16-failure), isa(A13S16-pollution, "pollution").
 english(june2014.rule80, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-june2014.rule80:: isa(E7, "sweat"), agent(E7, A6), isa(A6, "our bodies"), object(E7, A8), isa(A8, "perspiration"), isa(A4, "the hot weather"), in(E7, A4) -> effect(E7, E9), isa(E9, "bring"), agent(E9, A6), object(E9, A10), isa(A10, "water"), isa(A13, "our[our] skin"), to(E9, A13).
+june2014.rule80:: isa(E7S17-sweat, "sweat"), agent(E7S17-sweat, A6S17-body), isa(A6S17-body, "our bodies"), object(E7S17-sweat, A8S17-perspiration), isa(A8S17-perspiration, "perspiration"), in(E7S17-sweat, A4S17-weather), isa(A4S17-weather, "the hot weather") -> effect(E7S17-sweat, E9S17-bring), isa(E9S17-bring, "bring"), agent(E9S17-bring, A6S17-body), object(E9S17-bring, A10S17-water), isa(A10S17-water, "water"), to(E9S17-bring, A13S17-skin), isa(A13S17-skin, "our[our] skin").
 english(june2014.rule81, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-june2014.rule81:: isa(E9, "bring"), agent(E9, A6), isa(A6, "our bodies"), object(E9, A10), isa(A10, "water"), isa(A13, "our[our] skin"), to(E9, A13) -> effect(E7, E9), isa(E7, "sweat"), agent(E7, A6), object(E7, A8), isa(A8, "perspiration"), isa(A4, "the hot weather"), in(E7, A4).
+june2014.rule81:: isa(E9S17-bring, "bring"), agent(E9S17-bring, A6S17-body), isa(A6S17-body, "our bodies"), object(E9S17-bring, A10S17-water), isa(A10S17-water, "water"), to(E9S17-bring, A13S17-skin), isa(A13S17-skin, "our[our] skin") -> effect(E7S17-sweat, E9S17-bring), isa(E7S17-sweat, "sweat"), agent(E7S17-sweat, A6S17-body), object(E7S17-sweat, A8S17-perspiration), isa(A8S17-perspiration, "perspiration"), in(E7S17-sweat, A4S17-weather), isa(A4S17-weather, "the hot weather").
 english(june2014.rule82, "A hand lens is used to view objects in more detail").
-june2014.rule82:: isa(A3, "A hand lens") -> purpose(A3, E7), isa(E7, "view"), agent(E7, A3), object(E7, A8), isa(A8, "objects"), isa(A11, "more detail"), in(E7, A11).
+june2014.rule82:: isa(A3S18-lens, "A hand lens") -> purpose(A3S18-lens, E7S18-view), isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), object(E7S18-view, A8S18-object), isa(A8S18-object, "objects"), in(E7S18-view, A11S18-detail), isa(A11S18-detail, "more detail").
 english(june2014.rule83, "A hand lens is used to view objects in more detail").
-june2014.rule83:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), isa(A11, "more detail"), in(E7, A11) -> purpose(A3, E7).
+june2014.rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens, "A hand lens"), object(E7S18-view, A8S18-object), isa(A8S18-object, "objects"), in(E7S18-view, A11S18-detail), isa(A11S18-detail, "more detail") -> purpose(A3S18-lens, E7S18-view).
 english(june2014.rule84, "Some animals grow thick fur in winter to stay warm").
-june2014.rule84:: isa(E3, "grow"), agent(E3, A2), isa(A2, "Some animals"), object(E3, A5), isa(A5, "fur") -> effect(E3, E9), isa(E9, "stay"), agent(E9, A2), object(E9, A10), isa(A10, "warm").
+june2014.rule84:: isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur") -> effect(E3S19-grow, E9S19-stay), isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm").
 english(june2014.rule85, "Some animals grow thick fur in winter to stay warm").
-june2014.rule85:: isa(E9, "stay"), agent(E9, A2), isa(A2, "Some animals"), object(E9, A10), isa(A10, "warm") -> effect(E3, E9), isa(E3, "grow"), agent(E3, A2), object(E3, A5), isa(A5, "fur").
+june2014.rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm") -> effect(E3S19-grow, E9S19-stay), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur").
 english(june2014.rule86, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule86:: isa(E2, "take in"), agent(E2, A1), isa(A1, "Animals"), object(E2, A4), isa(A4, "food"), isa(A7, "a nutrient"), as(E2, A7) -> effect(E2, E15), isa(E15, "grow"), agent(E15, A2), isa(A2, "Some animals").
+june2014.rule86:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E15S20-grow), isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals").
 english(june2014.rule87, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule87:: isa(E15, "grow"), agent(E15, A2), isa(A2, "Some animals") -> effect(E2, E15), isa(E2, "take in"), agent(E2, A1), isa(A1, "Animals"), object(E2, A4), isa(A4, "food"), isa(A7, "a nutrient"), as(E2, A7).
+june2014.rule87:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E2S20-take, E15S20-grow), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 english(june2014.rule88, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule88:: isa(E2, "take in"), agent(E2, A1), isa(A1, "Animals"), object(E2, A4), isa(A4, "food"), isa(A7, "a nutrient"), as(E2, A7) -> effect(E2, E9), isa(E9, "give"), object(E9, A2), isa(A2, "Some animals"), isa(A11, "energy"), arg(E9, A11).
+june2014.rule88:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E9S20-give), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 english(june2014.rule89, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule89:: isa(E9, "give"), object(E9, A2), isa(A2, "Some animals"), isa(A11, "energy"), arg(E9, A11) -> effect(E2, E9), isa(E2, "take in"), agent(E2, A1), isa(A1, "Animals"), object(E2, A4), isa(A4, "food"), isa(A7, "a nutrient"), as(E2, A7).
+june2014.rule89:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy") -> effect(E2S20-take, E9S20-give), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 english(june2014.rule90, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule90:: isa(E9, "give"), object(E9, A2), isa(A2, "Some animals"), isa(A11, "energy"), arg(E9, A11) -> effect(E9, E15), isa(E15, "grow"), agent(E15, A2).
+june2014.rule90:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy") -> effect(E9S20-give, E15S20-grow), isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal).
 english(june2014.rule91, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-june2014.rule91:: isa(E15, "grow"), agent(E15, A2), isa(A2, "Some animals") -> effect(E9, E15), isa(E9, "give"), object(E9, A2), isa(A11, "energy"), arg(E9, A11).
+june2014.rule91:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E9S20-give, E15S20-grow), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 english(june2014.rule92, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-june2014.rule92:: isa(E2, "provide") -> agent(E2, A1), isa(A1, "Plants"), object(E2, A3), isa(A3, "animals"), isa(A5, "food"), with(E2, A5), isa(A8, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy"), with(E2, A8).
+june2014.rule92:: isa(E2S21-provide, "provide") -> agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule93, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-june2014.rule93:: isa(A1, "Plants") -> isa(E2, "provide"), agent(E2, A1), object(E2, A3), isa(A3, "animals"), isa(A5, "food"), with(E2, A5), isa(A8, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy"), with(E2, A8).
+june2014.rule93:: isa(A1S21-plant, "Plants") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule94, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-june2014.rule94:: isa(A3, "animals") -> isa(E2, "provide"), agent(E2, A1), isa(A1, "Plants"), object(E2, A3), isa(A5, "food"), with(E2, A5), isa(A8, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy"), with(E2, A8).
+june2014.rule94:: isa(A3S21-animal, "animals") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule95, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-june2014.rule95:: isa(A5, "food") -> isa(E2, "provide"), agent(E2, A1), isa(A1, "Plants"), object(E2, A3), isa(A3, "animals"), with(E2, A5), isa(A8, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy"), with(E2, A8).
+june2014.rule95:: isa(A5S21-food, "food") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule96, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-june2014.rule96:: isa(A8, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy") -> isa(E2, "provide"), agent(E2, A1), isa(A1, "Plants"), object(E2, A3), isa(A3, "animals"), isa(A5, "food"), with(E2, A5), with(E2, A8).
+june2014.rule96:: isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen).

@@ -1,8 +1,8 @@
 % ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
 english(rule1, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-rule1:: isa(E7, "sweat"), agent(E7, A6), isa(A6, "our bodies"), object(E7, A9), isa(A9, "perspiration"), isa(A4, "the hot weather"), in(E7, A4) -> effect(E7, E12), isa(E12, "bring"), agent(E12, A6), object(E12, A13), isa(A13, "water"), isa(A16, "our[our] skin"), to(E12, A16).
+rule1:: isa(E7S1-sweat, "sweat"), agent(E7S1-sweat, A6S1-body), isa(A6S1-body, "our bodies"), object(E7S1-sweat, A9S1-perspiration), isa(A9S1-perspiration, "perspiration"), in(E7S1-sweat, A4S1-weather), isa(A4S1-weather, "the hot weather") -> effect(E7S1-sweat, E12S1-bring), isa(E12S1-bring, "bring"), agent(E12S1-bring, A6S1-body), object(E12S1-bring, A13S1-water), isa(A13S1-water, "water"), to(E12S1-bring, A16S1-skin), isa(A16S1-skin, "our[our] skin").
 english(rule2, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-rule2:: isa(E12, "bring"), agent(E12, A6), isa(A6, "our bodies"), object(E12, A13), isa(A13, "water"), isa(A16, "our[our] skin"), to(E12, A16) -> effect(E7, E12), isa(E7, "sweat"), agent(E7, A6), object(E7, A9), isa(A9, "perspiration"), isa(A4, "the hot weather"), in(E7, A4).
+rule2:: isa(E12S1-bring, "bring"), agent(E12S1-bring, A6S1-body), isa(A6S1-body, "our bodies"), object(E12S1-bring, A13S1-water), isa(A13S1-water, "water"), to(E12S1-bring, A16S1-skin), isa(A16S1-skin, "our[our] skin") -> effect(E7S1-sweat, E12S1-bring), isa(E7S1-sweat, "sweat"), agent(E7S1-sweat, A6S1-body), object(E7S1-sweat, A9S1-perspiration), isa(A9S1-perspiration, "perspiration"), in(E7S1-sweat, A4S1-weather), isa(A4S1-weather, "the hot weather").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -56,9 +56,9 @@ rule2:: isa(E12, "bring"), agent(E12, A6), isa(A6, "our bodies"), object(E12, A1
 
 % ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
 english(rule3, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule3:: isa(E10, "store"), agent(E10, A3), isa(A3, "some animals"), object(E10, A11), isa(A11, "food") -> enable(E10, E4), isa(E4, "prepare"), agent(E4, A3), isa(A8, "the long winters"), for(E4, A8).
+rule3:: isa(E10S2-store, "store"), agent(E10S2-store, A3S2-animal), isa(A3S2-animal, "some animals"), object(E10S2-store, A11S2-food), isa(A11S2-food, "food") -> enable(E10S2-store, E4S2-prepare), isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters").
 english(rule4, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule4:: isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8) -> enable(E10, E4), isa(E10, "store"), agent(E10, A3), object(E10, A11), isa(A11, "food").
+rule4:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> enable(E10S2-store, E4S2-prepare), isa(E10S2-store, "store"), agent(E10S2-store, A3S2-animal), object(E10S2-store, A11S2-food), isa(A11S2-food, "food").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -103,9 +103,9 @@ rule4:: isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the
 
 % ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
 english(rule5, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule5:: isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8) -> example(E4, A18), isa(A18, "hibernation").
+rule5:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> example(E4S2-prepare, A18S2-hibernation), isa(A18S2-hibernation, "hibernation").
 english(rule6, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-rule6:: isa(A18, "hibernation") -> example(E4, A18), isa(E4, "prepare"), agent(E4, A3), isa(A3, "some animals"), isa(A8, "the long winters"), for(E4, A8).
+rule6:: isa(A18S2-hibernation, "hibernation") -> example(E4S2-prepare, A18S2-hibernation), isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -140,9 +140,9 @@ rule6:: isa(A18, "hibernation") -> example(E4, A18), isa(E4, "prepare"), agent(E
 
 % "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
 english(rule7, "A hand lens is used to view objects in more detail").
-rule7:: isa(A3, "A hand lens") -> purpose(A3, E7), isa(E7, "view"), agent(E7, A3), object(E7, A8), isa(A8, "objects"), isa(A11, "more detail"), in(E7, A11).
+rule7:: isa(A3S3-lens, "A hand lens") -> purpose(A3S3-lens, E7S3-view), isa(E7S3-view, "view"), agent(E7S3-view, A3S3-lens), object(E7S3-view, A8S3-object), isa(A8S3-object, "objects"), in(E7S3-view, A11S3-detail), isa(A11S3-detail, "more detail").
 english(rule8, "A hand lens is used to view objects in more detail").
-rule8:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), isa(A8, "objects"), isa(A11, "more detail"), in(E7, A11) -> purpose(A3, E7).
+rule8:: isa(E7S3-view, "view"), agent(E7S3-view, A3S3-lens), isa(A3S3-lens, "A hand lens"), object(E7S3-view, A8S3-object), isa(A8S3-object, "objects"), in(E7S3-view, A11S3-detail), isa(A11S3-detail, "more detail") -> purpose(A3S3-lens, E7S3-view).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -182,9 +182,9 @@ rule8:: isa(E7, "view"), agent(E7, A3), isa(A3, "A hand lens"), object(E7, A8), 
 
 % ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
 english(rule9, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
-rule9:: isa(E18, "remove"), agent(E18, A1), isa(A1, "Freezing"), object(E18, A20), isa(A20, "heat") -> enable(E18, E3), isa(E3, "change"), agent(E3, A1), object(E3, A4), isa(A4, "water"), isa(A8, "its[A hand lens] liquid state"), from(E3, A8), isa(A12, "its[its liquid state] solid state"), to(E3, A12).
+rule9:: isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat") -> enable(E18S4-removal, E3S4-change), isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state").
 english(rule10, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
-rule10:: isa(E3, "change"), agent(E3, A1), isa(A1, "Freezing"), object(E3, A4), isa(A4, "water"), isa(A8, "its[A hand lens] liquid state"), from(E3, A8), isa(A12, "its[its liquid state] solid state"), to(E3, A12) -> enable(E18, E3), isa(E18, "remove"), agent(E18, A1), object(E18, A20), isa(A20, "heat").
+rule10:: isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state") -> enable(E18S4-removal, E3S4-change), isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -238,9 +238,9 @@ rule10:: isa(E3, "change"), agent(E3, A1), isa(A1, "Freezing"), object(E3, A4), 
 
 % ("Animals" "not make" "their[some animals] own food")	"so"/EFFECT	("some animals" "eat" "")
 english(rule11, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule11:: isa(E4, "not make"), agent(E4, A1), isa(A1, "Animals"), object(E4, A7), isa(A7, "their[some animals] own food") -> effect(E4, E11), isa(E11, "eat"), agent(E11, A3), isa(A3, "some animals").
+rule11:: isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food") -> effect(E4S5-make, E11S5-eat), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals").
 english(rule12, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule12:: isa(E11, "eat"), agent(E11, A3), isa(A3, "some animals") -> effect(E4, E11), isa(E4, "not make"), agent(E4, A1), isa(A1, "Animals"), object(E4, A7), isa(A7, "their[some animals] own food").
+rule12:: isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals") -> effect(E4S5-make, E11S5-eat), isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -281,9 +281,9 @@ rule12:: isa(E11, "eat"), agent(E11, A3), isa(A3, "some animals") -> effect(E4, 
 
 % ("some animals"/?x "eat" "")	"to"/REQUIREMENT	("some animals"/?x "get" "nutrients")
 english(rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule13:: isa(E11, "eat"), agent(E11, A3), isa(A3, "some animals") -> requirement(E11, E13), isa(E13, "get"), agent(E13, A3), object(E13, A14), isa(A14, "nutrients").
+rule13:: isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals") -> requirement(E11S5-eat, E13S5-get), isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), object(E13S5-get, A14S5-nutrient), isa(A14S5-nutrient, "nutrients").
 english(rule14, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-rule14:: isa(E13, "get"), agent(E13, A3), isa(A3, "some animals"), object(E13, A14), isa(A14, "nutrients") -> requirement(E11, E13), isa(E11, "eat"), agent(E11, A3).
+rule14:: isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), isa(A3S2-animal, "some animals"), object(E13S5-get, A14S5-nutrient), isa(A14S5-nutrient, "nutrients") -> requirement(E11S5-eat, E13S5-get), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -324,13 +324,13 @@ rule14:: isa(E13, "get"), agent(E13, A3), isa(A3, "some animals"), object(E13, A
 
 % ("The friction between the two surfaces" "convert" "kinetic energy" [ "into heat" ] )
 english(rule15, "The friction between the two surfaces converts kinetic energy into heat").
-rule15:: isa(E7, "convert") -> agent(E7, A2), isa(A2, "The friction between the two surfaces"), object(E7, A9), isa(A9, "kinetic energy"), isa(A11, "heat"), into(E7, A11).
+rule15:: isa(E7S6-convert, "convert") -> agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule16, "The friction between the two surfaces converts kinetic energy into heat").
-rule16:: isa(A2, "The friction between the two surfaces") -> isa(E7, "convert"), agent(E7, A2), object(E7, A9), isa(A9, "kinetic energy"), isa(A11, "heat"), into(E7, A11).
+rule16:: isa(A2S6-friction, "The friction between the two surfaces") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule17, "The friction between the two surfaces converts kinetic energy into heat").
-rule17:: isa(A9, "kinetic energy") -> isa(E7, "convert"), agent(E7, A2), isa(A2, "The friction between the two surfaces"), object(E7, A9), isa(A11, "heat"), into(E7, A11).
+rule17:: isa(A9S6-energy, "kinetic energy") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule18, "The friction between the two surfaces converts kinetic energy into heat").
-rule18:: isa(A11, "heat") -> isa(E7, "convert"), agent(E7, A2), isa(A2, "The friction between the two surfaces"), object(E7, A9), isa(A9, "kinetic energy"), into(E7, A11).
+rule18:: isa(A11S6-heat, "heat") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -359,9 +359,9 @@ rule18:: isa(A11, "heat") -> isa(E7, "convert"), agent(E7, A2), isa(A2, "The fri
 
 % ("" "get" "rest")	"part of"/PART	("" "live" "a healthy life")
 english(rule19, "Getting enough rest is also an important part of living a healthy life").
-rule19:: isa(E1, "get"), object(E1, A3), isa(A3, "rest") -> part(E1, E10), isa(E10, "live"), object(E10, A13), isa(A13, "a healthy life").
+rule19:: isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest") -> part(E1S7-get, E10S7-live), isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life").
 english(rule20, "Getting enough rest is also an important part of living a healthy life").
-rule20:: isa(E10, "live"), object(E10, A13), isa(A13, "a healthy life") -> part(E1, E10), isa(E1, "get"), object(E1, A3), isa(A3, "rest").
+rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life") -> part(E1S7-get, E10S7-live), isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -397,9 +397,9 @@ rule20:: isa(E10, "live"), object(E10, A13), isa(A13, "a healthy life") -> part(
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule21:: isa(A1, "Decomposers") -> example(A1, A4), isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms"), isa(A1, A4).
+rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
 english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule22:: isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(E6, A9), isa(A9, "dead organisms") -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -436,9 +436,9 @@ rule22:: isa(E6, "break down"), agent(E6, A4), isa(A4, "living things"), object(
 
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule23:: isa(A1, "Decomposers") -> example(A1, A4), isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16), isa(A1, A4).
+rule23:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
 english(rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule24:: isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E11, A13), isa(A13, "their[dead organisms] nutrients"), isa(A16, "the soil"), into(E11, A16) -> example(A1, A4), isa(A1, "Decomposers"), isa(A1, A4).
+rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -479,9 +479,9 @@ rule24:: isa(E11, "recycle"), agent(E11, A4), isa(A4, "living things"), object(E
 
 % "Decomposers"	"are"/EXAMPLE	"living things"
 english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule25:: isa(A1, "Decomposers") -> example(A1, A4), isa(A4, "living things").
+rule25:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(A4S10-thing, "living things").
 english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-rule26:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Decomposers").
+rule26:: isa(A4S10-thing, "living things") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -507,9 +507,9 @@ rule26:: isa(A4, "living things") -> example(A1, A4), isa(A1, "Decomposers").
 
 % "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-rule27:: isa(A1, "Gravity") -> example(A1, A4), isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), object(E6, A8), isa(A8, "an object toward the center of the Earth"), isa(A1, A4).
+rule27:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
 english(rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-rule28:: isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), object(E6, A8), isa(A8, "an object toward the center of the Earth") -> example(A1, A4), isa(A1, "Gravity"), isa(A1, A4).
+rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -546,9 +546,9 @@ rule28:: isa(E6, "pull"), agent(E6, A4), isa(A4, "the force"), object(E6, A8), i
 
 % "Gravity"	"is"/EXAMPLE	"the force"
 english(rule29, "Gravity is the force that pulls an object toward the center of the Earth").
-rule29:: isa(A1, "Gravity") -> example(A1, A4), isa(A4, "the force").
+rule29:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(A4S11-force, "the force").
 english(rule30, "Gravity is the force that pulls an object toward the center of the Earth").
-rule30:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
+rule30:: isa(A4S11-force, "the force") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -574,9 +574,9 @@ rule30:: isa(A4, "the force") -> example(A1, A4), isa(A1, "Gravity").
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
 english(rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule31:: isa(A6, "sweat") -> example(A6, E14), isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A6), isa(A17, "hot temperatures"), to(E14, A17).
+rule31:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
 english(rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule32:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A6), isa(A6, "sweat"), isa(A17, "hot temperatures"), to(E14, A17) -> example(A6, E14).
+rule32:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), isa(A6S12-sweat, "sweat"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -616,9 +616,9 @@ rule32:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E1
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
 english(rule33, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule33:: isa(A6, "sweat") -> example(A6, E14), isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A9), isa(A9, "a way"), isa(A17, "hot temperatures"), to(E14, A17).
+rule33:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
 english(rule34, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-rule34:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E14, A9), isa(A9, "a way"), isa(A17, "hot temperatures"), to(E14, A17) -> example(A6, E14), isa(A6, "sweat").
+rule34:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust), isa(A6S12-sweat, "sweat").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -658,9 +658,9 @@ rule34:: isa(E14, "adjust"), agent(E14, A12), isa(A12, "an organism"), object(E1
 
 % ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule35, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-rule35:: isa(E3, "store"), agent(E3, A2), isa(A2, "A squirrel"), object(E3, A4), isa(A4, "nuts") -> effect(E3, E6), isa(E6, "prepare"), agent(E6, A2), isa(A10, "a seasonal change in the environment"), for(E6, A10).
+rule35:: isa(E3S13-store, "store"), agent(E3S13-store, A2S13-squirrel), isa(A2S13-squirrel, "A squirrel"), object(E3S13-store, A4S13-nut), isa(A4S13-nut, "nuts") -> effect(E3S13-store, E6S13-prepare), isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), for(E6S13-prepare, A10S13-change), isa(A10S13-change, "a seasonal change in the environment").
 english(rule36, "A squirrel storing nuts is preparing for a seasonal change in the environment").
-rule36:: isa(E6, "prepare"), agent(E6, A2), isa(A2, "A squirrel"), isa(A10, "a seasonal change in the environment"), for(E6, A10) -> effect(E3, E6), isa(E3, "store"), agent(E3, A2), object(E3, A4), isa(A4, "nuts").
+rule36:: isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), isa(A2S13-squirrel, "A squirrel"), for(E6S13-prepare, A10S13-change), isa(A10S13-change, "a seasonal change in the environment") -> effect(E3S13-store, E6S13-prepare), isa(E3S13-store, "store"), agent(E3S13-store, A2S13-squirrel), object(E3S13-store, A4S13-nut), isa(A4S13-nut, "nuts").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -705,9 +705,9 @@ rule36:: isa(E6, "prepare"), agent(E6, A2), isa(A2, "A squirrel"), isa(A10, "a s
 
 % ("A student"/?x "use" "a hand lens")	"to"/EFFECT	("A student"/?x "get" "" [ "a better look at the spots" ] )
 english(rule37, "A student should use a hand lens to get a better look at the spots").
-rule37:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a hand lens") -> effect(E4, E9), isa(E9, "get"), agent(E9, A2), isa(A12, "a better look at the spots"), arg(E9, A12).
+rule37:: isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), isa(A2S14-student, "A student"), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens") -> effect(E4S14-use, E9S14-get), isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots").
 english(rule38, "A student should use a hand lens to get a better look at the spots").
-rule38:: isa(E9, "get"), agent(E9, A2), isa(A2, "A student"), isa(A12, "a better look at the spots"), arg(E9, A12) -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a hand lens").
+rule38:: isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), isa(A2S14-student, "A student"), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots") -> effect(E4S14-use, E9S14-get), isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -752,9 +752,9 @@ rule38:: isa(E9, "get"), agent(E9, A2), isa(A2, "A student"), isa(A12, "a better
 
 % ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule39, "Decreasing the temperature is one way to change water from a liquid to a solid").
-rule39:: isa(E1, "decrease"), object(E1, A3), isa(A3, "the temperature") -> effect(E1, E8), isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15).
+rule39:: isa(E1S15-decrease, "decrease"), object(E1S15-decrease, A3S15-temperature), isa(A3S15-temperature, "the temperature") -> effect(E1S15-decrease, E8S15-change), isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S15-water, "water"), from(E8S15-change, A12S15-liquid), isa(A12S15-liquid, "a liquid"), to(E8S15-change, A15S15-solid), isa(A15S15-solid, "a solid").
 english(rule40, "Decreasing the temperature is one way to change water from a liquid to a solid").
-rule40:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid"), from(E8, A12), isa(A15, "a solid"), to(E8, A15) -> effect(E1, E8), isa(E1, "decrease"), object(E1, A3), isa(A3, "the temperature").
+rule40:: isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S15-water, "water"), from(E8S15-change, A12S15-liquid), isa(A12S15-liquid, "a liquid"), to(E8S15-change, A15S15-solid), isa(A15S15-solid, "a solid") -> effect(E1S15-decrease, E8S15-change), isa(E1S15-decrease, "decrease"), object(E1S15-decrease, A3S15-temperature), isa(A3S15-temperature, "the temperature").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -798,15 +798,15 @@ rule40:: isa(E8, "change"), object(E8, A9), isa(A9, "water"), isa(A12, "a liquid
 
 % ("Animals" "get" "energy" [ "for growth from food", "for repair" ] )
 english(rule41, "Animals get energy for growth and repair from food").
-rule41:: isa(E2, "get") -> agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule41:: isa(E2S16-get, "get") -> agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule42, "Animals get energy for growth and repair from food").
-rule42:: isa(A1, "Animals") -> isa(E2, "get"), agent(E2, A1), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule42:: isa(A1S16-animal, "Animals") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule43, "Animals get energy for growth and repair from food").
-rule43:: isa(A3, "energy") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A5, "growth from food"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule43:: isa(A3S16-energy, "energy") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule44, "Animals get energy for growth and repair from food").
-rule44:: isa(A5, "growth from food") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), for(E2, A5), isa(A7, "repair"), for(E2, A7).
+rule44:: isa(A5S16-growth, "growth from food") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule45, "Animals get energy for growth and repair from food").
-rule45:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"), object(E2, A3), isa(A3, "energy"), isa(A5, "growth from food"), for(E2, A5), for(E2, A7).
+rule45:: isa(A7S16-repair, "repair") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -839,9 +839,9 @@ rule45:: isa(A7, "repair") -> isa(E2, "get"), agent(E2, A1), isa(A1, "Animals"),
 
 % "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
 english(rule46, "The heat that produces the smoke is caused by friction").
-rule46:: isa(A10, "friction") -> cause(A10, E4), isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke").
+rule46:: isa(A10S17-friction, "friction") -> cause(A10S17-friction, E4S17-produce), isa(E4S17-produce, "produce"), agent(E4S17-produce, A2S17-heat), isa(A2S17-heat, "The heat"), object(E4S17-produce, A6S17-smoke), isa(A6S17-smoke, "the smoke").
 english(rule47, "The heat that produces the smoke is caused by friction").
-rule47:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6), isa(A6, "the smoke") -> cause(A10, E4), isa(A10, "friction").
+rule47:: isa(E4S17-produce, "produce"), agent(E4S17-produce, A2S17-heat), isa(A2S17-heat, "The heat"), object(E4S17-produce, A6S17-smoke), isa(A6S17-smoke, "the smoke") -> cause(A10S17-friction, E4S17-produce), isa(A10S17-friction, "friction").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -877,9 +877,9 @@ rule47:: isa(E4, "produce"), agent(E4, A2), isa(A2, "The heat"), object(E4, A6),
 
 % ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 english(rule48, "Resting is necessary for humans to maintain good health").
-rule48:: isa(E1, "rest"), agent(E1, A5), isa(A5, "humans") -> requirement(E1, E7), isa(E7, "maintain"), agent(E7, A5), object(E7, A9), isa(A9, "good health").
+rule48:: isa(E1S18-rest, "rest"), agent(E1S18-rest, A5S18-human), isa(A5S18-human, "humans") -> requirement(E1S18-rest, E7S18-maintain), isa(E7S18-maintain, "maintain"), agent(E7S18-maintain, A5S18-human), object(E7S18-maintain, A9S18-health), isa(A9S18-health, "good health").
 english(rule49, "Resting is necessary for humans to maintain good health").
-rule49:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), isa(A9, "good health") -> requirement(E1, E7), isa(E1, "rest"), agent(E1, A5).
+rule49:: isa(E7S18-maintain, "maintain"), agent(E7S18-maintain, A5S18-human), isa(A5S18-human, "humans"), object(E7S18-maintain, A9S18-health), isa(A9S18-health, "good health") -> requirement(E1S18-rest, E7S18-maintain), isa(E1S18-rest, "rest"), agent(E1S18-rest, A5S18-human).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -920,9 +920,9 @@ rule49:: isa(E7, "maintain"), agent(E7, A5), isa(A5, "humans"), object(E7, A9), 
 
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
 english(rule50, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule50:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A12), isa(A12, "10 milliliters of water").
+rule50:: isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), isa(A2S19-student, "A student"), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder") -> effect(E4S19-use, E9S19-measure), isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), object(E9S19-measure, A12S19-milliliter), isa(A12S19-milliliter, "10 milliliters of water").
 english(rule51, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule51:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A12), isa(A12, "10 milliliters of water") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+rule51:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A12S19-milliliter), isa(A12S19-milliliter, "10 milliliters of water") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -966,9 +966,9 @@ rule51:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A12
 
 % ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "mL")
 english(rule52, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule52:: isa(E4, "use"), agent(E4, A2), isa(A2, "A student"), object(E4, A7), isa(A7, "a graduated cylinder") -> effect(E4, E9), isa(E9, "measure"), agent(E9, A2), object(E9, A14), isa(A14, "mL").
+rule52:: isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), isa(A2S19-student, "A student"), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder") -> effect(E4S19-use, E9S19-measure), isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL").
 english(rule53, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-rule53:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A14), isa(A14, "mL") -> effect(E4, E9), isa(E4, "use"), agent(E4, A2), object(E4, A7), isa(A7, "a graduated cylinder").
+rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1016,9 +1016,9 @@ rule53:: isa(E9, "measure"), agent(E9, A2), isa(A2, "A student"), object(E9, A14
 
 % "The white fur of an arctic fox blends"	"is called"/EXAMPLE	"camouflage"
 english(rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
-rule54:: isa(A3, "The white fur of an arctic fox blends") -> example(A3, A15), isa(A15, "camouflage").
+rule54:: isa(A3S20-fur, "The white fur of an arctic fox blends") -> example(A3S20-fur, A15S20-camouflage), isa(A15S20-camouflage, "camouflage").
 english(rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
-rule55:: isa(A15, "camouflage") -> example(A3, A15), isa(A3, "The white fur of an arctic fox blends").
+rule55:: isa(A15S20-camouflage, "camouflage") -> example(A3S20-fur, A15S20-camouflage), isa(A3S20-fur, "The white fur of an arctic fox blends").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1044,9 +1044,9 @@ rule55:: isa(A15, "camouflage") -> example(A3, A15), isa(A3, "The white fur of a
 
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 english(rule56, "When plants and animals die decomposers help return nutrients to the food chain").
-rule56:: isa(A7, "decomposers") -> purpose(A7, E9), isa(E9, "return"), agent(E9, A7), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule56:: isa(A7S21-decomposer, "decomposers") -> purpose(A7S21-decomposer, E9S21-return), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
 english(rule57, "When plants and animals die decomposers help return nutrients to the food chain").
-rule57:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> purpose(A7, E9).
+rule57:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> purpose(A7S21-decomposer, E9S21-return).
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1086,9 +1086,9 @@ rule57:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A1
 
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
 english(rule58, "When plants and animals die decomposers help return nutrients to the food chain").
-rule58:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A2), isa(A2, "plants").
+rule58:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> when(E9S21-return, E5S21-die), isa(E5S21-die, "die"), agent(E5S21-die, A2S21-plant), isa(A2S21-plant, "plants").
 english(rule59, "When plants and animals die decomposers help return nutrients to the food chain").
-rule59:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule59:: isa(E5S21-die, "die"), agent(E5S21-die, A2S21-plant), isa(A2S21-plant, "plants") -> when(E9S21-return, E5S21-die), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1133,9 +1133,9 @@ rule59:: isa(E5, "die"), agent(E5, A2), isa(A2, "plants") -> when(E9, E5), isa(E
 
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
 english(rule60, "When plants and animals die decomposers help return nutrients to the food chain").
-rule60:: isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14) -> when(E9, E5), isa(E5, "die"), agent(E5, A4), isa(A4, "animals").
+rule60:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> when(E9S21-return, E5S21-die), isa(E5S21-die, "die"), agent(E5S21-die, A4S21-animal), isa(A4S21-animal, "animals").
 english(rule61, "When plants and animals die decomposers help return nutrients to the food chain").
-rule61:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(E9, "return"), agent(E9, A7), isa(A7, "decomposers"), object(E9, A10), isa(A10, "nutrients"), isa(A14, "the food chain"), to(E9, A14).
+rule61:: isa(E5S21-die, "die"), agent(E5S21-die, A4S21-animal), isa(A4S21-animal, "animals") -> when(E9S21-return, E5S21-die), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1180,9 +1180,9 @@ rule61:: isa(E5, "die"), agent(E5, A4), isa(A4, "animals") -> when(E9, E5), isa(
 
 % "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
 english(rule62, "Gravity causes the ball to fall to the ground").
-rule62:: isa(A1, "Gravity") -> cause(A1, E6), isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9).
+rule62:: isa(A1S22-gravity, "Gravity") -> cause(A1S22-gravity, E6S22-fall), isa(E6S22-fall, "fall"), agent(E6S22-fall, A4S22-ball), isa(A4S22-ball, "the ball"), to(E6S22-fall, A9S22-ground), isa(A9S22-ground, "the ground").
 english(rule63, "Gravity causes the ball to fall to the ground").
-rule63:: isa(E6, "fall"), agent(E6, A4), isa(A4, "the ball"), isa(A9, "the ground"), to(E6, A9) -> cause(A1, E6), isa(A1, "Gravity").
+rule63:: isa(E6S22-fall, "fall"), agent(E6S22-fall, A4S22-ball), isa(A4S22-ball, "the ball"), to(E6S22-fall, A9S22-ground), isa(A9S22-ground, "the ground") -> cause(A1S22-gravity, E6S22-fall), isa(A1S22-gravity, "Gravity").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

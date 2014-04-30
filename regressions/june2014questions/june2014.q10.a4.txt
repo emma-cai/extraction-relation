@@ -1,1 +1,0 @@
-Sound is being used when a person pushes a wooden block across the floor.

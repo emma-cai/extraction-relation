@@ -1,8 +1,8 @@
 % ("Some animals"/?x "grow" "fur" [ "in winter" ] )	"to"/EFFECT	("Some animals"/?x "keep" "" [ "warm" ] )
 english(rule1, "Some animals grow fur in winter to keep warm").
-rule1:: isa(E3, "grow"), agent(E3, A2), isa(A2, "Some animals"), object(E3, A4), isa(A4, "fur"), isa(A6, "winter"), in(E3, A6) -> effect(E3, E8), isa(E8, "keep"), agent(E8, A2), isa(A9, "warm"), arg(E8, A9).
+rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), isa(A2S1-animal, "Some animals"), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter") -> effect(E3S1-grow, E8S1-keep), isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm").
 english(rule2, "Some animals grow fur in winter to keep warm").
-rule2:: isa(E8, "keep"), agent(E8, A2), isa(A2, "Some animals"), isa(A9, "warm"), arg(E8, A9) -> effect(E3, E8), isa(E3, "grow"), agent(E3, A2), object(E3, A4), isa(A4, "fur"), isa(A6, "winter"), in(E3, A6).
+rule2:: isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), isa(A2S1-animal, "Some animals"), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm") -> effect(E3S1-grow, E8S1-keep), isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .

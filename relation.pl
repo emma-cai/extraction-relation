@@ -14,7 +14,7 @@ relation :-
 
 relation(Root,Json) :-
 	% descend through every node checking for relations
-	( top_relation(Root,_)
+	( top_relation(Root,Json)
 	; constit(Root,Node),
 	  relation(Root,Node,Json) ).
 relation(Root,Json) :- % question-specific
