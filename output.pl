@@ -480,11 +480,13 @@ stripped_id(Token,TokenId) :- % event
 	rdf(Token,rdf:type,event),
 	rdf_global_id(id:_,Token),
 	token_id(Token,Id),
-	atomic_list_concat(['E',Id],TokenId).
+	lemma(Token,Lemma),
+	atomic_list_concat(['E',Id,'-',Lemma],TokenId).
 stripped_id(Token,TokenId) :- % argument
 	rdf_global_id(id:_,Token),
 	token_id(Token,Id),
-	atomic_list_concat(['A',Id],TokenId).
+	lemma(Token,Lemma),
+	atomic_list_concat(['A',Id,'-',Lemma],TokenId).
 stripped_id(Token,TokenId) :-
 	rdf_global_id(_:TokenId,Token).
 stripped_id(Token,Token). % literal
