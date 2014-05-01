@@ -162,6 +162,10 @@ write_question_relation0(Left,Right) :-
 	write(' -> '),
 	write_inf_tuple(focus,LeftTriples,_,true),
 	write('.'), nl,
+	nl,
+	rdf_save_turtle(stream(current_output),[graph(setup),silent(true)]),
+	nl,
+	rdf_save_turtle(stream(current_output),[graph(focus),silent(true)]),
 	!.
 write_question_relation0(_,_). % setup only, don't write
 

@@ -3,37 +3,329 @@ QUESTION: Which force causes rocks to roll downhill? (A) gravity(B) friction(C) 
 english(rule1, "gravity causes rocks to roll downhill").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill"), cause(A1S1-gravity, E5S1-roll) -> isa(A1S1-gravity, "gravity").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"rocks\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"roll\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"downhill\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"gravity\"" .
+
 % "friction"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(rule1, "friction causes rocks to roll downhill").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill"), cause(A1S1-friction, E5S1-roll) -> isa(A1S1-friction, "friction").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"rocks\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"roll\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"downhill\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"friction\"" .
 
 % "erosion"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(rule1, "erosion causes rocks to roll downhill").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill"), cause(A1S1-erosion, E5S1-roll) -> isa(A1S1-erosion, "erosion").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"rocks\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"roll\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"downhill\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"erosion\"" .
+
 % "magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 english(rule1, "magnetism causes rocks to roll downhill").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill"), cause(A1S1-magnetism, E5S1-roll) -> isa(A1S1-magnetism, "magnetism").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"rocks\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"roll\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"downhill\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"magnetism\"" .
 
 QUESTION: Which activity is an example of a good health habit? (A) watching television(B) smoking cigarettes(C) eating candy(D) exercising every day
 % "watching television"	"example[watching television] of"/EXAMPLE	"a good health habit"
 english(rule1, "watching television is an example[watching television] of a good health habit").
 rule1:: isa(A10S1-habit, "a good health habit"), example(A2S1-television, A10S1-habit) -> isa(A2S1-television, "watching television").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"watching television\"" .
+
 % "smoking cigarettes"	"example of"/EXAMPLE	"a good health habit"
 english(rule1, "smoking cigarettes is an example of a good health habit").
 rule1:: isa(A10S1-habit, "a good health habit"), example(A2S1-cigarette, A10S1-habit) -> isa(A2S1-cigarette, "smoking cigarettes").
 
-% ("" "be" "" [ "an example of a good health habit" ] )
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"smoking cigarettes\"" .
+
+% ("" "eat" "candy")	"example of"/EXAMPLE	"a good health habit"
+english(rule1, "eating candy is an example of a good health habit").
+rule1:: isa(A10S1-habit, "a good health habit"), example(E1S1-eat, A10S1-habit) -> isa(E1S1-eat, "eat"), object(E1S1-eat, A2S1-candy), isa(A2S1-candy, "candy").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> .
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"candy\"" .
+
 % ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
 english(rule1, "exercising every day is an example of a good health habit").
 rule1:: isa(A11S1-habit, "a good health habit"), example(E1S1-exercise, A11S1-habit) -> isa(E1S1-exercise, "exercise"), arg(E1S1-exercise, A3S1-day), isa(A3S1-day, "every day").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:example <http://aristo.allenai.org/id#1.11> .
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:arg <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"exercise\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"every day\"" .
+
 QUESTION: A decomposer is an organism that (A) hunts and eats animals(B) migrates for the winter(C) breaks down dead plants and animals(D) uses water and sunlight to make food
-% ("a decomposer" "be" "" [ "an organism" ] )
+% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "hunt" "animals")
+english(rule1, "a decomposer is an organism[a decomposer] that hunts and eats animals").
+rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-hunt) -> isa(E7S1-hunt, "hunt"), agent(E7S1-hunt, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]"), object(E7S1-hunt, A10S1-animal), isa(A10S1-animal, "animals").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"hunt\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> .
+
+% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "eat" "")
+
+% "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
+
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "migrate" "" [ "for the winter" ] )
 english(rule1, "a decomposer is an organism[a decomposer] that migrates for the winter").
 rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-migrate) -> isa(E7S1-migrate, "migrate"), agent(E7S1-migrate, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]"), for(E7S1-migrate, A10S1-winter), isa(A10S1-winter, "the winter").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the winter\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:for <http://aristo.allenai.org/id#1.10> ;
+	pred:isa "\"migrate\"" .
 
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
 
@@ -41,15 +333,128 @@ rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-migr
 english(rule1, "a decomposer is an organism[a decomposer] that breaks down dead plants and animals").
 rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-break) -> isa(E7S1-break, "break"), agent(E7S1-break, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"break\"" .
+
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
 
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "use" "water" [ "to make food" ] )
 english(rule1, "a decomposer is an organism[a decomposer] that uses water and sunlight to make food").
 rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-use) -> isa(E7S1-use, "use"), agent(E7S1-use, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]"), object(E7S1-use, A8S1-water), isa(A8S1-water, "water"), arg(E7S1-use, A12S1-make), isa(A12S1-make, "to make food").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"to make food\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:arg <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"water\"" .
+
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "use" "sunlight" [ "to make food" ] )
 english(rule2, "a decomposer is an organism[a decomposer] that uses water and sunlight to make food").
 rule2:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-use) -> isa(E7S1-use, "use"), agent(E7S1-use, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]"), object(E7S1-use, A8S1-water), isa(A8S1-water, "water"), arg(E7S1-use, A12S1-make), isa(A12S1-make, "to make food"), object(E7S1-use, A10S1-sunlight), isa(A10S1-sunlight, "sunlight").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"sunlight\"" .
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"to make food\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:arg <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ,
+		    <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"water\"" .
 
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
 
@@ -58,17 +463,181 @@ QUESTION: What is one way to change water from a liquid to a solid? (A) decrease
 english(rule1, "decreasing the temperature is one way to change water from a liquid to a solid").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid"), effect(E1S1-decrease, E8S1-change) -> isa(E1S1-decrease, "decrease"), object(E1S1-decrease, A3S1-temperature), isa(A3S1-temperature, "the temperature").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#1.15>
+	pred:isa "\"a solid\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:from <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	pred:to <http://aristo.allenai.org/id#1.15> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"decrease\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"the temperature\"" .
+
 % ("" "increase" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule1, "increasing the temperature is one way to change water from a liquid to a solid").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid"), effect(E1S1-increase, E8S1-change) -> isa(E1S1-increase, "increase"), object(E1S1-increase, A3S1-temperature), isa(A3S1-temperature, "the temperature").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#1.15>
+	pred:isa "\"a solid\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:from <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	pred:to <http://aristo.allenai.org/id#1.15> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"increase\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"the temperature\"" .
 
 % ("" "decrease" "the mass")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule1, "decreasing the mass is one way to change water from a liquid to a solid").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid"), effect(E1S1-decrease, E8S1-change) -> isa(E1S1-decrease, "decrease"), object(E1S1-decrease, A3S1-mass), isa(A3S1-mass, "the mass").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#1.15>
+	pred:isa "\"a solid\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:from <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	pred:to <http://aristo.allenai.org/id#1.15> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"decrease\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"the mass\"" .
+
 % ("" "increase" "the mass")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 english(rule1, "increasing the mass is one way to change water from a liquid to a solid").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid"), effect(E1S1-increase, E8S1-change) -> isa(E1S1-increase, "increase"), object(E1S1-increase, A3S1-mass), isa(A3S1-mass, "the mass").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#1.15>
+	pred:isa "\"a solid\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:from <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	pred:to <http://aristo.allenai.org/id#1.15> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"increase\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"the mass\"" .
 
 QUESTION: A student drops a ball. Which force causes the ball to fall to the ground? (A) electricity (B) friction (C) gravity (D) magnetism
 % ("A student" "drop" "a ball")
@@ -76,70 +645,630 @@ QUESTION: A student drops a ball. Which force causes the ball to fall to the gro
 english(rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground"), cause(A1S2-electricity, E6S2-fall) -> isa(A1S2-electricity, "electricity").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a ball\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fall\"" ;
+	pred:to <http://aristo.allenai.org/id#2.9> .
+
+<http://aristo.allenai.org/id#2.9>
+	pred:isa "\"the ground\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	pred:isa "\"electricity\"" .
+
 % ("A student" "drop" "a ball")
 % "friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 english(rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground"), cause(A1S2-friction, E6S2-fall) -> isa(A1S2-friction, "friction").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a ball\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fall\"" ;
+	pred:to <http://aristo.allenai.org/id#2.9> .
+
+<http://aristo.allenai.org/id#2.9>
+	pred:isa "\"the ground\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	pred:isa "\"friction\"" .
 
 % ("A student" "drop" "a ball")
 % "gravity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 english(rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground"), cause(A1S2-gravity, E6S2-fall) -> isa(A1S2-gravity, "gravity").
 
-% ("A student" "drop" "" [ "a ball" ] )
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a ball\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fall\"" ;
+	pred:to <http://aristo.allenai.org/id#2.9> .
+
+<http://aristo.allenai.org/id#2.9>
+	pred:isa "\"the ground\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	pred:isa "\"gravity\"" .
+
+% ("A student" "drop" "a ball")
 % "magnetism"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 english(rule1, "A student drops a ball magnetism causes the ball[a ball] to fall to the ground").
-rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), arg(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground"), cause(A1S2-magnetism, E6S2-fall) -> isa(A1S2-magnetism, "magnetism").
+rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground"), cause(A1S2-magnetism, E6S2-fall) -> isa(A1S2-magnetism, "magnetism").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a ball\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fall\"" ;
+	pred:to <http://aristo.allenai.org/id#2.9> .
+
+<http://aristo.allenai.org/id#2.9>
+	pred:isa "\"the ground\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.1>
+	pred:isa "\"magnetism\"" .
 
 QUESTION: What is the main source of energy for the water cycle? (A) electricity(B) erosion(C) gravity(D) sunlight
 % "electricity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(rule1, "electricity is the main source of energy for the water cycle").
 rule1:: isa(A5S1-source, "the main source of energy for the water cycle"), example(A1S1-electricity, A5S1-source) -> isa(A1S1-electricity, "electricity").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"the main source of energy for the water cycle\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"electricity\"" .
+
 % "erosion"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(rule1, "erosion is the main source of energy for the water cycle").
 rule1:: isa(A5S1-source, "the main source of energy for the water cycle"), example(A1S1-erosion, A5S1-source) -> isa(A1S1-erosion, "erosion").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"the main source of energy for the water cycle\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"erosion\"" .
 
 % "gravity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(rule1, "gravity is the main source of energy for the water cycle").
 rule1:: isa(A5S1-source, "the main source of energy for the water cycle"), example(A1S1-gravity, A5S1-source) -> isa(A1S1-gravity, "gravity").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"the main source of energy for the water cycle\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"gravity\"" .
+
 % "sunlight"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 english(rule1, "sunlight is the main source of energy for the water cycle").
 rule1:: isa(A5S1-source, "the main source of energy for the water cycle"), example(A1S1-sunlight, A5S1-source) -> isa(A1S1-sunlight, "sunlight").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"the main source of energy for the water cycle\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"sunlight\"" .
 
 QUESTION: Which instrument should a student use to measure exactly 10 milliliters (mL) of water? (A) graduated cylinder (B) pan balance (C) ruler (D) thermometer
 % ("a student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 english(rule1, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E9S1-measure) -> isa(A7S1-cylinder, "a graduated cylinder").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.12>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> ;
+	rel:effect <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.12> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"a graduated cylinder\"" .
+
 % ("a student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("a student"/?x "measure" "mL")
 english(rule2, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E9S1-measure), object(E9S1-measure, A14S1-ml), isa(A14S1-ml, "mL") -> isa(A7S1-cylinder, "a graduated cylinder").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.12>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> ;
+	rel:effect <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.12> ,
+		    <http://aristo.allenai.org/id#1.14> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"a graduated cylinder\"" .
 
 % ("a student"/?x "use" "pan balance")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 english(rule1, "a student should use pan balance to measure exactly 10 milliliters mL of water").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure) -> isa(A6S1-balance, "pan balance").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"pan balance\"" .
+
 % ("a student"/?x "use" "pan balance")	"to"/EFFECT	("a student"/?x "measure" "mL")
 english(rule2, "a student should use pan balance to measure exactly 10 milliliters mL of water").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> isa(A6S1-balance, "pan balance").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.13>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> ,
+		    <http://aristo.allenai.org/id#1.13> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"pan balance\"" .
 
 % ("a student"/?x "use" "a ruler")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 english(rule1, "a student should use a ruler to measure exactly 10 milliliters mL of water").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure) -> isa(A6S1-ruler, "a ruler").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"a ruler\"" .
+
 % ("a student"/?x "use" "a ruler")	"to"/EFFECT	("a student"/?x "measure" "mL")
 english(rule2, "a student should use a ruler to measure exactly 10 milliliters mL of water").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> isa(A6S1-ruler, "a ruler").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.13>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> ,
+		    <http://aristo.allenai.org/id#1.13> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"a ruler\"" .
 
 % ("a student"/?x "use" "a thermometer")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 english(rule1, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure) -> isa(A6S1-thermometer, "a thermometer").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"a thermometer\"" .
+
 % ("a student"/?x "use" "a thermometer")	"to"/EFFECT	("a student"/?x "measure" "mL")
 english(rule2, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), effect(E4S1-use, E8S1-measure), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> isa(A6S1-thermometer, "a thermometer").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.11>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#1.13>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> ;
+	rel:effect <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#1.11> ,
+		    <http://aristo.allenai.org/id#1.13> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"a thermometer\"" .
 
 QUESTION: Which activity is necessary for humans to maintain good health? (A) reading (B) resting (C) driving (D) talking
 % ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
@@ -147,11 +1276,99 @@ QUESTION: Which activity is necessary for humans to maintain good health? (A) re
 % ("reading" "be" "necessary")
 english(rule1, "reading is necessary for humans to maintain good health").
 rule1:: agent(E1S1-reading, A5S1-human), isa(A5S1-human, "humans"), isa(E7S1-maintain, "maintain"), agent(E7S1-maintain, A5S1-human), object(E7S1-maintain, A9S1-health), isa(A9S1-health, "good health"), requirement(E1S1-reading, E7S1-maintain), isa(E2S1-be, "be"), agent(E2S1-be, E1S1-reading), object(E2S1-be, A3S1-necessary), isa(A3S1-necessary, "necessary") -> isa(E1S1-reading, "read"), isa(E1S1-reading, "reading").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ,
+	  <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	rel:requirement <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"be\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"necessary\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"humans\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"maintain\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"good health\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"read\"" ,
+		 "\"reading\"" .
 % ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 
 % ("resting" "be" "necessary")
 english(rule1, "resting is necessary for humans to maintain good health").
 rule1:: agent(E1S1-rest, A5S1-human), isa(A5S1-human, "humans"), isa(E7S1-maintain, "maintain"), agent(E7S1-maintain, A5S1-human), object(E7S1-maintain, A9S1-health), isa(A9S1-health, "good health"), requirement(E1S1-rest, E7S1-maintain), isa(E2S1-be, "be"), agent(E2S1-be, E1S1-rest), object(E2S1-be, A3S1-necessary), isa(A3S1-necessary, "necessary") -> isa(E1S1-rest, "rest"), isa(E1S1-rest, "resting").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ,
+	  <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	rel:requirement <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"be\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"necessary\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"humans\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"maintain\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"good health\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"rest\"" ,
+		 "\"resting\"" .
 % "driving activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 
 % ("driving activity" "be" "necessary")
@@ -162,10 +1379,7 @@ QUESTION: Green plants get the energy they need to make food from (A) air (B) su
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from air" ] )
 
 % ("green plants" "get" "the energy")
-% ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "food" [ "from sunlight" ] )
-english(rule1, "green plants get the energy they[green plants] need to make food from sunlight").
-rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), object(E9S1-make, A10S1-food), isa(A10S1-food, "food"), from(E9S1-make, A12S1-sunlight), effect(E3S1-get, E9S1-make) -> isa(A12S1-sunlight, "sunlight").
-
+% ("green plants" "get" "" [ "the energy" ] )
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from water" ] )
 
 % ("green plants" "get" "the energy")
@@ -177,63 +1391,635 @@ QUESTION: When plants and animals die, which organisms help return nutrients to 
 english(rule1, "when plants and animals die decomposers help return nutrients to the food chain").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-decomposer, E9S1-return) -> isa(A7S1-decomposer, "decomposers").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"decomposers\"" .
+
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 english(rule2, "when plants and animals die decomposers help return nutrients to the food chain").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-decomposer, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die) -> isa(A7S1-decomposer, "decomposers").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"decomposers\"" .
 
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 english(rule3, "when plants and animals die decomposers help return nutrients to the food chain").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-decomposer, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> isa(A7S1-decomposer, "decomposers").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (7)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"decomposers\"" .
+
 % "predators"	"help"/PURPOSE	("predators" "return" "nutrients" [ "to the food chain" ] )
 english(rule1, "when plants and animals die predators help return nutrients to the food chain").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-predator, E9S1-return) -> isa(A7S1-predator, "predators").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"predators\"" .
 
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 english(rule2, "when plants and animals die predators help return nutrients to the food chain").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-predator, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die) -> isa(A7S1-predator, "predators").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"predators\"" .
+
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 english(rule3, "when plants and animals die predators help return nutrients to the food chain").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-predator, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> isa(A7S1-predator, "predators").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (7)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"predators\"" .
 
 % ("plants"/?x "prey" "help")	"when"/WHEN	("plants"/?x "die" "")
 english(rule1, "when plants and animals die prey help return nutrients to the food chain").
 rule1:: isa(A2S1-plant, "plants"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), when(E7S1-prey, E5S1-die) -> isa(E7S1-prey, "prey"), agent(E7S1-prey, A2S1-plant), object(E7S1-prey, A8S1-help), isa(A8S1-help, "help").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"help\"" .
+
 % ("animals"/?x "prey" "help")	"when"/WHEN	("animals"/?x "die" "")
 english(rule2, "when plants and animals die prey help return nutrients to the food chain").
 rule2:: isa(A2S1-plant, "plants"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), when(E7S1-prey, E5S1-die), isa(A4S1-animal, "animals"), agent(E5S1-die, A4S1-animal) -> isa(E7S1-prey, "prey"), agent(E7S1-prey, A2S1-plant), object(E7S1-prey, A8S1-help), isa(A8S1-help, "help"), agent(E7S1-prey, A4S1-animal).
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"help\"" .
 
 % "producers"	"help"/PURPOSE	("producers" "return" "nutrients" [ "to the food chain" ] )
 english(rule1, "when plants and animals die producers help return nutrients to the food chain").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-producer, E9S1-return) -> isa(A7S1-producer, "producers").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"producers\"" .
+
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 english(rule2, "when plants and animals die producers help return nutrients to the food chain").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-producer, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die) -> isa(A7S1-producer, "producers").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"producers\"" .
+
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 english(rule3, "when plants and animals die producers help return nutrients to the food chain").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), purpose(A7S1-producer, E9S1-return), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), when(E9S1-return, E5S1-die), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> isa(A7S1-producer, "producers").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (7)
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#1.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"die\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.9> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ;
+	pred:to <http://aristo.allenai.org/id#1.14> ;
+	rel:when <http://aristo.allenai.org/id#1.5> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"producers\"" .
 
 QUESTION: Which animal is preparing for a seasonal change in the environment? (A) a bat flying at night (B) a deer drinking water (C) an owl eating a mouse (D) a squirrel storing nuts
 % ("a bat"/?x "fly" "a bat" [ "at night" ] )	""/EFFECT	("a bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule1, "a bat flying at night is preparing for a seasonal change in the environment").
 rule1:: isa(E3S1-fly, "fly"), agent(E3S1-fly, A2S1-bat), object(E3S1-fly, A2S1-bat), at(E3S1-fly, A5S1-night), isa(A5S1-night, "night"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare, A2S1-bat), for(E7S1-prepare, A11S1-change), isa(A11S1-change, "a seasonal change in the environment"), effect(E3S1-fly, E7S1-prepare) -> isa(A2S1-bat, "a bat").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"a seasonal change in the environment\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:at <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fly\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"night\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"prepare\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"a bat\"" .
+
 % ("a bat"/?x "fly" "" [ "at night" ] )	""/EFFECT	("a bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule2, "a bat flying at night is preparing for a seasonal change in the environment").
 rule2:: isa(E3S1-fly, "fly"), agent(E3S1-fly, A2S1-bat), object(E3S1-fly, A2S1-bat), at(E3S1-fly, A5S1-night), isa(A5S1-night, "night"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare, A2S1-bat), for(E7S1-prepare, A11S1-change), isa(A11S1-change, "a seasonal change in the environment"), effect(E3S1-fly, E7S1-prepare) -> isa(A2S1-bat, "a bat").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"a seasonal change in the environment\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:at <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"fly\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"night\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"prepare\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"a bat\"" .
 
 % ("" "prepare" "" [ "for a seasonal change in the environment" ] )
 % ("an owl"/?x "eat" "a mouse")	""/EFFECT	("an owl"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule1, "an owl eating a mouse is preparing for a seasonal change in the environment").
 rule1:: isa(E3S1-eat, "eat"), agent(E3S1-eat, A2S1-owl), object(E3S1-eat, A5S1-mouse), isa(A5S1-mouse, "a mouse"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare, A2S1-owl), for(E7S1-prepare, A11S1-change), isa(A11S1-change, "a seasonal change in the environment"), effect(E3S1-eat, E7S1-prepare) -> isa(A2S1-owl, "an owl").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"a seasonal change in the environment\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"a mouse\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"prepare\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"an owl\"" .
+
 % ("a squirrel"/?x "store" "nuts")	""/EFFECT	("a squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 english(rule1, "a squirrel storing nuts is preparing for a seasonal change in the environment").
 rule1:: isa(E3S1-store, "store"), agent(E3S1-store, A2S1-squirrel), object(E3S1-store, A4S1-nut), isa(A4S1-nut, "nuts"), isa(E6S1-prepare, "prepare"), agent(E6S1-prepare, A2S1-squirrel), for(E6S1-prepare, A10S1-change), isa(A10S1-change, "a seasonal change in the environment"), effect(E3S1-store, E6S1-prepare) -> isa(A2S1-squirrel, "a squirrel").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"a seasonal change in the environment\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"store\"" ;
+	pred:object <http://aristo.allenai.org/id#1.4> ;
+	rel:effect <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <entity> ;
+	pred:isa "\"nuts\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.10> ;
+	pred:isa "\"prepare\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"a squirrel\"" .
 
 QUESTION: What form of energy is being used when a person pushes a wooden block across the floor? (A) mechanical (B) magnetic (C) sound (D) electrical
 % ("" "use" "mechanical energy")
@@ -241,68 +2027,506 @@ QUESTION: What form of energy is being used when a person pushes a wooden block 
 % ("" "use" "sound")
 english(rule1, "sound is being used when a person pushes a wooden block across the floor").
 rule1:: isa(E4S1-use, "use"), object(E4S1-use, A1S1-sound) -> isa(A1S1-sound, "sound").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.1> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"sound\"" .
 % ("" "use" "electrical energy")
 QUESTION: Since green plants make their own food, they are called (A) predators (B) prey (C) decomposers (D) producers
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"predators"
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called predators").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food"), example(E4S1-make, A12S1-predator) -> isa(A12S1-predator, "predators").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"green plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"make\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> ;
+	rel:example <http://aristo.allenai.org/id#1.12> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"their[green plants] own food\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"predators\"" .
+
 % ("" "call" "green plants" [ "since green plants make their[green plants] own food" ] )
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"decomposers"
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called decomposers").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food"), example(E4S1-make, A12S1-decomposer) -> isa(A12S1-decomposer, "decomposers").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"green plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"make\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> ;
+	rel:example <http://aristo.allenai.org/id#1.12> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"their[green plants] own food\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"decomposers\"" .
+
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"producers"
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called producers").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food"), example(E4S1-make, A12S1-producer) -> isa(A12S1-producer, "producers").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"green plants\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"make\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> ;
+	rel:example <http://aristo.allenai.org/id#1.12> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"their[green plants] own food\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"producers\"" .
 
 QUESTION: Which human activity most often has a harmful effect on the environment? (A) breathing (B) growing (C) planting (D) polluting
 % ("breathing" "have" "a harmful effect on the environment")
 english(rule1, "breathing most often has a harmful effect on the environment").
 rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-breathe), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-breathe, "breathing").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"have\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"a harmful effect on the environment\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"breathing\"" .
 % ("a harmful effect on the environment" "grow" "")
 english(rule1, "growing most often has a harmful effect on the environment").
 rule1::  -> isa(E1S1-grow, "grow"), agent(E1S1-grow, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment").
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"grow\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:isa "\"a harmful effect on the environment\"" .
 % ("planting" "have" "a harmful effect on the environment")
 english(rule1, "planting most often has a harmful effect on the environment").
 rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-plant), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-plant, "planting").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"have\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"a harmful effect on the environment\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"planting\"" .
 % ("polluting" "have" "a harmful effect on the environment")
 english(rule1, "polluting most often has a harmful effect on the environment").
 rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-pollute), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-pollute, "polluting").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:isa "\"have\"" ;
+	pred:object <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <entity> ;
+	pred:isa "\"a harmful effect on the environment\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"polluting\"" .
 QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. These are two ways that organisms may adjust to (A) cold temperatures (B) hot temperatures (C) a shortage of food (D) a shortage of drinking water
-% ("A dog" "open" "its mouth")
-% ("A human 's body" "produce" "sweat")
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to cold temperatures" ] )
-english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
-rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), example(A1S3-these, E8S3-adjust) -> isa(A11S3-temperature, "cold temperatures").
-
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to cold temperatures" ] )
-english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
-rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-temperature, "cold temperatures").
-
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % ("these" "be" "" [ "two ways" ] )
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to hot temperatures" ] )
+english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), example(A1S3-these, E8S3-adjust) -> isa(A11S3-temperature, "hot temperatures").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (9)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"hot temperatures\"" .
+
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to hot temperatures" ] )
+english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-temperature, "hot temperatures").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (10)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.4>
+	a <entity> ;
+	pred:isa "\"two ways[these]\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ,
+		    <http://aristo.allenai.org/id#3.4> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"hot temperatures\"" .
+
+% ("A dog" "open" "its mouth")
+% ("A human 's body" "produce" "" [ "sweat" ] )
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of food" ] )
 english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
-rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust) -> isa(A11S3-shortage, "a shortage of food").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust) -> isa(A11S3-shortage, "a shortage of food").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (9)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:arg <http://aristo.allenai.org/id#2.6> ;
+	pred:isa "\"produce\"" .
+
+<http://aristo.allenai.org/id#2.6>
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
 
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of food" ] )
 english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
-rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-shortage, "a shortage of food").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-shortage, "a shortage of food").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (10)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:arg <http://aristo.allenai.org/id#2.6> ;
+	pred:isa "\"produce\"" .
+
+<http://aristo.allenai.org/id#2.6>
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.4>
+	a <entity> ;
+	pred:isa "\"two ways[these]\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ,
+		    <http://aristo.allenai.org/id#3.4> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
 
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of drinking water" ] )
-english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
-rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust) -> isa(A11S3-shortage, "a shortage of drinking water").
-
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of drinking water" ] )
-english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
-rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-shortage, "a shortage of drinking water").
-
+% ("these" "be" "" [ "two ways" ] )
 QUESTION: A student is growing some plants for an experiment. She notices small white spots on the leaves. Which tool should she use to get a better look at the spots? (A) thermometer (B) hand lens (C) graduated cylinder (D) balance
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
@@ -310,11 +2534,149 @@ QUESTION: A student is growing some plants for an experiment. She notices small 
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a thermometer to get a better look at the spots[small white spots]").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-thermometer), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]"), effect(E3S3-use, E7S3-get) -> isa(A5S3-thermometer, "a thermometer").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (12)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"some plants\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"an experiment\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"notify\"" ;
+	pred:object <http://aristo.allenai.org/id#2.5> ;
+	pred:on <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"small white spots\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the leaves\"" .
+
+<http://aristo.allenai.org/id#3.10>
+	a <entity> ;
+	pred:isa "\"a better look at the spots[small white spots]\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#3.5> ;
+	rel:effect <http://aristo.allenai.org/id#3.7> .
+
+<http://aristo.allenai.org/id#3.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#3.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.10> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.5>
+	pred:isa "\"a thermometer\"" .
+
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a hand lens")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]"), effect(E3S3-use, E8S3-get) -> isa(A6S3-lens, "a hand lens").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (12)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"some plants\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"an experiment\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"notify\"" ;
+	pred:object <http://aristo.allenai.org/id#2.5> ;
+	pred:on <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"small white spots\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the leaves\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	a <entity> ;
+	pred:isa "\"a better look at the spots[small white spots]\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#3.6> ;
+	rel:effect <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.6>
+	pred:isa "\"a hand lens\"" .
 
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
@@ -322,11 +2684,149 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]"), effect(E3S3-use, E8S3-get) -> isa(A6S3-cylinder, "a graduated cylinder").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (12)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"some plants\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"an experiment\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"notify\"" ;
+	pred:object <http://aristo.allenai.org/id#2.5> ;
+	pred:on <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"small white spots\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the leaves\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	a <entity> ;
+	pred:isa "\"a better look at the spots[small white spots]\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#3.6> ;
+	rel:effect <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.6>
+	pred:isa "\"a graduated cylinder\"" .
+
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-balance), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]"), effect(E3S3-use, E7S3-get) -> isa(A5S3-balance, "a balance").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (12)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#1.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:for <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"some plants\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"an experiment\"" .
+
+<http://aristo.allenai.org/id#2.1>
+	a <entity> ;
+	pred:isa "\"She\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"notify\"" ;
+	pred:object <http://aristo.allenai.org/id#2.5> ;
+	pred:on <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.5>
+	a <entity> ;
+	pred:isa "\"small white spots\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the leaves\"" .
+
+<http://aristo.allenai.org/id#3.10>
+	a <entity> ;
+	pred:isa "\"a better look at the spots[small white spots]\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#3.5> ;
+	rel:effect <http://aristo.allenai.org/id#3.7> .
+
+<http://aristo.allenai.org/id#3.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#3.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.1> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.10> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.5>
+	pred:isa "\"a balance\"" .
 
 QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the fox to (A) find food(B) keep warmer(C) grow stronger(D) escape from predators
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
@@ -334,20 +2834,206 @@ QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the
 english(rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to find food").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-fox), isa(A2S1-fox, "A fox"), object(E3S1-grow, A5S1-fur), isa(A5S1-fur, "thicker fur"), as(E3S1-grow, A9S1-change), isa(A9S1-change, "a season changes"), isa(E2S2-adaptation, "adapt"), agent(E2S2-adaptation, A2S1-fox), purpose(E2S2-adaptation, E7S2-find) -> isa(E7S2-find, "find"), agent(E7S2-find, A2S1-fox), object(E7S2-find, A8S2-food), isa(A8S2-food, "food").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (7)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:as <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"thicker fur\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"a season changes\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"adapt\"" ;
+	rel:purpose <http://aristo.allenai.org/id#2.7> .
+
+<http://aristo.allenai.org/id#2.7>
+	a <event> .
+
+<http://aristo.allenai.org/id#2.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"find\"" ;
+	pred:object <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"food\"" .
+
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 % ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "keep" "" [ "warmer" ] )
 english(rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to keep warmer").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-fox), isa(A2S1-fox, "A fox"), object(E3S1-grow, A5S1-fur), isa(A5S1-fur, "thicker fur"), as(E3S1-grow, A9S1-change), isa(A9S1-change, "a season changes"), isa(E2S2-adaptation, "adapt"), agent(E2S2-adaptation, A2S1-fox), purpose(E2S2-adaptation, E7S2-keep) -> isa(E7S2-keep, "keep"), agent(E7S2-keep, A2S1-fox), arg(E7S2-keep, A8S2-warmer), isa(A8S2-warmer, "warmer").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:as <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"thicker fur\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"a season changes\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"adapt\"" ;
+	rel:purpose <http://aristo.allenai.org/id#2.7> .
+
+<http://aristo.allenai.org/id#2.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:arg <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"keep\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"warmer\"" .
 
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 % ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "grow" "" [ "stronger" ] )
 english(rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to grow stronger").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-fox), isa(A2S1-fox, "A fox"), object(E3S1-grow, A5S1-fur), isa(A5S1-fur, "thicker fur"), as(E3S1-grow, A9S1-change), isa(A9S1-change, "a season changes"), isa(E2S2-adaptation, "adapt"), agent(E2S2-adaptation, A2S1-fox), purpose(E2S2-adaptation, E7S2-grow) -> isa(E7S2-grow, "grow"), agent(E7S2-grow, A2S1-fox), arg(E7S2-grow, A8S2-stronger), isa(A8S2-stronger, "stronger").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:as <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"thicker fur\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"a season changes\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"adapt\"" ;
+	rel:purpose <http://aristo.allenai.org/id#2.7> .
+
+<http://aristo.allenai.org/id#2.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:arg <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"grow\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"stronger\"" .
+
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 % ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "escape" "from predators")
 english(rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to escape from predators").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-fox), isa(A2S1-fox, "A fox"), object(E3S1-grow, A5S1-fur), isa(A5S1-fur, "thicker fur"), as(E3S1-grow, A9S1-change), isa(A9S1-change, "a season changes"), isa(E2S2-adaptation, "adapt"), agent(E2S2-adaptation, A2S1-fox), purpose(E2S2-adaptation, E7S2-escape) -> isa(E7S2-escape, "escape"), agent(E7S2-escape, A2S1-fox), object(E7S2-escape, A8S2-from), isa(A8S2-from, "from predators").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (7)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A fox\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:as <http://aristo.allenai.org/id#1.9> ;
+	pred:isa "\"grow\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"thicker fur\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	pred:isa "\"a season changes\"" .
+
+<http://aristo.allenai.org/id#2.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"adapt\"" ;
+	rel:purpose <http://aristo.allenai.org/id#2.7> .
+
+<http://aristo.allenai.org/id#2.7>
+	a <event> .
+
+<http://aristo.allenai.org/id#2.8>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.7>
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"escape\"" ;
+	pred:object <http://aristo.allenai.org/id#2.8> .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"from predators\"" .
 
 QUESTION: Which adaptation often helps an animal attract a mate? (A) hibernation (B) camouflage (C) coloration (D) migration
 % ("an animal"/?x "hibernate" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
@@ -355,20 +3041,174 @@ QUESTION: Which adaptation often helps an animal attract a mate? (A) hibernation
 % ("hibernation" "help" "" [ "an animal attract a mate" ] )
 english(rule1, "hibernation often helps an animal attract a mate").
 rule1:: agent(E1S1-hibernation, A5S1-animal), isa(A5S1-animal, "an animal"), isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate"), purpose(E1S1-hibernation, E6S1-attract), isa(E3S1-help, "help"), agent(E3S1-help, E1S1-hibernation), arg(E3S1-help, E6S1-attract), isa(E6S1-attract, "an animal attract a mate") -> isa(E1S1-hibernation, "hibernate"), isa(E1S1-hibernation, "hibernation").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ,
+	  <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	rel:purpose <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"help\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an animal\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"an animal attract a mate\"" ,
+		 "\"attract\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"a mate\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"hibernate\"" ,
+		 "\"hibernation\"" .
 % "camouflage"	"helps"/PURPOSE	("an animal" "attract" "a mate")
 english(rule1, "camouflage often helps an animal attract a mate").
 rule1:: isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), isa(A5S1-animal, "an animal"), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate"), purpose(A1S1-camouflage, E6S1-attract) -> isa(A1S1-camouflage, "camouflage").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ;
+	rel:purpose <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an animal\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"attract\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"a mate\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"camouflage\"" .
 
 % ("an animal"/?x "color" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 
 % ("coloration" "help" "" [ "an animal attract a mate" ] )
 english(rule1, "coloration often helps an animal attract a mate").
 rule1:: agent(E1S1-coloration, A5S1-animal), isa(A5S1-animal, "an animal"), isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate"), purpose(E1S1-coloration, E6S1-attract), isa(E3S1-help, "help"), agent(E3S1-help, E1S1-coloration), arg(E3S1-help, E6S1-attract), isa(E6S1-attract, "an animal attract a mate") -> isa(E1S1-coloration, "color"), isa(E1S1-coloration, "coloration").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ,
+	  <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	rel:purpose <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"help\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an animal\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"an animal attract a mate\"" ,
+		 "\"attract\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"a mate\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"color\"" ,
+		 "\"coloration\"" .
 % ("an animal"/?x "migrate" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 
 % ("migration" "help" "" [ "an animal attract a mate" ] )
 english(rule1, "migration often helps an animal attract a mate").
 rule1:: agent(E1S1-migration, A5S1-animal), isa(A5S1-animal, "an animal"), isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate"), purpose(E1S1-migration, E6S1-attract), isa(E3S1-help, "help"), agent(E3S1-help, E1S1-migration), arg(E3S1-help, E6S1-attract), isa(E6S1-attract, "an animal attract a mate") -> isa(E1S1-migration, "migrate"), isa(E1S1-migration, "migration").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#1.1>
+	a <entity> ,
+	  <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	rel:purpose <http://aristo.allenai.org/id#1.6> .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:arg <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"help\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"an animal\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"an animal attract a mate\"" ,
+		 "\"attract\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
+
+<http://aristo.allenai.org/id#1.8>
+	a <entity> ;
+	pred:isa "\"a mate\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"migrate\"" ,
+		 "\"migration\"" .
 QUESTION: Animals get energy for growth and repair from (A) soil (B) food (C) water (D) air
 % ("animals" "get" "energy" [ "for growth from soil", "for repair" ] )
 % ("animals" "get" "energy" [ "for growth from food", "for repair" ] )
@@ -380,18 +3220,178 @@ QUESTION: A car skids along the road and smoke appears to be coming from under t
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by magnetism").
 rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke"), cause(A10S2-magnetism, E4S2-produce) -> isa(A10S2-magnetism, "magnetism").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"A car skids along the road and smoke\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"appear\"" .
+
+<http://aristo.allenai.org/id#2.10>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.4> .
+
+<http://aristo.allenai.org/id#2.2>
+	a <entity> ;
+	pred:isa "\"the heat\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.10>
+	pred:isa "\"magnetism\"" .
+
 % ("A car skids along the road and smoke" "appear" "")
 % "sound"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by sound").
 rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke"), cause(A10S2-sound, E4S2-produce) -> isa(A10S2-sound, "sound").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"A car skids along the road and smoke\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"appear\"" .
+
+<http://aristo.allenai.org/id#2.10>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.4> .
+
+<http://aristo.allenai.org/id#2.2>
+	a <entity> ;
+	pred:isa "\"the heat\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.10>
+	pred:isa "\"sound\"" .
 
 % ("A car skids along the road and smoke" "appear" "")
 % "light"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by light").
 rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke"), cause(A10S2-light, E4S2-produce) -> isa(A10S2-light, "light").
 
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"A car skids along the road and smoke\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"appear\"" .
+
+<http://aristo.allenai.org/id#2.10>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.4> .
+
+<http://aristo.allenai.org/id#2.2>
+	a <entity> ;
+	pred:isa "\"the heat\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.10>
+	pred:isa "\"light\"" .
+
 % ("A car skids along the road and smoke" "appear" "")
 % "friction"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by friction").
 rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke"), cause(A10S2-friction, E4S2-produce) -> isa(A10S2-friction, "friction").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (6)
+
+<http://aristo.allenai.org/id#1.3>
+	a <entity> ;
+	pred:isa "\"A car skids along the road and smoke\"" .
+
+<http://aristo.allenai.org/id#1.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"appear\"" .
+
+<http://aristo.allenai.org/id#2.10>
+	a <entity> ;
+	rel:cause <http://aristo.allenai.org/id#2.4> .
+
+<http://aristo.allenai.org/id#2.2>
+	a <entity> ;
+	pred:isa "\"the heat\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.10>
+	pred:isa "\"friction\"" .
 
