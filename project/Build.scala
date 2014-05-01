@@ -96,7 +96,7 @@ object ExtractionBuild extends Build {
     publish := { },
     publishTo := Some("bogus" at "http://nowhere.com"),
     publishLocal := { }
-  ).aggregate(demo)
+  ).aggregate(demo, ermine)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
     Seq(
