@@ -19,7 +19,7 @@ relation(Root,Json) :-
 	  relation(Root,Node,Json) ).
 relation(Root,Json) :- % question-specific
 	current_question_focus(_),
-	\+ rdf(_,_,_,focus),
+	\+ rdf(_,_,_,consequent),
 	write_simple_tuple(Root,Json).
 
 % top level to call from JPL and backtrack for all values
@@ -35,8 +35,8 @@ question(Focus) :-
 	once(focus_root(Focus,FocusRoot)),
 	asserta(current_question_focus(FocusRoot)),
 	findall(_,relation,_),
-	rdf_unload_graph(setup),
-	rdf_unload_graph(focus),
+	rdf_unload_graph(antecedent),
+	rdf_unload_graph(consequent),
 	retract(current_question_focus(FocusRoot)).
 
 focus_root(FocusString,Root) :-
