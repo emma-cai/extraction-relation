@@ -86,8 +86,17 @@ question_focus([_,Event|_]) :-
 	; true ).
 question_focus([Subj,_Event,Obj|Args]) :-
 	member(Arg,[Subj,Obj|Args]), Arg \= [],
-	question_focus(Arg).
-
+	question_focus(Arg), !.
+question_focus([Subj,_Event,Obj|Args]) :-
+	current_question_focus(Focus),
+	member(Arg,[Subj,Obj|Args]),
+	entity_id(Arg,Id),
+	constit(Id,Focus,[rcmod,partmod]), % substring case
+	( rdf(Id,pred:isa,Type,antecedent),
+	  rdf_retractall(Id,pred:isa,Type,antecedent),
+	  rdf_assert(Id,pred:isa,Type,consequent),
+	  fail
+	; true ).
 
 write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
 	write_inf_relation(Top,Ent,Rel,Tuple).
