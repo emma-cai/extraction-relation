@@ -186,7 +186,38 @@ rule1:: isa(A10S1-habit, "a good health habit"), example(A2S1-cigarette, A10S1-h
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"smoking cigarettes\"" .
 
-% ("" "be" "" [ "an example of a good health habit" ] )
+% ("" "eat" "candy")	"example of"/EXAMPLE	"a good health habit"
+english(rule1, "eating candy is an example of a good health habit").
+rule1:: isa(A10S1-habit, "a good health habit"), example(E1S1-eat, A10S1-habit) -> isa(E1S1-eat, "eat"), object(E1S1-eat, A2S1-candy), isa(A2S1-candy, "candy").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> .
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"candy\"" .
+
 % ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
 english(rule1, "exercising every day is an example of a good health habit").
 rule1:: isa(A11S1-habit, "a good health habit"), example(E1S1-exercise, A11S1-habit) -> isa(E1S1-exercise, "exercise"), arg(E1S1-exercise, A3S1-day), isa(A3S1-day, "every day").
@@ -260,7 +291,44 @@ rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-hunt
 
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
 
-% ("a decomposer" "be" "" [ "an organism" ] )
+% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "migrate" "" [ "for the winter" ] )
+english(rule1, "a decomposer is an organism[a decomposer] that migrates for the winter").
+rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-migrate) -> isa(E7S1-migrate, "migrate"), agent(E7S1-migrate, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]"), for(E7S1-migrate, A10S1-winter), isa(A10S1-winter, "the winter").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"a decomposer\"" ;
+	rel:example <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the winter\"" .
+
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"an organism[a decomposer]\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:for <http://aristo.allenai.org/id#1.10> ;
+	pred:isa "\"migrate\"" .
+
+% "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
+
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "break" "")
 english(rule1, "a decomposer is an organism[a decomposer] that breaks down dead plants and animals").
 rule1:: isa(A2S1-decomposer, "a decomposer"), example(A2S1-decomposer, E7S1-break) -> isa(E7S1-break, "break"), agent(E7S1-break, A5S1-organism), isa(A5S1-organism, "an organism[a decomposer]").
@@ -2345,17 +2413,25 @@ rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "g
 	pred:isa "\"producers\"" .
 
 QUESTION: Which human activity most often has a harmful effect on the environment? (A) breathing (B) growing (C) planting (D) polluting
+% ("" "breathe" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
+
 % ("breathing" "have" "a harmful effect on the environment")
 english(rule1, "breathing most often has a harmful effect on the environment").
-rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-breathe), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-breathe, "breathing").
+rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment), isa(A10S1-environment, "the environment"), effect(E1S1-breathe, E7S1-effect), isa(E4S1-have, "have"), agent(E4S1-have, E1S1-breathe), object(E4S1-have, E7S1-effect), isa(E7S1-effect, "a harmful effect on the environment") -> isa(E1S1-breathe, "breathe"), isa(E1S1-breathe, "breathing").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
-	a <entity> .
+	a <entity> ,
+	  <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the environment\"" .
 
 <http://aristo.allenai.org/id#1.4>
 	a <event> ;
@@ -2364,15 +2440,19 @@ rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-breathe), object(E4S1-have
 	pred:object <http://aristo.allenai.org/id#1.7> .
 
 <http://aristo.allenai.org/id#1.7>
-	a <entity> ;
-	pred:isa "\"a harmful effect on the environment\"" .
+	a <entity> ,
+	  <event> ;
+	pred:isa "\"a harmful effect on the environment\"" ,
+		 "\"a harmful effect\"" ;
+	pred:on <http://aristo.allenai.org/id#1.10> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#1.1>
-	pred:isa "\"breathing\"" .
+	pred:isa "\"breathe\"" ,
+		 "\"breathing\"" .
 % ("a harmful effect on the environment" "grow" "")
 english(rule1, "growing most often has a harmful effect on the environment").
 rule1::  -> isa(E1S1-grow, "grow"), agent(E1S1-grow, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment").
@@ -2397,17 +2477,25 @@ rule1::  -> isa(E1S1-grow, "grow"), agent(E1S1-grow, A7S1-effect), isa(A7S1-effe
 
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"a harmful effect on the environment\"" .
+% ("" "plant" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
+
 % ("planting" "have" "a harmful effect on the environment")
 english(rule1, "planting most often has a harmful effect on the environment").
-rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-plant), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-plant, "planting").
+rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment), isa(A10S1-environment, "the environment"), effect(E1S1-plant, E7S1-effect), isa(E4S1-have, "have"), agent(E4S1-have, E1S1-plant), object(E4S1-have, E7S1-effect), isa(E7S1-effect, "a harmful effect on the environment") -> isa(E1S1-plant, "plant"), isa(E1S1-plant, "planting").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
-	a <entity> .
+	a <entity> ,
+	  <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the environment\"" .
 
 <http://aristo.allenai.org/id#1.4>
 	a <event> ;
@@ -2416,26 +2504,38 @@ rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-plant), object(E4S1-have, 
 	pred:object <http://aristo.allenai.org/id#1.7> .
 
 <http://aristo.allenai.org/id#1.7>
-	a <entity> ;
-	pred:isa "\"a harmful effect on the environment\"" .
+	a <entity> ,
+	  <event> ;
+	pred:isa "\"a harmful effect on the environment\"" ,
+		 "\"a harmful effect\"" ;
+	pred:on <http://aristo.allenai.org/id#1.10> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#1.1>
-	pred:isa "\"planting\"" .
+	pred:isa "\"plant\"" ,
+		 "\"planting\"" .
+% ("" "pollute" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
+
 % ("polluting" "have" "a harmful effect on the environment")
 english(rule1, "polluting most often has a harmful effect on the environment").
-rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-pollute), object(E4S1-have, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment") -> isa(A1S1-pollute, "polluting").
+rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment), isa(A10S1-environment, "the environment"), effect(E1S1-pollute, E7S1-effect), isa(E4S1-have, "have"), agent(E4S1-have, E1S1-pollute), object(E4S1-have, E7S1-effect), isa(E7S1-effect, "a harmful effect on the environment") -> isa(E1S1-pollute, "pollute"), isa(E1S1-pollute, "polluting").
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
-	a <entity> .
+	a <entity> ,
+	  <event> ;
+	rel:effect <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the environment\"" .
 
 <http://aristo.allenai.org/id#1.4>
 	a <event> ;
@@ -2444,15 +2544,19 @@ rule1:: isa(E4S1-have, "have"), agent(E4S1-have, A1S1-pollute), object(E4S1-have
 	pred:object <http://aristo.allenai.org/id#1.7> .
 
 <http://aristo.allenai.org/id#1.7>
-	a <entity> ;
-	pred:isa "\"a harmful effect on the environment\"" .
+	a <entity> ,
+	  <event> ;
+	pred:isa "\"a harmful effect on the environment\"" ,
+		 "\"a harmful effect\"" ;
+	pred:on <http://aristo.allenai.org/id#1.10> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#1.1>
-	pred:isa "\"polluting\"" .
+	pred:isa "\"pollute\"" ,
+		 "\"polluting\"" .
 QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. These are two ways that organisms may adjust to (A) cold temperatures (B) hot temperatures (C) a shortage of food (D) a shortage of drinking water
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
@@ -2714,7 +2818,133 @@ rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
-% ("these" "be" "" [ "two ways" ] )
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of food" ] )
+english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust) -> isa(A11S3-shortage, "a shortage of food").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (9)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of food" ] )
+english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), example(A1S3-these, E8S3-adjust), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> isa(A11S3-shortage, "a shortage of food").
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (10)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" ;
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.4>
+	a <entity> ;
+	pred:isa "\"two ways[these]\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ,
+		    <http://aristo.allenai.org/id#3.4> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of drinking water" ] )

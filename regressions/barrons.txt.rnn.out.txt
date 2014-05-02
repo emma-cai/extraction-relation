@@ -292,6 +292,8 @@
 % "The length of time from an animal 's birth to its[an animal 's birth] death"	"is called"/EXAMPLE	"its[The length of time from an animal 's birth to its death] life span"
 % ("The type of environment" "have" "a direct effect on organisms")
 % ("various environment al factors" "have" "a direct effect on organisms")
+% "The type of environment"/?x	"have effect"/EFFECT	("The type of environment"/?x "a direct effect" "" [ "on organisms" ] )
+% "various environment al factors"/?x	"have effect"/EFFECT	("various environment al factors"/?x "a direct effect" "" [ "on organisms" ] )
 % "The average life span of a fruit fly"	"is"/EXAMPLE	"72 hours"
 % "The average life span of a worker ant"	"is"/EXAMPLE	"6 months"
 % "The average life span of a frog"	"is"/EXAMPLE	"10 years"
@@ -479,6 +481,7 @@
 % ("oil" "take" "thousands of years for certain fossil fuels to be created")
 % ("natural gas" "take" "thousands of years for certain fossil fuels to be created")
 % ("The way" "have" "a large effect on the survival of all living and nonliving things")
+% "The way"/?x	"has effect"/EFFECT	("The way"/?x "a large effect" "" [ "on the survival of all living and nonliving things" ] )
 % ("humans" "displace" "the animals")
 % ("humans" "build" "homes")	"As"/EFFECT	("humans" "displace" "the animals")
 % ("the animals" "have" "difficulty")
@@ -618,6 +621,7 @@
 % ("you" "feel" "the force")	"causes to"/EFFECT	("" "repel" "the magnets" [ "from one another" ] )
 % "the force"	"causes"/CAUSE	("" "repel" "the magnets" [ "from one another" ] )
 % ("The distance between two magnets or a magnet and another metal object" "have" "an effect on the force of attraction")
+% "The distance between two magnets or a magnet and another metal object"/?x	"has effect"/EFFECT	("The distance between two magnets or a magnet and another metal object"/?x "a effect" "" [ "on the force of attraction" ] )
 % ("the distance between the objects" "increase" "the magnetic force of attraction decreases")
 % "Gravity"	"is"/EXAMPLE	("a force" "act" "" [ "on objects here on Earth" ] )
 % "Gravity"	"is"/EXAMPLE	"a force"
@@ -751,6 +755,7 @@
 % ("the ground" "not soak up" "the water" [ "full", "it[the ground] rains for a long period of time" ] )
 % ("the ground" "be" "hard" [ "of water", "too" ] )	"If"/EFFECT	("the ground" "not soak up" "the water" [ "full", "it[the ground] rains for a long period of time" ] )
 % ("These storms/conditions" "have" "a harmful effect on the areas involved")
+% "These storms/conditions"/?x	"have effect"/EFFECT	("These storms/conditions"/?x "a harmful effect" "" [ "on the areas involved" ] )
 % ("Each season" "experience" "specific climate conditions")
 % ("the temperature" "start out" "cold and gradually warms" [ "During Spring" ] )
 % ("Spring" "have" "high amounts of rainfall")

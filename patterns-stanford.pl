@@ -267,6 +267,18 @@ function(Entity,Comp,['REQUIREMENT'-39,Necessary]) :-
 	lemma(Necessary,necessary),
 	dependency(Necessary,dep:cop,_),
 	dependency(Necessary,dep:advcl,Comp).
+% FUNCTION: NP "has" EFFECT-NP
+function(Entity,Obj,['EFFECT'-40,Have,Obj]) :-
+	dependency(Have,dep:nsubj,Entity),
+	lemma(Have,have),
+	dependency(Have,dep:dobj,Obj),
+	lemma(Obj,effect).
+% FUNCTION: NP "has" PURPOSE-NP
+function(Entity,Obj,['PURPOSE'-41,Have,Obj]) :-
+	dependency(Have,dep:nsubj,Entity),
+	lemma(Have,have),
+	dependency(Have,dep:dobj,Obj),
+	lemma(Obj,purpose).
 	
 
 %%%effect(Root,Comp,['EFFECT'-40,Aux]) :-

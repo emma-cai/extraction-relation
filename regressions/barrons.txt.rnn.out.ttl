@@ -4668,6 +4668,34 @@
 <http://aristo.allenai.org/id#269.17>
 	a <entity> ;
 	pred:isa "\"a direct effect on organisms\"" .
+<http://aristo.allenai.org/id#269.2>
+	a <entity> ;
+	pred:isa "\"The type of environment\"" ;
+	rel:effect <http://aristo.allenai.org/id#269.17> .
+<http://aristo.allenai.org/id#269.17>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#269.2> ;
+	pred:isa "\"a direct effect\"" ;
+	pred:on <http://aristo.allenai.org/id#269.19> .
+<http://aristo.allenai.org/id#269.19>
+	pred:isa "\"organisms\"" .
+<http://aristo.allenai.org/id#269.2>
+	a <entity> ;
+	pred:isa "\"The type of environment\"" .
+<http://aristo.allenai.org/id#269.12>
+	a <entity> ;
+	pred:isa "\"various environment al factors\"" ;
+	rel:effect <http://aristo.allenai.org/id#269.17> .
+<http://aristo.allenai.org/id#269.12>
+	a <entity> ;
+	pred:isa "\"various environment al factors\"" .
+<http://aristo.allenai.org/id#269.17>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#269.12> ;
+	pred:isa "\"a direct effect\"" ;
+	pred:on <http://aristo.allenai.org/id#269.19> .
+<http://aristo.allenai.org/id#269.19>
+	pred:isa "\"organisms\"" .
 <http://aristo.allenai.org/id#271.4>
 	a <entity> ;
 	pred:isa "\"The average life span of a fruit fly\"" ;
@@ -7432,6 +7460,20 @@
 	pred:agent <http://aristo.allenai.org/id#449.2> ;
 	pred:isa "\"have\"" ;
 	pred:object <http://aristo.allenai.org/id#449.11> .
+<http://aristo.allenai.org/id#449.2>
+	a <entity> ;
+	pred:isa "\"The way\"" ;
+	rel:effect <http://aristo.allenai.org/id#449.11> .
+<http://aristo.allenai.org/id#449.11>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#449.2> ;
+	pred:isa "\"a large effect\"" ;
+	pred:on <http://aristo.allenai.org/id#449.14> .
+<http://aristo.allenai.org/id#449.14>
+	pred:isa "\"the survival of all living and nonliving things\"" .
+<http://aristo.allenai.org/id#449.2>
+	a <entity> ;
+	pred:isa "\"The way\"" .
 <http://aristo.allenai.org/id#27.11>
 	a <entity> ;
 	pred:isa "\"humans\"" .
@@ -9664,6 +9706,20 @@
 <http://aristo.allenai.org/id#615.2>
 	a <entity> ;
 	pred:isa "\"The distance between two magnets or a magnet and another metal object\"" .
+<http://aristo.allenai.org/id#615.2>
+	a <entity> ;
+	pred:isa "\"The distance between two magnets or a magnet and another metal object\"" ;
+	rel:effect <http://aristo.allenai.org/id#615.15> .
+<http://aristo.allenai.org/id#615.15>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#615.2> ;
+	pred:isa "\"a effect\"" ;
+	pred:on <http://aristo.allenai.org/id#615.18> .
+<http://aristo.allenai.org/id#615.18>
+	pred:isa "\"the force of attraction\"" .
+<http://aristo.allenai.org/id#615.2>
+	a <entity> ;
+	pred:isa "\"The distance between two magnets or a magnet and another metal object\"" .
 <http://aristo.allenai.org/id#617.10>
 	a <entity> ;
 	pred:isa "\"the magnetic force of attraction decreases\"" .
@@ -11564,6 +11620,20 @@
 <http://aristo.allenai.org/id#762.7>
 	a <entity> ;
 	pred:isa "\"a harmful effect on the areas involved\"" .
+<http://aristo.allenai.org/id#762.2>
+	a <entity> ;
+	pred:isa "\"These storms/conditions\"" ;
+	rel:effect <http://aristo.allenai.org/id#762.7> .
+<http://aristo.allenai.org/id#762.10>
+	pred:isa "\"the areas involved\"" .
+<http://aristo.allenai.org/id#762.2>
+	a <entity> ;
+	pred:isa "\"These storms/conditions\"" .
+<http://aristo.allenai.org/id#762.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#762.2> ;
+	pred:isa "\"a harmful effect\"" ;
+	pred:on <http://aristo.allenai.org/id#762.10> .
 <http://aristo.allenai.org/id#766.12>
 	a <entity> ;
 	pred:isa "\"specific climate conditions\"" .
