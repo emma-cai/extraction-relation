@@ -27,7 +27,7 @@ info_description(_Request) :-
 :- http_handler(root('info/version'), info_version, []).
 info_version(_Request) :-
         format('Content-type: text/plain~n~n', []),
-        format('2014-03-14~n').
+        format('2014-05-05~n').
 
 :- http_handler(root(.), request, []).
 request(Request) :-

@@ -31,9 +31,18 @@ info_description(_Request) :-
 :- http_handler(root('info/version'), info_version, []).
 info_version(_Request) :-
         format('Content-type: text/plain~n~n', []),
-        format('2014-03-14~n').
+        format('2014-05-05~n').
 
 :- http_handler(root(.), request, []).
+request(Request) :- % json from decomposer
+        memberchk(method(post), Request),
+        catch( http_read_json(Request, Json), _Error, fail ), !,
+        json_to_prolog(Json, Data),
+        Data = json(Params),
+        member(question=Question,Params),
+        member(focus=Focus,Params),
+        format('Content-type: text/plain~n~n', []),
+        extract(Question,Focus).
 request(Request) :-
         memberchk(method(post), Request), !,
         http_read_data(Request, Data, [to(atom)]),
