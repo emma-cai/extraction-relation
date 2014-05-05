@@ -60,46 +60,67 @@ entity_id(Entity,Id) :-
 	!.
 
 % move focus statements out of antecedent
-question_focus(Ent-_) :-
+question_focus(Ent-_) :- !,
 	question_focus(Ent).
 question_focus(Ent) :-
 	atom(Ent), !,
 	current_question_focus(Ent),
-	( rdf(Ent,pred:isa,Type,antecedent),
-	  rdf_retractall(Ent,pred:isa,Type,antecedent),
-	  rdf_assert(Ent,pred:isa,Type,consequent),
-	  fail
-	; true ).
+	question_focus_consequent_arg(Ent).
 question_focus([_,Event|_]) :-
 	current_question_focus(Event),
-	( rdf(Event,Pred,Arg,antecedent),
-	  rdf_global_id(pred:_,Pred),
-	  rdf_retractall(Event,Pred,Arg,antecedent),
-	  rdf_assert(Event,Pred,Arg,consequent),
-	  % move Arg to consequent if not referenced elsewhere in antecedent
-	  \+ (rdf(_,Pred2,Arg,antecedent),
-	      rdf_global_id(pred:_,Pred2)),
-	  rdf(Arg,pred:isa,Type,antecedent),
-	  rdf_retractall(Arg,pred:isa,Type,antecedent),
-	  rdf_assert(Arg,pred:isa,Type,consequent),
-	  fail
-	; true ).
+	question_focus_consequent_event(Event).
 question_focus([Subj,_Event,Obj|Args]) :-
 	member(Arg,[Subj,Obj|Args]), Arg \= [],
 	question_focus(Arg), !.
 question_focus([Subj,_Event,Obj|Args]) :-
 	current_question_focus(Focus),
-	member(Arg,[Subj,Obj|Args]),
+	member(Arg,[Subj,Obj|Args]), Arg \= [],
 	entity_id(Arg,Id),
 	constit(Id,Focus,[rcmod,partmod]), % substring case
-	( rdf(Id,pred:isa,Type,antecedent),
-	  rdf_retractall(Id,pred:isa,Type,antecedent),
-	  rdf_assert(Id,pred:isa,Type,consequent),
-	  fail
-	; true ).
+	question_focus_consequent_arg(Id).
+question_focus([_,Event|_]) :- % conjunction case
+	current_question_focus(Focus),
+	entity_id(Event,EventId),
+	( rdf(EventId,basic:conj,Focus)
+	; rdf(Focus,basic:conj,EventId) ),
+	question_focus_consequent_event(EventId).
+
+question_focus_consequent_event(Event) :-
+	rdf(Event,Pred,Arg,antecedent),
+	rdf_global_id(pred:_,Pred),
+	rdf_retractall(Event,Pred,Arg,antecedent),
+	rdf_assert(Event,Pred,Arg,consequent),
+	% move Arg to consequent if not referenced elsewhere in antecedent
+	\+ (rdf(_,Pred2,Arg,antecedent),
+	    rdf_global_id(pred:_,Pred2)),
+	question_focus_consequent_arg(Arg),
+	fail.
+question_focus_consequent_event(_).
+
+question_focus_consequent_arg(Id) :-
+	rdf(Id,pred:isa,Type,antecedent),
+	rdf_retractall(Id,pred:isa,Type,antecedent),
+	rdf_assert(Id,pred:isa,Type,consequent),
+	fail.
+question_focus_consequent_arg(_).
+
 
 write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
 	write_inf_relation(Top,Ent,Rel,Tuple).
+write_inf_relation(_Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :- % question-specific
+	current_question_focus(_),
+	atom(Entity),
+	entity_id(Subj,E),
+	% isa relative clause
+	rdf(E,dep:nsubj,Entity),
+	rdf(E,dep:rcmod,Verb), !,
+	inf_tuple(Entity,AntecedentId,antecedent),
+	inf_tuple([Subj,Verb|Rest],_,antecedent),
+	rdf_assert(Entity,pred:isa,Subj,antecedent),
+	downcase_atom(Rel,LRel),
+	rdf_global_id(rel:LRel,RelId),
+	rdf_assert(AntecedentId,RelId,Subj,antecedent),
+	write_question_relation0(Entity,[Subj,Verb|Rest]).
 write_inf_relation(_Top,Antecedent,[Rel-_|_],Consequent) :- % question-specific
 	current_question_focus(_), !,
 	inf_tuple(Antecedent,AntecedentId,antecedent),
