@@ -193,7 +193,16 @@ filter_tuple(Root,_) :-
 		      possible
 		     ]).
 filter_tuple(Root,[[]|_]) :- % empty subject
-	rdf(Root,basic:nsubjpass,_), !,
+	rdf(Root,basic:nsubjpass,Obj),
+	lemma(Obj,it),
+	text(Root,Token),
+	member(Token,[
+		      called,
+		      considered
+		     ]).
+filter_tuple(Root,[[]|_]) :- % empty subject
+	rdf(Root,basic:nsubjpass,_),
+	\+ rdf(Root,dep:advcl,_), !, % subject will be distributed
 	text(Root,Token),
 	member(Token,[
 		      called,
