@@ -19,12 +19,11 @@ import java.io.Writer
   * @param output if set, the final default output to use instead of STDOUT
   */
 case class ErmineOptions(configFile: File = new File("."), pipelineName: String = "ermine.pipeline",
-  input: Option[File] = None, output: Option[File] = None) {
-  /** Use the file option as input, default to STDIN. */
-  def defaultInput: Source = input map {
-    Source.fromFile
-  } getOrElse {
-    Source.fromInputStream(System.in)
+  inputs: Seq[File] = Seq.empty, output: Option[File] = None) {
+  /** Use the file option(s) as input(s), default to STDIN. */
+  def defaultInputs: Seq[Source] = inputs match {
+    case Seq() => Seq(Source.fromInputStream(System.in))
+    case _ => inputs map Source.fromFile
   }
   /** Use the file option as output, default to STDOUT. */
   def defaultOutput: Writer = output map {
@@ -45,8 +44,8 @@ object Ermine extends Logging {
         options.copy(pipelineName = pipelineName)
       } text("The name of the pipeline to look for in the config file.\n" +
         "        Defaults to ermine.pipeline.")
-      opt[File]('i', "input") valueName("<file>") action { (input, options) =>
-        options.copy(input = Some(input))
+      opt[File]('i', "input") valueName("<file>") unbounded() action { (input, options) =>
+        options.copy(inputs = options.inputs :+ input)
       } text("The default input file to send to the first extractor.\n" +
         "        Only used if the first extractor has no input specified.")
       opt[File]('o', "output") valueName("<file>") action { (output, options) =>
@@ -69,7 +68,7 @@ object Ermine extends Logging {
 
       logger.info("running pipeline")
 
-      pipeline.run(options.defaultInput, options.defaultOutput)
+      pipeline.run(options.defaultInputs, options.defaultOutput)
     }
   }
 }

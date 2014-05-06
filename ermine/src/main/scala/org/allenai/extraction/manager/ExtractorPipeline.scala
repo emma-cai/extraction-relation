@@ -16,10 +16,14 @@ import java.net.URI
 
 /** Class representing a pipeline. */
 class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) extends Logging {
-  def run(defaultInput: Source, defaultOutput: Writer): Unit = {
-    val defaultName = ExtractorIO.defaultName("0")
-    runExtractors(extractors, Map.empty, Map(defaultName -> defaultInput), defaultOutput)
-    // TODO(jkinkead): Sources should probably be returned from runExtractors & closed here.
+  def run(inputs: Seq[Source], defaultOutput: Writer): Unit = {
+    val inputMap = (for {
+      (input, index) <- inputs.zipWithIndex
+    } yield (ExtractorIO.defaultName(index.toString) -> input)).toMap
+    runExtractors(extractors, Map.empty, inputMap, defaultOutput)
+    inputs foreach { _.close }
+    defaultOutput.flush
+    defaultOutput.close
   }
 
   /** Recursive function to run extractions. The first extraction in the list will be run, then its
