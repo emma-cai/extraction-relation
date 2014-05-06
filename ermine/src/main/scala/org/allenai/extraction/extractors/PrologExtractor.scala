@@ -3,8 +3,7 @@ package org.allenai.extraction.extractors
 import org.allenai.common.Resource
 import org.allenai.extraction.FlatExtractor
 
-import jpl.Term
-import jpl.Query
+import jpl.{ JPL, Term, Query }
 
 import spray.json._
 import spray.json.DefaultJsonProtocol._
@@ -20,7 +19,9 @@ object PrologExtractor extends FlatExtractor {
   {
     // TODO(jkinkead): Load this from config.
     val prologRoot = "/Users/jkinkead/work/prototyping/prolog/extraction"
-    this.synchronized {
+    classOf[JPL].synchronized {
+      // Be quiet (don't print informational load messages).
+      JPL.init(JPL.getDefaultInitArgs :+ "-q")
       val loadProlog = new Query(
         s"consult(['${prologRoot}/relation.pl', '${prologRoot}/patterns-stanford.pl'])")
       loadProlog.allSolutions
@@ -39,7 +40,7 @@ object PrologExtractor extends FlatExtractor {
       }
     }
 
-    val jsonResults = this.synchronized {
+    val jsonResults = classOf[JPL].synchronized {
       // Next, run the prolog extractor and generate output rules.
       val solveRelations = new Query(
         s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
