@@ -10,6 +10,7 @@
 :- use_module(library(http/http_json)).
 %%% process library
 :- use_module(library(filesex)).
+:- use_module(library(jpl)).
 
 :- [relation].
 :- ['patterns-stanford'].
