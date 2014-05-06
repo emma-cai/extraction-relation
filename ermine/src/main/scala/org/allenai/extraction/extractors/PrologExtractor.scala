@@ -16,8 +16,17 @@ import java.io.FileWriter
 import java.io.Writer
 
 object PrologExtractor extends FlatExtractor {
-  // TODO(jkinkead): Take from config.
-  val prologRoot = "/Users/jkinkead/work/prototyping/prolog/extraction"
+  // Initialize the Ferret solver.
+  {
+    // TODO(jkinkead): Load this from config.
+    val prologRoot = "/Users/jkinkead/work/prototyping/prolog/extraction"
+    this.synchronized {
+      val loadProlog = new Query(
+        s"consult(['${prologRoot}/relation.pl', '${prologRoot}/patterns-stanford.pl'])")
+      loadProlog.allSolutions
+      loadProlog.rewind
+    }
+  }
 
   override protected def extractInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
@@ -30,20 +39,27 @@ object PrologExtractor extends FlatExtractor {
       }
     }
 
-    // Next, run the prolog extractor and generate output rules.
-    val loadProlog = new Query(
-      s"consult(['${prologRoot}/relation.pl', '${prologRoot}/patterns-stanford.pl'])," +
-      s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
-      // Magic here: Fill in the Json variable with all relations.
-      "relation(Json)")
+    val jsonResults = this.synchronized {
+      // Next, run the prolog extractor and generate output rules.
+      val solveRelations = new Query(
+        s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
+        // Magic here: Fill in the Json variable with all relations.
+        "relation(Json), " +
+        s"rdf_unload('${ttlFile.getAbsolutePath()}')")
 
-    val jsonResults = (for {
-      result <- loadProlog.allSolutions
-      // TODO(jkinkead): This isn't robust to prolog failures - have a sensible default.
-      jsonString = result.get("Json") match {
-        case term: Term => term.name
-      }
-    } yield JsonParser(jsonString)).toSeq
+      val jsonResults = for {
+        result <- solveRelations.allSolutions
+        // TODO(jkinkead): This isn't robust to prolog failures - have a sensible default.
+        jsonString = result.get("Json") match {
+          case term: Term => term.name
+        }
+      } yield JsonParser(jsonString)
+
+      solveRelations.rewind()
+
+      // Create immutable copy.
+      jsonResults.toSeq
+    }
 
     // Serialize JSON to outfile.
     destination.write(jsonResults.toJson.prettyPrint)
