@@ -32,13 +32,16 @@ relation(InfString,JsonString) :-
 
 :- dynamic current_question_focus/1.
 % top level to process all input as single question
-question(Focus) :-
+question(Focus,Inf) :-
 	once(focus_root(Focus,FocusRoot)),
 	asserta(current_question_focus(FocusRoot)),
-	findall(_,relation,_),
+	rdf(_Sentence,dep:root,Root),
+	relation(Root,Inf,_Json).
+question(_,_) :-
 	rdf_unload_graph(antecedent),
 	rdf_unload_graph(consequent),
-	retract(current_question_focus(FocusRoot)).
+	retract(current_question_focus(_)),
+	fail.
 
 focus_root(FocusString,Root) :-
 	% find subsequence of input text
