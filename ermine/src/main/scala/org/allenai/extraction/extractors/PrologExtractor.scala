@@ -15,8 +15,10 @@ import java.io.FileWriter
 import java.io.Writer
 
 object PrologExtractor extends FlatExtractor {
-  // Initialize the Ferret solver.
-  {
+  /** Initialize JPL. This is lazily evaluated to keep this from breaking class
+    * load if we don't have the swipl libraries on the classpath.
+    */
+  lazy val jplClass = {
     // TODO(jkinkead): Load this from config.
     val prologRoot = "/Users/jkinkead/work/prototyping/prolog/extraction"
     classOf[JPL].synchronized {
@@ -27,6 +29,7 @@ object PrologExtractor extends FlatExtractor {
       loadProlog.allSolutions
       loadProlog.rewind
     }
+    classOf[JPL]
   }
 
   override protected def extractInternal(source: Source, destination: Writer): Unit = {
@@ -40,7 +43,7 @@ object PrologExtractor extends FlatExtractor {
       }
     }
 
-    val jsonResults = classOf[JPL].synchronized {
+    val jsonResults = jplClass.synchronized {
       // Next, run the prolog extractor and generate output rules.
       val solveRelations = new Query(
         s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
