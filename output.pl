@@ -88,10 +88,11 @@ question_focus([_,Event|_]) :- % conjunction case
 question_focus_consequent_event(Event) :-
 	rdf(Event,Pred,Arg,antecedent),
 	rdf_global_id(pred:_,Pred),
-	rdf_retractall(Event,Pred,Arg,antecedent),
+%	rdf_update(Event,Pred,Arg,antecedent,graph(consequent)),
 	rdf_assert(Event,Pred,Arg,consequent),
 	% move Arg to consequent if not referenced elsewhere in antecedent
-	\+ (rdf(_,Pred2,Arg,antecedent),
+	\+ (rdf(Event2,Pred2,Arg,antecedent),
+	    Event2 \= Event,
 	    rdf_global_id(pred:_,Pred2)),
 	question_focus_consequent_arg(Arg),
 	fail.
@@ -99,7 +100,7 @@ question_focus_consequent_event(_).
 
 question_focus_consequent_arg(Id) :-
 	rdf(Id,pred:isa,Type,antecedent),
-	rdf_retractall(Id,pred:isa,Type,antecedent),
+%	rdf_update(Id,pred:isa,Type,antecedent,graph(consequent)),
 	rdf_assert(Id,pred:isa,Type,consequent),
 	fail.
 question_focus_consequent_arg(_).
@@ -190,7 +191,13 @@ write_question_relation0(Left,Right,Out) :-
 	( question_focus(Left) ; question_focus(Right) ),
 	gensym(rule,Id),
 	write_inf_rule_text(_Top,Id,Text), % all input
-	write_inf_tuple(antecedent,[],LeftTriples,true,LHS),
+	% collect RHS to exclude from LHS
+	%%% TODO: track down rdf_update failures
+	findall([S,P,O],
+		(rdf(S,P,O,consequent),
+		 \+ rdf_global_id(rdf:type,P)),
+		Consequents),
+	write_inf_tuple(antecedent,Consequents,LeftTriples,true,LHS),
 	write_inf_tuple(consequent,LeftTriples,_,true,RHS),
 	format(atom(Out), '~w~w:: ~w -> ~w.~n', [Text,Id,LHS,RHS]),
 	write_turtle_relation(antecedent,consequent),

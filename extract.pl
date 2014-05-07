@@ -68,11 +68,9 @@ extract(Text,Focus) :-
         turtle(Xml, Turtle),
         write_tmp_file(Turtle, File),
         rdf_load(File, [format(turtle)]),
-        ( ( question(Focus,Inf),
-	    write(Inf),
-	    fail )
-	; ( rdf_unload(File),
-	    delete_file(File) ) ).
+        findall(_,(question(Focus,Inf),write(Inf)),_),
+        rdf_unload(File),
+        delete_file(File).
 
 % call corenlp jsonrpc service
 corenlp_jsonrpc(Text, Xml) :-

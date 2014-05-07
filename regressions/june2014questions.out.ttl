@@ -3,6 +3,7 @@
 @prefix pred: <http://aristo.allenai.org/pred/> .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"gravity\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
@@ -18,6 +19,7 @@
 	pred:isa "\"gravity\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
@@ -33,6 +35,7 @@
 	pred:isa "\"friction\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"erosion\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
@@ -48,6 +51,7 @@
 	pred:isa "\"erosion\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
@@ -66,6 +70,7 @@
 	pred:isa "\"a good health habit\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
+	pred:isa "\"watching television\"" ;
 	rel:example <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"watching television\"" .
@@ -74,17 +79,21 @@
 	pred:isa "\"a good health habit\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
+	pred:isa "\"smoking cigarettes\"" ;
 	rel:example <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"smoking cigarettes\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> ;
 	rel:example <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.10>
 	a <entity> ;
 	pred:isa "\"a good health habit\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"candy\"" .
 <http://aristo.allenai.org/id#1.1>
 	pred:isa "\"eat\"" ;
 	pred:object <http://aristo.allenai.org/id#1.2> .
@@ -92,17 +101,22 @@
 	pred:isa "\"candy\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:arg <http://aristo.allenai.org/id#1.3> ;
+	pred:isa "\"exercise\"" ;
 	rel:example <http://aristo.allenai.org/id#1.11> .
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
 	pred:isa "\"a good health habit\"" .
+<http://aristo.allenai.org/id#1.3>
+	pred:isa "\"every day\"" .
 <http://aristo.allenai.org/id#1.1>
 	pred:arg <http://aristo.allenai.org/id#1.3> ;
 	pred:isa "\"exercise\"" .
 <http://aristo.allenai.org/id#1.3>
 	pred:isa "\"every day\"" .
 <http://aristo.allenai.org/id#1.10>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"animals\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.5> ,
@@ -112,7 +126,10 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"hunt\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"animals\"" .
 <http://aristo.allenai.org/id#1.7>
@@ -120,7 +137,8 @@
 	pred:isa "\"hunt\"" ;
 	pred:object <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.10>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"animals\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.5> ,
@@ -130,9 +148,14 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"hunt\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.9>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"eat\"" .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"animals\"" .
 <http://aristo.allenai.org/id#1.7>
@@ -142,6 +165,8 @@
 <http://aristo.allenai.org/id#1.9>
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
 	pred:isa "\"eat\"" .
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the winter\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.5> ,
@@ -151,7 +176,10 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:for <http://aristo.allenai.org/id#1.10> ;
+	pred:isa "\"migrate\"" .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"the winter\"" .
 <http://aristo.allenai.org/id#1.7>
@@ -167,10 +195,14 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"break\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
 	pred:isa "\"break\"" .
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"to make food\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.5> ,
@@ -180,9 +212,14 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:arg <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"water\"" .
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"to make food\"" .
 <http://aristo.allenai.org/id#1.7>
@@ -193,7 +230,10 @@
 <http://aristo.allenai.org/id#1.8>
 	pred:isa "\"water\"" .
 <http://aristo.allenai.org/id#1.10>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"sunlight\"" .
+<http://aristo.allenai.org/id#1.12>
+	pred:isa "\"to make food\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.5> ,
@@ -203,9 +243,15 @@
 	a <entity> ;
 	pred:isa "\"an organism[a decomposer]\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:arg <http://aristo.allenai.org/id#1.12> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#1.10> ,
+		    <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"water\"" .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"sunlight\"" .
 <http://aristo.allenai.org/id#1.12>
@@ -220,13 +266,16 @@
 	pred:isa "\"water\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:isa "\"decrease\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"a liquid\"" .
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"a solid\"" .
 <http://aristo.allenai.org/id#1.3>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"the temperature\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:from <http://aristo.allenai.org/id#1.12> ;
@@ -243,13 +292,16 @@
 	pred:isa "\"the temperature\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:isa "\"increase\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"a liquid\"" .
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"a solid\"" .
 <http://aristo.allenai.org/id#1.3>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"the temperature\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:from <http://aristo.allenai.org/id#1.12> ;
@@ -266,13 +318,16 @@
 	pred:isa "\"the temperature\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:isa "\"decrease\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"a liquid\"" .
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"a solid\"" .
 <http://aristo.allenai.org/id#1.3>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"the mass\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:from <http://aristo.allenai.org/id#1.12> ;
@@ -289,13 +344,16 @@
 	pred:isa "\"the mass\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
+	pred:isa "\"increase\"" ;
+	pred:object <http://aristo.allenai.org/id#1.3> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"a liquid\"" .
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"a solid\"" .
 <http://aristo.allenai.org/id#1.3>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"the mass\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:from <http://aristo.allenai.org/id#1.12> ;
@@ -323,6 +381,7 @@
 	pred:isa "\"a ball\"" .
 <http://aristo.allenai.org/id#2.1>
 	a <entity> ;
+	pred:isa "\"electricity\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
 	a <event> ;
@@ -339,13 +398,14 @@
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"drop\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
+	pred:arg <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"drop\"" .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
 	pred:isa "\"a ball\"" .
 <http://aristo.allenai.org/id#2.1>
 	a <entity> ;
+	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
 	a <event> ;
@@ -369,6 +429,7 @@
 	pred:isa "\"a ball\"" .
 <http://aristo.allenai.org/id#2.1>
 	a <entity> ;
+	pred:isa "\"gravity\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
 	a <event> ;
@@ -385,13 +446,14 @@
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"drop\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
+	pred:arg <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"drop\"" .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
 	pred:isa "\"a ball\"" .
 <http://aristo.allenai.org/id#2.1>
 	a <entity> ;
+	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
 	a <event> ;
@@ -404,6 +466,7 @@
 	pred:isa "\"magnetism\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"electricity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -412,6 +475,7 @@
 	pred:isa "\"electricity\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"erosion\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -420,6 +484,7 @@
 	pred:isa "\"erosion\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -427,13 +492,11 @@
 <http://aristo.allenai.org/id#1.1>
 	pred:isa "\"gravity\"" .
 <http://aristo.allenai.org/id#1.1>
-	a <entity> .
-<http://aristo.allenai.org/id#1.2>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.1> ;
-	pred:arg <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"be\"" .
+	a <entity> ;
+	pred:isa "\"sunlight\"" ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.5>
+	a <entity> ;
 	pred:isa "\"the main source of energy for the water cycle\"" .
 <http://aristo.allenai.org/id#1.1>
 	pred:isa "\"sunlight\"" .
@@ -450,7 +513,8 @@
 	pred:object <http://aristo.allenai.org/id#1.7> ;
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.7>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -474,7 +538,8 @@
 	pred:object <http://aristo.allenai.org/id#1.7> ;
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.7>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -496,7 +561,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"pan balance\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -520,7 +586,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"pan balance\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -542,7 +609,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a ruler\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -566,7 +634,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a ruler\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -588,7 +657,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a thermometer\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -612,7 +682,8 @@
 	pred:object <http://aristo.allenai.org/id#1.6> ;
 	rel:effect <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a thermometer\"" .
 <http://aristo.allenai.org/id#1.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -625,6 +696,8 @@
 	a <entity> ,
 	  <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"read\"" ,
+		 "\"reading\"" ;
 	rel:requirement <http://aristo.allenai.org/id#1.7> .
 <http://aristo.allenai.org/id#1.2>
 	a <event> ;
@@ -652,6 +725,8 @@
 	a <entity> ,
 	  <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"rest\"" ,
+		 "\"resting\"" ;
 	rel:requirement <http://aristo.allenai.org/id#1.7> .
 <http://aristo.allenai.org/id#1.2>
 	a <event> ;
@@ -680,6 +755,7 @@
 	pred:isa "\"good health\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
+	pred:isa "\"driving activity\"" ;
 	rel:requirement <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
@@ -704,6 +780,7 @@
 	pred:isa "\"good health\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
+	pred:isa "\"talking activity\"" ;
 	rel:requirement <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
@@ -723,6 +800,8 @@
 	pred:object <http://aristo.allenai.org/id#1.10> .
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"talking activity\"" .
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"food from air\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -743,28 +822,7 @@
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"food from air\"" .
 <http://aristo.allenai.org/id#1.10>
-	a <entity> ;
-	pred:isa "\"food\"" .
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"green plants\"" .
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> ;
-	rel:effect <http://aristo.allenai.org/id#1.9> .
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"the energy\"" .
-<http://aristo.allenai.org/id#1.9>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:from <http://aristo.allenai.org/id#1.12> ;
-	pred:isa "\"make\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-<http://aristo.allenai.org/id#1.12>
-	pred:isa "\"sunlight\"" .
+	pred:isa "\"food from water\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -784,6 +842,8 @@
 	pred:isa "\"make\"" .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"food from water\"" .
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"food from soil\"" .
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -810,6 +870,7 @@
 	pred:isa "\"the food chain\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"decomposers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -833,6 +894,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"decomposers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -861,6 +923,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"decomposers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -878,6 +941,7 @@
 	pred:isa "\"the food chain\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"predators\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -901,6 +965,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"predators\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -929,6 +994,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"predators\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -948,9 +1014,13 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> ;
 	rel:when <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"help\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:isa "\"prey\"" ;
@@ -970,9 +1040,14 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ,
+		   <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"prey\"" ;
+	pred:object <http://aristo.allenai.org/id#1.8> ;
 	rel:when <http://aristo.allenai.org/id#1.5> .
 <http://aristo.allenai.org/id#1.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"help\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ,
 		   <http://aristo.allenai.org/id#1.4> ;
@@ -987,6 +1062,7 @@
 	pred:isa "\"the food chain\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"producers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -1010,6 +1086,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"producers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -1038,6 +1115,7 @@
 	pred:isa "\"die\"" .
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
+	pred:isa "\"producers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -1051,7 +1129,8 @@
 <http://aristo.allenai.org/id#1.11>
 	pred:isa "\"a seasonal change in the environment\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a bat\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -1071,7 +1150,8 @@
 <http://aristo.allenai.org/id#1.11>
 	pred:isa "\"a seasonal change in the environment\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a bat\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -1091,7 +1171,8 @@
 <http://aristo.allenai.org/id#1.11>
 	pred:isa "\"a seasonal change in the environment\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"an owl\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -1111,7 +1192,8 @@
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"a seasonal change in the environment\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a squirrel\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
@@ -1134,7 +1216,8 @@
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"the floor\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"mechanical energy\"" .
 <http://aristo.allenai.org/id#1.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.8> ;
@@ -1158,7 +1241,8 @@
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"the floor\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"magnetic energy\"" .
 <http://aristo.allenai.org/id#1.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.8> ;
@@ -1177,7 +1261,8 @@
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"magnetic energy\"" .
 <http://aristo.allenai.org/id#1.1>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"sound\"" .
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
 	pred:isa "\"a wooden block\"" .
@@ -1206,7 +1291,8 @@
 <http://aristo.allenai.org/id#1.15>
 	pred:isa "\"the floor\"" .
 <http://aristo.allenai.org/id#1.2>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"electrical energy\"" .
 <http://aristo.allenai.org/id#1.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.8> ;
@@ -1225,7 +1311,8 @@
 <http://aristo.allenai.org/id#1.2>
 	pred:isa "\"electrical energy\"" .
 <http://aristo.allenai.org/id#1.12>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"predators\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -1241,7 +1328,8 @@
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"predators\"" .
 <http://aristo.allenai.org/id#1.12>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"decomposers\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -1257,7 +1345,8 @@
 <http://aristo.allenai.org/id#1.12>
 	pred:isa "\"decomposers\"" .
 <http://aristo.allenai.org/id#1.12>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"producers\"" .
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"green plants\"" .
@@ -1275,6 +1364,8 @@
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ,
 	  <event> ;
+	pred:isa "\"breathe\"" ,
+		 "\"breathing\"" ;
 	rel:effect <http://aristo.allenai.org/id#1.7> .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"the environment\"" .
@@ -1293,9 +1384,12 @@
 	pred:isa "\"breathe\"" ,
 		 "\"breathing\"" .
 <http://aristo.allenai.org/id#1.1>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.7> ;
+	pred:isa "\"grow\"" .
 <http://aristo.allenai.org/id#1.7>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a harmful effect on the environment\"" .
 <http://aristo.allenai.org/id#1.1>
 	pred:agent <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"grow\"" .
@@ -1304,6 +1398,8 @@
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ,
 	  <event> ;
+	pred:isa "\"plant\"" ,
+		 "\"planting\"" ;
 	rel:effect <http://aristo.allenai.org/id#1.7> .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"the environment\"" .
@@ -1324,6 +1420,8 @@
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ,
 	  <event> ;
+	pred:isa "\"pollute\"" ,
+		 "\"polluting\"" ;
 	rel:effect <http://aristo.allenai.org/id#1.7> .
 <http://aristo.allenai.org/id#1.10>
 	pred:isa "\"the environment\"" .
@@ -1367,84 +1465,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
-<http://aristo.allenai.org/id#3.6>
-	a <entity> ;
-	pred:isa "\"organisms\"" .
-<http://aristo.allenai.org/id#3.8>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#3.6> ;
-	pred:isa "\"adjust\"" ;
-	pred:object <http://aristo.allenai.org/id#3.1> ;
-	pred:to <http://aristo.allenai.org/id#3.11> .
 <http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"A dog\"" .
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"open\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"its mouth\"" .
-<http://aristo.allenai.org/id#2.4>
-	a <entity> ;
-	pred:isa "\"A human 's body\"" .
-<http://aristo.allenai.org/id#2.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:isa "\"produce\"" ;
-	pred:object <http://aristo.allenai.org/id#2.6> .
-<http://aristo.allenai.org/id#2.6>
-	a <entity> ;
-	pred:isa "\"sweat\"" .
-<http://aristo.allenai.org/id#3.1>
-	a <entity> ;
-	pred:isa "\"these\"" ;
-	rel:example <http://aristo.allenai.org/id#3.8> .
-<http://aristo.allenai.org/id#3.4>
-	a <entity> ;
-	pred:isa "\"two ways[these]\"" .
-<http://aristo.allenai.org/id#3.6>
-	a <entity> ;
-	pred:isa "\"organisms\"" .
-<http://aristo.allenai.org/id#3.8>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#3.6> ;
-	pred:isa "\"adjust\"" ;
-	pred:object <http://aristo.allenai.org/id#3.1> ,
-		    <http://aristo.allenai.org/id#3.4> ;
-	pred:to <http://aristo.allenai.org/id#3.11> .
-<http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"A dog\"" .
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"open\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"its mouth\"" .
-<http://aristo.allenai.org/id#2.4>
-	a <entity> ;
-	pred:isa "\"A human 's body\"" .
-<http://aristo.allenai.org/id#2.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:isa "\"produce\"" ;
-	pred:object <http://aristo.allenai.org/id#2.6> .
-<http://aristo.allenai.org/id#2.6>
-	a <entity> ;
-	pred:isa "\"sweat\"" .
-<http://aristo.allenai.org/id#3.1>
-	a <entity> ;
-	pred:isa "\"these\"" ;
-	rel:example <http://aristo.allenai.org/id#3.8> .
+	pred:isa "\"hot temperatures\"" .
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
 	pred:isa "\"organisms\"" .
@@ -1482,6 +1504,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"hot temperatures\"" .
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
 	pred:isa "\"two ways[these]\"" .
@@ -1523,6 +1547,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
 	pred:isa "\"organisms\"" .
@@ -1560,6 +1586,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
 	pred:isa "\"two ways[these]\"" .
@@ -1601,6 +1629,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of drinking water\"" .
 <http://aristo.allenai.org/id#3.6>
 	a <entity> ;
 	pred:isa "\"organisms\"" .
@@ -1638,6 +1668,8 @@
 	a <entity> ;
 	pred:isa "\"these\"" ;
 	rel:example <http://aristo.allenai.org/id#3.8> .
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of drinking water\"" .
 <http://aristo.allenai.org/id#3.4>
 	a <entity> ;
 	pred:isa "\"two ways[these]\"" .
@@ -1682,6 +1714,7 @@
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 <http://aristo.allenai.org/id#3.10>
+	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -1690,12 +1723,13 @@
 	pred:object <http://aristo.allenai.org/id#3.5> ;
 	rel:effect <http://aristo.allenai.org/id#3.7> .
 <http://aristo.allenai.org/id#3.5>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a thermometer\"" .
 <http://aristo.allenai.org/id#3.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.10> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.10> .
 <http://aristo.allenai.org/id#3.5>
 	pred:isa "\"a thermometer\"" .
 <http://aristo.allenai.org/id#1.2>
@@ -1736,7 +1770,8 @@
 	pred:object <http://aristo.allenai.org/id#3.6> ;
 	rel:effect <http://aristo.allenai.org/id#3.8> .
 <http://aristo.allenai.org/id#3.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a hand lens\"" .
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
@@ -1773,6 +1808,7 @@
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 <http://aristo.allenai.org/id#3.11>
+	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -1781,12 +1817,13 @@
 	pred:object <http://aristo.allenai.org/id#3.6> ;
 	rel:effect <http://aristo.allenai.org/id#3.8> .
 <http://aristo.allenai.org/id#3.6>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.11> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.11> .
 <http://aristo.allenai.org/id#3.6>
 	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#1.2>
@@ -1827,7 +1864,8 @@
 	pred:object <http://aristo.allenai.org/id#3.5> ;
 	rel:effect <http://aristo.allenai.org/id#3.7> .
 <http://aristo.allenai.org/id#3.5>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"a balance\"" .
 <http://aristo.allenai.org/id#3.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
@@ -1855,9 +1893,13 @@
 	pred:isa "\"adapt\"" ;
 	rel:purpose <http://aristo.allenai.org/id#2.7> .
 <http://aristo.allenai.org/id#2.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"find\"" ;
+	pred:object <http://aristo.allenai.org/id#2.8> .
 <http://aristo.allenai.org/id#2.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"food\"" .
 <http://aristo.allenai.org/id#2.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:isa "\"find\"" ;
@@ -1884,7 +1926,12 @@
 	pred:isa "\"adapt\"" ;
 	rel:purpose <http://aristo.allenai.org/id#2.7> .
 <http://aristo.allenai.org/id#2.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:arg <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"keep\"" .
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"warmer\"" .
 <http://aristo.allenai.org/id#2.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:arg <http://aristo.allenai.org/id#2.8> ;
@@ -1911,7 +1958,12 @@
 	pred:isa "\"adapt\"" ;
 	rel:purpose <http://aristo.allenai.org/id#2.7> .
 <http://aristo.allenai.org/id#2.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:arg <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"grow\"" .
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"stronger\"" .
 <http://aristo.allenai.org/id#2.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:arg <http://aristo.allenai.org/id#2.8> ;
@@ -1938,9 +1990,13 @@
 	pred:isa "\"adapt\"" ;
 	rel:purpose <http://aristo.allenai.org/id#2.7> .
 <http://aristo.allenai.org/id#2.7>
-	a <event> .
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"escape\"" ;
+	pred:object <http://aristo.allenai.org/id#2.8> .
 <http://aristo.allenai.org/id#2.8>
-	a <entity> .
+	a <entity> ;
+	pred:isa "\"from predators\"" .
 <http://aristo.allenai.org/id#2.7>
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
 	pred:isa "\"escape\"" ;
@@ -1951,6 +2007,8 @@
 	a <entity> ,
 	  <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"hibernate\"" ,
+		 "\"hibernation\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.6> .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
@@ -1974,6 +2032,7 @@
 		 "\"hibernation\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
+	pred:isa "\"camouflage\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.6> .
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -1992,6 +2051,8 @@
 	a <entity> ,
 	  <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"color\"" ,
+		 "\"coloration\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.6> .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
@@ -2017,6 +2078,8 @@
 	a <entity> ,
 	  <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"migrate\"" ,
+		 "\"migration\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.6> .
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
@@ -2051,6 +2114,8 @@
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"energy\"" .
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"growth from soil\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"repair\"" .
 <http://aristo.allenai.org/id#1.5>
@@ -2068,6 +2133,8 @@
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"energy\"" .
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"growth from food\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"repair\"" .
 <http://aristo.allenai.org/id#1.5>
@@ -2085,6 +2152,8 @@
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"energy\"" .
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"growth from water\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"repair\"" .
 <http://aristo.allenai.org/id#1.5>
@@ -2102,6 +2171,8 @@
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
 	pred:isa "\"energy\"" .
+<http://aristo.allenai.org/id#1.5>
+	pred:isa "\"growth from air\"" .
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"repair\"" .
 <http://aristo.allenai.org/id#1.5>
@@ -2115,6 +2186,7 @@
 	pred:isa "\"appear\"" .
 <http://aristo.allenai.org/id#2.10>
 	a <entity> ;
+	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 <http://aristo.allenai.org/id#2.2>
 	a <entity> ;
@@ -2138,6 +2210,7 @@
 	pred:isa "\"appear\"" .
 <http://aristo.allenai.org/id#2.10>
 	a <entity> ;
+	pred:isa "\"sound\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 <http://aristo.allenai.org/id#2.2>
 	a <entity> ;
@@ -2161,6 +2234,7 @@
 	pred:isa "\"appear\"" .
 <http://aristo.allenai.org/id#2.10>
 	a <entity> ;
+	pred:isa "\"light\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 <http://aristo.allenai.org/id#2.2>
 	a <entity> ;
@@ -2184,6 +2258,7 @@
 	pred:isa "\"appear\"" .
 <http://aristo.allenai.org/id#2.10>
 	a <entity> ;
+	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 <http://aristo.allenai.org/id#2.2>
 	a <entity> ;

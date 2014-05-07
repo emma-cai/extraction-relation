@@ -30,17 +30,19 @@ relation(InfString,JsonString) :-
 	with_output_to(atom(JsonString),
 		       json_write(current_output,Json,[width(0)])).
 
-:- dynamic current_question_focus/1.
+current_question_focus(Focus) :-
+	nb_current(current_question_focus,Focus).
 % top level to process all input as single question
 question(Focus,Inf) :-
 	once(focus_root(Focus,FocusRoot)),
-	asserta(current_question_focus(FocusRoot)),
+	nb_setval(current_question_focus,FocusRoot),
 	rdf(_Sentence,dep:root,Root),
-	relation(Root,Inf,_Json).
+	relation(Root,Inf,_Json),
+	Inf \= ''.
 question(_,_) :-
 	rdf_unload_graph(antecedent),
 	rdf_unload_graph(consequent),
-	retract(current_question_focus(_)),
+	nb_delete(current_question_focus),
 	fail.
 
 focus_root(FocusString,Root) :-
