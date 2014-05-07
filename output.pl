@@ -1,16 +1,16 @@
 :- use_module(library(http/json)).
 :- use_module(library(semweb/rdf_turtle_write)).
 
-:- rdf_meta write_rdf(r,r,-,-).
+:- rdf_meta write_rdf(r,r,-,-,-).
 
 :- rdf_register_prefix(pred, 'http://aristo.allenai.org/pred/').
 :- rdf_register_prefix(rel, 'http://aristo.allenai.org/rel/').
 
 
-write_relation(Top,Antecedent,Rel,Consequent,Json) :-
+write_relation(Top,Antecedent,Rel,Consequent,Inf,Json) :-
 	text_relation(Antecedent,Rel,Consequent,Text),
 	format(current_output, '% ~w\t~w\t~w', Text), nl,
-	write_inf_relation(Top,Antecedent,Rel,Consequent), nl,
+	write_inf_relation(Top,Antecedent,Rel,Consequent,Inf),
 	json_relation(Antecedent,Rel,Consequent,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -47,11 +47,11 @@ json_rel([Rel-_Id|Tokens],Json) :- !,
 json_rel([Rel|Tokens],json([class='Relation',string=TokenIds,normalizedRelation=Rel])) :-
 	json_ids(Tokens,TokenIds).
 
-write_simple_tuple(Node,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
+write_simple_tuple(Node,Inf,json([class='ExtractionRule',antecedents=[Json],consequents=[],confidence=1.0])) :-
 	tuple(Node,Tuple),
 	text_tuple(Tuple,Text),
 	write('% '), write(Text), nl,
-	write_inf_simple_tuple(Node,Tuple),
+	write_inf_simple_tuple(Node,Tuple,Inf),
 	json_tuple(Tuple,Json).
 %	json:json_write(current_output,Json), nl.
 
@@ -105,9 +105,9 @@ question_focus_consequent_arg(Id) :-
 question_focus_consequent_arg(_).
 
 
-write_inf_relation(Top,Ent-_,Rel,Tuple) :- !,
-	write_inf_relation(Top,Ent,Rel,Tuple).
-write_inf_relation(_Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :- % question-specific
+write_inf_relation(Top,Ent-_,Rel,Tuple,Out) :- !,
+	write_inf_relation(Top,Ent,Rel,Tuple,Out).
+write_inf_relation(_Top,Entity,[Rel-_|_],[Subj,Verb|Rest],Out) :- % question-specific
 	current_question_focus(_),
 	atom(Entity),
 	entity_id(Subj,E),
@@ -120,16 +120,16 @@ write_inf_relation(_Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :- % question-specifi
 	downcase_atom(Rel,LRel),
 	rdf_global_id(rel:LRel,RelId),
 	rdf_assert(AntecedentId,RelId,Subj,antecedent),
-	write_question_relation0(Entity,[Subj,Verb|Rest]).
-write_inf_relation(_Top,Antecedent,[Rel-_|_],Consequent) :- % question-specific
+	write_question_relation0(Entity,[Subj,Verb|Rest],Out).
+write_inf_relation(_Top,Antecedent,[Rel-_|_],Consequent,Out) :- % question-specific
 	current_question_focus(_), !,
 	inf_tuple(Antecedent,AntecedentId,antecedent),
 	inf_tuple(Consequent,ConsequentId,antecedent),
 	downcase_atom(Rel,LRel),
 	rdf_global_id(rel:LRel,RelId),
 	rdf_assert(AntecedentId,RelId,ConsequentId,antecedent),
-	write_question_relation0(Antecedent,Consequent).
-write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
+	write_question_relation0(Antecedent,Consequent,Out).
+write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest],Out) :-
 	atom(Entity),
 	entity_id(Subj,E),
 	% isa relative clause
@@ -142,27 +142,29 @@ write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest]) :-
 	downcase_atom(Rel,LRel),
 	% left to right
 	rdf_assert(Entity,pred:isa,Subj,ConsequentId), % RHS
-	write_inf_relation0(Top,AntecedentId,[LRel,StrippedAntecedentId,StrippedSubjId],ConsequentId),
+	write_inf_relation0(Top,AntecedentId,[LRel,StrippedAntecedentId,StrippedSubjId],ConsequentId,Out1),
 	rdf_retractall(Entity,pred:isa,Subj,ConsequentId), % RHS
 	% right to left
 	rdf_assert(Entity,pred:isa,Subj,AntecedentId), %LHS
-	write_inf_relation0(Top,ConsequentId,[LRel,StrippedAntecedentId,StrippedSubjId],AntecedentId),
+	write_inf_relation0(Top,ConsequentId,[LRel,StrippedAntecedentId,StrippedSubjId],AntecedentId,Out2),
+	atomic_list_concat([Out1,Out2],Out),
 	% write turtle
 	rdf_global_id(rel:LRel,RelId),
 	rdf_assert(AntecedentId,RelId,Subj,AntecedentId), %LHS
 	write_turtle_relation(AntecedentId,ConsequentId),
 	rdf_unload_graph(AntecedentId),
 	rdf_unload_graph(ConsequentId).
-write_inf_relation(Top,Antecedent,[Rel-_|_],Consequent) :-
+write_inf_relation(Top,Antecedent,[Rel-_|_],Consequent,Out) :-
 	inf_tuple(Antecedent,_,AntecedentId),
 	once(stripped_id(AntecedentId,StrippedAntecedentId)),
 	inf_tuple(Consequent,_,ConsequentId),
 	once(stripped_id(ConsequentId,StrippedConsequentId)),
 	downcase_atom(Rel,LRel),
 	% left to right
-	write_inf_relation0(Top,AntecedentId,[LRel,StrippedAntecedentId,StrippedConsequentId],ConsequentId),
+	write_inf_relation0(Top,AntecedentId,[LRel,StrippedAntecedentId,StrippedConsequentId],ConsequentId,Out1),
 	% right to left
-	write_inf_relation0(Top,ConsequentId,[LRel,StrippedAntecedentId,StrippedConsequentId],AntecedentId),
+	write_inf_relation0(Top,ConsequentId,[LRel,StrippedAntecedentId,StrippedConsequentId],AntecedentId,Out2),
+	atomic_list_concat([Out1,Out2],Out),
 	% write turtle
 	rdf_global_id(rel:LRel,RelId),
 	rdf_assert(AntecedentId,RelId,ConsequentId,AntecedentId), %LHS
@@ -176,87 +178,82 @@ write_turtle_relation(AntecedentId,ConsequentId) :-
 	nl,
 	rdf_save_turtle(stream(current_output),[graph(ConsequentId),silent(true)]).
 
-write_inf_relation0(Top,Left,Rel,Right) :-
+write_inf_relation0(Top,Left,Rel,Right,Out) :-
 	gensym(rule,Id),
-	write_inf_rule_text(Top,Id),
-	format('~w:: ', [Id]),
-	write_inf_tuple(Left,[],LeftTriples,true),
-	format(' -> ~w(~w, ~w)', Rel),
-	write_inf_tuple(Right,LeftTriples,_,false),
-	write('.'), nl.
+	write_inf_rule_text(Top,Id,Text),
+	write_inf_tuple(Left,[],LeftTriples,true,LHS),
+	format(atom(Relation), '~w(~w, ~w)', Rel),
+	write_inf_tuple(Right,LeftTriples,_,false,RHS),
+	format(atom(Out), '~w~w:: ~w -> ~w~w.~n', [Text,Id,LHS,Relation,RHS]).
 
-write_question_relation0(Left,Right) :-
+write_question_relation0(Left,Right,Out) :-
 	( question_focus(Left) ; question_focus(Right) ),
 	gensym(rule,Id),
-	write_inf_rule_text(_Top,Id), % all input
-	format('~w:: ', [Id]),
-	write_inf_tuple(antecedent,[],LeftTriples,true),
-	write(' -> '),
-	write_inf_tuple(consequent,LeftTriples,_,true),
-	write('.'), nl,
+	write_inf_rule_text(_Top,Id,Text), % all input
+	write_inf_tuple(antecedent,[],LeftTriples,true,LHS),
+	write_inf_tuple(consequent,LeftTriples,_,true,RHS),
+	format(atom(Out), '~w~w:: ~w -> ~w.~n', [Text,Id,LHS,RHS]),
 	write_turtle_relation(antecedent,consequent),
 	!.
-write_question_relation0(_,_). % setup only, don't write
+write_question_relation0(_,_,''). % setup only, don't write
 
-write_inf_tuple(GraphId,Remove,Triples,First) :-
+write_inf_tuple(GraphId,Remove,Triples,First,Out) :-
 	findall([S,P,O],
 		(rdf(S,P,O,GraphId),
 		 \+ rdf_global_id(rdf:type,P)),
 		Ts),
 	subtract(Ts,Remove,Triples),
-	( Triples = []
-	; ( (First = true ; write(', ')),
-	   write_rdf_list(Triples,GraphId)) ),
+	write_rdf_list(Triples,GraphId,TriplesOut),
+	( ( (Triples = [] ; First = true),
+	    Out = TriplesOut )
+	; format(atom(Out), ', ~w', [TriplesOut]) ),
 	!.
 
-write_inf_simple_tuple(_,Tuple) :- % question-specific
+write_inf_simple_tuple(_,Tuple,Out) :- % question-specific
 	current_question_focus(_), !,
 	inf_tuple(Tuple,_,antecedent),
-	write_question_relation0(Tuple,[]).
-write_inf_simple_tuple(Root,Tuple) :-
+	write_question_relation0(Tuple,[],Out).
+write_inf_simple_tuple(Root,Tuple,Inf) :-
 	inf_tuple(Tuple,_,Id),
-	write_inf_simple_tuple0(Root,Id),
+	findall(Out,write_inf_simple_tuple0(Root,Id,Out),Outs),
+	atomic_list_concat(Outs,Inf),
 	rdf_unload_graph(Id).
 
-write_inf_simple_tuple0(Root,GraphId) :-
+write_inf_simple_tuple0(Root,GraphId,Out) :-
 	rdf(S,pred:isa,O,GraphId),
-	% write first
 	gensym(rule,Id),
-	write_inf_rule_text(Root,Id),
-	format('~w:: ', [Id]),
-	write_rdf(S,pred:isa,O,GraphId),
-	write(' -> '),
+	write_inf_rule_text(Root,Id,Text),
+	% write first
+	write_rdf(S,pred:isa,O,GraphId,First),
 	% write rest
-	write_inf_tuple(GraphId,[[S,_,O]],_,true),
-	write('.'), nl,
-	fail.
-write_inf_simple_tuple0(_,GraphId) :-
+	write_inf_tuple(GraphId,[[S,_,O]],_,true,Rest),
+	format(atom(Out), '~w~w:: ~w -> ~w.~n', [Text,Id,First,Rest]).
+write_inf_simple_tuple0(_,GraphId,'') :-
 	nl,
 	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
 	nl.
 
-write_inf_rule_text(Root,Id) :-
+write_inf_rule_text(Root,Id,Out) :-
 	tokens(Root,Tokens),
-	format('english(~w, "', [Id]),
-	write_tokens(Tokens),
-	write('").'), nl, !.
-
+	tokens_text(Tokens,Text),
+	format(atom(Out), 'english(~w, "~w").~n', [Id,Text]),
+	!.
 
 % comma separated list
-write_rdf_list([],_) :- !.
-write_rdf_list([[S,P,O]],GraphId) :-
-	write_rdf(S,P,O,GraphId),
+write_rdf_list([],_,'') :- !.
+write_rdf_list([[S,P,O]],GraphId,Out) :-
+	write_rdf(S,P,O,GraphId,Out),
 	!.
-write_rdf_list([[S,P,O]|Rest],GraphId) :-
-	write_rdf(S,P,O,GraphId),
-	write(', '),
-	write_rdf_list(Rest,GraphId).
+write_rdf_list([[S,P,O]|Rest],GraphId,AllOut) :-
+	write_rdf(S,P,O,GraphId,Out),
+	write_rdf_list(Rest,GraphId,RestOut),
+	format(atom(AllOut), '~w, ~w', [Out,RestOut]).
 
-write_rdf(S,P,O,GraphId) :-
+write_rdf(S,P,O,GraphId,Out) :-
 	rdf(S,P,O,GraphId),
 	(O = literal(Val); Val = O),
 	stripped_ids([P,S,Val],Ids),
-	format('~w(~w, ~w)',Ids), !.
+	format(atom(Out), '~w(~w, ~w)',Ids), !.
 
 inf_tuple(Ent-_,EntId,GraphId) :- !,
 	inf_tuple(Ent,EntId,GraphId).
@@ -493,7 +490,7 @@ json_id(Token,json([token=TokenId])) :-
 
 json_lemma_ids(Tokens,TokenIds) :-
 	maplist(json_lemma_id,Tokens,TokenIds), !.
-json_lemma_id(Token-Val,json([token=TokenId,text=Val])) :- !,
+json_lemma_id(Token-Lemma,json([token=TokenId,text=Lemma])) :- !,
 	rdf_global_id(id:Val,Token),
 	atomic_list_concat([id,':',Val],TokenId).
 json_lemma_id(Token,json([token=TokenId,text=Text])) :-

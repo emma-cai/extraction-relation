@@ -4153,17 +4153,6 @@
 	pred:agent <http://aristo.allenai.org/id#221.2> ;
 	pred:for <http://aristo.allenai.org/id#221.10> ;
 	pred:isa "\"prepare\"" .
-<http://aristo.allenai.org/id#221.2>
-	a <entity> ;
-	pred:isa "\"Some animals\"" .
-<http://aristo.allenai.org/id#221.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#221.2> ;
-	pred:isa "\"gather\"" ;
-	pred:object <http://aristo.allenai.org/id#221.4> .
-<http://aristo.allenai.org/id#221.4>
-	a <entity> ;
-	pred:isa "\"food\"" .
 <http://aristo.allenai.org/id#222.1>
 	a <entity> ;
 	pred:isa "\"Squirrels\"" .

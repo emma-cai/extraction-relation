@@ -256,7 +256,6 @@
 % "Body fat"	"helps"/PURPOSE	("animals" "get" "long periods of time with little food" [ "through" ] )
 % "Body fat"	"is"/EXAMPLE	"a form of stored energy"
 % ("Some animals"/?x "gather" "food")	"in preparation for"/EFFECT	("Some animals"/?x "prepare" "" [ "for the long winter" ] )
-% ("Some animals" "gather" "food")
 % ("Squirrels" "collect" "acorns")
 % ("Some animals" "live" "a very different life" [ "in the warm weather than in the cold weather" ] )
 % ("Bears"/?x "eat" "a great deal of food" [ "before doing so" ] )	"to"/EFFECT	("Bears"/?x "increase" "their[Bears] body fat")
