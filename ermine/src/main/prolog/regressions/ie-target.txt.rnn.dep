@@ -1,0 +1,412 @@
+
+
+/* Sentence #1
+(ROOT (S (PP (IN In) (NP (DT the) (JJ hot) (NN weather))) (NP (PRP$ our) (NNS bodies)) (VP (VBP sweat) (NP (NP (-LRB- -LRB-) (NN perspiration) (-RRB- -RRB-)) (, ,)) (S (VP (VBG bringing) (NP (NN water)) (PP (TO to) (NP (PRP$ our) (NN skin)))))) (. .)))  */
+  
+root(1.0-ROOT, 1.7-sweat).
+det(1.4-weather, 1.2-the).
+amod(1.4-weather, 1.3-hot).
+prep_in(1.7-sweat, 1.4-weather).
+poss(1.6-bodies, 1.5-our).
+nsubj(1.7-sweat, 1.6-bodies).
+dobj(1.7-sweat, 1.9-perspiration).
+xcomp(1.7-sweat, 1.12-bringing).
+dobj(1.12-bringing, 1.13-water).
+poss(1.16-skin, 1.15-our).
+prep_to(1.12-bringing, 1.16-skin).
+
+
+/* Sentence #2
+(ROOT (S (SBAR (WHADVP (WRB When)) (S (NP (DT some) (NNS animals)) (VP (VB prepare) (PP (IN for) (NP (DT the) (JJ long) (NNS winters))) (PP (IN by) (S (VP (VP (VBG storing) (NP (NN food))) (CC and) (VP (VBG going) (S (ADJP (JJ dormant)))))))))) (NP (PRP it)) (VP (VBZ is) (VP (VBN called) (S (NP (NN hibernation))))) (. .)))  */
+  
+root(2.0-ROOT, 2.17-called).
+advmod(2.4-prepare, 2.1-When).
+det(2.3-animals, 2.2-some).
+nsubj(2.4-prepare, 2.3-animals).
+advcl(2.17-called, 2.4-prepare).
+det(2.8-winters, 2.6-the).
+amod(2.8-winters, 2.7-long).
+prep_for(2.4-prepare, 2.8-winters).
+prepc_by(2.4-prepare, 2.10-storing).
+dobj(2.10-storing, 2.11-food).
+prepc_by(2.4-prepare, 2.13-going).
+conj_and(2.10-storing, 2.13-going).
+acomp(2.13-going, 2.14-dormant).
+nsubjpass(2.17-called, 2.15-it).
+auxpass(2.17-called, 2.16-is).
+xcomp(2.17-called, 2.18-hibernation).
+
+*** 'go' is filtered without dobj
+
+/* Sentence #3
+(ROOT (S (NP (DT A) (NN hand) (NN lens)) (VP (VBZ is) (VP (VBN used) (S (VP (TO to) (VP (VB view) (NP (NNS objects)) (PP (IN in) (NP (JJR more) (NN detail)))))))) (. .)))  */
+  
+root(3.0-ROOT, 3.5-used).
+det(3.3-lens, 3.1-A).
+nn(3.3-lens, 3.2-hand).
+nsubjpass(3.5-used, 3.3-lens).
+auxpass(3.5-used, 3.4-is).
+aux(3.7-view, 3.6-to).
+xcomp(3.5-used, 3.7-view).
+dobj(3.7-view, 3.8-objects).
+amod(3.11-detail, 3.10-more).
+prep_in(3.7-view, 3.11-detail).
+
+
+/* Sentence #4
+(ROOT (S (NP (NN Freezing)) (VP (VBZ involves) (S (VP (VBG changing) (NP (NN water)) (PP (PP (IN from) (NP (PRP$ its) (JJ liquid) (NN state))) (PP (TO to) (NP (NP (PRP$ its) (JJ solid) (NN state)) (PRN (-LRB- -LRB-) (NP (NN ice)) (-RRB- -RRB-))))) (PP (IN by) (NP (NP (DT the) (NN removal)) (PP (IN of) (NP (NN heat)))))))) (. .)))  */
+  
+root(4.0-ROOT, 4.2-involves).
+nsubj(4.2-involves, 4.1-Freezing).
+xcomp(4.2-involves, 4.3-changing).
+dobj(4.3-changing, 4.4-water).
+poss(4.8-state, 4.6-its).
+amod(4.8-state, 4.7-liquid).
+prep_from(4.3-changing, 4.8-state).
+poss(4.12-state, 4.10-its).
+amod(4.12-state, 4.11-solid).
+prep_to(4.3-changing, 4.12-state).
+appos(4.12-state, 4.14-ice).
+det(4.18-removal, 4.17-the).
+prep_by(4.3-changing, 4.18-removal).
+prep_of(4.18-removal, 4.20-heat).
+
+
+/* Sentence #5
+(ROOT (S (NP (NNS Animals)) (VP (MD can) (RB not) (VP (VB make) (NP (PRP$ their) (JJ own) (NN food)) (SBAR (IN so) (S (NP (PRP they)) (VP (MD must) (VP (VB eat) (S (VP (TO to) (VP (VB get) (NP (NNS nutrients))))))))))) (. .)))  */
+  
+root(5.0-ROOT, 5.4-make).
+nsubj(5.4-make, 5.1-Animals).
+aux(5.4-make, 5.2-can).
+neg(5.4-make, 5.3-not).
+poss(5.7-food, 5.5-their).
+amod(5.7-food, 5.6-own).
+dobj(5.4-make, 5.7-food).
+mark(5.11-eat, 5.8-so).
+nsubj(5.11-eat, 5.9-they).
+aux(5.11-eat, 5.10-must).
+advcl(5.4-make, 5.11-eat).
+aux(5.13-get, 5.12-to).
+xcomp(5.11-eat, 5.13-get).
+dobj(5.13-get, 5.14-nutrients).
+
+
+/* Sentence #6
+(ROOT (S (NP (NP (DT The) (NN friction)) (PP (IN between) (NP (DT the) (CD two) (NNS surfaces)))) (VP (VBZ converts) (NP (JJ kinetic) (NN energy)) (PP (IN into) (NP (NN heat)))) (. .)))  */
+  
+root(6.0-ROOT, 6.7-converts).
+det(6.2-friction, 6.1-The).
+nsubj(6.7-converts, 6.2-friction).
+det(6.6-surfaces, 6.4-the).
+num(6.6-surfaces, 6.5-two).
+prep_between(6.2-friction, 6.6-surfaces).
+amod(6.9-energy, 6.8-kinetic).
+dobj(6.7-converts, 6.9-energy).
+prep_into(6.7-converts, 6.11-heat).
+
+
+/* Sentence #7
+(ROOT (S (S (VP (VBG Getting) (NP (RB enough) (NN rest)))) (VP (VBZ is) (ADVP (RB also)) (NP (NP (DT an) (JJ important) (NN part)) (PP (IN of) (VP (VBG living) (NP (DT a) (JJ healthy) (NN life)))))) (. .)))  */
+  
+root(7.0-ROOT, 7.8-part).
+csubj(7.8-part, 7.1-Getting).
+advmod(7.3-rest, 7.2-enough).
+dobj(7.1-Getting, 7.3-rest).
+cop(7.8-part, 7.4-is).
+advmod(7.8-part, 7.5-also).
+det(7.8-part, 7.6-an).
+amod(7.8-part, 7.7-important).
+prep(7.8-part, 7.9-of).
+dep(7.9-of, 7.10-living).
+det(7.13-life, 7.11-a).
+amod(7.13-life, 7.12-healthy).
+dobj(7.10-living, 7.13-life).
+
+
+/* Sentence #8
+(ROOT (S (NP (NP (DT The) (NN tool)) (SBAR (WHNP (WDT that)) (S (VP (VBZ is) (VP (VBN used) (S (VP (TO to) (VP (VB measure) (NP (NP (DT the) (NN volume)) (PP (IN of) (NP (DT a) (NN liquid)))))))))))) (VP (VBZ is) (NP (DT a) (VBN graduated) (NN cylinder))) (. .)))  */
+  
+root(8.0-ROOT, 8.16-cylinder).
+det(8.2-tool, 8.1-The).
+nsubj(8.16-cylinder, 8.2-tool).
+nsubjpass(8.5-used, 8.3-that).
+auxpass(8.5-used, 8.4-is).
+rcmod(8.2-tool, 8.5-used).
+aux(8.7-measure, 8.6-to).
+xcomp(8.5-used, 8.7-measure).
+det(8.9-volume, 8.8-the).
+dobj(8.7-measure, 8.9-volume).
+det(8.12-liquid, 8.11-a).
+prep_of(8.9-volume, 8.12-liquid).
+dep(8.16-cylinder, 8.13-is).
+det(8.16-cylinder, 8.14-a).
+amod(8.16-cylinder, 8.15-graduated).
+
+*** no cop parse
+
+/* Sentence #9
+(ROOT (NP (NP (NN camouflage)) (: :) (NP (NP (DT The) (NN disguising)) (PP (IN of) (NP (JJ military) (NNS personnel))) (S (VP (TO to) (VP (VB make) (S (NP (PRP them)) (VP (VB blend) (ADVP (IN in)) (PP (IN with) (NP (PRP$ their) (NNS surroundings))))))))) (. .)))  */
+  
+root(9.0-ROOT, 9.1-camouflage).
+det(9.4-disguising, 9.3-The).
+dep(9.1-camouflage, 9.4-disguising).
+amod(9.7-personnel, 9.6-military).
+prep_of(9.4-disguising, 9.7-personnel).
+aux(9.9-make, 9.8-to).
+infmod(9.4-disguising, 9.9-make).
+nsubj(9.11-blend, 9.10-them).
+ccomp(9.9-make, 9.11-blend).
+advmod(9.11-blend, 9.12-in).
+poss(9.15-surroundings, 9.14-their).
+prep_with(9.11-blend, 9.15-surroundings).
+
+
+/* Sentence #10
+(ROOT (S (NP (NNS Decomposers)) (VP (VBP are) (NP (NP (VBG living) (NNS things)) (SBAR (WHNP (WDT that)) (S (VP (VP (VBP break) (PRT (RP down)) (NP (JJ dead) (NNS organisms))) (CC and) (VP (VB recycle) (NP (PRP$ their) (NNS nutrients)) (PP (IN into) (NP (DT the) (NN soil))))))))) (. .)))  */
+  
+root(10.0-ROOT, 10.4-things).
+nsubj(10.4-things, 10.1-Decomposers).
+cop(10.4-things, 10.2-are).
+amod(10.4-things, 10.3-living).
+nsubj(10.6-break, 10.5-that).
+nsubj(10.11-recycle, 10.5-that).
+rcmod(10.4-things, 10.6-break).
+prt(10.6-break, 10.7-down).
+amod(10.9-organisms, 10.8-dead).
+dobj(10.6-break, 10.9-organisms).
+rcmod(10.4-things, 10.11-recycle).
+conj_and(10.6-break, 10.11-recycle).
+poss(10.13-nutrients, 10.12-their).
+dobj(10.11-recycle, 10.13-nutrients).
+det(10.16-soil, 10.15-the).
+prep_into(10.11-recycle, 10.16-soil).
+
+
+/* Sentence #11
+(ROOT (S (NP (NN Gravity)) (VP (VBZ is) (NP (NP (DT the) (NN force)) (SBAR (WHNP (WDT that)) (S (VP (VBZ pulls) (NP (NP (DT an) (NN object)) (PP (IN toward) (NP (NP (DT the) (NN center)) (PP (IN of) (NP (DT the) (NNP Earth))))))))))) (. .)))  */
+  
+root(11.0-ROOT, 11.4-force).
+nsubj(11.4-force, 11.1-Gravity).
+cop(11.4-force, 11.2-is).
+det(11.4-force, 11.3-the).
+nsubj(11.6-pulls, 11.5-that).
+rcmod(11.4-force, 11.6-pulls).
+det(11.8-object, 11.7-an).
+dobj(11.6-pulls, 11.8-object).
+det(11.11-center, 11.10-the).
+prep_toward(11.8-object, 11.11-center).
+det(11.14-Earth, 11.13-the).
+prep_of(11.11-center, 11.14-Earth).
+
+
+/* Sentence #12
+(ROOT (S (NP (NP (DT A) (JJ human) (POS 's)) (NN body)) (VP (VBZ produces) (S (NP (NN sweat)) (VP (VBZ is) (NP (NP (DT a) (NN way)) (SBAR (WHNP (IN that)) (S (NP (DT an) (NN organism)) (VP (MD may) (VP (VB adjust) (PP (TO to) (NP (JJ hot) (NNS temperatures))))))))))) (. .)))  */
+  
+root(12.0-ROOT, 12.5-produces).
+det(12.2-human, 12.1-A).
+poss(12.4-body, 12.2-human).
+nsubj(12.5-produces, 12.4-body).
+nsubj(12.9-way, 12.6-sweat).
+cop(12.9-way, 12.7-is).
+det(12.9-way, 12.8-a).
+ccomp(12.5-produces, 12.9-way).
+dobj(12.14-adjust, 12.10-that).
+det(12.12-organism, 12.11-an).
+nsubj(12.14-adjust, 12.12-organism).
+aux(12.14-adjust, 12.13-may).
+rcmod(12.9-way, 12.14-adjust).
+amod(12.17-temperatures, 12.16-hot).
+prep_to(12.14-adjust, 12.17-temperatures).
+
+
+/* Sentence #13
+(ROOT (S (NP (NP (DT A) (NN squirrel)) (VP (VBG storing) (NP (NNS nuts)))) (VP (VBZ is) (VP (VBG preparing) (PP (IN for) (NP-TMP (NP (DT a) (JJ seasonal) (NN change)) (PP (IN in) (NP (DT the) (NN environment))))))) (. .)))  */
+  
+root(13.0-ROOT, 13.6-preparing).
+det(13.2-squirrel, 13.1-A).
+nsubj(13.6-preparing, 13.2-squirrel).
+partmod(13.2-squirrel, 13.3-storing).
+dobj(13.3-storing, 13.4-nuts).
+aux(13.6-preparing, 13.5-is).
+det(13.10-change, 13.8-a).
+amod(13.10-change, 13.9-seasonal).
+prep_for(13.6-preparing, 13.10-change).
+det(13.13-environment, 13.12-the).
+prep_in(13.10-change, 13.13-environment).
+
+
+/* Sentence #14
+(ROOT (S (NP (DT A) (NN student)) (VP (MD should) (VP (VB use) (NP (DT a) (NN hand) (NN lens)) (S (VP (TO to) (VP (VB get) (NP-TMP (NP (DT a) (JJR better) (NN look)) (PP (IN at) (NP (DT the) (NNS spots))))))))) (. .)))  */
+  
+root(14.0-ROOT, 14.4-use).
+det(14.2-student, 14.1-A).
+nsubj(14.4-use, 14.2-student).
+aux(14.4-use, 14.3-should).
+det(14.7-lens, 14.5-a).
+nn(14.7-lens, 14.6-hand).
+dobj(14.4-use, 14.7-lens).
+aux(14.9-get, 14.8-to).
+xcomp(14.4-use, 14.9-get).
+det(14.12-look, 14.10-a).
+amod(14.12-look, 14.11-better).
+tmod(14.9-get, 14.12-look).
+det(14.15-spots, 14.14-the).
+prep_at(14.12-look, 14.15-spots).
+
+
+/* Sentence #15
+(ROOT (S (S (VP (VBG Decreasing) (NP (DT the) (NN temperature)))) (VP (VBZ is) (NP (NP (CD one) (NN way)) (SBAR (S (VP (TO to) (VP (VB change) (NP (NN water)) (PP (PP (IN from) (NP (DT a) (NN liquid))) (PP (TO to) (NP (DT a) (JJ solid)))))))))) (. .)))  */
+  
+root(15.0-ROOT, 15.6-way).
+csubj(15.6-way, 15.1-Decreasing).
+det(15.3-temperature, 15.2-the).
+dobj(15.1-Decreasing, 15.3-temperature).
+cop(15.6-way, 15.4-is).
+num(15.6-way, 15.5-one).
+aux(15.8-change, 15.7-to).
+infmod(15.6-way, 15.8-change).
+dobj(15.8-change, 15.9-water).
+det(15.12-liquid, 15.11-a).
+prep_from(15.8-change, 15.12-liquid).
+det(15.15-solid, 15.14-a).
+prep_to(15.8-change, 15.15-solid).
+
+
+/* Sentence #16
+(ROOT (S (NP (NNS Animals)) (VP (VBP get) (NP (NN energy)) (PP (IN for) (NP (NP (NP (NN growth)) (CC and) (NP (NN repair))) (PP (IN from) (NP (NN food)))))) (. .)))  */
+  
+root(16.0-ROOT, 16.2-get).
+nsubj(16.2-get, 16.1-Animals).
+dobj(16.2-get, 16.3-energy).
+prep_for(16.2-get, 16.5-growth).
+prep_for(16.2-get, 16.7-repair).
+conj_and(16.5-growth, 16.7-repair).
+prep_from(16.5-growth, 16.9-food).
+
+
+/* Sentence #17
+(ROOT (S (NP (NP (DT The) (NN heat)) (SBAR (WHNP (WDT that)) (S (VP (VBZ produces) (NP (DT the) (NN smoke)))))) (VP (VBZ is) (VP (VBN caused) (PP (IN by) (NP (NN friction))))) (. .)))  */
+  
+root(17.0-ROOT, 17.8-caused).
+det(17.2-heat, 17.1-The).
+nsubjpass(17.8-caused, 17.2-heat).
+nsubj(17.4-produces, 17.3-that).
+rcmod(17.2-heat, 17.4-produces).
+det(17.6-smoke, 17.5-the).
+dobj(17.4-produces, 17.6-smoke).
+auxpass(17.8-caused, 17.7-is).
+agent(17.8-caused, 17.10-friction).
+
+
+/* Sentence #18
+(ROOT (S (NP (VBG Resting)) (VP (VBZ is) (ADJP (JJ necessary)) (SBAR (IN for) (S (NP (NNS humans)) (VP (TO to) (VP (VB maintain) (NP (JJ good) (NN health))))))) (. .)))  */
+  
+root(18.0-ROOT, 18.3-necessary).
+nsubj(18.3-necessary, 18.1-Resting).
+cop(18.3-necessary, 18.2-is).
+mark(18.7-maintain, 18.4-for).
+nsubj(18.7-maintain, 18.5-humans).
+aux(18.7-maintain, 18.6-to).
+advcl(18.3-necessary, 18.7-maintain).
+amod(18.9-health, 18.8-good).
+dobj(18.7-maintain, 18.9-health).
+
+
+/* Sentence #19
+(ROOT (S (NP (DT A) (NN student)) (VP (MD should) (VP (VB use) (NP (DT a) (VBN graduated) (NN cylinder)) (S (VP (TO to) (VP (VB measure) (NP (NP (RB exactly) (CD 10) (NNS milliliters)) (PRN (-LRB- -LRB-) (NP (NN mL)) (-RRB- -RRB-)) (PP (IN of) (NP (NN water))))))))) (. .)))  */
+  
+root(19.0-ROOT, 19.4-use).
+det(19.2-student, 19.1-A).
+nsubj(19.4-use, 19.2-student).
+aux(19.4-use, 19.3-should).
+det(19.7-cylinder, 19.5-a).
+amod(19.7-cylinder, 19.6-graduated).
+dobj(19.4-use, 19.7-cylinder).
+aux(19.9-measure, 19.8-to).
+xcomp(19.4-use, 19.9-measure).
+advmod(19.12-milliliters, 19.10-exactly).
+num(19.12-milliliters, 19.11-10).
+dobj(19.9-measure, 19.12-milliliters).
+appos(19.12-milliliters, 19.14-mL).
+prep_of(19.12-milliliters, 19.17-water).
+
+
+/* Sentence #20
+(ROOT (S (NP (NP (DT The) (JJ white) (NN fur)) (PP (IN of) (NP (DT an) (JJ arctic) (NN fox) (NNS blends)))) (ADVP (IN in) (PP (IN with) (NP (DT the) (NN snow)))) (VP (VBZ is) (VP (VBN called) (S (NP (NN camouflage))))) (. .)))  */
+  
+root(20.0-ROOT, 20.14-called).
+det(20.3-fur, 20.1-The).
+amod(20.3-fur, 20.2-white).
+nsubjpass(20.14-called, 20.3-fur).
+det(20.8-blends, 20.5-an).
+amod(20.8-blends, 20.6-arctic).
+nn(20.8-blends, 20.7-fox).
+prep_of(20.3-fur, 20.8-blends).
+advmod(20.14-called, 20.9-in).
+det(20.12-snow, 20.11-the).
+prep_with(20.9-in, 20.12-snow).
+auxpass(20.14-called, 20.13-is).
+xcomp(20.14-called, 20.15-camouflage).
+
+
+/* Sentence #21
+(ROOT (S (SBAR (WHADVP (WRB When)) (S (NP (NNS plants) (CC and) (NNS animals)) (VP (VB die)))) (, ,) (NP (NNS decomposers)) (VP (VBP help) (S (VP (VB return) (NP (NNS nutrients)) (PP (TO to) (NP (DT the) (NN food) (NN chain)))))) (. .)))  */
+  
+root(21.0-ROOT, 21.8-help).
+advmod(21.5-die, 21.1-When).
+nsubj(21.5-die, 21.2-plants).
+conj_and(21.2-plants, 21.4-animals).
+nsubj(21.5-die, 21.4-animals).
+advcl(21.8-help, 21.5-die).
+nsubj(21.8-help, 21.7-decomposers).
+ccomp(21.8-help, 21.9-return).
+dobj(21.9-return, 21.10-nutrients).
+det(21.14-chain, 21.12-the).
+nn(21.14-chain, 21.13-food).
+prep_to(21.9-return, 21.14-chain).
+
+
+/* Sentence #22
+(ROOT (S (NP (NN Gravity)) (VP (VBZ causes) (S (NP (DT the) (NN ball)) (VP (TO to) (VP (VB fall) (PP (TO to) (NP (DT the) (NN ground))))))) (. .)))  */
+  
+root(22.0-ROOT, 22.2-causes).
+nsubj(22.2-causes, 22.1-Gravity).
+det(22.4-ball, 22.3-the).
+nsubj(22.6-fall, 22.4-ball).
+aux(22.6-fall, 22.5-to).
+xcomp(22.2-causes, 22.6-fall).
+det(22.9-ground, 22.8-the).
+prep_to(22.6-fall, 22.9-ground).
+
+coref(1.5, 1.5-gov).
+coref(1.5, 1.15).
+coref(1.5, 1.9-gov).
+coref(1.5, 1.9).
+coref(1.5, 2.3-gov).
+coref(1.5, 5.1).
+coref(1.5, 5.5).
+coref(1.5, 5.9).
+coref(1.5, 16.1).
+coref(1.5, 3.3-gov).
+coref(1.5, 4.6).
+coref(1.5, 14.7).
+coref(1.5, 4.8-gov).
+coref(1.5, 4.10).
+coref(1.5, 10.13-gov).
+coref(1.5, 5.14).
+coref(1.5, 21.10).
+coref(1.5, 8.16-gov).
+coref(1.5, 8.2).
+coref(1.5, 19.7).
+coref(1.5, 8.12-gov).
+coref(1.5, 15.12).
+coref(1.5, 9.7-gov).
+coref(1.5, 9.10).
+coref(1.5, 9.14).
+coref(1.5, 10.4-gov).
+coref(1.5, 10.1).
+coref(1.5, 21.7).
+coref(1.5, 10.9-gov).
+coref(1.5, 10.12).
+coref(1.5, 14.2-gov).
+coref(1.5, 19.2).
