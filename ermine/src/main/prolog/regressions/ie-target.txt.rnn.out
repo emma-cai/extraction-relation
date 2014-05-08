@@ -1,0 +1,1190 @@
+% ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.4>
+	pred:isa "\"the hot weather\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"our bodies\"" .
+
+<http://aristo.allenai.org/id#1.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.6> ;
+	pred:in <http://aristo.allenai.org/id#1.4> ;
+	pred:isa "\"sweat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.9> ;
+	rel:effect <http://aristo.allenai.org/id#1.12> .
+
+<http://aristo.allenai.org/id#1.9>
+	a <entity> ;
+	pred:isa "\"perspiration\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#1.12>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.6> ;
+	pred:isa "\"bring\"" ;
+	pred:object <http://aristo.allenai.org/id#1.13> ;
+	pred:to <http://aristo.allenai.org/id#1.16> .
+
+<http://aristo.allenai.org/id#1.13>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"our[our] skin\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	a <entity> ;
+	pred:isa "\"our bodies\"" .
+english(rule1, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+rule1:: isa(E7S1-sweat, "sweat"), agent(E7S1-sweat, A6S1-body), isa(A6S1-body, "our bodies"), object(E7S1-sweat, A9S1-perspiration), isa(A9S1-perspiration, "perspiration"), in(E7S1-sweat, A4S1-weather), isa(A4S1-weather, "the hot weather") -> effect(E7S1-sweat, E12S1-bring), isa(E12S1-bring, "bring"), agent(E12S1-bring, A6S1-body), object(E12S1-bring, A13S1-water), isa(A13S1-water, "water"), to(E12S1-bring, A16S1-skin), isa(A16S1-skin, "our[our] skin").
+english(rule2, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+rule2:: isa(E12S1-bring, "bring"), agent(E12S1-bring, A6S1-body), isa(A6S1-body, "our bodies"), object(E12S1-bring, A13S1-water), isa(A13S1-water, "water"), to(E12S1-bring, A16S1-skin), isa(A16S1-skin, "our[our] skin") -> effect(E7S1-sweat, E12S1-bring), isa(E7S1-sweat, "sweat"), agent(E7S1-sweat, A6S1-body), object(E7S1-sweat, A9S1-perspiration), isa(A9S1-perspiration, "perspiration"), in(E7S1-sweat, A4S1-weather), isa(A4S1-weather, "the hot weather").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"our"},  {"token":"id:1.6", "text":"bodies"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.5", "text":"our"},  {"token":"id:1.6", "text":"bodies"} ]} ]}, "verbPhrase": [ {"token":"id:1.7", "text":"sweat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.9", "text":"perspiration"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.1", "text":"In"},  {"token":"id:1.2", "text":"the"},  {"token":"id:1.3", "text":"hot"},  {"token":"id:1.4", "text":"weather"} ] ]} ], "relation": {"class":"Relation", "string": [], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.5", "text":"our"},  {"token":"id:1.6", "text":"bodies"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.5", "text":"our"},  {"token":"id:1.6", "text":"bodies"} ]} ]}, "verbPhrase": [ {"token":"id:1.12", "text":"bring"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.13", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.14", "text":"to"},  {"token":"id:1.15", "text":"our[our]"},  {"token":"id:1.16", "text":"skin"} ] ]} ], "confidence":1.0}
+
+% ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.10>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:isa "\"store\"" ;
+	pred:object <http://aristo.allenai.org/id#2.11> ;
+	rel:enable <http://aristo.allenai.org/id#2.4> .
+
+<http://aristo.allenai.org/id#2.11>
+	a <entity> ;
+	pred:isa "\"food\"" .
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:for <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"prepare\"" .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the long winters\"" .
+english(rule3, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule3:: isa(E10S2-store, "store"), agent(E10S2-store, A3S2-animal), isa(A3S2-animal, "some animals"), object(E10S2-store, A11S2-food), isa(A11S2-food, "food") -> enable(E10S2-store, E4S2-prepare), isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters").
+english(rule4, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule4:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> enable(E10S2-store, E4S2-prepare), isa(E10S2-store, "store"), agent(E10S2-store, A3S2-animal), object(E10S2-store, A11S2-food), isa(A11S2-food, "food").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:2.10", "text":"store"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:2.11", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.9", "text":"by"} ], "normalizedRelation":"ENABLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:2.4", "text":"prepare"} ], "extraPhrases": [ [ {"token":"id:2.5", "text":"for"},  {"token":"id:2.6", "text":"the"},  {"token":"id:2.7", "text":"long"},  {"token":"id:2.8", "text":"winters"} ] ]} ], "confidence":1.0}
+
+% ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:for <http://aristo.allenai.org/id#2.8> ;
+	pred:isa "\"prepare\"" ;
+	rel:example <http://aristo.allenai.org/id#2.18> .
+
+<http://aristo.allenai.org/id#2.8>
+	pred:isa "\"the long winters\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#2.18>
+	a <entity> ;
+	pred:isa "\"hibernation\"" .
+english(rule5, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule5:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> example(E4S2-prepare, A18S2-hibernation), isa(A18S2-hibernation, "hibernation").
+english(rule6, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+rule6:: isa(A18S2-hibernation, "hibernation") -> example(E4S2-prepare, A18S2-hibernation), isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:2.4", "text":"prepare"} ], "extraPhrases": [ [ {"token":"id:2.5", "text":"for"},  {"token":"id:2.6", "text":"the"},  {"token":"id:2.7", "text":"long"},  {"token":"id:2.8", "text":"winters"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.16", "text":"is"},  {"token":"id:2.17", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.18", "text":"hibernation"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#3.3>
+	a <entity> ;
+	pred:isa "\"A hand lens\"" ;
+	rel:purpose <http://aristo.allenai.org/id#3.7> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"more detail\"" .
+
+<http://aristo.allenai.org/id#3.3>
+	a <entity> ;
+	pred:isa "\"A hand lens\"" .
+
+<http://aristo.allenai.org/id#3.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.3> ;
+	pred:in <http://aristo.allenai.org/id#3.11> ;
+	pred:isa "\"view\"" ;
+	pred:object <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.8>
+	a <entity> ;
+	pred:isa "\"objects\"" .
+english(rule7, "A hand lens is used to view objects in more detail").
+rule7:: isa(A3S3-lens, "A hand lens") -> purpose(A3S3-lens, E7S3-view), isa(E7S3-view, "view"), agent(E7S3-view, A3S3-lens), object(E7S3-view, A8S3-object), isa(A8S3-object, "objects"), in(E7S3-view, A11S3-detail), isa(A11S3-detail, "more detail").
+english(rule8, "A hand lens is used to view objects in more detail").
+rule8:: isa(E7S3-view, "view"), agent(E7S3-view, A3S3-lens), isa(A3S3-lens, "A hand lens"), object(E7S3-view, A8S3-object), isa(A8S3-object, "objects"), in(E7S3-view, A11S3-detail), isa(A11S3-detail, "more detail") -> purpose(A3S3-lens, E7S3-view).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.1", "text":"A"},  {"token":"id:3.2", "text":"hand"},  {"token":"id:3.3", "text":"lens"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.1", "text":"A"},  {"token":"id:3.2", "text":"hand"},  {"token":"id:3.3", "text":"lens"} ]} ]}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.4", "text":"is"},  {"token":"id:3.5", "text":"used"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.1", "text":"A"},  {"token":"id:3.2", "text":"hand"},  {"token":"id:3.3", "text":"lens"} ]} ]}, "verbPhrase": [ {"token":"id:3.7", "text":"view"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.8", "text":"objects"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:3.9", "text":"in"},  {"token":"id:3.10", "text":"more"},  {"token":"id:3.11", "text":"detail"} ] ]} ], "confidence":1.0}
+
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[A hand lens] liquid state", "to its[its liquid state] solid state" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#4.1>
+	a <entity> ;
+	pred:isa "\"Freezing\"" .
+
+<http://aristo.allenai.org/id#4.18>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#4.1> ;
+	pred:isa "\"remove\"" ;
+	pred:object <http://aristo.allenai.org/id#4.20> ;
+	rel:enable <http://aristo.allenai.org/id#4.3> .
+
+<http://aristo.allenai.org/id#4.20>
+	a <entity> ;
+	pred:isa "\"heat\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#4.1>
+	a <entity> ;
+	pred:isa "\"Freezing\"" .
+
+<http://aristo.allenai.org/id#4.12>
+	pred:isa "\"its[its liquid state] solid state\"" .
+
+<http://aristo.allenai.org/id#4.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#4.1> ;
+	pred:from <http://aristo.allenai.org/id#4.8> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#4.4> ;
+	pred:to <http://aristo.allenai.org/id#4.12> .
+
+<http://aristo.allenai.org/id#4.4>
+	a <entity> ;
+	pred:isa "\"water\"" .
+
+<http://aristo.allenai.org/id#4.8>
+	pred:isa "\"its[A hand lens] liquid state\"" .
+english(rule9, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
+rule9:: isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat") -> enable(E18S4-removal, E3S4-change), isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state").
+english(rule10, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
+rule10:: isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state") -> enable(E18S4-removal, E3S4-change), isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:4.1", "text":"Freezing"} ]} ]}, "verbPhrase": [ {"token":"id:4.18", "text":"remove"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:4.20", "text":"heat"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:4.16", "text":"by"} ], "normalizedRelation":"ENABLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.1", "text":"Freezing"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:4.1", "text":"Freezing"} ]} ]}, "verbPhrase": [ {"token":"id:4.3", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:4.4", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:4.5", "text":"from"},  {"token":"id:4.6", "text":"its[A hand lens]"},  {"token":"id:4.7", "text":"liquid"},  {"token":"id:4.8", "text":"state"} ],  [ {"token":"id:4.9", "text":"to"},  {"token":"id:4.10", "text":"its[its liquid state]"},  {"token":"id:4.11", "text":"solid"},  {"token":"id:4.12", "text":"state"} ] ]} ], "confidence":1.0}
+
+% ("Animals" "not make" "their[some animals] own food")	"so"/EFFECT	("some animals" "eat" "")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#5.1>
+	a <entity> ;
+	pred:isa "\"Animals\"" .
+
+<http://aristo.allenai.org/id#5.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#5.1> ;
+	pred:isa "\"not make\"" ;
+	pred:object <http://aristo.allenai.org/id#5.7> ;
+	rel:effect <http://aristo.allenai.org/id#5.11> .
+
+<http://aristo.allenai.org/id#5.7>
+	a <entity> ;
+	pred:isa "\"their[some animals] own food\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+<http://aristo.allenai.org/id#5.11>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:isa "\"eat\"" .
+english(rule11, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule11:: isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food") -> effect(E4S5-make, E11S5-eat), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals").
+english(rule12, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule12:: isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals") -> effect(E4S5-make, E11S5-eat), isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:5.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:5.3", "text":"not"},  {"token":"id:5.4", "text":"make"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:5.5", "text":"their[some animals]"},  {"token":"id:5.6", "text":"own"},  {"token":"id:5.7", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:5.8", "text":"so"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:5.11", "text":"eat"} ], "extraPhrases": []} ], "confidence":1.0}
+
+% ("some animals"/?x "eat" "")	"to"/REQUIREMENT	("some animals"/?x "get" "nutrients")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+<http://aristo.allenai.org/id#5.11>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:isa "\"eat\"" ;
+	rel:requirement <http://aristo.allenai.org/id#5.13> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#2.3>
+	a <entity> ;
+	pred:isa "\"some animals\"" .
+
+<http://aristo.allenai.org/id#5.13>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.3> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#5.14> .
+
+<http://aristo.allenai.org/id#5.14>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+english(rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule13:: isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals") -> requirement(E11S5-eat, E13S5-get), isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), object(E13S5-get, A14S5-nutrient), isa(A14S5-nutrient, "nutrients").
+english(rule14, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+rule14:: isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), isa(A3S2-animal, "some animals"), object(E13S5-get, A14S5-nutrient), isa(A14S5-nutrient, "nutrients") -> requirement(E11S5-eat, E13S5-get), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:5.11", "text":"eat"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:5.12", "text":"to"} ], "normalizedRelation":"REQUIREMENT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:2.2", "text":"some"},  {"token":"id:2.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:5.13", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:5.14", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% ("The friction between the two surfaces" "convert" "kinetic energy" [ "into heat" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#6.11>
+	pred:isa "\"heat\"" .
+
+<http://aristo.allenai.org/id#6.2>
+	a <entity> ;
+	pred:isa "\"The friction between the two surfaces\"" .
+
+<http://aristo.allenai.org/id#6.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#6.2> ;
+	pred:into <http://aristo.allenai.org/id#6.11> ;
+	pred:isa "\"convert\"" ;
+	pred:object <http://aristo.allenai.org/id#6.9> .
+
+<http://aristo.allenai.org/id#6.9>
+	a <entity> ;
+	pred:isa "\"kinetic energy\"" .
+
+english(rule15, "The friction between the two surfaces converts kinetic energy into heat").
+rule15:: isa(E7S6-convert, "convert") -> agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
+english(rule16, "The friction between the two surfaces converts kinetic energy into heat").
+rule16:: isa(A2S6-friction, "The friction between the two surfaces") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
+english(rule17, "The friction between the two surfaces converts kinetic energy into heat").
+rule17:: isa(A9S6-energy, "kinetic energy") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
+english(rule18, "The friction between the two surfaces converts kinetic energy into heat").
+rule18:: isa(A11S6-heat, "heat") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:6.1", "text":"The"},  {"token":"id:6.2", "text":"friction"},  {"token":"id:6.3", "text":"between"},  {"token":"id:6.4", "text":"the"},  {"token":"id:6.5", "text":"two"},  {"token":"id:6.6", "text":"surfaces"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:6.7", "text":"convert"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:6.8", "text":"kinetic"},  {"token":"id:6.9", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:6.10", "text":"into"},  {"token":"id:6.11", "text":"heat"} ] ]} ], "consequents": [], "confidence":1.0}
+
+% ("" "get" "rest")	"part of"/PART	("" "live" "a healthy life")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#7.1>
+	a <event> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#7.3> ;
+	rel:part <http://aristo.allenai.org/id#7.10> .
+
+<http://aristo.allenai.org/id#7.3>
+	a <entity> ;
+	pred:isa "\"rest\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#7.10>
+	a <event> ;
+	pred:isa "\"live\"" ;
+	pred:object <http://aristo.allenai.org/id#7.13> .
+
+<http://aristo.allenai.org/id#7.13>
+	a <entity> ;
+	pred:isa "\"a healthy life\"" .
+english(rule19, "Getting enough rest is also an important part of living a healthy life").
+rule19:: isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest") -> part(E1S7-get, E10S7-live), isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life").
+english(rule20, "Getting enough rest is also an important part of living a healthy life").
+rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life") -> part(E1S7-get, E10S7-live), isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.1", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.8", "text":"part"},  {"token":"id:7.9", "text":"of"} ], "normalizedRelation":"PART"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.10", "text":"live"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:7.11", "text":"a"},  {"token":"id:7.12", "text":"healthy"},  {"token":"id:7.13", "text":"life"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#10.1>
+	a <entity> ;
+	pred:isa <http://aristo.allenai.org/id#10.4> ,
+		 "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#10.4>
+	a <entity> ;
+	pred:isa "\"living things\"" .
+
+<http://aristo.allenai.org/id#10.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#10.4> ;
+	pred:isa "\"break down\"" ;
+	pred:object <http://aristo.allenai.org/id#10.9> .
+
+<http://aristo.allenai.org/id#10.9>
+	a <entity> ;
+	pred:isa "\"dead organisms\"" .
+english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
+english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.6", "text":"break"},  {"token":"id:10.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.8", "text":"dead"},  {"token":"id:10.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#10.1>
+	a <entity> ;
+	pred:isa <http://aristo.allenai.org/id#10.4> ,
+		 "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#10.11>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#10.4> ;
+	pred:into <http://aristo.allenai.org/id#10.16> ;
+	pred:isa "\"recycle\"" ;
+	pred:object <http://aristo.allenai.org/id#10.13> .
+
+<http://aristo.allenai.org/id#10.13>
+	a <entity> ;
+	pred:isa "\"their[dead organisms] nutrients\"" .
+
+<http://aristo.allenai.org/id#10.16>
+	pred:isa "\"the soil\"" .
+
+<http://aristo.allenai.org/id#10.4>
+	a <entity> ;
+	pred:isa "\"living things\"" .
+english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule23:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
+english(rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.12", "text":"their[dead organisms]"},  {"token":"id:10.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:10.14", "text":"into"},  {"token":"id:10.15", "text":"the"},  {"token":"id:10.16", "text":"soil"} ] ]} ], "confidence":1.0}
+
+% "Decomposers"	"are"/EXAMPLE	"living things"
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#10.1>
+	a <entity> ;
+	pred:isa "\"Decomposers\"" ;
+	rel:example <http://aristo.allenai.org/id#10.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#10.4>
+	a <entity> ;
+	pred:isa "\"living things\"" .
+english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule25:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(A4S10-thing, "living things").
+english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+rule26:: isa(A4S10-thing, "living things") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#11.1>
+	a <entity> ;
+	pred:isa <http://aristo.allenai.org/id#11.4> ,
+		 "\"Gravity\"" ;
+	rel:example <http://aristo.allenai.org/id#11.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#11.4>
+	a <entity> ;
+	pred:isa "\"the force\"" .
+
+<http://aristo.allenai.org/id#11.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#11.4> ;
+	pred:isa "\"pull\"" ;
+	pred:object <http://aristo.allenai.org/id#11.8> .
+
+<http://aristo.allenai.org/id#11.8>
+	a <entity> ;
+	pred:isa "\"an object toward the center of the Earth\"" .
+english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
+rule27:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
+english(rule28, "Gravity is the force that pulls an object toward the center of the Earth").
+rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.7", "text":"an"},  {"token":"id:11.8", "text":"object"},  {"token":"id:11.9", "text":"toward"},  {"token":"id:11.10", "text":"the"},  {"token":"id:11.11", "text":"center"},  {"token":"id:11.12", "text":"of"},  {"token":"id:11.13", "text":"the"},  {"token":"id:11.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% "Gravity"	"is"/EXAMPLE	"the force"
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#11.1>
+	a <entity> ;
+	pred:isa "\"Gravity\"" ;
+	rel:example <http://aristo.allenai.org/id#11.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#11.4>
+	a <entity> ;
+	pred:isa "\"the force\"" .
+english(rule29, "Gravity is the force that pulls an object toward the center of the Earth").
+rule29:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(A4S11-force, "the force").
+english(rule30, "Gravity is the force that pulls an object toward the center of the Earth").
+rule30:: isa(A4S11-force, "the force") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+
+% "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#12.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" ;
+	rel:example <http://aristo.allenai.org/id#12.14> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#12.12>
+	a <entity> ;
+	pred:isa "\"an organism\"" .
+
+<http://aristo.allenai.org/id#12.14>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#12.12> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#12.6> ;
+	pred:to <http://aristo.allenai.org/id#12.17> .
+
+<http://aristo.allenai.org/id#12.17>
+	pred:isa "\"hot temperatures\"" .
+
+<http://aristo.allenai.org/id#12.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+english(rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+rule31:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
+english(rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+rule32:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), isa(A6S12-sweat, "sweat"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.6", "text":"sweat"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:12.7", "text":"is"},  {"token":"id:12.9", "text":"way"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.11", "text":"an"},  {"token":"id:12.12", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:12.14", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:12.6", "text":"sweat"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:12.15", "text":"to"},  {"token":"id:12.16", "text":"hot"},  {"token":"id:12.17", "text":"temperatures"} ] ]} ], "confidence":1.0}
+
+% "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#12.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" ;
+	rel:example <http://aristo.allenai.org/id#12.14> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#12.12>
+	a <entity> ;
+	pred:isa "\"an organism\"" .
+
+<http://aristo.allenai.org/id#12.14>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#12.12> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#12.9> ;
+	pred:to <http://aristo.allenai.org/id#12.17> .
+
+<http://aristo.allenai.org/id#12.17>
+	pred:isa "\"hot temperatures\"" .
+
+<http://aristo.allenai.org/id#12.9>
+	a <entity> ;
+	pred:isa "\"a way\"" .
+english(rule33, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+rule33:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
+english(rule34, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+rule34:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust), isa(A6S12-sweat, "sweat").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.6", "text":"sweat"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:12.7", "text":"is"},  {"token":"id:12.9", "text":"way"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.11", "text":"an"},  {"token":"id:12.12", "text":"organism"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:12.14", "text":"adjust"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:12.8", "text":"a"},  {"token":"id:12.9", "text":"way"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:12.15", "text":"to"},  {"token":"id:12.16", "text":"hot"},  {"token":"id:12.17", "text":"temperatures"} ] ]} ], "confidence":1.0}
+
+% ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#13.2>
+	a <entity> ;
+	pred:isa "\"A squirrel\"" .
+
+<http://aristo.allenai.org/id#13.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#13.2> ;
+	pred:isa "\"store\"" ;
+	pred:object <http://aristo.allenai.org/id#13.4> ;
+	rel:effect <http://aristo.allenai.org/id#13.6> .
+
+<http://aristo.allenai.org/id#13.4>
+	a <entity> ;
+	pred:isa "\"nuts\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#13.10>
+	pred:isa "\"a seasonal change in the environment\"" .
+
+<http://aristo.allenai.org/id#13.2>
+	a <entity> ;
+	pred:isa "\"A squirrel\"" .
+
+<http://aristo.allenai.org/id#13.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#13.2> ;
+	pred:for <http://aristo.allenai.org/id#13.10> ;
+	pred:isa "\"prepare\"" .
+english(rule35, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+rule35:: isa(E3S13-store, "store"), agent(E3S13-store, A2S13-squirrel), isa(A2S13-squirrel, "A squirrel"), object(E3S13-store, A4S13-nut), isa(A4S13-nut, "nuts") -> effect(E3S13-store, E6S13-prepare), isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), for(E6S13-prepare, A10S13-change), isa(A10S13-change, "a seasonal change in the environment").
+english(rule36, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+rule36:: isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), isa(A2S13-squirrel, "A squirrel"), for(E6S13-prepare, A10S13-change), isa(A10S13-change, "a seasonal change in the environment") -> effect(E3S13-store, E6S13-prepare), isa(E3S13-store, "store"), agent(E3S13-store, A2S13-squirrel), object(E3S13-store, A4S13-nut), isa(A4S13-nut, "nuts").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:13.1", "text":"A"},  {"token":"id:13.2", "text":"squirrel"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:13.1", "text":"A"},  {"token":"id:13.2", "text":"squirrel"} ]} ]}, "verbPhrase": [ {"token":"id:13.3", "text":"store"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:13.4", "text":"nuts"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:13.1", "text":"A"},  {"token":"id:13.2", "text":"squirrel"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:13.1", "text":"A"},  {"token":"id:13.2", "text":"squirrel"} ]} ]}, "verbPhrase": [ {"token":"id:13.6", "text":"prepare"} ], "extraPhrases": [ [ {"token":"id:13.7", "text":"for"},  {"token":"id:13.8", "text":"a"},  {"token":"id:13.9", "text":"seasonal"},  {"token":"id:13.10", "text":"change"},  {"token":"id:13.11", "text":"in"},  {"token":"id:13.12", "text":"the"},  {"token":"id:13.13", "text":"environment"} ] ]} ], "confidence":1.0}
+
+% ("A student"/?x "use" "a hand lens")	"to"/EFFECT	("A student"/?x "get" "" [ "a better look at the spots" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#14.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#14.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#14.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#14.7> ;
+	rel:effect <http://aristo.allenai.org/id#14.9> .
+
+<http://aristo.allenai.org/id#14.7>
+	a <entity> ;
+	pred:isa "\"a hand lens\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#14.12>
+	pred:isa "\"a better look at the spots\"" .
+
+<http://aristo.allenai.org/id#14.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#14.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#14.2> ;
+	pred:arg <http://aristo.allenai.org/id#14.12> ;
+	pred:isa "\"get\"" .
+english(rule37, "A student should use a hand lens to get a better look at the spots").
+rule37:: isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), isa(A2S14-student, "A student"), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens") -> effect(E4S14-use, E9S14-get), isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots").
+english(rule38, "A student should use a hand lens to get a better look at the spots").
+rule38:: isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), isa(A2S14-student, "A student"), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots") -> effect(E4S14-use, E9S14-get), isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:14.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:14.5", "text":"a"},  {"token":"id:14.6", "text":"hand"},  {"token":"id:14.7", "text":"lens"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:14.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:14.9", "text":"get"} ], "extraPhrases": [ [ {"token":"id:14.10", "text":"a"},  {"token":"id:14.11", "text":"better"},  {"token":"id:14.12", "text":"look"},  {"token":"id:14.13", "text":"at"},  {"token":"id:14.14", "text":"the"},  {"token":"id:14.15", "text":"spots"} ] ]} ], "confidence":1.0}
+
+% ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#15.1>
+	a <event> ;
+	pred:isa "\"decrease\"" ;
+	pred:object <http://aristo.allenai.org/id#15.3> ;
+	rel:effect <http://aristo.allenai.org/id#15.8> .
+
+<http://aristo.allenai.org/id#15.3>
+	a <entity> ;
+	pred:isa "\"the temperature\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#15.12>
+	pred:isa "\"a liquid\"" .
+
+<http://aristo.allenai.org/id#15.15>
+	pred:isa "\"a solid\"" .
+
+<http://aristo.allenai.org/id#15.8>
+	a <event> ;
+	pred:from <http://aristo.allenai.org/id#15.12> ;
+	pred:isa "\"change\"" ;
+	pred:object <http://aristo.allenai.org/id#15.9> ;
+	pred:to <http://aristo.allenai.org/id#15.15> .
+
+<http://aristo.allenai.org/id#15.9>
+	a <entity> ;
+	pred:isa "\"water\"" .
+english(rule39, "Decreasing the temperature is one way to change water from a liquid to a solid").
+rule39:: isa(E1S15-decrease, "decrease"), object(E1S15-decrease, A3S15-temperature), isa(A3S15-temperature, "the temperature") -> effect(E1S15-decrease, E8S15-change), isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S15-water, "water"), from(E8S15-change, A12S15-liquid), isa(A12S15-liquid, "a liquid"), to(E8S15-change, A15S15-solid), isa(A15S15-solid, "a solid").
+english(rule40, "Decreasing the temperature is one way to change water from a liquid to a solid").
+rule40:: isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S15-water, "water"), from(E8S15-change, A12S15-liquid), isa(A12S15-liquid, "a liquid"), to(E8S15-change, A15S15-solid), isa(A15S15-solid, "a solid") -> effect(E1S15-decrease, E8S15-change), isa(E1S15-decrease, "decrease"), object(E1S15-decrease, A3S15-temperature), isa(A3S15-temperature, "the temperature").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.1", "text":"decrease"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.2", "text":"the"},  {"token":"id:15.3", "text":"temperature"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:15.4", "text":"is"},  {"token":"id:15.6", "text":"way"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.8", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.9", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:15.10", "text":"from"},  {"token":"id:15.11", "text":"a"},  {"token":"id:15.12", "text":"liquid"} ],  [ {"token":"id:15.13", "text":"to"},  {"token":"id:15.14", "text":"a"},  {"token":"id:15.15", "text":"solid"} ] ]} ], "confidence":1.0}
+
+% ("Animals" "get" "energy" [ "for growth from food", "for repair" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#16.1>
+	a <entity> ;
+	pred:isa "\"Animals\"" .
+
+<http://aristo.allenai.org/id#16.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#16.1> ;
+	pred:for <http://aristo.allenai.org/id#16.5> ,
+		 <http://aristo.allenai.org/id#16.7> ;
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#16.3> .
+
+<http://aristo.allenai.org/id#16.3>
+	a <entity> ;
+	pred:isa "\"energy\"" .
+
+<http://aristo.allenai.org/id#16.5>
+	pred:isa "\"growth from food\"" .
+
+<http://aristo.allenai.org/id#16.7>
+	pred:isa "\"repair\"" .
+
+english(rule41, "Animals get energy for growth and repair from food").
+rule41:: isa(E2S16-get, "get") -> agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
+english(rule42, "Animals get energy for growth and repair from food").
+rule42:: isa(A1S16-animal, "Animals") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
+english(rule43, "Animals get energy for growth and repair from food").
+rule43:: isa(A3S16-energy, "energy") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
+english(rule44, "Animals get energy for growth and repair from food").
+rule44:: isa(A5S16-growth, "growth from food") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
+english(rule45, "Animals get energy for growth and repair from food").
+rule45:: isa(A7S16-repair, "repair") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:16.2", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:16.3", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.5", "text":"growth"},  {"token":"id:16.8", "text":"from"},  {"token":"id:16.9", "text":"food"} ],  [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.7", "text":"repair"} ] ]} ], "consequents": [], "confidence":1.0}
+
+% "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#17.10>
+	a <entity> ;
+	pred:isa "\"friction\"" ;
+	rel:cause <http://aristo.allenai.org/id#17.4> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#17.2>
+	a <entity> ;
+	pred:isa "\"The heat\"" .
+
+<http://aristo.allenai.org/id#17.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#17.2> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#17.6> .
+
+<http://aristo.allenai.org/id#17.6>
+	a <entity> ;
+	pred:isa "\"the smoke\"" .
+english(rule46, "The heat that produces the smoke is caused by friction").
+rule46:: isa(A10S17-friction, "friction") -> cause(A10S17-friction, E4S17-produce), isa(E4S17-produce, "produce"), agent(E4S17-produce, A2S17-heat), isa(A2S17-heat, "The heat"), object(E4S17-produce, A6S17-smoke), isa(A6S17-smoke, "the smoke").
+english(rule47, "The heat that produces the smoke is caused by friction").
+rule47:: isa(E4S17-produce, "produce"), agent(E4S17-produce, A2S17-heat), isa(A2S17-heat, "The heat"), object(E4S17-produce, A6S17-smoke), isa(A6S17-smoke, "the smoke") -> cause(A10S17-friction, E4S17-produce), isa(A10S17-friction, "friction").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:17.10", "text":"friction"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:17.8", "text":"caused"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:17.1", "text":"The"},  {"token":"id:17.2", "text":"heat"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:17.4", "text":"produce"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:17.5", "text":"the"},  {"token":"id:17.6", "text":"smoke"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% ("humans"/?x "rest" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#18.1>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#18.5> ;
+	pred:isa "\"rest\"" ;
+	rel:requirement <http://aristo.allenai.org/id#18.7> .
+
+<http://aristo.allenai.org/id#18.5>
+	a <entity> ;
+	pred:isa "\"humans\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#18.5>
+	a <entity> ;
+	pred:isa "\"humans\"" .
+
+<http://aristo.allenai.org/id#18.7>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#18.5> ;
+	pred:isa "\"maintain\"" ;
+	pred:object <http://aristo.allenai.org/id#18.9> .
+
+<http://aristo.allenai.org/id#18.9>
+	a <entity> ;
+	pred:isa "\"good health\"" .
+english(rule48, "Resting is necessary for humans to maintain good health").
+rule48:: isa(E1S18-rest, "rest"), agent(E1S18-rest, A5S18-human), isa(A5S18-human, "humans") -> requirement(E1S18-rest, E7S18-maintain), isa(E7S18-maintain, "maintain"), agent(E7S18-maintain, A5S18-human), object(E7S18-maintain, A9S18-health), isa(A9S18-health, "good health").
+english(rule49, "Resting is necessary for humans to maintain good health").
+rule49:: isa(E7S18-maintain, "maintain"), agent(E7S18-maintain, A5S18-human), isa(A5S18-human, "humans"), object(E7S18-maintain, A9S18-health), isa(A9S18-health, "good health") -> requirement(E1S18-rest, E7S18-maintain), isa(E1S18-rest, "rest"), agent(E1S18-rest, A5S18-human).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:18.5", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:18.1", "text":"rest"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:18.3", "text":"necessary"} ], "normalizedRelation":"REQUIREMENT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:18.5", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:18.5", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:18.7", "text":"maintain"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:18.8", "text":"good"},  {"token":"id:18.9", "text":"health"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "10 milliliters of water")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#19.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#19.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#19.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#19.7> ;
+	rel:effect <http://aristo.allenai.org/id#19.9> .
+
+<http://aristo.allenai.org/id#19.7>
+	a <entity> ;
+	pred:isa "\"a graduated cylinder\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#19.12>
+	a <entity> ;
+	pred:isa "\"10 milliliters of water\"" .
+
+<http://aristo.allenai.org/id#19.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#19.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#19.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#19.12> .
+% ("A student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A student"/?x "measure" "mL")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#19.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#19.4>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#19.2> ;
+	pred:isa "\"use\"" ;
+	pred:object <http://aristo.allenai.org/id#19.7> ;
+	rel:effect <http://aristo.allenai.org/id#19.9> .
+
+<http://aristo.allenai.org/id#19.7>
+	a <entity> ;
+	pred:isa "\"a graduated cylinder\"" .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#19.14>
+	a <entity> ;
+	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#19.2>
+	a <entity> ;
+	pred:isa "\"A student\"" .
+
+<http://aristo.allenai.org/id#19.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#19.2> ;
+	pred:isa "\"measure\"" ;
+	pred:object <http://aristo.allenai.org/id#19.14> .
+english(rule50, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+rule50:: isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), isa(A2S19-student, "A student"), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder") -> effect(E4S19-use, E9S19-measure), isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), object(E9S19-measure, A12S19-milliliter), isa(A12S19-milliliter, "10 milliliters of water").
+english(rule51, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+rule51:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A12S19-milliliter), isa(A12S19-milliliter, "10 milliliters of water") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.5", "text":"a"},  {"token":"id:19.6", "text":"graduated"},  {"token":"id:19.7", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:19.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.9", "text":"measure"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.11", "text":"10"},  {"token":"id:19.12", "text":"milliliters"},  {"token":"id:19.16", "text":"of"},  {"token":"id:19.17", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+english(rule52, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+rule52:: isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), isa(A2S19-student, "A student"), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder") -> effect(E4S19-use, E9S19-measure), isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL").
+english(rule53, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.5", "text":"a"},  {"token":"id:19.6", "text":"graduated"},  {"token":"id:19.7", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:19.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.9", "text":"measure"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.14", "text":"mL"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+
+% "The white fur of an arctic fox blends"	"is called"/EXAMPLE	"camouflage"
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#20.3>
+	a <entity> ;
+	pred:isa "\"The white fur of an arctic fox blends\"" ;
+	rel:example <http://aristo.allenai.org/id#20.15> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#20.15>
+	a <entity> ;
+	pred:isa "\"camouflage\"" .
+english(rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
+rule54:: isa(A3S20-fur, "The white fur of an arctic fox blends") -> example(A3S20-fur, A15S20-camouflage), isa(A15S20-camouflage, "camouflage").
+english(rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
+rule55:: isa(A15S20-camouflage, "camouflage") -> example(A3S20-fur, A15S20-camouflage), isa(A3S20-fur, "The white fur of an arctic fox blends").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.1", "text":"The"},  {"token":"id:20.2", "text":"white"},  {"token":"id:20.3", "text":"fur"},  {"token":"id:20.4", "text":"of"},  {"token":"id:20.5", "text":"an"},  {"token":"id:20.6", "text":"arctic"},  {"token":"id:20.7", "text":"fox"},  {"token":"id:20.8", "text":"blends"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.13", "text":"is"},  {"token":"id:20.14", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.15", "text":"camouflage"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+
+% "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#21.7>
+	a <entity> ;
+	pred:isa "\"decomposers\"" ;
+	rel:purpose <http://aristo.allenai.org/id#21.9> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#21.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#21.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#21.7>
+	a <entity> ;
+	pred:isa "\"decomposers\"" .
+
+<http://aristo.allenai.org/id#21.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#21.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#21.10> ;
+	pred:to <http://aristo.allenai.org/id#21.14> .
+english(rule56, "When plants and animals die decomposers help return nutrients to the food chain").
+rule56:: isa(A7S21-decomposer, "decomposers") -> purpose(A7S21-decomposer, E9S21-return), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
+english(rule57, "When plants and animals die decomposers help return nutrients to the food chain").
+rule57:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> purpose(A7S21-decomposer, E9S21-return).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:21.8", "text":"help"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:21.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:21.11", "text":"to"},  {"token":"id:21.12", "text":"the"},  {"token":"id:21.13", "text":"food"},  {"token":"id:21.14", "text":"chain"} ] ]} ], "confidence":1.0}
+
+% ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("plants" "die" "")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#21.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#21.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#21.7>
+	a <entity> ;
+	pred:isa "\"decomposers\"" .
+
+<http://aristo.allenai.org/id#21.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#21.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#21.10> ;
+	pred:to <http://aristo.allenai.org/id#21.14> ;
+	rel:when <http://aristo.allenai.org/id#21.5> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#21.2>
+	a <entity> ;
+	pred:isa "\"plants\"" .
+
+<http://aristo.allenai.org/id#21.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#21.2> ;
+	pred:isa "\"die\"" .
+english(rule58, "When plants and animals die decomposers help return nutrients to the food chain").
+rule58:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> when(E9S21-return, E5S21-die), isa(E5S21-die, "die"), agent(E5S21-die, A2S21-plant), isa(A2S21-plant, "plants").
+english(rule59, "When plants and animals die decomposers help return nutrients to the food chain").
+rule59:: isa(E5S21-die, "die"), agent(E5S21-die, A2S21-plant), isa(A2S21-plant, "plants") -> when(E9S21-return, E5S21-die), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:21.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:21.11", "text":"to"},  {"token":"id:21.12", "text":"the"},  {"token":"id:21.13", "text":"food"},  {"token":"id:21.14", "text":"chain"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:21.1", "text":"When"} ], "normalizedRelation":"WHEN"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.2", "text":"plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.5", "text":"die"} ], "extraPhrases": []} ], "confidence":1.0}
+
+% ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"When"/WHEN	("animals" "die" "")
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (4)
+
+<http://aristo.allenai.org/id#21.10>
+	a <entity> ;
+	pred:isa "\"nutrients\"" .
+
+<http://aristo.allenai.org/id#21.14>
+	pred:isa "\"the food chain\"" .
+
+<http://aristo.allenai.org/id#21.7>
+	a <entity> ;
+	pred:isa "\"decomposers\"" .
+
+<http://aristo.allenai.org/id#21.9>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#21.7> ;
+	pred:isa "\"return\"" ;
+	pred:object <http://aristo.allenai.org/id#21.10> ;
+	pred:to <http://aristo.allenai.org/id#21.14> ;
+	rel:when <http://aristo.allenai.org/id#21.5> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#21.4>
+	a <entity> ;
+	pred:isa "\"animals\"" .
+
+<http://aristo.allenai.org/id#21.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#21.4> ;
+	pred:isa "\"die\"" .
+english(rule60, "When plants and animals die decomposers help return nutrients to the food chain").
+rule60:: isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain") -> when(E9S21-return, E5S21-die), isa(E5S21-die, "die"), agent(E5S21-die, A4S21-animal), isa(A4S21-animal, "animals").
+english(rule61, "When plants and animals die decomposers help return nutrients to the food chain").
+rule61:: isa(E5S21-die, "die"), agent(E5S21-die, A4S21-animal), isa(A4S21-animal, "animals") -> when(E9S21-return, E5S21-die), isa(E9S21-return, "return"), agent(E9S21-return, A7S21-decomposer), isa(A7S21-decomposer, "decomposers"), object(E9S21-return, A10S21-nutrient), isa(A10S21-nutrient, "nutrients"), to(E9S21-return, A14S21-chain), isa(A14S21-chain, "the food chain").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.7", "text":"decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.9", "text":"return"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:21.10", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:21.11", "text":"to"},  {"token":"id:21.12", "text":"the"},  {"token":"id:21.13", "text":"food"},  {"token":"id:21.14", "text":"chain"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:21.1", "text":"When"} ], "normalizedRelation":"WHEN"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.4", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.5", "text":"die"} ], "extraPhrases": []} ], "confidence":1.0}
+
+% "Gravity"	"causes"/CAUSE	("the ball" "fall" "" [ "to the ground" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (1)
+
+<http://aristo.allenai.org/id#22.1>
+	a <entity> ;
+	pred:isa "\"Gravity\"" ;
+	rel:cause <http://aristo.allenai.org/id#22.6> .
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#22.4>
+	a <entity> ;
+	pred:isa "\"the ball\"" .
+
+<http://aristo.allenai.org/id#22.6>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#22.4> ;
+	pred:isa "\"fall\"" ;
+	pred:to <http://aristo.allenai.org/id#22.9> .
+
+<http://aristo.allenai.org/id#22.9>
+	pred:isa "\"the ground\"" .
+english(rule62, "Gravity causes the ball to fall to the ground").
+rule62:: isa(A1S22-gravity, "Gravity") -> cause(A1S22-gravity, E6S22-fall), isa(E6S22-fall, "fall"), agent(E6S22-fall, A4S22-ball), isa(A4S22-ball, "the ball"), to(E6S22-fall, A9S22-ground), isa(A9S22-ground, "the ground").
+english(rule63, "Gravity causes the ball to fall to the ground").
+rule63:: isa(E6S22-fall, "fall"), agent(E6S22-fall, A4S22-ball), isa(A4S22-ball, "the ball"), to(E6S22-fall, A9S22-ground), isa(A9S22-ground, "the ground") -> cause(A1S22-gravity, E6S22-fall), isa(A1S22-gravity, "Gravity").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:22.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:22.2", "text":"causes"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:22.3", "text":"the"},  {"token":"id:22.4", "text":"ball"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:22.6", "text":"fall"} ], "extraPhrases": [ [ {"token":"id:22.7", "text":"to"},  {"token":"id:22.8", "text":"the"},  {"token":"id:22.9", "text":"ground"} ] ]} ], "confidence":1.0}
+
