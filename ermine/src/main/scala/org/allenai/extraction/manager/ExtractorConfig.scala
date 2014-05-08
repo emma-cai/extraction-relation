@@ -17,7 +17,8 @@ object ExtractorConfig {
     */
   def getExtractor(extractorName: String): Extractor = extractorName match {
     case "StanfordParser" => StanfordParser
-    case "PrologExtractor" => PrologExtractor
+    case "FerretTextExtractor" => FerretTextExtractor
+    case "FerretQuestionExtractor" => FerretQuestionExtractor
     case "StanfordXmlToTtl" => StanfordXmlToTtl
     case "FerretToExtractionRule" => FerretToExtractionRule
   }

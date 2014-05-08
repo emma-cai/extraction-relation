@@ -1,7 +1,7 @@
 package org.allenai.extraction.extractors
 
 import org.allenai.common.Resource
-import org.allenai.extraction.FlatExtractor
+import org.allenai.extraction.{ Extractor, FlatExtractor }
 
 import jpl.{ JPL, Term, Query }
 
@@ -14,7 +14,10 @@ import java.io.File
 import java.io.FileWriter
 import java.io.Writer
 
-object PrologExtractor extends FlatExtractor {
+object PrologExtractor {
+  /** Name used for the Prolog variable we're targeting. */
+  val VariableName = "Var"
+
   /** Initialize JPL. This is lazily evaluated to keep this from breaking class
     * load if we don't have the swipl libraries on the classpath.
     */
@@ -31,7 +34,15 @@ object PrologExtractor extends FlatExtractor {
     }
     classOf[JPL]
   }
+}
 
+/** Prolog extractor running the Ferret extraction code. This has two concrete instances - one for
+  * extractions, and one for question analysis.
+  *
+  * @param prologGoal the prolog goal code to use. Should have a variable named
+  *   PrologExtractor.VariableName.
+  */
+class PrologExtractor(val prologGoal: String) extends FlatExtractor {
   override protected def extractInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
@@ -43,29 +54,51 @@ object PrologExtractor extends FlatExtractor {
       }
     }
 
-    val jsonResults = jplClass.synchronized {
+    val results = PrologExtractor.jplClass.synchronized {
       // Next, run the prolog extractor and generate output rules.
       val solveRelations = new Query(
         s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
-        // Magic here: Fill in the Json variable with all relations.
-        "relation(Json), " +
-        s"rdf_unload('${ttlFile.getAbsolutePath()}')")
+        s"${prologGoal}")
 
-      val jsonResults = for {
+      val prologResults = for {
         result <- solveRelations.allSolutions
         // TODO(jkinkead): This isn't robust to prolog failures - have a sensible default.
-        jsonString = result.get("Json") match {
+        text = result.get(PrologExtractor.VariableName) match {
           case term: Term => term.name
         }
-      } yield JsonParser(jsonString)
+      } yield text
 
       solveRelations.rewind()
 
+      val rdfUnload = new Query(s"rdf_unload('${ttlFile.getAbsolutePath()}')")
+      rdfUnload.allSolutions()
+      rdfUnload.rewind()
+
       // Create immutable copy.
-      jsonResults.toSeq
+      prologResults.toSeq
     }
 
-    // Serialize JSON to outfile.
-    destination.write(jsonResults.toJson.prettyPrint)
+    ttlFile.delete()
+
+    destination.write(results.mkString(""))
+  }
+}
+
+/** Extractor for text. */
+object FerretTextExtractor extends PrologExtractor(s"relation(${PrologExtractor.VariableName}, _)")
+
+/** Extractor for questions. Takes one stream for the question and one for the focus. */
+object FerretQuestionExtractor extends Extractor {
+  override val numInputs = 2
+  override val numOutputs = 1
+
+  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+    val question = sources(0)
+    val focus = sources(1).getLines.mkString("")
+
+    // Internal PrologExtractor we delegate to.
+    val internalExtractor =
+      new PrologExtractor(s"question('${focus}', ${PrologExtractor.VariableName})")
+    internalExtractor.extract(Seq(question), destinations)
   }
 }
