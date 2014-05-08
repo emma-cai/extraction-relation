@@ -68,7 +68,8 @@ object Ermine extends Logging {
 
       logger.info("running pipeline")
 
-      pipeline.run(options.defaultInputs, options.defaultOutput)
+      // TODO(jkinkead): Allow for named pipelines here, too.
+      pipeline.run(Map.empty, options.defaultInputs, options.defaultOutput)
     }
   }
 }

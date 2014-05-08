@@ -16,12 +16,18 @@ import java.net.URI
 
 /** Class representing a pipeline. */
 class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) extends Logging {
-  def run(inputs: Seq[Source], defaultOutput: Writer): Unit = {
-    val inputMap = (for {
-      (input, index) <- inputs.zipWithIndex
+  /** Run this pipeline, using the given inputs and output.
+    * @param inputs the named inputs to this pipeline
+    * @param defaultInputs the default (unnamed) inputs to the first stage of this pipeline
+    * @param defaultOutput the default output for the last stage of the pipeline
+    */
+  def run(inputs: Map[String, Source], defaultInputs: Seq[Source], defaultOutput: Writer): Unit = {
+    val defaultsMap = (for {
+      (input, index) <- defaultInputs.zipWithIndex
     } yield (ExtractorIO.defaultName(index.toString) -> input)).toMap
-    runExtractors(extractors, Map.empty, inputMap, defaultOutput)
-    inputs foreach { _.close }
+    runExtractors(extractors, inputs, defaultsMap, defaultOutput)
+    inputs.values foreach { _.close }
+    defaultInputs foreach { _.close }
     defaultOutput.flush
     defaultOutput.close
   }

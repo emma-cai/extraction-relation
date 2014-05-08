@@ -1,14 +1,14 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.extractors.PrologExtractor
+import org.allenai.extraction.extractors.FerretTextExtractor
 
 import com.typesafe.config.ConfigFactory
 
 import java.net.URI
 
 class ExtractorConfigTest extends UnitSpec {
-  val validExtractor = "PrologExtractor"
+  val validExtractor = "FerretTextExtractor"
   val defaultIO = ExtractorIO.defaultIO("0")
 
   // Test that a simple extractor works.
@@ -17,7 +17,7 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (PrologExtractor)
+    extractor.extractor should be (FerretTextExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -29,7 +29,7 @@ class ExtractorConfigTest extends UnitSpec {
       inputs = [ "a" ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (PrologExtractor)
+    extractor.extractor should be (FerretTextExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -39,7 +39,7 @@ class ExtractorConfigTest extends UnitSpec {
       outputs = [ {name: "b"} ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (PrologExtractor)
+    extractor.extractor should be (FerretTextExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(ExtractorIO("b", new URI("name:b"))))
   }
@@ -50,7 +50,7 @@ class ExtractorConfigTest extends UnitSpec {
       outputs = [ "x" ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (PrologExtractor)
+    extractor.extractor should be (FerretTextExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(ExtractorIO("x", new URI("name:x"))))
   }
@@ -77,7 +77,7 @@ class ExtractorConfigTest extends UnitSpec {
   }
   it should "fail gracefully with too many inputs" in {
     val badInputs = ConfigFactory.parseString(s"""
-    name = "PrologExtractor"
+    name = "FerretTextExtractor"
     // Should only have one input.
     inputs = [ "x", "z" ]
     """)
