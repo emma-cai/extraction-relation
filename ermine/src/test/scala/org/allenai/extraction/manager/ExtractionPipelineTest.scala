@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.extractors.PrologExtractor
+import org.allenai.extraction.extractors.FerretTextExtractor
 
 import com.typesafe.config.ConfigFactory
 
@@ -12,7 +12,7 @@ class ExtractionPipelineTest extends UnitSpec {
       name = "TestWorkflow"
       extractors = [
         {
-          name = "PrologExtractor"
+          name = "FerretTextExtractor"
         }
       ]
       """)
@@ -20,6 +20,6 @@ class ExtractionPipelineTest extends UnitSpec {
 
     pipeline.name should be ("TestWorkflow")
     pipeline.extractors.length should be (1)
-    pipeline.extractors(0).extractor should be (PrologExtractor)
+    pipeline.extractors(0).extractor should be (FerretTextExtractor)
   }
 }
