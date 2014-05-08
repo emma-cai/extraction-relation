@@ -3,6 +3,7 @@ package org.allenai.extraction.manager
 import org.allenai.common.Config._
 import org.allenai.common.Logging
 
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.Config
 
 import scala.annotation.tailrec
@@ -43,7 +44,7 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
       sources: Map[String, Source], defaults: Map[String, Source], defaultOutput: Writer): Unit = {
     extractors match {
       // Base case: We've run all the extractors; now, if there was a default out from the last
-      // step, pipe to STDOUT.
+      // step, pipe to the default output.
       case Seq() => {
         for {
           lastOutput <- defaults.get(ExtractorIO.defaultName("0")) if defaults.size == 1
@@ -114,23 +115,30 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
   }
 }
 object ExtractorPipeline {
-  /** Builds a pipeline from an extractor config. This expects a Config with keys `name` and
-    * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
-    */
-  def fromConfig(config: Config): ExtractorPipeline = {
-    val name = config.get[String]("name").getOrElse(
-      throw new ExtractionException("pipeline name is required"))
+  class Builder(implicit val bindingModule: BindingModule) extends Injectable {
+    val extractorConfigBuilder = new ExtractorConfig.Builder()
 
-    val extractors: Seq[ExtractorConfig] = {
-      config.getConfigList("extractors").asScala map { ExtractorConfig.fromConfig }
+    /** Builds a pipeline from an extractor config. This expects a Config with keys `name` and
+      * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
+      */
+    def fromConfig(config: Config): ExtractorPipeline = {
+      val name = config.get[String]("name").getOrElse(
+        throw new ExtractionException("pipeline name is required"))
+
+      val extractors: Seq[ExtractorConfig] = {
+        config.getConfigList("extractors").asScala map { extractorConfigBuilder.fromConfig }
+      }
+
+      if (extractors.length == 0) {
+        throw new ExtractionException("no extractors found in pipeline")
+      }
+
+      // TODO: Validate the i/o of the extractors.
+      // First step: Validate default (unconfigured) inputs have outputs they can map to.
+      // Second step: Determine list of unsatisfied (named) inputs from secondary stages.
+      // Third step: Determine required input (required names *OR* required default count).
+
+      new ExtractorPipeline(name, extractors)
     }
-
-    if (extractors.length == 0) {
-      throw new ExtractionException("no extractors found in pipeline")
-    }
-
-    // TODO: Validate the i/o of the extractors.
-
-    new ExtractorPipeline(name, extractors)
   }
 }

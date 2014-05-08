@@ -1,23 +1,23 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.extractors.FerretTextExtractor
 
 import com.typesafe.config.ConfigFactory
 
 import java.net.URI
 
 class ExtractorConfigTest extends UnitSpec {
-  val validExtractor = "FerretTextExtractor"
+  val validExtractor = "NoOpExtractor"
   val defaultIO = ExtractorIO.defaultIO("0")
+  val testBuilder = new ExtractorConfig.Builder()(TestErmineModule)
 
   // Test that a simple extractor works.
-  "ExtractorConfig.fromConfig" should "handle a name-only config" in {
+  "ExtractorConfig.Builder.fromConfig" should "handle a name-only config" in {
     val extractorWithInputs = ConfigFactory.parseString(s"""
       name = "${validExtractor}"
       """)
-    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -28,8 +28,8 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       inputs = [ "a" ]
       """)
-    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -38,8 +38,8 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       outputs = [ {name: "b"} ]
       """)
-    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(ExtractorIO("b", new URI("name:b"))))
   }
@@ -49,8 +49,8 @@ class ExtractorConfigTest extends UnitSpec {
       inputs = [ "a" ]
       outputs = [ "x" ]
       """)
-    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(ExtractorIO("x", new URI("name:x"))))
   }
@@ -62,7 +62,7 @@ class ExtractorConfigTest extends UnitSpec {
     """)
 
     an[ExtractionException] should be thrownBy {
-      ExtractorConfig.fromConfig(noNameConfig)
+      testBuilder.fromConfig(noNameConfig)
     }
   }
   it should "fail gracefully with a bad name" in {
@@ -72,27 +72,27 @@ class ExtractorConfigTest extends UnitSpec {
     """)
 
     an[ExtractionException] should be thrownBy {
-      ExtractorConfig.fromConfig(badNameConfig)
+      testBuilder.fromConfig(badNameConfig)
     }
   }
   it should "fail gracefully with too many inputs" in {
     val badInputs = ConfigFactory.parseString(s"""
-    name = "FerretTextExtractor"
+    name = "NoOpExtractor"
     // Should only have one input.
     inputs = [ "x", "z" ]
     """)
 
     an[ExtractionException] should be thrownBy {
-      ExtractorConfig.fromConfig(badInputs)
+      testBuilder.fromConfig(badInputs)
     }
   }
 
   // Test that malformed inputs / outputs are handled gracefully.
-  "ExtractorConfig.getIOValues" should "return the default for an empty array" in {
+  "ExtractorConfig.Builder.getIOValues" should "return the default for an empty array" in {
     val emptyInputsConfig = ConfigFactory.parseString(s"""
     ary = [ ]
     """)
 
-    ExtractorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
+    testBuilder.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
   }
 }

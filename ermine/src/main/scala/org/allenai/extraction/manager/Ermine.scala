@@ -1,8 +1,9 @@
 package org.allenai.extraction.manager
 
+import org.allenai.common.Config._
 import org.allenai.common.Logging
 
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{ Config, ConfigFactory }
 import scopt.OptionParser
 
 import scala.io.Source
@@ -57,6 +58,7 @@ object Ermine extends Logging {
 
     optionParser.parse(args, ErmineOptions()) foreach { options =>
       logger.info("loading pipeline configuration")
+      implicit val module = ErmineModule
 
       // Load up a config file.
       val config = ConfigFactory.parseFile(options.configFile)
@@ -64,7 +66,7 @@ object Ermine extends Logging {
       if (!config.hasPath(configKey)) {
         throw new ExtractionException(s"no pipeline configuration found at key ${configKey}")
       }
-      val pipeline = ExtractorPipeline.fromConfig(config.getConfig(configKey))
+      val pipeline = new ExtractorPipeline.Builder().fromConfig(config[Config](configKey))
 
       logger.info("running pipeline")
 
