@@ -14,8 +14,8 @@ case class ExtractorConfig(extractor: Extractor, inputs: Seq[ExtractorIO],
   outputs: Seq[ExtractorIO])
 object ExtractorConfig {
   /** Builds an ExtractorConfig from a config with required key `name` and optional `inputs` and
-    * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the
-    * value `$$default`.
+    * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the value
+    * `$$default`.
     */
   def fromConfig(config: Config)(implicit bindingModule: BindingModule): ExtractorConfig = {
     val extractors = bindingModule.inject[Map[String,Extractor]](None)
@@ -32,19 +32,19 @@ object ExtractorConfig {
     val outputs = getIOValues(config, "outputs", extractor.numOutputs)
 
     if (inputs.size != extractor.numInputs) {
-      throw new ExtractionException(s"extrator ${extractorName} requires " +
-          s"${extractor.numInputs} inputs, has ${inputs.size} in the configuration")
+      throw new ExtractionException(s"extrator ${extractorName} requires ${extractor.numInputs} " +
+        s"inputs, has ${inputs.size} in the configuration")
     }
     if (outputs.size != extractor.numOutputs) {
-      throw new ExtractionException(s"extrator ${extractorName} requires " +
-          s"${extractor.numOutputs} outputs, has ${outputs.size} in the configuration")
+      throw new ExtractionException(s"extrator ${extractorName} requires ${extractor.numOutputs} " +
+        s"outputs, has ${outputs.size} in the configuration")
     }
 
     ExtractorConfig(extractor, inputs, outputs)
   }
 
-  /** Gets an input or output label set from a config using the given config path. This expects
-    * the value at the given path to be an array of strings.
+  /** Gets an input or output label set from a config using the given config path. This expects the
+    * value at the given path to be an array of strings.
     * @throws ExtractionException if the value at the path is not an array of strings
     */
   def getIOValues(config: Config, path: String, numExpected: Int): Seq[ExtractorIO] = {
@@ -58,7 +58,9 @@ object ExtractorConfig {
         Seq.empty
       }
     } catch {
-      case e: ConfigException => { throw new ExtractionException(s"bad ${path} value", e) }
+      case e: ConfigException => {
+        throw new ExtractionException(s"bad ${path} value", e)
+      }
     }
 
     if (configuredValues.size == 0) {
