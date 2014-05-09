@@ -36,3 +36,8 @@ javaOptions ++= ermineJavaOptions ++
 NativePackagerKeys.bashScriptExtraDefines ++=
   (ermineJavaOptions map { "addJava \"" +  _ + "\"" }) ++
   Seq("""addJava "-Dlogback.configurationFile=${app_home}/../conf/logback.xml"""")
+
+// Copy the prolog scripts from Ermine to the universal staging directory.
+mappings in Universal ++=
+  ((sourceDirectory in ermine).value / "main" / "prolog" ** "*" x
+    rebase((sourceDirectory in ermine).value / "main" / "prolog", "prolog/"))

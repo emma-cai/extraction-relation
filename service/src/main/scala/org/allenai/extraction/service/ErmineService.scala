@@ -1,6 +1,7 @@
 package org.allenai.extraction.service
 
 import org.allenai.common.Logging
+import org.allenai.extraction.interface.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ExtractorPipeline
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
@@ -12,11 +13,8 @@ import spray.routing.{ ExceptionHandler, HttpServiceActor }
 import scala.collection.JavaConversions._
 import scala.io.Source
 import scala.util.control.NonFatal
-          
-import java.io.File
-import java.io.FileWriter                                                                           
-import java.io.PrintWriter                                                                          
-import java.io.Writer 
+
+import java.io.StringWriter
 
 class ErmineService(implicit val bindingModule: BindingModule) extends HttpServiceActor
     with Logging with SprayJsonSupport with Injectable {
@@ -30,7 +28,7 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
   }
 
   // Preload pipelines.
-  val pipelineConfig = inject [Config](ServiceModule.Pipelines)
+  val pipelineConfig = inject [Config](ServiceModuleId.Pipelines)
   val pipelines: Map[String,ExtractorPipeline] = {
     val mutablePipelines = for {
       (pipelineName: String, configObject: ConfigObject) <- pipelineConfig.root()
@@ -45,21 +43,26 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
   }
 
   override def receive = runRoute(
-    // TODO(jkinkead): Make this accept POST requests.
-    pathPrefix("pipeline" / Segment / """(.*)""".r) { (name, text) =>
-      pipelines.get(name) match {
-        case Some(pipeline) => {
-          logger.info("running pipeline '" + name + "' . . .")
+    post {
+      pathPrefix("pipeline" / Segment) { pipelineName =>
+        entity(as[PipelineRequest]) { pipelineRequest =>
+          pipelines.get(pipelineName) match {
+            case Some(pipeline) => {
+              logger.info("running pipeline '" + pipelineName + "' . . .")
 
-          // TODO(jkinkead): Create infile(s).
-          val input = Source.fromString(text)
-          val output = new java.io.StringWriter()
-          pipeline.run(input, output)
-          output.close
+              val inputs = for {
+                (name, text) <- pipelineRequest.inputs
+              } yield (name -> Source.fromString(text))
+              val output = new StringWriter()
+              pipeline.run(inputs, Seq.empty, output)
+              output.close
 
-          complete("extractions:\n" + output.toString())
+              complete(PipelineResponse(output.toString))
+            }
+            case None => complete(StatusCodes.BadRequest ->
+              s"No pipeline with name '${pipelineName}' exists")
+          }
         }
-        case None => complete(StatusCodes.BadRequest -> s"No pipeline with name '${name}' exists")
       }
     }
   )
