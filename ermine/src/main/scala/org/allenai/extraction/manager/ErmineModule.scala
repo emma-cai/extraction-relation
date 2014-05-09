@@ -9,7 +9,7 @@ import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
 
 /** Module providing bindings for the Ermine system. */
-object ErmineModule extends NewBindingModule (module => {
+object ErmineModule extends NewBindingModule(module => {
   import module._
 
   // Include Config bindings, and inject the config object we need.

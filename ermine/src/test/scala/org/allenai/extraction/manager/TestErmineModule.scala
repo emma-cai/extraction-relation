@@ -14,7 +14,7 @@ object NoOpExtractor extends FlatExtractor {
 }
 
 /** Subcut module for testing. */
-object TestErmineModule extends NewBindingModule (module => {
+object TestErmineModule extends NewBindingModule(module => {
   // Available extractors.
   module.bind [Map[String,Extractor]] toSingle Map[String,Extractor](
     "NoOpExtractor" -> NoOpExtractor
