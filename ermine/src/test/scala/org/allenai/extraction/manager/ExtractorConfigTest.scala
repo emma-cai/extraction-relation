@@ -9,14 +9,15 @@ import java.net.URI
 class ExtractorConfigTest extends UnitSpec {
   val validExtractor = "NoOpExtractor"
   val defaultIO = ExtractorIO.defaultIO("0")
-  val testBuilder = new ExtractorConfig.Builder()(TestErmineModule)
+  // Binding module for fromConfig calls.
+  implicit val bindingModule = TestErmineModule
 
   // Test that a simple extractor works.
-  "ExtractorConfig.Builder.fromConfig" should "handle a name-only config" in {
+  "ExtractorConfig.fromConfig" should "handle a name-only config" in {
     val extractorWithInputs = ConfigFactory.parseString(s"""
       name = "${validExtractor}"
       """)
-    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(defaultIO))
@@ -28,7 +29,7 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       inputs = [ "a" ]
       """)
-    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(defaultIO))
@@ -38,7 +39,7 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       outputs = [ {name: "b"} ]
       """)
-    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(ExtractorIO("b", new URI("name:b"))))
@@ -49,7 +50,7 @@ class ExtractorConfigTest extends UnitSpec {
       inputs = [ "a" ]
       outputs = [ "x" ]
       """)
-    val extractor = testBuilder.fromConfig(extractorWithInputs)
+    val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
     extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(ExtractorIO("x", new URI("name:x"))))
@@ -62,7 +63,7 @@ class ExtractorConfigTest extends UnitSpec {
     """)
 
     an[ExtractionException] should be thrownBy {
-      testBuilder.fromConfig(noNameConfig)
+      ExtractorConfig.fromConfig(noNameConfig)
     }
   }
   it should "fail gracefully with a bad name" in {
@@ -72,7 +73,7 @@ class ExtractorConfigTest extends UnitSpec {
     """)
 
     an[ExtractionException] should be thrownBy {
-      testBuilder.fromConfig(badNameConfig)
+      ExtractorConfig.fromConfig(badNameConfig)
     }
   }
   it should "fail gracefully with too many inputs" in {
@@ -83,7 +84,7 @@ class ExtractorConfigTest extends UnitSpec {
     """)
 
     an[ExtractionException] should be thrownBy {
-      testBuilder.fromConfig(badInputs)
+      ExtractorConfig.fromConfig(badInputs)
     }
   }
 
@@ -93,6 +94,6 @@ class ExtractorConfigTest extends UnitSpec {
     ary = [ ]
     """)
 
-    testBuilder.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
+    ExtractorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
   }
 }

@@ -5,9 +5,7 @@ import org.allenai.common.testkit.UnitSpec
 import com.typesafe.config.ConfigFactory
 
 class ExtractorPipelineTest extends UnitSpec {
-  val testBuilder = new ExtractorPipeline.Builder()(TestErmineModule)
-
-  "ExtractorPipeline.Builder.fromConfig" should "parse a simple pipeline correctly" in {
+  "ExtractorPipeline.fromConfig" should "parse a simple pipeline correctly" in {
     // Simplest valid pipeline.
     val simpleConfig = ConfigFactory.parseString(s"""
       name = "TestWorkflow"
@@ -17,7 +15,7 @@ class ExtractorPipelineTest extends UnitSpec {
         }
       ]
       """)
-    val pipeline = testBuilder.fromConfig(simpleConfig)
+    val pipeline = ExtractorPipeline.fromConfig(simpleConfig)(TestErmineModule)
 
     pipeline.name should be ("TestWorkflow")
     pipeline.extractors.length should be (1)

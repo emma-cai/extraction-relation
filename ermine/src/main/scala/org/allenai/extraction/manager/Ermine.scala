@@ -66,7 +66,7 @@ object Ermine extends Logging {
       if (!config.hasPath(configKey)) {
         throw new ExtractionException(s"no pipeline configuration found at key ${configKey}")
       }
-      val pipeline = new ExtractorPipeline.Builder().fromConfig(config[Config](configKey))
+      val pipeline = ExtractorPipeline.fromConfig(config[Config](configKey))
 
       logger.info("running pipeline")
 

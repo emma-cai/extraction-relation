@@ -115,30 +115,26 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
   }
 }
 object ExtractorPipeline {
-  class Builder(implicit val bindingModule: BindingModule) extends Injectable {
-    val extractorConfigBuilder = new ExtractorConfig.Builder()
+  /** Builds a pipeline from an extractor config. This expects a Config with keys `name` and
+    * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
+    */
+  def fromConfig(config: Config)(implicit bindingModule: BindingModule): ExtractorPipeline = {
+    val name = config.get[String]("name").getOrElse(
+      throw new ExtractionException("pipeline name is required"))
 
-    /** Builds a pipeline from an extractor config. This expects a Config with keys `name` and
-      * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
-      */
-    def fromConfig(config: Config): ExtractorPipeline = {
-      val name = config.get[String]("name").getOrElse(
-        throw new ExtractionException("pipeline name is required"))
-
-      val extractors: Seq[ExtractorConfig] = {
-        config.getConfigList("extractors").asScala map { extractorConfigBuilder.fromConfig }
-      }
-
-      if (extractors.length == 0) {
-        throw new ExtractionException("no extractors found in pipeline")
-      }
-
-      // TODO: Validate the i/o of the extractors.
-      // First step: Validate default (unconfigured) inputs have outputs they can map to.
-      // Second step: Determine list of unsatisfied (named) inputs from secondary stages.
-      // Third step: Determine required input (required names *OR* required default count).
-
-      new ExtractorPipeline(name, extractors)
+    val extractors: Seq[ExtractorConfig] = {
+      config.getConfigList("extractors").asScala map { ExtractorConfig.fromConfig }
     }
+
+    if (extractors.length == 0) {
+      throw new ExtractionException("no extractors found in pipeline")
+    }
+
+    // TODO: Validate the i/o of the extractors.
+    // First step: Validate default (unconfigured) inputs have outputs they can map to.
+    // Second step: Determine list of unsatisfied (named) inputs from secondary stages.
+    // Third step: Determine required input (required names *OR* required default count).
+
+    new ExtractorPipeline(name, extractors)
   }
 }
