@@ -14,21 +14,19 @@ import java.io.File
 import java.io.FileWriter
 import java.io.Writer
 
-object PrologExtractor {
-  /** Name used for the Prolog variable we're targeting. */
-  val VariableName = "Var"
-
+/** Class responsible for holding a reference to the JPL initialized with the Ferret libraries.
+  * @param ferretDir the root of the ferret installation
+  */
+class Ferret(ferretDir: String) {
   /** Initialize JPL. This is lazily evaluated to keep this from breaking class
     * load if we don't have the swipl libraries on the classpath.
     */
-  lazy val jplClass = {
-    // TODO(jkinkead): Load this from config.
-    val prologRoot = "/Users/jkinkead/work/prototyping/prolog/extraction"
+  lazy val jpl = {
     classOf[JPL].synchronized {
       // Be quiet (don't print informational load messages).
       JPL.init(JPL.getDefaultInitArgs :+ "-q")
       val loadProlog = new Query(
-        s"consult(['${prologRoot}/relation.pl', '${prologRoot}/patterns-stanford.pl'])")
+        s"consult(['${ferretDir}/relation.pl', '${ferretDir}/patterns-stanford.pl'])")
       loadProlog.allSolutions
       loadProlog.rewind
     }
@@ -36,13 +34,19 @@ object PrologExtractor {
   }
 }
 
+object PrologExtractor {
+  /** Name used for the Prolog variable we're targeting. */
+  val VariableName = "Var"
+}
+
 /** Prolog extractor running the Ferret extraction code. This has two concrete instances - one for
   * extractions, and one for question analysis.
   *
+  * @param ferret reference to the ferret initializer class
   * @param prologGoal the prolog goal code to use. Should have a variable named
   *   PrologExtractor.VariableName.
   */
-class PrologExtractor(val prologGoal: String) extends FlatExtractor {
+class PrologExtractor(val ferret: Ferret, val prologGoal: String) extends FlatExtractor {
   override protected def extractInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
@@ -54,7 +58,7 @@ class PrologExtractor(val prologGoal: String) extends FlatExtractor {
       }
     }
 
-    val results = PrologExtractor.jplClass.synchronized {
+    val results = ferret.jpl.synchronized {
       // Next, run the prolog extractor and generate output rules.
       val solveRelations = new Query(
         s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
@@ -85,20 +89,21 @@ class PrologExtractor(val prologGoal: String) extends FlatExtractor {
 }
 
 /** Extractor for text. */
-object FerretTextExtractor extends PrologExtractor(s"relation(${PrologExtractor.VariableName}, _)")
+class FerretTextExtractor(ferret: Ferret) extends
+  PrologExtractor(ferret, s"relation(${PrologExtractor.VariableName}, _)")
 
 /** Extractor for questions. Takes one stream for the question and one for the focus. */
-object FerretQuestionExtractor extends Extractor {
+class FerretQuestionExtractor(val ferret: Ferret) extends Extractor {
   override val numInputs = 2
   override val numOutputs = 1
 
   override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val question = sources(0)
-    val focus = sources(1).getLines.mkString("")
+    val focus = sources(1).getLines.mkString("\n")
 
     // Internal PrologExtractor we delegate to.
     val internalExtractor =
-      new PrologExtractor(s"question('${focus}', ${PrologExtractor.VariableName})")
+      new PrologExtractor(ferret, s"question('${focus}', ${PrologExtractor.VariableName})")
     internalExtractor.extract(Seq(question), destinations)
   }
 }

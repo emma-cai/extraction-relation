@@ -1,15 +1,16 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.extractors.FerretTextExtractor
 
 import com.typesafe.config.ConfigFactory
 
 import java.net.URI
 
 class ExtractorConfigTest extends UnitSpec {
-  val validExtractor = "FerretTextExtractor"
+  val validExtractor = "NoOpExtractor"
   val defaultIO = ExtractorIO.defaultIO("0")
+  // Binding module for fromConfig calls.
+  implicit val bindingModule = TestErmineModule
 
   // Test that a simple extractor works.
   "ExtractorConfig.fromConfig" should "handle a name-only config" in {
@@ -17,7 +18,7 @@ class ExtractorConfigTest extends UnitSpec {
       name = "${validExtractor}"
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -29,7 +30,7 @@ class ExtractorConfigTest extends UnitSpec {
       inputs = [ "a" ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(defaultIO))
   }
@@ -39,7 +40,7 @@ class ExtractorConfigTest extends UnitSpec {
       outputs = [ {name: "b"} ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(defaultIO))
     extractor.outputs should be (Seq(ExtractorIO("b", new URI("name:b"))))
   }
@@ -50,7 +51,7 @@ class ExtractorConfigTest extends UnitSpec {
       outputs = [ "x" ]
       """)
     val extractor = ExtractorConfig.fromConfig(extractorWithInputs)
-    extractor.extractor should be (FerretTextExtractor)
+    extractor.extractor should be (NoOpExtractor)
     extractor.inputs should be (Seq(ExtractorIO("a", new URI("name:a"))))
     extractor.outputs should be (Seq(ExtractorIO("x", new URI("name:x"))))
   }
@@ -77,7 +78,7 @@ class ExtractorConfigTest extends UnitSpec {
   }
   it should "fail gracefully with too many inputs" in {
     val badInputs = ConfigFactory.parseString(s"""
-    name = "FerretTextExtractor"
+    name = "NoOpExtractor"
     // Should only have one input.
     inputs = [ "x", "z" ]
     """)
@@ -88,7 +89,7 @@ class ExtractorConfigTest extends UnitSpec {
   }
 
   // Test that malformed inputs / outputs are handled gracefully.
-  "ExtractorConfig.getIOValues" should "return the default for an empty array" in {
+  "ExtractorConfig.Builder.getIOValues" should "return the default for an empty array" in {
     val emptyInputsConfig = ConfigFactory.parseString(s"""
     ary = [ ]
     """)

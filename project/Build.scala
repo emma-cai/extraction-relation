@@ -70,6 +70,7 @@ object ExtractionBuild extends Build {
   val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.6"
+  val subcut = "com.escalatesoft.subcut" %% "subcut" % "2.0"
   val typesafeConfig = "com.typesafe" % "config" % "1.2.0"
   val mockito = "org.mockito" % "mockito-all" % "1.9.5"
 

@@ -3,6 +3,7 @@ package org.allenai.extraction.manager
 import org.allenai.extraction.Extractor
 import org.allenai.extraction.extractors._
 
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.{ Config, ConfigException }
 
 import scala.collection.JavaConverters._
@@ -12,28 +13,19 @@ import scala.collection.JavaConverters._
 case class ExtractorConfig(extractor: Extractor, inputs: Seq[ExtractorIO],
   outputs: Seq[ExtractorIO])
 object ExtractorConfig {
-  /** Gets the singleton instance of an extractor, or throw a MatchError if we don't know of the
-    * extractor.
-    */
-  def getExtractor(extractorName: String): Extractor = extractorName match {
-    case "StanfordParser" => StanfordParser
-    case "FerretTextExtractor" => FerretTextExtractor
-    case "FerretQuestionExtractor" => FerretQuestionExtractor
-    case "StanfordXmlToTtl" => StanfordXmlToTtl
-    case "FerretToExtractionRule" => FerretToExtractionRule
-  }
-
   /** Builds an ExtractorConfig from a config with required key `name` and optional `inputs` and
     * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the value
     * `$$default`.
     */
-  def fromConfig(config: Config): ExtractorConfig = {
+  def fromConfig(config: Config)(implicit bindingModule: BindingModule): ExtractorConfig = {
+    val extractors = bindingModule.inject[Map[String,Extractor]](None)
+
     if (!config.hasPath("name")) {
       throw new ExtractionException(s"extractor missing a 'name' key: ${config}")
     }
     val extractorName = config.getString("name")
-    val extractor = try { getExtractor(extractorName) } catch {
-      case _: MatchError => throw new ExtractionException(s"unknown extractor '${extractorName}'")
+    val extractor = extractors.get(extractorName) getOrElse {
+      throw new ExtractionException(s"unknown extractor '${extractorName}'")
     }
 
     val inputs = getIOValues(config, "inputs", extractor.numInputs)
@@ -41,11 +33,11 @@ object ExtractorConfig {
 
     if (inputs.size != extractor.numInputs) {
       throw new ExtractionException(s"extrator ${extractorName} requires ${extractor.numInputs} " +
-        s"inputs, got ${inputs.size}")
+        s"inputs, has ${inputs.size} in the configuration")
     }
     if (outputs.size != extractor.numOutputs) {
       throw new ExtractionException(s"extrator ${extractorName} requires ${extractor.numOutputs} " +
-        s"outputs, got ${outputs.size}")
+        s"outputs, has ${outputs.size} in the configuration")
     }
 
     ExtractorConfig(extractor, inputs, outputs)
