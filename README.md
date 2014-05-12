@@ -23,7 +23,7 @@ The auto-generated script `ermine/target/universal/stage/bin/extraction-manager`
 
 `./ermine/target/universal/stage/bin/extraction-manager -c ermine/examples/ferret.conf -i some-sentences-file.txt -o output.json`
 
-The `-c` flag is the only required one, and it specifies the configuration file for the pipeline you're running. the `-i` and `-o` flags are only used if your pipeline doesn't specify a first-stage input or a last-stage output (respectively).
+The `-c` flag is the only required one, and it specifies the configuration file for the pipeline you're running. the `-i` and `-o` flags are only used if your pipeline doesn't specify a first-stage input or a last-stage output (respectively). `-i` can be repeated if you have multiple inputs to the start of your pipeline.
 
 
 ### Installing Prolog
@@ -35,10 +35,6 @@ You can install this easily on OS X with [homebrew](http://brew.sh/):
 `brew install swi-prolog --with-jpl`
 
 Don't forget the `--with-jpl` flag! The root project's `Build.scala` will check for a valid swipl install at load time, and will print out a warning if one is missing.
-
-### Configuring PrologExtractor
-
-The `PrologExtractor` class in ermine currently has a path hard-coded into it - the location of the Ferret extraction script. This is the `prologRoot` value in the class, and needs to be updated before it can be run.
 
 
 ## Configuring ermine
