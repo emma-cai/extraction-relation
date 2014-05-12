@@ -28,16 +28,16 @@ dependencyOverrides ++= Set(
 fork in run := true
 
 // Set java options for run & re-start.
-javaOptions ++= ermineJavaOptions ++
-  Seq("-Dlogback.configurationFile=src/main/resources/logback.xml")
+javaOptions ++= ermineJavaOptions ++ prologLibraryFlags ++
+  Seq("-Dlogback.configurationFile=src/main/resources/logback.xml",
+    "-Dferret.directory=../ermine/src/main/prolog")
 
-// Set java options in the native packager script. These are literals embedded in the script, so we
-// have to call 'addJava' to get them added (and we quote them as well).
-NativePackagerKeys.bashScriptExtraDefines ++=
-  (ermineJavaOptions map { "addJava \"" +  _ + "\"" }) ++
-  Seq("""addJava "-Dlogback.configurationFile=${app_home}/../conf/logback.xml"""")
+Deploy.settings
 
 // Copy the prolog scripts from Ermine to the universal staging directory.
 mappings in Universal ++=
   ((sourceDirectory in ermine).value / "main" / "prolog" ** "*" x
     rebase((sourceDirectory in ermine).value / "main" / "prolog", "prolog/"))
+
+// Copy the prolog scripts to EC2.
+Deploy.deployDirs += "prolog"

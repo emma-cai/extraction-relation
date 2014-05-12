@@ -9,15 +9,14 @@ There are three subprojects:
 1. interface: A definition of models used as output for extractions (extraction targets)
 2. demo: A webapp running an extraction demo
 3. ermine: An extraction manager to handle workflows
-
-"ermine" is under construction.
-
+4. service: A webservice fronting ermine.
 
 ## Running ermine
 
-The main ermine project can be built without any special configuration. However, the `PrologExtractor` requires some special configuration - see below.
+The main ermine project can be built without any special configuration, although you do need Prolog
+installed to run the Ferret pipelines - see below.
 
-After installing prolog and updating `PrologExtractor`, you can run `sbt 'project ermine' stage` to build ermine.
+After installing prolog, you can run `sbt 'project ermine' stage` to build ermine.
 
 The auto-generated script `ermine/target/universal/stage/bin/extraction-manager` can then be used to run an extraction pipeline:
 

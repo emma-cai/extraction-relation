@@ -81,7 +81,7 @@ object ExtractionBuild extends Build {
   val ferretDeps = {
     // Prolog interface jar. This also requires having prolog installed to work -
     // see http://www.swi-prolog.org/build/macos.html
-    val jpl = "jpl" % "jpl" % "3.1.4-alpha"
+    val jpl = "org.allenai.jpl" % "jpl" % "6.6.4"
 
     // Kevin's patches of the Stanford parser.
     val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
@@ -103,6 +103,7 @@ object ExtractionBuild extends Build {
   ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
+    Deploy.settings ++
     Seq(
       organization := "org.allenai.extraction.demo",
       crossScalaVersions := Seq("2.10.4"),
@@ -126,7 +127,7 @@ object ExtractionBuild extends Build {
     base = file("demo"),
     settings = buildSettings)
 
-  val ermineJavaOptions = prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")
+  val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
