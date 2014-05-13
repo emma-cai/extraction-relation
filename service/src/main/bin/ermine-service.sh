@@ -12,8 +12,12 @@ fi
 
 eval `swipl --dump-runtime-variables`
 JPL_BASE="${PLBASE}/lib/${PLARCH}"
-# Check for the OS X JPL. If it doesn't exist, try the EC2 location.
-if [[ ! -e "$JPL_BASE/libjpl.jnilib" && ! -e "$JPL_BASE/libjpl.so" ]]; then
+# Check for the linux / EC2 location for the SWI libs. If it doesn't exist, try the OS X location.
+if [[ -e "$JPL_BASE/libjpl.so" ]]; then
+  # We need to set LD_LIBRARY_PATH and LD_PRELOAD if we're in Linux.
+  export LD_LIBRARY_PATH="$JPL_BASE:/usr/lib/jvm/java/jre/lib/amd64:/usr/lib/jvm/java/jre/lib/amd64/server"
+  export LD_PRELOAD="$JPL_BASE/libjpl.so"
+elif [[ ! -e "$JPL_BASE/libjpl.jnilib" ]]; then
   echo "Couldn't find JPL libraries; exiting."
   exit 1
 fi

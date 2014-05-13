@@ -13,7 +13,7 @@ In order to run the Ferret pipelines, you need to build swipl from source.
 Instructions are as follows:
 ```
 $ sudo yum install gcc autoconf chrpath libunwind freetype-devel gmp-devel \
-  java-1.6.0-openjdk-devel jpackage-utils libICE-devel libjpeg-devel libSM-devel \
+  java-1.7.0-openjdk-devel jpackage-utils libICE-devel libjpeg-devel libSM-devel \
   libX11-devel libXaw-devel libXext-devel libXft-devel libXinerama-devel \
   libXmu-devel libXpm-devel libXrender-devel libXt-devel ncurses-devel \
   openssl-devel pkgconfig readline-devel unixODBC-devel zlib-devel uuid-devel \
