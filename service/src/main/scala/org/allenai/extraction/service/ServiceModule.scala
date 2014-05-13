@@ -21,10 +21,10 @@ object ServiceModule extends NewBindingModule(module => {
   // Load our binding for Config.
   module <~ ConfigModule
   val config = inject[Config](None)
-  
+
   // Port the service will run on.
-  bind [Int] idBy ServiceModuleId.Port toSingle config[Int]("ermine.port")
+  bind[Int] idBy ServiceModuleId.Port toSingle config[Int]("ermine.port")
 
   // Pipeline configurations.
-  bind [Config] idBy ServiceModuleId.Pipelines toSingle config[Config]("ermine.pipelines")
+  bind[Config] idBy ServiceModuleId.Pipelines toSingle config[Config]("ermine.pipelines")
 })

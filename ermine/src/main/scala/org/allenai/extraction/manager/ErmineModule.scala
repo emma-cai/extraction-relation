@@ -21,7 +21,7 @@ object ErmineModule extends NewBindingModule(module => {
   val ferret = new Ferret(ferretDir)
 
   // Available extractors.
-  bind [Map[String,Extractor]] toSingle Map(
+  bind[Map[String,Extractor]] toSingle Map(
     "StanfordParser" -> StanfordParser,
     "FerretTextExtractor" -> new FerretTextExtractor(ferret),
     "FerretQuestionExtractor" -> new FerretQuestionExtractor(ferret),

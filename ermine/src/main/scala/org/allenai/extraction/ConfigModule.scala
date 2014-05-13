@@ -8,5 +8,5 @@ import com.typesafe.config.ConfigFactory
   * create it, so any clients should be sure to set the system property config.file.
   */
 object ConfigModule extends NewBindingModule(module => {
-  module.bind [Config] toSingle ConfigFactory.load
+  module.bind[Config] toSingle ConfigFactory.load
 })

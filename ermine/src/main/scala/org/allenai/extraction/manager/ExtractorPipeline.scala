@@ -1,7 +1,6 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
-import org.allenai.common.Logging
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.Config
@@ -16,7 +15,7 @@ import java.io.Writer
 import java.net.URI
 
 /** Class representing a pipeline. */
-class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) extends Logging {
+class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) {
   /** Run this pipeline, using the given inputs and output.
     * @param inputs the named inputs to this pipeline
     * @param defaultInputs the default (unnamed) inputs to the first stage of this pipeline

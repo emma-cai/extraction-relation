@@ -1,9 +1,9 @@
 package org.allenai.extraction.service
 
-import org.allenai.common.Logging
 import org.allenai.extraction.interface.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ExtractorPipeline
 
+import akka.actor.{ ActorLogging, Props }
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.{ Config, ConfigObject }
 import spray.http.StatusCodes
@@ -17,11 +17,11 @@ import scala.util.control.NonFatal
 import java.io.StringWriter
 
 class ErmineService(implicit val bindingModule: BindingModule) extends HttpServiceActor
-    with Logging with SprayJsonSupport with Injectable {
+    with ActorLogging with SprayJsonSupport with Injectable {
 
   implicit def exceptionHandler = ExceptionHandler {
     case NonFatal(e) => requestUri { uri =>
-      logger.warn(s"Request to ${uri} could not be handled normally: ", e)
+      log.error(e, s"Request to ${uri} could not be handled normally:")
       // TODO(jkinkead): Stack trace?
       complete(StatusCodes.InternalServerError -> "Error: " + e.getMessage)
     }
@@ -34,7 +34,7 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
       (pipelineName: String, configObject: ConfigObject) <- pipelineConfig.root()
       config = configObject.toConfig
       pipeline = {
-        logger.info(s"loading pipeline ${pipelineName} . . . ")
+        log.info(s"loading pipeline ${pipelineName} . . . ")
         ExtractorPipeline.fromConfig(config)
       }
     } yield (pipelineName -> pipeline)
@@ -48,7 +48,7 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
         entity(as[PipelineRequest]) { pipelineRequest =>
           pipelines.get(pipelineName) match {
             case Some(pipeline) => {
-              logger.info("running pipeline '" + pipelineName + "' . . .")
+              log.info(s"running pipeline '${pipelineName}' . . .")
 
               val inputs = for {
                 (name, text) <- pipelineRequest.inputs
@@ -66,4 +66,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
       }
     }
   )
+}
+
+object ErmineService {
+  def props(bindingModule: BindingModule): Props = Props(classOf[ErmineService], bindingModule)
 }
