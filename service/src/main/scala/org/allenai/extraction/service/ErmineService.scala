@@ -42,30 +42,40 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
     mutablePipelines.toMap
   }
 
+  // format: OFF
   override def receive = runRoute(
-    post {
-      pathPrefix("pipeline" / Segment) { pipelineName =>
-        entity(as[PipelineRequest]) { pipelineRequest =>
-          pipelines.get(pipelineName) match {
-            case Some(pipeline) => {
-              log.info(s"running pipeline '${pipelineName}' . . .")
+    pathPrefix("pipeline" / Segment) { pipelineName =>
+      pipelines.get(pipelineName) match {
+        case Some(pipeline) => {
+          pathEnd {
+            post {
+              entity(as[PipelineRequest]) { pipelineRequest =>
+                log.info(s"running pipeline '${pipelineName}' . . .")
 
-              val inputs = for {
-                (name, text) <- pipelineRequest.inputs
-              } yield (name -> Source.fromString(text))
-              val output = new StringWriter()
-              pipeline.run(inputs, Seq.empty, output)
-              output.close
+                val inputs = for {
+                  (name, text) <- pipelineRequest.inputs
+                } yield (name -> Source.fromString(text))
+                val output = new StringWriter()
+                pipeline.run(inputs, Seq.empty, output)
+                output.close
 
-              complete(PipelineResponse(output.toString))
+                complete(PipelineResponse(output.toString))
+              }
             }
-            case None => complete(StatusCodes.BadRequest ->
-              s"No pipeline with name '${pipelineName}' exists")
+          } ~
+          path("info" / "name" ) {
+            complete(pipeline.name)
+          } ~
+          path("info" / "description" ) {
+            complete(pipeline.description)
           }
         }
+        case None => complete(StatusCodes.BadRequest ->
+            s"No pipeline with name '${pipelineName}' exists")
       }
     }
   )
+  // format: ON
 }
 
 object ErmineService {
