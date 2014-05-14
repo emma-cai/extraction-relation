@@ -2,6 +2,7 @@ package org.allenai.extraction.demo
 
 import org.allenai.common.Resource.using
 import org.allenai.common.Logging
+import org.allenai.extraction.interface.JsonProtocol.{ PipelineRequest, PipelineResponse }
 
 import akka.actor._
 import com.typesafe.config.Config
@@ -195,9 +196,9 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   }
 }
 
-class ExtractorException(message: String, cause: Throwable) extends Exception(message, cause)
+class ExtractorException(message: String, cause: Throwable = null) extends Exception(message, cause)
 
-case class Extractor(url: URL) extends Logging {
+abstract class Extractor(val url: URL) extends (String => Future[String]) with Logging {
   override def toString = s"$name($url)"
 
   val name: String = {
@@ -216,10 +217,35 @@ case class Extractor(url: URL) extends Logging {
     val svc = dispatch.url(url.toString) / "info" / "description"
     Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption map (_.trim)
   }
+}
 
-  def apply(sentence: String): Future[String] = {
+/** Old-style extractor which accepts a POST on the root path and returns a string. */
+class SimpleExtractor(url: URL) extends Extractor(url) {
+  override def apply(sentence: String): Future[String] = {
     val svc = dispatch.url(url.toString) << sentence
     Http(svc OK as.String)
+  }
+}
+
+/** Extractor run through the Ermine service. */
+class ErmineExtractor(url: URL) extends Extractor(url) {
+  override def apply(sentence: String): Future[String] = {
+    // TODO(jkinkead): This is hard-coded to use a "text" input, which doesn't work for the
+    // ferret-question extractor. We should figure out a way to specify input streams in the config
+    // file . . . and add that to the UI.
+    val request = PipelineRequest(Map("text" -> sentence))
+    val svc = dispatch.url(url.toString).addHeader("Content-Type", "application/json") <<
+      request.toJson.compactPrint
+    Http(svc) map { response =>
+      response.getStatusCode match {
+        case 200 =>
+          val body = response.getResponseBody
+          body.parseJson.convertTo[PipelineResponse].output
+        case responseCode =>
+          val body = response.getResponseBody
+          throw new ExtractorException(s"Bad response ($responseCode) from Ermine at $url: $body")
+      }
+    }
   }
 }
 
@@ -227,9 +253,14 @@ object ExtractionDemoMain extends App with Logging {
   val config = ConfigFactory.load().getConfig("extraction.demo")
 
   val port = config.getInt("port")
-  val extractors = config.getStringList("extractors").iterator().asScala.map { url =>
-      new Extractor(new URL(url))
-    }.toSeq
+  val simpleExtractors = config.getStringList("extractors").iterator().asScala.map { url =>
+    new SimpleExtractor(new URL(url))
+  }.toSeq
+  val ermineExtractors = config.getStringList("ermine-extractors").iterator().asScala.map { url =>
+    new ErmineExtractor(new URL(url))
+  }.toSeq
+
+  val extractors = simpleExtractors ++ ermineExtractors
 
   logger.info("Configured with extractors: " + extractors.mkString(", "))
 
