@@ -1,0 +1,60 @@
+Det := OpenRegex {
+   (?: <pos='PDT'>? <pos='DT' | pos='CD' | pos='PRP$'> )
+   | (?: <pos='PDT'>? <pos='DT'> <pos='CD'> )
+}
+
+Noun := TypedOpenRegex {
+   (?: <pos=/NN.*|CD/>+ | <pos=/VBG/ & !lemma="be"> )
+}
+
+NP1 := TypedOpenRegex {
+   (<NP>: <pos=/RB.*/> @Det? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+  | (?: @Det? (<NP>: (<Adjs>: @AP1)? (<Nouns>: @Noun+)))
+   | (<NP>: <pos=/RB.*/>? @Det (<Adjs>: @AP1) )
+   | (<NP>: @Det (<pos=/VBN/ & !lemma="be">))
+}
+
+NP1NoDet := TypedOpenRegex {
+   (<NP>: <pos=/RB.*/>? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+}
+
+//NP1 := TypedOpenRegex {
+//   (?: <pos=/RB.*/>? @Det? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+//   | (?: <pos=/RB.*/>? @Det (<Adjs>: @Adj) )
+//   | (?: @Det (<pos=/VBN/ & !lemma="be">))
+//}
+
+//NP1NoDet := TypedOpenRegex {
+//   (?: <pos=/RB.*/>? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+//}
+
+NP2 := TypedOpenRegex {
+   (?: (((<pos='RBR' | pos='RBS'> <pos='IN'>)? @NP1) | (<IsaTerm>: @NP1)))
+}
+
+NP2NoDet := TypedOpenRegex {
+   (?: (((<pos='RBR' | pos='RBS'> <pos='IN'>) @NP1) | (<IsaTerm>: @NP1NoDet)))
+}
+
+NG1 := TypedOpenRegex {
+   ((<Main>: @NP2) (<Aux>: (?:<string="of"> | <pos="POS">) @NP2)? )
+   | ((<Main>: @NP2) <string="("> @NP2 <string=")"> )
+   | (?: <pos='PRP'> )
+   | (?: <lemma=/this|these|those/> )
+}
+
+NGNoDet1 := TypedOpenRegex {
+   (?: (<Main>: @NP2NoDet) (<Aux>: ((<string="of"> | <pos="POS">) @NP2)*) )
+   | (?: (<Main>: @NP2NoDet) <string="("> @NP2  <string=")"> )
+   | (?: <pos='PRP'> )
+   | (?: <lemma=/this|these|those/> )
+}
+
+NG := TypedOpenRegex {
+   (?:@NG1 (?: (?:<string="," | string="or"> @NG1)* (<string=",">? <string=/and|or|and\/or/>? @NG1)? )? )
+}
+
+NGNoDet := TypedOpenRegex {
+   (?:@NGNoDet1 (?: (?:<string="," | string="or"> @NG1)* (<string=",">? <string=/and|or|and\/or/>? @NG1)? )? )
+}
+

@@ -1,0 +1,12 @@
+VP1 := TypedOpenRegex {
+  (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@NP4)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG @NP4)))*))))
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@NP5)? @AP1?)))
+  // | (?: (<Rel>:@VG) (<Arg2>:@NP) (<Arg3>:@NP) @AP1* (<Arg>:@PP*) )
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@AP1) (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@AVP1)? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>: (@Rel | @RelTo | @RelFor) @V2?) (<Arg2>:@NP)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*))))
+}
+
+VP := TypedOpenRegex {
+   (?:(<First>: @VP1) (?: (?:(<string=","> | (<string=",">? <string=/or|but/>)) (<Middle>: @VP1))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @VP1) )? )
+}

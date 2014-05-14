@@ -20,12 +20,16 @@ object ErmineModule extends NewBindingModule(module => {
   val ferretDir = config[String]("ferret.directory")
   val ferret = new Ferret(ferretDir)
 
+  //Get the data directory for the definition extractor
+  val definitionsDataDir = config[String]("definitionsData.directory")
+  
   // Available extractors.
   bind [Map[String,Extractor]] toSingle Map(
     "StanfordParser" -> StanfordParser,
     "FerretTextExtractor" -> new FerretTextExtractor(ferret),
     "FerretQuestionExtractor" -> new FerretQuestionExtractor(ferret),
     "StanfordXmlToTtl" -> StanfordXmlToTtl,
-    "FerretToExtractionRule" -> FerretToExtractionRule
+    "FerretToExtractionRule" -> FerretToExtractionRule,
+    "NounDefinitionOpenRegexExtractor" -> new NounDefinitionOpenRegexExtractor(definitionsDataDir)
   )
 })

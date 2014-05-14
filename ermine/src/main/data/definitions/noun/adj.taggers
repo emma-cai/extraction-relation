@@ -1,0 +1,26 @@
+Adj := OpenRegex {
+   (?: (<First>: ((<pos=/JJ[RS]/> <pos=/JJ/>) | (<pos=/JJ/> <pos=/JJS/>) | <pos=/JJ.*/>) | (<(pos='VBG' | pos='VBN' | pos='VBD') & !lemma="be">)))
+}
+
+AdjNoVb := OpenRegex {
+   (?: (<First>: ((<pos=/JJ[RS]/> <pos=/JJ/>) | (<pos=/JJ/> <pos=/JJS/>) | <pos=/JJ.*/>)))
+}
+
+AP0 := TypedOpenRegex {
+   (?: <pos='RBR' | pos='RBS'>? <pos='RB'>? @Adj)
+  | (?: <pos='RBR' | pos='RBS'>)
+}
+
+AP0NoVb := TypedOpenRegex {
+   (?: <pos='RBR' | pos='RBS'>? <pos='RB'>? @AdjNoVb)
+  | (?: <pos='RBR' | pos='RBS'>)
+}
+
+AP1 := TypedOpenRegex {
+   (?: (<First>: @AP0) (?: (<string="," | string="or">? (<Middle>: @AP0))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @AP0) )? )
+}
+
+AP1NoVb := TypedOpenRegex {
+   (?: (<First>: @AP0NoVb) (?: (<string="," | string="or">? (<Middle>: @AP0NoVb))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @AP0NoVb) )? )
+}
+
