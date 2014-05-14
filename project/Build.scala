@@ -103,9 +103,9 @@ object ExtractionBuild extends Build {
   ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Deploy.settings ++
+    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++
     Seq(
-      organization := "org.allenai.extraction.demo",
+      organization := "org.allenai.extraction",
       crossScalaVersions := Seq("2.10.4"),
       scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
       scalacOptions ++= Seq("-unchecked", "-deprecation"),
