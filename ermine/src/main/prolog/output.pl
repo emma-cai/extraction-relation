@@ -62,6 +62,8 @@ entity_id(Entity,Id) :-
 % move focus statements out of antecedent
 question_focus(Ent-_) :- !,
 	question_focus(Ent).
+question_focus([_,Event-_,_]) :- !, % denominalized form
+	question_focus(Event).
 question_focus(Ent) :-
 	atom(Ent), !,
 	current_question_focus(Ent),
