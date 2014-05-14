@@ -1,0 +1,28 @@
+Chlorophyll	noun	Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
+Acid	verb	An acid is a liquid with a high number of hydrogen ions in it that can burn things.
+Acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
+Contest	noun	A contest is where people do a quiz or play a game to win a prize.
+Chlorophyll	noun	Chlorophyll is an extremely important biomolecule, critical in photosynthesis, which allows plants to absorb energy from light.
+Ear	noun	The ear is the organ that hears sound.
+Mercury	noun	Mercury: Mercury is a silvery-colored, toxic, metallic chemical element, liquid at room temperature, with atomic number 80 and symbol Hg.
+Esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
+Erosion	noun	Erosion is the process by which soil and rock are removed from the Earth's surface by natural processes such as wind or water flow, and then transported and deposited in other locations.
+Earthquake	noun	An earthquake is the result of a sudden release of energy in the Earth's crust that creates seismic waves.
+Embryo	noun	Embryo is the germ of the plant, which is enclosed in the seed and which is developed by germination.
+embryo	noun	embryo :  the germ of the plant, which is enclosed in the seed and which is developed by germination.
+tendon	noun	Tendon: A fibrous connective tissue that joins muscle to bone.
+cellulase	noun	Cellulase refers to a suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+cellulase	noun	Cellulase : A suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+germination	noun	Germination is the process in which a plant or fungus emerges from a seed or spore, respectively, and begins growth.
+germination	noun	Germination is the process in which a plant emerges from a seed and begins growth.
+freezing	noun	Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
+drought	noun	A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
+vibration	noun	Vibration is a mechanical phenomenon whereby oscillations occur about an equilibrium point.
+active site	noun	Active site is the part of an enzyme where substrates bind and undergo a chemical reaction.
+earth	noun	Earth is the third planet from the Sun, and the densest and fifth largest of the eight planets in the Solar System.
+mass	noun	Mass : Amount of material in an object.
+ecosystem	noun	Ecosystem : Living and nonliving organisms in an environment
+abortion	noun	Abortion is defined as the termination of pregnancy by the removal or expulsion from the uterus of a fetus or embryo prior to viability.
+thermoregulation	noun	thermoregulation: The maintenance of internal body temperature within a tolerable range.
+termination	noun	termination: The ending phase of a cellular process.
+taste	noun	taste : It refers to the ability to detect the flavor of substances such as food, certain minerals, poisons, etc.

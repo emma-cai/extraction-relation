@@ -10,7 +10,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
 libraryDependencies ++= loggingImplementations ++ ferretDeps ++ Seq(akkaActor, typesafeConfig,
-  sprayJson, allenaiCommon, scopt, subcut) ++ testLibs
+  sprayJson, allenaiCommon, scopt, subcut, taggers) ++ testLibs
 
 dependencyOverrides ++= Set(
   "org.scala-lang" % "scala-library" % "2.10.4",
@@ -21,13 +21,19 @@ dependencyOverrides ++= Set(
   "org.scala-lang" % "scala-reflect" % "2.10.3",
   // Override the scopt library used by nlptools.
   // Unsafe only if we try to run an nlptools class that uses scopt (unlikely).
-  "com.github.scopt" % "scopt_2.10" % "3.2.0"
+  "com.github.scopt" % "scopt_2.10" % "3.2.0",
+  // taggers (which is a dependency here) takes a dependency on. taggers looks for guava version 14.0.1.
+  "com.google.guava" % "guava" % "15.0"
 )
 
 // Copy the prolog scripts to the universal staging directory.
 mappings in Universal ++=
-  (sourceDirectory.value / "main" / "prolog" ** "*" x
+   (sourceDirectory.value / "main" / "prolog" ** "*" x
     rebase(sourceDirectory.value / "main" / "prolog", "prolog/"))
+
+mappings in Universal ++=
+   (sourceDirectory.value / "main" / "data" ** "*" x
+    rebase(sourceDirectory.value / "main" / "data", "data/"))
 
 // Set java options in the native packager script. These are literals embedded in the script, so we
 // have to call 'addJava' to get them added (and we quote them as well).

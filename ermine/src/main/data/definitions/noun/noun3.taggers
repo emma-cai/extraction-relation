@@ -1,0 +1,17 @@
+NP3 := TypedOpenRegex {
+   (?: @NG)
+ | (?: @NG @RelClause @VG @NG)
+ | (?: @NG <pos="IN" | pos="TO">  <pos="WDT"> @NG @VG @NG?)
+}
+
+NP4 := TypedOpenRegex {
+   (?:@NP3 (?: (?:<string=","> @NP3)* <string=",">? <string=/and|or|and\/or/> @NP3)? )
+}
+
+NP5 := TypedOpenRegex {
+   (?:@NP3 @PP*)
+}
+
+NP := TypedOpenRegex {
+   (?:@NP5 (?: (?:<string=","> @NP5)* <string=",">? <string=/and|or|and\/or/> @NP5 )? )
+}
