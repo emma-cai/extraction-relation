@@ -132,15 +132,16 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
     implicit val system = ActorSystem("extraction-demo")
 
     implicit def exceptionHandler(implicit log: spray.util.LoggingContext) =
-        ExceptionHandler {
-          case e: Throwable => ctx =>
-            // log in akka, which is configured to use slf4j
-            log.error(e, "Unexpected Error.")
+      ExceptionHandler {
+        case e: Throwable => ctx =>
+          // log in akka, which is configured to use slf4j
+          log.error(e, "Unexpected Error.")
 
-            // return the error formatted as json
-            ctx.complete((InternalServerError, e.toJson.prettyPrint))
-        }
+          // return the error formatted as json
+          ctx.complete((InternalServerError, e.toJson.prettyPrint))
+      }
 
+    // format: OFF
     startServer(interface = "0.0.0.0", port = port) {
       handleExceptions(exceptionHandler) {
         respondWithHeader(cacheControlMaxAge) {
@@ -192,6 +193,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         }
       }
     }
+    // format: ON
   }
 }
 
@@ -204,8 +206,7 @@ case class Extractor(url: URL) extends Logging {
     val svc = dispatch.url(url.toString) / "info" / "name"
     try {
       Await.result(Http(svc OK as.String), 10.seconds).trim
-    }
-    catch {
+    } catch {
       case NonFatal(e) =>
         logger.error("Could not access /info/name at: " + url.toString, e)
         throw e
@@ -228,8 +229,8 @@ object ExtractionDemoMain extends App with Logging {
 
   val port = config.getInt("port")
   val extractors = config.getStringList("extractors").iterator().asScala.map { url =>
-      new Extractor(new URL(url))
-    }.toSeq
+    new Extractor(new URL(url))
+  }.toSeq
 
   logger.info("Configured with extractors: " + extractors.mkString(", "))
 
