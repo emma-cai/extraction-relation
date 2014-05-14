@@ -1,7 +1,7 @@
 package org.allenai.extraction.extractors
 
 import org.allenai.extraction.Extractor
-import org.allenai.extraction.interface.Token
+import org.allenai.extraction.api.Token
 
 import spray.json._
 import spray.json.DefaultJsonProtocol._

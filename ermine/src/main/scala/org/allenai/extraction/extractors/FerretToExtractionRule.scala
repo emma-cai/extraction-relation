@@ -2,7 +2,7 @@ package org.allenai.extraction.extractors
 
 import org.allenai.common.Logging
 import org.allenai.extraction.Extractor
-import org.allenai.extraction.interface._
+import org.allenai.extraction.api._
 
 import spray.json._
 // Implicits hack: We want to use a custom JSON reader for Seq[Token], so we need to not import the

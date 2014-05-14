@@ -1,4 +1,4 @@
-package org.allenai.extraction.interface
+package org.allenai.extraction.api
 
 import spray.json._
 

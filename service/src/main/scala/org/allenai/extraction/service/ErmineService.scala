@@ -1,6 +1,6 @@
 package org.allenai.extraction.service
 
-import org.allenai.extraction.interface.JsonProtocol.{ PipelineRequest, PipelineResponse }
+import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ExtractorPipeline
 
 import akka.actor.{ ActorLogging, Props }

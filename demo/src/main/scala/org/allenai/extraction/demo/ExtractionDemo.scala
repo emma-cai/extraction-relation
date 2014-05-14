@@ -2,7 +2,7 @@ package org.allenai.extraction.demo
 
 import org.allenai.common.Resource.using
 import org.allenai.common.Logging
-import org.allenai.extraction.interface.JsonProtocol.{ PipelineRequest, PipelineResponse }
+import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 
 import akka.actor._
 import com.typesafe.config.Config

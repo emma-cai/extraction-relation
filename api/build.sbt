@@ -1,6 +1,6 @@
-name := "extraction-interface"
+name := "extraction-api"
 
-description := "Data models and API for extraction"
+description := "API for Ermine extraction"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
