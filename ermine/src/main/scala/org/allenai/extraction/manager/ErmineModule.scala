@@ -2,8 +2,8 @@ package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
 import org.allenai.extraction.ConfigModule
-import org.allenai.extraction.Extractor
-import org.allenai.extraction.extractors._
+import org.allenai.extraction.Processor
+import org.allenai.extraction.processors._
 
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
@@ -21,10 +21,10 @@ object ErmineModule extends NewBindingModule(module => {
   val ferret = new Ferret(ferretDir)
 
   // Available extractors.
-  bind[Map[String,Extractor]] toSingle Map(
+  bind[Map[String,Processor]] toSingle Map(
     "StanfordParser" -> StanfordParser,
-    "FerretTextExtractor" -> new FerretTextExtractor(ferret),
-    "FerretQuestionExtractor" -> new FerretQuestionExtractor(ferret),
+    "FerretTextProcessor" -> new FerretTextProcessor(ferret),
+    "FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret),
     "StanfordXmlToTtl" -> StanfordXmlToTtl,
     "FerretToExtractionRule" -> FerretToExtractionRule
   )

@@ -1,6 +1,6 @@
-package org.allenai.extraction.extractors
+package org.allenai.extraction.processors
 
-import org.allenai.extraction.Extractor
+import org.allenai.extraction.Processor
 import org.allenai.extraction.api.Token
 
 import spray.json._
@@ -16,14 +16,14 @@ import java.io.PrintWriter
 import java.io.Writer
 
 /** Filter to convert stanford XML to TTL format. */
-object StanfordXmlToTtl extends Extractor {
+object StanfordXmlToTtl extends Processor {
   override val numInputs = 1
   override val numOutputs = 2
 
   /** Converts a stanford XML parse tree into TTL and a companion tokens map.
     * Reads a single XML file, and writes output to a TTL file and a JSON file.
     */
-  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val xml = XML.loadString(sources.head.getLines.mkString)
     val ttlOut = destinations(0)
 
