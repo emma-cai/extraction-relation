@@ -33,6 +33,10 @@ mappings in Universal ++=
 // have to call 'addJava' to get them added (and we quote them as well).
 NativePackagerKeys.bashScriptExtraDefines ++=
   (ermineJavaOptions map { "addJava \"" +  _ + "\"" }) ++
-  Seq("""addJava "-Dlogback.configurationFile=${app_home}/../conf/logback.xml"""",
-    """addJava "-Dconfig.file=${app_home}/../conf/application.conf"""",
-    """addJava "-Dapp_home=${app_home}"""")
+  Seq("""
+eval `swipl --dump-runtime-variables`
+addJava "-Djava.library.path=${PLBASE}/lib/${PLARCH}"
+addJava "-Dlogback.configurationFile=${app_home}/../conf/logback.xml"
+addJava "-Dconfig.file=${app_home}/../conf/application.conf"
+addJava "-Dapp_home=${app_home}"
+""")

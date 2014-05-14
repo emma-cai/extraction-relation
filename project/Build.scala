@@ -68,7 +68,10 @@ object ExtractionBuild extends Build {
 
   val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
   val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
+  val sprayCan = "io.spray" %  "spray-can" % sprayVersion
+  val sprayRouting = "io.spray" %  "spray-routing" % sprayVersion
   val sprayClient = "io.spray" %  "spray-client" % sprayVersion
+  // spray-json uses a different versioning scheme.
   val sprayJson = "io.spray" %%  "spray-json" % "1.2.6"
   val subcut = "com.escalatesoft.subcut" %% "subcut" % "2.0"
   val typesafeConfig = "com.typesafe" % "config" % "1.2.0"
@@ -78,7 +81,7 @@ object ExtractionBuild extends Build {
   val ferretDeps = {
     // Prolog interface jar. This also requires having prolog installed to work -
     // see http://www.swi-prolog.org/build/macos.html
-    val jpl = "jpl" % "jpl" % "3.1.4-alpha"
+    val jpl = "org.allenai.jpl" % "jpl" % "6.6.4"
 
     // Kevin's patches of the Stanford parser.
     val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
@@ -97,9 +100,10 @@ object ExtractionBuild extends Build {
     publish := { },
     publishTo := Some("bogus" at "http://nowhere.com"),
     publishLocal := { }
-  ).aggregate(demo, ermine)
+  ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
+    Deploy.settings ++
     Seq(
       organization := "org.allenai.extraction.demo",
       crossScalaVersions := Seq("2.10.4"),
@@ -123,10 +127,16 @@ object ExtractionBuild extends Build {
     base = file("demo"),
     settings = buildSettings)
 
-  val ermineJavaOptions = prologLibraryFlags ++ Seq("-Xmx3G", "-Xms3G")
+  val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
     settings = buildSettings
   ).dependsOn(interface)
+
+  lazy val service = Project(
+    id = "service",
+    base = file("service"),
+    settings = buildSettings
+  ).dependsOn(interface, ermine)
 }
