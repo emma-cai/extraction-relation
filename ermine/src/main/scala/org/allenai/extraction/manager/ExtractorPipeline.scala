@@ -15,7 +15,8 @@ import java.io.Writer
 import java.net.URI
 
 /** Class representing a pipeline. */
-class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) {
+class ExtractorPipeline(val name: String, val description: String,
+    val extractors: Seq[ExtractorConfig]) {
   /** Run this pipeline, using the given inputs and output.
     * @param inputs the named inputs to this pipeline
     * @param defaultInputs the default (unnamed) inputs to the first stage of this pipeline
@@ -116,6 +117,7 @@ class ExtractorPipeline(val name: String, val extractors: Seq[ExtractorConfig]) 
 object ExtractorPipeline {
   /** Builds a pipeline from an extractor config. This expects a Config with keys `name` and
     * `pipeline`, where `name` is a string and `pipeline` is an array of extraction configs.
+    * The Config may contain a `description` key holding a string.
     */
   def fromConfig(config: Config)(implicit bindingModule: BindingModule): ExtractorPipeline = {
     val name = config.get[String]("name").getOrElse(
@@ -124,6 +126,7 @@ object ExtractorPipeline {
     val extractors: Seq[ExtractorConfig] = {
       config.getConfigList("extractors").asScala map { ExtractorConfig.fromConfig }
     }
+    val description = config.get[String]("description").getOrElse(name)
 
     if (extractors.length == 0) {
       throw new ExtractionException("no extractors found in pipeline")
@@ -134,6 +137,6 @@ object ExtractorPipeline {
     // Second step: Determine list of unsatisfied (named) inputs from secondary stages.
     // Third step: Determine required input (required names *OR* required default count).
 
-    new ExtractorPipeline(name, extractors)
+    new ExtractorPipeline(name, description, extractors)
   }
 }

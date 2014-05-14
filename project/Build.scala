@@ -125,7 +125,8 @@ object ExtractionBuild extends Build {
   lazy val demo = Project(
     id = "demo",
     base = file("demo"),
-    settings = buildSettings)
+    settings = buildSettings
+  ).dependsOn(interface)
 
   val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
