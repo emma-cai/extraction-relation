@@ -6,7 +6,7 @@ This project is meant to contain glue code that integrates our various extractio
 
 There are three subprojects:
 
-1. interface: A definition of models used as output for extractions (extraction targets)
+1. api: A definition of the API to talk to the Ermine service
 2. demo: A webapp running an extraction demo
 3. ermine: An extraction manager to handle workflows
 4. service: A webservice fronting ermine.

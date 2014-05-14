@@ -103,9 +103,9 @@ object ExtractionBuild extends Build {
   ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Deploy.settings ++
+    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++
     Seq(
-      organization := "org.allenai.extraction.demo",
+      organization := "org.allenai.extraction",
       crossScalaVersions := Seq("2.10.4"),
       scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
       scalacOptions ++= Seq("-unchecked", "-deprecation"),
@@ -117,27 +117,27 @@ object ExtractionBuild extends Build {
         "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/"),
       homepage := Some(url("http://github.com/allenai/extraction")))
 
-  lazy val interface = Project(
-    id = "interface",
-    base = file("interface"),
+  lazy val api = Project(
+    id = "api",
+    base = file("api"),
     settings = buildSettings)
 
   lazy val demo = Project(
     id = "demo",
     base = file("demo"),
     settings = buildSettings
-  ).dependsOn(interface)
+  ).dependsOn(api)
 
   val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
     settings = buildSettings
-  ).dependsOn(interface)
+  ).dependsOn(api)
 
   lazy val service = Project(
     id = "service",
     base = file("service"),
     settings = buildSettings
-  ).dependsOn(interface, ermine)
+  ).dependsOn(api, ermine)
 }

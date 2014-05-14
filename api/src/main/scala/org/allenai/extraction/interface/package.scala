@@ -7,7 +7,7 @@ import edu.knowitall.tool.tokenize.Tokenizer
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 
-package object interface {
+package object api {
   /** Token pulled from a string.
     * TODO(jkinkead): Document allowed POS and chunk values.
     * @param string the raw token
