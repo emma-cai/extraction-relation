@@ -1,38 +1,27 @@
 package org.allenai.extraction.processors
 
-import org.allenai.extraction.Processor
-import org.allenai.extraction.api.Token
+import org.allenai.extraction.FlatProcessor
 
-import spray.json._
-import spray.json.DefaultJsonProtocol._
-
-import scala.collection.mutable
 import scala.io.Source
 import scala.xml.Node
 import scala.xml.XML
 
-import java.io.OutputStream
 import java.io.PrintWriter
 import java.io.Writer
 
 /** Filter to convert stanford XML to TTL format. */
-object StanfordXmlToTtl extends Processor {
-  override val numInputs = 1
-  override val numOutputs = 2
-
-  /** Converts a stanford XML parse tree into TTL and a companion tokens map.
-    * Reads a single XML file, and writes output to a TTL file and a JSON file.
+object StanfordXmlToTtl extends FlatProcessor {
+  /** Converts a stanford XML parse tree into TTL.  Reads a single XML file, and writes output to a
+    * TTL file.
     */
-  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val xml = XML.loadString(sources.head.getLines.mkString)
-    val ttlOut = destinations(0)
+  override protected def processInternal(stanfordXml: Source, ttlOut: Writer): Unit = {
+    val xml = XML.loadString(stanfordXml.getLines.mkString)
 
     val outputPrinter = new PrintWriter(ttlOut)
     printHeaders(outputPrinter)
 
-    val tokenMap: mutable.Map[String, Token] = new mutable.HashMap
     for (sentence <- (xml \\ "sentences" \ "sentence")) {
-      processSentence(sentence, outputPrinter, tokenMap)
+      processSentence(sentence, outputPrinter)
       outputPrinter.println
     }
 
@@ -41,26 +30,18 @@ object StanfordXmlToTtl extends Processor {
       processCoreference(coreference, outputPrinter)
       outputPrinter.println
     }
-
-    // Write out our tokens.  Note that we only have a JSON implicit from immutable.Map, so we need
-    // to convert to an immutable.Map via toMap.
-    val jsonOut = destinations(1)
-    jsonOut.write(tokenMap.toMap.toJson.prettyPrint)
   }
 
   /** A sentence in the stanford output consists of tokens, "basic" dependencies, and "collapsed"
     * dependencies.
-    *
-    * @param tokenMap map to store encountered tokens
     */
-  def processSentence(sentence: Node, output: PrintWriter, tokenMap: mutable.Map[String, Token]):
-    Unit = {
+  def processSentence(sentence: Node, output: PrintWriter): Unit = {
     // We need a sentence ID to proceed.
     for (idAttr <- sentence \ "@id") {
       val sentenceId = idAttr.text
 
       for (token <- sentence \ "tokens" \ "token") {
-        for (line <- processToken(sentenceId, token, tokenMap)) {
+        for (line <- processToken(sentenceId, token)) {
           output.println(line)
         }
         output.println
@@ -152,8 +133,7 @@ object StanfordXmlToTtl extends Processor {
     *
     * with the first number being the provided sentence ID.
     */
-  def processToken(sentenceId: String, token: Node, tokenMap: mutable.Map[String, Token]):
-    Seq[String] = {
+  def processToken(sentenceId: String, token: Node): Seq[String] = {
   // case class Token(string: String, lemma: String, posTag: Symbol, chunk: Symbol, offset: Int)
     (for (idAttr <- token \ "@id") yield {
       val tokenId = s"id:${sentenceId}.${idAttr.text}"
@@ -163,18 +143,13 @@ object StanfordXmlToTtl extends Processor {
         posTag <- getChildText(token, "POS")
         offsetBegin <- getChildText(token, "CharacterOffsetBegin")
         offsetEnd <- getChildText(token, "CharacterOffsetEnd")
-      } yield {
-        // Side-effect: Save token.
-        tokenMap.put(tokenId, Token(string, lemma, Symbol(posTag), '??, offsetBegin.toInt))
-
-        Seq(
+      } yield Seq(
           s"""${tokenId} token:text  "${string}"     .""",
           s"""${tokenId} token:lemma "${lemma}"      .""",
           s"""${tokenId} token:pos   "${posTag}"     .""",
           s"""${tokenId} token:begin  ${offsetBegin} .""",
           s"""${tokenId} token:end    ${offsetEnd}   ."""
-        )
-      }).getOrElse(Seq.empty)
+        )).getOrElse(Seq.empty)
 
       // Ignore NER=O, otherwise print NE stuff.
       val nerText = getChildText(token, "NER").getOrElse("O")
