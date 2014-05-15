@@ -25,7 +25,6 @@ object ErmineModule extends NewBindingModule(module => {
     "StanfordParser" -> StanfordParser,
     "FerretTextProcessor" -> new FerretTextProcessor(ferret),
     "FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret),
-    "StanfordXmlToTtl" -> StanfordXmlToTtl,
-    "FerretToExtractionRule" -> FerretToExtractionRule
+    "StanfordXmlToTtl" -> StanfordXmlToTtl
   )
 })

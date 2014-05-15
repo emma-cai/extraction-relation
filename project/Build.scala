@@ -66,7 +66,6 @@ object ExtractionBuild extends Build {
     Seq(logbackCore, logbackClassic)
   }
 
-  val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
   val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   val sprayCan = "io.spray" %  "spray-can" % sprayVersion
   val sprayRouting = "io.spray" %  "spray-routing" % sprayVersion
