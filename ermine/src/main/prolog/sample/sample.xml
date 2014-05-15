@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>Some</word>
+            <lemma>some</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>4</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>animals</word>
+            <lemma>animal</lemma>
+            <CharacterOffsetBegin>5</CharacterOffsetBegin>
+            <CharacterOffsetEnd>12</CharacterOffsetEnd>
+            <POS>NNS</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>grow</word>
+            <lemma>grow</lemma>
+            <CharacterOffsetBegin>13</CharacterOffsetBegin>
+            <CharacterOffsetEnd>17</CharacterOffsetEnd>
+            <POS>VB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="4">
+            <word>fur</word>
+            <lemma>fur</lemma>
+            <CharacterOffsetBegin>18</CharacterOffsetBegin>
+            <CharacterOffsetEnd>21</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="5">
+            <word>in</word>
+            <lemma>in</lemma>
+            <CharacterOffsetBegin>22</CharacterOffsetBegin>
+            <CharacterOffsetEnd>24</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>winter</word>
+            <lemma>winter</lemma>
+            <CharacterOffsetBegin>25</CharacterOffsetBegin>
+            <CharacterOffsetEnd>31</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>DATE</NER>
+            <NormalizedNER>XXXX-WI</NormalizedNER>
+            <Timex tid="t1" type="DATE">XXXX-WI</Timex>
+          </token>
+          <token id="7">
+            <word>to</word>
+            <lemma>to</lemma>
+            <CharacterOffsetBegin>32</CharacterOffsetBegin>
+            <CharacterOffsetEnd>34</CharacterOffsetEnd>
+            <POS>TO</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>keep</word>
+            <lemma>keep</lemma>
+            <CharacterOffsetBegin>35</CharacterOffsetBegin>
+            <CharacterOffsetEnd>39</CharacterOffsetEnd>
+            <POS>VB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>warm</word>
+            <lemma>warm</lemma>
+            <CharacterOffsetBegin>40</CharacterOffsetBegin>
+            <CharacterOffsetEnd>44</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>44</CharacterOffsetBegin>
+            <CharacterOffsetEnd>45</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (DT Some) (NNS animals)) (VP (VB grow) (NP (NN fur)) (PP (IN in) (NP (NP (NN winter)) (SBAR (S (VP (TO to) (VP (VB keep) (S (ADJP (JJ warm)))))))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">grow</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">animals</governor>
+            <dependent idx="1">Some</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">grow</governor>
+            <dependent idx="2">animals</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="3">grow</governor>
+            <dependent idx="4">fur</dependent>
+          </dep>
+          <dep type="prep">
+            <governor idx="3">grow</governor>
+            <dependent idx="5">in</dependent>
+          </dep>
+          <dep type="pobj">
+            <governor idx="5">in</governor>
+            <dependent idx="6">winter</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">keep</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="infmod">
+            <governor idx="6">winter</governor>
+            <dependent idx="8">keep</dependent>
+          </dep>
+          <dep type="acomp">
+            <governor idx="8">keep</governor>
+            <dependent idx="9">warm</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">grow</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">animals</governor>
+            <dependent idx="1">Some</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">grow</governor>
+            <dependent idx="2">animals</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="3">grow</governor>
+            <dependent idx="4">fur</dependent>
+          </dep>
+          <dep type="prep_in">
+            <governor idx="3">grow</governor>
+            <dependent idx="6">winter</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">keep</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="infmod">
+            <governor idx="6">winter</governor>
+            <dependent idx="8">keep</dependent>
+          </dep>
+          <dep type="acomp">
+            <governor idx="8">keep</governor>
+            <dependent idx="9">warm</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">grow</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="2">animals</governor>
+            <dependent idx="1">Some</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">grow</governor>
+            <dependent idx="2">animals</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="3">grow</governor>
+            <dependent idx="4">fur</dependent>
+          </dep>
+          <dep type="prep_in">
+            <governor idx="3">grow</governor>
+            <dependent idx="6">winter</dependent>
+          </dep>
+          <dep type="aux">
+            <governor idx="8">keep</governor>
+            <dependent idx="7">to</dependent>
+          </dep>
+          <dep type="infmod">
+            <governor idx="6">winter</governor>
+            <dependent idx="8">keep</dependent>
+          </dep>
+          <dep type="acomp">
+            <governor idx="8">keep</governor>
+            <dependent idx="9">warm</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+  </document>
+</root>

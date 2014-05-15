@@ -1,0 +1,46 @@
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
+% "Gravity"	"is"/EXAMPLE	"the force"
+% "Exercise"	"example of"/EXAMPLE	"good health habit"
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "grow" "")
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+% ("humans"/?x "eat" "healthy foods")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "grow" "")
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+% ("humans"/?x "exercise" "")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "grow" "")
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "have" "energy")
+% ("humans"/?x "get" "regular rest")	"In order for"/EFFECT	("humans"/?x "be" "healthy")
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+% "Decomposers"	"are"/EXAMPLE	"living things"
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[the soil] liquid state", "to its[its liquid state] solid state" ] )
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "" [ "an object toward the center of the Earth" ] )
+% "Gravity"	"is"/EXAMPLE	"the force"
+% ("A scientist"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A scientist"/?x "measure" "the volume of a liquid")
+% ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "grow" "")
+% ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "be" "healthy")
+% ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "grow" "")
+% ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "be" "healthy")
+% ("The plant"/?x "get" "the energy")	"to"/EFFECT	("The plant"/?x "go" "" [ "through photosynthesis", "from sunlight" ] )
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+% "Decomposers"	"are"/EXAMPLE	"living things"
+% ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
+% ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
+% ("Mechanical energy" "push" "another object")
+% "Producers"	"are"/EXAMPLE	("living things" "change" "the sun 's energy" [ "to make their[Producers] own food" ] )
+% "Producers"	"are"/EXAMPLE	"living things"
+% ("Green plants" "provide" "the basic food supply" [ "for themselves[Producers]", "for animals" ] )	"are called"/EXAMPLE	"producers"
+% ("Green plants" "provide" "the basic food supply" [ "for themselves[Producers]", "for animals" ] )	"because"/EFFECT	("" "call" "Green plants" [ "producers" ] )
+% "Building homes"	"causes of"/CAUSE	"ecosystem failure"
+% "stores"	"causes of"/CAUSE	"ecosystem failure"
+% "factories"	"causes of"/CAUSE	"ecosystem failure"
+% "growing food crops"	"causes of"/CAUSE	"ecosystem failure"
+% "pollution"	"causes of"/CAUSE	"ecosystem failure"
+% ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
+% "A hand lens"/?x	"is used"/PURPOSE	("A hand lens"/?x "view" "objects" [ "in more detail" ] )
+% ("Some animals"/?x "grow" "fur")	"to"/EFFECT	("Some animals"/?x "stay" "warm")
+% ("Animals" "take in" "food" [ "as a nutrient" ] )	"to help"/EFFECT	("Some animals" "grow" "")
+% ("Animals" "take in" "food" [ "as a nutrient" ] )	"to"/EFFECT	("" "give" "Some animals" [ "energy" ] )
+% ("" "give" "Some animals" [ "energy" ] )	"help"/EFFECT	("Some animals" "grow" "")
+% ("Plants" "provide" "animals" [ "with food", "with gases oxygen that their[Green plants] bodies need to grow breathe and make energy" ] )

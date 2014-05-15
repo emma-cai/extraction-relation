@@ -69,15 +69,15 @@
             </div>
           </div>
           <h3>{{ sentence.text }}</h3>
-          <dl ng-repeat="extractor in sentence.extractors">
-            {{ extractor.description }}
-            <dt>{{ extractor.name }} <small>{{ response.extractors[extractor.name] }}</small></dt>
-            <dl>
-              <ul ng-repeat="extraction in extractor.extractions">
-                {{ extraction }}
-              </ul>
-            </dl>
-          </dl>
+           <accordion close-others="never">
+             <accordion-group ng-repeat="extractor in sentence.extractors"  heading="{{ extractor.name }} : {{ response.extractors[extractor.name] }}" is-open="{{ $first }}">
+                 <dl>
+                   <ul ng-repeat="extraction in extractor.extractions">
+                     {{ extraction }}
+                   </ul>
+                 </dl>
+             </accordion-group>
+          </accordion>
         </div>
       </div>
     </div>

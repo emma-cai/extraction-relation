@@ -6,24 +6,23 @@ This project is meant to contain glue code that integrates our various extractio
 
 There are three subprojects:
 
-1. interface: A definition of models used as output for extractions (extraction targets)
+1. api: A definition of the API to talk to the Ermine service
 2. demo: A webapp running an extraction demo
 3. ermine: An extraction manager to handle workflows
-
-"ermine" is under construction.
-
+4. service: A webservice fronting ermine.
 
 ## Running ermine
 
-The main ermine project can be built without any special configuration. However, the `PrologExtractor` requires some special configuration - see below.
+The main ermine project can be built without any special configuration, although you do need Prolog
+installed to run the Ferret pipelines - see below.
 
-After installing prolog and updating `PrologExtractor`, you can run `sbt 'project ermine' stage` to build ermine.
+After installing prolog, you can run `sbt 'project ermine' stage` to build ermine.
 
 The auto-generated script `ermine/target/universal/stage/bin/extraction-manager` can then be used to run an extraction pipeline:
 
 `./ermine/target/universal/stage/bin/extraction-manager -c ermine/examples/ferret.conf -i some-sentences-file.txt -o output.json`
 
-The `-c` flag is the only required one, and it specifies the configuration file for the pipeline you're running. the `-i` and `-o` flags are only used if your pipeline doesn't specify a first-stage input or a last-stage output (respectively).
+The `-c` flag is the only required one, and it specifies the configuration file for the pipeline you're running. the `-i` and `-o` flags are only used if your pipeline doesn't specify a first-stage input or a last-stage output (respectively). `-i` can be repeated if you have multiple inputs to the start of your pipeline.
 
 
 ### Installing Prolog
@@ -35,10 +34,6 @@ You can install this easily on OS X with [homebrew](http://brew.sh/):
 `brew install swi-prolog --with-jpl`
 
 Don't forget the `--with-jpl` flag! The root project's `Build.scala` will check for a valid swipl install at load time, and will print out a warning if one is missing.
-
-### Configuring PrologExtractor
-
-The `PrologExtractor` class in ermine currently has a path hard-coded into it - the location of the Ferret extraction script. This is the `prologRoot` value in the class, and needs to be updated before it can be run.
 
 
 ## Configuring ermine
