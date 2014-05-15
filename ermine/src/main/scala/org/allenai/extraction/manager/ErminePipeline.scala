@@ -37,11 +37,11 @@ class ErminePipeline(val name: String, val description: String,
     * outputs will be added to the `sources` map for the next run.
     * @param processors the processors to run. Each call runs the first processor in the Seq.
     * @param sources existing named sources. All named outputs from the current run will be added to
-    *   this map for the next run.
+    * this map for the next run.
     * @param defaults the default sources for the current processor run
     */
   @tailrec final def runProcessors(processors: Seq[ProcessorConfig],
-      sources: Map[String, Source], defaults: Map[String, Source], defaultOutput: Writer): Unit = {
+    sources: Map[String, Source], defaults: Map[String, Source], defaultOutput: Writer): Unit = {
     processors match {
       // Base case: We've run all the processors; now, if there was a default out from the last
       // step, pipe to the default output.
@@ -93,12 +93,14 @@ class ErminePipeline(val name: String, val description: String,
     }
   }
 
-  def openSource(input: ProcessorIO, sources: Map[String, Source], defaults: Map[String, Source]):
-      Source = input.uri.getScheme match {
-    case "default" => defaults(input.name)
-    case "name" => sources(input.name)
-    case "file" => Source.fromFile(input.uri)
-    case _ => throw new ErmineException(s"uri ${input.uri} not supported")
+  def openSource(input: ProcessorIO, sources: Map[String, Source],
+    defaults: Map[String, Source]): Source = {
+    input.uri.getScheme match {
+      case "default" => defaults(input.name)
+      case "name" => sources(input.name)
+      case "file" => Source.fromFile(input.uri)
+      case _ => throw new ErmineException(s"uri ${input.uri} not supported")
+    }
   }
 
   /** @return an output file for the given ouput IO. This will be a temp file for default or named

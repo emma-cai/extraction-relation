@@ -44,7 +44,7 @@ object PrologProcessor {
   *
   * @param ferret reference to the ferret initializer class
   * @param prologGoal the prolog goal code to use. Should have a variable named
-  *   PrologProcessor.VariableName.
+  * PrologProcessor.VariableName.
   */
 class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatProcessor {
   override protected def processInternal(source: Source, destination: Writer): Unit = {
@@ -62,7 +62,7 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatPr
       // Next, run the prolog extractor and generate output rules.
       val solveRelations = new Query(
         s"rdf_load('${ttlFile.getAbsolutePath()}'), " +
-        s"${prologGoal}")
+          s"${prologGoal}")
 
       val prologResults = for {
         result <- solveRelations.allSolutions
@@ -89,8 +89,8 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatPr
 }
 
 /** Processor for text. */
-class FerretTextProcessor(ferret: Ferret) extends
-  PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
+class FerretTextProcessor(ferret: Ferret)
+  extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
 
 /** Processor for questions. Takes one stream for the question and one for the focus. */
 class FerretQuestionProcessor(val ferret: Ferret) extends Processor {

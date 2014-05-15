@@ -8,7 +8,6 @@ import com.typesafe.config.{ Config, ConfigException }
 
 import scala.collection.JavaConverters._
 
-
 /** Configuration for a single processor. */
 case class ProcessorConfig(processor: Processor, inputs: Seq[ProcessorIO],
   outputs: Seq[ProcessorIO])
@@ -18,7 +17,7 @@ object ProcessorConfig {
     * `$$default`.
     */
   def fromConfig(config: Config)(implicit bindingModule: BindingModule): ProcessorConfig = {
-    val processors = bindingModule.inject[Map[String,Processor]](None)
+    val processors = bindingModule.inject[Map[String, Processor]](None)
 
     if (!config.hasPath("name")) {
       throw new ErmineException(s"processor missing a 'name' key: ${config}")
