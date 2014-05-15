@@ -20,7 +20,7 @@ import java.io.Writer
   * @param output if set, the final default output to use instead of STDOUT
   */
 case class ErmineOptions(configFile: File = new File("."), pipelineName: String = "ermine.pipeline",
-  inputs: Seq[File] = Seq.empty, output: Option[File] = None) {
+    inputs: Seq[File] = Seq.empty, output: Option[File] = None) {
   /** Use the file option(s) as input(s), default to STDIN. */
   def defaultInputs: Seq[Source] = inputs match {
     case Seq() => Seq(Source.fromInputStream(System.in))
@@ -37,6 +37,7 @@ case class ErmineOptions(configFile: File = new File("."), pipelineName: String 
 /** Main app to run pipelines. */
 object Ermine extends Logging {
   def main(args: Array[String]): Unit = {
+    // format: OFF
     val optionParser = new OptionParser[ErmineOptions]("ermine") {
       opt[File]('c', "config-file") required() valueName("<file>") action { (configFile, options) =>
         options.copy(configFile = configFile)
@@ -55,6 +56,7 @@ object Ermine extends Logging {
         "        Only used if the first processor has no output specified.")
       help("help") text("Prints this help.")
     }
+    // format: ON
 
     optionParser.parse(args, ErmineOptions()) foreach { options =>
       logger.info("loading pipeline configuration")

@@ -70,18 +70,17 @@ object StanfordXmlToTtl extends FlatProcessor {
     }
   }
 
-
   /** Process a coreference element, with a format like:
     *
     * <coreference>
-    *   <mention representative="true">
-    *     <sentence>2</sentence>
-    *     <head>4</head>
-    *   </mention>
-    *   <mention>
-    *     <sentence>5</sentence>
-    *     <head>10</head>
-    *   </mention>
+    * <mention representative="true">
+    * <sentence>2</sentence>
+    * <head>4</head>
+    * </mention>
+    * <mention>
+    * <sentence>5</sentence>
+    * <head>10</head>
+    * </mention>
     * </coreference>
     *
     * and prints output like:
@@ -113,14 +112,13 @@ object StanfordXmlToTtl extends FlatProcessor {
   }
 
   /** Processes a token element, with a format like:
-    *
     * <token id="3">
-    *   <word>grow</word>
-    *   <lemma>grow</lemma>
-    *   <CharacterOffsetBegin>13</CharacterOffsetBegin>
-    *   <CharacterOffsetEnd>17</CharacterOffsetEnd>
-    *   <POS>VB</POS>
-    *   <NER>O</NER>
+    * <word>grow</word>
+    * <lemma>grow</lemma>
+    * <CharacterOffsetBegin>13</CharacterOffsetBegin>
+    * <CharacterOffsetEnd>17</CharacterOffsetEnd>
+    * <POS>VB</POS>
+    * <NER>O</NER>
     * </token>
     *
     * and returns output like:
@@ -134,7 +132,6 @@ object StanfordXmlToTtl extends FlatProcessor {
     * with the first number being the provided sentence ID.
     */
   def processToken(sentenceId: String, token: Node): Seq[String] = {
-  // case class Token(string: String, lemma: String, posTag: Symbol, chunk: Symbol, offset: Int)
     (for (idAttr <- token \ "@id") yield {
       val tokenId = s"id:${sentenceId}.${idAttr.text}"
       val tokenLines = (for {
@@ -144,12 +141,11 @@ object StanfordXmlToTtl extends FlatProcessor {
         offsetBegin <- getChildText(token, "CharacterOffsetBegin")
         offsetEnd <- getChildText(token, "CharacterOffsetEnd")
       } yield Seq(
-          s"""${tokenId} token:text  "${string}"     .""",
-          s"""${tokenId} token:lemma "${lemma}"      .""",
-          s"""${tokenId} token:pos   "${posTag}"     .""",
-          s"""${tokenId} token:begin  ${offsetBegin} .""",
-          s"""${tokenId} token:end    ${offsetEnd}   ."""
-        )).getOrElse(Seq.empty)
+        s"""${tokenId} token:text  "${string}"     .""",
+        s"""${tokenId} token:lemma "${lemma}"      .""",
+        s"""${tokenId} token:pos   "${posTag}"     .""",
+        s"""${tokenId} token:begin  ${offsetBegin} .""",
+        s"""${tokenId} token:end    ${offsetEnd}   .""")).getOrElse(Seq.empty)
 
       // Ignore NER=O, otherwise print NE stuff.
       val nerText = getChildText(token, "NER").getOrElse("O")
@@ -176,8 +172,8 @@ object StanfordXmlToTtl extends FlatProcessor {
   /** Processes a dependency element, with a format like:
     *
     * <dep type="det">
-    *   <governor idx="2">animals</governor>
-    *   <dependent idx="1">Some</dependent>
+    * <governor idx="2">animals</governor>
+    * <dependent idx="1">Some</dependent>
     * </dep>
     *
     * and returns output like:
@@ -187,8 +183,8 @@ object StanfordXmlToTtl extends FlatProcessor {
     * with the first number in both labels being the provided sentence ID, and the first part of
     * the middle label being the given dependencyLabel.
     */
-  def processDependency(sentenceId: String, dependency: Node, dependencyLabel: String):
-    Seq[String] = {
+  def processDependency(sentenceId: String, dependency: Node,
+    dependencyLabel: String): Seq[String] = {
     for (typeAttr <- dependency \ "@type") yield {
       // The format is "governorId labelType dependentId".
       // We take the first value found for each item.
