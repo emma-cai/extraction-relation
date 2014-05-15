@@ -1,7 +1,7 @@
-package org.allenai.extraction.extractors
+package org.allenai.extraction.processors
 
 import org.allenai.common.Resource
-import org.allenai.extraction.{ Extractor, FlatExtractor }
+import org.allenai.extraction.{ FlatProcessor, Processor }
 
 import jpl.{ JPL, Term, Query }
 
@@ -34,20 +34,20 @@ class Ferret(ferretDir: String) {
   }
 }
 
-object PrologExtractor {
+object PrologProcessor {
   /** Name used for the Prolog variable we're targeting. */
   val VariableName = "Var"
 }
 
-/** Prolog extractor running the Ferret extraction code. This has two concrete instances - one for
+/** Prolog processor running the Ferret extraction code. This has two concrete instances - one for
   * extractions, and one for question analysis.
   *
   * @param ferret reference to the ferret initializer class
   * @param prologGoal the prolog goal code to use. Should have a variable named
-  *   PrologExtractor.VariableName.
+  *   PrologProcessor.VariableName.
   */
-class PrologExtractor(val ferret: Ferret, val prologGoal: String) extends FlatExtractor {
-  override protected def extractInternal(source: Source, destination: Writer): Unit = {
+class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatProcessor {
+  override protected def processInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
     ttlFile.deleteOnExit
@@ -67,7 +67,7 @@ class PrologExtractor(val ferret: Ferret, val prologGoal: String) extends FlatEx
       val prologResults = for {
         result <- solveRelations.allSolutions
         // TODO(jkinkead): This isn't robust to prolog failures - have a sensible default.
-        text = result.get(PrologExtractor.VariableName) match {
+        text = result.get(PrologProcessor.VariableName) match {
           case term: Term => term.name
         }
       } yield text
@@ -88,22 +88,22 @@ class PrologExtractor(val ferret: Ferret, val prologGoal: String) extends FlatEx
   }
 }
 
-/** Extractor for text. */
-class FerretTextExtractor(ferret: Ferret) extends
-  PrologExtractor(ferret, s"relation(${PrologExtractor.VariableName}, _)")
+/** Processor for text. */
+class FerretTextProcessor(ferret: Ferret) extends
+  PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
 
-/** Extractor for questions. Takes one stream for the question and one for the focus. */
-class FerretQuestionExtractor(val ferret: Ferret) extends Extractor {
+/** Processor for questions. Takes one stream for the question and one for the focus. */
+class FerretQuestionProcessor(val ferret: Ferret) extends Processor {
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val question = sources(0)
     val focus = sources(1).getLines.mkString("\n")
 
-    // Internal PrologExtractor we delegate to.
-    val internalExtractor =
-      new PrologExtractor(ferret, s"question('${focus}', ${PrologExtractor.VariableName})")
-    internalExtractor.extract(Seq(question), destinations)
+    // Internal PrologProcessor we delegate to.
+    val internalProcessor =
+      new PrologProcessor(ferret, s"question('${focus}', ${PrologProcessor.VariableName})")
+    internalProcessor.process(Seq(question), destinations)
   }
 }

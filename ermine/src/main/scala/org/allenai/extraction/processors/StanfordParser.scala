@@ -1,6 +1,6 @@
-package org.allenai.extraction.extractors
+package org.allenai.extraction.processors
 
-import org.allenai.extraction.FlatExtractor
+import org.allenai.extraction.FlatProcessor
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP
 
@@ -12,7 +12,7 @@ import java.util.Properties
 /** Wrapper around stanford parser, with static configs. Note that this takes a substantial (more
   * than 10 seconds) time to construct, and uses about 600MB of memory.
   */
-object StanfordParser extends FlatExtractor {
+object StanfordParser extends FlatProcessor {
   /** Lazily instantiated stanford pipeline. */
   lazy val pipeline = {
     // Construct a StanfordCoreNLP instance.
@@ -24,8 +24,8 @@ object StanfordParser extends FlatExtractor {
     new StanfordCoreNLP(props)
   }
 
-  /** Extracts the Stanford parse as XML from the given source. */
-  override protected def extractInternal (source: Source, destination: Writer): Unit = {
+  /** Outputs the Stanford parse as XML from the given source. */
+  override protected def processInternal (source: Source, destination: Writer): Unit = {
     // Stanford requires we load the entire text to process in memory.
     val sourceText = source.getLines().mkString("\n")
     // Run the processing.

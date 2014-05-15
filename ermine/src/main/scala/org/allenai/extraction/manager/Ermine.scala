@@ -34,7 +34,7 @@ case class ErmineOptions(configFile: File = new File("."), pipelineName: String 
   }
 }
 
-/** Main app to run extractions. */
+/** Main app to run pipelines. */
 object Ermine extends Logging {
   def main(args: Array[String]): Unit = {
     val optionParser = new OptionParser[ErmineOptions]("ermine") {
@@ -47,12 +47,12 @@ object Ermine extends Logging {
         "        Defaults to ermine.pipeline.")
       opt[File]('i', "input") valueName("<file>") unbounded() action { (input, options) =>
         options.copy(inputs = options.inputs :+ input)
-      } text("The default input file to send to the first extractor.\n" +
-        "        Only used if the first extractor has no input specified.")
+      } text("The default input file to send to the first processor.\n" +
+        "        Only used if the first processor has no input specified.")
       opt[File]('o', "output") valueName("<file>") action { (output, options) =>
         options.copy(output = Some(output))
       } text("The default output file to send to the first pipeline stage.\n" +
-        "        Only used if the first extractor has no output specified.")
+        "        Only used if the first processor has no output specified.")
       help("help") text("Prints this help.")
     }
 
@@ -64,9 +64,9 @@ object Ermine extends Logging {
       val config = ConfigFactory.parseFile(options.configFile)
       val configKey = options.pipelineName
       if (!config.hasPath(configKey)) {
-        throw new ExtractionException(s"no pipeline configuration found at key ${configKey}")
+        throw new ErmineException(s"no pipeline configuration found at key ${configKey}")
       }
-      val pipeline = ExtractorPipeline.fromConfig(config[Config](configKey))
+      val pipeline = ErminePipeline.fromConfig(config[Config](configKey))
 
       logger.info("running pipeline")
 

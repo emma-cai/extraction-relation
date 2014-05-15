@@ -1,7 +1,7 @@
 package org.allenai.extraction.service
 
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
-import org.allenai.extraction.manager.ExtractorPipeline
+import org.allenai.extraction.manager.ErminePipeline
 
 import akka.actor.{ ActorLogging, Props }
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
@@ -29,13 +29,13 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
 
   // Preload pipelines.
   val pipelineConfig = inject [Config](ServiceModuleId.Pipelines)
-  val pipelines: Map[String,ExtractorPipeline] = {
+  val pipelines: Map[String,ErminePipeline] = {
     val mutablePipelines = for {
       (pipelineName: String, configObject: ConfigObject) <- pipelineConfig.root()
       config = configObject.toConfig
       pipeline = {
         log.info(s"loading pipeline ${pipelineName} . . . ")
-        ExtractorPipeline.fromConfig(config)
+        ErminePipeline.fromConfig(config)
       }
     } yield (pipelineName -> pipeline)
     // Create immutable version.

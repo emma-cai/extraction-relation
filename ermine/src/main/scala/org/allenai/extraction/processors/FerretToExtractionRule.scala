@@ -1,7 +1,7 @@
-package org.allenai.extraction.extractors
+package org.allenai.extraction.processors
 
 import org.allenai.common.Logging
-import org.allenai.extraction.Extractor
+import org.allenai.extraction.Processor
 import org.allenai.extraction.api._
 
 import spray.json._
@@ -15,15 +15,15 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.Writer
 
-/** Extractor converting the ferret output (JSON with incomplete tokens) into complete
+/** Processor converting the ferret output (JSON with incomplete tokens) into complete
   * ExtractionRules. This expects two input streams - the ferret output, and the output tokens from
-  * the StanfordXmlToTtl extractor.
+  * the StanfordXmlToTtl processor.
   */
-object FerretToExtractionRule extends Extractor with Logging {
+object FerretToExtractionRule extends Processor with Logging {
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def extractInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     // Local seq format for de/serializing in this function.
     import spray.json.DefaultJsonProtocol.seqFormat
 
