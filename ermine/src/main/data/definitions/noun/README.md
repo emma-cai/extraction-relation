@@ -17,12 +17,17 @@ Definition1_1 - Definition1_3:
 
 These differ only in the type of verb phrase following the relative (that/which) clause, namely, simple/compund (with antecedent-consequent)/composite.
 They cover patterns of the form-
+
+```
 <Term> is/are/refers to <NP> that/, which {<VP1>, <VP2>,… : implied subject}
 <Term> : <NP> that/, which {<VP1>, <VP2>,… : implied subject}
+```
 
 E.g.:
-The ear is the organ that detects sound.
+> The ear is the organ that detects sound.
+```
 Ear: The organ that detects sound.
+```
 
 
 Definition2_2_1 - Definition2_2_2:
