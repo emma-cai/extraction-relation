@@ -8,6 +8,7 @@ import edu.knowitall.tool.typer.Type
 /** A DefinitionExtractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
+  * @param dataPath Path to the noun definition data- mainly the required OpenRegex rule files.
   */
 class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenRegexExtractor(dataPath, "noun") {
 
@@ -21,13 +22,17 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
 
   /** The (main) client-visible method that takes the output of the 'extract' method, which contains
     * the output Types, and returns a list of extractions formatted as tuples, as Strings.
+    * Sample output for the definition, "Chlorophyll is a green pigment found in almost all plants, 
+    * algae, and cyanobacteria." : 
+    * Each of these extractions is a String in the returned Seq of Strings:
+    *   Defined Term: Chlorophyll
+    *   Isa: (Chlorophyll, isa, pigment)
+    *   Fact: (Chlorophyll, is, green pigment)
+    *   Quality: (Chlorophyll, is, green)
+    *   Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, )
     */
   override def process(allTypes: Seq[Type], lastLevelTypes: Seq[Type]): Seq[String] = {
-    val results: Seq[String] = (lastLevelTypes collectFirst {
-      case x if definitionTypeNames.contains(x.name) => processNounDefinition(x, allTypes)
-    }) getOrElse Seq.empty[String]
-
-    results
+    (lastLevelTypes find { t => definitionTypeNames.contains(t.name) } map { processNounDefinition(_, allTypes) }).getOrElse(Seq.empty[String])
   }
 
   /** Given a Type and the entire list of output Types, generate extractions from the
@@ -141,7 +146,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
   private def processNounDefinitionNGSingle(definedTerm: String, typ: Type, types: Seq[Type]): Seq[String] = {
     var results = Seq.empty[String]
 
-    var np: String = nounDefinitionGetNounPartFromNGSingle(typ, types, "NP")
+    var np: StringBuilder = new StringBuilder(nounDefinitionGetNounPartFromNGSingle(typ, types, "NP"))
     var noun: String = nounDefinitionGetNounPartFromNGSingle(typ, types, "Nouns")
     var aux: String = nounDefinitionGetAuxPartFromNGSingle(typ, types)
     val prep: String = nounDefinitionGetPrepFromNGSingle(typ, types)
@@ -150,9 +155,9 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     if (noun.length() > 0) {
       results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + noun + ")")
       if (aux.length() > 0)
-        np += " " + aux
+        np ++= " " + aux
       if (prep.length() > 0)
-        np += ", " + prep
+        np ++= ", " + prep
       if ((np.length() > 0) && !noun.equals(np))
         results ++= Seq[String]("Fact: (" + definedTerm + ", is, " + np + ")")
     }
@@ -348,7 +353,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
 
   /** Get a string representing a match on a sentence rule defined in the 'VP3' rule */
   private def getFormattedVP3(typ: Type, types: Seq[Type]): String = {
-    var result: String = ""
+    var result: StringBuilder = new StringBuilder("")
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
@@ -376,14 +381,14 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentS.length() > 0)) {
-      result += antecedentVP + "), " + rel + ", " + consequentS
+      result ++= antecedentVP + "), " + rel + ", " + consequentS
     }
-    result
+    result.toString()
   }
 
   /** Get a string representing a match on a sentence rule defined in the 'VP2' rule */
   private def getFormattedVP2(typ: Type, types: Seq[Type], subj: String): String = {
-    var result: String = ""
+    var result: StringBuilder = new StringBuilder("")
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
@@ -411,26 +416,26 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result += antecedentVP + "), " + rel + ", " + "(" + subj + ", " + consequentVP + ")"
+      result ++= antecedentVP + "), " + rel + ", " + "(" + subj + ", " + consequentVP + ")"
     }
-    result
+    result.toString()
   }
 
   /** Get a string representing a match on a sentence rule defined in the 'VP1' rule */
   def getFormattedVP1(typ: Type, types: Seq[Type]): String = {
-    var result: String = ""
+    var result: StringBuilder = new StringBuilder("")
     val rel = (Extractor.findSubtypesWithName(types)(typ, "Rel").headOption map (_.text)).getOrElse("")
     val arg2 = (Extractor.findSubtypesWithName(types)(typ, "Arg2").headOption map (_.text)).getOrElse("")
     val arg = (Extractor.findSubtypesWithName(types)(typ, "Arg").headOption map (_.text)).getOrElse("")
     if (rel.length() > 0) {
-      result += rel + ", " + arg2 + ", " + arg
+      result ++= rel + ", " + arg2 + ", " + arg
     }
-    result
+    result.toString()
   }
 
   /** Get a string representing a match on a sentence rule defined in the 'S' rule */
   private def getFormattedS(typ: Type, types: Seq[Type]): String = {
-    var result: String = ""
+    var result: StringBuilder = new StringBuilder("")
     val formattedAntecedentS1 = (for {
       antecedentS <- Extractor.findSubtypesWithName(types)(typ, "AntecedentS").headOption
       S1 <- Extractor.findAlignedTypesWithName(types)(antecedentS, "S1").headOption
@@ -448,14 +453,14 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     } yield (getFormattedS1(S1, types))) getOrElse ""
 
     if ((formattedAntecedentS1.length() > 0) && (rel.length() > 0) && (formattedConsequentS1.length() > 0)) {
-      result += "(" + formattedAntecedentS1 + ", " + rel + ", " + formattedConsequentS1 + ")"
+      result ++= "(" + formattedAntecedentS1 + ", " + rel + ", " + formattedConsequentS1 + ")"
     }
-    result
+    result.toString()
   }
 
   /** Get a string representing a match on a sentence rule defined in the 'S1' rule */
   private def getFormattedS1(typ: Type, types: Seq[Type]): String = {
-    var result = ""
+    var result = new StringBuilder("(")
     val arg1 =
       Extractor.findSubtypesWithName(types)(typ, "Arg1").headOption match {
         case Some(a) =>
@@ -471,19 +476,18 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
           }
         case _ => Seq.empty[String]
       }
-    result = "("
     var ix = 0
     for (vp <- vps) {
       var vpStr = ""
       if ((arg1.length() > 0) && (vp.length() > 0)) {
         if (ix > 0)
-          result += ", "
+          result ++= ", "
         vpStr = "(" + arg1 + ", " + vp + ")"
         ix += 1
       }
-      result += vpStr
+      result ++= vpStr
     }
-    result += ")"
-    result
+    result ++= ")"
+    result.toString()
   }
 }

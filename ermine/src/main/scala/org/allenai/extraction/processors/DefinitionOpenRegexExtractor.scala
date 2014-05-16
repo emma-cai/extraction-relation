@@ -4,8 +4,14 @@ import java.io.{ File, Writer }
 
 import scala.io.Source
 
-/** An extractor that processes definitions for a given class of terms using OpenRegex. */
-/** A directory is expected per word class, with the cascade file in it being called defn.cascade */
+/** An extractor that processes definitions for a given class of terms using OpenRegex. 
+ *  A directory is expected per word class, with the cascade file in it being called defn.cascade.
+ *  wordClass can take different values like Noun, Adjective, Verb, Expression etc.
+ *  Definitions have different formats depending on the word class of the term being defined. This will
+ *  impact the rules defined in Openregex, so we will have a set of rules and a cascade file for each word class. 
+ *  @param dataPath  Path of the data directory that will contain OpenRegex rule files to be used for the definition extraction. 
+ *  @param wordClass The word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
+ *                   for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files. */
 abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
 
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed

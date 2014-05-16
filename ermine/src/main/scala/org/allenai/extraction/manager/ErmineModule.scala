@@ -21,7 +21,7 @@ object ErmineModule extends NewBindingModule(module => {
   val ferret = new Ferret(ferretDir)
 
   //Get the data directory for the definition extractor
-  val definitionsDataDir = config[String]("definitionsData.directory")
+  val definitionsDataDir = config[String]("definitions.dataDirectory")
   
   // Available extractors.
   bind[Map[String, Processor]] toSingle Map(
