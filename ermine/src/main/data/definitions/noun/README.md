@@ -25,7 +25,9 @@ They cover patterns of the form-
 
 E.g.:
 > The ear is the organ that detects sound.
-> Ear: The organ that detects sound.
+```
+Ear: The organ that detects sound.
+```
 
 
 Definition2_2_1 - Definition2_2_2:
