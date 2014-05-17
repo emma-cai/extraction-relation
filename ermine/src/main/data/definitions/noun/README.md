@@ -21,11 +21,10 @@ They cover patterns of the form-
 ```
 <Term> is/are/refers to <NP> that/, which {<VP1>, <VP2>,… : implied subject}
 <Term> : <NP> that/, which {<VP1>, <VP2>,… : implied subject}
-```
+
 
 E.g.:
-> The ear is the organ that detects sound.
-```
+The ear is the organ that detects sound.
 Ear: The organ that detects sound.
 ```
 
