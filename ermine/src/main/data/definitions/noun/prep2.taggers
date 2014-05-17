@@ -1,0 +1,4 @@
+PP2 := TypedOpenRegex {
+  (?: ((@RelClause @VG @NG) | (<pos="IN" | pos="TO"> @VG @NG?) | (<pos="IN" | pos="TO">  <pos="WDT"> @NG @VG @NG?))*)
+| (?: @PP)
+}
