@@ -8,7 +8,7 @@ import java.net.URI
 
 class ProcessorConfigTest extends UnitSpec {
   val validProcessor = "NoOpProcessor"
-  val defaultIO = ProcessorIO.defaultIO("0")
+  val unnamedIO = ProcessorIO.unnamedIO("0")
   // Binding module for fromConfig calls.
   implicit val bindingModule = TestErmineModule
 
@@ -19,8 +19,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(defaultIO))
-    processor.outputs should be (Seq(defaultIO))
+    processor.inputs should be (Seq(unnamedIO))
+    processor.outputs should be (Seq(unnamedIO))
   }
 
   // Test that we can add inputs & outputs to the pipeline and have them be parsed.
@@ -32,7 +32,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(ProcessorIO("a", new URI("name:a"))))
-    processor.outputs should be (Seq(defaultIO))
+    processor.outputs should be (Seq(unnamedIO))
   }
   it should "handle a processor with only outputs configured" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -41,7 +41,7 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(defaultIO))
+    processor.inputs should be (Seq(unnamedIO))
     processor.outputs should be (Seq(ProcessorIO("b", new URI("name:b"))))
   }
   it should "handle a processor with both inputs and outputs" in {
@@ -89,11 +89,11 @@ class ProcessorConfigTest extends UnitSpec {
   }
 
   // Test that malformed inputs / outputs are handled gracefully.
-  "ProcessorConfig.Builder.getIOValues" should "return the default for an empty array" in {
+  "ProcessorConfig.Builder.getIOValues" should "return an unnamed IO for an empty array" in {
     val emptyInputsConfig = ConfigFactory.parseString(s"""
     ary = [ ]
     """)
 
-    ProcessorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(defaultIO))
+    ProcessorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(unnamedIO))
   }
 }
