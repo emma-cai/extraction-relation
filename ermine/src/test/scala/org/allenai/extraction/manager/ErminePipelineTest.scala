@@ -61,7 +61,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredInputs should be (Set())
+    pipeline.requiredNamedInputs should be (Set())
   }
 
   it should "allow named outputs to be used for unnamed inputs" in {
@@ -79,10 +79,10 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredInputs should be (Set())
+    pipeline.requiredNamedInputs should be (Set())
   }
 
-  it should "fail when given a pipeline with one output followed by two default inputs" in {
+  it should "fail when given a pipeline with one output followed by two unnamed inputs" in {
     // TwoBy expects two inputs, but NoOp just yields one.
     val simpleConfig = ConfigFactory.parseString(s"""
       name = "TestWorkflow"
@@ -115,7 +115,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredInputs should be (Set("foo"))
+    pipeline.requiredNamedInputs should be (Set("foo"))
   }
 
   it should "have two required inputs when both stages have an unsatisfied input" in {
@@ -134,7 +134,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredInputs should be (Set("foo", "bar"))
+    pipeline.requiredNamedInputs should be (Set("foo", "bar"))
   }
 
   it should "handle named IO skipping stages" in {
@@ -157,7 +157,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredInputs should be (Set())
+    pipeline.requiredNamedInputs should be (Set())
   }
 
   it should "fail when given a mixture of anonymous first-stage input and named input" in {
