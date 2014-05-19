@@ -31,14 +31,15 @@ object ProcessorIO {
     */
   def simpleUri(scheme: String, value: String) = new URI(scheme, value, null)
 
-  /** Returns the string name for an unnamed stream with the given ordinal.
+  /** Returns the string key for an unnamed stream with the given ordinal. Used for the "name" field
+    * of the case class.
     * @param ordinal the index of this unnamed stream in the processor's input, starting at zero
     */
-  def unnamedName(ordinal: String) = "$unnamed-" + ordinal
+  def unnamedKey(ordinal: String) = "$unnamed-" + ordinal
   /** Creates a processor IO with an unnamed-schemed URI (e.g. n unnamed:0").
     * @param ordinal the index of this stream in the processor's input, starting at zero
     */
-  def unnamedIO(ordinal: String) = ProcessorIO(unnamedName(ordinal), simpleUri("unnamed", ordinal))
+  def unnamedIO(ordinal: String) = ProcessorIO(unnamedKey(ordinal), simpleUri("unnamed", ordinal))
 
   /** Parses an IO value from a config value. This can be either an object with optional `name` and
     * `uri` keys, or a raw string. A raw string will be treated as an object with the string as the
@@ -73,7 +74,7 @@ object ProcessorIO {
       // Name but no URI - named only.
       case (Some(name), None) => ProcessorIO(name, simpleUri("name", name))
       // URI only - use unnamed name.
-      case (None, Some(uri)) => ProcessorIO(unnamedName(ordinalString), uri)
+      case (None, Some(uri)) => ProcessorIO(unnamedKey(ordinalString), uri)
       // Fully configured!
       case (Some(name), Some(uri)) => ProcessorIO(name, uri)
     }

@@ -54,7 +54,7 @@ class ProcessorIOTest extends UnitSpec {
       io = {uri: "${devNull}"}
       """)
     val io = ProcessorIO.fromConfig(config.getConfig("io"), "2")
-    io should be (ProcessorIO(ProcessorIO.unnamedName("2"), devNullUri))
+    io should be (ProcessorIO(ProcessorIO.unnamedKey("2"), devNullUri))
   }
   it should "handle an empty object correctly" in {
     val config = ConfigFactory.parseString(s"""

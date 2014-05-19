@@ -52,7 +52,7 @@ class ErminePipeline(val name: String, val description: String,
     }
     val unnamedMap = (for {
       (input, index) <- unnamedInputs.zipWithIndex
-    } yield (ProcessorIO.unnamedName(index.toString) -> input)).toMap
+    } yield (ProcessorIO.unnamedKey(index.toString) -> input)).toMap
     runProcessors(processors, namedInputs, unnamedMap, defaultOutput)
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
@@ -77,7 +77,7 @@ class ErminePipeline(val name: String, val description: String,
       // step, pipe to the default output.
       case Seq() => {
         for {
-          lastOutput <- unnamedSources.get(ProcessorIO.unnamedName("0")) if unnamedSources.size == 1
+          lastOutput <- unnamedSources.get(ProcessorIO.unnamedKey("0")) if unnamedSources.size == 1
           line <- lastOutput.getLines
         } {
           defaultOutput.write(line)
