@@ -29,6 +29,6 @@ object ErmineModule extends NewBindingModule(module => {
     "FerretTextProcessor" -> new FerretTextProcessor(ferret),
     "FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret),
     "StanfordXmlToTtl" -> StanfordXmlToTtl,
-    "NounDefinitionOpenRegexExtractor" -> new NounDefinitionOpenRegexExtractor(definitionsDataDir)
-  )
+    "NounDefinitionOpenRegexExtractor" -> new NounDefinitionOpenRegexExtractor(definitionsDataDir),
+    "CatProcessor" -> CatProcessor)
 })

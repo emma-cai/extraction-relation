@@ -14,15 +14,41 @@ import java.io.FileWriter
 import java.io.Writer
 import java.net.URI
 
-/** Class representing a pipeline. */
+/** Class representing a pipeline.
+  * @param name the name of the pipeline, as configured
+  * @param description human-readable description of the pipeline
+  * @param processors the processors to run in-order
+  * @param requiredInputs the named inputs required for this processor to run successfully
+  */
 class ErminePipeline(val name: String, val description: String,
-    val processors: Seq[ProcessorConfig]) {
+    val processors: Seq[ProcessorConfig], val requiredInputs: Set[String]) {
+
+  /** The number of default inputs the pipeline requires. */
+  val requiredDefaultCount: Int = if (processors.head.wantsDefaultInput) {
+    processors.head.processor.numInputs
+  } else {
+    0
+  }
+
   /** Run this pipeline, using the given inputs and output.
     * @param inputs the named inputs to this pipeline
     * @param defaultInputs the default (unnamed) inputs to the first stage of this pipeline
     * @param defaultOutput the default output for the last stage of the pipeline
+    * @throws ErmineException if the provided inputs don't satisfy the pipeline's requirements
     */
   def run(inputs: Map[String, Source], defaultInputs: Seq[Source], defaultOutput: Writer): Unit = {
+    // Validate that the inputs match what we need (we aren't missing any).
+    val firstProcessor = processors.head
+    if (requiredDefaultCount > defaultInputs.size) {
+      throw new ErmineException(s"Pipeline '${name}' requires ${requiredDefaultCount} default " +
+        s"streams; got ${defaultInputs.size}")
+    } else {
+      val missingInputs = requiredInputs diff inputs.keySet
+      if (missingInputs.size > 0) {
+        throw new ErmineException(s"Pipeline '${name}' missing required named inputs. Missing " +
+          s"""inputs: ${missingInputs.mkString(", ")}""")
+      }
+    }
     val defaultsMap = (for {
       (input, index) <- defaultInputs.zipWithIndex
     } yield (ProcessorIO.defaultName(index.toString) -> input)).toMap
@@ -123,7 +149,7 @@ object ErminePipeline {
     */
   def fromConfig(config: Config)(implicit bindingModule: BindingModule): ErminePipeline = {
     val name = config.get[String]("name").getOrElse(
-      throw new ErmineException("pipeline name is required"))
+      throw new ErmineException("Pipeline name is required"))
 
     val processors: Seq[ProcessorConfig] = {
       config.getConfigList("processors").asScala map { ProcessorConfig.fromConfig }
@@ -131,14 +157,46 @@ object ErminePipeline {
     val description = config.get[String]("description").getOrElse(name)
 
     if (processors.length == 0) {
-      throw new ErmineException("no processors found in pipeline")
+      throw new ErmineException(s"No processors found in pipeline '${name}'")
     }
 
-    // TODO: Validate the i/o of the processors.
-    // First step: Validate default (unconfigured) inputs have outputs they can map to.
-    // Second step: Determine list of unsatisfied (named) inputs from secondary stages.
-    // Third step: Determine required input (required names *OR* required default count).
+    // Validate that each processor using default inputs follows a processor with at least enough
+    // outputs to satisfy it.
+    for (Seq(previous, current) <- processors.sliding(2)) {
+      if (current.wantsDefaultInput) {
+        // If this processor expects default input, make sure the previous processor provides
+        // enough outputs.
+        if (current.inputs.size > previous.outputs.size) {
+          throw new ErmineException(s"Processor '${current.name}' has no inputs configured, but " +
+            s"previous processor '${previous.name}' only produces ${previous.outputs.size} outputs")
+        }
+      }
+    }
 
-    new ErminePipeline(name, description, processors)
+    // Collect all of the unsatisfied named inputs.
+    val (_, unsatisfiedInputs) = processors.foldLeft((Set.empty[String], Set.empty[String])) {
+      case ((available, unsatisfied), processor) => {
+        val newOutputs = (processor.outputs map { _.name }).toSet
+        // Gather all named (non-default) inputs that don't have an entry in the available set.
+        val newUnsatisfied = (for {
+          io <- processor.inputs
+          if !io.isDefault
+          name = io.name
+          if !available.contains(name)
+        } yield name).toSet
+        (available ++ newOutputs, unsatisfied ++ newUnsatisfied)
+      }
+    }
+
+    // Validate that either the first pipeline has default inputs OR there are
+    // unsatisfied named inputs, but not both.
+    // TODO(jkinkead): Expand the commandline API to allow mixing these two ways of specifying
+    // input.
+    if (processors.head.wantsDefaultInput && unsatisfiedInputs.nonEmpty) {
+      throw new ErmineException(s"Pipeline '${name}' requires unnamed inputs, but also requires " +
+        s"""named inputs. Required named inputs: ${unsatisfiedInputs.mkString(", ")}""")
+    }
+
+    new ErminePipeline(name, description, processors, unsatisfiedInputs)
   }
 }

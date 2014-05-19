@@ -9,8 +9,15 @@ import com.typesafe.config.{ Config, ConfigException }
 import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
-case class ProcessorConfig(processor: Processor, inputs: Seq[ProcessorIO],
-  outputs: Seq[ProcessorIO])
+case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorIO],
+  outputs: Seq[ProcessorIO]) {
+  /** @return true if this processor expects default (unnamed) inputs */
+  def wantsDefaultInput: Boolean = {
+    // Either the first (and by implication all subsequent) inputs are default, or none are. We
+    // consider empty inputs to mean not default.
+    inputs.headOption map { _.isDefault } getOrElse { false }
+  }
+}
 object ProcessorConfig {
   /** Builds a ProcessorConfig from a config with required key `name` and optional `inputs` and
     * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the value
@@ -39,7 +46,7 @@ object ProcessorConfig {
         s"outputs, has ${outputs.size} in the configuration")
     }
 
-    ProcessorConfig(processor, inputs, outputs)
+    ProcessorConfig(processorName, processor, inputs, outputs)
   }
 
   /** Gets an input or output label set from a config using the given config path. This expects the
