@@ -13,7 +13,7 @@ sent.taggers is the topmost level taggers file that defines the high-level patte
 
 The highest level rules (in sent.taggers) cover the most commonly occuring patterns in noun definitions, namely-
 
-Definition1_1 - Definition1_3:
+### Definition1_1 - Definition1_3:
 
 These differ only in the type of verb phrase following the relative (that/which) clause, namely, simple/compund (with antecedent-consequent)/composite.
 They cover patterns of the form-
@@ -21,66 +21,69 @@ They cover patterns of the form-
 ```
 <Term> is/are/refers to <NP> that/, which {<VP1>, <VP2>,… : implied subject}
 <Term> : <NP> that/, which {<VP1>, <VP2>,… : implied subject}
-```
+
 
 E.g.:
-> The ear is the organ that detects sound.
-```
+The ear is the organ that detects sound.
 Ear: The organ that detects sound.
 ```
 
 
-Definition2_2_1 - Definition2_2_2:
+### Definition2_2_1 - Definition2_2_2:
 
 These differ only in the type of sentence following the relative clause, namely, simple/compound sentence.
 They cover patterns of the form-
+```
 <Term> is/are/refers to <NP> <PP> which <sentence>
 <Term> : <NP> <PP> which <sentence>
 
 E.g.:
 Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
 Freezing : A phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point
+```
 
-
-Definition2_1_1 - Definition2_1_2:
+### Definition2_1_1 - Definition2_1_2:
 
 These differ only in the type of sentence following the relative clause, namely, simple/compound sentence.
 They cover patterns of the form-
+```
 <Term> is/are/refers to <NP>  where/whereby <sentence>
 <Term> : <NP> where/whereby <sentence>
 
 E.g.:
 A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
+```
 
-
-Definition3_1 - Definition3_3:
+### Definition3_1 - Definition3_3:
 
 These differ only in the type of verb phrase following the relative (that/which) clause, namely, simple/compund (with antecedent-consequent)/composite.
 They cover patterns of the form-
+```
 <Term> is/are/refers to <NP>  {<VP1>, VP2>,… : implied subject}
 <Term> : <NP>  {<VP1>, <VP2>,… : implied subject}
 
 E.g.:
 Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
+```
 
-
-Definition4_1 - Definition4_2:
+### Definition4_1 - Definition4_2:
 
 These cover patterns of the form-
+```
 <Term> is/are/refers to {<NP1>, <NP2>,…}
 
 E.g.:
 Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System.
+```
 
-
-Definition5_1 - Definition5_2:
+### Definition5_1 - Definition5_2:
 
 These cover patterns of the form-
-
+```
 <Term> is when/where <sentence>
 
 E.g.:
 An 'agreement' is where everybody has the same feelings about something.
-
+```
 
 
