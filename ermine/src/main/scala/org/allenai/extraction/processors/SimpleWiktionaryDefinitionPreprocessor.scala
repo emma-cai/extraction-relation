@@ -11,9 +11,9 @@ import org.allenai.extraction.FlatProcessor
   * as input and converts it to the format expected by the Definition Extractor, which is:
   * <term>\t<wordClass>\t<cleaned-up-definition>.
   * @param wordClasses The set of wordclasses to consider. If this set is specified, i.e., non-empty, definitions
-  *                  of terms belonging to any class outside of this set will NOT be processed/written out.
-  *                  Default: Empty set, which means there are no filters, so the preprocessor will process/write out
-  *                  all definitions of all word classes.
+  *                 of terms belonging to any class outside of this set will NOT be processed/written out.
+  *                 Default: Empty set, which means there are no filters, so the preprocessor will process/write out
+  *                 all definitions of all word classes.
   */
 class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empty) extends FlatProcessor {
 
@@ -54,9 +54,9 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * abandon	Noun	#{{uncountable}} 'Abandon' is a state where you do not control yourself.
     * aberrant	Adjective	# Straying from the right or usual course; wandering.
     * around	Preposition	# If a boat runs or goes 'ground', its bottom goes onto the ground
-    *                        and it is not floating freely anymore. {{antonyms|afloat}}
+    *                       and it is not floating freely anymore. {{antonyms|afloat}}
     * keyboard	Noun	#{{context|music}} , {{countable}} A 'keyboard' is a range of black and white
-    *                   keys (buttons) on a musical instrument.
+    *                  keys (buttons) on a musical instrument.
     */
   def cleanUp(definitionRawLine: String): Seq[String] = {
     // Remove leading '#' character 
@@ -65,7 +65,8 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
 
     // Remove meta info - stuff in curly braces  if present : there could be a cluster of multiple of these
     // separated by semicolon or comma like the last e.g. in above documentation.
-    val defMetaInfoPattern = """\{\{[^}]*\}\}(\s*(,|;)\s*\{\{[^}]*\}\})*""".r
+    val metaInfo = """\{\{[^}]*\}\}"""
+    val defMetaInfoPattern = s"""${metaInfo}(?:\\s*(?:,|;)\\s*${metaInfo})*""".r
     val defPoundMetaStripped: String = defMetaInfoPattern replaceAllIn (defBeginningPoundStripped, "")
 
     // Remove all bracketed expressions

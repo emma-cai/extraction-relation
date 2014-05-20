@@ -2,15 +2,15 @@ package org.allenai.extraction.processors
 
 import org.allenai.common.testkit.UnitSpec
 
-/** A Test for the SimpleWiktionaryPreprocessor class. Currently only implements unit tests 
+/** A Test for the SimpleWiktionaryDefinitionPreprocessor class. Currently only implements unit tests 
  *  for the cleanUp method which uses a number of regexes to clean up raw definition text
  *  from SimpleWiktionary.
  */
-class SimpleWiktionaryPreprocessorTest extends UnitSpec{
+class SimpleWiktionaryDefinitionPreprocessorTest extends UnitSpec{
 
   val testPreprocessor = new SimpleWiktionaryDefinitionPreprocessor()
   
-  "SimpleWiktionaryPreprocessor's cleanUp Method" should "strip the leading '#' and return trimmed string" in {   
+  "SimpleWiktionaryDefinitionPreprocessor's cleanUp Method" should "strip the leading '#' and return trimmed string" in {   
 	  assert(testPreprocessor.cleanUp("# On the other side.") === Seq[String]("On the other side."))
    }
   
