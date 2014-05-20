@@ -41,16 +41,17 @@ I/O, and map each of these steps to a processor.  For example, we have
 (a processor that runs the Stanford dependency parser)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordParser.scala], and streams out the
 dependency parse as XML - and (a separate processor to convert that XML)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordXmltoTtl.scala] to the TTL graph
 format. This way, we both have two smaller problems to solve - and someone
-could resue the Stanford processor down the line.
+could reuse the Stanford processor down the line.
 
-Processors should extend the [Processor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/Processor.scala). For a simple example of this, check out the [CatProcessor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala) (named after the Linux tool, not the furry mammal).
+Processors should extend the [Processor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/Processor.scala). We've been putting processors in [extraction/processors](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala).
+For a simple example processor, check out [CatProcessor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala) (named after the Linux tool, not the furry mammal).
 
 Once written, the processor needs to be added to the processor configuration map, which is created in [ErmineModule](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/manager/ErmineModule.scala#L24). Ideally, we could look up processors at runtime by class name . . . but this is not very reliable with the current Scala reflection libraries.
 
 ### Pipelines
 
 Once you have processors in place, you're ready to write a pipeline. A pipeline is configured in a
-typesafe config file. By default, Ermine locally looks be under the `ermine.pipeline` config key, but you can change this with the `-p` commandline flag.
+typesafe config file. By default, Ermine locally looks under the `ermine.pipeline` config key, but you can change this with the `-p` commandline flag.
 
 A pipeline has the following fields:
 * `name`: A human-readable name of the pipeline. Required.
