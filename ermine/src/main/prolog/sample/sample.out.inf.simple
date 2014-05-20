@@ -1,0 +1,4 @@
+english(sample.rule1, "Some animals grow fur in winter to keep warm").
+sample.rule1:: agent(grow, animal), object(grow, fur), in(grow, winter) -> effect(grow, keep), agent(keep, animal), arg(keep, warm).
+english(sample.rule2, "Some animals grow fur in winter to keep warm").
+sample.rule2:: agent(keep, animal), arg(keep, warm) -> effect(grow, keep), agent(grow, animal), object(grow, fur), in(grow, winter).
