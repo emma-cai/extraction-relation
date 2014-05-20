@@ -9,12 +9,19 @@ import com.typesafe.config.{ Config, ConfigException }
 import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
-case class ProcessorConfig(processor: Processor, inputs: Seq[ProcessorIO],
-  outputs: Seq[ProcessorIO])
+case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorIO],
+  outputs: Seq[ProcessorIO]) {
+  /** @return true if this processor expects unnamed inputs */
+  def wantsUnnamedInput: Boolean = {
+    // Either the first (and by implication all subsequent) inputs are unnamed, or none are. We
+    // consider empty inputs to be named.
+    inputs.headOption map { _.isUnnamed } getOrElse { false }
+  }
+}
 object ProcessorConfig {
   /** Builds a ProcessorConfig from a config with required key `name` and optional `inputs` and
-    * `outputs` keys. If either of `inputs` or `outputs` are missing, they will be set to the value
-    * `$$default`.
+    * `outputs` keys. If either of `inputs` or `outputs` are missing, they will
+    * be filled with unnamed IO instances.
     */
   def fromConfig(config: Config)(implicit bindingModule: BindingModule): ProcessorConfig = {
     val processors = bindingModule.inject[Map[String, Processor]](None)
@@ -39,7 +46,7 @@ object ProcessorConfig {
         s"outputs, has ${outputs.size} in the configuration")
     }
 
-    ProcessorConfig(processor, inputs, outputs)
+    ProcessorConfig(processorName, processor, inputs, outputs)
   }
 
   /** Gets an input or output label set from a config using the given config path. This expects the
@@ -63,9 +70,9 @@ object ProcessorConfig {
     }
 
     if (configuredValues.size == 0) {
-      // If there were no IO objects configured, use the defaults (pipe from the previous
+      // If there were no IO objects configured, use an unnamed IO (pipe from the previous
       // operation).
-      for (i <- 0 until numExpected) yield ProcessorIO.defaultIO(i.toString)
+      for (i <- 0 until numExpected) yield ProcessorIO.unnamedIO(i.toString)
     } else {
       configuredValues
     }

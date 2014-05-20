@@ -9,7 +9,7 @@ import java.net.URISyntaxException
 
 /** A configured IO stream for a processor. When reading from a configuration file, a user may
   * provide an object with optional `name` and `uri` fields to identify the IO, or they may just
-  * provide a bareword name. If no name is given, a special "$$default-N" name will be used.
+  * provide a bareword name. If no name is given, a special "$$unnamed-N" name will be used.
   *
   * URI schemes will be one of:
   * `file://`, with a path (normal file semantics). This represents a local file to read from or
@@ -17,13 +17,13 @@ import java.net.URISyntaxException
   * `name:`, with a string value. For output streams, this represents a named stream that can be
   * read from later in the pipeline, but which will not be saved to any location after the pipeline
   * completes. For input streams, this represents a previously-generated named output stream.
-  * `default:`, with a numeric value. This is similar to a named stream, with the difference that
-  * default outputs are only available to the next processor in the pipeline, and default inputs
-  * only read from default outputs of the previous processor in the pipeline.
+  * `unnamed:`, with a numeric value. This is similar to a named stream, with the difference that
+  * unnamed outputs are only available to the next processor in the pipeline, and unnamed inputs
+  * only read from the outputs of the previous processor in the pipeline.
   */
 case class ProcessorIO(name: String, uri: URI) {
-  /** @return true if this is a default IO stream */
-  def isDefault(): Boolean = uri.getScheme == "default"
+  /** @return true if this is an unnamed IO stream */
+  def isUnnamed(): Boolean = uri.getScheme == "unnamed"
 }
 object ProcessorIO {
   /** Creates a URI with a name and value, aka "scheme-specific part".  As a string, this looks like
@@ -31,19 +31,20 @@ object ProcessorIO {
     */
   def simpleUri(scheme: String, value: String) = new URI(scheme, value, null)
 
-  /** Returns the default name for a stream with the given ordinal.
-    * @param ordinal the index of this default stream in the processor's input, starting at zero
+  /** Returns the string key for an unnamed stream with the given ordinal. Used for the "name" field
+    * of the case class.
+    * @param ordinal the index of this unnamed stream in the processor's input, starting at zero
     */
-  def defaultName(ordinal: String) = "$default-" + ordinal
-  /** Creates a processor IO with a default name and a default-schemed URI (e.g. "default:0").
-    * @param ordinal the index of this default stream in the processor's input, starting at zero
+  def unnamedKey(ordinal: String) = "$unnamed-" + ordinal
+  /** Creates a processor IO with an unnamed-schemed URI (e.g. n unnamed:0").
+    * @param ordinal the index of this stream in the processor's input, starting at zero
     */
-  def defaultIO(ordinal: String) = ProcessorIO(defaultName(ordinal), simpleUri("default", ordinal))
+  def unnamedIO(ordinal: String) = ProcessorIO(unnamedKey(ordinal), simpleUri("unnamed", ordinal))
 
   /** Parses an IO value from a config value. This can be either an object with optional `name` and
     * `uri` keys, or a raw string. A raw string will be treated as an object with the string as the
     * name.
-    * @param ordinal the ordinal to append to any default names created
+    * @param ordinal the ordinal to use for any unnamed IOs created
     */
   def fromConfigValue(configValue: ConfigValue, ordinal: Int): ProcessorIO = {
     (configValue, configValue.unwrapped) match {
@@ -69,11 +70,11 @@ object ProcessorIO {
 
     (nameOption, uriOption) match {
       // Default (no configuration).
-      case (None, None) => ProcessorIO.defaultIO(ordinalString)
+      case (None, None) => ProcessorIO.unnamedIO(ordinalString)
       // Name but no URI - named only.
       case (Some(name), None) => ProcessorIO(name, simpleUri("name", name))
-      // URI only - use default name.
-      case (None, Some(uri)) => ProcessorIO(defaultName(ordinalString), uri)
+      // URI only - use unnamed name.
+      case (None, Some(uri)) => ProcessorIO(unnamedKey(ordinalString), uri)
       // Fully configured!
       case (Some(name), Some(uri)) => ProcessorIO(name, uri)
     }

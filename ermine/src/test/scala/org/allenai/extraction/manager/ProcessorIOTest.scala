@@ -54,14 +54,14 @@ class ProcessorIOTest extends UnitSpec {
       io = {uri: "${devNull}"}
       """)
     val io = ProcessorIO.fromConfig(config.getConfig("io"), "2")
-    io should be (ProcessorIO(ProcessorIO.defaultName("2"), devNullUri))
+    io should be (ProcessorIO(ProcessorIO.unnamedKey("2"), devNullUri))
   }
   it should "handle an empty object correctly" in {
     val config = ConfigFactory.parseString(s"""
       io = {}
       """)
     val io = ProcessorIO.fromConfig(config.getConfig("io"), "10")
-    io should be (ProcessorIO.defaultIO("10"))
+    io should be (ProcessorIO.unnamedIO("10"))
   }
   it should "fail gracefully with a bad name" in {
     val config = ConfigFactory.parseString(s"""
