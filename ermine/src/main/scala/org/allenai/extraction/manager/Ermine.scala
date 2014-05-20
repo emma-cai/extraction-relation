@@ -60,14 +60,14 @@ object Ermine extends Logging {
       optionParser.parse(args, ErmineOptions()) foreach { options =>
         implicit val module = ErmineModule
 
-        // Load up a config file.
-        val config = ConfigFactory.parseFile(options.configFile)
+        // Load up a config file, using the default overrides (system properties).
+        val rawConfig = ConfigFactory.parseFile(options.configFile)
+        val resolvedConfig = ConfigFactory.defaultOverrides.withFallback(rawConfig).resolve
         val configKey = options.pipelineName
-        if (!config.hasPath(configKey)) {
-          throw new ErmineException(s"No pipeline configuration found at key ${configKey}")
+        if (!resolvedConfig.hasPath(configKey)) {
+          throw new ErmineException(s"no pipeline configuration found at key ${configKey}")
         }
-
-        val pipeline = ErminePipeline.fromConfig(config[Config](configKey))
+        val pipeline = ErminePipeline.fromConfig(resolvedConfig[Config](configKey))
 
         println(s"Running pipeline '${pipeline.name}' . . .")
 
