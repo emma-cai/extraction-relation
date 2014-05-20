@@ -24,7 +24,8 @@ object ErmineModule extends NewBindingModule(module => {
   val definitionsDataDir = config[String]("definitions.dataDirectory")
 
   // Get the set of wordclasses for the SimpleWiktionary preprocessor to operate on
-  val simpleWiktionaryWordClasses = config[Seq[String]]("simpleWiktionary.wordClasses").toSet
+  val simpleWiktionaryWordClasses =
+    config.get[Seq[String]]("simpleWiktionary.wordClasses").getOrElse(Seq.empty[String]).toSet
 
   // Available extractors.
   bind[Map[String, Processor]] toSingle Map(

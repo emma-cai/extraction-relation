@@ -10,12 +10,12 @@ import org.allenai.extraction.FlatProcessor
 /** Preprocessor that takes Simple Wiktionary scraped text in the form: <term>\t<wordClass>\t<noisy-definition-text>
   * as input and converts it to the format expected by the Definition Extractor, which is:
   * <term>\t<wordClass>\t<cleaned-up-definition>.
-  * @param wordClasses The set of wordclasses to consider. If this set is specified, i.e., non-empty, definitions 
-  *                   of terms belonging to any class outside of this set will NOT be processed/written out.
-  *                   Default: Empty set, which means there are no filters, so the preprocessor will process/write out
-  *                   all definitions of all word classes.
+  * @param wordClasses The set of wordclasses to consider. If this set is specified, i.e., non-empty, definitions
+  *                  of terms belonging to any class outside of this set will NOT be processed/written out.
+  *                  Default: Empty set, which means there are no filters, so the preprocessor will process/write out
+  *                  all definitions of all word classes.
   */
-class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String]) extends FlatProcessor {
+class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empty) extends FlatProcessor {
 
   val wordClassesLowerCase = wordClasses.map(x => x.toLowerCase)
 
@@ -53,24 +53,27 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String]) extends F
     * Sample SimpleWiktionary Definition lines:
     * abandon	Noun	#{{uncountable}} 'Abandon' is a state where you do not control yourself.
     * aberrant	Adjective	# Straying from the right or usual course; wandering.
-    * aground	Preposition	# If a boat runs or goes 'aground', its bottom goes onto the ground
-    *                           and it is not floating freely anymore. {{antonyms|afloat}}
+    * around	Preposition	# If a boat runs or goes 'ground', its bottom goes onto the ground
+    *                        and it is not floating freely anymore. {{antonyms|afloat}}
+    * keyboard	Noun	#{{context|music}} , {{countable}} A 'keyboard' is a range of black and white
+    *                   keys (buttons) on a musical instrument.
     */
   def cleanUp(definitionRawLine: String): Seq[String] = {
     // Remove leading '#' character 
-    val defPoundAtBeginningPattern = new Regex("^#")
+    val defPoundAtBeginningPattern = "^#".r
     val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (definitionRawLine, "")
 
-    // Remove meta info - stuff in curly braces  if present
-    val defMetaInfoPattern = new Regex("""\{\{.+\}\}""")
+    // Remove meta info - stuff in curly braces  if present : there could be a cluster of multiple of these
+    // separated by semicolon or comma like the last e.g. in above documentation.
+    val defMetaInfoPattern = """\{\{[^}]*\}\}(\s*(,|;)\s*\{\{[^}]*\}\})*""".r
     val defPoundMetaStripped: String = defMetaInfoPattern replaceAllIn (defBeginningPoundStripped, "")
 
     // Remove all bracketed expressions
-    val parenPattern = new Regex("""\(.*\)""")
+    val parenPattern = """\([^)]*\)""".r
     val defPoundMetaParenStripped: String = parenPattern replaceAllIn (defPoundMetaStripped, "")
 
     // Remove quotes from quoted words, like the definition term
-    val defQuotedWordPattern = new Regex("""(?<=\W|^)'([^']+)'(?=\W|$)""")
+    val defQuotedWordPattern = """(?<=\W|^)'([^']+)'(?=\W|$)""".r
     val defPoundMetaQuotesStripped = defQuotedWordPattern replaceAllIn (defPoundMetaParenStripped, m => m.group(1))
 
     // Break the line up into multiple definitions if separated by semicolons
