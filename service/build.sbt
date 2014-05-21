@@ -49,5 +49,5 @@ mappings in Universal ++=
   ((sourceDirectory in ermine).value / "main" / "data" ** "*" x
     rebase((sourceDirectory in ermine).value / "main" / "data", "data/"))
 
-// Copy the prolog scripts to EC2.
-Deploy.deployDirs += "prolog"
+// Copy the prolog scripts & tagger data files to EC2.
+Deploy.deployDirs ++= Seq("prolog", "data")
