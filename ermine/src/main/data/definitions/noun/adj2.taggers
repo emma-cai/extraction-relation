@@ -1,0 +1,15 @@
+AP2 := TypedOpenRegex {
+   (?: (@AP0 @PP0?))
+}
+
+AP2NoVb := TypedOpenRegex {
+   (?: (@AP0NoVb @PP0?))
+}
+
+AP3 := TypedOpenRegex {
+   (?: ((<First>: @AP2) (?: (<string="," | string="or">? (<Middle>: @AP2))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @AP2) )?))
+}
+
+AP3NoVb := TypedOpenRegex {
+   (?: ((<First>: @AP2NoVb) (?: (<string="," | string="or">? (<Middle>: @AP2NoVb))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @AP2NoVb) )?))
+}

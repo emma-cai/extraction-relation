@@ -66,7 +66,6 @@ object ExtractionBuild extends Build {
     Seq(logbackCore, logbackClassic)
   }
 
-  val openNlpCore = "org.allenai.nlptools" %% "nlptools-core" % "2.5.0-SNAPSHOT"
   val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   val sprayCan = "io.spray" %  "spray-can" % sprayVersion
   val sprayRouting = "io.spray" %  "spray-routing" % sprayVersion
@@ -95,6 +94,7 @@ object ExtractionBuild extends Build {
   val allenaiCommon = "org.allenai.common" %% "common" % "2014.04.28-SNAPSHOT"
   val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.2-SNAPSHOT"
   val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
+  val taggers = "org.allenai.taggers" %% "taggers-core" % "0.5-SNAPSHOT"
 
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },
@@ -103,9 +103,9 @@ object ExtractionBuild extends Build {
   ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Deploy.settings ++
+    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++
     Seq(
-      organization := "org.allenai.extraction.demo",
+      organization := "org.allenai.extraction",
       crossScalaVersions := Seq("2.10.4"),
       scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
       scalacOptions ++= Seq("-unchecked", "-deprecation"),
@@ -117,27 +117,27 @@ object ExtractionBuild extends Build {
         "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/"),
       homepage := Some(url("http://github.com/allenai/extraction")))
 
-  lazy val interface = Project(
-    id = "interface",
-    base = file("interface"),
+  lazy val api = Project(
+    id = "api",
+    base = file("api"),
     settings = buildSettings)
 
   lazy val demo = Project(
     id = "demo",
     base = file("demo"),
     settings = buildSettings
-  ).dependsOn(interface)
+  ).dependsOn(api)
 
   val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
     settings = buildSettings
-  ).dependsOn(interface)
+  ).dependsOn(api)
 
   lazy val service = Project(
     id = "service",
     base = file("service"),
     settings = buildSettings
-  ).dependsOn(interface, ermine)
+  ).dependsOn(api, ermine)
 }

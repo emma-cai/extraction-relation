@@ -1,0 +1,85 @@
+adj.taggers
+adv.taggers
+noun.taggers
+prep.taggers
+noun2.taggers
+adj2.taggers
+defn.taggers
+verb.taggers
+prep2.taggers
+noun3.taggers
+rel.taggers
+verb2.taggers
+sent.taggers
+
+
+
+x: Definition1_1 => Isa: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition1_1 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition1_1 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.Qualities|''})
+y: Definition1_1 => Definition Fact: (${y.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, ${y.Facts})
+y: Definition1_1 => Properties: (${y.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition1_2 => Isa: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition1_2 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition1_2 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition1_2 => Definition Fact: ((${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, ${x.Facts->VP2.AntecedentVP->VP1.Rel|''}, ${x.Facts->VP2.AntecedentVP->VP1.Arg2|''},${x.Facts->VP2.AntecedentVP->VP1.Arg|''}), ${x.Facts->VP2.Rel}, (, ${x.Facts->VP2.ConsequentVP->VP1.Rel|''}, ${x.Facts->VP2.ConsequentVP->VP1.Arg2|''},${x.Facts->VP2.ConsequentVP->VP1.Arg|''}))
+x: Definition1_2 => Properties: (${y.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition1_3 => Isa: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition1_3 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition1_3 => Qualities: (${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition1_3 => Definition Fact: ((${x.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, ${x.Facts->VP3.AntecedentVP->VP1.Rel|''}, ${x.Facts->VP3.AntecedentVP->VP1.Arg2|''},${x.Facts->VP3.AntecedentVP->VP1.Arg|''}), ${x.Facts->VP3.Rel}, (${x.Facts->VP3.ConsequentS->S1.Arg1|''}, ${x.Facts->VP3.ConsequentS->S1.VP->VP1.Rel|''}, ${x.Facts->VP3.ConsequentS->S1.VP->VP1.Arg2|''},${x.Facts->VP3.ConsequentS->S1.VP->VP1.Arg|''}))
+y: Definition1_3 => Properties: (${y.Isa->DefnPattern1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition2_1_1 => Isa: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition2_1_1 => Qualities: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition2_1_1 => Qualities: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition2_1_1 => Definition Fact: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, describes, (${x.Facts->S1.Arg1|''}, ${x.Facts->S1.VP->VP1.Rel|''}, ${x.Facts->S1.VP->VP1.Arg2|''}, ${x.Facts->S1.VP->VP1.Arg|''}))
+y: Definition2_1_1 => Properties: (${y.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+
+x: Definition2_1_2 => Isa: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition2_1_2 => Qualities: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition2_1_2 => Qualities: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition2_1_2 => Definition Fact: (${x.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, describes, ((${x.Facts->S.AntecedentS->S1.Arg1|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Arg2|''},${x.Facts->S.AntecedentS->S1.VP->VP1.Arg|''}), ${x.Facts->S.Rel|''}, (${x.Facts->S.ConsequentS->S1.Arg1|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Arg2|''},${x.Facts->S.ConsequentS->S1.VP->VP1.Arg|''})))
+y: Definition2_1_2 => Properties: (${y.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition2_2_1 => Isa: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition2_2_1 => Qualities: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition2_2_1 => Qualities: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition2_2_1 => Definition Fact: ((${x.Facts->S1.Arg1|''}, ${x.Facts->S1.VP->VP1.Rel|''}, ${x.Facts->S1.VP->VP1.Arg2|''},${x.Facts->S1.VP->VP1.Arg|''}), ${x.Isa->DefnPattern2_2.Prep|''} , ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''})
+y: Definition2_2_1 => Properties: (${y.Isa->DefnPattern2_1.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition2_2_2 => Isa: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition2_2_2 => Qualities: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition2_2_2 => Qualities: (${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition2_2_2 => Definition Fact: (((${x.Facts->S.AntecedentS->S1.Arg1|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Arg2|''},${x.Facts->S.AntecedentS->S1.VP->VP1.Arg|''}), ${x.Facts->S.Rel|''}, (${x.Facts->S.ConsequentS->S1.Arg1|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Arg2|''},${x.Facts->S.ConsequentS->S1.VP->VP1.Arg|''})), ${x.Isa->DefnPattern2_2.Prep|''}, ${x.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''})
+y: Definition2_2_2 => Properties: (${y.Isa->DefnPattern2_2.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition3_1 => Isa: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition3_1 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition3_1 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition3_1 => Definition Fact: (${x.Isa->DefnPattern3.Fact->DefnIsa.DefinedTerm|''}, ${x.Facts})
+y: Definition3_1 => Properties: (${y.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition3_2 => Isa: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition3_2 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition3_2 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition3_2 => Definition Fact: ((${x.Isa->DefnPattern3.Fact->DefnIsa.DefinedTerm|''}, ${x.Facts->VP2.AntecedentVP->VP1.Rel|''}, ${x.Facts->VP2.AntecedentVP->VP1.Arg2|''}), ${x.Facts->VP2.Rel}, (, ${x.Facts->VP2.ConsequentVP->VP1.Rel|''}, ${x.Facts->VP2.ConsequentVP->VP1.Arg2|''}))
+y: Definition3_2 => Properties: (${y.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition3_3 => Isa: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, isa, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Nouns|''} ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.PrepPart|''})
+x: Definition3_3 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.IsaWhat->NGNoDetSingle.NounPart->NGNoDet1.Main->NP2NoDet.IsaTerm->NP1NoDet.Adjs|''})
+x: Definition3_3 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition3_3 => Definition Fact: ((${x.Isa->DefnPattern3.Fact->DefnIsa.DefinedTerm|''}, ${x.Facts->VP3.AntecedentVP->VP1.Rel|''}, ${x.Facts->VP3.AntecedentVP->VP1.Arg2|''}), ${x.Facts->VP.3Rel}, (${x.Facts->VP3.ConsequentS->S1.Arg1|''}, ${x.Facts->VP3.ConsequentS->S1.VP->VP1.Rel|''}, ${x.Facts->VP3.ConsequentS->S1.VP->VP1.Arg2|''}))
+y: Definition3_3 => Properties: (${y.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, has, ${y.Properties|''})
+
+x: Definition4_1 => Definition Fact: (${x.DefnPattern->DefnPattern3.Fact->DefnIsa.DefinedTerm|''}, is, ${x.DefnPattern->DefnPattern3.Fact->DefnIsa.IsaWhat|''} ${x.PP|''})
+x: Definition4_1 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.Qualities|''})
+x: Definition4_2 => Definition Fact: (${x.DefnPattern->DefnPattern3.Fact->DefnIsa.DefinedTerm|''}, is, (${x.DefnPattern->DefnPattern3.Fact->DefnIsa.IsaWhat|''} ${x.PP|''}, to, (, ${x.FactArg->VP1.Rel|''}, ${x.FactArg->VP1.Arg2|''}, ${x.FactArg->VP1.Arg|''})))
+x: Definition4_2 => Qualities: (${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.DefinedTerm|''}, is, ${x.Isa->DefnPattern3.DefnIsaPart->DefnIsa.Qualities|''})
+
+x: Definition5_1 => Definition Fact: (${x.Isa->DefnPattern5.DefinedTerm|''}, describes, (${x.Facts->S1.Arg1|''}, ${x.Facts->S1.VP->VP1.Rel|''}, ${x.Facts->S1.VP->VP1.Arg2|''}, ${x.Facts->S1.VP->VP1.Arg|''}))
+x: Definition5_2 => Definition Fact: (${x.Isa->DefnPattern5.DefinedTerm|''}, describes, ((${x.Facts->S.AntecedentS->S1.Arg1|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.AntecedentS->S1.VP->VP1.Arg2|''},${x.Facts->S.AntecedentS->S1.VP->VP1.Arg|''}), ${x.Facts->S.Rel|''}, (${x.Facts->S.ConsequentS->S1.Arg1|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Rel|''}, ${x.Facts->S.ConsequentS->S1.VP->VP1.Arg2|''},${x.Facts->S.ConsequentS->S1.VP->VP1.Arg|''})))
+
