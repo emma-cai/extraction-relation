@@ -34,6 +34,11 @@ javaOptions ++= ermineJavaOptions ++ prologLibraryFlags ++
 
 Deploy.settings
 
+// Don't create windows or linux startup scripts.
+NativePackagerKeys.makeBatScript := None
+
+NativePackagerKeys.makeBashScript := None
+
 // Copy the prolog scripts from Ermine to the universal staging directory.
 mappings in Universal ++=
   ((sourceDirectory in ermine).value / "main" / "prolog" ** "*" x
