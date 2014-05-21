@@ -51,14 +51,28 @@ class ErminePipeline(val name: String, val description: String,
       }
     }
 
-    // TODO: Validate that all URI-based inputs exist; initialize any outputs.
+    // Initialize inputs & outputs.
+    for {
+      processor <- processors
+      input <- processor.inputs
+    } input.initializeInput()
+    for {
+      processor <- processors
+      output <- processor.outputs
+    } output.initializeOutput()
 
+    // Build up our unnamed inputs map, and run the processors.
     val unnamedMap = (for {
       (input, index) <- unnamedInputs.zipWithIndex
     } yield (ProcessorIo.unnamedKey(index.toString) -> input)).toMap
     runProcessors(processors, namedInputs, unnamedMap, defaultOutput)
 
-    // TODO: Finalize all outputs.
+    // Finalize all outputs.
+    for {
+      processor <- processors
+      output <- processor.outputs
+    } output.finalizeOutput()
+
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
     defaultOutput.flush

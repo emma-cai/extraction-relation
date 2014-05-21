@@ -36,6 +36,21 @@ sealed abstract class ProcessorIo(val key: String, val isUnnamed: Boolean) {
     * processors require it.
     */
   def getOutputFile: File
+
+  /** Performs any initialization and validation needed before a pipeline uses this as input.
+    * @throws ErmineException if the IO can't be used as-is for input or output.
+    */
+  def initializeInput(): Unit = { /* base implementation does nothing */ }
+
+  /** Performs any initialization and validation needed before a pipeline uses this as output.
+    * @throws ErmineException if the IO can't be used as-is for input or output.
+    */
+  def initializeOutput(): Unit = { /* base implementation does nothing */ }
+
+  /** Performs any finalization needed before an output is considered finished.  Should be called
+    * only after a pipeline completes successfully.
+    */
+  def finalizeOutput(): Unit = { /* base implementation does nothing */ }
 }
 
 object ProcessorIo {
@@ -106,6 +121,20 @@ case class FileIo(override val key: String, override val isUnnamed: Boolean, val
     extends ProcessorIo(key, isUnnamed) {
   override def openSource: Source = Source.fromFile(file)
   override def getOutputFile: File = file
+
+  /** Validates that the file can be read from. */
+  override def initializeInput(): Unit = {
+    if (!(file.isFile && file.canRead)) {
+      throw new ErmineException("${file.getPath} not a file or unreadable")
+    }
+  }
+
+  /** Validates that the file can be written to. */
+  override def initializeOutput(): Unit = {
+    if (!(file.canWrite)) {
+      throw new ErmineException("${file.getPath} not writable")
+    }
+  }
 }
 
 /** IO object without any user-configured destination. This will use a temporary file that is
