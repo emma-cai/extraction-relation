@@ -42,6 +42,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
     mutablePipelines.toMap
   }
 
+  log.info("done loading pipelines, ready for requests!")
+
   // format: OFF
   override def receive = runRoute(
     pathPrefix("pipeline" / Segment) { pipelineName =>
@@ -59,6 +61,7 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
                 pipeline.run(inputs, Seq.empty, output)
                 output.close
 
+                log.info(s"pipeline '${pipelineName}' complete.")
                 complete(PipelineResponse(output.toString))
               }
             }
