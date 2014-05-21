@@ -50,10 +50,15 @@ class ErminePipeline(val name: String, val description: String,
           s"""inputs: ${missingInputs.mkString(", ")}""")
       }
     }
+
+    // TODO: Validate that all URI-based inputs exist; initialize any outputs.
+
     val unnamedMap = (for {
       (input, index) <- unnamedInputs.zipWithIndex
-    } yield (ProcessorIO.unnamedKey(index.toString) -> input)).toMap
+    } yield (ProcessorIo.unnamedKey(index.toString) -> input)).toMap
     runProcessors(processors, namedInputs, unnamedMap, defaultOutput)
+
+    // TODO: Finalize all outputs.
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
     defaultOutput.flush
@@ -77,7 +82,7 @@ class ErminePipeline(val name: String, val description: String,
       // step, pipe to the default output.
       case Seq() => {
         for {
-          lastOutput <- unnamedSources.get(ProcessorIO.unnamedKey("0")) if unnamedSources.size == 1
+          lastOutput <- unnamedSources.get(ProcessorIo.unnamedKey("0")) if unnamedSources.size == 1
           line <- lastOutput.getLines
         } {
           defaultOutput.write(line)
@@ -87,9 +92,9 @@ class ErminePipeline(val name: String, val description: String,
       }
       case next +: rest => {
         // Get the input(s) that the current processor stage needs.
-        val inputs = next.inputs map { openSource(_, namedSources, unnamedSources) }
+        val inputs = next.inputs map { getSource(_, namedSources, unnamedSources) }
         // Get or create output files for the next processor to write to.
-        val outputFiles = next.outputs map { getOutputFile }
+        val outputFiles = next.outputs map { _.getOutputFile }
 
         // Open writers for the processors.
         val outputs = outputFiles map { new FileWriter(_) }
@@ -110,7 +115,7 @@ class ErminePipeline(val name: String, val description: String,
         val (newNamed, newUnnamed) = (for {
           (output, file) <- next.outputs zip outputFiles
         } yield {
-          val pair = Some(output.name -> Source.fromFile(file))
+          val pair = Some(output.key -> Source.fromFile(file))
           if (output.isUnnamed) {
             (None, pair)
           } else {
@@ -126,27 +131,16 @@ class ErminePipeline(val name: String, val description: String,
     }
   }
 
-  def openSource(input: ProcessorIO, namedSources: Map[String, Source],
+  def getSource(input: ProcessorIo, namedSources: Map[String, Source],
     unnamedSources: Map[String, Source]): Source = {
-    input.uri.getScheme match {
-      case "unnamed" => unnamedSources(input.name)
-      case "name" => namedSources(input.name)
-      case "file" => Source.fromFile(input.uri)
-      case _ => throw new ErmineException(s"uri ${input.uri} not supported")
-    }
-  }
 
-  /** @return an output file for the given ouput IO. This will be a temp file for unnamed or named
-    * streams, and the file indicated for a file streams.
-    */
-  def getOutputFile(output: ProcessorIO): File = output.uri.getScheme match {
-    case "unnamed" | "name" => {
-      val outfile = File.createTempFile(output.name, ".erm")
-      outfile.deleteOnExit
-      outfile
+    if (input.isUnnamed) {
+      unnamedSources(input.key)
+    } else if (namedSources.contains(input.key)) {
+      namedSources(input.key)
+    } else {
+      input.openSource
     }
-    case "file" => new File(output.uri.getPath)
-    case _ => throw new ErmineException(s"uri ${output.uri} not supported")
   }
 }
 object ErminePipeline {
@@ -183,12 +177,12 @@ object ErminePipeline {
     // Collect all of the unsatisfied named inputs.
     val (_, unsatisfiedInputs) = processors.foldLeft((Set.empty[String], Set.empty[String])) {
       case ((available, unsatisfied), processor) => {
-        val newOutputs = (processor.outputs map { _.name }).toSet
+        val newOutputs = (processor.outputs map { _.key }).toSet
         // Gather all named inputs that don't have an entry in the available set.
         val newUnsatisfied = (for {
           io <- processor.inputs
           if !io.isUnnamed
-          name = io.name
+          name = io.key
           if !available.contains(name)
         } yield name).toSet
         (available ++ newOutputs, unsatisfied ++ newUnsatisfied)
