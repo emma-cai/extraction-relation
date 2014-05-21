@@ -71,6 +71,13 @@ question_focus(Ent) :-
 question_focus([_,Event|_]) :-
 	current_question_focus(Event),
 	question_focus_consequent_event(Event).
+question_focus([Subj,Event|_]) :-
+	entity_id(Subj,SubjId),
+	entity_id(Event,EventId),
+	current_question_focus(SubjId),
+	( dependency(SubjId,dep:partmod,EventId)
+	; dependency(SubjId,dep:rcmod,EventId) ),
+	question_focus_consequent_event(EventId).
 question_focus([Subj,_Event,Obj|Args]) :-
 	member(Arg,[Subj,Obj|Args]), Arg \= [],
 	question_focus(Arg), !.
