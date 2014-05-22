@@ -4,11 +4,10 @@ import org.allenai.common.testkit.UnitSpec
 
 import com.typesafe.config.ConfigFactory
 
-import java.net.URI
 
 class ProcessorConfigTest extends UnitSpec {
   val validProcessor = "NoOpProcessor"
-  val unnamedIO = ProcessorIO.unnamedIO("0")
+  val unnamedIO = ProcessorIo.unnamedIO("0")
   // Binding module for fromConfig calls.
   implicit val bindingModule = TestErmineModule
 
@@ -31,7 +30,7 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(ProcessorIO("a", new URI("name:a"))))
+    processor.inputs should be (Seq(new EphemeralIo("a", false)))
     processor.outputs should be (Seq(unnamedIO))
   }
   it should "handle a processor with only outputs configured" in {
@@ -42,7 +41,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(unnamedIO))
-    processor.outputs should be (Seq(ProcessorIO("b", new URI("name:b"))))
+    processor.outputs should be (Seq(new EphemeralIo("b", false)))
   }
   it should "handle a processor with both inputs and outputs" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -52,8 +51,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(ProcessorIO("a", new URI("name:a"))))
-    processor.outputs should be (Seq(ProcessorIO("x", new URI("name:x"))))
+    processor.inputs should be (Seq(new EphemeralIo("a", false)))
+    processor.outputs should be (Seq(new EphemeralIo("x", false)))
   }
 
   // Test that we handle bad names gracefully.

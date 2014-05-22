@@ -9,8 +9,8 @@ import com.typesafe.config.{ Config, ConfigException }
 import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
-case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorIO],
-  outputs: Seq[ProcessorIO]) {
+case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorInput],
+  outputs: Seq[ProcessorOutput]) {
   /** @return true if this processor expects unnamed inputs */
   def wantsUnnamedInput: Boolean = {
     // Either the first (and by implication all subsequent) inputs are unnamed, or none are. We
@@ -53,13 +53,13 @@ object ProcessorConfig {
     * value at the given path to be an array of strings.
     * @throws ErmineException if the value at the path is not an array of strings
     */
-  def getIOValues(config: Config, path: String, numExpected: Int): Seq[ProcessorIO] = {
-    val configuredValues: Seq[ProcessorIO] = try {
+  def getIOValues(config: Config, path: String, numExpected: Int): Seq[ProcessorIo] = {
+    val configuredValues: Seq[ProcessorIo] = try {
       // Check for an object at the given path.
       if (config.hasPath(path)) {
         for {
           (configValue, index) <- config.getList(path).asScala.zipWithIndex
-        } yield ProcessorIO.fromConfigValue(configValue, index)
+        } yield ProcessorIo.fromConfigValue(configValue, index)
       } else {
         Seq.empty
       }
@@ -72,7 +72,7 @@ object ProcessorConfig {
     if (configuredValues.size == 0) {
       // If there were no IO objects configured, use an unnamed IO (pipe from the previous
       // operation).
-      for (i <- 0 until numExpected) yield ProcessorIO.unnamedIO(i.toString)
+      for (i <- 0 until numExpected) yield ProcessorIo.unnamedIO(i.toString)
     } else {
       configuredValues
     }

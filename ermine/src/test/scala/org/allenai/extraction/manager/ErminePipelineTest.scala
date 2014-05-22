@@ -6,6 +6,7 @@ import com.typesafe.config.ConfigFactory
 
 import scala.io.Source
 
+import java.io.File
 import java.io.StringWriter
 
 class ErminePipelineTest extends UnitSpec {
@@ -206,5 +207,91 @@ class ErminePipelineTest extends UnitSpec {
     pipeline.run(Map.empty, inputs, output)
 
     output.toString should be ("fooey\n")
+  }
+
+  it should "validate input, and succeed on valid files" in {
+    val file = File.createTempFile("test", ".txt")
+    // First processor has a bad file input.
+    val simpleConfig = ConfigFactory.parseString(s"""
+      name = "TestWorkflow"
+      processors = [
+        {
+          name = "NoOpProcessor"
+          inputs = [ { uri: "file://${file.getPath}" } ]
+        }
+      ]
+      """)
+    val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
+    val inputs = Seq(Source.fromString(""))
+    val output = new StringWriter()
+
+    // No exceptions thrown.
+    pipeline.run(Map.empty, inputs, output)
+    file.delete()
+  }
+
+  it should "validate input, and fail on bad files" in {
+    val file = File.createTempFile("test", ".txt")
+    file.delete()
+    // First processor has a bad file input.
+    val simpleConfig = ConfigFactory.parseString(s"""
+      name = "TestWorkflow"
+      processors = [
+        {
+          name = "NoOpProcessor"
+          inputs = [ { uri: "file://${file.getPath}" } ]
+        }
+      ]
+      """)
+    val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
+    val inputs = Seq(Source.fromString(""))
+    val output = new StringWriter()
+
+    an[ErmineException] should be thrownBy {
+      pipeline.run(Map.empty, inputs, output)
+    }
+  }
+
+  it should "validate outputs, and succeed on valid files" in {
+    val file = File.createTempFile("test", ".txt")
+    // First processor has a bad file input.
+    val simpleConfig = ConfigFactory.parseString(s"""
+      name = "TestWorkflow"
+      processors = [
+        {
+          name = "NoOpProcessor"
+          outputs = [ { uri: "file://${file.getPath}" } ]
+        }
+      ]
+      """)
+    val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
+    val inputs = Seq(Source.fromString(""))
+    val output = new StringWriter()
+
+    // No exceptions thrown.
+    pipeline.run(Map.empty, inputs, output)
+    file.delete()
+  }
+
+  it should "validate outputs, and fail on invalid files" in {
+    val file = File.createTempFile("test", ".txt")
+    file.delete()
+    // First processor has a bad file input.
+    val simpleConfig = ConfigFactory.parseString(s"""
+      name = "TestWorkflow"
+      processors = [
+        {
+          name = "NoOpProcessor"
+          outputs = [ { uri: "file://${file.getPath}" } ]
+        }
+      ]
+      """)
+    val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
+    val inputs = Seq(Source.fromString(""))
+    val output = new StringWriter()
+
+    an[ErmineException] should be thrownBy {
+      pipeline.run(Map.empty, inputs, output)
+    }
   }
 }
