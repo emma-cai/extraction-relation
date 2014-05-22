@@ -145,7 +145,7 @@ class ErminePipeline(val name: String, val description: String,
     }
   }
 
-  def getSource(input: ProcessorIo, namedSources: Map[String, Source],
+  def getSource(input: ProcessorInput, namedSources: Map[String, Source],
     unnamedSources: Map[String, Source]): Source = {
 
     if (input.isUnnamed) {

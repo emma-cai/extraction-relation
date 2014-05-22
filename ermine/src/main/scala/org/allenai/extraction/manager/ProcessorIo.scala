@@ -10,12 +10,48 @@ import java.io.File
 import java.net.URI
 import java.net.URISyntaxException
 
-/** A single configured input or output stream for a processor. When reading from a configuration
-  * file, a user may provide an object with optional `name` and `uri` fields to identify the IO, or
-  * they may just provide a bareword name. The name configured will be used as the IO object's `key`
-  * value. If no name is given, a special "__unnamed-N" name will be used.
-  */
-sealed abstract class ProcessorIo(val key: String, val isUnnamed: Boolean) {
+/** A trait holding the base configuration of an IO stream, used by the pipeline to execute. */
+trait ProcessorIoConfig {
+  /** @return the key used to identify this IO stream. */
+  def key: String
+
+  /** @return true if this is an unnamed IO stream. */
+  def isUnnamed: Boolean
+}
+
+/** A trait representing an input stream. */
+trait ProcessorInput extends ProcessorIoConfig {
+  /** @return a Source to read the data currently in this IO */
+  def openSource: Source
+
+  /** Performs any initialization and validation needed before a pipeline uses this as input.
+    * @throws ErmineException if the IO can't be used as-is for input or output.
+    */
+  def initializeInput(): Unit
+}
+
+/** A trait representing an output stream. */
+trait ProcessorOutput extends ProcessorIoConfig {
+  /** @return a File to write output data to. This will be re-used to read data from if later
+    * processors require it.
+    */
+  def getOutputFile: File
+
+  /** Performs any initialization and validation needed before a pipeline uses this as output.
+    * @throws ErmineException if the IO can't be used as-is for input or output.
+    */
+  def initializeOutput(): Unit
+
+  /** Performs any finalization needed before an output is considered finished.  Should be called
+    * only after a pipeline completes successfully.
+    */
+  def finalizeOutput(): Unit
+}
+
+/** A single configured input or output stream for a processor. */
+sealed abstract class ProcessorIo(override val key: String, override val isUnnamed: Boolean)
+    extends ProcessorInput with ProcessorOutput {
+
   /** @return a new temporary file that can be used for IO that will be deleted on JVM exit */
   protected def createTempFile(): File = {
     // Prefix must be of at least length 3, or File.createTempFile will fail.
@@ -29,49 +65,27 @@ sealed abstract class ProcessorIo(val key: String, val isUnnamed: Boolean) {
     file
   }
 
-  /** @return a Source to read the data currently in this IO */
-  def openSource: Source
-
-  /** @return a File to write output data to. This will be re-used to read data from if later
-    * processors require it.
-    */
-  def getOutputFile: File
-
-  /** Performs any initialization and validation needed before a pipeline uses this as input.
-    * @throws ErmineException if the IO can't be used as-is for input or output.
-    */
-  def initializeInput(): Unit = { /* base implementation does nothing */ }
-
-  /** Performs any initialization and validation needed before a pipeline uses this as output.
-    * @throws ErmineException if the IO can't be used as-is for input or output.
-    */
-  def initializeOutput(): Unit = { /* base implementation does nothing */ }
-
-  /** Performs any finalization needed before an output is considered finished.  Should be called
-    * only after a pipeline completes successfully.
-    */
-  def finalizeOutput(): Unit = { /* base implementation does nothing */ }
+  override def initializeInput(): Unit = { /* base implementation does nothing */ }
+  override def initializeOutput(): Unit = { /* base implementation does nothing */ }
+  override def finalizeOutput(): Unit = { /* base implementation does nothing */ }
 }
 
 object ProcessorIo {
-  /** Creates a URI with a name and value, aka "scheme-specific part".  As a string, this looks like
-    * "scheme:value".
-    */
-  def simpleUri(scheme: String, value: String) = new URI(scheme, value, null)
-
   /** Returns the string key for an unnamed stream with the given ordinal. Used for the "name" field
     * of the case class.
     * @param ordinal the index of this unnamed stream in the processor's input, starting at zero
     */
   def unnamedKey(ordinal: String) = "__unnamed-" + ordinal
-  /** Creates a processor IO with an unnamed-schemed URI (e.g. n unnamed:0").
+
+  /** Creates a processor IO with an unnamed key.
     * @param ordinal the index of this stream in the processor's input, starting at zero
     */
   def unnamedIO(ordinal: String) = new EphemeralIo(unnamedKey(ordinal), true)
 
   /** Parses an IO value from a config value. This can be either an object with optional `name` and
     * `uri` keys, or a raw string. A raw string will be treated as an object with the string as the
-    * name.
+    * name.  The name configured will be used as the IO object's `key` value. If no name is given, a
+    * special "__unnamed-N" name will be used.
     * @param ordinal the ordinal to use for any unnamed IOs created
     */
   def fromConfigValue(configValue: ConfigValue, ordinal: Int): ProcessorIo = {
@@ -110,7 +124,7 @@ object ProcessorIo {
 
   def fromUri(key: String, isUnnamed: Boolean, uri: URI): ProcessorIo = uri.getScheme match {
     // TODO(jkinkead): Add Aristore support here.
-    case "file" => new FileIo(key, isUnnamed, new File(uri.getPath))
+    case "file" => new FileIo(key, isUnnamed, new File(uri))
   }
 }
 
@@ -146,4 +160,7 @@ case class EphemeralIo(override val key: String, override val isUnnamed: Boolean
 
   override def openSource: Source = Source.fromFile(tempFile)
   override def getOutputFile: File = tempFile
+  override def finalizeOutput(): Unit = {
+    tempFile.delete()
+  }
 }
