@@ -10,10 +10,10 @@ import java.io.File
 import java.net.URI
 import java.net.URISyntaxException
 
-/** A configured IO stream for a processor. When reading from a configuration file, a user may
-  * provide an object with optional `name` and `uri` fields to identify the IO, or they may just
-  * provide a bareword name. The name configured will be used as the IO object's `key` value. If no
-  * name is given, a special "__unnamed-N" name will be used.
+/** A single configured input or output stream for a processor. When reading from a configuration
+  * file, a user may provide an object with optional `name` and `uri` fields to identify the IO, or
+  * they may just provide a bareword name. The name configured will be used as the IO object's `key`
+  * value. If no name is given, a special "__unnamed-N" name will be used.
   */
 sealed abstract class ProcessorIo(val key: String, val isUnnamed: Boolean) {
   /** @return a new temporary file that can be used for IO that will be deleted on JVM exit */
