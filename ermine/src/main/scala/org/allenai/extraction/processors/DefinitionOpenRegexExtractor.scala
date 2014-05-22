@@ -9,10 +9,10 @@ import spray.json.DefaultJsonProtocol._
 import spray.json.pimpAny
 
 /** A Case Class and Companion Object for Definition Extraction Output to support outputting results in JSON.
+  * The first three parameters come from the input and the last one contains the extraction results-
   * @param term  Defined Term
   * @param wordClass Word Class for the term
   * @param definition The definition
-  * The above parameters come from the input.
   * @param results The resultant extractions
   */
 case class DefinitionExtractionResult(term: String, wordClass: String, definition: String, results: Seq[String])
@@ -39,15 +39,24 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
     */
   override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
 
+    //Start output Json 
+    destination.write("[")
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
+    var beginning = true
     for (line <- defnInputSource.getLines) {
       val (term, termWordClass, termDefinition) = preprocessLine(line)
       if (termWordClass.equalsIgnoreCase(wordClass)) {
         val results = super.extractText(termDefinition)
         val extractionOp = DefinitionExtractionResult(term, termWordClass, termDefinition, results)
+        if (!beginning)
+          destination.write(",")
         destination.write(extractionOp.toJson.prettyPrint)
+        if (beginning)
+          beginning = false
       }
-    }
+    }   
+    // End output Json
+    destination.write("]")
   }
 
   /** prerocessLine : Break the input line into its constituent parts.

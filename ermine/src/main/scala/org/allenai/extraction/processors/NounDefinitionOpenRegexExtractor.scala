@@ -54,14 +54,14 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
         // "Academia: this group of people have attended a university and/or do research." to the 
         // definition extractor, it works since it has rules to handle this pattern, but not without
         // the "Academia: ".
-        if (results == Nil)
+        if (results.isEmpty)
           results = super.extractText(term + " : " + termDefinition)
 
         // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
         // does not have the subject as part of the definition. In this case passing it to the 
         // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
         // that arises in the brain." works.
-        if (results == Nil)
+        if (results.isEmpty)
           results = super.extractText(term + " " + termDefinition)
 
         // Output: First write out the input line.
@@ -410,7 +410,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
 
   /** Get a string representing a match on a sentence rule defined in the 'VP3' rule */
   private def getFormattedVP3(typ: Type, types: Seq[Type]): String = {
-    val result: StringBuilder = new StringBuilder("")
+    val result: StringBuilder = new StringBuilder("(")
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
@@ -437,6 +437,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentS.length() > 0)) {
       result ++= "(" + " , " + antecedentVP + "), " + rel + ", " + consequentS
     }
+    result ++= ")"
     result.toString()
   }
 
@@ -515,7 +516,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
 
   /** Get a string representing a match on a sentence rule defined in the 'S1' rule */
   private def getFormattedS1(typ: Type, types: Seq[Type]): String = {
-    val result = new StringBuilder("(")
+    val result = new StringBuilder("")
     val arg1 =
       Extractor.findSubtypesWithName(types)(typ, "Arg1").headOption match {
         case Some(a) =>
@@ -531,6 +532,13 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
           }
         case _ => Seq.empty[String]
       }
+    
+    
+    // Need an extra pair of parens around this sentence if it has a composite VP that 
+    // is broken into multiple VPs (tuples).
+    val numVps = vps.length
+    if (numVps > 1)
+      result ++= "("
     var ix = 0
     for (vp <- vps) {
       var vpStr = ""
@@ -542,7 +550,9 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       }
       result ++= vpStr
     }
-    result ++= ")"
+    if (numVps > 1)
+      result ++= ")"
+        
     result.toString()
   }
 }
