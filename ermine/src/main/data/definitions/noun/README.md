@@ -13,10 +13,9 @@ sent.taggers is the topmost level taggers file that defines the high-level patte
 
 The highest level rules (in sent.taggers) cover the most commonly occuring patterns in noun definitions, namely-
 
-### Definition1_1 - Definition1_3:
+### RelClauseDefinition:
 
-These differ only in the type of verb phrase following the relative (that/which) clause, namely, simple/compund (with antecedent-consequent)/composite.
-They cover patterns of the form-
+Covers patterns of the form-
 
 ```
 <Term> is/are/refers to <NP> that/, which {<VP1>, <VP2>,… : implied subject}
@@ -28,11 +27,9 @@ The ear is the organ that detects sound.
 Ear: The organ that detects sound.
 ```
 
+### WhichWhomDefinition:
 
-### Definition2_2_1 - Definition2_2_2:
-
-These differ only in the type of sentence following the relative clause, namely, simple/compound sentence.
-They cover patterns of the form-
+Covers patterns of the form-
 ```
 <Term> is/are/refers to <NP> <PP> which <sentence>
 <Term> : <NP> <PP> which <sentence>
@@ -42,43 +39,50 @@ Freezing is a phase change in which a liquid turns into a solid when its tempera
 Freezing : A phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point
 ```
 
-### Definition2_1_1 - Definition2_1_2:
+### WhenWhereDefinition:
 
-These differ only in the type of sentence following the relative clause, namely, simple/compound sentence.
-They cover patterns of the form-
+Covers patterns of the form-
 ```
-<Term> is/are/refers to <NP>  where/whereby <sentence>
-<Term> : <NP> where/whereby <sentence>
+<Term> is/are/refers to <NP>  when/where/whereby <sentence>
+<Term> : <NP> when/where/whereby <sentence>
 
 E.g.:
 A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
 ```
 
-### Definition3_1 - Definition3_3:
+### IsaFactsDefinition:
 
-These differ only in the type of verb phrase following the relative (that/which) clause, namely, simple/compund (with antecedent-consequent)/composite.
-They cover patterns of the form-
+Covers patterns of the form-
 ```
-<Term> is/are/refers to <NP>  {<VP1>, VP2>,… : implied subject}
-<Term> : <NP>  {<VP1>, <VP2>,… : implied subject}
+<Term> is/are/refers to <NP> {<VP> | <Sentence>, <VP> | <Sentence>,…}
 
 E.g.:
-Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
+Cellulase refers to a suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
 ```
 
-### Definition4_1 - Definition4_2:
+### IsaToFactsDefinition:
 
-These cover patterns of the form-
+Covers patterns of the form-
 ```
-<Term> is/are/refers to {<NP1>, <NP2>,…}
+<Term> is/are/refers to <NP> TO {<VP> | <Sentence>, <VP> | <Sentence>,…}
+
+E.g.:
+A gardening hose is a tube to water plants.
+```
+
+### IsaDefinition:
+
+Covers patterns of the form-
+```
+<Term> is/are/refers to {<NP>, <NP>,…}
 
 E.g.:
 Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System.
 ```
 
-### Definition5_1 - Definition5_2:
+### IsWhereDefinition:
 
-These cover patterns of the form-
+Covers patterns of the form-
 ```
 <Term> is when/where <sentence>
 

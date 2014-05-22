@@ -27,7 +27,7 @@ NP2NoDet := TypedOpenRegex {
 }
 
 NG1 := TypedOpenRegex {
-   ((<Main>: @NP2) (<Aux>: (?:<string="of"> | <pos="POS">) @NP2)? )
+   (?: (<Main>: @NP2) (<Aux>: ((<string="of"> | <pos="POS">) @NP2)*) )
    | ((<Main>: @NP2) <string="("> @NP2 <string=")"> )
    | (?: <pos='PRP'> )
    | (?: <lemma=/this|these|those/> )
@@ -47,4 +47,3 @@ NG := TypedOpenRegex {
 NGNoDet := TypedOpenRegex {
    (?:@NGNoDet1 (?: (?:<string="," | string="or"> @NG1)* (<string=",">? <string=/and|or|and\/or/>? @NG1)? )? )
 }
-

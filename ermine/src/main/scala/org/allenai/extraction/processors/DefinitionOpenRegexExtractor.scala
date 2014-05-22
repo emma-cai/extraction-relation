@@ -1,17 +1,36 @@
 package org.allenai.extraction.processors
 
-import java.io.{ File, Writer }
+import java.io.Writer
 
 import scala.io.Source
 
-/** An extractor that processes definitions for a given class of terms using OpenRegex. 
- *  A directory is expected per word class, with the cascade file in it being called defn.cascade.
- *  wordClass can take different values like Noun, Adjective, Verb, Expression etc.
- *  Definitions have different formats depending on the word class of the term being defined. This will
- *  impact the rules defined in Openregex, so we will have a set of rules and a cascade file for each word class. 
- *  @param dataPath  Path of the data directory that will contain OpenRegex rule files to be used for the definition extraction. 
- *  @param wordClass The word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
- *                   for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files. */
+import spray.json.DefaultJsonProtocol._
+
+import spray.json.pimpAny
+
+/** A Case Class and Companion Object for Definition Extraction Output to support outputting results in JSON.
+  * @param term  Defined Term
+  * @param wordClass Word Class for the term
+  * @param definition The definition
+  * The above parameters come from the input.
+  * @param results The resultant extractions
+  */
+case class DefinitionExtractionResult(term: String, wordClass: String, definition: String, results: Seq[String])
+
+object DefinitionExtractionResult {
+  import spray.json.DefaultJsonProtocol._
+  implicit val definitionExtractionResultJsonFormat = jsonFormat4(DefinitionExtractionResult.apply)
+}
+
+/** An extractor that processes definitions for a given class of terms using OpenRegex.
+  * A directory is expected per word class, with the cascade file in it being called defn.cascade.
+  * wordClass can take different values like Noun, Adjective, Verb, Expression etc.
+  * Definitions have different formats depending on the word class of the term being defined. This will
+  * impact the rules defined in OpenRegex, so we will have a set of rules and a cascade file for each word class.
+  * @param dataPath  Path of the data directory that will contain OpenRegex rule files to be used for the definition extraction.
+  * @param wordClass The word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
+  *                for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
+  */
 abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
 
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed
@@ -20,23 +39,15 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
     */
   override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
 
-    // Iterate over input sentences (definitions), preprocess each and send it to the 
+    // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
     for (line <- defnInputSource.getLines) {
       val (term, termWordClass, termDefinition) = preprocessLine(line)
       if (termWordClass.equalsIgnoreCase(wordClass)) {
         val results = super.extractText(termDefinition)
-
-        // Output: First write out the input line.
-        destination.write("DEFINITION:   " + line + "\n")
-
-        // Then write out the extraction results.
-        for (result <- results) {
-          destination.write(result + "\n")
-        }
-        destination.write("\n")
+        val extractionOp = DefinitionExtractionResult(term, termWordClass, termDefinition, results)
+        destination.write(extractionOp.toJson.prettyPrint)
       }
     }
-
   }
 
   /** prerocessLine : Break the input line into its constituent parts.
@@ -51,4 +62,3 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
     }
   }
 }
-

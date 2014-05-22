@@ -1,9 +1,9 @@
 NGSingle := TypedOpenRegex {
-  (?:(<NounPart>: @NG1) (<PrepPart>: @PP0NoWithNoOf @PP0NoWith*)?)
+  (?:(<NounPart>: @NG1) (<PrepPart>: @PP0NoWithNoOfNoRelClause @PP0NoWithNoRelClause*)?)
 }
 
 NGNoDetSingle := TypedOpenRegex {
-   (?:(<NounPart>: @NGNoDet1) (<PrepPart>: @PP0NoWithNoOf @PP0NoWith*)?)
+   (?:(<NounPart>: @NGNoDet1) (<PrepPart>: @PP0NoWithNoOfNoRelClause @PP0NoWithNoRelClause*)?)
 }
 
 NGMultiple := TypedOpenRegex {
@@ -13,4 +13,3 @@ NGMultiple := TypedOpenRegex {
 NGNoDetMultiple := TypedOpenRegex {
    (?:(<First>: @NGNoDetSingle) (?: (?:<string="," | string="or"> (<Middle>: @NGSingle))* (<string=",">? <string=/and|or|and\/or/>? (<Last>: @NGSingle))? )? )
 }
-

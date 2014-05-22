@@ -1,5 +1,9 @@
 package org.allenai.extraction.processors
 
+import java.io.Writer
+
+import scala.io.Source
+
 import org.allenai.taggers.Extractor
 import org.allenai.taggers.NamedGroupType
 
@@ -16,20 +20,73 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     * This is the list of top level Types we will consider to start mining for the constituent
     * extraction parts.
     */
-  val definitionTypeNames = Set[String]("Definition1_1", "Definition1_2", "Definition2_1_2",
-    "Definition2_1_1", "Definition2_2_2", "Definition2_2_1", "Definition3_3", "Definition3_2",
-    "Definition3_1", "Definition4_2", "Definition4_1", "Definition5_2", "Definition5_1")
+  val definitionTypeNames = Set[String]("RelClauseDefinition", "WhenWhereDefinition", "WhichWhomDefinition",
+    "IsaFactsDefinition", "IsaToFactsDefinition", "IsaDefinition", "IsWhereDefinition")
 
-  /** The (main) client-visible method that takes the output of the 'extract' method, which contains
+  /** This (processInternal) method has been implemented in the DefinitionOpenRegexExtractor base class,
+    * but we are overriding it  here because we have some special handling going on here- if the initial
+    * definition text does not give back any extraction results, there is retry logic here to prepend
+    * the definition term to the definition text and retry. This is required because of the way the
+    * preprocessor splits definition lines with multiple definitions separated by semicolons.
+    * Due to this preprocessing, sometimes a definition does not contain the subject (defined term).
+    * This retry we know makes sense for noun definition terms- the patterns written handle both
+    * a fully-formed sentence with the defined term as subject as well as "<term> : <definition>".
+    * Also, we are not using the JSON format for the extraction results here right now.
+    */
+  override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
+
+    // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
+    for (line <- defnInputSource.getLines) {
+      val (term, termWordClass, termDefinition) = preprocessLine(line)
+      if (termWordClass.equalsIgnoreCase(wordClass)) {
+        var results = super.extractText(termDefinition)
+
+        // Some retries if no results were found with just the definition text.
+        // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
+        // a part of the scientific and cultural community; this group of people have attended a 
+        // university and/or do research." is converted by the preprocessor into two separate definition
+        // lines:
+        //   "Academia	Noun	Academia is a word for the group of people who are 
+        //                      a part of the scientific and cultural community"
+        //   and
+        //   "Academia	Noun	this group of people have attended a university and/or do research."
+        // The second definition does not have the term but a coreference. So if we pass
+        // "Academia: this group of people have attended a university and/or do research." to the 
+        // definition extractor, it works since it has rules to handle this pattern, but not without
+        // the "Academia: ".
+        if (results == Nil)
+          results = super.extractText(term + " : " + termDefinition)
+
+        // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
+        // does not have the subject as part of the definition. In this case passing it to the 
+        // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
+        // that arises in the brain." works.
+        if (results == Nil)
+          results = super.extractText(term + " " + termDefinition)
+
+        // Output: First write out the input line.
+        destination.write("DEFINITION:   " + line + "\n")
+
+        // Then write out the extraction results.
+        for (result <- results) {
+          destination.write(result + "\n")
+        }
+        destination.write("\n")
+      }
+    }
+
+  }
+
+  /** A client-visible method that takes the output of the 'extract' method, which contains
     * the output Types, and returns a list of extractions formatted as tuples, as Strings.
-    * Sample output for the definition, "Chlorophyll is a green pigment found in almost all plants, 
-    * algae, and cyanobacteria." : 
+    * Sample output for the definition, "Chlorophyll is a green pigment found in almost all plants,
+    * algae, and cyanobacteria." :
     * Each of these extractions is a String in the returned Seq of Strings:
-    *   Defined Term: Chlorophyll
-    *   Isa: (Chlorophyll, isa, pigment)
-    *   Fact: (Chlorophyll, is, green pigment)
-    *   Quality: (Chlorophyll, is, green)
-    *   Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, )
+    * Defined Term: Chlorophyll
+    * Isa: (Chlorophyll, isa, pigment)
+    * Fact: (Chlorophyll, is, green pigment)
+    * Quality: (Chlorophyll, is, green)
+    * Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, )
     */
   override def process(allTypes: Seq[Type], lastLevelTypes: Seq[Type]): Seq[String] = {
     (lastLevelTypes find { t => definitionTypeNames.contains(t.name) } map { processNounDefinition(_, allTypes) }).getOrElse(Seq.empty[String])
@@ -321,7 +378,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     for (alignedType <- alignedTypes) {
       if (results.length == 0) {
         alignedType.name match {
-          case "VP3" => results ++= getFormattedVP3(alignedType, types).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
+          case "VP3" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedVP3(alignedType, types) + ")")
           case "VP2" => results ++= getFormattedVP2(alignedType, types, definedTerm).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
           case "VP" => results ++= getFormattedVPs(alignedType, types).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
           case "S" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedS(alignedType, types) + ")")
@@ -357,31 +414,28 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
-          Extractor.findAlignedTypesWithName(types)(typ, "VP1").headOption match {
+          Extractor.findAlignedTypesWithName(types)(antecedent, "VP1").headOption match {
             case Some(vp1) => getFormattedVP1(vp1, types)
             case _ => ""
           }
         case _ => ""
       }
-
     val rel =
       Extractor.findSubtypesWithName(types)(typ, "Rel").headOption match {
         case Some(rl) => rl.text
         case _ => ""
       }
-
     val consequentS: String =
       Extractor.findSubtypesWithName(types)(typ, "ConsequentS").headOption match {
         case Some(consequent) =>
-          Extractor.findAlignedTypesWithName(types)(typ, "S1").headOption match {
+          Extractor.findAlignedTypesWithName(types)(consequent, "S1").headOption match {
             case Some(s1) => getFormattedS1(s1, types)
             case _ => ""
           }
         case _ => ""
       }
-
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentS.length() > 0)) {
-      result ++= antecedentVP + "), " + rel + ", " + consequentS
+      result ++= "(" + " , " + antecedentVP + "), " + rel + ", " + consequentS
     }
     result.toString()
   }
@@ -392,7 +446,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
-          Extractor.findAlignedTypesWithName(types)(typ, "VP1").headOption match {
+          Extractor.findAlignedTypesWithName(types)(antecedent, "VP1").headOption match {
             case Some(vp1) => getFormattedVP1(vp1, types)
             case _ => ""
           }
@@ -408,7 +462,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     val consequentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "ConsequentVP").headOption match {
         case Some(consequent) =>
-          Extractor.findAlignedTypesWithName(types)(typ, "VP1").headOption match {
+          Extractor.findAlignedTypesWithName(types)(consequent, "VP1").headOption match {
             case Some(vp1) => getFormattedVP1(vp1, types)
             case _ => ""
           }
@@ -416,7 +470,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result ++= antecedentVP + "), " + rel + ", " + "(" + subj + ", " + consequentVP + ")"
+      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" + subj + ", " + consequentVP + ")"
     }
     result.toString()
   }
@@ -426,9 +480,10 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     val result: StringBuilder = new StringBuilder("")
     val rel = (Extractor.findSubtypesWithName(types)(typ, "Rel").headOption map (_.text)).getOrElse("")
     val arg2 = (Extractor.findSubtypesWithName(types)(typ, "Arg2").headOption map (_.text)).getOrElse("")
+    val arg3 = (Extractor.findSubtypesWithName(types)(typ, "Arg3").headOption map (_.text)).getOrElse("")
     val arg = (Extractor.findSubtypesWithName(types)(typ, "Arg").headOption map (_.text)).getOrElse("")
     if (rel.length() > 0) {
-      result ++= rel + ", " + arg2 + ", " + arg
+      result ++= rel + ", " + arg2 + ", " + arg3 + ", " + arg
     }
     result.toString()
   }
@@ -471,7 +526,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       Extractor.findSubtypesWithName(types)(typ, "VP").headOption match {
         case Some(vp) =>
           Extractor.findAlignedTypesWithName(types)(vp, "VP").headOption match {
-            case Some(vp) => getFormattedVPs(vp, types)
+            case Some(vpType) => getFormattedVPs(vpType, types)
             case _ => Seq.empty[String]
           }
         case _ => Seq.empty[String]
