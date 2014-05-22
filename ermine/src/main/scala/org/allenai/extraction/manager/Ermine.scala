@@ -1,8 +1,9 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
-import org.allenai.common.Logging
+import org.allenai.extraction.ActorSystemModule
 
+import akka.actor.ActorSystem
 import com.typesafe.config.{ Config, ConfigFactory }
 import scopt.OptionParser
 
@@ -33,7 +34,7 @@ case class ErmineOptions(configFile: File = new File("."), pipelineName: String 
 }
 
 /** Main app to run pipelines. */
-object Ermine extends Logging {
+object Ermine {
   def main(args: Array[String]): Unit = {
     // format: OFF
     val optionParser = new OptionParser[ErmineOptions]("ermine") {
@@ -58,7 +59,8 @@ object Ermine extends Logging {
 
     try {
       optionParser.parse(args, ErmineOptions()) foreach { options =>
-        implicit val module = ErmineModule
+        val actorSystem = ActorSystem("ermine")
+        implicit val module = new ErmineModule(actorSystem) ~ new ActorSystemModule(actorSystem)
 
         // Load up a config file, using the default overrides (system properties).
         val rawConfig = ConfigFactory.parseFile(options.configFile)
