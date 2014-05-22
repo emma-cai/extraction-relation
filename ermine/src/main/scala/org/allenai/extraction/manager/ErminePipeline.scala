@@ -52,14 +52,10 @@ class ErminePipeline(val name: String, val description: String,
     }
 
     // Initialize inputs & outputs.
-    for {
-      processor <- processors
-      input <- processor.inputs
-    } input.initializeInput()
-    for {
-      processor <- processors
-      output <- processor.outputs
-    } output.initializeOutput()
+    for (processor <- processors) {
+      processor.inputs foreach { _.initializeInput() }
+      processor.outputs foreach { _.initializeOutput() }
+    }
 
     // Build up our unnamed inputs map, and run the processors.
     val unnamedMap = (for {
