@@ -26,6 +26,9 @@ dependencyOverrides ++= Set(
   "com.google.guava" % "guava" % "15.0"
 )
 
+// Don't create windows startup script.
+NativePackagerKeys.makeBatScript := None
+
 // Copy the prolog scripts to the universal staging directory.
 mappings in Universal ++=
    (sourceDirectory.value / "main" / "prolog" ** "*" x
