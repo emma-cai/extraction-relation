@@ -6,14 +6,13 @@ PP := TypedOpenRegex {
    (?:@PP0 (?: (?:<string="," | string="or"> @PP0)* <string=",">? <string=/and|or|but|and\/or/>? @PP0 )? )
 }
 
-PP0NoWith := TypedOpenRegex {
-  <(pos='IN' | pos='TO' | pos='RP') & !string="with"> <pos="RB">? @NG1
+PP0NoWithNoRelClause := TypedOpenRegex {
+  <(pos='IN' | pos='TO' | pos='RP') & !string="with" & !string="that" & !string="which" & !string="who"> <pos="RB">? @NG1
 }
 
-PP0NoWithNoOf := TypedOpenRegex {
-  <(pos='IN' | pos='TO' | pos='RP') & !string="with" & !string="of"> <pos="RB">? @NG1
+PP0NoWithNoOfNoRelClause := TypedOpenRegex {
+  <(pos='IN' | pos='TO' | pos='RP') & !string="with" & !string="of" & !string="that" & !string="which" & !string="who"> <pos="RB">? @NG1
 }
-
 
 // for e.g.: "in doing so"
 consume PPWithVerbGerund := TypedOpenRegex {

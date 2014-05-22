@@ -44,8 +44,8 @@ CauseRel := TypedOpenRegex {
 (?:(?:@Modal? @Be)? <lemma="because"> <string="of">? )
 // may be caused by
 | (?:@Modal? @Be <string="caused"> <string="by"> )
-// which causes
-| (?:<lemma="cause"> )
+// causes or may cause
+| (?:@Modal? <lemma="cause"> )
 // may be due to
 | (?:@Modal? @Be? <lemma="due"> <string="to"> )
 }
