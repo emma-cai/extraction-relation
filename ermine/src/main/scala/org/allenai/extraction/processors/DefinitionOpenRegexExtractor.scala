@@ -48,11 +48,13 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
       if (termWordClass.equalsIgnoreCase(wordClass)) {
         val results = super.extractText(termDefinition)
         val extractionOp = DefinitionExtractionResult(term, termWordClass, termDefinition, results)
-        if (!beginning)
+        if (!beginning) {
           destination.write(",")
+        }
         destination.write(extractionOp.toJson.prettyPrint)
-        if (beginning)
+        if (beginning) {
           beginning = false
+        }
       }
     }   
     // End output Json
