@@ -378,7 +378,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     for (alignedType <- alignedTypes) {
       if (results.length == 0) {
         alignedType.name match {
-          case "VP3" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedVP3(alignedType, types) + ")")
+          case "VP3" => results ++= Seq[String]("Fact: (" + getFormattedVP3(alignedType, types, definedTerm) + pp + ")")
           case "VP2" => results ++= Seq[String]("Fact: (" + getFormattedVP2(alignedType, types, definedTerm) + pp + ")")
           case "VP" => results ++= getFormattedVPs(alignedType, types).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
           case "S" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedS(alignedType, types) + ")")
@@ -409,7 +409,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
   }
 
   /** Get a string representing a match on a sentence rule defined in the 'VP3' rule */
-  private def getFormattedVP3(typ: Type, types: Seq[Type]): String = {
+  private def getFormattedVP3(typ: Type, types: Seq[Type], subj: String): String = {
     val result: StringBuilder = new StringBuilder("(")
     val antecedentVP: String =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
@@ -435,7 +435,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
         case _ => ""
       }
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentS.length() > 0)) {
-      result ++= "(" + " , " + antecedentVP + "), " + rel + ", " + consequentS
+      result ++= "(" + subj + " , " + antecedentVP + "), " + rel + ", " + consequentS
     }
     result ++= ")"
     result.toString()
