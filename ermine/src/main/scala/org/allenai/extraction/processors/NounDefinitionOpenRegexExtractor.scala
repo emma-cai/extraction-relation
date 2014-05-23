@@ -379,7 +379,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       if (results.length == 0) {
         alignedType.name match {
           case "VP3" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedVP3(alignedType, types) + ")")
-          case "VP2" => results ++= getFormattedVP2(alignedType, types, definedTerm).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
+          case "VP2" => results ++= Seq[String]("Fact: (" + getFormattedVP2(alignedType, types, definedTerm) + pp + ")")
           case "VP" => results ++= getFormattedVPs(alignedType, types).map(r => "Fact: (" + definedTerm + ", " + r + pp + ")")
           case "S" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedS(alignedType, types) + ")")
           case "S1" => results ++= Seq[String]("Fact: (" + definedTerm + ", describes, " + getFormattedS1(alignedType, types) + ")")
@@ -471,7 +471,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" + subj + ", " + consequentVP + ")"
+      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" +  " , " + consequentVP + ")"
     }
     result.toString()
   }
