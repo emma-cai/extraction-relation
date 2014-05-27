@@ -1,6 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
+import org.allenai.extraction.manager.io._
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.Config
@@ -57,11 +58,8 @@ class ErminePipeline(val name: String, val description: String,
       processor.outputs foreach { _.initializeOutput() }
     }
 
-    // Build up our unnamed inputs map, and run the processors.
-    val unnamedMap = (for {
-      (input, index) <- unnamedInputs.zipWithIndex
-    } yield (ProcessorIo.unnamedKey(index.toString) -> input)).toMap
-    runProcessors(processors, namedInputs, unnamedMap, defaultOutput)
+    // Run.
+    runProcessors(processors, namedInputs, unnamedInputs, defaultOutput)
 
     // Finalize all outputs.
     for {
@@ -84,25 +82,34 @@ class ErminePipeline(val name: String, val description: String,
     * outputs of the previous processor run.
     */
   @tailrec final def runProcessors(processors: Seq[ProcessorConfig],
-    namedSources: Map[String, Source], unnamedSources: Map[String, Source],
+    namedSources: Map[String, Source], unnamedSources: Seq[Source],
     defaultOutput: Writer): Unit = {
 
     processors match {
       // Base case: We've run all the processors; now, if there was an unnamed out from the last
       // step, pipe to the default output.
       case Seq() => {
-        for {
-          lastOutput <- unnamedSources.get(ProcessorIo.unnamedKey("0")) if unnamedSources.size == 1
-          line <- lastOutput.getLines
-        } {
-          defaultOutput.write(line)
-          defaultOutput.write('\n')
+        if (unnamedSources.size == 1) {
+          for {
+            line <- unnamedSources(0).getLines
+          } {
+            defaultOutput.write(line)
+            defaultOutput.write('\n')
+          }
+          defaultOutput.flush
         }
-        defaultOutput.flush
       }
       case next +: rest => {
         // Get the input(s) that the current processor stage needs.
-        val inputs = next.inputs map { getSource(_, namedSources, unnamedSources) }
+        val inputs = next.inputs.zipWithIndex map { case (input, index) =>
+          input match {
+            // TODO(jkinkead): The below 'reset' calls are needed in order to be able to reuse
+            // inputs to multiple pipeline stages - but they are fragile and should be fixed.
+            case UnnamedInput() => unnamedSources(index).reset
+            case NamedInput(name) => namedSources(name).reset
+            case uriInput: UriInput => uriInput.getSource()
+          }
+        }
         // Get or create output files for the next processor to write to.
         val outputFiles = next.outputs map { _.getOutputFile }
 
@@ -114,7 +121,7 @@ class ErminePipeline(val name: String, val description: String,
           next.processor.process(inputs, outputs)
         } finally {
           inputs foreach { _.close }
-          unnamedSources.values foreach { _.close }
+          unnamedSources foreach { _.close }
           outputs foreach { output =>
             output.flush
             output.close
@@ -122,34 +129,17 @@ class ErminePipeline(val name: String, val description: String,
         }
 
         // Build up the new sources for the next round of iteration.
-        val (newNamed, newUnnamed) = (for {
-          (output, file) <- next.outputs zip outputFiles
-        } yield {
-          val pair = Some(output.key -> Source.fromFile(file))
-          if (output.isUnnamed) {
-            (None, pair)
-          } else {
-            (pair, None)
-          }
-        }).unzip
+        val newUnnamed = outputFiles map { Source.fromFile(_) }
+        val newNamed = for {
+          (output, source) <- next.outputs zip newUnnamed
+          name <- output.name
+        } yield (name -> source)
 
         runProcessors(rest,
-          namedSources ++ newNamed.flatten,
-          newUnnamed.flatten.toMap,
+          namedSources ++ newNamed,
+          newUnnamed,
           defaultOutput)
       }
-    }
-  }
-
-  def getSource(input: ProcessorInput, namedSources: Map[String, Source],
-    unnamedSources: Map[String, Source]): Source = {
-
-    if (input.isUnnamed) {
-      unnamedSources(input.key)
-    } else if (namedSources.contains(input.key)) {
-      namedSources(input.key)
-    } else {
-      input.openSource
     }
   }
 }
@@ -187,12 +177,10 @@ object ErminePipeline {
     // Collect all of the unsatisfied named inputs.
     val (_, unsatisfiedInputs) = processors.foldLeft((Set.empty[String], Set.empty[String])) {
       case ((available, unsatisfied), processor) => {
-        val newOutputs = (processor.outputs map { _.key }).toSet
+        val newOutputs = (processor.outputs map { _.name }).flatten.toSet
         // Gather all named inputs that don't have an entry in the available set.
         val newUnsatisfied = (for {
-          io <- processor.inputs
-          if !io.isUnnamed
-          name = io.key
+          NamedInput(name) <- processor.inputs
           if !available.contains(name)
         } yield name).toSet
         (available ++ newOutputs, unsatisfied ++ newUnsatisfied)

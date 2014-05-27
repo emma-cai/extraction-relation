@@ -75,8 +75,11 @@ case class FileOutput(override val name: Option[String], val file: File) extends
 
   /** Validates that the file can be written to. */
   override def initializeOutput(): Unit = {
+    if (!file.exists()) {
+      file.createNewFile()
+    }
     if (!(file.canWrite)) {
-      throw new ErmineException("${file.getPath} not writable")
+      throw new ErmineException(s"${file.getPath} is not writable or couldn't be created")
     }
   }
 }

@@ -3,7 +3,9 @@ package org.allenai.extraction.manager.io
 import org.allenai.common.testkit.UnitSpec
 import org.allenai.extraction.manager.ErmineException
 
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{ ConfigValue, ConfigValueFactory }
+
+import scala.collection.JavaConverters._
 
 import java.net.URI
 
@@ -11,45 +13,47 @@ class IoConfigTest extends UnitSpec {
   val devNull = "file:///dev/null"
   val devNullUri = new URI(devNull)
 
+  def configValue(values: (String, AnyRef)*): ConfigValue = {
+    ConfigValueFactory.fromMap(values.toMap.asJava)
+  }
+
   "IoConfig.fromConfigValue" should "handle a full object correctly" in {
-    val config = ConfigFactory.parseString(s"""io = {name: "a", uri: "${devNull}"}""")
-    val io = IoConfig.fromConfigValue(config.getValue("io"))
+    val io = IoConfig.fromConfigValue(configValue("name" -> "a", "uri" -> devNull))
     io should be (IoConfig(Some("a"), Some(devNullUri)))
   }
 
   it should "handle partial objects correctly" in {
-    val noUriConfig = ConfigFactory.parseString(s"""io = {name: "a"}""")
-    val noUriIo = IoConfig.fromConfigValue(noUriConfig.getValue("io"))
+    val noUriIo = IoConfig.fromConfigValue(configValue("name" -> "a"))
     noUriIo should be (IoConfig(Some("a"), None))
 
-    val noNameConfig = ConfigFactory.parseString(s"""io = {uri: "${devNull}"}""")
-    val noNameIo = IoConfig.fromConfigValue(noNameConfig.getValue("io"))
+    val noNameIo = IoConfig.fromConfigValue(configValue("uri" -> devNull))
     noNameIo should be (IoConfig(None, Some(devNullUri)))
   }
 
+  it should "handle empty objects correctly" in {
+    val io = IoConfig.fromConfigValue(configValue(/* empty */))
+    io should be (IoConfig(None, None))
+  }
+
   it should "handle bareword names correctly" in {
-    val config = ConfigFactory.parseString(s"""io = "barewordName"""")
-    val io = IoConfig.fromConfigValue(config.getValue("io"))
+    val io = IoConfig.fromConfigValue(ConfigValueFactory.fromAnyRef("barewordName"))
     io should be (IoConfig(Some("barewordName"), None))
   }
 
   it should "handle bareword URIs correctly" in {
-    val config = ConfigFactory.parseString(s"""io = "${devNull}"""")
-    val io = IoConfig.fromConfigValue(config.getValue("io"))
+    val io = IoConfig.fromConfigValue(ConfigValueFactory.fromAnyRef(devNull))
     io should be (IoConfig(None, Some(devNullUri)))
   }
 
   it should "fail gracefully with a bad config value" in {
-    val config = ConfigFactory.parseString(s"""io = [ { name: "IO is not an array" } ]""")
     an[ErmineException] should be thrownBy {
-      IoConfig.fromConfigValue(config.getValue("io"))
+      IoConfig.fromConfigValue(ConfigValueFactory.fromAnyRef(1234))
     }
   }
 
   it should "fail gracefully with a bad URI" in {
-    val config = ConfigFactory.parseString(s"""io = { uri: "this: is : invalid" }""")
     an[ErmineException] should be thrownBy {
-      IoConfig.fromConfigValue(config.getValue("io"))
+      IoConfig.fromConfigValue(configValue("uri" -> "this: is : invalid"))
     }
   }
 }

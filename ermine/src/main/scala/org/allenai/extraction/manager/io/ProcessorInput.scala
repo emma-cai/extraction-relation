@@ -59,5 +59,11 @@ sealed abstract case class UriInput() extends ProcessorInput {
 
 /** File input, specified with a file-schemed URI. */
 class FileInput(val file: File) extends UriInput() {
-  def getSource(): Source = Source.fromFile(file)
+  override def getSource(): Source = Source.fromFile(file)
+  /** @throws ErmineException if the configured file isn't readable */
+  override def initializeInput(): Unit = {
+    if (!(file.isFile && file.canRead)) {
+      throw new ErmineException("${file.getPath} not a file or unreadable")
+    }
+  }
 }
