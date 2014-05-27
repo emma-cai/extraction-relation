@@ -4,7 +4,7 @@ import org.allenai.extraction.Processor
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors._
 
-import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
+import com.escalatesoft.subcut.inject.BindingModule
 import com.typesafe.config.{ Config, ConfigValue, ConfigException, ConfigValueFactory }
 
 import scala.collection.JavaConverters._
@@ -78,6 +78,7 @@ object ProcessorConfig {
       // Check for an object at the given path.
       if (config.hasPath(path)) {
         for {
+          // TODO(jkinkead): Use the new apply[Seq[ConfigValue]] API!
           configValue <- config.getList(path).asScala
         } yield factory(configValue)
       } else {

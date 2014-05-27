@@ -1,13 +1,19 @@
 package org.allenai.extraction.manager.io
 
+import org.allenai.ari.datastore.client.AriDatastoreClient
+import org.allenai.ari.datastore.interface.TextFile
 import org.allenai.extraction.manager.ErmineException
 
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.ConfigValue
 
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.duration.Duration
 import scala.io.Source
 
 import java.io.File
 import java.net.URI
+import java.nio.file.Files
 
 /** An input to a pipeline. */
 sealed abstract class ProcessorInput {
@@ -22,7 +28,9 @@ object ProcessorInput {
     * @throws ErmineException if the config value has both a name and a URI specified, if the URI
     * scheme is unsupported, or if the config value can't be built into an IoConfig
     */
-  def fromConfigValue(configValue: ConfigValue): ProcessorInput = {
+  def fromConfigValue(configValue: ConfigValue)
+    (implicit bindingModule: BindingModule): ProcessorInput = {
+
     IoConfig.fromConfigValue(configValue) match {
       case IoConfig(None, None) => UnnamedInput()
       case IoConfig(Some(name), None) => NamedInput(name)
@@ -35,9 +43,13 @@ object ProcessorInput {
   /** Builds the appropriate UriInput from the given URI.
     * @throws ErmineException if the URI scheme is unsupported
     */
-  def buildUriInput(uri: URI): UriInput = {
+  def buildUriInput(uri: URI)(implicit bindingModule: BindingModule): UriInput = {
     uri.getScheme match {
       case "file" => new FileInput(new File(uri))
+      case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
+        case ("file", Array(datasetId, documentId)) => new AristoreFileInput(datasetId, documentId)
+        case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
+      }
       case _ => throw new ErmineException("Unsupported input scheme: " + uri)
     }
   }
@@ -67,5 +79,34 @@ class FileInput(val file: File) extends UriInput() {
       throw new ErmineException("${file.getPath} not a file or unreadable")
     }
     this
+  }
+}
+
+/** IO object for Aristore FileDocuments. */
+class AristoreFileInput(val datasetId: String, val documentId: String)
+    (override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
+
+  val client: AriDatastoreClient = inject[AriDatastoreClient]
+
+  private val tempDirectory: File = {
+    val dir = Files.createTempDirectory(datasetId).toFile
+    dir.deleteOnExit
+    dir
+  }
+
+  private var downloadLocation: Future[File] = null
+
+  override def initializeInput(): Unit = {
+    // TODO(jkinkead): Figure this out properly.
+    import scala.concurrent.ExecutionContext.Implicits.global
+
+    // TODO: Query the datastore for the file requested!
+    downloadLocation = for {
+      dataset <- client.getDataset(datasetId)
+      document <- client.getFileDocument[TextFile](dataset.id, documentId, tempDirectory)
+    } yield document.file
+  }
+  override def getSource(): Source = {
+    Source.fromFile(Await.result(downloadLocation, Duration.Inf))
   }
 }
