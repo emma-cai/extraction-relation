@@ -194,7 +194,60 @@ write_inf_relation0(Top,Left,Rel,Right,Out) :-
 	write_inf_tuple(Left,[],LeftTriples,true,LHS),
 	format(atom(Relation), '~w(~w, ~w)', Rel),
 	write_inf_tuple(Right,LeftTriples,_,false,RHS),
-	format(atom(Out), '~w~w:: ~w -> ~w~w.~n', [Text,Id,LHS,Relation,RHS]).
+	write_simplified_inf_relation(Left,Right,Rel,Id,Pretty),
+	format(atom(Out), '~w~w~w:: ~w -> ~w~w.~n', [Text,Pretty,Id,LHS,Relation,RHS]).
+
+write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
+	simplified_inf_rel(Rel,Relation),
+	simplified_inf_pred(Left,LPred,''), % LHS
+	simplified_inf_pred(Right,RPred,', '), % RHS
+	format(atom(Pretty), 'simplified(~w, "~w -> ~w~w.").~n', [Id,LPred,Relation,RPred]),
+	!.
+
+simplified_inf_rel([Rel,Left,Right],Relation) :-
+	atomic_list_concat([_,L],'-',Left),
+	atomic_list_concat([_,R],'-',Right),
+	format(atom(Relation), '~w(~w, ~w)', [Rel,L,R]).
+
+simplified_inf_pred(Root,Pred,Prefix) :-
+	rdf(Root,Rel,_),
+	rdf_global_id(pred:P,Rel),
+	P \= isa, !, % clausal
+	lemma(Root,Lemma),
+	( (rdf(Root,pred:agent,Subj),
+	   lemma(Subj,S))
+	; S = 'X' ),
+	simplified_inf_args(Root,Args),
+	format(atom(Pred), '~w~w(~w~w)', [Prefix,Lemma,S,Args]).
+simplified_inf_pred(Root,Lemma,'') :- % write on LHS only
+	lemma(Root,Lemma). % entity	
+simplified_inf_pred(_,'',_).
+
+simplified_inf_args(Root,ArgString) :-
+	findall(Arg,simplified_inf_arg(Root,Arg),Args),
+	Args \= [],
+	format_simplified_inf_args(Args,ArgString).
+simplified_inf_args(_,'').
+
+simplified_inf_arg(Root,Arg) :-
+	rdf(Root,pred:object,Obj),
+	lemma(Obj, Arg).
+simplified_inf_arg(Root,Arg) :-
+	rdf(Root,pred:arg,Obj),
+	lemma(Obj, Arg).
+simplified_inf_arg(Root,PP) :-
+	rdf(Root,Pred,Obj),
+	rdf_global_id(pred:Prep,Pred),
+	\+ memberchk(Prep,[agent,object,arg,isa]),
+	lemma(Obj, Arg),
+	atomic_list_concat([Prep,'(',Arg,')'],PP).
+
+format_simplified_inf_args([],'') :- !.
+format_simplified_inf_args([Arg|Rest],ArgString) :-
+	format_simplified_inf_args(Rest,RestArgString),
+	format(atom(ArgString), ', ~w~w', [Arg, RestArgString]).
+
+
 
 write_question_relation0(Left,Right,Out) :-
 	( question_focus(Left) ; question_focus(Right) ),
@@ -243,7 +296,8 @@ write_inf_simple_tuple0(Root,GraphId,Out) :-
 	write_rdf(S,pred:isa,O,GraphId,First),
 	% write rest
 	write_inf_tuple(GraphId,[[S,_,O]],_,true,Rest),
-	format(atom(Out), '~w~w:: ~w -> ~w.~n', [Text,Id,First,Rest]).
+	write_simplified_inf_simple_tuple(S,Root,Id,Pretty),
+	format(atom(Out), '~w~w~w:: ~w -> ~w.~n', [Text,Pretty,Id,First,Rest]).
 write_inf_simple_tuple0(_,GraphId,'') :-
 	nl,
 	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
@@ -253,6 +307,12 @@ write_inf_rule_text(Root,Id,Out) :-
 	tokens(Root,Tokens),
 	tokens_text(Tokens,Text),
 	format(atom(Out), 'english(~w, "~w").~n', [Id,Text]),
+	!.
+
+write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
+	lemma(Entity,Lemma),
+	simplified_inf_pred(Root,Pred,''), % no prefix
+	format(atom(Pretty), 'simplified(~w, "~w -> ~w.").~n', [Id,Lemma,Pred]),
 	!.
 
 % comma separated list
