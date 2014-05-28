@@ -23,7 +23,7 @@ case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[Proce
   }
 
   /** @return a copy of this processor config with initialized inputs and outputs */
-  def initializeCopy(): ProcessorConfig = {
+  def getInitializedCopy(): ProcessorConfig = {
     val initializedInputs = inputs map { _.initialize() }
     val initializedOutputs = outputs map { _.initialize() }
     ProcessorConfig(name, processor, initializedInputs, initializedOutputs)

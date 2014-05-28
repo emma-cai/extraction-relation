@@ -53,7 +53,7 @@ class ErminePipeline(val name: String, val description: String,
     }
 
     // Initialize inputs & outputs.
-    val initializedProcessors = for (processor <- processors) yield processor.initializeCopy()
+    val initializedProcessors = for (processor <- processors) yield processor.getInitializedCopy()
 
     // Run.
     runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
