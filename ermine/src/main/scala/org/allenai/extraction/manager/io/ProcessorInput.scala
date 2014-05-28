@@ -1,6 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
+import org.allenai.ari.datastore.interface.FileDocument
 import org.allenai.ari.datastore.interface.TextFile
 import org.allenai.extraction.manager.ErmineException
 
@@ -88,25 +89,27 @@ class AristoreFileInput(val datasetId: String, val documentId: String)
 
   val client: AriDatastoreClient = inject[AriDatastoreClient]
 
-  private val tempDirectory: File = {
+  private lazy val tempDirectory: File = {
     val dir = Files.createTempDirectory(datasetId).toFile
     dir.deleteOnExit
     dir
   }
 
-  private var downloadLocation: Future[File] = null
+  private var downloadLocation: Future[FileDocument] = null
 
   override def initializeInput(): Unit = {
-    // TODO(jkinkead): Figure this out properly.
+    // TODO(jkinkead): Inject this.
     import scala.concurrent.ExecutionContext.Implicits.global
 
-    // TODO: Query the datastore for the file requested!
+    // Query the datastore for the file requested!
     downloadLocation = for {
       dataset <- client.getDataset(datasetId)
       document <- client.getFileDocument[TextFile](dataset.id, documentId, tempDirectory)
-    } yield document.file
+    } yield document
   }
+
   override def getSource(): Source = {
-    Source.fromFile(Await.result(downloadLocation, Duration.Inf))
+    val file = Await.result(downloadLocation, Duration.Inf)
+    Source.fromFile(file.file)
   }
 }

@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.manager.{ ErmineException, TestErmineModule }
 
 import com.typesafe.config.ConfigValueFactory
 
@@ -10,6 +10,8 @@ import scala.collection.JavaConverters._
 import java.io.File
 
 class ProcessorInputTest extends UnitSpec {
+  implicit val bindingModule = TestErmineModule
+
   val devNull = "file:///dev/null"
 
   def configValue(values: (String, AnyRef)*) = {

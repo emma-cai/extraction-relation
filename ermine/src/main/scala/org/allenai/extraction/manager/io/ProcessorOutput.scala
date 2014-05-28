@@ -1,7 +1,10 @@
 package org.allenai.extraction.manager.io
 
+import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.extraction.manager.ErmineException
 
+import akka.actor.ActorSystem
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.ConfigValue
 
 import java.io.File
@@ -33,7 +36,9 @@ object ProcessorOutput {
     * @throws ErmineException if the config value has both a name and a URI specified, if the URI
     * scheme is unsupported, or if the config value can't be built into an IoConfig
     */
-  def fromConfigValue(configValue: ConfigValue): ProcessorOutput = {
+  def fromConfigValue(configValue: ConfigValue)
+    (implicit bindingModule: BindingModule): ProcessorOutput = {
+
     IoConfig.fromConfigValue(configValue) match {
       case IoConfig(name, None) => EphemeralOutput(name)
       case IoConfig(name, Some(uri)) => buildOutput(name, uri)
@@ -43,9 +48,17 @@ object ProcessorOutput {
   /** Builds the appropriate output from the given URI and name.
     * @throws ErmineException if the URI scheme is unsupported
     */
-  def buildOutput(name: Option[String], uri: URI): ProcessorOutput = {
+  def buildOutput(name: Option[String], uri: URI)
+    (implicit bindingModule: BindingModule): ProcessorOutput = {
+
     uri.getScheme match {
       case "file" => new FileOutput(name, new File(uri))
+      case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
+        case ("file", Array(datasetId, documentId)) => {
+          new AristoreFileOutput(name, datasetId, documentId)
+        }
+        case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
+      }
       case _ => throw new ErmineException("Unsupported input scheme: " + uri)
     }
   }
@@ -89,4 +102,17 @@ case class FileOutput(override val name: Option[String], val file: File) extends
     }
     this
   }
+}
+
+case class AristoreFileOutput(override val name: Option[String], val datasetId: String,
+    val documentId: String)(override implicit val bindingModule: BindingModule)
+    extends ProcessorOutput with Injectable {
+
+  val aristoreActor = {
+    val actorSystem = inject[ActorSystem]
+    val aristoreClient = inject[AriDatastoreClient]
+    actorSystem.actorOf(AristoreActor.props(aristoreClient))
+  }
+
+  override def getOutputFile(): File = null
 }
