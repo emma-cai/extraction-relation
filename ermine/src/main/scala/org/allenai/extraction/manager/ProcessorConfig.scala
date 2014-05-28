@@ -21,6 +21,13 @@ case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[Proce
       case _ => false
     }
   }
+
+  /** @return a copy of this processor config with initialized inputs and outputs */
+  def initializeCopy(): ProcessorConfig = {
+    val initializedInputs = inputs map { _.initialize() }
+    val initializedOutputs = outputs map { _.initialize() }
+    ProcessorConfig(name, processor, initializedInputs, initializedOutputs)
+  }
 }
 object ProcessorConfig {
   /** Empty-object config value used to build IO objects when their config is missing. */

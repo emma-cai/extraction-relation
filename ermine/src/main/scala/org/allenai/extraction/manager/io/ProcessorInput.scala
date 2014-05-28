@@ -11,10 +11,11 @@ import java.net.URI
 
 /** An input to a pipeline. */
 sealed abstract class ProcessorInput {
-  /** Performs any initialization and validation needed before a pipeline uses this as input.
+  /** Performs any initialization and validation needed before a pipeline uses this as input, and
+    * returns a reference to a fully-initialized input.
     * @throws ErmineException if the configured input can't be used
     */
-  def initializeInput(): Unit = { /* base implementation does nothing */ }
+  def initialize(): ProcessorInput = this
 }
 object ProcessorInput {
   /** Builds an input from a config value.
@@ -61,9 +62,10 @@ sealed abstract case class UriInput() extends ProcessorInput {
 class FileInput(val file: File) extends UriInput() {
   override def getSource(): Source = Source.fromFile(file)
   /** @throws ErmineException if the configured file isn't readable */
-  override def initializeInput(): Unit = {
+  override def initialize(): ProcessorInput = {
     if (!(file.isFile && file.canRead)) {
       throw new ErmineException("${file.getPath} not a file or unreadable")
     }
+    this
   }
 }

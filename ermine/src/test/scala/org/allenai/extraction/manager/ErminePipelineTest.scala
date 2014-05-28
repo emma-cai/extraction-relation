@@ -273,7 +273,7 @@ class ErminePipelineTest extends UnitSpec {
     file.delete()
   }
 
-  it should "validate outputs, and fail on invalid files" in {
+  it should "validate inputs, and fail on invalid files" in {
     val file = File.createTempFile("test", ".txt")
     file.delete()
     // First processor has a bad file input.
@@ -282,7 +282,7 @@ class ErminePipelineTest extends UnitSpec {
       processors = [
         {
           name = "NoOpProcessor"
-          outputs = [ { uri: "file://${file.getPath}" } ]
+          inputs = [ { uri: "file://${file.getPath}" } ]
         }
       ]
       """)

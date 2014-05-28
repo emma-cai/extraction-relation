@@ -17,15 +17,16 @@ sealed abstract class ProcessorOutput {
     */
   def getOutputFile(): File
 
-  /** Performs any initialization and validation needed before a pipeline uses this as output.
+  /** Performs any initialization and validation needed before a pipeline uses this as output, and
+    * returns a reference to a fully-initialized output.
     * @throws ErmineException if the configured output can't be used
     */
-  def initializeOutput(): Unit = { /* base implementation does nothing */ }
+  def initialize(): ProcessorOutput = this
 
   /** Performs any finalization needed before an output is considered finished.  Should be called
     * only after a pipeline completes successfully.
     */
-  def finalizeOutput(): Unit = { /* base implementation does nothing */ }
+  def commit(): Unit = { /* base implementation does nothing */ }
 }
 object ProcessorOutput {
   /** Builds an output from a config value.
@@ -52,7 +53,9 @@ object ProcessorOutput {
 
 /** Output that is written to a temp file and discarded after the end of the pipeline run. */
 case class EphemeralOutput(override val name: Option[String]) extends ProcessorOutput {
-  private val tempFile: File = {
+  /** Temp file to write output to. Lazy to avoid creating extra empty files until they're needed.
+    */
+  private lazy val tempFile: File = {
     // Prefix must be of at least length 3, or File.createTempFile will fail.
     val prefix = name match {
       case Some(value) => value + "-erm-"
@@ -65,8 +68,11 @@ case class EphemeralOutput(override val name: Option[String]) extends ProcessorO
 
   override def getOutputFile(): File = tempFile
 
+  /** Creates a new ephemeral output, which will use a fresh temp file for output. */
+  override def initialize(): ProcessorOutput = copy()
+
   /** Deletes the temp file created. */
-  override def finalizeOutput(): Unit = tempFile.delete()
+  override def commit(): Unit = tempFile.delete()
 }
 
 /** Output that is written to a file on disk. */
@@ -74,12 +80,13 @@ case class FileOutput(override val name: Option[String], val file: File) extends
   override def getOutputFile(): File = file
 
   /** Validates that the file can be written to. */
-  override def initializeOutput(): Unit = {
+  override def initialize(): ProcessorOutput = {
     if (!file.exists()) {
       file.createNewFile()
     }
     if (!(file.canWrite)) {
       throw new ErmineException(s"${file.getPath} is not writable or couldn't be created")
     }
+    this
   }
 }

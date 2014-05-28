@@ -53,19 +53,16 @@ class ErminePipeline(val name: String, val description: String,
     }
 
     // Initialize inputs & outputs.
-    for (processor <- processors) {
-      processor.inputs foreach { _.initializeInput() }
-      processor.outputs foreach { _.initializeOutput() }
-    }
+    val initializedProcessors = for (processor <- processors) yield processor.initializeCopy()
 
     // Run.
-    runProcessors(processors, namedInputs, unnamedInputs, defaultOutput)
+    runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
 
     // Finalize all outputs.
     for {
-      processor <- processors
+      processor <- initializedProcessors
       output <- processor.outputs
-    } output.finalizeOutput()
+    } output.commit()
 
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
