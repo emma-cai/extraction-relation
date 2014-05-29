@@ -6,7 +6,7 @@ import org.allenai.extraction.manager.ErmineException
 
 import akka.actor.ActorRef
 import akka.pattern.ask
-import com.escalatesoft.subcut.inject.BindingModule
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.ConfigValue
 
 import scala.concurrent.{ Await, Future }
@@ -25,6 +25,9 @@ sealed abstract class ProcessorInput {
     * @throws ErmineException if the configured input can't be used
     */
   def initialize()(implicit bindingModule: BindingModule): ProcessorInput = this
+
+  /** Performs any cleanup of input files needed. */
+  def cleanup(): Future[Unit] = Future.successful[Unit](Unit)
 }
 object ProcessorInput {
   /** Builds an input from a config value.
@@ -50,8 +53,7 @@ object ProcessorInput {
       case "file" => new FileInput(new File(uri))
       case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
         case ("file", Array(datasetId, documentId)) => {
-          new AristoreFileInput(datasetId, documentId, Future.failed(
-            new ErmineException("Internal error: uninitialized input dereferenced!")))
+          new AristoreFileInputConfig(datasetId, documentId)
         }
         case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
       }
@@ -87,25 +89,51 @@ class FileInput(val file: File) extends UriInput() {
   }
 }
 
-/** IO object initializing for Aristore FileDocuments. */
-// TODO(jkinkead): Split the initialization and input into two classes.
-class AristoreFileInput(val datasetId: String, val documentId: String,
-    val aristoreDocument: Future[FileDocument]) extends UriInput() {
-
+/** Uninitialized Aristore input. This will throw an exception if getSource is called on it; an
+  * initialized instance needs to be fetched.
+  * @see AristoreFileInput
+  */
+class AristoreFileInputConfig(val datasetId: String, val documentId: String) extends UriInput() {
   /** @return a new AristoreFileInput with a FileDocument containing the requested file */
   override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
-    val client = bindingModule.inject[ActorRef](Some(AristoreActor.ActorId.bindingName))
+    new AristoreFileInput(datasetId, documentId)
+  }
 
+  /** @throws ErmineException when invoked; this represents an uninitialized instance */
+  override def getSource(): Source = {
+    throw new ErmineException("getSource called on uninitialized Aristore input!")
+  }
+}
+
+/** Initialized Aristore file input.  We need a separate initialized instance to fetch fresh
+  * versions of files from Aristore, which we do with a per-pipeline AristoreActor.
+  */
+class AristoreFileInput(val datasetId: String, val documentId: String)
+    (override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
+
+  /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
+  val client = inject[ActorRef](AristoreActor.Id)
+
+  /** A future holding the document we'll be reading. */
+  val document: Future[FileDocument] = {
     // Query the datastore for the file requested.
-    val request = AristoreActor.InitializeInput(datasetId, documentId)
-    val document = (client ? request)(10.minutes).mapTo[FileDocument]
+    (client ? AristoreActor.InitializeInput(datasetId, documentId))(10.minutes).mapTo[FileDocument]
+  }
 
-    new AristoreFileInput(datasetId, documentId, document)
+  /** @throws ErmineException when invoked; this copy shouldn't reused between pipeline runs. */
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
+    throw new ErmineException("initialize called on already-initialized AristoreFileInput!")
   }
 
   /** @return the source for the downloaded aristore file */
   override def getSource(): Source = {
-    val file = Await.result(aristoreDocument, Duration.Inf)
+    val file = Await.result(document, Duration.Inf)
     Source.fromFile(file.file)
+  }
+
+  /** Deletes the file downloaded from Aristore. */
+  override def cleanup(): Future[Unit] = {
+    import scala.concurrent.ExecutionContext.Implicits.global
+    document map { _.file.delete() }
   }
 }

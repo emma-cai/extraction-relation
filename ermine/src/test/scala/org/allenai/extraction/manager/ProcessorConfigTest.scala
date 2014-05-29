@@ -19,7 +19,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(UnnamedInput()))
-    processor.outputs should be (Seq(new EphemeralOutput(None)))
+    processor.outputs should be (Seq(EphemeralOutput(None)))
   }
 
   // Test that we can add inputs & outputs to the pipeline and have them be parsed.
@@ -31,7 +31,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(NamedInput("a")))
-    processor.outputs should be (Seq(new EphemeralOutput(None)))
+    processor.outputs should be (Seq(EphemeralOutput(None)))
   }
   it should "handle a processor with only outputs configured" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -41,7 +41,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(UnnamedInput()))
-    processor.outputs should be (Seq(new EphemeralOutput(Some("b"))))
+    processor.outputs should be (Seq(EphemeralOutput(Some("b"))))
   }
   it should "handle a processor with both inputs and outputs" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -52,7 +52,7 @@ class ProcessorConfigTest extends UnitSpec {
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
     processor.inputs should be (Seq(NamedInput("a")))
-    processor.outputs should be (Seq(new EphemeralOutput(Some("x"))))
+    processor.outputs should be (Seq(EphemeralOutput(Some("x"))))
   }
 
   // Test that we handle bad names gracefully.

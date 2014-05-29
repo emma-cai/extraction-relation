@@ -78,7 +78,6 @@ object ProcessorConfig {
       // Check for an object at the given path.
       if (config.hasPath(path)) {
         for {
-          // TODO(jkinkead): Use the new apply[Seq[ConfigValue]] API!
           configValue <- config.getList(path).asScala
         } yield factory(configValue)
       } else {

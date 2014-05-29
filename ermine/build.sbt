@@ -10,8 +10,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
 libraryDependencies ++= loggingImplementations ++ ferretDeps ++ Seq(akkaActor, typesafeConfig,
-  "org.allenai.ari-datastore" % "client_2.10" % "2014.5.16-0-SNAPSHOT",
-  sprayJson, allenaiCommon, scopt, subcut, taggers) ++ testLibs
+  aristore, sprayJson, allenaiCommon, aristore, scopt, subcut, taggers) ++ testLibs
 
 dependencyOverrides ++= Set(
   "org.scala-lang" % "scala-library" % "2.10.4",

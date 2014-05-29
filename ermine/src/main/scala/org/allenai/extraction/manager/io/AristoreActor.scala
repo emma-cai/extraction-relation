@@ -16,16 +16,22 @@ import scala.util.{ Failure, Success }
 import java.io.File
 import java.nio.file.Files
 
-/** A dataset paired with a location on disk where it's being stored. */
-case class DatasetCache(dataset: Dataset, location: File)
-
+/** An actor for a single pipeline's Aristore operations. This collects all outputs to a single
+  * dataset in a single directory, and commits them as a unit.
+  */
 class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogging {
+  /** A dataset version paired with the location on disk where it's being stored. */
+  case class DatasetCache(dataset: Dataset, location: File)
+
   import context._
 
-  /** @param datasets the mapping of name to cache value for all of the datasets currently being
+  /** Receives messages defined in the AristoreActor companion object.
+    * @param datasets the mapping of name to cache value for all of the datasets currently being
     * worked on.
     */
   def receiveWithDatasets(datasets: Map[String, Future[DatasetCache]]): Actor.Receive = {
+    // Reads a file document from the datastore, and returns the location on disk where it's been
+    // written to.
     case AristoreActor.InitializeInput(datasetId, documentId) => {
       val tempDirectory = Files.createTempDirectory(datasetId).toFile
       tempDirectory.deleteOnExit
@@ -37,13 +43,15 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
 
       location pipeTo sender
     }
+    // Looks up the given dataset ID, and starts a create or update operation for it, as
+    // appropriate. Returns the directory created to the client.
     case AristoreActor.InitializeOutput(datasetId) => {
       if (datasets.contains(datasetId)) {
-        log.info(s"already initialized ${datasetId}; returning directory")
+        log.debug(s"Already initialized ${datasetId}; returning output directory")
         // Send the dataset directory back to the sender.
         (datasets(datasetId) map { _.location}) pipeTo sender
       } else {
-        log.info(s"initializing ${datasetId}")
+        log.debug(s"Initializing ${datasetId} for write")
 
         // Look up the dataset, and either create or update.
         val newDataset: Future[Dataset] = client.getDataset(datasetId) flatMap { existingDataset =>
@@ -51,7 +59,7 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
           client.updateDataset(existingDataset.id, Seq.empty[String])
         } recoverWith {
           // Exception thrown when the initial lookup fails.
-          case _: NoSuchDatasetException => 
+          case _: NoSuchDatasetException =>
             client.createDataset(datasetId, DocumentType.TextFile, Seq.empty[String])
         }
         // Save the updated Dataset object in our cache.
@@ -64,9 +72,12 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
         // Send the dataset directory back to the sender.
         (datasetCache map { _.location }) pipeTo sender
 
+        // Save the location we set up for the dataset.
         become(receiveWithDatasets(datasets + (datasetId -> datasetCache)))
       }
     }
+    // Saves all files that have been added to the given dataset to aristore, then deletes them.
+    // Returns a Unit to the sender that it can wait on for commit completion.
     case AristoreActor.CommitOutput(datasetId) => {
       if (datasets.contains(datasetId)) {
         // Publish the dataset directory to aristore; delete the files on disk.
@@ -78,15 +89,18 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
           _ <- client.addDocuments(cache.dataset.id, documents)
           commit <- client.commitDataset(cache.dataset.id)
         } yield {
-          log.info(s"committed ${datasetId} (${cache})!")
-          commit
+          // Files have been uploaded and committed; delete them now.
+          for (file <- cache.location.listFiles) {
+            file.delete()
+          }
+          log.debug(s"Committed ${datasetId} (${cache})!")
+          if (!cache.location.delete()) {
+            // Disk leak; should be automatically cleaned up on JVM exit, since the directory is a
+            // temp file we told to remove itself.
+            log.warning(s"Unable to delete ${cache.location}; leaving around.")
+          }
         }
 
-        // TODO(jkinkead): Fix this.
-        commitResult onComplete {
-          case Success(_) => log.info("commit done")
-          case Failure(x) => log.info(s"commit failed: ${x.getMessage()}")
-        }
         commitResult pipeTo sender
 
         become(receiveWithDatasets(datasets - datasetId))
@@ -98,12 +112,13 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
     case unexpected => sender ! Status.Failure(new ErmineException(s"bad message: ${unexpected}"))
   }
 
+  /** Starts a receiveWithDatasets  with an empty set of tracked datasets. */
   override def receive: Actor.Receive = receiveWithDatasets(Map.empty)
 }
 
 /** Actor helping with Aristore IO. */
 object AristoreActor {
-  object ActorId extends BindingId
+  object Id extends BindingId
 
   case class InitializeInput(datasetId: String, documentId: String)
 
@@ -113,7 +128,6 @@ object AristoreActor {
   /** Message directing the actor to commit output for a given dataset. */
   case class CommitOutput(datasetId: String)
 
-  // TODO(jkinkead): Figure out how to do this with akka magic.
   def props(client: AriDatastoreClient): Props = Props(new AristoreActor(client))
 }
 
@@ -121,7 +135,7 @@ object AristoreActor {
 class AristoreActorModule extends NewBindingModule(module => {
   import module._
 
-  bind[ActorRef] idBy AristoreActor.ActorId toModuleSingle { implicit module =>
+  bind[ActorRef] idBy AristoreActor.Id toModuleSingle { implicit module =>
     val actorSystem = module.inject[ActorSystem](None)
     val aristoreClient = module.inject[AriDatastoreClient](None)
     actorSystem.actorOf(AristoreActor.props(aristoreClient))

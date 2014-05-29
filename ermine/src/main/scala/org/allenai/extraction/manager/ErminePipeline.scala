@@ -8,11 +8,11 @@ import com.typesafe.config.Config
 
 import scala.annotation.tailrec
 import scala.collection.JavaConverters._
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.duration._
 import scala.io.Source
 
-import java.io.File
-import java.io.FileWriter
-import java.io.Writer
+import java.io.{ File, FileWriter, Writer }
 import java.net.URI
 
 /** Class representing a pipeline.
@@ -64,11 +64,16 @@ class ErminePipeline(val name: String, val description: String,
     // Run.
     runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
 
-    // Finalize all outputs.
-    for {
+    // Finalize all inputs & outputs.
+    val cleanupFutures: Seq[Future[Unit]] = for {
+      processor <- initializedProcessors
+      input <- processor.inputs
+    } yield input.cleanup()
+    val commitFutures: Seq[Future[Unit]] = for {
       processor <- initializedProcessors
       output <- processor.outputs
-    } output.commit()
+    } yield output.commit()
+    for (f: Future[Unit] <- cleanupFutures ++ commitFutures) Await.ready(f, Duration.Inf)
 
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }

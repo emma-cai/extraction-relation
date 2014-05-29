@@ -19,7 +19,7 @@ class ProcessorOutputTest extends UnitSpec {
   "ProcessorOutput.fromConfigValue" should "build a file output correctly" in {
     val output = ProcessorOutput.fromConfigValue(
       configValue("name" -> "a", "uri" -> "file:///dev/null"))
-    output should be (new FileOutput(Some("a"), new File("/dev/null")))
+    output should be (FileOutput(Some("a"), new File("/dev/null")))
   }
 
   it should "fail when given an unsupported URI" in {
