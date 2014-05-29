@@ -38,32 +38,35 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
     for (line <- defnInputSource.getLines) {
       val (term, termWordClass, termDefinition) = preprocessLine(line)
-      if (termWordClass.equalsIgnoreCase(wordClass)) {
+      if ((termWordClass.length == 0) || (termWordClass.equalsIgnoreCase(wordClass))) {
         var results = super.extractText(termDefinition)
 
         // Some retries if no results were found with just the definition text.
-        // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
-        // a part of the scientific and cultural community; this group of people have attended a 
-        // university and/or do research." is converted by the preprocessor into two separate definition
-        // lines:
-        //   "Academia	Noun	Academia is a word for the group of people who are 
-        //                      a part of the scientific and cultural community"
-        //   and
-        //   "Academia	Noun	this group of people have attended a university and/or do research."
-        // The second definition does not have the term but a coreference. So if we pass
-        // "Academia: this group of people have attended a university and/or do research." to the 
-        // definition extractor, it works since it has rules to handle this pattern, but not without
-        // the "Academia: ".
-        if (results.isEmpty)
-          results = super.extractText(term + " : " + termDefinition)
+        if (term.length > 0)
+        {
+          // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
+          // a part of the scientific and cultural community; this group of people have attended a 
+          // university and/or do research." is converted by the preprocessor into two separate definition
+          // lines:
+          //   "Academia	Noun	Academia is a word for the group of people who are 
+          //                      a part of the scientific and cultural community"
+          //   and
+          //   "Academia	Noun	this group of people have attended a university and/or do research."
+          // The second definition does not have the term but a coreference. So if we pass
+          // "Academia: this group of people have attended a university and/or do research." to the 
+          // definition extractor, it works since it has rules to handle this pattern, but not without
+          // the "Academia: ".
+          if (results.isEmpty)
+            results = super.extractText(term + " : " + termDefinition)
 
-        // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
-        // does not have the subject as part of the definition. In this case passing it to the 
-        // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
-        // that arises in the brain." works.
-        if (results.isEmpty)
-          results = super.extractText(term + " " + termDefinition)
-
+          // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
+          // does not have the subject as part of the definition. In this case passing it to the 
+          // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
+          // that arises in the brain." works.
+          if (results.isEmpty)
+            results = super.extractText(term + " " + termDefinition)
+        }
+        
         // Output: First write out the input line.
         destination.write("DEFINITION:   " + line + "\n")
 
@@ -215,8 +218,8 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
         np ++= " " + aux
       if (prep.length() > 0)
         np ++= ", " + prep
-      if ((np.length() > 0) && !noun.equals(np))
-        results ++= Seq[String]("Fact: (" + definedTerm + ", is, " + np + ")")
+      if ((np.length() > 0) && (!np.toString.equals(noun)))
+        results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + np + ")")
     }
 
     results ++= adjs.map(adj => "Quality: (" + definedTerm + ", is, " + adj + ")")

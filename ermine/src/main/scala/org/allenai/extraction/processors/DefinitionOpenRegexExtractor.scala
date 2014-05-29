@@ -67,8 +67,12 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
     * is of the form: <Term>\t<WordClass>\t<Definition> per line.
     */
   def preprocessLine(defnInputLine: String): (String, String, String) = {
-    defnInputLine.split("\t") match {
-      case Array(term, termWordClass, termDefinition, _*) => (term, termWordClass, termDefinition)
+    defnInputLine.split("\t").toList match {
+      case List(term, termWordClass, termDefinition, _*) => (term.trim, termWordClass.trim, termDefinition.trim)
+      // If there aren't at least three strings in the returned array and the array is not empty, consider the last
+      // string as the definition - when running through the ermine service/ extraction web demo, we will be passing
+      // just the definition text and nothing else.
+      case _ :+ termDefinition => ("", "", termDefinition)
       case _ => ("", "", "")
     }
   }
