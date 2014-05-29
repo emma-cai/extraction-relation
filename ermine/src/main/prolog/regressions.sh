@@ -16,7 +16,7 @@ swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('regression
 
 swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('regressions/barrons.txt.rnn.ttl'),findall(_,(relation(I,J),write(I),write(J),nl,nl),_),halt" > regressions/barrons.txt.rnn.out
 
-#./extract-question.sh < regressions/june2014questions.txt > regressions/june2014questions.out
+./extract-question.sh < regressions/june2014questions.txt > regressions/june2014questions.out
 
 for f in regressions/*.out
   do grep -E '^[;%]' $f > $f.txt

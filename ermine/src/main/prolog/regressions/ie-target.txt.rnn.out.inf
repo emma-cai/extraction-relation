@@ -23,16 +23,16 @@ english(ie-target.rule8, "A hand lens is used to view objects in more detail").
 simplified(ie-target.rule8, "view(lens, object, in(detail)) -> purpose(lens, view).").
 ie-target.rule8:: isa(E7S3-view, "view"), agent(E7S3-view, A3S3-lens), isa(A3S3-lens, "A hand lens"), object(E7S3-view, A8S3-object), isa(A8S3-object, "objects"), in(E7S3-view, A11S3-detail), isa(A11S3-detail, "more detail") -> purpose(A3S3-lens, E7S3-view).
 english(ie-target.rule9, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
-simplified(ie-target.rule9, "removal(freezing, heat) -> enable(removal, change), change(freezing, water, from(state), to(state)).").
+simplified(ie-target.rule9, "remove(freezing, heat) -> enable(removal, change), change(freezing, water, from(state), to(state)).").
 ie-target.rule9:: isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat") -> enable(E18S4-removal, E3S4-change), isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state").
 english(ie-target.rule10, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
-simplified(ie-target.rule10, "change(freezing, water, from(state), to(state)) -> enable(removal, change), removal(freezing, heat).").
+simplified(ie-target.rule10, "change(freezing, water, from(state), to(state)) -> enable(removal, change), remove(freezing, heat).").
 ie-target.rule10:: isa(E3S4-change, "change"), agent(E3S4-change, A1S4-freezing), isa(A1S4-freezing, "Freezing"), object(E3S4-change, A4S4-water), isa(A4S4-water, "water"), from(E3S4-change, A8S4-state), isa(A8S4-state, "its[A hand lens] liquid state"), to(E3S4-change, A12S4-state), isa(A12S4-state, "its[its liquid state] solid state") -> enable(E18S4-removal, E3S4-change), isa(E18S4-removal, "remove"), agent(E18S4-removal, A1S4-freezing), object(E18S4-removal, A20S4-heat), isa(A20S4-heat, "heat").
 english(ie-target.rule11, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-simplified(ie-target.rule11, "make(animal, food) -> effect(make, eat), eat(animal).").
+simplified(ie-target.rule11, "not make(animal, food) -> effect(make, eat), eat(animal).").
 ie-target.rule11:: isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food") -> effect(E4S5-make, E11S5-eat), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals").
 english(ie-target.rule12, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
-simplified(ie-target.rule12, "eat(animal) -> effect(make, eat), make(animal, food).").
+simplified(ie-target.rule12, "eat(animal) -> effect(make, eat), not make(animal, food).").
 ie-target.rule12:: isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal), isa(A3S2-animal, "some animals") -> effect(E4S5-make, E11S5-eat), isa(E4S5-make, "not make"), agent(E4S5-make, A1S5-animal), isa(A1S5-animal, "Animals"), object(E4S5-make, A7S5-food), isa(A7S5-food, "their[some animals] own food").
 english(ie-target.rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
 simplified(ie-target.rule13, "eat(animal) -> requirement(eat, get), get(animal, nutrient).").
@@ -59,10 +59,10 @@ english(ie-target.rule20, "Getting enough rest is also an important part of livi
 simplified(ie-target.rule20, "live(X, life) -> part(get, live), get(X, rest).").
 ie-target.rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life") -> part(E1S7-get, E10S7-live), isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest").
 english(ie-target.rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(ie-target.rule21, "decomposer -> example(decomposer, thing), break(thing, organism).").
+simplified(ie-target.rule21, "decomposer -> example(decomposer, thing), break down(thing, organism).").
 ie-target.rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(ie-target.rule22, "break(thing, organism) -> example(decomposer, thing).").
+simplified(ie-target.rule22, "break down(thing, organism) -> example(decomposer, thing).").
 ie-target.rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 simplified(ie-target.rule23, "decomposer -> example(decomposer, thing), recycle(thing, nutrient, into(soil)).").

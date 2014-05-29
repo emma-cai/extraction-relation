@@ -199,47 +199,60 @@ write_inf_relation0(Top,Left,Rel,Right,Out) :-
 
 write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
 	simplified_inf_rel(Rel,Relation),
-	simplified_inf_pred(Left,LPred,''), % LHS
-	simplified_inf_pred(Right,RPred,', '), % RHS
+	simplified_inf_pred(Left,LPred,null,''), % LHS
+	simplified_inf_pred(Right,RPred,null,', '), % RHS
 	format(atom(Pretty), 'simplified(~w, "~w -> ~w~w.").~n', [Id,LPred,Relation,RPred]),
 	!.
 
+simplified_inf_rel([Rel|_],Relation) :- % question-specific
+	rdf_global_id(rel:Rel,P),
+	rdf(S,P,O),
+	simplified_lemma(S,focus,SL),
+	simplified_lemma(O,focus,OL),
+	format(atom(Relation), '~w(~w, ~w)', [Rel,SL,OL]).
 simplified_inf_rel([Rel,Left,Right],Relation) :-
 	atomic_list_concat([_,L],'-',Left),
 	atomic_list_concat([_,R],'-',Right),
 	format(atom(Relation), '~w(~w, ~w)', [Rel,L,R]).
 
-simplified_inf_pred(Root,Pred,Prefix) :-
-	rdf(Root,Rel,_),
-	rdf_global_id(pred:P,Rel),
-	P \= isa, !, % clausal
-	lemma(Root,Lemma),
-	( (rdf(Root,pred:agent,Subj),
-	   lemma(Subj,S))
-	; S = 'X' ),
-	simplified_inf_args(Root,Args),
-	format(atom(Pred), '~w~w(~w~w)', [Prefix,Lemma,S,Args]).
-simplified_inf_pred(Root,Lemma,'') :- % write on LHS only
-	lemma(Root,Lemma). % entity	
-simplified_inf_pred(_,'',_).
 
-simplified_inf_args(Root,ArgString) :-
-	findall(Arg,simplified_inf_arg(Root,Arg),Args),
+simplified_inf_pred(Root-_,Pred,Focus,Prefix) :-
+	simplified_inf_pred(Root,Pred,Focus,Prefix).
+simplified_inf_pred(Focus,'',Focus,'') :- !, fail. % LHS only
+simplified_inf_pred(Root,'',Focus,'') :- % LHS only
+	( dependency(Focus,dep:partmod,Root)
+	; dependency(Focus,dep:rcmod,Root) ),
+	!, fail.
+simplified_inf_pred(Root,Pred,Focus,Prefix) :-
+	rdf(Root,rdf:type,event),
+	simplified_lemma(Root,Focus,Lemma),
+	( (rdf(Root,pred:agent,Subj),
+	   simplified_lemma(Subj,Focus,S))
+	; S = 'X' ),
+	simplified_inf_args(Root,Focus,Args),
+	format(atom(Pred), '~w~w(~w~w)', [Prefix,Lemma,S,Args]).
+simplified_inf_pred(Root,Lemma,Focus,'') :- % write on LHS only
+	simplified_lemma(Root,Focus,Lemma). % entity	
+simplified_inf_pred(_,'',_,_).
+
+simplified_inf_args(Root,Focus,ArgString) :-
+	findall(Arg,simplified_inf_arg(Root,Focus,Arg),Args),
 	Args \= [],
 	format_simplified_inf_args(Args,ArgString).
-simplified_inf_args(_,'').
+simplified_inf_args(_,_,'').
 
-simplified_inf_arg(Root,Arg) :-
+simplified_inf_arg(Root,Focus,Arg) :-
 	rdf(Root,pred:object,Obj),
-	lemma(Obj, Arg).
-simplified_inf_arg(Root,Arg) :-
+	\+ rdf(Root,pred:agent,Obj), % TODO: track down fly(bat, bat)
+	simplified_lemma(Obj,Focus,Arg).
+simplified_inf_arg(Root,Focus,Arg) :-
 	rdf(Root,pred:arg,Obj),
-	lemma(Obj, Arg).
-simplified_inf_arg(Root,PP) :-
+	simplified_lemma(Obj,Focus,Arg).
+simplified_inf_arg(Root,Focus,PP) :-
 	rdf(Root,Pred,Obj),
 	rdf_global_id(pred:Prep,Pred),
 	\+ memberchk(Prep,[agent,object,arg,isa]),
-	lemma(Obj, Arg),
+	simplified_lemma(Obj,Focus,Arg),
 	atomic_list_concat([Prep,'(',Arg,')'],PP).
 
 format_simplified_inf_args([],'') :- !.
@@ -247,6 +260,22 @@ format_simplified_inf_args([Arg|Rest],ArgString) :-
 	format_simplified_inf_args(Rest,RestArgString),
 	format(atom(ArgString), ', ~w~w', [Arg, RestArgString]).
 
+simplified_lemma(Arg,null,Lemma) :-
+	rdf(Arg,rdf:type,event),
+	rdf(Arg,pred:isa,literal(String)),
+	atomic_list_concat(['',Lemma,''],'"',String),
+	!.
+simplified_lemma(Arg,null,Lemma) :-
+	lemma(Arg,Lemma), !.
+simplified_lemma(Arg,_,'Q') :-
+	current_question_focus(Arg), !.
+simplified_lemma(Arg,_,'Q') :-
+	current_question_focus(Focus),
+	( dependency(Arg,dep:partmod,Focus)
+	; dependency(Arg,dep:rcmod,Focus) ),
+	!.
+simplified_lemma(Arg,_,Lemma) :-
+	lemma(Arg,Lemma).
 
 
 write_question_relation0(Left,Right,Out) :-
@@ -260,11 +289,77 @@ write_question_relation0(Left,Right,Out) :-
 		 \+ rdf_global_id(rdf:type,P)),
 		Consequents),
 	write_inf_tuple(antecedent,Consequents,LeftTriples,true,LHS),
-	write_inf_tuple(consequent,LeftTriples,_,true,RHS),
-	format(atom(Out), '~w~w:: ~w -> ~w.~n', [Text,Id,LHS,RHS]),
+	write_inf_tuple(consequent,LeftTriples,RightTriples,true,RHS),
+	write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty),
+	format(atom(Out), '~w~w~w:: ~w -> ~w.~n', [Text,Pretty,Id,LHS,RHS]),
 	write_turtle_relation(antecedent,consequent),
 	!.
 write_question_relation0(_,_,''). % setup only, don't write
+
+write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
+	current_question_focus(Focus),
+	write_simplified_triples(LeftTriples,Focus,LeftPred),
+	write_simplified_question_relation(LeftTriples,Focus,LeftPred,Relation),
+	write_simplified_triples(RightTriples,null,RightPred),
+	format(atom(Pretty), 'simplified(~w, "~w~w~w.").~n', [Id,LeftPred,Relation,RightPred]),
+	!.
+write_simplified_inf_question(_,_,Id,Pretty) :- % failed
+	format(atom(Pretty), 'simplified(~w, "").~n', [Id]).
+
+write_simplified_triples(Triples,Focus,OutPreds) :-
+	findall(Event,
+		(member([Event|_],Triples),
+		 Event \= Focus,
+		 rdf(Event,rdf:type,event)),
+		Events),
+	Events \= [],
+	list_to_set(Events,EventSet),
+	findall(Pred,
+	        (member(E,EventSet),
+		 once(simplified_inf_pred(E,Pred,Focus,''))),
+		Preds),
+	atomic_list_concat(Preds,', ',OutPreds).
+write_simplified_triples([[Entity|_]|Rest],Focus,OutPred) :-
+	Entity \= Focus,
+	\+ (member([Entity,P,_],Rest), rdf_global_id(rel:_,P)),
+	\+ (member([_,P,Entity],Rest), rdf_global_id(rel:_,P)),
+	lemma(Entity,OutPred).
+write_simplified_triples(_,_,'').
+
+write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
+	member([S,P,O],Triples),
+	rdf_global_id(rel:Rel,P),
+	( S = Focus
+	; ( ( dependency(Focus,dep:partmod,S)
+	    ; dependency(Focus,dep:rcmod,S) ) ) ),
+	!,
+	lemma(O,Lemma),
+	( (Prev = '', Prefix = '')
+	; Prefix = ', ' ),
+	format(atom(Relation), '~w~w(Q, ~w) -> Q=', [Prefix,Rel,Lemma]).
+write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
+	member([S,P,O],Triples),
+	rdf_global_id(rel:Rel,P),
+	( O = Focus
+	; ( ( dependency(Focus,dep:partmod,O)
+	    ; dependency(Focus,dep:rcmod,O) ) ) ),
+	!,
+	lemma(S,Lemma),
+	( (Prev = '', Prefix = '')
+	; Prefix = ', ' ),
+	format(atom(Relation), '~w~w(~w, Q) -> Q=', [Prefix,Rel,Lemma]).
+write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
+	member([S,P,O],Triples),
+	rdf_global_id(rel:Rel,P), !,
+	lemma(S,SLemma),
+	lemma(O,OLemma),
+	( (Prev = '', Prefix = '')
+	; Prefix = ', ' ),
+	( (memberchk([_,_,Focus],Triples), Var = 'Q=')
+	; Var = ''), % relation only
+	format(atom(Relation), '~w~w(~w, ~w) -> ~w', [Prefix,Rel,SLemma,OLemma,Var]).
+write_simplified_question_relation(_,_,_,' -> ').
+	
 
 write_inf_tuple(GraphId,Remove,Triples,First,Out) :-
 	findall([S,P,O],
@@ -311,7 +406,7 @@ write_inf_rule_text(Root,Id,Out) :-
 
 write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
 	lemma(Entity,Lemma),
-	simplified_inf_pred(Root,Pred,''), % no prefix
+	simplified_inf_pred(Root,Pred,null,''), % no prefix
 	format(atom(Pretty), 'simplified(~w, "~w -> ~w.").~n', [Id,Lemma,Pred]),
 	!.
 

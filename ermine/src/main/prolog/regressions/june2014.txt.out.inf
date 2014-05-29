@@ -71,10 +71,10 @@ english(june2014.rule24, "In order for humans to grow have energy and be healthy
 simplified(june2014.rule24, "be(human, healthy) -> effect(get, be), get(human, rest).").
 june2014.rule24:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E24S3-get, E12S3-be), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 english(june2014.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(june2014.rule25, "decomposer -> example(decomposer, thing), break(thing, organism).").
+simplified(june2014.rule25, "decomposer -> example(decomposer, thing), break down(thing, organism).").
 june2014.rule25:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(june2014.rule26, "break(thing, organism) -> example(decomposer, thing).").
+simplified(june2014.rule26, "break down(thing, organism) -> example(decomposer, thing).").
 june2014.rule26:: isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers"), isa(A1S4-decomposer, A4S4-thing).
 english(june2014.rule27, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 simplified(june2014.rule27, "decomposer -> example(decomposer, thing), recycle(thing, nutrient, into(soil)).").
@@ -89,10 +89,10 @@ english(june2014.rule30, "Decomposers are living things that break down dead org
 simplified(june2014.rule30, "thing -> example(decomposer, thing).").
 june2014.rule30:: isa(A4S4-thing, "living things") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers").
 english(june2014.rule31, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-simplified(june2014.rule31, "removal(freezing, heat) -> enable(removal, change), change(freezing, water, from(state), to(state)).").
+simplified(june2014.rule31, "remove(freezing, heat) -> enable(removal, change), change(freezing, water, from(state), to(state)).").
 june2014.rule31:: isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat") -> enable(E18S5-removal, E3S5-change), isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state").
 english(june2014.rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-simplified(june2014.rule32, "change(freezing, water, from(state), to(state)) -> enable(removal, change), removal(freezing, heat).").
+simplified(june2014.rule32, "change(freezing, water, from(state), to(state)) -> enable(removal, change), remove(freezing, heat).").
 june2014.rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state") -> enable(E18S5-removal, E3S5-change), isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat").
 english(june2014.rule33, "Gravity is the force that pulls an object toward the center of the Earth").
 simplified(june2014.rule33, "gravity -> example(gravity, force), pull(force, object).").
@@ -143,10 +143,10 @@ english(june2014.rule48, "The plant gets the energy to go through photosynthesis
 simplified(june2014.rule48, "go(plant, through(photosynthesis), from(sunlight)) -> effect(get, go), get(plant, energy).").
 june2014.rule48:: isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), isa(A2S10-plant, "The plant"), through(E7S10-go, A9S10-photosynthesis), isa(A9S10-photosynthesis, "photosynthesis"), from(E7S10-go, A11S10-sunlight), isa(A11S10-sunlight, "sunlight") -> effect(E3S10-get, E7S10-go), isa(E3S10-get, "get"), agent(E3S10-get, A2S10-plant), object(E3S10-get, A5S10-energy), isa(A5S10-energy, "the energy").
 english(june2014.rule49, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(june2014.rule49, "decomposer -> example(decomposer, thing), break(thing, organism).").
+simplified(june2014.rule49, "decomposer -> example(decomposer, thing), break down(thing, organism).").
 june2014.rule49:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule50, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-simplified(june2014.rule50, "break(thing, organism) -> example(decomposer, thing).").
+simplified(june2014.rule50, "break down(thing, organism) -> example(decomposer, thing).").
 june2014.rule50:: isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers"), isa(A1S11-decomposer, A4S11-thing).
 english(june2014.rule51, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 simplified(june2014.rule51, "decomposer -> example(decomposer, thing), recycle(thing, nutrient, into(soil)).").
@@ -254,16 +254,16 @@ english(june2014.rule85, "Some animals grow thick fur in winter to stay warm").
 simplified(june2014.rule85, "stay(animal, warm) -> effect(grow, stay), grow(animal, fur).").
 june2014.rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm") -> effect(E3S19-grow, E9S19-stay), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur").
 english(june2014.rule86, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-simplified(june2014.rule86, "take(animal, food, as(nutrient)) -> effect(take, grow), grow(animal).").
+simplified(june2014.rule86, "take in(animal, food, as(nutrient)) -> effect(take, grow), grow(animal).").
 june2014.rule86:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E15S20-grow), isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals").
 english(june2014.rule87, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-simplified(june2014.rule87, "grow(animal) -> effect(take, grow), take(animal, food, as(nutrient)).").
+simplified(june2014.rule87, "grow(animal) -> effect(take, grow), take in(animal, food, as(nutrient)).").
 june2014.rule87:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E2S20-take, E15S20-grow), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 english(june2014.rule88, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-simplified(june2014.rule88, "take(animal, food, as(nutrient)) -> effect(take, give), give(X, animal, energy).").
+simplified(june2014.rule88, "take in(animal, food, as(nutrient)) -> effect(take, give), give(X, animal, energy).").
 june2014.rule88:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E9S20-give), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 english(june2014.rule89, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-simplified(june2014.rule89, "give(X, animal, energy) -> effect(take, give), take(animal, food, as(nutrient)).").
+simplified(june2014.rule89, "give(X, animal, energy) -> effect(take, give), take in(animal, food, as(nutrient)).").
 june2014.rule89:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy") -> effect(E2S20-take, E9S20-give), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 english(june2014.rule90, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
 simplified(june2014.rule90, "give(X, animal, energy) -> effect(give, grow), grow(animal).").

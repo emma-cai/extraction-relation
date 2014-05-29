@@ -9,7 +9,7 @@ while read line
       sed 's/Is it true that //;s/?"/."/' | \
       jq '.[] | "swipl -q -l extract.pl -g \"extract(\"\(.question)\", \"\(.focus)\"),halt.\""' | \
       sed -E "s/'/\\\'/g;s/^\"//;s/\"$//;s/[\\]\"/'/g;
-              s/'extract[(]/\"extract(/g;s/halt.'/halt.\";/g"
+              s/'extract[(]/\"extract(/g;s/halt.'/halt.\";sleep 1;/g"
     )
   eval $cmd
 done
