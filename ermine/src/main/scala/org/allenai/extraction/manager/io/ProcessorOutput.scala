@@ -3,9 +3,13 @@ package org.allenai.extraction.manager.io
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.extraction.manager.ErmineException
 
-import akka.actor.ActorSystem
+import akka.actor.ActorRef
+import akka.pattern.ask
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.ConfigValue
+
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.duration._
 
 import java.io.File
 import java.net.URI
@@ -21,10 +25,11 @@ sealed abstract class ProcessorOutput {
   def getOutputFile(): File
 
   /** Performs any initialization and validation needed before a pipeline uses this as output, and
-    * returns a reference to a fully-initialized output.
+    * returns a reference to a fully-initialized output. Some outputs cannot be shared between
+    * pipeline executions, and will return new instances from this method.
     * @throws ErmineException if the configured output can't be used
     */
-  def initialize(): ProcessorOutput = this
+  def initialize()(implicit bindingModule: BindingModule): ProcessorOutput = this
 
   /** Performs any finalization needed before an output is considered finished.  Should be called
     * only after a pipeline completes successfully.
@@ -40,7 +45,7 @@ object ProcessorOutput {
     (implicit bindingModule: BindingModule): ProcessorOutput = {
 
     IoConfig.fromConfigValue(configValue) match {
-      case IoConfig(name, None) => EphemeralOutput(name)
+      case IoConfig(name, None) => new EphemeralOutput(name)
       case IoConfig(name, Some(uri)) => buildOutput(name, uri)
     }
   }
@@ -65,7 +70,7 @@ object ProcessorOutput {
 }
 
 /** Output that is written to a temp file and discarded after the end of the pipeline run. */
-case class EphemeralOutput(override val name: Option[String]) extends ProcessorOutput {
+class EphemeralOutput(override val name: Option[String]) extends ProcessorOutput {
   /** Temp file to write output to. Lazy to avoid creating extra empty files until they're needed.
     */
   private lazy val tempFile: File = {
@@ -82,18 +87,20 @@ case class EphemeralOutput(override val name: Option[String]) extends ProcessorO
   override def getOutputFile(): File = tempFile
 
   /** Creates a new ephemeral output, which will use a fresh temp file for output. */
-  override def initialize(): ProcessorOutput = copy()
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorOutput = {
+    new EphemeralOutput(name)
+  }
 
   /** Deletes the temp file created. */
   override def commit(): Unit = tempFile.delete()
 }
 
 /** Output that is written to a file on disk. */
-case class FileOutput(override val name: Option[String], val file: File) extends ProcessorOutput {
+class FileOutput(override val name: Option[String], val file: File) extends ProcessorOutput {
   override def getOutputFile(): File = file
 
   /** Validates that the file can be written to. */
-  override def initialize(): ProcessorOutput = {
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorOutput = {
     if (!file.exists()) {
       file.createNewFile()
     }
@@ -104,14 +111,33 @@ case class FileOutput(override val name: Option[String], val file: File) extends
   }
 }
 
-case class AristoreFileOutput(override val name: Option[String], val datasetId: String,
+class AristoreFileOutput2(override val name: Option[String], val datasetId: String,
     val documentId: String)(override implicit val bindingModule: BindingModule)
     extends ProcessorOutput with Injectable {
 
-  val aristoreActor = {
-    val actorSystem = inject[ActorSystem]
-    val aristoreClient = inject[AriDatastoreClient]
-    actorSystem.actorOf(AristoreActor.props(aristoreClient))
+  val client = inject[ActorRef](AristoreActor.ActorId)
+
+  val outputDirectory: Future[File] = {
+    val request = AristoreActor.InitializeOutput(datasetId)
+    (client ? request)(10.minutes).mapTo[File]
+  }
+
+  override def getOutputFile(): File = {
+    val directory = Await.result(outputDirectory, Duration.Inf)
+    return new File(directory, documentId)
+  }
+
+  override def commit(): Unit = {
+    val request = AristoreActor.CommitOutput(datasetId)
+    Await.result((client ? request)(10.minutes), Duration.Inf)
+  }
+}
+
+class AristoreFileOutput(override val name: Option[String], val datasetId: String,
+    val documentId: String) extends ProcessorOutput {
+
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorOutput = {
+    return new AristoreFileOutput2(name, datasetId, documentId)
   }
 
   override def getOutputFile(): File = null

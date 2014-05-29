@@ -2,14 +2,15 @@ package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.FileDocument
-import org.allenai.ari.datastore.interface.TextFile
 import org.allenai.extraction.manager.ErmineException
 
-import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
+import akka.actor.ActorRef
+import akka.pattern.ask
+import com.escalatesoft.subcut.inject.BindingModule
 import com.typesafe.config.ConfigValue
 
 import scala.concurrent.{ Await, Future }
-import scala.concurrent.duration.Duration
+import scala.concurrent.duration._
 import scala.io.Source
 
 import java.io.File
@@ -19,18 +20,18 @@ import java.nio.file.Files
 /** An input to a pipeline. */
 sealed abstract class ProcessorInput {
   /** Performs any initialization and validation needed before a pipeline uses this as input, and
-    * returns a reference to a fully-initialized input.
+    * returns a reference to a fully-initialized input. Some inputs cannot be shared between
+    * pipeline executions, and will return new instances from this method.
     * @throws ErmineException if the configured input can't be used
     */
-  def initialize(): ProcessorInput = this
+  def initialize()(implicit bindingModule: BindingModule): ProcessorInput = this
 }
 object ProcessorInput {
   /** Builds an input from a config value.
     * @throws ErmineException if the config value has both a name and a URI specified, if the URI
     * scheme is unsupported, or if the config value can't be built into an IoConfig
     */
-  def fromConfigValue(configValue: ConfigValue)
-    (implicit bindingModule: BindingModule): ProcessorInput = {
+  def fromConfigValue(configValue: ConfigValue): ProcessorInput = {
 
     IoConfig.fromConfigValue(configValue) match {
       case IoConfig(None, None) => UnnamedInput()
@@ -44,11 +45,14 @@ object ProcessorInput {
   /** Builds the appropriate UriInput from the given URI.
     * @throws ErmineException if the URI scheme is unsupported
     */
-  def buildUriInput(uri: URI)(implicit bindingModule: BindingModule): UriInput = {
+  def buildUriInput(uri: URI): UriInput = {
     uri.getScheme match {
       case "file" => new FileInput(new File(uri))
       case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
-        case ("file", Array(datasetId, documentId)) => new AristoreFileInput(datasetId, documentId)
+        case ("file", Array(datasetId, documentId)) => {
+          new AristoreFileInput(datasetId, documentId, Future.failed(
+            new ErmineException("Internal error: uninitialized input dereferenced!")))
+        }
         case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
       }
       case _ => throw new ErmineException("Unsupported input scheme: " + uri)
@@ -75,7 +79,7 @@ sealed abstract case class UriInput() extends ProcessorInput {
 class FileInput(val file: File) extends UriInput() {
   override def getSource(): Source = Source.fromFile(file)
   /** @throws ErmineException if the configured file isn't readable */
-  override def initialize(): ProcessorInput = {
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
     if (!(file.isFile && file.canRead)) {
       throw new ErmineException("${file.getPath} not a file or unreadable")
     }
@@ -83,33 +87,25 @@ class FileInput(val file: File) extends UriInput() {
   }
 }
 
-/** IO object for Aristore FileDocuments. */
-class AristoreFileInput(val datasetId: String, val documentId: String)
-    (override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
+/** IO object initializing for Aristore FileDocuments. */
+// TODO(jkinkead): Split the initialization and input into two classes.
+class AristoreFileInput(val datasetId: String, val documentId: String,
+    val aristoreDocument: Future[FileDocument]) extends UriInput() {
 
-  val client: AriDatastoreClient = inject[AriDatastoreClient]
+  /** @return a new AristoreFileInput with a FileDocument containing the requested file */
+  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
+    val client = bindingModule.inject[ActorRef](Some(AristoreActor.ActorId.bindingName))
 
-  private lazy val tempDirectory: File = {
-    val dir = Files.createTempDirectory(datasetId).toFile
-    dir.deleteOnExit
-    dir
+    // Query the datastore for the file requested.
+    val request = AristoreActor.InitializeInput(datasetId, documentId)
+    val document = (client ? request)(10.minutes).mapTo[FileDocument]
+
+    new AristoreFileInput(datasetId, documentId, document)
   }
 
-  private var downloadLocation: Future[FileDocument] = null
-
-  override def initializeInput(): Unit = {
-    // TODO(jkinkead): Inject this.
-    import scala.concurrent.ExecutionContext.Implicits.global
-
-    // Query the datastore for the file requested!
-    downloadLocation = for {
-      dataset <- client.getDataset(datasetId)
-      document <- client.getFileDocument[TextFile](dataset.id, documentId, tempDirectory)
-    } yield document
-  }
-
+  /** @return the source for the downloaded aristore file */
   override def getSource(): Source = {
-    val file = Await.result(downloadLocation, Duration.Inf)
+    val file = Await.result(aristoreDocument, Duration.Inf)
     Source.fromFile(file.file)
   }
 }

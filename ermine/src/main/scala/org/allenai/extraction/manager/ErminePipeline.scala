@@ -22,7 +22,8 @@ import java.net.URI
   * @param requiredNamedInputs the named inputs required for this pipeline to run successfully
   */
 class ErminePipeline(val name: String, val description: String,
-    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String]) {
+    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String])
+    (implicit val bindingModule: BindingModule) {
 
   /** The number of unnamed inputs this pipeline requires. */
   val requiredUnnamedCount: Int = if (processors.head.wantsUnnamedInput) {
@@ -52,8 +53,13 @@ class ErminePipeline(val name: String, val description: String,
       }
     }
 
+    // Provide an execution-scoped instance of AristoreActor.
+    val pipelineModule = bindingModule ~ new AristoreActorModule()
+
     // Initialize inputs & outputs.
-    val initializedProcessors = for (processor <- processors) yield processor.getInitializedCopy()
+    val initializedProcessors = for (processor <- processors) yield {
+      processor.getInitializedCopy()(pipelineModule)
+    }
 
     // Run.
     runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
