@@ -328,38 +328,26 @@ write_simplified_triples(_,_,'').
 
 write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
 	member([S,P,O],Triples),
-	rdf_global_id(rel:Rel,P),
-	( S = Focus
-	; ( ( dependency(Focus,dep:partmod,S)
-	    ; dependency(Focus,dep:rcmod,S) ) ) ),
-	!,
-	lemma(O,Lemma),
-	( (Prev = '', Prefix = '')
-	; Prefix = ', ' ),
-	format(atom(Relation), '~w~w(Q, ~w) -> Q=', [Prefix,Rel,Lemma]).
-write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
-	member([S,P,O],Triples),
-	rdf_global_id(rel:Rel,P),
-	( O = Focus
-	; ( ( dependency(Focus,dep:partmod,O)
-	    ; dependency(Focus,dep:rcmod,O) ) ) ),
-	!,
-	lemma(S,Lemma),
-	( (Prev = '', Prefix = '')
-	; Prefix = ', ' ),
-	format(atom(Relation), '~w~w(~w, Q) -> Q=', [Prefix,Rel,Lemma]).
-write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
-	member([S,P,O],Triples),
 	rdf_global_id(rel:Rel,P), !,
-	lemma(S,SLemma),
-	lemma(O,OLemma),
+	focus_lemma(S,Focus,SLemma),
+	focus_lemma(O,Focus,OLemma),
 	( (Prev = '', Prefix = '')
 	; Prefix = ', ' ),
-	( (memberchk([_,_,Focus],Triples), Var = 'Q=')
+	( ( ( SLemma = 'Q'
+	    ; OLemma = 'Q'
+	    ; memberchk([_,_,Focus],Triples) ),
+	  Var = 'Q=' )
 	; Var = ''), % relation only
 	format(atom(Relation), '~w~w(~w, ~w) -> ~w', [Prefix,Rel,SLemma,OLemma,Var]).
 write_simplified_question_relation(_,_,_,' -> ').
-	
+
+focus_lemma(Focus,Focus,'Q') :- !.
+focus_lemma(Arg,Focus,'Q') :-
+	dependency(Focus,dep:partmod,Arg), !.
+focus_lemma(Arg,Focus,'Q') :-
+	dependency(Focus,dep:partmod,Arg), !.
+focus_lemma(Arg,_,Lemma) :-
+	lemma(Arg,Lemma).
 
 write_inf_tuple(GraphId,Remove,Triples,First,Out) :-
 	findall([S,P,O],
