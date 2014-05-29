@@ -5,10 +5,10 @@ write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
 	simplified_inf_rel(Rel,Relation),
 	simplified_inf_pred(Left,LPred,null,''), % LHS
 	simplified_inf_pred(Right,RPred,null,', '), % RHS
-	format(atom(Pretty), 'simplified(~w, "~w -> ~w~w.").~n', [Id,LPred,Relation,RPred]),
+	format(atom(Pretty), 'pretty(~w, "~w -> ~w~w.")', [Id,LPred,Relation,RPred]),
 	!.
 write_simplified_inf_relation(_,_,_,Id,Pretty) :- % failed
-	format(atom(Pretty), 'simplified(~w, "").~n', [Id]).
+	format(atom(Pretty), 'pretty(~w, "")', [Id]).
 
 simplified_inf_rel([Rel|_],Relation) :- % question-specific
 	rdf_global_id(rel:Rel,P),
@@ -89,10 +89,10 @@ simplified_lemma(Arg,_,Lemma) :-
 write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
 	simplified_lemma(Entity,null,Lemma),
 	simplified_inf_pred(Root,Pred,null,''), % no prefix
-	format(atom(Pretty), 'simplified(~w, "~w -> ~w.").~n', [Id,Lemma,Pred]),
+	format(atom(Pretty), 'pretty(~w, "~w -> ~w.")', [Id,Lemma,Pred]),
 	!.
 write_simplified_inf_simple_tuple(_,_,Id,Pretty) :- % failed
-	format(atom(Pretty), 'simplified(~w, "").~n', [Id]).
+	format(atom(Pretty), 'pretty(~w, "")', [Id]).
 
 
 %%% simplified form of questions
@@ -102,10 +102,10 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	write_simplified_triples(LeftTriples,Focus,LeftPred),
 	write_simplified_question_relation(LeftTriples,Focus,LeftPred,Relation),
 	write_simplified_triples(RightTriples,null,RightPred),
-	format(atom(Pretty), 'simplified(~w, "~w~w~w.").~n', [Id,LeftPred,Relation,RightPred]),
+	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LeftPred,Relation,RightPred]),
 	!.
 write_simplified_inf_question(_,_,Id,Pretty) :- % failed
-	format(atom(Pretty), 'simplified(~w, "").~n', [Id]).
+	format(atom(Pretty), 'pretty(~w, "")', [Id]).
 
 write_simplified_triples(Triples,Focus,OutPreds) :-
 	findall(Event,

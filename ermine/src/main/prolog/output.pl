@@ -195,7 +195,7 @@ write_inf_relation0(Top,Left,Rel,Right,Out) :-
 	format(atom(Relation), '~w(~w, ~w)', Rel),
 	write_inf_tuple(Right,LeftTriples,_,false,RHS),
 	write_simplified_inf_relation(Left,Right,Rel,Id,Pretty),
-	format(atom(Out), '~w~w~w:: ~w -> ~w~w.~n', [Text,Pretty,Id,LHS,Relation,RHS]).
+	format(atom(Out), '~w.~n~w.~n~w:: ~w -> ~w~w.~n', [Text,Pretty,Id,LHS,Relation,RHS]).
 
 
 write_question_relation0(Left,Right,Out) :-
@@ -211,7 +211,7 @@ write_question_relation0(Left,Right,Out) :-
 	write_inf_tuple(antecedent,Consequents,LeftTriples,true,LHS),
 	write_inf_tuple(consequent,LeftTriples,RightTriples,true,RHS),
 	write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty),
-	format(atom(Out), '~w~w~w:: ~w -> ~w.~n', [Text,Pretty,Id,LHS,RHS]),
+	format(atom(Out), '~w.~n~w.~n~w:: ~w -> ~w.~n', [Text,Pretty,Id,LHS,RHS]),
 	write_turtle_relation(antecedent,consequent),
 	!.
 write_question_relation0(_,_,''). % setup only, don't write
@@ -248,7 +248,7 @@ write_inf_simple_tuple0(Root,GraphId,Out) :-
 	% write rest
 	write_inf_tuple(GraphId,[[S,_,O]],_,true,Rest),
 	write_simplified_inf_simple_tuple(S,Root,Id,Pretty),
-	format(atom(Out), '~w~w~w:: ~w -> ~w.~n', [Text,Pretty,Id,First,Rest]).
+	format(atom(Out), '~w.~n~w.~n~w:: ~w -> ~w.~n', [Text,Pretty,Id,First,Rest]).
 write_inf_simple_tuple0(_,GraphId,'') :-
 	nl,
 	rdf_save_turtle(stream(current_output),[graph(GraphId),silent(true)]),
@@ -257,7 +257,7 @@ write_inf_simple_tuple0(_,GraphId,'') :-
 write_inf_rule_text(Root,Id,Out) :-
 	tokens(Root,Tokens),
 	tokens_text(Tokens,Text),
-	format(atom(Out), 'english(~w, "~w").~n', [Id,Text]),
+	format(atom(Out), 'english(~w, "~w")', [Id,Text]),
 	!.
 
 % comma separated list
