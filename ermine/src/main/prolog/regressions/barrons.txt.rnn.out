@@ -522,7 +522,7 @@ rule24:: isa(E12S7-survive, "survive"), agent(E12S7-survive, A1S7-animal), isa(A
 	pred:isa "\"breathing\"" .
 
 english(rule25, "Animals take in air by breathing").
-simplified(rule25, "take -> take in(animal, air, by(breathing)).").
+simplified(rule25, "take in -> take in(animal, air, by(breathing)).").
 rule25:: isa(E2S8-take, "take in") -> agent(E2S8-take, A1S8-animal), isa(A1S8-animal, "Animals"), object(E2S8-take, A4S8-air), isa(A4S8-air, "air"), by(E2S8-take, A6S8-breathing), isa(A6S8-breathing, "breathing").
 english(rule26, "Animals take in air by breathing").
 simplified(rule26, "animal -> take in(animal, air, by(breathing)).").
@@ -1271,7 +1271,7 @@ rule63:: isa(E14S15-survive, "survive"), agent(E14S15-survive, A1S15-plant), isa
 	pred:isa "\"their[Plants] leaves\"" .
 
 english(rule64, "Plants take in air through their[Plants] leaves").
-simplified(rule64, "take -> take in(plant, air, through(leaf)).").
+simplified(rule64, "take in -> take in(plant, air, through(leaf)).").
 rule64:: isa(E2S16-take, "take in") -> agent(E2S16-take, A1S16-plant), isa(A1S16-plant, "Plants"), object(E2S16-take, A4S16-air), isa(A4S16-air, "air"), through(E2S16-take, A7S16-leaf), isa(A7S16-leaf, "their[Plants] leaves").
 english(rule65, "Plants take in air through their[Plants] leaves").
 simplified(rule65, "plant -> take in(plant, air, through(leaf)).").
@@ -1814,7 +1814,7 @@ rule96:: isa(A2S26-thing, "things") -> isa(E1S26-nonlive, "nonlive"), agent(E1S2
 	pred:isa "\"living things\"" .
 
 english(rule97, "They[living things organisms] do not have a life cycle").
-simplified(rule97, "have -> not have(thing, cycle).").
+simplified(rule97, "not have -> not have(thing, cycle).").
 rule97:: isa(E4S28-have, "not have") -> agent(E4S28-have, A6S6-thing), isa(A6S6-thing, "living things"), object(E4S28-have, A7S28-cycle), isa(A7S28-cycle, "a life cycle").
 english(rule98, "They[living things organisms] do not have a life cycle").
 simplified(rule98, "thing -> not have(thing, cycle).").
@@ -2901,7 +2901,7 @@ rule156:: isa(A6S54-type, "some type of breathing") -> isa(E4S54-do, "do"), agen
 	pred:isa "\"their[Most animals] mouths\"" .
 
 english(rule157, "Most animals take in oxygen through their[Most animals] mouths").
-simplified(rule157, "take -> take in(animal, oxygen, through(mouth)).").
+simplified(rule157, "take in -> take in(animal, oxygen, through(mouth)).").
 rule157:: isa(E3S55-take, "take in") -> agent(E3S55-take, A2S55-animal), isa(A2S55-animal, "Most animals"), object(E3S55-take, A5S55-oxygen), isa(A5S55-oxygen, "oxygen"), through(E3S55-take, A8S55-mouth), isa(A8S55-mouth, "their[Most animals] mouths").
 english(rule158, "Most animals take in oxygen through their[Most animals] mouths").
 simplified(rule158, "animal -> take in(animal, oxygen, through(mouth)).").
@@ -2985,7 +2985,7 @@ rule162:: isa(E13S57-create, "create"), agent(E13S57-create, A1S57-both), isa(A1
 	pred:isa "\"carbon dioxide\"" .
 
 english(rule163, "Animals exhale give off carbon dioxide which is used by plants").
-simplified(rule163, "exhale -> exhale give off(animal, dioxide).").
+simplified(rule163, "exhale give off -> exhale give off(animal, dioxide).").
 rule163:: isa(E2S59-exhale, "exhale give off") -> agent(E2S59-exhale, A1S59-animal), isa(A1S59-animal, "Animals"), object(E2S59-exhale, A8S59-dioxide), isa(A8S59-dioxide, "carbon dioxide").
 english(rule164, "Animals exhale give off carbon dioxide which is used by plants").
 simplified(rule164, "animal -> exhale give off(animal, dioxide).").
@@ -3017,7 +3017,7 @@ rule165:: isa(A8S59-dioxide, "carbon dioxide") -> isa(E2S59-exhale, "exhale give
 	pred:isa "\"carbon dioxide\"" .
 
 english(rule166, "Plants take in carbon dioxide and give off oxygen").
-simplified(rule166, "take -> take in(plant, dioxide).").
+simplified(rule166, "take in -> take in(plant, dioxide).").
 rule166:: isa(E2S60-take, "take in") -> agent(E2S60-take, A1S60-plant), isa(A1S60-plant, "Plants"), object(E2S60-take, A5S60-dioxide), isa(A5S60-dioxide, "carbon dioxide").
 english(rule167, "Plants take in carbon dioxide and give off oxygen").
 simplified(rule167, "plant -> take in(plant, dioxide).").
@@ -4236,7 +4236,7 @@ rule232:: isa(E14S83-survive, "survive"), agent(E14S83-survive, A10S83-animal), 
 	pred:isa "\"oxygen\"" .
 
 english(rule233, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
-simplified(rule233, "inhale -> inhale breathe in(human, oxygen).").
+simplified(rule233, "inhale breathe in -> inhale breathe in(human, oxygen).").
 rule233:: isa(E2S84-inhale, "inhale breathe in") -> agent(E2S84-inhale, A1S84-human), isa(A1S84-human, "Humans"), object(E2S84-inhale, A7S84-oxygen), isa(A7S84-oxygen, "oxygen").
 english(rule234, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
 simplified(rule234, "human -> inhale breathe in(human, oxygen).").
@@ -4268,7 +4268,7 @@ rule235:: isa(A7S84-oxygen, "oxygen") -> isa(E2S84-inhale, "inhale breathe in"),
 	pred:isa "\"exhale breathe out carbon dioxide\"" .
 
 english(rule236, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
-simplified(rule236, "inhale -> inhale breathe in(human, exhale).").
+simplified(rule236, "inhale breathe in -> inhale breathe in(human, exhale).").
 rule236:: isa(E2S84-inhale, "inhale breathe in") -> agent(E2S84-inhale, A1S84-human), isa(A1S84-human, "Humans"), object(E2S84-inhale, A9S84-exhale), isa(A9S84-exhale, "exhale breathe out carbon dioxide").
 english(rule237, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
 simplified(rule237, "human -> inhale breathe in(human, exhale).").
@@ -6159,7 +6159,7 @@ rule351:: isa(A5S140-structure, "different structures") -> isa(E3S140-have, "hav
 	pred:isa "\"tissues\"" .
 
 english(rule352, "Groups of cells make up tissues").
-simplified(rule352, "make -> make up(group, tissue).").
+simplified(rule352, "make up -> make up(group, tissue).").
 rule352:: isa(E4S142-make, "make up") -> agent(E4S142-make, A1S142-group), isa(A1S142-group, "Groups of cells"), object(E4S142-make, A6S142-tissue), isa(A6S142-tissue, "tissues").
 english(rule353, "Groups of cells make up tissues").
 simplified(rule353, "group -> make up(group, tissue).").
@@ -6896,7 +6896,7 @@ rule397:: isa(A5S159-breathing, "breathing") -> isa(E2S159-do, "do"), agent(E2S1
 	pred:isa "\"air through the nose\"" .
 
 english(rule398, "Animals take in air which contains oxygen through the nose").
-simplified(rule398, "take -> take in(animal, air).").
+simplified(rule398, "take in -> take in(animal, air).").
 rule398:: isa(E2S160-take, "take in") -> agent(E2S160-take, A1S160-animal), isa(A1S160-animal, "Animals"), object(E2S160-take, A4S160-air), isa(A4S160-air, "air through the nose").
 english(rule399, "Animals take in air which contains oxygen through the nose").
 simplified(rule399, "animal -> take in(animal, air).").
@@ -8214,7 +8214,7 @@ rule485:: isa(E13S185-decide, "decide"), agent(E13S185-decide, A1S181-we), isa(A
 	pred:isa "\"light through the lenses\"" .
 
 english(rule486, "The eyes take in light through the lenses and transmit the shapes and images through the optic nerve to the brain").
-simplified(rule486, "take -> take in(eye, light).").
+simplified(rule486, "take in -> take in(eye, light).").
 rule486:: isa(E3S187-take, "take in") -> agent(E3S187-take, A2S187-eye), isa(A2S187-eye, "The eyes"), object(E3S187-take, A5S187-light), isa(A5S187-light, "light through the lenses").
 english(rule487, "The eyes take in light through the lenses and transmit the shapes and images through the optic nerve to the brain").
 simplified(rule487, "eye -> take in(eye, light).").
@@ -14130,7 +14130,7 @@ rule875:: isa(A4S336-only, "only") -> isa(E5S336-have, "have"), agent(E5S336-hav
 	pred:isa "\"kittens\"" .
 
 english(rule876, "Dogs can not have kittens and rabbits can not have guppies").
-simplified(rule876, "have -> not have(dog, kitten).").
+simplified(rule876, "not have -> not have(dog, kitten).").
 rule876:: isa(E4S337-have, "not have") -> agent(E4S337-have, A1S337-dog), isa(A1S337-dog, "Dogs"), object(E4S337-have, A5S337-kitten), isa(A5S337-kitten, "kittens").
 english(rule877, "Dogs can not have kittens and rabbits can not have guppies").
 simplified(rule877, "dog -> not have(dog, kitten).").
@@ -14178,7 +14178,7 @@ rule878:: isa(A5S337-kitten, "kittens") -> isa(E4S337-have, "not have"), agent(E
 	pred:isa "\"get\"" .
 
 english(rule879, "For example if you fall and get a deep cut that leaves a scar you would not pass the scar to your offspring").
-simplified(rule879, "pass -> not pass(you, scar, fall, get, for(example), to(offspring)).").
+simplified(rule879, "not pass -> not pass(you, scar, fall, get, for(example), to(offspring)).").
 rule879:: isa(E20S339-pass, "not pass") -> agent(E20S339-pass, A17S339-you), isa(A17S339-you, "you"), object(E20S339-pass, A22S339-scar), isa(A22S339-scar, "the scar"), for(E20S339-pass, A2S339-example), isa(A2S339-example, "example"), to(E20S339-pass, A25S339-offspring), isa(A25S339-offspring, "your offspring"), arg(E20S339-pass, A6S339-fall), isa(A6S339-fall, "if you fall a deep cut that leaves a scar"), arg(E20S339-pass, A8S339-get), isa(A8S339-get, "get").
 english(rule880, "For example if you fall and get a deep cut that leaves a scar you would not pass the scar to your offspring").
 simplified(rule880, "you -> not pass(you, scar, fall, get, for(example), to(offspring)).").
@@ -14259,7 +14259,7 @@ rule887:: isa(A4S341-trait, "not traits from your parents") -> example(A1S341-th
 	pred:isa "\"your offspring\"" .
 
 english(rule888, "You can not pass these traits to your offspring through your genes").
-simplified(rule888, "pass -> not pass(you, trait, to(offspring), through(gene)).").
+simplified(rule888, "not pass -> not pass(you, trait, to(offspring), through(gene)).").
 rule888:: isa(E4S343-pass, "not pass") -> agent(E4S343-pass, A1S343-you), isa(A1S343-you, "You"), object(E4S343-pass, A6S343-trait), isa(A6S343-trait, "these traits"), to(E4S343-pass, A9S343-offspring), isa(A9S343-offspring, "your offspring"), through(E4S343-pass, A12S343-gene), isa(A12S343-gene, "your genes").
 english(rule889, "You can not pass these traits to your offspring through your genes").
 simplified(rule889, "you -> not pass(you, trait, to(offspring), through(gene)).").
@@ -14980,7 +14980,7 @@ rule926:: isa(A6S352-morning, "the morning") -> isa(E1S352-brush, "brush"), agen
 	pred:isa "\"the day\"" .
 
 english(rule927, "Our[us] teeth build up food throughout the day and overnight while we[us] sleep").
-simplified(rule927, "build -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
+simplified(rule927, "build up -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
 rule927:: isa(E3S353-build, "build up") -> agent(E3S353-build, A2S353-tooth), isa(A2S353-tooth, "Our[us] teeth"), object(E3S353-build, A5S353-food), isa(A5S353-food, "food"), throughout(E3S353-build, A8S353-day), isa(A8S353-day, "the day"), throughout(E3S353-build, A10S353-overnight), isa(A10S353-overnight, "overnight"), arg(E3S353-build, A13S353-sleep), isa(A13S353-sleep, "while we[us] sleep").
 english(rule928, "Our[us] teeth build up food throughout the day and overnight while we[us] sleep").
 simplified(rule928, "tooth -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
@@ -16645,7 +16645,7 @@ rule1017:: isa(E18S394-do, "do"), agent(E18S394-do, A4S74-organism), isa(A4S74-o
 	pred:isa "\"carbon dioxide\"" .
 
 english(rule1018, "Plants also take in carbon dioxide from the environment and return oxygen to the air for animals to use").
-simplified(rule1018, "take -> take in(plant, dioxide, from(oxygen), to(air)).").
+simplified(rule1018, "take in -> take in(plant, dioxide, from(oxygen), to(air)).").
 rule1018:: isa(E3S395-take, "take in") -> agent(E3S395-take, A1S395-plant), isa(A1S395-plant, "Plants"), object(E3S395-take, A6S395-dioxide), isa(A6S395-dioxide, "carbon dioxide"), from(E3S395-take, A12S395-oxygen), isa(A12S395-oxygen, "the environment and return oxygen"), to(E3S395-take, A15S395-air), isa(A15S395-air, "the air for animals to use").
 english(rule1019, "Plants also take in carbon dioxide from the environment and return oxygen to the air for animals to use").
 simplified(rule1019, "plant -> take in(plant, dioxide, from(oxygen), to(air)).").
@@ -20348,7 +20348,7 @@ rule1241:: isa(E16S463-bring, "bring"), agent(E16S463-bring, A11S27-human), isa(
 	pred:isa "\"While it is nice\"" .
 
 english(rule1242, "While it is nice to have cars planes and trains for transportation these machines give off gases that are not helpful to the atmosphere").
-simplified(rule1242, "give -> give off(machine, gas, nice).").
+simplified(rule1242, "give off -> give off(machine, gas, nice).").
 rule1242:: isa(E18S464-give, "give off") -> agent(E18S464-give, A17S464-machine), isa(A17S464-machine, "these machines"), object(E18S464-give, A20S464-gas), isa(A20S464-gas, "gases"), arg(E18S464-give, A4S464-nice), isa(A4S464-nice, "While it is nice").
 english(rule1243, "While it is nice to have cars planes and trains for transportation these machines give off gases that are not helpful to the atmosphere").
 simplified(rule1243, "machine -> give off(machine, gas, nice).").
@@ -24190,7 +24190,7 @@ rule1493:: isa(A4S598-force, "a force") -> example(A1S598-friction, A4S598-force
 	pred:isa "\"the less friction against an object\"" .
 
 english(rule1494, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-simplified(rule1494, "surface -> the surface(smoother, friction, move).").
+simplified(rule1494, "the surface -> the surface(smoother, friction, move).").
 rule1494:: isa(E4S601-surface, "the surface") -> agent(E4S601-surface, A2S601-smoother), isa(A2S601-smoother, "The smoother"), object(E4S601-surface, A8S601-friction), isa(A8S601-friction, "the less friction against an object"), arg(E4S601-surface, A18S601-move), isa(A18S601-move, "the faster it[The smoother] will move").
 english(rule1495, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
 simplified(rule1495, "smoother -> the surface(smoother, friction, move).").
@@ -27227,7 +27227,7 @@ rule1670:: isa(A5S676-satellite, "a satellite of the Earth") -> example(A2S676-m
 	pred:isa "\"its[the moon around the Earth] own light\"" .
 
 english(rule1671, "The moon does not give off its[the moon around the Earth] own light").
-simplified(rule1671, "give -> not give off(moon, light).").
+simplified(rule1671, "not give off -> not give off(moon, light).").
 rule1671:: isa(E5S679-give, "not give off") -> agent(E5S679-give, A2S679-moon), isa(A2S679-moon, "The moon"), object(E5S679-give, A9S679-light), isa(A9S679-light, "its[the moon around the Earth] own light").
 english(rule1672, "The moon does not give off its[the moon around the Earth] own light").
 simplified(rule1672, "moon -> not give off(moon, light).").
@@ -29730,7 +29730,7 @@ rule1833:: isa(E9S757-be, "be"), agent(E9S757-be, A8S757-air), isa(A8S757-air, "
 	pred:isa "\"full\"" .
 
 english(rule1834, "If the ground is too hard or full of water or it[the ground] rains for a long period of time the ground can not soak up the water").
-simplified(rule1834, "soak -> not soak up(ground, water, full, rain).").
+simplified(rule1834, "not soak up -> not soak up(ground, water, full, rain).").
 rule1834:: isa(E26S760-soak, "not soak up") -> agent(E26S760-soak, A23S760-ground), isa(A23S760-ground, "the ground"), object(E26S760-soak, A29S760-water), isa(A29S760-water, "the water"), arg(E26S760-soak, A8S760-full), isa(A8S760-full, "full"), arg(E26S760-soak, A14S760-rain), isa(A14S760-rain, "it[the ground] rains for a long period of time").
 english(rule1835, "If the ground is too hard or full of water or it[the ground] rains for a long period of time the ground can not soak up the water").
 simplified(rule1835, "ground -> not soak up(ground, water, full, rain).").
@@ -29939,7 +29939,7 @@ rule1848:: isa(A12S766-condition, "specific climate conditions") -> isa(E9S766-e
 	pred:object <http://aristo.allenai.org/id#768.11> .
 
 english(rule1849, "During Spring the temperature starts out cold and gradually warms").
-simplified(rule1849, "start -> start out(temperature, warm, during(spring)).").
+simplified(rule1849, "start out -> start out(temperature, warm, during(spring)).").
 rule1849:: isa(E6S768-start, "start out") -> agent(E6S768-start, A5S768-temperature), isa(A5S768-temperature, "the temperature"), object(E6S768-start, A11S768-warm), isa(A11S768-warm, "cold and gradually warms"), during(E6S768-start, A2S768-spring), isa(A2S768-spring, "Spring").
 english(rule1850, "During Spring the temperature starts out cold and gradually warms").
 simplified(rule1850, "temperature -> start out(temperature, warm, during(spring)).").
@@ -31233,7 +31233,7 @@ rule1928:: isa(E4S815-freeze, "freeze"), agent(E4S815-freeze, A3S815-water), isa
 	pred:isa "\"periods of time\"" .
 
 english(rule1929, "This process continues over long periods of time breaking down rocks").
-simplified(rule1929, "continue -> continue break down rock(process, period, long).").
+simplified(rule1929, "continue break down rock -> continue break down rock(process, period, long).").
 rule1929:: isa(E3S816-continue, "continue break down rock") -> agent(E3S816-continue, A2S816-process), isa(A2S816-process, "This process"), object(E3S816-continue, A6S816-period), isa(A6S816-period, "periods of time"), arg(E3S816-continue, A5S816-long), isa(A5S816-long, "over long").
 english(rule1930, "This process continues over long periods of time breaking down rocks").
 simplified(rule1930, "process -> continue break down rock(process, period, long).").
@@ -31272,7 +31272,7 @@ rule1932:: isa(A5S816-long, "over long") -> isa(E3S816-continue, "continue break
 	pred:isa "\"the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water\"" .
 
 english(rule1933, "Plants can also break down rocks by the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
-simplified(rule1933, "break -> break down(plant, rock, by(action)).").
+simplified(rule1933, "break down -> break down(plant, rock, by(action)).").
 rule1933:: isa(E4S817-break, "break down") -> agent(E4S817-break, A1S817-plant), isa(A1S817-plant, "Plants"), object(E4S817-break, A6S817-rock), isa(A6S817-rock, "rocks"), by(E4S817-break, A9S817-action), isa(A9S817-action, "the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
 english(rule1934, "Plants can also break down rocks by the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
 simplified(rule1934, "plant -> break down(plant, rock, by(action)).").
@@ -32186,7 +32186,7 @@ rule1994:: isa(E7S834-move, "move"), agent(E7S834-move, A5S834-particle), isa(A5
 	pred:object <http://aristo.allenai.org/id#837.10> .
 
 english(rule1995, "Most of the time people do not feel the earthquakes").
-simplified(rule1995, "feel -> not feel(most, earthquake).").
+simplified(rule1995, "not feel -> not feel(most, earthquake).").
 rule1995:: isa(E8S837-feel, "not feel") -> agent(E8S837-feel, A1S837-most), isa(A1S837-most, "Most of the time people"), object(E8S837-feel, A10S837-earthquake), isa(A10S837-earthquake, "the earthquakes").
 english(rule1996, "Most of the time people do not feel the earthquakes").
 simplified(rule1996, "most -> not feel(most, earthquake).").
@@ -33170,7 +33170,7 @@ rule2053:: isa(E11S877-grow, "grow"), agent(E11S877-grow, A9S877-sunflower), isa
 	pred:isa "\"an experiment\"" .
 
 english(rule2054, "Students set up an experiment in which they[Students] exposed some sunflower seeds to rock music and some to no music").
-simplified(rule2054, "set -> set up(student, experiment).").
+simplified(rule2054, "set up -> set up(student, experiment).").
 rule2054:: isa(E2S878-set, "set up") -> agent(E2S878-set, A1S878-student), isa(A1S878-student, "Students"), object(E2S878-set, A5S878-experiment), isa(A5S878-experiment, "an experiment").
 english(rule2055, "Students set up an experiment in which they[Students] exposed some sunflower seeds to rock music and some to no music").
 simplified(rule2055, "student -> set up(student, experiment).").
@@ -39247,7 +39247,7 @@ rule2422:: isa(A13S997-mechanism, "a defense mechanism") -> isa(E3S997-have, "ha
 	pred:isa "\"a smell as a defense mechanism\"" .
 
 english(rule2423, "Some animals give off a smell as a defense mechanism").
-simplified(rule2423, "give -> give off(animal, smell).").
+simplified(rule2423, "give off -> give off(animal, smell).").
 rule2423:: isa(E3S998-give, "give off") -> agent(E3S998-give, A2S998-animal), isa(A2S998-animal, "Some animals"), object(E3S998-give, A6S998-smell), isa(A6S998-smell, "a smell as a defense mechanism").
 english(rule2424, "Some animals give off a smell as a defense mechanism").
 simplified(rule2424, "animal -> give off(animal, smell).").
@@ -40133,7 +40133,7 @@ rule2474:: isa(A12S1024-trait, "traits") -> example(A1S1024-characteristic, A12S
 	pred:isa "\"the parents\"" .
 
 english(rule2475, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
-simplified(rule2475, "reproduce -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
+simplified(rule2475, "reproduce combine to form the genetic information for the new offspring -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
 rule2475:: isa(E2S1029-reproduce, "reproduce combine to form the genetic information for the new offspring") -> agent(E2S1029-reproduce, A1S1029-organism), isa(A1S1029-organism, "Organisms"), object(E2S1029-reproduce, A3S1029-dna), isa(A3S1029-dna, "DNA"), from(E2S1029-reproduce, A6S1029-parent), isa(A6S1029-parent, "the parents").
 english(rule2476, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
 simplified(rule2476, "organism -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
@@ -47258,7 +47258,7 @@ rule2891:: isa(E6S1199-measure, "measure"), agent(E6S1199-measure, A2S1199-ruler
 	pred:isa "\"while in outer space\"" .
 
 english(rule2892, "The astronaut does not experience gravity while in outer space").
-simplified(rule2892, "experience -> not experience(astronaut, gravity, in).").
+simplified(rule2892, "not experience -> not experience(astronaut, gravity, in).").
 rule2892:: isa(E5S1201-experience, "not experience") -> agent(E5S1201-experience, A2S1201-astronaut), isa(A2S1201-astronaut, "The astronaut"), object(E5S1201-experience, A6S1201-gravity), isa(A6S1201-gravity, "gravity"), arg(E5S1201-experience, A8S1201-in), isa(A8S1201-in, "while in outer space").
 english(rule2893, "The astronaut does not experience gravity while in outer space").
 simplified(rule2893, "astronaut -> not experience(astronaut, gravity, in).").

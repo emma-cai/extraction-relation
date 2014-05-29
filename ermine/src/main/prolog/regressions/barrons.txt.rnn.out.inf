@@ -71,7 +71,7 @@ english(barrons.rule24, "Animals need air water and food to live and survive").
 simplified(barrons.rule24, "survive(animal) -> effect(need, survive), need(animal, food).").
 barrons.rule24:: isa(E12S7-survive, "survive"), agent(E12S7-survive, A1S7-animal), isa(A1S7-animal, "Animals") -> effect(E2S7-need, E12S7-survive), isa(E2S7-need, "need"), agent(E2S7-need, A1S7-animal), object(E2S7-need, A8S7-food), isa(A8S7-food, "food").
 english(barrons.rule25, "Animals take in air by breathing").
-simplified(barrons.rule25, "take -> take in(animal, air, by(breathing)).").
+simplified(barrons.rule25, "take in -> take in(animal, air, by(breathing)).").
 barrons.rule25:: isa(E2S8-take, "take in") -> agent(E2S8-take, A1S8-animal), isa(A1S8-animal, "Animals"), object(E2S8-take, A4S8-air), isa(A4S8-air, "air"), by(E2S8-take, A6S8-breathing), isa(A6S8-breathing, "breathing").
 english(barrons.rule26, "Animals take in air by breathing").
 simplified(barrons.rule26, "animal -> take in(animal, air, by(breathing)).").
@@ -188,7 +188,7 @@ english(barrons.rule63, "Plants need air water nutrients and light to live and s
 simplified(barrons.rule63, "survive(plant) -> effect(need, survive), need(plant, light).").
 barrons.rule63:: isa(E14S15-survive, "survive"), agent(E14S15-survive, A1S15-plant), isa(A1S15-plant, "Plants") -> effect(E2S15-need, E14S15-survive), isa(E2S15-need, "need"), agent(E2S15-need, A1S15-plant), object(E2S15-need, A10S15-light), isa(A10S15-light, "light").
 english(barrons.rule64, "Plants take in air through their[Plants] leaves").
-simplified(barrons.rule64, "take -> take in(plant, air, through(leaf)).").
+simplified(barrons.rule64, "take in -> take in(plant, air, through(leaf)).").
 barrons.rule64:: isa(E2S16-take, "take in") -> agent(E2S16-take, A1S16-plant), isa(A1S16-plant, "Plants"), object(E2S16-take, A4S16-air), isa(A4S16-air, "air"), through(E2S16-take, A7S16-leaf), isa(A7S16-leaf, "their[Plants] leaves").
 english(barrons.rule65, "Plants take in air through their[Plants] leaves").
 simplified(barrons.rule65, "plant -> take in(plant, air, through(leaf)).").
@@ -287,7 +287,7 @@ english(barrons.rule96, "Nonliving things are all around us").
 simplified(barrons.rule96, "thing -> nonlive(all, thing).").
 barrons.rule96:: isa(A2S26-thing, "things") -> isa(E1S26-nonlive, "nonlive"), agent(E1S26-nonlive, A4S26-all), isa(A4S26-all, "all around us"), object(E1S26-nonlive, A2S26-thing).
 english(barrons.rule97, "They[living things organisms] do not have a life cycle").
-simplified(barrons.rule97, "have -> not have(thing, cycle).").
+simplified(barrons.rule97, "not have -> not have(thing, cycle).").
 barrons.rule97:: isa(E4S28-have, "not have") -> agent(E4S28-have, A6S6-thing), isa(A6S6-thing, "living things"), object(E4S28-have, A7S28-cycle), isa(A7S28-cycle, "a life cycle").
 english(barrons.rule98, "They[living things organisms] do not have a life cycle").
 simplified(barrons.rule98, "thing -> not have(thing, cycle).").
@@ -467,7 +467,7 @@ english(barrons.rule156, "All living things do some type of breathing").
 simplified(barrons.rule156, "type -> do(thing, type).").
 barrons.rule156:: isa(A6S54-type, "some type of breathing") -> isa(E4S54-do, "do"), agent(E4S54-do, A3S54-thing), isa(A3S54-thing, "All living things"), object(E4S54-do, A6S54-type).
 english(barrons.rule157, "Most animals take in oxygen through their[Most animals] mouths").
-simplified(barrons.rule157, "take -> take in(animal, oxygen, through(mouth)).").
+simplified(barrons.rule157, "take in -> take in(animal, oxygen, through(mouth)).").
 barrons.rule157:: isa(E3S55-take, "take in") -> agent(E3S55-take, A2S55-animal), isa(A2S55-animal, "Most animals"), object(E3S55-take, A5S55-oxygen), isa(A5S55-oxygen, "oxygen"), through(E3S55-take, A8S55-mouth), isa(A8S55-mouth, "their[Most animals] mouths").
 english(barrons.rule158, "Most animals take in oxygen through their[Most animals] mouths").
 simplified(barrons.rule158, "animal -> take in(animal, oxygen, through(mouth)).").
@@ -485,7 +485,7 @@ english(barrons.rule162, "Both inhale take in oxygen which is used to create ene
 simplified(barrons.rule162, "create(both, energy) -> effect(inhale, create), inhale take in(both, oxygen).").
 barrons.rule162:: isa(E13S57-create, "create"), agent(E13S57-create, A1S57-both), isa(A1S57-both, "Both"), object(E13S57-create, A14S57-energy), isa(A14S57-energy, "energy") -> effect(E2S57-inhale, E13S57-create), isa(E2S57-inhale, "inhale take in"), agent(E2S57-inhale, A1S57-both), object(E2S57-inhale, A7S57-oxygen), isa(A7S57-oxygen, "oxygen").
 english(barrons.rule163, "Animals exhale give off carbon dioxide which is used by plants").
-simplified(barrons.rule163, "exhale -> exhale give off(animal, dioxide).").
+simplified(barrons.rule163, "exhale give off -> exhale give off(animal, dioxide).").
 barrons.rule163:: isa(E2S59-exhale, "exhale give off") -> agent(E2S59-exhale, A1S59-animal), isa(A1S59-animal, "Animals"), object(E2S59-exhale, A8S59-dioxide), isa(A8S59-dioxide, "carbon dioxide").
 english(barrons.rule164, "Animals exhale give off carbon dioxide which is used by plants").
 simplified(barrons.rule164, "animal -> exhale give off(animal, dioxide).").
@@ -494,7 +494,7 @@ english(barrons.rule165, "Animals exhale give off carbon dioxide which is used b
 simplified(barrons.rule165, "dioxide -> exhale give off(animal, dioxide).").
 barrons.rule165:: isa(A8S59-dioxide, "carbon dioxide") -> isa(E2S59-exhale, "exhale give off"), agent(E2S59-exhale, A1S59-animal), isa(A1S59-animal, "Animals"), object(E2S59-exhale, A8S59-dioxide).
 english(barrons.rule166, "Plants take in carbon dioxide and give off oxygen").
-simplified(barrons.rule166, "take -> take in(plant, dioxide).").
+simplified(barrons.rule166, "take in -> take in(plant, dioxide).").
 barrons.rule166:: isa(E2S60-take, "take in") -> agent(E2S60-take, A1S60-plant), isa(A1S60-plant, "Plants"), object(E2S60-take, A5S60-dioxide), isa(A5S60-dioxide, "carbon dioxide").
 english(barrons.rule167, "Plants take in carbon dioxide and give off oxygen").
 simplified(barrons.rule167, "plant -> take in(plant, dioxide).").
@@ -695,7 +695,7 @@ english(barrons.rule232, "Oxygen is a gas that is needed by many animals in orde
 simplified(barrons.rule232, "survive(animal) -> effect(need, survive), need(animal, gas).").
 barrons.rule232:: isa(E14S83-survive, "survive"), agent(E14S83-survive, A10S83-animal), isa(A10S83-animal, "many animals") -> effect(E7S83-need, E14S83-survive), isa(E7S83-need, "need"), agent(E7S83-need, A10S83-animal), object(E7S83-need, A4S83-gas), isa(A4S83-gas, "a gas").
 english(barrons.rule233, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
-simplified(barrons.rule233, "inhale -> inhale breathe in(human, oxygen).").
+simplified(barrons.rule233, "inhale breathe in -> inhale breathe in(human, oxygen).").
 barrons.rule233:: isa(E2S84-inhale, "inhale breathe in") -> agent(E2S84-inhale, A1S84-human), isa(A1S84-human, "Humans"), object(E2S84-inhale, A7S84-oxygen), isa(A7S84-oxygen, "oxygen").
 english(barrons.rule234, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
 simplified(barrons.rule234, "human -> inhale breathe in(human, oxygen).").
@@ -704,7 +704,7 @@ english(barrons.rule235, "Humans inhale breathe in oxygen and exhale breathe out
 simplified(barrons.rule235, "oxygen -> inhale breathe in(human, oxygen).").
 barrons.rule235:: isa(A7S84-oxygen, "oxygen") -> isa(E2S84-inhale, "inhale breathe in"), agent(E2S84-inhale, A1S84-human), isa(A1S84-human, "Humans"), object(E2S84-inhale, A7S84-oxygen).
 english(barrons.rule236, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
-simplified(barrons.rule236, "inhale -> inhale breathe in(human, exhale).").
+simplified(barrons.rule236, "inhale breathe in -> inhale breathe in(human, exhale).").
 barrons.rule236:: isa(E2S84-inhale, "inhale breathe in") -> agent(E2S84-inhale, A1S84-human), isa(A1S84-human, "Humans"), object(E2S84-inhale, A9S84-exhale), isa(A9S84-exhale, "exhale breathe out carbon dioxide").
 english(barrons.rule237, "Humans inhale breathe in oxygen and exhale breathe out carbon dioxide").
 simplified(barrons.rule237, "human -> inhale breathe in(human, exhale).").
@@ -1052,7 +1052,7 @@ english(barrons.rule351, "Each animal has different structures that serve differ
 simplified(barrons.rule351, "structure -> have(animal, structure).").
 barrons.rule351:: isa(A5S140-structure, "different structures") -> isa(E3S140-have, "have"), agent(E3S140-have, A2S140-animal), isa(A2S140-animal, "Each animal"), object(E3S140-have, A5S140-structure).
 english(barrons.rule352, "Groups of cells make up tissues").
-simplified(barrons.rule352, "make -> make up(group, tissue).").
+simplified(barrons.rule352, "make up -> make up(group, tissue).").
 barrons.rule352:: isa(E4S142-make, "make up") -> agent(E4S142-make, A1S142-group), isa(A1S142-group, "Groups of cells"), object(E4S142-make, A6S142-tissue), isa(A6S142-tissue, "tissues").
 english(barrons.rule353, "Groups of cells make up tissues").
 simplified(barrons.rule353, "group -> make up(group, tissue).").
@@ -1190,7 +1190,7 @@ english(barrons.rule397, "We do this by breathing").
 simplified(barrons.rule397, "breathing -> do(we, this, by(breathing)).").
 barrons.rule397:: isa(A5S159-breathing, "breathing") -> isa(E2S159-do, "do"), agent(E2S159-do, A1S159-we), isa(A1S159-we, "We"), object(E2S159-do, A3S159-this), isa(A3S159-this, "this"), by(E2S159-do, A5S159-breathing).
 english(barrons.rule398, "Animals take in air which contains oxygen through the nose").
-simplified(barrons.rule398, "take -> take in(animal, air).").
+simplified(barrons.rule398, "take in -> take in(animal, air).").
 barrons.rule398:: isa(E2S160-take, "take in") -> agent(E2S160-take, A1S160-animal), isa(A1S160-animal, "Animals"), object(E2S160-take, A4S160-air), isa(A4S160-air, "air through the nose").
 english(barrons.rule399, "Animals take in air which contains oxygen through the nose").
 simplified(barrons.rule399, "animal -> take in(animal, air).").
@@ -1454,7 +1454,7 @@ english(barrons.rule485, "The taste buds send information to the brain so that w
 simplified(barrons.rule485, "decide(we, like, dislike) -> effect(send, decide), send(bud, information, to(brain)).").
 barrons.rule485:: isa(E13S185-decide, "decide"), agent(E13S185-decide, A1S181-we), isa(A1S181-we, "We"), arg(E13S185-decide, A16S185-like), isa(A16S185-like, "if we[We] like the taste"), arg(E13S185-decide, A18S185-dislike), isa(A18S185-dislike, "dislike") -> effect(E4S185-send, E13S185-decide), isa(E4S185-send, "send"), agent(E4S185-send, A3S185-bud), isa(A3S185-bud, "The taste buds"), object(E4S185-send, A5S185-information), isa(A5S185-information, "information"), to(E4S185-send, A8S185-brain), isa(A8S185-brain, "the brain").
 english(barrons.rule486, "The eyes take in light through the lenses and transmit the shapes and images through the optic nerve to the brain").
-simplified(barrons.rule486, "take -> take in(eye, light).").
+simplified(barrons.rule486, "take in -> take in(eye, light).").
 barrons.rule486:: isa(E3S187-take, "take in") -> agent(E3S187-take, A2S187-eye), isa(A2S187-eye, "The eyes"), object(E3S187-take, A5S187-light), isa(A5S187-light, "light through the lenses").
 english(barrons.rule487, "The eyes take in light through the lenses and transmit the shapes and images through the optic nerve to the brain").
 simplified(barrons.rule487, "eye -> take in(eye, light).").
@@ -2624,7 +2624,7 @@ english(barrons.rule875, "An organism can only have an offspring from their[dogs
 simplified(barrons.rule875, "only -> have(organism, offspring, only).").
 barrons.rule875:: isa(A4S336-only, "only") -> isa(E5S336-have, "have"), agent(E5S336-have, A2S336-organism), isa(A2S336-organism, "An organism"), object(E5S336-have, A7S336-offspring), isa(A7S336-offspring, "an offspring from their[dogs] own species"), arg(E5S336-have, A4S336-only).
 english(barrons.rule876, "Dogs can not have kittens and rabbits can not have guppies").
-simplified(barrons.rule876, "have -> not have(dog, kitten).").
+simplified(barrons.rule876, "not have -> not have(dog, kitten).").
 barrons.rule876:: isa(E4S337-have, "not have") -> agent(E4S337-have, A1S337-dog), isa(A1S337-dog, "Dogs"), object(E4S337-have, A5S337-kitten), isa(A5S337-kitten, "kittens").
 english(barrons.rule877, "Dogs can not have kittens and rabbits can not have guppies").
 simplified(barrons.rule877, "dog -> not have(dog, kitten).").
@@ -2633,7 +2633,7 @@ english(barrons.rule878, "Dogs can not have kittens and rabbits can not have gup
 simplified(barrons.rule878, "kitten -> not have(dog, kitten).").
 barrons.rule878:: isa(A5S337-kitten, "kittens") -> isa(E4S337-have, "not have"), agent(E4S337-have, A1S337-dog), isa(A1S337-dog, "Dogs"), object(E4S337-have, A5S337-kitten).
 english(barrons.rule879, "For example if you fall and get a deep cut that leaves a scar you would not pass the scar to your offspring").
-simplified(barrons.rule879, "pass -> not pass(you, scar, fall, get, for(example), to(offspring)).").
+simplified(barrons.rule879, "not pass -> not pass(you, scar, fall, get, for(example), to(offspring)).").
 barrons.rule879:: isa(E20S339-pass, "not pass") -> agent(E20S339-pass, A17S339-you), isa(A17S339-you, "you"), object(E20S339-pass, A22S339-scar), isa(A22S339-scar, "the scar"), for(E20S339-pass, A2S339-example), isa(A2S339-example, "example"), to(E20S339-pass, A25S339-offspring), isa(A25S339-offspring, "your offspring"), arg(E20S339-pass, A6S339-fall), isa(A6S339-fall, "if you fall a deep cut that leaves a scar"), arg(E20S339-pass, A8S339-get), isa(A8S339-get, "get").
 english(barrons.rule880, "For example if you fall and get a deep cut that leaves a scar you would not pass the scar to your offspring").
 simplified(barrons.rule880, "you -> not pass(you, scar, fall, get, for(example), to(offspring)).").
@@ -2660,7 +2660,7 @@ english(barrons.rule887, "These are not traits from your parents").
 simplified(barrons.rule887, "trait -> example(these, trait).").
 barrons.rule887:: isa(A4S341-trait, "not traits from your parents") -> example(A1S341-these, A4S341-trait), isa(A1S341-these, "These").
 english(barrons.rule888, "You can not pass these traits to your offspring through your genes").
-simplified(barrons.rule888, "pass -> not pass(you, trait, to(offspring), through(gene)).").
+simplified(barrons.rule888, "not pass -> not pass(you, trait, to(offspring), through(gene)).").
 barrons.rule888:: isa(E4S343-pass, "not pass") -> agent(E4S343-pass, A1S343-you), isa(A1S343-you, "You"), object(E4S343-pass, A6S343-trait), isa(A6S343-trait, "these traits"), to(E4S343-pass, A9S343-offspring), isa(A9S343-offspring, "your offspring"), through(E4S343-pass, A12S343-gene), isa(A12S343-gene, "your genes").
 english(barrons.rule889, "You can not pass these traits to your offspring through your genes").
 simplified(barrons.rule889, "you -> not pass(you, trait, to(offspring), through(gene)).").
@@ -2777,7 +2777,7 @@ english(barrons.rule926, "Brushing your teeth in the morning and before going to
 simplified(barrons.rule926, "morning -> brush(part, tooth, in(morning)).").
 barrons.rule926:: isa(A6S352-morning, "the morning") -> isa(E1S352-brush, "brush"), agent(E1S352-brush, A15S352-part), isa(A15S352-part, "another important part of having good health"), object(E1S352-brush, A3S352-tooth), isa(A3S352-tooth, "your teeth"), in(E1S352-brush, A6S352-morning).
 english(barrons.rule927, "Our[us] teeth build up food throughout the day and overnight while we[us] sleep").
-simplified(barrons.rule927, "build -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
+simplified(barrons.rule927, "build up -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
 barrons.rule927:: isa(E3S353-build, "build up") -> agent(E3S353-build, A2S353-tooth), isa(A2S353-tooth, "Our[us] teeth"), object(E3S353-build, A5S353-food), isa(A5S353-food, "food"), throughout(E3S353-build, A8S353-day), isa(A8S353-day, "the day"), throughout(E3S353-build, A10S353-overnight), isa(A10S353-overnight, "overnight"), arg(E3S353-build, A13S353-sleep), isa(A13S353-sleep, "while we[us] sleep").
 english(barrons.rule928, "Our[us] teeth build up food throughout the day and overnight while we[us] sleep").
 simplified(barrons.rule928, "tooth -> build up(tooth, food, sleep, throughout(day), throughout(overnight)).").
@@ -3050,7 +3050,7 @@ english(barrons.rule1017, "While plants are able to make their[Plants are living
 simplified(barrons.rule1017, "do(organism) -> effect(need, do), need(organism, water, able).").
 barrons.rule1017:: isa(E18S394-do, "do"), agent(E18S394-do, A4S74-organism), isa(A4S74-organism, "living organisms") -> effect(E13S394-need, E18S394-do), isa(E13S394-need, "need"), agent(E13S394-need, A4S74-organism), object(E13S394-need, A16S394-water), isa(A16S394-water, "water"), arg(E13S394-need, A4S394-able), isa(A4S394-able, "While plants are able").
 english(barrons.rule1018, "Plants also take in carbon dioxide from the environment and return oxygen to the air for animals to use").
-simplified(barrons.rule1018, "take -> take in(plant, dioxide, from(oxygen), to(air)).").
+simplified(barrons.rule1018, "take in -> take in(plant, dioxide, from(oxygen), to(air)).").
 barrons.rule1018:: isa(E3S395-take, "take in") -> agent(E3S395-take, A1S395-plant), isa(A1S395-plant, "Plants"), object(E3S395-take, A6S395-dioxide), isa(A6S395-dioxide, "carbon dioxide"), from(E3S395-take, A12S395-oxygen), isa(A12S395-oxygen, "the environment and return oxygen"), to(E3S395-take, A15S395-air), isa(A15S395-air, "the air for animals to use").
 english(barrons.rule1019, "Plants also take in carbon dioxide from the environment and return oxygen to the air for animals to use").
 simplified(barrons.rule1019, "plant -> take in(plant, dioxide, from(oxygen), to(air)).").
@@ -3722,7 +3722,7 @@ english(barrons.rule1241, "Humans developed various means of transportation so t
 simplified(barrons.rule1241, "bring(human, goods, rather, to(they), than(live)) -> effect(develop, bring), develop(human, means).").
 barrons.rule1241:: isa(E16S463-bring, "bring"), agent(E16S463-bring, A11S27-human), isa(A11S27-human, "humans"), object(E16S463-bring, A23S463-goods), isa(A23S463-goods, "other goods"), to(E16S463-bring, A25S463-they), isa(A25S463-they, "them[humans]"), than(E16S463-bring, A28S463-live), isa(A28S463-live, "living at the site where they[humans] are made"), arg(E16S463-bring, A26S463-rather), isa(A26S463-rather, "rather") -> effect(E2S463-develop, E16S463-bring), isa(E2S463-develop, "develop"), agent(E2S463-develop, A1S463-human), isa(A1S463-human, "Humans"), object(E2S463-develop, A4S463-means), isa(A4S463-means, "various means of transportation").
 english(barrons.rule1242, "While it is nice to have cars planes and trains for transportation these machines give off gases that are not helpful to the atmosphere").
-simplified(barrons.rule1242, "give -> give off(machine, gas, nice).").
+simplified(barrons.rule1242, "give off -> give off(machine, gas, nice).").
 barrons.rule1242:: isa(E18S464-give, "give off") -> agent(E18S464-give, A17S464-machine), isa(A17S464-machine, "these machines"), object(E18S464-give, A20S464-gas), isa(A20S464-gas, "gases"), arg(E18S464-give, A4S464-nice), isa(A4S464-nice, "While it is nice").
 english(barrons.rule1243, "While it is nice to have cars planes and trains for transportation these machines give off gases that are not helpful to the atmosphere").
 simplified(barrons.rule1243, "machine -> give off(machine, gas, nice).").
@@ -4478,7 +4478,7 @@ english(barrons.rule1493, "Friction is a force that provides resistance whenever
 simplified(barrons.rule1493, "force -> example(friction, force).").
 barrons.rule1493:: isa(A4S598-force, "a force") -> example(A1S598-friction, A4S598-force), isa(A1S598-friction, "Friction").
 english(barrons.rule1494, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-simplified(barrons.rule1494, "surface -> the surface(smoother, friction, move).").
+simplified(barrons.rule1494, "the surface -> the surface(smoother, friction, move).").
 barrons.rule1494:: isa(E4S601-surface, "the surface") -> agent(E4S601-surface, A2S601-smoother), isa(A2S601-smoother, "The smoother"), object(E4S601-surface, A8S601-friction), isa(A8S601-friction, "the less friction against an object"), arg(E4S601-surface, A18S601-move), isa(A18S601-move, "the faster it[The smoother] will move").
 english(barrons.rule1495, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
 simplified(barrons.rule1495, "smoother -> the surface(smoother, friction, move).").
@@ -5009,7 +5009,7 @@ english(barrons.rule1670, "The moon is a satellite of the Earth").
 simplified(barrons.rule1670, "satellite -> example(moon, satellite).").
 barrons.rule1670:: isa(A5S676-satellite, "a satellite of the Earth") -> example(A2S676-moon, A5S676-satellite), isa(A2S676-moon, "The moon").
 english(barrons.rule1671, "The moon does not give off its[the moon around the Earth] own light").
-simplified(barrons.rule1671, "give -> not give off(moon, light).").
+simplified(barrons.rule1671, "not give off -> not give off(moon, light).").
 barrons.rule1671:: isa(E5S679-give, "not give off") -> agent(E5S679-give, A2S679-moon), isa(A2S679-moon, "The moon"), object(E5S679-give, A9S679-light), isa(A9S679-light, "its[the moon around the Earth] own light").
 english(barrons.rule1672, "The moon does not give off its[the moon around the Earth] own light").
 simplified(barrons.rule1672, "moon -> not give off(moon, light).").
@@ -5498,7 +5498,7 @@ english(barrons.rule1833, "Most severe thunderstorms occur in summer when air is
 simplified(barrons.rule1833, "be(air, hot) -> when(occur, be), occur(thunderstorm, moist, in(summer)).").
 barrons.rule1833:: isa(E9S757-be, "be"), agent(E9S757-be, A8S757-air), isa(A8S757-air, "air"), object(E9S757-be, A10S757-hot), isa(A10S757-hot, "hot") -> when(E4S757-occur, E9S757-be), isa(E4S757-occur, "occur"), agent(E4S757-occur, A3S757-thunderstorm), isa(A3S757-thunderstorm, "Most severe thunderstorms"), in(E4S757-occur, A6S757-summer), isa(A6S757-summer, "summer"), arg(E4S757-occur, A12S757-moist), isa(A12S757-moist, "moist").
 english(barrons.rule1834, "If the ground is too hard or full of water or it[the ground] rains for a long period of time the ground can not soak up the water").
-simplified(barrons.rule1834, "soak -> not soak up(ground, water, full, rain).").
+simplified(barrons.rule1834, "not soak up -> not soak up(ground, water, full, rain).").
 barrons.rule1834:: isa(E26S760-soak, "not soak up") -> agent(E26S760-soak, A23S760-ground), isa(A23S760-ground, "the ground"), object(E26S760-soak, A29S760-water), isa(A29S760-water, "the water"), arg(E26S760-soak, A8S760-full), isa(A8S760-full, "full"), arg(E26S760-soak, A14S760-rain), isa(A14S760-rain, "it[the ground] rains for a long period of time").
 english(barrons.rule1835, "If the ground is too hard or full of water or it[the ground] rains for a long period of time the ground can not soak up the water").
 simplified(barrons.rule1835, "ground -> not soak up(ground, water, full, rain).").
@@ -5543,7 +5543,7 @@ english(barrons.rule1848, "Each season that occurs in New York state experiences
 simplified(barrons.rule1848, "condition -> experience(season, condition).").
 barrons.rule1848:: isa(A12S766-condition, "specific climate conditions") -> isa(E9S766-experience, "experience"), agent(E9S766-experience, A2S766-season), isa(A2S766-season, "Each season"), object(E9S766-experience, A12S766-condition).
 english(barrons.rule1849, "During Spring the temperature starts out cold and gradually warms").
-simplified(barrons.rule1849, "start -> start out(temperature, warm, during(spring)).").
+simplified(barrons.rule1849, "start out -> start out(temperature, warm, during(spring)).").
 barrons.rule1849:: isa(E6S768-start, "start out") -> agent(E6S768-start, A5S768-temperature), isa(A5S768-temperature, "the temperature"), object(E6S768-start, A11S768-warm), isa(A11S768-warm, "cold and gradually warms"), during(E6S768-start, A2S768-spring), isa(A2S768-spring, "Spring").
 english(barrons.rule1850, "During Spring the temperature starts out cold and gradually warms").
 simplified(barrons.rule1850, "temperature -> start out(temperature, warm, during(spring)).").
@@ -5783,7 +5783,7 @@ english(barrons.rule1928, "When the water freezes it[Food] expands making the cr
 simplified(barrons.rule1928, "freeze(water) -> when(expand, freeze), expand(Food).").
 barrons.rule1928:: isa(E4S815-freeze, "freeze"), agent(E4S815-freeze, A3S815-water), isa(A3S815-water, "the water") -> when(E7S815-expand, E4S815-freeze), isa(E7S815-expand, "expand"), agent(E7S815-expand, A1S525-Food), isa(A1S525-Food, "Food").
 english(barrons.rule1929, "This process continues over long periods of time breaking down rocks").
-simplified(barrons.rule1929, "continue -> continue break down rock(process, period, long).").
+simplified(barrons.rule1929, "continue break down rock -> continue break down rock(process, period, long).").
 barrons.rule1929:: isa(E3S816-continue, "continue break down rock") -> agent(E3S816-continue, A2S816-process), isa(A2S816-process, "This process"), object(E3S816-continue, A6S816-period), isa(A6S816-period, "periods of time"), arg(E3S816-continue, A5S816-long), isa(A5S816-long, "over long").
 english(barrons.rule1930, "This process continues over long periods of time breaking down rocks").
 simplified(barrons.rule1930, "process -> continue break down rock(process, period, long).").
@@ -5795,7 +5795,7 @@ english(barrons.rule1932, "This process continues over long periods of time brea
 simplified(barrons.rule1932, "long -> continue break down rock(process, period, long).").
 barrons.rule1932:: isa(A5S816-long, "over long") -> isa(E3S816-continue, "continue break down rock"), agent(E3S816-continue, A2S816-process), isa(A2S816-process, "This process"), object(E3S816-continue, A6S816-period), isa(A6S816-period, "periods of time"), arg(E3S816-continue, A5S816-long).
 english(barrons.rule1933, "Plants can also break down rocks by the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
-simplified(barrons.rule1933, "break -> break down(plant, rock, by(action)).").
+simplified(barrons.rule1933, "break down -> break down(plant, rock, by(action)).").
 barrons.rule1933:: isa(E4S817-break, "break down") -> agent(E4S817-break, A1S817-plant), isa(A1S817-plant, "Plants"), object(E4S817-break, A6S817-rock), isa(A6S817-rock, "rocks"), by(E4S817-break, A9S817-action), isa(A9S817-action, "the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
 english(barrons.rule1934, "Plants can also break down rocks by the action of their[Plants are living organisms] roots which are constantly growing to secure the plant and seek water").
 simplified(barrons.rule1934, "plant -> break down(plant, rock, by(action)).").
@@ -5981,7 +5981,7 @@ english(barrons.rule1994, "Deposition occurs when the particles stop moving").
 simplified(barrons.rule1994, "move(particle) -> effect(stop, move), stop(particle).").
 barrons.rule1994:: isa(E7S834-move, "move"), agent(E7S834-move, A5S834-particle), isa(A5S834-particle, "the particles") -> effect(E6S834-stop, E7S834-move), isa(E6S834-stop, "stop"), agent(E6S834-stop, A5S834-particle).
 english(barrons.rule1995, "Most of the time people do not feel the earthquakes").
-simplified(barrons.rule1995, "feel -> not feel(most, earthquake).").
+simplified(barrons.rule1995, "not feel -> not feel(most, earthquake).").
 barrons.rule1995:: isa(E8S837-feel, "not feel") -> agent(E8S837-feel, A1S837-most), isa(A1S837-most, "Most of the time people"), object(E8S837-feel, A10S837-earthquake), isa(A10S837-earthquake, "the earthquakes").
 english(barrons.rule1996, "Most of the time people do not feel the earthquakes").
 simplified(barrons.rule1996, "most -> not feel(most, earthquake).").
@@ -6158,7 +6158,7 @@ english(barrons.rule2053, "One hypothesis was that Rock music caused sunflowers 
 simplified(barrons.rule2053, "grow(sunflower, faster) -> cause(music, grow).").
 barrons.rule2053:: isa(E11S877-grow, "grow"), agent(E11S877-grow, A9S877-sunflower), isa(A9S877-sunflower, "sunflowers"), arg(E11S877-grow, A12S877-faster), isa(A12S877-faster, "faster than no music") -> cause(A7S877-music, E11S877-grow), isa(A7S877-music, "Rock music").
 english(barrons.rule2054, "Students set up an experiment in which they[Students] exposed some sunflower seeds to rock music and some to no music").
-simplified(barrons.rule2054, "set -> set up(student, experiment).").
+simplified(barrons.rule2054, "set up -> set up(student, experiment).").
 barrons.rule2054:: isa(E2S878-set, "set up") -> agent(E2S878-set, A1S878-student), isa(A1S878-student, "Students"), object(E2S878-set, A5S878-experiment), isa(A5S878-experiment, "an experiment").
 english(barrons.rule2055, "Students set up an experiment in which they[Students] exposed some sunflower seeds to rock music and some to no music").
 simplified(barrons.rule2055, "student -> set up(student, experiment).").
@@ -7265,7 +7265,7 @@ english(barrons.rule2422, "Some animals have claws spines or shells as a defense
 simplified(barrons.rule2422, "mechanism -> have(animal, shell, as(mechanism)).").
 barrons.rule2422:: isa(A13S997-mechanism, "a defense mechanism") -> isa(E3S997-have, "have"), agent(E3S997-have, A2S997-animal), isa(A2S997-animal, "Some animals"), object(E3S997-have, A9S997-shell), isa(A9S997-shell, "shells"), as(E3S997-have, A13S997-mechanism).
 english(barrons.rule2423, "Some animals give off a smell as a defense mechanism").
-simplified(barrons.rule2423, "give -> give off(animal, smell).").
+simplified(barrons.rule2423, "give off -> give off(animal, smell).").
 barrons.rule2423:: isa(E3S998-give, "give off") -> agent(E3S998-give, A2S998-animal), isa(A2S998-animal, "Some animals"), object(E3S998-give, A6S998-smell), isa(A6S998-smell, "a smell as a defense mechanism").
 english(barrons.rule2424, "Some animals give off a smell as a defense mechanism").
 simplified(barrons.rule2424, "animal -> give off(animal, smell).").
@@ -7421,7 +7421,7 @@ english(barrons.rule2474, "Characteristics that are passed from a parent to chil
 simplified(barrons.rule2474, "trait -> example(characteristic, trait).").
 barrons.rule2474:: isa(A12S1024-trait, "traits") -> example(A1S1024-characteristic, A12S1024-trait), isa(A1S1024-characteristic, "Characteristics that are passed from a parent to child").
 english(barrons.rule2475, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
-simplified(barrons.rule2475, "reproduce -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
+simplified(barrons.rule2475, "reproduce combine to form the genetic information for the new offspring -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
 barrons.rule2475:: isa(E2S1029-reproduce, "reproduce combine to form the genetic information for the new offspring") -> agent(E2S1029-reproduce, A1S1029-organism), isa(A1S1029-organism, "Organisms"), object(E2S1029-reproduce, A3S1029-dna), isa(A3S1029-dna, "DNA"), from(E2S1029-reproduce, A6S1029-parent), isa(A6S1029-parent, "the parents").
 english(barrons.rule2476, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
 simplified(barrons.rule2476, "organism -> reproduce combine to form the genetic information for the new offspring(organism, dna, from(parent)).").
@@ -8672,7 +8672,7 @@ english(barrons.rule2891, "A ruler is used to measure the length of a piece of w
 simplified(barrons.rule2891, "measure(ruler, length) -> purpose(ruler, measure).").
 barrons.rule2891:: isa(E6S1199-measure, "measure"), agent(E6S1199-measure, A2S1199-ruler), isa(A2S1199-ruler, "A ruler"), object(E6S1199-measure, A8S1199-length), isa(A8S1199-length, "the length of a piece of wood") -> purpose(A2S1199-ruler, E6S1199-measure).
 english(barrons.rule2892, "The astronaut does not experience gravity while in outer space").
-simplified(barrons.rule2892, "experience -> not experience(astronaut, gravity, in).").
+simplified(barrons.rule2892, "not experience -> not experience(astronaut, gravity, in).").
 barrons.rule2892:: isa(E5S1201-experience, "not experience") -> agent(E5S1201-experience, A2S1201-astronaut), isa(A2S1201-astronaut, "The astronaut"), object(E5S1201-experience, A6S1201-gravity), isa(A6S1201-gravity, "gravity"), arg(E5S1201-experience, A8S1201-in), isa(A8S1201-in, "while in outer space").
 english(barrons.rule2893, "The astronaut does not experience gravity while in outer space").
 simplified(barrons.rule2893, "astronaut -> not experience(astronaut, gravity, in).").

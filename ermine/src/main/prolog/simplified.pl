@@ -87,7 +87,7 @@ simplified_lemma(Arg,_,Lemma) :-
 %%% simplified form of basic sentence (no relation)
 
 write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
-	lemma(Entity,Lemma),
+	simplified_lemma(Entity,null,Lemma),
 	simplified_inf_pred(Root,Pred,null,''), % no prefix
 	format(atom(Pretty), 'simplified(~w, "~w -> ~w.").~n', [Id,Lemma,Pred]),
 	!.
@@ -124,7 +124,7 @@ write_simplified_triples([[Entity|_]|Rest],Focus,OutPred) :-
 	Entity \= Focus,
 	\+ (member([Entity,P,_],Rest), rdf_global_id(rel:_,P)),
 	\+ (member([_,P,Entity],Rest), rdf_global_id(rel:_,P)),
-	lemma(Entity,OutPred).
+	simplified_lemma(Entity,Focus,OutPred).
 write_simplified_triples(_,_,'').
 
 write_simplified_question_relation(Triples,Focus,Prev,Relation) :-
