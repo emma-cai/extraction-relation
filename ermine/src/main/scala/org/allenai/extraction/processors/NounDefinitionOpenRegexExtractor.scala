@@ -42,8 +42,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
         var results = super.extractText(termDefinition)
 
         // Some retries if no results were found with just the definition text.
-        if (term.length > 0)
-        {
+        if (term.length > 0) {
           // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
           // a part of the scientific and cultural community; this group of people have attended a 
           // university and/or do research." is converted by the preprocessor into two separate definition
@@ -56,15 +55,17 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
           // "Academia: this group of people have attended a university and/or do research." to the 
           // definition extractor, it works since it has rules to handle this pattern, but not without
           // the "Academia: ".
-          if (results.isEmpty)
+          if (results.isEmpty) {
             results = super.extractText(term + " : " + termDefinition)
-
+          }
+          
           // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
           // does not have the subject as part of the definition. In this case passing it to the 
           // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
           // that arises in the brain." works.
-          if (results.isEmpty)
+          if (results.isEmpty) {
             results = super.extractText(term + " " + termDefinition)
+          }
         }
         
         // Output: First write out the input line.
