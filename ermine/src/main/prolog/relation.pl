@@ -2,6 +2,7 @@
 :- [expand].
 :- [tuple].
 :- [output].
+:- [simplified].
 :- [denominalizations].
 
 

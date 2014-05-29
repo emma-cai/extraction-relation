@@ -2,8 +2,8 @@ swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('sample/sam
 
 for f in sample/*.out
   do grep -E '^[;%]' $f > $f.txt
-     grep -E '^(english\(|rule[0-9]+:: )' $f | gsed -E "s/^(english[(])?rule/\1sample.rule/" > $f.inf
-     sed -E 's/(, )?isa\([^)]+\)//g;s/(\(|, )[EA][^-]+-/\1/g;s/:: ( -> )?(, )?/:: /;s/ -> , / -> /;s/ -> \././' $f.inf > $f.inf.simple
+     grep -E '^(english\(|pretty\(|rule[0-9]+:: )' $f | gsed -E "s/^((english|pretty)[(])?rule/\1sample.rule/" > $f.inf
+     sed -E 's/(, )?isa\([^)]+\)//g;s/(\(|, )[EA][^-]+-/\1/g;s/:: ( -> )?(, )?/:: /;s/ -> , / -> /;s/ -> \././' $f.inf | grep -v '^pretty(' > $f.inf.simple
      grep '^{"class":' $f > $f.json
      head $f | grep '^@' > $f.ttl
      grep -E '^[<	]' $f >> $f.ttl
@@ -20,8 +20,8 @@ swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('regression
 
 for f in regressions/*.out
   do grep -E '^[;%]' $f > $f.txt
-     grep -E '^(english\(|rule[0-9]+:: )' $f | gsed -E "s/^(english[(])?rule/\1`basename $f`.rule/;s/\.txt(\.rnn)?\.out//" > $f.inf
-     sed -E 's/(, )?isa\([^)]+\)//g;s/(\(|, )[EA][^-]+-/\1/g;s/:: ( -> )?(, )?/:: /;s/ -> , / -> /;s/ -> \././' $f.inf > $f.inf.simple
+     grep -E '^(english\(|pretty\(|rule[0-9]+:: )' $f | gsed -E "s/^((english|pretty)[(])?rule/\1`basename $f`.rule/;s/\.txt(\.rnn)?\.out//" > $f.inf
+     sed -E 's/(, )?isa\([^)]+\)//g;s/(\(|, )[EA][^-]+-/\1/g;s/:: ( -> )?(, )?/:: /;s/ -> , / -> /;s/ -> \././' $f.inf | grep -v '^pretty(' > $f.inf.simple
      grep '^{"class":' $f > $f.json
      head $f | grep '^@' > $f.ttl
      grep -E '^[<	]' $f >> $f.ttl
