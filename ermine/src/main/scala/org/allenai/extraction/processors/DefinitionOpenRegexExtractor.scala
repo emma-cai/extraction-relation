@@ -62,17 +62,18 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
   }
 
   /** prerocessLine : Break the input line into its constituent parts.
-    * The assumption here is that the required preprocessor for the given Definition corpus
-    * has been run earlier in the pipeline so that what feeds into this extractor (DefnExtractor)
-    * is of the form: <Term>\t<WordClass>\t<Definition> per line.
+    * The assumption here is that if a preprocessor for a given Definition corpus
+    * was run earlier in the pipeline and feeds into this extractor (DefinitionOpenRegexExtractor),
+    * then the input is of the form: <Term>\t<WordClass>\t<Definition> per line.
+    * Alternately, this extractor can be run by itself on input consisting of just a <Definition> 
+    * per line. 
     */
   def preprocessLine(defnInputLine: String): (String, String, String) = {
     defnInputLine.split("\t").toList match {
+      // For handling output format from Preprocessor
       case List(term, termWordClass, termDefinition, _*) => (term.trim, termWordClass.trim, termDefinition.trim)
-      // If there aren't at least three strings in the returned array and the array is not empty, consider the last
-      // string as the definition - when running through the ermine service/ extraction web demo, we will be passing
-      // just the definition text and nothing else.
-      case _ :+ termDefinition => ("", "", termDefinition)
+      // For handling just the raw definition- for e.g., when using the ermine service through the web demo
+      case Nil :+ termDefinition => ("", "", termDefinition.trim)
       case _ => ("", "", "")
     }
   }

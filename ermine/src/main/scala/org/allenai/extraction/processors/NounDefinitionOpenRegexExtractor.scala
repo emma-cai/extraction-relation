@@ -212,14 +212,17 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     val prep: String = nounDefinitionGetPrepFromNGSingle(typ, types)
     val adjs: Seq[String] = nounDefinitionGetAdjsFromNGSingle(typ, types)
 
-    if (noun.length() > 0) {
+    if (noun.length > 0) {
       results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + noun + ")")
-      if (aux.length() > 0)
+      if (aux.length > 0) {
         np ++= " " + aux
-      if (prep.length() > 0)
+      }
+      if (prep.length > 0) {
         np ++= ", " + prep
-      if ((np.length() > 0) && (!np.toString.equals(noun)))
+      }
+      if ((np.length > 0) && (!np.toString.equals(noun))) {
         results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + np + ")")
+      }
     }
 
     results ++= adjs.map(adj => "Quality: (" + definedTerm + ", is, " + adj + ")")
