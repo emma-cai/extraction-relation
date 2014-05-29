@@ -1,10 +1,11 @@
 package org.allenai.extraction.manager
 
 import org.allenai.extraction.Processor
+import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors._
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
-import com.typesafe.config.{ Config, ConfigException }
+import com.typesafe.config.{ Config, ConfigValue, ConfigException, ConfigValueFactory }
 
 import scala.collection.JavaConverters._
 
@@ -15,10 +16,23 @@ case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[Proce
   def wantsUnnamedInput: Boolean = {
     // Either the first (and by implication all subsequent) inputs are unnamed, or none are. We
     // consider empty inputs to be named.
-    inputs.headOption map { _.isUnnamed } getOrElse { false }
+    inputs.headOption match {
+      case Some(UnnamedInput()) => true
+      case _ => false
+    }
+  }
+
+  /** @return a copy of this processor config with initialized inputs and outputs */
+  def getInitializedCopy(): ProcessorConfig = {
+    val initializedInputs = inputs map { _.initialize() }
+    val initializedOutputs = outputs map { _.initialize() }
+    ProcessorConfig(name, processor, initializedInputs, initializedOutputs)
   }
 }
 object ProcessorConfig {
+  /** Empty-object config value used to build IO objects when their config is missing. */
+  val EmptyConfigValue: ConfigValue = ConfigValueFactory.fromAnyRef(Map.empty.asJava)
+
   /** Builds a ProcessorConfig from a config with required key `name` and optional `inputs` and
     * `outputs` keys. If either of `inputs` or `outputs` are missing, they will
     * be filled with unnamed IO instances.
@@ -34,8 +48,12 @@ object ProcessorConfig {
       throw new ErmineException(s"unknown processor '${processorName}'")
     }
 
-    val inputs = getIOValues(config, "inputs", processor.numInputs)
-    val outputs = getIOValues(config, "outputs", processor.numOutputs)
+    val inputs = getIOValues(config, "inputs", processor.numInputs) {
+      ProcessorInput.fromConfigValue
+    }
+    val outputs = getIOValues(config, "outputs", processor.numOutputs) {
+      ProcessorOutput.fromConfigValue
+    }
 
     if (inputs.size != processor.numInputs) {
       throw new ErmineException(s"extrator ${processorName} requires ${processor.numInputs} " +
@@ -53,13 +71,15 @@ object ProcessorConfig {
     * value at the given path to be an array of strings.
     * @throws ErmineException if the value at the path is not an array of strings
     */
-  def getIOValues(config: Config, path: String, numExpected: Int): Seq[ProcessorIo] = {
-    val configuredValues: Seq[ProcessorIo] = try {
+  def getIOValues[T](config: Config, path: String, numExpected: Int)
+    (factory: ConfigValue => T): Seq[T] = {
+
+    val configuredValues: Seq[T] = try {
       // Check for an object at the given path.
       if (config.hasPath(path)) {
         for {
-          (configValue, index) <- config.getList(path).asScala.zipWithIndex
-        } yield ProcessorIo.fromConfigValue(configValue, index)
+          configValue <- config.getList(path).asScala
+        } yield factory(configValue)
       } else {
         Seq.empty
       }
@@ -70,9 +90,8 @@ object ProcessorConfig {
     }
 
     if (configuredValues.size == 0) {
-      // If there were no IO objects configured, use an unnamed IO (pipe from the previous
-      // operation).
-      for (i <- 0 until numExpected) yield ProcessorIo.unnamedIO(i.toString)
+      // If there were no IO objects configured, use defaults.
+      for (_ <- 0 until numExpected) yield factory(EmptyConfigValue)
     } else {
       configuredValues
     }

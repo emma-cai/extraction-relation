@@ -1,13 +1,13 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
+import org.allenai.extraction.manager.io._
 
 import com.typesafe.config.ConfigFactory
 
 
 class ProcessorConfigTest extends UnitSpec {
   val validProcessor = "NoOpProcessor"
-  val unnamedIO = ProcessorIo.unnamedIO("0")
   // Binding module for fromConfig calls.
   implicit val bindingModule = TestErmineModule
 
@@ -18,8 +18,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(unnamedIO))
-    processor.outputs should be (Seq(unnamedIO))
+    processor.inputs should be (Seq(UnnamedInput()))
+    processor.outputs should be (Seq(EphemeralOutput(None)))
   }
 
   // Test that we can add inputs & outputs to the pipeline and have them be parsed.
@@ -30,8 +30,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(new EphemeralIo("a", false)))
-    processor.outputs should be (Seq(unnamedIO))
+    processor.inputs should be (Seq(NamedInput("a")))
+    processor.outputs should be (Seq(EphemeralOutput(None)))
   }
   it should "handle a processor with only outputs configured" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -40,8 +40,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(unnamedIO))
-    processor.outputs should be (Seq(new EphemeralIo("b", false)))
+    processor.inputs should be (Seq(UnnamedInput()))
+    processor.outputs should be (Seq(EphemeralOutput(Some("b"))))
   }
   it should "handle a processor with both inputs and outputs" in {
     val processorWithInputs = ConfigFactory.parseString(s"""
@@ -51,8 +51,8 @@ class ProcessorConfigTest extends UnitSpec {
       """)
     val processor = ProcessorConfig.fromConfig(processorWithInputs)
     processor.processor should be (NoOpProcessor)
-    processor.inputs should be (Seq(new EphemeralIo("a", false)))
-    processor.outputs should be (Seq(new EphemeralIo("x", false)))
+    processor.inputs should be (Seq(NamedInput("a")))
+    processor.outputs should be (Seq(EphemeralOutput(Some("x"))))
   }
 
   // Test that we handle bad names gracefully.
@@ -85,14 +85,5 @@ class ProcessorConfigTest extends UnitSpec {
     an[ErmineException] should be thrownBy {
       ProcessorConfig.fromConfig(badInputs)
     }
-  }
-
-  // Test that malformed inputs / outputs are handled gracefully.
-  "ProcessorConfig.Builder.getIOValues" should "return an unnamed IO for an empty array" in {
-    val emptyInputsConfig = ConfigFactory.parseString(s"""
-    ary = [ ]
-    """)
-
-    ProcessorConfig.getIOValues(emptyInputsConfig, "ary", 1) should be (Seq(unnamedIO))
   }
 }
