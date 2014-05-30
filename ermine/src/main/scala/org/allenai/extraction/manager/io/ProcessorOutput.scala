@@ -144,6 +144,8 @@ class AristoreFileOutput(override val name: Option[String], val datasetId: Strin
   /** The directory we're writing files to. */
   val outputDirectory: Future[File] = {
     val request = AristoreActor.InitializeOutput(datasetId)
+    // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
+    // executions.
     (client ? request)(10.minutes).mapTo[File]
   }
 
@@ -162,6 +164,8 @@ class AristoreFileOutput(override val name: Option[String], val datasetId: Strin
 
   /** Tells the AristoreActor to commit the given dataset. */
   override def commit(): Future[Unit] = {
+    // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
+    // executions.
     (client ? AristoreActor.CommitOutput(datasetId))(10.minutes).mapTo[Unit]
   }
 }

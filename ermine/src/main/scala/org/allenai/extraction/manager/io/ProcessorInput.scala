@@ -117,6 +117,8 @@ class AristoreFileInput(val datasetId: String, val documentId: String)
   /** A future holding the document we'll be reading. */
   val document: Future[FileDocument] = {
     // Query the datastore for the file requested.
+    // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
+    // executions.
     (client ? AristoreActor.InitializeInput(datasetId, documentId))(10.minutes).mapTo[FileDocument]
   }
 
