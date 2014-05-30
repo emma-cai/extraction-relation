@@ -75,7 +75,8 @@ object Ermine {
           println(s"Running pipeline '${pipeline.name}' . . .")
 
           val defaultInputs = options.defaultInputs match {
-            case Seq() => {
+            // If the first pipeline stage wants a single unnamed input, use STDIN.
+            case Seq() if pipeline.requiredUnnamedCount == 1 => {
               println("Using input from STDIN (press CTRL-D to end stream)")
               Seq(Source.fromInputStream(System.in))
             }
