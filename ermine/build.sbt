@@ -10,10 +10,11 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
 libraryDependencies ++= loggingImplementations ++ ferretDeps ++ Seq(akkaActor, typesafeConfig,
-  sprayJson, allenaiCommon, scopt, subcut, taggers) ++ testLibs
+  aristore, sprayJson, allenaiCommon, aristore, scopt, subcut, taggers) ++ testLibs
 
 dependencyOverrides ++= Set(
   "org.scala-lang" % "scala-library" % "2.10.4",
+  "log4j" % "log4j" % "1.2.17",
   "org.slf4j" % "slf4j-api" % "1.7.6",
   // subcut & scalatest depends on the latest version of scala-reflect, while subcut (transitively)
   // depends on an older version (2.10.0). Override to the latest version.
@@ -22,8 +23,11 @@ dependencyOverrides ++= Set(
   // Override the scopt library used by nlptools.
   // Unsafe only if we try to run an nlptools class that uses scopt (unlikely).
   "com.github.scopt" % "scopt_2.10" % "3.2.0",
-  // taggers (which is a dependency here) takes a dependency on. taggers looks for guava version 14.0.1.
-  "com.google.guava" % "guava" % "15.0"
+  // taggers (which is a dependency here) takes a dependency on. taggers looks for guava version
+  // 14.0.1.
+  "com.google.guava" % "guava" % "15.0",
+  // Minor version override.
+  akkaModule("actor")
 )
 
 // Don't create windows startup script.

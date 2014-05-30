@@ -93,6 +93,7 @@ object ExtractionBuild extends Build {
 
   val allenaiCommon = "org.allenai.common" %% "common" % "2014.04.28-SNAPSHOT"
   val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.2-SNAPSHOT"
+  val aristore = "org.allenai.ari-datastore" %% "client" % "2014.5.16-0-SNAPSHOT"
   val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
   val taggers = "org.allenai.taggers" %% "taggers-core" % "0.5-SNAPSHOT"
 

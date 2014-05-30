@@ -78,9 +78,38 @@ It is considered a configuration error if:
 * A processor with no inputs configured follows a processor with too few outputs to satisfy it.
 * The first processor requires command-line inputs, but a later processor requires named pipeline inputs. *NOTE*: This is mostly a failing of the Ermine interface; the ability to name input streams on the commandline is a project TODO.
 
-Normally, inputs and outputs only need to be simple strings. If desired, you may also add a `uri` to the input configuration to pipe the results to another location. They will still be available for downstream processors; this is similar to using the `tee` linux utility.
+### I/O specification
+
+As mentioned above, configuring IO is frequently optional - many intermediary processors can infer inputs and outputs correctly, even if they are missing. Configuring IO is needed if you wish to:
+
+1. Have input to a processor come from an earlier processor that doesn't immediately precede it, or from outside the pipeline.
+2. Have output from a non-final processor saved, or have multiple output streams saved.
+
+Inputs and outputs are configured similarly, but have slightly different semantics.
+
+Inputs have two fields, only one of which may be specified:
+* `name`: A named input. This will use either a named input to the pipeline, or a previous output with the same name.
+* `uri`: An input from outside the pipeline, read from the given URI.
+
+Outputs have two fields, where one or both may be specified:
+* `name`: A named output. Can be read by later inputs using the same name.
+* `uri`: A URI to write output to. Output will be written to this regardless of whether this output is read by a later input.
+
+You can specify inputs and outputs as objects with these keys, but you may also specify them as strings. A string configuration will be treated as a URI if it has a `:` character, and as a name otherwise.
+
+URIs support two schemes:
+* `file`: A file on local disk, e.g. `file:///dev/null`. Must be a full path (non-relative). Input will read from this file, and output will overwrite this file with all data produced.
+* `aristore`: An aristore document. URIs are of the form `aristore://{documentType}/{datasetName}/{documentId}`. Currently `documentType` must be `file`, for `FileDocument`s. Note that Aristore doesn't allow `/` to appear in dataset names or document IDs, so the URI will be unambiguous.
+
+For input, Aristore documents are read at pipeline execution time, and will use the latest version of the document available.
+
+For output, Ermine will collect all documents written by dataset, and commit them in a batch after the pipeline completes successfully. New datasets will be created automatically, if needed. `FileDocument`s will use the document ID as the filename.
+
 
 [The Ferret example](https://github.com/allenai/extraction/blob/master/ermine/examples/ferret.conf) is a good place to look for a sample configuration.
+[The Aristore example](https://github.com/allenai/extraction/blob/master/ermine/examples/aristore.conf) has sample Aristore I/O.
+
+
 
 ## Running ermine
 

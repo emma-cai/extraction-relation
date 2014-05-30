@@ -21,7 +21,10 @@ dependencyOverrides ++= Set(
   // subcut & scalatest depends on the latest version of scala-reflect, while subcut (transitively)
   // depends on an older version (2.10.0). Override to the latest version.
   // TODO(jkinkead): Update to the newest subcut release (2.1) once it's published.
-  "org.scala-lang" % "scala-reflect" % "2.10.3"
+  "org.scala-lang" % "scala-reflect" % "2.10.3",
+  // Somehow we get two versions of commons-io through ari-datastore-client - use the most recent
+  // one.
+  "commons-io" % "commons-io" % "2.4"
 )
 
 // Make sure we get the javaOptions we've set when we run.

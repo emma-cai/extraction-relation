@@ -4,7 +4,7 @@ import org.allenai.extraction.Processor
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors._
 
-import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
+import com.escalatesoft.subcut.inject.BindingModule
 import com.typesafe.config.{ Config, ConfigValue, ConfigException, ConfigValueFactory }
 
 import scala.collection.JavaConverters._
@@ -23,7 +23,7 @@ case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[Proce
   }
 
   /** @return a copy of this processor config with initialized inputs and outputs */
-  def getInitializedCopy(): ProcessorConfig = {
+  def getInitializedCopy()(implicit bindingModule: BindingModule): ProcessorConfig = {
     val initializedInputs = inputs map { _.initialize() }
     val initializedOutputs = outputs map { _.initialize() }
     ProcessorConfig(name, processor, initializedInputs, initializedOutputs)

@@ -1,5 +1,6 @@
 package org.allenai.extraction.service
 
+import org.allenai.extraction.ActorSystemModule
 import org.allenai.extraction.manager.ErmineModule
 
 import akka.actor.ActorSystem
@@ -8,11 +9,11 @@ import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import spray.can.Http
 
 class HttpServer(implicit val bindingModule: BindingModule) extends Injectable {
-  val port = inject [Int](ServiceModuleId.Port)
+  val port = inject[Int](ServiceModuleId.Port)
+  val actorSystem = inject[ActorSystem]
 
   def start(): Unit = {
-    implicit val system = ActorSystem("ermine-service")
-
+    implicit val system = actorSystem
     val service = system.actorOf(ErmineService.props(bindingModule))
 
     IO(Http) ! Http.Bind(service, "0.0.0.0", port = port)
@@ -20,9 +21,11 @@ class HttpServer(implicit val bindingModule: BindingModule) extends Injectable {
 }
 
 object HttpServer extends App {
-  implicit val serviceConfig = ServiceModule ~ ErmineModule
+  val system = ActorSystem("ermine-service")
 
-  val service = new HttpServer()
+  val serviceConfig = ServiceModule ~ new ErmineModule(system) ~ new ActorSystemModule(system)
+
+  val service = new HttpServer()(serviceConfig)
 
   service.start()
 }
