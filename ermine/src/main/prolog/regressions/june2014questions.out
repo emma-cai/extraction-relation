@@ -1,5 +1,4 @@
 QUESTION: Which force causes rocks to roll downhill? (A) gravity(B) friction(C) erosion(D) magnetism
-swipl -q -l extract.pl -g "extract('gravity causes rocks to roll downhill.', 'gravity'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('friction causes rocks to roll downhill.', 'friction'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('erosion causes rocks to roll downhill.', 'erosion'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('magnetism causes rocks to roll downhill.', 'magnetism'),halt.";sleep 1;
 % "gravity"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -141,7 +140,6 @@ english(rule1, "magnetism causes rocks to roll downhill").
 pretty(rule1, "roll(\"rocks\", \"downhill\") -> cause(Q, roll(\"rocks\", \"downhill\")), Q=\"magnetism\".").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill") -> cause(A1S1-magnetism, E5S1-roll), isa(A1S1-magnetism, "magnetism").
 QUESTION: Which activity is an example of a good health habit? (A) watching television(B) smoking cigarettes(C) eating candy(D) exercising every day
-swipl -q -l extract.pl -g "extract('watching television is an example of a good health habit.', 'watching television'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('smoking cigarettes is an example of a good health habit.', 'smoking cigarettes'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('eating candy is an example of a good health habit.', 'eating candy'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('exercising every day is an example of a good health habit.', 'exercising every day'),halt.";sleep 1;
 % "watching television"	"example[watching television] of"/EXAMPLE	"a good health habit"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -194,7 +192,41 @@ rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-television, A10S
 english(rule1, "smoking cigarettes is an example of a good health habit").
 pretty(rule1, "isa(habit, \"a good health habit\") -> example(Q, \"a good health habit\"), Q=\"smoking cigarettes\".").
 rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-cigarette, A10S1-habit), isa(A2S1-cigarette, "smoking cigarettes").
-% ("" "be" "" [ "an example of a good health habit" ] )
+% ("" "eat" "candy")	"example of"/EXAMPLE	"a good health habit"
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (3)
+
+<http://aristo.allenai.org/id#1.1>
+	a <event> ;
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> .
+
+<http://aristo.allenai.org/id#1.10>
+	a <entity> ;
+	pred:isa "\"a good health habit\"" .
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"candy\"" .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#1.1>
+	pred:isa "\"eat\"" ;
+	pred:object <http://aristo.allenai.org/id#1.2> ;
+	rel:example <http://aristo.allenai.org/id#1.10> .
+
+<http://aristo.allenai.org/id#1.2>
+	pred:isa "\"candy\"" .
+english(rule1, "eating candy is an example of a good health habit").
+pretty(rule1, "isa(habit, \"a good health habit\") -> example(Q, \"a good health habit\"), Q=eat(X, \"candy\").").
+rule1:: isa(A10S1-habit, "a good health habit") -> example(E1S1-eat, A10S1-habit), isa(E1S1-eat, "eat"), object(E1S1-eat, A2S1-candy), isa(A2S1-candy, "candy").
 % ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -230,7 +262,6 @@ english(rule1, "exercising every day is an example of a good health habit").
 pretty(rule1, "isa(habit, \"a good health habit\") -> example(Q, \"a good health habit\"), Q=exercise(X, \"every day\").").
 rule1:: isa(A11S1-habit, "a good health habit") -> example(E1S1-exercise, A11S1-habit), isa(E1S1-exercise, "exercise"), arg(E1S1-exercise, A3S1-day), isa(A3S1-day, "every day").
 QUESTION: A decomposer is an organism that (A) hunts and eats animals(B) migrates for the winter(C) breaks down dead plants and animals(D) uses water and sunlight to make food
-swipl -q -l extract.pl -g "extract('a decomposer is an organism that hunts and eats animals.', 'hunts and eats animals'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a decomposer is an organism that migrates for the winter.', 'migrates for the winter'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a decomposer is an organism that breaks down dead plants and animals.', 'breaks down dead plants and animals'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a decomposer is an organism that uses water and sunlight to make food.', 'uses water and sunlight to make food'),halt.";sleep 1;
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "hunt" "animals")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -524,7 +555,6 @@ pretty(rule2, "isa(decomposer, \"a decomposer\") -> example(\"a decomposer\", \"
 rule2:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-use, "use"), agent(E7S1-use, A5S1-organism), object(E7S1-use, A8S1-water), isa(A8S1-water, "water"), arg(E7S1-use, A12S1-make), isa(A12S1-make, "to make food"), object(E7S1-use, A10S1-sunlight), isa(A10S1-sunlight, "sunlight").
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
 QUESTION: What is one way to change water from a liquid to a solid? (A) decrease the temperature (B) increase the temperature (C) decrease the mass (D) increase the mass
-swipl -q -l extract.pl -g "extract('decreasing the temperature is one way to change water from a liquid to a solid.', 'decreasing the temperature'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('increasing the temperature is one way to change water from a liquid to a solid.', 'increasing the temperature'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('decreasing the mass is one way to change water from a liquid to a solid.', 'decreasing the mass'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('increasing the mass is one way to change water from a liquid to a solid.', 'increasing the mass'),halt.";sleep 1;
 % ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -718,8 +748,7 @@ english(rule1, "increasing the mass is one way to change water from a liquid to 
 pretty(rule1, "change(X, \"water\", from(\"a liquid\"), to(\"a solid\")) -> effect(Q, change(X, \"water\", from(\"a liquid\"), to(\"a solid\"))), Q=increase(X, \"the mass\").").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid") -> effect(E1S1-increase, E8S1-change), isa(E1S1-increase, "increase"), object(E1S1-increase, A3S1-mass), isa(A3S1-mass, "the mass").
 QUESTION: A student drops a ball. Which force causes the ball to fall to the ground? (A) electricity (B) friction (C) gravity (D) magnetism
-swipl -q -l extract.pl -g "extract('A student drops a ball. electricity causes the ball to fall to the ground.', 'electricity'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student drops a ball. friction causes the ball to fall to the ground.', 'friction'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student drops a ball. gravity causes the ball to fall to the ground.', 'gravity'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student drops a ball. magnetism causes the ball to fall to the ground.', 'magnetism'),halt.";sleep 1;
-% ("A student" "drop" "" [ "a ball" ] )
+% ("A student" "drop" "a ball")
 % "electricity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -734,8 +763,8 @@ swipl -q -l extract.pl -g "extract('A student drops a ball. electricity causes t
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:arg <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"drop\"" .
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
 
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -764,7 +793,7 @@ swipl -q -l extract.pl -g "extract('A student drops a ball. electricity causes t
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
 pretty(rule1, "drop(\"A student\", \"a ball\"), fall(\"a ball\", to(\"the ground\")) -> cause(Q, fall(\"a ball\", to(\"the ground\"))), Q=\"electricity\".").
-rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), arg(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-electricity, E6S2-fall), isa(A1S2-electricity, "electricity").
+rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-electricity, E6S2-fall), isa(A1S2-electricity, "electricity").
 % ("A student" "drop" "a ball")
 % "friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
@@ -904,7 +933,6 @@ english(rule1, "A student drops a ball magnetism causes the ball[a ball] to fall
 pretty(rule1, "drop(\"A student\", \"a ball\"), fall(\"a ball\", to(\"the ground\")) -> cause(Q, fall(\"a ball\", to(\"the ground\"))), Q=\"magnetism\".").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-magnetism, E6S2-fall), isa(A1S2-magnetism, "magnetism").
 QUESTION: What is the main source of energy for the water cycle? (A) electricity(B) erosion(C) gravity(D) sunlight
-swipl -q -l extract.pl -g "extract('electricity is the main source of energy for the water cycle.', 'electricity'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('erosion is the main source of energy for the water cycle.', 'erosion'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('gravity is the main source of energy for the water cycle.', 'gravity'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('sunlight is the main source of energy for the water cycle.', 'sunlight'),halt.";sleep 1;
 % "electricity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -983,37 +1011,33 @@ rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> exa
 english(rule1, "gravity is the main source of energy for the water cycle").
 pretty(rule1, "isa(source, \"the main source of energy for the water cycle\") -> example(Q, \"the main source of energy for the water cycle\"), Q=\"gravity\".").
 rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-gravity, A5S1-source), isa(A1S1-gravity, "gravity").
-% ("sunlight" "be" "" [ "the main source of energy for the water cycle" ] )
+% "sunlight"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (2)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"sunlight\"" .
 
-<http://aristo.allenai.org/id#1.2>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.1> ;
-	pred:arg <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"be\"" .
-
 <http://aristo.allenai.org/id#1.5>
+	a <entity> ;
 	pred:isa "\"the main source of energy for the water cycle\"" .
 
+@prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
 # Named toplevel resources (1)
 
 <http://aristo.allenai.org/id#1.1>
-	pred:isa "\"sunlight\"" .
+	pred:isa "\"sunlight\"" ;
+	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "sunlight is the main source of energy for the water cycle").
-pretty(rule1, "be(Q, \"the main source of energy for the water cycle\") -> , Q=\"sunlight\".").
-rule1:: isa(E2S1-be, "be"), agent(E2S1-be, A1S1-sunlight), arg(E2S1-be, A5S1-source), isa(A5S1-source, "the main source of energy for the water cycle") -> isa(A1S1-sunlight, "sunlight").
+pretty(rule1, "isa(source, \"the main source of energy for the water cycle\") -> example(Q, \"the main source of energy for the water cycle\"), Q=\"sunlight\".").
+rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-sunlight, A5S1-source), isa(A1S1-sunlight, "sunlight").
 QUESTION: Which instrument should a student use to measure exactly 10 milliliters (mL) of water? (A) graduated cylinder (B) pan balance (C) ruler (D) thermometer
-swipl -q -l extract.pl -g "extract('a student should use a graduated cylinder to measure exactly 10 milliliters (mL) of water.', 'graduated cylinder'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a student should use pan balance to measure exactly 10 milliliters (mL) of water.', 'pan balance'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a student should use a ruler to measure exactly 10 milliliters (mL) of water.', 'ruler'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a student should use a thermometer to measure exactly 10 milliliters (mL) of water.', 'thermometer'),halt.";sleep 1;
 % ("a student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1387,7 +1411,6 @@ english(rule2, "a student should use a thermometer to measure exactly 10 millili
 pretty(rule2, "use(\"a student\", Q), measure(\"a student\", \"10 milliliters of water\", \"mL\") -> effect(use(\"a student\", Q), measure(\"a student\", \"10 milliliters of water\", \"mL\")), Q=\"a thermometer\".").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
 QUESTION: Which activity is necessary for humans to maintain good health? (A) reading (B) resting (C) driving (D) talking
-swipl -q -l extract.pl -g "extract('reading is necessary for humans to maintain good health.', 'reading'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('resting is necessary for humans to maintain good health.', 'resting'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('driving activity is necessary for humans to maintain good health.', 'driving'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('talking activity is necessary for humans to maintain good health.', 'talking'),halt.";sleep 1;
 % ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1465,7 +1488,6 @@ rule1:: agent(E1S1-rest, A5S1-human), isa(A5S1-human, "humans"), isa(E7S1-mainta
 % "driving activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 % "talking activity"	"necessary"/REQUIREMENT	("humans" "maintain" "good health")
 QUESTION: Green plants get the energy they need to make food from (A) air (B) sunlight (C) water (D) soil
-swipl -q -l extract.pl -g "extract('green plants get the energy they need to make food from air.', 'air'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('green plants get the energy they need to make food from sunlight.', 'sunlight'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('green plants get the energy they need to make food from water.', 'water'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('green plants get the energy they need to make food from soil.', 'soil'),halt.";sleep 1;
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from air" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1509,54 +1531,7 @@ swipl -q -l extract.pl -g "extract('green plants get the energy they need to mak
 english(rule1, "green plants get the energy they[green plants] need to make food from air").
 pretty(rule1, "get(\"green plants\", \"the energy\"), make(\"green plants\", \"food from air\") -> effect(get(\"green plants\", \"the energy\"), make(\"green plants\", \"food from air\")), Q=\"air\".").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), arg(E9S1-make, A10S1-food) -> effect(E3S1-get, E9S1-make), isa(A10S1-food, "food from air").
-% ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "food" [ "from sunlight" ] )
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (6)
-
-<http://aristo.allenai.org/id#1.10>
-	a <entity> ;
-	pred:isa "\"food\"" .
-
-<http://aristo.allenai.org/id#1.12>
-	pred:isa "\"sunlight\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"green plants\"" .
-
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"the energy\"" .
-
-<http://aristo.allenai.org/id#1.9>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:from <http://aristo.allenai.org/id#1.12> ;
-	pred:isa "\"make\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#1.12>
-	pred:isa "\"sunlight\"" .
-
-<http://aristo.allenai.org/id#1.3>
-	rel:effect <http://aristo.allenai.org/id#1.9> .
-english(rule1, "green plants get the energy they[green plants] need to make food from sunlight").
-pretty(rule1, "get(\"green plants\", \"the energy\"), make(\"green plants\", \"food\", from(Q)) -> effect(get(\"green plants\", \"the energy\"), make(\"green plants\", \"food\", from(Q))), Q=\"sunlight\".").
-rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), object(E9S1-make, A10S1-food), isa(A10S1-food, "food"), from(E9S1-make, A12S1-sunlight) -> effect(E3S1-get, E9S1-make), isa(A12S1-sunlight, "sunlight").
+% ("green plants" "get" "" [ "the energy" ] )
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from water" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -1644,7 +1619,6 @@ english(rule1, "green plants get the energy they[green plants] need to make food
 pretty(rule1, "get(\"green plants\", \"the energy\"), make(\"green plants\", \"food from soil\") -> effect(get(\"green plants\", \"the energy\"), make(\"green plants\", \"food from soil\")), Q=\"soil\".").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), arg(E9S1-make, A10S1-food) -> effect(E3S1-get, E9S1-make), isa(A10S1-food, "food from soil").
 QUESTION: When plants and animals die, which organisms help return nutrients to the food chain? (A) decomposers (B) predators (C) prey (D) producers
-swipl -q -l extract.pl -g "extract('when plants and animals die, decomposers help return nutrients to the food chain.', 'decomposers'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('when plants and animals die, predators help return nutrients to the food chain.', 'predators'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('when plants and animals die, prey help return nutrients to the food chain.', 'prey'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('when plants and animals die, producers help return nutrients to the food chain.', 'producers'),halt.";sleep 1;
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2148,7 +2122,6 @@ english(rule3, "when plants and animals die producers help return nutrients to t
 pretty(rule3, "return(Q, \"nutrients\", to(\"the food chain\")), die(\"plants\") -> purpose(Q, return(Q, \"nutrients\", to(\"the food chain\"))), Q=return(\"producers\", \"nutrients\", to(\"the food chain\")).").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> purpose(A7S1-producer, E9S1-return), isa(A7S1-producer, "producers"), when(E9S1-return, E5S1-die).
 QUESTION: Which animal is preparing for a seasonal change in the environment? (A) a bat flying at night (B) a deer drinking water (C) an owl eating a mouse (D) a squirrel storing nuts
-swipl -q -l extract.pl -g "extract('a bat flying at night is preparing for a seasonal change in the environment.', 'a bat flying at night'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a deer drinking water is preparing for a seasonal change in the environment.', 'a deer drinking water'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('an owl eating a mouse is preparing for a seasonal change in the environment.', 'an owl eating a mouse'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('a squirrel storing nuts is preparing for a seasonal change in the environment.', 'a squirrel storing nuts'),halt.";sleep 1;
 % ("a bat"/?x "fly" "a bat" [ "at night" ] )	""/EFFECT	("a bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2337,7 +2310,6 @@ english(rule1, "a squirrel storing nuts is preparing for a seasonal change in th
 pretty(rule1, "prepare(Q, for(\"a seasonal change in the environment\")) -> effect(Q, prepare(Q, for(\"a seasonal change in the environment\"))), Q=store(\"a squirrel\", \"nuts\").").
 rule1:: isa(A2S1-squirrel, "a squirrel"), isa(E6S1-prepare, "prepare"), agent(E6S1-prepare, A2S1-squirrel), for(E6S1-prepare, A10S1-change), isa(A10S1-change, "a seasonal change in the environment") -> effect(E3S1-store, E6S1-prepare), isa(E3S1-store, "store"), agent(E3S1-store, A2S1-squirrel), object(E3S1-store, A4S1-nut), isa(A4S1-nut, "nuts").
 QUESTION: What form of energy is being used when a person pushes a wooden block across the floor? (A) mechanical (B) magnetic (C) sound (D) electrical
-swipl -q -l extract.pl -g "extract('mechanical energy is being used when a person pushes a wooden block across the floor.', 'mechanical'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('magnetic energy is being used when a person pushes a wooden block across the floor.', 'magnetic'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('sound is being used when a person pushes a wooden block across the floor.', 'sound'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('electrical energy is being used when a person pushes a wooden block across the floor.', 'electrical'),halt.";sleep 1;
 % ("a person"/?x "use" "mechanical energy")	"when"/WHEN	("a person"/?x "push" "a wooden block" [ "across the floor" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2531,7 +2503,6 @@ english(rule1, "electrical energy is being used when a person pushes a wooden bl
 pretty(rule1, "use(\"a person\", \"electrical energy\"), push(\"a person\", \"a wooden block\", across(\"the floor\")) -> when(use(\"a person\", \"electrical energy\"), push(\"a person\", \"a wooden block\", across(\"the floor\"))), Q=\"electrical\".").
 rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a person"), object(E5S1-use, A2S1-energy), isa(E9S1-push, "push"), agent(E9S1-push, A8S1-person), object(E9S1-push, A12S1-block), isa(A12S1-block, "a wooden block"), across(E9S1-push, A15S1-floor), isa(A15S1-floor, "the floor") -> when(E5S1-use, E9S1-push), isa(A2S1-energy, "electrical energy").
 QUESTION: Since green plants make their own food, they are called (A) predators (B) prey (C) decomposers (D) producers
-swipl -q -l extract.pl -g "extract('since green plants make their own food, they are called predators.', 'predators'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('since green plants make their own food, they are called prey.', 'prey'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('since green plants make their own food, they are called decomposers.', 'decomposers'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('since green plants make their own food, they are called producers.', 'producers'),halt.";sleep 1;
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"predators"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2648,7 +2619,6 @@ english(rule1, "since green plants make their[green plants] own food they[green 
 pretty(rule1, "make(\"green plants\", \"their[green plants] own food\") -> example(make(\"green plants\", \"their[green plants] own food\"), Q), Q=make(\"green plants\", \"their[green plants] own food\").").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food") -> example(E4S1-make, A12S1-producer), isa(A12S1-producer, "producers").
 QUESTION: Which human activity most often has a harmful effect on the environment? (A) breathing (B) growing (C) planting (D) polluting
-swipl -q -l extract.pl -g "extract('breathing most often has a harmful effect on the environment.', 'breathing'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('growing most often has a harmful effect on the environment.', 'growing'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('planting most often has a harmful effect on the environment.', 'planting'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('polluting most often has a harmful effect on the environment.', 'polluting'),halt.";sleep 1;
 % ("" "breathe" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2769,144 +2739,9 @@ english(rule1, "polluting most often has a harmful effect on the environment").
 pretty(rule1, "effect(X, on(\"the environment\")) -> effect(Q, effect(X, on(\"the environment\"))), Q=pollute(X).").
 rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment), isa(A10S1-environment, "the environment") -> effect(E1S1-pollute, E7S1-effect), isa(E1S1-pollute, "pollute").
 QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. These are two ways that organisms may adjust to (A) cold temperatures (B) hot temperatures (C) a shortage of food (D) a shortage of drinking water
-swipl -q -l extract.pl -g "extract('A dog opens its mouth and lets its tongue hang out. A human\'s body produces sweat. these are two ways that organisms may adjust to cold temperatures.', 'cold temperatures'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A dog opens its mouth and lets its tongue hang out. A human\'s body produces sweat. these are two ways that organisms may adjust to hot temperatures.', 'hot temperatures'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A dog opens its mouth and lets its tongue hang out. A human\'s body produces sweat. these are two ways that organisms may adjust to a shortage of food.', 'a shortage of food'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A dog opens its mouth and lets its tongue hang out. A human\'s body produces sweat. these are two ways that organisms may adjust to a shortage of drinking water.', 'a shortage of drinking water'),halt.";sleep 1;
 % ("A dog" "open" "its mouth")
-% ("A human 's body" "produce" "" [ "sweat" ] )
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to cold temperatures" ] )
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (10)
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"A dog\"" .
-
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"open\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"its mouth\"" .
-
-<http://aristo.allenai.org/id#2.4>
-	a <entity> ;
-	pred:isa "\"A human 's body\"" .
-
-<http://aristo.allenai.org/id#2.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
-
-<http://aristo.allenai.org/id#2.6>
-	pred:isa "\"sweat\"" .
-
-<http://aristo.allenai.org/id#3.1>
-	a <entity> ;
-	pred:isa "\"these\"" .
-
-<http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-
-<http://aristo.allenai.org/id#3.6>
-	a <entity> ;
-	pred:isa "\"organisms\"" .
-
-<http://aristo.allenai.org/id#3.8>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#3.6> ;
-	pred:isa "\"adjust\"" ;
-	pred:object <http://aristo.allenai.org/id#3.1> ;
-	pred:to <http://aristo.allenai.org/id#3.11> .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#3.1>
-	rel:example <http://aristo.allenai.org/id#3.8> .
-
-<http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
-pretty(rule1, "open(\"A dog\", \"its mouth\"), produce(\"A human 's body\", \"sweat\"), adjust(\"organisms\", \"these\", to(Q)) -> example(\"these\", adjust(\"organisms\", \"these\", to(Q))), Q=\"cold temperatures\".").
-rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature) -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "cold temperatures").
-% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to cold temperatures" ] )
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (11)
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa "\"A dog\"" .
-
-<http://aristo.allenai.org/id#1.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:isa "\"open\"" ;
-	pred:object <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"its mouth\"" .
-
-<http://aristo.allenai.org/id#2.4>
-	a <entity> ;
-	pred:isa "\"A human 's body\"" .
-
-<http://aristo.allenai.org/id#2.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
-
-<http://aristo.allenai.org/id#2.6>
-	pred:isa "\"sweat\"" .
-
-<http://aristo.allenai.org/id#3.1>
-	a <entity> ;
-	pred:isa "\"these\"" .
-
-<http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-
-<http://aristo.allenai.org/id#3.4>
-	a <entity> ;
-	pred:isa "\"two ways[these]\"" .
-
-<http://aristo.allenai.org/id#3.6>
-	a <entity> ;
-	pred:isa "\"organisms\"" .
-
-<http://aristo.allenai.org/id#3.8>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#3.6> ;
-	pred:isa "\"adjust\"" ;
-	pred:object <http://aristo.allenai.org/id#3.1> ,
-		    <http://aristo.allenai.org/id#3.4> ;
-	pred:to <http://aristo.allenai.org/id#3.11> .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#3.1>
-	rel:example <http://aristo.allenai.org/id#3.8> .
-
-<http://aristo.allenai.org/id#3.11>
-	pred:isa "\"cold temperatures\"" .
-english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
-pretty(rule2, "open(\"A dog\", \"its mouth\"), produce(\"A human 's body\", \"sweat\"), adjust(\"organisms\", \"these\", \"two ways[these]\", to(Q)) -> example(\"these\", adjust(\"organisms\", \"these\", \"two ways[these]\", to(Q))), Q=\"cold temperatures\".").
-rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "cold temperatures").
+% ("A human 's body" "produce" "sweat")
+% ("these" "be" "" [ "two ways" ] )
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to hot temperatures" ] )
@@ -3325,7 +3160,6 @@ english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A 
 pretty(rule2, "open(\"A dog\", \"its mouth\"), produce(\"A human 's body\", \"sweat\"), adjust(\"organisms\", \"these\", \"two ways[these]\", to(Q)) -> example(\"these\", adjust(\"organisms\", \"these\", \"two ways[these]\", to(Q))), Q=\"a shortage of drinking water\".").
 rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of drinking water").
 QUESTION: A student is growing some plants for an experiment. She notices small white spots on the leaves. Which tool should she use to get a better look at the spots? (A) thermometer (B) hand lens (C) graduated cylinder (D) balance
-swipl -q -l extract.pl -g "extract('A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a thermometer to get a better look at the spots.', 'thermometer'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a hand lens to get a better look at the spots.', 'hand lens'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a graduated cylinder to get a better look at the spots.', 'graduated cylinder'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A student is growing some plants for an experiment. She notices small white spots on the leaves. she should use a balance to get a better look at the spots.', 'balance'),halt.";sleep 1;
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
@@ -3406,7 +3240,7 @@ pretty(rule1, "grow(\"A student\", \"some plants\", for(\"an experiment\")), not
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-thermometer), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E7S3-get), isa(A5S3-thermometer, "a thermometer").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a hand lens")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+% ("She"/?x "use" "a hand lens")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3450,7 +3284,6 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"the leaves\"" .
 
 <http://aristo.allenai.org/id#3.11>
-	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
@@ -3466,8 +3299,8 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#3.11> .
+	pred:arg <http://aristo.allenai.org/id#3.11> ;
+	pred:isa "\"get\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3481,10 +3314,10 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"a hand lens\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
 pretty(rule1, "grow(\"A student\", \"some plants\", for(\"an experiment\")), notice(\"She\", \"small white spots\", on(\"the leaves\")), use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\") -> effect(use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\")), Q=\"a hand lens\".").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-lens, "a hand lens").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), arg(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-lens, "a hand lens").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3528,7 +3361,6 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"the leaves\"" .
 
 <http://aristo.allenai.org/id#3.11>
-	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
@@ -3544,8 +3376,8 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#3.11> .
+	pred:arg <http://aristo.allenai.org/id#3.11> ;
+	pred:isa "\"get\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3559,7 +3391,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"a graduated cylinder\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
 pretty(rule1, "grow(\"A student\", \"some plants\", for(\"an experiment\")), notice(\"She\", \"small white spots\", on(\"the leaves\")), use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\") -> effect(use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\")), Q=\"a graduated cylinder\".").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), arg(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
@@ -3639,7 +3471,6 @@ english(rule1, "A student is growing some plants for an experiment She notices s
 pretty(rule1, "grow(\"A student\", \"some plants\", for(\"an experiment\")), notice(\"She\", \"small white spots\", on(\"the leaves\")), use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\") -> effect(use(\"She\", Q), get(\"She\", \"a better look at the spots[small white spots]\")), Q=\"a balance\".").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-balance), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E7S3-get), isa(A5S3-balance, "a balance").
 QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the fox to (A) find food(B) keep warmer(C) grow stronger(D) escape from predators
-swipl -q -l extract.pl -g "extract('A fox grows thicker fur as a season changes. this adaptation helps the fox to find food.', 'find food'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A fox grows thicker fur as a season changes. this adaptation helps the fox to keep warmer.', 'keep warmer'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A fox grows thicker fur as a season changes. this adaptation helps the fox to grow stronger.', 'grow stronger'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A fox grows thicker fur as a season changes. this adaptation helps the fox to escape from predators.', 'escape from predators'),halt.";sleep 1;
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 % ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "find" "food")
 
@@ -3875,7 +3706,6 @@ english(rule1, "A fox grows thicker fur as a season changes this adaptation help
 pretty(rule1, "grow(\"A fox\", \"thicker fur\", as(\"a season changes\")), adaptation(\"A fox\") -> purpose(adaptation(\"A fox\"), Q), Q=adapt(\"A fox\"), escape(\"A fox\", \"from predators\").").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-fox), isa(A2S1-fox, "A fox"), object(E3S1-grow, A5S1-fur), isa(A5S1-fur, "thicker fur"), as(E3S1-grow, A9S1-change), isa(A9S1-change, "a season changes"), isa(E2S2-adaptation, "adapt"), agent(E2S2-adaptation, A2S1-fox) -> purpose(E2S2-adaptation, E7S2-escape), isa(E7S2-escape, "escape"), agent(E7S2-escape, A2S1-fox), object(E7S2-escape, A8S2-from), isa(A8S2-from, "from predators").
 QUESTION: Which adaptation often helps an animal attract a mate? (A) hibernation (B) camouflage (C) coloration (D) migration
-swipl -q -l extract.pl -g "extract('hibernation often helps an animal attract a mate.', 'hibernation'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('camouflage often helps an animal attract a mate.', 'camouflage'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('coloration often helps an animal attract a mate.', 'coloration'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('migration often helps an animal attract a mate.', 'migration'),halt.";sleep 1;
 % ("an animal"/?x "hibernate" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -4024,7 +3854,6 @@ english(rule1, "migration often helps an animal attract a mate").
 pretty(rule1, "attract(\"an animal\", \"a mate\") -> purpose(Q, attract(\"an animal\", \"a mate\")), Q=migrate(\"an animal\").").
 rule1:: agent(E1S1-migration, A5S1-animal), isa(A5S1-animal, "an animal"), isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate") -> purpose(E1S1-migration, E6S1-attract), isa(E1S1-migration, "migrate").
 QUESTION: Animals get energy for growth and repair from (A) soil (B) food (C) water (D) air
-swipl -q -l extract.pl -g "extract('animals get energy for growth and repair from soil.', 'soil'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('animals get energy for growth and repair from food.', 'food'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('animals get energy for growth and repair from water.', 'water'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('animals get energy for growth and repair from air.', 'air'),halt.";sleep 1;
 % ("animals" "get" "energy" [ "for growth from soil", "for repair" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -4178,7 +4007,6 @@ english(rule1, "animals get energy for growth and repair from air").
 pretty(rule1, "get(\"animals\", \"energy\", for(\"growth from air\"), for(\"repair\")) -> , Q=\"air\".").
 rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "animals"), object(E2S1-get, A3S1-energy), isa(A3S1-energy, "energy"), for(E2S1-get, A5S1-growth), for(E2S1-get, A7S1-repair), isa(A7S1-repair, "repair") -> isa(A5S1-growth, "growth from air").
 QUESTION: A car skids along the road and smoke appears to be coming from under the tires. The heat that produces the smoke is caused by (A) magnetism (B) sound (C) light (D) friction
-swipl -q -l extract.pl -g "extract('A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by magnetism.', 'magnetism'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by sound.', 'sound'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by light.', 'light'),halt.";sleep 1; swipl -q -l extract.pl -g "extract('A car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by friction.', 'friction'),halt.";sleep 1;
 % ("A car skids along the road and smoke" "appear" "")
 % "magnetism"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 
