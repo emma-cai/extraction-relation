@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.manager.{ ErmineException, TestErmineModule }
 
 import com.typesafe.config.{ ConfigValue, ConfigValueFactory }
 
@@ -10,6 +10,8 @@ import scala.collection.JavaConverters._
 import java.io.File
 
 class ProcessorOutputTest extends UnitSpec {
+  implicit val bindingModule = TestErmineModule
+
   def configValue(values: (String, AnyRef)*): ConfigValue = {
     ConfigValueFactory.fromMap(values.toMap.asJava)
   }
@@ -17,7 +19,7 @@ class ProcessorOutputTest extends UnitSpec {
   "ProcessorOutput.fromConfigValue" should "build a file output correctly" in {
     val output = ProcessorOutput.fromConfigValue(
       configValue("name" -> "a", "uri" -> "file:///dev/null"))
-    output should be (new FileOutput(Some("a"), new File("/dev/null")))
+    output should be (FileOutput(Some("a"), new File("/dev/null")))
   }
 
   it should "fail when given an unsupported URI" in {

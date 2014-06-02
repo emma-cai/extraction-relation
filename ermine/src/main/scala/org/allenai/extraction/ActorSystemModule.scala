@@ -5,15 +5,12 @@ import akka.event.Logging
 import akka.event.LoggingAdapter
 import akka.event.LogSource
 import com.escalatesoft.subcut.inject.NewBindingModule
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigFactory
 
 /** Module providing the ActorSystem for an app.
-  * @param name the name of the actor system to provide
+  * @param system the actor system to provide
   */
 // TODO(jkinkead): Move to a common library if we continue to use subcut.
-class ActorSystemModule(name: String) extends NewBindingModule(module => {
-  val system = ActorSystem(name)
+class ActorSystemModule(system: ActorSystem) extends NewBindingModule(module => {
   module.bind[ActorSystem] toSingle system
   module.bind[LogProvider] toSingle new LogProvider(system)
 })

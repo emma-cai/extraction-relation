@@ -8,11 +8,11 @@ import com.typesafe.config.Config
 
 import scala.annotation.tailrec
 import scala.collection.JavaConverters._
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.duration._
 import scala.io.Source
 
-import java.io.File
-import java.io.FileWriter
-import java.io.Writer
+import java.io.{ File, FileWriter, Writer }
 import java.net.URI
 
 /** Class representing a pipeline.
@@ -22,7 +22,8 @@ import java.net.URI
   * @param requiredNamedInputs the named inputs required for this pipeline to run successfully
   */
 class ErminePipeline(val name: String, val description: String,
-    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String]) {
+    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String])
+    (implicit val bindingModule: BindingModule) {
 
   /** The number of unnamed inputs this pipeline requires. */
   val requiredUnnamedCount: Int = if (processors.head.wantsUnnamedInput) {
@@ -52,17 +53,27 @@ class ErminePipeline(val name: String, val description: String,
       }
     }
 
+    // Provide an execution-scoped instance of AristoreActor.
+    val pipelineModule = bindingModule ~ new AristoreActorModule()
+
     // Initialize inputs & outputs.
-    val initializedProcessors = for (processor <- processors) yield processor.getInitializedCopy()
+    val initializedProcessors = for (processor <- processors) yield {
+      processor.getInitializedCopy()(pipelineModule)
+    }
 
     // Run.
     runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
 
-    // Finalize all outputs.
-    for {
+    // Finalize all inputs & outputs.
+    val cleanupFutures: Seq[Future[Unit]] = for {
+      processor <- initializedProcessors
+      input <- processor.inputs
+    } yield input.cleanup()
+    val commitFutures: Seq[Future[Unit]] = for {
       processor <- initializedProcessors
       output <- processor.outputs
-    } output.commit()
+    } yield output.commit()
+    for (f: Future[Unit] <- cleanupFutures ++ commitFutures) Await.ready(f, Duration.Inf)
 
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
