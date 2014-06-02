@@ -48,7 +48,7 @@ simplified_inf_pred(Root,String,Focus,'') :- % write on LHS only
 	entity_tokens(Root,Tokens),
 	tokens_text_escaped_quoted(Tokens,Text),
 	format(atom(String), 'isa(~w, ~w)', [Lemma,Text]).
-simplified_inf_pred(Root,String,Focus,Prefix) :-
+simplified_inf_pred(Root,String,_Focus,Prefix) :-
 %	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
 	tokens_text_escaped_quoted(Tokens,Text),
@@ -135,7 +135,9 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	current_question_focus(Focus),
 	write_simplified_triples(LeftTriples,Focus,LeftPred,''),
 	write_simplified_question_relation(RightTriples,Focus,'',Relation,Prefix),
-	write_simplified_triples(RightTriples,null,RightPred,Prefix),
+	( (Prefix = ', Q=',
+	   write_simplified_triples(RightTriples,null,RightPred,Prefix))
+	; simplified_inf_pred(Focus,RightPred,null,', Q=') ),
 	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LeftPred,Relation,RightPred]),
 	!.
 write_simplified_inf_question(_,_,Id,Pretty) :- % failed
