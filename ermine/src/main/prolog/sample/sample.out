@@ -43,10 +43,10 @@
 <http://aristo.allenai.org/id#1.9>
 	pred:isa "\"warm\"" .
 english(rule1, "Some animals grow fur in winter to keep warm").
-pretty(rule1, "grow(animal, fur, in(winter)) -> effect(grow, keep), keep(animal, warm).").
+pretty(rule1, "grow(\"Some animals\", \"fur\", in(\"winter\")) -> effect(grow(\"Some animals\", \"fur\", in(\"winter\")), keep(\"Some animals\", \"warm\")).").
 rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), isa(A2S1-animal, "Some animals"), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter") -> effect(E3S1-grow, E8S1-keep), isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm").
 english(rule2, "Some animals grow fur in winter to keep warm").
-pretty(rule2, "keep(animal, warm) -> effect(grow, keep), grow(animal, fur, in(winter)).").
+pretty(rule2, "keep(\"Some animals\", \"warm\") -> effect(grow(\"Some animals\", \"fur\", in(\"winter\")), keep(\"Some animals\", \"warm\")).").
 rule2:: isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), isa(A2S1-animal, "Some animals"), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm") -> effect(E3S1-grow, E8S1-keep), isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:1.3", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.4", "text":"fur"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:1.5", "text":"in"},  {"token":"id:1.6", "text":"winter"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.7", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:1.1", "text":"Some"},  {"token":"id:1.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:1.8", "text":"keep"} ], "extraPhrases": [ [ {"token":"id:1.9", "text":"warm"} ] ]} ], "confidence":1.0}
 

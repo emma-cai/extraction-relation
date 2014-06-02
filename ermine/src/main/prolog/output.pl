@@ -129,7 +129,7 @@ write_inf_relation(_Top,Entity,[Rel-_|_],[Subj,Verb|Rest],Out) :- % question-spe
 	rdf_assert(Entity,pred:isa,Subj,antecedent),
 	downcase_atom(Rel,LRel),
 	rdf_global_id(rel:LRel,RelId),
-	rdf_assert(AntecedentId,RelId,Subj,antecedent),
+	rdf_assert(AntecedentId,RelId,Subj,consequent),
 	write_question_relation0(Entity,[Subj,Verb|Rest],Out).
 write_inf_relation(_Top,Antecedent,[Rel-_|_],Consequent,Out) :- % question-specific
 	current_question_focus(_), !,
@@ -137,7 +137,7 @@ write_inf_relation(_Top,Antecedent,[Rel-_|_],Consequent,Out) :- % question-speci
 	inf_tuple(Consequent,ConsequentId,antecedent),
 	downcase_atom(Rel,LRel),
 	rdf_global_id(rel:LRel,RelId),
-	rdf_assert(AntecedentId,RelId,ConsequentId,antecedent),
+	rdf_assert(AntecedentId,RelId,ConsequentId,consequent),
 	write_question_relation0(Antecedent,Consequent,Out).
 write_inf_relation(Top,Entity,[Rel-_|_],[Subj,Verb|Rest],Out) :-
 	atom(Entity),

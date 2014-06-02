@@ -93,6 +93,9 @@ tokens_text(Tokens,Text) :-
 tokens_text_quoted(Tokens,QuotedText) :-
 	tokens_text(Tokens,Text),
 	format(atom(QuotedText), '"~w"', [Text]).
+tokens_text_escaped_quoted(Tokens,QuotedText) :-
+	tokens_text(Tokens,Text),
+	format(atom(QuotedText), '\\"~w\\"', [Text]).
 
 write_tokens(Tokens) :-
 	tokens_text(Tokens,Text),
