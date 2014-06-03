@@ -17,8 +17,7 @@ import java.util.Properties
 /** Wrapper around stanford parser, with static configs. Note that this takes a substantial (more
   * than 10 seconds) time to construct, and uses about 600MB of memory.
   *
-  * This takes a text file as input, with one coreference section per line (each line will be fed
-  * through Stanford as a unit). Output is Ari TTL.
+  * This takes a text file as input and runs the parser on the entire document. Output is Ari TTL.
   */
 object StanfordTtl extends FlatProcessor {
   /** Lazily instantiated stanford pipeline. */
@@ -31,81 +30,71 @@ object StanfordTtl extends FlatProcessor {
     new StanfordCoreNLP(props)
   }
 
-  /** Outputs the Stanford parse as XML from the given source. */
+  /** Outputs the Stanford parse as TTL from the given source. */
   override protected def processInternal(source: Source, destination: Writer): Unit = {
-    // The last sentence index seen. Start with one-based IDs.
-    var startingSentenceId = 1
-
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)
 
-    // Process text linewise. These should be paragraphs or other coreference units.
-    for (line <- source.getLines()) {
-      // Run the processing.
-      val annotation = pipeline.process(line)
+    // Run the text through Stanford parser.
+    val annotation = pipeline.process(source.getLines().mkString("\n"))
 
-      // Iterate over sentences parsed from the chunk.
-      val sentences = annotation.get(classOf[CoreAnnotations.SentencesAnnotation]).asScala
-      for ((sentence, sentenceIndex) <- sentences.zipWithIndex) {
-        val sentenceId = startingSentenceId + sentenceIndex
-        // The character offset into the chunk of text. Used to build token offests.
-        var sentenceOffset = sentence.get(classOf[CoreAnnotations.CharacterOffsetBeginAnnotation])
+    // Iterate over sentences parsed from the chunk.
+    val sentences = annotation.get(classOf[CoreAnnotations.SentencesAnnotation]).asScala
+    for ((sentence, sentenceIndex) <- sentences.zipWithIndex) {
+      val sentenceId = sentenceIndex + 1
+      // The character offset into the chunk of text. Used to build token offests.
+      var sentenceOffset = sentence.get(classOf[CoreAnnotations.CharacterOffsetBeginAnnotation])
 
-        // Print out all token info for the sentence.
-        val tokens = sentence.get(classOf[CoreAnnotations.TokensAnnotation]).asScala
-        for ((token, tokenIndex) <- tokens.zipWithIndex) {
-          // Use one-based IDs.
-          val tokenId = tokenIndex + 1
+      // Print out all token info for the sentence.
+      val tokens = sentence.get(classOf[CoreAnnotations.TokensAnnotation]).asScala
+      for ((token, tokenIndex) <- tokens.zipWithIndex) {
+        // Use one-based IDs.
+        val tokenId = tokenIndex + 1
 
-          // Convert to TTL.
-          val ttlToken = Token.fromStanfordToken(sentenceId, tokenId, sentenceOffset, token)
-          destination.write(ttlToken.ttl)
-          destination.write('\n')
-        }
-
-        // Print out basic dependency info.
-        val basicDependencyGraph =
-          sentence.get(classOf[SemanticGraphCoreAnnotations.BasicDependenciesAnnotation])
-        for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "basic", basicDependencyGraph)) {
-          destination.write(ttlDep.ttl)
-        }
-        destination.write('\n')
-
-        // Print out collapsed dependency info.
-        val collapsedDependencyGraph = sentence.get(
-          classOf[SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation])
-        for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "dep", collapsedDependencyGraph)) {
-          destination.write(ttlDep.ttl)
-        }
+        // Convert to TTL.
+        val ttlToken = Token.fromStanfordToken(sentenceId, tokenId, sentenceOffset, token)
+        destination.write(ttlToken.ttl)
         destination.write('\n')
       }
 
-      // Build up coreferences.
-      val allCorefChains: Iterable[Iterable[Coreference]] = for {
-        chain <- annotation.get(classOf[CorefCoreAnnotations.CorefChainAnnotation]).asScala.values
-        mentions = chain.getMentionsInTextualOrder.asScala
-        // Skip empty or self-referential corefs.
-        if mentions.size > 1
-      } yield {
-        val source = chain.getRepresentativeMention
-        // Subtract one from the starting ID to get the offset.
-        val sentenceOffset = startingSentenceId - 1
-        val sourceCoref = Coreference.fromStanfordSourceMention(sentenceOffset, source)
-        val childCorefs = for {
-          mention <- mentions if mention != source
-        } yield Coreference.fromStanfordMention(sentenceOffset, sourceCoref.rootId, mention)
-
-        sourceCoref +: childCorefs 
+      // Print out basic dependency info.
+      val basicDependencyGraph =
+        sentence.get(classOf[SemanticGraphCoreAnnotations.BasicDependenciesAnnotation])
+      for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "basic", basicDependencyGraph)) {
+        destination.write(ttlDep.ttl)
       }
-      // Print all corefs.
-      for (corefChain <- allCorefChains) {
-        for (coref <- corefChain) {
-          destination.write(coref.ttl)
-        }
-        destination.write('\n')
-      }
+      destination.write('\n')
 
-      startingSentenceId += sentences.size
+      // Print out collapsed dependency info.
+      val collapsedDependencyGraph = sentence.get(
+        classOf[SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation])
+      for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "dep", collapsedDependencyGraph)) {
+        destination.write(ttlDep.ttl)
+      }
+      destination.write('\n')
+    }
+
+    // Build up coreferences.
+    val allCorefChains: Iterable[Iterable[Coreference]] = for {
+      chain <- annotation.get(classOf[CorefCoreAnnotations.CorefChainAnnotation]).asScala.values
+      mentions = chain.getMentionsInTextualOrder.asScala
+      // Skip empty or self-referential corefs.
+      if mentions.size > 1
+    } yield {
+      val source = chain.getRepresentativeMention
+      val sourceCoref = Coreference.fromStanfordSourceMention(source)
+      val childCorefs = for {
+        mention <- mentions if mention != source
+      } yield Coreference.fromStanfordMention(sourceCoref.rootId, mention)
+
+      sourceCoref +: childCorefs
+    }
+    // Print all corefs.
+    for (corefChain <- allCorefChains) {
+      for (coref <- corefChain) {
+        destination.write(coref.ttl)
+      }
+      destination.write('\n')
     }
   }
 
@@ -197,20 +186,14 @@ object StanfordTtl extends FlatProcessor {
   }
   object Coreference {
     /** Builds a source reference ("representative mention") from a mention instance. */
-    def fromStanfordSourceMention(sentenceIdOffset: Int,
-      mention: CorefChain.CorefMention): Coreference = {
-
-      val sentenceId = mention.sentNum + sentenceIdOffset
-      val rootId = Token.buildId(sentenceId, mention.headIndex)
+    def fromStanfordSourceMention(mention: CorefChain.CorefMention): Coreference = {
+      val rootId = Token.buildId(mention.sentNum, mention.headIndex)
       // Root is self-referential.
       Coreference(rootId, rootId)
     }
     /** Builds a coreference from a mention using a given root. */
-    def fromStanfordMention(sentenceIdOffset: Int, rootId: String,
-      mention: CorefChain.CorefMention): Coreference = {
-
-      val sentenceId = mention.sentNum + sentenceIdOffset
-      Coreference(rootId, Token.buildId(sentenceId, mention.headIndex))
+    def fromStanfordMention(rootId: String, mention: CorefChain.CorefMention): Coreference = {
+      Coreference(rootId, Token.buildId(mention.sentNum, mention.headIndex))
     }
   }
 }
