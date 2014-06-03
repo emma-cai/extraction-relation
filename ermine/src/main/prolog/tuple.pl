@@ -60,14 +60,14 @@ tuple(Root,[Subj,Root,Obj|Mods]) :-
 tuple(Root,[Subj,Root,Obj|Mods]) :-
 	rdf(Obj,basic:rcmod,Root),
 	\+ rdf(_,dep:root,Obj), % not clause root, e.g. 'is a way that'
-	rdf(Root,dep:nsubj,NSubj),
-	NSubj \= Obj, !,
+	\+ argument(Root,dep:nsubj,Obj), !,
 	argument(Root,dep:nsubj,Subj),
 	modifiers(Root,Mods).
 % active - partmod
 tuple(Root,[Subj,Root,Obj|Mods]) :-
 	rdf(Obj,basic:partmod,Root), 
 	\+ rdf(_,dep:root,Obj), % not clause root, e.g. 'is a way that'
+	\+ argument(Root,dep:nsubj,Obj), !,
 	argument(Root,dep:nsubj,Subj),
 	modifiers(Root,Mods).
 % active - instransitive
