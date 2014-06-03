@@ -173,13 +173,13 @@ english(june2014.rule58, "When some animals prepare for the long winters by stor
 pretty(june2014.rule58, "isa(hibernation, \"hibernation\") -> example(prepare(\"some animals\", for(\"the long winters\")), \"hibernation\").").
 june2014.rule58:: isa(A18S12-hibernation, "hibernation") -> example(E4S12-prepare, A18S12-hibernation), isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters").
 english(june2014.rule59, "Mechanical energy exerted by one object can push or pull another object").
-pretty(june2014.rule59, "push -> push(\"Mechanical energy\", \"another object\").").
+pretty(june2014.rule59, "isa(push, \"push\") -> push(\"Mechanical energy\", \"another object\").").
 june2014.rule59:: isa(E8S13-push, "push") -> agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(june2014.rule60, "Mechanical energy exerted by one object can push or pull another object").
-pretty(june2014.rule60, "energy -> push(\"Mechanical energy\", \"another object\").").
+pretty(june2014.rule60, "isa(energy, \"Mechanical energy\") -> push(\"Mechanical energy\", \"another object\").").
 june2014.rule60:: isa(A2S13-energy, "Mechanical energy") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(june2014.rule61, "Mechanical energy exerted by one object can push or pull another object").
-pretty(june2014.rule61, "object -> push(\"Mechanical energy\", \"another object\").").
+pretty(june2014.rule61, "isa(object, \"another object\") -> push(\"Mechanical energy\", \"another object\").").
 june2014.rule61:: isa(A12S13-object, "another object") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object).
 english(june2014.rule62, "Producers are living things that change the sun 's energy to make their[Producers] own food").
 pretty(june2014.rule62, "isa(producer, \"Producers\") -> example(\"Producers\", change(\"living things\", \"the sun 's energy\", \"make their[Producers] own food\")).").
@@ -272,17 +272,17 @@ english(june2014.rule91, "Animals take in food as a nutrient to give them[Some a
 pretty(june2014.rule91, "grow(\"Some animals\") -> effect(give(X, \"Some animals\", \"energy\"), grow(\"Some animals\")).").
 june2014.rule91:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E9S20-give, E15S20-grow), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 english(june2014.rule92, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(june2014.rule92, "provide -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(june2014.rule92, "isa(provide, \"provide\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
 june2014.rule92:: isa(E2S21-provide, "provide") -> agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule93, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(june2014.rule93, "plant -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(june2014.rule93, "isa(plant, \"Plants\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
 june2014.rule93:: isa(A1S21-plant, "Plants") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule94, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(june2014.rule94, "animal -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(june2014.rule94, "isa(animal, \"animals\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
 june2014.rule94:: isa(A3S21-animal, "animals") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule95, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(june2014.rule95, "food -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(june2014.rule95, "isa(food, \"food\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
 june2014.rule95:: isa(A5S21-food, "food") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(june2014.rule96, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(june2014.rule96, "oxygen -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(june2014.rule96, "isa(oxygen, \"gases oxygen that their[Green plants] bodies need to grow breathe and make energy\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
 june2014.rule96:: isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen).

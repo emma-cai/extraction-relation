@@ -41,16 +41,16 @@ english(ie-target.rule14, "Animals can not make their[some animals] own food so 
 pretty(ie-target.rule14, "get(\"some animals\", \"nutrients\") -> requirement(eat(\"some animals\"), get(\"some animals\", \"nutrients\")).").
 ie-target.rule14:: isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), isa(A3S2-animal, "some animals"), object(E13S5-get, A14S5-nutrient), isa(A14S5-nutrient, "nutrients") -> requirement(E11S5-eat, E13S5-get), isa(E11S5-eat, "eat"), agent(E11S5-eat, A3S2-animal).
 english(ie-target.rule15, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(ie-target.rule15, "convert -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(ie-target.rule15, "isa(convert, \"converts\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 ie-target.rule15:: isa(E7S6-convert, "convert") -> agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(ie-target.rule16, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(ie-target.rule16, "friction -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(ie-target.rule16, "isa(friction, \"The friction between the two surfaces\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 ie-target.rule16:: isa(A2S6-friction, "The friction between the two surfaces") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(ie-target.rule17, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(ie-target.rule17, "energy -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(ie-target.rule17, "isa(energy, \"kinetic energy\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 ie-target.rule17:: isa(A9S6-energy, "kinetic energy") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(ie-target.rule18, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(ie-target.rule18, "heat -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(ie-target.rule18, "isa(heat, \"heat\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 ie-target.rule18:: isa(A11S6-heat, "heat") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat).
 english(ie-target.rule19, "Getting enough rest is also an important part of living a healthy life").
 pretty(ie-target.rule19, "get(X, \"rest\") -> part(get(X, \"rest\"), live(X, \"a healthy life\")).").
@@ -119,19 +119,19 @@ english(ie-target.rule40, "Decreasing the temperature is one way to change water
 pretty(ie-target.rule40, "change(X, \"water\", from(\"a liquid\"), to(\"a solid\")) -> effect(decrease(X, \"the temperature\"), change(X, \"water\", from(\"a liquid\"), to(\"a solid\"))).").
 ie-target.rule40:: isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S15-water, "water"), from(E8S15-change, A12S15-liquid), isa(A12S15-liquid, "a liquid"), to(E8S15-change, A15S15-solid), isa(A15S15-solid, "a solid") -> effect(E1S15-decrease, E8S15-change), isa(E1S15-decrease, "decrease"), object(E1S15-decrease, A3S15-temperature), isa(A3S15-temperature, "the temperature").
 english(ie-target.rule41, "Animals get energy for growth and repair from food").
-pretty(ie-target.rule41, "get -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(ie-target.rule41, "isa(get, \"get\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 ie-target.rule41:: isa(E2S16-get, "get") -> agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(ie-target.rule42, "Animals get energy for growth and repair from food").
-pretty(ie-target.rule42, "animal -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(ie-target.rule42, "isa(animal, \"Animals\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 ie-target.rule42:: isa(A1S16-animal, "Animals") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(ie-target.rule43, "Animals get energy for growth and repair from food").
-pretty(ie-target.rule43, "energy -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(ie-target.rule43, "isa(energy, \"energy\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 ie-target.rule43:: isa(A3S16-energy, "energy") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(ie-target.rule44, "Animals get energy for growth and repair from food").
-pretty(ie-target.rule44, "growth -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(ie-target.rule44, "isa(growth, \"growth from food\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 ie-target.rule44:: isa(A5S16-growth, "growth from food") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(ie-target.rule45, "Animals get energy for growth and repair from food").
-pretty(ie-target.rule45, "repair -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(ie-target.rule45, "isa(repair, \"repair\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 ie-target.rule45:: isa(A7S16-repair, "repair") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair).
 english(ie-target.rule46, "The heat that produces the smoke is caused by friction").
 pretty(ie-target.rule46, "isa(friction, \"friction\") -> cause(\"friction\", produce(\"The heat\", \"the smoke\")).").

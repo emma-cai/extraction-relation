@@ -355,16 +355,16 @@ rule14:: isa(E13S5-get, "get"), agent(E13S5-get, A3S2-animal), isa(A3S2-animal, 
 	pred:isa "\"kinetic energy\"" .
 
 english(rule15, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(rule15, "convert -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(rule15, "isa(convert, \"converts\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 rule15:: isa(E7S6-convert, "convert") -> agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule16, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(rule16, "friction -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(rule16, "isa(friction, \"The friction between the two surfaces\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 rule16:: isa(A2S6-friction, "The friction between the two surfaces") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule17, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(rule17, "energy -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(rule17, "isa(energy, \"kinetic energy\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 rule17:: isa(A9S6-energy, "kinetic energy") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), into(E7S6-convert, A11S6-heat), isa(A11S6-heat, "heat").
 english(rule18, "The friction between the two surfaces converts kinetic energy into heat").
-pretty(rule18, "heat -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
+pretty(rule18, "isa(heat, \"heat\") -> convert(\"The friction between the two surfaces\", \"kinetic energy\", into(\"heat\")).").
 rule18:: isa(A11S6-heat, "heat") -> isa(E7S6-convert, "convert"), agent(E7S6-convert, A2S6-friction), isa(A2S6-friction, "The friction between the two surfaces"), object(E7S6-convert, A9S6-energy), isa(A9S6-energy, "kinetic energy"), into(E7S6-convert, A11S6-heat).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:6.1", "text":"The"},  {"token":"id:6.2", "text":"friction"},  {"token":"id:6.3", "text":"between"},  {"token":"id:6.4", "text":"the"},  {"token":"id:6.5", "text":"two"},  {"token":"id:6.6", "text":"surfaces"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:6.7", "text":"convert"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:6.8", "text":"kinetic"},  {"token":"id:6.9", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:6.10", "text":"into"},  {"token":"id:6.11", "text":"heat"} ] ]} ], "consequents": [], "confidence":1.0}
 
@@ -848,19 +848,19 @@ rule40:: isa(E8S15-change, "change"), object(E8S15-change, A9S15-water), isa(A9S
 	pred:isa "\"repair\"" .
 
 english(rule41, "Animals get energy for growth and repair from food").
-pretty(rule41, "get -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(rule41, "isa(get, \"get\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 rule41:: isa(E2S16-get, "get") -> agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule42, "Animals get energy for growth and repair from food").
-pretty(rule42, "animal -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(rule42, "isa(animal, \"Animals\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 rule42:: isa(A1S16-animal, "Animals") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule43, "Animals get energy for growth and repair from food").
-pretty(rule43, "energy -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(rule43, "isa(energy, \"energy\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 rule43:: isa(A3S16-energy, "energy") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule44, "Animals get energy for growth and repair from food").
-pretty(rule44, "growth -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(rule44, "isa(growth, \"growth from food\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 rule44:: isa(A5S16-growth, "growth from food") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), for(E2S16-get, A7S16-repair), isa(A7S16-repair, "repair").
 english(rule45, "Animals get energy for growth and repair from food").
-pretty(rule45, "repair -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
+pretty(rule45, "isa(repair, \"repair\") -> get(\"Animals\", \"energy\", for(\"growth from food\"), for(\"repair\")).").
 rule45:: isa(A7S16-repair, "repair") -> isa(E2S16-get, "get"), agent(E2S16-get, A1S16-animal), isa(A1S16-animal, "Animals"), object(E2S16-get, A3S16-energy), isa(A3S16-energy, "energy"), for(E2S16-get, A5S16-growth), isa(A5S16-growth, "growth from food"), for(E2S16-get, A7S16-repair).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:16.2", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:16.3", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.5", "text":"growth"},  {"token":"id:16.8", "text":"from"},  {"token":"id:16.9", "text":"food"} ],  [ {"token":"id:16.4", "text":"for"},  {"token":"id:16.7", "text":"repair"} ] ]} ], "consequents": [], "confidence":1.0}
 
