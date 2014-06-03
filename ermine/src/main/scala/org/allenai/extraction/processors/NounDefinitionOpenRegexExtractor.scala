@@ -23,7 +23,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
   val definitionTypeNames = Set[String]("RelClauseDefinition", "WhenWhereDefinition", "WhichWhomDefinition",
     "IsaFactsDefinition", "IsaToFactsDefinition", "IsaDefinition", "IsWhereDefinition")
 
-  /** This (processInternal) method has been implemented in the DefinitionOpenRegexExtractor base class,
+  /** This (processText) method has been implemented in the DefinitionOpenRegexExtractor base class,
     * but we are overriding it  here because we have some special handling going on here- if the initial
     * definition text does not give back any extraction results, there is retry logic here to prepend
     * the definition term to the definition text and retry. This is required because of the way the
@@ -33,7 +33,7 @@ class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenR
     * a fully-formed sentence with the defined term as subject as well as "<term> : <definition>".
     * Also, we are not using the JSON format for the extraction results here right now.
     */
-  override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
+  override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
 
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
     for (line <- defnInputSource.getLines) {

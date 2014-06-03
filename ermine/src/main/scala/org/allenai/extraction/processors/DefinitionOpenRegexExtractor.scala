@@ -37,7 +37,7 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
     * into the format: <term>\t<wordClass>\t<definition>. Output will be written out to the
     * specified destination
     */
-  override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
+  override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
 
     //Start output Json 
     destination.write("[")

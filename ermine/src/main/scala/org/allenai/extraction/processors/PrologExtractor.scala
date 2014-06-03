@@ -47,7 +47,7 @@ object PrologProcessor {
   * PrologProcessor.VariableName.
   */
 class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatProcessor {
-  override protected def processInternal(source: Source, destination: Writer): Unit = {
+  override protected def processText(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
     ttlFile.deleteOnExit
@@ -97,7 +97,9 @@ class FerretQuestionProcessor(val ferret: Ferret) extends Processor {
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override protected def processInternal(sources: Seq[Source],
+    destinations: Seq[Processor.Output]): Unit = {
+
     val question = sources(0)
     val focus = sources(1).getLines.mkString("\n")
 

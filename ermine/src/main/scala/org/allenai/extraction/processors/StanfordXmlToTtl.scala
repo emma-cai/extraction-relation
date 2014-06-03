@@ -14,7 +14,7 @@ object StanfordXmlToTtl extends FlatProcessor {
   /** Converts a stanford XML parse tree into TTL.  Reads a single XML file, and writes output to a
     * TTL file.
     */
-  override protected def processInternal(stanfordXml: Source, ttlOut: Writer): Unit = {
+  override protected def processText(stanfordXml: Source, ttlOut: Writer): Unit = {
     val xml = XML.loadString(stanfordXml.getLines.mkString)
 
     val outputPrinter = new PrintWriter(ttlOut)

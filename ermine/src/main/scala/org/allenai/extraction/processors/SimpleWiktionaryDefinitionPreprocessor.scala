@@ -23,7 +23,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * format and writes extraction output in the format: <term>\t<wordClass>\t<definition>,
     * as expected by the Definition extractor out to the specified Writer.
     */
-  override protected def processInternal(input: Source, destination: Writer): Unit = {
+  override protected def processText(input: Source, destination: Writer): Unit = {
     for {
       line <- input.getLines
       (term, termWordClass, termDefinition) <- breakLine(line)

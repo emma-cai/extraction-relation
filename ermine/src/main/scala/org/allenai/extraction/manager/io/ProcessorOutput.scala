@@ -1,6 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
+import org.allenai.extraction.Processor
 import org.allenai.extraction.manager.ErmineException
 
 import akka.actor.ActorRef
@@ -15,14 +16,9 @@ import java.io.File
 import java.net.URI
 
 /** An output from a pipeline. */
-sealed abstract class ProcessorOutput {
+sealed abstract class ProcessorOutput extends Processor.Output {
   /** @return the name of this output, if one was configured */
   def name: Option[String]
-
-  /** @return a File to write output data to. This will be re-used to read data from if later
-    * processors require it.
-    */
-  def getOutputFile(): File
 
   /** Performs any initialization and validation needed before a pipeline uses this as output, and
     * returns a reference to a fully-initialized output. Some outputs cannot be shared between
