@@ -62,13 +62,13 @@ english(ie-target.rule21, "Decomposers are living things that break down dead or
 pretty(ie-target.rule21, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", break(\"living things\", \"dead organisms\")).").
 ie-target.rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule22, "").
+pretty(ie-target.rule22, "break down(\"living things\", \"dead organisms\") -> example(\"Decomposers\", break(\"living things\", \"dead organisms\")).").
 ie-target.rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 pretty(ie-target.rule23, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\"))).").
 ie-target.rule23:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule24, "").
+pretty(ie-target.rule24, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> example(\"Decomposers\", recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\"))).").
 ie-target.rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 pretty(ie-target.rule25, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", \"living things\").").
@@ -80,7 +80,7 @@ english(ie-target.rule27, "Gravity is the force that pulls an object toward the 
 pretty(ie-target.rule27, "isa(gravity, \"Gravity\") -> example(\"Gravity\", pull(\"the force\", \"an object toward the center of the Earth\")).").
 ie-target.rule27:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
 english(ie-target.rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(ie-target.rule28, "").
+pretty(ie-target.rule28, "pull(\"the force\", \"an object toward the center of the Earth\") -> example(\"Gravity\", pull(\"the force\", \"an object toward the center of the Earth\")).").
 ie-target.rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
 english(ie-target.rule29, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(ie-target.rule29, "isa(gravity, \"Gravity\") -> example(\"Gravity\", \"the force\").").

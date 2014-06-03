@@ -16,6 +16,7 @@ simplified_inf_rel([Rel|_],Relation) :- % question-specific
 	simplified_inf_pred(S,SL,focus,'('),
 	simplified_inf_pred(O,OL,focus,', '),
 	format(atom(Relation), '~w~w~w)', [Rel,SL,OL]).
+
 simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
 	stripped_id(Left,LId),
 	simplified_inf_pred(Left,L,focus,'('),
@@ -23,6 +24,14 @@ simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
 	format(atom(Relation), '~w~w~w)', [Rel,L,R]).
 simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
 	stripped_id(Left,RId),
+	simplified_inf_pred(Left,L,focus,', '),
+	simplified_inf_pred(Right,R,focus,'('),
+	format(atom(Relation), '~w~w~w)', [Rel,R,L]).
+simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
+	% relc case
+	( dependency(Arg,dep:partmod,Left)
+	; dependency(Arg,dep:rcmod,Left) ),
+	stripped_id(Arg,RId),
 	simplified_inf_pred(Left,L,focus,', '),
 	simplified_inf_pred(Right,R,focus,'('),
 	format(atom(Relation), '~w~w~w)', [Rel,R,L]).

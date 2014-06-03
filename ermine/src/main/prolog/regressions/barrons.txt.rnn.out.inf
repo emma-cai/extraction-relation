@@ -599,7 +599,7 @@ english(barrons.rule200, "Plants are the only living organism that can make its[
 pretty(barrons.rule200, "isa(plant, \"Plants\") -> example(\"Plants\", make(\"the only living organism\", \"its[Air and water] own food\")).").
 barrons.rule200:: isa(A1S77-plant, "Plants") -> example(A1S77-plant, A6S77-organism), isa(E9S77-make, "make"), agent(E9S77-make, A6S77-organism), isa(A6S77-organism, "the only living organism"), object(E9S77-make, A12S77-food), isa(A12S77-food, "its[Air and water] own food"), isa(A1S77-plant, A6S77-organism).
 english(barrons.rule201, "Plants are the only living organism that can make its[Air and water] own food").
-pretty(barrons.rule201, "").
+pretty(barrons.rule201, "make(\"the only living organism\", \"its[Air and water] own food\") -> example(\"Plants\", make(\"the only living organism\", \"its[Air and water] own food\")).").
 barrons.rule201:: isa(E9S77-make, "make"), agent(E9S77-make, A6S77-organism), isa(A6S77-organism, "the only living organism"), object(E9S77-make, A12S77-food), isa(A12S77-food, "its[Air and water] own food") -> example(A1S77-plant, A6S77-organism), isa(A1S77-plant, "Plants"), isa(A1S77-plant, A6S77-organism).
 english(barrons.rule202, "Plants are the only living organism that can make its[Air and water] own food").
 pretty(barrons.rule202, "isa(plant, \"Plants\") -> example(\"Plants\", \"the only living organism\").").
@@ -1232,7 +1232,7 @@ english(barrons.rule411, "The diaphragm is a muscle that moves up and down as we
 pretty(barrons.rule411, "isa(diaphragm, \"The diaphragm\") -> example(\"The diaphragm\", move(\"a muscle\", \"as inhale\", \"exhale\", \"helps the lungs take in\", \"let out air\")).").
 barrons.rule411:: isa(A2S166-diaphragm, "The diaphragm") -> example(A2S166-diaphragm, A5S166-muscle), isa(E7S166-move, "move up and down"), agent(E7S166-move, A5S166-muscle), isa(A5S166-muscle, "a muscle"), arg(E7S166-move, A13S166-inhale), isa(A13S166-inhale, "as we[we] inhale"), arg(E7S166-move, A15S166-exhale), isa(A15S166-exhale, "exhale"), arg(E7S166-move, A20S166-take), isa(A20S166-take, "helps the lungs take in"), arg(E7S166-move, A23S166-let), isa(A23S166-let, "let out air"), isa(A2S166-diaphragm, A5S166-muscle).
 english(barrons.rule412, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
-pretty(barrons.rule412, "").
+pretty(barrons.rule412, "move up and down(\"a muscle\", \"as inhale\", \"exhale\", \"helps the lungs take in\", \"let out air\") -> example(\"The diaphragm\", move(\"a muscle\", \"as inhale\", \"exhale\", \"helps the lungs take in\", \"let out air\")).").
 barrons.rule412:: isa(E7S166-move, "move up and down"), agent(E7S166-move, A5S166-muscle), isa(A5S166-muscle, "a muscle"), arg(E7S166-move, A13S166-inhale), isa(A13S166-inhale, "as we[we] inhale"), arg(E7S166-move, A15S166-exhale), isa(A15S166-exhale, "exhale"), arg(E7S166-move, A20S166-take), isa(A20S166-take, "helps the lungs take in"), arg(E7S166-move, A23S166-let), isa(A23S166-let, "let out air") -> example(A2S166-diaphragm, A5S166-muscle), isa(A2S166-diaphragm, "The diaphragm"), isa(A2S166-diaphragm, A5S166-muscle).
 english(barrons.rule413, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
 pretty(barrons.rule413, "isa(diaphragm, \"The diaphragm\") -> example(\"The diaphragm\", \"a muscle\").").
@@ -1610,7 +1610,7 @@ english(barrons.rule537, "Chameleons are lizards that can change colors based on
 pretty(barrons.rule537, "isa(chameleon, \"Chameleons\") -> example(\"Chameleons\", change(\"lizards\", \"colors\")).").
 barrons.rule537:: isa(A1S200-chameleon, "Chameleons") -> example(A1S200-chameleon, A3S200-lizard), isa(E6S200-change, "change"), agent(E6S200-change, A3S200-lizard), isa(A3S200-lizard, "lizards"), object(E6S200-change, A7S200-color), isa(A7S200-color, "colors"), isa(A1S200-chameleon, A3S200-lizard).
 english(barrons.rule538, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
-pretty(barrons.rule538, "").
+pretty(barrons.rule538, "change(\"lizards\", \"colors\") -> example(\"Chameleons\", change(\"lizards\", \"colors\")).").
 barrons.rule538:: isa(E6S200-change, "change"), agent(E6S200-change, A3S200-lizard), isa(A3S200-lizard, "lizards"), object(E6S200-change, A7S200-color), isa(A7S200-color, "colors") -> example(A1S200-chameleon, A3S200-lizard), isa(A1S200-chameleon, "Chameleons"), isa(A1S200-chameleon, A3S200-lizard).
 english(barrons.rule539, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
 pretty(barrons.rule539, "isa(chameleon, \"Chameleons\") -> example(\"Chameleons\", \"lizards\").").
@@ -2285,7 +2285,7 @@ english(barrons.rule762, "A family tree is a chart that shows a family 's relati
 pretty(barrons.rule762, "isa(tree, \"A family tree\") -> example(\"A family tree\", show(\"a chart\", \"a family 's relatives\", over(\"time\"))).").
 barrons.rule762:: isa(A3S301-tree, "A family tree") -> example(A3S301-tree, A6S301-chart), isa(E8S301-show, "show"), agent(E8S301-show, A6S301-chart), isa(A6S301-chart, "a chart"), object(E8S301-show, A12S301-relative), isa(A12S301-relative, "a family 's relatives"), over(E8S301-show, A14S301-time), isa(A14S301-time, "time"), isa(A3S301-tree, A6S301-chart).
 english(barrons.rule763, "A family tree is a chart that shows a family 's relatives over time").
-pretty(barrons.rule763, "").
+pretty(barrons.rule763, "show(\"a chart\", \"a family 's relatives\", over(\"time\")) -> example(\"A family tree\", show(\"a chart\", \"a family 's relatives\", over(\"time\"))).").
 barrons.rule763:: isa(E8S301-show, "show"), agent(E8S301-show, A6S301-chart), isa(A6S301-chart, "a chart"), object(E8S301-show, A12S301-relative), isa(A12S301-relative, "a family 's relatives"), over(E8S301-show, A14S301-time), isa(A14S301-time, "time") -> example(A3S301-tree, A6S301-chart), isa(A3S301-tree, "A family tree"), isa(A3S301-tree, A6S301-chart).
 english(barrons.rule764, "A family tree is a chart that shows a family 's relatives over time").
 pretty(barrons.rule764, "isa(tree, \"A family tree\") -> example(\"A family tree\", \"a chart\").").
@@ -2882,7 +2882,7 @@ english(barrons.rule961, "In order for alcohol and drugs to get out of your body
 pretty(barrons.rule961, "isa(which, \"which\") -> example(\"which\", clean(\"the organ\", \"the blood\")).").
 barrons.rule961:: isa(A21S366-which, "which") -> example(A21S366-which, A24S366-organ), isa(E26S366-clean, "clean"), agent(E26S366-clean, A24S366-organ), isa(A24S366-organ, "the organ"), object(E26S366-clean, A28S366-blood), isa(A28S366-blood, "the blood"), isa(A21S366-which, A24S366-organ).
 english(barrons.rule962, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-pretty(barrons.rule962, "").
+pretty(barrons.rule962, "clean(\"the organ\", \"the blood\") -> example(\"which\", clean(\"the organ\", \"the blood\")).").
 barrons.rule962:: isa(E26S366-clean, "clean"), agent(E26S366-clean, A24S366-organ), isa(A24S366-organ, "the organ"), object(E26S366-clean, A28S366-blood), isa(A28S366-blood, "the blood") -> example(A21S366-which, A24S366-organ), isa(A21S366-which, "which"), isa(A21S366-which, A24S366-organ).
 english(barrons.rule963, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
 pretty(barrons.rule963, "isa(which, \"which\") -> example(\"which\", \"the organ\").").
@@ -3011,7 +3011,7 @@ english(barrons.rule1004, "Ecology is the science that studies the relationships
 pretty(barrons.rule1004, "isa(Ecology, \"Ecology\") -> example(\"Ecology\", study(\"the science\", \"the relationships between organisms and their[living things organisms] environments\")).").
 barrons.rule1004:: isa(A1S389-Ecology, "Ecology") -> example(A1S389-Ecology, A4S389-science), isa(E6S389-study, "study"), agent(E6S389-study, A4S389-science), isa(A4S389-science, "the science"), object(E6S389-study, A8S389-relationship), isa(A8S389-relationship, "the relationships between organisms and their[living things organisms] environments"), isa(A1S389-Ecology, A4S389-science).
 english(barrons.rule1005, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
-pretty(barrons.rule1005, "").
+pretty(barrons.rule1005, "study(\"the science\", \"the relationships between organisms and their[living things organisms] environments\") -> example(\"Ecology\", study(\"the science\", \"the relationships between organisms and their[living things organisms] environments\")).").
 barrons.rule1005:: isa(E6S389-study, "study"), agent(E6S389-study, A4S389-science), isa(A4S389-science, "the science"), object(E6S389-study, A8S389-relationship), isa(A8S389-relationship, "the relationships between organisms and their[living things organisms] environments") -> example(A1S389-Ecology, A4S389-science), isa(A1S389-Ecology, "Ecology"), isa(A1S389-Ecology, A4S389-science).
 english(barrons.rule1006, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
 pretty(barrons.rule1006, "isa(Ecology, \"Ecology\") -> example(\"Ecology\", \"the science\").").
@@ -3323,7 +3323,7 @@ english(barrons.rule1108, "Producers are living things that change the sun 's en
 pretty(barrons.rule1108, "isa(producer, \"Producers\") -> example(\"Producers\", change(\"living things\", \"the sun 's energy\", \"make their[producers] own food\")).").
 barrons.rule1108:: isa(A1S423-producer, "Producers") -> example(A1S423-producer, A4S423-thing), isa(E6S423-change, "change"), agent(E6S423-change, A4S423-thing), isa(A4S423-thing, "living things"), object(E6S423-change, A10S423-energy), isa(A10S423-energy, "the sun 's energy"), arg(E6S423-change, A12S423-make), isa(A12S423-make, "to make their[producers] own food"), isa(A1S423-producer, A4S423-thing).
 english(barrons.rule1109, "Producers are living things that change the sun 's energy to make their[producers] own food").
-pretty(barrons.rule1109, "").
+pretty(barrons.rule1109, "change(\"living things\", \"the sun 's energy\", \"make their[producers] own food\") -> example(\"Producers\", change(\"living things\", \"the sun 's energy\", \"make their[producers] own food\")).").
 barrons.rule1109:: isa(E6S423-change, "change"), agent(E6S423-change, A4S423-thing), isa(A4S423-thing, "living things"), object(E6S423-change, A10S423-energy), isa(A10S423-energy, "the sun 's energy"), arg(E6S423-change, A12S423-make), isa(A12S423-make, "to make their[producers] own food") -> example(A1S423-producer, A4S423-thing), isa(A1S423-producer, "Producers"), isa(A1S423-producer, A4S423-thing).
 english(barrons.rule1110, "Producers are living things that change the sun 's energy to make their[producers] own food").
 pretty(barrons.rule1110, "isa(producer, \"Producers\") -> example(\"Producers\", \"living things\").").
@@ -3347,7 +3347,7 @@ english(barrons.rule1116, "Consumers are living things that feed on others").
 pretty(barrons.rule1116, "isa(consumer, \"Consumers\") -> example(\"Consumers\", feed(\"living things\", on(\"others\"))).").
 barrons.rule1116:: isa(A1S425-consumer, "Consumers") -> example(A1S425-consumer, A4S425-thing), isa(E6S425-feed, "feed"), agent(E6S425-feed, A4S425-thing), isa(A4S425-thing, "living things"), on(E6S425-feed, A8S425-other), isa(A8S425-other, "others"), isa(A1S425-consumer, A4S425-thing).
 english(barrons.rule1117, "Consumers are living things that feed on others").
-pretty(barrons.rule1117, "").
+pretty(barrons.rule1117, "feed(\"living things\", on(\"others\")) -> example(\"Consumers\", feed(\"living things\", on(\"others\"))).").
 barrons.rule1117:: isa(E6S425-feed, "feed"), agent(E6S425-feed, A4S425-thing), isa(A4S425-thing, "living things"), on(E6S425-feed, A8S425-other), isa(A8S425-other, "others") -> example(A1S425-consumer, A4S425-thing), isa(A1S425-consumer, "Consumers"), isa(A1S425-consumer, A4S425-thing).
 english(barrons.rule1118, "Consumers are living things that feed on others").
 pretty(barrons.rule1118, "isa(consumer, \"Consumers\") -> example(\"Consumers\", \"living things\").").
@@ -3368,13 +3368,13 @@ english(barrons.rule1123, "Decomposers are living things that break down dead or
 pretty(barrons.rule1123, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", break(\"living things\", \"dead organisms\")).").
 barrons.rule1123:: isa(A1S429-decomposer, "Decomposers") -> example(A1S429-decomposer, A4S429-thing), isa(E6S429-break, "break down"), agent(E6S429-break, A4S429-thing), isa(A4S429-thing, "living things"), object(E6S429-break, A9S429-organism), isa(A9S429-organism, "dead organisms"), isa(A1S429-decomposer, A4S429-thing).
 english(barrons.rule1124, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(barrons.rule1124, "").
+pretty(barrons.rule1124, "break down(\"living things\", \"dead organisms\") -> example(\"Decomposers\", break(\"living things\", \"dead organisms\")).").
 barrons.rule1124:: isa(E6S429-break, "break down"), agent(E6S429-break, A4S429-thing), isa(A4S429-thing, "living things"), object(E6S429-break, A9S429-organism), isa(A9S429-organism, "dead organisms") -> example(A1S429-decomposer, A4S429-thing), isa(A1S429-decomposer, "Decomposers"), isa(A1S429-decomposer, A4S429-thing).
 english(barrons.rule1125, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 pretty(barrons.rule1125, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\"))).").
 barrons.rule1125:: isa(A1S429-decomposer, "Decomposers") -> example(A1S429-decomposer, A4S429-thing), isa(E11S429-recycle, "recycle"), agent(E11S429-recycle, A4S429-thing), isa(A4S429-thing, "living things"), object(E11S429-recycle, A13S429-nutrient), isa(A13S429-nutrient, "their[dead organisms] nutrients"), into(E11S429-recycle, A16S429-soil), isa(A16S429-soil, "the soil"), isa(A1S429-decomposer, A4S429-thing).
 english(barrons.rule1126, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(barrons.rule1126, "").
+pretty(barrons.rule1126, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> example(\"Decomposers\", recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\"))).").
 barrons.rule1126:: isa(E11S429-recycle, "recycle"), agent(E11S429-recycle, A4S429-thing), isa(A4S429-thing, "living things"), object(E11S429-recycle, A13S429-nutrient), isa(A13S429-nutrient, "their[dead organisms] nutrients"), into(E11S429-recycle, A16S429-soil), isa(A16S429-soil, "the soil") -> example(A1S429-decomposer, A4S429-thing), isa(A1S429-decomposer, "Decomposers"), isa(A1S429-decomposer, A4S429-thing).
 english(barrons.rule1127, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 pretty(barrons.rule1127, "isa(decomposer, \"Decomposers\") -> example(\"Decomposers\", \"living things\").").
@@ -4469,7 +4469,7 @@ english(barrons.rule1490, "Friction is a force that provides resistance whenever
 pretty(barrons.rule1490, "isa(friction, \"Friction\") -> example(\"Friction\", provide(\"a force\", \"resistance\")).").
 barrons.rule1490:: isa(A1S598-friction, "Friction") -> example(A1S598-friction, A4S598-force), isa(E6S598-provide, "provide"), agent(E6S598-provide, A4S598-force), isa(A4S598-force, "a force"), object(E6S598-provide, A7S598-resistance), isa(A7S598-resistance, "resistance"), isa(A1S598-friction, A4S598-force).
 english(barrons.rule1491, "Friction is a force that provides resistance whenever two surfaces are in contact").
-pretty(barrons.rule1491, "").
+pretty(barrons.rule1491, "provide(\"a force\", \"resistance\") -> example(\"Friction\", provide(\"a force\", \"resistance\")).").
 barrons.rule1491:: isa(E6S598-provide, "provide"), agent(E6S598-provide, A4S598-force), isa(A4S598-force, "a force"), object(E6S598-provide, A7S598-resistance), isa(A7S598-resistance, "resistance") -> example(A1S598-friction, A4S598-force), isa(A1S598-friction, "Friction"), isa(A1S598-friction, A4S598-force).
 english(barrons.rule1492, "Friction is a force that provides resistance whenever two surfaces are in contact").
 pretty(barrons.rule1492, "isa(friction, \"Friction\") -> example(\"Friction\", \"a force\").").
@@ -4517,7 +4517,7 @@ english(barrons.rule1506, "A magnet is an object that attracts metals").
 pretty(barrons.rule1506, "isa(magnet, \"A magnet\") -> example(\"A magnet\", attract(\"an object\", \"metals\")).").
 barrons.rule1506:: isa(A2S607-magnet, "A magnet") -> example(A2S607-magnet, A5S607-object), isa(E7S607-attract, "attract"), agent(E7S607-attract, A5S607-object), isa(A5S607-object, "an object"), object(E7S607-attract, A8S607-metal), isa(A8S607-metal, "metals"), isa(A2S607-magnet, A5S607-object).
 english(barrons.rule1507, "A magnet is an object that attracts metals").
-pretty(barrons.rule1507, "").
+pretty(barrons.rule1507, "attract(\"an object\", \"metals\") -> example(\"A magnet\", attract(\"an object\", \"metals\")).").
 barrons.rule1507:: isa(E7S607-attract, "attract"), agent(E7S607-attract, A5S607-object), isa(A5S607-object, "an object"), object(E7S607-attract, A8S607-metal), isa(A8S607-metal, "metals") -> example(A2S607-magnet, A5S607-object), isa(A2S607-magnet, "A magnet"), isa(A2S607-magnet, A5S607-object).
 english(barrons.rule1508, "A magnet is an object that attracts metals").
 pretty(barrons.rule1508, "isa(magnet, \"A magnet\") -> example(\"A magnet\", \"an object\").").
@@ -4589,7 +4589,7 @@ english(barrons.rule1530, "Gravity is also a force that acts on objects here on 
 pretty(barrons.rule1530, "isa(gravity, \"Gravity\") -> example(\"Gravity\", act(\"a force\", on(\"objects on Earth\"))).").
 barrons.rule1530:: isa(A1S618-gravity, "Gravity") -> example(A1S618-gravity, A5S618-force), isa(E7S618-act, "act"), agent(E7S618-act, A5S618-force), isa(A5S618-force, "a force"), on(E7S618-act, A9S618-object), isa(A9S618-object, "objects here on Earth"), isa(A1S618-gravity, A5S618-force).
 english(barrons.rule1531, "Gravity is also a force that acts on objects here on Earth").
-pretty(barrons.rule1531, "").
+pretty(barrons.rule1531, "act(\"a force\", on(\"objects on Earth\")) -> example(\"Gravity\", act(\"a force\", on(\"objects on Earth\"))).").
 barrons.rule1531:: isa(E7S618-act, "act"), agent(E7S618-act, A5S618-force), isa(A5S618-force, "a force"), on(E7S618-act, A9S618-object), isa(A9S618-object, "objects here on Earth") -> example(A1S618-gravity, A5S618-force), isa(A1S618-gravity, "Gravity"), isa(A1S618-gravity, A5S618-force).
 english(barrons.rule1532, "Gravity is also a force that acts on objects here on Earth").
 pretty(barrons.rule1532, "isa(gravity, \"Gravity\") -> example(\"Gravity\", \"a force\").").
@@ -4727,7 +4727,7 @@ english(barrons.rule1576, "An inclined plane is a ramp that extends from one lev
 pretty(barrons.rule1576, "isa(plane, \"An inclined plane\") -> example(\"An inclined plane\", extend(\"a ramp\", from(\"one level\"), to(\"another\"))).").
 barrons.rule1576:: isa(A3S633-plane, "An inclined plane") -> example(A3S633-plane, A6S633-ramp), isa(E8S633-extend, "extend"), agent(E8S633-extend, A6S633-ramp), isa(A6S633-ramp, "a ramp"), from(E8S633-extend, A11S633-level), isa(A11S633-level, "one level"), to(E8S633-extend, A13S633-another), isa(A13S633-another, "another"), isa(A3S633-plane, A6S633-ramp).
 english(barrons.rule1577, "An inclined plane is a ramp that extends from one level to another").
-pretty(barrons.rule1577, "").
+pretty(barrons.rule1577, "extend(\"a ramp\", from(\"one level\"), to(\"another\")) -> example(\"An inclined plane\", extend(\"a ramp\", from(\"one level\"), to(\"another\"))).").
 barrons.rule1577:: isa(E8S633-extend, "extend"), agent(E8S633-extend, A6S633-ramp), isa(A6S633-ramp, "a ramp"), from(E8S633-extend, A11S633-level), isa(A11S633-level, "one level"), to(E8S633-extend, A13S633-another), isa(A13S633-another, "another") -> example(A3S633-plane, A6S633-ramp), isa(A3S633-plane, "An inclined plane"), isa(A3S633-plane, A6S633-ramp).
 english(barrons.rule1578, "An inclined plane is a ramp that extends from one level to another").
 pretty(barrons.rule1578, "isa(plane, \"An inclined plane\") -> example(\"An inclined plane\", \"a ramp\").").
@@ -5756,13 +5756,13 @@ english(barrons.rule1919, "Weathering is a process that breaks rocks and other s
 pretty(barrons.rule1919, "isa(weather, \"Weathering\") -> example(\"Weathering\", break(\"a process\", \"rocks\", into(\"small pieces\"))).").
 barrons.rule1919:: isa(A1S811-weather, "Weathering") -> example(A1S811-weather, A4S811-process), isa(E6S811-break, "break"), agent(E6S811-break, A4S811-process), isa(A4S811-process, "a process"), object(E6S811-break, A7S811-rock), isa(A7S811-rock, "rocks"), into(E6S811-break, A14S811-piece), isa(A14S811-piece, "small pieces"), isa(A1S811-weather, A4S811-process).
 english(barrons.rule1920, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-pretty(barrons.rule1920, "").
+pretty(barrons.rule1920, "break(\"a process\", \"rocks\", into(\"small pieces\")) -> example(\"Weathering\", break(\"a process\", \"rocks\", into(\"small pieces\"))).").
 barrons.rule1920:: isa(E6S811-break, "break"), agent(E6S811-break, A4S811-process), isa(A4S811-process, "a process"), object(E6S811-break, A7S811-rock), isa(A7S811-rock, "rocks"), into(E6S811-break, A14S811-piece), isa(A14S811-piece, "small pieces") -> example(A1S811-weather, A4S811-process), isa(A1S811-weather, "Weathering"), isa(A1S811-weather, A4S811-process).
 english(barrons.rule1921, "Weathering is a process that breaks rocks and other surface materials into small pieces").
 pretty(barrons.rule1921, "isa(weather, \"Weathering\") -> example(\"Weathering\", break(\"a process\", \"other surface materials\", into(\"small pieces\"))).").
 barrons.rule1921:: isa(A1S811-weather, "Weathering") -> example(A1S811-weather, A4S811-process), isa(E6S811-break, "break"), agent(E6S811-break, A4S811-process), isa(A4S811-process, "a process"), object(E6S811-break, A11S811-material), isa(A11S811-material, "other surface materials"), into(E6S811-break, A14S811-piece), isa(A14S811-piece, "small pieces"), isa(A1S811-weather, A4S811-process).
 english(barrons.rule1922, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-pretty(barrons.rule1922, "").
+pretty(barrons.rule1922, "break(\"a process\", \"other surface materials\", into(\"small pieces\")) -> example(\"Weathering\", break(\"a process\", \"other surface materials\", into(\"small pieces\"))).").
 barrons.rule1922:: isa(E6S811-break, "break"), agent(E6S811-break, A4S811-process), isa(A4S811-process, "a process"), object(E6S811-break, A11S811-material), isa(A11S811-material, "other surface materials"), into(E6S811-break, A14S811-piece), isa(A14S811-piece, "small pieces") -> example(A1S811-weather, A4S811-process), isa(A1S811-weather, "Weathering"), isa(A1S811-weather, A4S811-process).
 english(barrons.rule1923, "Weathering is a process that breaks rocks and other surface materials into small pieces").
 pretty(barrons.rule1923, "isa(weather, \"Weathering\") -> example(\"Weathering\", \"a process\").").
@@ -8000,13 +8000,13 @@ english(barrons.rule2667, "Friction is the force that slows down or stops the mo
 pretty(barrons.rule2667, "isa(friction, \"Friction\") -> example(\"Friction\", slow(\"the force\", \"the motion of a bicycle\", \"down\")).").
 barrons.rule2667:: isa(A1S1097-friction, "Friction") -> example(A1S1097-friction, A4S1097-force), isa(E6S1097-slow, "slow"), agent(E6S1097-slow, A4S1097-force), isa(A4S1097-force, "the force"), object(E6S1097-slow, A11S1097-motion), isa(A11S1097-motion, "the motion of a bicycle"), arg(E6S1097-slow, A7S1097-down), isa(A7S1097-down, "down"), isa(A1S1097-friction, A4S1097-force).
 english(barrons.rule2668, "Friction is the force that slows down or stops the motion of a bicycle").
-pretty(barrons.rule2668, "").
+pretty(barrons.rule2668, "slow(\"the force\", \"the motion of a bicycle\", \"down\") -> example(\"Friction\", slow(\"the force\", \"the motion of a bicycle\", \"down\")).").
 barrons.rule2668:: isa(E6S1097-slow, "slow"), agent(E6S1097-slow, A4S1097-force), isa(A4S1097-force, "the force"), object(E6S1097-slow, A11S1097-motion), isa(A11S1097-motion, "the motion of a bicycle"), arg(E6S1097-slow, A7S1097-down), isa(A7S1097-down, "down") -> example(A1S1097-friction, A4S1097-force), isa(A1S1097-friction, "Friction"), isa(A1S1097-friction, A4S1097-force).
 english(barrons.rule2669, "Friction is the force that slows down or stops the motion of a bicycle").
 pretty(barrons.rule2669, "isa(friction, \"Friction\") -> example(\"Friction\", stop(\"the force\")).").
 barrons.rule2669:: isa(A1S1097-friction, "Friction") -> example(A1S1097-friction, A4S1097-force), isa(E9S1097-stop, "stop"), agent(E9S1097-stop, A4S1097-force), isa(A4S1097-force, "the force"), isa(A1S1097-friction, A4S1097-force).
 english(barrons.rule2670, "Friction is the force that slows down or stops the motion of a bicycle").
-pretty(barrons.rule2670, "").
+pretty(barrons.rule2670, "stop(\"the force\") -> example(\"Friction\", stop(\"the force\")).").
 barrons.rule2670:: isa(E9S1097-stop, "stop"), agent(E9S1097-stop, A4S1097-force), isa(A4S1097-force, "the force") -> example(A1S1097-friction, A4S1097-force), isa(A1S1097-friction, "Friction"), isa(A1S1097-friction, A4S1097-force).
 english(barrons.rule2671, "Friction is the force that slows down or stops the motion of a bicycle").
 pretty(barrons.rule2671, "isa(friction, \"Friction\") -> example(\"Friction\", \"the force\").").
@@ -8024,7 +8024,7 @@ english(barrons.rule2675, "Gravity is the force that brings objects toward the E
 pretty(barrons.rule2675, "isa(gravity, \"Gravity\") -> example(\"Gravity\", bring(\"the force\", \"objects\", toward(\"the Earth\"))).").
 barrons.rule2675:: isa(A1S1099-gravity, "Gravity") -> example(A1S1099-gravity, A4S1099-force), isa(E6S1099-bring, "bring"), agent(E6S1099-bring, A4S1099-force), isa(A4S1099-force, "the force"), object(E6S1099-bring, A7S1099-object), isa(A7S1099-object, "objects"), toward(E6S1099-bring, A10S1099-Earth), isa(A10S1099-Earth, "the Earth"), isa(A1S1099-gravity, A4S1099-force).
 english(barrons.rule2676, "Gravity is the force that brings objects toward the Earth").
-pretty(barrons.rule2676, "").
+pretty(barrons.rule2676, "bring(\"the force\", \"objects\", toward(\"the Earth\")) -> example(\"Gravity\", bring(\"the force\", \"objects\", toward(\"the Earth\"))).").
 barrons.rule2676:: isa(E6S1099-bring, "bring"), agent(E6S1099-bring, A4S1099-force), isa(A4S1099-force, "the force"), object(E6S1099-bring, A7S1099-object), isa(A7S1099-object, "objects"), toward(E6S1099-bring, A10S1099-Earth), isa(A10S1099-Earth, "the Earth") -> example(A1S1099-gravity, A4S1099-force), isa(A1S1099-gravity, "Gravity"), isa(A1S1099-gravity, A4S1099-force).
 english(barrons.rule2677, "Gravity is the force that brings objects toward the Earth").
 pretty(barrons.rule2677, "isa(gravity, \"Gravity\") -> example(\"Gravity\", \"the force\").").
@@ -8228,7 +8228,7 @@ english(barrons.rule2743, "Weathering is the process that breaks down rocks into
 pretty(barrons.rule2743, "isa(weather, \"Weathering\") -> example(\"Weathering\", break(\"the process\", \"rocks\", \"down\", into(\"small pieces\"))).").
 barrons.rule2743:: isa(A1S1140-weather, "Weathering") -> example(A1S1140-weather, A4S1140-process), isa(E6S1140-break, "break"), agent(E6S1140-break, A4S1140-process), isa(A4S1140-process, "the process"), object(E6S1140-break, A8S1140-rock), isa(A8S1140-rock, "rocks"), into(E6S1140-break, A11S1140-piece), isa(A11S1140-piece, "small pieces"), arg(E6S1140-break, A7S1140-down), isa(A7S1140-down, "down"), isa(A1S1140-weather, A4S1140-process).
 english(barrons.rule2744, "Weathering is the process that breaks down rocks into small pieces").
-pretty(barrons.rule2744, "").
+pretty(barrons.rule2744, "break(\"the process\", \"rocks\", \"down\", into(\"small pieces\")) -> example(\"Weathering\", break(\"the process\", \"rocks\", \"down\", into(\"small pieces\"))).").
 barrons.rule2744:: isa(E6S1140-break, "break"), agent(E6S1140-break, A4S1140-process), isa(A4S1140-process, "the process"), object(E6S1140-break, A8S1140-rock), isa(A8S1140-rock, "rocks"), into(E6S1140-break, A11S1140-piece), isa(A11S1140-piece, "small pieces"), arg(E6S1140-break, A7S1140-down), isa(A7S1140-down, "down") -> example(A1S1140-weather, A4S1140-process), isa(A1S1140-weather, "Weathering"), isa(A1S1140-weather, A4S1140-process).
 english(barrons.rule2745, "Weathering is the process that breaks down rocks into small pieces").
 pretty(barrons.rule2745, "isa(weather, \"Weathering\") -> example(\"Weathering\", \"the process\").").
@@ -8438,7 +8438,7 @@ english(barrons.rule2813, "A pulley is a simple machine that moves a sail up the
 pretty(barrons.rule2813, "isa(pulley, \"A pulley\") -> example(\"A pulley\", move(\"a simple machine\", \"a sail up the mast of a ship\")).").
 barrons.rule2813:: isa(A2S1173-pulley, "A pulley") -> example(A2S1173-pulley, A6S1173-machine), isa(E8S1173-move, "move"), agent(E8S1173-move, A6S1173-machine), isa(A6S1173-machine, "a simple machine"), arg(E8S1173-move, A11S1173-up), isa(A11S1173-up, "a sail up the mast of a ship"), isa(A2S1173-pulley, A6S1173-machine).
 english(barrons.rule2814, "A pulley is a simple machine that moves a sail up the mast of a ship").
-pretty(barrons.rule2814, "").
+pretty(barrons.rule2814, "move(\"a simple machine\", \"a sail up the mast of a ship\") -> example(\"A pulley\", move(\"a simple machine\", \"a sail up the mast of a ship\")).").
 barrons.rule2814:: isa(E8S1173-move, "move"), agent(E8S1173-move, A6S1173-machine), isa(A6S1173-machine, "a simple machine"), arg(E8S1173-move, A11S1173-up), isa(A11S1173-up, "a sail up the mast of a ship") -> example(A2S1173-pulley, A6S1173-machine), isa(A2S1173-pulley, "A pulley"), isa(A2S1173-pulley, A6S1173-machine).
 english(barrons.rule2815, "A pulley is a simple machine that moves a sail up the mast of a ship").
 pretty(barrons.rule2815, "isa(pulley, \"A pulley\") -> example(\"A pulley\", \"a simple machine\").").
