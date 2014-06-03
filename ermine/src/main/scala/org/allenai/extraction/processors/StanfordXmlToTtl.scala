@@ -18,7 +18,7 @@ object StanfordXmlToTtl extends FlatProcessor {
     val xml = XML.loadString(stanfordXml.getLines.mkString)
 
     val outputPrinter = new PrintWriter(ttlOut)
-    printHeaders(outputPrinter)
+    outputPrinter.print(Ttl.NamespaceHeaders)
 
     for (sentence <- (xml \\ "sentences" \ "sentence")) {
       processSentence(sentence, outputPrinter)
@@ -194,20 +194,6 @@ object StanfordXmlToTtl extends FlatProcessor {
       s"id:${sentenceId}.${governorId} ${dependencyLabel}:${typeAttr} " +
         s"id:${sentenceId}.${dependentId} ."
     }
-  }
-
-  /** Prints declaration headers. */
-  def printHeaders(outputPrinter: PrintWriter): Unit = {
-    outputPrinter.print("""
-@prefix id: <http://aristo.allenai.org/id#> .
-
-@prefix token: <http://nlp.stanford.edu/token/> .
-@prefix ne: <http://nlp.stanford.edu/ne/> .
-@prefix basic: <http://nlp.stanford.edu/basic/> .
-@prefix dep: <http://nlp.stanford.edu/dep/> .
-@prefix coref: <http://nlp.stanford.edu/coref/> .
-
-""")
   }
 
   /** Gets the text contents of the first child node with the given name. */

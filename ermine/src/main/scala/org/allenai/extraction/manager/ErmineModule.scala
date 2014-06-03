@@ -28,6 +28,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
   // configuration.
   val processors = mutable.Map[String, Processor](
     "StanfordParser" -> StanfordParser,
+    "StanfordTtl" -> StanfordTtl,
     "StanfordXmlToTtl" -> StanfordXmlToTtl,
     "CatProcessor" -> CatProcessor)
 
