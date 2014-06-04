@@ -73,7 +73,7 @@ class ErminePipeline(val name: String, val description: String,
       processor <- initializedProcessors
       output <- processor.outputs
     } yield output.commit()
-    for (f: Future[Unit] <- cleanupFutures ++ commitFutures) Await.ready(f, Duration.Inf)
+    for (f: Future[Unit] <- cleanupFutures ++ commitFutures) Await.result(f, Duration.Inf)
 
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
@@ -130,7 +130,11 @@ class ErminePipeline(val name: String, val description: String,
         // Build up the new sources for the next round of iteration.
         val newUnnamed = for {
           output <- next.outputs
-        } yield Source.fromFile(output.getOutputFile)
+          file = output.getOutputFile
+          // TODO(jkinkead): Refactor processor inputs to allow us to send directories as input, and
+          // remove the below call.
+          if !file.isDirectory
+        } yield Source.fromFile(file)
         val newNamed = for {
           (output, source) <- next.outputs zip newUnnamed
           name <- output.name

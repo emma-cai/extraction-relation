@@ -54,11 +54,17 @@ object ProcessorOutput {
 
     uri.getScheme match {
       case "file" => FileOutput(name, new File(uri))
-      case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
-        case ("file", Array(datasetId, documentId)) => {
-          new AristoreFileOutputConfig(name, datasetId, documentId)
+      case "aristore" => {
+        val (datasetId, documentId) = uri.getPath.stripPrefix("/").split("/") match {
+          case Array(dataset, document) => (dataset, Some(document))
+          case Array(dataset) => (dataset, None)
+          case _ => throw new ErmineException(s"Invalid AristorePath: ${uri.getPath}")
         }
-        case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
+        uri.getAuthority match {
+          case "file" => new AristoreFileOutputConfig(name, datasetId, documentId)
+          case _ =>
+            throw new ErmineException(s"Invalid Aristore document type: ${uri.getAuthority}")
+        }
       }
       case _ => throw new ErmineException("Unsupported input scheme: " + uri)
     }
@@ -109,14 +115,17 @@ case class FileOutput(override val name: Option[String], val file: File) extends
 
 /** Uninitialized Aristore output. This will throw an exception if getOutputFile is called on it; an
   * initialized instance needs to be fetched.
+  * @param datasetId the ID of the dataset to output to
+  * @param documentId if set, the single file to output to. If unset, assumes full dataset
+  * output, and the file returned will be the directory for dataset output.
   * @see AristoreFileOutput
   */
 class AristoreFileOutputConfig(override val name: Option[String], val datasetId: String,
-    val documentId: String) extends ProcessorOutput {
+    val documentId: Option[String]) extends ProcessorOutput {
 
   /** Return an AristoreFileOutput that can be used to initiate Aristore output. */
   override def initialize()(implicit bindingModule: BindingModule): ProcessorOutput = {
-    return new AristoreFileOutput(name, datasetId, documentId)
+    new AristoreFileOutput(name, datasetId, documentId)
   }
 
   /** @throws ErmineException when invoked; this represents an uninitialized instance */
@@ -128,10 +137,11 @@ class AristoreFileOutputConfig(override val name: Option[String], val datasetId:
 /** Initialized Aristore file output.  We need a separate initialized instance to handle writing
   * multiple files in a batch - there's shared per-pipeline state that needs to be kept between all
   * of the Aristore outputs for a given run.  This is kept in AristoreActor.
-  * @param documentId the document ID to write to. This is also used as the file name in Aristore.
+  * @param documentId if set, the document ID to write to. This is also used as the file name in
+  * Aristore. If unset, the directory to write new files to will be returned instead.
   */
 class AristoreFileOutput(override val name: Option[String], val datasetId: String,
-    val documentId: String)(override implicit val bindingModule: BindingModule)
+    val documentId: Option[String])(override implicit val bindingModule: BindingModule)
     extends ProcessorOutput with Injectable {
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
@@ -150,12 +160,15 @@ class AristoreFileOutput(override val name: Option[String], val datasetId: Strin
     throw new ErmineException("initialize called on already-initialized AristoreFileOutput!")
   }
 
-  /** @return a file in the directory for the AristoreActor gave us to write to, named using the
-    * provided documentId
+  /** @return either a file in the directory for the AristoreActor gave us to write to, named using
+    * the provided documentId; or the directory AristoreActor gave us if the documentId is unset
     */
   override def getOutputFile(): File = {
     val directory = Await.result(outputDirectory, Duration.Inf)
-    return new File(directory, documentId)
+    documentId match {
+      case Some(filename) => new File(directory, filename)
+      case None => directory
+    }
   }
 
   /** Tells the AristoreActor to commit the given dataset. */
