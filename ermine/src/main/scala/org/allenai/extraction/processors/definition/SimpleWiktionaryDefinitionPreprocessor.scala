@@ -93,22 +93,24 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
 
     // Capture meta info - stuff in curly braces  if present : there could be a cluster of multiple of these
     // separated by semicolon or comma like the last e.g. in above documentation.
-    val metaInfo = """\{\{([^}]*)\}\}"""
+    val metaInfo = """\{\{([^}]*)\}\}""".r
     val defMetaInfoPattern = s"""(${metaInfo})(?:\\s*(?:,|;)\\s*(${metaInfo}))*""".r
     val matches = defMetaInfoPattern findAllMatchIn (defBeginningPoundStripped)
-    var metaData = Seq.empty[String]
-    // Process each captured group from defMetaInfoPattern, i.e., each individual {{_}} group in a cluster 
-    for (mtch <- matches) {
-      for (subGp <- mtch.subgroups) {
-        if (subGp != null) {
-          // Extract the group within the captured {{x}} group to get just the "x"
-          (new Regex(metaInfo)).findFirstMatchIn(subGp) match {
-            case Some(x) => metaData = metaData :+ x.group(1)
-            case _ =>
-          }
-        }
-      }
-    }
+    val metaData = (for {
+                     // Process each captured group from defMetaInfoPattern, 
+                     // i.e., each individual {{_}} group in a cluster 
+                     mtch <- matches
+                     subGp <- mtch.subgroups
+                     // Option() needed here on the right hand side because the 
+                     // string could be null (from Java)
+                     subGpNotNull <- Option(subGp)
+                     // Extract the group within the captured {{x}} group 
+                     // to get just the "x"
+                     firstMtch <- metaInfo findFirstMatchIn (subGpNotNull)
+                    } yield {                    
+                     firstMtch.group(1)
+                   }).toSeq
+            
   
     val defPoundMetaStripped: String = defMetaInfoPattern replaceAllIn (defBeginningPoundStripped, "")
 
