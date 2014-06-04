@@ -1,10 +1,11 @@
 package org.allenai.extraction.processors
 
 import org.allenai.common.Resource
-import org.allenai.extraction.{ FlatProcessor, Processor }
+import org.allenai.extraction.{ FlatProcessor, LogProvider, Processor }
 
+import akka.event.LoggingAdapter
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import jpl.{ JPL, Term, Query }
-
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 
@@ -46,7 +47,11 @@ object PrologProcessor {
   * @param prologGoal the prolog goal code to use. Should have a variable named
   * PrologProcessor.VariableName.
   */
-class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatProcessor {
+class PrologProcessor(val ferret: Ferret, val prologGoal: String)
+    (implicit val bindingModule: BindingModule) extends FlatProcessor with Injectable {
+
+  val log = inject[LogProvider].getLog(this)
+
   override protected def processInternal(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
@@ -82,6 +87,10 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatPr
       prologResults.toSeq
     }
 
+    if (results.length == 0) {
+      log.warning(s"got no results for prolog goal '${prologGoal}'!")
+    }
+
     ttlFile.delete()
 
     destination.write(results.mkString(""))
@@ -89,11 +98,13 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String) extends FlatPr
 }
 
 /** Processor for text. */
-class FerretTextProcessor(ferret: Ferret)
-  extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
+class FerretTextProcessor(ferret: Ferret)(implicit bindingModule: BindingModule)
+    extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
 
 /** Processor for questions. Takes one stream for the question and one for the focus. */
-class FerretQuestionProcessor(val ferret: Ferret) extends Processor {
+class FerretQuestionProcessor(val ferret: Ferret)(implicit val bindingModule: BindingModule)
+    extends Processor {
+
   override val numInputs = 2
   override val numOutputs = 1
 
