@@ -4,6 +4,7 @@ import org.allenai.ari.datastore.client.{ AriDatastoreClient, AriDatastoreHttpCl
 import org.allenai.common.Config._
 import org.allenai.extraction.{ ConfigModule, Processor }
 import org.allenai.extraction.processors._
+import org.allenai.extraction.processors.definition._
 
 import akka.actor.ActorSystem
 import akka.event.Logging
@@ -42,10 +43,10 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
   }
 
-  // Configure the Get the data directory for the definition extractor.
+  // Get the data directory for the definition extractor.
   config.get[String]("definitions.dataDirectory") match {
     case Some(dataDir) => processors += (
-        "NounDefinitionOpenRegexExtractor" -> new NounDefinitionOpenRegexExtractor(dataDir)
+        "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir)
     )
     case None => log.error("definitions.dataDirectory not found in config - " +
       "NounDefinitionOpenRegexExtractor won't be initialized")
