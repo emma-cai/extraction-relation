@@ -1,7 +1,7 @@
 package org.allenai.extraction.processors.definition
 
 /** A Case Class to represent a preprocessed raw definition
-  * @param definitionCorpusPath         The path of the input definition corpus if available.
+  * @param definitionCorpusName         The name/path or any identifier for the input definition corpus if available.
   * @param rawDefinitionId              Just a sequential index for a raw definition within the given corpus.
   * @param rawDefinitionLine            The raw Definition line (input).
   * @param definedTerm                  Term.
