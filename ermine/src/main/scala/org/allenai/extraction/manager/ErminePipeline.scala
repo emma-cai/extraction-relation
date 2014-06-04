@@ -1,6 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
+import org.allenai.extraction.Processor
 import org.allenai.extraction.manager.io._
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
@@ -117,20 +118,15 @@ class ErminePipeline(val name: String, val description: String,
             input match {
               // TODO(jkinkead): The below 'reset' calls are needed in order to be able to reuse
               // inputs to multiple pipeline stages - but they are fragile and should be fixed.
-              case UnnamedInput() => unnamedSources(index).reset
-              case NamedInput(name) => namedSources(name).reset
-              case uriInput: UriInput => uriInput.getSource()
+              case UnnamedInput() => new Processor.SourceInput(unnamedSources(index).reset)
+              case NamedInput(name) => new Processor.SourceInput(namedSources(name).reset)
+              case uriInput: UriInput => uriInput
             }
           }
         }
 
-        // Run the processor, closing all IO at the end.
-        try {
-          next.processor.process(inputs, next.outputs)
-        } finally {
-          inputs foreach { _.close }
-          unnamedSources foreach { _.close }
-        }
+        // Run the processor.
+        next.processor.process(inputs, next.outputs)
 
         // Build up the new sources for the next round of iteration.
         val newUnnamed = for {

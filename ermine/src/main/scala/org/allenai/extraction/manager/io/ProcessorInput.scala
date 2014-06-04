@@ -2,6 +2,7 @@ package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.FileDocument
+import org.allenai.extraction.Processor
 import org.allenai.extraction.manager.ErmineException
 
 import akka.actor.ActorRef
@@ -73,9 +74,7 @@ case class NamedInput(name: String) extends ProcessorInput
 case class UnnamedInput() extends ProcessorInput
 
 /** An input with a URI. The input's source will be loaded from the URI. */
-sealed abstract case class UriInput() extends ProcessorInput {
-  def getSource(): Source
-}
+sealed abstract case class UriInput() extends ProcessorInput with Processor.SingleInput
 
 /** File input, specified with a file-schemed URI. */
 class FileInput(val file: File) extends UriInput() {

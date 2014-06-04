@@ -108,11 +108,13 @@ class FerretQuestionProcessor(val ferret: Ferret)(implicit val bindingModule: Bi
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def processInternal(sources: Seq[Source],
+  override protected def processInternal(sources: Seq[Processor.Input],
     destinations: Seq[Processor.Output]): Unit = {
 
     val question = sources(0)
-    val focus = sources(1).getLines.mkString("\n")
+    val focusSource = sources(1).getSources()(0)
+    val focus = focusSource.getLines.mkString("\n")
+    focusSource.close()
 
     // Internal PrologProcessor we delegate to.
     val internalProcessor =
