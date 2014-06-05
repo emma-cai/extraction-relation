@@ -156,7 +156,7 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	current_question_focus(Focus),
 	write_simplified_triples(LeftTriples,Focus,LeftPred,''),
 	write_simplified_question_relation(RightTriples,Focus,'',Relation,Prefix),
-	( (Prefix = 'Q=',
+	( (Prefix = '',
 	   write_simplified_triples(RightTriples,null,RightPred,Prefix))
 	; simplified_inf_pred(Focus,RightPred,null,'') ),
 	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LeftPred,Relation,RightPred]),
@@ -197,7 +197,7 @@ write_simplified_question_relation(Triples,Focus,_Prev,Relation,Var) :-
 	   left_relation(Rel,OutRel) )
 	; right_relation(Rel,OutRel) ),
 	format(atom(Relation), ' -~w-> ', [OutRel]).
-write_simplified_question_relation(_,_,_,' -> ','Q=').
+write_simplified_question_relation(_,_,_,' -> ','').
 
 focus_lemma(Focus,Focus,Q,Prefix) :-
 	atomic_list_concat([Prefix,'Q'],Q), !.
