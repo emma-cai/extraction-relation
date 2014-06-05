@@ -11,10 +11,10 @@ english(ie-target.rule4, "When some animals prepare for the long winters by stor
 pretty(ie-target.rule4, "prepare('some animals', for('the long winters')) -ENABLED_BY-> store('some animals', 'food').").
 ie-target.rule4:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> enable(E10S2-store, E4S2-prepare), isa(E10S2-store, "store"), agent(E10S2-store, A3S2-animal), object(E10S2-store, A11S2-food), isa(A11S2-food, "food").
 english(ie-target.rule5, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(ie-target.rule5, "prepare('some animals', for('the long winters')) -IS_A-> isa(hibernation, 'hibernation').").
+pretty(ie-target.rule5, "prepare('some animals', for('the long winters')) -EXAMPLE_OF-> isa(hibernation, 'hibernation').").
 ie-target.rule5:: isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters") -> example(E4S2-prepare, A18S2-hibernation), isa(A18S2-hibernation, "hibernation").
 english(ie-target.rule6, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(ie-target.rule6, "isa(hibernation, 'hibernation') -IS_A-> prepare('some animals', for('the long winters')).").
+pretty(ie-target.rule6, "isa(hibernation, 'hibernation') -HAS_EXAMPLE-> prepare('some animals', for('the long winters')).").
 ie-target.rule6:: isa(A18S2-hibernation, "hibernation") -> example(E4S2-prepare, A18S2-hibernation), isa(E4S2-prepare, "prepare"), agent(E4S2-prepare, A3S2-animal), isa(A3S2-animal, "some animals"), for(E4S2-prepare, A8S2-winter), isa(A8S2-winter, "the long winters").
 english(ie-target.rule7, "A hand lens is used to view objects in more detail").
 pretty(ie-target.rule7, "isa(lens, 'A hand lens') -HAS_PURPOSE-> view('A hand lens', 'objects', in('more detail')).").
@@ -59,46 +59,46 @@ english(ie-target.rule20, "Getting enough rest is also an important part of livi
 pretty(ie-target.rule20, "live(X, 'a healthy life') -PART_OF-> get(X, 'rest').").
 ie-target.rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life") -> part(E1S7-get, E10S7-live), isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest").
 english(ie-target.rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule21, "isa(decomposer, 'Decomposers') -IS_A-> break down('living things', 'dead organisms').").
+pretty(ie-target.rule21, "isa(decomposer, 'Decomposers') -EXAMPLE_OF-> break down('living things', 'dead organisms').").
 ie-target.rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule22, "break down('living things', 'dead organisms') -IS_A-> isa(decomposer, 'Decomposers').").
+pretty(ie-target.rule22, "break down('living things', 'dead organisms') -HAS_EXAMPLE-> isa(decomposer, 'Decomposers').").
 ie-target.rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule23, "isa(decomposer, 'Decomposers') -IS_A-> recycle('living things', 'their[dead organisms] nutrients', into('the soil')).").
+pretty(ie-target.rule23, "isa(decomposer, 'Decomposers') -EXAMPLE_OF-> recycle('living things', 'their[dead organisms] nutrients', into('the soil')).").
 ie-target.rule23:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule24, "recycle('living things', 'their[dead organisms] nutrients', into('the soil')) -IS_A-> isa(decomposer, 'Decomposers').").
+pretty(ie-target.rule24, "recycle('living things', 'their[dead organisms] nutrients', into('the soil')) -HAS_EXAMPLE-> isa(decomposer, 'Decomposers').").
 ie-target.rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
 english(ie-target.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule25, "isa(decomposer, 'Decomposers') -IS_A-> isa(thing, 'living things').").
+pretty(ie-target.rule25, "isa(decomposer, 'Decomposers') -EXAMPLE_OF-> isa(thing, 'living things').").
 ie-target.rule25:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(A4S10-thing, "living things").
 english(ie-target.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(ie-target.rule26, "isa(thing, 'living things') -IS_A-> isa(decomposer, 'Decomposers').").
+pretty(ie-target.rule26, "isa(thing, 'living things') -HAS_EXAMPLE-> isa(decomposer, 'Decomposers').").
 ie-target.rule26:: isa(A4S10-thing, "living things") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers").
 english(ie-target.rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(ie-target.rule27, "isa(gravity, 'Gravity') -IS_A-> pull('the force', 'an object toward the center of the Earth').").
+pretty(ie-target.rule27, "isa(gravity, 'Gravity') -EXAMPLE_OF-> pull('the force', 'an object toward the center of the Earth').").
 ie-target.rule27:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
 english(ie-target.rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(ie-target.rule28, "pull('the force', 'an object toward the center of the Earth') -IS_A-> isa(gravity, 'Gravity').").
+pretty(ie-target.rule28, "pull('the force', 'an object toward the center of the Earth') -HAS_EXAMPLE-> isa(gravity, 'Gravity').").
 ie-target.rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
 english(ie-target.rule29, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(ie-target.rule29, "isa(gravity, 'Gravity') -IS_A-> isa(force, 'the force').").
+pretty(ie-target.rule29, "isa(gravity, 'Gravity') -EXAMPLE_OF-> isa(force, 'the force').").
 ie-target.rule29:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(A4S11-force, "the force").
 english(ie-target.rule30, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(ie-target.rule30, "isa(force, 'the force') -IS_A-> isa(gravity, 'Gravity').").
+pretty(ie-target.rule30, "isa(force, 'the force') -HAS_EXAMPLE-> isa(gravity, 'Gravity').").
 ie-target.rule30:: isa(A4S11-force, "the force") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity").
 english(ie-target.rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-pretty(ie-target.rule31, "isa(sweat, 'sweat') -IS_A-> adjust('an organism', 'sweat', to('hot temperatures')).").
+pretty(ie-target.rule31, "isa(sweat, 'sweat') -EXAMPLE_OF-> adjust('an organism', 'sweat', to('hot temperatures')).").
 ie-target.rule31:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
 english(ie-target.rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-pretty(ie-target.rule32, "adjust('an organism', 'sweat', to('hot temperatures')) -IS_A-> isa(sweat, 'sweat').").
+pretty(ie-target.rule32, "adjust('an organism', 'sweat', to('hot temperatures')) -HAS_EXAMPLE-> isa(sweat, 'sweat').").
 ie-target.rule32:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A6S12-sweat), isa(A6S12-sweat, "sweat"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust).
 english(ie-target.rule33, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-pretty(ie-target.rule33, "isa(sweat, 'sweat') -IS_A-> adjust('an organism', 'a way', to('hot temperatures')).").
+pretty(ie-target.rule33, "isa(sweat, 'sweat') -EXAMPLE_OF-> adjust('an organism', 'a way', to('hot temperatures')).").
 ie-target.rule33:: isa(A6S12-sweat, "sweat") -> example(A6S12-sweat, E14S12-adjust), isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures").
 english(ie-target.rule34, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
-pretty(ie-target.rule34, "adjust('an organism', 'a way', to('hot temperatures')) -IS_A-> isa(sweat, 'sweat').").
+pretty(ie-target.rule34, "adjust('an organism', 'a way', to('hot temperatures')) -HAS_EXAMPLE-> isa(sweat, 'sweat').").
 ie-target.rule34:: isa(E14S12-adjust, "adjust"), agent(E14S12-adjust, A12S12-organism), isa(A12S12-organism, "an organism"), object(E14S12-adjust, A9S12-way), isa(A9S12-way, "a way"), to(E14S12-adjust, A17S12-temperature), isa(A17S12-temperature, "hot temperatures") -> example(A6S12-sweat, E14S12-adjust), isa(A6S12-sweat, "sweat").
 english(ie-target.rule35, "A squirrel storing nuts is preparing for a seasonal change in the environment").
 pretty(ie-target.rule35, "store('A squirrel', 'nuts') -HAS_EFFECT-> prepare('A squirrel', for('a seasonal change in the environment')).").
@@ -158,10 +158,10 @@ english(ie-target.rule53, "A student should use a graduated cylinder to measure 
 pretty(ie-target.rule53, "measure('A student', 'mL') -EFFECT_OF-> use('A student', 'a graduated cylinder').").
 ie-target.rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
 english(ie-target.rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
-pretty(ie-target.rule54, "isa(fur, 'The white fur of an arctic fox blends') -IS_A-> isa(camouflage, 'camouflage').").
+pretty(ie-target.rule54, "isa(fur, 'The white fur of an arctic fox blends') -EXAMPLE_OF-> isa(camouflage, 'camouflage').").
 ie-target.rule54:: isa(A3S20-fur, "The white fur of an arctic fox blends") -> example(A3S20-fur, A15S20-camouflage), isa(A15S20-camouflage, "camouflage").
 english(ie-target.rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
-pretty(ie-target.rule55, "isa(camouflage, 'camouflage') -IS_A-> isa(fur, 'The white fur of an arctic fox blends').").
+pretty(ie-target.rule55, "isa(camouflage, 'camouflage') -HAS_EXAMPLE-> isa(fur, 'The white fur of an arctic fox blends').").
 ie-target.rule55:: isa(A15S20-camouflage, "camouflage") -> example(A3S20-fur, A15S20-camouflage), isa(A3S20-fur, "The white fur of an arctic fox blends").
 english(ie-target.rule56, "When plants and animals die decomposers help return nutrients to the food chain").
 pretty(ie-target.rule56, "isa(decomposer, 'decomposers') -HAS_PURPOSE-> return('decomposers', 'nutrients', to('the food chain')).").

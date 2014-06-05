@@ -481,12 +481,15 @@
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"erosion\"" .
+<http://aristo.allenai.org/id#1.2>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.1> ;
+	pred:arg <http://aristo.allenai.org/id#1.5> ;
+	pred:isa "\"be\"" .
 <http://aristo.allenai.org/id#1.5>
-	a <entity> ;
 	pred:isa "\"the main source of energy for the water cycle\"" .
 <http://aristo.allenai.org/id#1.1>
-	pred:isa "\"erosion\"" ;
-	rel:example <http://aristo.allenai.org/id#1.5> .
+	pred:isa "\"erosion\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"gravity\"" .
@@ -1483,9 +1486,10 @@
 <http://aristo.allenai.org/id#2.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
+	a <entity> ;
 	pred:isa "\"sweat\"" .
 <http://aristo.allenai.org/id#3.1>
 	a <entity> ;
@@ -1522,9 +1526,10 @@
 <http://aristo.allenai.org/id#2.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
 <http://aristo.allenai.org/id#2.6>
+	a <entity> ;
 	pred:isa "\"sweat\"" .
 <http://aristo.allenai.org/id#3.1>
 	a <entity> ;
@@ -1743,6 +1748,7 @@
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 <http://aristo.allenai.org/id#3.10>
+	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -1755,8 +1761,8 @@
 <http://aristo.allenai.org/id#3.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.10> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.10> .
 <http://aristo.allenai.org/id#3.3>
 	rel:effect <http://aristo.allenai.org/id#3.7> .
 <http://aristo.allenai.org/id#3.5>
@@ -1790,6 +1796,7 @@
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 <http://aristo.allenai.org/id#3.11>
+	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -1802,8 +1809,8 @@
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.11> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.11> .
 <http://aristo.allenai.org/id#3.3>
 	rel:effect <http://aristo.allenai.org/id#3.8> .
 <http://aristo.allenai.org/id#3.6>
@@ -1837,6 +1844,7 @@
 <http://aristo.allenai.org/id#2.8>
 	pred:isa "\"the leaves\"" .
 <http://aristo.allenai.org/id#3.11>
+	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -1849,8 +1857,8 @@
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.11> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.11> .
 <http://aristo.allenai.org/id#3.3>
 	rel:effect <http://aristo.allenai.org/id#3.8> .
 <http://aristo.allenai.org/id#3.6>

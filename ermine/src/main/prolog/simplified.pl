@@ -28,7 +28,7 @@ simplified_inf_rel([Rel,_,RId],Left,_,Relation) :-
 simplified_inf_rel([Rel,_,_],_,_,Relation) :-
 	format(atom(Relation), ' -~w->', [Rel]).
 
-left_relation(example,'IS_A').
+left_relation(example,'EXAMPLE_OF').
 left_relation(cause,'CAUSES').
 left_relation(enable,'ENABLES').
 left_relation(when,'WHEN').
@@ -36,7 +36,7 @@ left_relation(Rel,Relation) :-
 	upcase_atom(Rel,UpRel),
 	atomic_list_concat(['HAS_',UpRel], Relation).
 
-right_relation(example,'IS_A').
+right_relation(example,'HAS_EXAMPLE').
 right_relation(cause,'CAUSED_BY').
 right_relation(enable,'ENABLED_BY').
 right_relation(when,'THEN').
