@@ -1,6 +1,6 @@
 english(sample.rule1, "Some animals grow fur in winter to keep warm").
-pretty(sample.rule1, "grow('Some animals', 'fur', in('winter')) -> effect(grow, keep), keep('Some animals', 'warm').").
+pretty(sample.rule1, "grow('Some animals', 'fur', in('winter')) -HAS_EFFECT-> keep('Some animals', 'warm').").
 sample.rule1:: isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), isa(A2S1-animal, "Some animals"), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter") -> effect(E3S1-grow, E8S1-keep), isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm").
 english(sample.rule2, "Some animals grow fur in winter to keep warm").
-pretty(sample.rule2, "keep('Some animals', 'warm') -> effect(grow, keep), grow('Some animals', 'fur', in('winter')).").
+pretty(sample.rule2, "keep('Some animals', 'warm') -EFFECT_OF-> grow('Some animals', 'fur', in('winter')).").
 sample.rule2:: isa(E8S1-keep, "keep"), agent(E8S1-keep, A2S1-animal), isa(A2S1-animal, "Some animals"), arg(E8S1-keep, A9S1-warm), isa(A9S1-warm, "warm") -> effect(E3S1-grow, E8S1-keep), isa(E3S1-grow, "grow"), agent(E3S1-grow, A2S1-animal), object(E3S1-grow, A4S1-fur), isa(A4S1-fur, "fur"), in(E3S1-grow, A6S1-winter), isa(A6S1-winter, "winter").

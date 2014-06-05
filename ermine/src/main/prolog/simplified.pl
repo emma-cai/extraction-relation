@@ -4,37 +4,45 @@
 write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
 	simplified_inf_rel(Rel,Left,Right,Relation),
 	simplified_inf_pred(Left,LPred,null,''), % LHS
-	simplified_inf_pred(Right,RPred,null,', '), % RHS
-	format(atom(Pretty), 'pretty(~w, "~w -> ~w~w.")', [Id,LPred,Relation,RPred]),
+	simplified_inf_pred(Right,RPred,null,' '), % RHS
+	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LPred,Relation,RPred]),
 	!.
 write_simplified_inf_relation(_,_,_,Id,Pretty) :- % failed
 	format(atom(Pretty), 'pretty(~w, "")', [Id]).
 
-simplified_inf_rel([Rel|_],Relation) :- % question-specific
-	rdf_global_id(rel:Rel,P),
-	rdf(S,P,O),
-	simplified_inf_pred(S,SL,focus,'('),
-	simplified_inf_pred(O,OL,focus,', '),
-	format(atom(Relation), '~w~w~w)', [Rel,SL,OL]).
-
-simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
-	stripped_id(Left,LId),
-	simplified_lemma(Left,focus,L),
-	simplified_lemma(Right,focus,R),
-	format(atom(Relation), '~w(~w, ~w)', [Rel,L,R]).
-simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
-	stripped_id(Left,RId),
-	simplified_lemma(Left,focus,L),
-	simplified_lemma(Right,focus,R),
-	format(atom(Relation), '~w(~w, ~w)', [Rel,R,L]).
-simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
+simplified_inf_rel([Rel,LId,_],Left,_,Relation) :-
+	stripped_id(Left,LId), !,
+	left_relation(Rel,LRel),
+	format(atom(Relation), ' -~w->', [LRel]).
+simplified_inf_rel([Rel,_,RId],Left,_,Relation) :-
+	stripped_id(Left,RId), !,
+	right_relation(Rel,RRel),
+	format(atom(Relation), ' -~w->', [RRel]).
+simplified_inf_rel([Rel,_,RId],Left,_,Relation) :-
 	% relc case
 	( dependency(Arg,dep:partmod,Left)
 	; dependency(Arg,dep:rcmod,Left) ),
 	stripped_id(Arg,RId),
-	simplified_lemma(Left,focus,L),
-	simplified_lemma(Right,focus,R),
-	format(atom(Relation), '~w(~w, ~w)', [Rel,R,L]).
+	right_relation(Rel,RRel),
+	format(atom(Relation), ' -~w->', [RRel]).
+simplified_inf_rel([Rel,_,_],_,_,Relation) :-
+	format(atom(Relation), ' -~w->', [Rel]).
+
+left_relation(example,'IS_A').
+left_relation(cause,'CAUSES').
+left_relation(enable,'ENABLES').
+left_relation(when,'WHEN').
+left_relation(Rel,Relation) :-
+	upcase_atom(Rel,UpRel),
+	atomic_list_concat(['HAS_',UpRel], Relation).
+
+right_relation(example,'IS_A').
+right_relation(cause,'CAUSED_BY').
+right_relation(enable,'ENABLED_BY').
+right_relation(when,'THEN').
+right_relation(Rel,Relation) :-
+	upcase_atom(Rel,UpRel),
+	atomic_list_concat([UpRel,'_OF'], Relation).
 
 
 simplified_inf_pred(Root-_,Pred,Focus,Prefix) :-
@@ -148,9 +156,9 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	current_question_focus(Focus),
 	write_simplified_triples(LeftTriples,Focus,LeftPred,''),
 	write_simplified_question_relation(RightTriples,Focus,'',Relation,Prefix),
-	( (Prefix = ', Q=',
+	( (Prefix = 'Q=',
 	   write_simplified_triples(RightTriples,null,RightPred,Prefix))
-	; simplified_inf_pred(Focus,RightPred,null,', Q=') ),
+	; simplified_inf_pred(Focus,RightPred,null,'') ),
 	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LeftPred,Relation,RightPred]),
 	!.
 write_simplified_inf_question(_,_,Id,Pretty) :- % failed
@@ -180,14 +188,15 @@ write_simplified_triples(_,_,'',_).
 write_simplified_question_relation(Triples,Focus,_Prev,Relation,Var) :-
 	member([S,P,O],Triples),
 	rdf_global_id(rel:Rel,P), !,
-	focus_lemma(S,Focus,SLemma, '('),
-	focus_lemma(O,Focus,OLemma, ', '),
-	( ( ( SLemma = '(Q'
-	    ; OLemma = ', Q'
-	    ; memberchk([_,_,Focus],Triples) ),
-	  Var = ', Q=' )
-	; Var = ', '), % relation only
-	format(atom(Relation), ' -> ~w~w~w)', [Rel,SLemma,OLemma]).
+	focus_lemma(S,Focus,SLemma, ''),
+	focus_lemma(O,Focus,OLemma, ''),
+	( ( (SLemma = 'Q' ; OLemma = 'Q'),
+	    Var = '')
+	; Var = 'Q='),
+	( (OLemma = 'Q',
+	   left_relation(Rel,OutRel) )
+	; right_relation(Rel,OutRel) ),
+	format(atom(Relation), ' -~w-> ', [OutRel]).
 write_simplified_question_relation(_,_,_,' -> ','Q=').
 
 focus_lemma(Focus,Focus,Q,Prefix) :-
