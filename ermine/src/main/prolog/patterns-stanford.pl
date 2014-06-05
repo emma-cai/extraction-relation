@@ -49,7 +49,7 @@ example_Tuple_NP(Entity,Comp,['EXAMPLE'-7,Is,Called]) :-
 	; dependency(Called,dep:csubjpass,Comp) ).
 
 % EXAMPLE: NP is a NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-8,Cop]) :-
+example_NP_NP(Entity1,Entity2,['ISA'-8,Cop]) :-
 	dependency(Entity2,dep:nsubj,Entity1),
 	\+ lemma(Entity2,example),
 	\+ lemma(Entity2,cause),
@@ -58,14 +58,14 @@ example_NP_NP(Entity1,Entity2,['EXAMPLE'-8,Cop]) :-
 	( dependency(Entity2,dep:det,_)
 	; pos(Entity2,'NNS') ). % plural
 % EXAMPLE: NP is called NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-9,Is,Called]) :-
+example_NP_NP(Entity1,Entity2,['ISA'-9,Is,Called]) :-
 	dependency(Called,dep:nsubjpass,Entity1),
 	\+ dependency(Called,dep:advcl,_),
 	text(Called,called),
 	dependency(Called,dep:auxpass,Is),
 	dependency(Called,dep:xcomp,Entity2).
 % EXAMPLE: NP such as NP
-example_NP_NP(Entity1,Entity2,['EXAMPLE'-10,Such,As]) :-
+example_NP_NP(Entity1,Entity2,['ISA'-10,Such,As]) :-
 	dependency(Entity2,dep:prep_such_as,Entity1),
 	prep(Entity1,As),
 	dependency(As,basic:mwe,Such).

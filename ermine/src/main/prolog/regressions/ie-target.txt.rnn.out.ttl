@@ -184,7 +184,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#10.4> .
+	rel:isa <http://aristo.allenai.org/id#10.4> .
 <http://aristo.allenai.org/id#10.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -200,7 +200,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#10.4> .
+	rel:isa <http://aristo.allenai.org/id#10.4> .
 <http://aristo.allenai.org/id#10.11>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#10.4> ;
@@ -218,7 +218,7 @@
 <http://aristo.allenai.org/id#10.1>
 	a <entity> ;
 	pred:isa "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#10.4> .
+	rel:isa <http://aristo.allenai.org/id#10.4> .
 <http://aristo.allenai.org/id#10.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -226,7 +226,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
 		 "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#11.4> .
+	rel:isa <http://aristo.allenai.org/id#11.4> .
 <http://aristo.allenai.org/id#11.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -241,7 +241,7 @@
 <http://aristo.allenai.org/id#11.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#11.4> .
+	rel:isa <http://aristo.allenai.org/id#11.4> .
 <http://aristo.allenai.org/id#11.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -446,7 +446,7 @@
 <http://aristo.allenai.org/id#20.3>
 	a <entity> ;
 	pred:isa "\"The white fur of an arctic fox blends\"" ;
-	rel:example <http://aristo.allenai.org/id#20.15> .
+	rel:isa <http://aristo.allenai.org/id#20.15> .
 <http://aristo.allenai.org/id#20.15>
 	a <entity> ;
 	pred:isa "\"camouflage\"" .

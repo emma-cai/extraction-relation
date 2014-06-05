@@ -4,8 +4,8 @@
 write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
 	simplified_inf_rel(Rel,Left,Right,Relation),
 	simplified_inf_pred(Left,LPred,null,''), % LHS
-	%%%simplified_inf_pred(Right,RPred,null,', '), % RHS
-	format(atom(Pretty), 'pretty(~w, "~w -> ~w.")', [Id,LPred,Relation]),
+	simplified_inf_pred(Right,RPred,null,', '), % RHS
+	format(atom(Pretty), 'pretty(~w, "~w -> ~w~w.")', [Id,LPred,Relation,RPred]),
 	!.
 write_simplified_inf_relation(_,_,_,Id,Pretty) :- % failed
 	format(atom(Pretty), 'pretty(~w, "")', [Id]).
@@ -19,22 +19,22 @@ simplified_inf_rel([Rel|_],Relation) :- % question-specific
 
 simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
 	stripped_id(Left,LId),
-	simplified_inf_pred(Left,L,focus,'('),
-	simplified_inf_pred(Right,R,focus,', '),
-	format(atom(Relation), '~w~w~w)', [Rel,L,R]).
+	simplified_lemma(Left,focus,L),
+	simplified_lemma(Right,focus,R),
+	format(atom(Relation), '~w(~w, ~w)', [Rel,L,R]).
 simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
 	stripped_id(Left,RId),
-	simplified_inf_pred(Left,L,focus,', '),
-	simplified_inf_pred(Right,R,focus,'('),
-	format(atom(Relation), '~w~w~w)', [Rel,R,L]).
+	simplified_lemma(Left,focus,L),
+	simplified_lemma(Right,focus,R),
+	format(atom(Relation), '~w(~w, ~w)', [Rel,R,L]).
 simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
 	% relc case
 	( dependency(Arg,dep:partmod,Left)
 	; dependency(Arg,dep:rcmod,Left) ),
 	stripped_id(Arg,RId),
-	simplified_inf_pred(Left,L,focus,', '),
-	simplified_inf_pred(Right,R,focus,'('),
-	format(atom(Relation), '~w~w~w)', [Rel,R,L]).
+	simplified_lemma(Left,focus,L),
+	simplified_lemma(Right,focus,R),
+	format(atom(Relation), '~w(~w, ~w)', [Rel,R,L]).
 
 
 simplified_inf_pred(Root-_,Pred,Focus,Prefix) :-
@@ -52,11 +52,11 @@ simplified_inf_pred(Root,Pred,Focus,Prefix) :-
 	; S = 'X' ),
 	simplified_inf_args(Root,Focus,Args),
 	format(atom(Pred), '~w~w(~w~w)', [Prefix,Lemma,S,Args]).
-simplified_inf_pred(Root,String,Focus,'') :- % write on LHS only
+simplified_inf_pred(Root,String,Focus,Prefix) :- % write on LHS only
 	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
 	tokens_text_escaped_quoted(Tokens,Text),
-	format(atom(String), 'isa(~w, ~w)', [Lemma,Text]).
+	format(atom(String), '~wisa(~w, ~w)', [Prefix,Lemma,Text]).
 simplified_inf_pred(Root,String,_Focus,Prefix) :-
 %	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),

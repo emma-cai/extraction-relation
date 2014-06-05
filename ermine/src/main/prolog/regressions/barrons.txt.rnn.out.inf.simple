@@ -1,11 +1,11 @@
 english(barrons.rule1, "Animals and plants are living things").
-barrons.rule1:: example(animal, thing).
+barrons.rule1:: .
 english(barrons.rule2, "Animals and plants are living things").
-barrons.rule2:: example(animal, thing).
+barrons.rule2:: .
 english(barrons.rule3, "Animals and plants are living things").
-barrons.rule3:: example(plant, thing).
+barrons.rule3:: .
 english(barrons.rule4, "Animals and plants are living things").
-barrons.rule4:: example(plant, thing).
+barrons.rule4:: .
 english(barrons.rule5, "They[Animals and plants] have basic needs necessities in order to survive").
 barrons.rule5:: agent(have, animal), object(have, need) -> effect(have, survive), agent(survive, animal).
 english(barrons.rule6, "They[Animals and plants] have basic needs necessities in order to survive").
@@ -201,21 +201,21 @@ barrons.rule100:: agent(need, thing), object(need, anything) -> effect(need, exi
 english(barrons.rule101, "A nonliving thing does not need anything to exist").
 barrons.rule101:: agent(exist, thing) -> effect(need, exist), agent(need, thing), object(need, anything).
 english(barrons.rule102, "A swing set is a nonliving thing that is man-made").
-barrons.rule102:: example(set, be), agent(be, thing), object(be, man-made).
+barrons.rule102:: agent(be, thing), object(be, man-made).
 english(barrons.rule103, "A swing set is a nonliving thing that is man-made").
-barrons.rule103:: agent(be, thing), object(be, man-made) -> example(set, be).
+barrons.rule103:: agent(be, thing), object(be, man-made).
 english(barrons.rule104, "A swing set is a nonliving thing that is man-made").
-barrons.rule104:: example(set, thing).
+barrons.rule104:: .
 english(barrons.rule105, "A swing set is a nonliving thing that is man-made").
-barrons.rule105:: example(set, thing).
+barrons.rule105:: .
 english(barrons.rule106, "Your desk pencil and paper are all nonliving things").
-barrons.rule106:: example(paper, thing).
+barrons.rule106:: .
 english(barrons.rule107, "Your desk pencil and paper are all nonliving things").
-barrons.rule107:: example(paper, thing).
+barrons.rule107:: .
 english(barrons.rule108, "Your desk pencil and paper are all nonliving things").
-barrons.rule108:: example(paper, thing).
+barrons.rule108:: .
 english(barrons.rule109, "Your desk pencil and paper are all nonliving things").
-barrons.rule109:: example(paper, thing).
+barrons.rule109:: .
 english(barrons.rule110, "Air and water are nonliving but are necessary for living things to live and survive").
 barrons.rule110:: requirement(Air, live), agent(live, thing).
 english(barrons.rule111, "Air and water are nonliving but are necessary for living things to live and survive").
@@ -297,13 +297,13 @@ barrons.rule148:: agent(photosynthesis, plant) -> purpose(photosynthesis, make),
 english(barrons.rule149, "Photosynthesis is the process by which plants make their[Plants] own food").
 barrons.rule149:: agent(make, plant) -> purpose(photosynthesis, make), agent(photosynthesis, plant).
 english(barrons.rule150, "Photosynthesis is the process by which plants make their[Plants] own food").
-barrons.rule150:: example(photosynthesis, make), agent(make, plant).
+barrons.rule150:: agent(make, plant).
 english(barrons.rule151, "Photosynthesis is the process by which plants make their[Plants] own food").
-barrons.rule151:: agent(make, plant) -> example(photosynthesis, make).
+barrons.rule151:: agent(make, plant).
 english(barrons.rule152, "Photosynthesis is the process by which plants make their[Plants] own food").
-barrons.rule152:: example(photosynthesis, process).
+barrons.rule152:: .
 english(barrons.rule153, "Photosynthesis is the process by which plants make their[Plants] own food").
-barrons.rule153:: example(photosynthesis, process).
+barrons.rule153:: .
 english(barrons.rule154, "All living things do some type of breathing").
 barrons.rule154:: agent(do, thing), object(do, type).
 english(barrons.rule155, "All living things do some type of breathing").
@@ -355,9 +355,9 @@ barrons.rule177:: agent(exhale, animal), object(exhale, dioxide), through(exhale
 english(barrons.rule178, "Animals get rid of their[Animals] gaseous waste by exhaling carbon dioxide through their[Animals] mouth and nose").
 barrons.rule178:: agent(rid, animal), of(rid, waste) -> enable(exhale, rid), agent(exhale, animal), object(exhale, dioxide), through(exhale, mouth), through(exhale, nose).
 english(barrons.rule179, "Plants are living organisms").
-barrons.rule179:: example(plant, organism).
+barrons.rule179:: .
 english(barrons.rule180, "Plants are living organisms").
-barrons.rule180:: example(plant, organism).
+barrons.rule180:: .
 english(barrons.rule181, "Plants require air water nutrients and light in order to live and survive").
 barrons.rule181:: agent(require, plant), object(require, air) -> effect(require, live), agent(live, plant).
 english(barrons.rule182, "Plants require air water nutrients and light in order to live and survive").
@@ -397,13 +397,13 @@ barrons.rule198:: agent(contain, plant), object(contain, particle).
 english(barrons.rule199, "Plants contain little green particles called chloroplasts which are made up of chlorophyll").
 barrons.rule199:: agent(contain, plant), object(contain, particle).
 english(barrons.rule200, "Plants are the only living organism that can make its[Air and water] own food").
-barrons.rule200:: example(plant, organism), agent(make, organism), object(make, food).
+barrons.rule200:: agent(make, organism), object(make, food).
 english(barrons.rule201, "Plants are the only living organism that can make its[Air and water] own food").
-barrons.rule201:: agent(make, organism), object(make, food) -> example(plant, organism).
+barrons.rule201:: agent(make, organism), object(make, food).
 english(barrons.rule202, "Plants are the only living organism that can make its[Air and water] own food").
-barrons.rule202:: example(plant, organism).
+barrons.rule202:: .
 english(barrons.rule203, "Plants are the only living organism that can make its[Air and water] own food").
-barrons.rule203:: example(plant, organism).
+barrons.rule203:: .
 english(barrons.rule204, "Other living organisms depend on plants to survive").
 barrons.rule204:: agent(depend, organism), on(depend, plant) -> effect(depend, survive), agent(survive, organism).
 english(barrons.rule205, "Other living organisms depend on plants to survive").
@@ -419,41 +419,41 @@ barrons.rule209:: agent(photosynthesis, plant) -> purpose(photosynthesis, make),
 english(barrons.rule210, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
 barrons.rule210:: agent(make, plant), object(make, food) -> purpose(photosynthesis, make), agent(photosynthesis, plant).
 english(barrons.rule211, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule211:: example(photosynthesis, make), agent(make, plant), object(make, food).
+barrons.rule211:: agent(make, plant), object(make, food).
 english(barrons.rule212, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule212:: agent(make, plant), object(make, food) -> example(photosynthesis, make).
+barrons.rule212:: agent(make, plant), object(make, food).
 english(barrons.rule213, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule213:: example(photosynthesis, give), agent(give, plant), object(give, oxygen).
+barrons.rule213:: agent(give, plant), object(give, oxygen).
 english(barrons.rule214, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule214:: agent(give, plant), object(give, oxygen) -> example(photosynthesis, give).
+barrons.rule214:: agent(give, plant), object(give, oxygen).
 english(barrons.rule215, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule215:: example(photosynthesis, give), agent(give, plant), object(give, water).
+barrons.rule215:: agent(give, plant), object(give, water).
 english(barrons.rule216, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule216:: agent(give, plant), object(give, water) -> example(photosynthesis, give).
+barrons.rule216:: agent(give, plant), object(give, water).
 english(barrons.rule217, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule217:: example(photosynthesis, process).
+barrons.rule217:: .
 english(barrons.rule218, "Photosynthesis is a process by which plants make their[Plants are living organisms] own food and give off oxygen and water that they[Plants are living organisms] are not using").
-barrons.rule218:: example(photosynthesis, process).
+barrons.rule218:: .
 english(barrons.rule219, "The food made by the plant is a form of sugar called glucose").
-barrons.rule219:: example(food, call), agent(call, form).
+barrons.rule219:: agent(call, form).
 english(barrons.rule220, "The food made by the plant is a form of sugar called glucose").
-barrons.rule220:: agent(call, form) -> example(food, call).
+barrons.rule220:: agent(call, form).
 english(barrons.rule221, "The food made by the plant is a form of sugar called glucose").
-barrons.rule221:: example(food, form).
+barrons.rule221:: .
 english(barrons.rule222, "The food made by the plant is a form of sugar called glucose").
-barrons.rule222:: example(food, form).
+barrons.rule222:: .
 english(barrons.rule223, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule223:: example(oxygen, need), agent(need, animal), object(need, oxygen).
+barrons.rule223:: agent(need, animal), object(need, oxygen).
 english(barrons.rule224, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule224:: agent(need, animal), object(need, oxygen) -> example(oxygen, need).
+barrons.rule224:: agent(need, animal), object(need, oxygen).
 english(barrons.rule225, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule225:: example(oxygen, need), agent(need, animal), object(need, gas).
+barrons.rule225:: agent(need, animal), object(need, gas).
 english(barrons.rule226, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule226:: agent(need, animal), object(need, gas) -> example(oxygen, need).
+barrons.rule226:: agent(need, animal), object(need, gas).
 english(barrons.rule227, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule227:: example(oxygen, gas).
+barrons.rule227:: .
 english(barrons.rule228, "Oxygen is a gas that is needed by many animals in order to survive").
-barrons.rule228:: example(oxygen, gas).
+barrons.rule228:: .
 english(barrons.rule229, "Oxygen is a gas that is needed by many animals in order to survive").
 barrons.rule229:: agent(need, animal), object(need, oxygen) -> effect(need, survive), agent(survive, animal).
 english(barrons.rule230, "Oxygen is a gas that is needed by many animals in order to survive").
@@ -523,9 +523,9 @@ barrons.rule261:: agent(absorb, root), object(absorb, nutrient), from(absorb, so
 english(barrons.rule262, "Roots absorb water and nutrients from the soil into the plant").
 barrons.rule262:: agent(absorb, root), object(absorb, nutrient), from(absorb, soil).
 english(barrons.rule263, "The stem is the pathway of water and nutrients from roots to leaves and flower").
-barrons.rule263:: example(stem, pathway).
+barrons.rule263:: .
 english(barrons.rule264, "The stem is the pathway of water and nutrients from roots to leaves and flower").
-barrons.rule264:: example(stem, pathway).
+barrons.rule264:: .
 english(barrons.rule265, "The stem supports and holds up the plant").
 barrons.rule265:: agent(support, stem), object(support, plant).
 english(barrons.rule266, "The stem supports and holds up the plant").
@@ -541,9 +541,9 @@ barrons.rule270:: agent(be, stem), object(be, pathway) -> purpose(be, nutrient).
 english(barrons.rule271, "The stem is the pathway for transporting carrying water and nutrients").
 barrons.rule271:: purpose(be, nutrient), agent(be, stem), object(be, pathway).
 english(barrons.rule272, "The stem is the pathway for transporting carrying water and nutrients").
-barrons.rule272:: example(stem, pathway).
+barrons.rule272:: .
 english(barrons.rule273, "The stem is the pathway for transporting carrying water and nutrients").
-barrons.rule273:: example(stem, pathway).
+barrons.rule273:: .
 english(barrons.rule274, "The stem transports extra food glucose made in the leaves to the roots to be stored for later use").
 barrons.rule274:: agent(transport, stem), object(transport, food), to(transport, root) -> effect(transport, store), for(store, use).
 english(barrons.rule275, "The stem transports extra food glucose made in the leaves to the roots to be stored for later use").
@@ -553,9 +553,9 @@ barrons.rule276:: agent(transport, stem), object(transport, glucose), to(transpo
 english(barrons.rule277, "The stem transports extra food glucose made in the leaves to the roots to be stored for later use").
 barrons.rule277:: for(store, use) -> effect(transport, store), agent(transport, stem), object(transport, glucose), to(transport, root).
 english(barrons.rule278, "Leaves are the food-making factory of the plant").
-barrons.rule278:: example(leaf, factory).
+barrons.rule278:: .
 english(barrons.rule279, "Leaves are the food-making factory of the plant").
-barrons.rule279:: example(leaf, factory).
+barrons.rule279:: .
 english(barrons.rule280, "The flower is responsible for reproduction").
 barrons.rule280:: purpose(flower, reproduction).
 english(barrons.rule281, "The flower is responsible for reproduction").
@@ -565,13 +565,13 @@ barrons.rule282:: object(pollinate, flower), with(pollinate, help) -> effect(pol
 english(barrons.rule283, "With the help of animals insects and birds rain and wind flowers can be pollinated fertilized so that seeds can be formed that will grow into new plants").
 barrons.rule283:: object(form, seed), arg(form, grow) -> effect(pollinate, form), object(pollinate, flower), with(pollinate, help).
 english(barrons.rule284, "The flower is the reproductive part of the plant").
-barrons.rule284:: example(flower, part).
+barrons.rule284:: .
 english(barrons.rule285, "The flower is the reproductive part of the plant").
-barrons.rule285:: example(flower, part).
+barrons.rule285:: .
 english(barrons.rule286, "Flowers are usually bright colors and have nice scents for a reason").
-barrons.rule286:: example(flower, color).
+barrons.rule286:: .
 english(barrons.rule287, "Flowers are usually bright colors and have nice scents for a reason").
-barrons.rule287:: example(flower, color).
+barrons.rule287:: .
 english(barrons.rule288, "These colors and smells attract birds and insects to visit them[Flowers are usually bright colors and have nice scents for a reason] and help with the reproduction process").
 barrons.rule288:: agent(attract, color), object(attract, bird) -> effect(attract, visit), object(visit, color).
 english(barrons.rule289, "These colors and smells attract birds and insects to visit them[Flowers are usually bright colors and have nice scents for a reason] and help with the reproduction process").
@@ -663,25 +663,25 @@ barrons.rule331:: agent(have, plant), object(have, cycle).
 english(barrons.rule332, "Plants have life cycles that may include beginning of life development into an adult reproduction as an adult and eventually death").
 barrons.rule332:: agent(have, plant), object(have, cycle).
 english(barrons.rule333, "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death is called its[The length of time from the beginning of the plant to its death] life span").
-barrons.rule333:: example(length, span).
+barrons.rule333:: .
 english(barrons.rule334, "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death is called its[The length of time from the beginning of the plant to its death] life span").
-barrons.rule334:: example(length, span).
+barrons.rule334:: .
 english(barrons.rule335, "Growth is the process by which plants increase in size").
 barrons.rule335:: agent(growth, plant) -> purpose(growth, increase), agent(increase, plant), in(increase, size).
 english(barrons.rule336, "Growth is the process by which plants increase in size").
 barrons.rule336:: agent(increase, plant), in(increase, size) -> purpose(growth, increase), agent(growth, plant).
 english(barrons.rule337, "Growth is the process by which plants increase in size").
-barrons.rule337:: example(growth, increase), agent(increase, plant), in(increase, size).
+barrons.rule337:: agent(increase, plant), in(increase, size).
 english(barrons.rule338, "Growth is the process by which plants increase in size").
-barrons.rule338:: agent(increase, plant), in(increase, size) -> example(growth, increase).
+barrons.rule338:: agent(increase, plant), in(increase, size).
 english(barrons.rule339, "Growth is the process by which plants increase in size").
-barrons.rule339:: example(growth, process).
+barrons.rule339:: .
 english(barrons.rule340, "Growth is the process by which plants increase in size").
-barrons.rule340:: example(growth, process).
+barrons.rule340:: .
 english(barrons.rule341, "Animals are living organisms").
-barrons.rule341:: example(animal, organism).
+barrons.rule341:: .
 english(barrons.rule342, "Animals are living organisms").
-barrons.rule342:: example(animal, organism).
+barrons.rule342:: .
 english(barrons.rule343, "Animals require air water and food in order to live and survive").
 barrons.rule343:: agent(require, animal), object(require, air) -> effect(require, live), agent(live, animal).
 english(barrons.rule344, "Animals require air water and food in order to live and survive").
@@ -715,17 +715,17 @@ barrons.rule357:: example(skin, tissue).
 english(barrons.rule358, "Muscles and skin are examples of tissues").
 barrons.rule358:: example(skin, tissue).
 english(barrons.rule359, "Groups of tissues working together are called organs").
-barrons.rule359:: example(group, organ).
+barrons.rule359:: .
 english(barrons.rule360, "Groups of tissues working together are called organs").
-barrons.rule360:: example(group, organ).
+barrons.rule360:: .
 english(barrons.rule361, "The lungs are an organ in the body").
-barrons.rule361:: example(lung, organ).
+barrons.rule361:: .
 english(barrons.rule362, "The lungs are an organ in the body").
-barrons.rule362:: example(lung, organ).
+barrons.rule362:: .
 english(barrons.rule363, "Different organs working together are called organ systems").
-barrons.rule363:: example(organ, system).
+barrons.rule363:: .
 english(barrons.rule364, "Different organs working together are called organ systems").
-barrons.rule364:: example(organ, system).
+barrons.rule364:: .
 english(barrons.rule365, "These organ systems work together to make up the organism").
 barrons.rule365:: agent(work, system), arg(work, together) -> effect(work, make), agent(make, system), object(make, organism).
 english(barrons.rule366, "These organ systems work together to make up the organism").
@@ -819,13 +819,13 @@ barrons.rule409:: agent(send, lung), object(send, dioxide), out(send, of) -> whe
 english(barrons.rule410, "The lungs send the carbon dioxide out of the body when we exhale").
 barrons.rule410:: agent(exhale, we) -> when(send, exhale), agent(send, lung), object(send, dioxide), out(send, of).
 english(barrons.rule411, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
-barrons.rule411:: example(diaphragm, muscle), agent(move, muscle), arg(move, inhale), arg(move, exhale), arg(move, take), arg(move, let).
+barrons.rule411:: agent(move, muscle), arg(move, inhale), arg(move, exhale), arg(move, take), arg(move, let).
 english(barrons.rule412, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
-barrons.rule412:: agent(move, muscle), arg(move, inhale), arg(move, exhale), arg(move, take), arg(move, let) -> example(diaphragm, muscle).
+barrons.rule412:: agent(move, muscle), arg(move, inhale), arg(move, exhale), arg(move, take), arg(move, let).
 english(barrons.rule413, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
-barrons.rule413:: example(diaphragm, muscle).
+barrons.rule413:: .
 english(barrons.rule414, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
-barrons.rule414:: example(diaphragm, muscle).
+barrons.rule414:: .
 english(barrons.rule415, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
 barrons.rule415:: agent(inhale, we) -> effect(inhale, take), agent(take, we).
 english(barrons.rule416, "The diaphragm is a muscle that moves up and down as we[we] inhale and exhale and helps the lungs take in and let out air").
@@ -991,9 +991,9 @@ barrons.rule495:: agent(send, nerve), object(send, nerve), to(send, brain) -> ef
 english(barrons.rule496, "Tiny hairs and nerves in our[We] nose sense different smells and send them[Tiny hairs and nerves in our nose sense different] to the brain so that we[We] can decide if it[our nose sense] is a familiar scent or a new one").
 barrons.rule496:: agent(decide, we), arg(decide, scent), arg(decide, one) -> effect(send, decide), agent(send, nerve), object(send, nerve), to(send, brain).
 english(barrons.rule497, "Tiny hairs and nerves in our[We] nose sense different smells and send them[Tiny hairs and nerves in our nose sense different] to the brain so that we[We] can decide if it[our nose sense] is a familiar scent or a new one").
-barrons.rule497:: example(it, scent).
+barrons.rule497:: .
 english(barrons.rule498, "Tiny hairs and nerves in our[We] nose sense different smells and send them[Tiny hairs and nerves in our nose sense different] to the brain so that we[We] can decide if it[our nose sense] is a familiar scent or a new one").
-barrons.rule498:: example(it, scent).
+barrons.rule498:: .
 english(barrons.rule499, "All animals have different structures that have different jobs or functions to help with growth survival and reproduction").
 barrons.rule499:: agent(have, animal), object(have, structure).
 english(barrons.rule500, "All animals have different structures that have different jobs or functions to help with growth survival and reproduction").
@@ -1071,13 +1071,13 @@ barrons.rule535:: purpose(fur, blend), agent(blend, fur), into(blend, landscape)
 english(barrons.rule536, "Think of a lion 's golden fur which helps it[a lion 's golden fur which helps it blend into the desert landscape] blend into the desert landscape").
 barrons.rule536:: agent(blend, fur), into(blend, landscape) -> purpose(fur, blend).
 english(barrons.rule537, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
-barrons.rule537:: example(chameleon, lizard), agent(change, lizard), object(change, color).
+barrons.rule537:: agent(change, lizard), object(change, color).
 english(barrons.rule538, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
-barrons.rule538:: agent(change, lizard), object(change, color) -> example(chameleon, lizard).
+barrons.rule538:: agent(change, lizard), object(change, color).
 english(barrons.rule539, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
-barrons.rule539:: example(chameleon, lizard).
+barrons.rule539:: .
 english(barrons.rule540, "Chameleons are lizards that can change colors based on the color of their[Chameleons are lizards that can change colors based on the color of their surroundings] surroundings").
-barrons.rule540:: example(chameleon, lizard).
+barrons.rule540:: .
 english(barrons.rule541, "On the sand it[the sand] will turn a tan color and on grass it[the sand] will turn green to allow it[the sand] to hide from predators").
 barrons.rule541:: agent(turn, sand), object(turn, color), on(turn, sand).
 english(barrons.rule542, "On the sand it[the sand] will turn a tan color and on grass it[the sand] will turn green to allow it[the sand] to hide from predators").
@@ -1101,9 +1101,9 @@ barrons.rule550:: agent(send, animal), object(send, ut) -> enable(send, protect)
 english(barrons.rule551, "Some animals protect themselves[escape predators enemies] by sending o ut special sounds or smells which is another type of defense mechanism").
 barrons.rule551:: agent(protect, animal), object(protect, predator), arg(protect, type) -> enable(send, protect), agent(send, animal), object(send, ut).
 english(barrons.rule552, "Some animals protect themselves[escape predators enemies] by sending o ut special sounds or smells which is another type of defense mechanism").
-barrons.rule552:: example(which, type).
+barrons.rule552:: .
 english(barrons.rule553, "Some animals protect themselves[escape predators enemies] by sending o ut special sounds or smells which is another type of defense mechanism").
-barrons.rule553:: example(which, type).
+barrons.rule553:: .
 english(barrons.rule554, "These smells and sounds can attract other animals so that they[other animals] can mate or they[other animals] can help them[other animals] fight an enemy").
 barrons.rule554:: agent(attract, these), object(attract, animal) -> effect(attract, mate), agent(mate, animal).
 english(barrons.rule555, "These smells and sounds can attract other animals so that they[other animals] can mate or they[other animals] can help them[other animals] fight an enemy").
@@ -1235,9 +1235,9 @@ barrons.rule617:: purpose(fat, get), agent(get, animal), object(get, period), ar
 english(barrons.rule618, "Body fat is a form of stored energy and helps animals get through long periods of time with little food").
 barrons.rule618:: agent(get, animal), object(get, period), arg(get, through) -> purpose(fat, get).
 english(barrons.rule619, "Body fat is a form of stored energy and helps animals get through long periods of time with little food").
-barrons.rule619:: example(fat, form).
+barrons.rule619:: .
 english(barrons.rule620, "Body fat is a form of stored energy and helps animals get through long periods of time with little food").
-barrons.rule620:: example(fat, form).
+barrons.rule620:: .
 english(barrons.rule621, "Some animals gather food in preparation for the long winter").
 barrons.rule621:: agent(gather, animal), object(gather, food) -> effect(gather, preparation), agent(preparation, animal), for(preparation, winter).
 english(barrons.rule622, "Some animals gather food in preparation for the long winter").
@@ -1265,9 +1265,9 @@ barrons.rule632:: agent(move, animal), to(move, climate) -> effect(move, deal), 
 english(barrons.rule633, "Moving to a warmer climate in the cold months is another way some animals deal with changes in the weather").
 barrons.rule633:: agent(deal, animal), with(deal, change) -> effect(move, deal), agent(move, animal), to(move, climate).
 english(barrons.rule634, "This is called migration").
-barrons.rule634:: example(this, migration).
+barrons.rule634:: .
 english(barrons.rule635, "This is called migration").
-barrons.rule635:: example(this, migration).
+barrons.rule635:: .
 english(barrons.rule636, "Birds are known for fly ing south in the winter to avoid the cold months").
 barrons.rule636:: agent(know, ing), object(know, bird) -> effect(know, avoid), agent(avoid, ing), arg(avoid, month).
 english(barrons.rule637, "Birds are known for fly ing south in the winter to avoid the cold months").
@@ -1285,9 +1285,9 @@ barrons.rule642:: example(fish, adapt), agent(adapt, organism), to(adapt, enviro
 english(barrons.rule643, "One example of how organisms have adapted to their[living things organisms] environment is the fish").
 barrons.rule643:: agent(adapt, organism), to(adapt, environment), arg(adapt, how) -> example(fish, adapt).
 english(barrons.rule644, "One example of how organisms have adapted to their[living things organisms] environment is the fish").
-barrons.rule644:: example(example, fish).
+barrons.rule644:: .
 english(barrons.rule645, "One example of how organisms have adapted to their[living things organisms] environment is the fish").
-barrons.rule645:: example(example, fish).
+barrons.rule645:: .
 english(barrons.rule646, "Because fish live in the water and need to breathe they[living things organisms] developed gills").
 barrons.rule646:: agent(develop, thing), object(develop, gill).
 english(barrons.rule647, "Because fish live in the water and need to breathe they[living things organisms] developed gills").
@@ -1299,9 +1299,9 @@ barrons.rule649:: agent(live, fish), in(live, water) -> effect(live, develop), a
 english(barrons.rule650, "Because fish live in the water and need to breathe they[living things organisms] developed gills").
 barrons.rule650:: agent(develop, thing), object(develop, gill) -> effect(live, develop), agent(live, fish), in(live, water).
 english(barrons.rule651, "Gills are slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming").
-barrons.rule651:: example(gill, slit).
+barrons.rule651:: .
 english(barrons.rule652, "Gills are slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming").
-barrons.rule652:: example(gill, slit).
+barrons.rule652:: .
 english(barrons.rule653, "Gills are slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming").
 barrons.rule653:: purpose(side, get), agent(get, fish), object(get, oxygen), from(get, water).
 english(barrons.rule654, "Gills are slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming").
@@ -1319,9 +1319,9 @@ barrons.rule659:: purpose(beak, capture), agent(capture, bird).
 english(barrons.rule660, "A beak helps the bird capture and take in food").
 barrons.rule660:: agent(capture, bird) -> purpose(beak, capture).
 english(barrons.rule661, "The shape strength and design of the beak varies depending on whether it[The shape strength and design of the beak] is a bird of prey a seed-eater or a fish-eater").
-barrons.rule661:: example(it, bird).
+barrons.rule661:: .
 english(barrons.rule662, "The shape strength and design of the beak varies depending on whether it[The shape strength and design of the beak] is a bird of prey a seed-eater or a fish-eater").
-barrons.rule662:: example(it, bird).
+barrons.rule662:: .
 english(barrons.rule663, "Elephants have long trunks that enable them[Elephants] to grab food and drink water").
 barrons.rule663:: purpose(trunk, grab), agent(grab, elephant), object(grab, water).
 english(barrons.rule664, "Elephants have long trunks that enable them[Elephants] to grab food and drink water").
@@ -1353,13 +1353,13 @@ barrons.rule676:: cause(variation, have), agent(have, individual), object(have, 
 english(barrons.rule677, "All organisms have variations and because of these variations individuals of a species may have an advantage in surviving and reproducing").
 barrons.rule677:: agent(have, individual), object(have, advantage), of(have, variation), in(have, survive), in(have, reproduce) -> cause(variation, have).
 english(barrons.rule678, "Diversity is the many different types of animals within the same species").
-barrons.rule678:: example(diversity, type).
+barrons.rule678:: .
 english(barrons.rule679, "Diversity is the many different types of animals within the same species").
-barrons.rule679:: example(diversity, type).
+barrons.rule679:: .
 english(barrons.rule680, "Diversity is the many different types of animals within the same species").
-barrons.rule680:: example(diversity, type).
+barrons.rule680:: .
 english(barrons.rule681, "Diversity is the many different types of animals within the same species").
-barrons.rule681:: example(diversity, type).
+barrons.rule681:: .
 english(barrons.rule682, "You could have three beagles that look similar but their[three beagles that look similar] markings are different").
 barrons.rule682:: agent(have, you), object(have, beagle).
 english(barrons.rule683, "You could have three beagles that look similar but their[three beagles that look similar] markings are different").
@@ -1367,9 +1367,9 @@ barrons.rule683:: agent(have, you), object(have, beagle).
 english(barrons.rule684, "You could have three beagles that look similar but their[three beagles that look similar] markings are different").
 barrons.rule684:: agent(have, you), object(have, beagle).
 english(barrons.rule685, "This is called the continuity of life or life cycle").
-barrons.rule685:: example(this, continuity).
+barrons.rule685:: .
 english(barrons.rule686, "This is called the continuity of life or life cycle").
-barrons.rule686:: example(this, continuity).
+barrons.rule686:: .
 english(barrons.rule687, "All living things have specific patterns of reproduction growth and development that are called stages in its[Extinction is when the species no longer exists such as the dinosaurs] life cycle").
 barrons.rule687:: agent(have, thing), object(have, pattern).
 english(barrons.rule688, "All living things have specific patterns of reproduction growth and development that are called stages in its[Extinction is when the species no longer exists such as the dinosaurs] life cycle").
@@ -1383,13 +1383,13 @@ barrons.rule691:: agent(have, you), object(have, pet).
 english(barrons.rule692, "You may have had a pet or witnessed some of the following organisms life cycles").
 barrons.rule692:: agent(have, you), object(have, pet).
 english(barrons.rule693, "Some examples are the frog beetle and ladybug").
-barrons.rule693:: example(example, frog).
+barrons.rule693:: .
 english(barrons.rule694, "Some examples are the frog beetle and ladybug").
-barrons.rule694:: example(example, frog).
+barrons.rule694:: .
 english(barrons.rule695, "The length of time from an animal 's birth to its[an animal 's birth] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule695:: example(length, span).
+barrons.rule695:: .
 english(barrons.rule696, "The length of time from an animal 's birth to its[an animal 's birth] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule696:: example(length, span).
+barrons.rule696:: .
 english(barrons.rule697, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
 barrons.rule697:: agent(have, type), object(have, effect).
 english(barrons.rule698, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
@@ -1411,33 +1411,33 @@ barrons.rule705:: effect(factor, effect), agent(effect, factor), on(effect, orga
 english(barrons.rule706, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
 barrons.rule706:: agent(effect, factor), on(effect, organism) -> effect(factor, effect).
 english(barrons.rule707, "The average life span of a fruit fly is 72 hours").
-barrons.rule707:: example(span, hour).
+barrons.rule707:: .
 english(barrons.rule708, "The average life span of a fruit fly is 72 hours").
-barrons.rule708:: example(span, hour).
+barrons.rule708:: .
 english(barrons.rule709, "The average life span of a worker ant is 6 months").
-barrons.rule709:: example(span, month).
+barrons.rule709:: .
 english(barrons.rule710, "The average life span of a worker ant is 6 months").
-barrons.rule710:: example(span, month).
+barrons.rule710:: .
 english(barrons.rule711, "The average life span of a frog is 10 years").
-barrons.rule711:: example(span, year).
+barrons.rule711:: .
 english(barrons.rule712, "The average life span of a frog is 10 years").
-barrons.rule712:: example(span, year).
+barrons.rule712:: .
 english(barrons.rule713, "The average life span of an elephant is 70 years").
-barrons.rule713:: example(span, year).
+barrons.rule713:: .
 english(barrons.rule714, "The average life span of an elephant is 70 years").
-barrons.rule714:: example(span, year).
+barrons.rule714:: .
 english(barrons.rule715, "The average life span of a human is 79 years").
-barrons.rule715:: example(span, year).
+barrons.rule715:: .
 english(barrons.rule716, "The average life span of a human is 79 years").
-barrons.rule716:: example(span, year).
+barrons.rule716:: .
 english(barrons.rule717, "The average life span of a turtle is 100 years").
-barrons.rule717:: example(span, year).
+barrons.rule717:: .
 english(barrons.rule718, "The average life span of a turtle is 100 years").
-barrons.rule718:: example(span, year).
+barrons.rule718:: .
 english(barrons.rule719, "The health growth and development of organisms are affected by environmental conditions such as the availability of food air water space shelter heat and sunlight").
-barrons.rule719:: example(availability, condition).
+barrons.rule719:: .
 english(barrons.rule720, "The health growth and development of organisms are affected by environmental conditions such as the availability of food air water space shelter heat and sunlight").
-barrons.rule720:: example(availability, condition).
+barrons.rule720:: .
 english(barrons.rule721, "Growth is the process by which plants and animals increase in size").
 barrons.rule721:: agent(growth, plant) -> purpose(growth, increase), agent(increase, plant), object(increase, in).
 english(barrons.rule722, "Growth is the process by which plants and animals increase in size").
@@ -1447,17 +1447,17 @@ barrons.rule723:: agent(growth, animal) -> purpose(growth, increase), agent(incr
 english(barrons.rule724, "Growth is the process by which plants and animals increase in size").
 barrons.rule724:: agent(increase, animal), object(increase, in) -> purpose(growth, increase), agent(growth, animal).
 english(barrons.rule725, "Growth is the process by which plants and animals increase in size").
-barrons.rule725:: example(growth, increase), agent(increase, plant), object(increase, in).
+barrons.rule725:: agent(increase, plant), object(increase, in).
 english(barrons.rule726, "Growth is the process by which plants and animals increase in size").
-barrons.rule726:: agent(increase, plant), object(increase, in) -> example(growth, increase).
+barrons.rule726:: agent(increase, plant), object(increase, in).
 english(barrons.rule727, "Growth is the process by which plants and animals increase in size").
-barrons.rule727:: example(growth, increase), agent(increase, animal), object(increase, in).
+barrons.rule727:: agent(increase, animal), object(increase, in).
 english(barrons.rule728, "Growth is the process by which plants and animals increase in size").
-barrons.rule728:: agent(increase, animal), object(increase, in) -> example(growth, increase).
+barrons.rule728:: agent(increase, animal), object(increase, in).
 english(barrons.rule729, "Growth is the process by which plants and animals increase in size").
-barrons.rule729:: example(growth, process).
+barrons.rule729:: .
 english(barrons.rule730, "Growth is the process by which plants and animals increase in size").
-barrons.rule730:: example(growth, process).
+barrons.rule730:: .
 english(barrons.rule731, "As an organism moves into an adult stage of life they continue to grow").
 barrons.rule731:: agent(move, organism), into(move, stage) -> effect(move, continue), agent(continue, they).
 english(barrons.rule732, "As an organism moves into an adult stage of life they continue to grow").
@@ -1487,21 +1487,21 @@ barrons.rule743:: agent(make, body), object(make, cell) -> effect(make, happen),
 english(barrons.rule744, "This happens because your body is always growing and making new skin cells").
 barrons.rule744:: agent(happen, this) -> effect(make, happen), agent(make, body), object(make, cell).
 english(barrons.rule745, "This information is called traits").
-barrons.rule745:: example(information, trait).
+barrons.rule745:: .
 english(barrons.rule746, "This information is called traits").
-barrons.rule746:: example(information, trait).
+barrons.rule746:: .
 english(barrons.rule747, "A trait could be the color of your hair skin and eyes your height and the shape of your face ears and nose").
-barrons.rule747:: example(trait, color).
+barrons.rule747:: .
 english(barrons.rule748, "A trait could be the color of your hair skin and eyes your height and the shape of your face ears and nose").
-barrons.rule748:: example(trait, color).
+barrons.rule748:: .
 english(barrons.rule749, "These are all characteristics traits that you are born with").
-barrons.rule749:: example(these, characteristic).
+barrons.rule749:: .
 english(barrons.rule750, "These are all characteristics traits that you are born with").
-barrons.rule750:: example(these, characteristic).
+barrons.rule750:: .
 english(barrons.rule751, "These are all characteristics traits that you are born with").
-barrons.rule751:: example(these, characteristic).
+barrons.rule751:: .
 english(barrons.rule752, "These are all characteristics traits that you are born with").
-barrons.rule752:: example(these, characteristic).
+barrons.rule752:: .
 english(barrons.rule753, "When a trait is passed from parent to child we say that it[A trait could be the color of your hair skin and eyes your height and the shape of your face ears and nose] is inherited").
 barrons.rule753:: agent(say, we), arg(say, inherit) -> when(say, pass), object(pass, trait), from(pass, parent), to(pass, child).
 english(barrons.rule754, "When a trait is passed from parent to child we say that it[A trait could be the color of your hair skin and eyes your height and the shape of your face ears and nose] is inherited").
@@ -1517,29 +1517,29 @@ barrons.rule758:: agent(pass, inheritance), object(pass, characteristic), from(p
 english(barrons.rule759, "Inheritance is passing characteristics from parent to child").
 barrons.rule759:: agent(pass, inheritance), object(pass, characteristic), from(pass, parent), to(pass, child).
 english(barrons.rule760, "Genetics is the branch of science that studies how hereditary information is passed from one generation to the next generation in a family").
-barrons.rule760:: example(Genetics, branch).
+barrons.rule760:: .
 english(barrons.rule761, "Genetics is the branch of science that studies how hereditary information is passed from one generation to the next generation in a family").
-barrons.rule761:: example(Genetics, branch).
+barrons.rule761:: .
 english(barrons.rule762, "A family tree is a chart that shows a family 's relatives over time").
-barrons.rule762:: example(tree, chart), agent(show, chart), object(show, relative), over(show, time).
+barrons.rule762:: agent(show, chart), object(show, relative), over(show, time).
 english(barrons.rule763, "A family tree is a chart that shows a family 's relatives over time").
-barrons.rule763:: agent(show, chart), object(show, relative), over(show, time) -> example(tree, chart).
+barrons.rule763:: agent(show, chart), object(show, relative), over(show, time).
 english(barrons.rule764, "A family tree is a chart that shows a family 's relatives over time").
-barrons.rule764:: example(tree, chart).
+barrons.rule764:: .
 english(barrons.rule765, "A family tree is a chart that shows a family 's relatives over time").
-barrons.rule765:: example(tree, chart).
+barrons.rule765:: .
 english(barrons.rule766, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule766:: example(grandparent, generation).
+barrons.rule766:: .
 english(barrons.rule767, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule767:: example(grandparent, generation).
+barrons.rule767:: .
 english(barrons.rule768, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule768:: example(parent, generation).
+barrons.rule768:: .
 english(barrons.rule769, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule769:: example(parent, generation).
+barrons.rule769:: .
 english(barrons.rule770, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule770:: example(child, generation).
+barrons.rule770:: .
 english(barrons.rule771, "In the family tree chart shown below the grandparents are the first generation the parents are the second generation and the children are the third generation").
-barrons.rule771:: example(child, generation).
+barrons.rule771:: .
 english(barrons.rule772, "A pedigree chart shows each level of a family tree in a chart format").
 barrons.rule772:: agent(show, chart), object(show, level), in(show, format).
 english(barrons.rule773, "A pedigree chart shows each level of a family tree in a chart format").
@@ -1621,9 +1621,9 @@ barrons.rule810:: object(combine, information) -> effect(combine, form), object(
 english(barrons.rule811, "This information is combined to form the new offspring").
 barrons.rule811:: object(form, offspring) -> effect(combine, form), object(combine, information).
 english(barrons.rule812, "DNA is a bundle of chemicals that are considered the map for all living things").
-barrons.rule812:: example(dna, bundle).
+barrons.rule812:: .
 english(barrons.rule813, "DNA is a bundle of chemicals that are considered the map for all living things").
-barrons.rule813:: example(dna, bundle).
+barrons.rule813:: .
 english(barrons.rule814, "Just as you have your own fingerprint you also have your own DNA").
 barrons.rule814:: agent(have, you), object(have, dna), arg(have, just).
 english(barrons.rule815, "Just as you have your own fingerprint you also have your own DNA").
@@ -1651,9 +1651,9 @@ barrons.rule825:: agent(contain, strand), object(contain, hundred).
 english(barrons.rule826, "Each strand of DNA contains hundreds of pieces of information").
 barrons.rule826:: agent(contain, strand), object(contain, hundred).
 english(barrons.rule827, "The number of DNA strands chromosomes an organism has is the same for all members of a species").
-barrons.rule827:: example(number, same).
+barrons.rule827:: .
 english(barrons.rule828, "The number of DNA strands chromosomes an organism has is the same for all members of a species").
-barrons.rule828:: example(number, same).
+barrons.rule828:: .
 english(barrons.rule829, "For example humans have 46 chromosomes and a fruit fly has only 8 chromosomes").
 barrons.rule829:: agent(have, human), object(have, chromosome), for(have, example).
 english(barrons.rule830, "For example humans have 46 chromosomes and a fruit fly has only 8 chromosomes").
@@ -1671,13 +1671,13 @@ barrons.rule835:: agent(look, organism), object(look, similar), to(look, organis
 english(barrons.rule836, "Many organisms look very similar to other organisms because they[Many organisms] may be from the same species").
 barrons.rule836:: agent(look, organism), object(look, similar), to(look, organism).
 english(barrons.rule837, "A child or baby is called an offspring").
-barrons.rule837:: example(child, offspring).
+barrons.rule837:: .
 english(barrons.rule838, "A child or baby is called an offspring").
-barrons.rule838:: example(child, offspring).
+barrons.rule838:: .
 english(barrons.rule839, "A child or baby is called an offspring").
-barrons.rule839:: example(baby, offspring).
+barrons.rule839:: .
 english(barrons.rule840, "A child or baby is called an offspring").
-barrons.rule840:: example(baby, offspring).
+barrons.rule840:: .
 english(barrons.rule841, "An offspring grows up to look like its[an offspring] parents").
 barrons.rule841:: agent(grow, offspring) -> effect(grow, look), agent(look, offspring), like(look, parent).
 english(barrons.rule842, "An offspring grows up to look like its[an offspring] parents").
@@ -1691,13 +1691,13 @@ barrons.rule845:: cause(dna, resemble), agent(resemble, animal), object(resemble
 english(barrons.rule846, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
 barrons.rule846:: agent(resemble, animal), object(resemble, parent), of(resemble, dna), arg(resemble, closely) -> cause(dna, resemble).
 english(barrons.rule847, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule847:: example(plant, parent).
+barrons.rule847:: .
 english(barrons.rule848, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule848:: example(plant, parent).
+barrons.rule848:: .
 english(barrons.rule849, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule849:: example(animal, parent).
+barrons.rule849:: .
 english(barrons.rule850, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule850:: example(animal, parent).
+barrons.rule850:: .
 english(barrons.rule851, "Animals reproduce their[Animals] own kind").
 barrons.rule851:: agent(reproduce, animal), object(reproduce, kind).
 english(barrons.rule852, "Animals reproduce their[Animals] own kind").
@@ -1769,9 +1769,9 @@ barrons.rule884:: agent(pass, you), object(pass, scar), for(pass, example), to(p
 english(barrons.rule885, "For example if you fall and get a deep cut that leaves a scar you would not pass the scar to your offspring").
 barrons.rule885:: agent(pass, you), object(pass, scar), for(pass, example), to(pass, offspring), arg(pass, fall), arg(pass, get).
 english(barrons.rule886, "These are not traits from your parents").
-barrons.rule886:: example(these, trait).
+barrons.rule886:: .
 english(barrons.rule887, "These are not traits from your parents").
-barrons.rule887:: example(these, trait).
+barrons.rule887:: .
 english(barrons.rule888, "You can not pass these traits to your offspring through your genes").
 barrons.rule888:: agent(pass, you), object(pass, trait), to(pass, offspring), through(pass, gene).
 english(barrons.rule889, "You can not pass these traits to your offspring through your genes").
@@ -1895,9 +1895,9 @@ barrons.rule947:: agent(work, body), arg(work, harder) -> effect(work, get), age
 english(barrons.rule948, "Because the lungs have to work harder to remove the chemicals the body has to work harder to get the air needed to survive").
 barrons.rule948:: agent(get, body) -> effect(work, get), agent(work, body), arg(work, harder).
 english(barrons.rule949, "The chemicals from smoking can also cause very serious diseases such as lung cancer").
-barrons.rule949:: example(cancer, disease).
+barrons.rule949:: .
 english(barrons.rule950, "The chemicals from smoking can also cause very serious diseases such as lung cancer").
-barrons.rule950:: example(cancer, disease).
+barrons.rule950:: .
 english(barrons.rule951, "Smoking can also cause skin and teeth to turn an unhealthy color").
 barrons.rule951:: cause(smoking, turn), agent(turn, skin), object(turn, color).
 english(barrons.rule952, "Smoking can also cause skin and teeth to turn an unhealthy color").
@@ -1915,17 +1915,17 @@ barrons.rule957:: agent(take, blood), object(take, order), to(take, liver) -> ef
 english(barrons.rule958, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
 barrons.rule958:: agent(get, blood), out(get, of) -> effect(take, get), agent(take, blood), object(take, order), to(take, liver).
 english(barrons.rule959, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule959:: example(which, clean), agent(clean, liver), object(clean, blood).
+barrons.rule959:: agent(clean, liver), object(clean, blood).
 english(barrons.rule960, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule960:: agent(clean, liver), object(clean, blood) -> example(which, clean).
+barrons.rule960:: agent(clean, liver), object(clean, blood).
 english(barrons.rule961, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule961:: example(which, organ), agent(clean, organ), object(clean, blood).
+barrons.rule961:: agent(clean, organ), object(clean, blood).
 english(barrons.rule962, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule962:: agent(clean, organ), object(clean, blood) -> example(which, organ).
+barrons.rule962:: agent(clean, organ), object(clean, blood).
 english(barrons.rule963, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule963:: example(which, organ).
+barrons.rule963:: .
 english(barrons.rule964, "In order for alcohol and drugs to get out of your body the blood takes it[order for alcohol and drugs to get out of your body] to the liver which is the organ that cleans the blood").
-barrons.rule964:: example(which, organ).
+barrons.rule964:: .
 english(barrons.rule965, "The liver has to work harder to remove these foreign substances").
 barrons.rule965:: agent(work, liver), arg(work, harder) -> effect(work, remove), agent(remove, liver), object(remove, substance).
 english(barrons.rule966, "The liver has to work harder to remove these foreign substances").
@@ -2005,21 +2005,21 @@ barrons.rule1002:: agent(find, find) -> effect(find, complete), agent(complete, 
 english(barrons.rule1003, "When we[we] get a good night 's sleep we[we] are able to better concentrate in school and find it[to better concentrate in school and find it easier to complete our work] easier to complete our[we] work").
 barrons.rule1003:: agent(complete, find), object(complete, work) -> effect(find, complete), agent(find, find).
 english(barrons.rule1004, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
-barrons.rule1004:: example(Ecology, science), agent(study, science), object(study, relationship).
+barrons.rule1004:: agent(study, science), object(study, relationship).
 english(barrons.rule1005, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
-barrons.rule1005:: agent(study, science), object(study, relationship) -> example(Ecology, science).
+barrons.rule1005:: agent(study, science), object(study, relationship).
 english(barrons.rule1006, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
-barrons.rule1006:: example(Ecology, science).
+barrons.rule1006:: .
 english(barrons.rule1007, "Ecology is the science that studies the relationships between organisms and their[living things organisms] environments").
-barrons.rule1007:: example(Ecology, science).
+barrons.rule1007:: .
 english(barrons.rule1008, "These interconnected relationships are called ecosystems").
-barrons.rule1008:: example(relationship, ecosystem).
+barrons.rule1008:: .
 english(barrons.rule1009, "These interconnected relationships are called ecosystems").
-barrons.rule1009:: example(relationship, ecosystem).
+barrons.rule1009:: .
 english(barrons.rule1010, "An ecosystem is a community of all the living and nonliving parts of an environment").
-barrons.rule1010:: example(ecosystem, community).
+barrons.rule1010:: .
 english(barrons.rule1011, "An ecosystem is a community of all the living and nonliving parts of an environment").
-barrons.rule1011:: example(ecosystem, community).
+barrons.rule1011:: .
 english(barrons.rule1012, "Living things need specific resources for survival such as air food and water").
 barrons.rule1012:: agent(need, thing), object(need, resource) -> purpose(need, survival).
 english(barrons.rule1013, "Living things need specific resources for survival such as air food and water").
@@ -2051,9 +2051,9 @@ barrons.rule1025:: agent(provide, plant), object(provide, supply), for(provide, 
 english(barrons.rule1026, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[producers] and animals").
 barrons.rule1026:: object(call, plant), arg(call, producer) -> effect(provide, call), agent(provide, plant), object(provide, supply), for(provide, themselves), for(provide, animal).
 english(barrons.rule1027, "The sun is the ultimate source of energy for all life and physical cycles on Earth").
-barrons.rule1027:: example(sun, source).
+barrons.rule1027:: .
 english(barrons.rule1028, "The sun is the ultimate source of energy for all life and physical cycles on Earth").
-barrons.rule1028:: example(sun, source).
+barrons.rule1028:: .
 english(barrons.rule1029, "Provided there are enough resources for plants and animals they[plants and animals] can survive in a successful balanced ecosystem community for long periods of time").
 barrons.rule1029:: agent(survive, plant), object(survive, plant), in(survive, community) -> purpose(survive, period).
 english(barrons.rule1030, "Provided there are enough resources for plants and animals they[plants and animals] can survive in a successful balanced ecosystem community for long periods of time").
@@ -2185,13 +2185,13 @@ barrons.rule1092:: agent(be, disaster) -> example(be, change).
 english(barrons.rule1093, "Another example of an environmental change would be when there is a natural disaster such as a flood or fire").
 barrons.rule1093:: example(be, change), agent(be, disaster).
 english(barrons.rule1094, "Another example of an environmental change would be when there is a natural disaster such as a flood or fire").
-barrons.rule1094:: example(flood, disaster).
+barrons.rule1094:: .
 english(barrons.rule1095, "Another example of an environmental change would be when there is a natural disaster such as a flood or fire").
-barrons.rule1095:: example(flood, disaster).
+barrons.rule1095:: .
 english(barrons.rule1096, "Another example of an environmental change would be when there is a natural disaster such as a flood or fire").
-barrons.rule1096:: example(fire, disaster).
+barrons.rule1096:: .
 english(barrons.rule1097, "Another example of an environmental change would be when there is a natural disaster such as a flood or fire").
-barrons.rule1097:: example(fire, disaster).
+barrons.rule1097:: .
 english(barrons.rule1098, "Some animals predators eat other animals prey").
 barrons.rule1098:: agent(eat, animal), object(eat, animal).
 english(barrons.rule1099, "Some animals predators eat other animals prey").
@@ -2209,17 +2209,17 @@ barrons.rule1104:: agent(become, animal), object(become, food) -> purpose(become
 english(barrons.rule1105, "Animals that eat plants for food may in turn become food for other animals").
 barrons.rule1105:: purpose(become, animal), agent(become, animal), object(become, food).
 english(barrons.rule1106, "This sequence is called a food chain").
-barrons.rule1106:: example(sequence, chain).
+barrons.rule1106:: .
 english(barrons.rule1107, "This sequence is called a food chain").
-barrons.rule1107:: example(sequence, chain).
+barrons.rule1107:: .
 english(barrons.rule1108, "Producers are living things that change the sun 's energy to make their[producers] own food").
-barrons.rule1108:: example(producer, thing), agent(change, thing), object(change, energy), arg(change, make).
+barrons.rule1108:: agent(change, thing), object(change, energy), arg(change, make).
 english(barrons.rule1109, "Producers are living things that change the sun 's energy to make their[producers] own food").
-barrons.rule1109:: agent(change, thing), object(change, energy), arg(change, make) -> example(producer, thing).
+barrons.rule1109:: agent(change, thing), object(change, energy), arg(change, make).
 english(barrons.rule1110, "Producers are living things that change the sun 's energy to make their[producers] own food").
-barrons.rule1110:: example(producer, thing).
+barrons.rule1110:: .
 english(barrons.rule1111, "Producers are living things that change the sun 's energy to make their[producers] own food").
-barrons.rule1111:: example(producer, thing).
+barrons.rule1111:: .
 english(barrons.rule1112, "Green plants do this by photosynthesis").
 barrons.rule1112:: agent(do, plant), object(do, this), by(do, photosynthesis).
 english(barrons.rule1113, "Green plants do this by photosynthesis").
@@ -2229,13 +2229,13 @@ barrons.rule1114:: agent(do, plant), object(do, this), by(do, photosynthesis).
 english(barrons.rule1115, "Green plants do this by photosynthesis").
 barrons.rule1115:: agent(do, plant), object(do, this), by(do, photosynthesis).
 english(barrons.rule1116, "Consumers are living things that feed on others").
-barrons.rule1116:: example(consumer, thing), agent(feed, thing), on(feed, other).
+barrons.rule1116:: agent(feed, thing), on(feed, other).
 english(barrons.rule1117, "Consumers are living things that feed on others").
-barrons.rule1117:: agent(feed, thing), on(feed, other) -> example(consumer, thing).
+barrons.rule1117:: agent(feed, thing), on(feed, other).
 english(barrons.rule1118, "Consumers are living things that feed on others").
-barrons.rule1118:: example(consumer, thing).
+barrons.rule1118:: .
 english(barrons.rule1119, "Consumers are living things that feed on others").
-barrons.rule1119:: example(consumer, thing).
+barrons.rule1119:: .
 english(barrons.rule1120, "A primary 1st consumer eats producers plants").
 barrons.rule1120:: agent(eat, consumer), object(eat, producer).
 english(barrons.rule1121, "A primary 1st consumer eats producers plants").
@@ -2243,17 +2243,17 @@ barrons.rule1121:: agent(eat, consumer), object(eat, producer).
 english(barrons.rule1122, "A primary 1st consumer eats producers plants").
 barrons.rule1122:: agent(eat, consumer), object(eat, producer).
 english(barrons.rule1123, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1123:: example(decomposer, thing), agent(break, thing), object(break, organism).
+barrons.rule1123:: agent(break, thing), object(break, organism).
 english(barrons.rule1124, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1124:: agent(break, thing), object(break, organism) -> example(decomposer, thing).
+barrons.rule1124:: agent(break, thing), object(break, organism).
 english(barrons.rule1125, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1125:: example(decomposer, thing), agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+barrons.rule1125:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
 english(barrons.rule1126, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1126:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil) -> example(decomposer, thing).
+barrons.rule1126:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
 english(barrons.rule1127, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1127:: example(decomposer, thing).
+barrons.rule1127:: .
 english(barrons.rule1128, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-barrons.rule1128:: example(decomposer, thing).
+barrons.rule1128:: .
 english(barrons.rule1129, "Human decisions and activities have had a major impact on the physical and living environments").
 barrons.rule1129:: agent(have, decision), object(have, impact).
 english(barrons.rule1130, "Human decisions and activities have had a major impact on the physical and living environments").
@@ -2537,9 +2537,9 @@ barrons.rule1268:: object(create, form) -> effect(create, conserve), object(cons
 english(barrons.rule1269, "Creating new clean forms of energy to conserve fossil fuels").
 barrons.rule1269:: object(conserve, fuel) -> effect(create, conserve), object(create, form).
 english(barrons.rule1270, "Mass is the amount of material present in an object").
-barrons.rule1270:: example(Mass, amount).
+barrons.rule1270:: .
 english(barrons.rule1271, "Mass is the amount of material present in an object").
-barrons.rule1271:: example(Mass, amount).
+barrons.rule1271:: .
 english(barrons.rule1272, "To measure liquid volume scientists use a graduated cylinder").
 barrons.rule1272:: agent(use, scientist), object(use, cylinder).
 english(barrons.rule1273, "To measure liquid volume scientists use a graduated cylinder").
@@ -2759,13 +2759,13 @@ barrons.rule1379:: agent(change, we), object(change, paper), arg(change, how), a
 english(barrons.rule1380, "How might we[We] change the paper chemically").
 barrons.rule1380:: agent(change, we), object(change, paper), arg(change, how), arg(change, chemically).
 english(barrons.rule1381, "The white sheet of paper would become a pile of black ashes").
-barrons.rule1381:: example(sheet, pile).
+barrons.rule1381:: .
 english(barrons.rule1382, "The white sheet of paper would become a pile of black ashes").
-barrons.rule1382:: example(sheet, pile).
+barrons.rule1382:: .
 english(barrons.rule1383, "Energy is the ability to do work").
-barrons.rule1383:: example(Energy, ability).
+barrons.rule1383:: .
 english(barrons.rule1384, "Energy is the ability to do work").
-barrons.rule1384:: example(Energy, ability).
+barrons.rule1384:: .
 english(barrons.rule1385, "Work involves the changing of an object 's position moving up and down or from side to side").
 barrons.rule1385:: agent(involve, work), object(involve, the).
 english(barrons.rule1386, "Work involves the changing of an object 's position moving up and down or from side to side").
@@ -2855,13 +2855,13 @@ barrons.rule1427:: agent(produce, object), object(produce, energy) -> when(produ
 english(barrons.rule1428, "Mechanical energy is produced when two objects move together").
 barrons.rule1428:: agent(move, object), arg(move, together) -> when(produce, move), agent(produce, object), object(produce, energy).
 english(barrons.rule1429, "Light energy is energy that is given off from a light source such as the sun or a light bulb").
-barrons.rule1429:: example(sun, source).
+barrons.rule1429:: .
 english(barrons.rule1430, "Light energy is energy that is given off from a light source such as the sun or a light bulb").
-barrons.rule1430:: example(sun, source).
+barrons.rule1430:: .
 english(barrons.rule1431, "Light energy is energy that is given off from a light source such as the sun or a light bulb").
-barrons.rule1431:: example(bulb, source).
+barrons.rule1431:: .
 english(barrons.rule1432, "Light energy is energy that is given off from a light source such as the sun or a light bulb").
-barrons.rule1432:: example(bulb, source).
+barrons.rule1432:: .
 english(barrons.rule1433, "Mechanical energy exerted by one object can push or pull another object").
 barrons.rule1433:: agent(push, energy), object(push, object).
 english(barrons.rule1434, "Mechanical energy exerted by one object can push or pull another object").
@@ -2929,9 +2929,9 @@ barrons.rule1464:: agent(involve, circuit), object(involve, source), arg(involve
 english(barrons.rule1465, "A simple circuit generally involves a battery or other source of electrons wires through which the energy can flow and the object that needs the energy to work such as a light bulb").
 barrons.rule1465:: agent(involve, circuit), object(involve, source), arg(involve, generally).
 english(barrons.rule1466, "A simple circuit generally involves a battery or other source of electrons wires through which the energy can flow and the object that needs the energy to work such as a light bulb").
-barrons.rule1466:: example(bulb, battery).
+barrons.rule1466:: .
 english(barrons.rule1467, "A simple circuit generally involves a battery or other source of electrons wires through which the energy can flow and the object that needs the energy to work such as a light bulb").
-barrons.rule1467:: example(bulb, battery).
+barrons.rule1467:: .
 english(barrons.rule1468, "The circuit or path must be complete in order for the object to work").
 barrons.rule1468:: agent(be, circuit), object(be, complete) -> effect(be, work), agent(work, object).
 english(barrons.rule1469, "The circuit or path must be complete in order for the object to work").
@@ -2953,9 +2953,9 @@ barrons.rule1476:: agent(be, circuit), object(be, complete), as(be, in) -> when(
 english(barrons.rule1477, "When one of the wires is not attached as in the diagram below the circuit will not be complete and the bulb will not give off light").
 barrons.rule1477:: object(attach, one) -> when(be, attach), agent(be, circuit), object(be, complete), as(be, in).
 english(barrons.rule1478, "A force is a push or pull").
-barrons.rule1478:: example(force, push).
+barrons.rule1478:: .
 english(barrons.rule1479, "A force is a push or pull").
-barrons.rule1479:: example(force, push).
+barrons.rule1479:: .
 english(barrons.rule1480, "A force can also be used to change the direction that an object is moving").
 barrons.rule1480:: purpose(force, change), agent(change, force), object(change, direction).
 english(barrons.rule1481, "A force can also be used to change the direction that an object is moving").
@@ -2977,13 +2977,13 @@ barrons.rule1488:: agent(be, box), object(be, full) -> effect(be, need), agent(n
 english(barrons.rule1489, "If the same box were full of marbles you would need more force to move it[the same box] across the floor").
 barrons.rule1489:: agent(need, you), object(need, force) -> effect(be, need), agent(be, box), object(be, full).
 english(barrons.rule1490, "Friction is a force that provides resistance whenever two surfaces are in contact").
-barrons.rule1490:: example(friction, force), agent(provide, force), object(provide, resistance).
+barrons.rule1490:: agent(provide, force), object(provide, resistance).
 english(barrons.rule1491, "Friction is a force that provides resistance whenever two surfaces are in contact").
-barrons.rule1491:: agent(provide, force), object(provide, resistance) -> example(friction, force).
+barrons.rule1491:: agent(provide, force), object(provide, resistance).
 english(barrons.rule1492, "Friction is a force that provides resistance whenever two surfaces are in contact").
-barrons.rule1492:: example(friction, force).
+barrons.rule1492:: .
 english(barrons.rule1493, "Friction is a force that provides resistance whenever two surfaces are in contact").
-barrons.rule1493:: example(friction, force).
+barrons.rule1493:: .
 english(barrons.rule1494, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
 barrons.rule1494:: agent(surface, smoother), object(surface, friction), arg(surface, move).
 english(barrons.rule1495, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
@@ -3001,21 +3001,21 @@ barrons.rule1500:: agent(apply, surfer), object(apply, wax), to(apply, ski), to(
 english(barrons.rule1501, "Skiers and surfers often apply wax to their[Skiers and surfers] skis and boards in order to make them[Skiers and surfers] smoother so they[Skiers and surfers] will glide along the surface of the snow or water faster").
 barrons.rule1501:: agent(make, surfer), arg(make, smoother) -> effect(apply, make), agent(apply, surfer), object(apply, wax), to(apply, ski), to(apply, board).
 english(barrons.rule1502, "Friction is also the force exerted by brakes on a bicycle or car in order to stop").
-barrons.rule1502:: example(friction, exert), agent(exert, force).
+barrons.rule1502:: agent(exert, force).
 english(barrons.rule1503, "Friction is also the force exerted by brakes on a bicycle or car in order to stop").
-barrons.rule1503:: agent(exert, force) -> example(friction, exert).
+barrons.rule1503:: agent(exert, force).
 english(barrons.rule1504, "Friction is also the force exerted by brakes on a bicycle or car in order to stop").
-barrons.rule1504:: example(friction, force).
+barrons.rule1504:: .
 english(barrons.rule1505, "Friction is also the force exerted by brakes on a bicycle or car in order to stop").
-barrons.rule1505:: example(friction, force).
+barrons.rule1505:: .
 english(barrons.rule1506, "A magnet is an object that attracts metals").
-barrons.rule1506:: example(magnet, object), agent(attract, object), object(attract, metal).
+barrons.rule1506:: agent(attract, object), object(attract, metal).
 english(barrons.rule1507, "A magnet is an object that attracts metals").
-barrons.rule1507:: agent(attract, object), object(attract, metal) -> example(magnet, object).
+barrons.rule1507:: agent(attract, object), object(attract, metal).
 english(barrons.rule1508, "A magnet is an object that attracts metals").
-barrons.rule1508:: example(magnet, object).
+barrons.rule1508:: .
 english(barrons.rule1509, "A magnet is an object that attracts metals").
-barrons.rule1509:: example(magnet, object).
+barrons.rule1509:: .
 english(barrons.rule1510, "The magnet works because the forces in it[a magnet] are all moving in the same direction resulting in two different poles ends").
 barrons.rule1510:: agent(be, force), object(be, all) -> effect(be, work), agent(work, magnet).
 english(barrons.rule1511, "The magnet works because the forces in it[a magnet] are all moving in the same direction resulting in two different poles ends").
@@ -3025,9 +3025,9 @@ barrons.rule1512:: agent(move, all), in(move, direction) -> effect(move, result)
 english(barrons.rule1513, "The magnet works because the forces in it[a magnet] are all moving in the same direction resulting in two different poles ends").
 barrons.rule1513:: agent(result, all), in(result, pole) -> effect(move, result), agent(move, all), in(move, direction).
 english(barrons.rule1514, "The space around the magnet is called the magnetic field").
-barrons.rule1514:: example(space, field).
+barrons.rule1514:: .
 english(barrons.rule1515, "The space around the magnet is called the magnetic field").
-barrons.rule1515:: example(space, field).
+barrons.rule1515:: .
 english(barrons.rule1516, "If however you were to try and put the two north ends of two different magnets together you would feel the force that causes the magnets to be repelled pushed away from one another").
 barrons.rule1516:: agent(feel, you), object(feel, force) -> effect(feel, repel), object(repel, magnet), from(repel, one).
 english(barrons.rule1517, "If however you were to try and put the two north ends of two different magnets together you would feel the force that causes the magnets to be repelled pushed away from one another").
@@ -3053,13 +3053,13 @@ barrons.rule1526:: agent(increase, distance), object(increase, force).
 english(barrons.rule1527, "As the distance between the objects increases the magnetic force of attraction decreases").
 barrons.rule1527:: agent(increase, distance), object(increase, force).
 english(barrons.rule1528, "Gravity is also a force that acts on objects here on Earth").
-barrons.rule1528:: example(gravity, force), agent(act, force), on(act, object).
+barrons.rule1528:: agent(act, force), on(act, object).
 english(barrons.rule1529, "Gravity is also a force that acts on objects here on Earth").
-barrons.rule1529:: agent(act, force), on(act, object) -> example(gravity, force).
+barrons.rule1529:: agent(act, force), on(act, object).
 english(barrons.rule1530, "Gravity is also a force that acts on objects here on Earth").
-barrons.rule1530:: example(gravity, force).
+barrons.rule1530:: .
 english(barrons.rule1531, "Gravity is also a force that acts on objects here on Earth").
-barrons.rule1531:: example(gravity, force).
+barrons.rule1531:: .
 english(barrons.rule1532, "If an object is thrown into the air the force used will only allow it[A magnet is an object that attracts metals] to travel a certain distance before the gravitational attraction between the object and the Earth causes it[the gravitational attraction between the object and the Earth] to fall back down to Earth 's surface").
 barrons.rule1532:: agent(throw, force), object(throw, object), into(throw, air) -> effect(throw, allow), agent(allow, force), arg(allow, only).
 english(barrons.rule1533, "If an object is thrown into the air the force used will only allow it[A magnet is an object that attracts metals] to travel a certain distance before the gravitational attraction between the object and the Earth causes it[the gravitational attraction between the object and the Earth] to fall back down to Earth 's surface").
@@ -3073,13 +3073,13 @@ barrons.rule1536:: cause(attraction, fall), agent(fall, attraction), arg(fall, b
 english(barrons.rule1537, "If an object is thrown into the air the force used will only allow it[A magnet is an object that attracts metals] to travel a certain distance before the gravitational attraction between the object and the Earth causes it[the gravitational attraction between the object and the Earth] to fall back down to Earth 's surface").
 barrons.rule1537:: agent(fall, attraction), arg(fall, back), arg(fall, down) -> cause(attraction, fall).
 english(barrons.rule1538, "Mechanical energy is the energy produced when two objects move together").
-barrons.rule1538:: example(energy, produce), agent(produce, energy).
+barrons.rule1538:: agent(produce, energy).
 english(barrons.rule1539, "Mechanical energy is the energy produced when two objects move together").
-barrons.rule1539:: agent(produce, energy) -> example(energy, produce).
+barrons.rule1539:: agent(produce, energy).
 english(barrons.rule1540, "Mechanical energy is the energy produced when two objects move together").
-barrons.rule1540:: example(energy, energy).
+barrons.rule1540:: .
 english(barrons.rule1541, "Mechanical energy is the energy produced when two objects move together").
-barrons.rule1541:: example(energy, energy).
+barrons.rule1541:: .
 english(barrons.rule1542, "Mechanical energy is the energy produced when two objects move together").
 barrons.rule1542:: agent(produce, energy) -> when(produce, move), agent(move, object), arg(move, together).
 english(barrons.rule1543, "Mechanical energy is the energy produced when two objects move together").
@@ -3089,9 +3089,9 @@ barrons.rule1544:: agent(move, object) -> effect(move, work), agent(work, object
 english(barrons.rule1545, "We[we] have also learned that in order to do work an object must move and that a force is a push or pull").
 barrons.rule1545:: agent(work, object) -> effect(move, work), agent(move, object).
 english(barrons.rule1546, "We[we] have also learned that in order to do work an object must move and that a force is a push or pull").
-barrons.rule1546:: example(force, push).
+barrons.rule1546:: .
 english(barrons.rule1547, "We[we] have also learned that in order to do work an object must move and that a force is a push or pull").
-barrons.rule1547:: example(force, push).
+barrons.rule1547:: .
 english(barrons.rule1548, "In our[we] everyday lives we[we] exert force to do work").
 barrons.rule1548:: agent(exert, we), object(exert, force), in(exert, life) -> effect(exert, do), agent(do, we), object(do, work).
 english(barrons.rule1549, "In our[we] everyday lives we[we] exert force to do work").
@@ -3113,45 +3113,45 @@ barrons.rule1556:: agent(use, we), object(use, machine), arg(use, help), arg(use
 english(barrons.rule1557, "When this happens we[we] use tools or machines to help us[we] do work").
 barrons.rule1557:: agent(work, we) -> effect(use, work), agent(use, we), object(use, machine), arg(use, help), arg(use, happen).
 english(barrons.rule1558, "Simple machines are tools with very few parts that help us[we] work").
-barrons.rule1558:: example(machine, tool).
+barrons.rule1558:: .
 english(barrons.rule1559, "Simple machines are tools with very few parts that help us[we] work").
-barrons.rule1559:: example(machine, tool).
+barrons.rule1559:: .
 english(barrons.rule1560, "Simple machines are tools with very few parts that help us[we] work").
 barrons.rule1560:: purpose(part, work), agent(work, we).
 english(barrons.rule1561, "Simple machines are tools with very few parts that help us[we] work").
 barrons.rule1561:: agent(work, we) -> purpose(part, work).
 english(barrons.rule1562, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1562:: example(lever, place), object(place, lever), on(place, point).
+barrons.rule1562:: object(place, lever), on(place, point).
 english(barrons.rule1563, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1563:: object(place, lever), on(place, point) -> example(lever, place).
+barrons.rule1563:: object(place, lever), on(place, point).
 english(barrons.rule1564, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1564:: example(lever, place), object(place, structure), on(place, point).
+barrons.rule1564:: object(place, structure), on(place, point).
 english(barrons.rule1565, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1565:: object(place, structure), on(place, point) -> example(lever, place).
+barrons.rule1565:: object(place, structure), on(place, point).
 english(barrons.rule1566, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1566:: example(lever, structure).
+barrons.rule1566:: .
 english(barrons.rule1567, "A lever is a flat structure that is placed on a fixed point").
-barrons.rule1567:: example(lever, structure).
+barrons.rule1567:: .
 english(barrons.rule1568, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
 barrons.rule1568:: purpose(lever, move), agent(move, lever), object(move, object).
 english(barrons.rule1569, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
 barrons.rule1569:: agent(move, lever), object(move, object) -> purpose(lever, move).
 english(barrons.rule1570, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
-barrons.rule1570:: example(weight, heavy).
+barrons.rule1570:: .
 english(barrons.rule1571, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
-barrons.rule1571:: example(weight, heavy).
+barrons.rule1571:: .
 english(barrons.rule1572, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
-barrons.rule1572:: example(paint, object).
+barrons.rule1572:: .
 english(barrons.rule1573, "The lever can assist in moving an object that is too heavy such as a big weight or can assist in opening an object such as a paint can").
-barrons.rule1573:: example(paint, object).
+barrons.rule1573:: .
 english(barrons.rule1574, "An inclined plane is a ramp that extends from one level to another").
-barrons.rule1574:: example(plane, ramp), agent(extend, ramp), from(extend, level), to(extend, another).
+barrons.rule1574:: agent(extend, ramp), from(extend, level), to(extend, another).
 english(barrons.rule1575, "An inclined plane is a ramp that extends from one level to another").
-barrons.rule1575:: agent(extend, ramp), from(extend, level), to(extend, another) -> example(plane, ramp).
+barrons.rule1575:: agent(extend, ramp), from(extend, level), to(extend, another).
 english(barrons.rule1576, "An inclined plane is a ramp that extends from one level to another").
-barrons.rule1576:: example(plane, ramp).
+barrons.rule1576:: .
 english(barrons.rule1577, "An inclined plane is a ramp that extends from one level to another").
-barrons.rule1577:: example(plane, ramp).
+barrons.rule1577:: .
 english(barrons.rule1578, "A wheelchair ramp into your school is an example of an inclined plane").
 barrons.rule1578:: example(ramp, plane).
 english(barrons.rule1579, "A wheelchair ramp into your school is an example of an inclined plane").
@@ -3181,33 +3181,33 @@ barrons.rule1590:: example(door, type).
 english(barrons.rule1591, "Examples of this type of machine are a door knob and the wheel on a wheelbarrow").
 barrons.rule1591:: example(door, type).
 english(barrons.rule1592, "Examples of this type of machine are a door knob and the wheel on a wheelbarrow").
-barrons.rule1592:: example(example, door).
+barrons.rule1592:: .
 english(barrons.rule1593, "Examples of this type of machine are a door knob and the wheel on a wheelbarrow").
-barrons.rule1593:: example(example, door).
+barrons.rule1593:: .
 english(barrons.rule1594, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1594:: example(wedge, force), object(force, wedge), into(force, object).
+barrons.rule1594:: object(force, wedge), into(force, object).
 english(barrons.rule1595, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1595:: object(force, wedge), into(force, object) -> example(wedge, force).
+barrons.rule1595:: object(force, wedge), into(force, object).
 english(barrons.rule1596, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1596:: example(wedge, force), object(force, type), into(force, object).
+barrons.rule1596:: object(force, type), into(force, object).
 english(barrons.rule1597, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1597:: object(force, type), into(force, object) -> example(wedge, force).
+barrons.rule1597:: object(force, type), into(force, object).
 english(barrons.rule1598, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1598:: example(wedge, type).
+barrons.rule1598:: .
 english(barrons.rule1599, "A wedge is a type of inclined plane that can be forced into another object").
-barrons.rule1599:: example(wedge, type).
+barrons.rule1599:: .
 english(barrons.rule1600, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1600:: example(screw, wrap), object(wrap, screw), around(wrap, cylinder).
+barrons.rule1600:: object(wrap, screw), around(wrap, cylinder).
 english(barrons.rule1601, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1601:: object(wrap, screw), around(wrap, cylinder) -> example(screw, wrap).
+barrons.rule1601:: object(wrap, screw), around(wrap, cylinder).
 english(barrons.rule1602, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1602:: example(screw, wrap), object(wrap, type), around(wrap, cylinder).
+barrons.rule1602:: object(wrap, type), around(wrap, cylinder).
 english(barrons.rule1603, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1603:: object(wrap, type), around(wrap, cylinder) -> example(screw, wrap).
+barrons.rule1603:: object(wrap, type), around(wrap, cylinder).
 english(barrons.rule1604, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1604:: example(screw, type).
+barrons.rule1604:: .
 english(barrons.rule1605, "A screw is another type of inclined plane that is wrapped around a cylinder").
-barrons.rule1605:: example(screw, type).
+barrons.rule1605:: .
 english(barrons.rule1606, "By turning the screw you insert it[A screw] into another object").
 barrons.rule1606:: agent(insert, you), object(insert, screw), into(insert, object).
 english(barrons.rule1607, "By turning the screw you insert it[A screw] into another object").
@@ -3221,45 +3221,45 @@ barrons.rule1610:: agent(turn, you), object(turn, screw) -> enable(turn, insert)
 english(barrons.rule1611, "By turning the screw you insert it[A screw] into another object").
 barrons.rule1611:: agent(insert, you), object(insert, screw), into(insert, object) -> enable(turn, insert), agent(turn, you), object(turn, screw).
 english(barrons.rule1612, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1612:: example(sun, object).
+barrons.rule1612:: .
 english(barrons.rule1613, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1613:: example(sun, object).
+barrons.rule1613:: .
 english(barrons.rule1614, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1614:: example(sun, object).
+barrons.rule1614:: .
 english(barrons.rule1615, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1615:: example(sun, object).
+barrons.rule1615:: .
 english(barrons.rule1616, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1616:: example(star, object).
+barrons.rule1616:: .
 english(barrons.rule1617, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1617:: example(star, object).
+barrons.rule1617:: .
 english(barrons.rule1618, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1618:: example(star, object).
+barrons.rule1618:: .
 english(barrons.rule1619, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1619:: example(star, object).
+barrons.rule1619:: .
 english(barrons.rule1620, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1620:: example(moon, object).
+barrons.rule1620:: .
 english(barrons.rule1621, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1621:: example(moon, object).
+barrons.rule1621:: .
 english(barrons.rule1622, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1622:: example(moon, object).
+barrons.rule1622:: .
 english(barrons.rule1623, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1623:: example(moon, object).
+barrons.rule1623:: .
 english(barrons.rule1624, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1624:: example(planet, object).
+barrons.rule1624:: .
 english(barrons.rule1625, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1625:: example(planet, object).
+barrons.rule1625:: .
 english(barrons.rule1626, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1626:: example(planet, object).
+barrons.rule1626:: .
 english(barrons.rule1627, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1627:: example(planet, object).
+barrons.rule1627:: .
 english(barrons.rule1628, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1628:: example(comet, object).
+barrons.rule1628:: .
 english(barrons.rule1629, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1629:: example(comet, object).
+barrons.rule1629:: .
 english(barrons.rule1630, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1630:: example(comet, object).
+barrons.rule1630:: .
 english(barrons.rule1631, "The sun stars moon planets and comets are all celestial objects").
-barrons.rule1631:: example(comet, object).
+barrons.rule1631:: .
 english(barrons.rule1632, "The apparent movement of these objects gives us an indication of the passage of time").
 barrons.rule1632:: agent(give, movement), object(give, we), arg(give, indication).
 english(barrons.rule1633, "The apparent movement of these objects gives us an indication of the passage of time").
@@ -3285,9 +3285,9 @@ barrons.rule1642:: cause(motion, be), agent(be, this), of(be, motion), of(be, mo
 english(barrons.rule1643, "This is not because of the motion of the sun but rather the motion of the Earth").
 barrons.rule1643:: agent(be, this), of(be, motion), of(be, motion) -> cause(motion, be).
 english(barrons.rule1644, "It[This rotation] is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west").
-barrons.rule1644:: example(it, rotation).
+barrons.rule1644:: .
 english(barrons.rule1645, "It[This rotation] is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west").
-barrons.rule1645:: example(it, rotation).
+barrons.rule1645:: .
 english(barrons.rule1646, "It[This rotation] is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west").
 barrons.rule1646:: agent(move, sun), through(move, sky), during(move, day) -> effect(move, rise), agent(rise, sun), in(rise, east), in(rise, setting).
 english(barrons.rule1647, "It[This rotation] is the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west").
@@ -3331,9 +3331,9 @@ barrons.rule1665:: agent(have, season), object(have, condition).
 english(barrons.rule1666, "Each season has its[Each season] distinct weather conditions which will be discussed in the next chapter").
 barrons.rule1666:: agent(have, season), object(have, condition).
 english(barrons.rule1667, "The moon is a satellite of the Earth").
-barrons.rule1667:: example(moon, satellite).
+barrons.rule1667:: .
 english(barrons.rule1668, "The moon is a satellite of the Earth").
-barrons.rule1668:: example(moon, satellite).
+barrons.rule1668:: .
 english(barrons.rule1669, "The moon does not give off its[the moon around the Earth] own light").
 barrons.rule1669:: agent(give, moon), object(give, light).
 english(barrons.rule1670, "The moon does not give off its[the moon around the Earth] own light").
@@ -3353,9 +3353,9 @@ barrons.rule1676:: cause(light, see), agent(see, we), object(see, portion), of(s
 english(barrons.rule1677, "Because of the moon 's movement and the reflected light from the sun we see different portions of the moon at different times during the 29 1/2 days").
 barrons.rule1677:: agent(see, we), object(see, portion), of(see, movement), of(see, light), at(see, time) -> cause(light, see).
 english(barrons.rule1678, "The different portions of the moon that we[we] see are called phases").
-barrons.rule1678:: example(portion, phase).
+barrons.rule1678:: .
 english(barrons.rule1679, "The different portions of the moon that we[we] see are called phases").
-barrons.rule1679:: example(portion, phase).
+barrons.rule1679:: .
 english(barrons.rule1680, "Because the moon and Earth are constantly moving it is possible for each to move into the shadow created by the other").
 barrons.rule1680:: agent(move, moon), arg(move, constantly) -> effect(move, be), agent(be, it), object(be, possible).
 english(barrons.rule1681, "Because the moon and Earth are constantly moving it is possible for each to move into the shadow created by the other").
@@ -3439,9 +3439,9 @@ barrons.rule1719:: purpose(thermometer, measure), agent(measure, thermometer), o
 english(barrons.rule1720, "A thermometer measures temperature").
 barrons.rule1720:: agent(measure, thermometer), object(measure, temperature) -> purpose(thermometer, measure).
 english(barrons.rule1721, "Air pressure is the pressure against the surface of the Earth by the atmosphere").
-barrons.rule1721:: example(pressure, pressure).
+barrons.rule1721:: .
 english(barrons.rule1722, "Air pressure is the pressure against the surface of the Earth by the atmosphere").
-barrons.rule1722:: example(pressure, pressure).
+barrons.rule1722:: .
 english(barrons.rule1723, "Scientists use an anemometer to determine wind speed").
 barrons.rule1723:: agent(use, scientist), object(use, anemometer) -> effect(use, determine), agent(determine, scientist), object(determine, speed).
 english(barrons.rule1724, "Scientists use an anemometer to determine wind speed").
@@ -3473,9 +3473,9 @@ barrons.rule1736:: purpose(temperature, be), agent(be, temperature), object(be, 
 english(barrons.rule1737, "Temperature is a measure of how hot or cold the air is").
 barrons.rule1737:: agent(be, temperature), object(be, measure), of(be, be) -> purpose(temperature, be).
 english(barrons.rule1738, "Temperature is a measure of how hot or cold the air is").
-barrons.rule1738:: example(temperature, measure).
+barrons.rule1738:: .
 english(barrons.rule1739, "Temperature is a measure of how hot or cold the air is").
-barrons.rule1739:: example(temperature, measure).
+barrons.rule1739:: .
 english(barrons.rule1740, "A thermometer is the instrument used to measure temperature").
 barrons.rule1740:: purpose(instrument, measure), agent(measure, instrument), object(measure, temperature).
 english(barrons.rule1741, "A thermometer is the instrument used to measure temperature").
@@ -3485,13 +3485,13 @@ barrons.rule1742:: purpose(thermometer, measure), agent(measure, thermometer), o
 english(barrons.rule1743, "A thermometer is the instrument used to measure temperature").
 barrons.rule1743:: agent(measure, thermometer), object(measure, temperature) -> purpose(thermometer, measure).
 english(barrons.rule1744, "A thermometer is the instrument used to measure temperature").
-barrons.rule1744:: example(thermometer, use), agent(use, instrument).
+barrons.rule1744:: agent(use, instrument).
 english(barrons.rule1745, "A thermometer is the instrument used to measure temperature").
-barrons.rule1745:: agent(use, instrument) -> example(thermometer, use).
+barrons.rule1745:: agent(use, instrument).
 english(barrons.rule1746, "A thermometer is the instrument used to measure temperature").
-barrons.rule1746:: example(thermometer, instrument).
+barrons.rule1746:: .
 english(barrons.rule1747, "A thermometer is the instrument used to measure temperature").
-barrons.rule1747:: example(thermometer, instrument).
+barrons.rule1747:: .
 english(barrons.rule1748, "The information provided by these weather instruments is very useful in determining current or future weather conditions").
 barrons.rule1748:: agent(be, information), object(be, useful) -> effect(be, determine), agent(determine, information), object(determine, current).
 english(barrons.rule1749, "The information provided by these weather instruments is very useful in determining current or future weather conditions").
@@ -3509,17 +3509,17 @@ barrons.rule1754:: purpose(precipitation, describe), object(describe, water).
 english(barrons.rule1755, "Precipitation is the term used to describe water moisture that falls from the sky").
 barrons.rule1755:: object(describe, water) -> purpose(precipitation, describe).
 english(barrons.rule1756, "Precipitation is the term used to describe water moisture that falls from the sky").
-barrons.rule1756:: example(precipitation, use), agent(use, term).
+barrons.rule1756:: agent(use, term).
 english(barrons.rule1757, "Precipitation is the term used to describe water moisture that falls from the sky").
-barrons.rule1757:: agent(use, term) -> example(precipitation, use).
+barrons.rule1757:: agent(use, term).
 english(barrons.rule1758, "Precipitation is the term used to describe water moisture that falls from the sky").
-barrons.rule1758:: example(precipitation, term).
+barrons.rule1758:: .
 english(barrons.rule1759, "Precipitation is the term used to describe water moisture that falls from the sky").
-barrons.rule1759:: example(precipitation, term).
+barrons.rule1759:: .
 english(barrons.rule1760, "Hail is solid balls of water and dust falling from the sky").
-barrons.rule1760:: example(hail, ball).
+barrons.rule1760:: .
 english(barrons.rule1761, "Hail is solid balls of water and dust falling from the sky").
-barrons.rule1761:: example(hail, ball).
+barrons.rule1761:: .
 english(barrons.rule1762, "Rain can occur anytime during the year as long as the outside temperature is above the freezing point of water").
 barrons.rule1762:: agent(occur, rain), object(occur, anytime), during(occur, year), arg(occur, be).
 english(barrons.rule1763, "Rain can occur anytime during the year as long as the outside temperature is above the freezing point of water").
@@ -3541,9 +3541,9 @@ barrons.rule1770:: purpose(condition, describe), agent(describe, condition), obj
 english(barrons.rule1771, "Other conditions used to describe the weather include humidity and cloud cover").
 barrons.rule1771:: agent(describe, condition), object(describe, weather) -> purpose(condition, describe).
 english(barrons.rule1772, "Humidity is the amount of moisture in the atmosphere").
-barrons.rule1772:: example(humidity, amount).
+barrons.rule1772:: .
 english(barrons.rule1773, "Humidity is the amount of moisture in the atmosphere").
-barrons.rule1773:: example(humidity, amount).
+barrons.rule1773:: .
 english(barrons.rule1774, "When the humidity reaches 100 percent it is very likely that some form of precipitation will occur depending on the temperature").
 barrons.rule1774:: agent(be, it), object(be, likely), arg(be, occur) -> when(be, reach), agent(reach, humidity), object(reach, percent).
 english(barrons.rule1775, "When the humidity reaches 100 percent it is very likely that some form of precipitation will occur depending on the temperature").
@@ -3563,13 +3563,13 @@ barrons.rule1781:: agent(block, cloud), object(block, ability).
 english(barrons.rule1782, "Clouds can block the Earth 's ability to absorb light and heat from the sun and therefore can affect temperature").
 barrons.rule1782:: agent(block, cloud), object(block, ability).
 english(barrons.rule1783, "A meteorologist is a scientist who uses the information from weather instruments to predict weather").
-barrons.rule1783:: example(meteorologist, use), agent(use, who), object(use, information), arg(use, predict).
+barrons.rule1783:: agent(use, who), object(use, information), arg(use, predict).
 english(barrons.rule1784, "A meteorologist is a scientist who uses the information from weather instruments to predict weather").
-barrons.rule1784:: agent(use, who), object(use, information), arg(use, predict) -> example(meteorologist, use).
+barrons.rule1784:: agent(use, who), object(use, information), arg(use, predict).
 english(barrons.rule1785, "A meteorologist is a scientist who uses the information from weather instruments to predict weather").
-barrons.rule1785:: example(meteorologist, scientist).
+barrons.rule1785:: .
 english(barrons.rule1786, "A meteorologist is a scientist who uses the information from weather instruments to predict weather").
-barrons.rule1786:: example(meteorologist, scientist).
+barrons.rule1786:: .
 english(barrons.rule1787, "He[you] or she usually gives the temperature sky conditions and precipitation").
 barrons.rule1787:: agent(give, you), object(give, temperature), arg(give, usually).
 english(barrons.rule1788, "He[you] or she usually gives the temperature sky conditions and precipitation").
@@ -3701,29 +3701,29 @@ barrons.rule1850:: agent(have, spring), object(have, amount).
 english(barrons.rule1851, "Spring has high amounts of rainfall").
 barrons.rule1851:: agent(have, spring), object(have, amount).
 english(barrons.rule1852, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1852:: example(water, find), object(find, water), over(find, Earth), arg(find, all).
+barrons.rule1852:: object(find, water), over(find, Earth), arg(find, all).
 english(barrons.rule1853, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1853:: object(find, water), over(find, Earth), arg(find, all) -> example(water, find).
+barrons.rule1853:: object(find, water), over(find, Earth), arg(find, all).
 english(barrons.rule1854, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1854:: example(water, find), object(find, substance), over(find, Earth), arg(find, all).
+barrons.rule1854:: object(find, substance), over(find, Earth), arg(find, all).
 english(barrons.rule1855, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1855:: object(find, substance), over(find, Earth), arg(find, all) -> example(water, find).
+barrons.rule1855:: object(find, substance), over(find, Earth), arg(find, all).
 english(barrons.rule1856, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1856:: example(water, substance).
+barrons.rule1856:: .
 english(barrons.rule1857, "Water is a substance that is found all over the Earth in the ground on the surface and in the air").
-barrons.rule1857:: example(water, substance).
+barrons.rule1857:: .
 english(barrons.rule1858, "Water in the solid phase is often called ice").
-barrons.rule1858:: example(water, ice).
+barrons.rule1858:: .
 english(barrons.rule1859, "Water in the solid phase is often called ice").
-barrons.rule1859:: example(water, ice).
+barrons.rule1859:: .
 english(barrons.rule1860, "Water in the gaseous phase is often called water vapor or steam").
-barrons.rule1860:: example(water, vapor).
+barrons.rule1860:: .
 english(barrons.rule1861, "Water in the gaseous phase is often called water vapor or steam").
-barrons.rule1861:: example(water, vapor).
+barrons.rule1861:: .
 english(barrons.rule1862, "Water in the gaseous phase is often called water vapor or steam").
-barrons.rule1862:: example(water, steam).
+barrons.rule1862:: .
 english(barrons.rule1863, "Water in the gaseous phase is often called water vapor or steam").
-barrons.rule1863:: example(water, steam).
+barrons.rule1863:: .
 english(barrons.rule1864, "Water can easily be changed from one phase to another by the addition or removal of heat").
 barrons.rule1864:: object(change, water), from(change, phase), arg(change, easily) -> effect(change, another), by(another, addition), by(another, removal).
 english(barrons.rule1865, "Water can easily be changed from one phase to another by the addition or removal of heat").
@@ -3739,9 +3739,9 @@ barrons.rule1869:: agent(removal, freezing), object(removal, heat) -> enable(rem
 english(barrons.rule1870, "Freezing involves changing water from its[Each phase change that water goes through] liquid state to its[its liquid state] solid state ice by the removal of heat").
 barrons.rule1870:: agent(change, freezing), object(change, water), from(change, state), to(change, state) -> enable(removal, change), agent(removal, freezing), object(removal, heat).
 english(barrons.rule1871, "Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat").
-barrons.rule1871:: example(melt, opposite).
+barrons.rule1871:: .
 english(barrons.rule1872, "Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat").
-barrons.rule1872:: example(melt, opposite).
+barrons.rule1872:: .
 english(barrons.rule1873, "Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat").
 barrons.rule1873:: agent(addition, melt), object(addition, heat) -> enable(addition, change), agent(change, melt), object(change, water), from(change, state), to(change, state).
 english(barrons.rule1874, "Melting is the opposite of freezing and involves changing water from its[Melting] solid state ice to a liquid state by the addition of heat").
@@ -3769,13 +3769,13 @@ barrons.rule1884:: agent(come, vapor), in(come, contact) -> effect(come, be), ag
 english(barrons.rule1885, "This is because the water vapor in the air came in contact with the cool glass").
 barrons.rule1885:: agent(be, this) -> effect(come, be), agent(come, vapor), in(come, contact).
 english(barrons.rule1886, "The water that falls can be in liquid form such as rain or in solid form such as snow").
-barrons.rule1886:: example(rain, form).
+barrons.rule1886:: .
 english(barrons.rule1887, "The water that falls can be in liquid form such as rain or in solid form such as snow").
-barrons.rule1887:: example(rain, form).
+barrons.rule1887:: .
 english(barrons.rule1888, "The water that falls can be in liquid form such as rain or in solid form such as snow").
-barrons.rule1888:: example(snow, in).
+barrons.rule1888:: .
 english(barrons.rule1889, "The water that falls can be in liquid form such as rain or in solid form such as snow").
-barrons.rule1889:: example(snow, in).
+barrons.rule1889:: .
 english(barrons.rule1890, "Examples of precipitation include rain snow sleet and hail").
 barrons.rule1890:: agent(include, example), object(include, rain).
 english(barrons.rule1891, "Examples of precipitation include rain snow sleet and hail").
@@ -3827,17 +3827,17 @@ barrons.rule1913:: agent(settle, air), below(settle, surface) -> example(settle,
 english(barrons.rule1914, "When the ground absorbs the water and it[the ground surface and air] settles below the surface it is called groundwater").
 barrons.rule1914:: example(settle, groundwater), agent(settle, air), below(settle, surface).
 english(barrons.rule1915, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1915:: example(weather, process), agent(break, process), object(break, rock), into(break, piece).
+barrons.rule1915:: agent(break, process), object(break, rock), into(break, piece).
 english(barrons.rule1916, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1916:: agent(break, process), object(break, rock), into(break, piece) -> example(weather, process).
+barrons.rule1916:: agent(break, process), object(break, rock), into(break, piece).
 english(barrons.rule1917, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1917:: example(weather, process), agent(break, process), object(break, material), into(break, piece).
+barrons.rule1917:: agent(break, process), object(break, material), into(break, piece).
 english(barrons.rule1918, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1918:: agent(break, process), object(break, material), into(break, piece) -> example(weather, process).
+barrons.rule1918:: agent(break, process), object(break, material), into(break, piece).
 english(barrons.rule1919, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1919:: example(weather, process).
+barrons.rule1919:: .
 english(barrons.rule1920, "Weathering is a process that breaks rocks and other surface materials into small pieces").
-barrons.rule1920:: example(weather, process).
+barrons.rule1920:: .
 english(barrons.rule1921, "When the water freezes it[Food] expands making the crack even larger and in some cases breaks the rock").
 barrons.rule1921:: agent(expand, Food) -> effect(expand, make), agent(make, Food), arg(make, larger).
 english(barrons.rule1922, "When the water freezes it[Food] expands making the crack even larger and in some cases breaks the rock").
@@ -3893,65 +3893,65 @@ barrons.rule1946:: purpose(erosion, soil).
 english(barrons.rule1947, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
 barrons.rule1947:: purpose(erosion, soil).
 english(barrons.rule1948, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1948:: example(erosion, soil).
+barrons.rule1948:: .
 english(barrons.rule1949, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1949:: example(erosion, soil).
+barrons.rule1949:: .
 english(barrons.rule1950, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1950:: example(erosion, move), object(move, material), from(move, place), to(move, another).
+barrons.rule1950:: object(move, material), from(move, place), to(move, another).
 english(barrons.rule1951, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1951:: object(move, material), from(move, place), to(move, another) -> example(erosion, move).
+barrons.rule1951:: object(move, material), from(move, place), to(move, another).
 english(barrons.rule1952, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1952:: example(erosion, process).
+barrons.rule1952:: .
 english(barrons.rule1953, "Erosion is the process by which soil and or other Earth materials are moved from one place to another").
-barrons.rule1953:: example(erosion, process).
+barrons.rule1953:: .
 english(barrons.rule1954, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1954:: example(water, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1954:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1955, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1955:: agent(involve, force), in(involve, erosion) -> example(water, involve).
+barrons.rule1955:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1956, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1956:: example(water, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1956:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1957, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1957:: agent(involve, force), in(involve, erosion) -> example(water, involve).
+barrons.rule1957:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1958, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1958:: example(water, force).
+barrons.rule1958:: .
 english(barrons.rule1959, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1959:: example(water, force).
+barrons.rule1959:: .
 english(barrons.rule1960, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1960:: example(water, force).
+barrons.rule1960:: .
 english(barrons.rule1961, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1961:: example(water, force).
+barrons.rule1961:: .
 english(barrons.rule1962, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1962:: example(wind, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1962:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1963, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1963:: agent(involve, force), in(involve, erosion) -> example(wind, involve).
+barrons.rule1963:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1964, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1964:: example(wind, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1964:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1965, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1965:: agent(involve, force), in(involve, erosion) -> example(wind, involve).
+barrons.rule1965:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1966, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1966:: example(wind, force).
+barrons.rule1966:: .
 english(barrons.rule1967, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1967:: example(wind, force).
+barrons.rule1967:: .
 english(barrons.rule1968, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1968:: example(wind, force).
+barrons.rule1968:: .
 english(barrons.rule1969, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1969:: example(wind, force).
+barrons.rule1969:: .
 english(barrons.rule1970, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1970:: example(gravity, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1970:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1971, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1971:: agent(involve, force), in(involve, erosion) -> example(gravity, involve).
+barrons.rule1971:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1972, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1972:: example(gravity, involve), agent(involve, force), in(involve, erosion).
+barrons.rule1972:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1973, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1973:: agent(involve, force), in(involve, erosion) -> example(gravity, involve).
+barrons.rule1973:: agent(involve, force), in(involve, erosion).
 english(barrons.rule1974, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1974:: example(gravity, force).
+barrons.rule1974:: .
 english(barrons.rule1975, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1975:: example(gravity, force).
+barrons.rule1975:: .
 english(barrons.rule1976, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1976:: example(gravity, force).
+barrons.rule1976:: .
 english(barrons.rule1977, "Water wind and gravity are all forces involved in erosion").
-barrons.rule1977:: example(gravity, force).
+barrons.rule1977:: .
 english(barrons.rule1978, "Wave action can move sand along a beach").
 barrons.rule1978:: agent(move, action), object(move, sand), along(move, beach).
 english(barrons.rule1979, "Wave action can move sand along a beach").
@@ -3993,21 +3993,21 @@ barrons.rule1996:: agent(cause, earthquake), object(cause, damage), arg(cause, h
 english(barrons.rule1997, "However powerful earthquakes can cause damage to landscapes and buildings").
 barrons.rule1997:: agent(cause, earthquake), object(cause, damage), arg(cause, however).
 english(barrons.rule1998, "A volcano is a mountain through which hot liquid material from inside the Earth can reach the surface").
-barrons.rule1998:: example(volcano, reach), agent(reach, material), object(reach, surface), through(reach, which).
+barrons.rule1998:: agent(reach, material), object(reach, surface), through(reach, which).
 english(barrons.rule1999, "A volcano is a mountain through which hot liquid material from inside the Earth can reach the surface").
-barrons.rule1999:: agent(reach, material), object(reach, surface), through(reach, which) -> example(volcano, reach).
+barrons.rule1999:: agent(reach, material), object(reach, surface), through(reach, which).
 english(barrons.rule2000, "A volcano is a mountain through which hot liquid material from inside the Earth can reach the surface").
-barrons.rule2000:: example(volcano, mountain).
+barrons.rule2000:: .
 english(barrons.rule2001, "A volcano is a mountain through which hot liquid material from inside the Earth can reach the surface").
-barrons.rule2001:: example(volcano, mountain).
+barrons.rule2001:: .
 english(barrons.rule2002, "The hot liquid rock on the surface is called lava").
-barrons.rule2002:: example(rock, lava).
+barrons.rule2002:: .
 english(barrons.rule2003, "The hot liquid rock on the surface is called lava").
-barrons.rule2003:: example(rock, lava).
+barrons.rule2003:: .
 english(barrons.rule2004, "One of the most useful tools that a scientist has is the power of observation").
-barrons.rule2004:: example(one, power).
+barrons.rule2004:: .
 english(barrons.rule2005, "One of the most useful tools that a scientist has is the power of observation").
-barrons.rule2005:: example(one, power).
+barrons.rule2005:: .
 english(barrons.rule2006, "Scientists often record their[mass scientists] observations in a journal or notebook in order to keep accurate records for future review").
 barrons.rule2006:: agent(record, scientist), object(record, observation), in(record, journal), in(record, notebook) -> effect(record, keep), agent(keep, scientist), object(keep, record), for(keep, review).
 english(barrons.rule2007, "Scientists often record their[mass scientists] observations in a journal or notebook in order to keep accurate records for future review").
@@ -4107,9 +4107,9 @@ barrons.rule2053:: agent(expose, student), object(expose, seed), in(expose, whic
 english(barrons.rule2054, "Students set up an experiment in which they[Students] exposed some sunflower seeds to rock music and some to no music").
 barrons.rule2054:: agent(rock, student), object(rock, some), to(rock, music) -> effect(expose, rock), agent(expose, student), object(expose, seed), in(expose, which).
 english(barrons.rule2055, "Safety is a very important aspect in the study of science").
-barrons.rule2055:: example(safety, aspect).
+barrons.rule2055:: .
 english(barrons.rule2056, "Safety is a very important aspect in the study of science").
-barrons.rule2056:: example(safety, aspect).
+barrons.rule2056:: .
 english(barrons.rule2057, "Eye goggles protect eyes from chemicals and/or flying objects").
 barrons.rule2057:: agent(protect, goggles), object(protect, eye), from(protect, chemical), from(protect, object).
 english(barrons.rule2058, "Eye goggles protect eyes from chemicals and/or flying objects").
@@ -4135,9 +4135,9 @@ barrons.rule2067:: agent(protect, glove), object(protect, hands/skin), from(prot
 english(barrons.rule2068, "Gloves protect hands/skin from harm").
 barrons.rule2068:: agent(protect, glove), object(protect, hands/skin), from(protect, harm).
 english(barrons.rule2069, "The graph is a very useful method of displaying data obtained from a number of sources").
-barrons.rule2069:: example(graph, method).
+barrons.rule2069:: .
 english(barrons.rule2070, "The graph is a very useful method of displaying data obtained from a number of sources").
-barrons.rule2070:: example(graph, method).
+barrons.rule2070:: .
 english(barrons.rule2071, "A line graph shows the change in information between two variables").
 barrons.rule2071:: agent(show, graph), object(show, change), in(show, information).
 english(barrons.rule2072, "A line graph shows the change in information between two variables").
@@ -4151,17 +4151,17 @@ barrons.rule2075:: purpose(they, measure), agent(measure, axis), object(measure,
 english(barrons.rule2076, "The two axes of the line graph are labeled with a description of what they[The two axes of the line graph] measure and the unit of measure").
 barrons.rule2076:: agent(measure, axis), object(measure, what) -> purpose(they, measure).
 english(barrons.rule2077, "A bar graph is another form of graph used to present information").
-barrons.rule2077:: example(graph, form).
+barrons.rule2077:: .
 english(barrons.rule2078, "A bar graph is another form of graph used to present information").
-barrons.rule2078:: example(graph, form).
+barrons.rule2078:: .
 english(barrons.rule2079, "A graph such as this might be used to show the number of students with different eye color for your entire class").
 barrons.rule2079:: purpose(graph, show), agent(show, graph), object(show, number).
 english(barrons.rule2080, "A graph such as this might be used to show the number of students with different eye color for your entire class").
 barrons.rule2080:: agent(show, graph), object(show, number) -> purpose(graph, show).
 english(barrons.rule2081, "A graph such as this might be used to show the number of students with different eye color for your entire class").
-barrons.rule2081:: example(this, graph).
+barrons.rule2081:: .
 english(barrons.rule2082, "A graph such as this might be used to show the number of students with different eye color for your entire class").
-barrons.rule2082:: example(this, graph).
+barrons.rule2082:: .
 english(barrons.rule2083, "A pie graph is often used to show percentages of variables that equal 100").
 barrons.rule2083:: purpose(graph, show), agent(show, graph), object(show, percentage).
 english(barrons.rule2084, "A pie graph is often used to show percentages of variables that equal 100").
@@ -4201,9 +4201,9 @@ barrons.rule2100:: example(child, thing).
 english(barrons.rule2101, "Examples of living things are children and plants").
 barrons.rule2101:: example(child, thing).
 english(barrons.rule2102, "Examples of living things are children and plants").
-barrons.rule2102:: example(example, child).
+barrons.rule2102:: .
 english(barrons.rule2103, "Examples of living things are children and plants").
-barrons.rule2103:: example(example, child).
+barrons.rule2103:: .
 english(barrons.rule2104, "Examples of living things are children and plants").
 barrons.rule2104:: example(plant, thing).
 english(barrons.rule2105, "Examples of living things are children and plants").
@@ -4229,17 +4229,17 @@ barrons.rule2114:: requirement(water, survive), agent(survive, animal).
 english(barrons.rule2115, "Air and water are necessary for both plants and animals to survive").
 barrons.rule2115:: agent(survive, animal) -> requirement(water, survive).
 english(barrons.rule2116, "Air and water are two nonliving things that all living things need to survive").
-barrons.rule2116:: example(Air, thing).
+barrons.rule2116:: .
 english(barrons.rule2117, "Air and water are two nonliving things that all living things need to survive").
-barrons.rule2117:: example(Air, thing).
+barrons.rule2117:: .
 english(barrons.rule2118, "Air and water are two nonliving things that all living things need to survive").
-barrons.rule2118:: example(water, thing).
+barrons.rule2118:: .
 english(barrons.rule2119, "Air and water are two nonliving things that all living things need to survive").
-barrons.rule2119:: example(water, thing).
+barrons.rule2119:: .
 english(barrons.rule2120, "The changes frogs and butterflies go through are called metamorphosis").
-barrons.rule2120:: example(change, metamorphosis).
+barrons.rule2120:: .
 english(barrons.rule2121, "The changes frogs and butterflies go through are called metamorphosis").
-barrons.rule2121:: example(change, metamorphosis).
+barrons.rule2121:: .
 english(barrons.rule2122, "Living things need to take in nutrients so that they[their nutrients] can grow and create energy").
 barrons.rule2122:: agent(take, thing), object(take, nutrient) -> effect(take, grow), agent(grow, nutrient).
 english(barrons.rule2123, "Living things need to take in nutrients so that they[their nutrients] can grow and create energy").
@@ -4305,9 +4305,9 @@ barrons.rule2152:: agent(need, animal), object(need, water) -> effect(need, surv
 english(barrons.rule2153, "Animals need air food and water to live and survive").
 barrons.rule2153:: agent(survive, animal) -> effect(need, survive), agent(need, animal), object(need, water).
 english(barrons.rule2154, "A seed growing into a plant is a form of reproduction").
-barrons.rule2154:: example(seed, form).
+barrons.rule2154:: .
 english(barrons.rule2155, "A seed growing into a plant is a form of reproduction").
-barrons.rule2155:: example(seed, form).
+barrons.rule2155:: .
 english(barrons.rule2156, "All living things need air and water to survive").
 barrons.rule2156:: agent(need, thing), object(need, air) -> effect(need, survive), agent(survive, thing).
 english(barrons.rule2157, "All living things need air and water to survive").
@@ -4467,9 +4467,9 @@ barrons.rule2233:: example(grass, animal).
 english(barrons.rule2234, "Examples of an animal using plants for food are a cow eating grass and a horse eating hay").
 barrons.rule2234:: example(grass, animal).
 english(barrons.rule2235, "Examples of an animal using plants for food are a cow eating grass and a horse eating hay").
-barrons.rule2235:: example(example, grass).
+barrons.rule2235:: .
 english(barrons.rule2236, "Examples of an animal using plants for food are a cow eating grass and a horse eating hay").
-barrons.rule2236:: example(example, grass).
+barrons.rule2236:: .
 english(barrons.rule2237, "Examples of an animal using plants for food are a cow eating grass and a horse eating hay").
 barrons.rule2237:: example(hay, use), agent(use, animal).
 english(barrons.rule2238, "Examples of an animal using plants for food are a cow eating grass and a horse eating hay").
@@ -4495,13 +4495,13 @@ barrons.rule2247:: example(bird, animal).
 english(barrons.rule2248, "Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk").
 barrons.rule2248:: example(bird, animal).
 english(barrons.rule2249, "Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk").
-barrons.rule2249:: example(example, build), agent(build, bird), object(build, nest).
+barrons.rule2249:: agent(build, bird), object(build, nest).
 english(barrons.rule2250, "Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk").
-barrons.rule2250:: agent(build, bird), object(build, nest) -> example(example, build).
+barrons.rule2250:: agent(build, bird), object(build, nest).
 english(barrons.rule2251, "Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk").
-barrons.rule2251:: example(example, bird).
+barrons.rule2251:: .
 english(barrons.rule2252, "Examples of animals using plants for shelter are birds building a nest on tree branches and squirrels living inside a tree trunk").
-barrons.rule2252:: example(example, bird).
+barrons.rule2252:: .
 english(barrons.rule2253, "When plants make food they[Plants are living organisms] give off oxygen and water").
 barrons.rule2253:: agent(give, organism), object(give, oxygen) -> when(give, make), agent(make, plant), object(make, food).
 english(barrons.rule2254, "When plants make food they[Plants are living organisms] give off oxygen and water").
@@ -4529,9 +4529,9 @@ barrons.rule2264:: purpose(root, absorb), agent(absorb, function).
 english(barrons.rule2265, "The two functions of the roots are to anchor and absorb").
 barrons.rule2265:: agent(absorb, function) -> purpose(root, absorb).
 english(barrons.rule2266, "The stem is the pathway of water and nutrients from the roots to the leaves").
-barrons.rule2266:: example(stem, pathway).
+barrons.rule2266:: .
 english(barrons.rule2267, "The stem is the pathway of water and nutrients from the roots to the leaves").
-barrons.rule2267:: example(stem, pathway).
+barrons.rule2267:: .
 english(barrons.rule2268, "The stem also supports the plant").
 barrons.rule2268:: agent(support, stem), object(support, plant).
 english(barrons.rule2269, "The stem also supports the plant").
@@ -4569,9 +4569,9 @@ barrons.rule2284:: example(apple, fruit).
 english(barrons.rule2285, "Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit").
 barrons.rule2285:: example(apple, fruit).
 english(barrons.rule2286, "Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit").
-barrons.rule2286:: example(example, apple).
+barrons.rule2286:: .
 english(barrons.rule2287, "Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit").
-barrons.rule2287:: example(example, apple).
+barrons.rule2287:: .
 english(barrons.rule2288, "Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit").
 barrons.rule2288:: example(orange, fruit).
 english(barrons.rule2289, "Examples of some common fruits are apples oranges peaches watermelon cantaloupe and grapefruit").
@@ -4669,17 +4669,17 @@ barrons.rule2334:: agent(be, Airplanes), object(be, method) -> purpose(be, dispe
 english(barrons.rule2335, "Airplanes are not a common method for the dispersal of seeds").
 barrons.rule2335:: purpose(be, dispersal), agent(be, Airplanes), object(be, method).
 english(barrons.rule2336, "Airplanes are not a common method for the dispersal of seeds").
-barrons.rule2336:: example(Airplanes, method).
+barrons.rule2336:: .
 english(barrons.rule2337, "Airplanes are not a common method for the dispersal of seeds").
-barrons.rule2337:: example(Airplanes, method).
+barrons.rule2337:: .
 english(barrons.rule2338, "An example of a plant responding to a change in its[The typical life cycle of a plant] environment is leaves falling off trees in fall").
 barrons.rule2338:: agent(leave, example) -> effect(leave, fall), agent(fall, example), object(fall, tree), in(fall, fall).
 english(barrons.rule2339, "An example of a plant responding to a change in its[The typical life cycle of a plant] environment is leaves falling off trees in fall").
 barrons.rule2339:: agent(fall, example), object(fall, tree), in(fall, fall) -> effect(leave, fall), agent(leave, example).
 english(barrons.rule2340, "The part of a plant that is responsible for reproduction is the flower").
-barrons.rule2340:: example(part, flower).
+barrons.rule2340:: .
 english(barrons.rule2341, "The part of a plant that is responsible for reproduction is the flower").
-barrons.rule2341:: example(part, flower).
+barrons.rule2341:: .
 english(barrons.rule2342, "The part of a plant that is responsible for reproduction is the flower").
 barrons.rule2342:: purpose(that, reproduction).
 english(barrons.rule2343, "The part of a plant that is responsible for reproduction is the flower").
@@ -4763,9 +4763,9 @@ barrons.rule2381:: agent(include, Ways), object(include, shiver).
 english(barrons.rule2382, "Ways that animals respond to changes in their[different structures that have different jobs or functions to help with growth survival and reproduction] environment such as seasonal changes include hibernation migration growing thick fur or shivering").
 barrons.rule2382:: agent(include, Ways), object(include, shiver).
 english(barrons.rule2383, "Ways that animals respond to changes in their[different structures that have different jobs or functions to help with growth survival and reproduction] environment such as seasonal changes include hibernation migration growing thick fur or shivering").
-barrons.rule2383:: example(change, change).
+barrons.rule2383:: .
 english(barrons.rule2384, "Ways that animals respond to changes in their[different structures that have different jobs or functions to help with growth survival and reproduction] environment such as seasonal changes include hibernation migration growing thick fur or shivering").
-barrons.rule2384:: example(change, change).
+barrons.rule2384:: .
 english(barrons.rule2385, "Some animals grow thick fur in winter to stay warm").
 barrons.rule2385:: agent(grow, animal), object(grow, fur) -> effect(grow, stay), agent(stay, animal), object(stay, warm).
 english(barrons.rule2386, "Some animals grow thick fur in winter to stay warm").
@@ -4833,17 +4833,17 @@ barrons.rule2416:: agent(camouflage, animal) -> effect(camouflage, see), object(
 english(barrons.rule2417, "Animals that change color or are of a color similar to their[Some animals] environment can camouflage themselves so that they[themselves] can not be easily seen").
 barrons.rule2417:: object(see, themselves), arg(see, easily) -> effect(camouflage, see), agent(camouflage, animal).
 english(barrons.rule2418, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2418:: example(neck, consider), object(consider, neck), arg(consider, adaptation).
+barrons.rule2418:: object(consider, neck), arg(consider, adaptation).
 english(barrons.rule2419, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2419:: object(consider, neck), arg(consider, adaptation) -> example(neck, consider).
+barrons.rule2419:: object(consider, neck), arg(consider, adaptation).
 english(barrons.rule2420, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2420:: example(neck, consider), object(consider, trait), arg(consider, adaptation).
+barrons.rule2420:: object(consider, trait), arg(consider, adaptation).
 english(barrons.rule2421, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2421:: object(consider, trait), arg(consider, adaptation) -> example(neck, consider).
+barrons.rule2421:: object(consider, trait), arg(consider, adaptation).
 english(barrons.rule2422, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2422:: example(neck, trait).
+barrons.rule2422:: .
 english(barrons.rule2423, "A giraffe 's long neck is a trait that can be considered an adaptation").
-barrons.rule2423:: example(neck, trait).
+barrons.rule2423:: .
 english(barrons.rule2424, "A fish has a flipper or fin that helps them[animals with gills] swim").
 barrons.rule2424:: agent(have, fish), object(have, flipper) -> effect(have, swim), agent(swim, animal).
 english(barrons.rule2425, "A fish has a flipper or fin that helps them[animals with gills] swim").
@@ -4885,9 +4885,9 @@ barrons.rule2442:: example(pattern, diversity).
 english(barrons.rule2443, "Cats distinct colors and patterns are an example of diversity").
 barrons.rule2443:: example(pattern, diversity).
 english(barrons.rule2444, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2444:: example(length, span).
+barrons.rule2444:: .
 english(barrons.rule2445, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2445:: example(length, span).
+barrons.rule2445:: .
 english(barrons.rule2446, "A defense mechanism is a way in which animals protect themselves").
 barrons.rule2446:: example(mechanism, protect), agent(protect, animal), object(protect, themselves), in(protect, which).
 english(barrons.rule2447, "A defense mechanism is a way in which animals protect themselves").
@@ -4923,9 +4923,9 @@ barrons.rule2461:: agent(pass, organism), on(pass, characteristic) -> example(pa
 english(barrons.rule2462, "When organisms pass on characteristics from parent to offspring it is called inheritance").
 barrons.rule2462:: example(pass, inheritance), agent(pass, organism), on(pass, characteristic).
 english(barrons.rule2463, "Characteristics that are passed from a parent to child are called traits").
-barrons.rule2463:: example(characteristic, trait).
+barrons.rule2463:: .
 english(barrons.rule2464, "Characteristics that are passed from a parent to child are called traits").
-barrons.rule2464:: example(characteristic, trait).
+barrons.rule2464:: .
 english(barrons.rule2465, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
 barrons.rule2465:: agent(reproduce, organism), object(reproduce, dna), from(reproduce, parent).
 english(barrons.rule2466, "Organisms reproduce DNA from the parents combined to form the genetic information for the new offspring").
@@ -4957,13 +4957,13 @@ barrons.rule2478:: cause(dna, resemble), agent(resemble, animal), object(resembl
 english(barrons.rule2479, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of DNA").
 barrons.rule2479:: agent(resemble, animal), object(resemble, parent), of(resemble, dna), arg(resemble, closely) -> cause(dna, resemble).
 english(barrons.rule2480, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of DNA").
-barrons.rule2480:: example(plant, parent).
+barrons.rule2480:: .
 english(barrons.rule2481, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of DNA").
-barrons.rule2481:: example(plant, parent).
+barrons.rule2481:: .
 english(barrons.rule2482, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of DNA").
-barrons.rule2482:: example(animal, parent).
+barrons.rule2482:: .
 english(barrons.rule2483, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of DNA").
-barrons.rule2483:: example(animal, parent).
+barrons.rule2483:: .
 english(barrons.rule2484, "DNA is responsible for telling our[our] body what to look like or can give the body information").
 barrons.rule2484:: purpose(dna, tell), agent(tell, dna), object(tell, body).
 english(barrons.rule2485, "DNA is responsible for telling our[our] body what to look like or can give the body information").
@@ -4983,13 +4983,13 @@ barrons.rule2491:: agent(have, thing), object(have, dna).
 english(barrons.rule2492, "All living things have DNA").
 barrons.rule2492:: agent(have, thing), object(have, dna).
 english(barrons.rule2493, "DNA are the bundles of chemicals in our body that control what we[our] look like").
-barrons.rule2493:: example(dna, bundle).
+barrons.rule2493:: .
 english(barrons.rule2494, "DNA are the bundles of chemicals in our body that control what we[our] look like").
-barrons.rule2494:: example(dna, bundle).
+barrons.rule2494:: .
 english(barrons.rule2495, "DNA are the bundles of chemicals in our body that control what we[our] look like").
-barrons.rule2495:: example(dna, bundle).
+barrons.rule2495:: .
 english(barrons.rule2496, "DNA are the bundles of chemicals in our body that control what we[our] look like").
-barrons.rule2496:: example(dna, bundle).
+barrons.rule2496:: .
 english(barrons.rule2497, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
 barrons.rule2497:: agent(eat, human), object(eat, food) -> effect(eat, grow), agent(grow, human).
 english(barrons.rule2498, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
@@ -5023,9 +5023,9 @@ barrons.rule2511:: agent(wash, you), object(wash, hand), arg(wash, frequently).
 english(barrons.rule2512, "To avoid getting germs and illnesses from other people you should wash your hands frequently").
 barrons.rule2512:: agent(wash, you), object(wash, hand), arg(wash, frequently).
 english(barrons.rule2513, "A cigarette is a harmful substance").
-barrons.rule2513:: example(cigarette, substance).
+barrons.rule2513:: .
 english(barrons.rule2514, "A cigarette is a harmful substance").
-barrons.rule2514:: example(cigarette, substance).
+barrons.rule2514:: .
 english(barrons.rule2515, "The food pyramid shows us which foods make a balanced diet").
 barrons.rule2515:: agent(show, pyramid), object(show, we).
 english(barrons.rule2516, "The food pyramid shows us which foods make a balanced diet").
@@ -5033,21 +5033,21 @@ barrons.rule2516:: agent(show, pyramid), object(show, we).
 english(barrons.rule2517, "The food pyramid shows us which foods make a balanced diet").
 barrons.rule2517:: agent(show, pyramid), object(show, we).
 english(barrons.rule2518, "The sun is the ultimate source of energy for all life and physical cycles on Earth").
-barrons.rule2518:: example(sun, source).
+barrons.rule2518:: .
 english(barrons.rule2519, "The sun is the ultimate source of energy for all life and physical cycles on Earth").
-barrons.rule2519:: example(sun, source).
+barrons.rule2519:: .
 english(barrons.rule2520, "The cactus is a producer").
-barrons.rule2520:: example(cactus, producer).
+barrons.rule2520:: .
 english(barrons.rule2521, "The cactus is a producer").
-barrons.rule2521:: example(cactus, producer).
+barrons.rule2521:: .
 english(barrons.rule2522, "The butterfly is a consumer").
-barrons.rule2522:: example(butterfly, consumer).
+barrons.rule2522:: .
 english(barrons.rule2523, "The butterfly is a consumer").
-barrons.rule2523:: example(butterfly, consumer).
+barrons.rule2523:: .
 english(barrons.rule2524, "The snake is a predator").
-barrons.rule2524:: example(snake, predator).
+barrons.rule2524:: .
 english(barrons.rule2525, "The snake is a predator").
-barrons.rule2525:: example(snake, predator).
+barrons.rule2525:: .
 english(barrons.rule2526, "Plants depend on the sun for energy and on the water and soil for nutrients to survive and perform photosynthesis").
 barrons.rule2526:: agent(depend, plant), on(depend, sun), on(depend, water) -> purpose(depend, energy).
 english(barrons.rule2527, "Plants depend on the sun for energy and on the water and soil for nutrients to survive and perform photosynthesis").
@@ -5085,25 +5085,25 @@ barrons.rule2542:: agent(use, animal), object(use, material), for(use, shelter).
 english(barrons.rule2543, "Some animals use nonliving materials for shelter").
 barrons.rule2543:: agent(use, animal), object(use, material), for(use, shelter).
 english(barrons.rule2544, "A bird or snake is a predator").
-barrons.rule2544:: example(bird, predator).
+barrons.rule2544:: .
 english(barrons.rule2545, "A bird or snake is a predator").
-barrons.rule2545:: example(bird, predator).
+barrons.rule2545:: .
 english(barrons.rule2546, "A bird or snake is a predator").
-barrons.rule2546:: example(snake, predator).
+barrons.rule2546:: .
 english(barrons.rule2547, "A bird or snake is a predator").
-barrons.rule2547:: example(snake, predator).
+barrons.rule2547:: .
 english(barrons.rule2548, "A rabbit frog or fish is a prey").
-barrons.rule2548:: example(rabbit, prey).
+barrons.rule2548:: .
 english(barrons.rule2549, "A rabbit frog or fish is a prey").
-barrons.rule2549:: example(rabbit, prey).
+barrons.rule2549:: .
 english(barrons.rule2550, "A rabbit frog or fish is a prey").
-barrons.rule2550:: example(frog, prey).
+barrons.rule2550:: .
 english(barrons.rule2551, "A rabbit frog or fish is a prey").
-barrons.rule2551:: example(frog, prey).
+barrons.rule2551:: .
 english(barrons.rule2552, "A rabbit frog or fish is a prey").
-barrons.rule2552:: example(fish, prey).
+barrons.rule2552:: .
 english(barrons.rule2553, "A rabbit frog or fish is a prey").
-barrons.rule2553:: example(fish, prey).
+barrons.rule2553:: .
 english(barrons.rule2554, "Water animals produce very large numbers of eggs because there are very few young that survive").
 barrons.rule2554:: agent(produce, animal), object(produce, number).
 english(barrons.rule2555, "Water animals produce very large numbers of eggs because there are very few young that survive").
@@ -5219,9 +5219,9 @@ barrons.rule2609:: purpose(balance, measure), agent(measure, balance), object(me
 english(barrons.rule2610, "A balance measures mass").
 barrons.rule2610:: agent(measure, balance), object(measure, mass) -> purpose(balance, measure).
 english(barrons.rule2611, "Melting of ice is a physical change not a chemical change").
-barrons.rule2611:: example(melting, change).
+barrons.rule2611:: .
 english(barrons.rule2612, "Melting of ice is a physical change not a chemical change").
-barrons.rule2612:: example(melting, change).
+barrons.rule2612:: .
 english(barrons.rule2613, "The gas phase of matter will take the shape of a closed container").
 barrons.rule2613:: agent(take, phase), object(take, shape).
 english(barrons.rule2614, "The gas phase of matter will take the shape of a closed container").
@@ -5287,9 +5287,9 @@ barrons.rule2643:: agent(roll, ball), object(roll, hill), arg(roll, down) -> eff
 english(barrons.rule2644, "A ball rolling down a hill is an example of kinetic energy").
 barrons.rule2644:: agent(be, ball), object(be, example), of(be, energy) -> effect(roll, be), agent(roll, ball), object(roll, hill), arg(roll, down).
 english(barrons.rule2645, "Energy from the sun is called solar energy").
-barrons.rule2645:: example(Energy, energy).
+barrons.rule2645:: .
 english(barrons.rule2646, "Energy from the sun is called solar energy").
-barrons.rule2646:: example(Energy, energy).
+barrons.rule2646:: .
 english(barrons.rule2647, "The energy transformation that occurs when you ring a door bell is electrical energy to sound").
 barrons.rule2647:: agent(occur, transformation) -> when(occur, ring), agent(ring, you), object(ring, bell).
 english(barrons.rule2648, "The energy transformation that occurs when you ring a door bell is electrical energy to sound").
@@ -5299,29 +5299,29 @@ barrons.rule2649:: object(store, energy) -> example(store, energy).
 english(barrons.rule2650, "Stored energy is called potential energy").
 barrons.rule2650:: example(store, energy), object(store, energy).
 english(barrons.rule2651, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2651:: example(friction, force), agent(slow, force), object(slow, motion), arg(slow, down).
+barrons.rule2651:: agent(slow, force), object(slow, motion), arg(slow, down).
 english(barrons.rule2652, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2652:: agent(slow, force), object(slow, motion), arg(slow, down) -> example(friction, force).
+barrons.rule2652:: agent(slow, force), object(slow, motion), arg(slow, down).
 english(barrons.rule2653, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2653:: example(friction, force), agent(stop, force).
+barrons.rule2653:: agent(stop, force).
 english(barrons.rule2654, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2654:: agent(stop, force) -> example(friction, force).
+barrons.rule2654:: agent(stop, force).
 english(barrons.rule2655, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2655:: example(friction, force).
+barrons.rule2655:: .
 english(barrons.rule2656, "Friction is the force that slows down or stops the motion of a bicycle").
-barrons.rule2656:: example(friction, force).
+barrons.rule2656:: .
 english(barrons.rule2657, "The seesaw in a playground is an example of a lever").
 barrons.rule2657:: example(seesaw, lever).
 english(barrons.rule2658, "The seesaw in a playground is an example of a lever").
 barrons.rule2658:: example(seesaw, lever).
 english(barrons.rule2659, "Gravity is the force that brings objects toward the Earth").
-barrons.rule2659:: example(gravity, force), agent(bring, force), object(bring, object), toward(bring, Earth).
+barrons.rule2659:: agent(bring, force), object(bring, object), toward(bring, Earth).
 english(barrons.rule2660, "Gravity is the force that brings objects toward the Earth").
-barrons.rule2660:: agent(bring, force), object(bring, object), toward(bring, Earth) -> example(gravity, force).
+barrons.rule2660:: agent(bring, force), object(bring, object), toward(bring, Earth).
 english(barrons.rule2661, "Gravity is the force that brings objects toward the Earth").
-barrons.rule2661:: example(gravity, force).
+barrons.rule2661:: .
 english(barrons.rule2662, "Gravity is the force that brings objects toward the Earth").
-barrons.rule2662:: example(gravity, force).
+barrons.rule2662:: .
 english(barrons.rule2663, "A push or a pull is called a force").
 barrons.rule2663:: example(push, force).
 english(barrons.rule2664, "A push or a pull is called a force").
@@ -5343,9 +5343,9 @@ barrons.rule2671:: example(staple, object).
 english(barrons.rule2672, "Examples of objects that are attracted by magnet are a staple an iron nail and a pin").
 barrons.rule2672:: example(staple, object).
 english(barrons.rule2673, "Examples of objects that are attracted by magnet are a staple an iron nail and a pin").
-barrons.rule2673:: example(example, staple).
+barrons.rule2673:: .
 english(barrons.rule2674, "Examples of objects that are attracted by magnet are a staple an iron nail and a pin").
-barrons.rule2674:: example(example, staple).
+barrons.rule2674:: .
 english(barrons.rule2675, "Examples of objects that are attracted by magnet are a staple an iron nail and a pin").
 barrons.rule2675:: example(nail, attract), agent(attract, magnet), object(attract, object).
 english(barrons.rule2676, "Examples of objects that are attracted by magnet are a staple an iron nail and a pin").
@@ -5373,13 +5373,13 @@ barrons.rule2686:: object(reflect, light), off(reflect, of) -> effect(reflect, s
 english(barrons.rule2687, "We are able to see the moon in the sky because the sun 's light is reflected off of the moon").
 barrons.rule2687:: object(see, moon) -> effect(reflect, see), object(reflect, light), off(reflect, of).
 english(barrons.rule2688, "The rising and setting of the sun as viewed from Earth is the result of the Earth 's rotation").
-barrons.rule2688:: example(the, result).
+barrons.rule2688:: .
 english(barrons.rule2689, "The rising and setting of the sun as viewed from Earth is the result of the Earth 's rotation").
-barrons.rule2689:: example(the, result).
+barrons.rule2689:: .
 english(barrons.rule2690, "The rising and setting of the sun as viewed from Earth is the result of the Earth 's rotation").
-barrons.rule2690:: example(set, result).
+barrons.rule2690:: .
 english(barrons.rule2691, "The rising and setting of the sun as viewed from Earth is the result of the Earth 's rotation").
-barrons.rule2691:: example(set, result).
+barrons.rule2691:: .
 english(barrons.rule2692, "Tracking the weather is most important for people who plant crops").
 barrons.rule2692:: object(be, important), arg(be, most) -> purpose(be, people).
 english(barrons.rule2693, "Tracking the weather is most important for people who plant crops").
@@ -5397,25 +5397,25 @@ barrons.rule2698:: purpose(precipitation, describe).
 english(barrons.rule2699, "Precipitation is the term used to describe water falling from the sky").
 barrons.rule2699:: purpose(precipitation, describe).
 english(barrons.rule2700, "Precipitation is the term used to describe water falling from the sky").
-barrons.rule2700:: example(precipitation, use), agent(use, term).
+barrons.rule2700:: agent(use, term).
 english(barrons.rule2701, "Precipitation is the term used to describe water falling from the sky").
-barrons.rule2701:: agent(use, term) -> example(precipitation, use).
+barrons.rule2701:: agent(use, term).
 english(barrons.rule2702, "Precipitation is the term used to describe water falling from the sky").
-barrons.rule2702:: example(precipitation, term).
+barrons.rule2702:: .
 english(barrons.rule2703, "Precipitation is the term used to describe water falling from the sky").
-barrons.rule2703:: example(precipitation, term).
+barrons.rule2703:: .
 english(barrons.rule2704, "A meteorologist is a scientist who studies weather").
-barrons.rule2704:: example(meteorologist, study), agent(study, who), arg(study, weather).
+barrons.rule2704:: agent(study, who), arg(study, weather).
 english(barrons.rule2705, "A meteorologist is a scientist who studies weather").
-barrons.rule2705:: agent(study, who), arg(study, weather) -> example(meteorologist, study).
+barrons.rule2705:: agent(study, who), arg(study, weather).
 english(barrons.rule2706, "A meteorologist is a scientist who studies weather").
-barrons.rule2706:: example(meteorologist, scientist).
+barrons.rule2706:: .
 english(barrons.rule2707, "A meteorologist is a scientist who studies weather").
-barrons.rule2707:: example(meteorologist, scientist).
+barrons.rule2707:: .
 english(barrons.rule2708, "Water falling from the sky is called precipitation").
-barrons.rule2708:: example(water, precipitation).
+barrons.rule2708:: .
 english(barrons.rule2709, "Water falling from the sky is called precipitation").
-barrons.rule2709:: example(water, precipitation).
+barrons.rule2709:: .
 english(barrons.rule2710, "The water cycle involves movement of water between air and land").
 barrons.rule2710:: agent(involve, cycle), object(involve, movement).
 english(barrons.rule2711, "The water cycle involves movement of water between air and land").
@@ -5423,13 +5423,13 @@ barrons.rule2711:: agent(involve, cycle), object(involve, movement).
 english(barrons.rule2712, "The water cycle involves movement of water between air and land").
 barrons.rule2712:: agent(involve, cycle), object(involve, movement).
 english(barrons.rule2713, "Fog is not a form of precipitation").
-barrons.rule2713:: example(fog, form).
+barrons.rule2713:: .
 english(barrons.rule2714, "Fog is not a form of precipitation").
-barrons.rule2714:: example(fog, form).
+barrons.rule2714:: .
 english(barrons.rule2715, "When water vapor changes to liquid water it is called condensation").
-barrons.rule2715:: example(it, condensation).
+barrons.rule2715:: .
 english(barrons.rule2716, "When water vapor changes to liquid water it is called condensation").
-barrons.rule2716:: example(it, condensation).
+barrons.rule2716:: .
 english(barrons.rule2717, "When liquid water falls to the Earth from the sky it is called precipitation").
 barrons.rule2717:: agent(fall, water), to(fall, Earth), from(fall, sky) -> example(fall, precipitation).
 english(barrons.rule2718, "When liquid water falls to the Earth from the sky it is called precipitation").
@@ -5451,13 +5451,13 @@ barrons.rule2725:: cause(water, break), agent(break, rock).
 english(barrons.rule2726, "Water trapped inside the cracks of rocks may freeze and cause the rocks to break apart").
 barrons.rule2726:: agent(break, rock) -> cause(water, break).
 english(barrons.rule2727, "Weathering is the process that breaks down rocks into small pieces").
-barrons.rule2727:: example(weather, process), agent(break, process), object(break, rock), into(break, piece), arg(break, down).
+barrons.rule2727:: agent(break, process), object(break, rock), into(break, piece), arg(break, down).
 english(barrons.rule2728, "Weathering is the process that breaks down rocks into small pieces").
-barrons.rule2728:: agent(break, process), object(break, rock), into(break, piece), arg(break, down) -> example(weather, process).
+barrons.rule2728:: agent(break, process), object(break, rock), into(break, piece), arg(break, down).
 english(barrons.rule2729, "Weathering is the process that breaks down rocks into small pieces").
-barrons.rule2729:: example(weather, process).
+barrons.rule2729:: .
 english(barrons.rule2730, "Weathering is the process that breaks down rocks into small pieces").
-barrons.rule2730:: example(weather, process).
+barrons.rule2730:: .
 english(barrons.rule2731, "A balance is used to determine the mass of an object").
 barrons.rule2731:: purpose(balance, determine), agent(determine, balance), arg(determine, mass).
 english(barrons.rule2732, "A balance is used to determine the mass of an object").
@@ -5503,9 +5503,9 @@ barrons.rule2751:: purpose(tool, measure), agent(measure, tool), object(measure,
 english(barrons.rule2752, "The best tool to use to measure temperature is a thermometer").
 barrons.rule2752:: agent(measure, tool), object(measure, temperature) -> purpose(tool, measure).
 english(barrons.rule2753, "The best tool to use to measure temperature is a thermometer").
-barrons.rule2753:: example(tool, thermometer).
+barrons.rule2753:: .
 english(barrons.rule2754, "The best tool to use to measure temperature is a thermometer").
-barrons.rule2754:: example(tool, thermometer).
+barrons.rule2754:: .
 english(barrons.rule2755, "A thermometer is used to measure air temperature").
 barrons.rule2755:: purpose(thermometer, measure), agent(measure, thermometer), object(measure, temperature).
 english(barrons.rule2756, "A thermometer is used to measure air temperature").
@@ -5535,45 +5535,45 @@ barrons.rule2767:: agent(be, journal), object(be, useful), to(be, scientist) -> 
 english(barrons.rule2768, "A journal is useful to a scientist to record observations made during an experiment").
 barrons.rule2768:: agent(record, journal), object(record, observation) -> effect(be, record), agent(be, journal), object(be, useful), to(be, scientist).
 english(barrons.rule2769, "The best instrument to measure the growth of a plant 's stem is a ruler").
-barrons.rule2769:: example(instrument, ruler).
+barrons.rule2769:: .
 english(barrons.rule2770, "The best instrument to measure the growth of a plant 's stem is a ruler").
-barrons.rule2770:: example(instrument, ruler).
+barrons.rule2770:: .
 english(barrons.rule2771, "Students should wear safety goggles in the laboratory when they[the students] are using fire or handling chemicals").
 barrons.rule2771:: agent(wear, student), object(wear, goggles), in(wear, laboratory), arg(wear, handle) -> when(wear, use), agent(use, student), object(use, fire).
 english(barrons.rule2772, "Students should wear safety goggles in the laboratory when they[the students] are using fire or handling chemicals").
 barrons.rule2772:: agent(use, student), object(use, fire) -> when(wear, use), agent(wear, student), object(wear, goggles), in(wear, laboratory), arg(wear, handle).
 english(barrons.rule2773, "Snow and rain are forms of precipitation").
-barrons.rule2773:: example(Snow, form).
+barrons.rule2773:: .
 english(barrons.rule2774, "Snow and rain are forms of precipitation").
-barrons.rule2774:: example(Snow, form).
+barrons.rule2774:: .
 english(barrons.rule2775, "Snow and rain are forms of precipitation").
-barrons.rule2775:: example(rain, form).
+barrons.rule2775:: .
 english(barrons.rule2776, "Snow and rain are forms of precipitation").
-barrons.rule2776:: example(rain, form).
+barrons.rule2776:: .
 english(barrons.rule2777, "The main function of a turtle 's shell is to protect the turtle").
 barrons.rule2777:: purpose(shell, protect), agent(protect, function), object(protect, turtle).
 english(barrons.rule2778, "The main function of a turtle 's shell is to protect the turtle").
 barrons.rule2778:: agent(protect, function), object(protect, turtle) -> purpose(shell, protect).
 english(barrons.rule2779, "The Earth 's main source of energy is the sun").
-barrons.rule2779:: example(source, sun).
+barrons.rule2779:: .
 english(barrons.rule2780, "The Earth 's main source of energy is the sun").
-barrons.rule2780:: example(source, sun).
+barrons.rule2780:: .
 english(barrons.rule2781, "When you jump up in the air you come back down to the ground due to gravity").
 barrons.rule2781:: agent(come, you), to(come, ground), arg(come, back), arg(come, down) -> when(come, jump), agent(jump, you), in(jump, air).
 english(barrons.rule2782, "When you jump up in the air you come back down to the ground due to gravity").
 barrons.rule2782:: agent(jump, you), in(jump, air) -> when(come, jump), agent(come, you), to(come, ground), arg(come, back), arg(come, down).
 english(barrons.rule2783, "A ramp is a simple machine known as an inclined plane").
-barrons.rule2783:: example(ramp, know), agent(know, machine), as(know, plane).
+barrons.rule2783:: agent(know, machine), as(know, plane).
 english(barrons.rule2784, "A ramp is a simple machine known as an inclined plane").
-barrons.rule2784:: agent(know, machine), as(know, plane) -> example(ramp, know).
+barrons.rule2784:: agent(know, machine), as(know, plane).
 english(barrons.rule2785, "A ramp is a simple machine known as an inclined plane").
-barrons.rule2785:: example(ramp, machine).
+barrons.rule2785:: .
 english(barrons.rule2786, "A ramp is a simple machine known as an inclined plane").
-barrons.rule2786:: example(ramp, machine).
+barrons.rule2786:: .
 english(barrons.rule2787, "A plant in a food chain is called the producer").
-barrons.rule2787:: example(plant, producer).
+barrons.rule2787:: .
 english(barrons.rule2788, "A plant in a food chain is called the producer").
-barrons.rule2788:: example(plant, producer).
+barrons.rule2788:: .
 english(barrons.rule2789, "Sound waves and light energy are similar because they[Sound waves and light energy] move energy from one place to another").
 barrons.rule2789:: agent(move, wave), object(move, energy), from(move, place), to(move, another) -> effect(move, be), agent(be, wave), object(be, similar).
 english(barrons.rule2790, "Sound waves and light energy are similar because they[Sound waves and light energy] move energy from one place to another").
@@ -5591,17 +5591,17 @@ barrons.rule2795:: agent(move, energy), object(move, energy), from(move, place),
 english(barrons.rule2796, "Sound waves and light energy are similar because they[Sound waves and light energy] move energy from one place to another").
 barrons.rule2796:: agent(be, energy), object(be, similar) -> effect(move, be), agent(move, energy), object(move, energy), from(move, place), to(move, another).
 english(barrons.rule2797, "A pulley is a simple machine that moves a sail up the mast of a ship").
-barrons.rule2797:: example(pulley, machine), agent(move, machine), arg(move, up).
+barrons.rule2797:: agent(move, machine), arg(move, up).
 english(barrons.rule2798, "A pulley is a simple machine that moves a sail up the mast of a ship").
-barrons.rule2798:: agent(move, machine), arg(move, up) -> example(pulley, machine).
+barrons.rule2798:: agent(move, machine), arg(move, up).
 english(barrons.rule2799, "A pulley is a simple machine that moves a sail up the mast of a ship").
-barrons.rule2799:: example(pulley, machine).
+barrons.rule2799:: .
 english(barrons.rule2800, "A pulley is a simple machine that moves a sail up the mast of a ship").
-barrons.rule2800:: example(pulley, machine).
+barrons.rule2800:: .
 english(barrons.rule2801, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2801:: example(length, span).
+barrons.rule2801:: .
 english(barrons.rule2802, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2802:: example(length, span).
+barrons.rule2802:: .
 english(barrons.rule2803, "Living things need food water and air to survive").
 barrons.rule2803:: agent(need, thing), object(need, food) -> effect(need, survive), agent(survive, thing).
 english(barrons.rule2804, "Living things need food water and air to survive").
@@ -5623,9 +5623,9 @@ barrons.rule2811:: purpose(thermometer, measure), agent(measure, thermometer), o
 english(barrons.rule2812, "A thermometer is used to measure heat energy").
 barrons.rule2812:: agent(measure, thermometer), object(measure, energy) -> purpose(thermometer, measure).
 english(barrons.rule2813, "The flower is the part of the plant responsible for the production of seeds").
-barrons.rule2813:: example(flower, part).
+barrons.rule2813:: .
 english(barrons.rule2814, "The flower is the part of the plant responsible for the production of seeds").
-barrons.rule2814:: example(flower, part).
+barrons.rule2814:: .
 english(barrons.rule2815, "Photosynthesis takes place in the leaves of the plant").
 barrons.rule2815:: agent(take, photosynthesis), object(take, place), in(take, leaf).
 english(barrons.rule2816, "Photosynthesis takes place in the leaves of the plant").
@@ -5635,13 +5635,13 @@ barrons.rule2817:: agent(take, photosynthesis), object(take, place), in(take, le
 english(barrons.rule2818, "Photosynthesis takes place in the leaves of the plant").
 barrons.rule2818:: agent(take, photosynthesis), object(take, place), in(take, leaf).
 english(barrons.rule2819, "A rock is not a living thing").
-barrons.rule2819:: example(rock, thing).
+barrons.rule2819:: .
 english(barrons.rule2820, "A rock is not a living thing").
-barrons.rule2820:: example(rock, thing).
+barrons.rule2820:: .
 english(barrons.rule2821, "Hail is a form of precipitation").
-barrons.rule2821:: example(hail, form).
+barrons.rule2821:: .
 english(barrons.rule2822, "Hail is a form of precipitation").
-barrons.rule2822:: example(hail, form).
+barrons.rule2822:: .
 english(barrons.rule2823, "An example of a predator and prey is a hawk and a mouse").
 barrons.rule2823:: example(hawk, predator).
 english(barrons.rule2824, "An example of a predator and prey is a hawk and a mouse").
@@ -5651,9 +5651,9 @@ barrons.rule2825:: example(hawk, prey).
 english(barrons.rule2826, "An example of a predator and prey is a hawk and a mouse").
 barrons.rule2826:: example(hawk, prey).
 english(barrons.rule2827, "An example of a predator and prey is a hawk and a mouse").
-barrons.rule2827:: example(example, hawk).
+barrons.rule2827:: .
 english(barrons.rule2828, "An example of a predator and prey is a hawk and a mouse").
-barrons.rule2828:: example(example, hawk).
+barrons.rule2828:: .
 english(barrons.rule2829, "Growth is a process by which plants and animals increase in size").
 barrons.rule2829:: agent(growth, plant) -> purpose(growth, increase), agent(increase, plant), in(increase, size).
 english(barrons.rule2830, "Growth is a process by which plants and animals increase in size").
@@ -5663,21 +5663,21 @@ barrons.rule2831:: agent(growth, animal) -> purpose(growth, increase), agent(inc
 english(barrons.rule2832, "Growth is a process by which plants and animals increase in size").
 barrons.rule2832:: agent(increase, animal), in(increase, size) -> purpose(growth, increase), agent(growth, animal).
 english(barrons.rule2833, "Growth is a process by which plants and animals increase in size").
-barrons.rule2833:: example(growth, increase), agent(increase, plant), in(increase, size).
+barrons.rule2833:: agent(increase, plant), in(increase, size).
 english(barrons.rule2834, "Growth is a process by which plants and animals increase in size").
-barrons.rule2834:: agent(increase, plant), in(increase, size) -> example(growth, increase).
+barrons.rule2834:: agent(increase, plant), in(increase, size).
 english(barrons.rule2835, "Growth is a process by which plants and animals increase in size").
-barrons.rule2835:: example(growth, increase), agent(increase, animal), in(increase, size).
+barrons.rule2835:: agent(increase, animal), in(increase, size).
 english(barrons.rule2836, "Growth is a process by which plants and animals increase in size").
-barrons.rule2836:: agent(increase, animal), in(increase, size) -> example(growth, increase).
+barrons.rule2836:: agent(increase, animal), in(increase, size).
 english(barrons.rule2837, "Growth is a process by which plants and animals increase in size").
-barrons.rule2837:: example(growth, process).
+barrons.rule2837:: .
 english(barrons.rule2838, "Growth is a process by which plants and animals increase in size").
-barrons.rule2838:: example(growth, process).
+barrons.rule2838:: .
 english(barrons.rule2839, "The leaves are the part of the plant that is responsible for making food").
-barrons.rule2839:: example(leaf, part).
+barrons.rule2839:: .
 english(barrons.rule2840, "The leaves are the part of the plant that is responsible for making food").
-barrons.rule2840:: example(leaf, part).
+barrons.rule2840:: .
 english(barrons.rule2841, "The leaves are the part of the plant that is responsible for making food").
 barrons.rule2841:: purpose(that, make), agent(make, that), object(make, food).
 english(barrons.rule2842, "The leaves are the part of the plant that is responsible for making food").
@@ -5687,13 +5687,13 @@ barrons.rule2843:: agent(take, growth), object(take, nutrient) -> effect(take, b
 english(barrons.rule2844, "Growth taking in nutrients breathing and reproduction are the life processes of all living things").
 barrons.rule2844:: agent(breathing, growth) -> effect(take, breathing), agent(take, growth), object(take, nutrient).
 english(barrons.rule2845, "Growth taking in nutrients breathing and reproduction are the life processes of all living things").
-barrons.rule2845:: example(reproduction, process).
+barrons.rule2845:: .
 english(barrons.rule2846, "Growth taking in nutrients breathing and reproduction are the life processes of all living things").
-barrons.rule2846:: example(reproduction, process).
+barrons.rule2846:: .
 english(barrons.rule2847, "Growth taking in nutrients breathing and reproduction are the life processes of all living things").
-barrons.rule2847:: example(reproduction, process).
+barrons.rule2847:: .
 english(barrons.rule2848, "Growth taking in nutrients breathing and reproduction are the life processes of all living things").
-barrons.rule2848:: example(reproduction, process).
+barrons.rule2848:: .
 english(barrons.rule2849, "When an object travels slowly over a bumpy surface and fast over a smooth surface the difference is due to friction").
 barrons.rule2849:: agent(be, difference), object(be, due), to(be, friction) -> when(be, travel), agent(travel, object), over(travel, surface), arg(travel, slowly).
 english(barrons.rule2850, "When an object travels slowly over a bumpy surface and fast over a smooth surface the difference is due to friction").
@@ -5707,9 +5707,9 @@ barrons.rule2853:: agent(prepare, animal), for(prepare, winter) -> example(prepa
 english(barrons.rule2854, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
 barrons.rule2854:: example(prepare, hibernation), agent(prepare, animal), for(prepare, winter).
 english(barrons.rule2855, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2855:: example(length, span).
+barrons.rule2855:: .
 english(barrons.rule2856, "The length of time from an animal 's birth until its[an animal 's] death is called its[The length of time from an animal 's birth to its death] life span").
-barrons.rule2856:: example(length, span).
+barrons.rule2856:: .
 english(barrons.rule2857, "Some animals have claws spines or shells or give off a smell as a defense mechanism").
 barrons.rule2857:: agent(have, animal), object(have, claw).
 english(barrons.rule2858, "Some animals have claws spines or shells or give off a smell as a defense mechanism").
@@ -5737,13 +5737,13 @@ barrons.rule2868:: cause(dna, resemble), agent(resemble, animal), object(resembl
 english(barrons.rule2869, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
 barrons.rule2869:: agent(resemble, animal), object(resemble, parent), of(resemble, dna), arg(resemble, closely) -> cause(dna, resemble).
 english(barrons.rule2870, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule2870:: example(plant, parent).
+barrons.rule2870:: .
 english(barrons.rule2871, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule2871:: example(plant, parent).
+barrons.rule2871:: .
 english(barrons.rule2872, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule2872:: example(animal, parent).
+barrons.rule2872:: .
 english(barrons.rule2873, "Plants and animals closely resemble their[plants and animals] parents and other individuals in their[plants and animals] species because of their[plants and animals] DNA").
-barrons.rule2873:: example(animal, parent).
+barrons.rule2873:: .
 english(barrons.rule2874, "A ruler is used to measure the length of a piece of wood").
 barrons.rule2874:: purpose(ruler, measure), agent(measure, ruler), object(measure, length).
 english(barrons.rule2875, "A ruler is used to measure the length of a piece of wood").

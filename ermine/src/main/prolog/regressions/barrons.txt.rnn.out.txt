@@ -1,5 +1,5 @@
-% "Animals"	"are"/EXAMPLE	"living things"
-% "plants"	"are"/EXAMPLE	"living things"
+% "Animals"	"are"/ISA	"living things"
+% "plants"	"are"/ISA	"living things"
 % ("Animals"/?x "have" "basic needs")	"in order to"/EFFECT	("Animals"/?x "survive" "")
 % ("Animals" "have" "basic needs")	"in order to"/EFFECT	("plants" "survive" "")
 % ("plants" "have" "basic needs")	"in order to"/EFFECT	("Animals" "survive" "")
@@ -43,10 +43,10 @@
 % ("all around us" "nonlive" "things")
 % ("living things" "not have" "a life cycle")
 % ("A nonliving thing"/?x "not need" "anything")	"to"/EFFECT	("A nonliving thing"/?x "exist" "")
-% "A swing set"	"is"/EXAMPLE	("a nonliving thing" "be" "man-made")
-% "A swing set"	"is"/EXAMPLE	"a nonliving thing"
-% "paper"	"are"/EXAMPLE	"all nonliving things"
-% "paper"	"are"/EXAMPLE	"all nonliving things"
+% "A swing set"	"is"/ISA	("a nonliving thing" "be" "man-made")
+% "A swing set"	"is"/ISA	"a nonliving thing"
+% "paper"	"are"/ISA	"all nonliving things"
+% "paper"	"are"/ISA	"all nonliving things"
 % "Air"	"necessary"/REQUIREMENT	("living things" "live" "")
 % "Air"	"necessary"/REQUIREMENT	("living things" "survive" "")
 % ("" "know" "These life processes" [ "as the requirements for life" ] )	"for"/PURPOSE	"life"
@@ -66,8 +66,8 @@
 % "the soil"	"helps"/PURPOSE	("Plants" "grow" "")
 % "the soil"	"helps"/PURPOSE	("Plants" "perform" "photosynthesis")
 % ("plants"/?x "photosynthesize" "")	"by which"/PURPOSE	("plants"/?x "make" "")
-% "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "")
-% "Photosynthesis"	"is"/EXAMPLE	"the process"
+% "Photosynthesis"	"is"/ISA	("plants" "make" "")
+% "Photosynthesis"	"is"/ISA	"the process"
 % ("All living things" "do" "some type of breathing")
 % ("Most animals" "take in" "oxygen" [ "through their[Most animals] mouths" ] )
 % ("Both"/?x "inhale take in" "oxygen")	"used to"/EFFECT	("Both"/?x "create" "energy")
@@ -77,7 +77,7 @@
 % ("Animals"/?x "take in" "food")	"to"/EFFECT	("Animals"/?x "get" "nutrients")
 % ("The waste" "leave" "the body" [ "in the form of feces" ] )
 % ("Animals"/?x "exhale" "carbon dioxide" [ "through their[Animals] mouth", "through nose" ] )	"by"/ENABLE	("Animals"/?x "rid" "" [ "of their[Animals] gaseous waste" ] )
-% "Plants"	"are"/EXAMPLE	"living organisms"
+% "Plants"	"are"/ISA	"living organisms"
 % ("Plants"/?x "require" "air in order")	"in order to"/EFFECT	("Plants"/?x "live" "")
 % ("Plants"/?x "require" "water")	"in order to"/EFFECT	("Plants"/?x "live" "")
 % ("Plants"/?x "require" "nutrients")	"in order to"/EFFECT	("Plants"/?x "live" "")
@@ -87,20 +87,20 @@
 % ("Plants"/?x "require" "nutrients")	"in order to"/EFFECT	("Plants"/?x "survive" "")
 % ("Plants"/?x "require" "light")	"in order to"/EFFECT	("Plants"/?x "survive" "")
 % ("Plants" "contain" "little green particles")
-% "Plants"	"are"/EXAMPLE	("the only living organism" "make" "its[Air and water] own food")
-% "Plants"	"are"/EXAMPLE	"the only living organism"
+% "Plants"	"are"/ISA	("the only living organism" "make" "its[Air and water] own food")
+% "Plants"	"are"/ISA	"the only living organism"
 % ("Other living organisms"/?x "depend" "" [ "on plants" ] )	"to"/EFFECT	("Other living organisms"/?x "survive" "")
 % ("Plants" "provide" "animals with food and gases oxygen")
 % ("plants"/?x "photosynthesize" "")	"by which"/PURPOSE	("plants"/?x "make" "their[Plants are living organisms] own food")
-% "Photosynthesis"	"is"/EXAMPLE	("plants" "make" "their[Plants are living organisms] own food")
-% "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "oxygen")
-% "Photosynthesis"	"is"/EXAMPLE	("plants" "give off" "water")
-% "Photosynthesis"	"is"/EXAMPLE	"a process"
-% "The food"	"is"/EXAMPLE	("a form of sugar" "call" "")
-% "The food"	"is"/EXAMPLE	"a form of sugar"
-% "Oxygen"	"is"/EXAMPLE	("many animals" "need" "Oxygen")
-% "Oxygen"	"is"/EXAMPLE	("many animals" "need" "a gas")
-% "Oxygen"	"is"/EXAMPLE	"a gas"
+% "Photosynthesis"	"is"/ISA	("plants" "make" "their[Plants are living organisms] own food")
+% "Photosynthesis"	"is"/ISA	("plants" "give off" "oxygen")
+% "Photosynthesis"	"is"/ISA	("plants" "give off" "water")
+% "Photosynthesis"	"is"/ISA	"a process"
+% "The food"	"is"/ISA	("a form of sugar" "call" "")
+% "The food"	"is"/ISA	"a form of sugar"
+% "Oxygen"	"is"/ISA	("many animals" "need" "Oxygen")
+% "Oxygen"	"is"/ISA	("many animals" "need" "a gas")
+% "Oxygen"	"is"/ISA	"a gas"
 % ("many animals"/?x "need" "Oxygen")	"in order to"/EFFECT	("many animals"/?x "survive" "")
 % ("many animals"/?x "need" "a gas")	"in order to"/EFFECT	("many animals"/?x "survive" "")
 % ("Humans" "inhale breathe in" "oxygen")
@@ -113,18 +113,18 @@
 % ("Roots" "anchor" "the plant" [ "in the soil" ] )
 % ("Roots" "absorb" "water" [ "from the soil into the plant" ] )
 % ("Roots" "absorb" "nutrients" [ "from the soil into the plant" ] )
-% "The stem"	"is"/EXAMPLE	"the pathway of water and nutrients from roots to leaves and flower"
+% "The stem"	"is"/ISA	"the pathway of water and nutrients from roots to leaves and flower"
 % ("The stem" "support" "the plant")
 % ("The stem" "be" "the pathway")	"for"/PURPOSE	"transporting carrying water"
 % ("The stem" "be" "the pathway")	"for"/PURPOSE	"nutrients"
-% "The stem"	"is"/EXAMPLE	"the pathway for transporting carrying water and nutrients"
+% "The stem"	"is"/ISA	"the pathway for transporting carrying water and nutrients"
 % ("The stem" "transport" "extra food" [ "to the roots" ] )	"to"/EFFECT	("" "store" "" [ "for later use" ] )
 % ("The stem" "transport" "glucose" [ "to the roots" ] )	"to"/EFFECT	("" "store" "" [ "for later use" ] )
-% "Leaves"	"are"/EXAMPLE	"the food-making factory of the plant"
+% "Leaves"	"are"/ISA	"the food-making factory of the plant"
 % "The flower"	"responsible for"/PURPOSE	("" "reproduce" "")
 % ("" "pollinate" "flowers" [ "With the help of animals insects and birds rain and wind" ] )	"so that"/EFFECT	("" "form" "seeds" [ "that will grow into new plants" ] )
-% "The flower"	"is"/EXAMPLE	"the reproductive part of the plant"
-% "Flowers"	"are"/EXAMPLE	"bright colors"
+% "The flower"	"is"/ISA	"the reproductive part of the plant"
+% "Flowers"	"are"/ISA	"bright colors"
 % ("These colors" "attract" "birds")	"to"/EFFECT	("" "visit" "bright colors")
 % ("These colors"/?x "attract" "birds")	"to"/EFFECT	("These colors"/?x "visit" "have nice scents for a reason")
 % ("These colors" "attract" "insects")	"to"/EFFECT	("" "visit" "bright colors")
@@ -144,11 +144,11 @@
 % ("" "develop" "tough outer coatings")	"to"/EFFECT	("" "protect" "the plant" [ "from the environment" ] )
 % ("" "become" "thicker")	"to"/EFFECT	("" "prevent" "water loss")
 % ("Plants" "have" "life cycles")
-% "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death"	"is called"/EXAMPLE	"its[The length of time from the beginning of the plant to its death] life span"
+% "The length of time from the beginning of the plant to its[beginning of life development into an adult reproduction as an adult and eventually death] death"	"is called"/ISA	"its[The length of time from the beginning of the plant to its death] life span"
 % ("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "" [ "in size" ] )
-% "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
-% "Growth"	"is"/EXAMPLE	"the process"
-% "Animals"	"are"/EXAMPLE	"living organisms"
+% "Growth"	"is"/ISA	("plants" "increase" "" [ "in size" ] )
+% "Growth"	"is"/ISA	"the process"
+% "Animals"	"are"/ISA	"living organisms"
 % ("Animals"/?x "require" "air")	"in order to"/EFFECT	("Animals"/?x "live" "")
 % ("Animals"/?x "require" "water")	"in order to"/EFFECT	("Animals"/?x "live" "")
 % ("Animals"/?x "require" "food")	"in order to"/EFFECT	("Animals"/?x "live" "")
@@ -156,9 +156,9 @@
 % ("Groups of cells" "make up" "tissues")
 % "Muscles"	"examples of"/EXAMPLE	"tissues"
 % "skin"	"examples of"/EXAMPLE	"tissues"
-% "Groups of tissues working together"	"are called"/EXAMPLE	"organs"
-% "The lungs"	"are"/EXAMPLE	"an organ in the body"
-% "Different organs"	"are called"/EXAMPLE	"organ systems"
+% "Groups of tissues working together"	"are called"/ISA	"organs"
+% "The lungs"	"are"/ISA	"an organ in the body"
+% "Different organs"	"are called"/ISA	"organ systems"
 % ("These organ systems"/?x "work" "" [ "together" ] )	"to"/EFFECT	("These organ systems"/?x "make up" "the organism")
 % ("Each organ system" "have" "a specific function")	"helps to"/EFFECT	("the organism" "survive" "")
 % "a specific function"	"helps"/PURPOSE	("the organism" "survive" "")
@@ -177,8 +177,8 @@
 % ("All cells"/?x "need" "oxygen")	"to"/EFFECT	("All cells"/?x "survive" "")
 % ("the blood" "carry" "the waste dioxide" [ "After the cells use the oxygen" ] )
 % ("The lungs" "send" "the carbon dioxide" [ "out of the body" ] )	"when"/WHEN	("we" "exhale" "")
-% "The diaphragm"	"is"/EXAMPLE	("a muscle" "move up and down" "" [ "as we[we] inhale", "exhale", "helps the lungs take in", "let out air" ] )
-% "The diaphragm"	"is"/EXAMPLE	"a muscle"
+% "The diaphragm"	"is"/ISA	("a muscle" "move up and down" "" [ "as we[we] inhale", "exhale", "helps the lungs take in", "let out air" ] )
+% "The diaphragm"	"is"/ISA	"a muscle"
 % ("we"/?x "inhale" "")	"helps"/EFFECT	("we"/?x "take in" "")
 % ("we"/?x "inhale" "")	"helps"/EFFECT	("we"/?x "let out" "air")
 % ("The body" "get" "nutrients" [ "to all of its cells" ] )
@@ -208,7 +208,7 @@
 % ("nerves" "send" "Tiny hairs in our[We] nose sense different" [ "to the brain" ] )	"so that"/EFFECT	("We" "decide" "" [ "if it[our nose sense] is a familiar scent", "a new one" ] )
 % ("Tiny hairs in our[We] nose sense different" "send" "nerves" [ "to the brain" ] )	"so that"/EFFECT	("We" "decide" "" [ "if it[our nose sense] is a familiar scent", "a new one" ] )
 % ("nerves" "send" "nerves" [ "to the brain" ] )	"so that"/EFFECT	("We" "decide" "" [ "if it[our nose sense] is a familiar scent", "a new one" ] )
-% "it[our nose sense]"	"is"/EXAMPLE	"if a familiar scent"
+% "it[our nose sense]"	"is"/ISA	"if a familiar scent"
 % ("All animals" "have" "different structures")
 % ("Animals" "have" "different ways of movement")
 % ("Birds" "use" "their[birds] wings" [ "fish use their[birds] fins" ] )
@@ -221,13 +221,13 @@
 % "this camouflage"	"helps"/PURPOSE	("this camouflage" "protect" "the animal" [ "from enemies" ] )
 % ("a lion 's golden fur"/?x "think" "" [ "of a lion 's golden fur" ] )	"helps"/EFFECT	("a lion 's golden fur"/?x "blend" "" [ "into the desert landscape" ] )
 % "a lion 's golden fur"	"helps"/PURPOSE	("a lion 's golden fur" "blend" "" [ "into the desert landscape" ] )
-% "Chameleons"	"are"/EXAMPLE	("lizards" "change" "colors")
-% "Chameleons"	"are"/EXAMPLE	"lizards"
+% "Chameleons"	"are"/ISA	("lizards" "change" "colors")
+% "Chameleons"	"are"/ISA	"lizards"
 % ("the sand" "turn" "a tan color" [ "On the sand" ] )
 % ("the sand"/?x "turn" "" [ "on grass", "to allow", "green" ] )	"to allow"/EFFECT	("the sand"/?x "hide" "" [ "from predators" ] )
 % ("Some animals" "protect" "escape predators" [ "which is another type of defense mechanism" ] )
 % ("Some animals"/?x "send" "o ut")	"by"/ENABLE	("Some animals"/?x "protect" "escape predators" [ "which is another type of defense mechanism" ] )
-% "which"	"is"/EXAMPLE	"another type of defense mechanism"
+% "which"	"is"/ISA	"another type of defense mechanism"
 % ("These" "attract" "other animals")	"so that"/EFFECT	("other animals" "mate" "")
 % ("These" "attract" "other animals")	"so that"/EFFECT	("other animals" "help" "" [ "them[other animals] fight an enemy" ] )
 % "they[other animals]"	"help"/PURPOSE	("other animals" "fight" "an enemy")
@@ -254,26 +254,26 @@
 % ("Other animals" "change" "their[Other animals] amount of body fat" [ "with the seasons" ] )
 % ("Body fat" "be" "a form" [ "of stored energy" ] )	"helps"/EFFECT	("animals" "get" "long periods of time with little food" [ "through" ] )
 % "Body fat"	"helps"/PURPOSE	("animals" "get" "long periods of time with little food" [ "through" ] )
-% "Body fat"	"is"/EXAMPLE	"a form of stored energy"
+% "Body fat"	"is"/ISA	"a form of stored energy"
 % ("Some animals"/?x "gather" "food")	"in preparation for"/EFFECT	("Some animals"/?x "prepare" "" [ "for the long winter" ] )
 % ("Squirrels" "collect" "acorns")
 % ("Some animals" "live" "a very different life" [ "in the warm weather than in the cold weather" ] )
 % ("Bears"/?x "eat" "a great deal of food" [ "before doing so" ] )	"to"/EFFECT	("Bears"/?x "increase" "their[Bears] body fat")
 % ("some animals"/?x "move" "" [ "to a warmer climate in the cold months" ] )	"is way"/EFFECT	("some animals"/?x "deal" "" [ "with changes in the weather" ] )
-% "This"	"is called"/EXAMPLE	"migration"
+% "This"	"is called"/ISA	"migration"
 % ("fly ing"/?x "know" "Birds")	"to"/EFFECT	("fly ing"/?x "avoid" "" [ "the cold months" ] )
 % ("the species"/?x "pass" "Adaptations" [ "from one generation", "to the next" ] )	"so that"/EFFECT	("the species"/?x "survive" "")
 % ("the species"/?x "pass" "Adaptations" [ "from one generation", "to the next" ] )	"so that"/EFFECT	("the species"/?x "thrive" "")
 % "the fish"	"example"/EXAMPLE	("organisms" "adapt" "" [ "to their[living things organisms] environment", "of how" ] )
-% "One example of how organisms have adapted to their[living things organisms] environment"	"is"/EXAMPLE	"the fish"
+% "One example of how organisms have adapted to their[living things organisms] environment"	"is"/ISA	"the fish"
 % ("living things" "develop" "gills")
 % ("fish" "live" "" [ "in the water" ] )	"Because"/EFFECT	("living things" "develop" "gills")
-% "Gills"	"are"/EXAMPLE	"slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming"
+% "Gills"	"are"/ISA	"slits in the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body that allow the fish to get oxygen from the water while swimming"
 % "the sides of their[Gills are slits in the sides of their body that allow the fish to get oxygen from the water while swimming] body"	"allow"/PURPOSE	("the fish" "get" "oxygen" [ "from the water while swimming" ] )
 % ("their[the similarities and differences between animals arms and/or wings] arm" "adapt" "" [ "Depending on how the organism lives", "to help it[an organism 's] survive" ] )	"to help"/EFFECT	("an organism 's" "survive" "")
 % ("wing" "adapt" "" [ "Depending on how the organism lives", "to help it[an organism 's] survive" ] )	"to help"/EFFECT	("an organism 's" "survive" "")
 % "A beak"	"helps"/PURPOSE	("the bird" "capture" "")
-% "it[The shape strength and design of the beak]"	"is"/EXAMPLE	"whether a bird of prey"
+% "it[The shape strength and design of the beak]"	"is"/ISA	"whether a bird of prey"
 % "long trunks"	"enable"/PURPOSE	("Elephants" "grab" "food and drink water")
 % ("Elephants"/?x "have" "very large ear flaps")	"help"/EFFECT	("Elephants"/?x "hear" "")
 % "very large ear flaps"	"help"/PURPOSE	("Elephants" "hear" "")
@@ -281,30 +281,30 @@
 % ("good hearing"/?x "hear" "")	"helps"/PURPOSE	("good hearing"/?x "protect" "Elephants" [ "from predators" ] )
 % ("All organisms" "have" "variations")
 % "these variations"	"because of"/CAUSE	("individuals of a species" "have" "an advantage" [ "of these variations", "in surviving", "in reproducing" ] )
-% "Diversity"	"is"/EXAMPLE	"the many different types of animals within the same species"
-% "Diversity"	"is"/EXAMPLE	"the many different types of animals within the same species"
+% "Diversity"	"is"/ISA	"the many different types of animals within the same species"
+% "Diversity"	"is"/ISA	"the many different types of animals within the same species"
 % ("You" "have" "three beagles")
-% "This"	"is called"/EXAMPLE	"the continuity of life or life cycle"
+% "This"	"is called"/ISA	"the continuity of life or life cycle"
 % ("All living things" "have" "specific patterns of reproduction growth and development that are called stages in its[Extinction is when the species no longer exists such as the dinosaurs] life cycle")
 % ("You" "have" "a pet")
-% "Some examples"	"are"/EXAMPLE	"the frog"
-% "The length of time from an animal 's birth to its[an animal 's birth] death"	"is called"/EXAMPLE	"its[The length of time from an animal 's birth to its death] life span"
+% "Some examples"	"are"/ISA	"the frog"
+% "The length of time from an animal 's birth to its[an animal 's birth] death"	"is called"/ISA	"its[The length of time from an animal 's birth to its death] life span"
 % ("The type of environment" "have" "a direct effect on organisms")
 % ("various environment al factors" "have" "a direct effect on organisms")
 % "The type of environment"/?x	"have effect"/EFFECT	("The type of environment"/?x "a direct effect" "" [ "on organisms" ] )
 % "various environment al factors"/?x	"have effect"/EFFECT	("various environment al factors"/?x "a direct effect" "" [ "on organisms" ] )
-% "The average life span of a fruit fly"	"is"/EXAMPLE	"72 hours"
-% "The average life span of a worker ant"	"is"/EXAMPLE	"6 months"
-% "The average life span of a frog"	"is"/EXAMPLE	"10 years"
-% "The average life span of an elephant"	"is"/EXAMPLE	"70 years"
-% "The average life span of a human"	"is"/EXAMPLE	"79 years"
-% "The average life span of a turtle"	"is"/EXAMPLE	"100 years"
-% "the availability of food air water space shelter heat and sunlight"	"such as"/EXAMPLE	"environmental conditions"
+% "The average life span of a fruit fly"	"is"/ISA	"72 hours"
+% "The average life span of a worker ant"	"is"/ISA	"6 months"
+% "The average life span of a frog"	"is"/ISA	"10 years"
+% "The average life span of an elephant"	"is"/ISA	"70 years"
+% "The average life span of a human"	"is"/ISA	"79 years"
+% "The average life span of a turtle"	"is"/ISA	"100 years"
+% "the availability of food air water space shelter heat and sunlight"	"such as"/ISA	"environmental conditions"
 % ("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "in size")
 % ("animals"/?x "grow" "")	"by which"/PURPOSE	("animals"/?x "increase" "in size")
-% "Growth"	"is"/EXAMPLE	("plants" "increase" "in size")
-% "Growth"	"is"/EXAMPLE	("animals" "increase" "in size")
-% "Growth"	"is"/EXAMPLE	"the process"
+% "Growth"	"is"/ISA	("plants" "increase" "in size")
+% "Growth"	"is"/ISA	("animals" "increase" "in size")
+% "Growth"	"is"/ISA	"the process"
 % ("an organism" "move" "" [ "into an adult stage of life" ] )	"As"/EFFECT	("they" "continue" "")
 % ("an animal"/?x "break" "a bone")	"able to"/EFFECT	("an animal"/?x "heal" "" [ "over time" ] )
 % ("the body"/?x "do" "This healing")	""/EFFECT	("the body"/?x "grow" "")
@@ -312,18 +312,18 @@
 % ("you"/?x "think" "" [ "after a short period of time the cut healed", "about" ] )	"when"/WHEN	("you"/?x "cut" "yourself")
 % ("your body" "grow" "" [ "always" ] )	"because"/EFFECT	("This" "happen" "")
 % ("your body" "make" "new skin cells")	"because"/EFFECT	("This" "happen" "")
-% "This information"	"is called"/EXAMPLE	"traits"
-% "A trait"	"be"/EXAMPLE	"the color of your hair"
-% "These"	"are"/EXAMPLE	"all characteristics traits that you are born with"
-% "These"	"are"/EXAMPLE	"all characteristics traits that you are born with"
+% "This information"	"is called"/ISA	"traits"
+% "A trait"	"be"/ISA	"the color of your hair"
+% "These"	"are"/ISA	"all characteristics traits that you are born with"
+% "These"	"are"/ISA	"all characteristics traits that you are born with"
 % ("we" "say" "" [ "that it[A trait could be the color of your hair skin and eyes your height and the shape of your face ears and nose] is inherited" ] )	"When"/WHEN	("" "pass" "a trait" [ "from parent", "to child" ] )
 % ("Inheritance" "pass" "characteristics" [ "from parent", "to child" ] )
-% "Genetics"	"is"/EXAMPLE	"the branch of science that studies how hereditary information is passed from one generation to the next generation in a family"
-% "A family tree"	"is"/EXAMPLE	("a chart" "show" "a family 's relatives" [ "over time" ] )
-% "A family tree"	"is"/EXAMPLE	"a chart"
-% "the grandparents"	"are"/EXAMPLE	"the first generation"
-% "the parents"	"are"/EXAMPLE	"the second generation"
-% "the children"	"are"/EXAMPLE	"the third generation"
+% "Genetics"	"is"/ISA	"the branch of science that studies how hereditary information is passed from one generation to the next generation in a family"
+% "A family tree"	"is"/ISA	("a chart" "show" "a family 's relatives" [ "over time" ] )
+% "A family tree"	"is"/ISA	"a chart"
+% "the grandparents"	"are"/ISA	"the first generation"
+% "the parents"	"are"/ISA	"the second generation"
+% "the children"	"are"/ISA	"the third generation"
 % ("A pedigree chart" "show" "each level of a family tree" [ "in a chart format" ] )
 % ("Lines" "connect" "parents" [ "from one level", "to the next", "as shown below" ] )
 % ("boxes" "connect" "parents" [ "from one level", "to the next", "as shown below" ] )
@@ -332,21 +332,21 @@
 % ("Organisms" "reproduce" "an equal amount of genetic information" [ "from the mother", "from father" ] )
 % ("Organisms" "reproduce" "DNA" [ "from the mother", "from father" ] )
 % ("" "combine" "This information")	"to"/EFFECT	("" "form" "the new offspring")
-% "DNA"	"is"/EXAMPLE	"a bundle of chemicals that are considered the map for all living things"
+% "DNA"	"is"/ISA	"a bundle of chemicals that are considered the map for all living things"
 % ("you" "have" "your own DNA" [ "Just as you have your own fingerprint" ] )
 % ("DNA" "tell" "all living things")
 % ("Each step of the ladder" "control" "different traits")
 % ("Each strand of DNA" "contain" "hundreds of pieces of information")
-% "The number of DNA strands chromosomes an organism"	"is"/EXAMPLE	"the same for all members of a species"
+% "The number of DNA strands chromosomes an organism"	"is"/ISA	"the same for all members of a species"
 % ("humans" "have" "46 chromosomes" [ "For example" ] )
 % ("Many organisms" "look" "similar" [ "to other organisms" ] )
-% "A child"	"is called"/EXAMPLE	"an offspring"
-% "baby"	"is called"/EXAMPLE	"an offspring"
+% "A child"	"is called"/ISA	"an offspring"
+% "baby"	"is called"/ISA	"an offspring"
 % ("An offspring"/?x "grow up" "")	"to"/EFFECT	("An offspring"/?x "look" "" [ "like its[an offspring] parents" ] )
 % "their[plants and animals] DNA"	"because of"/CAUSE	("Plants" "resemble" "they parent" [ "of their[plants and animals] DNA", "closely" ] )
 % "their[plants and animals] DNA"	"because of"/CAUSE	("animals" "resemble" "they parent" [ "of their[plants and animals] DNA", "closely" ] )
-% "Plants"	"resemble"/EXAMPLE	"their[plants and animals] parents because of their[plants and animals] DNA"
-% "animals"	"resemble"/EXAMPLE	"their[plants and animals] parents because of their[plants and animals] DNA"
+% "Plants"	"resemble"/ISA	"their[plants and animals] parents because of their[plants and animals] DNA"
+% "animals"	"resemble"/ISA	"their[plants and animals] parents because of their[plants and animals] DNA"
 % ("Animals" "reproduce" "their[Animals] own kind")
 % ("Animals" "have" "different markings")
 % ("rabbits" "have" "rabbits")
@@ -357,7 +357,7 @@
 % ("An organism" "have" "an offspring from their[dogs] own species" [ "only" ] )
 % ("Dogs" "not have" "kittens")
 % ("you" "not pass" "the scar" [ "For example", "to your offspring", "if you fall a deep cut that leaves a scar", "get" ] )
-% "These"	"are"/EXAMPLE	"not traits from your parents"
+% "These"	"are"/ISA	"not traits from your parents"
 % ("You" "not pass" "these traits" [ "to your offspring", "through your genes" ] )
 % ("You" "teach" "their[pea plants] traits" [ "how to do each behavior" ] )
 % ("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "grow" "")
@@ -383,14 +383,14 @@
 % ("You"/?x "have" "one chance")	"to"/EFFECT	("You"/?x "live" "a healthy life style")
 % ("the lungs"/?x "work" "" [ "harder" ] )	"to"/EFFECT	("the lungs"/?x "remove" "the chemicals")
 % ("the body"/?x "work" "" [ "harder" ] )	"to"/EFFECT	("the body"/?x "get" "")
-% "lung cancer"	"such as"/EXAMPLE	"very serious diseases"
+% "lung cancer"	"such as"/ISA	"very serious diseases"
 % "Smoking"	"cause"/CAUSE	("skin" "turn" "an unhealthy color")
 % "Smoking"	"cause"/CAUSE	("teeth" "turn" "an unhealthy color")
 % ("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"to"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
 % ("the blood"/?x "take" "order for alcohol and drugs" [ "to the liver" ] )	"In order for"/EFFECT	("the blood"/?x "get" "" [ "out of your body" ] )
-% "which"	"is"/EXAMPLE	("the liver" "clean" "the blood")
-% "which"	"is"/EXAMPLE	("the organ" "clean" "the blood")
-% "which"	"is"/EXAMPLE	"the organ"
+% "which"	"is"/ISA	("the liver" "clean" "the blood")
+% "which"	"is"/ISA	("the organ" "clean" "the blood")
+% "which"	"is"/ISA	"the organ"
 % ("The liver"/?x "work" "" [ "harder" ] )	"to"/EFFECT	("The liver"/?x "remove" "these foreign substances")
 % ("your body" "develop" "some serious illnesses" [ "As a result" ] )
 % ("It"/?x "be" "important")	"to"/EFFECT	("It"/?x "take in" "the proper foods everyday")
@@ -408,17 +408,17 @@
 % ("" "give" "the cells" [ "time" ] )	"to"/EFFECT	("" "repair" "")
 % ("better concentrate in school"/?x "find" "")	"to"/EFFECT	("better concentrate in school"/?x "complete" "our[we] work")
 % ("find"/?x "find" "")	"to"/EFFECT	("find"/?x "complete" "our[we] work")
-% "Ecology"	"is"/EXAMPLE	("the science" "study" "the relationships between organisms and their[living things organisms] environments")
-% "Ecology"	"is"/EXAMPLE	"the science"
-% "These interconnected relationships"	"are called"/EXAMPLE	"ecosystems"
-% "An ecosystem"	"is"/EXAMPLE	"a community of all the living and nonliving parts of an environment"
+% "Ecology"	"is"/ISA	("the science" "study" "the relationships between organisms and their[living things organisms] environments")
+% "Ecology"	"is"/ISA	"the science"
+% "These interconnected relationships"	"are called"/ISA	"ecosystems"
+% "An ecosystem"	"is"/ISA	"a community of all the living and nonliving parts of an environment"
 % ("Living things" "need" "specific resources for survival such as air food and water")	"for"/PURPOSE	"survival such as air food and water"
 % ("living organisms"/?x "need" "sunlight" [ "While plants are able" ] )	"to"/EFFECT	("living organisms"/?x "do" "")
 % ("living organisms"/?x "need" "water" [ "While plants are able" ] )	"to"/EFFECT	("living organisms"/?x "do" "")
 % ("Plants" "take in" "carbon dioxide" [ "from the environment and return oxygen", "to the air for animals to use" ] )
 % ("Green plants" "provide" "the basic food supply" [ "for themselves[producers]", "for animals" ] )	"are called"/EXAMPLE	"producers"
 % ("Green plants" "provide" "the basic food supply" [ "for themselves[producers]", "for animals" ] )	"because"/EFFECT	("" "call" "Green plants" [ "producers" ] )
-% "The sun"	"is"/EXAMPLE	"the ultimate source of energy for all life and physical cycles on Earth"
+% "The sun"	"is"/ISA	"the ultimate source of energy for all life and physical cycles on Earth"
 % ("plants" "survive" "plants" [ "in a successful balanced ecosystem community for long periods of time" ] )	"for"/PURPOSE	"long periods of time"
 % ("animals" "survive" "plants" [ "in a successful balanced ecosystem community for long periods of time" ] )	"for"/PURPOSE	"long periods of time"
 % ("Problems"/?x "arise" "")	"when"/WHEN	("Problems"/?x "the balance" "" [ "between the organisms", "between the available resources" ] )
@@ -443,21 +443,21 @@
 % ("animals" "survive" "" [ "in number", "while others die to new locations", "move" ] )	"When"/WHEN	("environmental changes" "be" "")
 % ("This" "have" "a major impact on the resources available")
 % ("a natural disaster such as a flood or fire" "be" "")	"example of"/EXAMPLE	"an environmental change"
-% "a flood"	"such as"/EXAMPLE	"a natural disaster"
-% "fire"	"such as"/EXAMPLE	"a natural disaster"
+% "a flood"	"such as"/ISA	"a natural disaster"
+% "fire"	"such as"/ISA	"a natural disaster"
 % ("Some animals" "eat" "other animals")
 % ("predators" "eat" "other animals")
 % ("Animals" "become" "food")	"for"/PURPOSE	"other animals"
-% "This sequence"	"is called"/EXAMPLE	"a food chain"
-% "Producers"	"are"/EXAMPLE	("living things" "change" "the sun 's energy" [ "to make their[producers] own food" ] )
-% "Producers"	"are"/EXAMPLE	"living things"
+% "This sequence"	"is called"/ISA	"a food chain"
+% "Producers"	"are"/ISA	("living things" "change" "the sun 's energy" [ "to make their[producers] own food" ] )
+% "Producers"	"are"/ISA	"living things"
 % ("Green plants" "do" "this" [ "by photosynthesis" ] )
-% "Consumers"	"are"/EXAMPLE	("living things" "feed" "" [ "on others" ] )
-% "Consumers"	"are"/EXAMPLE	"living things"
+% "Consumers"	"are"/ISA	("living things" "feed" "" [ "on others" ] )
+% "Consumers"	"are"/ISA	"living things"
 % ("A primary 1st consumer" "eat" "producers")
-% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
-% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
-% "Decomposers"	"are"/EXAMPLE	"living things"
+% "Decomposers"	"are"/ISA	("living things" "break down" "dead organisms")
+% "Decomposers"	"are"/ISA	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+% "Decomposers"	"are"/ISA	"living things"
 % ("Human decisions" "have" "a major impact on the physical and living environments")
 % ("activities" "have" "a major impact on the physical and living environments")
 % ("Humans" "be" "dependent" [ "upon the environment for food shelter and energy" ] )	"for"/PURPOSE	"food"
@@ -517,7 +517,7 @@
 % ("Watering their[humans] imported lawns" "increase" "the moisture" [ "in the dry air" ] )
 % ("This" "change" "the air quality")
 % ("" "create" "new clean forms of energy")	"to"/EFFECT	("" "conserve" "fossil fuels")
-% "Mass"	"is"/EXAMPLE	"the amount of material present in an object"
+% "Mass"	"is"/ISA	"the amount of material present in an object"
 % ("scientists" "use" "a graduated cylinder")
 % ("this book" "have" "mass" [ "it[this book] is considered matter", "as well as volume", "therefore" ] )
 % ("Solids" "have" "a definite shape")
@@ -555,8 +555,8 @@
 % ("We"/?x "color" "the paper")	""/EFFECT	("We"/?x "use" "markers")
 % ("We" "fold" "the paper" [ "into a smaller size" ] )
 % ("We" "change" "the paper" [ "How", "chemically" ] )
-% "The white sheet of paper"	"become"/EXAMPLE	"a pile of black ashes"
-% "Energy"	"is"/EXAMPLE	"the ability to do work"
+% "The white sheet of paper"	"become"/ISA	"a pile of black ashes"
+% "Energy"	"is"/ISA	"the ability to do work"
 % ("Work" "involve" "the changing of an object 's position")
 % ("you" "have" "no energy")	"because"/EFFECT	("a whole day" "be" "")
 % ("we"/?x "convert" "Food" [ "to energy" ] )	"so that"/EFFECT	("we"/?x "work" "")
@@ -578,8 +578,8 @@
 % ("a chemical reaction"/?x "release" "Chemical energy")	"when"/WHEN	("a chemical reaction"/?x "take" "place")
 % ("a chemical reaction"/?x "release" "energy")	"when"/WHEN	("a chemical reaction"/?x "take" "place")
 % ("two objects"/?x "produce" "Mechanical energy")	"when"/WHEN	("two objects"/?x "move" "" [ "together" ] )
-% "the sun"	"such as"/EXAMPLE	"a light source"
-% "a light bulb"	"such as"/EXAMPLE	"a light source"
+% "the sun"	"such as"/ISA	"a light source"
+% "a light bulb"	"such as"/ISA	"a light source"
 % ("Mechanical energy" "push" "another object")
 % ("Mechanical energy changes" "sound" "energy")
 % ("Mechanical energy changes"/?x "clap together" "your hands")	"by"/ENABLE	("Mechanical energy changes"/?x "sound" "energy")
@@ -592,91 +592,91 @@
 % "A complete circuit"	"allows"/PURPOSE	("electrical energy" "flow" "")
 % ("A simple circuit" "involve" "a battery of electrons wires through which the energy can flow and the object that needs the energy to work such as a light bulb" [ "generally" ] )
 % ("A simple circuit" "involve" "other source" [ "generally" ] )
-% "a light bulb"	"such as"/EXAMPLE	"a battery of electrons wires through which the energy can flow and the object that needs the energy to work"
+% "a light bulb"	"such as"/ISA	"a battery of electrons wires through which the energy can flow and the object that needs the energy to work"
 % ("The circuit" "be" "complete")	"for"/EFFECT	("the object" "work" "")
 % ("path" "be" "complete")	"for"/EFFECT	("the object" "work" "")
 % "This"	"example of"/EXAMPLE	"a simple circuit"
 % ("the bulb" "give off" "light")	"When"/WHEN	("" "attach" "all the wires")
 % ("the circuit" "be" "not complete" [ "as in the diagram below" ] )	"When"/WHEN	("" "not attach" "one of the wires")
-% "A force"	"is"/EXAMPLE	"a push or pull"
+% "A force"	"is"/ISA	"a push or pull"
 % "A force"/?x	"be used"/PURPOSE	("A force"/?x "change" "the direction")
 % ("the box" "be" "empty")	"If"/EFFECT	("a box" "move" "" [ "across the floor", "easily" ] )
 % ("you" "give" "a box" [ "a push" ] )	"If"/EFFECT	("a box" "move" "" [ "across the floor", "easily" ] )
 % ("you"/?x "need" "more force")	"to"/EFFECT	("you"/?x "move" "the same box" [ "across the floor" ] )
 % ("the same box" "be" "full")	"If"/EFFECT	("you" "need" "more force")
-% "Friction"	"is"/EXAMPLE	("a force" "provide" "resistance")
-% "Friction"	"is"/EXAMPLE	"a force"
+% "Friction"	"is"/ISA	("a force" "provide" "resistance")
+% "Friction"	"is"/ISA	"a force"
 % ("The smoother" "the surface" "the less friction against an object" [ "the faster it[The smoother] will move" ] )
 % ("Skiers"/?x "apply" "wax" [ "to their[Skiers and surfers] skis", "to boards" ] )	"in order to"/EFFECT	("Skiers"/?x "make" "" [ "them[Skiers and surfers] smoother" ] )
 % ("surfers"/?x "apply" "wax" [ "to their[Skiers and surfers] skis", "to boards" ] )	"in order to"/EFFECT	("surfers"/?x "make" "" [ "them[Skiers and surfers] smoother" ] )
-% "Friction"	"is"/EXAMPLE	("the force" "exert" "")
-% "Friction"	"is"/EXAMPLE	"the force"
-% "A magnet"	"is"/EXAMPLE	("an object" "attract" "metals")
-% "A magnet"	"is"/EXAMPLE	"an object"
+% "Friction"	"is"/ISA	("the force" "exert" "")
+% "Friction"	"is"/ISA	"the force"
+% "A magnet"	"is"/ISA	("an object" "attract" "metals")
+% "A magnet"	"is"/ISA	"an object"
 % ("the forces in it[a magnet]" "be" "all move in the same direction result in two different pole end")	"because"/EFFECT	("The magnet" "work" "")
 % ("because all"/?x "move" "" [ "in the same direction" ] )	""/EFFECT	("because all"/?x "result" "" [ "in two different poles ends" ] )
-% "The space around the magnet"	"is called"/EXAMPLE	"the magnetic field"
+% "The space around the magnet"	"is called"/ISA	"the magnetic field"
 % ("you" "feel" "the force")	"causes to"/EFFECT	("" "repel" "the magnets" [ "from one another" ] )
 % "the force"	"causes"/CAUSE	("" "repel" "the magnets" [ "from one another" ] )
 % ("The distance between two magnets or a magnet and another metal object" "have" "an effect on the force of attraction")
 % "The distance between two magnets or a magnet and another metal object"/?x	"has effect"/EFFECT	("The distance between two magnets or a magnet and another metal object"/?x "a effect" "" [ "on the force of attraction" ] )
 % ("the distance between the objects" "increase" "the magnetic force of attraction decreases")
-% "Gravity"	"is"/EXAMPLE	("a force" "act" "" [ "on objects here on Earth" ] )
-% "Gravity"	"is"/EXAMPLE	"a force"
+% "Gravity"	"is"/ISA	("a force" "act" "" [ "on objects here on Earth" ] )
+% "Gravity"	"is"/ISA	"a force"
 % ("the force"/?x "throw" "an object" [ "into the air" ] )	"If"/EFFECT	("the force"/?x "allow" "" [ "only" ] )
 % "the force"	"allow"/PURPOSE	("an object" "travel" "a certain distance" [ "before the gravitational attraction between the object and the Earth causes" ] )
 % "the gravitational attraction between the object and the Earth"	"causes"/CAUSE	("the gravitational attraction between the object and the Earth" "fall" "" [ "back", "down to Earth 's surface" ] )
-% "Mechanical energy"	"is"/EXAMPLE	("the energy" "produce" "")
-% "Mechanical energy"	"is"/EXAMPLE	"the energy"
+% "Mechanical energy"	"is"/ISA	("the energy" "produce" "")
+% "Mechanical energy"	"is"/ISA	"the energy"
 % ("the energy" "produce" "")	"when"/WHEN	("two objects" "move" "" [ "together" ] )
 % ("an object"/?x "move" "")	"in order to"/EFFECT	("an object"/?x "work" "")
-% "a force"	"is"/EXAMPLE	"that a push"
+% "a force"	"is"/ISA	"that a push"
 % ("we"/?x "exert" "force" [ "In our[we] everyday lives" ] )	"to"/EFFECT	("we"/?x "do" "work")
 % ("the force" "be" "much" [ "too" ] )	"for"/PURPOSE	"one person"
 % ("we"/?x "need" "the force")	"in order to"/EFFECT	("we"/?x "do" "the work")
 % ("we"/?x "use" "tools" [ "to help us[we] do work", "When this happens" ] )	"to help"/EFFECT	("we"/?x "work" "")
 % ("we"/?x "use" "machines" [ "to help us[we] do work", "When this happens" ] )	"to help"/EFFECT	("we"/?x "work" "")
-% "Simple machines"	"are"/EXAMPLE	"tools with very few parts that help us[we] work"
+% "Simple machines"	"are"/ISA	"tools with very few parts that help us[we] work"
 % "very few parts"	"help"/PURPOSE	("we" "work" "")
-% "A lever"	"is"/EXAMPLE	("" "place" "A lever" [ "on a fixed point" ] )
-% "A lever"	"is"/EXAMPLE	("" "place" "a flat structure" [ "on a fixed point" ] )
-% "A lever"	"is"/EXAMPLE	"a flat structure"
+% "A lever"	"is"/ISA	("" "place" "A lever" [ "on a fixed point" ] )
+% "A lever"	"is"/ISA	("" "place" "a flat structure" [ "on a fixed point" ] )
+% "A lever"	"is"/ISA	"a flat structure"
 % "The lever"/?x	"assist"/PURPOSE	("The lever"/?x "move" "an object")
-% "a big weight"	"such as"/EXAMPLE	"heavy"
-% "a paint can"	"such as"/EXAMPLE	"an object"
-% "An inclined plane"	"is"/EXAMPLE	("a ramp" "extend" "" [ "from one level", "to another" ] )
-% "An inclined plane"	"is"/EXAMPLE	"a ramp"
+% "a big weight"	"such as"/ISA	"heavy"
+% "a paint can"	"such as"/ISA	"an object"
+% "An inclined plane"	"is"/ISA	("a ramp" "extend" "" [ "from one level", "to another" ] )
+% "An inclined plane"	"is"/ISA	"a ramp"
 % "A wheelchair ramp into your school"	"example of"/EXAMPLE	"an inclined plane"
 % "Pulleys"/?x	"are used"/PURPOSE	("Pulleys"/?x "lift" "objects")
 % "A pulley"/?x	"is used"/PURPOSE	("A pulley"/?x "raise" "the flag" [ "up the flagpole", "at your school", "each day" ] )
 % ("A wheel" "involve" "a wheel")
 % ("axle" "involve" "a wheel")
 % "a door knob and the wheel on a wheelbarrow"	"Examples of"/EXAMPLE	"this type of machine"
-% "Examples of this type of machine"	"are"/EXAMPLE	"a door knob and the wheel on a wheelbarrow"
-% "A wedge"	"is"/EXAMPLE	("" "force" "A wedge" [ "into another object" ] )
-% "A wedge"	"is"/EXAMPLE	("" "force" "a type of inclined plane" [ "into another object" ] )
-% "A wedge"	"is"/EXAMPLE	"a type of inclined plane"
-% "A screw"	"is"/EXAMPLE	("" "wrap" "A screw" [ "around a cylinder" ] )
-% "A screw"	"is"/EXAMPLE	("" "wrap" "another type of inclined plane" [ "around a cylinder" ] )
-% "A screw"	"is"/EXAMPLE	"another type of inclined plane"
+% "Examples of this type of machine"	"are"/ISA	"a door knob and the wheel on a wheelbarrow"
+% "A wedge"	"is"/ISA	("" "force" "A wedge" [ "into another object" ] )
+% "A wedge"	"is"/ISA	("" "force" "a type of inclined plane" [ "into another object" ] )
+% "A wedge"	"is"/ISA	"a type of inclined plane"
+% "A screw"	"is"/ISA	("" "wrap" "A screw" [ "around a cylinder" ] )
+% "A screw"	"is"/ISA	("" "wrap" "another type of inclined plane" [ "around a cylinder" ] )
+% "A screw"	"is"/ISA	"another type of inclined plane"
 % ("you" "insert" "A screw" [ "into another object" ] )
 % ("you"/?x "turn" "the screw")	"By"/ENABLE	("you"/?x "insert" "A screw" [ "into another object" ] )
-% "The sun"	"are"/EXAMPLE	"all celestial objects"
-% "The sun"	"are"/EXAMPLE	"all celestial objects"
-% "stars"	"are"/EXAMPLE	"all celestial objects"
-% "stars"	"are"/EXAMPLE	"all celestial objects"
-% "moon"	"are"/EXAMPLE	"all celestial objects"
-% "moon"	"are"/EXAMPLE	"all celestial objects"
-% "planets"	"are"/EXAMPLE	"all celestial objects"
-% "planets"	"are"/EXAMPLE	"all celestial objects"
-% "comets"	"are"/EXAMPLE	"all celestial objects"
-% "comets"	"are"/EXAMPLE	"all celestial objects"
+% "The sun"	"are"/ISA	"all celestial objects"
+% "The sun"	"are"/ISA	"all celestial objects"
+% "stars"	"are"/ISA	"all celestial objects"
+% "stars"	"are"/ISA	"all celestial objects"
+% "moon"	"are"/ISA	"all celestial objects"
+% "moon"	"are"/ISA	"all celestial objects"
+% "planets"	"are"/ISA	"all celestial objects"
+% "planets"	"are"/ISA	"all celestial objects"
+% "comets"	"are"/ISA	"all celestial objects"
+% "comets"	"are"/ISA	"all celestial objects"
 % ("The apparent movement of these objects" "give" "us" [ "an indication of the passage of time" ] )
 % "the motion of the Earth"	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the movement of the planets around the sun" ] )
 % "the movement of the planets around the sun"	"because of"/CAUSE	("us" "see" "different planets" [ "throughout the year", "of the motion of the Earth", "of the movement of the planets around the sun" ] )
 % "the motion of the sun"	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the Earth" ] )
 % "the motion of the Earth"	"because of"/CAUSE	("This" "be not" "" [ "of the motion of the sun", "of the motion of the Earth" ] )
-% "It[This rotation]"	"is"/EXAMPLE	"the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west"
+% "It[This rotation]"	"is"/ISA	"the rotation of the Earth that makes the sun appear to move through the sky during the day rising in the east and setting in the west"
 % ("the sun"/?x "move" "" [ "through the sky", "during the day" ] )	""/EFFECT	("the sun"/?x "rise" "" [ "in the east in the west", "in setting" ] )
 % ("We" "measure" "time on Earth" [ "based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun" ] )
 % "We"	"measure"/PURPOSE	("We" "measure" "time on Earth" [ "based on both the rotation of the Earth on its[time on Earth] axis and its[time on Earth] revolution around the sun" ] )
@@ -685,12 +685,12 @@
 % ("the Earth" "revolve" "around the sun")	"As"/EFFECT	("its[Earth] position changes" "change" "")
 % ("the Earth" "revolve" "around the sun")	"As"/EFFECT	("the amount of sunlight" "change" "")
 % ("Each season" "have" "its[Each season] distinct weather conditions")
-% "The moon"	"is"/EXAMPLE	"a satellite of the Earth"
+% "The moon"	"is"/ISA	"a satellite of the Earth"
 % ("The moon" "not give off" "its[the moon around the Earth] own light")
 % ("the moon around the Earth" "reflect" "light" [ "from the sun" ] )	"because"/EFFECT	("We" "see" "")
 % "the moon 's movement from the sun"	"Because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the reflected light", "at different times during the 29 1/2 days" ] )
 % "the reflected light"	"Because of"/CAUSE	("we" "see" "different portions of the moon" [ "of the moon 's movement from the sun", "of the reflected light", "at different times during the 29 1/2 days" ] )
-% "The different portions of the moon"	"are called"/EXAMPLE	"phases"
+% "The different portions of the moon"	"are called"/ISA	"phases"
 % ("the moon" "move" "" [ "constantly" ] )	"Because"/EFFECT	("it" "be" "possible")
 % ("Earth" "move" "" [ "constantly" ] )	"Because"/EFFECT	("it" "be" "possible")
 % ("" "know" "the event" [ "as an eclipse" ] )	"When"/WHEN	("" "move" "" [ "into the shadow of another" ] )
@@ -707,35 +707,35 @@
 % "An anemometer"	"measures"/PURPOSE	("An anemometer" "measure" "wind speed")
 % ("A thermometer" "measure" "temperature")
 % "A thermometer"	"measures"/PURPOSE	("A thermometer" "measure" "temperature")
-% "Air pressure"	"is"/EXAMPLE	"the pressure against the surface of the Earth by the atmosphere"
+% "Air pressure"	"is"/ISA	"the pressure against the surface of the Earth by the atmosphere"
 % ("Scientists"/?x "use" "an anemometer")	"to"/EFFECT	("Scientists"/?x "determine" "wind speed")
 % ("Wind direction"/?x "indicate" "" [ "the temperature and moisture level of the wind" ] )	"because"/EFFECT	("Wind direction"/?x "be" "important")
 % ("A southwest wind" "bring" "warm air" [ "to New York", "from the south" ] )
 % "A rain gauge"/?x	"is used"/PURPOSE	("A rain gauge"/?x "measure" "rainfall")
 % ("areas" "need" "rainwater for everyday use especially farmers who need rainwater for their[too much rainfall] crops")	"for"/PURPOSE	"everyday use farmers who need rainwater for their[too much rainfall] crops"
 % "Temperature"	"measure"/PURPOSE	("Temperature" "be" "a measure" [ "of how hot or cold the air is" ] )
-% "Temperature"	"is"/EXAMPLE	"a measure of how hot or cold the air is"
+% "Temperature"	"is"/ISA	"a measure of how hot or cold the air is"
 % "the instrument"/?x	"used to"/PURPOSE	("the instrument"/?x "measure" "temperature")
 % "A thermometer"/?x	"used to"/PURPOSE	("A thermometer"/?x "measure" "temperature")
-% "A thermometer"	"is"/EXAMPLE	("the instrument" "use" "")
-% "A thermometer"	"is"/EXAMPLE	"the instrument"
+% "A thermometer"	"is"/ISA	("the instrument" "use" "")
+% "A thermometer"	"is"/ISA	"the instrument"
 % ("The information"/?x "be" "useful")	"in"/EFFECT	("The information"/?x "determine" "current")
 % ("The information"/?x "be" "useful")	"in"/EFFECT	("The information"/?x "determine" "future weather conditions")
 % "the term"/?x	"used to"/PURPOSE	("the term"/?x "describe" "water")
 % ("" "precipitate" "")	"used to"/PURPOSE	("" "describe" "water")
-% "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
-% "Precipitation"	"is"/EXAMPLE	"the term"
-% "Hail"	"is"/EXAMPLE	"solid balls of water"
+% "Precipitation"	"is"/ISA	("the term" "use" "")
+% "Precipitation"	"is"/ISA	"the term"
+% "Hail"	"is"/ISA	"solid balls of water"
 % ("Rain" "occur" "anytime" [ "during the year", "as long as the outside temperature is above the freezing point of water" ] )
 % ("Other conditions" "include" "humidity and cloud cover")
 % "Other conditions"/?x	"used to"/PURPOSE	("Other conditions"/?x "describe" "the weather")
-% "Humidity"	"is"/EXAMPLE	"the amount of moisture in the atmosphere"
+% "Humidity"	"is"/ISA	"the amount of moisture in the atmosphere"
 % ("it" "be" "likely" [ "that some form of precipitation will occur" ] )	"When"/WHEN	("the humidity" "reach" "100 percent")
 % ("some form of precipitation"/?x "occur" "")	""/EFFECT	("some form of precipitation"/?x "depend" "" [ "on the temperature" ] )
 % ("Clouds" "form" "")	"when"/WHEN	("water" "condense" "" [ "in the atmosphere", "on dust particles suspended in the air" ] )
 % ("Clouds" "block" "the Earth 's ability")
-% "A meteorologist"	"is"/EXAMPLE	("who" "use" "the information from weather instruments" [ "to predict weather" ] )
-% "A meteorologist"	"is"/EXAMPLE	"a scientist"
+% "A meteorologist"	"is"/ISA	("who" "use" "the information from weather instruments" [ "to predict weather" ] )
+% "A meteorologist"	"is"/ISA	"a scientist"
 % ("you" "give" "the temperature" [ "usually" ] )
 % ("you" "give" "sky conditions" [ "usually" ] )
 % ("you" "give" "precipitation" [ "usually" ] )
@@ -756,23 +756,23 @@
 % ("Each season" "experience" "specific climate conditions")
 % ("the temperature" "start out" "cold and gradually warms" [ "During Spring" ] )
 % ("Spring" "have" "high amounts of rainfall")
-% "Water"	"is"/EXAMPLE	("" "find" "Water" [ "over the Earth in the ground on the surface and in the air", "all" ] )
-% "Water"	"is"/EXAMPLE	("" "find" "a substance" [ "over the Earth in the ground on the surface and in the air", "all" ] )
-% "Water"	"is"/EXAMPLE	"a substance"
-% "Water"	"is called"/EXAMPLE	"ice"
-% "Water"	"is called"/EXAMPLE	"water vapor"
-% "Water"	"is called"/EXAMPLE	"steam"
+% "Water"	"is"/ISA	("" "find" "Water" [ "over the Earth in the ground on the surface and in the air", "all" ] )
+% "Water"	"is"/ISA	("" "find" "a substance" [ "over the Earth in the ground on the surface and in the air", "all" ] )
+% "Water"	"is"/ISA	"a substance"
+% "Water"	"is called"/ISA	"ice"
+% "Water"	"is called"/ISA	"water vapor"
+% "Water"	"is called"/ISA	"steam"
 % ("" "change" "Water" [ "from one phase", "easily" ] )	"to"/EFFECT	("" "another" "" [ "by the addition of heat", "by removal" ] )
 % ("Each phase change" "have" "a specific name")
 % ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[Each phase change that water goes through] liquid state", "to its[its liquid state] solid state" ] )
-% "Melting"	"is"/EXAMPLE	"the opposite of freezing"
+% "Melting"	"is"/ISA	"the opposite of freezing"
 % ("Melting"/?x "add" "heat")	"by"/ENABLE	("Melting"/?x "change" "water" [ "from its[Melting] solid state", "to a liquid state" ] )
 % ("The energy from the sun" "heat" "the water")
 % "The energy from the sun"	"caused"/CAUSE	("energy" "evaporate" "change from liquid water to water vapor")
 % ("The water vapor" "enter" "the air" [ "then" ] )
 % ("the water vapor in the air" "come" "" [ "in contact with the cool glass" ] )	"because"/EFFECT	("This" "be" "")
-% "rain"	"such as"/EXAMPLE	"liquid form"
-% "snow"	"such as"/EXAMPLE	"in solid form"
+% "rain"	"such as"/ISA	"liquid form"
+% "snow"	"such as"/ISA	"in solid form"
 % ("Examples of precipitation" "include" "rain")
 % ("Examples of precipitation" "include" "snow")
 % ("Examples of precipitation" "include" "sleet")
@@ -784,9 +784,9 @@
 % ("the ground" "settle" "" [ "below the surface" ] )	"is called"/EXAMPLE	"groundwater"
 % ("surface" "settle" "" [ "below the surface" ] )	"is called"/EXAMPLE	"groundwater"
 % ("air" "settle" "" [ "below the surface" ] )	"is called"/EXAMPLE	"groundwater"
-% "Weathering"	"is"/EXAMPLE	("a process" "break" "rocks" [ "into small pieces" ] )
-% "Weathering"	"is"/EXAMPLE	("a process" "break" "other surface materials" [ "into small pieces" ] )
-% "Weathering"	"is"/EXAMPLE	"a process"
+% "Weathering"	"is"/ISA	("a process" "break" "rocks" [ "into small pieces" ] )
+% "Weathering"	"is"/ISA	("a process" "break" "other surface materials" [ "into small pieces" ] )
+% "Weathering"	"is"/ISA	"a process"
 % ("Food"/?x "expand" "")	""/EFFECT	("Food"/?x "make" "" [ "the crack even larger" ] )
 % ("Food" "expand" "")	"When"/WHEN	("the water" "freeze" "")
 % ("This process" "continue break down rock" "periods of time" [ "over long" ] )
@@ -796,21 +796,21 @@
 % ("The flow of water through a landform" "create" "valleys" [ "in large rocks" ] )
 % ("The force of waves" "change" "landforms")
 % ("" "erode" "")	"by which"/PURPOSE	("" "soil" "")
-% "Erosion"	"is"/EXAMPLE	("" "soil" "")
-% "Erosion"	"is"/EXAMPLE	("" "move" "other Earth materials" [ "from one place", "to another" ] )
-% "Erosion"	"is"/EXAMPLE	"the process"
-% "Water"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "Water"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "Water"	"are"/EXAMPLE	"all forces"
-% "Water"	"are"/EXAMPLE	"all forces"
-% "wind"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "wind"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "wind"	"are"/EXAMPLE	"all forces"
-% "wind"	"are"/EXAMPLE	"all forces"
-% "gravity"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "gravity"	"are"/EXAMPLE	("all forces" "involve" "" [ "in erosion" ] )
-% "gravity"	"are"/EXAMPLE	"all forces"
-% "gravity"	"are"/EXAMPLE	"all forces"
+% "Erosion"	"is"/ISA	("" "soil" "")
+% "Erosion"	"is"/ISA	("" "move" "other Earth materials" [ "from one place", "to another" ] )
+% "Erosion"	"is"/ISA	"the process"
+% "Water"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "Water"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "Water"	"are"/ISA	"all forces"
+% "Water"	"are"/ISA	"all forces"
+% "wind"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "wind"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "wind"	"are"/ISA	"all forces"
+% "wind"	"are"/ISA	"all forces"
+% "gravity"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "gravity"	"are"/ISA	("all forces" "involve" "" [ "in erosion" ] )
+% "gravity"	"are"/ISA	"all forces"
+% "gravity"	"are"/ISA	"all forces"
 % ("Wave action" "move" "sand" [ "along a beach" ] )
 % ("Increased water flow" "widen" "a riverbed")
 % ("the particles"/?x "stop" "" [ "Eventually" ] )	""/EFFECT	("the particles"/?x "move" "")
@@ -818,10 +818,10 @@
 % ("the particles"/?x "stop" "")	""/EFFECT	("the particles"/?x "move" "")
 % ("Most of the time people" "not feel" "the earthquakes")
 % ("powerful earthquakes" "cause" "damage to landscapes and buildings" [ "However" ] )
-% "A volcano"	"is"/EXAMPLE	("hot liquid material from inside the Earth" "reach" "the surface" [ "through which" ] )
-% "A volcano"	"is"/EXAMPLE	"a mountain"
-% "The hot liquid rock on the surface"	"is called"/EXAMPLE	"lava"
-% "One of the most useful tools that a scientist has"	"is"/EXAMPLE	"the power of observation"
+% "A volcano"	"is"/ISA	("hot liquid material from inside the Earth" "reach" "the surface" [ "through which" ] )
+% "A volcano"	"is"/ISA	"a mountain"
+% "The hot liquid rock on the surface"	"is called"/ISA	"lava"
+% "One of the most useful tools that a scientist has"	"is"/ISA	"the power of observation"
 % ("Scientists"/?x "record" "their[mass scientists] observations" [ "in a journal", "in notebook" ] )	"in order to"/EFFECT	("Scientists"/?x "keep" "accurate records" [ "for future review" ] )
 % ("" "use" "tools")	"help"/EFFECT	("" "make" "more detailed observations scientists")
 % ("A ruler" "measure" "length")
@@ -843,16 +843,16 @@
 % ("Students" "set up" "an experiment")
 % ("Students"/?x "expose" "some sunflower seeds" [ "in which" ] )	"to"/EFFECT	("Students"/?x "rock" "music" [ "to no music" ] )
 % ("Students"/?x "expose" "some sunflower seeds" [ "in which" ] )	"to"/EFFECT	("Students"/?x "rock" "some" [ "to no music" ] )
-% "Safety"	"is"/EXAMPLE	"a very important aspect in the study of science"
+% "Safety"	"is"/ISA	"a very important aspect in the study of science"
 % ("Eye goggles" "protect" "eyes" [ "from chemicals", "from flying objects" ] )
 % ("An apron" "protect" "clothing")
 % ("Gloves" "protect" "hands/skin" [ "from harm" ] )
-% "The graph"	"is"/EXAMPLE	"a very useful method of displaying data obtained from a number of sources"
+% "The graph"	"is"/ISA	"a very useful method of displaying data obtained from a number of sources"
 % ("A line graph" "show" "the change" [ "in information between two variables" ] )
 % "they[The two axes of the line graph]"	"measure"/PURPOSE	("The two axes of the line graph" "measure" "what")
-% "A bar graph"	"is"/EXAMPLE	"another form of graph used to present information"
+% "A bar graph"	"is"/ISA	"another form of graph used to present information"
 % "A graph such as this"/?x	"be used"/PURPOSE	("A graph such as this"/?x "show" "the number of students with different eye color for your entire class")
-% "this"	"such as"/EXAMPLE	"A graph"
+% "this"	"such as"/ISA	"A graph"
 % "A pie graph"/?x	"is used"/PURPOSE	("A pie graph"/?x "show" "percentages of variables that equal 100")
 % "a pie graph"/?x	"be used"/PURPOSE	("a pie graph"/?x "show" "the percentage of students in each grade in a high school")
 % ("data tables" "provide" "we" [ "to the information", "with a great deal of information" ] )
@@ -861,16 +861,16 @@
 % "drink"	"Examples of"/EXAMPLE	"nonliving things"
 % "air"	"Examples of"/EXAMPLE	"nonliving things"
 % "children"	"Examples of"/EXAMPLE	"living things"
-% "Examples of living things"	"are"/EXAMPLE	"children"
+% "Examples of living things"	"are"/ISA	"children"
 % "plants"	"Examples of"/EXAMPLE	"living things"
 % "Water"	"helps"/PURPOSE	("living things" "survive" "" [ "by moving materials" ] )
 % "Air"	"necessary"/REQUIREMENT	("both plants" "survive" "")
 % "Air"	"necessary"/REQUIREMENT	("animals" "survive" "")
 % "water"	"necessary"/REQUIREMENT	("both plants" "survive" "")
 % "water"	"necessary"/REQUIREMENT	("animals" "survive" "")
-% "Air"	"are"/EXAMPLE	"two nonliving things that all living things need to survive"
-% "water"	"are"/EXAMPLE	"two nonliving things that all living things need to survive"
-% "The changes"	"are called"/EXAMPLE	"metamorphosis"
+% "Air"	"are"/ISA	"two nonliving things that all living things need to survive"
+% "water"	"are"/ISA	"two nonliving things that all living things need to survive"
+% "The changes"	"are called"/ISA	"metamorphosis"
 % ("Living things" "take in" "nutrients")	"so that"/EFFECT	("their[Plants] nutrients" "grow" "")
 % ("Living things" "take in" "nutrients")	"so that"/EFFECT	("their[Plants] nutrients" "create" "energy")
 % ("Plants"/?x "need" "air")	"to"/EFFECT	("Plants"/?x "grow" "")
@@ -887,7 +887,7 @@
 % ("Animals"/?x "need" "air")	"to"/EFFECT	("Animals"/?x "survive" "")
 % ("Animals"/?x "need" "food")	"to"/EFFECT	("Animals"/?x "survive" "")
 % ("Animals"/?x "need" "water")	"to"/EFFECT	("Animals"/?x "survive" "")
-% "A seed growing into a plant"	"is"/EXAMPLE	"a form of reproduction"
+% "A seed growing into a plant"	"is"/ISA	"a form of reproduction"
 % ("All living things"/?x "need" "air")	"to"/EFFECT	("All living things"/?x "survive" "")
 % ("All living things"/?x "need" "water")	"to"/EFFECT	("All living things"/?x "survive" "")
 % ("Plants"/?x "need" "light")	"to"/EFFECT	("Plants"/?x "survive" "")
@@ -923,21 +923,21 @@
 % ("Animals" "use" "plants" [ "for food" ] )
 % "a cow eating grass"	"Examples of"/EXAMPLE	("an animal" "use" "")
 % "a cow eating grass"	"Examples of"/EXAMPLE	"an animal"
-% "Examples of an animal using plants for food"	"are"/EXAMPLE	"a cow eating grass"
+% "Examples of an animal using plants for food"	"are"/ISA	"a cow eating grass"
 % "a horse eating hay"	"Examples of"/EXAMPLE	("an animal" "use" "")
 % "a horse eating hay"	"Examples of"/EXAMPLE	"an animal"
 % ("Animals" "use" "plants" [ "for shelter" ] )
 % "birds"	"Examples of"/EXAMPLE	("animals" "use" "plants" [ "for shelter" ] )
 % "birds"	"Examples of"/EXAMPLE	"animals"
-% "Examples of animals using plants for shelter"	"are"/EXAMPLE	("birds" "build" "a nest on tree branches and squirrels living inside a tree trunk")
-% "Examples of animals using plants for shelter"	"are"/EXAMPLE	"birds"
+% "Examples of animals using plants for shelter"	"are"/ISA	("birds" "build" "a nest on tree branches and squirrels living inside a tree trunk")
+% "Examples of animals using plants for shelter"	"are"/ISA	"birds"
 % ("living organisms" "give off" "oxygen")	"When"/WHEN	("plants" "make" "food")
 % ("living organisms" "give off" "water")	"When"/WHEN	("plants" "make" "food")
 % ("The plant"/?x "get" "the energy")	"to"/EFFECT	("The plant"/?x "go" "" [ "through photosynthesis", "from sunlight" ] )
 % ("The leaves of the plant" "absorb" "sunlight")
 % "the roots"	"functions"/PURPOSE	("The two functions of the roots" "be" "anchor")
 % "the roots"	"functions"/PURPOSE	("The two functions of the roots" "absorb" "")
-% "The stem"	"is"/EXAMPLE	"the pathway of water and nutrients from the roots to the leaves"
+% "The stem"	"is"/ISA	"the pathway of water and nutrients from the roots to the leaves"
 % ("The stem" "support" "the plant")
 % ("The leaves" "contain" "chlorophyll")
 % ("" "move" "" [ "toward the sun" ] )	"to"/EFFECT	("" "collect" "light")
@@ -946,7 +946,7 @@
 % ("the plant" "contain" "the pollen")	"because"/EFFECT	("the plant" "reproduce" "")
 % ("the plant" "contain" "eggs")	"because"/EFFECT	("the plant" "reproduce" "")
 % "apples"	"Examples of"/EXAMPLE	"some common fruits"
-% "Examples of some common fruits"	"are"/EXAMPLE	"apples"
+% "Examples of some common fruits"	"are"/ISA	"apples"
 % "oranges"	"Examples of"/EXAMPLE	"some common fruits"
 % "peaches"	"Examples of"/EXAMPLE	"some common fruits"
 % "watermelon"	"Examples of"/EXAMPLE	"some common fruits"
@@ -969,9 +969,9 @@
 % ("The"/?x "have" "a tough outer coating")	"to"/EFFECT	("The"/?x "prevent" "the loss of water")
 % ("Roots" "secure" "the plant" [ "in the soil" ] )
 % ("Airplanes" "be" "not a common method")	"for"/PURPOSE	"the dispersal of seeds"
-% "Airplanes"	"are"/EXAMPLE	"not a common method for the dispersal of seeds"
+% "Airplanes"	"are"/ISA	"not a common method for the dispersal of seeds"
 % ("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "leave" "")	""/EFFECT	("An example of a plant responding to a change in its[The typical life cycle of a plant] environment"/?x "fall off" "trees" [ "in fall" ] )
-% "The part of a plant"	"is"/EXAMPLE	"the flower"
+% "The part of a plant"	"is"/ISA	"the flower"
 % "that"	"responsible for"/PURPOSE	("" "reproduce" "")
 % ("The stem" "provide" "support for the plant")
 % ("The digestive system" "take" "in nutrients")
@@ -988,7 +988,7 @@
 % ("Ways" "include" "migration")
 % ("Ways" "include" "growing thick fur")
 % ("Ways" "include" "shivering")
-% "seasonal changes"	"such as"/EXAMPLE	"changes in their[different structures that have different jobs or functions to help with growth survival and reproduction] environment"
+% "seasonal changes"	"such as"/ISA	"changes in their[different structures that have different jobs or functions to help with growth survival and reproduction] environment"
 % ("Some animals"/?x "grow" "fur")	"to"/EFFECT	("Some animals"/?x "stay" "warm")
 % ("Some animals"/?x "increase" "body fat")	"to"/EFFECT	("Some animals"/?x "stay" "warm" [ "in winter" ] )
 % ("Shivering"/?x "shake" "")	"in order to"/EFFECT	("Shivering"/?x "keep" "" [ "the body warm" ] )
@@ -1002,9 +1002,9 @@
 % ("Some animals" "have" "shells" [ "as a defense mechanism" ] )
 % ("Some animals" "give off" "a smell as a defense mechanism")
 % ("Animals" "camouflage" "")	"so that"/EFFECT	("" "not see" "themselves" [ "easily" ] )
-% "A giraffe 's long neck"	"is"/EXAMPLE	("" "consider" "A giraffe 's long neck" [ "an adaptation" ] )
-% "A giraffe 's long neck"	"is"/EXAMPLE	("" "consider" "a trait" [ "an adaptation" ] )
-% "A giraffe 's long neck"	"is"/EXAMPLE	"a trait"
+% "A giraffe 's long neck"	"is"/ISA	("" "consider" "A giraffe 's long neck" [ "an adaptation" ] )
+% "A giraffe 's long neck"	"is"/ISA	("" "consider" "a trait" [ "an adaptation" ] )
+% "A giraffe 's long neck"	"is"/ISA	"a trait"
 % ("A fish" "have" "a flipper")	"helps"/EFFECT	("animals with gills" "swim" "")
 % ("A fish" "have" "fin")	"helps"/EFFECT	("animals with gills" "swim" "")
 % "a flipper"	"helps"/PURPOSE	("animals with gills" "swim" "")
@@ -1015,28 +1015,28 @@
 % "strong legs"	"enable"/PURPOSE	("Horses" "run" "" [ "on many different landscapes" ] )
 % "Cats distinct colors"	"example of"/EXAMPLE	"diversity"
 % "patterns"	"example of"/EXAMPLE	"diversity"
-% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/EXAMPLE	"its[The length of time from an animal 's birth to its death] life span"
+% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/ISA	"its[The length of time from an animal 's birth to its death] life span"
 % "A defense mechanism"	"is way"/EXAMPLE	("animals" "protect" "themselves" [ "in which" ] )
 % ("rabbits" "have" "bones")
 % ("the dolphin"/?x "adapt" "")	"so that"/EFFECT	("the dolphin"/?x "act" "" [ "as a paddle" ] )
 % ("The human" "use" "its[the dolphin] fingers" [ "for many tasks" ] )
 % ("The human" "use" "arms" [ "for many tasks" ] )
 % ("organisms" "pass" "" [ "on characteristics from parent to offspring" ] )	"is called"/EXAMPLE	"inheritance"
-% "Characteristics that are passed from a parent to child"	"are called"/EXAMPLE	"traits"
+% "Characteristics that are passed from a parent to child"	"are called"/ISA	"traits"
 % ("Organisms" "reproduce combine to form the genetic information for the new offspring" "DNA" [ "from the parents" ] )
 % ("reproduce DNA from the parents"/?x "combine" "")	"to"/EFFECT	("reproduce DNA from the parents"/?x "form" "the genetic information for the new offspring")
 % ("a fingerprint" "be" "different" [ "from all others" ] )	"because"/EFFECT	("DNA" "be" "" [ "like a fingerprint" ] )
 % ("Genes" "carry" "traits")
 % "DNA"	"because of"/CAUSE	("Plants" "resemble" "they parent" [ "of DNA", "closely" ] )
 % "DNA"	"because of"/CAUSE	("animals" "resemble" "they parent" [ "of DNA", "closely" ] )
-% "Plants"	"resemble"/EXAMPLE	"their[plants and animals] parents because of DNA"
-% "animals"	"resemble"/EXAMPLE	"their[plants and animals] parents because of DNA"
+% "Plants"	"resemble"/ISA	"their[plants and animals] parents because of DNA"
+% "animals"	"resemble"/ISA	"their[plants and animals] parents because of DNA"
 % "DNA"/?x	"responsible for"/PURPOSE	("DNA"/?x "tell" "our[our] body")
 % ("what"/?x "tell" "our[our] body")	"to"/EFFECT	("what"/?x "look" "")
 % ("what"/?x "tell" "our[our] body")	"can"/EFFECT	("what"/?x "give" "the body information")
 % ("All living things" "have" "DNA")
-% "DNA"	"are"/EXAMPLE	"the bundles of chemicals in our body that control what we[our] look like"
-% "DNA"	"are"/EXAMPLE	"the bundles of chemicals in our body that control what we[our] look like"
+% "DNA"	"are"/ISA	"the bundles of chemicals in our body that control what we[our] look like"
+% "DNA"	"are"/ISA	"the bundles of chemicals in our body that control what we[our] look like"
 % ("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "grow" "")
 % ("humans" "eat" "healthy foods")	"In order for"/EFFECT	("humans" "be" "healthy")
 % ("humans" "exercise" "")	"In order for"/EFFECT	("humans" "grow" "")
@@ -1044,12 +1044,12 @@
 % ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "grow" "")
 % ("humans" "get" "regular rest")	"In order for"/EFFECT	("humans" "be" "healthy")
 % ("you" "wash" "your hands" [ "frequently" ] )
-% "A cigarette"	"is"/EXAMPLE	"a harmful substance"
+% "A cigarette"	"is"/ISA	"a harmful substance"
 % ("The food pyramid" "show" "us")
-% "The sun"	"is"/EXAMPLE	"the ultimate source of energy for all life and physical cycles on Earth"
-% "The cactus"	"is"/EXAMPLE	"a producer"
-% "The butterfly"	"is"/EXAMPLE	"a consumer"
-% "The snake"	"is"/EXAMPLE	"a predator"
+% "The sun"	"is"/ISA	"the ultimate source of energy for all life and physical cycles on Earth"
+% "The cactus"	"is"/ISA	"a producer"
+% "The butterfly"	"is"/ISA	"a consumer"
+% "The snake"	"is"/ISA	"a predator"
 % ("Plants" "depend" "" [ "on the sun for energy", "on the water for nutrients" ] )	"for"/PURPOSE	"energy"
 % ("Animals" "need" "plants for food and energy")	"for"/PURPOSE	"food"
 % ("Animals" "need" "plants for food and energy")	"for"/PURPOSE	"energy"
@@ -1058,11 +1058,11 @@
 % ("Humans" "need" "plant for nutrition")	"for"/PURPOSE	"nutrition"
 % ("Humans" "need" "animals")	"for"/PURPOSE	"nutrition"
 % ("Some animals" "use" "nonliving materials" [ "for shelter" ] )
-% "A bird"	"is"/EXAMPLE	"a predator"
-% "snake"	"is"/EXAMPLE	"a predator"
-% "A rabbit"	"is"/EXAMPLE	"a prey"
-% "frog"	"is"/EXAMPLE	"a prey"
-% "fish"	"is"/EXAMPLE	"a prey"
+% "A bird"	"is"/ISA	"a predator"
+% "snake"	"is"/ISA	"a predator"
+% "A rabbit"	"is"/ISA	"a prey"
+% "frog"	"is"/ISA	"a prey"
+% "fish"	"is"/ISA	"a prey"
 % ("Water animals" "produce" "very large numbers of eggs")
 % ("Animals" "have" "less success" [ "in survival" ] )
 % ("Humans" "be" "dependent" [ "upon their[humans] environment for food shelter and energy" ] )	"for"/PURPOSE	"food"
@@ -1087,7 +1087,7 @@
 % ("" "use" "your senses")	"to"/EFFECT	("" "make" "an observation")
 % ("A balance" "measure" "mass")
 % "A balance"	"measures"/PURPOSE	("A balance" "measure" "mass")
-% "Melting of ice"	"is"/EXAMPLE	"a physical change not a chemical change"
+% "Melting of ice"	"is"/ISA	"a physical change not a chemical change"
 % ("The gas phase of matter" "take" "the shape of a closed container")
 % "A bike"	"example of"/EXAMPLE	"kinetic energy"
 % ("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "exemplify" [ "of kinetic energy" ] )
@@ -1103,47 +1103,47 @@
 % "A car engine"	"example of"/EXAMPLE	"chemical energy changing to mechanical energy"
 % "A ball"	"example of"/EXAMPLE	"kinetic energy"
 % ("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "exemplify" [ "of kinetic energy" ] )
-% "Energy from the sun"	"is called"/EXAMPLE	"solar energy"
+% "Energy from the sun"	"is called"/ISA	"solar energy"
 % ("The energy transformation" "occur" "")	"when"/WHEN	("you" "ring" "a door bell")
 % ("" "store" "energy")	"is called"/EXAMPLE	"potential energy"
-% "Friction"	"is"/EXAMPLE	("the force" "slow" "the motion of a bicycle" [ "down" ] )
-% "Friction"	"is"/EXAMPLE	("the force" "stop" "")
-% "Friction"	"is"/EXAMPLE	"the force"
+% "Friction"	"is"/ISA	("the force" "slow" "the motion of a bicycle" [ "down" ] )
+% "Friction"	"is"/ISA	("the force" "stop" "")
+% "Friction"	"is"/ISA	"the force"
 % "The seesaw in a playground"	"example of"/EXAMPLE	"a lever"
-% "Gravity"	"is"/EXAMPLE	("the force" "bring" "objects" [ "toward the Earth" ] )
-% "Gravity"	"is"/EXAMPLE	"the force"
+% "Gravity"	"is"/ISA	("the force" "bring" "objects" [ "toward the Earth" ] )
+% "Gravity"	"is"/ISA	"the force"
 % ("" "a push" "")	"is called"/EXAMPLE	"a force"
 % ("" "a pull" "")	"is called"/EXAMPLE	"a force"
 % ("another friction" "occur" "")	"When"/WHEN	("two objects" "slide" "" [ "over one" ] )
 % "a staple"	"Examples of"/EXAMPLE	("magnet" "attract" "objects")
 % "a staple"	"Examples of"/EXAMPLE	"objects"
-% "Examples of objects that are attracted by magnet"	"are"/EXAMPLE	"a staple"
+% "Examples of objects that are attracted by magnet"	"are"/ISA	"a staple"
 % "an iron nail"	"Examples of"/EXAMPLE	("magnet" "attract" "objects")
 % "an iron nail"	"Examples of"/EXAMPLE	"objects"
 % "a pin"	"Examples of"/EXAMPLE	("magnet" "attract" "objects")
 % "a pin"	"Examples of"/EXAMPLE	"objects"
 % ("The Earth" "make" "a complete rotation on its[the Earth 's] axis once every 24 hours")
 % ("" "reflect" "the sun 's light" [ "off of the moon" ] )	"because"/EFFECT	("" "see" "the moon in the sky")
-% "The rising of the sun as viewed from Earth"	"is"/EXAMPLE	"the result of the Earth 's rotation"
-% "setting"	"is"/EXAMPLE	"the result of the Earth 's rotation"
+% "The rising of the sun as viewed from Earth"	"is"/ISA	"the result of the Earth 's rotation"
+% "setting"	"is"/ISA	"the result of the Earth 's rotation"
 % ("" "be" "important" [ "most" ] )	"for"/PURPOSE	"people"
 % "A barometer"/?x	"is used"/PURPOSE	("A barometer"/?x "measure" "air pressure")
 % "the term"/?x	"used to"/PURPOSE	("the term"/?x "describe" "")
 % ("" "precipitate" "")	"used to"/PURPOSE	("" "describe" "")
-% "Precipitation"	"is"/EXAMPLE	("the term" "use" "")
-% "Precipitation"	"is"/EXAMPLE	"the term"
-% "A meteorologist"	"is"/EXAMPLE	("who" "study" "" [ "weather" ] )
-% "A meteorologist"	"is"/EXAMPLE	"a scientist"
-% "Water falling from the sky"	"is called"/EXAMPLE	"precipitation"
+% "Precipitation"	"is"/ISA	("the term" "use" "")
+% "Precipitation"	"is"/ISA	"the term"
+% "A meteorologist"	"is"/ISA	("who" "study" "" [ "weather" ] )
+% "A meteorologist"	"is"/ISA	"a scientist"
+% "Water falling from the sky"	"is called"/ISA	"precipitation"
 % ("The water cycle" "involve" "movement of water between air and land")
-% "Fog"	"is"/EXAMPLE	"not a form of precipitation"
-% "it"	"is called"/EXAMPLE	"condensation"
+% "Fog"	"is"/ISA	"not a form of precipitation"
+% "it"	"is called"/ISA	"condensation"
 % ("liquid water" "fall" "" [ "to the Earth", "from the sky" ] )	"is called"/EXAMPLE	"precipitation"
 % ("Water from the oceans" "enter" "the atmosphere" [ "through evaporation" ] )
 % ("water molecules" "fall" "" [ "to the ground", "in the form of precipitation" ] )	"When"/WHEN	("the molecules" "become" "heavy" [ "to stay in the air", "too" ] )
 % "Water trapped inside the cracks of rocks"	"cause"/CAUSE	("the rocks" "break apart" "")
-% "Weathering"	"is"/EXAMPLE	("the process" "break" "rocks" [ "into small pieces", "down" ] )
-% "Weathering"	"is"/EXAMPLE	"the process"
+% "Weathering"	"is"/ISA	("the process" "break" "rocks" [ "into small pieces", "down" ] )
+% "Weathering"	"is"/ISA	"the process"
 % "A balance"/?x	"is used"/PURPOSE	("A balance"/?x "determine" "" [ "the mass of an object" ] )
 % ("You" "observe" "an orange 's color" [ "with your sense of sight" ] )
 % ("You" "observe" "an orange 's odor" [ "with your sense of smell" ] )
@@ -1151,7 +1151,7 @@
 % ("You" "observe" "an orange 's taste" [ "with your sense of taste" ] )
 % "a thermometer"/?x	"to use"/PURPOSE	("a thermometer"/?x "measure" "temperature")
 % "The best tool"/?x	"to use"/PURPOSE	("The best tool"/?x "measure" "temperature")
-% "The best tool to use to measure temperature"	"is"/EXAMPLE	"a thermometer"
+% "The best tool to use to measure temperature"	"is"/ISA	"a thermometer"
 % "A thermometer"/?x	"is used"/PURPOSE	("A thermometer"/?x "measure" "air temperature")
 % "A metric ruler"/?x	"be used"/PURPOSE	("A metric ruler"/?x "measure" "the length of a stick")
 % "A metric ruler"	"measure"/PURPOSE	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
@@ -1159,55 +1159,55 @@
 % "a balance"	"measure"/PURPOSE	("A metric ruler" "measure" "" [ "the size of an object", "mass" ] )
 % "a balance"	"measure"/PURPOSE	("a balance" "measure" "" [ "the size of an object", "mass" ] )
 % ("A journal"/?x "be" "useful" [ "to a scientist" ] )	"to"/EFFECT	("A journal"/?x "record" "observations")
-% "The best instrument to measure the growth of a plant 's stem"	"is"/EXAMPLE	"a ruler"
+% "The best instrument to measure the growth of a plant 's stem"	"is"/ISA	"a ruler"
 % ("Students" "wear" "safety goggles" [ "in the laboratory", "handling chemicals" ] )	"when"/WHEN	("the students" "use" "fire")
-% "Snow"	"are"/EXAMPLE	"forms of precipitation"
-% "rain"	"are"/EXAMPLE	"forms of precipitation"
+% "Snow"	"are"/ISA	"forms of precipitation"
+% "rain"	"are"/ISA	"forms of precipitation"
 % "a turtle 's shell"	"function of"/PURPOSE	("The main function of a turtle 's shell" "protect" "the turtle")
-% "The Earth 's main source of energy"	"is"/EXAMPLE	"the sun"
+% "The Earth 's main source of energy"	"is"/ISA	"the sun"
 % ("you" "come" "" [ "to the ground due to gravity", "back", "down" ] )	"When"/WHEN	("you" "jump up" "" [ "in the air" ] )
-% "A ramp"	"is"/EXAMPLE	("a simple machine" "know" "" [ "as an inclined plane" ] )
-% "A ramp"	"is"/EXAMPLE	"a simple machine"
-% "A plant in a food chain"	"is called"/EXAMPLE	"the producer"
+% "A ramp"	"is"/ISA	("a simple machine" "know" "" [ "as an inclined plane" ] )
+% "A ramp"	"is"/ISA	"a simple machine"
+% "A plant in a food chain"	"is called"/ISA	"the producer"
 % ("Sound waves"/?x "move" "energy" [ "from one place", "to another" ] )	"because"/EFFECT	("Sound waves"/?x "be" "similar")
 % ("Sound waves" "move" "energy" [ "from one place", "to another" ] )	"because"/EFFECT	("light energy" "be" "similar")
 % ("light energy" "move" "energy" [ "from one place", "to another" ] )	"because"/EFFECT	("Sound waves" "be" "similar")
 % ("light energy"/?x "move" "energy" [ "from one place", "to another" ] )	"because"/EFFECT	("light energy"/?x "be" "similar")
-% "A pulley"	"is"/EXAMPLE	("a simple machine" "move" "" [ "a sail up the mast of a ship" ] )
-% "A pulley"	"is"/EXAMPLE	"a simple machine"
-% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/EXAMPLE	"its[The length of time from an animal 's birth to its death] life span"
+% "A pulley"	"is"/ISA	("a simple machine" "move" "" [ "a sail up the mast of a ship" ] )
+% "A pulley"	"is"/ISA	"a simple machine"
+% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/ISA	"its[The length of time from an animal 's birth to its death] life span"
 % ("Living things"/?x "need" "food")	"to"/EFFECT	("Living things"/?x "survive" "")
 % ("Living things"/?x "need" "water")	"to"/EFFECT	("Living things"/?x "survive" "")
 % ("Living things"/?x "need" "air")	"to"/EFFECT	("Living things"/?x "survive" "")
 % ("you"/?x "transfer" "electrical energy" [ "into sound and light energy" ] )	"When"/WHEN	("you"/?x "turn" "")
 % "A thermometer"/?x	"is used"/PURPOSE	("A thermometer"/?x "measure" "heat energy")
-% "The flower"	"is"/EXAMPLE	"the part of the plant responsible for the production of seeds"
+% "The flower"	"is"/ISA	"the part of the plant responsible for the production of seeds"
 % ("Photosynthesis" "take" "place" [ "in the leaves of the plant" ] )
-% "A rock"	"is"/EXAMPLE	"not a living thing"
-% "Hail"	"is"/EXAMPLE	"a form of precipitation"
+% "A rock"	"is"/ISA	"not a living thing"
+% "Hail"	"is"/ISA	"a form of precipitation"
 % "a hawk and a mouse"	"example of"/EXAMPLE	"a predator"
 % "a hawk and a mouse"	"example of"/EXAMPLE	"prey"
-% "An example of a predator and prey"	"is"/EXAMPLE	"a hawk and a mouse"
+% "An example of a predator and prey"	"is"/ISA	"a hawk and a mouse"
 % ("plants"/?x "grow" "")	"by which"/PURPOSE	("plants"/?x "increase" "" [ "in size" ] )
 % ("animals"/?x "grow" "")	"by which"/PURPOSE	("animals"/?x "increase" "" [ "in size" ] )
-% "Growth"	"is"/EXAMPLE	("plants" "increase" "" [ "in size" ] )
-% "Growth"	"is"/EXAMPLE	("animals" "increase" "" [ "in size" ] )
-% "Growth"	"is"/EXAMPLE	"a process"
-% "The leaves"	"are"/EXAMPLE	"the part of the plant that is responsible for making food"
+% "Growth"	"is"/ISA	("plants" "increase" "" [ "in size" ] )
+% "Growth"	"is"/ISA	("animals" "increase" "" [ "in size" ] )
+% "Growth"	"is"/ISA	"a process"
+% "The leaves"	"are"/ISA	"the part of the plant that is responsible for making food"
 % "that"/?x	"responsible for"/PURPOSE	("that"/?x "make" "food")
 % ("Growth"/?x "take in" "nutrients")	""/EFFECT	("Growth"/?x "breathe" "")
-% "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
-% "reproduction"	"are"/EXAMPLE	"the life processes of all living things"
+% "reproduction"	"are"/ISA	"the life processes of all living things"
+% "reproduction"	"are"/ISA	"the life processes of all living things"
 % ("the difference" "be" "due" [ "to friction" ] )	"When"/WHEN	("an object" "travel" "" [ "over a bumpy surface and fast over a smooth surface", "slowly" ] )
 % ("some animals"/?x "store" "food")	"by"/ENABLE	("some animals"/?x "prepare" "" [ "for the long winters" ] )
 % ("some animals" "prepare" "" [ "for the long winters" ] )	"is called"/EXAMPLE	"hibernation"
-% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/EXAMPLE	"its[The length of time from an animal 's birth to its death] life span"
+% "The length of time from an animal 's birth until its[an animal 's] death"	"is called"/ISA	"its[The length of time from an animal 's birth to its death] life span"
 % ("Some animals" "have" "claws")
 % ("Some animals" "have" "spines")
 % ("Some animals" "have" "shells")
 % "their[plants and animals] DNA"	"because of"/CAUSE	("Plants" "resemble" "they parent" [ "of their[plants and animals] DNA", "closely" ] )
 % "their[plants and animals] DNA"	"because of"/CAUSE	("animals" "resemble" "they parent" [ "of their[plants and animals] DNA", "closely" ] )
-% "Plants"	"resemble"/EXAMPLE	"their[plants and animals] parents because of their[plants and animals] DNA"
-% "animals"	"resemble"/EXAMPLE	"their[plants and animals] parents because of their[plants and animals] DNA"
+% "Plants"	"resemble"/ISA	"their[plants and animals] parents because of their[plants and animals] DNA"
+% "animals"	"resemble"/ISA	"their[plants and animals] parents because of their[plants and animals] DNA"
 % "A ruler"/?x	"is used"/PURPOSE	("A ruler"/?x "measure" "the length of a piece of wood")
 % ("The astronaut" "not experience" "gravity" [ "while in outer space" ] )

@@ -5,7 +5,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#1.4> ,
 		 "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#1.4> .
+	rel:isa <http://aristo.allenai.org/id#1.4> .
 <http://aristo.allenai.org/id#1.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -20,7 +20,7 @@
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#1.4> .
+	rel:isa <http://aristo.allenai.org/id#1.4> .
 <http://aristo.allenai.org/id#1.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -218,7 +218,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#4.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#4.4> .
+	rel:isa <http://aristo.allenai.org/id#4.4> .
 <http://aristo.allenai.org/id#4.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -234,7 +234,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#4.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#4.4> .
+	rel:isa <http://aristo.allenai.org/id#4.4> .
 <http://aristo.allenai.org/id#4.11>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#4.4> ;
@@ -252,7 +252,7 @@
 <http://aristo.allenai.org/id#4.1>
 	a <entity> ;
 	pred:isa "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#4.4> .
+	rel:isa <http://aristo.allenai.org/id#4.4> .
 <http://aristo.allenai.org/id#4.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -289,7 +289,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#7.4> ,
 		 "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#7.4> .
+	rel:isa <http://aristo.allenai.org/id#7.4> .
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -303,7 +303,7 @@
 <http://aristo.allenai.org/id#7.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
-	rel:example <http://aristo.allenai.org/id#7.4> .
+	rel:isa <http://aristo.allenai.org/id#7.4> .
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -443,7 +443,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#11.4> .
+	rel:isa <http://aristo.allenai.org/id#11.4> .
 <http://aristo.allenai.org/id#11.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -459,7 +459,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
 		 "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#11.4> .
+	rel:isa <http://aristo.allenai.org/id#11.4> .
 <http://aristo.allenai.org/id#11.11>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#11.4> ;
@@ -477,7 +477,7 @@
 <http://aristo.allenai.org/id#11.1>
 	a <entity> ;
 	pred:isa "\"Decomposers\"" ;
-	rel:example <http://aristo.allenai.org/id#11.4> .
+	rel:isa <http://aristo.allenai.org/id#11.4> .
 <http://aristo.allenai.org/id#11.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
@@ -532,7 +532,7 @@
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#14.4> ,
 		 "\"Producers\"" ;
-	rel:example <http://aristo.allenai.org/id#14.4> .
+	rel:isa <http://aristo.allenai.org/id#14.4> .
 <http://aristo.allenai.org/id#14.10>
 	a <entity> ;
 	pred:isa "\"the sun 's energy\"" .
@@ -550,7 +550,7 @@
 <http://aristo.allenai.org/id#14.1>
 	a <entity> ;
 	pred:isa "\"Producers\"" ;
-	rel:example <http://aristo.allenai.org/id#14.4> .
+	rel:isa <http://aristo.allenai.org/id#14.4> .
 <http://aristo.allenai.org/id#14.4>
 	a <entity> ;
 	pred:isa "\"living things\"" .
