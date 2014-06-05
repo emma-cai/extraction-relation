@@ -614,7 +614,6 @@
 % "A magnet"	"is"/EXAMPLE	("an object" "attract" "metals")
 % "A magnet"	"is"/EXAMPLE	"an object"
 % ("the forces in it[a magnet]" "be" "all move in the same direction result in two different pole end")	"because"/EFFECT	("The magnet" "work" "")
-% ("because all"/?x "move" "because all" [ "in the same direction" ] )	""/EFFECT	("because all"/?x "result" "" [ "in two different poles ends" ] )
 % ("because all"/?x "move" "" [ "in the same direction" ] )	""/EFFECT	("because all"/?x "result" "" [ "in two different poles ends" ] )
 % "The space around the magnet"	"is called"/EXAMPLE	"the magnetic field"
 % ("you" "feel" "the force")	"causes to"/EFFECT	("" "repel" "the magnets" [ "from one another" ] )
@@ -730,7 +729,6 @@
 % ("Rain" "occur" "anytime" [ "during the year", "as long as the outside temperature is above the freezing point of water" ] )
 % ("Other conditions" "include" "humidity and cloud cover")
 % "Other conditions"/?x	"used to"/PURPOSE	("Other conditions"/?x "describe" "the weather")
-% ("Other conditions"/?x "use" "Other conditions")	"to"/EFFECT	("Other conditions"/?x "describe" "the weather")
 % "Humidity"	"is"/EXAMPLE	"the amount of moisture in the atmosphere"
 % ("it" "be" "likely" [ "that some form of precipitation will occur" ] )	"When"/WHEN	("the humidity" "reach" "100 percent")
 % ("some form of precipitation"/?x "occur" "")	""/EFFECT	("some form of precipitation"/?x "depend" "" [ "on the temperature" ] )
@@ -841,7 +839,6 @@
 % ("Students"/?x "research" "information")	"to"/EFFECT	("Students"/?x "find" "the best soil")
 % ("Students"/?x "research" "information")	"to"/EFFECT	("Students"/?x "find" "nutrients")
 % ("Students"/?x "research" "information")	"to"/EFFECT	("Students"/?x "find" "light source")
-% ("light source"/?x "need" "light source")	"in order to"/EFFECT	("light source"/?x "grow" "sunflowers")
 % "Rock music"	"caused"/CAUSE	("sunflowers" "grow" "" [ "faster than no music" ] )
 % ("Students" "set up" "an experiment")
 % ("Students"/?x "expose" "some sunflower seeds" [ "in which" ] )	"to"/EFFECT	("Students"/?x "rock" "music" [ "to no music" ] )
@@ -924,11 +921,9 @@
 % "potatoes"	"Examples of"/EXAMPLE	"plants"
 % "potatoes"	"Examples of"/EXAMPLE	"plant products"
 % ("Animals" "use" "plants" [ "for food" ] )
-% "a cow eating grass"	"Examples of"/EXAMPLE	("an animal" "use" "an animal")
 % "a cow eating grass"	"Examples of"/EXAMPLE	("an animal" "use" "")
 % "a cow eating grass"	"Examples of"/EXAMPLE	"an animal"
 % "Examples of an animal using plants for food"	"are"/EXAMPLE	"a cow eating grass"
-% "a horse eating hay"	"Examples of"/EXAMPLE	("an animal" "use" "an animal")
 % "a horse eating hay"	"Examples of"/EXAMPLE	("an animal" "use" "")
 % "a horse eating hay"	"Examples of"/EXAMPLE	"an animal"
 % ("Animals" "use" "plants" [ "for shelter" ] )
@@ -1097,22 +1092,19 @@
 % "A bike"	"example of"/EXAMPLE	"kinetic energy"
 % ("A bike"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A bike"/?x "be" "exemplify" [ "of kinetic energy" ] )
 % "A plane"	"example of"/EXAMPLE	"kinetic energy"
-% ("A plane"/?x "fly" "A plane")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
 % ("A plane"/?x "fly" "")	""/EFFECT	("A plane"/?x "be" "exemplify" [ "of kinetic energy" ] )
 % "A snowball melting in your hand"	"example of"/EXAMPLE	"heat energy"
 % ("" "bang" "a")	"example of"/EXAMPLE	"mechanical energy"
 % ("" "pound" "a fist" [ "on a table" ] )	"example of"/EXAMPLE	"mechanical energy"
-% ("mechanical energy"/?x "change" "mechanical energy")	"to"/EFFECT	("mechanical energy"/?x "sound" "energy")
 % ("" "dry" "clothes" [ "in a clothes dryer" ] )	"example of"/EXAMPLE	"electrical energy changing to heat energy"
 % "A battery"	"example of"/EXAMPLE	"chemical energy changing to electrical energy"
 % ("an example of mechanical energy changing to sound energy" "play" "a guitar")
-% ("mechanical energy"/?x "change" "mechanical energy")	"to"/EFFECT	("mechanical energy"/?x "sound" "energy")
 % "A blender"	"example of"/EXAMPLE	"electrical energy changing to mechanical energy"
 % "A car engine"	"example of"/EXAMPLE	"chemical energy changing to mechanical energy"
 % "A ball"	"example of"/EXAMPLE	"kinetic energy"
 % ("A ball"/?x "roll" "a hill" [ "down" ] )	""/EFFECT	("A ball"/?x "be" "exemplify" [ "of kinetic energy" ] )
 % "Energy from the sun"	"is called"/EXAMPLE	"solar energy"
-% ("The energy transformation" "occur" "The energy transformation")	"when"/WHEN	("you" "ring" "a door bell")
+% ("The energy transformation" "occur" "")	"when"/WHEN	("you" "ring" "a door bell")
 % ("" "store" "energy")	"is called"/EXAMPLE	"potential energy"
 % "Friction"	"is"/EXAMPLE	("the force" "slow" "the motion of a bicycle" [ "down" ] )
 % "Friction"	"is"/EXAMPLE	("the force" "stop" "")

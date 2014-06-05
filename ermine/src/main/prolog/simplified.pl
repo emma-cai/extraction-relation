@@ -16,6 +16,7 @@ simplified_inf_rel([Rel|_],Relation) :- % question-specific
 	simplified_inf_pred(S,SL,focus,'('),
 	simplified_inf_pred(O,OL,focus,', '),
 	format(atom(Relation), '~w~w~w)', [Rel,SL,OL]).
+
 simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
 	stripped_id(Left,LId),
 	simplified_inf_pred(Left,L,focus,'('),
@@ -23,6 +24,14 @@ simplified_inf_rel([Rel,LId,_],Left,Right,Relation) :-
 	format(atom(Relation), '~w~w~w)', [Rel,L,R]).
 simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
 	stripped_id(Left,RId),
+	simplified_inf_pred(Left,L,focus,', '),
+	simplified_inf_pred(Right,R,focus,'('),
+	format(atom(Relation), '~w~w~w)', [Rel,R,L]).
+simplified_inf_rel([Rel,_,RId],Left,Right,Relation) :-
+	% relc case
+	( dependency(Arg,dep:partmod,Left)
+	; dependency(Arg,dep:rcmod,Left) ),
+	stripped_id(Arg,RId),
 	simplified_inf_pred(Left,L,focus,', '),
 	simplified_inf_pred(Right,R,focus,'('),
 	format(atom(Relation), '~w~w~w)', [Rel,R,L]).
@@ -121,9 +130,13 @@ simplified_string(Arg,_,Lemma) :-
 %%% simplified form of basic sentence (no relation)
 
 write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
+	( (rdf(Entity,rdf:type,event),
+	   verb_tokens(Entity,Tokens))
+	; entity_tokens(Entity,Tokens) ),
+	tokens_text_escaped_quoted(Tokens,Text),
 	simplified_lemma(Entity,null,Lemma),
-	simplified_inf_pred(Root,Pred,null,''), % no prefix
-	format(atom(Pretty), 'pretty(~w, "~w -> ~w.")', [Id,Lemma,Pred]),
+	simplified_inf_pred(Root,Pred,null,''),
+	format(atom(Pretty), 'pretty(~w, "isa(~w, ~w) -> ~w.")', [Id,Lemma,Text,Pred]),
 	!.
 write_simplified_inf_simple_tuple(_,_,Id,Pretty) :- % failed
 	format(atom(Pretty), 'pretty(~w, "")', [Id]).

@@ -21,45 +21,47 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
 
   val log = Logging(actorSystem, classOf[ErmineModule])
 
-  // Include Config bindings, and inject the config object we need.
-  module <~ ConfigModule
-  val config = inject[Config](None)
+  // Inject the config object we need.
+  val config = ConfigModule.inject[Config](None)
 
-  // Build up the supported processor map, initialized with processors requiring no external
-  // configuration.
-  val processors = mutable.Map[String, Processor](
-    "StanfordParser" -> StanfordParser,
-    "StanfordXmlToTtl" -> StanfordXmlToTtl,
-    "CatProcessor" -> CatProcessor)
+  // Build up the supported processor map.
+  bind[Map[String, Processor]] toModuleSingle { implicit module =>
+    // Initialize with processors requiring no external configuration.
+    val processors = mutable.Map[String, Processor](
+      "StanfordParser" -> StanfordParser,
+      "StanfordTtl" -> StanfordTtl,
+      "StanfordXmlToTtl" -> StanfordXmlToTtl,
+      "CatProcessor" -> CatProcessor)
 
-  // Create the Ferret instance to use in our extractors, if we have a config key for it.
-  config.get[String]("ferret.directory") match {
-    case Some(ferretDir) => {
-      val ferret = new Ferret(ferretDir)
-      processors += ("FerretTextProcessor" -> new FerretTextProcessor(ferret))
-      processors += ("FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret))
+    // Create the Ferret instance to use in our extractors, if we have a config key for it.
+    config.get[String]("ferret.directory") match {
+      case Some(ferretDir) => {
+        val ferret = new Ferret(ferretDir)
+        processors += ("FerretTextProcessor" -> new FerretTextProcessor(ferret))
+        processors += ("FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret))
+      }
+      case None =>
+        log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
     }
-    case None =>
-      log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
+
+    // Get the data directory for the definition extractor.
+    config.get[String]("definitions.dataDirectory") match {
+      case Some(dataDir) => processors += (
+          "NounDefinitionOpenRegexExtractor" -> new OtterNounDefinitionExtractor(dataDir)
+      )
+      case None => log.error("definitions.dataDirectory not found in config - " +
+        "NounDefinitionOpenRegexExtractor won't be initialized")
+    }
+
+    // Configure the SimpleWiktionaryDefinitionPreprocessor.
+    val wordClasses: Set[String] =
+      (config.get[Seq[String]]("simpleWiktionary.wordClasses") getOrElse { Seq.empty }).toSet
+    processors += ("SimpleWiktionaryDefinitionPreprocessor" ->
+      new SimpleWiktionaryDefinitionPreprocessor(wordClasses))
+
+    // Bind the extractor map we built.
+    processors.toMap
   }
-
-  // Get the data directory for the definition extractor.
-  config.get[String]("definitions.dataDirectory") match {
-    case Some(dataDir) => processors += (
-        "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir)
-    )
-    case None => log.error("definitions.dataDirectory not found in config - " +
-      "NounDefinitionOpenRegexExtractor won't be initialized")
-  }
-
-  // Configure the SimpleWiktionaryDefinitionPreprocessor.
-  val wordClasses: Set[String] =
-    (config.get[Seq[String]]("simpleWiktionary.wordClasses") getOrElse { Seq.empty[String] }).toSet
-  processors += ("SimpleWiktionaryDefinitionPreprocessor" ->
-    new SimpleWiktionaryDefinitionPreprocessor(wordClasses))
-
-  // Bind the extractor map we built.
-  bind[Map[String, Processor]] toSingle processors.toMap
 
   // Bind the ari datastore client, if it's configured.
   config.get[String]("aristore.url") match {
