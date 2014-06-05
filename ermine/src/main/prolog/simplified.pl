@@ -156,9 +156,9 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	current_question_focus(Focus),
 	write_simplified_triples(LeftTriples,Focus,LeftPred,''),
 	write_simplified_question_relation(RightTriples,Focus,'',Relation,Prefix),
-	( (Prefix = '',
+	( (Prefix = ', Q=',
 	   write_simplified_triples(RightTriples,null,RightPred,Prefix))
-	; simplified_inf_pred(Focus,RightPred,null,'') ),
+	; simplified_inf_pred(Focus,RightPred,null,', Q=') ),
 	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LeftPred,Relation,RightPred]),
 	!.
 write_simplified_inf_question(_,_,Id,Pretty) :- % failed
@@ -188,16 +188,16 @@ write_simplified_triples(_,_,'',_).
 write_simplified_question_relation(Triples,Focus,_Prev,Relation,Var) :-
 	member([S,P,O],Triples),
 	rdf_global_id(rel:Rel,P), !,
-	focus_lemma(S,Focus,SLemma, ''),
-	focus_lemma(O,Focus,OLemma, ''),
-	( ( (SLemma = 'Q' ; OLemma = 'Q'),
-	    Var = '')
-	; Var = 'Q='),
-	( (OLemma = 'Q',
-	   left_relation(Rel,OutRel) )
-	; right_relation(Rel,OutRel) ),
-	format(atom(Relation), ' -~w-> ', [OutRel]).
-write_simplified_question_relation(_,_,_,' -> ','').
+	focus_lemma(S,Focus,SLemma, '('),
+	focus_lemma(O,Focus,OLemma, ', '),
+	( ( ( SLemma = '(Q'
+	    ; OLemma = ', Q'
+	    ; memberchk([_,_,Focus],Triples) ),
+	  Var = ', Q=' )
+	; Var = ', '), % relation only
+	left_relation(Rel,RelName),
+	format(atom(Relation), ' -> ~w~w~w)', [RelName,SLemma,OLemma]).
+write_simplified_question_relation(_,_,_,' -> ','Q=').
 
 focus_lemma(Focus,Focus,Q,Prefix) :-
 	atomic_list_concat([Prefix,'Q'],Q), !.
@@ -207,5 +207,6 @@ focus_lemma(Arg,Focus,Q,Prefix) :-
 focus_lemma(Arg,Focus,Q,Prefix) :-
 	dependency(Focus,dep:partmod,Arg),
 	atomic_list_concat([Prefix,'Q'],Q), !.
-focus_lemma(Arg,Focus,Lemma,Prefix) :-
-	simplified_inf_pred(Arg,Lemma,Focus,Prefix).
+focus_lemma(Arg,_,Out,Prefix) :-
+	simplified_lemma(Arg,null,Lemma),
+	atomic_list_concat([Prefix,Lemma],Out).
