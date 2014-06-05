@@ -407,7 +407,7 @@ pretty(rule20, "live(X, \"a healthy life\") -> part(get, live), get(X, \"rest\")
 rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life, "a healthy life") -> part(E1S7-get, E10S7-live), isa(E1S7-get, "get"), object(E1S7-get, A3S7-rest), isa(A3S7-rest, "rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.1", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.8", "text":"part"},  {"token":"id:7.9", "text":"of"} ], "normalizedRelation":"PART"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.10", "text":"live"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:7.11", "text":"a"},  {"token":"id:7.12", "text":"healthy"},  {"token":"id:7.13", "text":"life"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
-% "Decomposers"	"are"/ISA	("living things" "break down" "dead organisms")
+% "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -419,7 +419,7 @@ rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
 		 "\"Decomposers\"" ;
-	rel:isa <http://aristo.allenai.org/id#10.4> .
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -440,14 +440,14 @@ rule20:: isa(E10S7-live, "live"), object(E10S7-live, A13S7-life), isa(A13S7-life
 	a <entity> ;
 	pred:isa "\"dead organisms\"" .
 english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule21, "isa(decomposer, \"Decomposers\") -> isa(decomposer, break), break down(\"living things\", \"dead organisms\").").
-rule21:: isa(A1S10-decomposer, "Decomposers") -> isa(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
+pretty(rule21, "isa(decomposer, \"Decomposers\") -> example(decomposer, break), break down(\"living things\", \"dead organisms\").").
+rule21:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms"), isa(A1S10-decomposer, A4S10-thing).
 english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule22, "break down(\"living things\", \"dead organisms\") -> isa(decomposer, break), isa(decomposer, \"Decomposers\").").
-rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> isa(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.6", "text":"break"},  {"token":"id:10.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.8", "text":"dead"},  {"token":"id:10.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+pretty(rule22, "break down(\"living things\", \"dead organisms\") -> example(decomposer, break), isa(decomposer, \"Decomposers\").").
+rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4S10-thing, "living things"), object(E6S10-break, A9S10-organism), isa(A9S10-organism, "dead organisms") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.6", "text":"break"},  {"token":"id:10.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.8", "text":"dead"},  {"token":"id:10.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
-% "Decomposers"	"are"/ISA	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
+% "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -459,7 +459,7 @@ rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#10.4> ,
 		 "\"Decomposers\"" ;
-	rel:isa <http://aristo.allenai.org/id#10.4> .
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -484,14 +484,14 @@ rule22:: isa(E6S10-break, "break down"), agent(E6S10-break, A4S10-thing), isa(A4
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule23, "isa(decomposer, \"Decomposers\") -> isa(decomposer, recycle), recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")).").
-rule23:: isa(A1S10-decomposer, "Decomposers") -> isa(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
+pretty(rule23, "isa(decomposer, \"Decomposers\") -> example(decomposer, recycle), recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")).").
+rule23:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil"), isa(A1S10-decomposer, A4S10-thing).
 english(rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule24, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> isa(decomposer, recycle), isa(decomposer, \"Decomposers\").").
-rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> isa(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.12", "text":"their[dead organisms]"},  {"token":"id:10.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:10.14", "text":"into"},  {"token":"id:10.15", "text":"the"},  {"token":"id:10.16", "text":"soil"} ] ]} ], "confidence":1.0}
+pretty(rule24, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> example(decomposer, recycle), isa(decomposer, \"Decomposers\").").
+rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa(A4S10-thing, "living things"), object(E11S10-recycle, A13S10-nutrient), isa(A13S10-nutrient, "their[dead organisms] nutrients"), into(E11S10-recycle, A16S10-soil), isa(A16S10-soil, "the soil") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers"), isa(A1S10-decomposer, A4S10-thing).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:10.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.12", "text":"their[dead organisms]"},  {"token":"id:10.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:10.14", "text":"into"},  {"token":"id:10.15", "text":"the"},  {"token":"id:10.16", "text":"soil"} ] ]} ], "confidence":1.0}
 
-% "Decomposers"	"are"/ISA	"living things"
+% "Decomposers"	"are"/EXAMPLE	"living things"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -502,7 +502,7 @@ rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa
 <http://aristo.allenai.org/id#10.1>
 	a <entity> ;
 	pred:isa "\"Decomposers\"" ;
-	rel:isa <http://aristo.allenai.org/id#10.4> .
+	rel:example <http://aristo.allenai.org/id#10.4> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -513,14 +513,14 @@ rule24:: isa(E11S10-recycle, "recycle"), agent(E11S10-recycle, A4S10-thing), isa
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule25, "isa(decomposer, \"Decomposers\") -> isa(decomposer, thing), isa(thing, \"living things\").").
-rule25:: isa(A1S10-decomposer, "Decomposers") -> isa(A1S10-decomposer, A4S10-thing), isa(A4S10-thing, "living things").
+pretty(rule25, "isa(decomposer, \"Decomposers\") -> example(decomposer, thing), isa(thing, \"living things\").").
+rule25:: isa(A1S10-decomposer, "Decomposers") -> example(A1S10-decomposer, A4S10-thing), isa(A4S10-thing, "living things").
 english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule26, "isa(thing, \"living things\") -> isa(decomposer, thing), isa(decomposer, \"Decomposers\").").
-rule26:: isa(A4S10-thing, "living things") -> isa(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers").
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+pretty(rule26, "isa(thing, \"living things\") -> example(decomposer, thing), isa(decomposer, \"Decomposers\").").
+rule26:: isa(A4S10-thing, "living things") -> example(A1S10-decomposer, A4S10-thing), isa(A1S10-decomposer, "Decomposers").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.3", "text":"living"},  {"token":"id:10.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
-% "Gravity"	"is"/ISA	("the force" "pull" "an object toward the center of the Earth")
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -532,7 +532,7 @@ rule26:: isa(A4S10-thing, "living things") -> isa(A1S10-decomposer, A4S10-thing)
 	a <entity> ;
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
 		 "\"Gravity\"" ;
-	rel:isa <http://aristo.allenai.org/id#11.4> .
+	rel:example <http://aristo.allenai.org/id#11.4> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -553,14 +553,14 @@ rule26:: isa(A4S10-thing, "living things") -> isa(A1S10-decomposer, A4S10-thing)
 	a <entity> ;
 	pred:isa "\"an object toward the center of the Earth\"" .
 english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule27, "isa(gravity, \"Gravity\") -> isa(gravity, pull), pull(\"the force\", \"an object toward the center of the Earth\").").
-rule27:: isa(A1S11-gravity, "Gravity") -> isa(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
+pretty(rule27, "isa(gravity, \"Gravity\") -> example(gravity, pull), pull(\"the force\", \"an object toward the center of the Earth\").").
+rule27:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth"), isa(A1S11-gravity, A4S11-force).
 english(rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule28, "pull(\"the force\", \"an object toward the center of the Earth\") -> isa(gravity, pull), isa(gravity, \"Gravity\").").
-rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> isa(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.7", "text":"an"},  {"token":"id:11.8", "text":"object"},  {"token":"id:11.9", "text":"toward"},  {"token":"id:11.10", "text":"the"},  {"token":"id:11.11", "text":"center"},  {"token":"id:11.12", "text":"of"},  {"token":"id:11.13", "text":"the"},  {"token":"id:11.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
+pretty(rule28, "pull(\"the force\", \"an object toward the center of the Earth\") -> example(gravity, pull), isa(gravity, \"Gravity\").").
+rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-force, "the force"), object(E6S11-pull, A8S11-object), isa(A8S11-object, "an object toward the center of the Earth") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity"), isa(A1S11-gravity, A4S11-force).
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.7", "text":"an"},  {"token":"id:11.8", "text":"object"},  {"token":"id:11.9", "text":"toward"},  {"token":"id:11.10", "text":"the"},  {"token":"id:11.11", "text":"center"},  {"token":"id:11.12", "text":"of"},  {"token":"id:11.13", "text":"the"},  {"token":"id:11.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
-% "Gravity"	"is"/ISA	"the force"
+% "Gravity"	"is"/EXAMPLE	"the force"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -571,7 +571,7 @@ rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-forc
 <http://aristo.allenai.org/id#11.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
-	rel:isa <http://aristo.allenai.org/id#11.4> .
+	rel:example <http://aristo.allenai.org/id#11.4> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -582,12 +582,12 @@ rule28:: isa(E6S11-pull, "pull"), agent(E6S11-pull, A4S11-force), isa(A4S11-forc
 	a <entity> ;
 	pred:isa "\"the force\"" .
 english(rule29, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule29, "isa(gravity, \"Gravity\") -> isa(gravity, force), isa(force, \"the force\").").
-rule29:: isa(A1S11-gravity, "Gravity") -> isa(A1S11-gravity, A4S11-force), isa(A4S11-force, "the force").
+pretty(rule29, "isa(gravity, \"Gravity\") -> example(gravity, force), isa(force, \"the force\").").
+rule29:: isa(A1S11-gravity, "Gravity") -> example(A1S11-gravity, A4S11-force), isa(A4S11-force, "the force").
 english(rule30, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule30, "isa(force, \"the force\") -> isa(gravity, force), isa(gravity, \"Gravity\").").
-rule30:: isa(A4S11-force, "the force") -> isa(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity").
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+pretty(rule30, "isa(force, \"the force\") -> example(gravity, force), isa(gravity, \"Gravity\").").
+rule30:: isa(A4S11-force, "the force") -> example(A1S11-gravity, A4S11-force), isa(A1S11-gravity, "Gravity").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"the"},  {"token":"id:11.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
 
@@ -1045,7 +1045,7 @@ pretty(rule53, "measure(\"A student\", \"mL\") -> effect(use, measure), use(\"A 
 rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa(A2S19-student, "A student"), object(E9S19-measure, A14S19-ml), isa(A14S19-ml, "mL") -> effect(E4S19-use, E9S19-measure), isa(E4S19-use, "use"), agent(E4S19-use, A2S19-student), object(E4S19-use, A7S19-cylinder), isa(A7S19-cylinder, "a graduated cylinder").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.5", "text":"a"},  {"token":"id:19.6", "text":"graduated"},  {"token":"id:19.7", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:19.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"A"},  {"token":"id:19.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:19.9", "text":"measure"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.14", "text":"mL"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
-% "The white fur of an arctic fox blends"	"is called"/ISA	"camouflage"
+% "The white fur of an arctic fox blends"	"is called"/EXAMPLE	"camouflage"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  rel: <http://aristo.allenai.org/rel/> .
@@ -1056,7 +1056,7 @@ rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa
 <http://aristo.allenai.org/id#20.3>
 	a <entity> ;
 	pred:isa "\"The white fur of an arctic fox blends\"" ;
-	rel:isa <http://aristo.allenai.org/id#20.15> .
+	rel:example <http://aristo.allenai.org/id#20.15> .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -1067,12 +1067,12 @@ rule53:: isa(E9S19-measure, "measure"), agent(E9S19-measure, A2S19-student), isa
 	a <entity> ;
 	pred:isa "\"camouflage\"" .
 english(rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
-pretty(rule54, "isa(fur, \"The white fur of an arctic fox blends\") -> isa(fur, camouflage), isa(camouflage, \"camouflage\").").
-rule54:: isa(A3S20-fur, "The white fur of an arctic fox blends") -> isa(A3S20-fur, A15S20-camouflage), isa(A15S20-camouflage, "camouflage").
+pretty(rule54, "isa(fur, \"The white fur of an arctic fox blends\") -> example(fur, camouflage), isa(camouflage, \"camouflage\").").
+rule54:: isa(A3S20-fur, "The white fur of an arctic fox blends") -> example(A3S20-fur, A15S20-camouflage), isa(A15S20-camouflage, "camouflage").
 english(rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
-pretty(rule55, "isa(camouflage, \"camouflage\") -> isa(fur, camouflage), isa(fur, \"The white fur of an arctic fox blends\").").
-rule55:: isa(A15S20-camouflage, "camouflage") -> isa(A3S20-fur, A15S20-camouflage), isa(A3S20-fur, "The white fur of an arctic fox blends").
-{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.1", "text":"The"},  {"token":"id:20.2", "text":"white"},  {"token":"id:20.3", "text":"fur"},  {"token":"id:20.4", "text":"of"},  {"token":"id:20.5", "text":"an"},  {"token":"id:20.6", "text":"arctic"},  {"token":"id:20.7", "text":"fox"},  {"token":"id:20.8", "text":"blends"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.13", "text":"is"},  {"token":"id:20.14", "text":"called"} ], "normalizedRelation":"ISA"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.15", "text":"camouflage"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
+pretty(rule55, "isa(camouflage, \"camouflage\") -> example(fur, camouflage), isa(fur, \"The white fur of an arctic fox blends\").").
+rule55:: isa(A15S20-camouflage, "camouflage") -> example(A3S20-fur, A15S20-camouflage), isa(A3S20-fur, "The white fur of an arctic fox blends").
+{"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.1", "text":"The"},  {"token":"id:20.2", "text":"white"},  {"token":"id:20.3", "text":"fur"},  {"token":"id:20.4", "text":"of"},  {"token":"id:20.5", "text":"an"},  {"token":"id:20.6", "text":"arctic"},  {"token":"id:20.7", "text":"fox"},  {"token":"id:20.8", "text":"blends"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.13", "text":"is"},  {"token":"id:20.14", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.15", "text":"camouflage"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
 

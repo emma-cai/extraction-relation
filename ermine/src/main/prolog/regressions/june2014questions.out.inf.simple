@@ -37,11 +37,11 @@ june2014questions.out.rule1:: object(change, water), from(change, liquid), to(ch
 english(june2014questions.out.rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
 june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(electricity, fall).
 english(june2014questions.out.rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
-june2014questions.out.rule1:: agent(drop, student), arg(drop, ball), agent(fall, ball), to(fall, ground) -> cause(friction, fall).
+june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(friction, fall).
 english(june2014questions.out.rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
-june2014questions.out.rule1:: agent(drop, student), arg(drop, ball), agent(fall, ball), to(fall, ground) -> cause(gravity, fall).
+june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(gravity, fall).
 english(june2014questions.out.rule1, "A student drops a ball magnetism causes the ball[a ball] to fall to the ground").
-june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(magnetism, fall).
+june2014questions.out.rule1:: agent(drop, student), arg(drop, ball), agent(fall, ball), to(fall, ground) -> cause(magnetism, fall).
 english(june2014questions.out.rule1, "electricity is the main source of energy for the water cycle").
 june2014questions.out.rule1:: example(electricity, source).
 english(june2014questions.out.rule1, "erosion is the main source of energy for the water cycle").
@@ -72,8 +72,6 @@ english(june2014questions.out.rule1, "resting is necessary for humans to maintai
 june2014questions.out.rule1:: agent(rest, human), agent(maintain, human), object(maintain, health) -> requirement(rest, maintain).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from air").
 june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), arg(make, food) -> effect(get, make).
-english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from sunlight").
-june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), object(make, food), from(make, sunlight) -> effect(get, make).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from water").
 june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), arg(make, food) -> effect(get, make).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from soil").
@@ -147,7 +145,7 @@ june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(gro
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
 june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, cylinder), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
-june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, balance), agent(get, she), object(get, look) -> effect(use, get).
+june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, balance), agent(get, she), arg(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to find food").
 june2014questions.out.rule1:: agent(grow, fox), object(grow, fur), as(grow, change), agent(adaptation, fox) -> purpose(adaptation, find), agent(find, fox), object(find, food).
 english(june2014questions.out.rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to keep warmer").

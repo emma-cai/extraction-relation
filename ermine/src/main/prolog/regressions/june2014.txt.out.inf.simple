@@ -1,11 +1,11 @@
 english(june2014.rule1, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule1:: agent(pull, force), object(pull, object).
+june2014.rule1:: example(gravity, force), agent(pull, force), object(pull, object).
 english(june2014.rule2, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule2:: agent(pull, force), object(pull, object).
+june2014.rule2:: agent(pull, force), object(pull, object) -> example(gravity, force).
 english(june2014.rule3, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule3:: .
+june2014.rule3:: example(gravity, force).
 english(june2014.rule4, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule4:: .
+june2014.rule4:: example(gravity, force).
 english(june2014.rule5, "Exercise is an example of good health habit").
 june2014.rule5:: example(exercise, habit).
 english(june2014.rule6, "Exercise is an example of good health habit").
@@ -47,29 +47,29 @@ june2014.rule23:: agent(get, human), object(get, rest) -> effect(get, be), agent
 english(june2014.rule24, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
 june2014.rule24:: agent(be, human), object(be, healthy) -> effect(get, be), agent(get, human), object(get, rest).
 english(june2014.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule25:: agent(break, thing), object(break, organism).
+june2014.rule25:: example(decomposer, thing), agent(break, thing), object(break, organism).
 english(june2014.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule26:: agent(break, thing), object(break, organism).
+june2014.rule26:: agent(break, thing), object(break, organism) -> example(decomposer, thing).
 english(june2014.rule27, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule27:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+june2014.rule27:: example(decomposer, thing), agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
 english(june2014.rule28, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule28:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+june2014.rule28:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil) -> example(decomposer, thing).
 english(june2014.rule29, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule29:: .
+june2014.rule29:: example(decomposer, thing).
 english(june2014.rule30, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule30:: .
+june2014.rule30:: example(decomposer, thing).
 english(june2014.rule31, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
 june2014.rule31:: agent(removal, freezing), object(removal, heat) -> enable(removal, change), agent(change, freezing), object(change, water), from(change, state), to(change, state).
 english(june2014.rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
 june2014.rule32:: agent(change, freezing), object(change, water), from(change, state), to(change, state) -> enable(removal, change), agent(removal, freezing), object(removal, heat).
 english(june2014.rule33, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule33:: agent(pull, force), arg(pull, object).
+june2014.rule33:: example(gravity, force), agent(pull, force), arg(pull, object).
 english(june2014.rule34, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule34:: agent(pull, force), arg(pull, object).
+june2014.rule34:: agent(pull, force), arg(pull, object) -> example(gravity, force).
 english(june2014.rule35, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule35:: .
+june2014.rule35:: example(gravity, force).
 english(june2014.rule36, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule36:: .
+june2014.rule36:: example(gravity, force).
 english(june2014.rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
 june2014.rule37:: agent(use, scientist), object(use, cylinder) -> effect(use, measure), agent(measure, scientist), object(measure, volume).
 english(june2014.rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
@@ -95,17 +95,17 @@ june2014.rule47:: agent(get, plant), object(get, energy) -> effect(get, go), age
 english(june2014.rule48, "The plant gets the energy to go through photosynthesis from sunlight").
 june2014.rule48:: agent(go, plant), through(go, photosynthesis), from(go, sunlight) -> effect(get, go), agent(get, plant), object(get, energy).
 english(june2014.rule49, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule49:: agent(break, thing), object(break, organism).
+june2014.rule49:: example(decomposer, thing), agent(break, thing), object(break, organism).
 english(june2014.rule50, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule50:: agent(break, thing), object(break, organism).
+june2014.rule50:: agent(break, thing), object(break, organism) -> example(decomposer, thing).
 english(june2014.rule51, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule51:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+june2014.rule51:: example(decomposer, thing), agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
 english(june2014.rule52, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule52:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+june2014.rule52:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil) -> example(decomposer, thing).
 english(june2014.rule53, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule53:: .
+june2014.rule53:: example(decomposer, thing).
 english(june2014.rule54, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-june2014.rule54:: .
+june2014.rule54:: example(decomposer, thing).
 english(june2014.rule55, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
 june2014.rule55:: agent(store, animal), object(store, food) -> enable(store, prepare), agent(prepare, animal), for(prepare, winter).
 english(june2014.rule56, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
@@ -121,13 +121,13 @@ june2014.rule60:: agent(push, energy), object(push, object).
 english(june2014.rule61, "Mechanical energy exerted by one object can push or pull another object").
 june2014.rule61:: agent(push, energy), object(push, object).
 english(june2014.rule62, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule62:: agent(change, thing), object(change, energy), arg(change, make).
+june2014.rule62:: example(producer, thing), agent(change, thing), object(change, energy), arg(change, make).
 english(june2014.rule63, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule63:: agent(change, thing), object(change, energy), arg(change, make).
+june2014.rule63:: agent(change, thing), object(change, energy), arg(change, make) -> example(producer, thing).
 english(june2014.rule64, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule64:: .
+june2014.rule64:: example(producer, thing).
 english(june2014.rule65, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-june2014.rule65:: .
+june2014.rule65:: example(producer, thing).
 english(june2014.rule66, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
 june2014.rule66:: agent(provide, plant), object(provide, supply), for(provide, themselves), for(provide, animal) -> example(provide, producer).
 english(june2014.rule67, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").

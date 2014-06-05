@@ -39,25 +39,25 @@ ie-target.rule19:: object(get, rest) -> part(get, live), object(live, life).
 english(ie-target.rule20, "Getting enough rest is also an important part of living a healthy life").
 ie-target.rule20:: object(live, life) -> part(get, live), object(get, rest).
 english(ie-target.rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule21:: agent(break, thing), object(break, organism).
+ie-target.rule21:: example(decomposer, thing), agent(break, thing), object(break, organism).
 english(ie-target.rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule22:: agent(break, thing), object(break, organism).
+ie-target.rule22:: agent(break, thing), object(break, organism) -> example(decomposer, thing).
 english(ie-target.rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule23:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+ie-target.rule23:: example(decomposer, thing), agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
 english(ie-target.rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule24:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil).
+ie-target.rule24:: agent(recycle, thing), object(recycle, nutrient), into(recycle, soil) -> example(decomposer, thing).
 english(ie-target.rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule25:: .
+ie-target.rule25:: example(decomposer, thing).
 english(ie-target.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-ie-target.rule26:: .
+ie-target.rule26:: example(decomposer, thing).
 english(ie-target.rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule27:: agent(pull, force), object(pull, object).
+ie-target.rule27:: example(gravity, force), agent(pull, force), object(pull, object).
 english(ie-target.rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule28:: agent(pull, force), object(pull, object).
+ie-target.rule28:: agent(pull, force), object(pull, object) -> example(gravity, force).
 english(ie-target.rule29, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule29:: .
+ie-target.rule29:: example(gravity, force).
 english(ie-target.rule30, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule30:: .
+ie-target.rule30:: example(gravity, force).
 english(ie-target.rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
 ie-target.rule31:: example(sweat, adjust), agent(adjust, organism), object(adjust, sweat), to(adjust, temperature).
 english(ie-target.rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
@@ -105,9 +105,9 @@ ie-target.rule52:: agent(use, student), object(use, cylinder) -> effect(use, mea
 english(ie-target.rule53, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 ie-target.rule53:: agent(measure, student), object(measure, ml) -> effect(use, measure), agent(use, student), object(use, cylinder).
 english(ie-target.rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
-ie-target.rule54:: .
+ie-target.rule54:: example(fur, camouflage).
 english(ie-target.rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
-ie-target.rule55:: .
+ie-target.rule55:: example(fur, camouflage).
 english(ie-target.rule56, "When plants and animals die decomposers help return nutrients to the food chain").
 ie-target.rule56:: purpose(decomposer, return), agent(return, decomposer), object(return, nutrient), to(return, chain).
 english(ie-target.rule57, "When plants and animals die decomposers help return nutrients to the food chain").
