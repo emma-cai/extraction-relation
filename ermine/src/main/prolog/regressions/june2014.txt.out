@@ -31,10 +31,10 @@
 	a <entity> ;
 	pred:isa "\"an object toward the center of the Earth\"" .
 english(rule1, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule1, "isa(gravity, \"Gravity\") -> example(gravity, pull), pull(\"the force\", \"an object toward the center of the Earth\").").
+pretty(rule1, "isa(gravity, 'Gravity') -> example(gravity, pull), pull('the force', 'an object toward the center of the Earth').").
 rule1:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth"), isa(A1S1-gravity, A4S1-force).
 english(rule2, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule2, "pull(\"the force\", \"an object toward the center of the Earth\") -> example(gravity, pull), isa(gravity, \"Gravity\").").
+pretty(rule2, "pull('the force', 'an object toward the center of the Earth') -> example(gravity, pull), isa(gravity, 'Gravity').").
 rule2:: isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity"), isa(A1S1-gravity, A4S1-force).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"the"},  {"token":"id:1.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"an"},  {"token":"id:1.8", "text":"object"},  {"token":"id:1.9", "text":"toward"},  {"token":"id:1.10", "text":"the"},  {"token":"id:1.11", "text":"center"},  {"token":"id:1.12", "text":"of"},  {"token":"id:1.13", "text":"the"},  {"token":"id:1.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -60,10 +60,10 @@ rule2:: isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "t
 	a <entity> ;
 	pred:isa "\"the force\"" .
 english(rule3, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule3, "isa(gravity, \"Gravity\") -> example(gravity, force), isa(force, \"the force\").").
+pretty(rule3, "isa(gravity, 'Gravity') -> example(gravity, force), isa(force, 'the force').").
 rule3:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), isa(A4S1-force, "the force").
 english(rule4, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule4, "isa(force, \"the force\") -> example(gravity, force), isa(gravity, \"Gravity\").").
+pretty(rule4, "isa(force, 'the force') -> example(gravity, force), isa(gravity, 'Gravity').").
 rule4:: isa(A4S1-force, "the force") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"the"},  {"token":"id:1.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -89,10 +89,10 @@ rule4:: isa(A4S1-force, "the force") -> example(A1S1-gravity, A4S1-force), isa(A
 	a <entity> ;
 	pred:isa "\"good health habit\"" .
 english(rule5, "Exercise is an example of good health habit").
-pretty(rule5, "isa(exercise, \"Exercise\") -> example(exercise, habit), isa(habit, \"good health habit\").").
+pretty(rule5, "isa(exercise, 'Exercise') -> example(exercise, habit), isa(habit, 'good health habit').").
 rule5:: isa(A1S2-exercise, "Exercise") -> example(A1S2-exercise, A8S2-habit), isa(A8S2-habit, "good health habit").
 english(rule6, "Exercise is an example of good health habit").
-pretty(rule6, "isa(habit, \"good health habit\") -> example(exercise, habit), isa(exercise, \"Exercise\").").
+pretty(rule6, "isa(habit, 'good health habit') -> example(exercise, habit), isa(exercise, 'Exercise').").
 rule6:: isa(A8S2-habit, "good health habit") -> example(A1S2-exercise, A8S2-habit), isa(A1S2-exercise, "Exercise").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.1", "text":"Exercise"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:2.4", "text":"example"},  {"token":"id:2.5", "text":"of"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:2.6", "text":"good"},  {"token":"id:2.7", "text":"health"},  {"token":"id:2.8", "text":"habit"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -133,10 +133,10 @@ rule6:: isa(A8S2-habit, "good health habit") -> example(A1S2-exercise, A8S2-habi
 	pred:agent <http://aristo.allenai.org/id#3.4> ;
 	pred:isa "\"grow\"" .
 english(rule7, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule7, "eat(\"humans\", \"healthy foods\") -> effect(eat, grow), grow(\"humans\").").
+pretty(rule7, "eat('humans', 'healthy foods') -> effect(eat, grow), grow('humans').").
 rule7:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(rule8, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule8, "grow(\"humans\") -> effect(eat, grow), eat(\"humans\", \"healthy foods\").").
+pretty(rule8, "grow('humans') -> effect(eat, grow), eat('humans', 'healthy foods').").
 rule8:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E17S3-eat, E6S3-grow), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.17", "text":"eat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.18", "text":"healthy"},  {"token":"id:3.19", "text":"foods"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.6", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -182,10 +182,10 @@ rule8:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "h
 	a <entity> ;
 	pred:isa "\"energy\"" .
 english(rule9, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule9, "eat(\"humans\", \"healthy foods\") -> effect(eat, have), have(\"humans\", \"energy\").").
+pretty(rule9, "eat('humans', 'healthy foods') -> effect(eat, have), have('humans', 'energy').").
 rule9:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(rule10, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule10, "have(\"humans\", \"energy\") -> effect(eat, have), eat(\"humans\", \"healthy foods\").").
+pretty(rule10, "have('humans', 'energy') -> effect(eat, have), eat('humans', 'healthy foods').").
 rule10:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E17S3-eat, E8S3-have), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.17", "text":"eat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.18", "text":"healthy"},  {"token":"id:3.19", "text":"foods"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"have"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.9", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -231,10 +231,10 @@ rule10:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "
 	a <entity> ;
 	pred:isa "\"humans\"" .
 english(rule11, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule11, "eat(\"humans\", \"healthy foods\") -> effect(eat, be), be(\"humans\", \"healthy\").").
+pretty(rule11, "eat('humans', 'healthy foods') -> effect(eat, be), be('humans', 'healthy').").
 rule11:: isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), isa(A4S3-human, "humans"), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods") -> effect(E17S3-eat, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(rule12, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule12, "be(\"humans\", \"healthy\") -> effect(eat, be), eat(\"humans\", \"healthy foods\").").
+pretty(rule12, "be('humans', 'healthy') -> effect(eat, be), eat('humans', 'healthy foods').").
 rule12:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E17S3-eat, E12S3-be), isa(E17S3-eat, "eat"), agent(E17S3-eat, A4S3-human), object(E17S3-eat, A19S3-food), isa(A19S3-food, "healthy foods").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.17", "text":"eat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.18", "text":"healthy"},  {"token":"id:3.19", "text":"foods"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.12", "text":"be"} ], "directObject": {"class":"Other", "string": [ {"token":"id:3.13", "text":"healthy"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -270,10 +270,10 @@ rule12:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "huma
 	pred:agent <http://aristo.allenai.org/id#3.4> ;
 	pred:isa "\"grow\"" .
 english(rule13, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule13, "exercise(\"humans\") -> effect(exercise, grow), grow(\"humans\").").
+pretty(rule13, "exercise('humans') -> effect(exercise, grow), grow('humans').").
 rule13:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(rule14, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule14, "grow(\"humans\") -> effect(exercise, grow), exercise(\"humans\").").
+pretty(rule14, "grow('humans') -> effect(exercise, grow), exercise('humans').").
 rule14:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E6S3-grow), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.21", "text":"exercise"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.6", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -314,10 +314,10 @@ rule14:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "
 	a <entity> ;
 	pred:isa "\"energy\"" .
 english(rule15, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule15, "exercise(\"humans\") -> effect(exercise, have), have(\"humans\", \"energy\").").
+pretty(rule15, "exercise('humans') -> effect(exercise, have), have('humans', 'energy').").
 rule15:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(rule16, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule16, "have(\"humans\", \"energy\") -> effect(exercise, have), exercise(\"humans\").").
+pretty(rule16, "have('humans', 'energy') -> effect(exercise, have), exercise('humans').").
 rule16:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E21S3-exercise, E8S3-have), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.21", "text":"exercise"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"have"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.9", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -358,10 +358,10 @@ rule16:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "
 	a <entity> ;
 	pred:isa "\"humans\"" .
 english(rule17, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule17, "exercise(\"humans\") -> effect(exercise, be), be(\"humans\", \"healthy\").").
+pretty(rule17, "exercise('humans') -> effect(exercise, be), be('humans', 'healthy').").
 rule17:: isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human), isa(A4S3-human, "humans") -> effect(E21S3-exercise, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(rule18, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule18, "be(\"humans\", \"healthy\") -> effect(exercise, be), exercise(\"humans\").").
+pretty(rule18, "be('humans', 'healthy') -> effect(exercise, be), exercise('humans').").
 rule18:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E21S3-exercise, E12S3-be), isa(E21S3-exercise, "exercise"), agent(E21S3-exercise, A4S3-human).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.21", "text":"exercise"} ], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.12", "text":"be"} ], "directObject": {"class":"Other", "string": [ {"token":"id:3.13", "text":"healthy"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -402,10 +402,10 @@ rule18:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "huma
 	pred:agent <http://aristo.allenai.org/id#3.4> ;
 	pred:isa "\"grow\"" .
 english(rule19, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule19, "get(\"humans\", \"regular rest\") -> effect(get, grow), grow(\"humans\").").
+pretty(rule19, "get('humans', 'regular rest') -> effect(get, grow), grow('humans').").
 rule19:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E6S3-grow), isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human).
 english(rule20, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule20, "grow(\"humans\") -> effect(get, grow), get(\"humans\", \"regular rest\").").
+pretty(rule20, "grow('humans') -> effect(get, grow), get('humans', 'regular rest').").
 rule20:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "humans") -> effect(E24S3-get, E6S3-grow), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.24", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.25", "text":"regular"},  {"token":"id:3.26", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.6", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -451,10 +451,10 @@ rule20:: isa(E6S3-grow, "grow"), agent(E6S3-grow, A4S3-human), isa(A4S3-human, "
 	a <entity> ;
 	pred:isa "\"energy\"" .
 english(rule21, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule21, "get(\"humans\", \"regular rest\") -> effect(get, have), have(\"humans\", \"energy\").").
+pretty(rule21, "get('humans', 'regular rest') -> effect(get, have), have('humans', 'energy').").
 rule21:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E8S3-have), isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy").
 english(rule22, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule22, "have(\"humans\", \"energy\") -> effect(get, have), get(\"humans\", \"regular rest\").").
+pretty(rule22, "have('humans', 'energy') -> effect(get, have), get('humans', 'regular rest').").
 rule22:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "humans"), object(E8S3-have, A9S3-energy), isa(A9S3-energy, "energy") -> effect(E24S3-get, E8S3-have), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.24", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.25", "text":"regular"},  {"token":"id:3.26", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.8", "text":"have"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.9", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -500,10 +500,10 @@ rule22:: isa(E8S3-have, "have"), agent(E8S3-have, A4S3-human), isa(A4S3-human, "
 	a <entity> ;
 	pred:isa "\"humans\"" .
 english(rule23, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule23, "get(\"humans\", \"regular rest\") -> effect(get, be), be(\"humans\", \"healthy\").").
+pretty(rule23, "get('humans', 'regular rest') -> effect(get, be), be('humans', 'healthy').").
 rule23:: isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), isa(A4S3-human, "humans"), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest") -> effect(E24S3-get, E12S3-be), isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy").
 english(rule24, "In order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule24, "be(\"humans\", \"healthy\") -> effect(get, be), get(\"humans\", \"regular rest\").").
+pretty(rule24, "be('humans', 'healthy') -> effect(get, be), get('humans', 'regular rest').").
 rule24:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "humans"), object(E12S3-be, A13S3-healthy), isa(A13S3-healthy, "healthy") -> effect(E24S3-get, E12S3-be), isa(E24S3-get, "get"), agent(E24S3-get, A4S3-human), object(E24S3-get, A26S3-rest), isa(A26S3-rest, "regular rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.24", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:3.25", "text":"regular"},  {"token":"id:3.26", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:3.1", "text":"In"},  {"token":"id:3.2", "text":"order"},  {"token":"id:3.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:3.4", "text":"humans"} ]} ]}, "verbPhrase": [ {"token":"id:3.12", "text":"be"} ], "directObject": {"class":"Other", "string": [ {"token":"id:3.13", "text":"healthy"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -540,10 +540,10 @@ rule24:: isa(E12S3-be, "be"), agent(E12S3-be, A4S3-human), isa(A4S3-human, "huma
 	a <entity> ;
 	pred:isa "\"dead organisms\"" .
 english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule25, "isa(decomposer, \"Decomposers\") -> example(decomposer, break), break down(\"living things\", \"dead organisms\").").
+pretty(rule25, "isa(decomposer, 'Decomposers') -> example(decomposer, break), break down('living things', 'dead organisms').").
 rule25:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms"), isa(A1S4-decomposer, A4S4-thing).
 english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule26, "break down(\"living things\", \"dead organisms\") -> example(decomposer, break), isa(decomposer, \"Decomposers\").").
+pretty(rule26, "break down('living things', 'dead organisms') -> example(decomposer, break), isa(decomposer, 'Decomposers').").
 rule26:: isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-thing, "living things"), object(E6S4-break, A9S4-organism), isa(A9S4-organism, "dead organisms") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers"), isa(A1S4-decomposer, A4S4-thing).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:4.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.3", "text":"living"},  {"token":"id:4.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:4.6", "text":"break"},  {"token":"id:4.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:4.8", "text":"dead"},  {"token":"id:4.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -584,10 +584,10 @@ rule26:: isa(E6S4-break, "break down"), agent(E6S4-break, A4S4-thing), isa(A4S4-
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule27, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule27, "isa(decomposer, \"Decomposers\") -> example(decomposer, recycle), recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")).").
+pretty(rule27, "isa(decomposer, 'Decomposers') -> example(decomposer, recycle), recycle('living things', 'their[dead organisms] nutrients', into('the soil')).").
 rule27:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(E11S4-recycle, "recycle"), agent(E11S4-recycle, A4S4-thing), isa(A4S4-thing, "living things"), object(E11S4-recycle, A13S4-nutrient), isa(A13S4-nutrient, "their[dead organisms] nutrients"), into(E11S4-recycle, A16S4-soil), isa(A16S4-soil, "the soil"), isa(A1S4-decomposer, A4S4-thing).
 english(rule28, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule28, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> example(decomposer, recycle), isa(decomposer, \"Decomposers\").").
+pretty(rule28, "recycle('living things', 'their[dead organisms] nutrients', into('the soil')) -> example(decomposer, recycle), isa(decomposer, 'Decomposers').").
 rule28:: isa(E11S4-recycle, "recycle"), agent(E11S4-recycle, A4S4-thing), isa(A4S4-thing, "living things"), object(E11S4-recycle, A13S4-nutrient), isa(A13S4-nutrient, "their[dead organisms] nutrients"), into(E11S4-recycle, A16S4-soil), isa(A16S4-soil, "the soil") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers"), isa(A1S4-decomposer, A4S4-thing).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:4.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.3", "text":"living"},  {"token":"id:4.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:4.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:4.12", "text":"their[dead organisms]"},  {"token":"id:4.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:4.14", "text":"into"},  {"token":"id:4.15", "text":"the"},  {"token":"id:4.16", "text":"soil"} ] ]} ], "confidence":1.0}
 
@@ -613,10 +613,10 @@ rule28:: isa(E11S4-recycle, "recycle"), agent(E11S4-recycle, A4S4-thing), isa(A4
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule29, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule29, "isa(decomposer, \"Decomposers\") -> example(decomposer, thing), isa(thing, \"living things\").").
+pretty(rule29, "isa(decomposer, 'Decomposers') -> example(decomposer, thing), isa(thing, 'living things').").
 rule29:: isa(A1S4-decomposer, "Decomposers") -> example(A1S4-decomposer, A4S4-thing), isa(A4S4-thing, "living things").
 english(rule30, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule30, "isa(thing, \"living things\") -> example(decomposer, thing), isa(decomposer, \"Decomposers\").").
+pretty(rule30, "isa(thing, 'living things') -> example(decomposer, thing), isa(decomposer, 'Decomposers').").
 rule30:: isa(A4S4-thing, "living things") -> example(A1S4-decomposer, A4S4-thing), isa(A1S4-decomposer, "Decomposers").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:4.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:4.3", "text":"living"},  {"token":"id:4.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -670,10 +670,10 @@ rule30:: isa(A4S4-thing, "living things") -> example(A1S4-decomposer, A4S4-thing
 <http://aristo.allenai.org/id#5.8>
 	pred:isa "\"its[the soil] liquid state\"" .
 english(rule31, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-pretty(rule31, "remove(\"Freezing\", \"heat\") -> enable(removal, change), change(\"Freezing\", \"water\", from(\"its[the soil] liquid state\"), to(\"its[its liquid state] solid state\")).").
+pretty(rule31, "remove('Freezing', 'heat') -> enable(removal, change), change('Freezing', 'water', from('its[the soil] liquid state'), to('its[its liquid state] solid state')).").
 rule31:: isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat") -> enable(E18S5-removal, E3S5-change), isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state").
 english(rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
-pretty(rule32, "change(\"Freezing\", \"water\", from(\"its[the soil] liquid state\"), to(\"its[its liquid state] solid state\")) -> enable(removal, change), remove(\"Freezing\", \"heat\").").
+pretty(rule32, "change('Freezing', 'water', from('its[the soil] liquid state'), to('its[its liquid state] solid state')) -> enable(removal, change), remove('Freezing', 'heat').").
 rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5-freezing, "Freezing"), object(E3S5-change, A4S5-water), isa(A4S5-water, "water"), from(E3S5-change, A8S5-state), isa(A8S5-state, "its[the soil] liquid state"), to(E3S5-change, A12S5-state), isa(A12S5-state, "its[its liquid state] solid state") -> enable(E18S5-removal, E3S5-change), isa(E18S5-removal, "remove"), agent(E18S5-removal, A1S5-freezing), object(E18S5-removal, A20S5-heat), isa(A20S5-heat, "heat").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:5.1", "text":"Freezing"} ]} ]}, "verbPhrase": [ {"token":"id:5.18", "text":"remove"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:5.20", "text":"heat"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:5.16", "text":"by"} ], "normalizedRelation":"ENABLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:5.1", "text":"Freezing"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:5.1", "text":"Freezing"} ]} ]}, "verbPhrase": [ {"token":"id:5.3", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:5.4", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:5.5", "text":"from"},  {"token":"id:5.6", "text":"its[the soil]"},  {"token":"id:5.7", "text":"liquid"},  {"token":"id:5.8", "text":"state"} ],  [ {"token":"id:5.9", "text":"to"},  {"token":"id:5.10", "text":"its[its liquid state]"},  {"token":"id:5.11", "text":"solid"},  {"token":"id:5.12", "text":"state"} ] ]} ], "confidence":1.0}
 
@@ -709,10 +709,10 @@ rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5
 <http://aristo.allenai.org/id#7.8>
 	pred:isa "\"an object toward the center of the Earth\"" .
 english(rule33, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule33, "isa(gravity, \"Gravity\") -> example(gravity, pull), pull(\"the force\", \"an object toward the center of the Earth\").").
+pretty(rule33, "isa(gravity, 'Gravity') -> example(gravity, pull), pull('the force', 'an object toward the center of the Earth').").
 rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth"), isa(A1S7-gravity, A4S7-force).
 english(rule34, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule34, "pull(\"the force\", \"an object toward the center of the Earth\") -> example(gravity, pull), isa(gravity, \"Gravity\").").
+pretty(rule34, "pull('the force', 'an object toward the center of the Earth') -> example(gravity, pull), isa(gravity, 'Gravity').").
 rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"the"},  {"token":"id:7.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.6", "text":"pull"} ], "extraPhrases": [ [ {"token":"id:7.7", "text":"an"},  {"token":"id:7.8", "text":"object"},  {"token":"id:7.9", "text":"toward"},  {"token":"id:7.10", "text":"the"},  {"token":"id:7.11", "text":"center"},  {"token":"id:7.12", "text":"of"},  {"token":"id:7.13", "text":"the"},  {"token":"id:7.14", "text":"Earth"} ] ]} ], "confidence":1.0}
 
@@ -738,10 +738,10 @@ rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "
 	a <entity> ;
 	pred:isa "\"the force\"" .
 english(rule35, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule35, "isa(gravity, \"Gravity\") -> example(gravity, force), isa(force, \"the force\").").
+pretty(rule35, "isa(gravity, 'Gravity') -> example(gravity, force), isa(force, 'the force').").
 rule35:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(A4S7-force, "the force").
 english(rule36, "Gravity is the force that pulls an object toward the center of the Earth").
-pretty(rule36, "isa(force, \"the force\") -> example(gravity, force), isa(gravity, \"Gravity\").").
+pretty(rule36, "isa(force, 'the force') -> example(gravity, force), isa(gravity, 'Gravity').").
 rule36:: isa(A4S7-force, "the force") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"the"},  {"token":"id:7.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -787,10 +787,10 @@ rule36:: isa(A4S7-force, "the force") -> example(A1S7-gravity, A4S7-force), isa(
 	pred:isa "\"measure\"" ;
 	pred:object <http://aristo.allenai.org/id#8.11> .
 english(rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-pretty(rule37, "use(\"A scientist\", \"a graduated cylinder\") -> effect(use, measure), measure(\"A scientist\", \"the volume of a liquid\").").
+pretty(rule37, "use('A scientist', 'a graduated cylinder') -> effect(use, measure), measure('A scientist', 'the volume of a liquid').").
 rule37:: isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder") -> effect(E4S8-use, E9S8-measure), isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid").
 english(rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-pretty(rule38, "measure(\"A scientist\", \"the volume of a liquid\") -> effect(use, measure), use(\"A scientist\", \"a graduated cylinder\").").
+pretty(rule38, "measure('A scientist', 'the volume of a liquid') -> effect(use, measure), use('A scientist', 'a graduated cylinder').").
 rule38:: isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid") -> effect(E4S8-use, E9S8-measure), isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ]} ]}, "verbPhrase": [ {"token":"id:8.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:8.5", "text":"a"},  {"token":"id:8.6", "text":"graduated"},  {"token":"id:8.7", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:8.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ]} ]}, "verbPhrase": [ {"token":"id:8.9", "text":"measure"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:8.10", "text":"the"},  {"token":"id:8.11", "text":"volume"},  {"token":"id:8.12", "text":"of"},  {"token":"id:8.13", "text":"a"},  {"token":"id:8.14", "text":"liquid"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -831,10 +831,10 @@ rule38:: isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), isa(
 	pred:agent <http://aristo.allenai.org/id#9.4> ;
 	pred:isa "\"grow\"" .
 english(rule39, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule39, "eat(\"humans\", \"healthy foods exercise\") -> effect(eat, grow), grow(\"humans\").").
+pretty(rule39, "eat('humans', 'healthy foods exercise') -> effect(eat, grow), grow('humans').").
 rule39:: isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise") -> effect(E13S9-eat, E6S9-grow), isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans").
 english(rule40, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule40, "grow(\"humans\") -> effect(eat, grow), eat(\"humans\", \"healthy foods exercise\").").
+pretty(rule40, "grow('humans') -> effect(eat, grow), eat('humans', 'healthy foods exercise').").
 rule40:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans") -> effect(E13S9-eat, E6S9-grow), isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.13", "text":"eat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:9.14", "text":"healthy"},  {"token":"id:9.15", "text":"foods"},  {"token":"id:9.16", "text":"exercise"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:9.1", "text":"In"},  {"token":"id:9.2", "text":"order"},  {"token":"id:9.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:9.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.6", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -880,10 +880,10 @@ rule40:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "
 	a <entity> ;
 	pred:isa "\"healthy\"" .
 english(rule41, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule41, "eat(\"humans\", \"healthy foods exercise\") -> effect(eat, be), be(\"humans\", \"healthy\").").
+pretty(rule41, "eat('humans', 'healthy foods exercise') -> effect(eat, be), be('humans', 'healthy').").
 rule41:: isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise") -> effect(E13S9-eat, E8S9-be), isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy").
 english(rule42, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule42, "be(\"humans\", \"healthy\") -> effect(eat, be), eat(\"humans\", \"healthy foods exercise\").").
+pretty(rule42, "be('humans', 'healthy') -> effect(eat, be), eat('humans', 'healthy foods exercise').").
 rule42:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy") -> effect(E13S9-eat, E8S9-be), isa(E13S9-eat, "eat"), agent(E13S9-eat, A4S3-human), isa(A4S3-human, "humans"), object(E13S9-eat, A16S9-exercise), isa(A16S9-exercise, "healthy foods exercise").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.13", "text":"eat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:9.14", "text":"healthy"},  {"token":"id:9.15", "text":"foods"},  {"token":"id:9.16", "text":"exercise"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:9.1", "text":"In"},  {"token":"id:9.2", "text":"order"},  {"token":"id:9.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:9.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.8", "text":"be"} ], "directObject": {"class":"Other", "string": [ {"token":"id:9.9", "text":"healthy"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -924,10 +924,10 @@ rule42:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans
 	pred:agent <http://aristo.allenai.org/id#9.4> ;
 	pred:isa "\"grow\"" .
 english(rule43, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule43, "get(\"humans\", \"regular rest\") -> effect(get, grow), grow(\"humans\").").
+pretty(rule43, "get('humans', 'regular rest') -> effect(get, grow), grow('humans').").
 rule43:: isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest") -> effect(E18S9-get, E6S9-grow), isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans").
 english(rule44, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule44, "grow(\"humans\") -> effect(get, grow), get(\"humans\", \"regular rest\").").
+pretty(rule44, "grow('humans') -> effect(get, grow), get('humans', 'regular rest').").
 rule44:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "humans") -> effect(E18S9-get, E6S9-grow), isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.18", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:9.19", "text":"regular"},  {"token":"id:9.20", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:9.1", "text":"In"},  {"token":"id:9.2", "text":"order"},  {"token":"id:9.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:9.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.6", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -973,10 +973,10 @@ rule44:: isa(E6S9-grow, "grow"), agent(E6S9-grow, A4S9-human), isa(A4S9-human, "
 	a <entity> ;
 	pred:isa "\"healthy\"" .
 english(rule45, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule45, "get(\"humans\", \"regular rest\") -> effect(get, be), be(\"humans\", \"healthy\").").
+pretty(rule45, "get('humans', 'regular rest') -> effect(get, be), be('humans', 'healthy').").
 rule45:: isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest") -> effect(E18S9-get, E8S9-be), isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy").
 english(rule46, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
-pretty(rule46, "be(\"humans\", \"healthy\") -> effect(get, be), get(\"humans\", \"regular rest\").").
+pretty(rule46, "be('humans', 'healthy') -> effect(get, be), get('humans', 'regular rest').").
 rule46:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans"), object(E8S9-be, A9S9-healthy), isa(A9S9-healthy, "healthy") -> effect(E18S9-get, E8S9-be), isa(E18S9-get, "get"), agent(E18S9-get, A4S3-human), isa(A4S3-human, "humans"), object(E18S9-get, A20S9-rest), isa(A20S9-rest, "regular rest").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:3.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.18", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:9.19", "text":"regular"},  {"token":"id:9.20", "text":"rest"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:9.1", "text":"In"},  {"token":"id:9.2", "text":"order"},  {"token":"id:9.3", "text":"for"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:9.4", "text":"humans"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:9.8", "text":"be"} ], "directObject": {"class":"Other", "string": [ {"token":"id:9.9", "text":"healthy"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -1025,10 +1025,10 @@ rule46:: isa(E8S9-be, "be"), agent(E8S9-be, A4S9-human), isa(A4S9-human, "humans
 <http://aristo.allenai.org/id#10.9>
 	pred:isa "\"photosynthesis\"" .
 english(rule47, "The plant gets the energy to go through photosynthesis from sunlight").
-pretty(rule47, "get(\"The plant\", \"the energy\") -> effect(get, go), go(\"The plant\", through(\"photosynthesis\"), from(\"sunlight\")).").
+pretty(rule47, "get('The plant', 'the energy') -> effect(get, go), go('The plant', through('photosynthesis'), from('sunlight')).").
 rule47:: isa(E3S10-get, "get"), agent(E3S10-get, A2S10-plant), isa(A2S10-plant, "The plant"), object(E3S10-get, A5S10-energy), isa(A5S10-energy, "the energy") -> effect(E3S10-get, E7S10-go), isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), through(E7S10-go, A9S10-photosynthesis), isa(A9S10-photosynthesis, "photosynthesis"), from(E7S10-go, A11S10-sunlight), isa(A11S10-sunlight, "sunlight").
 english(rule48, "The plant gets the energy to go through photosynthesis from sunlight").
-pretty(rule48, "go(\"The plant\", through(\"photosynthesis\"), from(\"sunlight\")) -> effect(get, go), get(\"The plant\", \"the energy\").").
+pretty(rule48, "go('The plant', through('photosynthesis'), from('sunlight')) -> effect(get, go), get('The plant', 'the energy').").
 rule48:: isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), isa(A2S10-plant, "The plant"), through(E7S10-go, A9S10-photosynthesis), isa(A9S10-photosynthesis, "photosynthesis"), from(E7S10-go, A11S10-sunlight), isa(A11S10-sunlight, "sunlight") -> effect(E3S10-get, E7S10-go), isa(E3S10-get, "get"), agent(E3S10-get, A2S10-plant), object(E3S10-get, A5S10-energy), isa(A5S10-energy, "the energy").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"The"},  {"token":"id:10.2", "text":"plant"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:10.1", "text":"The"},  {"token":"id:10.2", "text":"plant"} ]} ]}, "verbPhrase": [ {"token":"id:10.3", "text":"get"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:10.4", "text":"the"},  {"token":"id:10.5", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:10.6", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:10.1", "text":"The"},  {"token":"id:10.2", "text":"plant"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:10.1", "text":"The"},  {"token":"id:10.2", "text":"plant"} ]} ]}, "verbPhrase": [ {"token":"id:10.7", "text":"go"} ], "extraPhrases": [ [ {"token":"id:10.8", "text":"through"},  {"token":"id:10.9", "text":"photosynthesis"} ],  [ {"token":"id:10.10", "text":"from"},  {"token":"id:10.11", "text":"sunlight"} ] ]} ], "confidence":1.0}
 
@@ -1065,10 +1065,10 @@ rule48:: isa(E7S10-go, "go"), agent(E7S10-go, A2S10-plant), isa(A2S10-plant, "Th
 	a <entity> ;
 	pred:isa "\"dead organisms\"" .
 english(rule49, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule49, "isa(decomposer, \"Decomposers\") -> example(decomposer, break), break down(\"living things\", \"dead organisms\").").
+pretty(rule49, "isa(decomposer, 'Decomposers') -> example(decomposer, break), break down('living things', 'dead organisms').").
 rule49:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms"), isa(A1S11-decomposer, A4S11-thing).
 english(rule50, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule50, "break down(\"living things\", \"dead organisms\") -> example(decomposer, break), isa(decomposer, \"Decomposers\").").
+pretty(rule50, "break down('living things', 'dead organisms') -> example(decomposer, break), isa(decomposer, 'Decomposers').").
 rule50:: isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4S11-thing, "living things"), object(E6S11-break, A9S11-organism), isa(A9S11-organism, "dead organisms") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers"), isa(A1S11-decomposer, A4S11-thing).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"living"},  {"token":"id:11.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.6", "text":"break"},  {"token":"id:11.7", "text":"down"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.8", "text":"dead"},  {"token":"id:11.9", "text":"organisms"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -1109,10 +1109,10 @@ rule50:: isa(E6S11-break, "break down"), agent(E6S11-break, A4S11-thing), isa(A4
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule51, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule51, "isa(decomposer, \"Decomposers\") -> example(decomposer, recycle), recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")).").
+pretty(rule51, "isa(decomposer, 'Decomposers') -> example(decomposer, recycle), recycle('living things', 'their[dead organisms] nutrients', into('the soil')).").
 rule51:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(E11S11-recycle, "recycle"), agent(E11S11-recycle, A4S11-thing), isa(A4S11-thing, "living things"), object(E11S11-recycle, A13S11-nutrient), isa(A13S11-nutrient, "their[dead organisms] nutrients"), into(E11S11-recycle, A16S11-soil), isa(A16S11-soil, "the soil"), isa(A1S11-decomposer, A4S11-thing).
 english(rule52, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule52, "recycle(\"living things\", \"their[dead organisms] nutrients\", into(\"the soil\")) -> example(decomposer, recycle), isa(decomposer, \"Decomposers\").").
+pretty(rule52, "recycle('living things', 'their[dead organisms] nutrients', into('the soil')) -> example(decomposer, recycle), isa(decomposer, 'Decomposers').").
 rule52:: isa(E11S11-recycle, "recycle"), agent(E11S11-recycle, A4S11-thing), isa(A4S11-thing, "living things"), object(E11S11-recycle, A13S11-nutrient), isa(A13S11-nutrient, "their[dead organisms] nutrients"), into(E11S11-recycle, A16S11-soil), isa(A16S11-soil, "the soil") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers"), isa(A1S11-decomposer, A4S11-thing).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"living"},  {"token":"id:11.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:11.11", "text":"recycle"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:11.12", "text":"their[dead organisms]"},  {"token":"id:11.13", "text":"nutrients"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:11.14", "text":"into"},  {"token":"id:11.15", "text":"the"},  {"token":"id:11.16", "text":"soil"} ] ]} ], "confidence":1.0}
 
@@ -1138,10 +1138,10 @@ rule52:: isa(E11S11-recycle, "recycle"), agent(E11S11-recycle, A4S11-thing), isa
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule53, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule53, "isa(decomposer, \"Decomposers\") -> example(decomposer, thing), isa(thing, \"living things\").").
+pretty(rule53, "isa(decomposer, 'Decomposers') -> example(decomposer, thing), isa(thing, 'living things').").
 rule53:: isa(A1S11-decomposer, "Decomposers") -> example(A1S11-decomposer, A4S11-thing), isa(A4S11-thing, "living things").
 english(rule54, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
-pretty(rule54, "isa(thing, \"living things\") -> example(decomposer, thing), isa(decomposer, \"Decomposers\").").
+pretty(rule54, "isa(thing, 'living things') -> example(decomposer, thing), isa(decomposer, 'Decomposers').").
 rule54:: isa(A4S11-thing, "living things") -> example(A1S11-decomposer, A4S11-thing), isa(A1S11-decomposer, "Decomposers").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.1", "text":"Decomposers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:11.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:11.3", "text":"living"},  {"token":"id:11.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1186,10 +1186,10 @@ rule54:: isa(A4S11-thing, "living things") -> example(A1S11-decomposer, A4S11-th
 <http://aristo.allenai.org/id#12.8>
 	pred:isa "\"the long winters\"" .
 english(rule55, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(rule55, "store(\"some animals\", \"food\") -> enable(store, prepare), prepare(\"some animals\", for(\"the long winters\")).").
+pretty(rule55, "store('some animals', 'food') -> enable(store, prepare), prepare('some animals', for('the long winters')).").
 rule55:: isa(E10S12-store, "store"), agent(E10S12-store, A3S12-animal), isa(A3S12-animal, "some animals"), object(E10S12-store, A11S12-food), isa(A11S12-food, "food") -> enable(E10S12-store, E4S12-prepare), isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters").
 english(rule56, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(rule56, "prepare(\"some animals\", for(\"the long winters\")) -> enable(store, prepare), store(\"some animals\", \"food\").").
+pretty(rule56, "prepare('some animals', for('the long winters')) -> enable(store, prepare), store('some animals', 'food').").
 rule56:: isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters") -> enable(E10S12-store, E4S12-prepare), isa(E10S12-store, "store"), agent(E10S12-store, A3S12-animal), object(E10S12-store, A11S12-food), isa(A11S12-food, "food").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:12.2", "text":"some"},  {"token":"id:12.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:12.10", "text":"store"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:12.11", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:12.9", "text":"by"} ], "normalizedRelation":"ENABLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.2", "text":"some"},  {"token":"id:12.3", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:12.2", "text":"some"},  {"token":"id:12.3", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:12.4", "text":"prepare"} ], "extraPhrases": [ [ {"token":"id:12.5", "text":"for"},  {"token":"id:12.6", "text":"the"},  {"token":"id:12.7", "text":"long"},  {"token":"id:12.8", "text":"winters"} ] ]} ], "confidence":1.0}
 
@@ -1224,10 +1224,10 @@ rule56:: isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(
 	a <entity> ;
 	pred:isa "\"hibernation\"" .
 english(rule57, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(rule57, "prepare(\"some animals\", for(\"the long winters\")) -> example(prepare, hibernation), isa(hibernation, \"hibernation\").").
+pretty(rule57, "prepare('some animals', for('the long winters')) -> example(prepare, hibernation), isa(hibernation, 'hibernation').").
 rule57:: isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters") -> example(E4S12-prepare, A18S12-hibernation), isa(A18S12-hibernation, "hibernation").
 english(rule58, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
-pretty(rule58, "isa(hibernation, \"hibernation\") -> example(prepare, hibernation), prepare(\"some animals\", for(\"the long winters\")).").
+pretty(rule58, "isa(hibernation, 'hibernation') -> example(prepare, hibernation), prepare('some animals', for('the long winters')).").
 rule58:: isa(A18S12-hibernation, "hibernation") -> example(E4S12-prepare, A18S12-hibernation), isa(E4S12-prepare, "prepare"), agent(E4S12-prepare, A3S12-animal), isa(A3S12-animal, "some animals"), for(E4S12-prepare, A8S12-winter), isa(A8S12-winter, "the long winters").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.2", "text":"some"},  {"token":"id:12.3", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:12.4", "text":"prepare"} ], "extraPhrases": [ [ {"token":"id:12.5", "text":"for"},  {"token":"id:12.6", "text":"the"},  {"token":"id:12.7", "text":"long"},  {"token":"id:12.8", "text":"winters"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:12.16", "text":"is"},  {"token":"id:12.17", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:12.18", "text":"hibernation"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1253,13 +1253,13 @@ rule58:: isa(A18S12-hibernation, "hibernation") -> example(E4S12-prepare, A18S12
 	pred:object <http://aristo.allenai.org/id#13.12> .
 
 english(rule59, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule59, "isa(push, \"push\") -> push(\"Mechanical energy\", \"another object\").").
+pretty(rule59, "isa(push, 'push') -> push('Mechanical energy', 'another object').").
 rule59:: isa(E8S13-push, "push") -> agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(rule60, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule60, "isa(energy, \"Mechanical energy\") -> push(\"Mechanical energy\", \"another object\").").
+pretty(rule60, "isa(energy, 'Mechanical energy') -> push('Mechanical energy', 'another object').").
 rule60:: isa(A2S13-energy, "Mechanical energy") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(rule61, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule61, "isa(object, \"another object\") -> push(\"Mechanical energy\", \"another object\").").
+pretty(rule61, "isa(object, 'another object') -> push('Mechanical energy', 'another object').").
 rule61:: isa(A12S13-object, "another object") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:13.1", "text":"Mechanical"},  {"token":"id:13.2", "text":"energy"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:13.8", "text":"push"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:13.11", "text":"another"},  {"token":"id:13.12", "text":"object"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
 
@@ -1300,10 +1300,10 @@ rule61:: isa(A12S13-object, "another object") -> isa(E8S13-push, "push"), agent(
 	pred:isa "\"change\"" ;
 	pred:object <http://aristo.allenai.org/id#14.10> .
 english(rule62, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-pretty(rule62, "isa(producer, \"Producers\") -> example(producer, change), change(\"living things\", \"the sun 's energy\", \"make their[Producers] own food\").").
+pretty(rule62, "isa(producer, 'Producers') -> example(producer, change), change('living things', 'the sun ’s energy', 'make their[Producers] own food').").
 rule62:: isa(A1S14-producer, "Producers") -> example(A1S14-producer, A4S14-thing), isa(E6S14-change, "change"), agent(E6S14-change, A4S14-thing), isa(A4S14-thing, "living things"), object(E6S14-change, A10S14-energy), isa(A10S14-energy, "the sun 's energy"), arg(E6S14-change, A12S14-make), isa(A12S14-make, "to make their[Producers] own food"), isa(A1S14-producer, A4S14-thing).
 english(rule63, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-pretty(rule63, "change(\"living things\", \"the sun 's energy\", \"make their[Producers] own food\") -> example(producer, change), isa(producer, \"Producers\").").
+pretty(rule63, "change('living things', 'the sun ’s energy', 'make their[Producers] own food') -> example(producer, change), isa(producer, 'Producers').").
 rule63:: isa(E6S14-change, "change"), agent(E6S14-change, A4S14-thing), isa(A4S14-thing, "living things"), object(E6S14-change, A10S14-energy), isa(A10S14-energy, "the sun 's energy"), arg(E6S14-change, A12S14-make), isa(A12S14-make, "to make their[Producers] own food") -> example(A1S14-producer, A4S14-thing), isa(A1S14-producer, "Producers"), isa(A1S14-producer, A4S14-thing).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"Producers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:14.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.3", "text":"living"},  {"token":"id:14.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:14.6", "text":"change"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:14.7", "text":"the"},  {"token":"id:14.8", "text":"sun"},  {"token":"id:14.9", "text":"'s"},  {"token":"id:14.10", "text":"energy"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:14.11", "text":"to"},  {"token":"id:14.12", "text":"make"},  {"token":"id:14.13", "text":"their[Producers]"},  {"token":"id:14.14", "text":"own"},  {"token":"id:14.15", "text":"food"} ] ]} ], "confidence":1.0}
 
@@ -1329,10 +1329,10 @@ rule63:: isa(E6S14-change, "change"), agent(E6S14-change, A4S14-thing), isa(A4S1
 	a <entity> ;
 	pred:isa "\"living things\"" .
 english(rule64, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-pretty(rule64, "isa(producer, \"Producers\") -> example(producer, thing), isa(thing, \"living things\").").
+pretty(rule64, "isa(producer, 'Producers') -> example(producer, thing), isa(thing, 'living things').").
 rule64:: isa(A1S14-producer, "Producers") -> example(A1S14-producer, A4S14-thing), isa(A4S14-thing, "living things").
 english(rule65, "Producers are living things that change the sun 's energy to make their[Producers] own food").
-pretty(rule65, "isa(thing, \"living things\") -> example(producer, thing), isa(producer, \"Producers\").").
+pretty(rule65, "isa(thing, 'living things') -> example(producer, thing), isa(producer, 'Producers').").
 rule65:: isa(A4S14-thing, "living things") -> example(A1S14-producer, A4S14-thing), isa(A1S14-producer, "Producers").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"Producers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:14.2", "text":"are"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.3", "text":"living"},  {"token":"id:14.4", "text":"things"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1376,10 +1376,10 @@ rule65:: isa(A4S14-thing, "living things") -> example(A1S14-producer, A4S14-thin
 	a <entity> ;
 	pred:isa "\"producers\"" .
 english(rule66, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-pretty(rule66, "provide(\"Green plants\", \"the basic food supply\", for(\"themselves[Producers]\"), for(\"animals\")) -> example(provide, producer), isa(producer, \"producers\").").
+pretty(rule66, "provide('Green plants', 'the basic food supply', for('themselves[Producers]'), for('animals')) -> example(provide, producer), isa(producer, 'producers').").
 rule66:: isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals") -> example(E8S15-provide, A5S15-producer), isa(A5S15-producer, "producers").
 english(rule67, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-pretty(rule67, "isa(producer, \"producers\") -> example(provide, producer), provide(\"Green plants\", \"the basic food supply\", for(\"themselves[Producers]\"), for(\"animals\")).").
+pretty(rule67, "isa(producer, 'producers') -> example(provide, producer), provide('Green plants', 'the basic food supply', for('themselves[Producers]'), for('animals')).").
 rule67:: isa(A5S15-producer, "producers") -> example(E8S15-provide, A5S15-producer), isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:15.1", "text":"Green"},  {"token":"id:15.2", "text":"plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.8", "text":"provide"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.9", "text":"the"},  {"token":"id:15.10", "text":"basic"},  {"token":"id:15.11", "text":"food"},  {"token":"id:15.12", "text":"supply"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:15.13", "text":"for"},  {"token":"id:15.14", "text":"themselves[Producers]"} ],  [ {"token":"id:15.13", "text":"for"},  {"token":"id:15.16", "text":"animals"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:15.3", "text":"are"},  {"token":"id:15.4", "text":"called"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:15.5", "text":"producers"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1432,10 +1432,10 @@ rule67:: isa(A5S15-producer, "producers") -> example(E8S15-provide, A5S15-produc
 <http://aristo.allenai.org/id#15.5>
 	pred:isa "\"producers\"" .
 english(rule68, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-pretty(rule68, "provide(\"Green plants\", \"the basic food supply\", for(\"themselves[Producers]\"), for(\"animals\")) -> effect(provide, call), call(X, \"Green plants\", \"producers\").").
+pretty(rule68, "provide('Green plants', 'the basic food supply', for('themselves[Producers]'), for('animals')) -> effect(provide, call), call(X, 'Green plants', 'producers').").
 rule68:: isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), isa(A2S15-plant, "Green plants"), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals") -> effect(E8S15-provide, E4S15-call), isa(E4S15-call, "call"), object(E4S15-call, A2S15-plant), arg(E4S15-call, A5S15-producer), isa(A5S15-producer, "producers").
 english(rule69, "Green plants are called producers because they[Green plants] provide the basic food supply for themselves[Producers] and animals").
-pretty(rule69, "call(X, \"Green plants\", \"producers\") -> effect(provide, call), provide(\"Green plants\", \"the basic food supply\", for(\"themselves[Producers]\"), for(\"animals\")).").
+pretty(rule69, "call(X, 'Green plants', 'producers') -> effect(provide, call), provide('Green plants', 'the basic food supply', for('themselves[Producers]'), for('animals')).").
 rule69:: isa(E4S15-call, "call"), object(E4S15-call, A2S15-plant), isa(A2S15-plant, "Green plants"), arg(E4S15-call, A5S15-producer), isa(A5S15-producer, "producers") -> effect(E8S15-provide, E4S15-call), isa(E8S15-provide, "provide"), agent(E8S15-provide, A2S15-plant), object(E8S15-provide, A12S15-supply), isa(A12S15-supply, "the basic food supply"), for(E8S15-provide, A14S15-themselves), isa(A14S15-themselves, "themselves[Producers]"), for(E8S15-provide, A16S15-animal), isa(A16S15-animal, "animals").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:15.1", "text":"Green"},  {"token":"id:15.2", "text":"plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.8", "text":"provide"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.9", "text":"the"},  {"token":"id:15.10", "text":"basic"},  {"token":"id:15.11", "text":"food"},  {"token":"id:15.12", "text":"supply"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:15.13", "text":"for"},  {"token":"id:15.14", "text":"themselves[Producers]"} ],  [ {"token":"id:15.13", "text":"for"},  {"token":"id:15.16", "text":"animals"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:15.6", "text":"because"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:15.4", "text":"call"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:15.1", "text":"Green"},  {"token":"id:15.2", "text":"plants"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:15.5", "text":"producers"} ] ]} ], "confidence":1.0}
 
@@ -1461,10 +1461,10 @@ rule69:: isa(E4S15-call, "call"), object(E4S15-call, A2S15-plant), isa(A2S15-pla
 	a <entity> ;
 	pred:isa "\"ecosystem failure\"" .
 english(rule70, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule70, "isa(home, \"Building homes\") -> cause(home, failure), isa(failure, \"ecosystem failure\").").
+pretty(rule70, "isa(home, 'Building homes') -> cause(home, failure), isa(failure, 'ecosystem failure').").
 rule70:: isa(A2S16-home, "Building homes") -> cause(A2S16-home, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(rule71, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule71, "isa(failure, \"ecosystem failure\") -> cause(home, failure), isa(home, \"Building homes\").").
+pretty(rule71, "isa(failure, 'ecosystem failure') -> cause(home, failure), isa(home, 'Building homes').").
 rule71:: isa(A19S16-failure, "ecosystem failure") -> cause(A2S16-home, A19S16-failure), isa(A2S16-home, "Building homes").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.1", "text":"Building"},  {"token":"id:16.2", "text":"homes"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:16.16", "text":"causes"},  {"token":"id:16.17", "text":"of"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.18", "text":"ecosystem"},  {"token":"id:16.19", "text":"failure"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1490,10 +1490,10 @@ rule71:: isa(A19S16-failure, "ecosystem failure") -> cause(A2S16-home, A19S16-fa
 	a <entity> ;
 	pred:isa "\"ecosystem failure\"" .
 english(rule72, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule72, "isa(store, \"stores\") -> cause(store, failure), isa(failure, \"ecosystem failure\").").
+pretty(rule72, "isa(store, 'stores') -> cause(store, failure), isa(failure, 'ecosystem failure').").
 rule72:: isa(A4S16-store, "stores") -> cause(A4S16-store, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(rule73, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule73, "isa(failure, \"ecosystem failure\") -> cause(store, failure), isa(store, \"stores\").").
+pretty(rule73, "isa(failure, 'ecosystem failure') -> cause(store, failure), isa(store, 'stores').").
 rule73:: isa(A19S16-failure, "ecosystem failure") -> cause(A4S16-store, A19S16-failure), isa(A4S16-store, "stores").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.4", "text":"stores"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:16.16", "text":"causes"},  {"token":"id:16.17", "text":"of"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.18", "text":"ecosystem"},  {"token":"id:16.19", "text":"failure"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1519,10 +1519,10 @@ rule73:: isa(A19S16-failure, "ecosystem failure") -> cause(A4S16-store, A19S16-f
 	a <entity> ;
 	pred:isa "\"ecosystem failure\"" .
 english(rule74, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule74, "isa(factory, \"factories\") -> cause(factory, failure), isa(failure, \"ecosystem failure\").").
+pretty(rule74, "isa(factory, 'factories') -> cause(factory, failure), isa(failure, 'ecosystem failure').").
 rule74:: isa(A6S16-factory, "factories") -> cause(A6S16-factory, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(rule75, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule75, "isa(failure, \"ecosystem failure\") -> cause(factory, failure), isa(factory, \"factories\").").
+pretty(rule75, "isa(failure, 'ecosystem failure') -> cause(factory, failure), isa(factory, 'factories').").
 rule75:: isa(A19S16-failure, "ecosystem failure") -> cause(A6S16-factory, A19S16-failure), isa(A6S16-factory, "factories").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.6", "text":"factories"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:16.16", "text":"causes"},  {"token":"id:16.17", "text":"of"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.18", "text":"ecosystem"},  {"token":"id:16.19", "text":"failure"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1548,10 +1548,10 @@ rule75:: isa(A19S16-failure, "ecosystem failure") -> cause(A6S16-factory, A19S16
 	a <entity> ;
 	pred:isa "\"ecosystem failure\"" .
 english(rule76, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule76, "isa(crop, \"growing food crops\") -> cause(crop, failure), isa(failure, \"ecosystem failure\").").
+pretty(rule76, "isa(crop, 'growing food crops') -> cause(crop, failure), isa(failure, 'ecosystem failure').").
 rule76:: isa(A10S16-crop, "growing food crops") -> cause(A10S16-crop, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(rule77, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule77, "isa(failure, \"ecosystem failure\") -> cause(crop, failure), isa(crop, \"growing food crops\").").
+pretty(rule77, "isa(failure, 'ecosystem failure') -> cause(crop, failure), isa(crop, 'growing food crops').").
 rule77:: isa(A19S16-failure, "ecosystem failure") -> cause(A10S16-crop, A19S16-failure), isa(A10S16-crop, "growing food crops").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.8", "text":"growing"},  {"token":"id:16.9", "text":"food"},  {"token":"id:16.10", "text":"crops"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:16.16", "text":"causes"},  {"token":"id:16.17", "text":"of"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.18", "text":"ecosystem"},  {"token":"id:16.19", "text":"failure"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1577,10 +1577,10 @@ rule77:: isa(A19S16-failure, "ecosystem failure") -> cause(A10S16-crop, A19S16-f
 	a <entity> ;
 	pred:isa "\"ecosystem failure\"" .
 english(rule78, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule78, "isa(pollution, \"pollution\") -> cause(pollution, failure), isa(failure, \"ecosystem failure\").").
+pretty(rule78, "isa(pollution, 'pollution') -> cause(pollution, failure), isa(failure, 'ecosystem failure').").
 rule78:: isa(A13S16-pollution, "pollution") -> cause(A13S16-pollution, A19S16-failure), isa(A19S16-failure, "ecosystem failure").
 english(rule79, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
-pretty(rule79, "isa(failure, \"ecosystem failure\") -> cause(pollution, failure), isa(pollution, \"pollution\").").
+pretty(rule79, "isa(failure, 'ecosystem failure') -> cause(pollution, failure), isa(pollution, 'pollution').").
 rule79:: isa(A19S16-failure, "ecosystem failure") -> cause(A13S16-pollution, A19S16-failure), isa(A13S16-pollution, "pollution").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.13", "text":"pollution"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:16.16", "text":"causes"},  {"token":"id:16.17", "text":"of"} ], "normalizedRelation":"CAUSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:16.18", "text":"ecosystem"},  {"token":"id:16.19", "text":"failure"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1634,10 +1634,10 @@ rule79:: isa(A19S16-failure, "ecosystem failure") -> cause(A13S16-pollution, A19
 	pred:object <http://aristo.allenai.org/id#17.10> ;
 	pred:to <http://aristo.allenai.org/id#17.13> .
 english(rule80, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-pretty(rule80, "sweat(\"our bodies\", \"perspiration\", in(\"the hot weather\")) -> effect(sweat, bring), bring(\"our bodies\", \"water\", to(\"our[our] skin\")).").
+pretty(rule80, "sweat('our bodies', 'perspiration', in('the hot weather')) -> effect(sweat, bring), bring('our bodies', 'water', to('our[our] skin')).").
 rule80:: isa(E7S17-sweat, "sweat"), agent(E7S17-sweat, A6S17-body), isa(A6S17-body, "our bodies"), object(E7S17-sweat, A8S17-perspiration), isa(A8S17-perspiration, "perspiration"), in(E7S17-sweat, A4S17-weather), isa(A4S17-weather, "the hot weather") -> effect(E7S17-sweat, E9S17-bring), isa(E9S17-bring, "bring"), agent(E9S17-bring, A6S17-body), object(E9S17-bring, A10S17-water), isa(A10S17-water, "water"), to(E9S17-bring, A13S17-skin), isa(A13S17-skin, "our[our] skin").
 english(rule81, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
-pretty(rule81, "bring(\"our bodies\", \"water\", to(\"our[our] skin\")) -> effect(sweat, bring), sweat(\"our bodies\", \"perspiration\", in(\"the hot weather\")).").
+pretty(rule81, "bring('our bodies', 'water', to('our[our] skin')) -> effect(sweat, bring), sweat('our bodies', 'perspiration', in('the hot weather')).").
 rule81:: isa(E9S17-bring, "bring"), agent(E9S17-bring, A6S17-body), isa(A6S17-body, "our bodies"), object(E9S17-bring, A10S17-water), isa(A10S17-water, "water"), to(E9S17-bring, A13S17-skin), isa(A13S17-skin, "our[our] skin") -> effect(E7S17-sweat, E9S17-bring), isa(E7S17-sweat, "sweat"), agent(E7S17-sweat, A6S17-body), object(E7S17-sweat, A8S17-perspiration), isa(A8S17-perspiration, "perspiration"), in(E7S17-sweat, A4S17-weather), isa(A4S17-weather, "the hot weather").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:17.5", "text":"our"},  {"token":"id:17.6", "text":"bodies"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:17.5", "text":"our"},  {"token":"id:17.6", "text":"bodies"} ]} ]}, "verbPhrase": [ {"token":"id:17.7", "text":"sweat"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:17.8", "text":"perspiration"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:17.1", "text":"In"},  {"token":"id:17.2", "text":"the"},  {"token":"id:17.3", "text":"hot"},  {"token":"id:17.4", "text":"weather"} ] ]} ], "relation": {"class":"Relation", "string": [], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:17.5", "text":"our"},  {"token":"id:17.6", "text":"bodies"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:17.5", "text":"our"},  {"token":"id:17.6", "text":"bodies"} ]} ]}, "verbPhrase": [ {"token":"id:17.9", "text":"bring"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:17.10", "text":"water"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:17.11", "text":"to"},  {"token":"id:17.12", "text":"our[our]"},  {"token":"id:17.13", "text":"skin"} ] ]} ], "confidence":1.0}
 
@@ -1677,10 +1677,10 @@ rule81:: isa(E9S17-bring, "bring"), agent(E9S17-bring, A6S17-body), isa(A6S17-bo
 	a <entity> ;
 	pred:isa "\"objects\"" .
 english(rule82, "A hand lens is used to view objects in more detail").
-pretty(rule82, "isa(lens, \"A hand lens\") -> purpose(lens, view), view(\"A hand lens\", \"objects\", in(\"more detail\")).").
+pretty(rule82, "isa(lens, 'A hand lens') -> purpose(lens, view), view('A hand lens', 'objects', in('more detail')).").
 rule82:: isa(A3S18-lens, "A hand lens") -> purpose(A3S18-lens, E7S18-view), isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), object(E7S18-view, A8S18-object), isa(A8S18-object, "objects"), in(E7S18-view, A11S18-detail), isa(A11S18-detail, "more detail").
 english(rule83, "A hand lens is used to view objects in more detail").
-pretty(rule83, "view(\"A hand lens\", \"objects\", in(\"more detail\")) -> purpose(lens, view), isa(lens, \"A hand lens\").").
+pretty(rule83, "view('A hand lens', 'objects', in('more detail')) -> purpose(lens, view), isa(lens, 'A hand lens').").
 rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens, "A hand lens"), object(E7S18-view, A8S18-object), isa(A8S18-object, "objects"), in(E7S18-view, A11S18-detail), isa(A11S18-detail, "more detail") -> purpose(A3S18-lens, E7S18-view).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:18.1", "text":"A"},  {"token":"id:18.2", "text":"hand"},  {"token":"id:18.3", "text":"lens"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:18.1", "text":"A"},  {"token":"id:18.2", "text":"hand"},  {"token":"id:18.3", "text":"lens"} ]} ]}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:18.4", "text":"is"},  {"token":"id:18.5", "text":"used"} ], "normalizedRelation":"PURPOSE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [], "isInferred":true, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:18.1", "text":"A"},  {"token":"id:18.2", "text":"hand"},  {"token":"id:18.3", "text":"lens"} ]} ]}, "verbPhrase": [ {"token":"id:18.7", "text":"view"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:18.8", "text":"objects"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:18.9", "text":"in"},  {"token":"id:18.10", "text":"more"},  {"token":"id:18.11", "text":"detail"} ] ]} ], "confidence":1.0}
 
@@ -1726,10 +1726,10 @@ rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens,
 	pred:isa "\"stay\"" ;
 	pred:object <http://aristo.allenai.org/id#19.10> .
 english(rule84, "Some animals grow thick fur in winter to stay warm").
-pretty(rule84, "grow(\"Some animals\", \"fur\") -> effect(grow, stay), stay(\"Some animals\", \"warm\").").
+pretty(rule84, "grow('Some animals', 'fur') -> effect(grow, stay), stay('Some animals', 'warm').").
 rule84:: isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur") -> effect(E3S19-grow, E9S19-stay), isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm").
 english(rule85, "Some animals grow thick fur in winter to stay warm").
-pretty(rule85, "stay(\"Some animals\", \"warm\") -> effect(grow, stay), grow(\"Some animals\", \"fur\").").
+pretty(rule85, "stay('Some animals', 'warm') -> effect(grow, stay), grow('Some animals', 'fur').").
 rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm") -> effect(E3S19-grow, E9S19-stay), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:19.3", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.5", "text":"fur"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:19.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:19.9", "text":"stay"} ], "directObject": {"class":"Other", "string": [ {"token":"id:19.10", "text":"warm"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
@@ -1818,18 +1818,18 @@ rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-ani
 	pred:isa "\"give\"" ;
 	pred:object <http://aristo.allenai.org/id#19.2> .
 english(rule86, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule86, "take in(\"Animals\", \"food\", as(\"a nutrient\")) -> effect(take, grow), grow(\"Some animals\").").
+pretty(rule86, "take in('Animals', 'food', as('a nutrient')) -> effect(take, grow), grow('Some animals').").
 rule86:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E15S20-grow), isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals").
 english(rule87, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule87, "grow(\"Some animals\") -> effect(take, grow), take in(\"Animals\", \"food\", as(\"a nutrient\")).").
+pretty(rule87, "grow('Some animals') -> effect(take, grow), take in('Animals', 'food', as('a nutrient')).").
 rule87:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E2S20-take, E15S20-grow), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.2", "text":"take"},  {"token":"id:20.3", "text":"in"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:20.4", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:20.5", "text":"as"},  {"token":"id:20.6", "text":"a"},  {"token":"id:20.7", "text":"nutrient"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.8", "text":"to"},  {"token":"id:20.13", "text":"help"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.15", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
 english(rule88, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule88, "take in(\"Animals\", \"food\", as(\"a nutrient\")) -> effect(take, give), give(X, \"Some animals\", \"energy\").").
+pretty(rule88, "take in('Animals', 'food', as('a nutrient')) -> effect(take, give), give(X, 'Some animals', 'energy').").
 rule88:: isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient") -> effect(E2S20-take, E9S20-give), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 english(rule89, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule89, "give(X, \"Some animals\", \"energy\") -> effect(take, give), take in(\"Animals\", \"food\", as(\"a nutrient\")).").
+pretty(rule89, "give(X, 'Some animals', 'energy') -> effect(take, give), take in('Animals', 'food', as('a nutrient')).").
 rule89:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy") -> effect(E2S20-take, E9S20-give), isa(E2S20-take, "take in"), agent(E2S20-take, A1S20-animal), isa(A1S20-animal, "Animals"), object(E2S20-take, A4S20-food), isa(A4S20-food, "food"), as(E2S20-take, A7S20-nutrient), isa(A7S20-nutrient, "a nutrient").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:20.1", "text":"Animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.2", "text":"take"},  {"token":"id:20.3", "text":"in"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:20.4", "text":"food"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:20.5", "text":"as"},  {"token":"id:20.6", "text":"a"},  {"token":"id:20.7", "text":"nutrient"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.9", "text":"give"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:20.11", "text":"energy"} ] ]} ], "confidence":1.0}
 
@@ -1869,10 +1869,10 @@ rule89:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-an
 	pred:agent <http://aristo.allenai.org/id#19.2> ;
 	pred:isa "\"grow\"" .
 english(rule90, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule90, "give(X, \"Some animals\", \"energy\") -> effect(give, grow), grow(\"Some animals\").").
+pretty(rule90, "give(X, 'Some animals', 'energy') -> effect(give, grow), grow('Some animals').").
 rule90:: isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), isa(A2S19-animal, "Some animals"), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy") -> effect(E9S20-give, E15S20-grow), isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal).
 english(rule91, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
-pretty(rule91, "grow(\"Some animals\") -> effect(give, grow), give(X, \"Some animals\", \"energy\").").
+pretty(rule91, "grow('Some animals') -> effect(give, grow), give(X, 'Some animals', 'energy').").
 rule91:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-animal, "Some animals") -> effect(E9S20-give, E15S20-grow), isa(E9S20-give, "give"), object(E9S20-give, A2S19-animal), arg(E9S20-give, A11S20-energy), isa(A11S20-energy, "energy").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"string": [], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.9", "text":"give"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:20.11", "text":"energy"} ] ]} ], "relation": {"class":"Relation", "string": [ {"token":"id:20.13", "text":"help"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:20.15", "text":"grow"} ], "extraPhrases": []} ], "confidence":1.0}
 
@@ -1906,19 +1906,19 @@ rule91:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-a
 	pred:isa "\"gases oxygen that their[Green plants] bodies need to grow breathe and make energy\"" .
 
 english(rule92, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule92, "isa(provide, \"provide\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(rule92, "isa(provide, 'provide') -> provide('Plants', 'animals', with('food'), with('gases oxygen')).").
 rule92:: isa(E2S21-provide, "provide") -> agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule93, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule93, "isa(plant, \"Plants\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(rule93, "isa(plant, 'Plants') -> provide('Plants', 'animals', with('food'), with('gases oxygen')).").
 rule93:: isa(A1S21-plant, "Plants") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule94, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule94, "isa(animal, \"animals\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(rule94, "isa(animal, 'animals') -> provide('Plants', 'animals', with('food'), with('gases oxygen')).").
 rule94:: isa(A3S21-animal, "animals") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule95, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule95, "isa(food, \"food\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(rule95, "isa(food, 'food') -> provide('Plants', 'animals', with('food'), with('gases oxygen')).").
 rule95:: isa(A5S21-food, "food") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule96, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule96, "isa(oxygen, \"gases oxygen that their[Green plants] bodies need to grow breathe and make energy\") -> provide(\"Plants\", \"animals\", with(\"food\"), with(\"gases oxygen\")).").
+pretty(rule96, "isa(oxygen, 'gases oxygen that their[Green plants] bodies need to grow breathe and make energy') -> provide('Plants', 'animals', with('food'), with('gases oxygen')).").
 rule96:: isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.1", "text":"Plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.2", "text":"provide"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:21.3", "text":"animals"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:21.4", "text":"with"},  {"token":"id:21.5", "text":"food"} ],  [ {"token":"id:21.4", "text":"with"},  {"token":"id:21.7", "text":"gases"},  {"token":"id:21.8", "text":"oxygen"},  {"token":"id:21.9", "text":"that"},  {"token":"id:21.10", "text":"their[Green plants]"},  {"token":"id:21.11", "text":"bodies"},  {"token":"id:21.12", "text":"need"},  {"token":"id:21.13", "text":"to"},  {"token":"id:21.14", "text":"grow"},  {"token":"id:21.15", "text":"breathe"},  {"token":"id:21.16", "text":"and"},  {"token":"id:21.17", "text":"make"},  {"token":"id:21.18", "text":"energy"} ] ]} ], "consequents": [], "confidence":1.0}
 

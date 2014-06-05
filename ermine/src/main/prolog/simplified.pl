@@ -55,12 +55,12 @@ simplified_inf_pred(Root,Pred,Focus,Prefix) :-
 simplified_inf_pred(Root,String,Focus,Prefix) :- % write on LHS only
 	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
-	tokens_text_escaped_quoted(Tokens,Text),
+	tokens_text_single_quoted(Tokens,Text),
 	format(atom(String), '~wisa(~w, ~w)', [Prefix,Lemma,Text]).
 simplified_inf_pred(Root,String,_Focus,Prefix) :-
 %	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
-	tokens_text_escaped_quoted(Tokens,Text),
+	tokens_text_single_quoted(Tokens,Text),
 	format(atom(String), '~w~w', [Prefix,Text]).
 simplified_inf_pred(_,'',_,_).
 
@@ -114,7 +114,7 @@ simplified_string(Arg,null,Lemma) :-
 	!.
 simplified_string(Arg,null,Lemma) :-
 	arg_tokens(Arg,Tokens),
-	tokens_text_escaped_quoted(Tokens,Lemma), !.
+	tokens_text_single_quoted(Tokens,Lemma), !.
 simplified_string(Arg,_,'Q') :-
 	current_question_focus(Arg), !.
 simplified_string(Arg,_,'Q') :-
@@ -124,7 +124,7 @@ simplified_string(Arg,_,'Q') :-
 	!.
 simplified_string(Arg,_,Lemma) :-
 	arg_tokens(Arg,Tokens),
-	tokens_text_escaped_quoted(Tokens,Lemma).
+	tokens_text_single_quoted(Tokens,Lemma).
 
 
 %%% simplified form of basic sentence (no relation)
@@ -133,7 +133,7 @@ write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
 	( (rdf(Entity,rdf:type,event),
 	   verb_tokens(Entity,Tokens))
 	; entity_tokens(Entity,Tokens) ),
-	tokens_text_escaped_quoted(Tokens,Text),
+	tokens_text_single_quoted(Tokens,Text),
 	simplified_lemma(Entity,null,Lemma),
 	simplified_inf_pred(Root,Pred,null,''),
 	format(atom(Pretty), 'pretty(~w, "isa(~w, ~w) -> ~w.")', [Id,Lemma,Text,Pred]),
