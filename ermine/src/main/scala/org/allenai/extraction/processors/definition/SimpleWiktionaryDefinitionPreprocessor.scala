@@ -91,28 +91,15 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     val defPoundAtBeginningPattern = "^#".r
     val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (definitionRawLine, "")
 
-    // Capture meta info - stuff in curly braces  if present : there could be a cluster of multiple of these
-    // separated by semicolon or comma like the last e.g. in above documentation.
-    val metaInfo = """\{\{([^}]*)\}\}""".r
-    val defMetaInfoPattern = s"""(${metaInfo})(?:\\s*(?:,|;)\\s*(${metaInfo}))*""".r
+    // Capture meta info - stuff in curly braces  if present in metaData seq - to be returned.
+    val defMetaInfoPattern = """\{\{([^}]*)\}\}""".r
     val matches = defMetaInfoPattern findAllMatchIn (defBeginningPoundStripped)
-    val metaData = (for {
-                     // Process each captured group from defMetaInfoPattern, 
-                     // i.e., each individual {{_}} group in a cluster 
-                     mtch <- matches
-                     subGp <- mtch.subgroups
-                     // Option() needed here on the right hand side because the 
-                     // string could be null (from Java)
-                     subGpNotNull <- Option(subGp)
-                     // Extract the group within the captured {{x}} group 
-                     // to get just the "x"
-                     firstMtch <- metaInfo findFirstMatchIn (subGpNotNull)
-                    } yield {                    
-                     firstMtch.group(1)
-                   }).toSeq
-            
+    val metaData = (matches map { m => m.group(1) }).toSeq
   
-    val defPoundMetaStripped: String = defMetaInfoPattern replaceAllIn (defBeginningPoundStripped, "")
+    // Remove meta info - there could be a cluster of multiple of these
+    // separated by semicolon or comma like the last e.g. in above documentation.
+    val defMetaInfoClusterPattern = s"""(${defMetaInfoPattern})((\\s*[,;]\\s*${defMetaInfoPattern})*)""".r
+    val defPoundMetaStripped: String = defMetaInfoClusterPattern replaceAllIn (defBeginningPoundStripped, "")
 
     // Remove all bracketed expressions
     val parenPattern = """\([^)]*\)""".r

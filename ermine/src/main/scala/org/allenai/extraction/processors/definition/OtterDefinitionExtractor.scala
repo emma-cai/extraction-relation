@@ -40,7 +40,7 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     destination.write("[")
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
     var beginning = true
-    for (line <- defnInputSource.getLines) yield {
+    for (line <- defnInputSource.getLines) {
       val (term, termWordClass, termDefinition) = preprocessLine(line)
       if (termWordClass.equalsIgnoreCase(wordClass)) {
         val results = super.extractText(termDefinition)
