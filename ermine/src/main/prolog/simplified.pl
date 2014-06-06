@@ -72,6 +72,7 @@ simplified_inf_pred(Root,Pred,Focus,Prefix) :-
 simplified_inf_pred(_,'',_,', ') :- % after relclause
 	!.
 simplified_inf_pred(Root,String,Focus,Prefix) :-
+	Prefix \= ', Q=', % not focus
 	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
 	tokens_text_single_quoted(Tokens,Text),
