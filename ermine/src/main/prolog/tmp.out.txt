@@ -1,0 +1,188 @@
+english(rule1, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+pretty(rule1, "sweat('our bodies', 'perspiration', in('the hot weather')) -HAS_EFFECT-> bring('our bodies', 'water', to('our[our] skin')).").
+
+english(rule2, "In the hot weather our bodies sweat perspiration bringing water to our[our] skin").
+pretty(rule2, "bring('our bodies', 'water', to('our[our] skin')) -EFFECT_OF-> sweat('our bodies', 'perspiration', in('the hot weather')).").
+
+english(rule3, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+pretty(rule3, "store('some animals', 'food') -ENABLES-> prepare('some animals', for('the long winters')).").
+
+english(rule4, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+pretty(rule4, "prepare('some animals', for('the long winters')) -ENABLED_BY-> store('some animals', 'food').").
+
+english(rule5, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+pretty(rule5, "prepare('some animals', for('the long winters')) -IS_A-> isa(hibernation, 'hibernation').").
+
+english(rule6, "When some animals prepare for the long winters by storing food and going dormant it is called hibernation").
+pretty(rule6, "isa(hibernation, 'hibernation') -IS_A-> prepare('some animals', for('the long winters')).").
+
+english(rule7, "A hand lens is used to view objects in more detail").
+pretty(rule7, "isa(lens, 'A hand lens') -HAS_PURPOSE-> view('A hand lens', 'objects', in('more detail')).").
+
+english(rule8, "A hand lens is used to view objects in more detail").
+pretty(rule8, "view('A hand lens', 'objects', in('more detail')) -PURPOSE_OF-> isa(lens, 'A hand lens').").
+
+english(rule9, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
+pretty(rule9, "remove('Freezing', 'heat') -ENABLES-> change('Freezing', 'water', from('its[A hand lens] liquid state'), to('its[its liquid state] solid state')).").
+
+english(rule10, "Freezing involves changing water from its[A hand lens] liquid state to its[its liquid state] solid state ice by the removal of heat").
+pretty(rule10, "change('Freezing', 'water', from('its[A hand lens] liquid state'), to('its[its liquid state] solid state')) -ENABLED_BY-> remove('Freezing', 'heat').").
+
+english(rule11, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+pretty(rule11, "not make('Animals', 'their[some animals] own food') -HAS_EFFECT-> eat('some animals').").
+
+english(rule12, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+pretty(rule12, "eat('some animals') -EFFECT_OF-> not make('Animals', 'their[some animals] own food').").
+
+english(rule13, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+pretty(rule13, "eat('some animals') -HAS_REQUIREMENT-> get('some animals', 'nutrients').").
+
+english(rule14, "Animals can not make their[some animals] own food so they[some animals] must eat to get nutrients").
+pretty(rule14, "get('some animals', 'nutrients') -REQUIREMENT_OF-> eat('some animals').").
+
+english(rule15, "The friction between the two surfaces converts kinetic energy into heat").
+pretty(rule15, "isa(convert, 'converts') -> convert('The friction between the two surfaces', 'kinetic energy', into('heat')).").
+
+english(rule16, "The friction between the two surfaces converts kinetic energy into heat").
+pretty(rule16, "isa(friction, 'The friction between the two surfaces') -> convert('The friction between the two surfaces', 'kinetic energy', into('heat')).").
+
+english(rule17, "The friction between the two surfaces converts kinetic energy into heat").
+pretty(rule17, "isa(energy, 'kinetic energy') -> convert('The friction between the two surfaces', 'kinetic energy', into('heat')).").
+
+english(rule18, "The friction between the two surfaces converts kinetic energy into heat").
+pretty(rule18, "isa(heat, 'heat') -> convert('The friction between the two surfaces', 'kinetic energy', into('heat')).").
+
+english(rule19, "Getting enough rest is also an important part of living a healthy life").
+pretty(rule19, "get(X, 'rest') -HAS_PART-> live(X, 'a healthy life').").
+
+english(rule20, "Getting enough rest is also an important part of living a healthy life").
+pretty(rule20, "live(X, 'a healthy life') -PART_OF-> get(X, 'rest').").
+
+english(rule21, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule21, "isa(decomposer, 'Decomposers') -IS_A-> break down('living things', 'dead organisms').").
+
+english(rule22, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule22, "break down('living things', 'dead organisms') -IS_A-> isa(decomposer, 'Decomposers').").
+
+english(rule23, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule23, "isa(decomposer, 'Decomposers') -IS_A-> recycle('living things', 'their[dead organisms] nutrients', into('the soil')).").
+
+english(rule24, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule24, "recycle('living things', 'their[dead organisms] nutrients', into('the soil')) -IS_A-> isa(decomposer, 'Decomposers').").
+
+english(rule25, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule25, "isa(decomposer, 'Decomposers') -IS_A-> isa(thing, 'living things').").
+
+english(rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
+pretty(rule26, "isa(thing, 'living things') -IS_A-> isa(decomposer, 'Decomposers').").
+
+english(rule27, "Gravity is the force that pulls an object toward the center of the Earth").
+pretty(rule27, "isa(gravity, 'Gravity') -IS_A-> pull('the force', 'an object toward the center of the Earth').").
+
+english(rule28, "Gravity is the force that pulls an object toward the center of the Earth").
+pretty(rule28, "pull('the force', 'an object toward the center of the Earth') -IS_A-> isa(gravity, 'Gravity').").
+
+english(rule29, "Gravity is the force that pulls an object toward the center of the Earth").
+pretty(rule29, "isa(gravity, 'Gravity') -IS_A-> isa(force, 'the force').").
+
+english(rule30, "Gravity is the force that pulls an object toward the center of the Earth").
+pretty(rule30, "isa(force, 'the force') -IS_A-> isa(gravity, 'Gravity').").
+
+english(rule31, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+pretty(rule31, "isa(sweat, 'sweat') -IS_A-> adjust('an organism', 'sweat', to('hot temperatures')).").
+
+english(rule32, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+pretty(rule32, "adjust('an organism', 'sweat', to('hot temperatures')) -IS_A-> isa(sweat, 'sweat').").
+
+english(rule33, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+pretty(rule33, "isa(sweat, 'sweat') -IS_A-> adjust('an organism', 'a way', to('hot temperatures')).").
+
+english(rule34, "A human 's body produces sweat is a way that an organism may adjust to hot temperatures").
+pretty(rule34, "adjust('an organism', 'a way', to('hot temperatures')) -IS_A-> isa(sweat, 'sweat').").
+
+english(rule35, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+pretty(rule35, "store('A squirrel', 'nuts') -HAS_EFFECT-> prepare('A squirrel', for('a seasonal change in the environment')).").
+
+english(rule36, "A squirrel storing nuts is preparing for a seasonal change in the environment").
+pretty(rule36, "prepare('A squirrel', for('a seasonal change in the environment')) -EFFECT_OF-> store('A squirrel', 'nuts').").
+
+english(rule37, "A student should use a hand lens to get a better look at the spots").
+pretty(rule37, "use('A student', 'a hand lens') -HAS_EFFECT-> get('A student', 'a better look at the spots').").
+
+english(rule38, "A student should use a hand lens to get a better look at the spots").
+pretty(rule38, "get('A student', 'a better look at the spots') -EFFECT_OF-> use('A student', 'a hand lens').").
+
+english(rule39, "Decreasing the temperature is one way to change water from a liquid to a solid").
+pretty(rule39, "decrease(X, 'the temperature') -HAS_EFFECT-> change(X, 'water', from('a liquid'), to('a solid')).").
+
+english(rule40, "Decreasing the temperature is one way to change water from a liquid to a solid").
+pretty(rule40, "change(X, 'water', from('a liquid'), to('a solid')) -EFFECT_OF-> decrease(X, 'the temperature').").
+
+english(rule41, "Animals get energy for growth and repair from food").
+pretty(rule41, "isa(get, 'get') -> get('Animals', 'energy', for('growth from food'), for('repair')).").
+
+english(rule42, "Animals get energy for growth and repair from food").
+pretty(rule42, "isa(animal, 'Animals') -> get('Animals', 'energy', for('growth from food'), for('repair')).").
+
+english(rule43, "Animals get energy for growth and repair from food").
+pretty(rule43, "isa(energy, 'energy') -> get('Animals', 'energy', for('growth from food'), for('repair')).").
+
+english(rule44, "Animals get energy for growth and repair from food").
+pretty(rule44, "isa(growth, 'growth from food') -> get('Animals', 'energy', for('growth from food'), for('repair')).").
+
+english(rule45, "Animals get energy for growth and repair from food").
+pretty(rule45, "isa(repair, 'repair') -> get('Animals', 'energy', for('growth from food'), for('repair')).").
+
+english(rule46, "The heat that produces the smoke is caused by friction").
+pretty(rule46, "isa(friction, 'friction') -CAUSES-> produce('The heat', 'the smoke').").
+
+english(rule47, "The heat that produces the smoke is caused by friction").
+pretty(rule47, "produce('The heat', 'the smoke') -CAUSED_BY-> isa(friction, 'friction').").
+
+english(rule48, "Resting is necessary for humans to maintain good health").
+pretty(rule48, "rest('humans') -HAS_REQUIREMENT-> maintain('humans', 'good health').").
+
+english(rule49, "Resting is necessary for humans to maintain good health").
+pretty(rule49, "maintain('humans', 'good health') -REQUIREMENT_OF-> rest('humans').").
+
+english(rule50, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+pretty(rule50, "use('A student', 'a graduated cylinder') -HAS_EFFECT-> measure('A student', '10 milliliters of water').").
+
+english(rule51, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+pretty(rule51, "measure('A student', '10 milliliters of water') -EFFECT_OF-> use('A student', 'a graduated cylinder').").
+
+english(rule52, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+pretty(rule52, "use('A student', 'a graduated cylinder') -HAS_EFFECT-> measure('A student', 'mL').").
+
+english(rule53, "A student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
+pretty(rule53, "measure('A student', 'mL') -EFFECT_OF-> use('A student', 'a graduated cylinder').").
+
+english(rule54, "The white fur of an arctic fox blends in with the snow is called camouflage").
+pretty(rule54, "isa(fur, 'The white fur of an arctic fox blends') -IS_A-> isa(camouflage, 'camouflage').").
+
+english(rule55, "The white fur of an arctic fox blends in with the snow is called camouflage").
+pretty(rule55, "isa(camouflage, 'camouflage') -IS_A-> isa(fur, 'The white fur of an arctic fox blends').").
+
+english(rule56, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule56, "isa(decomposer, 'decomposers') -HAS_PURPOSE-> return('decomposers', 'nutrients', to('the food chain')).").
+
+english(rule57, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule57, "return('decomposers', 'nutrients', to('the food chain')) -PURPOSE_OF-> isa(decomposer, 'decomposers').").
+
+english(rule58, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule58, "return('decomposers', 'nutrients', to('the food chain')) -WHEN-> die('plants').").
+
+english(rule59, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule59, "die('plants') -THEN-> return('decomposers', 'nutrients', to('the food chain')).").
+
+english(rule60, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule60, "return('decomposers', 'nutrients', to('the food chain')) -WHEN-> die('animals').").
+
+english(rule61, "When plants and animals die decomposers help return nutrients to the food chain").
+pretty(rule61, "die('animals') -THEN-> return('decomposers', 'nutrients', to('the food chain')).").
+
+english(rule62, "Gravity causes the ball to fall to the ground").
+pretty(rule62, "isa(gravity, 'Gravity') -CAUSES-> fall('the ball', to('the ground')).").
+
+english(rule63, "Gravity causes the ball to fall to the ground").
+pretty(rule63, "fall('the ball', to('the ground')) -CAUSED_BY-> isa(gravity, 'Gravity').").

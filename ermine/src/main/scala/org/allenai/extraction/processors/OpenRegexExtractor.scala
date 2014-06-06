@@ -74,7 +74,7 @@ abstract class OpenRegexExtractor(cascadeFilePath: String) extends FlatProcessor
     val sentence = app.process(text)
 
     // Extract sentence to get all output types and the extractions based on rules specified in the
-    // Cacasde file.
+    // Cascade file.
     val (allTypes, lastLevelTypes, extractions) = extract(cascade, sentence, levels)
 
     // Call the process method on the specific extractor (abstract here)

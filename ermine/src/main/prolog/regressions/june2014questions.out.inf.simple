@@ -39,13 +39,13 @@ june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fa
 english(june2014questions.out.rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
 june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(friction, fall).
 english(june2014questions.out.rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
-june2014questions.out.rule1:: agent(drop, student), arg(drop, ball), agent(fall, ball), to(fall, ground) -> cause(gravity, fall).
+june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(gravity, fall).
 english(june2014questions.out.rule1, "A student drops a ball magnetism causes the ball[a ball] to fall to the ground").
 june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(magnetism, fall).
 english(june2014questions.out.rule1, "electricity is the main source of energy for the water cycle").
 june2014questions.out.rule1:: example(electricity, source).
 english(june2014questions.out.rule1, "erosion is the main source of energy for the water cycle").
-june2014questions.out.rule1:: example(erosion, source).
+june2014questions.out.rule1:: agent(be, erosion), arg(be, source).
 english(june2014questions.out.rule1, "gravity is the main source of energy for the water cycle").
 june2014questions.out.rule1:: example(gravity, source).
 english(june2014questions.out.rule1, "sunlight is the main source of energy for the water cycle").
@@ -72,6 +72,8 @@ english(june2014questions.out.rule1, "resting is necessary for humans to maintai
 june2014questions.out.rule1:: agent(rest, human), agent(maintain, human), object(maintain, health) -> requirement(rest, maintain).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from air").
 june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), arg(make, food) -> effect(get, make).
+english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from sunlight").
+june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), object(make, food), from(make, sunlight) -> effect(get, make).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from water").
 june2014questions.out.rule1:: agent(get, plant), object(get, energy), agent(make, plant), arg(make, food) -> effect(get, make).
 english(june2014questions.out.rule1, "green plants get the energy they[green plants] need to make food from soil").
@@ -99,9 +101,7 @@ june2014questions.out.rule2:: agent(return, producer), object(return, nutrient),
 english(june2014questions.out.rule3, "when plants and animals die producers help return nutrients to the food chain").
 june2014questions.out.rule3:: agent(return, producer), object(return, nutrient), to(return, chain), agent(die, plant), agent(die, animal) -> purpose(producer, return), when(return, die).
 english(june2014questions.out.rule1, "a bat flying at night is preparing for a seasonal change in the environment").
-june2014questions.out.rule1:: agent(prepare, bat), for(prepare, change) -> effect(fly, prepare), agent(fly, bat), object(fly, bat), at(fly, night).
-english(june2014questions.out.rule2, "a bat flying at night is preparing for a seasonal change in the environment").
-june2014questions.out.rule2:: agent(prepare, bat), for(prepare, change) -> effect(fly, prepare), agent(fly, bat), object(fly, bat), at(fly, night).
+june2014questions.out.rule1:: agent(prepare, bat), for(prepare, change) -> effect(fly, prepare), agent(fly, bat), at(fly, night).
 english(june2014questions.out.rule1, "an owl eating a mouse is preparing for a seasonal change in the environment").
 june2014questions.out.rule1:: agent(prepare, owl), for(prepare, change) -> effect(eat, prepare), agent(eat, owl), object(eat, mouse).
 english(june2014questions.out.rule1, "a squirrel storing nuts is preparing for a seasonal change in the environment").
@@ -128,14 +128,18 @@ english(june2014questions.out.rule1, "planting most often has a harmful effect o
 june2014questions.out.rule1:: on(effect, environment) -> effect(plant, effect).
 english(june2014questions.out.rule1, "polluting most often has a harmful effect on the environment").
 june2014questions.out.rule1:: on(effect, environment) -> effect(pollute, effect).
+english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature) -> example(these, adjust).
+english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature), object(adjust, way) -> example(these, adjust).
 english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
 june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature) -> example(these, adjust).
 english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
 june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature), object(adjust, way) -> example(these, adjust).
 english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
-june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage) -> example(these, adjust).
+june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), arg(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage) -> example(these, adjust).
 english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
-june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage), object(adjust, way) -> example(these, adjust).
+june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), arg(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage), object(adjust, way) -> example(these, adjust).
 english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
 june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage) -> example(these, adjust).
 english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
@@ -143,9 +147,9 @@ june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produ
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a thermometer to get a better look at the spots[small white spots]").
 june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, thermometer), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
-june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, lens), agent(get, she), arg(get, look) -> effect(use, get).
+june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, lens), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
-june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, cylinder), agent(get, she), arg(get, look) -> effect(use, get).
+june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, cylinder), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
 june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, balance), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to find food").

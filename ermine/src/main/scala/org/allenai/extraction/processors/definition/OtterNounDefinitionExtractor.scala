@@ -1,4 +1,4 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.processors.definition
 
 import java.io.Writer
 
@@ -9,12 +9,12 @@ import org.allenai.taggers.NamedGroupType
 
 import edu.knowitall.tool.typer.Type
 
-/** A DefinitionExtractor to process Noun definitions.
+/** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
   * @param dataPath Path to the noun definition data- mainly the required OpenRegex rule files.
   */
-class NounDefinitionOpenRegexExtractor(dataPath: String) extends DefinitionOpenRegexExtractor(dataPath, "noun") {
+class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtractor(dataPath, "noun") {
 
   /** The input definition will match one of these high level definition types, or none at all.
     * This is the list of top level Types we will consider to start mining for the constituent
