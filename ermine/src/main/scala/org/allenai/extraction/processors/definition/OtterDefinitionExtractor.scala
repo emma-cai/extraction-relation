@@ -1,12 +1,10 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.processors.definition
 
 import java.io.Writer
-
 import scala.io.Source
-
 import spray.json.DefaultJsonProtocol._
-
 import spray.json.pimpAny
+import org.allenai.extraction.processors.OpenRegexExtractor
 
 /** A Case Class and Companion Object for Definition Extraction Output to support outputting results in JSON.
   * The first three parameters come from the input and the last one contains the extraction results-
@@ -15,11 +13,11 @@ import spray.json.pimpAny
   * @param definition The definition
   * @param results The resultant extractions
   */
-case class DefinitionExtractionResult(term: String, wordClass: String, definition: String, results: Seq[String])
+case class OtterExtractionResult(term: String, wordClass: String, definition: String, results: Seq[String])
 
-object DefinitionExtractionResult {
+object OtterExtractionResult {
   import spray.json.DefaultJsonProtocol._
-  implicit val definitionExtractionResultJsonFormat = jsonFormat4(DefinitionExtractionResult.apply)
+  implicit val definitionExtractionResultJsonFormat = jsonFormat4(OtterExtractionResult.apply)
 }
 
 /** An extractor that processes definitions for a given class of terms using OpenRegex.
@@ -31,14 +29,13 @@ object DefinitionExtractionResult {
   * @param wordClass The word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
   *                for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
   */
-abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
-
+abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
+  
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed
     * into the format: <term>\t<wordClass>\t<definition>. Output will be written out to the
     * specified destination
     */
   override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
-
     //Start output Json 
     destination.write("[")
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
@@ -47,7 +44,7 @@ abstract class DefinitionOpenRegexExtractor(dataPath: String, val wordClass: Str
       val (term, termWordClass, termDefinition) = preprocessLine(line)
       if (termWordClass.equalsIgnoreCase(wordClass)) {
         val results = super.extractText(termDefinition)
-        val extractionOp = DefinitionExtractionResult(term, termWordClass, termDefinition, results)
+        val extractionOp = OtterExtractionResult(term, termWordClass, termDefinition, results)
         if (!beginning) {
           destination.write(",")
         }
