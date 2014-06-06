@@ -58,7 +58,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           if (results.isEmpty) {
             results = super.extractText(term + " : " + termDefinition)
           }
-          
+
           // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
           // does not have the subject as part of the definition. In this case passing it to the 
           // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
@@ -67,7 +67,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
             results = super.extractText(term + " " + termDefinition)
           }
         }
-        
+
         // Output: First write out the input line.
         destination.write("DEFINITION:   " + line + "\n")
 
@@ -478,7 +478,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" +  " , " + consequentVP + ")"
+      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" + " , " + consequentVP + ")"
     }
     result.toString()
   }
@@ -539,8 +539,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           }
         case _ => Seq.empty[String]
       }
-    
-    
+
     // Need an extra pair of parens around this sentence if it has a composite VP that 
     // is broken into multiple VPs (tuples).
     val numVps = vps.length
@@ -559,7 +558,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     }
     if (numVps > 1)
       result ++= ")"
-        
+
     result.toString()
   }
 }

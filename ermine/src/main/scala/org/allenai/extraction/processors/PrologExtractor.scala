@@ -47,8 +47,8 @@ object PrologProcessor {
   * @param prologGoal the prolog goal code to use. Should have a variable named
   * PrologProcessor.VariableName.
   */
-class PrologProcessor(val ferret: Ferret, val prologGoal: String)
-    (implicit val bindingModule: BindingModule) extends FlatProcessor with Injectable {
+class PrologProcessor(val ferret: Ferret, val prologGoal: String)(
+    implicit val bindingModule: BindingModule) extends FlatProcessor with Injectable {
 
   val log = inject[LogProvider].getLog(this)
 
@@ -99,7 +99,7 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String)
 
 /** Processor for text. */
 class FerretTextProcessor(ferret: Ferret)(implicit bindingModule: BindingModule)
-    extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
+  extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
 
 /** Processor for questions. Takes one stream for the question and one for the focus. */
 class FerretQuestionProcessor(val ferret: Ferret)(implicit val bindingModule: BindingModule)

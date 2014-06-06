@@ -49,7 +49,7 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
       if (datasets.contains(datasetId)) {
         log.debug(s"Already initialized ${datasetId}; returning output directory")
         // Send the dataset directory back to the sender.
-        (datasets(datasetId) map { _.location}) pipeTo sender
+        (datasets(datasetId) map { _.location }) pipeTo sender
       } else {
         log.debug(s"Initializing ${datasetId} for write")
 
@@ -84,7 +84,7 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
         val commitResult: Future[Unit] = for {
           cache <- datasets(datasetId)
           documents = for (file <- cache.location.listFiles) yield {
-             TextFile(file.getName, file.getName, file)
+            TextFile(file.getName, file.getName, file)
           }
           _ <- client.addDocuments(cache.dataset.id, documents)
           commit <- client.commitDataset(cache.dataset.id)
