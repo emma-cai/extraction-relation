@@ -2105,16 +2105,16 @@ english(barrons.rule702, "The type of environment they[Some examples] live in an
 pretty(barrons.rule702, "isa(effect, 'a direct effect on organisms') -> have('various environment al factors', 'a direct effect on organisms').").
 barrons.rule702:: isa(A17S269-effect, "a direct effect on organisms") -> isa(E14S269-have, "have"), agent(E14S269-have, A12S269-factor), isa(A12S269-factor, "various environment al factors"), object(E14S269-have, A17S269-effect).
 english(barrons.rule703, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
-pretty(barrons.rule703, "isa(type, 'The type of environment') -HAS_EFFECT-> a direct effect('The type of environment', on('organisms')).").
+pretty(barrons.rule703, "isa(type, 'The type of environment') -HAS_EFFECT-> direct effect('The type of environment', on('organisms')).").
 barrons.rule703:: isa(A2S269-type, "The type of environment") -> effect(A2S269-type, E17S269-effect), isa(E17S269-effect, "a direct effect"), agent(E17S269-effect, A2S269-type), on(E17S269-effect, A19S269-organism), isa(A19S269-organism, "organisms").
 english(barrons.rule704, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
-pretty(barrons.rule704, "a direct effect('The type of environment', on('organisms')) -EFFECT_OF-> isa(type, 'The type of environment').").
+pretty(barrons.rule704, "direct effect('The type of environment', on('organisms')) -EFFECT_OF-> isa(type, 'The type of environment').").
 barrons.rule704:: isa(E17S269-effect, "a direct effect"), agent(E17S269-effect, A2S269-type), isa(A2S269-type, "The type of environment"), on(E17S269-effect, A19S269-organism), isa(A19S269-organism, "organisms") -> effect(A2S269-type, E17S269-effect).
 english(barrons.rule705, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
-pretty(barrons.rule705, "isa(factor, 'various environment al factors') -HAS_EFFECT-> a direct effect('various environment al factors', on('organisms')).").
+pretty(barrons.rule705, "isa(factor, 'various environment al factors') -HAS_EFFECT-> direct effect('various environment al factors', on('organisms')).").
 barrons.rule705:: isa(A12S269-factor, "various environment al factors") -> effect(A12S269-factor, E17S269-effect), isa(E17S269-effect, "a direct effect"), agent(E17S269-effect, A12S269-factor), on(E17S269-effect, A19S269-organism), isa(A19S269-organism, "organisms").
 english(barrons.rule706, "The type of environment they[Some examples] live in and various environment al factors can have a direct effect on organisms").
-pretty(barrons.rule706, "a direct effect('various environment al factors', on('organisms')) -EFFECT_OF-> isa(factor, 'various environment al factors').").
+pretty(barrons.rule706, "direct effect('various environment al factors', on('organisms')) -EFFECT_OF-> isa(factor, 'various environment al factors').").
 barrons.rule706:: isa(E17S269-effect, "a direct effect"), agent(E17S269-effect, A12S269-factor), isa(A12S269-factor, "various environment al factors"), on(E17S269-effect, A19S269-organism), isa(A19S269-organism, "organisms") -> effect(A12S269-factor, E17S269-effect).
 english(barrons.rule707, "The average life span of a fruit fly is 72 hours").
 pretty(barrons.rule707, "isa(span, 'The average life span of a fruit fly') -EXAMPLE_OF-> isa(hour, '72 hours').").
@@ -3095,10 +3095,10 @@ english(barrons.rule1032, "Provided there are enough resources for plants and an
 pretty(barrons.rule1032, "isa(period, 'long periods of time') -PURPOSE_OF-> survive('animals', 'plants', in('a successful ecosystem community for long periods of time')).").
 barrons.rule1032:: isa(A23S401-period, "long periods of time") -> purpose(E12S401-survive, A23S401-period), isa(E12S401-survive, "survive"), agent(E12S401-survive, A9S281-animal), isa(A9S281-animal, "animals"), object(E12S401-survive, A7S401-plant), isa(A7S401-plant, "plants"), in(E12S401-survive, A20S401-community), isa(A20S401-community, "a successful balanced ecosystem community for long periods of time").
 english(barrons.rule1033, "Problems arise when the balance between the organisms and the available resources and space changes").
-pretty(barrons.rule1033, "arise('Problems') -WHEN-> the balance('Problems', between('the organisms'), between('the available resources')).").
+pretty(barrons.rule1033, "arise('Problems') -WHEN-> balance('Problems', between('the organisms'), between('the available resources')).").
 barrons.rule1033:: isa(E2S405-arise, "arise"), agent(E2S405-arise, A1S405-problem), isa(A1S405-problem, "Problems") -> when(E2S405-arise, E5S405-balance), isa(E5S405-balance, "the balance"), agent(E5S405-balance, A1S405-problem), between(E5S405-balance, A8S405-organism), isa(A8S405-organism, "the organisms"), between(E5S405-balance, A12S405-resource), isa(A12S405-resource, "the available resources").
 english(barrons.rule1034, "Problems arise when the balance between the organisms and the available resources and space changes").
-pretty(barrons.rule1034, "the balance('Problems', between('the organisms'), between('the available resources')) -THEN-> arise('Problems').").
+pretty(barrons.rule1034, "balance('Problems', between('the organisms'), between('the available resources')) -THEN-> arise('Problems').").
 barrons.rule1034:: isa(E5S405-balance, "the balance"), agent(E5S405-balance, A1S405-problem), isa(A1S405-problem, "Problems"), between(E5S405-balance, A8S405-organism), isa(A8S405-organism, "the organisms"), between(E5S405-balance, A12S405-resource), isa(A12S405-resource, "the available resources") -> when(E2S405-arise, E5S405-balance), isa(E2S405-arise, "arise"), agent(E2S405-arise, A1S405-problem).
 english(barrons.rule1035, "Building homes stores factories growing food crops and pollution are some causes of ecosystem failure").
 pretty(barrons.rule1035, "isa(home, 'Building homes') -CAUSES-> isa(failure, 'ecosystem failure').").
@@ -3530,10 +3530,10 @@ english(barrons.rule1177, "The way that humans treat the environment has a large
 pretty(barrons.rule1177, "isa(effect, 'a large effect on the survival of all living and nonliving things') -> have('The way', 'a large effect on the survival of all living and nonliving things').").
 barrons.rule1177:: isa(A11S449-effect, "a large effect on the survival of all living and nonliving things") -> isa(E8S449-have, "have"), agent(E8S449-have, A2S449-way), isa(A2S449-way, "The way"), object(E8S449-have, A11S449-effect).
 english(barrons.rule1178, "The way that humans treat the environment has a large effect on the survival of all living and nonliving things").
-pretty(barrons.rule1178, "isa(way, 'The way') -HAS_EFFECT-> a large effect('The way', on('the survival of all living and nonliving things')).").
+pretty(barrons.rule1178, "isa(way, 'The way') -HAS_EFFECT-> large effect('The way', on('the survival of all living and nonliving things')).").
 barrons.rule1178:: isa(A2S449-way, "The way") -> effect(A2S449-way, E11S449-effect), isa(E11S449-effect, "a large effect"), agent(E11S449-effect, A2S449-way), on(E11S449-effect, A14S449-survival), isa(A14S449-survival, "the survival of all living and nonliving things").
 english(barrons.rule1179, "The way that humans treat the environment has a large effect on the survival of all living and nonliving things").
-pretty(barrons.rule1179, "a large effect('The way', on('the survival of all living and nonliving things')) -EFFECT_OF-> isa(way, 'The way').").
+pretty(barrons.rule1179, "large effect('The way', on('the survival of all living and nonliving things')) -EFFECT_OF-> isa(way, 'The way').").
 barrons.rule1179:: isa(E11S449-effect, "a large effect"), agent(E11S449-effect, A2S449-way), isa(A2S449-way, "The way"), on(E11S449-effect, A14S449-survival), isa(A14S449-survival, "the survival of all living and nonliving things") -> effect(A2S449-way, E11S449-effect).
 english(barrons.rule1180, "As humans build homes stores and communities they[humans] displace the animals that live in those areas").
 pretty(barrons.rule1180, "isa(displace, 'displace') -> displace('humans', 'the animals').").
@@ -4478,16 +4478,16 @@ english(barrons.rule1493, "Friction is a force that provides resistance whenever
 pretty(barrons.rule1493, "isa(force, 'a force') -HAS_EXAMPLE-> isa(friction, 'Friction').").
 barrons.rule1493:: isa(A4S598-force, "a force") -> example(A1S598-friction, A4S598-force), isa(A1S598-friction, "Friction").
 english(barrons.rule1494, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-pretty(barrons.rule1494, "isa(the surface, 'the surface') -> the surface('The smoother', 'the less friction against an object', 'move').").
+pretty(barrons.rule1494, "isa(surface, 'the surface') -> surface('The smoother', 'the less friction against an object', 'move').").
 barrons.rule1494:: isa(E4S601-surface, "the surface") -> agent(E4S601-surface, A2S601-smoother), isa(A2S601-smoother, "The smoother"), object(E4S601-surface, A8S601-friction), isa(A8S601-friction, "the less friction against an object"), arg(E4S601-surface, A18S601-move), isa(A18S601-move, "the faster it[The smoother] will move").
 english(barrons.rule1495, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-pretty(barrons.rule1495, "isa(smoother, 'The smoother') -> the surface('The smoother', 'the less friction against an object', 'move').").
+pretty(barrons.rule1495, "isa(smoother, 'The smoother') -> surface('The smoother', 'the less friction against an object', 'move').").
 barrons.rule1495:: isa(A2S601-smoother, "The smoother") -> isa(E4S601-surface, "the surface"), agent(E4S601-surface, A2S601-smoother), object(E4S601-surface, A8S601-friction), isa(A8S601-friction, "the less friction against an object"), arg(E4S601-surface, A18S601-move), isa(A18S601-move, "the faster it[The smoother] will move").
 english(barrons.rule1496, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-pretty(barrons.rule1496, "isa(friction, 'the less friction against an object') -> the surface('The smoother', 'the less friction against an object', 'move').").
+pretty(barrons.rule1496, "isa(friction, 'the less friction against an object') -> surface('The smoother', 'the less friction against an object', 'move').").
 barrons.rule1496:: isa(A8S601-friction, "the less friction against an object") -> isa(E4S601-surface, "the surface"), agent(E4S601-surface, A2S601-smoother), isa(A2S601-smoother, "The smoother"), object(E4S601-surface, A8S601-friction), arg(E4S601-surface, A18S601-move), isa(A18S601-move, "the faster it[The smoother] will move").
 english(barrons.rule1497, "The smoother the surface the less friction against an object so the faster it[The smoother] will move").
-pretty(barrons.rule1497, "isa(move, 'move') -> the surface('The smoother', 'the less friction against an object', 'move').").
+pretty(barrons.rule1497, "isa(move, 'move') -> surface('The smoother', 'the less friction against an object', 'move').").
 barrons.rule1497:: isa(A18S601-move, "the faster it[The smoother] will move") -> isa(E4S601-surface, "the surface"), agent(E4S601-surface, A2S601-smoother), isa(A2S601-smoother, "The smoother"), object(E4S601-surface, A8S601-friction), isa(A8S601-friction, "the less friction against an object"), arg(E4S601-surface, A18S601-move).
 english(barrons.rule1498, "Skiers and surfers often apply wax to their[Skiers and surfers] skis and boards in order to make them[Skiers and surfers] smoother so they[Skiers and surfers] will glide along the surface of the snow or water faster").
 pretty(barrons.rule1498, "apply('Skiers', 'wax', to('their[Skiers and surfers] skis'), to('boards')) -HAS_EFFECT-> make('Skiers', 'smoother').").
@@ -4565,10 +4565,10 @@ english(barrons.rule1522, "The distance between two magnets or a magnet and anot
 pretty(barrons.rule1522, "isa(effect, 'an effect on the force of attraction') -> have('The distance between two magnets or a magnet and another metal object', 'an effect on the force of attraction').").
 barrons.rule1522:: isa(A15S615-effect, "an effect on the force of attraction") -> isa(E13S615-have, "have"), agent(E13S615-have, A2S615-distance), isa(A2S615-distance, "The distance between two magnets or a magnet and another metal object"), object(E13S615-have, A15S615-effect).
 english(barrons.rule1523, "The distance between two magnets or a magnet and another metal object has an effect on the force of attraction").
-pretty(barrons.rule1523, "isa(distance, 'The distance between two magnets or a magnet and another metal object') -HAS_EFFECT-> a effect('The distance between two magnets or a magnet and another metal object', on('the force of attraction')).").
+pretty(barrons.rule1523, "isa(distance, 'The distance between two magnets or a magnet and another metal object') -HAS_EFFECT-> effect('The distance between two magnets or a magnet and another metal object', on('the force of attraction')).").
 barrons.rule1523:: isa(A2S615-distance, "The distance between two magnets or a magnet and another metal object") -> effect(A2S615-distance, E15S615-effect), isa(E15S615-effect, "a effect"), agent(E15S615-effect, A2S615-distance), on(E15S615-effect, A18S615-force), isa(A18S615-force, "the force of attraction").
 english(barrons.rule1524, "The distance between two magnets or a magnet and another metal object has an effect on the force of attraction").
-pretty(barrons.rule1524, "a effect('The distance between two magnets or a magnet and another metal object', on('the force of attraction')) -EFFECT_OF-> isa(distance, 'The distance between two magnets or a magnet and another metal object').").
+pretty(barrons.rule1524, "effect('The distance between two magnets or a magnet and another metal object', on('the force of attraction')) -EFFECT_OF-> isa(distance, 'The distance between two magnets or a magnet and another metal object').").
 barrons.rule1524:: isa(E15S615-effect, "a effect"), agent(E15S615-effect, A2S615-distance), isa(A2S615-distance, "The distance between two magnets or a magnet and another metal object"), on(E15S615-effect, A18S615-force), isa(A18S615-force, "the force of attraction") -> effect(A2S615-distance, E15S615-effect).
 english(barrons.rule1525, "As the distance between the objects increases the magnetic force of attraction decreases").
 pretty(barrons.rule1525, "isa(increase, 'increases') -> increase('the distance between the objects', 'the magnetic force of attraction decreases').").
@@ -5516,10 +5516,10 @@ english(barrons.rule1839, "These storms/conditions can have a harmful effect on 
 pretty(barrons.rule1839, "isa(effect, 'a harmful effect on the areas involved') -> have('These storms/conditions', 'a harmful effect on the areas involved').").
 barrons.rule1839:: isa(A7S762-effect, "a harmful effect on the areas involved") -> isa(E4S762-have, "have"), agent(E4S762-have, A2S762-storms/conditions), isa(A2S762-storms/conditions, "These storms/conditions"), object(E4S762-have, A7S762-effect).
 english(barrons.rule1840, "These storms/conditions can have a harmful effect on the areas involved").
-pretty(barrons.rule1840, "isa(storms/conditions, 'These storms/conditions') -HAS_EFFECT-> a harmful effect('These storms/conditions', on('the areas')).").
+pretty(barrons.rule1840, "isa(storms/conditions, 'These storms/conditions') -HAS_EFFECT-> harmful effect('These storms/conditions', on('the areas')).").
 barrons.rule1840:: isa(A2S762-storms/conditions, "These storms/conditions") -> effect(A2S762-storms/conditions, E7S762-effect), isa(E7S762-effect, "a harmful effect"), agent(E7S762-effect, A2S762-storms/conditions), on(E7S762-effect, A10S762-area), isa(A10S762-area, "the areas involved").
 english(barrons.rule1841, "These storms/conditions can have a harmful effect on the areas involved").
-pretty(barrons.rule1841, "a harmful effect('These storms/conditions', on('the areas')) -EFFECT_OF-> isa(storms/conditions, 'These storms/conditions').").
+pretty(barrons.rule1841, "harmful effect('These storms/conditions', on('the areas')) -EFFECT_OF-> isa(storms/conditions, 'These storms/conditions').").
 barrons.rule1841:: isa(E7S762-effect, "a harmful effect"), agent(E7S762-effect, A2S762-storms/conditions), isa(A2S762-storms/conditions, "These storms/conditions"), on(E7S762-effect, A10S762-area), isa(A10S762-area, "the areas involved") -> effect(A2S762-storms/conditions, E7S762-effect).
 english(barrons.rule1842, "Each season that occurs in New York state experiences specific climate conditions").
 pretty(barrons.rule1842, "isa(experience, 'experiences') -> experience('Each season', 'specific climate conditions').").
@@ -7985,16 +7985,16 @@ english(barrons.rule2662, "Gravity is the force that brings objects toward the E
 pretty(barrons.rule2662, "isa(force, 'the force') -HAS_EXAMPLE-> isa(gravity, 'Gravity').").
 barrons.rule2662:: isa(A4S1099-force, "the force") -> example(A1S1099-gravity, A4S1099-force), isa(A1S1099-gravity, "Gravity").
 english(barrons.rule2663, "A push or a pull is called a force").
-pretty(barrons.rule2663, "a push(X) -EXAMPLE_OF-> isa(force, 'a force').").
+pretty(barrons.rule2663, "push(X) -EXAMPLE_OF-> isa(force, 'a force').").
 barrons.rule2663:: isa(E2S1100-push, "a push") -> example(E2S1100-push, A9S1100-force), isa(A9S1100-force, "a force").
 english(barrons.rule2664, "A push or a pull is called a force").
-pretty(barrons.rule2664, "isa(force, 'a force') -HAS_EXAMPLE-> a push(X).").
+pretty(barrons.rule2664, "isa(force, 'a force') -HAS_EXAMPLE-> push(X).").
 barrons.rule2664:: isa(A9S1100-force, "a force") -> example(E2S1100-push, A9S1100-force), isa(E2S1100-push, "a push").
 english(barrons.rule2665, "A push or a pull is called a force").
-pretty(barrons.rule2665, "a pull(X) -EXAMPLE_OF-> isa(force, 'a force').").
+pretty(barrons.rule2665, "pull(X) -EXAMPLE_OF-> isa(force, 'a force').").
 barrons.rule2665:: isa(E5S1100-pull, "a pull") -> example(E5S1100-pull, A9S1100-force), isa(A9S1100-force, "a force").
 english(barrons.rule2666, "A push or a pull is called a force").
-pretty(barrons.rule2666, "isa(force, 'a force') -HAS_EXAMPLE-> a pull(X).").
+pretty(barrons.rule2666, "isa(force, 'a force') -HAS_EXAMPLE-> pull(X).").
 barrons.rule2666:: isa(A9S1100-force, "a force") -> example(E5S1100-pull, A9S1100-force), isa(E5S1100-pull, "a pull").
 english(barrons.rule2667, "When two objects slide over one another friction can occur").
 pretty(barrons.rule2667, "occur('another friction') -WHEN-> slide('two objects', over('one')).").

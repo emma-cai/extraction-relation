@@ -108,10 +108,10 @@ format_simplified_inf_args([Arg|Rest],ArgString) :-
 	format_simplified_inf_args(Rest,RestArgString),
 	format(atom(ArgString), ', ~w~w', [Arg, RestArgString]).
 
-simplified_lemma(Arg,null,Lemma) :-
+simplified_lemma(Arg,null,Lemma) :- % non-question
 	rdf(Arg,rdf:type,event),
-	rdf(Arg,pred:isa,literal(String)),
-	atomic_list_concat(['',Lemma,''],'"',String),
+	simplified_verb_tokens(Arg,Tokens),
+	lemmas_text(Tokens,Lemma),
 	!.
 simplified_lemma(Arg,null,Lemma) :-
 	lemma(Arg,Lemma), !.
@@ -122,8 +122,22 @@ simplified_lemma(Arg,_,'Q') :-
 	( dependency(Arg,dep:partmod,Focus)
 	; dependency(Arg,dep:rcmod,Focus) ),
 	!.
+simplified_lemma(Arg,_,Lemma) :- % question
+	rdf(Arg,rdf:type,event),
+	simplified_verb_tokens(Arg,Tokens),
+	lemmas_text(Tokens,Lemma),
+	!.
 simplified_lemma(Arg,_,Lemma) :-
 	lemma(Arg,Lemma).
+
+% hacky override to allow for NPs parsed as verbs
+simplified_verb_tokens([],[]) :- !.
+simplified_verb_tokens(Arg,[Arg-Verb]) :-
+	rdf(Arg,token:lemma,literal(Lemma)),
+	wn-denom(Lemma,Verb),
+	!.
+simplified_verb_tokens(Arg,Tokens) :-
+	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,npadvmod,tmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl,det]).
 
 
 simplified_string(Arg,null,Lemma) :-
