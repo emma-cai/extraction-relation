@@ -35,11 +35,11 @@ class ErminePipeline(val name: String, val description: String,
   /** Run this pipeline, using the given inputs and output.
     * @param namedInputs the named inputs to this pipeline
     * @param unnamedInputs the unnamed inputs to the first stage of this pipeline
-    * @param defaultOutput the default output for the last stage of the pipeline
+    * @param defaultOutputs the default outputs for the last stage of the pipeline
     * @throws ErmineException if the provided inputs don't satisfy the pipeline's requirements
     */
   def run(namedInputs: Map[String, Source], unnamedInputs: Seq[Source],
-    defaultOutput: Writer): Unit = {
+    defaultOutputs: Seq[Writer]): Unit = {
     // Validate that the inputs match what we need (we aren't missing any).
     val firstProcessor = processors.head
     if (requiredUnnamedCount > unnamedInputs.size) {
@@ -62,7 +62,7 @@ class ErminePipeline(val name: String, val description: String,
     }
 
     // Run.
-    runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutput)
+    runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutputs)
 
     // Finalize all inputs & outputs.
     val cleanupFutures: Seq[Future[Unit]] = for {
@@ -77,8 +77,10 @@ class ErminePipeline(val name: String, val description: String,
 
     namedInputs.values foreach { _.close }
     unnamedInputs foreach { _.close }
-    defaultOutput.flush
-    defaultOutput.close
+    defaultOutputs foreach { output =>
+      output.flush
+      output.close
+    }
   }
 
   /** Recursive function to run a pipeline. The first processor in the list will be run, then its
@@ -91,20 +93,21 @@ class ErminePipeline(val name: String, val description: String,
     */
   @tailrec final def runProcessors(processors: Seq[ProcessorConfig],
     namedSources: Map[String, Source], unnamedSources: Seq[Source],
-    defaultOutput: Writer): Unit = {
+    defaultOutputs: Seq[Writer]): Unit = {
 
     processors match {
       // Base case: We've run all the processors; now, if there was an unnamed out from the last
       // step, pipe to the default output.
       case Seq() => {
-        if (unnamedSources.size == 1) {
+        if (unnamedSources.size <= defaultOutputs.size) {
           for {
-            line <- unnamedSources(0).getLines
+            (source, output) <- unnamedSources zip defaultOutputs
+            line <- source.getLines
           } {
-            defaultOutput.write(line)
-            defaultOutput.write('\n')
+            output.write(line)
+            output.write('\n')
           }
-          defaultOutput.flush
+          defaultOutputs foreach { _.flush }
         }
       }
       case next +: rest => {
@@ -146,7 +149,7 @@ class ErminePipeline(val name: String, val description: String,
         runProcessors(rest,
           namedSources ++ newNamed,
           newUnnamed,
-          defaultOutput)
+          defaultOutputs)
       }
     }
   }
