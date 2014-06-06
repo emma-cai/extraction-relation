@@ -35,7 +35,7 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     * into the format: <term>\t<wordClass>\t<definition>. Output will be written out to the
     * specified destination
     */
-  override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
+  override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
     //Start output Json 
     destination.write("[")
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
