@@ -2,39 +2,39 @@
 %%% simplified form of rules
 
 write_simplified_inf_relation(Left,Right,Rel,Id,Pretty) :-
-	simplified_inf_rel(Rel,Left,Right,Relation),
 	simplified_inf_pred(Left,LPred,null,''), % LHS
-	simplified_inf_pred(Right,RPred,null,' '), % RHS
+	simplified_inf_rel(Rel,Left,Right,Relation,Prefix),
+	simplified_inf_pred(Right,RPred,null,Prefix), % RHS
 	format(atom(Pretty), 'pretty(~w, "~w~w~w.")', [Id,LPred,Relation,RPred]),
 	!.
 write_simplified_inf_relation(_,_,_,Id,Pretty) :- % failed
 	format(atom(Pretty), 'pretty(~w, "")', [Id]).
 
-simplified_inf_rel([example|_],Left,Right,Relation) :-
+simplified_inf_rel([example|_],Left,Right,Relation,', ') :-
 	% relc case
 	( dependency(Arg,dep:partmod,Left)
 	; dependency(Arg,dep:rcmod,Left) ), !,
 	simplified_string(Right,null,R),
 	simplified_string(Arg,null,A),
 	left_relation(example,RRel),
-	format(atom(Relation), ' -IMPLIES-> ~w(~w, ~w),', [RRel,R,A]).
-simplified_inf_rel([example|_],Left,Right,Relation) :-
+	format(atom(Relation), ' -IMPLIES-> ~w(~w, ~w)', [RRel,R,A]).
+simplified_inf_rel([example|_],Left,Right,Relation,', ') :-
 	% relc case
 	( dependency(Arg,dep:partmod,Right)
 	; dependency(Arg,dep:rcmod,Right) ), !,
 	simplified_string(Left,null,R),
 	simplified_string(Arg,null,A),
 	left_relation(example,RRel),
-	format(atom(Relation), ' -IMPLIES-> ~w(~w, ~w),', [RRel,R,A]).
-simplified_inf_rel([Rel,LId,_],Left,_,Relation) :-
+	format(atom(Relation), ' -IMPLIES-> ~w(~w, ~w)', [RRel,R,A]).
+simplified_inf_rel([Rel,LId,_],Left,_,Relation,' ') :-
 	stripped_id(Left,LId), !,
 	left_relation(Rel,LRel),
 	format(atom(Relation), ' -~w->', [LRel]).
-simplified_inf_rel([Rel,_,RId],Left,_,Relation) :-
+simplified_inf_rel([Rel,_,RId],Left,_,Relation,' ') :-
 	stripped_id(Left,RId), !,
 	right_relation(Rel,RRel),
 	format(atom(Relation), ' -~w->', [RRel]).
-simplified_inf_rel([Rel,_,_],_,_,Relation) :-
+simplified_inf_rel([Rel,_,_],_,_,Relation,' ') :-
 	format(atom(Relation), ' -~w->', [Rel]).
 
 left_relation(example,'EXAMPLE_OF').
@@ -69,7 +69,10 @@ simplified_inf_pred(Root,Pred,Focus,Prefix) :-
 	; S = 'X' ),
 	simplified_inf_args(Root,Focus,Args),
 	format(atom(Pred), '~w~w(~w~w)', [Prefix,Lemma,S,Args]).
-simplified_inf_pred(Root,String,Focus,Prefix) :- % write on LHS only
+simplified_inf_pred(_,'',_,', ') :- % after relclause
+	!.
+simplified_inf_pred(Root,String,Focus,Prefix) :-
+	Prefix \= ', Q=', % not focus
 	simplified_lemma(Root,Focus,Lemma), % entity
 	entity_tokens(Root,Tokens),
 	tokens_text_single_quoted(Tokens,Text),
@@ -106,10 +109,10 @@ format_simplified_inf_args([Arg|Rest],ArgString) :-
 	format_simplified_inf_args(Rest,RestArgString),
 	format(atom(ArgString), ', ~w~w', [Arg, RestArgString]).
 
-simplified_lemma(Arg,null,Lemma) :-
+simplified_lemma(Arg,null,Lemma) :- % non-question
 	rdf(Arg,rdf:type,event),
-	rdf(Arg,pred:isa,literal(String)),
-	atomic_list_concat(['',Lemma,''],'"',String),
+	simplified_verb_tokens(Arg,Tokens),
+	lemmas_text(Tokens,Lemma),
 	!.
 simplified_lemma(Arg,null,Lemma) :-
 	lemma(Arg,Lemma), !.
@@ -120,8 +123,22 @@ simplified_lemma(Arg,_,'Q') :-
 	( dependency(Arg,dep:partmod,Focus)
 	; dependency(Arg,dep:rcmod,Focus) ),
 	!.
+simplified_lemma(Arg,_,Lemma) :- % question
+	rdf(Arg,rdf:type,event),
+	simplified_verb_tokens(Arg,Tokens),
+	lemmas_text(Tokens,Lemma),
+	!.
 simplified_lemma(Arg,_,Lemma) :-
 	lemma(Arg,Lemma).
+
+% hacky override to allow for NPs parsed as verbs
+simplified_verb_tokens([],[]) :- !.
+simplified_verb_tokens(Arg,[Arg-Verb]) :-
+	rdf(Arg,token:lemma,literal(Lemma)),
+	wn-denom(Lemma,Verb),
+	!.
+simplified_verb_tokens(Arg,Tokens) :-
+	tokens(Arg,Tokens,[aux,auxpass,nsubj,nsubjpass,csubj,csubjpass,dobj,iobj,xcomp,prep,conj,cc,mark,advcl,advmod,npadvmod,tmod,acomp,dep,ccomp,cop,expl,attr,xsubj,purpcl,det]).
 
 
 simplified_string(Arg,null,Lemma) :-
