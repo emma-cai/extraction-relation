@@ -58,7 +58,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
                   (name, text) <- pipelineRequest.inputs
                 } yield (name -> Source.fromString(text))
                 val output = new StringWriter()
-                pipeline.run(inputs, Seq.empty, output)
+                // TODO(jkinkead): Allow for multiple named outputs?
+                pipeline.run(inputs, Seq.empty, Seq(output))
                 output.close
 
                 log.info(s"pipeline '${pipelineName}' complete.")
