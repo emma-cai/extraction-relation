@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets
 import org.apache.commons.io.output.WriterOutputStream
 
 
+/** A demo extractor that reads and writes Turtle with no graph changes */
 object TurtleProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1

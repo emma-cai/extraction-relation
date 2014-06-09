@@ -28,6 +28,7 @@ dependencyOverrides ++= Set(
   "com.google.guava" % "guava" % "15.0",
   // tinkerpop needs later versions than solr
   "commons-io" % "commons-io" % "2.4",
+  "commons-logging" % "commons-logging" % "1.1.3",
   "org.apache.httpcomponents" % "httpclient" % "4.3.1",
   // Minor version override.
   akkaModule("actor")

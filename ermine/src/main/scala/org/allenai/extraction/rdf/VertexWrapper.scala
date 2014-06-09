@@ -5,10 +5,9 @@ import com.tinkerpop.blueprints.Vertex
 import scala.util.matching.Regex
 
 
-// wrap Vertex to add helper methods
+/** wrap Vertex to add helper methods */
 object VertexWrapper {
   implicit class VertexRdf (val v: Vertex) extends AnyVal {
-
 
     // format vertex name for use in SPARQL queries
     def toUri: String = {
