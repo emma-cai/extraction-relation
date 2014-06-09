@@ -93,9 +93,25 @@ tokens_text(Tokens,Text) :-
 tokens_text_quoted(Tokens,QuotedText) :-
 	tokens_text(Tokens,Text),
 	format(atom(QuotedText), '"~w"', [Text]).
-tokens_text_escaped_quoted(Tokens,QuotedText) :-
+tokens_text_single_quoted(Tokens,QuotedText) :-
 	tokens_text(Tokens,Text),
-	format(atom(QuotedText), '\\"~w\\"', [Text]).
+	atom_codes(Text,String),
+	substitute('\'','’',String,StringOut),
+	atom_codes(TextOut,StringOut),
+	format(atom(QuotedText), '\'~w\'', [TextOut]).
+
+%%% from http://www.swi-prolog.org/pldoc/doc/home/vnc/prolog/lib/swipl/library/edit.pl?show=src#substitute/4
+substitute(FromAtom, ToAtom, Old, New) :-
+	atom_codes(FromAtom, From),
+	(   atom(ToAtom)
+	->  atom_codes(ToAtom, To)
+	;   number_codes(ToAtom, To)
+	),
+	append(Pre, S0, Old),
+	append(From, Post, S0) ->
+	append(Pre, To, S1),
+	append(S1, Post, New), !.
+substitute(_, _, Old, Old).
 
 write_tokens(Tokens) :-
 	tokens_text(Tokens,Text),

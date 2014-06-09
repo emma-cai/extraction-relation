@@ -1,20 +1,20 @@
 package org.allenai.extraction.processors
 
-import org.allenai.extraction.Processor
+import org.allenai.extraction.TextProcessor
 
 import scala.io.Source
 
 import java.io.Writer
 
 /** A demo extractor that writes its input to its output (like the commandline tool `cat`). */
-object CatProcessor extends Processor {
+object CatProcessor extends TextProcessor {
   // Processors must override these two fields. These are used for error-checking of pipeline
-  // configurations - processInternal will not be called except with `sources` and `destinations` of
+  // configurations - processText will not be called except with `sources` and `destinations` of
   // exactly the sizes given below.
   override val numInputs = 1
   override val numOutputs = 1
 
-  override protected def processInternal(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     // Within this function, you have access to the inputs and outputs you configured in your
     // processor configuration, in the order they were declared.
     //
