@@ -30,7 +30,8 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     "StanfordParser" -> StanfordParser,
     "StanfordTtl" -> StanfordTtl,
     "StanfordXmlToTtl" -> StanfordXmlToTtl,
-    "CatProcessor" -> CatProcessor)
+    "CatProcessor" -> CatProcessor,
+    "TurtleProcessor" -> TurtleProcessor)
 
   // Create the Ferret instance to use in our extractors, if we have a config key for it.
   config.get[String]("ferret.directory") match {

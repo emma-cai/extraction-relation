@@ -1,0 +1,3009 @@
+
+<http://aristo.allenai.org/id#1_1> <http://nlp.stanford.edu/token/text> "In" ;
+	<http://nlp.stanford.edu/token/lemma> "in" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "0"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_2> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "3"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_3> <http://nlp.stanford.edu/token/text> "hot" ;
+	<http://nlp.stanford.edu/token/lemma> "hot" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "7"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "10"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_4> <http://nlp.stanford.edu/token/text> "weather" ;
+	<http://nlp.stanford.edu/token/lemma> "weather" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "11"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "18"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_5> <http://nlp.stanford.edu/token/text> "our" ;
+	<http://nlp.stanford.edu/token/lemma> "we" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "19"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "22"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_6> <http://nlp.stanford.edu/token/text> "bodies" ;
+	<http://nlp.stanford.edu/token/lemma> "body" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "23"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "29"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_7> <http://nlp.stanford.edu/token/text> "sweat" ;
+	<http://nlp.stanford.edu/token/lemma> "sweat" ;
+	<http://nlp.stanford.edu/token/pos> "VBP" ;
+	<http://nlp.stanford.edu/token/begin> "30"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "35"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_8> <http://nlp.stanford.edu/token/text> "-LRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-lrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-LRB-" ;
+	<http://nlp.stanford.edu/token/begin> "36"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "37"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_9> <http://nlp.stanford.edu/token/text> "perspiration" ;
+	<http://nlp.stanford.edu/token/lemma> "perspiration" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "37"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "49"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_10> <http://nlp.stanford.edu/token/text> "-RRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-rrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-RRB-" ;
+	<http://nlp.stanford.edu/token/begin> "49"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "50"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_11> <http://nlp.stanford.edu/token/text> "," ;
+	<http://nlp.stanford.edu/token/lemma> "," ;
+	<http://nlp.stanford.edu/token/pos> "," ;
+	<http://nlp.stanford.edu/token/begin> "50"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "51"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_12> <http://nlp.stanford.edu/token/text> "bringing" ;
+	<http://nlp.stanford.edu/token/lemma> "bring" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "52"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "60"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_13> <http://nlp.stanford.edu/token/text> "water" ;
+	<http://nlp.stanford.edu/token/lemma> "water" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "61"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "66"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_14> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "67"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "69"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_15> <http://nlp.stanford.edu/token/text> "our" ;
+	<http://nlp.stanford.edu/token/lemma> "we" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "70"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "73"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_16> <http://nlp.stanford.edu/token/text> "skin" ;
+	<http://nlp.stanford.edu/token/lemma> "skin" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "74"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "78"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_17> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "78"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "79"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#1_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#1_7> .
+
+<http://aristo.allenai.org/id#1_7> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#1_1> .
+
+<http://aristo.allenai.org/id#1_4> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#1_2> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#1_3> .
+
+<http://aristo.allenai.org/id#1_1> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#1_4> .
+
+<http://aristo.allenai.org/id#1_6> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#1_5> .
+
+<http://aristo.allenai.org/id#1_7> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#1_6> ;
+	<http://nlp.stanford.edu/basic/dep> <http://aristo.allenai.org/id#1_9> ;
+	<http://nlp.stanford.edu/basic/vmod> <http://aristo.allenai.org/id#1_12> .
+
+<http://aristo.allenai.org/id#1_12> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#1_13> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#1_14> .
+
+<http://aristo.allenai.org/id#1_16> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#1_15> .
+
+<http://aristo.allenai.org/id#1_14> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#1_16> .
+
+<http://aristo.allenai.org/id#1_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#1_7> .
+
+<http://aristo.allenai.org/id#1_4> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#1_2> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#1_3> .
+
+<http://aristo.allenai.org/id#1_7> <http://nlp.stanford.edu/dep/prep_in> <http://aristo.allenai.org/id#1_4> .
+
+<http://aristo.allenai.org/id#1_6> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#1_5> .
+
+<http://aristo.allenai.org/id#1_7> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#1_6> ;
+	<http://nlp.stanford.edu/dep/dep> <http://aristo.allenai.org/id#1_9> ;
+	<http://nlp.stanford.edu/dep/vmod> <http://aristo.allenai.org/id#1_12> .
+
+<http://aristo.allenai.org/id#1_12> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#1_13> .
+
+<http://aristo.allenai.org/id#1_16> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#1_15> .
+
+<http://aristo.allenai.org/id#1_12> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#1_16> .
+
+<http://aristo.allenai.org/id#2_1> <http://nlp.stanford.edu/token/text> "When" ;
+	<http://nlp.stanford.edu/token/lemma> "when" ;
+	<http://nlp.stanford.edu/token/pos> "WRB" ;
+	<http://nlp.stanford.edu/token/begin> "80"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "84"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_2> <http://nlp.stanford.edu/token/text> "some" ;
+	<http://nlp.stanford.edu/token/lemma> "some" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "85"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "89"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_3> <http://nlp.stanford.edu/token/text> "animals" ;
+	<http://nlp.stanford.edu/token/lemma> "animal" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "90"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "97"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/token/text> "prepare" ;
+	<http://nlp.stanford.edu/token/lemma> "prepare" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "98"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "105"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_5> <http://nlp.stanford.edu/token/text> "for" ;
+	<http://nlp.stanford.edu/token/lemma> "for" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "106"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "109"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_6> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "110"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "113"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_7> <http://nlp.stanford.edu/token/text> "long" ;
+	<http://nlp.stanford.edu/token/lemma> "long" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "114"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "118"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/token/text> "winters" ;
+	<http://nlp.stanford.edu/token/lemma> "winter" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "119"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "126"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/ne/type> "SET" .
+
+<http://aristo.allenai.org/id#2_9> <http://nlp.stanford.edu/token/text> "by" ;
+	<http://nlp.stanford.edu/token/lemma> "by" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "127"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "129"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_10> <http://nlp.stanford.edu/token/text> "storing" ;
+	<http://nlp.stanford.edu/token/lemma> "store" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "130"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "137"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_11> <http://nlp.stanford.edu/token/text> "food" ;
+	<http://nlp.stanford.edu/token/lemma> "food" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "138"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "142"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_12> <http://nlp.stanford.edu/token/text> "and" ;
+	<http://nlp.stanford.edu/token/lemma> "and" ;
+	<http://nlp.stanford.edu/token/pos> "CC" ;
+	<http://nlp.stanford.edu/token/begin> "143"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "146"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_13> <http://nlp.stanford.edu/token/text> "going" ;
+	<http://nlp.stanford.edu/token/lemma> "go" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "147"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "152"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_14> <http://nlp.stanford.edu/token/text> "dormant" ;
+	<http://nlp.stanford.edu/token/lemma> "dormant" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "153"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "160"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_15> <http://nlp.stanford.edu/token/text> "it" ;
+	<http://nlp.stanford.edu/token/lemma> "it" ;
+	<http://nlp.stanford.edu/token/pos> "PRP" ;
+	<http://nlp.stanford.edu/token/begin> "161"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "163"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_16> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "164"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "166"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_17> <http://nlp.stanford.edu/token/text> "called" ;
+	<http://nlp.stanford.edu/token/lemma> "call" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "167"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "173"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_18> <http://nlp.stanford.edu/token/text> "hibernation" ;
+	<http://nlp.stanford.edu/token/lemma> "hibernation" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "174"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "185"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_19> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "185"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "186"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#2_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#2_17> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/basic/advmod> <http://aristo.allenai.org/id#2_1> .
+
+<http://aristo.allenai.org/id#2_3> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#2_2> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#2_3> .
+
+<http://aristo.allenai.org/id#2_17> <http://nlp.stanford.edu/basic/advcl> <http://aristo.allenai.org/id#2_4> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#2_5> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#2_6> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#2_7> .
+
+<http://aristo.allenai.org/id#2_5> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#2_8> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#2_9> .
+
+<http://aristo.allenai.org/id#2_9> <http://nlp.stanford.edu/basic/dep> <http://aristo.allenai.org/id#2_10> .
+
+<http://aristo.allenai.org/id#2_10> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#2_11> ;
+	<http://nlp.stanford.edu/basic/cc> <http://aristo.allenai.org/id#2_12> ;
+	<http://nlp.stanford.edu/basic/conj> <http://aristo.allenai.org/id#2_13> .
+
+<http://aristo.allenai.org/id#2_13> <http://nlp.stanford.edu/basic/acomp> <http://aristo.allenai.org/id#2_14> .
+
+<http://aristo.allenai.org/id#2_17> <http://nlp.stanford.edu/basic/nsubjpass> <http://aristo.allenai.org/id#2_15> ;
+	<http://nlp.stanford.edu/basic/auxpass> <http://aristo.allenai.org/id#2_16> ;
+	<http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#2_18> .
+
+<http://aristo.allenai.org/id#2_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#2_17> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/dep/advmod> <http://aristo.allenai.org/id#2_1> .
+
+<http://aristo.allenai.org/id#2_3> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#2_2> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#2_3> .
+
+<http://aristo.allenai.org/id#2_17> <http://nlp.stanford.edu/dep/advcl> <http://aristo.allenai.org/id#2_4> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#2_6> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#2_7> .
+
+<http://aristo.allenai.org/id#2_4> <http://nlp.stanford.edu/dep/prep_for> <http://aristo.allenai.org/id#2_8> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/dep/prep> <http://aristo.allenai.org/id#2_9> .
+
+<http://aristo.allenai.org/id#2_9> <http://nlp.stanford.edu/dep/dep> <http://aristo.allenai.org/id#2_10> .
+
+<http://aristo.allenai.org/id#2_10> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#2_11> .
+
+<http://aristo.allenai.org/id#2_9> <http://nlp.stanford.edu/dep/dep> <http://aristo.allenai.org/id#2_13> .
+
+<http://aristo.allenai.org/id#2_10> <http://nlp.stanford.edu/dep/conj_and> <http://aristo.allenai.org/id#2_13> .
+
+<http://aristo.allenai.org/id#2_13> <http://nlp.stanford.edu/dep/acomp> <http://aristo.allenai.org/id#2_14> .
+
+<http://aristo.allenai.org/id#2_17> <http://nlp.stanford.edu/dep/nsubjpass> <http://aristo.allenai.org/id#2_15> ;
+	<http://nlp.stanford.edu/dep/auxpass> <http://aristo.allenai.org/id#2_16> ;
+	<http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#2_18> .
+
+<http://aristo.allenai.org/id#3_1> <http://nlp.stanford.edu/token/text> "A" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "187"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "188"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_2> <http://nlp.stanford.edu/token/text> "hand" ;
+	<http://nlp.stanford.edu/token/lemma> "hand" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "189"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "193"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_3> <http://nlp.stanford.edu/token/text> "lens" ;
+	<http://nlp.stanford.edu/token/lemma> "lens" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "194"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "198"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_4> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "199"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "201"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_5> <http://nlp.stanford.edu/token/text> "used" ;
+	<http://nlp.stanford.edu/token/lemma> "use" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "202"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "206"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_6> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "207"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "209"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/token/text> "view" ;
+	<http://nlp.stanford.edu/token/lemma> "view" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "210"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "214"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_8> <http://nlp.stanford.edu/token/text> "objects" ;
+	<http://nlp.stanford.edu/token/lemma> "object" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "215"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "222"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_9> <http://nlp.stanford.edu/token/text> "in" ;
+	<http://nlp.stanford.edu/token/lemma> "in" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "223"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "225"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_10> <http://nlp.stanford.edu/token/text> "more" ;
+	<http://nlp.stanford.edu/token/lemma> "more" ;
+	<http://nlp.stanford.edu/token/pos> "JJR" ;
+	<http://nlp.stanford.edu/token/begin> "226"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "230"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_11> <http://nlp.stanford.edu/token/text> "detail" ;
+	<http://nlp.stanford.edu/token/lemma> "detail" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "231"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "237"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_12> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "237"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "238"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#3_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#3_5> .
+
+<http://aristo.allenai.org/id#3_3> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#3_1> ;
+	<http://nlp.stanford.edu/basic/nn> <http://aristo.allenai.org/id#3_2> .
+
+<http://aristo.allenai.org/id#3_5> <http://nlp.stanford.edu/basic/nsubjpass> <http://aristo.allenai.org/id#3_3> ;
+	<http://nlp.stanford.edu/basic/auxpass> <http://aristo.allenai.org/id#3_4> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#3_6> .
+
+<http://aristo.allenai.org/id#3_5> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#3_7> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#3_8> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#3_9> .
+
+<http://aristo.allenai.org/id#3_11> <http://nlp.stanford.edu/basic/nn> <http://aristo.allenai.org/id#3_10> .
+
+<http://aristo.allenai.org/id#3_9> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#3_11> .
+
+<http://aristo.allenai.org/id#3_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#3_5> .
+
+<http://aristo.allenai.org/id#3_3> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#3_1> ;
+	<http://nlp.stanford.edu/dep/nn> <http://aristo.allenai.org/id#3_2> .
+
+<http://aristo.allenai.org/id#3_5> <http://nlp.stanford.edu/dep/nsubjpass> <http://aristo.allenai.org/id#3_3> ;
+	<http://nlp.stanford.edu/dep/auxpass> <http://aristo.allenai.org/id#3_4> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#3_6> .
+
+<http://aristo.allenai.org/id#3_5> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#3_7> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#3_8> .
+
+<http://aristo.allenai.org/id#3_11> <http://nlp.stanford.edu/dep/nn> <http://aristo.allenai.org/id#3_10> .
+
+<http://aristo.allenai.org/id#3_7> <http://nlp.stanford.edu/dep/prep_in> <http://aristo.allenai.org/id#3_11> .
+
+<http://aristo.allenai.org/id#4_1> <http://nlp.stanford.edu/token/text> "Freezing" ;
+	<http://nlp.stanford.edu/token/lemma> "freezing" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "239"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "247"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_2> <http://nlp.stanford.edu/token/text> "involves" ;
+	<http://nlp.stanford.edu/token/lemma> "involve" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "248"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "256"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/token/text> "changing" ;
+	<http://nlp.stanford.edu/token/lemma> "change" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "257"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "265"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_4> <http://nlp.stanford.edu/token/text> "water" ;
+	<http://nlp.stanford.edu/token/lemma> "water" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "266"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "271"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_5> <http://nlp.stanford.edu/token/text> "from" ;
+	<http://nlp.stanford.edu/token/lemma> "from" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "272"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "276"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_6> <http://nlp.stanford.edu/token/text> "its" ;
+	<http://nlp.stanford.edu/token/lemma> "its" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "277"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "280"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_7> <http://nlp.stanford.edu/token/text> "liquid" ;
+	<http://nlp.stanford.edu/token/lemma> "liquid" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "281"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "287"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_8> <http://nlp.stanford.edu/token/text> "state" ;
+	<http://nlp.stanford.edu/token/lemma> "state" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "288"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "293"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_9> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "294"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "296"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_10> <http://nlp.stanford.edu/token/text> "its" ;
+	<http://nlp.stanford.edu/token/lemma> "its" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "297"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "300"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_11> <http://nlp.stanford.edu/token/text> "solid" ;
+	<http://nlp.stanford.edu/token/lemma> "solid" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "301"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "306"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_12> <http://nlp.stanford.edu/token/text> "state" ;
+	<http://nlp.stanford.edu/token/lemma> "state" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "307"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "312"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_13> <http://nlp.stanford.edu/token/text> "-LRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-lrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-LRB-" ;
+	<http://nlp.stanford.edu/token/begin> "313"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "314"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_14> <http://nlp.stanford.edu/token/text> "ice" ;
+	<http://nlp.stanford.edu/token/lemma> "ice" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "314"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "317"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_15> <http://nlp.stanford.edu/token/text> "-RRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-rrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-RRB-" ;
+	<http://nlp.stanford.edu/token/begin> "317"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "318"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_16> <http://nlp.stanford.edu/token/text> "by" ;
+	<http://nlp.stanford.edu/token/lemma> "by" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "319"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "321"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_17> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "322"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "325"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_18> <http://nlp.stanford.edu/token/text> "removal" ;
+	<http://nlp.stanford.edu/token/lemma> "removal" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "326"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "333"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_19> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "334"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "336"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_20> <http://nlp.stanford.edu/token/text> "heat" ;
+	<http://nlp.stanford.edu/token/lemma> "heat" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "337"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "341"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_21> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "341"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "342"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#4_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#4_2> .
+
+<http://aristo.allenai.org/id#4_2> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#4_1> ;
+	<http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#4_3> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#4_4> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#4_5> .
+
+<http://aristo.allenai.org/id#4_8> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#4_6> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#4_7> .
+
+<http://aristo.allenai.org/id#4_5> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#4_8> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#4_9> .
+
+<http://aristo.allenai.org/id#4_12> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#4_10> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#4_11> .
+
+<http://aristo.allenai.org/id#4_9> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#4_12> .
+
+<http://aristo.allenai.org/id#4_12> <http://nlp.stanford.edu/basic/appos> <http://aristo.allenai.org/id#4_14> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#4_16> .
+
+<http://aristo.allenai.org/id#4_18> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#4_17> .
+
+<http://aristo.allenai.org/id#4_16> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#4_18> .
+
+<http://aristo.allenai.org/id#4_18> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#4_19> .
+
+<http://aristo.allenai.org/id#4_19> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#4_20> .
+
+<http://aristo.allenai.org/id#4_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#4_2> .
+
+<http://aristo.allenai.org/id#4_2> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#4_1> ;
+	<http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#4_3> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#4_4> .
+
+<http://aristo.allenai.org/id#4_8> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#4_6> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#4_7> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/dep/prep_from> <http://aristo.allenai.org/id#4_8> .
+
+<http://aristo.allenai.org/id#4_12> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#4_10> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#4_11> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#4_12> .
+
+<http://aristo.allenai.org/id#4_12> <http://nlp.stanford.edu/dep/appos> <http://aristo.allenai.org/id#4_14> .
+
+<http://aristo.allenai.org/id#4_18> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#4_17> .
+
+<http://aristo.allenai.org/id#4_3> <http://nlp.stanford.edu/dep/prep_by> <http://aristo.allenai.org/id#4_18> .
+
+<http://aristo.allenai.org/id#4_18> <http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#4_20> .
+
+<http://aristo.allenai.org/id#5_1> <http://nlp.stanford.edu/token/text> "Animals" ;
+	<http://nlp.stanford.edu/token/lemma> "animal" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "343"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "350"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_2> <http://nlp.stanford.edu/token/text> "can" ;
+	<http://nlp.stanford.edu/token/lemma> "can" ;
+	<http://nlp.stanford.edu/token/pos> "MD" ;
+	<http://nlp.stanford.edu/token/begin> "351"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "354"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_3> <http://nlp.stanford.edu/token/text> "not" ;
+	<http://nlp.stanford.edu/token/lemma> "not" ;
+	<http://nlp.stanford.edu/token/pos> "RB" ;
+	<http://nlp.stanford.edu/token/begin> "354"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "357"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/token/text> "make" ;
+	<http://nlp.stanford.edu/token/lemma> "make" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "358"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "362"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_5> <http://nlp.stanford.edu/token/text> "their" ;
+	<http://nlp.stanford.edu/token/lemma> "they" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "363"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "368"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_6> <http://nlp.stanford.edu/token/text> "own" ;
+	<http://nlp.stanford.edu/token/lemma> "own" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "369"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "372"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_7> <http://nlp.stanford.edu/token/text> "food" ;
+	<http://nlp.stanford.edu/token/lemma> "food" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "373"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "377"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_8> <http://nlp.stanford.edu/token/text> "so" ;
+	<http://nlp.stanford.edu/token/lemma> "so" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "378"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "380"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_9> <http://nlp.stanford.edu/token/text> "they" ;
+	<http://nlp.stanford.edu/token/lemma> "they" ;
+	<http://nlp.stanford.edu/token/pos> "PRP" ;
+	<http://nlp.stanford.edu/token/begin> "381"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "385"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_10> <http://nlp.stanford.edu/token/text> "must" ;
+	<http://nlp.stanford.edu/token/lemma> "must" ;
+	<http://nlp.stanford.edu/token/pos> "MD" ;
+	<http://nlp.stanford.edu/token/begin> "386"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "390"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_11> <http://nlp.stanford.edu/token/text> "eat" ;
+	<http://nlp.stanford.edu/token/lemma> "eat" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "391"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "394"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_12> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "395"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "397"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_13> <http://nlp.stanford.edu/token/text> "get" ;
+	<http://nlp.stanford.edu/token/lemma> "get" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "398"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "401"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_14> <http://nlp.stanford.edu/token/text> "nutrients" ;
+	<http://nlp.stanford.edu/token/lemma> "nutrient" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "402"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "411"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_15> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "411"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "412"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#5_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#5_4> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#5_1> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#5_2> ;
+	<http://nlp.stanford.edu/basic/neg> <http://aristo.allenai.org/id#5_3> .
+
+<http://aristo.allenai.org/id#5_7> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#5_5> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#5_6> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#5_7> .
+
+<http://aristo.allenai.org/id#5_11> <http://nlp.stanford.edu/basic/mark> <http://aristo.allenai.org/id#5_8> ;
+	<http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#5_9> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#5_10> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/basic/advcl> <http://aristo.allenai.org/id#5_11> .
+
+<http://aristo.allenai.org/id#5_13> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#5_12> .
+
+<http://aristo.allenai.org/id#5_11> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#5_13> .
+
+<http://aristo.allenai.org/id#5_13> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#5_14> .
+
+<http://aristo.allenai.org/id#5_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#5_4> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#5_1> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#5_2> ;
+	<http://nlp.stanford.edu/dep/neg> <http://aristo.allenai.org/id#5_3> .
+
+<http://aristo.allenai.org/id#5_7> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#5_5> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#5_6> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#5_7> .
+
+<http://aristo.allenai.org/id#5_11> <http://nlp.stanford.edu/dep/mark> <http://aristo.allenai.org/id#5_8> ;
+	<http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#5_9> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#5_10> .
+
+<http://aristo.allenai.org/id#5_4> <http://nlp.stanford.edu/dep/advcl> <http://aristo.allenai.org/id#5_11> .
+
+<http://aristo.allenai.org/id#5_13> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#5_12> .
+
+<http://aristo.allenai.org/id#5_11> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#5_13> .
+
+<http://aristo.allenai.org/id#5_13> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#5_14> .
+
+<http://aristo.allenai.org/id#6_1> <http://nlp.stanford.edu/token/text> "The" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "413"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "416"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_2> <http://nlp.stanford.edu/token/text> "friction" ;
+	<http://nlp.stanford.edu/token/lemma> "friction" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "417"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "425"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_3> <http://nlp.stanford.edu/token/text> "between" ;
+	<http://nlp.stanford.edu/token/lemma> "between" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "426"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "433"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_4> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "434"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "437"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_5> <http://nlp.stanford.edu/token/text> "two" ;
+	<http://nlp.stanford.edu/token/lemma> "two" ;
+	<http://nlp.stanford.edu/token/pos> "CD" ;
+	<http://nlp.stanford.edu/token/begin> "438"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "441"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/ne/type> "NUMBER" ;
+	<http://nlp.stanford.edu/ne/norm> "2.0" .
+
+<http://aristo.allenai.org/id#6_6> <http://nlp.stanford.edu/token/text> "surfaces" ;
+	<http://nlp.stanford.edu/token/lemma> "surface" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "442"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "450"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_7> <http://nlp.stanford.edu/token/text> "converts" ;
+	<http://nlp.stanford.edu/token/lemma> "convert" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "451"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "459"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_8> <http://nlp.stanford.edu/token/text> "kinetic" ;
+	<http://nlp.stanford.edu/token/lemma> "kinetic" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "460"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "467"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_9> <http://nlp.stanford.edu/token/text> "energy" ;
+	<http://nlp.stanford.edu/token/lemma> "energy" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "468"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "474"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_10> <http://nlp.stanford.edu/token/text> "into" ;
+	<http://nlp.stanford.edu/token/lemma> "into" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "475"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "479"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_11> <http://nlp.stanford.edu/token/text> "heat" ;
+	<http://nlp.stanford.edu/token/lemma> "heat" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "480"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "484"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_12> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "484"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "485"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#6_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#6_7> .
+
+<http://aristo.allenai.org/id#6_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#6_1> .
+
+<http://aristo.allenai.org/id#6_7> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#6_2> .
+
+<http://aristo.allenai.org/id#6_2> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#6_3> .
+
+<http://aristo.allenai.org/id#6_6> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#6_4> ;
+	<http://nlp.stanford.edu/basic/num> <http://aristo.allenai.org/id#6_5> .
+
+<http://aristo.allenai.org/id#6_3> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#6_6> .
+
+<http://aristo.allenai.org/id#6_9> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#6_8> .
+
+<http://aristo.allenai.org/id#6_7> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#6_9> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#6_10> .
+
+<http://aristo.allenai.org/id#6_10> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#6_11> .
+
+<http://aristo.allenai.org/id#6_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#6_7> .
+
+<http://aristo.allenai.org/id#6_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#6_1> .
+
+<http://aristo.allenai.org/id#6_7> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#6_2> .
+
+<http://aristo.allenai.org/id#6_6> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#6_4> ;
+	<http://nlp.stanford.edu/dep/num> <http://aristo.allenai.org/id#6_5> .
+
+<http://aristo.allenai.org/id#6_2> <http://nlp.stanford.edu/dep/prep_between> <http://aristo.allenai.org/id#6_6> .
+
+<http://aristo.allenai.org/id#6_9> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#6_8> .
+
+<http://aristo.allenai.org/id#6_7> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#6_9> ;
+	<http://nlp.stanford.edu/dep/prep_into> <http://aristo.allenai.org/id#6_11> .
+
+<http://aristo.allenai.org/id#7_1> <http://nlp.stanford.edu/token/text> "Getting" ;
+	<http://nlp.stanford.edu/token/lemma> "get" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "486"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "493"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_2> <http://nlp.stanford.edu/token/text> "enough" ;
+	<http://nlp.stanford.edu/token/lemma> "enough" ;
+	<http://nlp.stanford.edu/token/pos> "RB" ;
+	<http://nlp.stanford.edu/token/begin> "494"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "500"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_3> <http://nlp.stanford.edu/token/text> "rest" ;
+	<http://nlp.stanford.edu/token/lemma> "rest" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "501"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "505"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_4> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "506"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "508"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_5> <http://nlp.stanford.edu/token/text> "also" ;
+	<http://nlp.stanford.edu/token/lemma> "also" ;
+	<http://nlp.stanford.edu/token/pos> "RB" ;
+	<http://nlp.stanford.edu/token/begin> "509"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "513"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_6> <http://nlp.stanford.edu/token/text> "an" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "514"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "516"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_7> <http://nlp.stanford.edu/token/text> "important" ;
+	<http://nlp.stanford.edu/token/lemma> "important" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "517"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "526"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_8> <http://nlp.stanford.edu/token/text> "part" ;
+	<http://nlp.stanford.edu/token/lemma> "part" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "527"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "531"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_9> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "532"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "534"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_10> <http://nlp.stanford.edu/token/text> "living" ;
+	<http://nlp.stanford.edu/token/lemma> "live" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "535"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "541"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_11> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "542"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "543"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_12> <http://nlp.stanford.edu/token/text> "healthy" ;
+	<http://nlp.stanford.edu/token/lemma> "healthy" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "544"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "551"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_13> <http://nlp.stanford.edu/token/text> "life" ;
+	<http://nlp.stanford.edu/token/lemma> "life" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "552"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "556"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_14> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "556"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "557"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#7_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#7_8> .
+
+<http://aristo.allenai.org/id#7_8> <http://nlp.stanford.edu/basic/csubj> <http://aristo.allenai.org/id#7_1> .
+
+<http://aristo.allenai.org/id#7_3> <http://nlp.stanford.edu/basic/advmod> <http://aristo.allenai.org/id#7_2> .
+
+<http://aristo.allenai.org/id#7_1> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#7_3> .
+
+<http://aristo.allenai.org/id#7_8> <http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#7_4> ;
+	<http://nlp.stanford.edu/basic/advmod> <http://aristo.allenai.org/id#7_5> ;
+	<http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#7_6> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#7_7> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#7_9> .
+
+<http://aristo.allenai.org/id#7_9> <http://nlp.stanford.edu/basic/pcomp> <http://aristo.allenai.org/id#7_10> .
+
+<http://aristo.allenai.org/id#7_13> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#7_11> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#7_12> .
+
+<http://aristo.allenai.org/id#7_10> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#7_13> .
+
+<http://aristo.allenai.org/id#7_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#7_8> .
+
+<http://aristo.allenai.org/id#7_8> <http://nlp.stanford.edu/dep/csubj> <http://aristo.allenai.org/id#7_1> .
+
+<http://aristo.allenai.org/id#7_3> <http://nlp.stanford.edu/dep/advmod> <http://aristo.allenai.org/id#7_2> .
+
+<http://aristo.allenai.org/id#7_1> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#7_3> .
+
+<http://aristo.allenai.org/id#7_8> <http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#7_4> ;
+	<http://nlp.stanford.edu/dep/advmod> <http://aristo.allenai.org/id#7_5> ;
+	<http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#7_6> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#7_7> ;
+	<http://nlp.stanford.edu/dep/prepc_of> <http://aristo.allenai.org/id#7_10> .
+
+<http://aristo.allenai.org/id#7_13> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#7_11> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#7_12> .
+
+<http://aristo.allenai.org/id#7_10> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#7_13> .
+
+<http://aristo.allenai.org/id#8_1> <http://nlp.stanford.edu/token/text> "The" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "558"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "561"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_2> <http://nlp.stanford.edu/token/text> "tool" ;
+	<http://nlp.stanford.edu/token/lemma> "tool" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "562"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "566"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_3> <http://nlp.stanford.edu/token/text> "that" ;
+	<http://nlp.stanford.edu/token/lemma> "that" ;
+	<http://nlp.stanford.edu/token/pos> "WDT" ;
+	<http://nlp.stanford.edu/token/begin> "567"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "571"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_4> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "572"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "574"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_5> <http://nlp.stanford.edu/token/text> "used" ;
+	<http://nlp.stanford.edu/token/lemma> "use" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "575"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "579"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_6> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "580"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "582"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_7> <http://nlp.stanford.edu/token/text> "measure" ;
+	<http://nlp.stanford.edu/token/lemma> "measure" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "583"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "590"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_8> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "591"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "594"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_9> <http://nlp.stanford.edu/token/text> "volume" ;
+	<http://nlp.stanford.edu/token/lemma> "volume" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "595"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "601"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_10> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "602"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "604"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_11> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "605"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "606"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_12> <http://nlp.stanford.edu/token/text> "liquid" ;
+	<http://nlp.stanford.edu/token/lemma> "liquid" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "607"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "613"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_13> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "614"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "616"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_14> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "617"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "618"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_15> <http://nlp.stanford.edu/token/text> "graduated" ;
+	<http://nlp.stanford.edu/token/lemma> "graduate" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "619"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "628"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/token/text> "cylinder" ;
+	<http://nlp.stanford.edu/token/lemma> "cylinder" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "629"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "637"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_17> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "637"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "638"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#8_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#8_16> .
+
+<http://aristo.allenai.org/id#8_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#8_1> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#8_2> .
+
+<http://aristo.allenai.org/id#8_5> <http://nlp.stanford.edu/basic/nsubjpass> <http://aristo.allenai.org/id#8_3> ;
+	<http://nlp.stanford.edu/basic/auxpass> <http://aristo.allenai.org/id#8_4> .
+
+<http://aristo.allenai.org/id#8_2> <http://nlp.stanford.edu/basic/rcmod> <http://aristo.allenai.org/id#8_5> .
+
+<http://aristo.allenai.org/id#8_7> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#8_6> .
+
+<http://aristo.allenai.org/id#8_5> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#8_7> .
+
+<http://aristo.allenai.org/id#8_9> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#8_8> .
+
+<http://aristo.allenai.org/id#8_7> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#8_9> .
+
+<http://aristo.allenai.org/id#8_9> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#8_10> .
+
+<http://aristo.allenai.org/id#8_12> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#8_11> .
+
+<http://aristo.allenai.org/id#8_10> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#8_12> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/basic/dep> <http://aristo.allenai.org/id#8_13> ;
+	<http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#8_14> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#8_15> .
+
+<http://aristo.allenai.org/id#8_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#8_16> .
+
+<http://aristo.allenai.org/id#8_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#8_1> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#8_2> .
+
+<http://aristo.allenai.org/id#8_5> <http://nlp.stanford.edu/dep/nsubjpass> <http://aristo.allenai.org/id#8_3> ;
+	<http://nlp.stanford.edu/dep/auxpass> <http://aristo.allenai.org/id#8_4> .
+
+<http://aristo.allenai.org/id#8_2> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#8_5> .
+
+<http://aristo.allenai.org/id#8_7> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#8_6> .
+
+<http://aristo.allenai.org/id#8_5> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#8_7> .
+
+<http://aristo.allenai.org/id#8_9> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#8_8> .
+
+<http://aristo.allenai.org/id#8_7> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#8_9> .
+
+<http://aristo.allenai.org/id#8_12> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#8_11> .
+
+<http://aristo.allenai.org/id#8_9> <http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#8_12> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/dep/dep> <http://aristo.allenai.org/id#8_13> ;
+	<http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#8_14> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#8_15> .
+
+<http://aristo.allenai.org/id#9_1> <http://nlp.stanford.edu/token/text> "camouflage" ;
+	<http://nlp.stanford.edu/token/lemma> "camouflage" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "639"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "649"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_2> <http://nlp.stanford.edu/token/text> ":" ;
+	<http://nlp.stanford.edu/token/lemma> ":" ;
+	<http://nlp.stanford.edu/token/pos> ":" ;
+	<http://nlp.stanford.edu/token/begin> "649"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "650"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_3> <http://nlp.stanford.edu/token/text> "The" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "651"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "654"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/token/text> "disguising" ;
+	<http://nlp.stanford.edu/token/lemma> "disguising" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "655"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "665"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_5> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "666"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "668"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_6> <http://nlp.stanford.edu/token/text> "military" ;
+	<http://nlp.stanford.edu/token/lemma> "military" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "669"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "677"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_7> <http://nlp.stanford.edu/token/text> "personnel" ;
+	<http://nlp.stanford.edu/token/lemma> "personnel" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "678"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "687"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_8> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "688"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "690"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_9> <http://nlp.stanford.edu/token/text> "make" ;
+	<http://nlp.stanford.edu/token/lemma> "make" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "691"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "695"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_10> <http://nlp.stanford.edu/token/text> "them" ;
+	<http://nlp.stanford.edu/token/lemma> "they" ;
+	<http://nlp.stanford.edu/token/pos> "PRP" ;
+	<http://nlp.stanford.edu/token/begin> "696"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "700"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/token/text> "blend" ;
+	<http://nlp.stanford.edu/token/lemma> "blend" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "701"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "706"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_12> <http://nlp.stanford.edu/token/text> "in" ;
+	<http://nlp.stanford.edu/token/lemma> "in" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "707"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "709"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_13> <http://nlp.stanford.edu/token/text> "with" ;
+	<http://nlp.stanford.edu/token/lemma> "with" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "710"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "714"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_14> <http://nlp.stanford.edu/token/text> "their" ;
+	<http://nlp.stanford.edu/token/lemma> "they" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "715"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "720"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_15> <http://nlp.stanford.edu/token/text> "surroundings" ;
+	<http://nlp.stanford.edu/token/lemma> "surroundings" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "721"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "733"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_16> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "733"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "734"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#9_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#9_1> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#9_3> .
+
+<http://aristo.allenai.org/id#9_1> <http://nlp.stanford.edu/basic/dep> <http://aristo.allenai.org/id#9_4> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#9_5> .
+
+<http://aristo.allenai.org/id#9_7> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#9_6> .
+
+<http://aristo.allenai.org/id#9_5> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#9_7> .
+
+<http://aristo.allenai.org/id#9_9> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#9_8> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/basic/vmod> <http://aristo.allenai.org/id#9_9> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#9_10> .
+
+<http://aristo.allenai.org/id#9_9> <http://nlp.stanford.edu/basic/ccomp> <http://aristo.allenai.org/id#9_11> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#9_12> , <http://aristo.allenai.org/id#9_13> .
+
+<http://aristo.allenai.org/id#9_15> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#9_14> .
+
+<http://aristo.allenai.org/id#9_13> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#9_15> .
+
+<http://aristo.allenai.org/id#9_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#9_1> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#9_3> .
+
+<http://aristo.allenai.org/id#9_1> <http://nlp.stanford.edu/dep/dep> <http://aristo.allenai.org/id#9_4> .
+
+<http://aristo.allenai.org/id#9_7> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#9_6> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#9_7> .
+
+<http://aristo.allenai.org/id#9_9> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#9_8> .
+
+<http://aristo.allenai.org/id#9_4> <http://nlp.stanford.edu/dep/vmod> <http://aristo.allenai.org/id#9_9> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#9_10> .
+
+<http://aristo.allenai.org/id#9_9> <http://nlp.stanford.edu/dep/ccomp> <http://aristo.allenai.org/id#9_11> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/dep/prep> <http://aristo.allenai.org/id#9_12> .
+
+<http://aristo.allenai.org/id#9_15> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#9_14> .
+
+<http://aristo.allenai.org/id#9_11> <http://nlp.stanford.edu/dep/prep_with> <http://aristo.allenai.org/id#9_15> .
+
+<http://aristo.allenai.org/id#10_1> <http://nlp.stanford.edu/token/text> "Decomposers" ;
+	<http://nlp.stanford.edu/token/lemma> "decomposer" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "735"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "746"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_2> <http://nlp.stanford.edu/token/text> "are" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBP" ;
+	<http://nlp.stanford.edu/token/begin> "747"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "750"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_3> <http://nlp.stanford.edu/token/text> "living" ;
+	<http://nlp.stanford.edu/token/lemma> "live" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "751"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "757"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/token/text> "things" ;
+	<http://nlp.stanford.edu/token/lemma> "thing" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "758"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "764"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_5> <http://nlp.stanford.edu/token/text> "that" ;
+	<http://nlp.stanford.edu/token/lemma> "that" ;
+	<http://nlp.stanford.edu/token/pos> "WDT" ;
+	<http://nlp.stanford.edu/token/begin> "765"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "769"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/token/text> "break" ;
+	<http://nlp.stanford.edu/token/lemma> "break" ;
+	<http://nlp.stanford.edu/token/pos> "VBP" ;
+	<http://nlp.stanford.edu/token/begin> "770"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "775"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_7> <http://nlp.stanford.edu/token/text> "down" ;
+	<http://nlp.stanford.edu/token/lemma> "down" ;
+	<http://nlp.stanford.edu/token/pos> "RP" ;
+	<http://nlp.stanford.edu/token/begin> "776"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "780"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_8> <http://nlp.stanford.edu/token/text> "dead" ;
+	<http://nlp.stanford.edu/token/lemma> "dead" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "781"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "785"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_9> <http://nlp.stanford.edu/token/text> "organisms" ;
+	<http://nlp.stanford.edu/token/lemma> "organism" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "786"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "795"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_10> <http://nlp.stanford.edu/token/text> "and" ;
+	<http://nlp.stanford.edu/token/lemma> "and" ;
+	<http://nlp.stanford.edu/token/pos> "CC" ;
+	<http://nlp.stanford.edu/token/begin> "796"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "799"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_11> <http://nlp.stanford.edu/token/text> "recycle" ;
+	<http://nlp.stanford.edu/token/lemma> "recycle" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "800"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "807"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_12> <http://nlp.stanford.edu/token/text> "their" ;
+	<http://nlp.stanford.edu/token/lemma> "they" ;
+	<http://nlp.stanford.edu/token/pos> "PRP$" ;
+	<http://nlp.stanford.edu/token/begin> "808"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "813"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_13> <http://nlp.stanford.edu/token/text> "nutrients" ;
+	<http://nlp.stanford.edu/token/lemma> "nutrient" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "814"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "823"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_14> <http://nlp.stanford.edu/token/text> "into" ;
+	<http://nlp.stanford.edu/token/lemma> "into" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "824"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "828"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_15> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "829"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "832"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_16> <http://nlp.stanford.edu/token/text> "soil" ;
+	<http://nlp.stanford.edu/token/lemma> "soil" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "833"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "837"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_17> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "837"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "838"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#10_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#10_4> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#10_1> ;
+	<http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#10_2> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#10_3> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#10_5> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/basic/rcmod> <http://aristo.allenai.org/id#10_6> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/basic/prt> <http://aristo.allenai.org/id#10_7> .
+
+<http://aristo.allenai.org/id#10_9> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#10_8> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#10_9> ;
+	<http://nlp.stanford.edu/basic/cc> <http://aristo.allenai.org/id#10_10> ;
+	<http://nlp.stanford.edu/basic/conj> <http://aristo.allenai.org/id#10_11> .
+
+<http://aristo.allenai.org/id#10_13> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#10_12> .
+
+<http://aristo.allenai.org/id#10_11> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#10_13> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#10_14> .
+
+<http://aristo.allenai.org/id#10_16> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#10_15> .
+
+<http://aristo.allenai.org/id#10_14> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#10_16> .
+
+<http://aristo.allenai.org/id#10_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#10_4> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#10_1> ;
+	<http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#10_2> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#10_3> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#10_5> .
+
+<http://aristo.allenai.org/id#10_11> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#10_5> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#10_6> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/dep/prt> <http://aristo.allenai.org/id#10_7> .
+
+<http://aristo.allenai.org/id#10_9> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#10_8> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#10_9> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#10_11> .
+
+<http://aristo.allenai.org/id#10_6> <http://nlp.stanford.edu/dep/conj_and> <http://aristo.allenai.org/id#10_11> .
+
+<http://aristo.allenai.org/id#10_13> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#10_12> .
+
+<http://aristo.allenai.org/id#10_11> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#10_13> .
+
+<http://aristo.allenai.org/id#10_16> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#10_15> .
+
+<http://aristo.allenai.org/id#10_11> <http://nlp.stanford.edu/dep/prep_into> <http://aristo.allenai.org/id#10_16> .
+
+<http://aristo.allenai.org/id#11_1> <http://nlp.stanford.edu/token/text> "Gravity" ;
+	<http://nlp.stanford.edu/token/lemma> "gravity" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "839"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "846"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_2> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "847"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "849"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_3> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "850"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "853"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_4> <http://nlp.stanford.edu/token/text> "force" ;
+	<http://nlp.stanford.edu/token/lemma> "force" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "854"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "859"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_5> <http://nlp.stanford.edu/token/text> "that" ;
+	<http://nlp.stanford.edu/token/lemma> "that" ;
+	<http://nlp.stanford.edu/token/pos> "WDT" ;
+	<http://nlp.stanford.edu/token/begin> "860"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "864"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_6> <http://nlp.stanford.edu/token/text> "pulls" ;
+	<http://nlp.stanford.edu/token/lemma> "pull" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "865"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "870"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_7> <http://nlp.stanford.edu/token/text> "an" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "871"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "873"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_8> <http://nlp.stanford.edu/token/text> "object" ;
+	<http://nlp.stanford.edu/token/lemma> "object" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "874"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "880"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_9> <http://nlp.stanford.edu/token/text> "toward" ;
+	<http://nlp.stanford.edu/token/lemma> "toward" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "881"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "887"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_10> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "888"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "891"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_11> <http://nlp.stanford.edu/token/text> "center" ;
+	<http://nlp.stanford.edu/token/lemma> "center" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "892"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "898"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_12> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "899"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "901"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_13> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "902"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "905"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_14> <http://nlp.stanford.edu/token/text> "Earth" ;
+	<http://nlp.stanford.edu/token/lemma> "Earth" ;
+	<http://nlp.stanford.edu/token/pos> "NNP" ;
+	<http://nlp.stanford.edu/token/begin> "906"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "911"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/ne/type> "LOCATION" .
+
+<http://aristo.allenai.org/id#11_15> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "911"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "912"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#11_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#11_4> .
+
+<http://aristo.allenai.org/id#11_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#11_1> ;
+	<http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#11_2> ;
+	<http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#11_3> .
+
+<http://aristo.allenai.org/id#11_6> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#11_5> .
+
+<http://aristo.allenai.org/id#11_4> <http://nlp.stanford.edu/basic/rcmod> <http://aristo.allenai.org/id#11_6> .
+
+<http://aristo.allenai.org/id#11_8> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#11_7> .
+
+<http://aristo.allenai.org/id#11_6> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#11_8> .
+
+<http://aristo.allenai.org/id#11_8> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#11_9> .
+
+<http://aristo.allenai.org/id#11_11> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#11_10> .
+
+<http://aristo.allenai.org/id#11_9> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#11_11> .
+
+<http://aristo.allenai.org/id#11_11> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#11_12> .
+
+<http://aristo.allenai.org/id#11_14> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#11_13> .
+
+<http://aristo.allenai.org/id#11_12> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#11_14> .
+
+<http://aristo.allenai.org/id#11_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#11_4> .
+
+<http://aristo.allenai.org/id#11_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#11_1> ;
+	<http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#11_2> ;
+	<http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#11_3> .
+
+<http://aristo.allenai.org/id#11_6> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#11_5> .
+
+<http://aristo.allenai.org/id#11_4> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#11_6> .
+
+<http://aristo.allenai.org/id#11_8> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#11_7> .
+
+<http://aristo.allenai.org/id#11_6> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#11_8> .
+
+<http://aristo.allenai.org/id#11_11> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#11_10> .
+
+<http://aristo.allenai.org/id#11_8> <http://nlp.stanford.edu/dep/prep_toward> <http://aristo.allenai.org/id#11_11> .
+
+<http://aristo.allenai.org/id#11_14> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#11_13> .
+
+<http://aristo.allenai.org/id#11_11> <http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#11_14> .
+
+<http://aristo.allenai.org/id#12_1> <http://nlp.stanford.edu/token/text> "A" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "913"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "914"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_2> <http://nlp.stanford.edu/token/text> "human" ;
+	<http://nlp.stanford.edu/token/lemma> "human" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "915"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "920"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_3> <http://nlp.stanford.edu/token/text> "'s" ;
+	<http://nlp.stanford.edu/token/lemma> "'s" ;
+	<http://nlp.stanford.edu/token/pos> "POS" ;
+	<http://nlp.stanford.edu/token/begin> "920"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "922"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_4> <http://nlp.stanford.edu/token/text> "body" ;
+	<http://nlp.stanford.edu/token/lemma> "body" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "923"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "927"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_5> <http://nlp.stanford.edu/token/text> "produces" ;
+	<http://nlp.stanford.edu/token/lemma> "produce" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "928"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "936"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_6> <http://nlp.stanford.edu/token/text> "sweat" ;
+	<http://nlp.stanford.edu/token/lemma> "sweat" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "937"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "942"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_7> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "943"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "945"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_8> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "946"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "947"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_9> <http://nlp.stanford.edu/token/text> "way" ;
+	<http://nlp.stanford.edu/token/lemma> "way" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "948"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "951"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_10> <http://nlp.stanford.edu/token/text> "that" ;
+	<http://nlp.stanford.edu/token/lemma> "that" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "952"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "956"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_11> <http://nlp.stanford.edu/token/text> "an" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "957"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "959"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_12> <http://nlp.stanford.edu/token/text> "organism" ;
+	<http://nlp.stanford.edu/token/lemma> "organism" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "960"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "968"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_13> <http://nlp.stanford.edu/token/text> "may" ;
+	<http://nlp.stanford.edu/token/lemma> "may" ;
+	<http://nlp.stanford.edu/token/pos> "MD" ;
+	<http://nlp.stanford.edu/token/begin> "969"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "972"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/token/text> "adjust" ;
+	<http://nlp.stanford.edu/token/lemma> "adjust" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "973"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "979"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_15> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "980"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "982"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_16> <http://nlp.stanford.edu/token/text> "hot" ;
+	<http://nlp.stanford.edu/token/lemma> "hot" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "983"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "986"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_17> <http://nlp.stanford.edu/token/text> "temperatures" ;
+	<http://nlp.stanford.edu/token/lemma> "temperature" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "987"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "999"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_18> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "999"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1000"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#12_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#12_5> .
+
+<http://aristo.allenai.org/id#12_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#12_1> .
+
+<http://aristo.allenai.org/id#12_4> <http://nlp.stanford.edu/basic/poss> <http://aristo.allenai.org/id#12_2> .
+
+<http://aristo.allenai.org/id#12_2> <http://nlp.stanford.edu/basic/possessive> <http://aristo.allenai.org/id#12_3> .
+
+<http://aristo.allenai.org/id#12_5> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#12_4> .
+
+<http://aristo.allenai.org/id#12_9> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#12_6> ;
+	<http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#12_7> ;
+	<http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#12_8> .
+
+<http://aristo.allenai.org/id#12_5> <http://nlp.stanford.edu/basic/ccomp> <http://aristo.allenai.org/id#12_9> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#12_10> .
+
+<http://aristo.allenai.org/id#12_12> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#12_11> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#12_12> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#12_13> .
+
+<http://aristo.allenai.org/id#12_9> <http://nlp.stanford.edu/basic/rcmod> <http://aristo.allenai.org/id#12_14> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#12_15> .
+
+<http://aristo.allenai.org/id#12_17> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#12_16> .
+
+<http://aristo.allenai.org/id#12_15> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#12_17> .
+
+<http://aristo.allenai.org/id#12_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#12_5> .
+
+<http://aristo.allenai.org/id#12_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#12_1> .
+
+<http://aristo.allenai.org/id#12_4> <http://nlp.stanford.edu/dep/poss> <http://aristo.allenai.org/id#12_2> .
+
+<http://aristo.allenai.org/id#12_5> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#12_4> .
+
+<http://aristo.allenai.org/id#12_9> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#12_6> ;
+	<http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#12_7> ;
+	<http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#12_8> .
+
+<http://aristo.allenai.org/id#12_5> <http://nlp.stanford.edu/dep/ccomp> <http://aristo.allenai.org/id#12_9> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#12_10> .
+
+<http://aristo.allenai.org/id#12_12> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#12_11> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#12_12> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#12_13> .
+
+<http://aristo.allenai.org/id#12_9> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#12_14> .
+
+<http://aristo.allenai.org/id#12_17> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#12_16> .
+
+<http://aristo.allenai.org/id#12_14> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#12_17> .
+
+<http://aristo.allenai.org/id#13_1> <http://nlp.stanford.edu/token/text> "A" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1001"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1002"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_2> <http://nlp.stanford.edu/token/text> "squirrel" ;
+	<http://nlp.stanford.edu/token/lemma> "squirrel" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1003"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1011"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_3> <http://nlp.stanford.edu/token/text> "storing" ;
+	<http://nlp.stanford.edu/token/lemma> "store" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "1012"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1019"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_4> <http://nlp.stanford.edu/token/text> "nuts" ;
+	<http://nlp.stanford.edu/token/lemma> "nut" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1020"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1024"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_5> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1025"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1027"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/token/text> "preparing" ;
+	<http://nlp.stanford.edu/token/lemma> "prepare" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "1028"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1037"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_7> <http://nlp.stanford.edu/token/text> "for" ;
+	<http://nlp.stanford.edu/token/lemma> "for" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1038"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1041"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_8> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1042"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1043"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_9> <http://nlp.stanford.edu/token/text> "seasonal" ;
+	<http://nlp.stanford.edu/token/lemma> "seasonal" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1044"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1052"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_10> <http://nlp.stanford.edu/token/text> "change" ;
+	<http://nlp.stanford.edu/token/lemma> "change" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1053"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1059"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_11> <http://nlp.stanford.edu/token/text> "in" ;
+	<http://nlp.stanford.edu/token/lemma> "in" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1060"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1062"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_12> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1063"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1066"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_13> <http://nlp.stanford.edu/token/text> "environment" ;
+	<http://nlp.stanford.edu/token/lemma> "environment" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1067"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1078"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_14> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1078"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1079"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#13_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#13_6> .
+
+<http://aristo.allenai.org/id#13_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#13_1> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#13_2> .
+
+<http://aristo.allenai.org/id#13_2> <http://nlp.stanford.edu/basic/vmod> <http://aristo.allenai.org/id#13_3> .
+
+<http://aristo.allenai.org/id#13_3> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#13_4> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#13_5> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#13_7> .
+
+<http://aristo.allenai.org/id#13_10> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#13_8> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#13_9> .
+
+<http://aristo.allenai.org/id#13_7> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#13_10> .
+
+<http://aristo.allenai.org/id#13_10> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#13_11> .
+
+<http://aristo.allenai.org/id#13_13> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#13_12> .
+
+<http://aristo.allenai.org/id#13_11> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#13_13> .
+
+<http://aristo.allenai.org/id#13_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#13_6> .
+
+<http://aristo.allenai.org/id#13_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#13_1> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#13_2> .
+
+<http://aristo.allenai.org/id#13_2> <http://nlp.stanford.edu/dep/vmod> <http://aristo.allenai.org/id#13_3> .
+
+<http://aristo.allenai.org/id#13_3> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#13_4> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#13_5> .
+
+<http://aristo.allenai.org/id#13_10> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#13_8> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#13_9> .
+
+<http://aristo.allenai.org/id#13_6> <http://nlp.stanford.edu/dep/prep_for> <http://aristo.allenai.org/id#13_10> .
+
+<http://aristo.allenai.org/id#13_13> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#13_12> .
+
+<http://aristo.allenai.org/id#13_10> <http://nlp.stanford.edu/dep/prep_in> <http://aristo.allenai.org/id#13_13> .
+
+<http://aristo.allenai.org/id#14_1> <http://nlp.stanford.edu/token/text> "A" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1080"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1081"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_2> <http://nlp.stanford.edu/token/text> "student" ;
+	<http://nlp.stanford.edu/token/lemma> "student" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1082"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1089"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_3> <http://nlp.stanford.edu/token/text> "should" ;
+	<http://nlp.stanford.edu/token/lemma> "should" ;
+	<http://nlp.stanford.edu/token/pos> "MD" ;
+	<http://nlp.stanford.edu/token/begin> "1090"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1096"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/token/text> "use" ;
+	<http://nlp.stanford.edu/token/lemma> "use" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1097"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1100"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_5> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1101"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1102"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_6> <http://nlp.stanford.edu/token/text> "hand" ;
+	<http://nlp.stanford.edu/token/lemma> "hand" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1103"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1107"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_7> <http://nlp.stanford.edu/token/text> "lens" ;
+	<http://nlp.stanford.edu/token/lemma> "lens" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1108"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1112"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_8> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1113"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1115"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_9> <http://nlp.stanford.edu/token/text> "get" ;
+	<http://nlp.stanford.edu/token/lemma> "get" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1116"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1119"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_10> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1120"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1121"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_11> <http://nlp.stanford.edu/token/text> "better" ;
+	<http://nlp.stanford.edu/token/lemma> "better" ;
+	<http://nlp.stanford.edu/token/pos> "JJR" ;
+	<http://nlp.stanford.edu/token/begin> "1122"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1128"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_12> <http://nlp.stanford.edu/token/text> "look" ;
+	<http://nlp.stanford.edu/token/lemma> "look" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1129"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1133"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_13> <http://nlp.stanford.edu/token/text> "at" ;
+	<http://nlp.stanford.edu/token/lemma> "at" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1134"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1136"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_14> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1137"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1140"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_15> <http://nlp.stanford.edu/token/text> "spots" ;
+	<http://nlp.stanford.edu/token/lemma> "spot" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1141"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1146"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_16> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1146"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1147"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#14_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#14_4> .
+
+<http://aristo.allenai.org/id#14_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#14_1> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#14_2> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#14_3> .
+
+<http://aristo.allenai.org/id#14_7> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#14_5> ;
+	<http://nlp.stanford.edu/basic/nn> <http://aristo.allenai.org/id#14_6> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#14_7> .
+
+<http://aristo.allenai.org/id#14_9> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#14_8> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#14_9> .
+
+<http://aristo.allenai.org/id#14_12> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#14_10> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#14_11> .
+
+<http://aristo.allenai.org/id#14_9> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#14_12> .
+
+<http://aristo.allenai.org/id#14_12> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#14_13> .
+
+<http://aristo.allenai.org/id#14_15> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#14_14> .
+
+<http://aristo.allenai.org/id#14_13> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#14_15> .
+
+<http://aristo.allenai.org/id#14_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#14_4> .
+
+<http://aristo.allenai.org/id#14_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#14_1> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#14_2> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#14_3> .
+
+<http://aristo.allenai.org/id#14_7> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#14_5> ;
+	<http://nlp.stanford.edu/dep/nn> <http://aristo.allenai.org/id#14_6> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#14_7> .
+
+<http://aristo.allenai.org/id#14_9> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#14_8> .
+
+<http://aristo.allenai.org/id#14_4> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#14_9> .
+
+<http://aristo.allenai.org/id#14_12> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#14_10> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#14_11> .
+
+<http://aristo.allenai.org/id#14_9> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#14_12> .
+
+<http://aristo.allenai.org/id#14_15> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#14_14> .
+
+<http://aristo.allenai.org/id#14_12> <http://nlp.stanford.edu/dep/prep_at> <http://aristo.allenai.org/id#14_15> .
+
+<http://aristo.allenai.org/id#15_1> <http://nlp.stanford.edu/token/text> "Decreasing" ;
+	<http://nlp.stanford.edu/token/lemma> "decrease" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "1148"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1158"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_2> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1159"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1162"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_3> <http://nlp.stanford.edu/token/text> "temperature" ;
+	<http://nlp.stanford.edu/token/lemma> "temperature" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1163"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1174"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_4> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1175"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1177"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_5> <http://nlp.stanford.edu/token/text> "one" ;
+	<http://nlp.stanford.edu/token/lemma> "one" ;
+	<http://nlp.stanford.edu/token/pos> "CD" ;
+	<http://nlp.stanford.edu/token/begin> "1178"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1181"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/ne/type> "NUMBER" ;
+	<http://nlp.stanford.edu/ne/norm> "1.0" .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/token/text> "way" ;
+	<http://nlp.stanford.edu/token/lemma> "way" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1182"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1185"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_7> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1186"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1188"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/token/text> "change" ;
+	<http://nlp.stanford.edu/token/lemma> "change" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1189"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1195"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_9> <http://nlp.stanford.edu/token/text> "water" ;
+	<http://nlp.stanford.edu/token/lemma> "water" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1196"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1201"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_10> <http://nlp.stanford.edu/token/text> "from" ;
+	<http://nlp.stanford.edu/token/lemma> "from" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1202"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1206"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_11> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1207"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1208"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_12> <http://nlp.stanford.edu/token/text> "liquid" ;
+	<http://nlp.stanford.edu/token/lemma> "liquid" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1209"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1215"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_13> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1216"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1218"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_14> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1219"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1220"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_15> <http://nlp.stanford.edu/token/text> "solid" ;
+	<http://nlp.stanford.edu/token/lemma> "solid" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1221"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1226"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_16> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1226"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1227"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#15_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#15_6> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/basic/csubj> <http://aristo.allenai.org/id#15_1> .
+
+<http://aristo.allenai.org/id#15_3> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#15_2> .
+
+<http://aristo.allenai.org/id#15_1> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#15_3> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#15_4> ;
+	<http://nlp.stanford.edu/basic/num> <http://aristo.allenai.org/id#15_5> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#15_7> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/basic/vmod> <http://aristo.allenai.org/id#15_8> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#15_9> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#15_10> .
+
+<http://aristo.allenai.org/id#15_12> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#15_11> .
+
+<http://aristo.allenai.org/id#15_10> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#15_12> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#15_13> .
+
+<http://aristo.allenai.org/id#15_15> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#15_14> .
+
+<http://aristo.allenai.org/id#15_13> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#15_15> .
+
+<http://aristo.allenai.org/id#15_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#15_6> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/dep/csubj> <http://aristo.allenai.org/id#15_1> .
+
+<http://aristo.allenai.org/id#15_3> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#15_2> .
+
+<http://aristo.allenai.org/id#15_1> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#15_3> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#15_4> ;
+	<http://nlp.stanford.edu/dep/num> <http://aristo.allenai.org/id#15_5> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#15_7> .
+
+<http://aristo.allenai.org/id#15_6> <http://nlp.stanford.edu/dep/vmod> <http://aristo.allenai.org/id#15_8> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#15_9> .
+
+<http://aristo.allenai.org/id#15_12> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#15_11> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/dep/prep_from> <http://aristo.allenai.org/id#15_12> .
+
+<http://aristo.allenai.org/id#15_15> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#15_14> .
+
+<http://aristo.allenai.org/id#15_8> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#15_15> .
+
+<http://aristo.allenai.org/id#16_1> <http://nlp.stanford.edu/token/text> "Animals" ;
+	<http://nlp.stanford.edu/token/lemma> "animal" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1228"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1235"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_2> <http://nlp.stanford.edu/token/text> "get" ;
+	<http://nlp.stanford.edu/token/lemma> "get" ;
+	<http://nlp.stanford.edu/token/pos> "VBP" ;
+	<http://nlp.stanford.edu/token/begin> "1236"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1239"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_3> <http://nlp.stanford.edu/token/text> "energy" ;
+	<http://nlp.stanford.edu/token/lemma> "energy" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1240"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1246"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_4> <http://nlp.stanford.edu/token/text> "for" ;
+	<http://nlp.stanford.edu/token/lemma> "for" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1247"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1250"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_5> <http://nlp.stanford.edu/token/text> "growth" ;
+	<http://nlp.stanford.edu/token/lemma> "growth" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1251"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1257"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_6> <http://nlp.stanford.edu/token/text> "and" ;
+	<http://nlp.stanford.edu/token/lemma> "and" ;
+	<http://nlp.stanford.edu/token/pos> "CC" ;
+	<http://nlp.stanford.edu/token/begin> "1258"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1261"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_7> <http://nlp.stanford.edu/token/text> "repair" ;
+	<http://nlp.stanford.edu/token/lemma> "repair" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1262"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1268"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_8> <http://nlp.stanford.edu/token/text> "from" ;
+	<http://nlp.stanford.edu/token/lemma> "from" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1269"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1273"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_9> <http://nlp.stanford.edu/token/text> "food" ;
+	<http://nlp.stanford.edu/token/lemma> "food" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1274"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1278"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_10> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1278"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1279"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#16_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#16_2> .
+
+<http://aristo.allenai.org/id#16_2> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#16_1> ;
+	<http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#16_3> .
+
+<http://aristo.allenai.org/id#16_3> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#16_4> .
+
+<http://aristo.allenai.org/id#16_4> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#16_5> .
+
+<http://aristo.allenai.org/id#16_5> <http://nlp.stanford.edu/basic/cc> <http://aristo.allenai.org/id#16_6> ;
+	<http://nlp.stanford.edu/basic/conj> <http://aristo.allenai.org/id#16_7> .
+
+<http://aristo.allenai.org/id#16_3> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#16_8> .
+
+<http://aristo.allenai.org/id#16_8> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#16_9> .
+
+<http://aristo.allenai.org/id#16_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#16_2> .
+
+<http://aristo.allenai.org/id#16_2> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#16_1> ;
+	<http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#16_3> .
+
+<http://aristo.allenai.org/id#16_3> <http://nlp.stanford.edu/dep/prep_for> <http://aristo.allenai.org/id#16_5> , <http://aristo.allenai.org/id#16_7> .
+
+<http://aristo.allenai.org/id#16_5> <http://nlp.stanford.edu/dep/conj_and> <http://aristo.allenai.org/id#16_7> .
+
+<http://aristo.allenai.org/id#16_3> <http://nlp.stanford.edu/dep/prep_from> <http://aristo.allenai.org/id#16_9> .
+
+<http://aristo.allenai.org/id#17_1> <http://nlp.stanford.edu/token/text> "The" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1280"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1283"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_2> <http://nlp.stanford.edu/token/text> "heat" ;
+	<http://nlp.stanford.edu/token/lemma> "heat" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1284"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1288"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_3> <http://nlp.stanford.edu/token/text> "that" ;
+	<http://nlp.stanford.edu/token/lemma> "that" ;
+	<http://nlp.stanford.edu/token/pos> "WDT" ;
+	<http://nlp.stanford.edu/token/begin> "1289"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1293"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_4> <http://nlp.stanford.edu/token/text> "produces" ;
+	<http://nlp.stanford.edu/token/lemma> "produce" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1294"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1302"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_5> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1303"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1306"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_6> <http://nlp.stanford.edu/token/text> "smoke" ;
+	<http://nlp.stanford.edu/token/lemma> "smoke" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1307"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1312"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_7> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1313"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1315"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_8> <http://nlp.stanford.edu/token/text> "caused" ;
+	<http://nlp.stanford.edu/token/lemma> "cause" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "1316"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1322"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_9> <http://nlp.stanford.edu/token/text> "by" ;
+	<http://nlp.stanford.edu/token/lemma> "by" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1323"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1325"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_10> <http://nlp.stanford.edu/token/text> "friction" ;
+	<http://nlp.stanford.edu/token/lemma> "friction" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1326"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1334"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_11> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1334"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1335"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#17_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#17_8> .
+
+<http://aristo.allenai.org/id#17_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#17_1> .
+
+<http://aristo.allenai.org/id#17_8> <http://nlp.stanford.edu/basic/nsubjpass> <http://aristo.allenai.org/id#17_2> .
+
+<http://aristo.allenai.org/id#17_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#17_3> .
+
+<http://aristo.allenai.org/id#17_2> <http://nlp.stanford.edu/basic/rcmod> <http://aristo.allenai.org/id#17_4> .
+
+<http://aristo.allenai.org/id#17_6> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#17_5> .
+
+<http://aristo.allenai.org/id#17_4> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#17_6> .
+
+<http://aristo.allenai.org/id#17_8> <http://nlp.stanford.edu/basic/auxpass> <http://aristo.allenai.org/id#17_7> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#17_9> .
+
+<http://aristo.allenai.org/id#17_9> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#17_10> .
+
+<http://aristo.allenai.org/id#17_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#17_8> .
+
+<http://aristo.allenai.org/id#17_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#17_1> .
+
+<http://aristo.allenai.org/id#17_8> <http://nlp.stanford.edu/dep/nsubjpass> <http://aristo.allenai.org/id#17_2> .
+
+<http://aristo.allenai.org/id#17_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#17_3> .
+
+<http://aristo.allenai.org/id#17_2> <http://nlp.stanford.edu/dep/rcmod> <http://aristo.allenai.org/id#17_4> .
+
+<http://aristo.allenai.org/id#17_6> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#17_5> .
+
+<http://aristo.allenai.org/id#17_4> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#17_6> .
+
+<http://aristo.allenai.org/id#17_8> <http://nlp.stanford.edu/dep/auxpass> <http://aristo.allenai.org/id#17_7> ;
+	<http://nlp.stanford.edu/dep/agent> <http://aristo.allenai.org/id#17_10> .
+
+<http://aristo.allenai.org/id#18_1> <http://nlp.stanford.edu/token/text> "Resting" ;
+	<http://nlp.stanford.edu/token/lemma> "rest" ;
+	<http://nlp.stanford.edu/token/pos> "VBG" ;
+	<http://nlp.stanford.edu/token/begin> "1336"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1343"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_2> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1344"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1346"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_3> <http://nlp.stanford.edu/token/text> "necessary" ;
+	<http://nlp.stanford.edu/token/lemma> "necessary" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1347"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1356"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_4> <http://nlp.stanford.edu/token/text> "for" ;
+	<http://nlp.stanford.edu/token/lemma> "for" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1357"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1360"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_5> <http://nlp.stanford.edu/token/text> "humans" ;
+	<http://nlp.stanford.edu/token/lemma> "human" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1361"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1367"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_6> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1368"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1370"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_7> <http://nlp.stanford.edu/token/text> "maintain" ;
+	<http://nlp.stanford.edu/token/lemma> "maintain" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1371"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1379"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_8> <http://nlp.stanford.edu/token/text> "good" ;
+	<http://nlp.stanford.edu/token/lemma> "good" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1380"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1384"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_9> <http://nlp.stanford.edu/token/text> "health" ;
+	<http://nlp.stanford.edu/token/lemma> "health" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1385"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1391"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_10> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1391"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1392"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#18_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#18_3> .
+
+<http://aristo.allenai.org/id#18_3> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#18_1> ;
+	<http://nlp.stanford.edu/basic/cop> <http://aristo.allenai.org/id#18_2> .
+
+<http://aristo.allenai.org/id#18_7> <http://nlp.stanford.edu/basic/mark> <http://aristo.allenai.org/id#18_4> ;
+	<http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#18_5> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#18_6> .
+
+<http://aristo.allenai.org/id#18_3> <http://nlp.stanford.edu/basic/advcl> <http://aristo.allenai.org/id#18_7> .
+
+<http://aristo.allenai.org/id#18_9> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#18_8> .
+
+<http://aristo.allenai.org/id#18_7> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#18_9> .
+
+<http://aristo.allenai.org/id#18_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#18_3> .
+
+<http://aristo.allenai.org/id#18_3> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#18_1> ;
+	<http://nlp.stanford.edu/dep/cop> <http://aristo.allenai.org/id#18_2> .
+
+<http://aristo.allenai.org/id#18_7> <http://nlp.stanford.edu/dep/mark> <http://aristo.allenai.org/id#18_4> ;
+	<http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#18_5> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#18_6> .
+
+<http://aristo.allenai.org/id#18_3> <http://nlp.stanford.edu/dep/advcl> <http://aristo.allenai.org/id#18_7> .
+
+<http://aristo.allenai.org/id#18_9> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#18_8> .
+
+<http://aristo.allenai.org/id#18_7> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#18_9> .
+
+<http://aristo.allenai.org/id#19_1> <http://nlp.stanford.edu/token/text> "A" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1393"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1394"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_2> <http://nlp.stanford.edu/token/text> "student" ;
+	<http://nlp.stanford.edu/token/lemma> "student" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1395"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1402"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_3> <http://nlp.stanford.edu/token/text> "should" ;
+	<http://nlp.stanford.edu/token/lemma> "should" ;
+	<http://nlp.stanford.edu/token/pos> "MD" ;
+	<http://nlp.stanford.edu/token/begin> "1403"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1409"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/token/text> "use" ;
+	<http://nlp.stanford.edu/token/lemma> "use" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1410"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1413"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_5> <http://nlp.stanford.edu/token/text> "a" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1414"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1415"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_6> <http://nlp.stanford.edu/token/text> "graduated" ;
+	<http://nlp.stanford.edu/token/lemma> "graduate" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "1416"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1425"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_7> <http://nlp.stanford.edu/token/text> "cylinder" ;
+	<http://nlp.stanford.edu/token/lemma> "cylinder" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1426"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1434"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_8> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1435"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1437"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_9> <http://nlp.stanford.edu/token/text> "measure" ;
+	<http://nlp.stanford.edu/token/lemma> "measure" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1438"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1445"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_10> <http://nlp.stanford.edu/token/text> "exactly" ;
+	<http://nlp.stanford.edu/token/lemma> "exactly" ;
+	<http://nlp.stanford.edu/token/pos> "RB" ;
+	<http://nlp.stanford.edu/token/begin> "1446"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1453"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_11> <http://nlp.stanford.edu/token/text> "10" ;
+	<http://nlp.stanford.edu/token/lemma> "10" ;
+	<http://nlp.stanford.edu/token/pos> "CD" ;
+	<http://nlp.stanford.edu/token/begin> "1454"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1456"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/ne/type> "NUMBER" ;
+	<http://nlp.stanford.edu/ne/norm> "10.0" .
+
+<http://aristo.allenai.org/id#19_12> <http://nlp.stanford.edu/token/text> "milliliters" ;
+	<http://nlp.stanford.edu/token/lemma> "milliliter" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1457"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1468"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_13> <http://nlp.stanford.edu/token/text> "-LRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-lrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-LRB-" ;
+	<http://nlp.stanford.edu/token/begin> "1469"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1470"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_14> <http://nlp.stanford.edu/token/text> "mL" ;
+	<http://nlp.stanford.edu/token/lemma> "ml" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1470"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1472"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_15> <http://nlp.stanford.edu/token/text> "-RRB-" ;
+	<http://nlp.stanford.edu/token/lemma> "-rrb-" ;
+	<http://nlp.stanford.edu/token/pos> "-RRB-" ;
+	<http://nlp.stanford.edu/token/begin> "1472"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1473"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_16> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1474"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1476"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_17> <http://nlp.stanford.edu/token/text> "water" ;
+	<http://nlp.stanford.edu/token/lemma> "water" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1477"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1482"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_18> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1482"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1483"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#19_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#19_4> .
+
+<http://aristo.allenai.org/id#19_2> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#19_1> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#19_2> ;
+	<http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#19_3> .
+
+<http://aristo.allenai.org/id#19_7> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#19_5> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#19_6> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#19_7> .
+
+<http://aristo.allenai.org/id#19_9> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#19_8> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#19_9> .
+
+<http://aristo.allenai.org/id#19_12> <http://nlp.stanford.edu/basic/advmod> <http://aristo.allenai.org/id#19_10> ;
+	<http://nlp.stanford.edu/basic/num> <http://aristo.allenai.org/id#19_11> .
+
+<http://aristo.allenai.org/id#19_9> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#19_12> .
+
+<http://aristo.allenai.org/id#19_12> <http://nlp.stanford.edu/basic/appos> <http://aristo.allenai.org/id#19_14> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#19_16> .
+
+<http://aristo.allenai.org/id#19_16> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#19_17> .
+
+<http://aristo.allenai.org/id#19_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#19_4> .
+
+<http://aristo.allenai.org/id#19_2> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#19_1> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#19_2> ;
+	<http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#19_3> .
+
+<http://aristo.allenai.org/id#19_7> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#19_5> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#19_6> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#19_7> .
+
+<http://aristo.allenai.org/id#19_9> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#19_8> .
+
+<http://aristo.allenai.org/id#19_4> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#19_9> .
+
+<http://aristo.allenai.org/id#19_12> <http://nlp.stanford.edu/dep/advmod> <http://aristo.allenai.org/id#19_10> ;
+	<http://nlp.stanford.edu/dep/num> <http://aristo.allenai.org/id#19_11> .
+
+<http://aristo.allenai.org/id#19_9> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#19_12> .
+
+<http://aristo.allenai.org/id#19_12> <http://nlp.stanford.edu/dep/appos> <http://aristo.allenai.org/id#19_14> ;
+	<http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#19_17> .
+
+<http://aristo.allenai.org/id#20_1> <http://nlp.stanford.edu/token/text> "The" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1484"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1487"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_2> <http://nlp.stanford.edu/token/text> "white" ;
+	<http://nlp.stanford.edu/token/lemma> "white" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1488"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1493"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_3> <http://nlp.stanford.edu/token/text> "fur" ;
+	<http://nlp.stanford.edu/token/lemma> "fur" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1494"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1497"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_4> <http://nlp.stanford.edu/token/text> "of" ;
+	<http://nlp.stanford.edu/token/lemma> "of" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1498"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1500"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_5> <http://nlp.stanford.edu/token/text> "an" ;
+	<http://nlp.stanford.edu/token/lemma> "a" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1501"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1503"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_6> <http://nlp.stanford.edu/token/text> "arctic" ;
+	<http://nlp.stanford.edu/token/lemma> "arctic" ;
+	<http://nlp.stanford.edu/token/pos> "JJ" ;
+	<http://nlp.stanford.edu/token/begin> "1504"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1510"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_7> <http://nlp.stanford.edu/token/text> "fox" ;
+	<http://nlp.stanford.edu/token/lemma> "fox" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1511"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1514"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_8> <http://nlp.stanford.edu/token/text> "blends" ;
+	<http://nlp.stanford.edu/token/lemma> "blend" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1515"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1521"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_9> <http://nlp.stanford.edu/token/text> "in" ;
+	<http://nlp.stanford.edu/token/lemma> "in" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1522"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1524"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_10> <http://nlp.stanford.edu/token/text> "with" ;
+	<http://nlp.stanford.edu/token/lemma> "with" ;
+	<http://nlp.stanford.edu/token/pos> "IN" ;
+	<http://nlp.stanford.edu/token/begin> "1525"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1529"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_11> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1530"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1533"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_12> <http://nlp.stanford.edu/token/text> "snow" ;
+	<http://nlp.stanford.edu/token/lemma> "snow" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1534"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1538"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_13> <http://nlp.stanford.edu/token/text> "is" ;
+	<http://nlp.stanford.edu/token/lemma> "be" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1539"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1541"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_14> <http://nlp.stanford.edu/token/text> "called" ;
+	<http://nlp.stanford.edu/token/lemma> "call" ;
+	<http://nlp.stanford.edu/token/pos> "VBN" ;
+	<http://nlp.stanford.edu/token/begin> "1542"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1548"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_15> <http://nlp.stanford.edu/token/text> "camouflage" ;
+	<http://nlp.stanford.edu/token/lemma> "camouflage" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1549"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1559"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_16> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1559"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1560"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#20_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#20_14> .
+
+<http://aristo.allenai.org/id#20_3> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#20_1> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#20_2> .
+
+<http://aristo.allenai.org/id#20_14> <http://nlp.stanford.edu/basic/nsubjpass> <http://aristo.allenai.org/id#20_3> .
+
+<http://aristo.allenai.org/id#20_3> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#20_4> .
+
+<http://aristo.allenai.org/id#20_8> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#20_5> ;
+	<http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#20_6> ;
+	<http://nlp.stanford.edu/basic/nn> <http://aristo.allenai.org/id#20_7> .
+
+<http://aristo.allenai.org/id#20_4> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#20_8> .
+
+<http://aristo.allenai.org/id#20_8> <http://nlp.stanford.edu/basic/amod> <http://aristo.allenai.org/id#20_9> .
+
+<http://aristo.allenai.org/id#20_9> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#20_10> .
+
+<http://aristo.allenai.org/id#20_12> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#20_11> .
+
+<http://aristo.allenai.org/id#20_10> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#20_12> .
+
+<http://aristo.allenai.org/id#20_14> <http://nlp.stanford.edu/basic/auxpass> <http://aristo.allenai.org/id#20_13> ;
+	<http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#20_15> .
+
+<http://aristo.allenai.org/id#20_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#20_14> .
+
+<http://aristo.allenai.org/id#20_3> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#20_1> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#20_2> .
+
+<http://aristo.allenai.org/id#20_14> <http://nlp.stanford.edu/dep/nsubjpass> <http://aristo.allenai.org/id#20_3> .
+
+<http://aristo.allenai.org/id#20_8> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#20_5> ;
+	<http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#20_6> ;
+	<http://nlp.stanford.edu/dep/nn> <http://aristo.allenai.org/id#20_7> .
+
+<http://aristo.allenai.org/id#20_3> <http://nlp.stanford.edu/dep/prep_of> <http://aristo.allenai.org/id#20_8> .
+
+<http://aristo.allenai.org/id#20_8> <http://nlp.stanford.edu/dep/amod> <http://aristo.allenai.org/id#20_9> .
+
+<http://aristo.allenai.org/id#20_12> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#20_11> .
+
+<http://aristo.allenai.org/id#20_9> <http://nlp.stanford.edu/dep/prep_with> <http://aristo.allenai.org/id#20_12> .
+
+<http://aristo.allenai.org/id#20_14> <http://nlp.stanford.edu/dep/auxpass> <http://aristo.allenai.org/id#20_13> ;
+	<http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#20_15> .
+
+<http://aristo.allenai.org/id#21_1> <http://nlp.stanford.edu/token/text> "When" ;
+	<http://nlp.stanford.edu/token/lemma> "when" ;
+	<http://nlp.stanford.edu/token/pos> "WRB" ;
+	<http://nlp.stanford.edu/token/begin> "1561"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1565"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_2> <http://nlp.stanford.edu/token/text> "plants" ;
+	<http://nlp.stanford.edu/token/lemma> "plant" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1566"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1572"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_3> <http://nlp.stanford.edu/token/text> "and" ;
+	<http://nlp.stanford.edu/token/lemma> "and" ;
+	<http://nlp.stanford.edu/token/pos> "CC" ;
+	<http://nlp.stanford.edu/token/begin> "1573"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1576"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_4> <http://nlp.stanford.edu/token/text> "animals" ;
+	<http://nlp.stanford.edu/token/lemma> "animal" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1577"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1584"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_5> <http://nlp.stanford.edu/token/text> "die" ;
+	<http://nlp.stanford.edu/token/lemma> "die" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1585"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1588"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_6> <http://nlp.stanford.edu/token/text> "," ;
+	<http://nlp.stanford.edu/token/lemma> "," ;
+	<http://nlp.stanford.edu/token/pos> "," ;
+	<http://nlp.stanford.edu/token/begin> "1588"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1589"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_7> <http://nlp.stanford.edu/token/text> "decomposers" ;
+	<http://nlp.stanford.edu/token/lemma> "decomposer" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1590"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1601"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_8> <http://nlp.stanford.edu/token/text> "help" ;
+	<http://nlp.stanford.edu/token/lemma> "help" ;
+	<http://nlp.stanford.edu/token/pos> "VBP" ;
+	<http://nlp.stanford.edu/token/begin> "1602"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1606"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_9> <http://nlp.stanford.edu/token/text> "return" ;
+	<http://nlp.stanford.edu/token/lemma> "return" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1607"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1613"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_10> <http://nlp.stanford.edu/token/text> "nutrients" ;
+	<http://nlp.stanford.edu/token/lemma> "nutrient" ;
+	<http://nlp.stanford.edu/token/pos> "NNS" ;
+	<http://nlp.stanford.edu/token/begin> "1614"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1623"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_11> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1624"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1626"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_12> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1627"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1630"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_13> <http://nlp.stanford.edu/token/text> "food" ;
+	<http://nlp.stanford.edu/token/lemma> "food" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1631"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1635"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_14> <http://nlp.stanford.edu/token/text> "chain" ;
+	<http://nlp.stanford.edu/token/lemma> "chain" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1636"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1641"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_15> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1641"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1642"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#21_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#21_8> .
+
+<http://aristo.allenai.org/id#21_5> <http://nlp.stanford.edu/basic/advmod> <http://aristo.allenai.org/id#21_1> ;
+	<http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#21_2> .
+
+<http://aristo.allenai.org/id#21_2> <http://nlp.stanford.edu/basic/cc> <http://aristo.allenai.org/id#21_3> ;
+	<http://nlp.stanford.edu/basic/conj> <http://aristo.allenai.org/id#21_4> .
+
+<http://aristo.allenai.org/id#21_8> <http://nlp.stanford.edu/basic/advcl> <http://aristo.allenai.org/id#21_5> ;
+	<http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#21_7> ;
+	<http://nlp.stanford.edu/basic/ccomp> <http://aristo.allenai.org/id#21_9> .
+
+<http://aristo.allenai.org/id#21_9> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#21_10> ;
+	<http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#21_11> .
+
+<http://aristo.allenai.org/id#21_14> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#21_12> ;
+	<http://nlp.stanford.edu/basic/nn> <http://aristo.allenai.org/id#21_13> .
+
+<http://aristo.allenai.org/id#21_11> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#21_14> .
+
+<http://aristo.allenai.org/id#21_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#21_8> .
+
+<http://aristo.allenai.org/id#21_5> <http://nlp.stanford.edu/dep/advmod> <http://aristo.allenai.org/id#21_1> ;
+	<http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#21_2> .
+
+<http://aristo.allenai.org/id#21_2> <http://nlp.stanford.edu/dep/conj_and> <http://aristo.allenai.org/id#21_4> .
+
+<http://aristo.allenai.org/id#21_5> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#21_4> .
+
+<http://aristo.allenai.org/id#21_8> <http://nlp.stanford.edu/dep/advcl> <http://aristo.allenai.org/id#21_5> ;
+	<http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#21_7> ;
+	<http://nlp.stanford.edu/dep/ccomp> <http://aristo.allenai.org/id#21_9> .
+
+<http://aristo.allenai.org/id#21_9> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#21_10> .
+
+<http://aristo.allenai.org/id#21_14> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#21_12> ;
+	<http://nlp.stanford.edu/dep/nn> <http://aristo.allenai.org/id#21_13> .
+
+<http://aristo.allenai.org/id#21_9> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#21_14> .
+
+<http://aristo.allenai.org/id#22_1> <http://nlp.stanford.edu/token/text> "Gravity" ;
+	<http://nlp.stanford.edu/token/lemma> "gravity" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1643"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1650"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/token/text> "causes" ;
+	<http://nlp.stanford.edu/token/lemma> "cause" ;
+	<http://nlp.stanford.edu/token/pos> "VBZ" ;
+	<http://nlp.stanford.edu/token/begin> "1651"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1657"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_3> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1658"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1661"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_4> <http://nlp.stanford.edu/token/text> "ball" ;
+	<http://nlp.stanford.edu/token/lemma> "ball" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1662"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1666"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_5> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1667"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1669"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_6> <http://nlp.stanford.edu/token/text> "fall" ;
+	<http://nlp.stanford.edu/token/lemma> "fall" ;
+	<http://nlp.stanford.edu/token/pos> "VB" ;
+	<http://nlp.stanford.edu/token/begin> "1670"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1674"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_7> <http://nlp.stanford.edu/token/text> "to" ;
+	<http://nlp.stanford.edu/token/lemma> "to" ;
+	<http://nlp.stanford.edu/token/pos> "TO" ;
+	<http://nlp.stanford.edu/token/begin> "1675"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1677"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_8> <http://nlp.stanford.edu/token/text> "the" ;
+	<http://nlp.stanford.edu/token/lemma> "the" ;
+	<http://nlp.stanford.edu/token/pos> "DT" ;
+	<http://nlp.stanford.edu/token/begin> "1678"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1681"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_9> <http://nlp.stanford.edu/token/text> "ground" ;
+	<http://nlp.stanford.edu/token/lemma> "ground" ;
+	<http://nlp.stanford.edu/token/pos> "NN" ;
+	<http://nlp.stanford.edu/token/begin> "1682"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1688"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_10> <http://nlp.stanford.edu/token/text> "." ;
+	<http://nlp.stanford.edu/token/lemma> "." ;
+	<http://nlp.stanford.edu/token/pos> "." ;
+	<http://nlp.stanford.edu/token/begin> "1688"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://nlp.stanford.edu/token/end> "1689"^^<http://www.w3.org/2001/XMLSchema#integer> .
+
+<http://aristo.allenai.org/id#22_0> <http://nlp.stanford.edu/basic/root> <http://aristo.allenai.org/id#22_2> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/basic/nsubj> <http://aristo.allenai.org/id#22_1> .
+
+<http://aristo.allenai.org/id#22_4> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#22_3> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/basic/dobj> <http://aristo.allenai.org/id#22_4> .
+
+<http://aristo.allenai.org/id#22_6> <http://nlp.stanford.edu/basic/aux> <http://aristo.allenai.org/id#22_5> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/basic/xcomp> <http://aristo.allenai.org/id#22_6> .
+
+<http://aristo.allenai.org/id#22_6> <http://nlp.stanford.edu/basic/prep> <http://aristo.allenai.org/id#22_7> .
+
+<http://aristo.allenai.org/id#22_9> <http://nlp.stanford.edu/basic/det> <http://aristo.allenai.org/id#22_8> .
+
+<http://aristo.allenai.org/id#22_7> <http://nlp.stanford.edu/basic/pobj> <http://aristo.allenai.org/id#22_9> .
+
+<http://aristo.allenai.org/id#22_0> <http://nlp.stanford.edu/dep/root> <http://aristo.allenai.org/id#22_2> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/dep/nsubj> <http://aristo.allenai.org/id#22_1> .
+
+<http://aristo.allenai.org/id#22_4> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#22_3> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#22_4> .
+
+<http://aristo.allenai.org/id#22_6> <http://nlp.stanford.edu/dep/aux> <http://aristo.allenai.org/id#22_5> .
+
+<http://aristo.allenai.org/id#22_2> <http://nlp.stanford.edu/dep/xcomp> <http://aristo.allenai.org/id#22_6> .
+
+<http://aristo.allenai.org/id#22_9> <http://nlp.stanford.edu/dep/det> <http://aristo.allenai.org/id#22_8> .
+
+<http://aristo.allenai.org/id#22_6> <http://nlp.stanford.edu/dep/prep_to> <http://aristo.allenai.org/id#22_9> .
+
+<http://aristo.allenai.org/id#1_4> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#1_4> , <http://aristo.allenai.org/id#2_15> .
+
+<http://aristo.allenai.org/id#1_5> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#1_5> , <http://aristo.allenai.org/id#1_15> .
+
+<http://aristo.allenai.org/id#2_3> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#2_3> , <http://aristo.allenai.org/id#5_1> , <http://aristo.allenai.org/id#5_5> , <http://aristo.allenai.org/id#5_9> , <http://aristo.allenai.org/id#16_1> , <http://aristo.allenai.org/id#21_4> .
+
+<http://aristo.allenai.org/id#3_3> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#3_3> , <http://aristo.allenai.org/id#4_6> , <http://aristo.allenai.org/id#14_7> .
+
+<http://aristo.allenai.org/id#4_8> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#4_8> , <http://aristo.allenai.org/id#4_10> .
+
+<http://aristo.allenai.org/id#10_13> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#10_13> , <http://aristo.allenai.org/id#5_14> , <http://aristo.allenai.org/id#21_10> .
+
+<http://aristo.allenai.org/id#8_16> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#8_16> , <http://aristo.allenai.org/id#8_2> , <http://aristo.allenai.org/id#19_7> .
+
+<http://aristo.allenai.org/id#8_12> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#8_12> , <http://aristo.allenai.org/id#15_12> .
+
+<http://aristo.allenai.org/id#9_7> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#9_7> , <http://aristo.allenai.org/id#9_10> , <http://aristo.allenai.org/id#9_14> .
+
+<http://aristo.allenai.org/id#10_4> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#10_4> , <http://aristo.allenai.org/id#10_1> , <http://aristo.allenai.org/id#21_7> .
+
+<http://aristo.allenai.org/id#10_9> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#10_9> , <http://aristo.allenai.org/id#10_12> .
+
+<http://aristo.allenai.org/id#14_2> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#14_2> , <http://aristo.allenai.org/id#19_2> .

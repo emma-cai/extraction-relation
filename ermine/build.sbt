@@ -26,6 +26,9 @@ dependencyOverrides ++= Set(
   // taggers (which is a dependency here) takes a dependency on. taggers looks for guava version
   // 14.0.1.
   "com.google.guava" % "guava" % "15.0",
+  // tinkerpop needs later versions than solr
+  "commons-io" % "commons-io" % "2.4",
+  "org.apache.httpcomponents" % "httpclient" % "4.3.1",
   // Minor version override.
   akkaModule("actor")
 )

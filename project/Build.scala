@@ -88,7 +88,9 @@ object ExtractionBuild extends Build {
     // other dependencies the parser needs.
     val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
 
-    Seq(jpl, stanfordPatched, stanfordModels)
+    val tinkerpop = "com.tinkerpop.blueprints" % "blueprints-sail-graph" % "2.5.0"
+
+    Seq(jpl, stanfordPatched, stanfordModels, tinkerpop)
   }
 
   val allenaiCommon = "org.allenai.common" %% "common" % "2014.04.28-SNAPSHOT"
@@ -115,7 +117,8 @@ object ExtractionBuild extends Build {
         "AllenAI Snapshots" at "http://utility.allenai.org:8081/nexus/content/repositories/snapshots",
         "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
         "spray" at "http://repo.spray.io",
-        "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/"),
+        "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/",
+  "Restlet repo" at "http://maven.restlet.org"),
       homepage := Some(url("http://github.com/allenai/extraction")))
 
   lazy val api = Project(
