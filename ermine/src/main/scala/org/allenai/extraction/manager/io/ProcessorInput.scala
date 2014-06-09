@@ -108,8 +108,8 @@ class AristoreFileInputConfig(val datasetId: String, val documentId: String) ext
 /** Initialized Aristore file input.  We need a separate initialized instance to fetch fresh
   * versions of files from Aristore, which we do with a per-pipeline AristoreActor.
   */
-class AristoreFileInput(val datasetId: String, val documentId: String)
-    (override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
+class AristoreFileInput(val datasetId: String, val documentId: String)(
+    override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
   val client = inject[ActorRef](AristoreActor.Id)

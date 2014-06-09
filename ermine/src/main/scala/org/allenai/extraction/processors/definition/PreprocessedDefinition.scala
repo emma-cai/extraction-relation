@@ -18,6 +18,7 @@ package org.allenai.extraction.processors.definition
   * who are a part of the scientific and cultural community; this group of people have 
   * attended a university and/or do research." gets split into two definitions during 
   * preprocessing. This will produce:
+  * (format: OFF)
   * PreprocessedDefinition {
   *    definitionCorpusName: "SimpleWiktionary.20140114.txt"
   *    rawDefinitionId : 214
@@ -35,6 +36,7 @@ package org.allenai.extraction.processors.definition
   *    "uncountable"
   *    }
   *  }
+  * (format: ON)
   */
 case class PreprocessedDefinition (
     definitionCorpusName : Option[String],

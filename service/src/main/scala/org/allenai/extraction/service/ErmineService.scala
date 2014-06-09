@@ -28,8 +28,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
   }
 
   // Preload pipelines.
-  val pipelineConfig = inject [Config](ServiceModuleId.Pipelines)
-  val pipelines: Map[String,ErminePipeline] = {
+  val pipelineConfig = inject[Config](ServiceModuleId.Pipelines)
+  val pipelines: Map[String, ErminePipeline] = {
     val mutablePipelines = for {
       (pipelineName: String, configObject: ConfigObject) <- pipelineConfig.root()
       config = configObject.toConfig
