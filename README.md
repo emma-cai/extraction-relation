@@ -39,11 +39,11 @@ question?
 As a first step, you should decompose your problem into useful substeps with
 I/O, and map each of these steps to a processor.  For example, we have
 (a processor that runs the Stanford dependency parser)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordParser.scala], and streams out the
-dependency parse as XML - and (a separate processor to convert that XML)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordXmltoTtl.scala] to the TTL graph
+dependency parse as XML - and [a separate processor to convert that XML](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordXmltoTtl.scala) to the TTL graph
 format. This way, we both have two smaller problems to solve - and someone
 could reuse the Stanford processor down the line.
 
-Processors should extend the [Processor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/Processor.scala). We've been putting processors in [extraction/processors](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala).
+Text-based processors should extend [TextProcessor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/Processor.scala). We've been putting processors in [extraction/processors](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala).
 For a simple example processor, check out [CatProcessor](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/CatProcessor.scala) (named after the Linux tool, not the furry mammal).
 
 Once written, the processor needs to be added to the processor configuration map, which is created in [ErmineModule](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/manager/ErmineModule.scala#L24). Ideally, we could look up processors at runtime by class name . . . but this is not very reliable with the current Scala reflection libraries.
@@ -99,7 +99,7 @@ You can specify inputs and outputs as objects with these keys, but you may also 
 
 URIs support two schemes:
 * `file`: A file on local disk, e.g. `file:///dev/null`. Must be a full path (non-relative). Input will read from this file, and output will overwrite this file with all data produced.
-* `aristore`: An aristore document. URIs are of the form `aristore://{documentType}/{datasetName}/{documentId}`. Currently `documentType` must be `file`, for `FileDocument`s. Note that Aristore doesn't allow `/` to appear in dataset names or document IDs, so the URI will be unambiguous.
+* `aristore`: An aristore document. URIs are of the form `aristore://{documentType}/{datasetName}/{documentId}`. Currently `documentType` must be `file`, for `FileDocument`s. Note that Aristore doesn't allow `/` to appear in dataset names or document IDs, so the URI will be unambiguous. If you wish to output a variable number of files to a single dataset, you can omit the final `/{documentId}`. This will cause the dataset directory to be passed in to the `Processor`, and any files created in that directory will be uploaded to Aristore upon pipeline completion.
 
 For input, Aristore documents are read at pipeline execution time, and will use the latest version of the document available.
 

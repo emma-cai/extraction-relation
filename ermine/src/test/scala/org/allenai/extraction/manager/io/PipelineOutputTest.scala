@@ -9,15 +9,15 @@ import scala.collection.JavaConverters._
 
 import java.io.File
 
-class ProcessorOutputTest extends UnitSpec {
+class PipelineOutputTest extends UnitSpec {
   implicit val bindingModule = TestErmineModule
 
   def configValue(values: (String, AnyRef)*): ConfigValue = {
     ConfigValueFactory.fromMap(values.toMap.asJava)
   }
 
-  "ProcessorOutput.fromConfigValue" should "build a file output correctly" in {
-    val output = ProcessorOutput.fromConfigValue(
+  "PipelineOutput.fromConfigValue" should "build a file output correctly" in {
+    val output = PipelineOutput.fromConfigValue(
       configValue("name" -> "a", "uri" -> "file:///dev/null"))
     output should be (FileOutput(Some("a"), new File("/dev/null")))
   }
