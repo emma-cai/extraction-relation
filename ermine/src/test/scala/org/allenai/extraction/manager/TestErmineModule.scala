@@ -11,7 +11,7 @@ import java.io.Writer
 
 /** Test processor that does nothing. */
 object NoOpProcessor extends FlatProcessor {
-  override protected def processText(source: Source, destination: Writer): Unit = { }
+  override def processText(source: Source, destination: Writer): Unit = { }
 }
 
 /** Test processor with two inputs and two outputs that cats the first input to the first output,
@@ -19,7 +19,7 @@ object NoOpProcessor extends FlatProcessor {
 object TwoByCatProcessor extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 2
-  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     for (line <- sources(0).getLines) {
       destinations(0).write(line + "\n")
     }

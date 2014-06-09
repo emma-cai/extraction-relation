@@ -52,11 +52,17 @@ object ProcessorInput {
   def buildUriInput(uri: URI): UriInput = {
     uri.getScheme match {
       case "file" => new FileInput(new File(uri))
-      case "aristore" => (uri.getAuthority, uri.getPath.stripPrefix("/").split("/")) match {
-        case ("file", Array(datasetId, documentId)) => {
-          new AristoreFileInputConfig(datasetId, documentId)
+      case "aristore" => {
+        val (datasetId, documentId) = uri.getPath.stripPrefix("/").split("/") match {
+          case Array(dataset, document) => (dataset, Some(document))
+          case Array(dataset) => (dataset, None)
+          case _ => throw new ErmineException(s"Invalid AristorePath: ${uri.getPath}")
         }
-        case _ => throw new ErmineException(s"Invalid Aristore uri: ${uri}")
+        uri.getAuthority match {
+          case "file" => new AristoreFileInputConfig(datasetId, documentId)
+          case _ =>
+            throw new ErmineException(s"Invalid Aristore document type: ${uri.getAuthority}")
+        }
       }
       case _ => throw new ErmineException("Unsupported input scheme: " + uri)
     }
@@ -74,11 +80,19 @@ case class NamedInput(name: String) extends ProcessorInput
 case class UnnamedInput() extends ProcessorInput
 
 /** An input with a URI. The input's source will be loaded from the URI. */
-sealed abstract case class UriInput() extends ProcessorInput with Processor.SingleInput
+sealed abstract case class UriInput() extends ProcessorInput with Processor.Input
 
 /** File input, specified with a file-schemed URI. */
 class FileInput(val file: File) extends UriInput() {
-  override def getSource(): Source = Source.fromFile(file)
+  override def getSources(): Seq[Source] = {
+    if (file.isDirectory()) {
+      (file.listFiles map { entry =>
+        Source.fromFile(entry).withDescription(entry.getPath)
+      }).toSeq
+    } else {
+      Seq(Source.fromFile(file))
+    }
+  }
   /** @throws ErmineException if the configured file isn't readable */
   override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
     if (!(file.isFile && file.canRead)) {
@@ -90,16 +104,21 @@ class FileInput(val file: File) extends UriInput() {
 
 /** Uninitialized Aristore input. This will throw an exception if getSource is called on it; an
   * initialized instance needs to be fetched.
+  * @param datasetId the ID of the dataset to read from
+  * @param documentId if set, the single file to read from. If unset, assumes full dataset input,
+  * and all files in the dataset will be returned as sources.
   * @see AristoreFileInput
   */
-class AristoreFileInputConfig(val datasetId: String, val documentId: String) extends UriInput() {
+class AristoreFileInputConfig(val datasetId: String,
+    val documentId: Option[String]) extends UriInput() {
+
   /** @return a new AristoreFileInput with a FileDocument containing the requested file */
   override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
     new AristoreFileInput(datasetId, documentId)
   }
 
   /** @throws ErmineException when invoked; this represents an uninitialized instance */
-  override def getSource(): Source = {
+  override def getSources(): Seq[Source] = {
     throw new ErmineException("getSource called on uninitialized Aristore input!")
   }
 }
@@ -107,18 +126,29 @@ class AristoreFileInputConfig(val datasetId: String, val documentId: String) ext
 /** Initialized Aristore file input.  We need a separate initialized instance to fetch fresh
   * versions of files from Aristore, which we do with a per-pipeline AristoreActor.
   */
-class AristoreFileInput(val datasetId: String, val documentId: String)(
+class AristoreFileInput(val datasetId: String, val documentId: Option[String])(
     override implicit val bindingModule: BindingModule) extends UriInput() with Injectable {
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
   val client = inject[ActorRef](AristoreActor.Id)
 
-  /** A future holding the document we'll be reading. */
-  val document: Future[FileDocument] = {
-    // Query the datastore for the file requested.
-    // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
-    // executions.
-    (client ? AristoreActor.InitializeInput(datasetId, documentId))(10.minutes).mapTo[FileDocument]
+  // TODO(jkinkead): Use the context from our actor system?
+  import scala.concurrent.ExecutionContext.Implicits.global
+
+  /** A future holding the file we'll be reading from. */
+  val file: Future[File] = documentId match {
+    case Some(id) => {
+      // Query the datastore for the file requested.
+      val request = AristoreActor.InitializeFileInput(datasetId, id)
+      // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
+      // executions.
+      (client ? request)(10.minutes).mapTo[FileDocument] map { _.file }
+    }
+    case None => {
+      // Query the datastore for the full dataset.
+      val request = AristoreActor.InitializeDatasetInput(datasetId)
+      (client ? request)(10.minutes).mapTo[File]
+    }
   }
 
   /** @throws ErmineException when invoked; this copy shouldn't reused between pipeline runs. */
@@ -127,14 +157,24 @@ class AristoreFileInput(val datasetId: String, val documentId: String)(
   }
 
   /** @return the source for the downloaded aristore file */
-  override def getSource(): Source = {
-    val file = Await.result(document, Duration.Inf)
-    Source.fromFile(file.file)
+  override def getSources(): Seq[Source] = {
+    val fileResult = Await.result(file, Duration.Inf)
+    if (fileResult.isDirectory()) {
+      (fileResult.listFiles map { entry =>
+        Source.fromFile(entry).withDescription(entry.getPath)
+      }).toSeq
+    } else {
+      Seq(Source.fromFile(fileResult))
+    }
   }
 
   /** Deletes the file downloaded from Aristore. */
   override def cleanup(): Future[Unit] = {
-    import scala.concurrent.ExecutionContext.Implicits.global
-    document map { _.file.delete() }
+    file map { fileResult =>
+      if (fileResult.isDirectory()) {
+        fileResult.listFiles map { _.delete() }
+      }
+      fileResult.delete()
+    }
   }
 }

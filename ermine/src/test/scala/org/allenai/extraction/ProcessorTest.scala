@@ -5,60 +5,58 @@ import org.allenai.common.testkit.UnitSpec
 import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito.verify
 
-import scala.io.Source
-
 class ProcessorTest extends UnitSpec with MockitoSugar {
   object ConcreteProcessor extends Processor {
     override val numInputs = 2
     override val numOutputs = 1
-    override protected def processInternal(sources: Seq[Source],
+    override protected def processInternal(sources: Seq[Processor.Input],
       destinations: Seq[Processor.Output]): Unit = {
 
-      sources(1).getLines
+      sources(1).getSources
       destinations(0).getOutputFile
     }
   }
 
-  "A processor" should "delegate to the provided source and output" in {
-    val usedSource = mock[Source]
-    val unusedSource = mock[Source]
+  "A processor" should "delegate to the provided input and output" in {
+    val usedInput = mock[Processor.Input]
+    val unusedInput = mock[Processor.Input]
     val mockOutput = mock[Processor.Output]
 
-    ConcreteProcessor.process(Seq(unusedSource, usedSource), Seq(mockOutput))
+    ConcreteProcessor.process(Seq(unusedInput, usedInput), Seq(mockOutput))
 
-    verify(usedSource).getLines
+    verify(usedInput).getSources
     verify(mockOutput).getOutputFile
   }
 
-  it should "not allow too many sources" in {
-    val mockSource = mock[Source]
+  it should "not allow too many inputs" in {
+    val mockInput = mock[Processor.Input]
     val mockOutput = mock[Processor.Output]
 
     an[IllegalArgumentException] should be thrownBy {
-      ConcreteProcessor.process(Seq(mockSource, mockSource, mockSource), Seq(mockOutput))
+      ConcreteProcessor.process(Seq(mockInput, mockInput, mockInput), Seq(mockOutput))
     }
   }
-  it should "not allow too many writers" in {
-    val mockSource = mock[Source]
+  it should "not allow too many outputs" in {
+    val mockInput = mock[Processor.Input]
     val mockOutput = mock[Processor.Output]
 
     an[IllegalArgumentException] should be thrownBy {
-      ConcreteProcessor.process(Seq(mockSource, mockSource), Seq(mockOutput, mockOutput))
+      ConcreteProcessor.process(Seq(mockInput, mockInput), Seq(mockOutput, mockOutput))
     }
   }
-  it should "not allow too few sources" in {
-    val mockSource = mock[Source]
+  it should "not allow too few inputs" in {
+    val mockInput = mock[Processor.Input]
     val mockOutput = mock[Processor.Output]
 
     an[IllegalArgumentException] should be thrownBy {
-      ConcreteProcessor.process(Seq(mockSource), Seq(mockOutput))
+      ConcreteProcessor.process(Seq(mockInput), Seq(mockOutput))
     }
   }
   it should "not allow too few outputs" in {
-    val mockSource = mock[Source]
+    val mockInput = mock[Processor.Input]
 
     an[IllegalArgumentException] should be thrownBy {
-      ConcreteProcessor.process(Seq(mockSource, mockSource), Seq.empty)
+      ConcreteProcessor.process(Seq(mockInput, mockInput), Seq.empty)
     }
   }
 }

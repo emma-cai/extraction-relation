@@ -116,8 +116,8 @@ case class FileOutput(override val name: Option[String], val file: File) extends
 /** Uninitialized Aristore output. This will throw an exception if getOutputFile is called on it; an
   * initialized instance needs to be fetched.
   * @param datasetId the ID of the dataset to output to
-  * @param documentId if set, the single file to output to. If unset, assumes full dataset
-  * output, and the file returned will be the directory for dataset output.
+  * @param documentId if set, the single file to output to. If unset, assumes full dataset output,
+  * and the file returned will be the directory for dataset output.
   * @see AristoreFileOutput
   */
 class AristoreFileOutputConfig(override val name: Option[String], val datasetId: String,

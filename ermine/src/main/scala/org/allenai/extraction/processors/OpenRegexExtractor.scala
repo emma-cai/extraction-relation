@@ -47,7 +47,7 @@ abstract class OpenRegexExtractor(cascadeFilePath: String) extends FlatProcessor
   /** The main extraction method: takes an Input Source with the text to process and writes
     * extraction output out to the specified Writer.
     */
-  override protected def processText(input: Source, destination: Writer): Unit = {
+  override def processText(input: Source, destination: Writer): Unit = {
 
     // Iterate over input sentences (definitions), processing each
     for (line <- input.getLines) {

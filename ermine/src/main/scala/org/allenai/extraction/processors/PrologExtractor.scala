@@ -52,7 +52,7 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String)(
 
   val log = inject[LogProvider].getLog(this)
 
-  override protected def processText(source: Source, destination: Writer): Unit = {
+  override def processText(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
     ttlFile.deleteOnExit

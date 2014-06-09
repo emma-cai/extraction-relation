@@ -61,13 +61,16 @@ object Processor {
   */
 abstract class TextProcessor extends Processor {
   /** Process data from the given input(s), writing to the given output(s). */
-  protected def processInternal(sources: Seq[Processor.Input],
+  override protected def processInternal(sources: Seq[Processor.Input],
     destinations: Seq[Processor.Output]): Unit = {
 
+    val sourceInstances = (sources map { _.getSources() }).flatten
     val destinationWriters = for {
       destination <- destinations
     } yield new FileWriter(destination.getOutputFile)
-    val sourceInstances = (sources map { _.getSources() }).flatten
+    if (sourceInstances.size != sources.size) {
+      throw new RuntimeException("TextProcessor requires all inputs to be non-directory inputs!")
+    }
 
     processText(sourceInstances, destinationWriters)
 
@@ -79,17 +82,60 @@ abstract class TextProcessor extends Processor {
   }
 
   /** Process data from the given input(s), writing to the given text stream output. */
-  protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit
+  def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit
 }
 
-/** A processor with only one input and output. */
+/** A text processor with only one input and output. */
 abstract class FlatProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
-  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     processText(sources.head, destinations.head)
   }
 
   /** Process data from the given input, writing to the given output. */
-  protected def processText(source: Source, destination: Writer): Unit
+  def processText(source: Source, destination: Writer): Unit
+}
+
+/** A text processor with one input and output which can be either a pair of
+  * singular files or a pair of directories.
+  */
+abstract class MultiTextProcessor extends Processor {
+  override val numInputs = 1
+  override val numOutputs = 1
+
+  /** Process data from the given input(s), writing to the given output(s). */
+  override protected def processInternal(sources: Seq[Processor.Input],
+    destinations: Seq[Processor.Output]): Unit = {
+
+    val sourceInstances = sources(0).getSources()
+    val destinationFile = destinations(0).getOutputFile()
+    // Verify that, if we were given multiple sources, we can create enough outputs to satisfy them
+    // all.
+    if (sourceInstances.size > 1 && !destinationFile.isDirectory()) {
+      throw new RuntimeException(
+        "MultiTextProcessor given multiple inputs, but a non-directory output!")
+    }
+    val destinationWriters = if (destinationFile.isDirectory()) {
+      for (source <- sourceInstances) yield {
+        val sourceFileName = (new File(source.descr)).getName
+        new FileWriter(new File(destinationFile, sourceFileName))
+      }
+    } else {
+      Seq(new FileWriter(destinationFile))
+    }
+
+    for ((source, destination) <- sourceInstances zip destinationWriters) {
+      processText(source, destination)
+    }
+
+    sourceInstances foreach { _.close }
+    destinationWriters foreach { writer =>
+      writer.flush
+      writer.close
+    }
+  }
+
+  /** Process data from the given input, writing to the given output. */
+  def processText(source: Source, destination: Writer): Unit
 }
