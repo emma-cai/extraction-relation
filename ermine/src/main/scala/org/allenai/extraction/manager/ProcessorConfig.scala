@@ -11,7 +11,7 @@ import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
 case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorInput],
-  outputs: Seq[ProcessorOutput]) {
+  outputs: Seq[PipelineOutput]) {
   /** @return true if this processor expects unnamed inputs */
   def wantsUnnamedInput: Boolean = {
     // Either the first (and by implication all subsequent) inputs are unnamed, or none are. We
@@ -52,7 +52,7 @@ object ProcessorConfig {
       ProcessorInput.fromConfigValue
     }
     val outputs = getIOValues(config, "outputs", processor.numOutputs) {
-      ProcessorOutput.fromConfigValue
+      PipelineOutput.fromConfigValue
     }
 
     if (inputs.size != processor.numInputs) {

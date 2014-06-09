@@ -31,7 +31,7 @@ object StanfordTtl extends FlatProcessor {
   }
 
   /** Outputs the Stanford parse as TTL from the given source. */
-  override protected def processInternal(source: Source, destination: Writer): Unit = {
+  override protected def processText(source: Source, destination: Writer): Unit = {
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)
 

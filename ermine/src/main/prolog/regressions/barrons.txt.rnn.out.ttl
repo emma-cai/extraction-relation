@@ -9606,28 +9606,6 @@
 	pred:agent <http://aristo.allenai.org/id#608.10> ;
 	pred:in <http://aristo.allenai.org/id#608.15> ;
 	pred:isa "\"move\"" ;
-	pred:object <http://aristo.allenai.org/id#608.10> ;
-	rel:effect <http://aristo.allenai.org/id#608.17> .
-<http://aristo.allenai.org/id#608.15>
-	pred:isa "\"the same direction\"" .
-<http://aristo.allenai.org/id#608.10>
-	a <entity> ;
-	pred:isa "\"because all\"" .
-<http://aristo.allenai.org/id#608.17>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#608.10> ;
-	pred:in <http://aristo.allenai.org/id#608.21> ;
-	pred:isa "\"result\"" .
-<http://aristo.allenai.org/id#608.21>
-	pred:isa "\"two different poles ends\"" .
-<http://aristo.allenai.org/id#608.10>
-	a <entity> ;
-	pred:isa "\"because all\"" .
-<http://aristo.allenai.org/id#608.11>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#608.10> ;
-	pred:in <http://aristo.allenai.org/id#608.15> ;
-	pred:isa "\"move\"" ;
 	rel:effect <http://aristo.allenai.org/id#608.17> .
 <http://aristo.allenai.org/id#608.15>
 	pred:isa "\"the same direction\"" .
@@ -11246,26 +11224,6 @@
 <http://aristo.allenai.org/id#736.7>
 	a <entity> ;
 	pred:isa "\"the weather\"" .
-<http://aristo.allenai.org/id#736.2>
-	a <entity> ;
-	pred:isa "\"Other conditions\"" .
-<http://aristo.allenai.org/id#736.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#736.2> ;
-	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#736.2> ;
-	rel:effect <http://aristo.allenai.org/id#736.5> .
-<http://aristo.allenai.org/id#736.2>
-	a <entity> ;
-	pred:isa "\"Other conditions\"" .
-<http://aristo.allenai.org/id#736.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#736.2> ;
-	pred:isa "\"describe\"" ;
-	pred:object <http://aristo.allenai.org/id#736.7> .
-<http://aristo.allenai.org/id#736.7>
-	a <entity> ;
-	pred:isa "\"the weather\"" .
 <http://aristo.allenai.org/id#737.1>
 	a <entity> ;
 	pred:isa "\"Humidity\"" ;
@@ -12783,26 +12741,6 @@
 	pred:agent <http://aristo.allenai.org/id#875.1> ;
 	pred:isa "\"find\"" ;
 	pred:object <http://aristo.allenai.org/id#876.14> .
-<http://aristo.allenai.org/id#876.14>
-	a <entity> ;
-	pred:isa "\"light source\"" .
-<http://aristo.allenai.org/id#876.15>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#876.14> ;
-	pred:isa "\"need\"" ;
-	pred:object <http://aristo.allenai.org/id#876.14> ;
-	rel:effect <http://aristo.allenai.org/id#876.19> .
-<http://aristo.allenai.org/id#876.14>
-	a <entity> ;
-	pred:isa "\"light source\"" .
-<http://aristo.allenai.org/id#876.19>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#876.14> ;
-	pred:isa "\"grow\"" ;
-	pred:object <http://aristo.allenai.org/id#876.20> .
-<http://aristo.allenai.org/id#876.20>
-	a <entity> ;
-	pred:isa "\"sunflowers\"" .
 <http://aristo.allenai.org/id#877.7>
 	a <entity> ;
 	pred:isa "\"Rock music\"" ;
@@ -13898,18 +13836,6 @@
 <http://aristo.allenai.org/id#942.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#942.4> ;
-	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#942.4> .
-<http://aristo.allenai.org/id#942.13>
-	a <entity> ;
-	pred:isa "\"a cow eating grass\"" ;
-	rel:example <http://aristo.allenai.org/id#942.5> .
-<http://aristo.allenai.org/id#942.4>
-	a <entity> ;
-	pred:isa "\"an animal\"" .
-<http://aristo.allenai.org/id#942.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#942.4> ;
 	pred:isa "\"use\"" .
 <http://aristo.allenai.org/id#942.13>
 	a <entity> ;
@@ -13925,18 +13851,6 @@
 <http://aristo.allenai.org/id#942.13>
 	a <entity> ;
 	pred:isa "\"a cow eating grass\"" .
-<http://aristo.allenai.org/id#942.18>
-	a <entity> ;
-	pred:isa "\"a horse eating hay\"" ;
-	rel:example <http://aristo.allenai.org/id#942.5> .
-<http://aristo.allenai.org/id#942.4>
-	a <entity> ;
-	pred:isa "\"an animal\"" .
-<http://aristo.allenai.org/id#942.5>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#942.4> ;
-	pred:isa "\"use\"" ;
-	pred:object <http://aristo.allenai.org/id#942.4> .
 <http://aristo.allenai.org/id#942.18>
 	a <entity> ;
 	pred:isa "\"a horse eating hay\"" ;
@@ -16398,29 +16312,6 @@
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1083.2> ;
 	pred:isa "\"fly\"" ;
-	pred:object <http://aristo.allenai.org/id#1083.2> ;
-	rel:effect <http://aristo.allenai.org/id#1083.4> .
-<http://aristo.allenai.org/id#1083.2>
-	a <entity> ;
-	pred:isa "\"A plane\"" .
-<http://aristo.allenai.org/id#1083.4>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1083.2> ;
-	pred:isa "\"be\"" ;
-	pred:object <http://aristo.allenai.org/id#1083.6> ;
-	pred:of <http://aristo.allenai.org/id#1083.9> .
-<http://aristo.allenai.org/id#1083.6>
-	a <entity> ;
-	pred:isa "\"exemplify\"" .
-<http://aristo.allenai.org/id#1083.9>
-	pred:isa "\"kinetic energy\"" .
-<http://aristo.allenai.org/id#1083.2>
-	a <entity> ;
-	pred:isa "\"A plane\"" .
-<http://aristo.allenai.org/id#1083.3>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1083.2> ;
-	pred:isa "\"fly\"" ;
 	rel:effect <http://aristo.allenai.org/id#1083.4> .
 <http://aristo.allenai.org/id#1083.2>
 	a <entity> ;
@@ -16468,26 +16359,6 @@
 <http://aristo.allenai.org/id#1086.12>
 	a <entity> ;
 	pred:isa "\"mechanical energy\"" .
-<http://aristo.allenai.org/id#1086.12>
-	a <entity> ;
-	pred:isa "\"mechanical energy\"" .
-<http://aristo.allenai.org/id#1086.13>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1086.12> ;
-	pred:isa "\"change\"" ;
-	pred:object <http://aristo.allenai.org/id#1086.12> ;
-	rel:effect <http://aristo.allenai.org/id#1086.16> .
-<http://aristo.allenai.org/id#1086.12>
-	a <entity> ;
-	pred:isa "\"mechanical energy\"" .
-<http://aristo.allenai.org/id#1086.16>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1086.12> ;
-	pred:isa "\"sound\"" ;
-	pred:object <http://aristo.allenai.org/id#1086.17> .
-<http://aristo.allenai.org/id#1086.17>
-	a <entity> ;
-	pred:isa "\"energy\"" .
 <http://aristo.allenai.org/id#1087.1>
 	a <event> ;
 	pred:in <http://aristo.allenai.org/id#1087.6> ;
@@ -16520,26 +16391,6 @@
 <http://aristo.allenai.org/id#1089.6>
 	a <entity> ;
 	pred:isa "\"an example of mechanical energy changing to sound energy\"" .
-<http://aristo.allenai.org/id#1089.10>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1089.9> ;
-	pred:isa "\"change\"" ;
-	pred:object <http://aristo.allenai.org/id#1089.9> ;
-	rel:effect <http://aristo.allenai.org/id#1089.12> .
-<http://aristo.allenai.org/id#1089.9>
-	a <entity> ;
-	pred:isa "\"mechanical energy\"" .
-<http://aristo.allenai.org/id#1089.12>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1089.9> ;
-	pred:isa "\"sound\"" ;
-	pred:object <http://aristo.allenai.org/id#1089.13> .
-<http://aristo.allenai.org/id#1089.13>
-	a <entity> ;
-	pred:isa "\"energy\"" .
-<http://aristo.allenai.org/id#1089.9>
-	a <entity> ;
-	pred:isa "\"mechanical energy\"" .
 <http://aristo.allenai.org/id#1090.2>
 	a <entity> ;
 	pred:isa "\"A blender\"" ;
@@ -16604,7 +16455,6 @@
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1094.3> ;
 	pred:isa "\"occur\"" ;
-	pred:object <http://aristo.allenai.org/id#1094.3> ;
 	rel:when <http://aristo.allenai.org/id#1094.8> .
 <http://aristo.allenai.org/id#1094.11>
 	a <entity> ;
