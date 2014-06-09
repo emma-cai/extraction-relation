@@ -8,14 +8,16 @@ Noun := TypedOpenRegex {
 }
 
 NP1 := TypedOpenRegex {
-   (<NP>: <pos=/RB.*/> @Det? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+   (<pos=/RB.*/> @Det? (<NP>: (<Adjs>: @AP1)? (<Nouns>: @Noun+)) )
   | (?: @Det? (<NP>: (<Adjs>: @AP1)? (<Nouns>: @Noun+)))
-   | (<NP>: <pos=/RB.*/>? @Det (<Adjs>: @AP1) )
+   | (<pos=/RB.*/>? (<NP>: @Det (<Adjs>: @AP1)) )
    | (<NP>: @Det (<pos=/VBN/ & !lemma="be">))
+// being happy, being polluted, being there
+   | (<NP>: <pos=/VBG/> (@AP1 | <pos=/RB/>))
 }
 
 NP1NoDet := TypedOpenRegex {
-   (<NP>: <pos=/RB.*/>? (<Adjs>: @AP1)? (<Nouns>: @Noun+) )
+   (<pos=/RB.*/>? (<NP>:  (<Adjs>: @AP1)? (<Nouns>: @Noun+) ))
 }
 
 NP2 := TypedOpenRegex {

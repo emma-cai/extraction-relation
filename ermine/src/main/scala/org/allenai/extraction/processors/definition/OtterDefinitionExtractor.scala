@@ -3,8 +3,9 @@ package org.allenai.extraction.processors.definition
 import java.io.Writer
 import scala.io.Source
 import spray.json.DefaultJsonProtocol._
-import spray.json.pimpAny
+import spray.json._
 import org.allenai.extraction.processors.OpenRegexExtractor
+
 
 /** A Case Class and Companion Object for Definition Extraction Output to support outputting results in JSON.
   * The first three parameters come from the input and the last one contains the extraction results-
@@ -31,27 +32,50 @@ object OtterExtractionResult {
   */
 abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
   
-  /** The main extraction method: Input Source contains a bunch of definitions preprocessed
-    * into the format: <term>\t<wordClass>\t<definition>. Output will be written out to the
-    * specified destination
+  /** The main extraction method: Input Source contains a bunch of definitions preprocessed into the format 
+    *  represented by the PreprocessedDefinition structure. The preprocessed output serialized into JSONs, 
+    *  is read here- from Source, and processed. The expected input structure is: "[" on the first line, followed
+    *  by one output (preprocessed definition) JSON per line separated by a "," per line, and a concluding "]" on
+    *  the last line. For e.g.:
+    *  [
+    *  {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":1,"rawDefinitionLine":"a priorichampionship\tNoun\t#\
+    *   A 'championship' is a contest to decide which person or team is best at a sport.","definedTerm":"a priorichampionship",\
+    *   "wordClass":"Noun","preprocessedDefinitions":["A championship is a contest to decide which person or team is best at a sport."],\
+    *   "metaData":[]}
+    *  ,
+    *  {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":2,"rawDefinitionLine":"abacus\tNoun\t#{{countable}} An 'abacus' is an ancient calculating device. It is made of a frame with beads on various rods.","definedTerm":"abacus","wordClass":"Noun","preprocessedDefinitions":["An abacus is an ancient calculating device. It is made of a frame with beads on various rods."],"metaData":["countable"]}
+,
+    *  Output will be written out to the specified destination.
     */
   override protected def processInternal(defnInputSource: Source, destination: Writer): Unit = {
     //Start output Json 
-    destination.write("[")
-    // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
+    destination.write("[\n")
+    // Iterate over input JSONs and process definitions.
     var beginning = true
-    for (line <- defnInputSource.getLines) {
-      val (term, termWordClass, termDefinition) = preprocessLine(line)
-      if (termWordClass.equalsIgnoreCase(wordClass)) {
-        val results = super.extractText(termDefinition)
-        val extractionOp = OtterExtractionResult(term, termWordClass, termDefinition, results)
-        if (!beginning) {
-          destination.write(",")
-        }
-        destination.write(extractionOp.toJson.prettyPrint)
-        if (beginning) {
-          beginning = false
-        }
+    for (rawLine <- defnInputSource.getLines) {
+      val line = rawLine.trim()
+      
+      // Skip over first line- it is expected to contain a "[",  the last line which is expected 
+      // to contain a "]" and lines in the middle that have just a ",". 
+      if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) { 
+        val preprocessedDefinitionsAst = line.parseJson
+        val preprocessedDefinitions = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
+        for {
+          preprocessedDefinition <- preprocessedDefinitions.preprocessedDefinitions
+          termWordClass <- preprocessedDefinitions.wordClass
+          if (termWordClass.equalsIgnoreCase(wordClass))
+        } {
+            val results = super.extractText(preprocessedDefinition)
+            val extractionOp = OtterExtractionResult(
+                                 preprocessedDefinitions.definedTerm,  termWordClass, preprocessedDefinition, results)
+            if (!beginning) {
+              destination.write(",\n")
+            }
+            destination.write(extractionOp.toJson.compactPrint + "\n")
+            if (beginning) {
+              beginning = false
+            }
+          }
       }
     }   
     // End output Json
