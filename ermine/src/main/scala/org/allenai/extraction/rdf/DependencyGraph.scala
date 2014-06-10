@@ -1,13 +1,18 @@
 package org.allenai.extraction.rdf
 
+import org.allenai.extraction.manager.io.SourceInputStream
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import com.tinkerpop.blueprints.Edge
 import com.tinkerpop.blueprints.Vertex
 import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
 
-import java.io.FileInputStream
+import scala.io.Source
 import scala.collection.JavaConverters._
+
+import java.io.Writer
+import java.nio.charset.StandardCharsets
+import org.apache.commons.io.output.WriterOutputStream
 
 
 /** wrapper class to support dependency-specific operations on an rdf graph */
@@ -36,6 +41,17 @@ class DependencyGraph extends MemoryStoreSailGraph {
   override def shutdown() = {
     outputGraph.shutdown()
     super.shutdown()
+  }
+
+  def loadTurtle(source: Source) = {
+    val sourceStream = new SourceInputStream(source, "UTF-8")
+    loadRDF(sourceStream, "http://aristo.allenai.org", "turtle", null)
+  }
+
+  def saveTurtle(sink: Writer) = {
+    val sinkStream = new WriterOutputStream(sink, StandardCharsets.UTF_8)
+    saveRDF(sinkStream, "turtle") // original input
+    outputGraph.saveRDF(sinkStream, "turtle") // any additions
   }
 
   /** wrap SailGraph.executeSparql */

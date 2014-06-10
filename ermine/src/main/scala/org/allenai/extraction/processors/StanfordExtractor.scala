@@ -1,25 +1,22 @@
 package org.allenai.extraction.processors
 
 import org.allenai.extraction.TextProcessor
-import org.allenai.extraction.manager.io.SourceInputStream
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import scala.io.Source
 
 import java.io.Writer
-import java.nio.charset.StandardCharsets
-import org.apache.commons.io.output.WriterOutputStream
 
 
-/** processor to fix common dependency-parse errors */
+/** processor to match dependency patterns */
 object StanfordExtractor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
   // SPARQL queries
-  val queries: Seq[Tuple2[String,String]] = Seq(
-    // (id, query)
+  val queries: Seq[(String,String)] = Seq(
+    // (id, query) where id is for logging rule matches 
 
     //"In the hot weather our bodies sweat perspiration bringing water to our[our] skin."
     //% ("our bodies"/?x "sweat" "perspiration" [ "In the hot weather" ] )	""/EFFECT-55	("our bodies"/?x "bring" "water" [ "to our[our] skin" ] )
@@ -215,28 +212,20 @@ object StanfordExtractor extends TextProcessor {
   )
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    // convert input
     val source = sources(0)
-    val sourceStream = new SourceInputStream(source, "UTF-8")
-    // load graph
     val graph = new DependencyGraph()
-    graph.loadRDF(sourceStream, "http://aristo.allenai.org/", "turtle", null)
+    graph.loadTurtle(source)
 
     // match patterns
     for ((id, query) <- queries; 
          map <- graph.executeQuery(query)) {
-      // add results
+      // add results, recording id for logging
       graph.addEdge(id, map("subject"), map("object"), map("predicate").toLiteral)
     }
 
     // convert output
     val sink: Writer = destinations(0)
-    val sinkStream: WriterOutputStream = new WriterOutputStream(sink, StandardCharsets.UTF_8)
-    // write graph
-    graph.saveRDF(sinkStream, "turtle") // original input
-    graph.outputGraph.saveRDF(sinkStream, "turtle") // any additions
-
-    // close
+    graph.saveTurtle(sink)
     graph.shutdown()
   }
 }

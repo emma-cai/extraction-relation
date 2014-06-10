@@ -1,15 +1,12 @@
 package org.allenai.extraction.processors
 
 import org.allenai.extraction.TextProcessor
-import org.allenai.extraction.manager.io.SourceInputStream
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import scala.io.Source
 
 import java.io.Writer
-import java.nio.charset.StandardCharsets
-import org.apache.commons.io.output.WriterOutputStream
 
 
 /** processor to fix common dependency-parse errors */
@@ -66,27 +63,19 @@ object StanfordFixProcessor extends TextProcessor {
   )
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    // convert input
     val source = sources(0)
-    val sourceStream = new SourceInputStream(source, "UTF-8")
-    // load graph
     val graph = new DependencyGraph()
-    graph.loadRDF(sourceStream, "http://aristo.allenai.org/", "turtle", null)
+    graph.loadTurtle(source)
 
     // match patterns
-    for (query <- queries; map <- graph.executeQuery(query)) {
+    for (query <- queries;
+         map <- graph.executeQuery(query)) {
       // add results
       graph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
-    // convert output
     val sink: Writer = destinations(0)
-    val sinkStream: WriterOutputStream = new WriterOutputStream(sink, StandardCharsets.UTF_8)
-    // write graph
-    graph.saveRDF(sinkStream, "turtle") // original input
-    graph.outputGraph.saveRDF(sinkStream, "turtle") // any additions
-
-    // close
+    graph.saveTurtle(sink)
     graph.shutdown()
   }
 }
