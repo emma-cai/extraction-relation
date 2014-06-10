@@ -73,7 +73,7 @@ object StanfordFixProcessor extends TextProcessor {
       map <- graph.executeQuery(query)
     } {
       // add results
-      graph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      graph.outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
     val sink: Writer = destinations(0)
