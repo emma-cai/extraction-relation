@@ -1,7 +1,8 @@
 package org.allenai.extraction.service
 
 import org.allenai.common.Config._
-import org.allenai.common.{ InfoRoute, Version }
+import org.allenai.common.Version
+import org.allenai.common.webapp.InfoRoute
 import org.allenai.extraction.ConfigModule
 
 import akka.actor.ActorSystem

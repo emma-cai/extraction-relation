@@ -1,6 +1,6 @@
 package org.allenai.extraction.service
 
-import org.allenai.common.InfoRoute
+import org.allenai.common.webapp.InfoRoute
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ErminePipeline
 
