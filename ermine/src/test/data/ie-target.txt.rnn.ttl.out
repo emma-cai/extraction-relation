@@ -3007,3 +3007,5 @@
 <http://aristo.allenai.org/id#10_9> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#10_9> , <http://aristo.allenai.org/id#10_12> .
 
 <http://aristo.allenai.org/id#14_2> <http://nlp.stanford.edu/coref/ref> <http://aristo.allenai.org/id#14_2> , <http://aristo.allenai.org/id#19_2> .
+
+<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/dep/prepc_by> <http://aristo.allenai.org/id#2_10> , <http://aristo.allenai.org/id#2_13> .

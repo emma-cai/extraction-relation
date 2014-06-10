@@ -31,6 +31,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "StanfordParser" -> StanfordParser,
       "StanfordTtl" -> StanfordTtl,
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
+      "StanfordFixProcessor" -> StanfordFixProcessor,
       "CatProcessor" -> CatProcessor,
       "TurtleProcessor" -> TurtleProcessor)
 

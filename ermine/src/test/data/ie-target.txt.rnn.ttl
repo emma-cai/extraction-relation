@@ -1,3 +1,4 @@
+# sample output from Stanford parser
 
 @prefix id: <http://aristo.allenai.org/id#> .
 
