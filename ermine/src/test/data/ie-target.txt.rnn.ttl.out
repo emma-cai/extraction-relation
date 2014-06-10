@@ -3014,9 +3014,9 @@
 
 <http://aristo.allenai.org/id#1_7> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#1_12> .
 
-<http://aristo.allenai.org/id#2_10> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#2_8> .
-
 <http://aristo.allenai.org/id#2_13> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#2_8> .
+
+<http://aristo.allenai.org/id#2_10> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#2_8> .
 
 <http://aristo.allenai.org/id#3_3> <http://aristo.allenai.org/rel/purpose> <http://aristo.allenai.org/id#3_7> .
 

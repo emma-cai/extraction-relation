@@ -63,5 +63,18 @@ class DependencyGraph extends MemoryStoreSailGraph {
     } yield javaMap.asScala.toMap
   }
 
+  /** find conuncts of a node */
+  def conjoinedNodes(node: Vertex): Seq[Vertex] = {
+    val uri: String = node.toUri
+    val query: String = s"""
+      SELECT ?conj WHERE {
+        { <$uri> dep:conj_and ?conj . }
+        UNION
+        { ?conj dep:conj_and <$uri> . }
+      }"""
+    val result: Seq[Map[String,Vertex]] = executeQuery(query)
+    result.headOption map { _.values.toSeq } getOrElse { Seq.empty }
+  }
+
 }
 

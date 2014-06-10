@@ -6,6 +6,7 @@ import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import scala.io.Source
 
+import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
 
@@ -221,8 +222,18 @@ object StanfordExtractor extends TextProcessor {
       (id, query) <- queries
       map <- graph.executeQuery(query)
     } {
-      // add results, recording id for logging
-      graph.addEdge(id, map("subject"), map("object"), map("predicate").toLiteral)
+      val subj: Vertex = map("subject")
+      val subjs: Seq[Vertex] = graph.conjoinedNodes(subj) :+ subj
+      val obj: Vertex = map("object")
+      val objs: Seq[Vertex] = graph.conjoinedNodes(obj) :+ obj
+      // add relation for each combination of conjuncts
+      for {
+        subjConj <- subjs
+        objConj <- objs
+      } {
+        // record id for logging
+        graph.outputGraph.addEdge(id, subjConj, objConj, map("predicate").toLiteral)
+      }
     }
 
     // convert output
