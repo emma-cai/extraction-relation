@@ -217,8 +217,10 @@ object StanfordExtractor extends TextProcessor {
     graph.loadTurtle(source)
 
     // match patterns
-    for ((id, query) <- queries; 
-         map <- graph.executeQuery(query)) {
+    for {
+      (id, query) <- queries
+      map <- graph.executeQuery(query)
+    } {
       // add results, recording id for logging
       graph.addEdge(id, map("subject"), map("object"), map("predicate").toLiteral)
     }

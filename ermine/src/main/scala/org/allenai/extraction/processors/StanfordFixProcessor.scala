@@ -22,7 +22,7 @@ object StanfordFixProcessor extends TextProcessor {
       ?y dep:dep ?z .
       ?y token:pos "IN" .
       ?z token:pos ?pos .
-      FILTER(regex(str(?pos), "^VB")) .
+      FILTER(STRSTARTS(str(?pos), "VB")) .
       ?y token:lemma ?prep .
       BIND(CONCAT("dep:prepc_", str(?prep)) AS ?p)
     }""",
@@ -32,7 +32,7 @@ object StanfordFixProcessor extends TextProcessor {
       ?y dep:dep ?z .
       ?y token:pos "IN" .
       ?z token:pos ?pos .
-      FILTER(!regex(str(?pos), "^VB")) .
+      FILTER(!STRSTARTS(str(?pos), "VB")) .
       ?y token:lemma ?prep .
       BIND(CONCAT("dep:prep_", str(?prep)) AS ?p)
     }""",
@@ -68,8 +68,10 @@ object StanfordFixProcessor extends TextProcessor {
     graph.loadTurtle(source)
 
     // match patterns
-    for (query <- queries;
-         map <- graph.executeQuery(query)) {
+    for {
+      query <- queries
+      map <- graph.executeQuery(query)
+    } {
       // add results
       graph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
