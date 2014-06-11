@@ -10,7 +10,8 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer")
 
 libraryDependencies ++= loggingImplementations ++ ferretDeps ++ Seq(akkaActor, akkaLogging,
-  typesafeConfig, sprayCan, sprayRouting, sprayClient, sprayJson, allenaiCommon, subcut) ++ testLibs
+  typesafeConfig, sprayCan, sprayRouting, sprayClient, sprayJson, allenaiCommon,
+  allenaiWebapp, subcut) ++ testLibs
 
 dependencyOverrides ++= Set(
   "org.scala-lang" % "scala-library" % "2.10.4",

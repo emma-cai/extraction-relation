@@ -1,5 +1,6 @@
 package org.allenai.extraction.service
 
+import org.allenai.common.webapp.InfoRoute
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ErminePipeline
 
@@ -18,6 +19,8 @@ import java.io.StringWriter
 
 class ErmineService(implicit val bindingModule: BindingModule) extends HttpServiceActor
     with ActorLogging with SprayJsonSupport with Injectable {
+
+  val info = (injectOptional[InfoRoute] getOrElse { new InfoRoute() }).withName("ermine")
 
   implicit def exceptionHandler = ExceptionHandler {
     case NonFatal(e) => requestUri { uri =>
@@ -77,7 +80,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
         case None => complete(StatusCodes.BadRequest ->
             s"No pipeline with name '${pipelineName}' exists")
       }
-    }
+    } ~
+    info.route
   )
   // format: ON
 }

@@ -91,8 +91,9 @@ object ExtractionBuild extends Build {
     Seq(jpl, stanfordPatched, stanfordModels)
   }
 
-  val allenaiCommon = "org.allenai.common" %% "common" % "2014.04.28-SNAPSHOT"
-  val allenaiTestkit = "org.allenai.common" %% "testkit" % "0.0.2-SNAPSHOT"
+  val allenaiCommon = "org.allenai.common" %% "common-core" % "2014.06.10-0-SNAPSHOT"
+  val allenaiWebapp = "org.allenai.common" %% "common-webapp" % "2014.06.10-0-SNAPSHOT"
+  val allenaiTestkit = "org.allenai.common" %% "common-testkit" % "2014.06.10-0-SNAPSHOT"
   val aristore = "org.allenai.ari-datastore" %% "client" % "2014.5.16-0-SNAPSHOT"
   val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
   val taggers = "org.allenai.taggers" %% "taggers-core" % "0.5-SNAPSHOT"
@@ -104,7 +105,7 @@ object ExtractionBuild extends Build {
   ).aggregate(demo, service)
 
   val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++
+    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++ VersionInjector.settings ++
     Seq(
       organization := "org.allenai.extraction",
       crossScalaVersions := Seq("2.10.4"),
