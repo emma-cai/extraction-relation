@@ -12,15 +12,25 @@ import java.io.Writer
 
 
 /** processor to map dependencies of extracted nodes to roles */
-object ExtractionRoles extends TextProcessor {
+object ExtractionLabels extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
-  // SPARQL query for nodes with added relations (rel: or pred:)
-  val query: String =
-    """SELECT ?x ?y WHERE {
+  // SPARQL query for nodes with added pred: relations
+  val predQuery: String =
+    """SELECT ?x ?rel ?y WHERE {
       ?x ?rel ?y .
-      FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/")) .
+      FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/pred/")) .
+    }"""
+
+  // SPARQL query for nodes with added rel: relations
+  val relQuery: String =
+    """SELECT ?x WHERE {
+      { ?x ?rel ?y . }
+      UNION
+      { ?y ?rel ?x . }
+      FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/")) .
+      FILTER NOT EXISTS { ?x rdfs:label ?l . } 
     }"""
 
   val VerbExcludeString: String = {
@@ -38,16 +48,23 @@ object ExtractionRoles extends TextProcessor {
     val graph = new DependencyGraph()
     graph.loadTurtle(source)
 
-    // match pattern
-    for {
-      map <- graph.executeQuery(query)
-      node <- Seq(map("x"), map("y"))
-    } {
-      addLabel(node, graph)
-      addText(node, VerbExcludeString, graph)
+    // match verbal predicates
+    for (map <- graph.executeQuery(predQuery))
+    {
+      val xnode = map("x")
+      addLabel(xnode, graph)
+      addText(xnode, VerbExcludeString, graph)
+      val ynode = map("y")
+      addLabel(ynode, graph)
+      addText(ynode, ArgExcludeString, graph)
+    }
+    // match unlabeled relations
+    for (map <- graph.executeQuery(relQuery))
+    {
+      addLabel(map("x"), graph)
+      addText(map("x"), ArgExcludeString, graph)
     }
 
-    // convert output
     val sink: Writer = destinations(0)
     graph.saveTurtle(sink)
     graph.shutdown()
@@ -56,7 +73,7 @@ object ExtractionRoles extends TextProcessor {
   /** use token lemma as label */
   def addLabel(node: Vertex, graph: DependencyGraph): Edge = {
     val label: String = graph.tokenInfo(node, "lemma")
-    val v: Vertex = graph.addVertex('"' + label + '"')
+    val v: Vertex = graph.outputGraph.addVertex('"' + label + '"')
     graph.outputGraph.addEdge(label, node, v, "rdfs:label")
   }
 
@@ -65,7 +82,7 @@ object ExtractionRoles extends TextProcessor {
     val constits: Seq[Vertex] = (graph.nodeConstits(node, exclude) :+ node).sortWith(_ < _)
     val tokens: Seq[String] = constits.map(x => graph.tokenInfo(x))
     val text: String = tokens.mkString(" ")
-    val v: Vertex = graph.addVertex('"' + text + '"')
+    val v: Vertex = graph.outputGraph.addVertex('"' + text + '"')
     graph.outputGraph.addEdge(text, node, v, "rdfs:comment")
   }
 

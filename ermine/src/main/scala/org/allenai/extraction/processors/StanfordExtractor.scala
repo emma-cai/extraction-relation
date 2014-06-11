@@ -236,7 +236,6 @@ object StanfordExtractor extends TextProcessor {
       }
     }
 
-    // convert output
     val sink: Writer = destinations(0)
     graph.saveTurtle(sink)
     graph.shutdown()

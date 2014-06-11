@@ -12,7 +12,7 @@ import java.io.Writer
 
 
 /** processor to add labels and string descriptions to extracted nodes */
-object ExtractionLabels extends TextProcessor {
+object ExtractionRoles extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
@@ -36,7 +36,6 @@ object ExtractionLabels extends TextProcessor {
       addArgs(node, graph)
     }
 
-    // convert output
     val sink: Writer = destinations(0)
     graph.saveTurtle(sink)
     graph.shutdown()
