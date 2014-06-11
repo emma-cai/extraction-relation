@@ -2,10 +2,9 @@ package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.FileDocument
-import org.allenai.extraction.Processor
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.{ ErmineException, Processor }
 
-import akka.actor.ActorRef
+import akka.actor.{ ActorRef, ActorSystem }
 import akka.pattern.ask
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
 import com.typesafe.config.ConfigValue
@@ -84,21 +83,31 @@ sealed abstract case class UriInput() extends ProcessorInput with Processor.Inpu
 
 /** File input, specified with a file-schemed URI. */
 class FileInput(val file: File) extends UriInput() {
-  override def getSources(): Seq[Source] = {
-    if (file.isDirectory()) {
-      (file.listFiles map { entry =>
-        Source.fromFile(entry).withDescription(entry.getPath)
-      }).toSeq
-    } else {
-      Seq(Source.fromFile(file))
-    }
-  }
+  override def getSources(): Seq[Source] = FileInput.sourcesFromFile(file)
+
   /** @throws ErmineException if the configured file isn't readable */
   override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
     if (!(file.isFile && file.canRead)) {
       throw new ErmineException("${file.getPath} not a file or unreadable")
     }
     this
+  }
+}
+object FileInput {
+  /** Returns a sequence of sources from the given file. If the file is a directory, this returns
+    * sources for each of the (regular) files in that directory; if this is a regular file, it
+    * returns a single source for that file. Sources returned will have a description using just the
+    * file's name.
+    */
+  def sourcesFromFile(file: File): Seq[Source] = {
+    if (file.isDirectory()) {
+      (for {
+        entry <- file.listFiles
+        if entry.isFile
+      } yield Source.fromFile(entry).withDescription(entry.getName)).toSeq
+    } else {
+      Seq(Source.fromFile(file).withDescription(file.getName))
+    }
   }
 }
 
@@ -131,23 +140,24 @@ class AristoreFileInput(val datasetId: String, val documentId: Option[String])(
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
   val client = inject[ActorRef](AristoreActor.Id)
+  val aristoreTimeout = injectOptional[FiniteDuration](AristoreActor.Id) getOrElse { 10.minutes }
 
-  // TODO(jkinkead): Use the context from our actor system?
-  import scala.concurrent.ExecutionContext.Implicits.global
+  /** The actor system to run Futures in. */
+  val actorSystem = inject[ActorSystem]
+  // Import the actor system's execution context.
+  import actorSystem.dispatcher
 
   /** A future holding the file we'll be reading from. */
   val file: Future[File] = documentId match {
     case Some(id) => {
       // Query the datastore for the file requested.
       val request = AristoreActor.InitializeFileInput(datasetId, id)
-      // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
-      // executions.
-      (client ? request)(10.minutes).mapTo[FileDocument] map { _.file }
+      (client ? request)(aristoreTimeout).mapTo[FileDocument] map { _.file }
     }
     case None => {
       // Query the datastore for the full dataset.
       val request = AristoreActor.InitializeDatasetInput(datasetId)
-      (client ? request)(10.minutes).mapTo[File]
+      (client ? request)(aristoreTimeout).mapTo[File]
     }
   }
 
@@ -158,14 +168,8 @@ class AristoreFileInput(val datasetId: String, val documentId: Option[String])(
 
   /** @return the source for the downloaded aristore file */
   override def getSources(): Seq[Source] = {
-    val fileResult = Await.result(file, Duration.Inf)
-    if (fileResult.isDirectory()) {
-      (fileResult.listFiles map { entry =>
-        Source.fromFile(entry).withDescription(entry.getPath)
-      }).toSeq
-    } else {
-      Seq(Source.fromFile(fileResult))
-    }
+    val fileResult = Await.result(file, aristoreTimeout)
+    FileInput.sourcesFromFile(fileResult)
   }
 
   /** Deletes the file downloaded from Aristore. */

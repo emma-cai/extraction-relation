@@ -1,6 +1,6 @@
 package org.allenai.extraction.manager
 
-import org.allenai.extraction.Processor
+import org.allenai.extraction.{ ErmineException, Processor }
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors._
 

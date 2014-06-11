@@ -11,11 +11,12 @@ import java.io.Writer
 
 /** Test processor that does nothing. */
 object NoOpProcessor extends FlatProcessor {
-  override def processText(source: Source, destination: Writer): Unit = { }
+  override def processText(source: Source, destination: Writer): Unit = {}
 }
 
 /** Test processor with two inputs and two outputs that cats the first input to the first output,
-  * and cats the second input to the second output. */
+  * and cats the second input to the second output.
+  */
 object TwoByCatProcessor extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 2
@@ -32,9 +33,8 @@ object TwoByCatProcessor extends TextProcessor {
 /** Subcut module for testing. */
 object TestErmineModule extends NewBindingModule(module => {
   // Available processors.
-  module.bind [Map[String,Processor]] toSingle Map[String,Processor](
+  module.bind[Map[String, Processor]] toSingle Map[String, Processor](
     "NoOpProcessor" -> NoOpProcessor,
     "CatProcessor" -> CatProcessor,
-    "TwoByCatProcessor" -> TwoByCatProcessor
-  )
+    "TwoByCatProcessor" -> TwoByCatProcessor)
 })

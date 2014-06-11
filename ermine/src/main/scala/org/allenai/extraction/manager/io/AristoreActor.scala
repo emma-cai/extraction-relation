@@ -3,14 +3,17 @@ package org.allenai.extraction.manager.io
 import org.allenai.ari.datastore.api.NoSuchDatasetException
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.{ Dataset, DocumentType, FileDocument, TextFile }
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.common.Config._
+import org.allenai.extraction.{ ConfigModule, ErmineException }
 
 import akka.actor._
 import akka.pattern.pipe
 import com.escalatesoft.subcut.inject.{ BindingId, NewBindingModule }
 import spray.json.DefaultJsonProtocol._
+import com.typesafe.config.Config
 
 import scala.concurrent.Future
+import scala.concurrent.duration._
 import scala.util.{ Failure, Success }
 
 import java.io.File
@@ -153,13 +156,20 @@ object AristoreActor {
   def props(client: AriDatastoreClient): Props = Props(new AristoreActor(client))
 }
 
-/** Module providing a module-scoped AristoreActor. */
+/** Module providing a module-scoped AristoreActor as well as a timeout for talking to Aristore. */
 class AristoreActorModule extends NewBindingModule(module => {
   import module._
+
+  val config = ConfigModule.inject[Config](None)
 
   bind[ActorRef] idBy AristoreActor.Id toModuleSingle { implicit module =>
     val actorSystem = module.inject[ActorSystem](None)
     val aristoreClient = module.inject[AriDatastoreClient](None)
     actorSystem.actorOf(AristoreActor.props(aristoreClient))
+  }
+
+  // Bind the ari datastore timeout, if it's configured.
+  config.get[Long]("aristore.timeoutMillis") foreach { timeout =>
+    bind[FiniteDuration] idBy AristoreActor.Id toSingle timeout.millis
   }
 })

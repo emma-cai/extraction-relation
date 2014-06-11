@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
-import org.allenai.extraction.Processor
+import org.allenai.extraction.{ ErmineException, Processor }
 import org.allenai.extraction.manager.io._
 
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }

@@ -27,9 +27,11 @@ abstract class Processor {
     destinations: Seq[Processor.Output]): Unit
 }
 object Processor {
-  /** A generalized input trait for a processor. One configured input will normally produce one
-    * source - see the class SingleInput - but this is designed to allow for multiple inputs, such
-    * as an Aristore Dataset.
+  /** An input for a processor. One configured input will normally produce one source, as in the
+    * class SingleInput. This is provided to allow for a single configured input to produce
+    * multiple input streams, such as with a local directory or an Aristore Dataset.
+    *
+    * Sources should have a description that is usable as a filename.
     */
   trait Input {
     /** @return the list of Sources the processor should read from */
@@ -40,17 +42,20 @@ object Processor {
     /** @return the Source the processor should read from */
     def getSource(): Source
 
-    override def getSources(): Seq[Source] = Seq(getSource())
+    override final def getSources(): Seq[Source] = Seq(getSource())
   }
 
-  /** A trivial input defined off of a Source. */
+  /** An input using a predefined Source. Used for passing input directly into a pipeline. */
   class SourceInput(val source: Source) extends SingleInput {
     override def getSource() = source
   }
 
+  /** An output for a processor. This will provide either a single file to write to, or a directory
+    * to create one or more output files in.
+    */
   trait Output {
     /** @return a File to write output data to. This will be re-used to read data from if later
-      * processors require it.
+      * processors require it. This may point to either a regular file or a directory.
       */
     def getOutputFile(): File
   }
@@ -67,9 +72,15 @@ abstract class TextProcessor extends Processor {
     val sourceInstances = (sources map { _.getSources() }).flatten
     val destinationWriters = for {
       destination <- destinations
-    } yield new FileWriter(destination.getOutputFile)
+      outputFile = destination.getOutputFile
+    } yield {
+      if (outputFile.isDirectory) {
+        throw new ErmineException("TextProcessor requires all outputs to be non-directories!")
+      }
+      new FileWriter(outputFile)
+    }
     if (sourceInstances.size != sources.size) {
-      throw new RuntimeException("TextProcessor requires all inputs to be non-directory inputs!")
+      throw new ErmineException("TextProcessor requires all inputs to be non-directories!")
     }
 
     processText(sourceInstances, destinationWriters)
@@ -113,14 +124,11 @@ abstract class MultiTextProcessor extends Processor {
     // Verify that, if we were given multiple sources, we can create enough outputs to satisfy them
     // all.
     if (sourceInstances.size > 1 && !destinationFile.isDirectory()) {
-      throw new RuntimeException(
+      throw new ErmineException(
         "MultiTextProcessor given multiple inputs, but a non-directory output!")
     }
     val destinationWriters = if (destinationFile.isDirectory()) {
-      for (source <- sourceInstances) yield {
-        val sourceFileName = (new File(source.descr)).getName
-        new FileWriter(new File(destinationFile, sourceFileName))
-      }
+      sourceInstances map { source => new FileWriter(new File(destinationFile, source.descr)) }
     } else {
       Seq(new FileWriter(destinationFile))
     }
