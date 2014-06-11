@@ -48,17 +48,17 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     * the last line. For e.g.:
     * (format: OFF)
     * [
-    * {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":1,"rawDefinitionLine":"a priorichampionship\tNoun\t#\
-    *  A 'championship' is a contest to decide which person or team is best at a sport.","definedTerm":"a priorichampionship",\
-    *  "wordClass":"Noun","preprocessedDefinitions":["A championship is a contest to decide which person or team is best at a sport."],\
-    *  "metaData":[]}
-    * ,
-    * {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":2,"rawDefinitionLine":"abacus\tNoun\t#{{countable}} An 'abacus' is an \
-    * ancient calculating device. It is made of a frame with beads on various rods.","definedTerm":"abacus","wordClass":"Noun",\
-    * "preprocessedDefinitions":["An abacus is an ancient calculating device. It is made of a frame with beads on various rods."],\
-    * "metaData":["countable"]}
+    *   { "definitionCorpusName":"SimpleWiktionary","rawDefinitionId":1,"rawDefinitionLine":"a priorichampionship\tNoun\t#\
+    *     A 'championship' is a contest to decide which person or team is best at a sport.","definedTerm":"a priorichampionship",\
+    *     "wordClass":"Noun","preprocessedDefinitions":["A championship is a contest to decide which person or team is best at a sport."],\
+    *     "metaData":[] }
+    *   ,
+    *   { "definitionCorpusName":"SimpleWiktionary","rawDefinitionId":2,"rawDefinitionLine":"abacus\tNoun\t#{{countable}} An 'abacus' is an \
+    *     ancient calculating device. It is made of a frame with beads on various rods.","definedTerm":"abacus","wordClass":"Noun",\
+    *     "preprocessedDefinitions":["An abacus is an ancient calculating device. It is made of a frame with beads on various rods."],\
+    *     "metaData":["countable"] }
     * ]
-    * (format: OFF)
+    * (format: ON)
     * Output will be written out to the specified destination.
     */
   override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
