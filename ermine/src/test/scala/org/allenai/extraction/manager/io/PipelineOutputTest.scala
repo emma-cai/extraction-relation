@@ -25,7 +25,7 @@ class PipelineOutputTest extends UnitSpec {
 
   it should "fail when given an unsupported URI" in {
     an[ErmineException] should be thrownBy {
-      ProcessorInput.fromConfigValue(configValue("name" -> "a", "uri" -> "mailto:ari@allenai.org"))
+      PipelineInput.fromConfigValue(configValue("name" -> "a", "uri" -> "mailto:ari@allenai.org"))
     }
   }
 }

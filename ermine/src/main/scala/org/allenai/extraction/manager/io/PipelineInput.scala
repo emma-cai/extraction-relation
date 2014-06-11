@@ -18,23 +18,23 @@ import java.net.URI
 import java.nio.file.Files
 
 /** An input to a pipeline. */
-sealed abstract class ProcessorInput {
+sealed abstract class PipelineInput {
   /** Performs any initialization and validation needed before a pipeline uses this as input, and
     * returns a reference to a fully-initialized input. Some inputs cannot be shared between
     * pipeline executions, and will return new instances from this method.
     * @throws ErmineException if the configured input can't be used
     */
-  def initialize()(implicit bindingModule: BindingModule): ProcessorInput = this
+  def initialize()(implicit bindingModule: BindingModule): PipelineInput = this
 
   /** Performs any cleanup of input files needed. */
   def cleanup(): Future[Unit] = Future.successful[Unit](Unit)
 }
-object ProcessorInput {
+object PipelineInput {
   /** Builds an input from a config value.
     * @throws ErmineException if the config value has both a name and a URI specified, if the URI
     * scheme is unsupported, or if the config value can't be built into an IoConfig
     */
-  def fromConfigValue(configValue: ConfigValue): ProcessorInput = {
+  def fromConfigValue(configValue: ConfigValue): PipelineInput = {
 
     IoConfig.fromConfigValue(configValue) match {
       case IoConfig(None, None) => UnnamedInput()
@@ -71,22 +71,22 @@ object ProcessorInput {
 /** An input with just a name. This name is used to look up the processor Source from the available
   * pipeline inputs and previous processor outputs.
   */
-case class NamedInput(name: String) extends ProcessorInput
+case class NamedInput(name: String) extends PipelineInput
 
 /** An unconfigured input (missing). This will be mapped to the output from the previous stage with
   * the same index (placement in the config list).
   */
-case class UnnamedInput() extends ProcessorInput
+case class UnnamedInput() extends PipelineInput
 
 /** An input with a URI. The input's source will be loaded from the URI. */
-sealed abstract case class UriInput() extends ProcessorInput with Processor.Input
+sealed abstract case class UriInput() extends PipelineInput with Processor.Input
 
 /** File input, specified with a file-schemed URI. */
 class FileInput(val file: File) extends UriInput() {
   override def getSources(): Seq[Source] = FileInput.sourcesFromFile(file)
 
   /** @throws ErmineException if the configured file isn't readable */
-  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
+  override def initialize()(implicit bindingModule: BindingModule): PipelineInput = {
     if (!(file.isFile && file.canRead)) {
       throw new ErmineException("${file.getPath} not a file or unreadable")
     }
@@ -122,7 +122,7 @@ class AristoreFileInputConfig(val datasetId: String,
     val documentId: Option[String]) extends UriInput() {
 
   /** @return a new AristoreFileInput with a FileDocument containing the requested file */
-  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
+  override def initialize()(implicit bindingModule: BindingModule): PipelineInput = {
     new AristoreFileInput(datasetId, documentId)
   }
 
@@ -162,7 +162,7 @@ class AristoreFileInput(val datasetId: String, val documentId: Option[String])(
   }
 
   /** @throws ErmineException when invoked; this copy shouldn't reused between pipeline runs. */
-  override def initialize()(implicit bindingModule: BindingModule): ProcessorInput = {
+  override def initialize()(implicit bindingModule: BindingModule): PipelineInput = {
     throw new ErmineException("initialize called on already-initialized AristoreFileInput!")
   }
 
