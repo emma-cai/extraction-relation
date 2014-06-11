@@ -1,0 +1,40 @@
+rule1:: isa(E4_2-involve, "involves"), agent(E4_2-involve, "Freezing") -> effect(E4_2-involve, E4_3-change), isa(E4_3-change, "changing"), object(E4_3-change, "water"), from(E4_3-change, "its liquid state"), to(E4_3-change, "its solid state"), by(E4_3-change, "the removal of heat").
+rule2:: isa(E4_3-change, "changing"), object(E4_3-change, "water"), from(E4_3-change, "its liquid state"), to(E4_3-change, "its solid state"), by(E4_3-change, "the removal of heat") -> effect(E4_2-involve, E4_3-change), isa(E4_2-involve, "involves"), agent(E4_2-involve, "Freezing").
+rule3:: isa(E1_7-sweat, "sweat"), agent(E1_7-sweat, "our bodies"), in(E1_7-sweat, "the hot weather") -> effect(E1_7-sweat, E1_12-bring), isa(E1_12-bring, "bringing"), object(E1_12-bring, "water"), to(E1_12-bring, "our skin").
+rule4:: isa(E1_12-bring, "bringing"), object(E1_12-bring, "water"), to(E1_12-bring, "our skin") -> effect(E1_7-sweat, E1_12-bring), isa(E1_7-sweat, "sweat"), agent(E1_7-sweat, "our bodies"), in(E1_7-sweat, "the hot weather").
+rule5:: isa(E2_13-go, "going dormant") -> enable(E2_13-go, E2_8-winter), isa(E2_8-winter, "the long winters by storing food and going dormant").
+rule6:: isa(E2_8-winter, "the long winters by storing food and going dormant") -> enable(E2_13-go, E2_8-winter), isa(E2_13-go, "going dormant").
+rule7:: isa(E2_10-store, "storing"), object(E2_10-store, "food") -> enable(E2_10-store, E2_8-winter), isa(E2_8-winter, "the long winters by storing food and going dormant").
+rule8:: isa(E2_8-winter, "the long winters by storing food and going dormant") -> enable(E2_10-store, E2_8-winter), isa(E2_10-store, "storing"), object(E2_10-store, "food").
+rule9:: isa(E3_3-lens, "A hand lens") -> purpose(E3_3-lens, E3_7-view), isa(E3_7-view, "view"), object(E3_7-view, "objects"), in(E3_7-view, "more detail").
+rule10:: isa(E3_7-view, "view"), object(E3_7-view, "objects"), in(E3_7-view, "more detail") -> purpose(E3_3-lens, E3_7-view), isa(E3_3-lens, "A hand lens").
+rule11:: isa(E4_18-removal, "the removal of heat"), of(E4_18-removal, "heat") -> enable(E4_18-removal, E4_3-change), isa(E4_3-change, "changing"), object(E4_3-change, "water"), from(E4_3-change, "its liquid state"), to(E4_3-change, "its solid state"), by(E4_3-change, "the removal of heat").
+rule12:: isa(E4_3-change, "changing"), object(E4_3-change, "water"), from(E4_3-change, "its liquid state"), to(E4_3-change, "its solid state"), by(E4_3-change, "the removal of heat") -> enable(E4_18-removal, E4_3-change), isa(E4_18-removal, "the removal of heat"), of(E4_18-removal, "heat").
+rule13:: isa(E5_4-make, "not make"), agent(E5_4-make, "Animals"), object(E5_4-make, "their own food") -> effect(E5_4-make, E5_11-eat), isa(E5_11-eat, "eat"), agent(E5_11-eat, "they").
+rule14:: isa(E5_11-eat, "eat"), agent(E5_11-eat, "they") -> effect(E5_4-make, E5_11-eat), isa(E5_4-make, "not make"), agent(E5_4-make, "Animals"), object(E5_4-make, "their own food").
+rule15:: isa(E5_11-eat, "eat"), agent(E5_11-eat, "they") -> requirement(E5_11-eat, E5_13-get), isa(E5_13-get, "get"), object(E5_13-get, "nutrients").
+rule16:: isa(E5_13-get, "get"), object(E5_13-get, "nutrients") -> requirement(E5_11-eat, E5_13-get), isa(E5_11-eat, "eat"), agent(E5_11-eat, "they").
+rule17:: isa(E10_1-decomposer, "Decomposers") -> example(E10_1-decomposer, E10_4-thing), isa(E10_4-thing, "living things"), agent(E10_4-thing, "Decomposers").
+rule18:: isa(E10_4-thing, "living things"), agent(E10_4-thing, "Decomposers") -> example(E10_1-decomposer, E10_4-thing), isa(E10_1-decomposer, "Decomposers").
+rule19:: isa(E11_1-gravity, "Gravity") -> example(E11_1-gravity, E11_4-force), isa(E11_4-force, "the force"), agent(E11_4-force, "Gravity").
+rule20:: isa(E11_4-force, "the force"), agent(E11_4-force, "Gravity") -> example(E11_1-gravity, E11_4-force), isa(E11_1-gravity, "Gravity").
+rule21:: isa(E12_6-sweat, "sweat") -> example(E12_6-sweat, E12_14-adjust), isa(E12_14-adjust, "adjust"), agent(E12_14-adjust, "an organism"), object(E12_14-adjust, "that"), to(E12_14-adjust, "hot temperatures").
+rule22:: isa(E12_14-adjust, "adjust"), agent(E12_14-adjust, "an organism"), object(E12_14-adjust, "that"), to(E12_14-adjust, "hot temperatures") -> example(E12_6-sweat, E12_14-adjust), isa(E12_6-sweat, "sweat").
+rule23:: isa(E14_4-use, "use"), agent(E14_4-use, "A student"), object(E14_4-use, "a hand lens") -> effect(E14_4-use, E14_9-get), isa(E14_9-get, "get"), object(E14_9-get, "a better look at the spots").
+rule24:: isa(E14_9-get, "get"), object(E14_9-get, "a better look at the spots") -> effect(E14_4-use, E14_9-get), isa(E14_4-use, "use"), agent(E14_4-use, "A student"), object(E14_4-use, "a hand lens").
+rule25:: isa(E19_4-use, "use"), agent(E19_4-use, "A student"), object(E19_4-use, "a graduated cylinder") -> effect(E19_4-use, E19_9-measure), isa(E19_9-measure, "measure"), object(E19_9-measure, "10 milliliters of water").
+rule26:: isa(E19_9-measure, "measure"), object(E19_9-measure, "10 milliliters of water") -> effect(E19_4-use, E19_9-measure), isa(E19_4-use, "use"), agent(E19_4-use, "A student"), object(E19_4-use, "a graduated cylinder").
+rule27:: isa(E3_5-use, "A hand lens is used") -> effect(E3_5-use, E3_7-view), isa(E3_7-view, "view"), object(E3_7-view, "objects"), in(E3_7-view, "more detail").
+rule28:: isa(E3_7-view, "view"), object(E3_7-view, "objects"), in(E3_7-view, "more detail") -> effect(E3_5-use, E3_7-view), isa(E3_5-use, "A hand lens is used").
+rule29:: isa(E22_2-cause, "causes"), agent(E22_2-cause, "Gravity"), object(E22_2-cause, "the ball") -> effect(E22_2-cause, E22_6-fall), isa(E22_6-fall, "fall"), to(E22_6-fall, "the ground").
+rule30:: isa(E22_6-fall, "fall"), to(E22_6-fall, "the ground") -> effect(E22_2-cause, E22_6-fall), isa(E22_2-cause, "causes"), agent(E22_2-cause, "Gravity"), object(E22_2-cause, "the ball").
+rule31:: isa(E17_10-friction, "friction") -> cause(E17_10-friction, E17_4-produce), isa(E17_4-produce, "produces"), agent(E17_4-produce, "that"), object(E17_4-produce, "the smoke").
+rule32:: isa(E17_4-produce, "produces"), agent(E17_4-produce, "that"), object(E17_4-produce, "the smoke") -> cause(E17_10-friction, E17_4-produce), isa(E17_10-friction, "friction").
+rule33:: isa(E18_1-rest, "Resting") -> requirement(E18_1-rest, E18_7-maintain), isa(E18_7-maintain, "maintain"), agent(E18_7-maintain, "humans"), object(E18_7-maintain, "good health").
+rule34:: isa(E18_7-maintain, "maintain"), agent(E18_7-maintain, "humans"), object(E18_7-maintain, "good health") -> requirement(E18_1-rest, E18_7-maintain), isa(E18_1-rest, "Resting").
+rule35:: isa(E21_7-decomposer, "decomposers") -> purpose(E21_7-decomposer, E21_9-return), isa(E21_9-return, "return"), object(E21_9-return, "nutrients"), to(E21_9-return, "the food chain").
+rule36:: isa(E21_9-return, "return"), object(E21_9-return, "nutrients"), to(E21_9-return, "the food chain") -> purpose(E21_7-decomposer, E21_9-return), isa(E21_7-decomposer, "decomposers").
+rule37:: isa(E21_9-return, "return"), object(E21_9-return, "nutrients"), to(E21_9-return, "the food chain") -> when(E21_9-return, E21_5-die), isa(E21_5-die, "die"), agent(E21_5-die, "plants"), agent(E21_5-die, "animals").
+rule38:: isa(E21_5-die, "die"), agent(E21_5-die, "plants"), agent(E21_5-die, "animals") -> when(E21_9-return, E21_5-die), isa(E21_9-return, "return"), object(E21_9-return, "nutrients"), to(E21_9-return, "the food chain").
+rule39:: isa(E22_6-fall, "fall"), to(E22_6-fall, "the ground") -> cause(E22_6-fall, E22_1-gravity), isa(E22_1-gravity, "Gravity").
+rule40:: isa(E22_1-gravity, "Gravity") -> cause(E22_6-fall, E22_1-gravity), isa(E22_6-fall, "fall"), to(E22_6-fall, "the ground").

@@ -35,6 +35,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "StanfordExtractor" -> StanfordExtractor,
       "ExtractionRoles" -> ExtractionRoles,
       "ExtractionLabels" -> ExtractionLabels,
+      "InferenceRules" -> InferenceRules,
       "CatProcessor" -> CatProcessor,
       "TurtleProcessor" -> TurtleProcessor)
 
