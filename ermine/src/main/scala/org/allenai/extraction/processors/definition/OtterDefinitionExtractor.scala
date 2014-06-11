@@ -1,10 +1,16 @@
 package org.allenai.extraction.processors.definition
 
 import java.io.Writer
+
 import scala.io.Source
-import spray.json.DefaultJsonProtocol._
-import spray.json._
+
 import org.allenai.extraction.processors.OpenRegexExtractor
+
+import spray.json.DefaultJsonProtocol.StringJsonFormat
+import spray.json.DefaultJsonProtocol.jsonFormat4
+import spray.json.DefaultJsonProtocol.seqFormat
+import spray.json.pimpAny
+import spray.json.pimpString
 
 /** A Case Class and Companion Object for Definition Extraction Output to support outputting results
   * in JSON.  The first three parameters come from the input and the last one contains the
@@ -40,14 +46,19 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     * is read here- from Source, and processed. The expected input structure is: "[" on the first line, followed
     * by one output (preprocessed definition) JSON per line separated by a "," per line, and a concluding "]" on
     * the last line. For e.g.:
+    * (format: OFF)
     * [
     * {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":1,"rawDefinitionLine":"a priorichampionship\tNoun\t#\
     *  A 'championship' is a contest to decide which person or team is best at a sport.","definedTerm":"a priorichampionship",\
     *  "wordClass":"Noun","preprocessedDefinitions":["A championship is a contest to decide which person or team is best at a sport."],\
     *  "metaData":[]}
     * ,
-    * {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":2,"rawDefinitionLine":"abacus\tNoun\t#{{countable}} An 'abacus' is an ancient calculating device. It is made of a frame with beads on various rods.","definedTerm":"abacus","wordClass":"Noun","preprocessedDefinitions":["An abacus is an ancient calculating device. It is made of a frame with beads on various rods."],"metaData":["countable"]}
-    * ,
+    * {"definitionCorpusName":"SimpleWiktionary","rawDefinitionId":2,"rawDefinitionLine":"abacus\tNoun\t#{{countable}} An 'abacus' is an \
+    * ancient calculating device. It is made of a frame with beads on various rods.","definedTerm":"abacus","wordClass":"Noun",\
+    * "preprocessedDefinitions":["An abacus is an ancient calculating device. It is made of a frame with beads on various rods."],\
+    * "metaData":["countable"]}
+    * ]
+    * (format: OFF)
     * Output will be written out to the specified destination.
     */
   override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
