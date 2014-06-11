@@ -23,7 +23,9 @@ class HttpServer(implicit val bindingModule: BindingModule) extends Injectable {
 object HttpServer extends App {
   val system = ActorSystem("ermine-service")
 
-  val serviceConfig = ServiceModule ~ new ErmineModule(system) ~ new ActorSystemModule(system)
+  val serviceConfig = (new ServiceModule(system) ~
+    new ErmineModule(system) ~
+    new ActorSystemModule(system))
 
   val service = new HttpServer()(serviceConfig)
 

@@ -17,12 +17,12 @@ credentials += Credentials("Sonatype Nexus Repository Manager", "utility.allenai
 
 lazy val ai2PluginsVersion = "2014.2.20-2-SNAPSHOT"
 
-// Automates injection of artifact / git version info
-addSbtPlugin("org.allenai.plugins" % "sbt-version-injector" % ai2PluginsVersion)
-
 addSbtPlugin("org.allenai.plugins" % "sbt-travis-publisher" % ai2PluginsVersion)
 
 addSbtPlugin("org.allenai.plugins" % "sbt-shared-ui" % ai2PluginsVersion)
+
+// Automates injection of artifact / git version info
+addSbtPlugin("org.allenai.plugins" % "sbt-version-injector" % "2014.5.08-1-SNAPSHOT")
 
 addSbtPlugin("org.allenai.plugins" % "sbt-format" % "2014.5.9-1-SNAPSHOT")
 
