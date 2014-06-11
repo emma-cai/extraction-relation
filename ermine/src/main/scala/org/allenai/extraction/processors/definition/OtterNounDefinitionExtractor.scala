@@ -47,10 +47,10 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
     for (rawLine <- defnInputSource.getLines) {
       val line = rawLine.trim()
-      
+
       // Skip over first line- it is expected to contain a "[",  the last line which is expected 
       // to contain a "]" and lines in the middle that have just a ",". 
-      if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) { 
+      if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
         val preprocessedDefinitionsAst = line.parseJson
         val preprocessedDefinitions = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
         for {
@@ -58,50 +58,48 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           termWordClass <- preprocessedDefinitions.wordClass
           if (termWordClass.equalsIgnoreCase(wordClass))
         } {
-             var results = super.extractText(preprocessedDefinition)
+          var results = super.extractText(preprocessedDefinition)
 
-             // Some retries if no results were found with just the definition text.
-             if (preprocessedDefinitions.definedTerm.length > 0) {
-               // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
-               // a part of the scientific and cultural community; this group of people have attended a 
-               // university and/or do research." is converted by the preprocessor into two separate definition
-               // lines:
-               //   "Academia	Noun	Academia is a word for the group of people who are 
-               //                      a part of the scientific and cultural community"
-               //   and
-               //   "Academia	Noun	this group of people have attended a university and/or do research."
-               // The second definition does not have the term but a coreference. So if we pass
-               // "Academia: this group of people have attended a university and/or do research." to the 
-               // definition extractor, it works since it has rules to handle this pattern, but not without
-               // the "Academia: ".
-               if (results.isEmpty) {
-                 results = super.extractText(preprocessedDefinitions.definedTerm + " : " + preprocessedDefinition)
-               }
-          
-               // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
-               // does not have the subject as part of the definition. In this case passing it to the 
-               // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
-               // that arises in the brain." works.
-               if (results.isEmpty) {
-                results = super.extractText(preprocessedDefinitions.definedTerm + " " + preprocessedDefinition)
-               }
+          // Some retries if no results were found with just the definition text.
+          if (preprocessedDefinitions.definedTerm.length > 0) {
+            // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
+            // a part of the scientific and cultural community; this group of people have attended a 
+            // university and/or do research." is converted by the preprocessor into two separate definition
+            // lines:
+            //   "Academia	Noun	Academia is a word for the group of people who are 
+            //                      a part of the scientific and cultural community"
+            //   and
+            //   "Academia	Noun	this group of people have attended a university and/or do research."
+            // The second definition does not have the term but a coreference. So if we pass
+            // "Academia: this group of people have attended a university and/or do research." to the 
+            // definition extractor, it works since it has rules to handle this pattern, but not without
+            // the "Academia: ".
+            if (results.isEmpty) {
+              results = super.extractText(preprocessedDefinitions.definedTerm + " : " + preprocessedDefinition)
             }
-        
-            // Output: First write out the input line.
-            destination.write("DEFINITION:   " + preprocessedDefinitions.definedTerm + "\t" + termWordClass + "\t" + preprocessedDefinition + "\n")
-            
-            //if (!beginning) {
-            //  destination.write(",\n")
-            //}           
-            // Then write out the extraction results.
-            for (result <- results) {
-              destination.write(result + "\n")
+
+            // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
+            // does not have the subject as part of the definition. In this case passing it to the 
+            // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
+            // that arises in the brain." works.
+            if (results.isEmpty) {
+              results = super.extractText(preprocessedDefinitions.definedTerm + " " + preprocessedDefinition)
             }
-            if (beginning) {
-              beginning = false
-            }
-            destination.write("\n")
-         }
+          }
+
+          // Output: First write out the input line.
+          destination.write("DEFINITION:   " + preprocessedDefinitions.definedTerm + "\t" + termWordClass + "\t" + preprocessedDefinition + "\n")
+
+          //if (!beginning) {
+          //  destination.write(",\n")
+          //}           
+          // Then write out the extraction results.
+          for (result <- results) {
+            destination.write(result + "\n")
+          }
+          beginning = false
+          destination.write("\n")
+        }
       }
     }
     // End output Json
@@ -145,7 +143,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     var results = Seq.empty[String]
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
     val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
-    val isaRel = isaRelOption getOrElse("isa")
+    val isaRel = isaRelOption getOrElse ("isa")
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         results ++= Seq[String]("Defined Term: " + definedTerm)
@@ -190,16 +188,13 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           case _ => None
         }) match {
           case Some(defnIsa: Type) =>
-          {
-            isaRelOption = Extractor.findSubtypesWithName(types)(defnIsa, "IsaRel").headOption match {
-              case Some(isaRel) => Option[String](isaRel.text)
-              case _ => None
+            {
+              isaRelOption = Extractor.findSubtypesWithName(types)(defnIsa, "IsaRel").headOption map { isaRel => isaRel.text }
+              Extractor.findSubtypesWithName(types)(defnIsa, "DefinedTerm").headOption match {
+                case Some(definedTrm) => Option[String](definedTrm.text)
+                case _ => None
+              }
             }
-            Extractor.findSubtypesWithName(types)(defnIsa, "DefinedTerm").headOption match {
-              case Some(definedTrm) => Option[String](definedTrm.text)
-              case _ => None
-            }
-          }
           case _ => None
         }
       case _ => None
@@ -513,7 +508,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" +  " , " + consequentVP + ")"
+      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" + " , " + consequentVP + ")"
     }
     result.toString()
   }
@@ -574,8 +569,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           }
         case _ => Seq.empty[String]
       }
-    
-    
+
     // Need an extra pair of parens around this sentence if it has a composite VP that 
     // is broken into multiple VPs (tuples).
     val numVps = vps.length
@@ -594,7 +588,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     }
     if (numVps > 1)
       result ++= ")"
-        
+
     result.toString()
   }
 }

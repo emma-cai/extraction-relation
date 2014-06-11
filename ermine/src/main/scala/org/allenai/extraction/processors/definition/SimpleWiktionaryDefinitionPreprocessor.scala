@@ -10,13 +10,14 @@ import spray.json.pimpAny
 import org.allenai.extraction.FlatProcessor
 import org.allenai.extraction.processors.definition._
 
-/** Preprocessor that takes Simple Wiktionary scraped text in the form: <term>\t<wordClass>\t<noisy-definition-text>
-  * as input and converts it to the format expected by the Definition Extractor, which is:
+/** Preprocessor that takes Simple Wiktionary scraped text in the form:
+  * <term>\t<wordClass>\t<noisy-definition-text> as input and converts it to the format expected by
+  * the Definition Extractor, which is:
   * <term>\t<wordClass>\t<cleaned-up-definition>.
-  * @param wordClasses The set of wordclasses to consider. If this set is specified, i.e., non-empty, definitions
-  *                 of terms belonging to any class outside of this set will NOT be processed/written out.
-  *                 Default: Empty set, which means there are no filters, so the preprocessor will process/write out
-  *                 all definitions of all word classes.
+  * @param wordClasses The set of wordclasses to consider. If this set is specified, i.e.,
+  * non-empty, definitions of terms belonging to any class outside of this set will NOT be processed
+  * or written out.  Default: Empty set, which means there are no filters, so the preprocessor will
+  * process / write out all definitions of all word classes.
   */
 class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empty) extends FlatProcessor {
 
@@ -37,15 +38,11 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
       if (wordClassesLowerCase.contains(termWordClass.toLowerCase) || (wordClassesLowerCase.size == 0))
     } {
       val (defAlts, metaData) = cleanUp(termDefinition)
-      val preprocessedDefOp = 
+      val preprocessedDefOp =
         PreprocessedDefinition(Some("SimpleWiktionary"), defId, line, term, Some(termWordClass), defAlts, metaData)
-      if (!beginning) {
-          destination.write(",\n")
-        }
+      destination.write(",\n")
       destination.write(preprocessedDefOp.toJson.compactPrint + "\n")
-      if (beginning) {
-          beginning = false
-        }
+      beginning = false
       defId += 1
     }
     // End output Json
@@ -54,7 +51,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
 
   /** breakLine : Break the input line into its constituent parts.
     * SimpleWiktionary scraped text consists of one definition per line in a txt file,
-    * with the format of <Term>\t<WordClass>\t<Definition>. 
+    * with the format of <Term>\t<WordClass>\t<Definition>.
     */
   def breakLine(defnInputLine: String): Option[(String, String, String)] = {
     defnInputLine.split("\t") match {
@@ -71,10 +68,10 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * Sample SimpleWiktionary Definition lines:
     * #{{uncountable}} 'Abandon' is a state where you do not control yourself.
     * # Straying from the right or usual course; wandering.
-    * # If a boat runs or goes 'ground', its bottom goes onto the ground
-    *                       and it is not floating freely anymore. {{antonyms|afloat}}
-    * #{{context|music}} , {{countable}} A 'keyboard' is a range of black and white
-    *                  keys (buttons) on a musical instrument.
+    * # If a boat runs or goes 'ground', its bottom goes onto the ground and it is not floating
+    * freely anymore. {{antonyms|afloat}}
+    * #{{context|music}} , {{countable}} A 'keyboard' is a range of black and white keys (buttons)
+    * on a musical instrument.
     * Returns: a 2-tuple containing to Seq[String]s. The first is the sequence of cleaned-up
     * definitions obtained from splitting up the raw definition line when it contains multiple
     * paraphrases, separated by semicolons. The second is the sequence of metadata strings, i.e.,
@@ -94,7 +91,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     val defMetaInfoPattern = """\{\{([^}]*)\}\}""".r
     val matches = defMetaInfoPattern findAllMatchIn (defBeginningPoundStripped)
     val metaData = (matches map { m => m.group(1) }).toSeq
-  
+
     // Remove meta info - there could be a cluster of multiple of these
     // separated by semicolon or comma like the last e.g. in above documentation.
     val defMetaInfoClusterPattern = s"""(${defMetaInfoPattern})((\\s*[,;]\\s*${defMetaInfoPattern})*)""".r
@@ -110,7 +107,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
 
     // Break the line up into multiple definitions if separated by semicolons
     val multipleDefs = defPoundMetaQuotesStripped.split(";").toSeq map { x => x.trim }
-    
+
     (multipleDefs, metaData)
   }
 }

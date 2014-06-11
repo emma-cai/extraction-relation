@@ -15,15 +15,17 @@ import edu.knowitall.repr.sentence.Chunks
 import edu.knowitall.repr.sentence.Lemmas
 import edu.knowitall.tool.typer.Type
 
-/** An extractor that processes input text with OpenRegex with the specified Cascade file. 
- *  Given a cascade file parameter, this class will call OpenRegex API with that cascade file
- *  to process input source and generate extractions- written to the specified destination. 
- *  @param cascadeFilePath Path to the Cascade file to be used by OpenRegex to perform extractions
- *                         on the input text. */
+/** An extractor that processes input text with OpenRegex with the specified Cascade file.
+  * Given a cascade file parameter, this class will call OpenRegex API with that cascade file
+  * to process input source and generate extractions- written to the specified destination.
+  * @param cascadeFilePath Path to the Cascade file to be used by OpenRegex to perform extractions
+  * on the input text.
+  */
 abstract class OpenRegexExtractor(cascadeFilePath: String) extends FlatProcessor {
 
-  /** A type alias for convenience since the Tagger API we are using deal with sentences 
-   *  that are chunked and lemmatized. */ 
+  /** A type alias for convenience since the Tagger API we are using deal with sentences
+    * that are chunked and lemmatized.
+    */
   type Sentence = Tagger.Sentence with Chunks with Lemmas
 
   /** Create the file object from the Cascade File Path. */
@@ -38,7 +40,8 @@ abstract class OpenRegexExtractor(cascadeFilePath: String) extends FlatProcessor
   val cascade = new Cascade[Sentence]("DefinitionExtractor", levels, extractors)
 
   /** The ChunkedTaggerApp object is used to process the input raw sentence into a
-   * chunked and lemmatized Sentence object to be passed to the 'extract' method. */
+    * chunked and lemmatized Sentence object to be passed to the 'extract' method.
+    */
   val app = new ChunkedTaggerApp(cascade)
 
   /** The main extraction method: takes an Input Source with the text to process and writes

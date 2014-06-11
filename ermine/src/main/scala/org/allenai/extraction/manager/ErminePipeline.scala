@@ -22,8 +22,8 @@ import java.net.URI
   * @param requiredNamedInputs the named inputs required for this pipeline to run successfully
   */
 class ErminePipeline(val name: String, val description: String,
-    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String])
-    (implicit val bindingModule: BindingModule) {
+    val processors: Seq[ProcessorConfig], val requiredNamedInputs: Set[String])(
+        implicit val bindingModule: BindingModule) {
 
   /** The number of unnamed inputs this pipeline requires. */
   val requiredUnnamedCount: Int = if (processors.head.wantsUnnamedInput) {
@@ -112,13 +112,15 @@ class ErminePipeline(val name: String, val description: String,
       }
       case next +: rest => {
         // Get the input(s) that the current processor stage needs.
-        val inputs = next.inputs.zipWithIndex map { case (input, index) =>
-          input match {
-            // TODO(jkinkead): The below 'reset' calls are needed in order to be able to reuse
-            // inputs to multiple pipeline stages - but they are fragile and should be fixed.
-            case UnnamedInput() => unnamedSources(index).reset
-            case NamedInput(name) => namedSources(name).reset
-            case uriInput: UriInput => uriInput.getSource()
+        val inputs = next.inputs.zipWithIndex map {
+          case (input, index) => {
+            input match {
+              // TODO(jkinkead): The below 'reset' calls are needed in order to be able to reuse
+              // inputs to multiple pipeline stages - but they are fragile and should be fixed.
+              case UnnamedInput() => unnamedSources(index).reset
+              case NamedInput(name) => namedSources(name).reset
+              case uriInput: UriInput => uriInput.getSource()
+            }
           }
         }
 

@@ -47,8 +47,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     // Get the data directory for the definition extractor.
     config.get[String]("definitions.dataDirectory") match {
       case Some(dataDir) => processors += (
-          "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir)
-      )
+        "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir))
       case None => log.error("definitions.dataDirectory not found in config - " +
         "OtterNounDefinitionExtractor won't be initialized")
     }
