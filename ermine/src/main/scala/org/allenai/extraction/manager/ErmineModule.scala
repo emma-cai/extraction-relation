@@ -33,6 +33,8 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
       "StanfordFixProcessor" -> StanfordFixProcessor,
       "StanfordExtractor" -> StanfordExtractor,
+      "ExtractionRoles" -> ExtractionRoles,
+      "ExtractionLabels" -> ExtractionLabels,
       "CatProcessor" -> CatProcessor,
       "TurtleProcessor" -> TurtleProcessor)
 

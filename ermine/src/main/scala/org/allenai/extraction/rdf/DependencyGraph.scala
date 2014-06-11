@@ -63,7 +63,7 @@ class DependencyGraph extends MemoryStoreSailGraph {
     } yield javaMap.asScala.toMap
   }
 
-  /** find conuncts of a node */
+  /** find conjuncts of a node */
   def conjoinedNodes(node: Vertex): Seq[Vertex] = {
     val uri: String = node.toUri
     val query: String = s"""
@@ -74,6 +74,34 @@ class DependencyGraph extends MemoryStoreSailGraph {
       }"""
     val result: Seq[Map[String,Vertex]] = executeQuery(query)
     result.headOption map { _.values.toSeq } getOrElse { Seq.empty }
+  }
+
+  /** collect all tokens below node in the basic dependency tree */
+  def nodeConstits(node: Vertex, exclude: String = ""): Seq[Vertex] = {
+    val uri: String = node.toUri
+    val query: String = s"""
+      SELECT ?constit WHERE {
+        <$uri> ?dep ?constit .
+        FILTER(STRSTARTS(str(?dep), "http://nlp.stanford.edu/basic/")) .
+        FILTER(!regex(str(?dep), '/($exclude)$$')) .
+      }"""
+    val results: Seq[Map[String,Vertex]] = executeQuery(query)
+    val allValues: Seq[Seq[Vertex]] = for {
+      map <- results
+      constit = map("constit")
+    } yield (constit +: nodeConstits(constit)) // recurse without exclusions
+    allValues.flatten
+  }
+
+  /** retrieve properties of a token */
+  def tokenInfo(node: Vertex, prop: String = "text"): String = {
+    val uri: String = node.toUri
+    val query: String = s"""
+      SELECT ?prop WHERE {
+        <$uri> token:$prop ?prop .
+      }"""
+    val result: Map[String,Vertex] = executeQuery(query).head
+    result("prop").toLiteral
   }
 
 }
