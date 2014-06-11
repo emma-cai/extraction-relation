@@ -47,9 +47,9 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     // Get the data directory for the definition extractor.
     config.get[String]("definitions.dataDirectory") match {
       case Some(dataDir) => processors += (
-        "NounDefinitionOpenRegexExtractor" -> new OtterNounDefinitionExtractor(dataDir))
+        "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir))
       case None => log.error("definitions.dataDirectory not found in config - " +
-        "NounDefinitionOpenRegexExtractor won't be initialized")
+        "OtterNounDefinitionExtractor won't be initialized")
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.

@@ -7,10 +7,10 @@ DefnPronoun := CaseInsensitiveKeywordTagger {
 }
 
 consume DefnIsa := TypedOpenRegex {
-    (?: (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>: @NGNoDetSingle) <string="'">?) ((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>)) @Det? (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: @AP3NoVb))? (<string=",">? <string="with"> (<Properties>: @NGMultiple))?)
- |  (?: (<DefinedTerm>:@NGNoDetSingle) <string=":"> (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? ((@DefnPronoun | (@Det? <string="'">? @NGNoDetSingle <string="'">?)) ((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>)))? @Det? (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: @AP3NoVb))? (<string=",">? <string="with"> (<Properties>: @NGMultiple))?)
+    (?: (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>: @NGNoDetSingle) <string="'">?) (<IsaRel>:((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>)) @Det?) (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: @AP3NoVb))? (<string=",">? <string="with"> (<Properties>: @NGMultiple))?)
+ |  (?: (<DefinedTerm>:@NGNoDetSingle) <string=":"> (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? ((@DefnPronoun | (@Det? <string="'">? @NGNoDetSingle <string="'">?)) (<IsaRel>: ((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>)))? @Det?) (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: @AP3NoVb))? (<string=","> <string="with"> (<Properties>: @NGMultiple))?)
  |  (?: (<DefinedTerm>:@NGNoDetSingle) <string=":"> (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<IsaWhat>:@NGMultiple))
- |  (?: (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>: @NGNoDetSingle) <string="'">?) ((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>)) @Det? (<IsaWhat>: @NGMultiple))
+ |  (?: (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>: @NGNoDetSingle) <string="'">?) (<IsaRel>: (((<string=/is|was|are|were|describes/>) | (<string=/refers/> <string=/to/>) | (<string=/is/> <string=/defined/> <string=/as/>))) @Det?) (<IsaWhat>: @NGMultiple))
 }
 
 // E.g.: The ear is the organ that hears sound.

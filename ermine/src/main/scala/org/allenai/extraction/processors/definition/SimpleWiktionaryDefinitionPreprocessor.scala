@@ -29,7 +29,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     */
   override protected def processText(input: Source, destination: Writer): Unit = {
     //Start output Json 
-    destination.write("[")
+    destination.write("[\n")
     var beginning = true
     var defId = 1
     for {
@@ -40,13 +40,9 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
       val (defAlts, metaData) = cleanUp(termDefinition)
       val preprocessedDefOp =
         PreprocessedDefinition(Some("SimpleWiktionary"), defId, line, term, Some(termWordClass), defAlts, metaData)
-      if (!beginning) {
-        destination.write(",")
-      }
-      destination.write(preprocessedDefOp.toJson.prettyPrint)
-      if (beginning) {
-        beginning = false
-      }
+      destination.write(",\n")
+      destination.write(preprocessedDefOp.toJson.compactPrint + "\n")
+      beginning = false
       defId += 1
     }
     // End output Json
@@ -55,8 +51,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
 
   /** breakLine : Break the input line into its constituent parts.
     * SimpleWiktionary scraped text consists of one definition per line in a txt file,
-    * with the format of <Term>\t<WordClass>\t<Definition>. The output of this preprocessor
-    * will also be in the same format except the Definition will be cleaned up.
+    * with the format of <Term>\t<WordClass>\t<Definition>.
     */
   def breakLine(defnInputLine: String): Option[(String, String, String)] = {
     defnInputLine.split("\t") match {
