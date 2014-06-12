@@ -355,7 +355,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
 
   /** Helper method to extract all constituent captured groups from a given type (pattern) */
   private def getElementsOfCompositeType(typ: Type, types: Seq[Type]): Seq[Type] = {
-    Extractor.findSubtypes(types)(typ) toSeq
+    Extractor.findSubtypes(types)(typ).toSeq
   }
 
   /** Helper method to extract the text corresponding to each constituent captured group in a given type (pattern) */
