@@ -70,12 +70,6 @@ case class OtterToken(
   override def toString() = s"$string-$id"
 }
 
-/** A Case Class for token interval Extending to provide JSON support.
-  * @param start start index in seq of tokens
-  * @param end end index in seq of tokens
-  */
-//case class OtterInterval(start: Int, end: Int)
-
 /** A Case Class to represent a Tuple argument.
   * @param string string representing the Argument
   * @param tokens set of tokens corresponding to the Argument
@@ -272,14 +266,6 @@ object OtterToken {
   implicit val tokenJsonFormat = jsonFormat5(OtterToken.apply)
 } 
 
-/*object OtterInterval {
-  def apply(interval: Interval) = {
-    new OtterInterval(interval.start, interval.end)
-  }
-  import spray.json.DefaultJsonProtocol._
-  implicit val intervalJsonFormat = jsonFormat2(OtterInterval.apply)
-}*/
-
 object OtterInterval {
   implicit object IntervalJsonFormat extends RootJsonFormat[Interval] {
     def write(i: Interval) =
@@ -307,16 +293,19 @@ object Relation {
 
 object SimpleOtterExtractionTuple {
   import spray.json.DefaultJsonProtocol._
+  import OtterInterval.IntervalJsonFormat
   implicit val simpleOtterExtractionTupleJsonFormat = jsonFormat7(SimpleOtterExtractionTuple.apply)
 } 
 
 object OtterExtractionTupleWithTupleRelObject {
   import spray.json.DefaultJsonProtocol._
+  import OtterInterval.IntervalJsonFormat
   implicit val otterExtractionTupleWithTupleRelObjectJsonFormat = jsonFormat7(OtterExtractionTupleWithTupleRelObject.apply)
 }
 
 object ComplexOtterExtractionTuple {
   import spray.json.DefaultJsonProtocol._
+  import OtterInterval.IntervalJsonFormat
   implicit val complexOtterExtractionTupleJsonFormat = jsonFormat5(ComplexOtterExtractionTuple.apply)
 } 
 
@@ -327,32 +316,33 @@ object OtterExtractionTuple {
     val complexTupleIdentifier = "complex"
       
     implicit object OtterExtractionTupleJsonFormat extends RootJsonFormat[OtterExtractionTuple]{
-    def write(t: OtterExtractionTuple) = t match{
-      case simple:SimpleOtterExtractionTuple => packType(simple.toJson, simpleTupleIdentifier)
-      case tupleRelObj:OtterExtractionTupleWithTupleRelObject => packType(tupleRelObj.toJson, tupleWithTupleRelObjectIdentifier)
-      case complex:ComplexOtterExtractionTuple => packType(complex.toJson, complexTupleIdentifier)
-    }
+      import OtterInterval.IntervalJsonFormat
+      def write(t: OtterExtractionTuple) = t match{
+        case simple:SimpleOtterExtractionTuple => packType(simple.toJson, simpleTupleIdentifier)
+        case tupleRelObj:OtterExtractionTupleWithTupleRelObject => packType(tupleRelObj.toJson, tupleWithTupleRelObjectIdentifier)
+        case complex:ComplexOtterExtractionTuple => packType(complex.toJson, complexTupleIdentifier)
+      }
 
-    def packType(json: JsValue, typStr: String) : JsValue = {
-      val fields = json.asJsObject.fields
-      JsObject(fields + (typeFieldIdentifier -> JsString(typStr)))
-    }
+      def packType(json: JsValue, typStr: String) : JsValue = {
+        val fields = json.asJsObject.fields
+        JsObject(fields + (typeFieldIdentifier -> JsString(typStr)))
+      }
     
-    def read(value: JsValue) = value match{
-      case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == simpleTupleIdentifier) => 
-        {
-          JsObject(obj.fields - typeFieldIdentifier).convertTo[SimpleOtterExtractionTuple]
-        }
-      case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == tupleWithTupleRelObjectIdentifier) => 
-        {
-          JsObject(obj.fields - typeFieldIdentifier).convertTo[OtterExtractionTupleWithTupleRelObject]
-        }
-      case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == complexTupleIdentifier) => 
-        {
-          JsObject(obj.fields - typeFieldIdentifier).convertTo[ComplexOtterExtractionTuple]
-        }
-    }
-  }
+      def read(value: JsValue) = value match {
+        case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == simpleTupleIdentifier) => 
+          {
+            JsObject(obj.fields - typeFieldIdentifier).convertTo[SimpleOtterExtractionTuple]
+          }
+        case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == tupleWithTupleRelObjectIdentifier) => 
+          {
+            JsObject(obj.fields - typeFieldIdentifier).convertTo[OtterExtractionTupleWithTupleRelObject]
+          }
+        case obj:JsObject if (obj.fields(typeFieldIdentifier).toString.replaceAll("\"", "") == complexTupleIdentifier) => 
+          {
+            JsObject(obj.fields - typeFieldIdentifier).convertTo[ComplexOtterExtractionTuple]
+          }
+     }
+   }
 } 
 
 object OtterExtractionForDefinitionAlternate {

@@ -102,7 +102,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     var definedTermArgOption: Option[Argument] = None
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
     val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
-    val isaRelArgOption = isaRelOption map { x => Argument(x.text, OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(OtterInterval(x.tokenInterval))) }
+    val isaRelArgOption = isaRelOption map { x => Argument(x.text, OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         val (definedTermArg, definedTermTuple) = processNounDefinitionDefinedTerm(definedTerm, types, defnChunkedTokens)
@@ -167,11 +167,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     */
   private def processNounDefinitionDefinedTerm(typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): (Argument, OtterExtractionTuple) = {
     val definedTermTokens = OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval)
-    val definedTermArg = Argument(typ.text, definedTermTokens, Some(OtterInterval(typ.tokenInterval.start, typ.tokenInterval.end)))
+    val definedTermArg = Argument(typ.text, definedTermTokens, Some(typ.tokenInterval))
     val definedTermRelObj = Option(definedTermArg)
     val definedTermTuple = SimpleOtterExtractionTuple(
       definedTermTokens,
-      OtterInterval(typ.tokenInterval),
+      typ.tokenInterval,
       Some(Argument("DefinedTerm", Seq.empty[OtterToken], None)),
       Relation(Some(RelationTypeEnum.DefinedTerm), Argument("is", Seq.empty[OtterToken], None)),
       definedTermRelObj,
@@ -184,11 +184,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     */
   private def processNounDefinitionContext(definedTermArg: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): OtterExtractionTuple = {
     val defnTokens = OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval)
-    val typeArg = Argument(typ.text, defnTokens, Some(OtterInterval(typ.tokenInterval.start, typ.tokenInterval.end)))
+    val typeArg = Argument(typ.text, defnTokens, Some(typ.tokenInterval))
     val relObj = Option(typeArg)
     SimpleOtterExtractionTuple(
       defnTokens,
-      OtterInterval(typ.tokenInterval),
+      typ.tokenInterval,
       Some(Argument("Context", Seq.empty[OtterToken], None)),
       Relation(Some(RelationTypeEnum.Context), Argument("is", Seq.empty[OtterToken], None)),
       relObj,
@@ -250,11 +250,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       // Construct the tokens and relation object out of the extracted "nouns" part to make the
       // resultant IsA tuple.
       val nounTokens = OtterToken.makeTokenSeq(defnChunkedTokens, noun.tokenInterval)
-      val nounArg = Argument(noun.text, nounTokens, Some(OtterInterval(noun.tokenInterval.start, noun.tokenInterval.end)))
+      val nounArg = Argument(noun.text, nounTokens, Some(noun.tokenInterval))
       val relObj = Option(nounArg)
       results :+= SimpleOtterExtractionTuple(
         nounTokens,
-        OtterInterval(noun.tokenInterval),
+        noun.tokenInterval,
         Some(definedTermArg),
         Relation(Some(RelationTypeEnum.IsA), isaRelArg),
         relObj,
@@ -289,12 +289,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         if (prepOption.isDefined) {
           val prep = prepOption.get
           val prepIntervalOption = Option(prep.tokenInterval)
-          val prepOtterIntervalOption = prepIntervalOption map { prepInterval => OtterInterval(prepInterval) }
           val prepTokens = prepIntervalOption match {
             case Some(prepInterval) => OtterToken.makeTokenSeq(defnChunkedTokens, prepInterval)
             case _ => Seq.empty[OtterToken]
           }
-          preps :+= Argument(prep.text, prepTokens, prepOtterIntervalOption)
+          preps :+= Argument(prep.text, prepTokens, prepIntervalOption)
         }
 
         if (npIntervalOption.isDefined) {
@@ -302,13 +301,12 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           // We need to produce an Extraction Tuple only if this interval does not completely
           // overlap, i.e., is not the same as the interval covered by just the Nouns (handled earlier).
           if (!npInterval.equals(noun.tokenInterval)) {
-            val npOtterInterval = OtterInterval(npInterval)
             val npTokens = OtterToken.makeTokenSeq(defnChunkedTokens, npInterval)
-            val npArg = Argument(npText.toString, npTokens, Option(npOtterInterval))
+            val npArg = Argument(npText.toString, npTokens, Option(npInterval))
             val relObj = Option(npArg)
             results :+= SimpleOtterExtractionTuple(
               npTokens,
-              OtterInterval(npInterval),
+              npInterval,
               Some(definedTermArg),
               Relation(Some(RelationTypeEnum.IsA), isaRelArg),
               relObj,
@@ -322,11 +320,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     // Iterate over the adjectives and generate a Quality tuple for each.
     for (adj <- adjs) {
       val adjTokens = OtterToken.makeTokenSeq(defnChunkedTokens, adj.tokenInterval)
-      val adjArg = Argument(adj.text, adjTokens, Some(OtterInterval(adj.tokenInterval.start, adj.tokenInterval.end)))
+      val adjArg = Argument(adj.text, adjTokens, Some(adj.tokenInterval))
       val relObj = Option(adjArg)
       results :+= SimpleOtterExtractionTuple(
         adjTokens,
-        OtterInterval(adj.tokenInterval),
+        adj.tokenInterval,
         Some(definedTermArg),
         Relation(Some(RelationTypeEnum.Quality), Argument("is", Seq.empty[OtterToken], None)),
         relObj,
@@ -459,11 +457,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
               // Iterate over all the returned Types and construct Quality tuples out of them.
               for (adj <- ap3Types) {
                 val adjTokens = OtterToken.makeTokenSeq(defnChunkedTokens, adj.tokenInterval)
-                val adjArg = Argument(adj.text, adjTokens, Some(OtterInterval(adj.tokenInterval.start, adj.tokenInterval.end)))
+                val adjArg = Argument(adj.text, adjTokens, Some(adj.tokenInterval))
                 val relObj = Option(adjArg)
                 results :+= SimpleOtterExtractionTuple(
                   adjTokens,
-                  OtterInterval(adj.tokenInterval),
+                  adj.tokenInterval,
                   Some(definedTermArg),
                   Relation(Some(RelationTypeEnum.Quality), Argument("is", Seq.empty[OtterToken], None)),
                   relObj,
@@ -492,11 +490,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
               // Iterate over all the returned Types and construct Property OtterExtractionTuples out of them.
               for (ng <- ngTypes) {
                 val ngTokens = OtterToken.makeTokenSeq(defnChunkedTokens, ng.tokenInterval)
-                val ngArg = Argument(ng.text, ngTokens, Some(OtterInterval(ng.tokenInterval.start, ng.tokenInterval.end)))
+                val ngArg = Argument(ng.text, ngTokens, Some(ng.tokenInterval))
                 val relObj = Option(ngArg)
                 results :+= SimpleOtterExtractionTuple(
                   ngTokens,
-                  OtterInterval(ng.tokenInterval),
+                  ng.tokenInterval,
                   Some(definedTermArg),
                   Relation(Some(RelationTypeEnum.Property), Argument("has", Seq.empty[OtterToken], None)),
                   relObj,
@@ -598,7 +596,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         case Some(rl) =>
           {
             val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
-            val relArg = Argument(rl.text, relTokens, Some(OtterInterval(rl.tokenInterval.start, rl.tokenInterval.end)))
+            val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
             Option(Relation(None, relArg))
           }
         case _ => None
@@ -624,7 +622,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           case consequentSTuple: SimpleOtterExtractionTuple =>
             results :+= ComplexOtterExtractionTuple(
               OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-              OtterInterval(typ.tokenInterval),
+              typ.tokenInterval,
               antecedentVP,
               rel,
               consequentSTuple)
@@ -654,7 +652,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         case Some(rl) =>
           {
             val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
-            val relArg = Argument(rl.text, relTokens, Some(OtterInterval(rl.tokenInterval.start, rl.tokenInterval.end)))
+            val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
             Option(Relation(None, relArg))
           }
         case _ => None
@@ -677,7 +675,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     } yield {
       ComplexOtterExtractionTuple(
         OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-        OtterInterval(typ.tokenInterval),
+        typ.tokenInterval,
         antecedentVP,
         rel,
         consequentVP)
@@ -693,7 +691,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case Some(rl) =>
         {
           val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
-          val relArg = Argument(rl.text, relTokens, Some(OtterInterval(rl.tokenInterval.start, rl.tokenInterval.end)))
+          val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
           Option(Relation(None, relArg))
         }
       case _ => None
@@ -717,8 +715,6 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         }
       case _ => arg2IntervalOption
     }
-    val otterIntervalOption = intervalOption map { interval => OtterInterval(interval) }
-
     // Get the complete text for the relation object Argument
     val argText = new StringBuilder((arg2Option map { arg2 => arg2.text }) getOrElse (""))
     argText ++= (arg3Option map { arg3 => arg3.text }) getOrElse ("")
@@ -728,14 +724,14 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case _ => Seq.empty[OtterToken]
     }
     // Now construct the relation Object Argument (we need an Option type)
-    val relObjOption = Some(Argument(argText.toString, argTokens, otterIntervalOption))
+    val relObjOption = Some(Argument(argText.toString, argTokens, intervalOption))
 
     // Get the prepositional phrase Arguments
     val pps = Extractor.findSubtypesWithName(types)(typ, "Arg").headOption match {
       case Some(prep) =>
         {
           val prepTokens = OtterToken.makeTokenSeq(defnChunkedTokens, prep.tokenInterval)
-          Seq[Argument](Argument(prep.text, prepTokens, Some(OtterInterval(prep.tokenInterval))))
+          Seq[Argument](Argument(prep.text, prepTokens, intervalOption))
         }
       case _ => Seq.empty[Argument]
     }
@@ -745,7 +741,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case Some(advp) =>
         {
           val advpTokens = OtterToken.makeTokenSeq(defnChunkedTokens, advp.tokenInterval)
-          Seq[Argument](Argument(advp.text, advpTokens, Some(OtterInterval(advp.tokenInterval))))
+          Seq[Argument](Argument(advp.text, advpTokens, Some(advp.tokenInterval)))
         }
       case _ => Seq.empty[Argument]
     }
@@ -756,7 +752,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     } yield {
       SimpleOtterExtractionTuple(
         OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-        OtterInterval(typ.tokenInterval),
+        typ.tokenInterval,
         Option(agent),
         rel,
         relObjOption,
@@ -780,7 +776,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         case Some(rl) =>
           {
             val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
-            val relArg = Argument(rl.text, relTokens, Some(OtterInterval(rl.tokenInterval.start, rl.tokenInterval.end)))
+            val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
             Option(Relation(None, relArg))
           }
         case _ => None
@@ -802,7 +798,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
               {
                 results :+= ComplexOtterExtractionTuple(
                   OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-                  OtterInterval(typ.tokenInterval),
+                  typ.tokenInterval,
                   antecedentTuple,
                   rel,
                   consequentTuple)
@@ -821,7 +817,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   private def getExtractionTuplesForRuleS1(typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], pp: Option[Type]): Seq[OtterExtractionTuple] = {
     val arg1Option = Extractor.findSubtypesWithName(types)(typ, "Arg1").headOption
     val subj: Argument = arg1Option match {
-      case Some(arg1) => Argument(arg1.text, OtterToken.makeTokenSeq(defnChunkedTokens, arg1.tokenInterval), Some(OtterInterval(arg1.tokenInterval)))
+      case Some(arg1) => Argument(arg1.text, OtterToken.makeTokenSeq(defnChunkedTokens, arg1.tokenInterval), Some(arg1.tokenInterval))
       case _ => Argument("", Seq.empty[OtterToken], None)
     }
     val vps =
