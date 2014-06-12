@@ -84,7 +84,7 @@ case class OtterToken(
 case class Argument(
   string: String,
   tokens: Seq[OtterToken],
-  tokenInterval: Option[OtterInterval])
+  tokenInterval: Option[Interval])
 
 /** An Enumeration of certain "special" predicates that we identify. This list will be enhanced as Otter
   * has coverage for more of these relations that have special meaning/handling in inference.
@@ -284,7 +284,7 @@ object OtterInterval {
   implicit object IntervalJsonFormat extends RootJsonFormat[Interval] {
     def write(i: Interval) =
       JsArray(JsNumber(i.start), JsNumber(i.end))
-
+    
     def read(value: JsValue) = value match {
       case JsArray(JsNumber(start) :: JsNumber(end) :: Nil) =>
         Interval.open(start.toInt, end.toInt) 
@@ -292,6 +292,7 @@ object OtterInterval {
     }
   }
 }
+
 
 object Argument {
   import spray.json.DefaultJsonProtocol._
