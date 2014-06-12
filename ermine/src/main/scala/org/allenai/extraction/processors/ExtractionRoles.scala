@@ -12,7 +12,7 @@ import java.io.Writer
 
 /** processor to add labels and string descriptions to extracted nodes */
 object ExtractionRoles extends TextProcessor {
-  override val numInputs = 1
+  override val numInputs = 3
   override val numOutputs = 1
 
   // SPARQL query for nodes with added rel: relation
@@ -23,9 +23,10 @@ object ExtractionRoles extends TextProcessor {
     }"""
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
     val graph = new DependencyGraph()
-    graph.loadTurtle(source)
+    for (source <- sources) {
+      graph.loadTurtle(source)
+    }
 
     // match patterns
     for {

@@ -11,7 +11,7 @@ import java.io.Writer
 
 /** processor to add labels and string descriptions to extracted nodes */
 object InferenceRules extends TextProcessor {
-  override val numInputs = 1
+  override val numInputs = 5
   override val numOutputs = 1
 
   // SPARQL query for nodes with added rel: relation
@@ -25,12 +25,12 @@ object InferenceRules extends TextProcessor {
   val separator = ", "
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
-    val sink: Writer = destinations(0)
-
     val graph = new DependencyGraph()
-    graph.loadTurtle(source)
+    for (source <- sources) {
+      graph.loadTurtle(source)
+    }
 
+    val sink: Writer = destinations(0)
     var ruleId: Int = 0
     // match patterns
     for (map <- graph.executeQuery(relQuery)) {

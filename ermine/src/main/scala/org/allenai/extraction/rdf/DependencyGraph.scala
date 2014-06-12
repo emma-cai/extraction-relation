@@ -47,9 +47,11 @@ class DependencyGraph extends MemoryStoreSailGraph {
     loadRDF(sourceStream, "http://aristo.allenai.org", "turtle", null)
   }
 
-  def saveTurtle(sink: Writer) = {
+  def saveTurtle(sink: Writer, input: Boolean = false) = {
     val sinkStream = new WriterOutputStream(sink, StandardCharsets.UTF_8)
-    saveRDF(sinkStream, "turtle") // original input
+    if (input) {
+      saveRDF(sinkStream, "turtle") // original input
+    }
     outputGraph.saveRDF(sinkStream, "turtle") // any additions
   }
 

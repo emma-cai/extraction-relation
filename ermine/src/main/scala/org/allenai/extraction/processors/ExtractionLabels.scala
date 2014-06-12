@@ -12,7 +12,7 @@ import java.io.Writer
 
 /** processor to map dependencies of extracted nodes to roles */
 object ExtractionLabels extends TextProcessor {
-  override val numInputs = 1
+  override val numInputs = 4
   override val numOutputs = 1
 
   // SPARQL query for nodes with added pred: relations
@@ -43,9 +43,10 @@ object ExtractionLabels extends TextProcessor {
   }
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
     val graph = new DependencyGraph()
-    graph.loadTurtle(source)
+    for (source <- sources) {
+      graph.loadTurtle(source)
+    }
 
     // match verbal predicates
     for (map <- graph.executeQuery(predQuery)) {
