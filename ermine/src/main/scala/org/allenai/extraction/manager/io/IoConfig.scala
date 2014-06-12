@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.common.Config._
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.ErmineException
 
 import com.typesafe.config.{ ConfigObject, ConfigValue }
 

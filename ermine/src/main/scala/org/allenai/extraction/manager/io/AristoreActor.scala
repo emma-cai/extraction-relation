@@ -3,14 +3,17 @@ package org.allenai.extraction.manager.io
 import org.allenai.ari.datastore.api.NoSuchDatasetException
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.{ Dataset, DocumentType, FileDocument, TextFile }
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.common.Config._
+import org.allenai.extraction.{ ConfigModule, ErmineException }
 
 import akka.actor._
 import akka.pattern.pipe
 import com.escalatesoft.subcut.inject.{ BindingId, NewBindingModule }
 import spray.json.DefaultJsonProtocol._
+import com.typesafe.config.Config
 
 import scala.concurrent.Future
+import scala.concurrent.duration._
 import scala.util.{ Failure, Success }
 
 import java.io.File
@@ -32,7 +35,8 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
   def receiveWithDatasets(datasets: Map[String, Future[DatasetCache]]): Actor.Receive = {
     // Reads a file document from the datastore, and returns the location on disk where it's been
     // written to.
-    case AristoreActor.InitializeInput(datasetId, documentId) => {
+    case AristoreActor.InitializeFileInput(datasetId, documentId) => {
+      // TODO(jkinkead): Look in the cache first, and cache after reading.
       val tempDirectory = Files.createTempDirectory(datasetId).toFile
       tempDirectory.deleteOnExit
 
@@ -40,6 +44,20 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
         dataset <- client.getDataset(datasetId)
         document <- client.getFileDocument[TextFile](dataset.id, documentId, tempDirectory)
       } yield document
+
+      location pipeTo sender
+    }
+    // Loads the given dataset from Aristore.
+    case AristoreActor.InitializeDatasetInput(datasetId) => {
+      // TODO(jkinkead): Look in the cache first, and cache after reading.
+      val tempDirectory = Files.createTempDirectory(datasetId).toFile
+      tempDirectory.deleteOnExit
+
+      log.debug("Downloading full dataset ${datasetId} for read")
+      val location: Future[File] = for {
+        dataset <- client.getDataset(datasetId)
+        _ <- client.readFileDocuments[TextFile](dataset.id, 0, Int.MaxValue, tempDirectory)
+      } yield tempDirectory
 
       location pipeTo sender
     }
@@ -105,7 +123,7 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
 
         become(receiveWithDatasets(datasets - datasetId))
       } else {
-        log.info(s"ignoring commit request for key ${datasetId}; unknown or already committed.")
+        log.debug(s"Ignoring commit request for key ${datasetId}; unknown or already committed.")
         sender ! Unit
       }
     }
@@ -120,7 +138,14 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
 object AristoreActor {
   object Id extends BindingId
 
-  case class InitializeInput(datasetId: String, documentId: String)
+  /** Initializes a full dataset input, downloading all files in the dataset and returning the
+    * directory they are in.
+    */
+  case class InitializeDatasetInput(datasetId: String)
+
+  /** Initializes input from a single document, returning the file the document was downloaded to.
+    */
+  case class InitializeFileInput(datasetId: String, documentId: String)
 
   /** Message directing the actor to start output for a given dataset. */
   case class InitializeOutput(datasetId: String)
@@ -131,13 +156,20 @@ object AristoreActor {
   def props(client: AriDatastoreClient): Props = Props(new AristoreActor(client))
 }
 
-/** Module providing a module-scoped AristoreActor. */
+/** Module providing a module-scoped AristoreActor as well as a timeout for talking to Aristore. */
 class AristoreActorModule extends NewBindingModule(module => {
   import module._
+
+  val config = ConfigModule.inject[Config](None)
 
   bind[ActorRef] idBy AristoreActor.Id toModuleSingle { implicit module =>
     val actorSystem = module.inject[ActorSystem](None)
     val aristoreClient = module.inject[AriDatastoreClient](None)
     actorSystem.actorOf(AristoreActor.props(aristoreClient))
+  }
+
+  // Bind the ari datastore timeout, if it's configured.
+  config.get[Long]("aristore.timeoutMillis") foreach { timeout =>
+    bind[FiniteDuration] idBy AristoreActor.Id toSingle timeout.millis
   }
 })

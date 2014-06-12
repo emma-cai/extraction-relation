@@ -1,8 +1,8 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
-import org.allenai.extraction.Processor
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.{ ErmineException, Processor }
+import org.allenai.extraction.manager.ErmineModule
 
 import akka.actor.ActorRef
 import akka.pattern.ask
@@ -116,8 +116,8 @@ case class FileOutput(override val name: Option[String], val file: File) extends
 /** Uninitialized Aristore output. This will throw an exception if getOutputFile is called on it; an
   * initialized instance needs to be fetched.
   * @param datasetId the ID of the dataset to output to
-  * @param documentId if set, the single file to output to. If unset, assumes full dataset
-  * output, and the file returned will be the directory for dataset output.
+  * @param documentId if set, the single file to output to. If unset, assumes full dataset output,
+  * and the file returned will be the directory for dataset output.
   * @see AristoreFileOutput
   */
 class AristoreFileOutputConfig(override val name: Option[String], val datasetId: String,
@@ -146,13 +146,12 @@ class AristoreFileOutput(override val name: Option[String], val datasetId: Strin
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */
   val client = inject[ActorRef](AristoreActor.Id)
+  val aristoreTimeout = injectOptional[FiniteDuration](AristoreActor.Id) getOrElse { 10.minutes }
 
   /** The directory we're writing files to. */
   val outputDirectory: Future[File] = {
     val request = AristoreActor.InitializeOutput(datasetId)
-    // TODO(jkinkead): Take the timeout from config - we don't want a 10-minute timeout for all
-    // executions.
-    (client ? request)(10.minutes).mapTo[File]
+    (client ? request)(aristoreTimeout).mapTo[File]
   }
 
   /** @throws ErmineException when invoked; this copy shouldn't reused between pipeline runs. */
@@ -164,7 +163,7 @@ class AristoreFileOutput(override val name: Option[String], val datasetId: Strin
     * the provided documentId; or the directory AristoreActor gave us if the documentId is unset
     */
   override def getOutputFile(): File = {
-    val directory = Await.result(outputDirectory, Duration.Inf)
+    val directory = Await.result(outputDirectory, aristoreTimeout)
     documentId match {
       case Some(filename) => new File(directory, filename)
       case None => directory

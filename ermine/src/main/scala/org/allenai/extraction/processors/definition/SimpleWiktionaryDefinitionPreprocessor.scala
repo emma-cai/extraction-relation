@@ -27,7 +27,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * format and writes extraction output in the format: <term>\t<wordClass>\t<definition>,
     * as expected by the Definition extractor out to the specified Writer.
     */
-  override protected def processText(input: Source, destination: Writer): Unit = {
+  override def processText(input: Source, destination: Writer): Unit = {
     //Start output Json 
     destination.write("[\n")
     var beginning = true

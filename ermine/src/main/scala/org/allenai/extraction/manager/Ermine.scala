@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.Config._
-import org.allenai.extraction.ActorSystemModule
+import org.allenai.extraction.{ ActorSystemModule, ErmineException }
 
 import akka.actor.ActorSystem
 import com.typesafe.config.{ Config, ConfigFactory }

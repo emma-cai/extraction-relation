@@ -1,7 +1,7 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.manager.ErmineException
+import org.allenai.extraction.ErmineException
 
 import com.typesafe.config.{ ConfigValue, ConfigValueFactory }
 
@@ -19,30 +19,30 @@ class IoConfigTest extends UnitSpec {
 
   "IoConfig.fromConfigValue" should "handle a full object correctly" in {
     val io = IoConfig.fromConfigValue(configValue("name" -> "a", "uri" -> devNull))
-    io should be (IoConfig(Some("a"), Some(devNullUri)))
+    io should be(IoConfig(Some("a"), Some(devNullUri)))
   }
 
   it should "handle partial objects correctly" in {
     val noUriIo = IoConfig.fromConfigValue(configValue("name" -> "a"))
-    noUriIo should be (IoConfig(Some("a"), None))
+    noUriIo should be(IoConfig(Some("a"), None))
 
     val noNameIo = IoConfig.fromConfigValue(configValue("uri" -> devNull))
-    noNameIo should be (IoConfig(None, Some(devNullUri)))
+    noNameIo should be(IoConfig(None, Some(devNullUri)))
   }
 
   it should "handle empty objects correctly" in {
-    val io = IoConfig.fromConfigValue(configValue(/* empty */))
-    io should be (IoConfig(None, None))
+    val io = IoConfig.fromConfigValue(configValue( /* empty */ ))
+    io should be(IoConfig(None, None))
   }
 
   it should "handle bareword names correctly" in {
     val io = IoConfig.fromConfigValue(ConfigValueFactory.fromAnyRef("barewordName"))
-    io should be (IoConfig(Some("barewordName"), None))
+    io should be(IoConfig(Some("barewordName"), None))
   }
 
   it should "handle bareword URIs correctly" in {
     val io = IoConfig.fromConfigValue(ConfigValueFactory.fromAnyRef(devNull))
-    io should be (IoConfig(None, Some(devNullUri)))
+    io should be(IoConfig(None, Some(devNullUri)))
   }
 
   it should "fail gracefully with a bad config value" in {

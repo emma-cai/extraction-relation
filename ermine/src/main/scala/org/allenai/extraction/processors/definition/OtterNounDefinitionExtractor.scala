@@ -36,7 +36,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     * a fully-formed sentence with the defined term as subject as well as "<term> : <definition>".
     * Also, we are not using the JSON format for the extraction results here right now.
     */
-  override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
+  override def processText(defnInputSource: Source, destination: Writer): Unit = {
     // TODO: All Json output related statements are commented out, 
     // Finish implementation changes to output required data types and then
     // uncomment/change as necessary to output Json.

@@ -61,7 +61,7 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     * (format: ON)
     * Output will be written out to the specified destination.
     */
-  override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
+  override def processText(defnInputSource: Source, destination: Writer): Unit = {
     //Start output Json 
     destination.write("[\n")
     // Iterate over input JSONs and process definitions.

@@ -25,7 +25,7 @@ object StanfordParser extends FlatProcessor {
   }
 
   /** Outputs the Stanford parse as XML from the given source. */
-  override protected def processText(source: Source, destination: Writer): Unit = {
+  override def processText(source: Source, destination: Writer): Unit = {
     // Stanford requires we load the entire text to process in memory.
     val sourceText = source.getLines().mkString("\n")
     // Run the processing.
