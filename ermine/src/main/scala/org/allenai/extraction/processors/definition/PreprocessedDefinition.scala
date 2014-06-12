@@ -1,17 +1,22 @@
 package org.allenai.extraction.processors.definition
 
+import spray.json.DefaultJsonProtocol.IntJsonFormat
+import spray.json.DefaultJsonProtocol.StringJsonFormat
+import spray.json.DefaultJsonProtocol.jsonFormat7
+import spray.json.DefaultJsonProtocol.optionFormat
+import spray.json.DefaultJsonProtocol.seqFormat
+
 /** A Case Class to represent a preprocessed raw definition
-  * @param definitionCorpusName         The name/path or any identifier for the input definition corpus if available.
-  * @param rawDefinitionId              Just a sequential index for a raw definition within the given corpus.
-  * @param rawDefinitionLine            The raw Definition line (input).
-  * @param definedTerm                  Term.
-  * @param wordClass                    Word Class for the term, for e.g., Noun, Verb etc. usually available in
-  *                                     any standard definition corpus.
-  * @param preprocessedDefinitions      Formatted definitions output by the preprocessor. This is a Seq because
-  *                                     a certain (raw definition) line might be split into multiple definitions
-  *                                     when something is paraphrased.
-  * @param metaData                     Any additional metadata available, for e.g., context, and other attributes,
-  *                                     like 'countable' for nouns, etc.				
+  * @param definitionCorpusName name/path or any identifier for the input definition corpus if available.
+  * @param rawDefinitionId just a sequential index for a raw definition within the given corpus.
+  * @param rawDefinitionLine raw Definition line (input).
+  * @param definedTerm  term.
+  * @param wordClass word class for the term, for e.g., Noun, Verb etc. usually available in
+  * any standard definition corpus.
+  * @param preprocessedDefinitions formatted definitions output by the preprocessor. This is a Seq because
+  * a certain (raw definition) line might be split into multiple definitions when something is paraphrased.
+  * @param metaData any additional metadata available, for e.g., context, and other attributes,
+  * like 'countable' for nouns, etc.				
   *
   * For e.g., input raw definition line (line # 214) from SimpleWiktionary.20140114.txt: 
   * "Academia        noun        #{{uncountable}} 'Academia' is a word for the group of people 
@@ -39,18 +44,18 @@ package org.allenai.extraction.processors.definition
   * (format: ON)
   */
 case class PreprocessedDefinition (
-    definitionCorpusName : Option[String],
-    rawDefinitionId : Int,
-    rawDefinitionLine : String,
-    definedTerm : String,
-    wordClass : Option[String],
-    preprocessedDefinitions : Seq[String],
-    metaData : Seq[String])
+    definitionCorpusName: Option[String],
+    rawDefinitionId: Int,
+    rawDefinitionLine: String,
+    definedTerm: String,
+    wordClass: Option[String],
+    preprocessedDefinitions: Seq[String],
+    metaData: Seq[String])
  
 
 /** Companion Object to support conversion to/from JSON.
   */
 object PreprocessedDefinition {
   import spray.json.DefaultJsonProtocol._
-  implicit val dPreprocessedDefinitionJsonFormat = jsonFormat7(PreprocessedDefinition.apply)
+  implicit val preprocessedDefinitionJsonFormat = jsonFormat7(PreprocessedDefinition.apply)
 } 
