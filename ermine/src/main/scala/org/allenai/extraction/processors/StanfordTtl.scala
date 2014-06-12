@@ -125,7 +125,7 @@ object StanfordTtl extends MultiTextProcessor {
   }
   object Token {
     /** @return the full ID string for a token with the given numerical ids */
-    def buildId(sentenceId: Int, tokenId: Int): String = s"${sentenceId}.${tokenId}"
+    def buildId(sentenceId: Int, tokenId: Int): String = s"${sentenceId}_${tokenId}"
 
     /** Create a Token from a Stanford annotation.
       * @param sentenceId ID of the sentence in the source document.
