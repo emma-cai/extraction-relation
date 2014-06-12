@@ -26,6 +26,7 @@ class DependencyGraph extends MemoryStoreSailGraph {
     graph.addNamespace("ne", "http://nlp.stanford.edu/ne/")
     graph.addNamespace("basic", "http://nlp.stanford.edu/basic/")
     graph.addNamespace("dep", "http://nlp.stanford.edu/dep/")
+    graph.addNamespace("wn", "http://wordnet.princeton.edu/")
     graph.addNamespace("rel", "http://aristo.allenai.org/rel/")
     graph.addNamespace("pred", "http://aristo.allenai.org/pred/")
   }

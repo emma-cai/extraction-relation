@@ -3050,30 +3050,46 @@
 
 <http://aristo.allenai.org/id#22_6> <http://aristo.allenai.org/rel/cause> <http://aristo.allenai.org/id#22_1> .
 
+<http://aristo.allenai.org/id#4_18> <http://wordnet.princeton.edu/deriv> "remove" ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "remove" ;
+	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#4_20> .
+
 <http://aristo.allenai.org/id#4_2> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#4_1> .
+
+<http://aristo.allenai.org/id#1_7> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#1_6> ;
+	<http://aristo.allenai.org/pred/in> <http://aristo.allenai.org/id#1_4> .
+
+<http://aristo.allenai.org/id#2_10> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#2_11> .
+
+<http://aristo.allenai.org/id#5_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#5_1> ;
+	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#5_7> .
+
+<http://aristo.allenai.org/id#5_11> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#5_9> .
+
+<http://aristo.allenai.org/id#14_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#14_2> ;
+	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#14_7> .
+
+<http://aristo.allenai.org/id#19_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#19_2> ;
+	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#19_7> .
+
+<http://aristo.allenai.org/id#22_2> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#22_1> ;
+	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#22_4> .
+
+<http://aristo.allenai.org/id#21_9> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#21_10> ;
+	<http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#21_14> .
+
+<http://aristo.allenai.org/id#22_6> <http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#22_9> .
 
 <http://aristo.allenai.org/id#4_3> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#4_4> ;
 	<http://aristo.allenai.org/pred/from> <http://aristo.allenai.org/id#4_8> ;
 	<http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#4_12> ;
 	<http://aristo.allenai.org/pred/by> <http://aristo.allenai.org/id#4_18> .
 
-<http://aristo.allenai.org/id#1_7> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#1_6> ;
-	<http://aristo.allenai.org/pred/in> <http://aristo.allenai.org/id#1_4> .
-
 <http://aristo.allenai.org/id#1_12> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#1_13> ;
 	<http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#1_16> .
 
-<http://aristo.allenai.org/id#2_10> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#2_11> .
-
 <http://aristo.allenai.org/id#3_7> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#3_8> ;
 	<http://aristo.allenai.org/pred/in> <http://aristo.allenai.org/id#3_11> .
-
-<http://aristo.allenai.org/id#4_18> <http://aristo.allenai.org/pred/of> <http://aristo.allenai.org/id#4_20> .
-
-<http://aristo.allenai.org/id#5_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#5_1> ;
-	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#5_7> .
-
-<http://aristo.allenai.org/id#5_11> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#5_9> .
 
 <http://aristo.allenai.org/id#5_13> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#5_14> .
 
@@ -3085,20 +3101,9 @@
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#12_10> ;
 	<http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#12_17> .
 
-<http://aristo.allenai.org/id#14_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#14_2> ;
-	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#14_7> .
-
 <http://aristo.allenai.org/id#14_9> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#14_12> .
 
-<http://aristo.allenai.org/id#19_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#19_2> ;
-	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#19_7> .
-
 <http://aristo.allenai.org/id#19_9> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#19_12> .
-
-<http://aristo.allenai.org/id#22_2> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#22_1> ;
-	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#22_4> .
-
-<http://aristo.allenai.org/id#22_6> <http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#22_9> .
 
 <http://aristo.allenai.org/id#17_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#17_3> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#17_6> .
@@ -3106,31 +3111,19 @@
 <http://aristo.allenai.org/id#18_7> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#18_5> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#18_9> .
 
-<http://aristo.allenai.org/id#21_9> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#21_10> ;
-	<http://aristo.allenai.org/pred/to> <http://aristo.allenai.org/id#21_14> .
-
 <http://aristo.allenai.org/id#21_5> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#21_2> , <http://aristo.allenai.org/id#21_4> .
+
+<http://aristo.allenai.org/id#4_18> <http://www.w3.org/2000/01/rdf-schema#label> "removal" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "the removal" .
+
+<http://aristo.allenai.org/id#4_20> <http://www.w3.org/2000/01/rdf-schema#label> "heat" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "heat" .
 
 <http://aristo.allenai.org/id#4_2> <http://www.w3.org/2000/01/rdf-schema#label> "involve" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "involves" .
 
 <http://aristo.allenai.org/id#4_1> <http://www.w3.org/2000/01/rdf-schema#label> "freezing" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "Freezing" .
-
-<http://aristo.allenai.org/id#4_3> <http://www.w3.org/2000/01/rdf-schema#label> "change" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "changing" .
-
-<http://aristo.allenai.org/id#4_4> <http://www.w3.org/2000/01/rdf-schema#label> "water" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "water" .
-
-<http://aristo.allenai.org/id#4_8> <http://www.w3.org/2000/01/rdf-schema#label> "state" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "its liquid state" .
-
-<http://aristo.allenai.org/id#4_12> <http://www.w3.org/2000/01/rdf-schema#label> "state" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "its solid state" .
-
-<http://aristo.allenai.org/id#4_18> <http://www.w3.org/2000/01/rdf-schema#label> "removal" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "the removal of heat" .
 
 <http://aristo.allenai.org/id#1_7> <http://www.w3.org/2000/01/rdf-schema#label> "sweat" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "sweat" .
@@ -3141,34 +3134,11 @@
 <http://aristo.allenai.org/id#1_4> <http://www.w3.org/2000/01/rdf-schema#label> "weather" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "the hot weather" .
 
-<http://aristo.allenai.org/id#1_12> <http://www.w3.org/2000/01/rdf-schema#label> "bring" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "bringing" .
-
-<http://aristo.allenai.org/id#1_13> <http://www.w3.org/2000/01/rdf-schema#label> "water" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "water" .
-
-<http://aristo.allenai.org/id#1_16> <http://www.w3.org/2000/01/rdf-schema#label> "skin" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "our skin" .
-
 <http://aristo.allenai.org/id#2_10> <http://www.w3.org/2000/01/rdf-schema#label> "store" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "storing" .
 
 <http://aristo.allenai.org/id#2_11> <http://www.w3.org/2000/01/rdf-schema#label> "food" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "food" .
-
-<http://aristo.allenai.org/id#3_7> <http://www.w3.org/2000/01/rdf-schema#label> "view" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "view" .
-
-<http://aristo.allenai.org/id#3_8> <http://www.w3.org/2000/01/rdf-schema#label> "object" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "objects" .
-
-<http://aristo.allenai.org/id#3_11> <http://www.w3.org/2000/01/rdf-schema#label> "detail" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "more detail" .
-
-<http://aristo.allenai.org/id#4_18> <http://www.w3.org/2000/01/rdf-schema#comment> "the removal" .
-
-<http://aristo.allenai.org/id#4_20> <http://www.w3.org/2000/01/rdf-schema#label> "heat" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "heat" .
 
 <http://aristo.allenai.org/id#5_4> <http://www.w3.org/2000/01/rdf-schema#label> "make" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "not make" .
@@ -3184,6 +3154,80 @@
 
 <http://aristo.allenai.org/id#5_9> <http://www.w3.org/2000/01/rdf-schema#label> "they" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "they" .
+
+<http://aristo.allenai.org/id#14_4> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "use" .
+
+<http://aristo.allenai.org/id#14_2> <http://www.w3.org/2000/01/rdf-schema#label> "student" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "A student" .
+
+<http://aristo.allenai.org/id#14_7> <http://www.w3.org/2000/01/rdf-schema#label> "lens" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "a hand lens" .
+
+<http://aristo.allenai.org/id#19_4> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "use" .
+
+<http://aristo.allenai.org/id#19_2> <http://www.w3.org/2000/01/rdf-schema#label> "student" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "A student" .
+
+<http://aristo.allenai.org/id#19_7> <http://www.w3.org/2000/01/rdf-schema#label> "cylinder" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "a graduated cylinder" .
+
+<http://aristo.allenai.org/id#22_2> <http://www.w3.org/2000/01/rdf-schema#label> "cause" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "causes" .
+
+<http://aristo.allenai.org/id#22_1> <http://www.w3.org/2000/01/rdf-schema#label> "gravity" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "Gravity" .
+
+<http://aristo.allenai.org/id#22_4> <http://www.w3.org/2000/01/rdf-schema#label> "ball" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "the ball" .
+
+<http://aristo.allenai.org/id#21_9> <http://www.w3.org/2000/01/rdf-schema#label> "return" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "return" .
+
+<http://aristo.allenai.org/id#21_10> <http://www.w3.org/2000/01/rdf-schema#label> "nutrient" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "nutrients" .
+
+<http://aristo.allenai.org/id#21_14> <http://www.w3.org/2000/01/rdf-schema#label> "chain" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "the food chain" .
+
+<http://aristo.allenai.org/id#22_6> <http://www.w3.org/2000/01/rdf-schema#label> "fall" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "fall" .
+
+<http://aristo.allenai.org/id#22_9> <http://www.w3.org/2000/01/rdf-schema#label> "ground" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "the ground" .
+
+<http://aristo.allenai.org/id#4_3> <http://www.w3.org/2000/01/rdf-schema#label> "change" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "changing" .
+
+<http://aristo.allenai.org/id#4_4> <http://www.w3.org/2000/01/rdf-schema#label> "water" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "water" .
+
+<http://aristo.allenai.org/id#4_8> <http://www.w3.org/2000/01/rdf-schema#label> "state" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "its liquid state" .
+
+<http://aristo.allenai.org/id#4_12> <http://www.w3.org/2000/01/rdf-schema#label> "state" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "its solid state" .
+
+<http://aristo.allenai.org/id#4_18> <http://www.w3.org/2000/01/rdf-schema#comment> "the removal of heat" .
+
+<http://aristo.allenai.org/id#1_12> <http://www.w3.org/2000/01/rdf-schema#label> "bring" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "bringing" .
+
+<http://aristo.allenai.org/id#1_13> <http://www.w3.org/2000/01/rdf-schema#label> "water" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "water" .
+
+<http://aristo.allenai.org/id#1_16> <http://www.w3.org/2000/01/rdf-schema#label> "skin" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "our skin" .
+
+<http://aristo.allenai.org/id#3_7> <http://www.w3.org/2000/01/rdf-schema#label> "view" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "view" .
+
+<http://aristo.allenai.org/id#3_8> <http://www.w3.org/2000/01/rdf-schema#label> "object" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "objects" .
+
+<http://aristo.allenai.org/id#3_11> <http://www.w3.org/2000/01/rdf-schema#label> "detail" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "more detail" .
 
 <http://aristo.allenai.org/id#5_13> <http://www.w3.org/2000/01/rdf-schema#label> "get" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "get" .
@@ -3215,50 +3259,17 @@
 <http://aristo.allenai.org/id#12_17> <http://www.w3.org/2000/01/rdf-schema#label> "temperature" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "hot temperatures" .
 
-<http://aristo.allenai.org/id#14_4> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "use" .
-
-<http://aristo.allenai.org/id#14_2> <http://www.w3.org/2000/01/rdf-schema#label> "student" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "A student" .
-
-<http://aristo.allenai.org/id#14_7> <http://www.w3.org/2000/01/rdf-schema#label> "lens" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "a hand lens" .
-
 <http://aristo.allenai.org/id#14_9> <http://www.w3.org/2000/01/rdf-schema#label> "get" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "get" .
 
 <http://aristo.allenai.org/id#14_12> <http://www.w3.org/2000/01/rdf-schema#label> "look" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "a better look at the spots" .
 
-<http://aristo.allenai.org/id#19_4> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "use" .
-
-<http://aristo.allenai.org/id#19_2> <http://www.w3.org/2000/01/rdf-schema#label> "student" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "A student" .
-
-<http://aristo.allenai.org/id#19_7> <http://www.w3.org/2000/01/rdf-schema#label> "cylinder" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "a graduated cylinder" .
-
 <http://aristo.allenai.org/id#19_9> <http://www.w3.org/2000/01/rdf-schema#label> "measure" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "measure" .
 
 <http://aristo.allenai.org/id#19_12> <http://www.w3.org/2000/01/rdf-schema#label> "milliliter" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "10 milliliters of water" .
-
-<http://aristo.allenai.org/id#22_2> <http://www.w3.org/2000/01/rdf-schema#label> "cause" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "causes" .
-
-<http://aristo.allenai.org/id#22_1> <http://www.w3.org/2000/01/rdf-schema#label> "gravity" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "Gravity" .
-
-<http://aristo.allenai.org/id#22_4> <http://www.w3.org/2000/01/rdf-schema#label> "ball" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "the ball" .
-
-<http://aristo.allenai.org/id#22_6> <http://www.w3.org/2000/01/rdf-schema#label> "fall" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "fall" .
-
-<http://aristo.allenai.org/id#22_9> <http://www.w3.org/2000/01/rdf-schema#label> "ground" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "the ground" .
 
 <http://aristo.allenai.org/id#17_4> <http://www.w3.org/2000/01/rdf-schema#label> "produce" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "produces" .
@@ -3277,15 +3288,6 @@
 
 <http://aristo.allenai.org/id#18_9> <http://www.w3.org/2000/01/rdf-schema#label> "health" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "good health" .
-
-<http://aristo.allenai.org/id#21_9> <http://www.w3.org/2000/01/rdf-schema#label> "return" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "return" .
-
-<http://aristo.allenai.org/id#21_10> <http://www.w3.org/2000/01/rdf-schema#label> "nutrient" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "nutrients" .
-
-<http://aristo.allenai.org/id#21_14> <http://www.w3.org/2000/01/rdf-schema#label> "chain" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "the food chain" .
 
 <http://aristo.allenai.org/id#21_5> <http://www.w3.org/2000/01/rdf-schema#label> "die" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "die" .

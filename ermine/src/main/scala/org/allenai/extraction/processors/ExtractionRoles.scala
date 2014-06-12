@@ -12,13 +12,19 @@ import java.io.Writer
 
 /** processor to add labels and string descriptions to extracted nodes */
 object ExtractionRoles extends TextProcessor {
-  override val numInputs = 3
+  override val numInputs = 4
   override val numOutputs = 1
 
+  // SPARQL query for denominalized nodes
+  val denomQuery: String =
+    """CONSTRUCT { ?node pred:object ?obj . } WHERE {
+      ?node wn:deriv ?verb ; dep:prep_of ?obj .
+    }"""
+
   // SPARQL query for nodes with added rel: relation
-  val query: String =
-    """SELECT ?x ?y WHERE {
-      ?x ?rel ?y .
+  val relQuery: String =
+    """SELECT ?node WHERE {
+      { ?node ?rel ?x . } UNION { ?x ?rel ?node . }
       FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/")) .
     }"""
 
@@ -29,11 +35,15 @@ object ExtractionRoles extends TextProcessor {
     }
 
     // match patterns
-    for {
-      map <- graph.executeQuery(query)
-      node <- Seq(map("x"), map("y"))
-    } {
-      addArgs(node, graph)
+    for (map <- graph.executeQuery(denomQuery)) {
+      // add to input graph for next query
+      graph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      // add to output graph for output
+      graph.outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+    }
+
+    for (map <- graph.executeQuery(relQuery)) {
+      addArgs(map("node"), graph)
     }
 
     val sink: Writer = destinations(0)
@@ -77,6 +87,7 @@ object ExtractionRoles extends TextProcessor {
       # find prep_* relation and extract the preposition substring
       SELECT ?prep ?obj WHERE {
         <$uri> ?dep ?obj .
+        FILTER NOT EXISTS { <$uri> pred:object ?obj . } # from wn:deriv
         FILTER(CONTAINS(str(?dep), "/dep/prep_")) .
         BIND(STRAFTER(str(?dep), "_") AS ?prep) .
       }"""

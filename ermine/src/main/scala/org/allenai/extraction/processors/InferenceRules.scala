@@ -11,7 +11,7 @@ import java.io.Writer
 
 /** processor to add labels and string descriptions to extracted nodes */
 object InferenceRules extends TextProcessor {
-  override val numInputs = 5
+  override val numInputs = 6
   override val numOutputs = 1
 
   // SPARQL query for nodes with added rel: relation

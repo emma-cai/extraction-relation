@@ -12,12 +12,12 @@ import java.io.Writer
 
 /** processor to map dependencies of extracted nodes to roles */
 object ExtractionLabels extends TextProcessor {
-  override val numInputs = 4
+  override val numInputs = 5
   override val numOutputs = 1
 
   // SPARQL query for nodes with added pred: relations
   val predQuery: String =
-    """SELECT ?x ?rel ?y WHERE {
+    """SELECT ?x ?y WHERE {
       ?x ?rel ?y .
       FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/pred/")) .
     }"""
@@ -25,9 +25,7 @@ object ExtractionLabels extends TextProcessor {
   // SPARQL query for nodes with added rel: relations
   val relQuery: String =
     """SELECT ?x WHERE {
-      { ?x ?rel ?y . }
-      UNION
-      { ?y ?rel ?x . }
+      { ?x ?rel ?y . } UNION { ?y ?rel ?x . }
       FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/")) .
       FILTER NOT EXISTS { ?x rdfs:label ?l . } 
     }"""
