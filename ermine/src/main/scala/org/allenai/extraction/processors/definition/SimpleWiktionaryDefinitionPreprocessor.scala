@@ -1,11 +1,11 @@
 package org.allenai.extraction.processors
 
+import org.allenai.extraction.FlatProcessor
+import org.allenai.extraction.processors.definition.PreprocessedDefinition
+
 import java.io.Writer
 
 import scala.io.Source
-
-import org.allenai.extraction.FlatProcessor
-import org.allenai.extraction.processors.definition.PreprocessedDefinition
 
 import spray.json.pimpAny
 
@@ -37,8 +37,9 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
       val (defAlts, metaData) = cleanUp(termDefinition)
       val preprocessedDefOp =
         PreprocessedDefinition(Some("SimpleWiktionary"), defId, line, term, Some(termWordClass), defAlts, metaData)
-      if (!beginning)
+      if (!beginning) {
         destination.write(",\n")
+      }
       destination.write(preprocessedDefOp.toJson.compactPrint + "\n")
       beginning = false
       defId += 1

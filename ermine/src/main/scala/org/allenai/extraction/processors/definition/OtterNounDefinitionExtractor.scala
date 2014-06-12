@@ -1,13 +1,12 @@
 package org.allenai.extraction.processors.definition
 
-import scala.Option.option2Iterable
-
-import org.allenai.taggers.Extractor
-import org.allenai.taggers.NamedGroupType
+import org.allenai.taggers.{ Extractor, NamedGroupType }
 
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.typer.Type
+
+import scala.Option.option2Iterable
 
 /** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the

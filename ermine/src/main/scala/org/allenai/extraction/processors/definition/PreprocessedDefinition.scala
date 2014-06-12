@@ -1,10 +1,6 @@
 package org.allenai.extraction.processors.definition
 
-import spray.json.DefaultJsonProtocol.IntJsonFormat
-import spray.json.DefaultJsonProtocol.StringJsonFormat
-import spray.json.DefaultJsonProtocol.jsonFormat7
-import spray.json.DefaultJsonProtocol.optionFormat
-import spray.json.DefaultJsonProtocol.seqFormat
+import spray.json.DefaultJsonProtocol._
 
 /** A Case Class to represent a preprocessed raw definition
   * @param definitionCorpusName name/path or any identifier for the input definition corpus if available.

@@ -21,6 +21,7 @@ import edu.knowitall.tool.typer.Type
 /** An extractor that processes input text with OpenRegex with the specified Cascade file.
   * Given a cascade file parameter, this class will call OpenRegex API with that cascade file
   * to process input source and generate extractions- written to the specified destination.
+  * @param [T] the output extraction type depending on the specific extractor
   * @param cascadeFilePath path to the Cascade file to be used by OpenRegex to perform extractions
   * on the input text.
   */

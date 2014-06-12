@@ -1,21 +1,21 @@
 DEFINITION:   Chlorophyll	noun	Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
 DefinedTerm: (DefinedTerm, is, Chlorophyll, )
-IsA: (Chlorophyll, isa, pigment, )
-IsA: (Chlorophyll, isa, green pigment, )
+IsA: (Chlorophyll, is, pigment, )
+IsA: (Chlorophyll, is, green pigment, )
 Quality: (Chlorophyll, is, green, )
 Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, )
 
 DEFINITION:   Acid	noun	An acid is a liquid with a high number of hydrogen ions in it that can burn things.
 DefinedTerm: (DefinedTerm, is, acid, )
-IsA: (acid, isa, liquid, )
+IsA: (acid, is a, liquid, )
 Property: (acid, has, a high number of hydrogen ions in it, )
 Fact: (acid, can burn, things, )
 
 DEFINITION:   Acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
 DefinedTerm: (DefinedTerm, is, acceleration, )
 Context: (Context, is, physics, )
-IsA: (acceleration, isa, rate, )
-IsA: (acceleration, isa, rate of change of velocity, )
+IsA: (acceleration, is the, rate, )
+IsA: (acceleration, is the, rate of change of velocity, )
 Property: (acceleration, has, time, )
 
 DEFINITION:   Contest	noun	A contest is where people do a quiz or play a game to win a prize.
@@ -25,21 +25,21 @@ Describes: (contest, describes, (people, play, a game, , to win a prize))
 
 DEFINITION:   Chlorophyll	noun	Chlorophyll is an extremely important biomolecule, critical in photosynthesis, which allows plants to absorb energy from light.
 DefinedTerm: (DefinedTerm, is, Chlorophyll, )
-IsA: (Chlorophyll, isa, biomolecule, )
-IsA: (Chlorophyll, isa, extremely important biomolecule, )
+IsA: (Chlorophyll, is an, biomolecule, )
+IsA: (Chlorophyll, is an, extremely important biomolecule, )
 Quality: (Chlorophyll, is, extremely important, )
 Quality: (Chlorophyll, is, critical in photosynthesis, )
 Fact: (Chlorophyll, allows, plants, , to absorb energy from light)
 
 DEFINITION:   Ear	noun	The ear is the organ that hears sound.
 DefinedTerm: (DefinedTerm, is, ear, )
-IsA: (ear, isa, organ, )
+IsA: (ear, is, organ, )
 Fact: (ear, hears, sound, )
 
 DEFINITION:   Mercury	noun	Mercury: Mercury is a silvery-colored, toxic, metallic chemical element, liquid at room temperature, with atomic number 80 and symbol Hg.
 DefinedTerm: (DefinedTerm, is, Mercury, )
-IsA: (Mercury, isa, chemical element, )
-IsA: (Mercury, isa, silvery-colored, toxic, metallic chemical element, )
+IsA: (Mercury, is, chemical element, )
+IsA: (Mercury, is, silvery-colored, toxic, metallic chemical element, )
 Quality: (Mercury, is, silvery-colored, )
 Quality: (Mercury, is, toxic, )
 Quality: (Mercury, is, metallic, )
@@ -49,24 +49,24 @@ Property: (Mercury, has, symbol Hg, )
 
 DEFINITION:   Esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
 DefinedTerm: (DefinedTerm, is, esophagus, )
-IsA: (esophagus, isa, organ, )
+IsA: (esophagus, is, organ, )
 Fact: (esophagus, consists of, a muscular tube, )
 
 DEFINITION:   Erosion	noun	Erosion is the process by which soil and rock are removed from the Earth's surface by natural processes such as wind or water flow, and then transported and deposited in other locations.
 DefinedTerm: (DefinedTerm, is, Erosion, )
-IsA: (Erosion, isa, process, )
+IsA: (Erosion, is, process, )
 Describes: (Erosion, describes, (soil and rock, are removed from, the Earth's surface, ))
 
 DEFINITION:   Earthquake	noun	An earthquake is the result of a sudden release of energy in the Earth's crust that creates seismic waves.
 DefinedTerm: (DefinedTerm, is, earthquake, )
-IsA: (earthquake, isa, result, )
-IsA: (earthquake, isa, result of a sudden release of energy, , in the Earth's crust)
+IsA: (earthquake, is, result, )
+IsA: (earthquake, is, result of a sudden release of energy, , in the Earth's crust)
 Fact: (earthquake, creates, seismic waves, )
 
 DEFINITION:   Embryo	noun	Embryo is the germ of the plant, which is enclosed in the seed and which is developed by germination.
 DefinedTerm: (DefinedTerm, is, Embryo, )
-IsA: (Embryo, isa, germ, )
-IsA: (Embryo, isa, germ of the plant, )
+IsA: (Embryo, is, germ, )
+IsA: (Embryo, is, germ of the plant, )
 Fact: (Embryo, is enclosed in, the seed, )
 Fact: (Embryo, is developed by, germination, )
 
@@ -87,8 +87,8 @@ Fact: (Tendon, joins, muscle to bone, )
 
 DEFINITION:   cellulase	noun	Cellulase refers to a suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
 DefinedTerm: (DefinedTerm, is, Cellulase, )
-IsA: (Cellulase, isa, suite, )
-IsA: (Cellulase, isa, suite of enzymes, )
+IsA: (Cellulase, refers to, suite, )
+IsA: (Cellulase, refers to, suite of enzymes, )
 Fact: (Cellulase, produced chiefly by, fungi, bacteria, and protozoans that catalyze cellulolysis, )
 
 DEFINITION:   cellulase	noun	Cellulase : A suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
@@ -99,38 +99,38 @@ Fact: (Cellulase, produced chiefly by, fungi, bacteria, and protozoans that cata
 
 DEFINITION:   germination	noun	Germination is the process in which a plant or fungus emerges from a seed or spore, respectively, and begins growth.
 DefinedTerm: (DefinedTerm, is, Germination, )
-IsA: (Germination, isa, process, )
+IsA: (Germination, is, process, )
 Describes: (Germination, describes, (a plant or fungus, emerges from, a seed or spore, ))
 
 DEFINITION:   freezing	noun	Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
 DefinedTerm: (DefinedTerm, is, Freezing, )
-IsA: (Freezing, isa, phase change, )
+IsA: (Freezing, is, phase change, )
 
 DEFINITION:   drought	noun	A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
 DefinedTerm: (DefinedTerm, is, drought, )
-IsA: (drought, isa, period, )
-IsA: (drought, isa, extended period of months, )
+IsA: (drought, is, period, )
+IsA: (drought, is, extended period of months, )
 Quality: (drought, is, extended, )
-IsA: (drought, isa, years, )
+IsA: (drought, is, years, )
 Describes: (drought, describes, (a region, notes, a deficiency in its water supply whether surface, ))
 
 DEFINITION:   vibration	noun	Vibration is a mechanical phenomenon whereby oscillations occur about an equilibrium point.
 DefinedTerm: (DefinedTerm, is, Vibration, )
-IsA: (Vibration, isa, phenomenon, )
-IsA: (Vibration, isa, mechanical phenomenon, )
+IsA: (Vibration, is, phenomenon, )
+IsA: (Vibration, is, mechanical phenomenon, )
 Quality: (Vibration, is, mechanical, )
 Describes: (Vibration, describes, (oscillations, occur about, an equilibrium point, ))
 
 DEFINITION:   active site	noun	Active site is the part of an enzyme where substrates bind and undergo a chemical reaction.
 DefinedTerm: (DefinedTerm, is, Active site, )
-IsA: (Active site, isa, part, )
-IsA: (Active site, isa, part of an enzyme, )
+IsA: (Active site, is, part, )
+IsA: (Active site, is, part of an enzyme, )
 Describes: (Active site, describes, (substrates, bind and undergo, a chemical reaction, ))
 
 DEFINITION:   earth	noun	Earth is the third planet from the Sun, and the densest and fifth largest of the eight planets in the Solar System.
 DefinedTerm: (DefinedTerm, is, Earth, )
-IsA: (Earth, isa, planet, )
-IsA: (Earth, isa, third planet, , from the Sun)
+IsA: (Earth, is, planet, )
+IsA: (Earth, is, third planet, , from the Sun)
 Quality: (Earth, is, third, )
 Quality: (Earth, is, densest, )
 Quality: (Earth, is, fifth largest, )
@@ -149,10 +149,10 @@ Quality: (Ecosystem, is, nonliving, )
 
 DEFINITION:   abortion	noun	Abortion is defined as the termination of pregnancy by the removal or expulsion from the uterus of a fetus or embryo prior to viability.
 DefinedTerm: (DefinedTerm, is, Abortion, )
-IsA: (Abortion, isa, termination, )
-IsA: (Abortion, isa, termination of pregnancy, , by the removal)
-IsA: (Abortion, isa, expulsion, )
-IsA: (Abortion, isa, embryo, )
+IsA: (Abortion, is defined as, termination, )
+IsA: (Abortion, is defined as, termination of pregnancy, , by the removal)
+IsA: (Abortion, is defined as, expulsion, )
+IsA: (Abortion, is defined as, embryo, )
 
 DEFINITION:   thermoregulation	noun	thermoregulation: The maintenance of internal body temperature within a tolerable range.
 DefinedTerm: (DefinedTerm, is, thermoregulation, )
@@ -167,51 +167,51 @@ Quality: (termination, is, ending, )
 
 DEFINITION:   taste	noun	taste : It refers to the ability to detect the flavor of substances such as food, certain minerals, poisons, etc.
 DefinedTerm: (DefinedTerm, is, taste, )
-IsA: (taste, isa, ability, )
+IsA: (taste, refers to, ability, )
 Fact: (taste, detect, the flavor of substances, , as food)
 
 DEFINITION:   esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
 DefinedTerm: (DefinedTerm, is, esophagus, )
-IsA: (esophagus, isa, organ, )
+IsA: (esophagus, is, organ, )
 Fact: (esophagus, consists of, a muscular tube, )
 
 DEFINITION:   acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
 DefinedTerm: (DefinedTerm, is, acceleration, )
 Context: (Context, is, physics, )
-IsA: (acceleration, isa, rate, )
-IsA: (acceleration, isa, rate of change of velocity, )
+IsA: (acceleration, is the, rate, )
+IsA: (acceleration, is the, rate of change of velocity, )
 Property: (acceleration, has, time, )
 
 DEFINITION:   acid	noun	An acid is a substance which reacts with a base.
 DefinedTerm: (DefinedTerm, is, acid, )
-IsA: (acid, isa, substance, )
+IsA: (acid, is, substance, )
 Fact: (acid, reacts with, a base, )
 
 DEFINITION:   mitosis	noun	Mitosis is the process by which a eukaryotic cell separates the chromosomes in its cell nucleus into two identical sets, in two separate nuclei.
 DefinedTerm: (DefinedTerm, is, Mitosis, )
-IsA: (Mitosis, isa, process, )
+IsA: (Mitosis, is, process, )
 Describes: (Mitosis, describes, (a eukaryotic cell, separates, the chromosomes, , in its cell nucleus into two identical sets, in two separate nuclei))
 
 DEFINITION:   monomer	noun	A monomer is a molecule that may combine chemically to other molecules to form a polymer.
 DefinedTerm: (DefinedTerm, is, monomer, )
-IsA: (monomer, isa, molecule, )
-Fact: (monomer, may combine, chemically, , to other molecules to form)
+IsA: (monomer, is, molecule, )
+Fact: (monomer, may combine, , , to other molecules to form, chemically)
 
 DEFINITION:   nicotinamide	noun	Nicotinamide is the amide of nicotinic acid.
 DefinedTerm: (DefinedTerm, is, Nicotinamide, )
-IsA: (Nicotinamide, isa, amide, )
-IsA: (Nicotinamide, isa, amide of nicotinic acid, )
+IsA: (Nicotinamide, is, amide, )
+IsA: (Nicotinamide, is, amide of nicotinic acid, )
 
 DEFINITION:   nitrification	noun	Nitrification is the biological oxidation of ammonia with oxygen into nitrite followed by the oxidation of these nitrites into nitrates.
 DefinedTerm: (DefinedTerm, is, Nitrification, )
-IsA: (Nitrification, isa, oxidation, )
-IsA: (Nitrification, isa, biological oxidation of ammonia, )
+IsA: (Nitrification, is the, oxidation, )
+IsA: (Nitrification, is the, biological oxidation of ammonia, )
 Quality: (Nitrification, is, biological, )
 Property: (Nitrification, has, oxygen, )
 
 DEFINITION:   oncogene	noun	An oncogene is a gene that has the potential to cause cancer.
 DefinedTerm: (DefinedTerm, is, oncogene, )
-IsA: (oncogene, isa, gene, )
+IsA: (oncogene, is, gene, )
 Fact: ((oncogene, has, the potential, ), to, (oncogene, cause, cancer, ))
 
 DEFINITION:   AV valve	noun	valves connecting the atria and ventricles of the heart
@@ -241,12 +241,6 @@ Fact: (aggregate fruit, derived from, a single flower, )
 Fact: (aggregate fruit, has, more, , than one carpel)
 
 DEFINITION:   agonistic behavior	noun	In animals, an often ritualized contest that determines which competitor gains access to a resource, such as food or mates.
-DefinedTerm: (DefinedTerm, is, agonistic behavior, )
-Context: (Context, is, animals, )
-IsA: (agonistic behavior, isa, contest, )
-IsA: (agonistic behavior, isa, often ritualized contest, )
-Quality: (agonistic behavior, is, often ritualized, )
-Fact: (agonistic behavior, determines, , )
 
 DEFINITION:   bile	noun	A mixture of substances that is produced in the liver but stored in the gallbladder and that enables formation of fat droplets in water as an aid in the digestion and absorption of fats.
 DefinedTerm: (DefinedTerm, is, bile, )
@@ -261,8 +255,6 @@ DefinedTerm: (DefinedTerm, is, bile salt, )
 IsA: (bile salt, isa, agents, )
 IsA: (bile salt, isa, Emulsifying agents, )
 Quality: (bile salt, is, Emulsifying, )
-Quality: (bile salt, is, present in bile, )
-Fact: (bile salt, aid in, , )
 
 DEFINITION:   vapor	noun	A substance that is usually a solid or liquid suspended in air.
 DefinedTerm: (DefinedTerm, is, vapor, )
@@ -270,16 +262,13 @@ IsA: (vapor, isa, substance, )
 Fact: (vapor, is, usually a solid or liquid suspended in air, )
 
 DEFINITION:   vascular plant	noun	A plant with vascular tissue.
-DefinedTerm: (DefinedTerm, is, vascular plant, )
-IsA: (vascular plant, isa, plant, )
-Property: (vascular plant, has, vascular tissue, )
 
 DEFINITION:   yeast	noun	Single-celled fungus that reproduces asexually by binary fission or by the pinching of small buds off a parent cell
 DefinedTerm: (DefinedTerm, is, yeast, )
 IsA: (yeast, isa, fungus, )
 IsA: (yeast, isa, Single-celled fungus, )
 Quality: (yeast, is, Single-celled, )
-Fact: (yeast, reproduces, asexually, , by binary fission or by the pinching of small buds off a parent cell)
+Fact: (yeast, reproduces, , , by binary fission or by the pinching of small buds off a parent cell, asexually)
 
 DEFINITION:   yeast	noun	some species exhibit cell fusion between different mating types.
 DefinedTerm: (DefinedTerm, is, yeast, )
@@ -305,9 +294,6 @@ IsA: (acceleration, isa, act, )
 IsA: (acceleration, isa, act of accelerating, )
 
 DEFINITION:   agglutination	noun	In bacteriology, the clumping or coalescence of red blood-corpuscles or bacteria brought about by the action of special agglutinating substances .
-DefinedTerm: (DefinedTerm, is, agglutination, )
-Context: (Context, is, bacteriology, )
-IsA: (agglutination, isa, clumping, )
 
 DEFINITION:   base	noun	base: In Morphology: a morpheme is regarded as a form to which affixes or other bases may be added.
 DefinedTerm: (DefinedTerm, is, Morphology, )
@@ -324,25 +310,25 @@ Fact: (allele, occupy, a specific position on a specific chromosome, )
 
 DEFINITION:   weathering	noun	Weathering is the process that breaks down rocks into small pieces.
 DefinedTerm: (DefinedTerm, is, Weathering, )
-IsA: (Weathering, isa, process, )
+IsA: (Weathering, is, process, )
 Fact: (Weathering, breaks, down rocks into small pieces, )
 
 DEFINITION:   growth	noun	Growth is a process by which plants and animals expand in size.
 DefinedTerm: (DefinedTerm, is, Growth, )
-IsA: (Growth, isa, process, )
+IsA: (Growth, is, process, )
 Describes: (Growth, describes, (plants and animals, expand in, size, ))
 
 DEFINITION:   barrel	noun	barrel: A  barrel  is a solid metal tube that may be part of some machines.
 DefinedTerm: (DefinedTerm, is, barrel, )
-IsA: (barrel, isa, metal tube, )
-IsA: (barrel, isa, solid metal tube, )
+IsA: (barrel, is, metal tube, )
+IsA: (barrel, is, solid metal tube, )
 Quality: (barrel, is, solid, )
 Fact: (barrel, may be, part of some machines, )
 
 DEFINITION:   barrel	noun	A  barrel  is a tall and round container.
 DefinedTerm: (DefinedTerm, is, barrel, )
-IsA: (barrel, isa, container, )
-IsA: (barrel, isa, tall and round container, )
+IsA: (barrel, is, container, )
+IsA: (barrel, is, tall and round container, )
 Quality: (barrel, is, tall, )
 Quality: (barrel, is, round, )
 
@@ -368,8 +354,8 @@ Quality: (base, is, most important, )
 
 DEFINITION:   beauty	noun	A beauty is  something or someone that is good to look at.
 DefinedTerm: (DefinedTerm, is, beauty, )
-IsA: (beauty, isa, something, )
-IsA: (beauty, isa, someone, )
+IsA: (beauty, is, something, )
+IsA: (beauty, is, someone, )
 Fact: (beauty, is good to look at, , )
 
 DEFINITION:   beaver	noun	An animal that lives near water and has a wide flat tail and webbed feet.
@@ -386,7 +372,7 @@ Quality: (bike, is, short, )
 
 DEFINITION:   room	noun	A  room  is a place which is part of a building.  Someone is able to see other people who are in the same  room .
 DefinedTerm: (DefinedTerm, is, room, )
-IsA: (room, isa, place, )
+IsA: (room, is, place, )
 Fact: (room, is, part of a building, )
 
 DEFINITION:   room	noun	room:  Room  can mean some space
@@ -395,52 +381,48 @@ IsA: (room, isa, Room, )
 Fact: (room, can mean, some space, )
 
 DEFINITION:   room	noun	a place with nothing, only air.
-DefinedTerm: (DefinedTerm, is, room, )
-IsA: (room, isa, place, )
-Property: (room, has, nothing, )
-Property: (room, has, only air, )
 
 DEFINITION:   schedule	noun	A  schedule  is a list, usually one with prices.
 DefinedTerm: (DefinedTerm, is, schedule, )
-IsA: (schedule, isa, list, )
+IsA: (schedule, is, list, )
 
 DEFINITION:   schedule	noun	A  schedule  is a plan of things that are happening and the times when they happen.
 DefinedTerm: (DefinedTerm, is, schedule, )
-IsA: (schedule, isa, plan, )
-IsA: (schedule, isa, plan of things, )
+IsA: (schedule, is, plan, )
+IsA: (schedule, is, plan of things, )
 Fact: (schedule, are happening, , )
 
 DEFINITION:   scream	noun	A  scream  is a loud noise made by a person.
 DefinedTerm: (DefinedTerm, is, scream, )
-IsA: (scream, isa, noise, )
-IsA: (scream, isa, loud noise, )
+IsA: (scream, is, noise, )
+IsA: (scream, is, loud noise, )
 Quality: (scream, is, loud, )
 Fact: (scream, made by, a person, )
 
 DEFINITION:   sewer	noun	A  sewer  in medieval times was a person who served food at meals.
 DefinedTerm: (DefinedTerm, is, sewer  in medieval times, )
-IsA: (sewer  in medieval times, isa, person, )
+IsA: (sewer  in medieval times, was, person, )
 Fact: (sewer  in medieval times, served, , )
 
 DEFINITION:   sewer	noun	A  sewer  is a person who sews with needle and thread.
 DefinedTerm: (DefinedTerm, is, sewer, )
-IsA: (sewer, isa, person, )
+IsA: (sewer, is, person, )
 Fact: (sewer, sews with, needle and thread, )
 
 DEFINITION:   sewer	noun	A  sewer  is a pipe, or system of pipes, that removes wastes from buildings.
 DefinedTerm: (DefinedTerm, is, sewer, )
-IsA: (sewer, isa, pipe, )
-IsA: (sewer, isa, system, )
-IsA: (sewer, isa, system of pipes, )
+IsA: (sewer, is, pipe, )
+IsA: (sewer, is, system, )
+IsA: (sewer, is, system of pipes, )
 Fact: (sewer, removes, wastes from buildings, )
 
 DEFINITION:   shades	noun	Shades  are sunglasses.
 DefinedTerm: (DefinedTerm, is, Shades, )
-IsA: (Shades, isa, sunglasses, )
+IsA: (Shades, are, sunglasses, )
 
 DEFINITION:   shine	noun	Shine  is the light from a reflection, or from a source of light.
 DefinedTerm: (DefinedTerm, is, Shine, )
-IsA: (Shine, isa, light, )
+IsA: (Shine, is, light, )
 
 DEFINITION:   shine	noun	A  shine  is when someone shines your shoes.
 DefinedTerm: (DefinedTerm, is, shine, )
@@ -448,47 +430,46 @@ Describes: (shine, describes, (someone, shines, your shoes, ))
 
 DEFINITION:   shock	noun	Shock  is the way a person is when the person has lost some blood or has been hurt, and their heart is beating very fast and weakly.
 DefinedTerm: (DefinedTerm, is, Shock, )
-IsA: (Shock, isa, way, )
-IsA: (Shock, isa, person, )
+IsA: (Shock, is, way, )
+IsA: (Shock, is, person, )
 Fact: ((Shock, is, , ), when, (the person, has lost, some blood, ))
 Fact: ((Shock, is, , ), when, (the person, has been hurt, , ))
 
 DEFINITION:   shock	noun	A  shock  is some electricity that suddenly hurts someone.
 DefinedTerm: (DefinedTerm, is, shock, )
-IsA: (shock, isa, electricity, )
+IsA: (shock, is, electricity, )
 Fact: (shock, suddenly hurts, someone, )
 
 DEFINITION:   xenophobe	noun	A  xenophobe  is someone who has the fear of strangers or foreigners.
 DefinedTerm: (DefinedTerm, is, xenophobe, )
-IsA: (xenophobe, isa, someone, )
+IsA: (xenophobe, is, someone, )
 Fact: (xenophobe, has, the fear of strangers or foreigners, )
 
 DEFINITION:   xenophobe	noun	A  xenophobe  is someone who has xenophobia.
 DefinedTerm: (DefinedTerm, is, xenophobe, )
-IsA: (xenophobe, isa, someone, )
+IsA: (xenophobe, is, someone, )
 Fact: (xenophobe, has, xenophobia, )
 
 DEFINITION:   waistcoat	noun	A  waistcoat  is a special type of sleeveless garment.
 DefinedTerm: (DefinedTerm, is, waistcoat, )
-IsA: (waistcoat, isa, type, )
-IsA: (waistcoat, isa, special type of sleeveless garment, )
+IsA: (waistcoat, is, type, )
+IsA: (waistcoat, is, special type of sleeveless garment, )
 Quality: (waistcoat, is, special, )
 
 DEFINITION:   ward	noun	A  ward  is an area in a hospital that focused on one kind of medicine.
 DefinedTerm: (DefinedTerm, is, ward, )
-IsA: (ward, isa, area, )
+IsA: (ward, is, area, )
 Fact: (ward, focused on, one kind of medicine, )
 
 DEFINITION:   ward	noun	A  ward  is someone, usually a child, who is under the legal care of someone else.
 DefinedTerm: (DefinedTerm, is, ward, )
-IsA: (ward, isa, someone, )
-IsA: (ward, isa, child, )
-IsA: (ward, isa, usually a child, )
+IsA: (ward, is, someone, )
+IsA: (ward, is, child, )
 Fact: (ward, is under, the legal care of someone, )
 
 DEFINITION:   yo-yo	noun	A  yo-yo  is a toy that goes up and down, hanging from a string.
 DefinedTerm: (DefinedTerm, is, yo-yo, )
-IsA: (yo-yo, isa, toy, )
-Fact: (yo-yo, goes, up and down, )
+IsA: (yo-yo, is, toy, )
+Fact: (yo-yo, goes, , , up and down)
 Fact: (yo-yo, hanging from, a string, )
 

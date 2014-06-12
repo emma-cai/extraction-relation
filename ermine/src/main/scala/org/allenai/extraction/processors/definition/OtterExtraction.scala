@@ -1,25 +1,13 @@
 package org.allenai.extraction.processors.definition
 
-import org.allenai.common.Enum
-import org.allenai.common.EnumCompanion
+import org.allenai.common.{ Enum, EnumCompanion }
 
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
-import spray.json.DefaultJsonProtocol.IntJsonFormat
-import spray.json.DefaultJsonProtocol.StringJsonFormat
-import spray.json.DefaultJsonProtocol.jsonFormat2
-import spray.json.DefaultJsonProtocol.jsonFormat3
-import spray.json.DefaultJsonProtocol.jsonFormat5
-import spray.json.DefaultJsonProtocol.jsonFormat6
-import spray.json.DefaultJsonProtocol.jsonFormat7
-import spray.json.DefaultJsonProtocol.optionFormat
-import spray.json.DefaultJsonProtocol.seqFormat
-import spray.json.JsObject
-import spray.json.JsString
-import spray.json.JsValue
-import spray.json.RootJsonFormat
-import spray.json.pimpAny
+
+import spray.json.DefaultJsonProtocol._
+import spray.json._
 
 /** A Case Class to represent the output extraction from OtterDefinitionExtractor.
   * For a certain raw definition this structure ties together that definition line with the sequence of
@@ -289,7 +277,6 @@ object OtterToken {
   import spray.json.DefaultJsonProtocol._
   implicit val tokenJsonFormat = jsonFormat5(OtterToken.apply)
 } 
-
 
 object Argument {
   import spray.json.DefaultJsonProtocol._

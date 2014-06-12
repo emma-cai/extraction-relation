@@ -1,10 +1,10 @@
 package org.allenai.extraction.processors.definition
 
+import org.allenai.extraction.FlatProcessor
+
 import java.io.Writer
 
 import scala.io.Source
-
-import org.allenai.extraction.FlatProcessor
 
 import spray.json.pimpString
 

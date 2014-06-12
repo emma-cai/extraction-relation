@@ -1,13 +1,14 @@
 package org.allenai.extraction.processors.definition
 
-import java.io.Writer
-
-import scala.io.Source
-
 import org.allenai.extraction.processors.OpenRegexExtractor
 
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
+
+import java.io.Writer
+
+import scala.io.Source
+
 import spray.json.pimpAny
 import spray.json.pimpString
 
@@ -43,7 +44,7 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
     * Output will be written out to the specified destination.
     */
   override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
-     //Start output Json 
+    //Start output Json 
     destination.write("[\n")
     var beginning = true
     // Iterate over input JSONs and process definitions.
@@ -74,8 +75,9 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
                              preprocessedDefinitionAlts.definedTerm,
                              preprocessedDefinitionAlts.wordClass,
                              otterExtractionsForDefinitionAlternates)
-        if (!beginning)
+        if (!beginning) {
           destination.write(",\n")
+        }
         destination.write(extractionOp.toJson.compactPrint + "\n")
         beginning = false
       }
