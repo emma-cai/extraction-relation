@@ -51,7 +51,6 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       if (result._1.isEmpty) {
         result = super.extractText(definedTerm + " : " + preprocessedDefinition)
       }
-
       // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
       // does not have the subject as part of the definition. In this case passing it to the 
       // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
@@ -437,7 +436,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Helper method: Extract types corresponding to all constituent captured groups from a given type (pattern)
     */
   private def getElementsOfCompositeType(typ: Type, types: Seq[Type]): Seq[Type] = {
-    Extractor.findSubtypes(types)(typ) toSeq
+    Extractor.findSubtypes(types)(typ).toSeq
   }
 
   /** Helper method: Extract the text corresponding to each constituent captured group in a given type (pattern)

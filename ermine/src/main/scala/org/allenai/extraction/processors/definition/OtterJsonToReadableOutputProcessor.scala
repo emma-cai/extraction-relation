@@ -24,7 +24,7 @@ import spray.json.pimpString
   */
 object OtterJsonToReadableOutputProcessor extends FlatProcessor {
   
-  override protected def processText(jsonInputSource: Source, destination: Writer): Unit = {
+  override def processText(jsonInputSource: Source, destination: Writer): Unit = {
     // Iterate over input JSONs and process definitions.
     for (rawLine <- jsonInputSource.getLines) {
       val line = rawLine.trim()

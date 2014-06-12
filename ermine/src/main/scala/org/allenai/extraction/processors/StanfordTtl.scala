@@ -1,6 +1,6 @@
 package org.allenai.extraction.processors
 
-import org.allenai.extraction.FlatProcessor
+import org.allenai.extraction.MultiTextProcessor
 
 import edu.stanford.nlp.dcoref.{ CorefChain, CorefCoreAnnotations }
 import edu.stanford.nlp.ling.{ CoreAnnotations, CoreLabel }
@@ -19,7 +19,7 @@ import java.util.Properties
   *
   * This takes a text file as input and runs the parser on the entire document. Output is Ari TTL.
   */
-object StanfordTtl extends FlatProcessor {
+object StanfordTtl extends MultiTextProcessor {
   /** Lazily instantiated stanford pipeline. */
   lazy val pipeline = {
     // Construct a StanfordCoreNLP instance.
@@ -31,7 +31,7 @@ object StanfordTtl extends FlatProcessor {
   }
 
   /** Outputs the Stanford parse as TTL from the given source. */
-  override protected def processText(source: Source, destination: Writer): Unit = {
+  override def processText(source: Source, destination: Writer): Unit = {
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)
 

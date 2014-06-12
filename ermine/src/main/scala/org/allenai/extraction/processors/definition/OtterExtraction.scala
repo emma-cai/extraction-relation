@@ -74,15 +74,7 @@ case class OtterToken(
   * @param start start index in seq of tokens
   * @param end end index in seq of tokens
   */
-case class OtterInterval(start: Int, end: Int)
-
-object OtterInterval {
-  def apply(interval: Interval) = {
-    new OtterInterval(interval.start, interval.end)
-  }
-  import spray.json.DefaultJsonProtocol._
-  implicit val intervalJsonFormat = jsonFormat2(OtterInterval.apply)
-}
+//case class OtterInterval(start: Int, end: Int)
 
 /** A Case Class to represent a Tuple argument.
   * @param string string representing the Argument
@@ -124,7 +116,7 @@ case class Relation(
   */
 sealed abstract class OtterExtractionTuple {
   def tupleTokens: Seq[OtterToken]
-  def tokenInterval: OtterInterval
+  def tokenInterval: Interval
   def relation: Relation
 }
 
@@ -150,7 +142,7 @@ sealed abstract class OtterExtractionTuple {
   */
 case class SimpleOtterExtractionTuple(
     override val tupleTokens: Seq[OtterToken],
-    override val tokenInterval: OtterInterval,
+    override val tokenInterval: Interval,
     val agent: Option[Argument],
     override val relation: Relation,
     val relObj: Option[Argument],
@@ -199,7 +191,7 @@ case class SimpleOtterExtractionTuple(
   */
 case class OtterExtractionTupleWithTupleRelObject(
     override val tupleTokens: Seq[OtterToken],
-    override val tokenInterval: OtterInterval,
+    override val tokenInterval: Interval,
     val agent: Option[Argument],
     override val relation: Relation,
     val relObj: SimpleOtterExtractionTuple,
@@ -239,7 +231,7 @@ case class OtterExtractionTupleWithTupleRelObject(
   */
 case class ComplexOtterExtractionTuple (
   override val tupleTokens: Seq[OtterToken],
-  override val tokenInterval: OtterInterval,
+  override val tokenInterval: Interval,
   val antecedent: SimpleOtterExtractionTuple, 
   override val relation: Relation,
   val consequent: SimpleOtterExtractionTuple
@@ -267,10 +259,12 @@ object OtterToken {
   }
   
   def makeTokenSeq(defnTokens: Seq[Lemmatized[ChunkedToken]], tokenInterval: Interval) : Seq[OtterToken] = {
+    implicit val postfix = scala.language.postfixOps
     ((defnTokens slice(tokenInterval.start, tokenInterval.end)) zipWithIndex) map { x => OtterToken(tokenInterval.start + x._2 , x._1) }
   }
   
   def makeTokenSeq(defnTokens: Seq[Lemmatized[ChunkedToken]]) : Seq[OtterToken] = {
+    implicit val postfix = scala.language.postfixOps
     (defnTokens zipWithIndex) map { x => OtterToken(x._2 , x._1) }
   }
   
@@ -278,8 +272,30 @@ object OtterToken {
   implicit val tokenJsonFormat = jsonFormat5(OtterToken.apply)
 } 
 
+/*object OtterInterval {
+  def apply(interval: Interval) = {
+    new OtterInterval(interval.start, interval.end)
+  }
+  import spray.json.DefaultJsonProtocol._
+  implicit val intervalJsonFormat = jsonFormat2(OtterInterval.apply)
+}*/
+
+object OtterInterval {
+  implicit object IntervalJsonFormat extends RootJsonFormat[Interval] {
+    def write(i: Interval) =
+      JsArray(JsNumber(i.start), JsNumber(i.end))
+
+    def read(value: JsValue) = value match {
+      case JsArray(JsNumber(start) :: JsNumber(end) :: Nil) =>
+        Interval.open(start.toInt, end.toInt) 
+      case _ => deserializationError("Interval expected")
+    }
+  }
+}
+
 object Argument {
   import spray.json.DefaultJsonProtocol._
+  import OtterInterval.IntervalJsonFormat
   implicit val argumentJsonFormat = jsonFormat3(Argument.apply)
 } 
 

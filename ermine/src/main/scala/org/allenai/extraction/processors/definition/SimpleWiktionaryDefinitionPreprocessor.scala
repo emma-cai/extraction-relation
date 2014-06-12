@@ -24,7 +24,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
   /** The main extraction method: takes an Input Source with the scraped SimpleWiktionary text to
     * format, and writes extraction output in the format defined by the PreprocessedDefinition class.
     */
-  override protected def processText(input: Source, destination: Writer): Unit = {
+  override def processText(input: Source, destination: Writer): Unit = {
     //Start output Json 
     destination.write("[\n")
     var beginning = true
@@ -54,7 +54,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     */
   def breakLine(defnInputLine: String): Option[(String, String, String)] = {
     defnInputLine.split("\t") match {
-      case Array(term, termWordClass, termDefinition, _*) => Some(term.trim, termWordClass.trim, termDefinition.trim)
+      case Array(term, termWordClass, termDefinition, _*) => Some((term.trim, termWordClass.trim, termDefinition.trim))
       case _ => None
     }
   }

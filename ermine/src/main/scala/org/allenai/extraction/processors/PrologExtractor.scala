@@ -52,7 +52,7 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String)(
 
   val log = inject[LogProvider].getLog(this)
 
-  override protected def processText(source: Source, destination: Writer): Unit = {
+  override def processText(source: Source, destination: Writer): Unit = {
     // First step: Write the TTL input to a file so that prolog can run on it.
     val ttlFile = File.createTempFile("prolog-input-", ".ttl")
     ttlFile.deleteOnExit
@@ -108,11 +108,13 @@ class FerretQuestionProcessor(val ferret: Ferret)(implicit val bindingModule: Bi
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def processInternal(sources: Seq[Source],
+  override protected def processInternal(sources: Seq[Processor.Input],
     destinations: Seq[Processor.Output]): Unit = {
 
     val question = sources(0)
-    val focus = sources(1).getLines.mkString("\n")
+    val focusSource = sources(1).getSources()(0)
+    val focus = focusSource.getLines.mkString("\n")
+    focusSource.close()
 
     // Internal PrologProcessor we delegate to.
     val internalProcessor =

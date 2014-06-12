@@ -1,6 +1,6 @@
 package org.allenai.extraction.manager
 
-import org.allenai.extraction.Processor
+import org.allenai.extraction.{ ErmineException, Processor }
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors._
 
@@ -10,7 +10,7 @@ import com.typesafe.config.{ Config, ConfigValue, ConfigException, ConfigValueFa
 import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
-case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorInput],
+case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[PipelineInput],
     outputs: Seq[PipelineOutput]) {
   /** @return true if this processor expects unnamed inputs */
   def wantsUnnamedInput: Boolean = {
@@ -49,7 +49,7 @@ object ProcessorConfig {
     }
 
     val inputs = getIOValues(config, "inputs", processor.numInputs) {
-      ProcessorInput.fromConfigValue
+      PipelineInput.fromConfigValue
     }
     val outputs = getIOValues(config, "outputs", processor.numOutputs) {
       PipelineOutput.fromConfigValue

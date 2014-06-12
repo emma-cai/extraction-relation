@@ -3,78 +3,9 @@ import Keys._
 
 import spray.revolver.RevolverPlugin._
 
-import java.io.File
-import java.io.IOException
-import scala.util.Try
-
 object ExtractionBuild extends Build {
-  /** Returns the path the prolog installation, or None if a prolog installation can't be found. */
-  def getPrologPath(): Option[String] = {
-    try {
-      // --dump-runtime-variables returns an eval-able string; so the values are quoted & have
-      // semicolons at the end.
-      val ShellAssignment = """([^=]+)="(.*)";""".r
-      val envMap = (for {
-        // TODO(jkinkead): The script that comes bundled with swi-prolog also checks `swi-prolog`
-        // and `pl`, which we could do here.
-        output <- Try(Process(Seq("swipl", "--dump-runtime-variables")).lines).toOption.toSeq
-        line <- output
-        (key, value) <- line match {
-          case ShellAssignment(key, value) => Some(key -> value)
-          case _ => None
-        }
-      } yield (key -> value)).toMap
-      for {
-        // Base install directory.
-        plbase <- envMap.get("PLBASE")
-        // Architecture label.
-        plarch <- envMap.get("PLARCH")
-      } yield s"${plbase}/lib/${plarch}"
-    } catch {
-        // Occurs if "swipl" isn't found.
-        case ioe: IOException => None
-    }
-  }
-
-  // Seq of the required flag, or empty if we failed to find prolog.
-  val prologLibraryFlags = getPrologPath() match {
-    case Some(path) => {
-      println(s"Using swipl at ${path}")
-
-      if (!(new File(s"${path}/libjpl.jnilib").exists)) {
-        println("WARNING: Couldn't find libjpl - did you install swipl --with-jpl?")
-      }
-      Seq(s"-Djava.library.path=${path}")
-    }
-    case None => {
-      println("WARNING: Couldn't find swipl - prolog will fail at runtime!")
-      Seq.empty
-    }
-  }
-
-  val sprayVersion = "1.3.1"
-
-  val akkaVersion = "2.3.2"
-  def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-$id" % akkaVersion
-  val akkaActor = akkaModule("actor")
-  val akkaLogging = akkaModule("slf4j")
-
-  val loggingImplementations = {
-    val logbackVersion = "1.1.1"
-    val logbackCore = "ch.qos.logback" % "logback-core" % logbackVersion
-    val logbackClassic = "ch.qos.logback" % "logback-classic" % logbackVersion
-    Seq(logbackCore, logbackClassic)
-  }
-
-  val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
-  val sprayCan = "io.spray" %  "spray-can" % sprayVersion
-  val sprayRouting = "io.spray" %  "spray-routing" % sprayVersion
-  val sprayClient = "io.spray" %  "spray-client" % sprayVersion
-  // spray-json uses a different versioning scheme.
-  val sprayJson = "io.spray" %%  "spray-json" % "1.2.6"
-  val subcut = "com.escalatesoft.subcut" %% "subcut" % "2.0"
-  val typesafeConfig = "com.typesafe" % "config" % "1.2.0"
-  val mockito = "org.mockito" % "mockito-all" % "1.9.5"
+  /** Increased memory to handle Stanford parser. */
+  val ErmineMemory = Seq("-Xmx3G", "-Xms3G")
 
   // Full requirements for Stanford + Prolog extractions.
   val ferretDeps = {
@@ -91,33 +22,23 @@ object ExtractionBuild extends Build {
     Seq(jpl, stanfordPatched, stanfordModels)
   }
 
-  val allenaiCommon = "org.allenai.common" %% "common-core" % "2014.06.10-0-SNAPSHOT"
-  val allenaiWebapp = "org.allenai.common" %% "common-webapp" % "2014.06.10-0-SNAPSHOT"
-  val allenaiTestkit = "org.allenai.common" %% "common-testkit" % "2014.06.10-0-SNAPSHOT"
-  val aristore = "org.allenai.ari-datastore" %% "client" % "2014.5.16-0-SNAPSHOT"
-  val testLibs = Seq(allenaiTestkit % "test", mockito % "test")
-  val taggers = "org.allenai.taggers" %% "taggers-core" % "0.5-SNAPSHOT"
+  val inheritedSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
+    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++ VersionInjector.settings
+
+  val buildSettings = inheritedSettings ++ Seq(
+    organization := "org.allenai.extraction",
+    crossScalaVersions := Seq("2.10.4"),
+    scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
+    scalacOptions ++= Seq("-Xlint", "-feature", "-unchecked", "-deprecation"),
+    conflictManager := ConflictManager.strict,
+    dependencyOverrides ++= Dependencies.Overrides,
+    resolvers ++= Dependencies.Resolvers,
+    homepage := Some(url("http://github.com/allenai/extraction")))
 
   lazy val root = Project(id = "extraction-root", base = file(".")).settings (
     publish := { },
-    publishTo := Some("bogus" at "http://nowhere.com"),
     publishLocal := { }
-  ).aggregate(demo, service)
-
-  val buildSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++ VersionInjector.settings ++
-    Seq(
-      organization := "org.allenai.extraction",
-      crossScalaVersions := Seq("2.10.4"),
-      scalaVersion <<= crossScalaVersions { (vs: Seq[String]) => vs.head },
-      scalacOptions ++= Seq("-unchecked", "-deprecation"),
-      conflictManager := ConflictManager.strict,
-      resolvers ++= Seq(
-        "AllenAI Snapshots" at "http://utility.allenai.org:8081/nexus/content/repositories/snapshots",
-        "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
-        "spray" at "http://repo.spray.io",
-        "Sonatype SNAPSHOTS" at "https://oss.sonatype.org/content/repositories/snapshots/"),
-      homepage := Some(url("http://github.com/allenai/extraction")))
+  ).aggregate(api, demo, ermine, service)
 
   lazy val api = Project(
     id = "api",
@@ -130,7 +51,6 @@ object ExtractionBuild extends Build {
     settings = buildSettings
   ).dependsOn(api)
 
-  val ermineJavaOptions = Seq("-Xmx3G", "-Xms3G")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
