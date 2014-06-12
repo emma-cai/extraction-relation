@@ -1,10 +1,8 @@
 import sbt._
 import Keys._
 
-import scala.util.Try
-
 object Publish {
-  val nexus = s"http://utility.allenai.org:8081/nexus/content/repositories/"
+  val nexus = "http://utility.allenai.org:8081/nexus/content/repositories/"
 
   lazy val settings = Seq(
     credentials += Credentials("Sonatype Nexus Repository Manager",

@@ -55,7 +55,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     */
   def breakLine(defnInputLine: String): Option[(String, String, String)] = {
     defnInputLine.split("\t") match {
-      case Array(term, termWordClass, termDefinition, _*) => Some(term.trim, termWordClass.trim, termDefinition.trim)
+      case Array(term, termWordClass, termDefinition, _*) => Some((term.trim, termWordClass.trim, termDefinition.trim))
       case _ => None
     }
   }
