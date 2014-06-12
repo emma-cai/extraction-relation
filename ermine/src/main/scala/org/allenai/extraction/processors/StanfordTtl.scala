@@ -100,7 +100,7 @@ object StanfordTtl extends FlatProcessor {
 
   /** A token parsed from Stanford. */
   case class Token(id: String, text: String, lemma: String, begin: Int, end: Int,
-    partOfSpeech: String, namedEntityType: Option[String], namedEntityTag: Option[String]) {
+      partOfSpeech: String, namedEntityType: Option[String], namedEntityTag: Option[String]) {
 
     val ttl: String = {
       val ttlBuilder = new StringBuilder()

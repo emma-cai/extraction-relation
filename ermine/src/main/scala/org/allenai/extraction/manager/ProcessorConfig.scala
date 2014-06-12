@@ -11,7 +11,7 @@ import scala.collection.JavaConverters._
 
 /** Configuration for a single processor. */
 case class ProcessorConfig(name: String, processor: Processor, inputs: Seq[ProcessorInput],
-  outputs: Seq[PipelineOutput]) {
+    outputs: Seq[PipelineOutput]) {
   /** @return true if this processor expects unnamed inputs */
   def wantsUnnamedInput: Boolean = {
     // Either the first (and by implication all subsequent) inputs are unnamed, or none are. We
@@ -71,8 +71,8 @@ object ProcessorConfig {
     * value at the given path to be an array of strings.
     * @throws ErmineException if the value at the path is not an array of strings
     */
-  def getIOValues[T](config: Config, path: String, numExpected: Int)
-    (factory: ConfigValue => T): Seq[T] = {
+  def getIOValues[T](config: Config, path: String, numExpected: Int)(
+    factory: ConfigValue => T): Seq[T] = {
 
     val configuredValues: Seq[T] = try {
       // Check for an object at the given path.

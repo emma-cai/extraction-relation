@@ -37,8 +37,8 @@ object PipelineOutput {
     * @throws ErmineException if the config value has both a name and a URI specified, if the URI
     * scheme is unsupported, or if the config value can't be built into an IoConfig
     */
-  def fromConfigValue(configValue: ConfigValue)
-    (implicit bindingModule: BindingModule): PipelineOutput = {
+  def fromConfigValue(configValue: ConfigValue)(
+    implicit bindingModule: BindingModule): PipelineOutput = {
 
     IoConfig.fromConfigValue(configValue) match {
       case IoConfig(name, None) => new EphemeralOutput(name)
@@ -49,8 +49,8 @@ object PipelineOutput {
   /** Builds the appropriate output from the given URI and name.
     * @throws ErmineException if the URI scheme is unsupported
     */
-  def buildOutput(name: Option[String], uri: URI)
-    (implicit bindingModule: BindingModule): PipelineOutput = {
+  def buildOutput(name: Option[String], uri: URI)(
+    implicit bindingModule: BindingModule): PipelineOutput = {
 
     uri.getScheme match {
       case "file" => FileOutput(name, new File(uri))
@@ -141,7 +141,7 @@ class AristoreFileOutputConfig(override val name: Option[String], val datasetId:
   * Aristore. If unset, the directory to write new files to will be returned instead.
   */
 class AristoreFileOutput(override val name: Option[String], val datasetId: String,
-    val documentId: Option[String])(override implicit val bindingModule: BindingModule)
+  val documentId: Option[String])(override implicit val bindingModule: BindingModule)
     extends PipelineOutput with Injectable {
 
   /** The per-pipeline-execution actor handling Aristore communication and datset batching. */

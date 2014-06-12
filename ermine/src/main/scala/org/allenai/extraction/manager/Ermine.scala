@@ -21,15 +21,14 @@ import java.io.Writer
   * @param output if set, the final default output to use instead of STDOUT
   */
 case class ErmineOptions(configFile: File = new File("."), pipelineName: String = "ermine.pipeline",
-    inputs: Seq[File] = Seq.empty, output: Option[File] = None) {
-  /** Use the file option(s) as input(s), default to STDIN. */
+    inputs: Seq[File] = Seq.empty, outputs: Seq[File] = Seq.empty) {
+  /** Use the file option(s) as input(s). */
   def defaultInputs: Seq[Source] = inputs map Source.fromFile
 
   /** Use the file option as output, default to STDOUT. */
-  def defaultOutput: Writer = output map {
-    new FileWriter(_)
-  } getOrElse {
-    new PrintWriter(System.out)
+  def defaultOutputs: Seq[Writer] = outputs match {
+    case Seq() => Seq(new PrintWriter(System.out))
+    case _ => outputs map { new FileWriter(_) }
   }
 }
 
@@ -47,12 +46,12 @@ object Ermine {
         "        Defaults to ermine.pipeline.")
       opt[File]('i', "input") valueName("<file>") unbounded() action { (input, options) =>
         options.copy(inputs = options.inputs :+ input)
-      } text("The default input file to send to the first processor.\n" +
+      } text("The input file(s) to send to the first processor.\n" +
         "        Only used if the first processor has no input specified.")
-      opt[File]('o', "output") valueName("<file>") action { (output, options) =>
-        options.copy(output = Some(output))
-      } text("The default output file to send to the first pipeline stage.\n" +
-        "        Only used if the first processor has no output specified.")
+      opt[File]('o', "output") valueName("<file>") unbounded() action { (output, options) =>
+        options.copy(outputs = options.outputs :+ output)
+      } text("The output file(s) to send to the last pipeline stage.\n" +
+        "        Only used if the last processor has no output specified.")
       help("help") text("Prints this help.")
     }
     // format: ON
@@ -84,7 +83,7 @@ object Ermine {
           }
 
           // TODO(jkinkead): Allow for named pipelines here, too.
-          pipeline.run(Map.empty, defaultInputs, options.defaultOutput)
+          pipeline.run(Map.empty, defaultInputs, options.defaultOutputs)
         } finally {
           actorSystem.shutdown()
         }

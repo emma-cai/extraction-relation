@@ -1,5 +1,6 @@
 package org.allenai.extraction.service
 
+import org.allenai.common.webapp.InfoRoute
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 import org.allenai.extraction.manager.ErminePipeline
 
@@ -19,6 +20,8 @@ import java.io.StringWriter
 class ErmineService(implicit val bindingModule: BindingModule) extends HttpServiceActor
     with ActorLogging with SprayJsonSupport with Injectable {
 
+  val info = (injectOptional[InfoRoute] getOrElse { new InfoRoute() }).withName("ermine")
+
   implicit def exceptionHandler = ExceptionHandler {
     case NonFatal(e) => requestUri { uri =>
       log.error(e, s"Request to ${uri} could not be handled normally:")
@@ -28,8 +31,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
   }
 
   // Preload pipelines.
-  val pipelineConfig = inject [Config](ServiceModuleId.Pipelines)
-  val pipelines: Map[String,ErminePipeline] = {
+  val pipelineConfig = inject[Config](ServiceModuleId.Pipelines)
+  val pipelines: Map[String, ErminePipeline] = {
     val mutablePipelines = for {
       (pipelineName: String, configObject: ConfigObject) <- pipelineConfig.root()
       config = configObject.toConfig
@@ -58,7 +61,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
                   (name, text) <- pipelineRequest.inputs
                 } yield (name -> Source.fromString(text))
                 val output = new StringWriter()
-                pipeline.run(inputs, Seq.empty, output)
+                // TODO(jkinkead): Allow for multiple named outputs?
+                pipeline.run(inputs, Seq.empty, Seq(output))
                 output.close
 
                 log.info(s"pipeline '${pipelineName}' complete.")
@@ -76,7 +80,8 @@ class ErmineService(implicit val bindingModule: BindingModule) extends HttpServi
         case None => complete(StatusCodes.BadRequest ->
             s"No pipeline with name '${pipelineName}' exists")
       }
-    }
+    } ~
+    info.route
   )
   // format: ON
 }

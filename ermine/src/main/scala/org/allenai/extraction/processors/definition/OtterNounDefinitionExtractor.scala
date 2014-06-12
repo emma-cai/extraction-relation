@@ -9,6 +9,9 @@ import org.allenai.taggers.NamedGroupType
 
 import edu.knowitall.tool.typer.Type
 
+import spray.json.DefaultJsonProtocol._
+import spray.json._
+
 /** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
@@ -34,51 +37,73 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     * Also, we are not using the JSON format for the extraction results here right now.
     */
   override protected def processText(defnInputSource: Source, destination: Writer): Unit = {
-
+    // TODO: All Json output related statements are commented out, 
+    // Finish implementation changes to output required data types and then
+    // uncomment/change as necessary to output Json.
+    // Start output Json 
+    // destination.write("[\n")
+    // Iterate over input JSONs and process definitions.
+    var beginning = true
     // Iterate over input sentences (definitions), preprocess each and send it to the extractText method.
-    for (line <- defnInputSource.getLines) {
-      val (term, termWordClass, termDefinition) = preprocessLine(line)
-      if ((termWordClass.length == 0) || (termWordClass.equalsIgnoreCase(wordClass))) {
-        var results = super.extractText(termDefinition)
+    for (rawLine <- defnInputSource.getLines) {
+      val line = rawLine.trim()
 
-        // Some retries if no results were found with just the definition text.
-        if (term.length > 0) {
-          // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
-          // a part of the scientific and cultural community; this group of people have attended a 
-          // university and/or do research." is converted by the preprocessor into two separate definition
-          // lines:
-          //   "Academia	Noun	Academia is a word for the group of people who are 
-          //                      a part of the scientific and cultural community"
-          //   and
-          //   "Academia	Noun	this group of people have attended a university and/or do research."
-          // The second definition does not have the term but a coreference. So if we pass
-          // "Academia: this group of people have attended a university and/or do research." to the 
-          // definition extractor, it works since it has rules to handle this pattern, but not without
-          // the "Academia: ".
-          if (results.isEmpty) {
-            results = super.extractText(term + " : " + termDefinition)
-          }
-          
-          // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
-          // does not have the subject as part of the definition. In this case passing it to the 
-          // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
-          // that arises in the brain." works.
-          if (results.isEmpty) {
-            results = super.extractText(term + " " + termDefinition)
-          }
-        }
-        
-        // Output: First write out the input line.
-        destination.write("DEFINITION:   " + line + "\n")
+      // Skip over first line- it is expected to contain a "[",  the last line which is expected 
+      // to contain a "]" and lines in the middle that have just a ",". 
+      if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
+        val preprocessedDefinitionsAst = line.parseJson
+        val preprocessedDefinitions = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
+        for {
+          preprocessedDefinition <- preprocessedDefinitions.preprocessedDefinitions
+          termWordClass <- preprocessedDefinitions.wordClass
+          if (termWordClass.equalsIgnoreCase(wordClass))
+        } {
+          var results = super.extractText(preprocessedDefinition)
 
-        // Then write out the extraction results.
-        for (result <- results) {
-          destination.write(result + "\n")
+          // Some retries if no results were found with just the definition text.
+          if (preprocessedDefinitions.definedTerm.length > 0) {
+            // E.g.: The input, "Academia	Noun	'Academia' is a word for the group of people who are 
+            // a part of the scientific and cultural community; this group of people have attended a 
+            // university and/or do research." is converted by the preprocessor into two separate definition
+            // lines:
+            //   "Academia	Noun	Academia is a word for the group of people who are 
+            //                      a part of the scientific and cultural community"
+            //   and
+            //   "Academia	Noun	this group of people have attended a university and/or do research."
+            // The second definition does not have the term but a coreference. So if we pass
+            // "Academia: this group of people have attended a university and/or do research." to the 
+            // definition extractor, it works since it has rules to handle this pattern, but not without
+            // the "Academia: ".
+            if (results.isEmpty) {
+              results = super.extractText(preprocessedDefinitions.definedTerm + " : " + preprocessedDefinition)
+            }
+
+            // E.g.: The input, "brain cancer	Noun	# is a type of cancer that arises in the brain."
+            // does not have the subject as part of the definition. In this case passing it to the 
+            // definition extractor with the term prepended, i.e., as "brain cancer	is a type of cancer 
+            // that arises in the brain." works.
+            if (results.isEmpty) {
+              results = super.extractText(preprocessedDefinitions.definedTerm + " " + preprocessedDefinition)
+            }
+          }
+
+          // Output: First write out the input line.
+          destination.write("DEFINITION:   " + preprocessedDefinitions.definedTerm + "\t" + termWordClass + "\t" + preprocessedDefinition + "\n")
+
+          //if (!beginning) {
+          //  destination.write(",\n")
+          //}           
+          // Then write out the extraction results.
+          for (result <- results) {
+            destination.write(result + "\n")
+          }
+          beginning = false
+          destination.write("\n")
         }
-        destination.write("\n")
       }
     }
-
+    // End output Json
+    //destination.write("]")
   }
 
   /** A client-visible method that takes the output of the 'extract' method, which contains
@@ -117,7 +142,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   private def processNounDefinitionIsa(typ: Type, types: Seq[Type]): (Option[String], Seq[String]) = {
     var results = Seq.empty[String]
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
-    val (definedTermOption, defnIsaOption) = nounDefinitionGetDefinedTerm(isaOption, types)
+    val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
+    val isaRel = isaRelOption getOrElse ("isa")
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         results ++= Seq[String]("Defined Term: " + definedTerm)
@@ -125,7 +151,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         for ((typName, typContent) <- subtypeTuples) {
           val result = typName match {
             case "DefnIsa.Context" => Seq[String]("Context:" + typContent.text)
-            case "DefnIsa.IsaWhat" => processNounDefinitionIsaWhat(definedTerm, typContent, types)
+            case "DefnIsa.IsaWhat" => processNounDefinitionIsaWhat(definedTerm, isaRel, typContent, types)
             case "DefnIsa.Qualities" => processNounDefinitionQualities(definedTerm, typContent, types)
             case "DefnIsa.Properties" => processNounDefinitionProperties(definedTerm, typContent, types)
             case _ => Seq.empty[String]
@@ -141,8 +167,9 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Get the Defined Term. This is somewhat redundant if the input definition file already contains the defined term.
     * The Defined Term ties together the different extractions for a certain definition since it is the subject for every extraction.
     */
-  private def nounDefinitionGetDefinedTerm(isaOption: Option[NamedGroupType], types: Seq[Type]): (Option[String], Option[Type]) = {
+  private def nounDefinitionGetDefinedTermAndIsaRel(isaOption: Option[NamedGroupType], types: Seq[Type]): (Option[String], Option[String], Option[Type]) = {
     var defnIsaOption: Option[Type] = None
+    var isaRelOption: Option[String] = None
     val definedTermOption: Option[String] = isaOption match {
       case Some(isa) =>
         (Extractor.findAlignedTypes(types)(isa).headOption match {
@@ -161,26 +188,29 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           case _ => None
         }) match {
           case Some(defnIsa: Type) =>
-            Extractor.findSubtypesWithName(types)(defnIsa, "DefinedTerm").headOption match {
-              case Some(definedTrm) => Option[String](definedTrm.text)
-              case _ => None
+            {
+              isaRelOption = Extractor.findSubtypesWithName(types)(defnIsa, "IsaRel").headOption map { isaRel => isaRel.text }
+              Extractor.findSubtypesWithName(types)(defnIsa, "DefinedTerm").headOption match {
+                case Some(definedTrm) => Option[String](definedTrm.text)
+                case _ => None
+              }
             }
           case _ => None
         }
       case _ => None
     }
-    (definedTermOption, defnIsaOption)
+    (definedTermOption, isaRelOption, defnIsaOption)
   }
 
   /** Processes the IsaWhat group captured in the DefnIsa rule */
-  private def processNounDefinitionIsaWhat(definedTerm: String, typ: Type, types: Seq[Type]): Seq[String] = {
+  private def processNounDefinitionIsaWhat(definedTerm: String, isaRel: String, typ: Type, types: Seq[Type]): Seq[String] = {
     var results = Seq.empty[String]
     val alignedTypes = Extractor.findAlignedTypes(types)(typ)
     for (alignedType <- alignedTypes) {
       if (results.length == 0) {
         alignedType.name match {
-          case "NGMultiple" => results ++= processNounDefinitionNGMultiple(definedTerm, alignedType, types)
-          case "NGNoDetSingle" => results ++= processNounDefinitionNGSingle(definedTerm, alignedType, types)
+          case "NGMultiple" => results ++= processNounDefinitionNGMultiple(definedTerm, isaRel, alignedType, types)
+          case "NGNoDetSingle" => results ++= processNounDefinitionNGSingle(definedTerm, isaRel, alignedType, types)
           case _ => None
         }
       }
@@ -191,20 +221,20 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Splits composite NPs matching the NGMultiple rules up into a sequence of extractions representing
     * each constituent simple NP (NPSingle)
     */
-  private def processNounDefinitionNGMultiple(definedTerm: String, typ: Type, types: Seq[Type]): Seq[String] = {
+  private def processNounDefinitionNGMultiple(definedTerm: String, isaRel: String, typ: Type, types: Seq[Type]): Seq[String] = {
     var results = Seq.empty[String]
     val subtypes = Extractor.findSubtypes(types)(typ)
     for (subtype <- subtypes) {
       val alignedTypes = Extractor.findAlignedTypesWithName(types)(subtype, "NGSingle")
       for (alignedType <- alignedTypes) {
-        results ++= processNounDefinitionNGSingle(definedTerm, alignedType, types)
+        results ++= processNounDefinitionNGSingle(definedTerm, isaRel, alignedType, types)
       }
     }
     results
   }
 
   /** Process simple NP */
-  private def processNounDefinitionNGSingle(definedTerm: String, typ: Type, types: Seq[Type]): Seq[String] = {
+  private def processNounDefinitionNGSingle(definedTerm: String, isaRel: String, typ: Type, types: Seq[Type]): Seq[String] = {
     var results = Seq.empty[String]
 
     val np: StringBuilder = new StringBuilder(nounDefinitionGetNounPartFromNGSingle(typ, types, "NP"))
@@ -214,7 +244,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     val adjs: Seq[String] = nounDefinitionGetAdjsFromNGSingle(typ, types)
 
     if (noun.length > 0) {
-      results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + noun + ")")
+      results ++= Seq[String]("Isa: (" + definedTerm + ", " + isaRel + ", " + noun + ")")
       if (aux.length > 0) {
         np ++= " " + aux
       }
@@ -222,7 +252,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         np ++= ", " + prep
       }
       if ((np.length > 0) && (!np.toString.equals(noun))) {
-        results ++= Seq[String]("Isa: (" + definedTerm + ", isa, " + np + ")")
+        results ++= Seq[String]("Isa: (" + definedTerm + ", " + isaRel + ", " + np + ")")
       }
     }
 
@@ -478,7 +508,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       }
 
     if ((antecedentVP.length() > 0) && (rel.length() > 0) && (consequentVP.length() > 0)) {
-      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" +  " , " + consequentVP + ")"
+      result ++= "(" + subj + ", " + antecedentVP + "), " + rel + ", " + "(" + " , " + consequentVP + ")"
     }
     result.toString()
   }
@@ -539,8 +569,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           }
         case _ => Seq.empty[String]
       }
-    
-    
+
     // Need an extra pair of parens around this sentence if it has a composite VP that 
     // is broken into multiple VPs (tuples).
     val numVps = vps.length
@@ -559,7 +588,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     }
     if (numVps > 1)
       result ++= ")"
-        
+
     result.toString()
   }
 }

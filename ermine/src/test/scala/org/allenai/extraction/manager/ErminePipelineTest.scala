@@ -204,7 +204,7 @@ class ErminePipelineTest extends UnitSpec {
     val output = new StringWriter()
 
     // Run the pipeline, and assert that the "foo" input was piped to the output.
-    pipeline.run(Map.empty, inputs, output)
+    pipeline.run(Map.empty, inputs, Seq(output))
 
     output.toString should be ("fooey\n")
   }
@@ -223,10 +223,10 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
     val inputs = Seq(Source.fromString(""))
-    val output = new StringWriter()
+    val outputs = Seq(new StringWriter())
 
     // No exceptions thrown.
-    pipeline.run(Map.empty, inputs, output)
+    pipeline.run(Map.empty, inputs, outputs)
     file.delete()
   }
 
@@ -245,10 +245,10 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
     val inputs = Seq(Source.fromString(""))
-    val output = new StringWriter()
+    val outputs = Seq(new StringWriter())
 
     an[ErmineException] should be thrownBy {
-      pipeline.run(Map.empty, inputs, output)
+      pipeline.run(Map.empty, inputs, outputs)
     }
   }
 
@@ -266,10 +266,10 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
     val inputs = Seq(Source.fromString(""))
-    val output = new StringWriter()
+    val outputs = Seq(new StringWriter())
 
     // No exceptions thrown.
-    pipeline.run(Map.empty, inputs, output)
+    pipeline.run(Map.empty, inputs, outputs)
     file.delete()
   }
 
@@ -288,10 +288,10 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
     val inputs = Seq(Source.fromString(""))
-    val output = new StringWriter()
+    val outputs= Seq(new StringWriter())
 
     an[ErmineException] should be thrownBy {
-      pipeline.run(Map.empty, inputs, output)
+      pipeline.run(Map.empty, inputs, outputs)
     }
   }
 }
