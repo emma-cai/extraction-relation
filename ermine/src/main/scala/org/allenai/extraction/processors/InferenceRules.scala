@@ -27,48 +27,43 @@ object InferenceRules extends TextProcessor {
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
+    val sink: Writer = destinations(0)
+
     val graph = new DependencyGraph()
     graph.loadTurtle(source)
 
-    val sb = new StringBuilder()
-    var ruleId: Int = 1
+    var ruleId: Int = 0
     // match patterns
     for (map <- graph.executeQuery(relQuery)) {
-      val x = map("x")
-      val y = map("y")
-
+      val x: Vertex = map("x")
+      val y: Vertex = map("y")
+      val relation: String = nodeRel(x, map("r"), y, graph)
       // left -> relation, right
-      // rule id
-      sb.append(s"rule${ruleId}:: ")
       ruleId += 1
-      // LHS
-      sb.append(nodeIsa(x, graph))
-      sb.append(nodeArgs(x, graph, separator))
-      // relation
-      sb.append(" -> " + nodeRel(x, map("r"), y, graph))
-      // RHS
-      sb.append(nodeIsa(y, graph, separator))
-      sb.append(nodeArgs(y, graph, separator))
-      sb ++= ".\n"
-
+      sink.write(relationRule(x, relation, y, ruleId, graph))
       // right -> relation, left
-      // rule id
-      sb.append(s"rule${ruleId}:: ")
       ruleId += 1
-      // LHS
-      sb.append(nodeIsa(y, graph))
-      sb.append(nodeArgs(y, graph, separator))
-      // relation
-      sb.append(" -> " + nodeRel(x, map("r"), y, graph))
-      // RHS
-      sb.append(nodeIsa(x, graph, separator))
-      sb.append(nodeArgs(x, graph, separator))
-      sb ++= ".\n"
+      sink.write(relationRule(y, relation, x, ruleId, graph))
     }
 
     graph.shutdown()
-    val sink: Writer = destinations(0)
-    sink.write(sb.toString)
+  }
+
+  def relationRule(left: Vertex, relation: String, right: Vertex, ruleId: Int, graph: DependencyGraph): String = {
+    val rule = new StringBuilder()
+    // rule id
+    rule ++= s"rule${ruleId}:: "
+    // LHS
+    rule ++= nodeIsa(left, graph)
+    rule ++= nodeArgs(left, graph, separator)
+    // relation
+    rule ++= " -> " + relation
+    // RHS
+    rule ++= nodeIsa(right, graph, separator)
+    rule ++= nodeArgs(right, graph, separator)
+
+    rule ++= ".\n"
+    rule.toString
   }
 
   def nodeRel(x: Vertex, r: Vertex, y: Vertex, graph: DependencyGraph): String = {
@@ -87,17 +82,17 @@ object InferenceRules extends TextProcessor {
         FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/pred/")) .
         BIND(STRAFTER(str(?rel), "http://aristo.allenai.org/pred/") AS ?pred) .
       }"""
-    val sb = new StringBuilder()
+    val args = new StringBuilder()
     for (map <- graph.executeQuery(query)) {
       val pred = map("pred").toLiteral
       val argString = nodeString(map("arg"), graph)
-      if (sb.isEmpty)
-        sb ++= prefix
+      if (args.isEmpty)
+        args ++= prefix
       else
-        sb ++= separator
-      sb.append(s"$pred($label, $argString)")
+        args ++= separator
+      args.append(s"$pred($label, $argString)")
     }
-    sb.toString
+    args.toString
   }
 
   def nodeIsa(node: Vertex, graph: DependencyGraph, prefix: String = ""): String = {
