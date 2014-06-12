@@ -10,7 +10,6 @@ import com.tinkerpop.blueprints.Edge
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-
 /** processor to map dependencies of extracted nodes to roles */
 object ExtractionLabels extends TextProcessor {
   override val numInputs = 1
@@ -49,8 +48,7 @@ object ExtractionLabels extends TextProcessor {
     graph.loadTurtle(source)
 
     // match verbal predicates
-    for (map <- graph.executeQuery(predQuery))
-    {
+    for (map <- graph.executeQuery(predQuery)) {
       val xnode = map("x")
       addLabel(xnode, graph)
       addText(xnode, VerbExcludeString, graph)
@@ -59,8 +57,7 @@ object ExtractionLabels extends TextProcessor {
       addText(ynode, ArgExcludeString, graph)
     }
     // match unlabeled relations
-    for (map <- graph.executeQuery(relQuery))
-    {
+    for (map <- graph.executeQuery(relQuery)) {
       addLabel(map("x"), graph)
       addText(map("x"), ArgExcludeString, graph)
     }

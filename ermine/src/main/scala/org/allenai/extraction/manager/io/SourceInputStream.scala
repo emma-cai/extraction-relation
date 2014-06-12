@@ -10,17 +10,16 @@ import java.nio.charset.Charset
 import java.nio.CharBuffer
 import java.nio.ByteBuffer
 
-/**
- * A SourceInputStream obtains input bytes
- * from a scala.io.Source and encodes obtained character stream
- * into a stream of raw bytes using given encoding.
- *
- * @constructor create a new instance of SourceInputStream.
- * @param source underlying scala.io.Source.
- * @param encoding encoding, that will be used to transform character stream into a stream of bytes.
- * @see scala.io.Source
- * @see java.io.InputStream
- */
+/** A SourceInputStream obtains input bytes
+  * from a scala.io.Source and encodes obtained character stream
+  * into a stream of raw bytes using given encoding.
+  *
+  * @constructor create a new instance of SourceInputStream.
+  * @param source underlying scala.io.Source.
+  * @param encoding encoding, that will be used to transform character stream into a stream of bytes.
+  * @see scala.io.Source
+  * @see java.io.InputStream
+  */
 class SourceInputStream(source: Source, encoding: String = "UTF-8") extends InputStream {
 
   private val encoder = Charset.forName(encoding).newEncoder()
@@ -28,12 +27,11 @@ class SourceInputStream(source: Source, encoding: String = "UTF-8") extends Inpu
   private var bufferEnd = 0
   private var bufferPos = 0
 
-  /**
-   * Reads a byte of data from underlying scala.io.Source.
-   *
-   * @return     the next byte of data, or -1 if the end of the
-   *             file is reached.
-   */
+  /** Reads a byte of data from underlying scala.io.Source.
+    *
+    * @return     the next byte of data, or -1 if the end of the
+    *            file is reached.
+    */
   override def read: Int = {
 
     if (availableBytes < 1) {
@@ -49,12 +47,11 @@ class SourceInputStream(source: Source, encoding: String = "UTF-8") extends Inpu
 
   }
 
-  /**
-   * Reads a subarray as a sequence of bytes.
-   * @param b the data to be written
-   * @param off the start offset in the data
-   * @param len the number of bytes that are written
-   */
+  /** Reads a subarray as a sequence of bytes.
+    * @param b the data to be written
+    * @param off the start offset in the data
+    * @param len the number of bytes that are written
+    */
   override def read(b: Array[Byte], off: Int, len: Int): Int = {
 
     require(off >= 0, "argument off of the %s.read should be >= 0".format(getClass().getName()))

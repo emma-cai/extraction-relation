@@ -8,7 +8,6 @@ import scala.io.Source
 
 import java.io.Writer
 
-
 /** A demo extractor that reads and writes Turtle with no graph changes */
 object TurtleProcessor extends TextProcessor {
   override val numInputs = 1

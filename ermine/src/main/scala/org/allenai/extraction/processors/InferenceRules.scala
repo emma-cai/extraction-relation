@@ -9,7 +9,6 @@ import scala.io.Source
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-
 /** processor to add labels and string descriptions to extracted nodes */
 object InferenceRules extends TextProcessor {
   override val numInputs = 1
@@ -108,7 +107,7 @@ object InferenceRules extends TextProcessor {
       SELECT ?label WHERE {
         <$uri> rdfs:label ?label .
       }"""
-    val result: Map[String,Vertex] = graph.executeQuery(query).head
+    val result: Map[String, Vertex] = graph.executeQuery(query).head
     val label = result.get("label").map(_.toLiteral).getOrElse("")
     s"E$id-$label"
   }
@@ -119,7 +118,7 @@ object InferenceRules extends TextProcessor {
       SELECT ?string WHERE {
         <$uri> rdfs:comment ?string .
       }"""
-    val result: Map[String,Vertex] = graph.executeQuery(query).head
+    val result: Map[String, Vertex] = graph.executeQuery(query).head
     result.get("string").map(_.toUri).getOrElse("")
   }
 

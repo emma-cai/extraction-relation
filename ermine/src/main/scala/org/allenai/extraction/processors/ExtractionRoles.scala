@@ -10,7 +10,6 @@ import com.tinkerpop.blueprints.Edge
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-
 /** processor to add labels and string descriptions to extracted nodes */
 object ExtractionRoles extends TextProcessor {
   override val numInputs = 1
@@ -44,10 +43,11 @@ object ExtractionRoles extends TextProcessor {
   /** map input dependencies to output args */
   def addArgs(node: Vertex, graph: DependencyGraph) = {
     // define input dependency to output role relations
-    val roles: Seq[Tuple2[String,String]] = Seq(("nsubj","pred:agent"),
-                                                ("dobj","pred:object"),
-                                                ("iobj","pred:arg"),
-                                                ("tmod","pred:arg"))
+    val roles: Seq[Tuple2[String, String]] = Seq(
+      ("nsubj", "pred:agent"),
+      ("dobj", "pred:object"),
+      ("iobj", "pred:arg"),
+      ("tmod", "pred:arg"))
     for ((dep, role) <- roles) {
       addArg(node, dep, role, graph)
     }
@@ -62,7 +62,7 @@ object ExtractionRoles extends TextProcessor {
       SELECT ?$dep WHERE {
         <$uri> dep:$dep ?$dep .
       }"""
-    val result: Seq[Map[String,Vertex]] = graph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = graph.executeQuery(query)
     for (map <- result) {
       val obj: Vertex = map(dep)
       graph.outputGraph.addEdge(null, node, obj, role)
@@ -79,7 +79,7 @@ object ExtractionRoles extends TextProcessor {
         FILTER(CONTAINS(str(?dep), "/dep/prep_")) .
         BIND(STRAFTER(str(?dep), "_") AS ?prep) .
       }"""
-    val result: Seq[Map[String,Vertex]] = graph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = graph.executeQuery(query)
     for (map <- result) {
       // use preposition as new predicate
       val prep: String = map("prep").toLiteral

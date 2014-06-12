@@ -9,14 +9,13 @@ import scala.io.Source
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-
 /** processor to match dependency patterns */
 object StanfordExtractor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
   // SPARQL queries
-  val queries: Seq[(String,String)] = Seq(
+  val queries: Seq[(String, String)] = Seq(
     // (id, query) where id is for logging rule matches 
 
     //"In the hot weather our bodies sweat perspiration bringing water to our[our] skin."
@@ -209,8 +208,7 @@ object StanfordExtractor extends TextProcessor {
       { ?comp dep:rcmod ?cause . }
       UNION
       { ?cause dep:nsubj ?comp . }
-    }""")
-  )
+    }"""))
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)

@@ -8,7 +8,6 @@ import scala.io.Source
 
 import java.io.Writer
 
-
 /** processor to fix common dependency-parse errors */
 object StanfordFixProcessor extends TextProcessor {
   override val numInputs = 1
@@ -59,8 +58,7 @@ object StanfordFixProcessor extends TextProcessor {
       FILTER NOT EXISTS { ?y ne:type "DATE" . }
       FILTER NOT EXISTS { ?y ne:type "TIME" . }
       FILTER NOT EXISTS { ?x dep:dobj ?z . }
-    }"""
-  )
+    }""")
 
   override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
