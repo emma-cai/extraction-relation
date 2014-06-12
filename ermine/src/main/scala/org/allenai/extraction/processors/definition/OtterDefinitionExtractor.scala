@@ -1,46 +1,28 @@
 package org.allenai.extraction.processors.definition
 
+import org.allenai.extraction.processors.OpenRegexExtractor
+
+import edu.knowitall.tool.chunk.ChunkedToken
+import edu.knowitall.tool.stem.Lemmatized
+
 import java.io.Writer
 
 import scala.io.Source
 
-import org.allenai.extraction.processors.OpenRegexExtractor
-
-import spray.json.DefaultJsonProtocol.StringJsonFormat
-import spray.json.DefaultJsonProtocol.jsonFormat4
-import spray.json.DefaultJsonProtocol.seqFormat
 import spray.json.pimpAny
 import spray.json.pimpString
-
-/** A Case Class and Companion Object for Definition Extraction Output to support outputting results
-  * in JSON.  The first three parameters come from the input and the last one contains the
-  * extraction results.
-  * @param term  Defined Term
-  * @param wordClass Word Class for the term
-  * @param definition The definition
-  * @param results The resultant extractions
-  */
-case class OtterExtractionResult(term: String, wordClass: String, definition: String, results: Seq[String])
-
-object OtterExtractionResult {
-  import spray.json.DefaultJsonProtocol._
-  implicit val definitionExtractionResultJsonFormat = jsonFormat4(OtterExtractionResult.apply)
-}
 
 /** An extractor that processes definitions for a given class of terms using OpenRegex.
   * A directory is expected per word class, with the cascade file in it being called defn.cascade.
   * wordClass can take different values like Noun, Adjective, Verb, Expression etc.
-  * Definitions have different formats depending on the word class of the term being defined. This
-  * will impact the rules defined in OpenRegex, so we will have a set of rules and a cascade file
-  * for each word class.
-  * @param dataPath  Path of the data directory that will contain OpenRegex rule files to be used
-  * for the definition extraction.
-  * @param wordClass The word class, for e.g., noun/verb/adjective to be processed. A subdirectory
-  * is expected under the specified dataPath, for each word class. So the specified wordClass here
-  * is appended to the dataPath to get to the necessary rule files.
+  * Definitions have different formats depending on the word class of the term being defined. This will
+  * impact the rules defined in OpenRegex, so we will have a set of rules and a cascade file for each word class.
+  * @param dataPath  path of the data directory that will contain OpenRegex rule files to be used for the definition extraction.
+  * @param wordClass word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
+  * for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
   */
-abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor(dataPath + "//" + wordClass + "//defn.cascade") {
-
+abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade") {
+  
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed into the format
     * represented by the PreprocessedDefinition structure. The preprocessed output serialized into JSONs,
     * is read here- from Source, and processed. The expected input structure is: "[" on the first line, followed
@@ -64,50 +46,51 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
   override def processText(defnInputSource: Source, destination: Writer): Unit = {
     //Start output Json 
     destination.write("[\n")
-    // Iterate over input JSONs and process definitions.
     var beginning = true
+    // Iterate over input JSONs and process definitions.
     for (rawLine <- defnInputSource.getLines) {
       val line = rawLine.trim()
       // Skip over first line- it is expected to contain a "[",  the last line which is expected 
       // to contain a "]" and lines in the middle that have just a ",". 
       if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
         val preprocessedDefinitionsAst = line.parseJson
-        val preprocessedDefinitions = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
+        val preprocessedDefinitionAlts = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
+        var otterExtractionsForDefinitionAlternates = Seq.empty[OtterExtractionForDefinitionAlternate]
         for {
-          preprocessedDefinition <- preprocessedDefinitions.preprocessedDefinitions
-          termWordClass <- preprocessedDefinitions.wordClass
-          if (termWordClass.equalsIgnoreCase(wordClass))
-        } {
-          val results = super.extractText(preprocessedDefinition)
-          val extractionOp = OtterExtractionResult(
-            preprocessedDefinitions.definedTerm, termWordClass, preprocessedDefinition, results)
-          if (!beginning) {
-            destination.write(",\n")
-          }
-          destination.write(extractionOp.toJson.compactPrint + "\n")
-          beginning = false
+           preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
+           termWordClass <- preprocessedDefinitionAlts.wordClass
+           if (termWordClass.equalsIgnoreCase(wordClass))
+        }  {
+          val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
+          otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
+                                             preprocessedDefinition,
+                                             OtterToken.makeTokenSeq(result._2),
+                                             result._1)
         }
+        // Compose the OtterExtraction overall result per raw definition to be written out as json.
+        val extractionOp = OtterExtraction(
+                             preprocessedDefinitionAlts.definitionCorpusName,
+                             preprocessedDefinitionAlts.rawDefinitionId,
+                             preprocessedDefinitionAlts.rawDefinitionLine,
+                             preprocessedDefinitionAlts.definedTerm,
+                             preprocessedDefinitionAlts.wordClass,
+                             otterExtractionsForDefinitionAlternates)
+        if (!beginning) {
+          destination.write(",\n")
+        }
+        destination.write(extractionOp.toJson.compactPrint + "\n")
+        beginning = false
       }
-    }
+    }    
     // End output Json
     destination.write("]")
   }
 
-  /** prerocessLine : Break the input line into its constituent parts.
-    * The assumption here is that if a preprocessor for a given Definition corpus
-    * was run earlier in the pipeline and feeds into this extractor (DefinitionOpenRegexExtractor),
-    * then the input is of the form: <Term>\t<WordClass>\t<Definition> per line.
-    * Alternately, this extractor can be run by itself on input consisting of just a <Definition>
-    * per line.
+  /** Method that takes a definition alternate, calls the necessary functions on it to perform
+    * extraction and returns a sequence of extractions as OtterExtractionTuples which are to be
+    * composed into an overall OtterExtraction for a single original raw definition from the corpus.
     */
-  def preprocessLine(defnInputLine: String): (String, String, String) = {
-    defnInputLine.split("\t").toList match {
-      // For handling output format from Preprocessor
-      case List(term, termWordClass, termDefinition, _*) => (term.trim, termWordClass.trim, termDefinition.trim)
-      // For handling just the raw definition- for e.g., when using the ermine service through the
-      // web demo.
-      case Nil :+ termDefinition => ("", "", termDefinition.trim)
-      case _ => ("", "", "")
-    }
+  def extract(definedTerm: String, preprocessedDefinition: String) : (Seq[OtterExtractionTuple], Seq[Lemmatized[ChunkedToken]]) = {
+    super.extractText(preprocessedDefinition)
   }
 }

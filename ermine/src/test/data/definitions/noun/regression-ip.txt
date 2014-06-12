@@ -1,5 +1,5 @@
 Chlorophyll	noun	Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
-Acid	verb	An acid is a liquid with a high number of hydrogen ions in it that can burn things.
+Acid	noun	An acid is a liquid with a high number of hydrogen ions in it that can burn things.
 Acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
 Contest	noun	A contest is where people do a quiz or play a game to win a prize.
 Chlorophyll	noun	Chlorophyll is an extremely important biomolecule, critical in photosynthesis, which allows plants to absorb energy from light.
