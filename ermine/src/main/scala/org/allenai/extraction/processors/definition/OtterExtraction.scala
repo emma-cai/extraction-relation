@@ -68,6 +68,7 @@ case class OtterToken(
     chunk: String,
     lemma: String) {
   override def toString() = s"$string-$id"
+  def toFullString() = s"[$id|$string|$lemma|$posTag|$chunk]"
 }
 
 /** A Case Class to represent a Tuple argument.
@@ -112,6 +113,7 @@ sealed abstract class OtterExtractionTuple {
   def tupleTokens: Seq[OtterToken]
   def tokenInterval: Interval
   def relation: Relation
+  def toSimpleString: String
 }
 
 /** A Case Class to represent a simple extraction tuple.
@@ -142,6 +144,19 @@ case class SimpleOtterExtractionTuple(
     val relObj: Option[Argument],
     val advps: Seq[Argument],
     val pps: Seq[Argument]) extends OtterExtractionTuple {
+  def toSimpleString = {
+    "[ " + agent.map(_.string).getOrElse("-") + " | " +
+      relation.relationPhrase.string +
+      {
+        relation.relationType match {
+          case Some(t) => "/" + t.toString.toUpperCase
+          case None => ""
+        }
+      } + " | " +
+      relObj.map(_.string).getOrElse("-") +
+      { if (advps.size > 0) advps.map(_.string).mkString(" | [advps: ", " | ", " ]") else "" } +
+      { if (pps.size > 0) pps.map(_.string).mkString(" | [pps: ", " | ", " ]") else "" } + " ]"
+  }
   override def toString() = {
     val agentStr = agent match {
       case Some(y) => y.string
@@ -191,6 +206,21 @@ case class OtterExtractionTupleWithTupleRelObject(
     val relObj: SimpleOtterExtractionTuple,
     val advps: Seq[Argument],
     val pps: Seq[Argument]) extends OtterExtractionTuple {
+  def toSimpleString = {
+    "[ " + agent.map(_.string).getOrElse("-") + " | " +
+      relation.relationPhrase.string +
+      {
+        relation.relationType match {
+          case Some(t) => "/" + t.toString.toUpperCase
+          case None => ""
+        }
+      } + " | " +
+      relObj.toSimpleString +
+      { if (advps.size > 0) advps.map(_.string).mkString(" | [advps: ", " | ", " ]") else "" } +
+      { if (pps.size > 0) pps.map(_.string).mkString(" | [pps: ", " | ", " ]") else "" } + " ]"
+  }
+
+  /* TODO: The toString() is missing advps and pps */
   override def toString() = {
     val result = new StringBuilder("(")
     agent match {
@@ -230,7 +260,17 @@ case class ComplexOtterExtractionTuple (
   override val relation: Relation,
   val consequent: SimpleOtterExtractionTuple
 ) extends OtterExtractionTuple {
-    override def toString() = {
+  
+  def toSimpleString = {
+      "[ " + antecedent.toSimpleString + " | " +
+        relation.relationPhrase.string + 
+        {relation.relationType match {
+          case Some(t) => "/" + t.toString.toUpperCase
+          case None => ""}
+        } + " | " +
+        consequent.toSimpleString
+  }
+  override def toString() = {
     val result = new StringBuilder("(")               
     result ++= antecedent.toString
     result ++= ", " + relation.relationPhrase.string + ", "
