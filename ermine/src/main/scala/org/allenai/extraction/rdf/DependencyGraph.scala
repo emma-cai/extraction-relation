@@ -1,6 +1,6 @@
 package org.allenai.extraction.rdf
 
-import org.allenai.extraction.manager.io.SourceInputStream
+import org.allenai.common.SourceInputStream
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import com.tinkerpop.blueprints.Edge
@@ -44,7 +44,7 @@ class DependencyGraph extends MemoryStoreSailGraph {
   }
 
   def loadTurtle(source: Source) = {
-    val sourceStream = new SourceInputStream(source, "UTF-8")
+    val sourceStream = new SourceInputStream(source)
     loadRDF(sourceStream, "http://aristo.allenai.org", "turtle", null)
   }
 
