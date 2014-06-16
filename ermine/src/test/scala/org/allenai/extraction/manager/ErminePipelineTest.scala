@@ -1,6 +1,7 @@
 package org.allenai.extraction.manager
 
 import org.allenai.common.testkit.UnitSpec
+import org.allenai.extraction.ErmineException
 
 import com.typesafe.config.ConfigFactory
 
@@ -23,9 +24,9 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
 
-    pipeline.name should be ("TestWorkflow")
-    pipeline.processors.length should be (1)
-    pipeline.processors(0).processor should be (NoOpProcessor)
+    pipeline.name should be("TestWorkflow")
+    pipeline.processors.length should be(1)
+    pipeline.processors(0).processor should be(NoOpProcessor)
   }
 
   it should "parse a two-stage pipeline correctly" in {
@@ -43,9 +44,9 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
 
-    pipeline.processors.length should be (2)
-    pipeline.processors(0).processor should be (NoOpProcessor)
-    pipeline.processors(1).processor should be (NoOpProcessor)
+    pipeline.processors.length should be(2)
+    pipeline.processors(0).processor should be(NoOpProcessor)
+    pipeline.processors(1).processor should be(NoOpProcessor)
   }
 
   it should "silently ignore extra outputs" in {
@@ -62,7 +63,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredNamedInputs should be (Set())
+    pipeline.requiredNamedInputs should be(Set())
   }
 
   it should "allow named outputs to be used for unnamed inputs" in {
@@ -80,7 +81,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredNamedInputs should be (Set())
+    pipeline.requiredNamedInputs should be(Set())
   }
 
   it should "fail when given a pipeline with one output followed by two unnamed inputs" in {
@@ -116,7 +117,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredNamedInputs should be (Set("foo"))
+    pipeline.requiredNamedInputs should be(Set("foo"))
   }
 
   it should "have two required inputs when both stages have an unsatisfied input" in {
@@ -135,7 +136,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredNamedInputs should be (Set("foo", "bar"))
+    pipeline.requiredNamedInputs should be(Set("foo", "bar"))
   }
 
   it should "handle named IO skipping stages" in {
@@ -158,7 +159,7 @@ class ErminePipelineTest extends UnitSpec {
       ]
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
-    pipeline.requiredNamedInputs should be (Set())
+    pipeline.requiredNamedInputs should be(Set())
   }
 
   it should "fail when given a mixture of anonymous first-stage input and named input" in {
@@ -206,7 +207,7 @@ class ErminePipelineTest extends UnitSpec {
     // Run the pipeline, and assert that the "foo" input was piped to the output.
     pipeline.run(Map.empty, inputs, Seq(output))
 
-    output.toString should be ("fooey\n")
+    output.toString should be("fooey\n")
   }
 
   it should "validate input, and succeed on valid files" in {
@@ -288,7 +289,7 @@ class ErminePipelineTest extends UnitSpec {
       """)
     val pipeline = ErminePipeline.fromConfig(simpleConfig)(TestErmineModule)
     val inputs = Seq(Source.fromString(""))
-    val outputs= Seq(new StringWriter())
+    val outputs = Seq(new StringWriter())
 
     an[ErmineException] should be thrownBy {
       pipeline.run(Map.empty, inputs, outputs)

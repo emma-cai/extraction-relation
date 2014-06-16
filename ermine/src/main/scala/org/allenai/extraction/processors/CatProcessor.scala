@@ -14,7 +14,7 @@ object CatProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
-  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     // Within this function, you have access to the inputs and outputs you configured in your
     // processor configuration, in the order they were declared.
     //

@@ -1,17 +1,28 @@
 package org.allenai.extraction.manager
 
-import org.allenai.ari.datastore.client.{ AriDatastoreClient, AriDatastoreHttpClient }
-import org.allenai.common.Config._
-import org.allenai.extraction.{ ConfigModule, Processor }
-import org.allenai.extraction.processors._
-import org.allenai.extraction.processors.definition._
+import scala.collection.mutable
 
-import akka.actor.ActorSystem
-import akka.event.Logging
+import org.allenai.ari.datastore.client.AriDatastoreClient
+import org.allenai.ari.datastore.client.AriDatastoreHttpClient
+import org.allenai.common.Config.EnhancedConfig
+import org.allenai.extraction.ConfigModule
+import org.allenai.extraction.Processor
+import org.allenai.extraction.processors.CatProcessor
+import org.allenai.extraction.processors.Ferret
+import org.allenai.extraction.processors.FerretQuestionProcessor
+import org.allenai.extraction.processors.FerretTextProcessor
+import org.allenai.extraction.processors.SimpleWiktionaryDefinitionPreprocessor
+import org.allenai.extraction.processors.StanfordParser
+import org.allenai.extraction.processors.StanfordTtl
+import org.allenai.extraction.processors.StanfordXmlToTtl
+import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
+import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
+
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
 
-import scala.collection.mutable
+import akka.actor.ActorSystem
+import akka.event.Logging
 
 /** Module providing bindings for the Ermine system.
   * @param actorSystem the actor system, for logging and AriDatastoreClient
@@ -37,8 +48,9 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "ExtractionRoles" -> ExtractionRoles,
       "ExtractionLabels" -> ExtractionLabels,
       "InferenceRules" -> InferenceRules,
+      "TurtleProcessor" -> TurtleProcessor,
       "CatProcessor" -> CatProcessor,
-      "TurtleProcessor" -> TurtleProcessor)
+      "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.
     config.get[String]("ferret.directory") match {
@@ -56,7 +68,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       case Some(dataDir) => processors += (
         "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir))
       case None => log.error("definitions.dataDirectory not found in config - " +
-        "OtterNounDefinitionExtractor won't be initialized")
+        "NounDefinitionOpenRegexExtractor won't be initialized")
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.

@@ -1,7 +1,8 @@
 package org.allenai.extraction.manager.io
 
 import org.allenai.common.testkit.UnitSpec
-import org.allenai.extraction.manager.{ ErmineException, TestErmineModule }
+import org.allenai.extraction.ErmineException
+import org.allenai.extraction.manager.TestErmineModule
 
 import com.typesafe.config.{ ConfigValue, ConfigValueFactory }
 
@@ -19,12 +20,12 @@ class PipelineOutputTest extends UnitSpec {
   "PipelineOutput.fromConfigValue" should "build a file output correctly" in {
     val output = PipelineOutput.fromConfigValue(
       configValue("name" -> "a", "uri" -> "file:///dev/null"))
-    output should be (FileOutput(Some("a"), new File("/dev/null")))
+    output should be(FileOutput(Some("a"), new File("/dev/null")))
   }
 
   it should "fail when given an unsupported URI" in {
     an[ErmineException] should be thrownBy {
-      ProcessorInput.fromConfigValue(configValue("name" -> "a", "uri" -> "mailto:ari@allenai.org"))
+      PipelineInput.fromConfigValue(configValue("name" -> "a", "uri" -> "mailto:ari@allenai.org"))
     }
   }
 }
