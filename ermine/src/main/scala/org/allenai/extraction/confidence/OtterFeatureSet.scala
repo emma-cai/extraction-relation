@@ -17,7 +17,6 @@ import scala.collection.immutable.SortedMap
 import scala.language.implicitConversions
 
 import java.util.regex.Pattern
-import java.util.regex.Pattern
 
 case class OtterExtractionTupleAnnotated(tuple: OtterExtractionTuple, allTokens: Seq[OtterToken])
 

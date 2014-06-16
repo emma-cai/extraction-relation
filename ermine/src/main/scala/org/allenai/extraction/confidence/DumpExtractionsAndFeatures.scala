@@ -70,7 +70,10 @@ object DumpExtractionsAndFeatures {
       Resource.using(Source.fromFile(settings.inputFile, "UTF8")) { source => source.getLines.toList.take(settings.count) }
 
     println("*** FEATURES ***")
-    if (settings.includeFeatures) OtterFeatures.featureMap.foreach { case (name, feature) => println("::: " + name) }
+    if (settings.includeFeatures) {
+      for { (name, feature) <- OtterFeatures.featureMap }
+        println("::: " + name)
+    }
 
     println("*** EXTRACTIONS ***")
 
@@ -83,7 +86,10 @@ object DumpExtractionsAndFeatures {
 
       val otterTokens = OtterToken.makeTokenSeq(tokens)
 
-      for (extr <- extrs; extrAnno = OtterExtractionTupleAnnotated(extr, otterTokens)) {
+      for {
+        extr <- extrs
+        extrAnno = OtterExtractionTupleAnnotated(extr, otterTokens)
+      } {
         println(
           ";;; " + extr.toSimpleString + "\t" +
             (if (!settings.includeScores) "" else {

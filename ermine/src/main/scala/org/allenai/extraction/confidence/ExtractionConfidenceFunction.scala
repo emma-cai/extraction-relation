@@ -1,5 +1,7 @@
 package org.allenai.extraction.confidence
 
+import org.allenai.common.Logging
+
 import edu.knowitall.tool.conf.FeatureSet
 import org.slf4j.LoggerFactory
 
@@ -13,8 +15,7 @@ import java.net.URL
  * val conf = ExtractionConfidenceFunction.loadDefaultOtterClassifier()
  * val score = conf(oet.relation.relationType.toString)(OtterExtractionTupleAnnotated(oet, oefda.preprocessedDefinitionTokens)
  */
-object ExtractionConfidenceFunction {
-  val logger = LoggerFactory.getLogger(classOf[OtterExtractionTupleAnnotated])
+object ExtractionConfidenceFunction extends Logging {
 
   type ExtractionConfidenceFunction = LogisticRegression[OtterExtractionTupleAnnotated]
 
