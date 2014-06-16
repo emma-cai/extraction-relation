@@ -66,6 +66,8 @@ object Dependencies {
     "commons-io" % "commons-io" % "2.4",
     // There's a phantom dependency on 14.0; override to the taggers dependency.
     "com.google.guava" % "guava" % "15.0",
+    // solr/tinkerpop conflict
+    "org.apache.httpcomponents" % "httpclient" % "4.3.1",
     // Minor version override for akka actor.
     akkaModule("actor"))
 }
