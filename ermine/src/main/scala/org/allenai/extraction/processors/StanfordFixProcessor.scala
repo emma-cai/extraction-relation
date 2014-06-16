@@ -60,7 +60,7 @@ object StanfordFixProcessor extends TextProcessor {
       FILTER NOT EXISTS { ?x dep:dobj ?z . }
     }""")
 
-  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val graph = new DependencyGraph()
     for (source <- sources) {
       graph.loadTurtle(source)

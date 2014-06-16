@@ -28,7 +28,7 @@ object ExtractionRoles extends TextProcessor {
       FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/")) .
     }"""
 
-  override protected def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val graph = new DependencyGraph()
     for (source <- sources) {
       graph.loadTurtle(source)

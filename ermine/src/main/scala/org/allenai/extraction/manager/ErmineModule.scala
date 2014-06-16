@@ -15,6 +15,13 @@ import org.allenai.extraction.processors.SimpleWiktionaryDefinitionPreprocessor
 import org.allenai.extraction.processors.StanfordParser
 import org.allenai.extraction.processors.StanfordTtl
 import org.allenai.extraction.processors.StanfordXmlToTtl
+import org.allenai.extraction.processors.StanfordFixProcessor
+import org.allenai.extraction.processors.StanfordExtractor
+import org.allenai.extraction.processors.ExtractionDenominalize
+import org.allenai.extraction.processors.ExtractionRoles
+import org.allenai.extraction.processors.ExtractionLabels
+import org.allenai.extraction.processors.InferenceRules
+import org.allenai.extraction.processors.TurtleProcessor
 import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
 
