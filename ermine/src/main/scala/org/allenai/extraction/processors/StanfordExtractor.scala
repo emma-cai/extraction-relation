@@ -11,8 +11,8 @@ import java.io.Writer
 
 /** processor to match dependency patterns */
 object StanfordExtractor extends TextProcessor {
-  override val numInputs = 2
-  override val numOutputs = 1
+  override val numInputs = 1
+  override val numOutputs = 2
 
   val inputGraph = new DependencyGraph()
   val outputGraph = new DependencyGraph()
@@ -214,9 +214,8 @@ object StanfordExtractor extends TextProcessor {
     }"""))
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    for (source <- sources) {
-      inputGraph.loadTurtle(source)
-    }
+    val source = sources(0)
+    inputGraph.loadTurtle(source)
 
     // match patterns
     for {
@@ -238,7 +237,11 @@ object StanfordExtractor extends TextProcessor {
     }
 
     val sink: Writer = destinations(0)
+    inputGraph.saveTurtle(sink)
     outputGraph.saveTurtle(sink)
+
+    val debugSink: Writer = destinations(1)
+    outputGraph.saveTurtle(debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()

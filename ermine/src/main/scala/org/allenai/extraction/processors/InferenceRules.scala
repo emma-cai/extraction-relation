@@ -11,7 +11,7 @@ import java.io.Writer
 
 /** processor to add labels and string descriptions to extracted nodes */
 object InferenceRules extends TextProcessor {
-  override val numInputs = 6
+  override val numInputs = 1
   override val numOutputs = 1
 
   val inputGraph = new DependencyGraph()
@@ -27,10 +27,8 @@ object InferenceRules extends TextProcessor {
   val separator = ", "
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    for (source <- sources) {
-      println(source)
-      inputGraph.loadTurtle(source)
-    }
+    val source = sources(0)
+    inputGraph.loadTurtle(source)
 
     val sink: Writer = destinations(0)
     var ruleId: Int = 0

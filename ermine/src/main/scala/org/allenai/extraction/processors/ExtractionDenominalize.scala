@@ -11,10 +11,11 @@ import java.io.Writer
 
 /** processor to map nominal nodes to events */
 object ExtractionDenominalize extends TextProcessor {
-  override val numInputs = 4
-  override val numOutputs = 1
+  override val numInputs = 2
+  override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph()
+  val inputGraph = new DependencyGraph() // unmodified input
+  val combinedGraph = new DependencyGraph() // input plus nominalization table
   val outputGraph = new DependencyGraph()
 
   // SPARQL query for nodes in rel: relation with denominalization != lemma
@@ -28,20 +29,29 @@ object ExtractionDenominalize extends TextProcessor {
     }"""
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    for (source <- sources) {
-      inputGraph.loadTurtle(source)
-    }
+    val source = sources(0)
+    inputGraph.loadTurtle(source)
+
+    val nominalizations = sources(1)
+    combinedGraph.loadTurtle(source.reset()) // re-read input
+    combinedGraph.loadTurtle(nominalizations)
 
     // match patterns
-    for (map <- inputGraph.executeQuery(query)) {
+    for (map <- combinedGraph.executeQuery(query)) {
+      println(map)
       // add results
       outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
     val sink: Writer = destinations(0)
+    inputGraph.saveTurtle(sink)
     outputGraph.saveTurtle(sink)
 
+    val debugSink: Writer = destinations(1)
+    outputGraph.saveTurtle(debugSink)
+
     inputGraph.shutdown()
+    combinedGraph.shutdown()
     outputGraph.shutdown()
   }
 

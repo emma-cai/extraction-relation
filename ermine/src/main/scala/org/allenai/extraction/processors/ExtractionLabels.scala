@@ -12,8 +12,8 @@ import java.io.Writer
 
 /** processor to map dependencies of extracted nodes to roles */
 object ExtractionLabels extends TextProcessor {
-  override val numInputs = 5
-  override val numOutputs = 1
+  override val numInputs = 1
+  override val numOutputs = 2
 
   val inputGraph = new DependencyGraph()
   val outputGraph = new DependencyGraph()
@@ -44,9 +44,8 @@ object ExtractionLabels extends TextProcessor {
   }
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    for (source <- sources) {
-      inputGraph.loadTurtle(source)
-    }
+    val source = sources(0)
+    inputGraph.loadTurtle(source)
 
     // match verbal predicates
     for (map <- inputGraph.executeQuery(predQuery)) {
@@ -64,7 +63,11 @@ object ExtractionLabels extends TextProcessor {
     }
 
     val sink: Writer = destinations(0)
+    inputGraph.saveTurtle(sink)
     outputGraph.saveTurtle(sink)
+
+    val debugSink: Writer = destinations(1)
+    outputGraph.saveTurtle(debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()
