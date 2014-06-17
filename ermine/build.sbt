@@ -7,8 +7,6 @@ description := "Extraction management system"
 // SBT native packager configs.
 packageArchetype.java_application
 
-mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
-
 libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   allenaiCommon,
   aristore,
