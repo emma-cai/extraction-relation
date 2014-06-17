@@ -51,10 +51,13 @@ object ExtractionBuild extends Build {
     settings = buildSettings
   ).dependsOn(api)
 
+  // We need to include the main class setting at this level in order for the universal packager to
+  // generate a start script for us.
+  val ermineMainClass = mainClass in Compile := Some("org.allenai.extraction.manager.Ermine")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
-    settings = buildSettings
+    settings = buildSettings :+ ermineMainClass
   ).dependsOn(api)
 
   lazy val service = Project(
