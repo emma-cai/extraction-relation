@@ -5,6 +5,7 @@ object Dependencies {
   val Resolvers = Seq(
     "AllenAI Snapshots" at "http://utility.allenai.org:8081/nexus/content/repositories/snapshots",
     "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
+    "Restlet repo" at "http://maven.restlet.org",
     "spray repo" at "http://repo.spray.io",
     Resolver.sonatypeRepo("snapshots"))
 
@@ -25,6 +26,8 @@ object Dependencies {
   val scopt = "com.github.scopt" % "scopt_2.10" % "3.2.0"
   // Subcut for dependency injection.
   val subcut = "com.escalatesoft.subcut" %% "subcut" % "2.0"
+  // Tinkerpop for RDF graph manipulation.
+  val tinkerpop = "com.tinkerpop.blueprints" % "blueprints-sail-graph" % "2.5.0"
 
   // Demo-only libraries.
 
@@ -43,6 +46,12 @@ object Dependencies {
   val AkkaLibraries = Seq(akkaModule("actor"),
     akkaModule("slf4j"),
     "ch.qos.logback" % "logback-classic" % "1.0.13") ++ H2DatabaseLibraries
+
+  // Clear libraries, for use in SRL.
+  val clearNlp = "com.clearnlp" % "clearnlp" % "2.0.2"
+  val ClearLibraries = Seq(clearNlp,
+      "com.clearnlp" % "clearnlp-dictionary" % "1.0",
+      "com.clearnlp" % "clearnlp-general-en-srl" % "1.1")
 
   // Collection of libraries used in test only.
   val TestLibraries = Seq(
@@ -69,8 +78,12 @@ object Dependencies {
     // Somehow we get two versions of commons-io through ari-datastore-client - use the most recent
     // one.
     "commons-io" % "commons-io" % "2.4",
+    // Solr and jsonld both depend on a different version; prefer the more recent.
+    "org.apache.httpcomponents" % "httpclient" % "4.3.1",
     // There's a phantom dependency on 14.0; override to the taggers dependency.
     "com.google.guava" % "guava" % "15.0",
+    // Force most recent clear version.
+    clearNlp,
     // Minor version override for akka actor.
     akkaModule("actor"))
 }
