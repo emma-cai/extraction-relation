@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Vertex
@@ -14,7 +16,8 @@ object InferenceRules extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
-  val inputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
 
   // SPARQL query for nodes with added rel: relation
   val relQuery =
@@ -28,12 +31,12 @@ object InferenceRules extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     val sink: Writer = destinations(0)
     var ruleId: Int = 0
     // match patterns
-    for (map <- inputGraph.executeQuery(relQuery)) {
+    for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       val x: Vertex = map("x")
       val y: Vertex = map("y")
       val relation: String = nodeRel(x, map("r"), y)
@@ -67,7 +70,7 @@ object InferenceRules extends TextProcessor {
 
   def nodeRel(x: Vertex, r: Vertex, y: Vertex): String = {
     val xlabel: String = nodeLabel(x)
-    val rel: String = r.toLiteral
+    val rel: String = r.toStringLiteral
     val ylabel: String = nodeLabel(y)
     s"$rel($xlabel, $ylabel)"
   }
@@ -82,14 +85,14 @@ object InferenceRules extends TextProcessor {
         BIND(STRAFTER(str(?rel), "http://aristo.allenai.org/pred/") AS ?pred) .
       }"""
     val args = new StringBuilder()
-    for (map <- inputGraph.executeQuery(query)) {
-      val pred = map("pred").toLiteral
+    for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
+      val pred = map("pred").toStringLiteral
       val argString = nodeString(map("arg"))
       if (args.isEmpty)
         args ++= prefix
       else
         args ++= separator
-      args.append(s"$pred($label, $argString)")
+      args.append(s"""$pred($label, "$argString")""")
     }
     args.toString
   }
@@ -97,7 +100,7 @@ object InferenceRules extends TextProcessor {
   def nodeIsa(node: Vertex, prefix: String = ""): String = {
     val label: String = nodeLabel(node)
     val string: String = nodeString(node)
-    s"${prefix}isa($label, $string)"
+    s"""${prefix}isa($label, "$string")"""
   }
 
   def nodeLabel(node: Vertex): String = {
@@ -107,8 +110,8 @@ object InferenceRules extends TextProcessor {
       SELECT ?label WHERE {
         <$uri> rdfs:label ?label .
       }"""
-    val result: Map[String, Vertex] = inputGraph.executeQuery(query).head
-    val label = result.get("label").map(_.toLiteral).getOrElse("")
+    val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
+    val label = result.get("label").map(_.toStringLiteral).getOrElse("")
     s"E$id-$label"
   }
 
@@ -118,8 +121,8 @@ object InferenceRules extends TextProcessor {
       SELECT ?string WHERE {
         <$uri> rdfs:comment ?string .
       }"""
-    val result: Map[String, Vertex] = inputGraph.executeQuery(query).head
-    result.get("string").map(_.toUri).getOrElse("")
+    val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
+    result.get("string").map(_.toStringLiteral).getOrElse("")
   }
 
 }

@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Vertex
@@ -14,9 +16,12 @@ object ExtractionDenominalize extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph() // unmodified input
-  val combinedGraph = new DependencyGraph() // input plus nominalization table
-  val outputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph() // unmodified input
+  DependencyGraph.setNamespaces(inputGraph)
+  val combinedGraph = new MemoryStoreSailGraph() // input plus nominalization table
+  DependencyGraph.setNamespaces(combinedGraph)
+  val outputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(outputGraph)
 
   // SPARQL query for nodes in rel: relation with denominalization != lemma
   val query =
@@ -30,25 +35,24 @@ object ExtractionDenominalize extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     val nominalizations = sources(1)
-    combinedGraph.loadTurtle(source.reset()) // re-read input
-    combinedGraph.loadTurtle(nominalizations)
+    DependencyGraph.fromTurtle(combinedGraph, source.reset()) // re-read input
+    DependencyGraph.fromTurtle(combinedGraph, nominalizations)
 
     // match patterns
-    for (map <- combinedGraph.executeQuery(query)) {
-      println(map)
+    for (map <- DependencyGraph.executeSparql(combinedGraph, query)) {
       // add results
-      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toUri)
     }
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
-    outputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
+    DependencyGraph.toTurtle(outputGraph, sink)
 
     val debugSink: Writer = destinations(1)
-    outputGraph.saveTurtle(debugSink)
+    DependencyGraph.toTurtle(outputGraph, debugSink)
 
     inputGraph.shutdown()
     combinedGraph.shutdown()

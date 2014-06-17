@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import java.io.Writer
@@ -13,8 +15,10 @@ object StanfordFixProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph()
-  val outputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
+  val outputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(outputGraph)
 
   // SPARQL queries
   val queries: Seq[String] = Seq(
@@ -65,23 +69,23 @@ object StanfordFixProcessor extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     // match patterns
     for {
       query <- queries
-      map <- inputGraph.executeQuery(query)
+      map <- DependencyGraph.executeSparql(inputGraph, query)
     } {
       // add results
-      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toStringLiteral)
     }
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
-    outputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
+    DependencyGraph.toTurtle(outputGraph, sink)
 
     val debugSink: Writer = destinations(1)
-    outputGraph.saveTurtle(debugSink)
+    DependencyGraph.toTurtle(outputGraph, debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()

@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Vertex
@@ -14,8 +16,10 @@ object StanfordExtractor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph()
-  val outputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
+  val outputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(outputGraph)
 
   // SPARQL queries
   val queries: Seq[(String, String)] = Seq(
@@ -215,33 +219,33 @@ object StanfordExtractor extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     // match patterns
     for {
       (id, query) <- queries
-      map <- inputGraph.executeQuery(query)
+      map <- DependencyGraph.executeSparql(inputGraph, query)
     } {
       val subj: Vertex = map("subject")
-      val subjs: Seq[Vertex] = inputGraph.conjoinedNodes(subj) :+ subj
+      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(inputGraph, subj) :+ subj
       val obj: Vertex = map("object")
-      val objs: Seq[Vertex] = inputGraph.conjoinedNodes(obj) :+ obj
+      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(inputGraph, obj) :+ obj
       // add relation for each combination of conjuncts
       for {
         subjConj <- subjs
         objConj <- objs
       } {
         // record id for logging
-        outputGraph.addEdge(id, subjConj, objConj, map("predicate").toLiteral)
+        outputGraph.addEdge(id, subjConj, objConj, map("predicate").toUri)
       }
     }
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
-    outputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
+    DependencyGraph.toTurtle(outputGraph, sink)
 
     val debugSink: Writer = destinations(1)
-    outputGraph.saveTurtle(debugSink)
+    DependencyGraph.toTurtle(outputGraph, debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()

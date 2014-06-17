@@ -35,6 +35,18 @@ object DependencyGraph {
     } yield javaMap.asScala.toMap
   }
 
+  def setNamespaces(graph: SailGraph) = {
+    graph.addDefaultNamespaces // rdf: rdfs:
+    graph.addNamespace("id", "http://aristo.allenai.org/id#")
+    graph.addNamespace("token", "http://nlp.stanford.edu/token/")
+    graph.addNamespace("ne", "http://nlp.stanford.edu/ne/")
+    graph.addNamespace("basic", "http://nlp.stanford.edu/basic/")
+    graph.addNamespace("dep", "http://nlp.stanford.edu/dep/")
+    graph.addNamespace("wn", "http://wordnet.princeton.edu/")
+    graph.addNamespace("rel", "http://aristo.allenai.org/rel/")
+    graph.addNamespace("pred", "http://aristo.allenai.org/pred/")
+  }
+
   /** find conjuncts of a node */
   def conjoinedNodes(graph: SailGraph, node: Vertex): Seq[Vertex] = {
     val uri: String = node.toUri

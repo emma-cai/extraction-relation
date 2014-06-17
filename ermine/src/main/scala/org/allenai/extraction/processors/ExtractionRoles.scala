@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Edge
@@ -15,8 +17,10 @@ object ExtractionRoles extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph()
-  val outputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
+  val outputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(outputGraph)
 
   // SPARQL query for denominalized nodes
   val denomQuery: String =
@@ -33,26 +37,26 @@ object ExtractionRoles extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     // match patterns
-    for (map <- inputGraph.executeQuery(denomQuery)) {
+    for (map <- DependencyGraph.executeSparql(inputGraph, denomQuery)) {
       // add to input graph for next query
-      inputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      inputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toUri)
       // add to output graph for output
-      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toUri)
     }
 
-    for (map <- inputGraph.executeQuery(relQuery)) {
+    for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       addArgs(map("node"))
     }
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
-    outputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
+    DependencyGraph.toTurtle(outputGraph, sink)
 
     val debugSink: Writer = destinations(1)
-    outputGraph.saveTurtle(debugSink)
+    DependencyGraph.toTurtle(outputGraph, debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()
@@ -80,7 +84,7 @@ object ExtractionRoles extends TextProcessor {
       SELECT ?$dep WHERE {
         <$uri> dep:$dep ?$dep .
       }"""
-    val result: Seq[Map[String, Vertex]] = inputGraph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, query)
     for (map <- result) {
       val obj: Vertex = map(dep)
       outputGraph.addEdge(null, node, obj, role)
@@ -98,10 +102,10 @@ object ExtractionRoles extends TextProcessor {
         FILTER(CONTAINS(str(?dep), "/dep/prep_")) .
         BIND(STRAFTER(str(?dep), "_") AS ?prep) .
       }"""
-    val result: Seq[Map[String, Vertex]] = inputGraph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, query)
     for (map <- result) {
       // use preposition as new predicate
-      val prep: String = map("prep").toLiteral
+      val prep: String = map("prep").toStringLiteral
       val obj: Vertex = map("obj")
       outputGraph.addEdge(null, node, obj, s"pred:$prep")
     }

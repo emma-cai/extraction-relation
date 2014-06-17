@@ -4,6 +4,8 @@ import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Edge
@@ -15,8 +17,10 @@ object ExtractionLabels extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 2
 
-  val inputGraph = new DependencyGraph()
-  val outputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
+  val outputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(outputGraph)
 
   // SPARQL query for nodes with added pred: relations
   val predQuery: String =
@@ -45,10 +49,10 @@ object ExtractionLabels extends TextProcessor {
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     // match verbal predicates
-    for (map <- inputGraph.executeQuery(predQuery)) {
+    for (map <- DependencyGraph.executeSparql(inputGraph, predQuery)) {
       val xnode = map("x")
       addLabel(xnode)
       addText(xnode, VerbExcludeString)
@@ -57,17 +61,17 @@ object ExtractionLabels extends TextProcessor {
       addText(ynode, ArgExcludeString)
     }
     // match unlabeled relations
-    for (map <- inputGraph.executeQuery(relQuery)) {
+    for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       addLabel(map("x"))
       addText(map("x"), ArgExcludeString)
     }
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
-    outputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
+    DependencyGraph.toTurtle(outputGraph, sink)
 
     val debugSink: Writer = destinations(1)
-    outputGraph.saveTurtle(debugSink)
+    DependencyGraph.toTurtle(outputGraph, debugSink)
 
     inputGraph.shutdown()
     outputGraph.shutdown()
@@ -75,15 +79,15 @@ object ExtractionLabels extends TextProcessor {
 
   /** use token lemma as label */
   def addLabel(node: Vertex): Edge = {
-    val label: String = inputGraph.tokenInfo(node, "lemma")
+    val label: String = DependencyGraph.tokenInfo(inputGraph, node, "lemma")
     val v: Vertex = outputGraph.addVertex('"' + label + '"')
     outputGraph.addEdge(label, node, v, "rdfs:label")
   }
 
   /** create complete string for node */
   def addText(node: Vertex, exclude: String = ""): Edge = {
-    val constits: Seq[Vertex] = (inputGraph.nodeConstits(node, exclude) :+ node).sortWith(_ < _)
-    val tokens: Seq[String] = constits.map(x => inputGraph.tokenInfo(x))
+    val constits: Seq[Vertex] = (DependencyGraph.nodeConstits(inputGraph, node, exclude) :+ node).sortWith(_ < _)
+    val tokens: Seq[String] = constits.map(x => DependencyGraph.tokenInfo(inputGraph, x))
     val text: String = tokens.mkString(" ")
     val v: Vertex = outputGraph.addVertex('"' + text + '"')
     outputGraph.addEdge(text, node, v, "rdfs:comment")

@@ -3,6 +3,8 @@ package org.allenai.extraction.processors
 import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+
 import scala.io.Source
 
 import java.io.Writer
@@ -12,14 +14,15 @@ object TurtleProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
-  val inputGraph = new DependencyGraph()
+  val inputGraph = new MemoryStoreSailGraph()
+  DependencyGraph.setNamespaces(inputGraph)
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
-    inputGraph.loadTurtle(source)
+    DependencyGraph.fromTurtle(inputGraph, source)
 
     val sink: Writer = destinations(0)
-    inputGraph.saveTurtle(sink)
+    DependencyGraph.toTurtle(inputGraph, sink)
 
     inputGraph.shutdown()
   }
