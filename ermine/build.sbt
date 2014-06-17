@@ -7,8 +7,6 @@ description := "Extraction management system"
 // SBT native packager configs.
 packageArchetype.java_application
 
-mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
-
 libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   allenaiCommon,
   aristore,
@@ -16,6 +14,7 @@ libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   sprayJson,
   subcut,
   taggers,
+  tinkerpop,
   typesafeConfig)
 
 // Don't create windows startup script.

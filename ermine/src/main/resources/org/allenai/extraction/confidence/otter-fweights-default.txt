@@ -1,0 +1,44 @@
+#Logistic regression weights for general Otter extractions
+#Currently not specifically trained, just a copy of IsA weights
+Intercept	-1.7849105806514818
+'s right after arg2s	0.
+, right before arg1	0.
+arg1 appears before rel in sentence	0.
+arg1 borders rel	0.
+arg1 contains < 3 tokens	1.3156797196216592
+arg1 contains >= 10 tokens	0.
+arg1 contains a pronoun or EX	0.
+arg1 contains noun	0.
+arg1 contains proper noun	-0.3110058835172233
+arg1 equals arg2s	-19.369759988810635
+arg2s appears after rel in sentence	0.
+arg2s borders rel	-1.179126526712237
+arg2s consists of blacklisted words	-4.44341733258207
+arg2s contains >= 10 tokens	0.
+arg2s contains a pronoun or EX	0.
+arg2s contains noun	2.0116032326487256
+arg2s contains proper noun	0.38164715354550843
+cognitive words anywhere before arg1	0.
+communic words anywhere before arg1	0.
+if right before arg1	0.
+if|whether|though|although anywhere before arg1	0.
+in right before arg1	0.
+may|might|would|could|should|suppose anywhere before arg1	0.
+of right after arg2s	0.6585862864764879
+or right before arg2s	-0.5285279758657727
+rel contains VB	0.
+rel contains VBD	0.
+rel contains VBG	0.
+rel contains VBN	0.
+rel contains VBP	0.
+rel contains VBZ	1.3231318516426451
+rel contains verb	16.167013015487424
+rel contiguous	0.
+rel is single verb	-16.660014908645437
+rel matches VW+P	0.
+relational object is a tuple	0.
+sentence contains < 10 tokens	0.6596866166826654
+sentence contains >= 20 tokens	-0.6098126269434833
+that right before rel	0.
+that|which|who right before arg1	0.
+who|which right before rel	0.
