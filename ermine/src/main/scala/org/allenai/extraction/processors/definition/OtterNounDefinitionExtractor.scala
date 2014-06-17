@@ -275,16 +275,13 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         // The "Aux" part as defined in the rules is a captured group representing possession.
         // In this case we want to merge the NP part with the Aux part to build the composite
         // argument. So we concatenate the Aux text to the NP text and take the total token interval
-        // (union).
+        // (span).
         if (auxOption.isDefined) {
           val aux = auxOption.get
           npText ++= " " + aux.text
           val auxIntervalOption = Option(aux.tokenInterval)
           if (auxIntervalOption.isDefined) {
             val auxInterval = auxIntervalOption.get
-            if (npIntervalOption.isDefined) {
-              val npInterval = npIntervalOption.get
-            }
             npIntervalOption = npIntervalOption map { npInterval => Interval.span(Seq(npInterval, auxInterval)) }
           }
         }
@@ -297,7 +294,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
             case Some(prepInterval) => OtterToken.makeTokenSeq(defnChunkedTokens, prepInterval)
             case _ => Seq.empty[OtterToken]
           }
-          preps :+= Argument(prep.text, prepTokens, prepIntervalOption)
+          if (prep.text != "") preps :+= Argument(prep.text, prepTokens, prepIntervalOption)
         }
 
         if (npIntervalOption.isDefined) {
@@ -314,8 +311,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
               Some(definedTermArg),
               Relation(Some(RelationTypeEnum.IsA), isaRelArg),
               relObj,
-              preps,
-              advs)
+              advps = advs,
+              pps = preps)
           }
         }
       }
@@ -708,7 +705,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     val arg2IntervalOption = arg2Option map { arg2 => arg2.tokenInterval }
     val arg3IntervalOption = arg3Option map { arg3 => arg3.tokenInterval }
 
-    // Get the overall interval (union)
+    // Get the overall interval (span)
     val intervalOption = arg3IntervalOption match {
       case Some(arg3Interval) =>
         {
@@ -735,7 +732,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case Some(prep) =>
         {
           val prepTokens = OtterToken.makeTokenSeq(defnChunkedTokens, prep.tokenInterval)
-          Seq[Argument](Argument(prep.text, prepTokens, intervalOption))
+          if (prep.text != "") Seq[Argument](Argument(prep.text, prepTokens, intervalOption)) else Seq()
         }
       case _ => Seq.empty[Argument]
     }
@@ -760,8 +757,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         Option(agent),
         rel,
         relObjOption,
-        pps,
-        advps)
+        advps = advps,
+        pps = pps)
     }
 
     result
