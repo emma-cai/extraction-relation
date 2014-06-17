@@ -14,6 +14,7 @@ libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   sprayJson,
   subcut,
   taggers,
+  tinkerpop,
   typesafeConfig)
 
 // Don't create windows startup script.
