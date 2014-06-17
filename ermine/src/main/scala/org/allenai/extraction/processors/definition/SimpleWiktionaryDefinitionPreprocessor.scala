@@ -1,7 +1,6 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.processors.definition
 
 import org.allenai.extraction.FlatProcessor
-import org.allenai.extraction.processors.definition.PreprocessedDefinition
 
 import java.io.Writer
 
@@ -10,8 +9,8 @@ import scala.io.Source
 import spray.json.pimpAny
 
 /** Preprocessor that takes Simple Wiktionary scraped text in the form: <term>\t<wordClass>\t<noisy-definition-text>
-  * as input and converts it to the format expected by the Definition Extractor, which is:
-  * <term>\t<wordClass>\t<cleaned-up-definition>.
+  * as input and converts it to the format expected by the Definition Extractor, which is defined in the
+  * PreprocessedDefinition class.
   * @param wordClasses the set of wordclasses to consider. If this set is specified, i.e., non-empty, definitions
   * of terms belonging to any class outside of this set will NOT be processed/written out.
   * Default: Empty set, which means there are no filters, so the preprocessor will process/write out
@@ -36,7 +35,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     } {
       val (defAlts, metaData) = cleanUp(termDefinition)
       val preprocessedDefOp =
-        PreprocessedDefinition(Some("SimpleWiktionary"), defId, line, term, Some(termWordClass), defAlts, metaData)
+        PreprocessedDefinition(Some("SimpleWiktionary"), defId, termDefinition, term, Some(termWordClass), defAlts, metaData)
       if (!beginning) {
         destination.write(",\n")
       }
@@ -96,16 +95,10 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     val defMetaInfoClusterPattern = s"""(${defMetaInfoPattern})((\\s*[,;]\\s*${defMetaInfoPattern})*)""".r
     val defPoundMetaStripped: String = defMetaInfoClusterPattern replaceAllIn (defBeginningPoundStripped, "")
 
-    // Remove all bracketed expressions
-    val parenPattern = """\([^)]*\)""".r
-    val defPoundMetaParenStripped: String = parenPattern replaceAllIn (defPoundMetaStripped, "")
-
-    // Remove quotes from quoted words, like the definition term
-    val defQuotedWordPattern = """(?<=\W|^)'([^']+)'(?=\W|$)""".r
-    val defPoundMetaQuotesStripped = defQuotedWordPattern replaceAllIn (defPoundMetaParenStripped, m => m.group(1))
+    val defCleanedUp = DefinitionCleanupUtility.cleanUp(defPoundMetaStripped)
 
     // Break the line up into multiple definitions if separated by semicolons
-    val multipleDefs = defPoundMetaQuotesStripped.split(";").toSeq map { x => x.trim }
+    val multipleDefs = defCleanedUp.split(";").toSeq map { x => x.trim }
 
     (multipleDefs, metaData)
   }

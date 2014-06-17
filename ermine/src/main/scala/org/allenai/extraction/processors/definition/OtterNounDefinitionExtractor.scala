@@ -2,6 +2,7 @@ package org.allenai.extraction.processors.definition
 
 import org.allenai.taggers.{ Extractor, NamedGroupType }
 
+import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.typer.Type
@@ -102,7 +103,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     var definedTermArgOption: Option[Argument] = None
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
     val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
-    val isaRelArgOption = isaRelOption map { x => Argument(x.text, OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
+    val isaRelArgOption = isaRelOption map { x => Argument("isa", OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         val (definedTermArg, definedTermTuple) = processNounDefinitionDefinedTerm(definedTerm, types, defnChunkedTokens)
@@ -281,7 +282,10 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           val auxIntervalOption = Option(aux.tokenInterval)
           if (auxIntervalOption.isDefined) {
             val auxInterval = auxIntervalOption.get
-            npIntervalOption = npIntervalOption map { npInterval => npInterval.union(auxInterval) }
+            if (npIntervalOption.isDefined) {
+              val npInterval = npIntervalOption.get
+            }
+            npIntervalOption = npIntervalOption map { npInterval => Interval.span(Seq(npInterval, auxInterval)) }
           }
         }
 
@@ -709,7 +713,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case Some(arg3Interval) =>
         {
           arg2IntervalOption match {
-            case Some(arg2Interval) => Option(arg2Interval.union(arg3Interval))
+            case Some(arg2Interval) => Option(Interval.span(Seq(arg2Interval, arg3Interval)))
             case _ => Option(arg3Interval)
           }
         }

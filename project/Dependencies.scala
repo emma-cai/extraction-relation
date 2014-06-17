@@ -68,4 +68,9 @@ object Dependencies {
     "com.google.guava" % "guava" % "15.0",
     // Minor version override for akka actor.
     akkaModule("actor"))
+
+  // Dependencies for using H2 (database)
+  val h2 = Seq(
+    "com.h2database" % "h2" % "1.3.175",
+    "com.typesafe.slick" %% "slick" % "2.0.0")
 }

@@ -11,12 +11,14 @@ import org.allenai.extraction.processors.CatProcessor
 import org.allenai.extraction.processors.Ferret
 import org.allenai.extraction.processors.FerretQuestionProcessor
 import org.allenai.extraction.processors.FerretTextProcessor
-import org.allenai.extraction.processors.SimpleWiktionaryDefinitionPreprocessor
 import org.allenai.extraction.processors.StanfordParser
 import org.allenai.extraction.processors.StanfordTtl
 import org.allenai.extraction.processors.StanfordXmlToTtl
+import org.allenai.extraction.processors.definition.OtterDefinitionDBWriter
 import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
+import org.allenai.extraction.processors.definition.MultipleDictionarySourcePreprocessor
+import org.allenai.extraction.processors.definition.SimpleWiktionaryDefinitionPreprocessor
 
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
@@ -65,10 +67,26 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.
-    val wordClasses: Set[String] =
+    val wordClassesForSimpleWiktionaryPreprocessor: Set[String] =
       (config.get[Seq[String]]("simpleWiktionary.wordClasses") getOrElse { Seq.empty }).toSet
     processors += ("SimpleWiktionaryDefinitionPreprocessor" ->
-      new SimpleWiktionaryDefinitionPreprocessor(wordClasses))
+      new SimpleWiktionaryDefinitionPreprocessor(wordClassesForSimpleWiktionaryPreprocessor))
+
+    // Configure the MultipleDictionarySourcePreprocessor.
+    val wordClassesForMultipleDictionaryPreprocessor: Set[String] =
+      (config.get[Seq[String]]("multipleDictionaries.wordClasses") getOrElse { Seq.empty }).toSet
+    val sourcesForMultipleDictionaryPreprocessor: Set[String] =
+      (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
+    processors += ("MultipleDictionarySourcePreprocessor" ->
+      new MultipleDictionarySourcePreprocessor(wordClassesForMultipleDictionaryPreprocessor, sourcesForMultipleDictionaryPreprocessor))
+
+    // Configure the OtterDefinitionDBWriter.
+    config.get[String]("otterDBwriter.dbPath") match {
+      case Some(otterDBpath) => processors += (
+        "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(otterDBpath))
+      case None => log.error("otterDBwriter.dbpath not found in config - " +
+        "OtterDefinitionDBWriter won't be initialized")
+    }
 
     // Bind the extractor map we built.
     processors.toMap

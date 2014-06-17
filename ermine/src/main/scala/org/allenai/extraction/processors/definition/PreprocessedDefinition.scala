@@ -42,7 +42,7 @@ import spray.json.DefaultJsonProtocol._
 case class PreprocessedDefinition (
     definitionCorpusName: Option[String],
     rawDefinitionId: Int,
-    rawDefinitionLine: String,
+    rawDefinition: String,
     definedTerm: String,
     wordClass: Option[String],
     preprocessedDefinitions: Seq[String],
