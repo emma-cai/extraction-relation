@@ -13,6 +13,9 @@ object StanfordFixProcessor extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+  val outputGraph = new DependencyGraph()
+
   // SPARQL queries
   val queries: Seq[String] = Seq(
     // broken PP: X prep Y, Y dep Z -> X prepc_Y Z
@@ -61,22 +64,23 @@ object StanfordFixProcessor extends TextProcessor {
     }""")
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      inputGraph.loadTurtle(source)
     }
 
     // match patterns
     for {
       query <- queries
-      map <- graph.executeQuery(query)
+      map <- inputGraph.executeQuery(query)
     } {
       // add results
-      graph.outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
     val sink: Writer = destinations(0)
-    graph.saveTurtle(sink)
-    graph.shutdown()
+    outputGraph.saveTurtle(sink)
+
+    inputGraph.shutdown()
+    outputGraph.shutdown()
   }
 }

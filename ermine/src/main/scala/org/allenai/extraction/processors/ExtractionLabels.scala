@@ -15,6 +15,9 @@ object ExtractionLabels extends TextProcessor {
   override val numInputs = 5
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+  val outputGraph = new DependencyGraph()
+
   // SPARQL query for nodes with added pred: relations
   val predQuery: String =
     """SELECT ?x ?y WHERE {
@@ -41,45 +44,46 @@ object ExtractionLabels extends TextProcessor {
   }
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      inputGraph.loadTurtle(source)
     }
 
     // match verbal predicates
-    for (map <- graph.executeQuery(predQuery)) {
+    for (map <- inputGraph.executeQuery(predQuery)) {
       val xnode = map("x")
-      addLabel(xnode, graph)
-      addText(xnode, VerbExcludeString, graph)
+      addLabel(xnode)
+      addText(xnode, VerbExcludeString)
       val ynode = map("y")
-      addLabel(ynode, graph)
-      addText(ynode, ArgExcludeString, graph)
+      addLabel(ynode)
+      addText(ynode, ArgExcludeString)
     }
     // match unlabeled relations
-    for (map <- graph.executeQuery(relQuery)) {
-      addLabel(map("x"), graph)
-      addText(map("x"), ArgExcludeString, graph)
+    for (map <- inputGraph.executeQuery(relQuery)) {
+      addLabel(map("x"))
+      addText(map("x"), ArgExcludeString)
     }
 
     val sink: Writer = destinations(0)
-    graph.saveTurtle(sink)
-    graph.shutdown()
+    outputGraph.saveTurtle(sink)
+
+    inputGraph.shutdown()
+    outputGraph.shutdown()
   }
 
   /** use token lemma as label */
-  def addLabel(node: Vertex, graph: DependencyGraph): Edge = {
-    val label: String = graph.tokenInfo(node, "lemma")
-    val v: Vertex = graph.outputGraph.addVertex('"' + label + '"')
-    graph.outputGraph.addEdge(label, node, v, "rdfs:label")
+  def addLabel(node: Vertex): Edge = {
+    val label: String = inputGraph.tokenInfo(node, "lemma")
+    val v: Vertex = outputGraph.addVertex('"' + label + '"')
+    outputGraph.addEdge(label, node, v, "rdfs:label")
   }
 
   /** create complete string for node */
-  def addText(node: Vertex, exclude: String = "", graph: DependencyGraph): Edge = {
-    val constits: Seq[Vertex] = (graph.nodeConstits(node, exclude) :+ node).sortWith(_ < _)
-    val tokens: Seq[String] = constits.map(x => graph.tokenInfo(x))
+  def addText(node: Vertex, exclude: String = ""): Edge = {
+    val constits: Seq[Vertex] = (inputGraph.nodeConstits(node, exclude) :+ node).sortWith(_ < _)
+    val tokens: Seq[String] = constits.map(x => inputGraph.tokenInfo(x))
     val text: String = tokens.mkString(" ")
-    val v: Vertex = graph.outputGraph.addVertex('"' + text + '"')
-    graph.outputGraph.addEdge(text, node, v, "rdfs:comment")
+    val v: Vertex = outputGraph.addVertex('"' + text + '"')
+    outputGraph.addEdge(text, node, v, "rdfs:comment")
   }
 
 }

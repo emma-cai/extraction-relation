@@ -14,6 +14,9 @@ object StanfordExtractor extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+  val outputGraph = new DependencyGraph()
+
   // SPARQL queries
   val queries: Seq[(String, String)] = Seq(
     // (id, query) where id is for logging rule matches 
@@ -211,32 +214,33 @@ object StanfordExtractor extends TextProcessor {
     }"""))
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      inputGraph.loadTurtle(source)
     }
 
     // match patterns
     for {
       (id, query) <- queries
-      map <- graph.executeQuery(query)
+      map <- inputGraph.executeQuery(query)
     } {
       val subj: Vertex = map("subject")
-      val subjs: Seq[Vertex] = graph.conjoinedNodes(subj) :+ subj
+      val subjs: Seq[Vertex] = inputGraph.conjoinedNodes(subj) :+ subj
       val obj: Vertex = map("object")
-      val objs: Seq[Vertex] = graph.conjoinedNodes(obj) :+ obj
+      val objs: Seq[Vertex] = inputGraph.conjoinedNodes(obj) :+ obj
       // add relation for each combination of conjuncts
       for {
         subjConj <- subjs
         objConj <- objs
       } {
         // record id for logging
-        graph.outputGraph.addEdge(id, subjConj, objConj, map("predicate").toLiteral)
+        outputGraph.addEdge(id, subjConj, objConj, map("predicate").toLiteral)
       }
     }
 
     val sink: Writer = destinations(0)
-    graph.saveTurtle(sink)
-    graph.shutdown()
+    outputGraph.saveTurtle(sink)
+
+    inputGraph.shutdown()
+    outputGraph.shutdown()
   }
 }

@@ -14,6 +14,8 @@ object InferenceRules extends TextProcessor {
   override val numInputs = 6
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+
   // SPARQL query for nodes with added rel: relation
   val relQuery =
     """SELECT ?x ?r ?y WHERE {
@@ -25,56 +27,56 @@ object InferenceRules extends TextProcessor {
   val separator = ", "
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      println(source)
+      inputGraph.loadTurtle(source)
     }
 
     val sink: Writer = destinations(0)
     var ruleId: Int = 0
     // match patterns
-    for (map <- graph.executeQuery(relQuery)) {
+    for (map <- inputGraph.executeQuery(relQuery)) {
       val x: Vertex = map("x")
       val y: Vertex = map("y")
-      val relation: String = nodeRel(x, map("r"), y, graph)
+      val relation: String = nodeRel(x, map("r"), y)
       // left -> relation, right
       ruleId += 1
-      sink.write(relationRule(x, relation, y, ruleId, graph))
+      sink.write(relationRule(x, relation, y, ruleId))
       // right -> relation, left
       ruleId += 1
-      sink.write(relationRule(y, relation, x, ruleId, graph))
+      sink.write(relationRule(y, relation, x, ruleId))
     }
 
-    graph.shutdown()
+    inputGraph.shutdown()
   }
 
-  def relationRule(left: Vertex, relation: String, right: Vertex, ruleId: Int, graph: DependencyGraph): String = {
+  def relationRule(left: Vertex, relation: String, right: Vertex, ruleId: Int): String = {
     val rule = new StringBuilder()
     // rule id
     rule ++= s"rule${ruleId}:: "
     // LHS
-    rule ++= nodeIsa(left, graph)
-    rule ++= nodeArgs(left, graph, separator)
+    rule ++= nodeIsa(left)
+    rule ++= nodeArgs(left, separator)
     // relation
     rule ++= " -> " + relation
     // RHS
-    rule ++= nodeIsa(right, graph, separator)
-    rule ++= nodeArgs(right, graph, separator)
+    rule ++= nodeIsa(right, separator)
+    rule ++= nodeArgs(right, separator)
 
     rule ++= ".\n"
     rule.toString
   }
 
-  def nodeRel(x: Vertex, r: Vertex, y: Vertex, graph: DependencyGraph): String = {
-    val xlabel: String = nodeLabel(x, graph)
+  def nodeRel(x: Vertex, r: Vertex, y: Vertex): String = {
+    val xlabel: String = nodeLabel(x)
     val rel: String = r.toLiteral
-    val ylabel: String = nodeLabel(y, graph)
+    val ylabel: String = nodeLabel(y)
     s"$rel($xlabel, $ylabel)"
   }
 
-  def nodeArgs(node: Vertex, graph: DependencyGraph, prefix: String = ""): String = {
+  def nodeArgs(node: Vertex, prefix: String = ""): String = {
     val uri: String = node.toUri
-    val label: String = nodeLabel(node, graph)
+    val label: String = nodeLabel(node)
     val query: String = s"""
       SELECT ?pred ?arg WHERE {
         <$uri> ?rel ?arg .
@@ -82,9 +84,9 @@ object InferenceRules extends TextProcessor {
         BIND(STRAFTER(str(?rel), "http://aristo.allenai.org/pred/") AS ?pred) .
       }"""
     val args = new StringBuilder()
-    for (map <- graph.executeQuery(query)) {
+    for (map <- inputGraph.executeQuery(query)) {
       val pred = map("pred").toLiteral
-      val argString = nodeString(map("arg"), graph)
+      val argString = nodeString(map("arg"))
       if (args.isEmpty)
         args ++= prefix
       else
@@ -94,31 +96,31 @@ object InferenceRules extends TextProcessor {
     args.toString
   }
 
-  def nodeIsa(node: Vertex, graph: DependencyGraph, prefix: String = ""): String = {
-    val label: String = nodeLabel(node, graph)
-    val string: String = nodeString(node, graph)
+  def nodeIsa(node: Vertex, prefix: String = ""): String = {
+    val label: String = nodeLabel(node)
+    val string: String = nodeString(node)
     s"${prefix}isa($label, $string)"
   }
 
-  def nodeLabel(node: Vertex, graph: DependencyGraph): String = {
+  def nodeLabel(node: Vertex): String = {
     val uri: String = node.toUri
     val id: String = uri.split("http://aristo.allenai.org/id#").last
     val query: String = s"""
       SELECT ?label WHERE {
         <$uri> rdfs:label ?label .
       }"""
-    val result: Map[String, Vertex] = graph.executeQuery(query).head
+    val result: Map[String, Vertex] = inputGraph.executeQuery(query).head
     val label = result.get("label").map(_.toLiteral).getOrElse("")
     s"E$id-$label"
   }
 
-  def nodeString(node: Vertex, graph: DependencyGraph): String = {
+  def nodeString(node: Vertex): String = {
     val uri: String = node.toUri
     val query: String = s"""
       SELECT ?string WHERE {
         <$uri> rdfs:comment ?string .
       }"""
-    val result: Map[String, Vertex] = graph.executeQuery(query).head
+    val result: Map[String, Vertex] = inputGraph.executeQuery(query).head
     result.get("string").map(_.toUri).getOrElse("")
   }
 

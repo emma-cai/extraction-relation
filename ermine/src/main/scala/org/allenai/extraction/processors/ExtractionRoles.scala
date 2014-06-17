@@ -15,6 +15,9 @@ object ExtractionRoles extends TextProcessor {
   override val numInputs = 4
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+  val outputGraph = new DependencyGraph()
+
   // SPARQL query for denominalized nodes
   val denomQuery: String =
     """CONSTRUCT { ?node pred:object ?obj . } WHERE {
@@ -29,30 +32,31 @@ object ExtractionRoles extends TextProcessor {
     }"""
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      inputGraph.loadTurtle(source)
     }
 
     // match patterns
-    for (map <- graph.executeQuery(denomQuery)) {
+    for (map <- inputGraph.executeQuery(denomQuery)) {
       // add to input graph for next query
-      graph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      inputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
       // add to output graph for output
-      graph.outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
-    for (map <- graph.executeQuery(relQuery)) {
-      addArgs(map("node"), graph)
+    for (map <- inputGraph.executeQuery(relQuery)) {
+      addArgs(map("node"))
     }
 
     val sink: Writer = destinations(0)
-    graph.saveTurtle(sink)
-    graph.shutdown()
+    outputGraph.saveTurtle(sink)
+
+    inputGraph.shutdown()
+    outputGraph.shutdown()
   }
 
   /** map input dependencies to output args */
-  def addArgs(node: Vertex, graph: DependencyGraph) = {
+  def addArgs(node: Vertex) = {
     // define input dependency to output role relations
     val roles: Seq[Tuple2[String, String]] = Seq(
       ("nsubj", "pred:agent"),
@@ -60,28 +64,28 @@ object ExtractionRoles extends TextProcessor {
       ("iobj", "pred:arg"),
       ("tmod", "pred:arg"))
     for ((dep, role) <- roles) {
-      addArg(node, dep, role, graph)
+      addArg(node, dep, role)
     }
-    addPreps(node, graph)
+    addPreps(node)
   }
 
   /** query for arg values and add to outputGraph */
-  def addArg(node: Vertex, dep: String, role: String, graph: DependencyGraph) = {
+  def addArg(node: Vertex, dep: String, role: String) = {
     val uri: String = node.toUri
     val query: String = s"""
       # find dep relation
       SELECT ?$dep WHERE {
         <$uri> dep:$dep ?$dep .
       }"""
-    val result: Seq[Map[String, Vertex]] = graph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = inputGraph.executeQuery(query)
     for (map <- result) {
       val obj: Vertex = map(dep)
-      graph.outputGraph.addEdge(null, node, obj, role)
+      outputGraph.addEdge(null, node, obj, role)
     }
   }
 
   /** query for PP values and add to outputGraph */
-  def addPreps(node: Vertex, graph: DependencyGraph) = {
+  def addPreps(node: Vertex) = {
     val uri: String = node.toUri
     val query: String = s"""
       # find prep_* relation and extract the preposition substring
@@ -91,12 +95,12 @@ object ExtractionRoles extends TextProcessor {
         FILTER(CONTAINS(str(?dep), "/dep/prep_")) .
         BIND(STRAFTER(str(?dep), "_") AS ?prep) .
       }"""
-    val result: Seq[Map[String, Vertex]] = graph.executeQuery(query)
+    val result: Seq[Map[String, Vertex]] = inputGraph.executeQuery(query)
     for (map <- result) {
       // use preposition as new predicate
       val prep: String = map("prep").toLiteral
       val obj: Vertex = map("obj")
-      graph.outputGraph.addEdge(null, node, obj, s"pred:$prep")
+      outputGraph.addEdge(null, node, obj, s"pred:$prep")
     }
   }
 

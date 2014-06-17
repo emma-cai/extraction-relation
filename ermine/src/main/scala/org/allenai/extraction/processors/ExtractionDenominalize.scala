@@ -14,6 +14,9 @@ object ExtractionDenominalize extends TextProcessor {
   override val numInputs = 4
   override val numOutputs = 1
 
+  val inputGraph = new DependencyGraph()
+  val outputGraph = new DependencyGraph()
+
   // SPARQL query for nodes in rel: relation with denominalization != lemma
   val query =
     """CONSTRUCT { ?node wn:deriv ?verb ; rdfs:label ?verb . } WHERE {
@@ -25,20 +28,21 @@ object ExtractionDenominalize extends TextProcessor {
     }"""
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val graph = new DependencyGraph()
     for (source <- sources) {
-      graph.loadTurtle(source)
+      inputGraph.loadTurtle(source)
     }
 
     // match patterns
-    for (map <- graph.executeQuery(query)) {
+    for (map <- inputGraph.executeQuery(query)) {
       // add results
-      graph.outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
+      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toLiteral)
     }
 
     val sink: Writer = destinations(0)
-    graph.saveTurtle(sink)
-    graph.shutdown()
+    outputGraph.saveTurtle(sink)
+
+    inputGraph.shutdown()
+    outputGraph.shutdown()
   }
 
 }
