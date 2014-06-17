@@ -41,11 +41,12 @@ object OtterJsonToReadableOutputProcessor extends FlatProcessor {
           // Then write out the extraction results.
           for (tuple <- otterExtractionForDefinitionAlt.extractions) {
             // Prefix output extraction with "<RelationType>: "
-            val relTypeStr =  (tuple.relation.relationType match {
+            val relTypeStr =  tuple.relation.relationType match {
               case Some(x) => x.toString
               case _ => "Fact"
-            }) + ": "
+            }
             destination.write(relTypeStr)
+            destination.write(": ")
             // Now write out the actual tuple in friendly format (all tuple classes have overridden toString)
             destination.write(tuple.toString)
             destination.write("\n")

@@ -20,9 +20,12 @@ import spray.json._
   * ALTERNATEDEFINITION  varchar(2000)
   * EXTRACTION           varchar(3000)
   * (format: ON)
+  * @param dbDir the database path
+  * @param user username to connect to the database
+  * @param password password to connect to the database
   */
-class OtterDefinitionDBWriter(dbDir: String) extends FlatProcessor {
-  val extractionsDb: DefinitionExtractionsDB = new DefinitionExtractionsDB(dbDir)
+class OtterDefinitionDBWriter(dbDir: String, user: String, password: String) extends FlatProcessor {
+  val extractionsDb: DefinitionExtractionsDB = new DefinitionExtractionsDB(dbDir, user, password)
 
   override def processText(jsonInputSource: Source, destination: Writer): Unit = {
     // Iterate over input JSONs and write definition extractions to DB.

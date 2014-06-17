@@ -81,11 +81,14 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       new MultipleDictionarySourcePreprocessor(wordClassesForMultipleDictionaryPreprocessor, sourcesForMultipleDictionaryPreprocessor))
 
     // Configure the OtterDefinitionDBWriter.
-    config.get[String]("otterDBwriter.dbPath") match {
-      case Some(otterDBpath) => processors += (
-        "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(otterDBpath))
-      case None => log.error("otterDBwriter.dbpath not found in config - " +
-        "OtterDefinitionDBWriter won't be initialized")
+    val dbPathOption = config.get[String]("otterDBwriter.dbPath")
+    val dbUserOption = config.get[String]("otterDBwriter.dbUsername")
+    val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
+    (dbPathOption, dbUserOption, dbPasswordOption) match {
+      case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
+        processors += (
+          "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
+      case _ => log.error("Either dbPath or some part of the database credentials is missing for OtterDefinitionDBWriter. The processor failed to start up.")
     }
 
     // Bind the extractor map we built.

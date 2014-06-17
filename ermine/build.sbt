@@ -9,7 +9,7 @@ packageArchetype.java_application
 
 mainClass in Revolver.reStart := Some("org.allenai.extraction.manager.Ermine")
 
-libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ h2 ++ Seq(
+libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   allenaiCommon,
   aristore,
   scopt,
