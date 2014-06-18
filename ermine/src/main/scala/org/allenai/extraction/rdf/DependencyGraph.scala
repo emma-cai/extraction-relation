@@ -61,13 +61,17 @@ object DependencyGraph {
   }
 
   /** collect all tokens below node in the basic dependency tree */
-  def nodeConstits(graph: SailGraph, node: Vertex, exclude: String = ""): Seq[Vertex] = {
+  def nodeConstits(graph: SailGraph, node: Vertex, exclude: Option[String] = None): Seq[Vertex] = {
     val uri: String = node.toUri
+    val filter = exclude match {
+      case Some(deps) => s"FILTER(!regex(str(?dep), '/($deps)$$')) ."
+      case None => ""
+    }
     val query: String = s"""
       SELECT ?constit WHERE {
         <$uri> ?dep ?constit .
         FILTER(STRSTARTS(str(?dep), "http://nlp.stanford.edu/basic/")) .
-        FILTER(!regex(str(?dep), '/($exclude)$$')) .
+        $filter
       }"""
     val results: Seq[Map[String, Vertex]] = executeSparql(graph, query)
     val allValues: Seq[Seq[Vertex]] = for {
