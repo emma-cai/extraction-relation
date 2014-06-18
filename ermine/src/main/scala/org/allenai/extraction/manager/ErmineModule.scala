@@ -9,6 +9,7 @@ import org.allenai.extraction.Processor
 import org.allenai.extraction.processors._
 import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
+import org.allenai.extraction.processors.dependencies._
 
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
@@ -35,6 +36,13 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "StanfordParser" -> StanfordParser,
       "StanfordTtl" -> StanfordTtl,
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
+      "StanfordFixProcessor" -> StanfordFixProcessor,
+      "StanfordExtractor" -> StanfordExtractor,
+      "ExtractionDenominalize" -> ExtractionDenominalize,
+      "ExtractionRoles" -> ExtractionRoles,
+      "ExtractionLabels" -> ExtractionLabels,
+      "InferenceRules" -> InferenceRules,
+      "TurtleProcessor" -> TurtleProcessor,
       "CatProcessor" -> CatProcessor,
       "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
 
