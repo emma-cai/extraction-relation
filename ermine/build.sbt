@@ -7,7 +7,7 @@ description := "Extraction management system"
 // SBT native packager configs.
 packageArchetype.java_application
 
-libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
+libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   allenaiCommon,
   aristore,
   scopt,
