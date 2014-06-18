@@ -74,7 +74,7 @@ object ClearSrl extends MultiTextProcessor {
         // Get all of the basic dependencies for the given node from our graph.
         val query = s"""SELECT ?head ?dep WHERE {
             ?head ?dep <${vertex.toUri}> .
-            FILTER regex(str(?dep), "http://nlp.stanford.edu/basic")
+            FILTER strstarts(str(?dep), "http://nlp.stanford.edu/basic")
           }"""
         val results = DependencyGraph.executeSparql(graph, query)
         for (result <- results) {
