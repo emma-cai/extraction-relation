@@ -19,12 +19,12 @@ object DefinitionCleanupUtility {
     val defParenStripped = parenPattern replaceAllIn (rawDefinition, "")
 
     // Remove single quotes from quoted words, like the definition term
-    val defSingleQuotedWordPattern = """(?<=\W|^)'([^']+)'(?=\W|$)""".r
-    val defParenSQuotesStripped = defSingleQuotedWordPattern replaceAllIn (defParenStripped, m => m.group(1))
+    val defSingleQuotedWordPattern = """(\W|^)'([^']+)'(\W|$)""".r
+    val defParenSQuotesStripped = defSingleQuotedWordPattern replaceAllIn (defParenStripped, m => m.group(1) + m.group(2) + m.group(3))
 
     // Remove double quotes 
-    val defDoubleQuotedWordPattern = """(?<=\W|^)\"([^\"]+)\"(?=\W|$)""".r
-    val defParenDQuotesStripped = defDoubleQuotedWordPattern replaceAllIn (defParenSQuotesStripped, m => m.group(1))
+    val defDoubleQuotedWordPattern = """(\W|^)\"([^\"]+)\"(\W|$)""".r
+    val defParenDQuotesStripped = defDoubleQuotedWordPattern replaceAllIn (defParenSQuotesStripped, m => m.group(1) + m.group(2) + m.group(3))
 
     defParenDQuotesStripped
   }
