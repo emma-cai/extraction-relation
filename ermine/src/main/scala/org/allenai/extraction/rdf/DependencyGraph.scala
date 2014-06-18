@@ -81,8 +81,15 @@ object DependencyGraph {
     allValues.flatten
   }
 
-  /** retrieve properties of a token */
-  def tokenInfo(graph: SailGraph, node: Vertex, prop: String = "text"): String = {
+  /** retrieve properties of a token
+    * valid prop values in current Stanford output are:
+    * - text
+    * - lemma
+    * - pos
+    * - begin
+    * - end
+    */
+  def tokenInfo(graph: SailGraph, node: Vertex, prop: String): String = {
     val uri: String = node.toUri
     val query: String = s"""
       SELECT ?prop WHERE {

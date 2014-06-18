@@ -39,13 +39,11 @@ object ExtractionLabels extends TextProcessor {
 
   val VerbExcludeString: Option[String] = Some(
     // list of dependencies to exclude when building verb string
-    Set("aux", "auxpass", "nsubj", "nsubjpass", "csubj", "csubjpass", "dobj", "iobj", "xcomp", "prep", "conj", "cc", "mark", "advcl", "advmod", "npadvmod", "tmod", "acomp", "dep", "ccomp", "cop", "expl", "attr", "xsubj", "purpcl", "vmod", "rcmod", "partmod").mkString("|")
-  )
+    Set("aux", "auxpass", "nsubj", "nsubjpass", "csubj", "csubjpass", "dobj", "iobj", "xcomp", "prep", "conj", "cc", "mark", "advcl", "advmod", "npadvmod", "tmod", "acomp", "dep", "ccomp", "cop", "expl", "attr", "xsubj", "purpcl", "vmod", "rcmod", "partmod").mkString("|"))
 
   val ArgExcludeString: Option[String] = Some(
     // list of dependencies to exclude when building arg string
-    Set("conj", "cc", "appos", "dep", "xcomp", "infmod", "rcmod", "partmod", "advmod", "cop", "nsubj", "aux", "ref", "vmod").mkString("|")
-  )
+    Set("conj", "cc", "appos", "dep", "xcomp", "infmod", "rcmod", "partmod", "advmod", "cop", "nsubj", "aux", "ref", "vmod").mkString("|"))
 
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
@@ -87,7 +85,7 @@ object ExtractionLabels extends TextProcessor {
   /** create complete string for node */
   def addText(node: Vertex, exclude: Option[String] = None): Edge = {
     val constits: Seq[Vertex] = (DependencyGraph.nodeConstits(inputGraph, node, exclude) :+ node).sortWith(_ < _)
-    val tokens: Seq[String] = constits.map(x => DependencyGraph.tokenInfo(inputGraph, x))
+    val tokens: Seq[String] = constits.map(x => DependencyGraph.tokenInfo(inputGraph, x, "text"))
     val text: String = tokens.mkString(" ")
     val v: Vertex = outputGraph.addVertex('"' + text + '"')
     outputGraph.addEdge(text, node, v, "rdfs:comment")
