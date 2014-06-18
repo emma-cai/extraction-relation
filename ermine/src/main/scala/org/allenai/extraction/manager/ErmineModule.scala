@@ -14,6 +14,8 @@ import org.allenai.extraction.processors.FerretTextProcessor
 import org.allenai.extraction.processors.StanfordParser
 import org.allenai.extraction.processors.StanfordTtl
 import org.allenai.extraction.processors.StanfordXmlToTtl
+import org.allenai.extraction.processors.TurtleProcessor
+import org.allenai.extraction.processors.dependencies._
 import org.allenai.extraction.processors.definition.OtterDefinitionDBWriter
 import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
@@ -44,6 +46,13 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "StanfordParser" -> StanfordParser,
       "StanfordTtl" -> StanfordTtl,
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
+      "StanfordFixProcessor" -> StanfordFixProcessor,
+      "StanfordExtractor" -> StanfordExtractor,
+      "ExtractionDenominalize" -> ExtractionDenominalize,
+      "ExtractionRoles" -> ExtractionRoles,
+      "ExtractionLabels" -> ExtractionLabels,
+      "InferenceRules" -> InferenceRules,
+      "TurtleProcessor" -> TurtleProcessor,
       "CatProcessor" -> CatProcessor,
       "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
 

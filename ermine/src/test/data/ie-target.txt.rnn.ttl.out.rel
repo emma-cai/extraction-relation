@@ -1,0 +1,40 @@
+
+<http://aristo.allenai.org/id#4_2> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#4_3> .
+
+<http://aristo.allenai.org/id#1_7> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#1_12> .
+
+<http://aristo.allenai.org/id#2_13> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#2_8> .
+
+<http://aristo.allenai.org/id#2_10> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#2_8> .
+
+<http://aristo.allenai.org/id#3_3> <http://aristo.allenai.org/rel/purpose> <http://aristo.allenai.org/id#3_7> .
+
+<http://aristo.allenai.org/id#4_18> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#4_3> .
+
+<http://aristo.allenai.org/id#5_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#5_11> .
+
+<http://aristo.allenai.org/id#5_11> <http://aristo.allenai.org/rel/requirement> <http://aristo.allenai.org/id#5_13> .
+
+<http://aristo.allenai.org/id#10_1> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#10_4> .
+
+<http://aristo.allenai.org/id#11_1> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#11_4> .
+
+<http://aristo.allenai.org/id#12_6> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#12_14> .
+
+<http://aristo.allenai.org/id#14_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#14_9> .
+
+<http://aristo.allenai.org/id#19_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#19_9> .
+
+<http://aristo.allenai.org/id#3_5> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#3_7> .
+
+<http://aristo.allenai.org/id#22_2> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#22_6> .
+
+<http://aristo.allenai.org/id#17_10> <http://aristo.allenai.org/rel/cause> <http://aristo.allenai.org/id#17_4> .
+
+<http://aristo.allenai.org/id#18_1> <http://aristo.allenai.org/rel/requirement> <http://aristo.allenai.org/id#18_7> .
+
+<http://aristo.allenai.org/id#21_7> <http://aristo.allenai.org/rel/purpose> <http://aristo.allenai.org/id#21_9> .
+
+<http://aristo.allenai.org/id#21_9> <http://aristo.allenai.org/rel/when> <http://aristo.allenai.org/id#21_5> .
+
+<http://aristo.allenai.org/id#22_6> <http://aristo.allenai.org/rel/cause> <http://aristo.allenai.org/id#22_1> .
