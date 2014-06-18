@@ -1,4 +1,4 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.processors.dependencies
 
 import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
