@@ -65,7 +65,7 @@ object ExtractionRoles extends TextProcessor {
   /** map input dependencies to output args */
   def addArgs(node: Vertex) = {
     // define input dependency to output role relations
-    val roles: Seq[Tuple2[String, String]] = Seq(
+    val roles: Seq[(String, String)] = Seq(
       ("nsubj", "pred:agent"),
       ("dobj", "pred:object"),
       ("iobj", "pred:arg"),

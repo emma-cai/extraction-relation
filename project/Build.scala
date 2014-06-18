@@ -19,9 +19,7 @@ object ExtractionBuild extends Build {
     // other dependencies the parser needs.
     val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
 
-    val tinkerpop = "com.tinkerpop.blueprints" % "blueprints-sail-graph" % "2.5.0"
-
-    Seq(jpl, stanfordPatched, stanfordModels, tinkerpop)
+    Seq(jpl, stanfordPatched, stanfordModels)
   }
 
   val inheritedSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++

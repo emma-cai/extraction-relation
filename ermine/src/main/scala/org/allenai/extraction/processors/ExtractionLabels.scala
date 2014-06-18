@@ -84,7 +84,7 @@ object ExtractionLabels extends TextProcessor {
 
   /** create complete string for node */
   def addText(node: Vertex, exclude: Option[String] = None): Edge = {
-    val constits: Seq[Vertex] = (DependencyGraph.nodeConstits(inputGraph, node, exclude) :+ node).sortWith(_ < _)
+    val constits: Seq[Vertex] = (DependencyGraph.nodeConstits(inputGraph, node, exclude) :+ node).sortBy(_.tokenId)
     val tokens: Seq[String] = constits.map(x => DependencyGraph.tokenInfo(inputGraph, x, "text"))
     val text: String = tokens.mkString(" ")
     val v: Vertex = outputGraph.addVertex('"' + text + '"')
