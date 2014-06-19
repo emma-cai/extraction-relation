@@ -23,18 +23,18 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   val definitionTypeNames = Set[String]("RelClauseDefinition", "WhenWhereDefinition", "WhichWhomDefinition",
     "IsaFactsDefinition", "IsaToFactsDefinition", "IsaDefinition", "IsWhereDefinition")
 
-  /** Rules that map to "special" relation predicates we want to extract.   
+  /** Rules that map to "special" relation predicates we want to extract.
     */
   val relationPredicates = Map[String, RelationTypeEnum](
-      "EffectRel" -> RelationTypeEnum.Effect, 
-      "EffectRelTo" -> RelationTypeEnum.Effect, 
-      "CauseRel" -> RelationTypeEnum.Cause, 
-      "FunctionRel" -> RelationTypeEnum.Function, 
-      "FunctionRelTo" -> RelationTypeEnum.Function,
-      "ExampleRel" -> RelationTypeEnum.Example, 
-      "RequiredRel" -> RelationTypeEnum.Require, 
-      "RequiredRelTo" -> RelationTypeEnum.Require)
-  
+    "EffectRel" -> RelationTypeEnum.Effect,
+    "EffectRelTo" -> RelationTypeEnum.Effect,
+    "CauseRel" -> RelationTypeEnum.Cause,
+    "FunctionRel" -> RelationTypeEnum.Function,
+    "FunctionRelTo" -> RelationTypeEnum.Function,
+    "ExampleRel" -> RelationTypeEnum.Example,
+    "RequiredRel" -> RelationTypeEnum.Require,
+    "RequiredRelTo" -> RelationTypeEnum.Require)
+
   /** This (extract) method has been implemented in the DefinitionOpenRegexExtractor base class,
     * but we are overriding it  here because we have some special handling going on here- if the initial
     * definition text does not give back any extraction results, there is retry logic here to prepend
@@ -231,8 +231,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     * each constituent simple NP (NPSingle)
     */
   private def processNounDefinitionNGMultiple(
-      definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], ruleName : String)
-       : Seq[OtterExtractionTuple] = {
+    definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], ruleName: String): Seq[OtterExtractionTuple] = {
     var results = Seq.empty[OtterExtractionTuple]
     // Extractor could come out with duplicates, hence converting to a set
     val subtypes = Extractor.findSubtypes(types)(typ).toSet
@@ -242,7 +241,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         case ("NGNoDetMultiple", "NGNoDetMultiple.First") => Extractor.findAlignedTypesWithName(types)(subtype, "NGNoDetSingle").toSet
         case _ => Extractor.findAlignedTypesWithName(types)(subtype, "NGSingle").toSet
       })
-    }   
+    }
     for (alignedType <- alignedTypes) {
       results ++= processNounDefinitionNGSingle(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens)
     }
@@ -712,7 +711,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       case Some(rl) =>
         {
           // Check if this is a one of our special predicates
-          val alignedType = Extractor.findAlignedTypes(types)(rl) find ( x => relationPredicates.keySet.contains(x.name.trim))
+          val alignedType = Extractor.findAlignedTypes(types)(rl) find (x => relationPredicates.keySet.contains(x.name.trim))
           val relType = alignedType map { pred => relationPredicates(pred.name.trim) }
           val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
           val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
