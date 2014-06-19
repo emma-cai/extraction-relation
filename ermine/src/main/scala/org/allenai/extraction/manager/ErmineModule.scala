@@ -7,8 +7,7 @@ import org.allenai.common.Config.EnhancedConfig
 import org.allenai.extraction.ConfigModule
 import org.allenai.extraction.Processor
 import org.allenai.extraction.processors._
-import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
-import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
+import org.allenai.extraction.processors.definition._
 import org.allenai.extraction.processors.dependencies._
 
 import com.escalatesoft.subcut.inject.NewBindingModule
@@ -66,10 +65,29 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.
-    val wordClasses: Set[String] =
+    val wordClassesForSimpleWiktionaryPreprocessor: Set[String] =
       (config.get[Seq[String]]("simpleWiktionary.wordClasses") getOrElse { Seq.empty }).toSet
     processors += ("SimpleWiktionaryDefinitionPreprocessor" ->
-      new SimpleWiktionaryDefinitionPreprocessor(wordClasses))
+      new SimpleWiktionaryDefinitionPreprocessor(wordClassesForSimpleWiktionaryPreprocessor))
+
+    // Configure the MultipleDictionarySourcePreprocessor.
+    val wordClassesForMultipleDictionaryPreprocessor: Set[String] =
+      (config.get[Seq[String]]("multipleDictionaries.wordClasses") getOrElse { Seq.empty }).toSet
+    val sourcesForMultipleDictionaryPreprocessor: Set[String] =
+      (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
+    processors += ("MultipleDictionarySourcePreprocessor" ->
+      new MultipleDictionarySourcePreprocessor(wordClassesForMultipleDictionaryPreprocessor, sourcesForMultipleDictionaryPreprocessor))
+
+    // Configure the OtterDefinitionDBWriter.
+    val dbPathOption = config.get[String]("otterDBwriter.dbPath")
+    val dbUserOption = config.get[String]("otterDBwriter.dbUsername")
+    val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
+    (dbPathOption, dbUserOption, dbPasswordOption) match {
+      case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
+        processors += (
+          "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
+      case _ => log.error("Either dbPath or some part of the database credentials is missing for OtterDefinitionDBWriter. The processor failed to start up.")
+    }
 
     // Bind the extractor map we built.
     processors.toMap

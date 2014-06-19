@@ -103,7 +103,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     var definedTermArgOption: Option[Argument] = None
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
     val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
-    val isaRelArgOption = isaRelOption map { x => Argument(x.text, OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
+    val isaRelArgOption = isaRelOption map { x => Argument("isa", OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         val (definedTermArg, definedTermTuple) = processNounDefinitionDefinedTerm(definedTerm, types, defnChunkedTokens)

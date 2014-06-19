@@ -33,7 +33,7 @@ object OtterJsonToReadableOutputProcessor extends FlatProcessor {
       if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
         val otterExtractionAst = line.parseJson
         val otterExtraction = otterExtractionAst.convertTo[OtterExtraction]
-        // Iterate over the definition alernates and process, i.e., write out each one.
+        // Iterate over the definition alternates and process, i.e., write out each one.
         for (otterExtractionForDefinitionAlt <- otterExtraction.extractions) {
           // First write out the input line.
           destination.write("DEFINITION:   " + otterExtraction.definedTerm + "\t" + otterExtraction.wordClass.getOrElse ("") 
@@ -41,9 +41,13 @@ object OtterJsonToReadableOutputProcessor extends FlatProcessor {
           // Then write out the extraction results.
           for (tuple <- otterExtractionForDefinitionAlt.extractions) {
             // Prefix output extraction with "<RelationType>: "
-            val relType =  tuple.relation.relationType getOrElse ("Fact")
-            destination.write(relType + ": ")
-            // Now write out the actual tuple in friendly format (all tuple classes have overriden toString
+            val relTypeStr =  tuple.relation.relationType match {
+              case Some(x) => x.toString
+              case _ => "Fact"
+            }
+            destination.write(relTypeStr)
+            destination.write(": ")
+            // Now write out the actual tuple in friendly format (all tuple classes have overridden toString)
             destination.write(tuple.toString)
             destination.write("\n")
           }

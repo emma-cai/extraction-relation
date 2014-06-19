@@ -1,4 +1,4 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.processors.definition
 
 import org.allenai.common.testkit.UnitSpec
 
