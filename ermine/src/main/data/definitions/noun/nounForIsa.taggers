@@ -1,0 +1,26 @@
+// The nouns going into the "IsA" part have a special structure. For e.g., we omit the determiner if one of present because we don't want that to be part of the object for the 'IsA'.
+// TODO: Give the "NoDet" suffixed rule names better names like "...forIsa" or something of that sort.
+
+NounForIsa := TypedOpenRegex {
+   (?: (<pos=/NN.*|CD/>+ | (<pos=/VBG/ & !lemma="be">)))
+}
+
+NP1NoDet := TypedOpenRegex {
+   (<pos=/RB.*/>? (<NP>:  (<Adjs>: @AP1)? (<Nouns>: @NounForIsa)) )
+}
+
+NP2NoDet := TypedOpenRegex {
+   (?: (((<pos='RBR' | pos='RBS'> <pos='IN'>) @NP1) | (<IsaTerm>: @NP1NoDet)))
+}
+
+NGNoDet1 := TypedOpenRegex {
+   (?: (<Main>: @NP2NoDet) (<Aux>: ((<string="of"> | <pos="POS">) @NP2)*) )
+   | (?: (<Main>: @NP2NoDet) <string="("> @NP2  <string=")"> )
+   | (?: <pos='PRP'> )
+   | (?: <lemma=/this|these|those/> )
+}
+
+NGNoDet := TypedOpenRegex {
+   (?:@NGNoDet1 (?: (?:<string="," | string="or"> @NG1)* (<string=",">? <string=/and|or|and\/or/>? @NG1)? )? )
+}
+

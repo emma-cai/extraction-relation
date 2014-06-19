@@ -23,6 +23,18 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   val definitionTypeNames = Set[String]("RelClauseDefinition", "WhenWhereDefinition", "WhichWhomDefinition",
     "IsaFactsDefinition", "IsaToFactsDefinition", "IsaDefinition", "IsWhereDefinition")
 
+  /** Rules that map to "special" relation predicates we want to extract.   
+    */
+  val relationPredicates = Map[String, RelationTypeEnum](
+      "EffectRel" -> RelationTypeEnum.Effect, 
+      "EffectRelTo" -> RelationTypeEnum.Effect, 
+      "CauseRel" -> RelationTypeEnum.Cause, 
+      "FunctionRel" -> RelationTypeEnum.Function, 
+      "FunctionRelTo" -> RelationTypeEnum.Function,
+      "ExampleRel" -> RelationTypeEnum.Example, 
+      "RequiredRel" -> RelationTypeEnum.Require, 
+      "RequiredRelTo" -> RelationTypeEnum.Require)
+  
   /** This (extract) method has been implemented in the DefinitionOpenRegexExtractor base class,
     * but we are overriding it  here because we have some special handling going on here- if the initial
     * definition text does not give back any extraction results, there is retry logic here to prepend
@@ -75,7 +87,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     * Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, )
     */
   override def process(allTypes: Seq[Type], lastLevelTypes: Seq[Type], defnTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
-    (lastLevelTypes find { t => definitionTypeNames.contains(t.name) } map { processNounDefinition(_, allTypes, defnTokens) }).getOrElse(Seq.empty[OtterExtractionTuple])
+    val rawTuples = (lastLevelTypes find { t => definitionTypeNames.contains(t.name) } map { processNounDefinition(_, allTypes, defnTokens) }).getOrElse(Seq.empty[OtterExtractionTuple])
+    OtterExtractionsPostprocessingUtility.postProcess(rawTuples)
   }
 
   /** Given a Type, the entire list of output Types, and the seq of input definition tokens,
@@ -205,7 +218,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     for (alignedType <- alignedTypes) {
       if (results.length == 0) {
         alignedType.name match {
-          case "NGMultiple" => results ++= processNounDefinitionNGMultiple(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens)
+          case ("NGMultiple" | "NGNoDetMultiple") => results ++= processNounDefinitionNGMultiple(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens, alignedType.name)
           case "NGNoDetSingle" => results ++= processNounDefinitionNGSingle(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens)
           case _ => None
         }
@@ -217,14 +230,21 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Split composite NPs matching the NGMultiple rules up into a sequence of extractions representing
     * each constituent simple NP (NPSingle)
     */
-  private def processNounDefinitionNGMultiple(definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
+  private def processNounDefinitionNGMultiple(
+      definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], ruleName : String)
+       : Seq[OtterExtractionTuple] = {
     var results = Seq.empty[OtterExtractionTuple]
-    val subtypes = Extractor.findSubtypes(types)(typ)
+    // Extractor could come out with duplicates, hence converting to a set
+    val subtypes = Extractor.findSubtypes(types)(typ).toSet
+    var alignedTypes = Set.empty[Type]
     for (subtype <- subtypes) {
-      val alignedTypes = Extractor.findAlignedTypesWithName(types)(subtype, "NGSingle")
-      for (alignedType <- alignedTypes) {
-        results ++= processNounDefinitionNGSingle(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens)
-      }
+      alignedTypes = alignedTypes.union((ruleName, subtype.name) match {
+        case ("NGNoDetMultiple", "NGNoDetMultiple.First") => Extractor.findAlignedTypesWithName(types)(subtype, "NGNoDetSingle").toSet
+        case _ => Extractor.findAlignedTypesWithName(types)(subtype, "NGSingle").toSet
+      })
+    }   
+    for (alignedType <- alignedTypes) {
+      results ++= processNounDefinitionNGSingle(definedTermArg, isaRelArgOption, alignedType, types, defnChunkedTokens)
     }
     results
   }
@@ -541,7 +561,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     results
   }
 
-  /** Make the 'Desrcibes' Relation Extractions for facts that are complete sentences describing what the defined term is
+  /** Make the 'Describes' Relation Extractions for facts that are complete sentences describing what the defined term is
     */
   private def makeDescribesRelationExtractionTuples(agent: Argument, tuples: Seq[OtterExtractionTuple]): Seq[OtterExtractionTuple] = {
     var results = Seq.empty[OtterExtractionTuple]
@@ -691,9 +711,12 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     val relOption: Option[Relation] = Extractor.findSubtypesWithName(types)(typ, "Rel").headOption match {
       case Some(rl) =>
         {
+          // Check if this is a one of our special predicates
+          val alignedType = Extractor.findAlignedTypes(types)(rl) find ( x => relationPredicates.keySet.contains(x.name.trim))
+          val relType = alignedType map { pred => relationPredicates(pred.name.trim) }
           val relTokens = OtterToken.makeTokenSeq(defnChunkedTokens, rl.tokenInterval)
           val relArg = Argument(rl.text, relTokens, Some(rl.tokenInterval))
-          Option(Relation(None, relArg))
+          Option(Relation(relType, relArg))
         }
       case _ => None
     }
@@ -718,7 +741,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     }
     // Get the complete text for the relation object Argument
     val argText = new StringBuilder((arg2Option map { arg2 => arg2.text }) getOrElse (""))
-    argText ++= (arg3Option map { arg3 => arg3.text }) getOrElse ("")
+    argText ++= (arg3Option map { arg3 => " " + arg3.text }) getOrElse ("")
     // Get the complete set of tokens for the relation object Argument
     val argTokens = intervalOption match {
       case Some(interval) => OtterToken.makeTokenSeq(defnChunkedTokens, interval)
