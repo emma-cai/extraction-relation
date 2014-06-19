@@ -2,23 +2,13 @@ package org.allenai.extraction.manager
 
 import scala.collection.mutable
 
-import org.allenai.ari.datastore.client.AriDatastoreClient
-import org.allenai.ari.datastore.client.AriDatastoreHttpClient
+import org.allenai.ari.datastore.client.{ AriDatastoreClient, AriDatastoreHttpClient }
 import org.allenai.common.Config.EnhancedConfig
 import org.allenai.extraction.ConfigModule
 import org.allenai.extraction.Processor
-import org.allenai.extraction.processors.CatProcessor
-import org.allenai.extraction.processors.Ferret
-import org.allenai.extraction.processors.FerretQuestionProcessor
-import org.allenai.extraction.processors.FerretTextProcessor
-import org.allenai.extraction.processors.StanfordParser
-import org.allenai.extraction.processors.StanfordTtl
-import org.allenai.extraction.processors.StanfordXmlToTtl
-import org.allenai.extraction.processors.definition.OtterDefinitionDBWriter
-import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
-import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
-import org.allenai.extraction.processors.definition.MultipleDictionarySourcePreprocessor
-import org.allenai.extraction.processors.definition.SimpleWiktionaryDefinitionPreprocessor
+import org.allenai.extraction.processors._
+import org.allenai.extraction.processors.definition._
+import org.allenai.extraction.processors.dependencies._
 
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
@@ -41,9 +31,17 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
   bind[Map[String, Processor]] toModuleSingle { implicit module =>
     // Initialize with processors requiring no external configuration.
     val processors = mutable.Map[String, Processor](
+      "ClearSrl" -> ClearSrl,
       "StanfordParser" -> StanfordParser,
       "StanfordTtl" -> StanfordTtl,
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
+      "StanfordFixProcessor" -> StanfordFixProcessor,
+      "StanfordExtractor" -> StanfordExtractor,
+      "ExtractionDenominalize" -> ExtractionDenominalize,
+      "ExtractionRoles" -> ExtractionRoles,
+      "ExtractionLabels" -> ExtractionLabels,
+      "InferenceRules" -> InferenceRules,
+      "TurtleProcessor" -> TurtleProcessor,
       "CatProcessor" -> CatProcessor,
       "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
 

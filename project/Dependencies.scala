@@ -80,6 +80,8 @@ object Dependencies {
     "commons-io" % "commons-io" % "2.4",
     // Solr and jsonld both depend on a different version; prefer the more recent.
     "org.apache.httpcomponents" % "httpclient" % "4.3.1",
+    // httpcomponents needs more recent commons-logging
+    "commons-logging" % "commons-logging" % "1.1.3",
     // There's a phantom dependency on 14.0; override to the taggers dependency.
     "com.google.guava" % "guava" % "15.0",
     // Force most recent clear version.
