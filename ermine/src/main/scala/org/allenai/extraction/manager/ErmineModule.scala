@@ -50,6 +50,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       "ExtractionRoles" -> ExtractionRoles,
       "ExtractionLabels" -> ExtractionLabels,
       "InferenceRules" -> InferenceRules,
+      "QuestionRules" -> QuestionRules,
       "TurtleProcessor" -> TurtleProcessor,
       "CatProcessor" -> CatProcessor,
       "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
