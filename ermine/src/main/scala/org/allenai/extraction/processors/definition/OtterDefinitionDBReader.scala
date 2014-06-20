@@ -37,9 +37,13 @@ class OtterDefinitionDBReader(dbDir: String, user: String, password: String) ext
         // The database is completely flat, so sort the returned query
         // results as required. First sort by the definition.
         val resultMap = results groupBy (_.alternateDefinition)
+        var defId = 1
         for ((definition, v1) <- resultMap) {
           if (definition.length > 0) {
             // Write the definition out
+            if (resultMap.size > 1) {
+              destination.write("(" + defId + ")  ")
+            }
             destination.write("DEFINITION: " + definition + "\n")
             // Then group the value (seq of DefinitionExtractions) further by source
             val perDefinitionSourceMap = v1 groupBy (_.source)
@@ -57,11 +61,12 @@ class OtterDefinitionDBReader(dbDir: String, user: String, password: String) ext
                 } else {
                   destination.write("EXTRACTIONS\n")
                   // Sort the extractions and write them out
-                  extractions sortBy (_.extraction) map { e => destination.write(e.extraction + "\n") }
+                  extractions sortBy (_.extraction) map { e => destination.write("   " + e.extraction + "\n") }
                 }
               }
             }
             destination.write("\n")
+            defId += 1
           }
         }
         destination.write("\n")
