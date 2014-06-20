@@ -16,6 +16,8 @@ import org.allenai.extraction.processors.StanfordTtl
 import org.allenai.extraction.processors.StanfordXmlToTtl
 import org.allenai.extraction.processors.TurtleProcessor
 import org.allenai.extraction.processors.dependencies._
+import org.allenai.extraction.processors.definition.DefinitionTextPreprocessor
+import org.allenai.extraction.processors.definition.OtterDefinitionDBReader
 import org.allenai.extraction.processors.definition.OtterDefinitionDBWriter
 import org.allenai.extraction.processors.definition.OtterJsonToReadableOutputProcessor
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
@@ -89,16 +91,24 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     processors += ("MultipleDictionarySourcePreprocessor" ->
       new MultipleDictionarySourcePreprocessor(wordClassesForMultipleDictionaryPreprocessor, sourcesForMultipleDictionaryPreprocessor))
 
-    // Configure the OtterDefinitionDBWriter.
-    val dbPathOption = config.get[String]("otterDBwriter.dbPath")
-    val dbUserOption = config.get[String]("otterDBwriter.dbUsername")
-    val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
+    // Configure the OtterDefinitionDBWriter and OtterDefinitionDBWriter.
+    val dbPathOption = config.get[String]("otterDB.dbPath")
+    val dbUserOption = config.get[String]("otterDB.dbUsername")
+    val dbPasswordOption = config.get[String]("otterDB.dbPassword")
     (dbPathOption, dbUserOption, dbPasswordOption) match {
       case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
-        processors += (
-          "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
-      case _ => log.error("Either dbPath or some part of the database credentials is missing for OtterDefinitionDBWriter. The processor failed to start up.")
+        processors ++= Seq(
+          ("OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword)),
+          ("OtterDefinitionDBReader" -> new OtterDefinitionDBReader(dbPath, dbUser, dbPassword)))
+      case _ => log.error("Either dbPath or some part of the database credentials is missing for OtterDefinitionDBReader/Writes. The processors failed to start up.")
     }
+
+    // Configure the DefinitionTextPreprocessor. This is used to clean up definitions entered by user
+    // in the web demo. The processor needs to construct a PreprocessedDefinition structure, which
+    // has a wordClass. 
+    val wordClassForDefinitionTextPreprocessor: Option[String] = config.get[String]("definitionTextProcessor.wordClass")
+    processors += ("DefinitionTextPreprocessor" ->
+      new DefinitionTextPreprocessor(wordClassForDefinitionTextPreprocessor))
 
     // Bind the extractor map we built.
     processors.toMap

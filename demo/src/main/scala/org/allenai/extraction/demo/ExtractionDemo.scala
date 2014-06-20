@@ -28,31 +28,29 @@ import scala.io.Source
 import scala.util.{ Try, Success, Failure }
 import scala.util.control.NonFatal
 
-class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
+class ExtractionDemo(extractors: Seq[Processor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
   val timeout = 1.minute
 
   def extractSentences(sentences: Seq[String]): Future[Response] = {
-    val processed: Seq[Future[(ExtractedSentence, Seq[Throwable])]] = for (sentence <- sentences) yield {
+    val processed: Seq[Future[(ProcessedInput, Seq[Throwable])]] = for (sentence <- sentences) yield {
       logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
-
-      case class ExtractorResponse(extractor: String, response: String)
 
       // Fire off requests to all extractors for the particular sentence.
       // We use a Try so that we can keep all failures, instead of failing
       // the whole future for a single failure.
-      val extractionFutures: Seq[Future[Try[ExtractorResponse]]] =
+      val extractionFutures: Seq[Future[Try[ProcessorResponse]]] =
         for (extractor <- extractors) yield {
           // Run the extractor
           val attempt: Future[String] = extractor(sentence)
 
           // Wrap with a cleaner exception
           val wrapped: Future[String] = attempt.transform(x => x, throwable =>
-            new ExtractorException(
+            new ProcessorException(
               s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
 
           // Convert future value to Try.
           wrapped map { extractions =>
-            Success(ExtractorResponse(extractor.name, extractions))
+            Success(ProcessorResponse(extractor.name, extractions))
           } recover {
             case NonFatal(e) =>
               logger.error(e.getMessage, e)
@@ -60,35 +58,31 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
           }
         }
 
-      // Change responses into an ExtractedSentence and failures.
-      Future.sequence(extractionFutures) map { seq: Seq[Try[ExtractorResponse]] =>
+      // Change responses into an ProcessedInput and failures.
+      Future.sequence(extractionFutures) map { seq: Seq[Try[ProcessorResponse]] =>
         val successfulExtractions = for {
           tryValue <- seq
           success <- tryValue.toOption
-          ExtractorResponse(extractor, response) = success
+          ProcessorResponse(extractor, response) = success
           extractions = (response split "\n")
-        } yield ExtractorResults(extractor, extractions)
+        } yield ProcessorResults(extractor, extractions)
 
         val exceptions = seq collect { case fail: Failure[_] => fail.exception }
 
-        (ExtractedSentence(sentence, successfulExtractions), exceptions)
+        (ProcessedInput(sentence, successfulExtractions), exceptions)
       }
     }
 
-    val extractorMap = extractors.map { extractor: Extractor =>
+    val extractorMap = extractors.map { extractor: Processor =>
       extractor.name -> extractor.description.getOrElse("")
     }.toMap
 
     Future.sequence(processed) map { seq =>
-      val successes: Seq[ExtractedSentence] = seq map (_._1)
+      val successes: Seq[ProcessedInput] = seq map (_._1)
       val exceptions: Seq[Throwable] = seq flatMap (_._2)
       Response(successes, extractorMap, exceptions)
     }
   }
-
-  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String], failures: Seq[Throwable])
-  case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
-  case class ExtractorResults(name: String, extractions: Seq[String])
 
   implicit val throwableWriter = new RootJsonFormat[Throwable] {
     def read(v: JsValue): Throwable = throw new UnsupportedOperationException
@@ -113,12 +107,12 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         "stackTrace" -> JsString(stackTrace))
     }
   }
-  implicit val extractorResults = jsonFormat2(ExtractorResults)
-  implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
+  implicit val extractorResults = jsonFormat2(ProcessorResults)
+  implicit val extractedSentenceFormat = jsonFormat2(ProcessedInput)
   implicit val responseFormat = jsonFormat3(Response)
 
   def run() {
-    val config = ConfigFactory.load().getConfig("extraction")
+    val config = ConfigFactory.load().getConfig("extraction.demo")
 
     val staticContentRoot = "public"
     val staticContentRootFile = new File(staticContentRoot)
@@ -148,7 +142,7 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
         respondWithHeader(cacheControlMaxAge) {
           path ("") {
             get {
-              getFromFile(staticContentRoot + "/index.html")
+              getFromFile(defaultContentRootFile)
             }
           } ~
           path("config") {
@@ -198,9 +192,13 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
   }
 }
 
-class ExtractorException(message: String, cause: Throwable = null) extends Exception(message, cause)
+case class Response(sentences: Seq[ProcessedInput], extractors: Map[String, String], failures: Seq[Throwable])
+case class ProcessedInput(text: String, extractors: Seq[ProcessorResults])
+case class ProcessorResults(name: String, extractions: Seq[String])
+case class ProcessorResponse(extractor: String, response: String)
+class ProcessorException(message: String, cause: Throwable = null) extends Exception(message, cause)
 
-abstract class Extractor(val url: URL) extends (String => Future[String]) with Logging {
+abstract class Processor(val url: URL) extends (String => Future[String]) with Logging {
   override def toString = s"$name($url)"
 
   val name: String = {
@@ -221,7 +219,7 @@ abstract class Extractor(val url: URL) extends (String => Future[String]) with L
 }
 
 /** Old-style extractor which accepts a POST on the root path and returns a string. */
-class SimpleExtractor(url: URL) extends Extractor(url) {
+class SimpleProcessor(url: URL) extends Processor(url) {
   override def apply(sentence: String): Future[String] = {
     val svc = dispatch.url(url.toString) << sentence
     Http(svc OK as.String)
@@ -229,7 +227,7 @@ class SimpleExtractor(url: URL) extends Extractor(url) {
 }
 
 /** Extractor run through the Ermine service. */
-class ErmineExtractor(url: URL) extends Extractor(url) {
+class ErmineProcessor(url: URL) extends Processor(url) {
   override def apply(sentence: String): Future[String] = {
     // TODO(jkinkead): This is hard-coded to use a "text" input, which doesn't work for the
     // ferret-question extractor. We should figure out a way to specify input streams in the config
@@ -244,7 +242,7 @@ class ErmineExtractor(url: URL) extends Extractor(url) {
           body.parseJson.convertTo[PipelineResponse].output
         case responseCode =>
           val body = response.getResponseBody
-          throw new ExtractorException(s"Bad response ($responseCode) from Ermine at $url: $body")
+          throw new ProcessorException(s"Bad response ($responseCode) from Ermine at $url: $body")
       }
     }
   }
@@ -255,16 +253,16 @@ object ExtractionDemoMain extends App with Logging {
 
   val port = config.getInt("port")
   val simpleExtractors = config.getStringList("extractors").iterator().asScala.map { url =>
-    new SimpleExtractor(new URL(url))
+    new SimpleProcessor(new URL(url))
   }.toSeq
-  val ermineExtractors = config.getStringList("ermine-extractors").iterator().asScala.map { url =>
-    new ErmineExtractor(new URL(url))
+  val ermineProcessors = config.getStringList("ermine-extractors").iterator().asScala.map { url =>
+    new ErmineProcessor(new URL(url))
   }.toSeq
 
-  val extractors = simpleExtractors ++ ermineExtractors
+  val processors = simpleExtractors ++ ermineProcessors
 
-  logger.info("Configured with extractors: " + extractors.mkString(", "))
+  logger.info("Configured with extractors: " + processors.mkString(", "))
 
-  val server = new ExtractionDemo(extractors)(config.getInt("port"))
+  val server = new ExtractionDemo(processors)(config.getInt("port"))
   server.run()
 }

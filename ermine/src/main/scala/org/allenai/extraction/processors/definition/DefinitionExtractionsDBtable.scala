@@ -31,7 +31,7 @@ class DefinitionExtractionsDB(dbPath: String, username: String, password: String
   def lookup(qterm: String): Seq[DefinitionExtraction] = {
     db.withSession { implicit session =>
       val query = for {
-        de <- definitionExtractions if de.definedTerm === qterm
+        de <- definitionExtractions if de.definedTerm.toLowerCase === qterm
       } yield {
         de.* // project query result to tuple
       }
@@ -46,7 +46,7 @@ class DefinitionExtractionsDB(dbPath: String, username: String, password: String
   def insertDefinitionExtraction(flatDefinitionExtraction: DefinitionExtraction): Unit = {
     db.withSession { implicit session =>
       definitionExtractions.insert(
-        (flatDefinitionExtraction.definedTerm,
+        (flatDefinitionExtraction.definedTerm.toLowerCase,
           flatDefinitionExtraction.wordClass,
           flatDefinitionExtraction.source,
           flatDefinitionExtraction.alternateDefinition,
