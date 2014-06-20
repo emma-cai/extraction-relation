@@ -4,10 +4,12 @@ name := "extraction-manager-service"
 
 description := "Http service for Ermine"
 
+mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer")
+
+Deploy.settings
+
 // SBT native packager configs.
 packageArchetype.java_application
-
-mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer")
 
 libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ Seq(
   allenaiCommon,
@@ -26,8 +28,6 @@ fork in run := true
 javaOptions ++= ErmineMemory ++ Prolog.LibraryFlags ++
   Seq("-Dlogback.configurationFile=src/main/resources/logback.xml",
     "-Dferret.directory=../ermine/src/main/prolog")
-
-Deploy.settings
 
 // Don't create windows or linux startup scripts.
 NativePackagerKeys.makeBatScript := None

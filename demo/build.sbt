@@ -4,6 +4,8 @@ name := "extraction-demo"
 
 description := "An interactive demo for extractors."
 
+Deploy.settings
+
 libraryDependencies ++= AkkaLibraries ++ Seq(
     allenaiCommon,
     boilerpipe,
@@ -17,8 +19,6 @@ libraryDependencies ++= AkkaLibraries ++ Seq(
 javaOptions ++= Seq("-Xmx1G", "-XX:+UseConcMarkSweepGC")
 
 fork in run := true
-
-Deploy.settings
 
 mappings in Universal ++=
   (baseDirectory.value / "public" ** "*" pair relativeTo(baseDirectory.value))
