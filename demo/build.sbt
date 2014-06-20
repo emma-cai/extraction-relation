@@ -1,4 +1,5 @@
 import Dependencies._
+import NativePackagerHelper.directory
 
 name := "extraction-demo"
 
@@ -20,5 +21,4 @@ javaOptions ++= Seq("-Xmx1G", "-XX:+UseConcMarkSweepGC")
 
 fork in run := true
 
-mappings in Universal ++=
-  (baseDirectory.value / "public" ** "*" pair relativeTo(baseDirectory.value))
+mappings in Universal ++= directory(baseDirectory.value / "public")

@@ -1,4 +1,5 @@
 import Dependencies._
+import NativePackagerHelper.directory
 
 name := "extraction-manager"
 
@@ -24,14 +25,10 @@ libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ TestLibraries ++ ferr
 // Don't create windows startup script.
 NativePackagerKeys.makeBatScript := None
 
-// Copy the prolog scripts to the universal staging directory.
-mappings in Universal ++=
-   (sourceDirectory.value / "main" / "prolog" ** "*" x
-    rebase(sourceDirectory.value / "main" / "prolog", "prolog/"))
+// Copy the prolog scripts & tagger config files to the universal staging directory.
+mappings in Universal ++= directory(sourceDirectory.value / "main" / "prolog")
 
-mappings in Universal ++=
-   (sourceDirectory.value / "main" / "data" ** "*" x
-    rebase(sourceDirectory.value / "main" / "data", "data/"))
+mappings in Universal ++= directory(sourceDirectory.value / "main" / "data")
 
 // Set java options in the native packager script. These are literals embedded in the script, so we
 // have to call 'addJava' to get them added (and we quote them as well).

@@ -19,7 +19,14 @@ import java.util.Properties
   *
   * This takes a text file as input and runs the parser on the entire document. Output is Ari TTL.
   */
+// TODO(jkinkead): Port this to use tinkerpop to build an RDF graph, instead of writing out TTL by
+// hand.
 object StanfordTtl extends MultiTextProcessor {
+  /** Escapes all quotes and backslashes in a string. */
+  def escapeString(string: String): String = {
+    string.replace("\\", "\\\\").replace("\"", "\\\"")
+  }
+
   /** Lazily instantiated stanford pipeline. */
   lazy val pipeline = {
     // Construct a StanfordCoreNLP instance.
@@ -104,18 +111,23 @@ object StanfordTtl extends MultiTextProcessor {
 
     val ttl: String = {
       val ttlBuilder = new StringBuilder()
-      ttlBuilder.append(s"""id:${id} token:text "${text}" .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:lemma "${lemma}" .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:pos "${partOfSpeech}" .""").append('\n')
+      val escapedText = escapeString(text)
+      val escapedLemma = escapeString(lemma)
+      val escapedPartOfSpeech = escapeString(partOfSpeech)
+      ttlBuilder.append(s"""id:${id} token:text "${escapedText}" .""").append('\n')
+      ttlBuilder.append(s"""id:${id} token:lemma "${escapedLemma}" .""").append('\n')
+      ttlBuilder.append(s"""id:${id} token:pos "${escapedPartOfSpeech}" .""").append('\n')
       ttlBuilder.append(s"""id:${id} token:begin ${begin} .""").append('\n')
       ttlBuilder.append(s"""id:${id} token:end ${end} .""").append('\n')
       namedEntityType match {
         // Skip output of default entity type O ("Other").
         case Some("O") =>
         case Some(neType) => {
-          ttlBuilder.append(s"""id:${id} ne:type "${neType}" .""").append('\n')
+          val escapedType = escapeString(neType)
+          ttlBuilder.append(s"""id:${id} ne:type "${escapedType}" .""").append('\n')
           namedEntityTag map { neTag =>
-            ttlBuilder.append(s"""id:${id} ne:norm "${neTag}" .""").append('\n')
+            val escapedTag = escapeString(neTag)
+            ttlBuilder.append(s"""id:${id} ne:norm "${escapedTag}" .""").append('\n')
           }
         }
         case None =>
