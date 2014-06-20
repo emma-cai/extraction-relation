@@ -1,4 +1,5 @@
 import Dependencies._
+import NativePackagerHelper.directory
 
 name := "extraction-demo"
 
@@ -20,5 +21,4 @@ fork in run := true
 
 Deploy.settings
 
-mappings in Universal ++=
-  (baseDirectory.value / "public" ** "*" pair relativeTo(baseDirectory.value))
+mappings in Universal ++= directory(baseDirectory.value / "public")
