@@ -2,6 +2,10 @@
   cursor: pointer;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 summary {
   cursor: pointer;
 }
