@@ -39,6 +39,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(ExtractionLabels)
     addProcessor(ExtractionRoles)
     addProcessor(InferenceRules)
+    addProcessor(MergeProcessor)
     addProcessor(OtterJsonToReadableOutputProcessor)
     addProcessor(StanfordExtractor)
     addProcessor(StanfordFixProcessor)
