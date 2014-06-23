@@ -32,6 +32,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     // Initialize with processors requiring no external configuration.
     val processors = mutable.Map[String, Processor](
       "ClearSrl" -> ClearSrl,
+      "CorpusSplitter" -> CorpusSplitter,
       "StanfordParser" -> StanfordParser,
       "StanfordTtl" -> StanfordTtl,
       "StanfordXmlToTtl" -> StanfordXmlToTtl,
