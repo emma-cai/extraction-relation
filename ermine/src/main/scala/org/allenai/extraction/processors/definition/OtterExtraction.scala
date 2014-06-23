@@ -92,7 +92,12 @@ object RelationTypeEnum extends EnumCompanion[RelationTypeEnum] {
   case object Quality extends RelationTypeEnum("Quality")
   case object Property extends RelationTypeEnum("Property")
   case object Describes extends RelationTypeEnum("Describes")
-  register(Context, DefinedTerm, IsA, Quality, Property, Describes)
+  case object Effect extends RelationTypeEnum("Effect")
+  case object Cause extends RelationTypeEnum("Cause")
+  case object Function extends RelationTypeEnum("Function")
+  case object Example extends RelationTypeEnum("Example")
+  case object Require extends RelationTypeEnum("Require")
+  register(Context, DefinedTerm, IsA, Quality, Property, Describes, Effect, Cause, Function, Example, Require)
 }
 
 /** A Case Class to represent a Relation.

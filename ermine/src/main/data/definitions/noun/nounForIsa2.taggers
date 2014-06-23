@@ -1,0 +1,10 @@
+// The nouns going into the "IsA" part have a special structure. For e.g., we omit the determiner if one of present because we don't want that to be part of the object for the 'IsA'.
+// TODO: Give the "NoDet" suffixed rule names better names like "...forIsa" or something of that sort.
+
+NGNoDetSingle := TypedOpenRegex {
+   (?:(<NounPart>: @NGNoDet1) (<PrepPart>: @PP0NoWithNoOfNoRelClause @PP0NoWithNoRelClause*)?)
+}
+
+NGNoDetMultiple := TypedOpenRegex {
+   (?:(<First>: @NGNoDetSingle) (?: (?:<string="," | string="or"> (<Middle>: @NGSingle))* (<string=",">? <string=/and|or|and\/or/>? (<Last>: @NGSingle))? )? )
+}
