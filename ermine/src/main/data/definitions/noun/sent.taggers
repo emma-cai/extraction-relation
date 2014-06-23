@@ -3,15 +3,15 @@ S1 := TypedOpenRegex {
 }
 
 S := TypedOpenRegex {
-  (?: ((<AntecedentS>: @S1) (<Rel>: @Rel | @RelTo | @RelFor | @RelClause | <lemma=/when|as/>) (<ConsequentS>: @S1)))
+  (?: ((<AntecedentS>: @S1) (<Rel>: @EffectRel | @EffectRelTo | @CauseRel | @FunctionRel | @FunctionRelTo | @ExampleRel | @RequiredRel | @RequiredRelTo | @RelClause | <lemma=/when|as/>) (<ConsequentS>: @S1)))
 }
 
 VP3 := TypedOpenRegex {
-  (?: ((<AntecedentVP>: @VP1) (<Rel>: @Rel | @RelTo | @RelFor | @RelClause | <lemma=/when|as/> | <string="to">) (<ConsequentS>: @S1)))
+  (?: ((<AntecedentVP>: @VP1) (<Rel>: @EffectRel | @EffectRelTo | @CauseRel | @FunctionRel | @FunctionRelTo | @ExampleRel | @RequiredRel | @RequiredRelTo | @RelClause | <lemma=/when|as/> | <string="to">) (<ConsequentS>: @S1)))
 }
 
 VP2 := TypedOpenRegex {
-  (?: ((<AntecedentVP>: @VP1) (<Rel>: @Rel | @RelTo | @RelFor | <lemma=/when|as/> | <string="to">) (<ConsequentVP>: @VP1)))
+  (?: ((<AntecedentVP>: @VP1) (<Rel>: @EffectRel | @EffectRelTo | @CauseRel | @FunctionRel | @FunctionRelTo | @ExampleRel | @RequiredRel | @RequiredRelTo | <lemma=/when|as/> | <string="to">) (<ConsequentVP>: @VP1)))
 }
 
 consume RelClauseDefinition := TypedOpenRegex {

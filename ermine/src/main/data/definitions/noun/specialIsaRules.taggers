@@ -1,0 +1,10 @@
+// Rules to handle special types of IsAs that appear in definitions like "foo is a type of bar" and "foo is a word for bar". 
+// We want to capture these patterns so that we don't emit vacuous IsA relations like (foo, isa, type) or (foo, isa, word) 
+consume TypeOf := TypedOpenRegex {
+    (?: <string=/A|a/> <string=/kind|type|sort|variety/> <string=/of/>) |
+    (?: <string=/A|a|An|an/> <string=/example/> <string=/of/>)
+}
+
+consume WordFor := TypedOpenRegex {
+    (?: (@Det @Adj* <string=/word|expression|term/> (<string=/for|meaning/> | ((<string=/that/> (<string=/is/> | ((<string=/can/> | <pos="MD">) <lemma=/be/>)))? <string=/used/> <string=/to/> (<string=/describe/> | <string=/refer/> <string=/to/>)))))
+}
