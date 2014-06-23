@@ -87,12 +87,17 @@ object InferenceRules extends TextProcessor {
     val args = new StringBuilder()
     for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
       val pred = map("pred").toStringLiteral
-      val argString = nodeString(map("arg"))
-      if (args.isEmpty)
+      val arg: Vertex = map("arg")
+      val argLabel = nodeLabel(arg)
+      val argString = nodeString(arg)
+      if (args.isEmpty) {
         args ++= prefix
-      else
+      } else {
         args ++= separator
-      args.append(s"""$pred($label, "$argString")""")
+      }
+      args.append(s"$pred($label, $argLabel)")
+      args ++= separator
+      args.append(s"""isa($argLabel, "$argString")""")
     }
     args.toString
   }
