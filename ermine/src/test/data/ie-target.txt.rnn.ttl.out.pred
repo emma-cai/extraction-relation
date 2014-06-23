@@ -19,6 +19,8 @@
 <http://aristo.allenai.org/id#19_4> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#19_2> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#19_7> .
 
+<http://aristo.allenai.org/id#3_5> <http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#3_3> .
+
 <http://aristo.allenai.org/id#22_2> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#22_1> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#22_4> .
 

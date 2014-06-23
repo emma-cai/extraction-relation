@@ -67,6 +67,7 @@ object ExtractionRoles extends TextProcessor {
     // define input dependency to output role relations
     val roles: Seq[(String, String)] = Seq(
       ("nsubj", "pred:agent"),
+      ("nsubjpass", "pred:object"),
       ("dobj", "pred:object"),
       ("iobj", "pred:arg"),
       ("tmod", "pred:arg"))

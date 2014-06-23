@@ -59,6 +59,12 @@
 <http://aristo.allenai.org/id#19_7> <http://www.w3.org/2000/01/rdf-schema#label> "cylinder" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "a graduated cylinder" .
 
+<http://aristo.allenai.org/id#3_5> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "used" .
+
+<http://aristo.allenai.org/id#3_3> <http://www.w3.org/2000/01/rdf-schema#label> "lens" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens" .
+
 <http://aristo.allenai.org/id#22_2> <http://www.w3.org/2000/01/rdf-schema#label> "cause" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "causes" .
 
@@ -191,9 +197,6 @@
 
 <http://aristo.allenai.org/id#2_10> <http://www.w3.org/2000/01/rdf-schema#comment> "storing food" .
 
-<http://aristo.allenai.org/id#3_3> <http://www.w3.org/2000/01/rdf-schema#label> "lens" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens" .
-
 <http://aristo.allenai.org/id#5_4> <http://www.w3.org/2000/01/rdf-schema#comment> "not make their own food so they must eat to get nutrients" .
 
 <http://aristo.allenai.org/id#5_11> <http://www.w3.org/2000/01/rdf-schema#comment> "so eat" .
@@ -205,8 +208,7 @@
 
 <http://aristo.allenai.org/id#19_4> <http://www.w3.org/2000/01/rdf-schema#comment> "use a graduated cylinder" .
 
-<http://aristo.allenai.org/id#3_5> <http://www.w3.org/2000/01/rdf-schema#label> "use" ;
-	<http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens is used" .
+<http://aristo.allenai.org/id#3_5> <http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens is used" .
 
 <http://aristo.allenai.org/id#22_2> <http://www.w3.org/2000/01/rdf-schema#comment> "causes the ball" .
 
