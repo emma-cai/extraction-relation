@@ -64,53 +64,50 @@ object QuestionRules extends TextProcessor {
     val relation = new StringBuilder()
 
     // collect top-level: either related nodes or root
+    var mentions: ArrayBuffer[Vertex] = ArrayBuffer(focusNode.get)
     for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       val x: Vertex = map("x")
       val y: Vertex = map("y")
       // LHS
-      if (x != focusNode.get) {
-        if (!rule.isEmpty) {
-          rule ++= separator
-        }
-        rule ++= nodeIsa(x)
-        rule ++= nodeArgs(x, focusNode, separator)
-        rule ++= rcmodArgs(x, focusNode, separator)
+      if (!mentions.contains(x)) {
+        rule ++= separator(rule)
+        rule ++= nodeString(x, mentions.toSet, separator)
+        mentions += x
       }
-      if (y != focusNode.get) {
-        if (!rule.isEmpty) {
-          rule ++= separator
-        }
-        rule ++= nodeIsa(y)
-        rule ++= nodeArgs(y, focusNode, separator)
-        rule ++= rcmodArgs(y, focusNode, separator)
+      if (!mentions.contains(y)) {
+        rule ++= separator(rule)
+        rule ++= nodeString(y, mentions.toSet, separator)
+        mentions += y
       }
       if (x == focusNode.get || y == focusNode.get) {
         // RHS
-        if (!relation.isEmpty) {
-          relation ++= separator
-        }
+        relation ++= separator(relation)
         relation ++= nodeRel(x, map("r"), y)
       } else {
         // LHS
-        if (!rule.isEmpty) {
-          rule ++= separator
-        }
+        rule ++= separator(rule)
         rule ++= nodeRel(x, map("r"), y)
       }
     }
     // relation
-    rule ++= " -> " + relation
+    rule ++= " -> " + relation + separator
     // focus
-    rule ++= nodeIsa(focusNode.get, separator)
-    rule ++= nodeArgs(focusNode.get, None, separator)
-    rule ++= "."
+    rule ++= nodeString(focusNode.get, Set(), separator)
 
     ruleId += 1
     sink.write(s"rule${ruleId}:: ")
     sink.write(rule.toString)
-    sink.write('\n')
+    sink.write(".\n")
 
     inputGraph.shutdown()
+  }
+
+  def separator(string: StringBuilder): String = {
+    if (string.nonEmpty) {
+      separator
+    } else {
+      ""
+    }
   }
 
   def nodeParent(node: Vertex): Option[Vertex] = {
@@ -153,7 +150,22 @@ object QuestionRules extends TextProcessor {
     s"$rel($xlabel, $ylabel)"
   }
 
-  def nodeArgs(node: Vertex, focus: Option[Vertex], prefix: String = ""): String = {
+  def nodeString(node: Vertex, skip: Set[Vertex], prefix: String = ""): String = {
+    val string = new StringBuilder()
+    // node plus any args
+    string ++= nodeIsa(node)
+    string ++= nodeArgs(node, skip, prefix)
+    string ++= rcmodArgs(node, skip, prefix)
+    string.toString
+  }
+
+  def nodeIsa(node: Vertex, prefix: String = ""): String = {
+    val label: String = nodeLabel(node)
+    val string: String = nodeString(node)
+    s"""${prefix}isa($label, "$string")"""
+  }
+
+  def nodeArgs(node: Vertex, skip: Set[Vertex], prefix: String = ""): String = {
     val uri: String = node.toUri
     val label: String = nodeLabel(node)
     val query: String = s"""
@@ -174,7 +186,7 @@ object QuestionRules extends TextProcessor {
         args ++= separator
       }
       args.append(s"$pred($label, $argLabel)")
-      if (focus.isEmpty || arg != focus.get) {
+      if (!skip.contains(arg)) {
         args ++= separator
         args.append(s"""isa($argLabel, "$argString")""")
       }
@@ -182,7 +194,7 @@ object QuestionRules extends TextProcessor {
     args.toString
   }
 
-  def rcmodArgs(node: Vertex, focus: Option[Vertex], prefix: String = ""): String = {
+  def rcmodArgs(node: Vertex, skip: Set[Vertex], prefix: String = ""): String = {
     val uri: String = node.toUri
     val label: String = nodeLabel(node)
     val query: String = s"""
@@ -197,15 +209,9 @@ object QuestionRules extends TextProcessor {
       } else {
         args ++= separator
       }
-      args ++= nodeArgs(rcmod, Some(node))
+      args ++= nodeArgs(rcmod, skip)
     }
     args.toString
-  }
-
-  def nodeIsa(node: Vertex, prefix: String = ""): String = {
-    val label: String = nodeLabel(node)
-    val string: String = nodeString(node)
-    s"""${prefix}isa($label, "$string")"""
   }
 
   def nodeLabel(node: Vertex): String = {

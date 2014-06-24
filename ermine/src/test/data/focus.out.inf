@@ -1,0 +1,1 @@
+rule1:: isa(E1_2-cause, "causes"), agent(E1_2-cause, E1_1-gravity), isa(E1_5-roll, "roll"), agent(E1_5-roll, E1_3-rock), isa(E1_3-rock, "rocks"), effect(E1_2-cause, E1_5-roll) -> cause(E1_5-roll, E1_1-gravity), isa(E1_1-gravity, "gravity").
