@@ -57,76 +57,58 @@ object QuestionRules extends TextProcessor {
     val focusNode: Option[Vertex] = parentNode(focusTokens)
     println(focusNode)
 
+    // rule id
+    var ruleId: Int = 0
+    val sink: Writer = destinations(0)
     val rule = new StringBuilder()
+    val relation = new StringBuilder()
 
     // collect top-level: either related nodes or root
-    var mentions: ArrayBuffer[Vertex] = ArrayBuffer()
-
     for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       val x: Vertex = map("x")
       val y: Vertex = map("y")
       // LHS
-      if (!mentions.contains(x)) {
-        mentions += x
+      if (x != focusNode.get) {
         if (!rule.isEmpty) {
           rule ++= separator
         }
-        rule ++= nodeIsa(x, focusNode)
-        if (!rule.isEmpty) {
-          rule ++= separator
-        }
-        rule ++= nodeArgs(x)
+        rule ++= nodeIsa(x)
+        rule ++= nodeArgs(x, focusNode, separator)
+        rule ++= rcmodArgs(x, focusNode, separator)
       }
-      if (!mentions.contains(y)) {
-        mentions += y
+      if (y != focusNode.get) {
         if (!rule.isEmpty) {
           rule ++= separator
         }
-        rule ++= nodeIsa(y, focusNode)
+        rule ++= nodeIsa(y)
+        rule ++= nodeArgs(y, focusNode, separator)
+        rule ++= rcmodArgs(y, focusNode, separator)
+      }
+      if (x == focusNode.get || y == focusNode.get) {
+        // RHS
+        if (!relation.isEmpty) {
+          relation ++= separator
+        }
+        relation ++= nodeRel(x, map("r"), y)
+      } else {
+        // LHS
         if (!rule.isEmpty) {
           rule ++= separator
         }
-        rule ++= nodeArgs(y)
+        rule ++= nodeRel(x, map("r"), y)
       }
-      // relation
-      if (!rule.isEmpty) {
-        rule ++= separator
-      }
-      rule ++= questionRel(x, map("r"), y, focusNode)
     }
-      // RHS
-    rule ++= " -> Q="
-    rule ++= nodeIsa(focusNode.get, None)
-    rule ++= ".\n"
+    // relation
+    rule ++= " -> " + relation
+    // focus
+    rule ++= nodeIsa(focusNode.get, separator)
+    rule ++= nodeArgs(focusNode.get, None, separator)
+    rule ++= "."
 
-    val sink: Writer = destinations(0)
-    // rule id
-    var ruleId: Int = 0
     ruleId += 1
     sink.write(s"rule${ruleId}:: ")
     sink.write(rule.toString)
-
-    // collect verbs with args
-
-    // collect any non-arg tokens
-
-    // use focus as RHS
-    // replace focus with Q on LHS
-
-    // add any relation on LHS
-
-    /*
-    var ruleId: Int = 0
-    // match patterns
-    for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
-      val x: Vertex = map("x")
-      val y: Vertex = map("y")
-      val relation: String = nodeRel(x, map("r"), y)
-      // setup, relation -> focus
-      ruleId += 1
-      sink.write(relationRule(x, relation, y, ruleId))
-    }
-     */
+    sink.write('\n')
 
     inputGraph.shutdown()
   }
@@ -164,16 +146,16 @@ object QuestionRules extends TextProcessor {
   }
  */
 
-  def questionRel(x: Vertex, r: Vertex, y: Vertex, focus: Option[Vertex]): String = {
-    val xlabel: String = nodeLabel(x, focus)
+  def nodeRel(x: Vertex, r: Vertex, y: Vertex): String = {
+    val xlabel: String = nodeLabel(x)
     val rel: String = r.toStringLiteral
-    val ylabel: String = nodeLabel(y, focus)
+    val ylabel: String = nodeLabel(y)
     s"$rel($xlabel, $ylabel)"
   }
 
-  def nodeArgs(node: Vertex, prefix: String = ""): String = {
+  def nodeArgs(node: Vertex, focus: Option[Vertex], prefix: String = ""): String = {
     val uri: String = node.toUri
-    val label: String = nodeLabel(node, None)
+    val label: String = nodeLabel(node)
     val query: String = s"""
       SELECT ?pred ?arg WHERE {
         <$uri> ?rel ?arg .
@@ -183,29 +165,50 @@ object QuestionRules extends TextProcessor {
     val args = new StringBuilder()
     for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
       val pred = map("pred").toStringLiteral
-      val argString = nodeString(map("arg"))
-      if (args.isEmpty)
+      val arg: Vertex = map("arg")
+      val argLabel = nodeLabel(arg)
+      val argString = nodeString(arg)
+      if (args.isEmpty) {
         args ++= prefix
-      else
+      } else {
         args ++= separator
-      args.append(s"""$pred($label, "$argString")""")
+      }
+      args.append(s"$pred($label, $argLabel)")
+      if (focus.isEmpty || arg != focus.get) {
+        args ++= separator
+        args.append(s"""isa($argLabel, "$argString")""")
+      }
     }
     args.toString
   }
 
-  def nodeIsa(node: Vertex, focus: Option[Vertex], prefix: String = ""): String = {
-    if (Some(node) == focus) {
-      return ""
+  def rcmodArgs(node: Vertex, focus: Option[Vertex], prefix: String = ""): String = {
+    val uri: String = node.toUri
+    val label: String = nodeLabel(node)
+    val query: String = s"""
+      SELECT ?rcmod WHERE {
+        <$uri> dep:rcmod ?rcmod .
+      }"""
+    val args = new StringBuilder()
+    for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
+      val rcmod: Vertex = map("rcmod")
+      if (args.isEmpty) {
+        args ++= prefix
+      } else {
+        args ++= separator
+      }
+      args ++= nodeArgs(rcmod, Some(node))
     }
-    val label: String = nodeLabel(node, None)
+    args.toString
+  }
+
+  def nodeIsa(node: Vertex, prefix: String = ""): String = {
+    val label: String = nodeLabel(node)
     val string: String = nodeString(node)
     s"""${prefix}isa($label, "$string")"""
   }
 
-  def nodeLabel(node: Vertex, focus: Option[Vertex]): String = {
-    if (Some(node) == focus) {
-      return "Q"
-    }
+  def nodeLabel(node: Vertex): String = {
     val uri: String = node.toUri
     val id: String = uri.split("http://aristo.allenai.org/id#").last
     val query: String = s"""

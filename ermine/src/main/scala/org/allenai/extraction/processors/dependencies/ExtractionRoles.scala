@@ -6,6 +6,7 @@ import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
 
+import util.control.Breaks._
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Edge
@@ -63,7 +64,7 @@ object ExtractionRoles extends TextProcessor {
   }
 
   /** map input dependencies to output args */
-  def addArgs(node: Vertex) = {
+  def addArgs(node: Vertex): Unit = {
     // define input dependency to output role relations
     val roles: Seq[(String, String)] = Seq(
       ("nsubj", "pred:agent"),
@@ -75,15 +76,25 @@ object ExtractionRoles extends TextProcessor {
       addArg(node, dep, role)
     }
     addPreps(node)
+    addRelClause(node)
   }
 
   /** query for arg values and add to outputGraph */
   def addArg(node: Vertex, dep: String, role: String) = {
     val uri: String = node.toUri
+    // add filter to exclude that/which/etc as rcmod subject
+    // TODO: declare filters in dep-role table?
+    val filter: String = dep match {
+      case "nsubj" => s"""FILTER NOT EXISTS { ?rcmod dep:rcmod <$uri> . 
+                                              ?nsubj token:pos "WDT" . }"""
+      case _ => "" // no filter
+    }
     val query: String = s"""
       # find dep relation
       SELECT ?$dep WHERE {
         <$uri> dep:$dep ?$dep .
+        FILTER NOT EXISTS { <$uri> dep:cop ?cop . }
+        $filter
       }"""
     val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, query)
     for (map <- result) {
@@ -109,6 +120,36 @@ object ExtractionRoles extends TextProcessor {
       val prep: String = map("prep").toStringLiteral
       val obj: Vertex = map("obj")
       outputGraph.addEdge(null, node, obj, s"pred:$prep")
+    }
+  }
+
+  /** query for relative clauses add to outputGraph */
+  def addRelClause(node: Vertex) = {
+    val uri: String = node.toUri
+    val query: String = s"""
+      # find rcmod head
+      SELECT ?rcmod WHERE {
+        <$uri> dep:rcmod ?rcmod .
+      }"""
+    val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, query)
+    for (map <- result) {
+      val rcmod: Vertex = map("rcmod")
+      val rcmodUri: String = rcmod.toUri
+      addArgs(rcmod)
+      breakable {
+        // find first missing pred
+        for (role <- Seq("pred:agent", "pred:object", "pred:arg")) {
+          val predQuery: String = s"""
+          SELECT ?node WHERE {
+            <$rcmodUri> $role ?node .
+          }"""
+          val predResult: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(outputGraph, predQuery)
+          if (predResult.isEmpty) {
+            outputGraph.addEdge(rcmod, rcmod, node, role)
+            break
+          }
+        }
+      }
     }
   }
 
