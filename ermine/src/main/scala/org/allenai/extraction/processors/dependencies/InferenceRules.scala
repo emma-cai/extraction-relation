@@ -105,7 +105,6 @@ object InferenceRules extends TextProcessor {
 
   def nodeLabel(node: Vertex): String = {
     val uri: String = node.toUri
-    val id: String = uri.split("http://aristo.allenai.org/id#").last
     val query: String = s"""
       SELECT ?label WHERE {
         <$uri> rdfs:label ?label .
@@ -115,7 +114,7 @@ object InferenceRules extends TextProcessor {
       vertex <- result.get("label")
     } yield vertex.toStringLiteral
     labelOption match {
-      case Some(label) => s"E$id-$label"
+      case Some(label) => s"E${node.sentenceId}S${node.tokenId}-$label"
       case None => throw new ErmineException(s"Couldn't find rdfs:label for $uri")
     }
   }
