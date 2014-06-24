@@ -1,0 +1,87 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "animals" .
+id:1_1 token:lemma "animal" .
+id:1_1 token:pos "NNS" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 7 .
+
+id:1_2 token:text "get" .
+id:1_2 token:lemma "get" .
+id:1_2 token:pos "VB" .
+id:1_2 token:begin 8 .
+id:1_2 token:end 11 .
+
+id:1_3 token:text "energy" .
+id:1_3 token:lemma "energy" .
+id:1_3 token:pos "NN" .
+id:1_3 token:begin 12 .
+id:1_3 token:end 18 .
+
+id:1_4 token:text "for" .
+id:1_4 token:lemma "for" .
+id:1_4 token:pos "IN" .
+id:1_4 token:begin 19 .
+id:1_4 token:end 22 .
+
+id:1_5 token:text "growth" .
+id:1_5 token:lemma "growth" .
+id:1_5 token:pos "NN" .
+id:1_5 token:begin 23 .
+id:1_5 token:end 29 .
+
+id:1_6 token:text "and" .
+id:1_6 token:lemma "and" .
+id:1_6 token:pos "CC" .
+id:1_6 token:begin 30 .
+id:1_6 token:end 33 .
+
+id:1_7 token:text "repair" .
+id:1_7 token:lemma "repair" .
+id:1_7 token:pos "NN" .
+id:1_7 token:begin 34 .
+id:1_7 token:end 40 .
+
+id:1_8 token:text "from" .
+id:1_8 token:lemma "from" .
+id:1_8 token:pos "IN" .
+id:1_8 token:begin 41 .
+id:1_8 token:end 45 .
+
+id:1_9 token:text "soil" .
+id:1_9 token:lemma "soil" .
+id:1_9 token:pos "NN" .
+id:1_9 token:begin 46 .
+id:1_9 token:end 50 .
+
+id:1_10 token:text "." .
+id:1_10 token:lemma "." .
+id:1_10 token:pos "." .
+id:1_10 token:begin 50 .
+id:1_10 token:end 51 .
+
+id:1_0 basic:root id:1_2 .
+id:1_2 basic:nsubj id:1_1 .
+id:1_2 basic:dobj id:1_3 .
+id:1_2 basic:prep id:1_4 .
+id:1_4 basic:pobj id:1_5 .
+id:1_5 basic:cc id:1_6 .
+id:1_5 basic:conj id:1_7 .
+id:1_5 basic:prep id:1_8 .
+id:1_8 basic:pobj id:1_9 .
+
+id:1_0 dep:root id:1_2 .
+id:1_2 dep:nsubj id:1_1 .
+id:1_2 dep:dobj id:1_3 .
+id:1_2 dep:prep_for id:1_5 .
+id:1_2 dep:prep_for id:1_7 .
+id:1_5 dep:conj_and id:1_7 .
+id:1_5 dep:prep_from id:1_9 .
+

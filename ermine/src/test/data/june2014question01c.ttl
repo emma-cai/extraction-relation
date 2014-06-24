@@ -1,0 +1,65 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "erosion" .
+id:1_1 token:lemma "erosion" .
+id:1_1 token:pos "NN" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 7 .
+
+id:1_2 token:text "causes" .
+id:1_2 token:lemma "cause" .
+id:1_2 token:pos "VBZ" .
+id:1_2 token:begin 8 .
+id:1_2 token:end 14 .
+
+id:1_3 token:text "rocks" .
+id:1_3 token:lemma "rock" .
+id:1_3 token:pos "NNS" .
+id:1_3 token:begin 15 .
+id:1_3 token:end 20 .
+
+id:1_4 token:text "to" .
+id:1_4 token:lemma "to" .
+id:1_4 token:pos "TO" .
+id:1_4 token:begin 21 .
+id:1_4 token:end 23 .
+
+id:1_5 token:text "roll" .
+id:1_5 token:lemma "roll" .
+id:1_5 token:pos "VB" .
+id:1_5 token:begin 24 .
+id:1_5 token:end 28 .
+
+id:1_6 token:text "downhill" .
+id:1_6 token:lemma "downhill" .
+id:1_6 token:pos "RB" .
+id:1_6 token:begin 29 .
+id:1_6 token:end 37 .
+
+id:1_7 token:text "." .
+id:1_7 token:lemma "." .
+id:1_7 token:pos "." .
+id:1_7 token:begin 37 .
+id:1_7 token:end 38 .
+
+id:1_0 basic:root id:1_2 .
+id:1_2 basic:nsubj id:1_1 .
+id:1_5 basic:nsubj id:1_3 .
+id:1_5 basic:aux id:1_4 .
+id:1_2 basic:xcomp id:1_5 .
+id:1_5 basic:advmod id:1_6 .
+
+id:1_0 dep:root id:1_2 .
+id:1_2 dep:nsubj id:1_1 .
+id:1_5 dep:nsubj id:1_3 .
+id:1_5 dep:aux id:1_4 .
+id:1_2 dep:xcomp id:1_5 .
+id:1_5 dep:advmod id:1_6 .
+

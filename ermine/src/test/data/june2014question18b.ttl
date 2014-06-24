@@ -1,0 +1,81 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "camouflage" .
+id:1_1 token:lemma "camouflage" .
+id:1_1 token:pos "NN" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 10 .
+
+id:1_2 token:text "often" .
+id:1_2 token:lemma "often" .
+id:1_2 token:pos "RB" .
+id:1_2 token:begin 11 .
+id:1_2 token:end 16 .
+
+id:1_3 token:text "helps" .
+id:1_3 token:lemma "help" .
+id:1_3 token:pos "VBZ" .
+id:1_3 token:begin 17 .
+id:1_3 token:end 22 .
+
+id:1_4 token:text "an" .
+id:1_4 token:lemma "a" .
+id:1_4 token:pos "DT" .
+id:1_4 token:begin 23 .
+id:1_4 token:end 25 .
+
+id:1_5 token:text "animal" .
+id:1_5 token:lemma "animal" .
+id:1_5 token:pos "NN" .
+id:1_5 token:begin 26 .
+id:1_5 token:end 32 .
+
+id:1_6 token:text "attract" .
+id:1_6 token:lemma "attract" .
+id:1_6 token:pos "VB" .
+id:1_6 token:begin 33 .
+id:1_6 token:end 40 .
+
+id:1_7 token:text "a" .
+id:1_7 token:lemma "a" .
+id:1_7 token:pos "DT" .
+id:1_7 token:begin 41 .
+id:1_7 token:end 42 .
+
+id:1_8 token:text "mate" .
+id:1_8 token:lemma "mate" .
+id:1_8 token:pos "NN" .
+id:1_8 token:begin 43 .
+id:1_8 token:end 47 .
+
+id:1_9 token:text "." .
+id:1_9 token:lemma "." .
+id:1_9 token:pos "." .
+id:1_9 token:begin 47 .
+id:1_9 token:end 48 .
+
+id:1_0 basic:root id:1_3 .
+id:1_3 basic:nsubj id:1_1 .
+id:1_3 basic:advmod id:1_2 .
+id:1_5 basic:det id:1_4 .
+id:1_6 basic:nsubj id:1_5 .
+id:1_3 basic:ccomp id:1_6 .
+id:1_8 basic:det id:1_7 .
+id:1_6 basic:dobj id:1_8 .
+
+id:1_0 dep:root id:1_3 .
+id:1_3 dep:nsubj id:1_1 .
+id:1_3 dep:advmod id:1_2 .
+id:1_5 dep:det id:1_4 .
+id:1_6 dep:nsubj id:1_5 .
+id:1_3 dep:ccomp id:1_6 .
+id:1_8 dep:det id:1_7 .
+id:1_6 dep:dobj id:1_8 .
+

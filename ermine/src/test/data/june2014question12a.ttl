@@ -1,0 +1,136 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "mechanical" .
+id:1_1 token:lemma "mechanical" .
+id:1_1 token:pos "JJ" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 10 .
+
+id:1_2 token:text "energy" .
+id:1_2 token:lemma "energy" .
+id:1_2 token:pos "NN" .
+id:1_2 token:begin 11 .
+id:1_2 token:end 17 .
+
+id:1_3 token:text "is" .
+id:1_3 token:lemma "be" .
+id:1_3 token:pos "VBZ" .
+id:1_3 token:begin 18 .
+id:1_3 token:end 20 .
+
+id:1_4 token:text "being" .
+id:1_4 token:lemma "be" .
+id:1_4 token:pos "VBG" .
+id:1_4 token:begin 21 .
+id:1_4 token:end 26 .
+
+id:1_5 token:text "used" .
+id:1_5 token:lemma "use" .
+id:1_5 token:pos "VBN" .
+id:1_5 token:begin 27 .
+id:1_5 token:end 31 .
+
+id:1_6 token:text "when" .
+id:1_6 token:lemma "when" .
+id:1_6 token:pos "WRB" .
+id:1_6 token:begin 32 .
+id:1_6 token:end 36 .
+
+id:1_7 token:text "a" .
+id:1_7 token:lemma "a" .
+id:1_7 token:pos "DT" .
+id:1_7 token:begin 37 .
+id:1_7 token:end 38 .
+
+id:1_8 token:text "person" .
+id:1_8 token:lemma "person" .
+id:1_8 token:pos "NN" .
+id:1_8 token:begin 39 .
+id:1_8 token:end 45 .
+
+id:1_9 token:text "pushes" .
+id:1_9 token:lemma "push" .
+id:1_9 token:pos "VBZ" .
+id:1_9 token:begin 46 .
+id:1_9 token:end 52 .
+
+id:1_10 token:text "a" .
+id:1_10 token:lemma "a" .
+id:1_10 token:pos "DT" .
+id:1_10 token:begin 53 .
+id:1_10 token:end 54 .
+
+id:1_11 token:text "wooden" .
+id:1_11 token:lemma "wooden" .
+id:1_11 token:pos "JJ" .
+id:1_11 token:begin 55 .
+id:1_11 token:end 61 .
+
+id:1_12 token:text "block" .
+id:1_12 token:lemma "block" .
+id:1_12 token:pos "NN" .
+id:1_12 token:begin 62 .
+id:1_12 token:end 67 .
+
+id:1_13 token:text "across" .
+id:1_13 token:lemma "across" .
+id:1_13 token:pos "IN" .
+id:1_13 token:begin 68 .
+id:1_13 token:end 74 .
+
+id:1_14 token:text "the" .
+id:1_14 token:lemma "the" .
+id:1_14 token:pos "DT" .
+id:1_14 token:begin 75 .
+id:1_14 token:end 78 .
+
+id:1_15 token:text "floor" .
+id:1_15 token:lemma "floor" .
+id:1_15 token:pos "NN" .
+id:1_15 token:begin 79 .
+id:1_15 token:end 84 .
+
+id:1_16 token:text "." .
+id:1_16 token:lemma "." .
+id:1_16 token:pos "." .
+id:1_16 token:begin 84 .
+id:1_16 token:end 85 .
+
+id:1_0 basic:root id:1_5 .
+id:1_2 basic:amod id:1_1 .
+id:1_5 basic:nsubjpass id:1_2 .
+id:1_5 basic:aux id:1_3 .
+id:1_5 basic:auxpass id:1_4 .
+id:1_9 basic:advmod id:1_6 .
+id:1_8 basic:det id:1_7 .
+id:1_9 basic:nsubj id:1_8 .
+id:1_5 basic:advcl id:1_9 .
+id:1_12 basic:det id:1_10 .
+id:1_12 basic:amod id:1_11 .
+id:1_9 basic:dobj id:1_12 .
+id:1_9 basic:prep id:1_13 .
+id:1_15 basic:det id:1_14 .
+id:1_13 basic:pobj id:1_15 .
+
+id:1_0 dep:root id:1_5 .
+id:1_2 dep:amod id:1_1 .
+id:1_5 dep:nsubjpass id:1_2 .
+id:1_5 dep:aux id:1_3 .
+id:1_5 dep:auxpass id:1_4 .
+id:1_9 dep:advmod id:1_6 .
+id:1_8 dep:det id:1_7 .
+id:1_9 dep:nsubj id:1_8 .
+id:1_5 dep:advcl id:1_9 .
+id:1_12 dep:det id:1_10 .
+id:1_12 dep:amod id:1_11 .
+id:1_9 dep:dobj id:1_12 .
+id:1_15 dep:det id:1_14 .
+id:1_9 dep:prep_across id:1_15 .
+

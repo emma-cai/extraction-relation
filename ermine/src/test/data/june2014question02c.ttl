@@ -1,0 +1,96 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "eating" .
+id:1_1 token:lemma "eat" .
+id:1_1 token:pos "VBG" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 6 .
+
+id:1_2 token:text "candy" .
+id:1_2 token:lemma "candy" .
+id:1_2 token:pos "NN" .
+id:1_2 token:begin 7 .
+id:1_2 token:end 12 .
+
+id:1_3 token:text "is" .
+id:1_3 token:lemma "be" .
+id:1_3 token:pos "VBZ" .
+id:1_3 token:begin 13 .
+id:1_3 token:end 15 .
+
+id:1_4 token:text "an" .
+id:1_4 token:lemma "a" .
+id:1_4 token:pos "DT" .
+id:1_4 token:begin 16 .
+id:1_4 token:end 18 .
+
+id:1_5 token:text "example" .
+id:1_5 token:lemma "example" .
+id:1_5 token:pos "NN" .
+id:1_5 token:begin 19 .
+id:1_5 token:end 26 .
+
+id:1_6 token:text "of" .
+id:1_6 token:lemma "of" .
+id:1_6 token:pos "IN" .
+id:1_6 token:begin 27 .
+id:1_6 token:end 29 .
+
+id:1_7 token:text "a" .
+id:1_7 token:lemma "a" .
+id:1_7 token:pos "DT" .
+id:1_7 token:begin 30 .
+id:1_7 token:end 31 .
+
+id:1_8 token:text "good" .
+id:1_8 token:lemma "good" .
+id:1_8 token:pos "JJ" .
+id:1_8 token:begin 32 .
+id:1_8 token:end 36 .
+
+id:1_9 token:text "health" .
+id:1_9 token:lemma "health" .
+id:1_9 token:pos "NN" .
+id:1_9 token:begin 37 .
+id:1_9 token:end 43 .
+
+id:1_10 token:text "habit" .
+id:1_10 token:lemma "habit" .
+id:1_10 token:pos "NN" .
+id:1_10 token:begin 44 .
+id:1_10 token:end 49 .
+
+id:1_11 token:text "." .
+id:1_11 token:lemma "." .
+id:1_11 token:pos "." .
+id:1_11 token:begin 49 .
+id:1_11 token:end 50 .
+
+id:1_0 basic:root id:1_3 .
+id:1_3 basic:csubj id:1_1 .
+id:1_1 basic:dobj id:1_2 .
+id:1_5 basic:det id:1_4 .
+id:1_3 basic:tmod id:1_5 .
+id:1_5 basic:prep id:1_6 .
+id:1_10 basic:det id:1_7 .
+id:1_10 basic:amod id:1_8 .
+id:1_10 basic:nn id:1_9 .
+id:1_6 basic:pobj id:1_10 .
+
+id:1_0 dep:root id:1_3 .
+id:1_3 dep:csubj id:1_1 .
+id:1_1 dep:dobj id:1_2 .
+id:1_5 dep:det id:1_4 .
+id:1_3 dep:tmod id:1_5 .
+id:1_10 dep:det id:1_7 .
+id:1_10 dep:amod id:1_8 .
+id:1_10 dep:nn id:1_9 .
+id:1_5 dep:prep_of id:1_10 .
+

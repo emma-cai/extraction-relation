@@ -1,0 +1,284 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "A" .
+id:1_1 token:lemma "a" .
+id:1_1 token:pos "DT" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 1 .
+
+id:1_2 token:text "dog" .
+id:1_2 token:lemma "dog" .
+id:1_2 token:pos "NN" .
+id:1_2 token:begin 2 .
+id:1_2 token:end 5 .
+
+id:1_3 token:text "opens" .
+id:1_3 token:lemma "open" .
+id:1_3 token:pos "VBZ" .
+id:1_3 token:begin 6 .
+id:1_3 token:end 11 .
+
+id:1_4 token:text "its" .
+id:1_4 token:lemma "its" .
+id:1_4 token:pos "PRP$" .
+id:1_4 token:begin 12 .
+id:1_4 token:end 15 .
+
+id:1_5 token:text "mouth" .
+id:1_5 token:lemma "mouth" .
+id:1_5 token:pos "NN" .
+id:1_5 token:begin 16 .
+id:1_5 token:end 21 .
+
+id:1_6 token:text "and" .
+id:1_6 token:lemma "and" .
+id:1_6 token:pos "CC" .
+id:1_6 token:begin 22 .
+id:1_6 token:end 25 .
+
+id:1_7 token:text "lets" .
+id:1_7 token:lemma "let" .
+id:1_7 token:pos "VBZ" .
+id:1_7 token:begin 26 .
+id:1_7 token:end 30 .
+
+id:1_8 token:text "its" .
+id:1_8 token:lemma "its" .
+id:1_8 token:pos "PRP$" .
+id:1_8 token:begin 31 .
+id:1_8 token:end 34 .
+
+id:1_9 token:text "tongue" .
+id:1_9 token:lemma "tongue" .
+id:1_9 token:pos "NN" .
+id:1_9 token:begin 35 .
+id:1_9 token:end 41 .
+
+id:1_10 token:text "hang" .
+id:1_10 token:lemma "hang" .
+id:1_10 token:pos "VB" .
+id:1_10 token:begin 42 .
+id:1_10 token:end 46 .
+
+id:1_11 token:text "out" .
+id:1_11 token:lemma "out" .
+id:1_11 token:pos "RP" .
+id:1_11 token:begin 47 .
+id:1_11 token:end 50 .
+
+id:1_12 token:text "." .
+id:1_12 token:lemma "." .
+id:1_12 token:pos "." .
+id:1_12 token:begin 50 .
+id:1_12 token:end 51 .
+
+id:1_0 basic:root id:1_3 .
+id:1_2 basic:det id:1_1 .
+id:1_3 basic:nsubj id:1_2 .
+id:1_5 basic:poss id:1_4 .
+id:1_3 basic:dobj id:1_5 .
+id:1_3 basic:cc id:1_6 .
+id:1_3 basic:conj id:1_7 .
+id:1_9 basic:poss id:1_8 .
+id:1_10 basic:nsubj id:1_9 .
+id:1_7 basic:ccomp id:1_10 .
+id:1_10 basic:prt id:1_11 .
+
+id:1_0 dep:root id:1_3 .
+id:1_2 dep:det id:1_1 .
+id:1_3 dep:nsubj id:1_2 .
+id:1_7 dep:nsubj id:1_2 .
+id:1_5 dep:poss id:1_4 .
+id:1_3 dep:dobj id:1_5 .
+id:1_3 dep:conj_and id:1_7 .
+id:1_9 dep:poss id:1_8 .
+id:1_10 dep:nsubj id:1_9 .
+id:1_7 dep:ccomp id:1_10 .
+id:1_10 dep:prt id:1_11 .
+
+id:2_1 token:text "A" .
+id:2_1 token:lemma "a" .
+id:2_1 token:pos "DT" .
+id:2_1 token:begin 52 .
+id:2_1 token:end 53 .
+
+id:2_2 token:text "human" .
+id:2_2 token:lemma "human" .
+id:2_2 token:pos "JJ" .
+id:2_2 token:begin 54 .
+id:2_2 token:end 59 .
+
+id:2_3 token:text "'s" .
+id:2_3 token:lemma "'s" .
+id:2_3 token:pos "POS" .
+id:2_3 token:begin 59 .
+id:2_3 token:end 61 .
+
+id:2_4 token:text "body" .
+id:2_4 token:lemma "body" .
+id:2_4 token:pos "NN" .
+id:2_4 token:begin 62 .
+id:2_4 token:end 66 .
+
+id:2_5 token:text "produces" .
+id:2_5 token:lemma "produce" .
+id:2_5 token:pos "VBZ" .
+id:2_5 token:begin 67 .
+id:2_5 token:end 75 .
+
+id:2_6 token:text "sweat" .
+id:2_6 token:lemma "sweat" .
+id:2_6 token:pos "NN" .
+id:2_6 token:begin 76 .
+id:2_6 token:end 81 .
+
+id:2_7 token:text "." .
+id:2_7 token:lemma "." .
+id:2_7 token:pos "." .
+id:2_7 token:begin 81 .
+id:2_7 token:end 82 .
+
+id:2_0 basic:root id:2_5 .
+id:2_2 basic:det id:2_1 .
+id:2_4 basic:poss id:2_2 .
+id:2_2 basic:possessive id:2_3 .
+id:2_5 basic:nsubj id:2_4 .
+id:2_5 basic:tmod id:2_6 .
+
+id:2_0 dep:root id:2_5 .
+id:2_2 dep:det id:2_1 .
+id:2_4 dep:poss id:2_2 .
+id:2_5 dep:nsubj id:2_4 .
+id:2_5 dep:tmod id:2_6 .
+
+id:3_1 token:text "these" .
+id:3_1 token:lemma "these" .
+id:3_1 token:pos "DT" .
+id:3_1 token:begin 83 .
+id:3_1 token:end 88 .
+
+id:3_2 token:text "are" .
+id:3_2 token:lemma "be" .
+id:3_2 token:pos "VBP" .
+id:3_2 token:begin 89 .
+id:3_2 token:end 92 .
+
+id:3_3 token:text "two" .
+id:3_3 token:lemma "two" .
+id:3_3 token:pos "CD" .
+id:3_3 token:begin 93 .
+id:3_3 token:end 96 .
+id:3_3 ne:type "NUMBER" .
+id:3_3 ne:norm "2.0" .
+
+id:3_4 token:text "ways" .
+id:3_4 token:lemma "way" .
+id:3_4 token:pos "NNS" .
+id:3_4 token:begin 97 .
+id:3_4 token:end 101 .
+
+id:3_5 token:text "that" .
+id:3_5 token:lemma "that" .
+id:3_5 token:pos "WDT" .
+id:3_5 token:begin 102 .
+id:3_5 token:end 106 .
+
+id:3_6 token:text "organisms" .
+id:3_6 token:lemma "organism" .
+id:3_6 token:pos "NNS" .
+id:3_6 token:begin 107 .
+id:3_6 token:end 116 .
+
+id:3_7 token:text "may" .
+id:3_7 token:lemma "may" .
+id:3_7 token:pos "MD" .
+id:3_7 token:begin 117 .
+id:3_7 token:end 120 .
+
+id:3_8 token:text "adjust" .
+id:3_8 token:lemma "adjust" .
+id:3_8 token:pos "VB" .
+id:3_8 token:begin 121 .
+id:3_8 token:end 127 .
+
+id:3_9 token:text "to" .
+id:3_9 token:lemma "to" .
+id:3_9 token:pos "TO" .
+id:3_9 token:begin 128 .
+id:3_9 token:end 130 .
+
+id:3_10 token:text "a" .
+id:3_10 token:lemma "a" .
+id:3_10 token:pos "DT" .
+id:3_10 token:begin 131 .
+id:3_10 token:end 132 .
+
+id:3_11 token:text "shortage" .
+id:3_11 token:lemma "shortage" .
+id:3_11 token:pos "NN" .
+id:3_11 token:begin 133 .
+id:3_11 token:end 141 .
+
+id:3_12 token:text "of" .
+id:3_12 token:lemma "of" .
+id:3_12 token:pos "IN" .
+id:3_12 token:begin 142 .
+id:3_12 token:end 144 .
+
+id:3_13 token:text "drinking" .
+id:3_13 token:lemma "drinking" .
+id:3_13 token:pos "NN" .
+id:3_13 token:begin 145 .
+id:3_13 token:end 153 .
+
+id:3_14 token:text "water" .
+id:3_14 token:lemma "water" .
+id:3_14 token:pos "NN" .
+id:3_14 token:begin 154 .
+id:3_14 token:end 159 .
+
+id:3_15 token:text "." .
+id:3_15 token:lemma "." .
+id:3_15 token:pos "." .
+id:3_15 token:begin 159 .
+id:3_15 token:end 160 .
+
+id:3_0 basic:root id:3_4 .
+id:3_4 basic:nsubj id:3_1 .
+id:3_4 basic:cop id:3_2 .
+id:3_4 basic:num id:3_3 .
+id:3_8 basic:dobj id:3_5 .
+id:3_8 basic:nsubj id:3_6 .
+id:3_8 basic:aux id:3_7 .
+id:3_4 basic:rcmod id:3_8 .
+id:3_8 basic:prep id:3_9 .
+id:3_11 basic:det id:3_10 .
+id:3_9 basic:pobj id:3_11 .
+id:3_11 basic:prep id:3_12 .
+id:3_14 basic:nn id:3_13 .
+id:3_12 basic:pobj id:3_14 .
+
+id:3_0 dep:root id:3_4 .
+id:3_4 dep:nsubj id:3_1 .
+id:3_4 dep:cop id:3_2 .
+id:3_4 dep:num id:3_3 .
+id:3_8 dep:dobj id:3_5 .
+id:3_8 dep:nsubj id:3_6 .
+id:3_8 dep:aux id:3_7 .
+id:3_4 dep:rcmod id:3_8 .
+id:3_11 dep:det id:3_10 .
+id:3_8 dep:prep_to id:3_11 .
+id:3_14 dep:nn id:3_13 .
+id:3_11 dep:prep_of id:3_14 .
+
+id:1_5 coref:ref id:1_5 .
+id:1_5 coref:ref id:1_8 .
+id:3_4 coref:ref id:3_4 .
+id:3_4 coref:ref id:3_1 .

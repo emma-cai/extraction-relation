@@ -1,0 +1,150 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+id:1_1 token:text "a" .
+id:1_1 token:lemma "a" .
+id:1_1 token:pos "DT" .
+id:1_1 token:begin 0 .
+id:1_1 token:end 1 .
+
+id:1_2 token:text "student" .
+id:1_2 token:lemma "student" .
+id:1_2 token:pos "NN" .
+id:1_2 token:begin 2 .
+id:1_2 token:end 9 .
+
+id:1_3 token:text "should" .
+id:1_3 token:lemma "should" .
+id:1_3 token:pos "MD" .
+id:1_3 token:begin 10 .
+id:1_3 token:end 16 .
+
+id:1_4 token:text "use" .
+id:1_4 token:lemma "use" .
+id:1_4 token:pos "VB" .
+id:1_4 token:begin 17 .
+id:1_4 token:end 20 .
+
+id:1_5 token:text "a" .
+id:1_5 token:lemma "a" .
+id:1_5 token:pos "DT" .
+id:1_5 token:begin 21 .
+id:1_5 token:end 22 .
+
+id:1_6 token:text "graduated" .
+id:1_6 token:lemma "graduate" .
+id:1_6 token:pos "VBN" .
+id:1_6 token:begin 23 .
+id:1_6 token:end 32 .
+
+id:1_7 token:text "cylinder" .
+id:1_7 token:lemma "cylinder" .
+id:1_7 token:pos "NN" .
+id:1_7 token:begin 33 .
+id:1_7 token:end 41 .
+
+id:1_8 token:text "to" .
+id:1_8 token:lemma "to" .
+id:1_8 token:pos "TO" .
+id:1_8 token:begin 42 .
+id:1_8 token:end 44 .
+
+id:1_9 token:text "measure" .
+id:1_9 token:lemma "measure" .
+id:1_9 token:pos "VB" .
+id:1_9 token:begin 45 .
+id:1_9 token:end 52 .
+
+id:1_10 token:text "exactly" .
+id:1_10 token:lemma "exactly" .
+id:1_10 token:pos "RB" .
+id:1_10 token:begin 53 .
+id:1_10 token:end 60 .
+
+id:1_11 token:text "10" .
+id:1_11 token:lemma "10" .
+id:1_11 token:pos "CD" .
+id:1_11 token:begin 61 .
+id:1_11 token:end 63 .
+id:1_11 ne:type "NUMBER" .
+id:1_11 ne:norm "10.0" .
+
+id:1_12 token:text "milliliters" .
+id:1_12 token:lemma "milliliter" .
+id:1_12 token:pos "NNS" .
+id:1_12 token:begin 64 .
+id:1_12 token:end 75 .
+
+id:1_13 token:text "-LRB-" .
+id:1_13 token:lemma "-lrb-" .
+id:1_13 token:pos "-LRB-" .
+id:1_13 token:begin 76 .
+id:1_13 token:end 77 .
+
+id:1_14 token:text "mL" .
+id:1_14 token:lemma "ml" .
+id:1_14 token:pos "NN" .
+id:1_14 token:begin 77 .
+id:1_14 token:end 79 .
+
+id:1_15 token:text "-RRB-" .
+id:1_15 token:lemma "-rrb-" .
+id:1_15 token:pos "-RRB-" .
+id:1_15 token:begin 79 .
+id:1_15 token:end 80 .
+
+id:1_16 token:text "of" .
+id:1_16 token:lemma "of" .
+id:1_16 token:pos "IN" .
+id:1_16 token:begin 81 .
+id:1_16 token:end 83 .
+
+id:1_17 token:text "water" .
+id:1_17 token:lemma "water" .
+id:1_17 token:pos "NN" .
+id:1_17 token:begin 84 .
+id:1_17 token:end 89 .
+
+id:1_18 token:text "." .
+id:1_18 token:lemma "." .
+id:1_18 token:pos "." .
+id:1_18 token:begin 89 .
+id:1_18 token:end 90 .
+
+id:1_0 basic:root id:1_4 .
+id:1_2 basic:det id:1_1 .
+id:1_4 basic:nsubj id:1_2 .
+id:1_4 basic:aux id:1_3 .
+id:1_7 basic:det id:1_5 .
+id:1_7 basic:amod id:1_6 .
+id:1_4 basic:dobj id:1_7 .
+id:1_9 basic:aux id:1_8 .
+id:1_4 basic:xcomp id:1_9 .
+id:1_12 basic:advmod id:1_10 .
+id:1_12 basic:num id:1_11 .
+id:1_9 basic:dobj id:1_12 .
+id:1_12 basic:appos id:1_14 .
+id:1_12 basic:prep id:1_16 .
+id:1_16 basic:pobj id:1_17 .
+
+id:1_0 dep:root id:1_4 .
+id:1_2 dep:det id:1_1 .
+id:1_4 dep:nsubj id:1_2 .
+id:1_4 dep:aux id:1_3 .
+id:1_7 dep:det id:1_5 .
+id:1_7 dep:amod id:1_6 .
+id:1_4 dep:dobj id:1_7 .
+id:1_9 dep:aux id:1_8 .
+id:1_4 dep:xcomp id:1_9 .
+id:1_12 dep:advmod id:1_10 .
+id:1_12 dep:num id:1_11 .
+id:1_9 dep:dobj id:1_12 .
+id:1_12 dep:appos id:1_14 .
+id:1_12 dep:prep_of id:1_17 .
+
