@@ -24,6 +24,11 @@ object CorpusSplitter extends Processor {
     destinations: Seq[Processor.Output]): Unit = {
 
     val text = sources(0).getSources()(0)
+    val prefix = if (text.descr != "") {
+      s"${text.descr}-"
+    } else {
+      ""
+    }
     val destinationDir = destinations(0).getOutputFile
 
     require(destinationDir.isDirectory, "Non-directory given to CorpusSplitter")
@@ -40,8 +45,7 @@ object CorpusSplitter extends Processor {
               currOutput.flush()
               currOutput.close()
             }
-            // TODO(jkinkead): Make this output name configurable.
-            currOutput = new FileWriter(new File(destinationDir, f"${sectionId}%02d.txt"))
+            currOutput = new FileWriter(new File(destinationDir, f"${prefix}${sectionId}%02d.txt"))
             currSectionId = sectionId
           }
           currOutput.write(sentence)
