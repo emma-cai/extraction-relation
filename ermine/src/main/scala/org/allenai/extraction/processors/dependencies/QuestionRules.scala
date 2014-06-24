@@ -30,6 +30,14 @@ object QuestionRules extends TextProcessor {
 
   val separator = ", "
 
+  def separator(string: StringBuilder): String = {
+    if (string.nonEmpty) {
+      separator
+    } else {
+      ""
+    }
+  }
+
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
     DependencyGraph.fromTurtle(inputGraph, source)
@@ -71,12 +79,12 @@ object QuestionRules extends TextProcessor {
       // LHS
       if (!mentions.contains(x)) {
         rule ++= separator(rule)
-        rule ++= nodeString(x, mentions.toSet, separator)
+        rule ++= nodeRule(x, mentions.toSet, separator)
         mentions += x
       }
       if (!mentions.contains(y)) {
         rule ++= separator(rule)
-        rule ++= nodeString(y, mentions.toSet, separator)
+        rule ++= nodeRule(y, mentions.toSet, separator)
         mentions += y
       }
       if (x == focusNode.get || y == focusNode.get) {
@@ -90,9 +98,11 @@ object QuestionRules extends TextProcessor {
       }
     }
     // relation
-    rule ++= " -> " + relation + separator
+    rule ++= " -> "
+    rule ++= relation
     // focus
-    rule ++= nodeString(focusNode.get, Set(), separator)
+    rule ++= separator
+    rule ++= nodeRule(focusNode.get, Set(), separator)
 
     ruleId += 1
     sink.write(s"rule${ruleId}:: ")
@@ -102,47 +112,6 @@ object QuestionRules extends TextProcessor {
     inputGraph.shutdown()
   }
 
-  def separator(string: StringBuilder): String = {
-    if (string.nonEmpty) {
-      separator
-    } else {
-      ""
-    }
-  }
-
-  def nodeParent(node: Vertex): Option[Vertex] = {
-    val uri = node.toUri
-    val nodeQuery =
-      s"""SELECT ?parent WHERE {
-        ?x ?rel <$uri> .
-        FILTER(STRSTARTS(str(?rel), "http://nlp.stanford.edu/basic/")) .
-      }"""
-    val results: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, nodeQuery)
-    results match {
-      case Nil => None
-      case head :: _ => Some(head("parent"))
-    }
-  }
-
-  /*
-  def relationRule(left: Vertex, relation: String, right: Vertex, ruleId: Int): String = {
-    val rule = new StringBuilder()
-    // rule id
-    rule ++= s"rule${ruleId}:: "
-    // LHS
-    rule ++= nodeIsa(left)
-    rule ++= nodeArgs(left, separator)
-    // relation
-    rule ++= " -> " + relation
-    // RHS
-    rule ++= nodeIsa(right, separator)
-    rule ++= nodeArgs(right, separator)
-
-    rule ++= ".\n"
-    rule.toString
-  }
- */
-
   def nodeRel(x: Vertex, r: Vertex, y: Vertex): String = {
     val xlabel: String = nodeLabel(x)
     val rel: String = r.toStringLiteral
@@ -150,7 +119,7 @@ object QuestionRules extends TextProcessor {
     s"$rel($xlabel, $ylabel)"
   }
 
-  def nodeString(node: Vertex, skip: Set[Vertex], prefix: String = ""): String = {
+  def nodeRule(node: Vertex, skip: Set[Vertex], prefix: String = ""): String = {
     val string = new StringBuilder()
     // node plus any args
     string ++= nodeIsa(node)
@@ -236,7 +205,7 @@ object QuestionRules extends TextProcessor {
     result.get("string").map(_.toStringLiteral).getOrElse("")
   }
 
-  /** find longest sequence of tokens */
+  /** find longest sequence of contiguous tokens */
   private def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
     // sort by sentence and token position
     val sortedTokens: Array[Vertex] = tokens.sortBy(t => (t.sentenceId, t.tokenId)).toArray
@@ -261,8 +230,8 @@ object QuestionRules extends TextProcessor {
     sortedTokens.slice(maxStart, maxStart + maxLength)
   }
 
-  private def parentNode(tokens: Array[Vertex]): Option[Vertex] = {
-    // walk up the tree to find the lowest node covering all focus tokens
+  /** walk up the tree to find the lowest node covering all focus tokens */
+  def parentNode(tokens: Array[Vertex]): Option[Vertex] = {
     var top: Option[Vertex] = None
     var parent: Option[Vertex] = Some(tokens.last)
     while (parent.isDefined) {
@@ -275,6 +244,21 @@ object QuestionRules extends TextProcessor {
       }
     }
     top
+  }
+
+  /** query basic dependency tree for immediate parent */
+  def nodeParent(node: Vertex): Option[Vertex] = {
+    val uri = node.toUri
+    val nodeQuery =
+      s"""SELECT ?parent WHERE {
+        ?x ?rel <$uri> .
+        FILTER(STRSTARTS(str(?rel), "http://nlp.stanford.edu/basic/")) .
+      }"""
+    val results: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, nodeQuery)
+    results match {
+      case Nil => None
+      case head :: _ => Some(head("parent"))
+    }
   }
 
 }
