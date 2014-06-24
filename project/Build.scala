@@ -23,7 +23,7 @@ object ExtractionBuild extends Build {
   }
 
   val inheritedSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
-    Publish.settings ++ TravisPublisher.settings ++ Deploy.settings ++ VersionInjector.settings
+    Publish.settings ++ TravisPublisher.settings ++ VersionInjector.settings
 
   val buildSettings = inheritedSettings ++ Seq(
     organization := "org.allenai.extraction",
@@ -51,13 +51,10 @@ object ExtractionBuild extends Build {
     settings = buildSettings
   ).dependsOn(api)
 
-  // We need to include the main class setting at this level in order for the universal packager to
-  // generate a start script for us.
-  val ermineMainClass = mainClass in Compile := Some("org.allenai.extraction.manager.Ermine")
   lazy val ermine = Project(
     id = "ermine",
     base = file("ermine"),
-    settings = buildSettings :+ ermineMainClass
+    settings = buildSettings
   ).dependsOn(api)
 
   lazy val service = Project(

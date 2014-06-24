@@ -229,7 +229,7 @@ object QuestionRules extends TextProcessor {
     val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
     result.get("string").map(_.toStringLiteral).getOrElse("")
   }
-  
+
   /** find longest sequence of tokens */
   private def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
     // sort by sentence and token position
@@ -240,8 +240,8 @@ object QuestionRules extends TextProcessor {
     var currentStart: Int = 0
     var currentLength: Int = 1
     for (i <- 0 to sortedTokens.length - 2) {
-      if (sortedTokens(i).sentenceId == sortedTokens(i+1).sentenceId
-        && sortedTokens(i).tokenId + 1 == sortedTokens(i+1).tokenId) {
+      if (sortedTokens(i).sentenceId == sortedTokens(i + 1).sentenceId
+        && sortedTokens(i).tokenId + 1 == sortedTokens(i + 1).tokenId) {
         currentLength += 1
       } else {
         currentStart = i + 1
@@ -254,7 +254,7 @@ object QuestionRules extends TextProcessor {
     }
     sortedTokens.slice(maxStart, maxStart + maxLength)
   }
-  
+
   private def parentNode(tokens: Array[Vertex]): Option[Vertex] = {
     // walk up the tree to find the lowest node covering all focus tokens
     var top: Option[Vertex] = None
@@ -270,5 +270,5 @@ object QuestionRules extends TextProcessor {
     }
     top
   }
-  
+
 }

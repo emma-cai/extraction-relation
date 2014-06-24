@@ -8,15 +8,15 @@ Help := OpenRegex {
   <lemma=/(help|aid|allow|assist|enable)/>
 }
 
-EffectRel := TypedOpenRegex {
+consume EffectRel := TypedOpenRegex {
 // in order for
 (?:<lemma="in"> <string="order"> <string=/for|that/> )
 // which helps with
 | (?: (?:<string=",">? <string=/and|that|which|to/>)? @Help <string=/with|in/> )
 // which helps
-| (?: <string=",">? <string=/and|that|which|to/> @Help <string=/with|in/>? )
+| (?: <string=",">? <string=/and|that|which|to/>? @Help <string=/with|in/>? )
 // which results in
-| (?:<string="results"> <string="in"> )
+| (?: <string=",">? <string=/and|that|which|to/>?<string="results"> <string="in"> )
 // is the result of
 | (?:@Be <pos="DT" | pos="CD">? <string="result"> <string="of"> )
 // so that
@@ -30,36 +30,36 @@ EffectRel := TypedOpenRegex {
 // by which
 | (?: <string="by"> <string="which"> )
 }
-EffectRelTo := TypedOpenRegex {
+consume EffectRelTo := TypedOpenRegex {
 // in order to
 (?:<lemma="in"> <string="order"> <string="to"> )
 // which helps to
 | (?: (?:<string=",">? <string=/and|that|which|to/>)? @Help <string="to"> )
 // may be one way to
-| (?:@Modal? @Be <pos="DT" | pos="CD">? <string=/way(s)?/> <string="to"> )
+| (?:@Modal? @Be? <pos="DT" | pos="CD">? <string=/way(s)?/> <string="to"> )
 }
 
-CauseRel := TypedOpenRegex {
+consume CauseRel := TypedOpenRegex {
 // may be because of
 (?:(?:@Modal? @Be)? <lemma="because"> <string="of">? )
 // may be caused by
-| (?:@Modal? @Be <string="caused"> <string="by"> )
+| (?:@Modal? @Be? <string="caused"> <string="by"> )
 // causes or may cause
 | (?:@Modal? <lemma="cause"> )
 // may be due to
 | (?:@Modal? @Be? <lemma="due"> <string="to"> )
 }
 
-FunctionRel := TypedOpenRegex {
+consume FunctionRel := TypedOpenRegex {
 // which may be responsible for
-(?:@Modal? @Be <string=/used|responsible/> <string="for"> )
+(?:@Modal? @Be? <string=/used|responsible/> <string="for"> )
 }
-FunctionRelTo := TypedOpenRegex {
+consume FunctionRelTo := TypedOpenRegex {
 // which may be used to
-(?:@Modal? @Be <string="used"> <string="to"> )
+(?:@Modal? @Be? <string="used"> <string="to"> )
 }
 
-ExampleRel := TypedOpenRegex {
+consume ExampleRel := TypedOpenRegex {
 // which may include
 (?:@Modal? <lemma="include"> )
 // such as
@@ -70,24 +70,24 @@ ExampleRel := TypedOpenRegex {
 | (?:<string="is"> <string=/a(n)?/> )
 }
 
-RequiredRel := TypedOpenRegex {
+consume RequiredRel := TypedOpenRegex {
 // which may be necessary for
 (?:@Modal? @Be <string=/necessary|needed|required/> <string="for"> )
 }
-RequiredRelTo := TypedOpenRegex {
+consume RequiredRelTo := TypedOpenRegex {
 // which may be necessary to
 (?:@Modal? @Be <string=/necessary|needed|required/> <string="to"> )
 }
 
 
-consume Rel := TypedOpenRegex {
-  (?:@EffectRel | @CauseRel )
-}
+//consume Rel := TypedOpenRegex {
+//  (?:@EffectRel | @CauseRel )
+//}
 
-consume RelTo := TypedOpenRegex {
-  (?:@EffectRelTo | @FunctionRelTo | @RequiredRelTo)
-}
+//consume RelTo := TypedOpenRegex {
+//  (?:@EffectRelTo | @FunctionRelTo | @RequiredRelTo)
+//}
 
-consume RelFor := TypedOpenRegex {
-  (?:@FunctionRel | @RequiredRel)
-}
+//consume RelFor := TypedOpenRegex {
+//  (?:@FunctionRel | @RequiredRel)
+//}

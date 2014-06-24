@@ -70,7 +70,7 @@
           </div>
           <h3>{{ sentence.text }}</h3>
            <accordion close-others="never">
-             <accordion-group ng-repeat="extractor in sentence.extractors"  heading="{{ extractor.name }} : {{ response.extractors[extractor.name] }}" is-open="{{ $first }}">
+             <accordion-group ng-repeat="extractor in sentence.extractors"  heading="{{ extractor.name }} : {{ response.extractors[extractor.name] }}" is-open="{{ $first }}" class="pointer">
                  <dl>
                    <ul ng-repeat="extraction in extractor.extractions">
                      {{ extraction }}

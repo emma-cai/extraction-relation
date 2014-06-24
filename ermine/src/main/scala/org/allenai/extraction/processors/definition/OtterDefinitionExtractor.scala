@@ -71,7 +71,7 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
         val extractionOp = OtterExtraction(
                              preprocessedDefinitionAlts.definitionCorpusName,
                              preprocessedDefinitionAlts.rawDefinitionId,
-                             preprocessedDefinitionAlts.rawDefinitionLine,
+                             preprocessedDefinitionAlts.rawDefinition,
                              preprocessedDefinitionAlts.definedTerm,
                              preprocessedDefinitionAlts.wordClass,
                              otterExtractionsForDefinitionAlternates)

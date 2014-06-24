@@ -1,0 +1,4 @@
+% "gravity"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
+% "friction"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
+% "erosion"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
+% "magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
