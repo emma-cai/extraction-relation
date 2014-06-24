@@ -7,10 +7,10 @@ description := "Http service for Ermine"
 
 mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer")
 
-Deploy.settings
-
 // SBT native packager configs.
 packageArchetype.java_application
+
+Deploy.settings
 
 libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ Seq(
   allenaiCommon,
