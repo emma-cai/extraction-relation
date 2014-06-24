@@ -26,6 +26,9 @@ object DefinitionCleanupUtility {
     val defDoubleQuotedWordPattern = """(\W|^)\"([^\"]+)\"(\W|$)""".r
     val defParenDQuotesStripped = defDoubleQuotedWordPattern replaceAllIn (defParenSQuotesStripped, m => m.group(1) + m.group(2) + m.group(3))
 
-    defParenDQuotesStripped
+    // Remove empty quoted strings if any
+    val defParenEmptyQuotedStringsStripped = defParenDQuotesStripped.replaceAll("''", "").replaceAll("\"\"", "")
+
+    defParenEmptyQuotedStringsStripped
   }
 }
