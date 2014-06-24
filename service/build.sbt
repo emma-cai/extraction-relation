@@ -9,9 +9,6 @@ mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer
 
 Deploy.settings
 
-// SBT native packager configs.
-packageArchetype.java_application
-
 libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ Seq(
   allenaiCommon,
   allenaiWebapp,

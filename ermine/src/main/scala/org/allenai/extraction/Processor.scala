@@ -6,6 +6,22 @@ import java.io.{ File, FileWriter, Writer }
 
 /** A processor that converts data from one format into another. */
 abstract class Processor {
+  /** The name of this processor, as it should appear in pipeline configs. The default name is the
+    * class name, cleaned up for objects. Not guaranteed to look nice for inner classes, case
+    * classes, or other unusual constructs.
+    */
+  def name: String = {
+    val className = this.getClass.getSimpleName
+    // Scala objects use a trailing $ for the class name.
+    if (className.endsWith("$")) {
+      className.substring(0, className.length - 1)
+    } else {
+      className
+    }
+  }
+
+  /** @return the mapping of name to processor for this processor. */
+  def configMapping: (String, Processor) = (name -> this)
 
   /** @return the number of sources this processor expects */
   def numInputs: Int

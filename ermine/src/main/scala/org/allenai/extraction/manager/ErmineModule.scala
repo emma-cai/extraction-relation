@@ -29,29 +29,36 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
 
   // Build up the supported processor map.
   bind[Map[String, Processor]] toModuleSingle { implicit module =>
+    val processors: mutable.Map[String, Processor] = mutable.Map.empty
+    def addProcessor(processor: Processor) = processors += processor.configMapping
+
     // Initialize with processors requiring no external configuration.
-    val processors = mutable.Map[String, Processor](
-      "ClearSrl" -> ClearSrl,
-      "CorpusSplitter" -> CorpusSplitter,
-      "StanfordParser" -> StanfordParser,
-      "StanfordTtl" -> StanfordTtl,
-      "StanfordXmlToTtl" -> StanfordXmlToTtl,
-      "StanfordFixProcessor" -> StanfordFixProcessor,
-      "StanfordExtractor" -> StanfordExtractor,
-      "ExtractionDenominalize" -> ExtractionDenominalize,
-      "ExtractionRoles" -> ExtractionRoles,
-      "ExtractionLabels" -> ExtractionLabels,
-      "InferenceRules" -> InferenceRules,
-      "TurtleProcessor" -> TurtleProcessor,
-      "CatProcessor" -> CatProcessor,
-      "OtterJsonToReadableOutputProcessor" -> OtterJsonToReadableOutputProcessor)
+    for (
+      processor <- Seq(
+        CatProcessor,
+        ClearSrl,
+        CorpusSplitter,
+        ExtractionDenominalize,
+        ExtractionLabels,
+        ExtractionRoles,
+        InferenceRules,
+        OtterJsonToReadableOutputProcessor,
+        StanfordExtractor,
+        StanfordFixProcessor,
+        StanfordParser,
+        StanfordTtl,
+        StanfordXmlToTtl,
+        TurtleProcessor)
+    ) {
+      addProcessor(processor)
+    }
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.
     config.get[String]("ferret.directory") match {
       case Some(ferretDir) => {
         val ferret = new Ferret(ferretDir)
-        processors += ("FerretTextProcessor" -> new FerretTextProcessor(ferret))
-        processors += ("FerretQuestionProcessor" -> new FerretQuestionProcessor(ferret))
+        addProcessor(new FerretTextProcessor(ferret))
+        addProcessor(new FerretQuestionProcessor(ferret))
       }
       case None =>
         log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
@@ -59,25 +66,23 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
 
     // Get the data directory for the definition extractor.
     config.get[String]("definitions.dataDirectory") match {
-      case Some(dataDir) => processors += (
-        "OtterNounDefinitionExtractor" -> new OtterNounDefinitionExtractor(dataDir))
+      case Some(dataDir) => addProcessor(new OtterNounDefinitionExtractor(dataDir))
       case None => log.error("definitions.dataDirectory not found in config - " +
-        "NounDefinitionOpenRegexExtractor won't be initialized")
+        "OtterNounDefinitionExtractor won't be initialized")
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.
-    val wordClassesForSimpleWiktionaryPreprocessor: Set[String] =
+    val simpleWiktionaryWordClasses: Set[String] =
       (config.get[Seq[String]]("simpleWiktionary.wordClasses") getOrElse { Seq.empty }).toSet
-    processors += ("SimpleWiktionaryDefinitionPreprocessor" ->
-      new SimpleWiktionaryDefinitionPreprocessor(wordClassesForSimpleWiktionaryPreprocessor))
+    addProcessor(new SimpleWiktionaryDefinitionPreprocessor(simpleWiktionaryWordClasses))
 
     // Configure the MultipleDictionarySourcePreprocessor.
-    val wordClassesForMultipleDictionaryPreprocessor: Set[String] =
+    val multipleDictionaryWordClasses: Set[String] =
       (config.get[Seq[String]]("multipleDictionaries.wordClasses") getOrElse { Seq.empty }).toSet
-    val sourcesForMultipleDictionaryPreprocessor: Set[String] =
+    val multipleDictionarySources: Set[String] =
       (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
-    processors += ("MultipleDictionarySourcePreprocessor" ->
-      new MultipleDictionarySourcePreprocessor(wordClassesForMultipleDictionaryPreprocessor, sourcesForMultipleDictionaryPreprocessor))
+    addProcessor(new MultipleDictionarySourcePreprocessor(
+      multipleDictionaryWordClasses, multipleDictionaryWordClasses))
 
     // Configure the OtterDefinitionDBWriter.
     val dbPathOption = config.get[String]("otterDBwriter.dbPath")
@@ -85,9 +90,9 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
     (dbPathOption, dbUserOption, dbPasswordOption) match {
       case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
-        processors += (
-          "OtterDefinitionDBWriter" -> new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
-      case _ => log.error("Either dbPath or some part of the database credentials is missing for OtterDefinitionDBWriter. The processor failed to start up.")
+        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
+      case _ => log.error("Either dbPath or some part of the database credentials is missing " +
+        "for OtterDefinitionDBWriter. The processor failed to start up.")
     }
 
     // Bind the extractor map we built.

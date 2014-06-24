@@ -3,6 +3,9 @@ adv.taggers
 noun.taggers
 prep.taggers
 noun2.taggers
+specialIsaRules.taggers
+nounForIsa.taggers
+nounForIsa2.taggers
 adj2.taggers
 defn.taggers
 verb.taggers
