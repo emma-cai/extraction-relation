@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLASS_NAME="org.allenai.extraction.demo.otter.OtterExtractionDemoMain"
+CLASS_NAME="org.allenai.extraction.demo.ExtractionDemoApp"
 
 SCRIPT_DIR=`dirname $0`
 SHORT_NAME=`basename $0 .sh`

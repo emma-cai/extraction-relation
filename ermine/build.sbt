@@ -7,8 +7,6 @@ description := "Extraction management system"
 
 mainClass in Compile := Some("org.allenai.extraction.manager.Ermine")
 
-Deploy.settings
-
 // SBT native packager configs.
 packageArchetype.java_application
 
