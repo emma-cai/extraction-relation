@@ -94,4 +94,9 @@ class SimpleWiktionaryDefinitionPreprocessorTest extends UnitSpec{
       assert(testPreprocessor.cleanUp("#{{plural of|khaki}}")
           === (Seq[String](""), Seq[String]("plural of|khaki")))
   }
+  
+  it should "remove any empty (single/double) quoted strings that appear in the definition" in {  
+      assert(testPreprocessor.cleanUp("The Indus Valley bullfrog '' is a large frog found in Pakistan and India.")
+          === (Seq[String]("The Indus Valley bullfrog  is a large frog found in Pakistan and India."), Seq.empty[String]))
+  }
 }

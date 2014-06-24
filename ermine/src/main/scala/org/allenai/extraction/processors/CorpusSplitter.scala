@@ -60,7 +60,7 @@ object CorpusSplitter extends Processor {
     text.close()
     if (currOutput != null) {
       currOutput.flush()
-        currOutput.close()
+      currOutput.close()
     }
   }
 }
