@@ -31,21 +31,24 @@ object CorpusSplitter extends Processor {
     }
     val destinationDir = destinations(0).getOutputFile
 
-    require(destinationDir.isDirectory, "Non-directory given to CorpusSplitter")
+    require(destinationDir.isDirectory, "Non-directory output given to CorpusSplitter")
 
-    var currSectionId = -1
+    var sectionIndex = 0
+    var currSectionId = "-1"
     var currOutput = null: Writer
 
     for (line <- text.getLines) {
       line match {
         case SectionSentence(sectionString, sentence) => {
-          val sectionId = sectionString.toInt
+          val sectionId = sectionString
           if (sectionId != currSectionId) {
             if (currOutput != null) {
               currOutput.flush()
               currOutput.close()
             }
-            currOutput = new FileWriter(new File(destinationDir, f"${prefix}${sectionId}%02d.txt"))
+            sectionIndex += 1
+            currOutput = new FileWriter(
+              new File(destinationDir, f"${prefix}${sectionIndex}%02d.txt"))
             currSectionId = sectionId
           }
           currOutput.write(sentence)
