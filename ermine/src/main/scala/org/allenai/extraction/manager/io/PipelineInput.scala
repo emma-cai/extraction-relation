@@ -87,8 +87,8 @@ class FileInput(val file: File) extends UriInput() {
 
   /** @throws ErmineException if the configured file isn't readable */
   override def initialize()(implicit bindingModule: BindingModule): PipelineInput = {
-    if (!(file.isFile && file.canRead)) {
-      throw new ErmineException("${file.getPath} not a file or unreadable")
+    if (!file.canRead) {
+      throw new ErmineException(s"${file.getPath} not a file or unreadable")
     }
     this
   }
