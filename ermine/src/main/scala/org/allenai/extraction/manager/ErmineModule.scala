@@ -1,7 +1,5 @@
 package org.allenai.extraction.manager
 
-import scala.collection.mutable
-
 import org.allenai.ari.datastore.client.{ AriDatastoreClient, AriDatastoreHttpClient }
 import org.allenai.common.Config.EnhancedConfig
 import org.allenai.extraction.ConfigModule
@@ -10,11 +8,13 @@ import org.allenai.extraction.processors._
 import org.allenai.extraction.processors.definition._
 import org.allenai.extraction.processors.dependencies._
 
+import akka.actor.ActorSystem
+import akka.event.Logging
 import com.escalatesoft.subcut.inject.NewBindingModule
 import com.typesafe.config.Config
 
-import akka.actor.ActorSystem
-import akka.event.Logging
+import scala.collection.mutable
+import scala.io.Source
 
 /** Module providing bindings for the Ermine system.
   * @param actorSystem the actor system, for logging and AriDatastoreClient
@@ -38,7 +38,6 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
         CatProcessor,
         ClearSrl,
         CorpusSplitter,
-        ExtractionDenominalize,
         ExtractionLabels,
         ExtractionRoles,
         InferenceRules,
@@ -64,11 +63,15 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
         log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
     }
 
-    // Get the data directory for the definition extractor.
-    config.get[String]("definitions.dataDirectory") match {
-      case Some(dataDir) => addProcessor(new OtterNounDefinitionExtractor(dataDir))
-      case None => log.error("definitions.dataDirectory not found in config - " +
-        "OtterNounDefinitionExtractor won't be initialized")
+    // Get the data directory for extractors that need it.
+    config.get[String]("ermine.dataDirectory") match {
+      case Some(dataDir) => {
+        addProcessor(
+          new ExtractionDenominalize(Source.fromFile(s"${dataDir}/wordnet-nominalizations.ttl")))
+        addProcessor(new OtterNounDefinitionExtractor(s"${dataDir}/definitions"))
+      }
+      case None => log.error("ermine.dataDirectory not found in config - " +
+        "some extractors won't be initialized!")
     }
 
     // Configure the SimpleWiktionaryDefinitionPreprocessor.
