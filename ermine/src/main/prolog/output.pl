@@ -281,7 +281,7 @@ inf_tuple(Ent-_,EntId,GraphId) :- !,
 inf_tuple(Ent,Ent,GraphId) :-
 	atom(Ent), !,
 	( nonvar(GraphId) ; GraphId = Ent ), !,
-	text_arg(Ent,Text),
+	inf_arg(Ent,Text,GraphId),
 	rdf_assert(Ent,pred:isa,literal(Text),GraphId),
 	rdf_assert(Ent,rdf:type,entity,GraphId).
 inf_tuple([S,V,O-_|Rest],TupleId,GraphId) :- !, % ignore vars
@@ -291,12 +291,12 @@ inf_tuple([S-_,V|Rest],TupleId,GraphId) :- !, % ignore vars
 inf_tuple([S,V],TupleId,GraphId) :-
 	inf_tuple([S,V,[]],TupleId,GraphId).
 inf_tuple([S,Verb,Arg|Mods],V,GraphId) :-
-	text_arg(S,SubjText),
 	text_verb(Verb,VerbText,V),
 	( nonvar(GraphId) ; GraphId = V), !,
+	inf_arg(S,SubjText,GraphId),
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText,_)) % copula
-	; text_arg(Arg,ObjText) ), % dobj
+	; inf_arg(Arg,ObjText,GraphId) ), % dobj
 	rdf_assert(V,pred:isa,literal(VerbText),GraphId),
 	rdf_assert(V,rdf:type,event,GraphId),
 	(S = []
@@ -309,6 +309,39 @@ inf_tuple([S,Verb,Arg|Mods],V,GraphId) :-
 	   rdf_assert(Arg,rdf:type,entity,GraphId)) ),
 	inf_mods(V,Mods,GraphId),
 	!.
+
+inf_arg([],'""',_) :- !.
+inf_arg(Arg-Var-true,Text,GraphId) :- !,
+	inf_arg(Arg-Var,Text,GraphId).
+inf_arg(Arg-Var,Text,GraphId) :- !,
+	inf_arg(Arg,ArgText,GraphId),
+	format(atom(Text), '~w/?~w', [ArgText, Var]).
+inf_arg(Arg,Text,GraphId) :-
+	inf_arg_tokens(Arg,Tokens,GraphId),
+	tokens_text_quoted(Tokens,Text).
+
+% special case for prep to apply exclusion list to pobj
+inf_arg_tokens(Arg,[Arg|Tokens],GraphId) :-
+	rdf(_,basic:prep,Arg),
+	( rdf(Arg,basic:pobj,Obj)
+	; rdf(Arg,basic:pcomp,Obj)), !,
+	inf_arg_tokens(Obj,Tokens,GraphId).
+inf_arg_tokens(Arg,Tokens,GraphId) :-
+	tokens(Arg,Tokens,[conj,cc,appos,dep,xcomp,infmod,rcmod,partmod,advmod,cop,nsubj,aux,ref,prep]),
+	inf_arg_prep(Arg,GraphId).
+
+inf_arg_prep(Arg,GraphId) :-
+	rdf(Arg,PrepRel,PObj),
+	( (atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
+	   NewP = P)
+	; (atom_concat('http://nlp.stanford.edu/dep/prepc_',PC,PrepRel),
+	   NewP = PC) ),
+	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
+	inf_arg(PObj,Text,GraphId),
+	rdf_assert(Arg,NewPrepRel,PObj,GraphId),
+	rdf_assert(PObj,pred:isa,literal(Text),GraphId),
+	fail.
+inf_arg_prep(_,_).	
 
 inf_mods(_V, [], _GraphId) :- !.
 inf_mods(V, [Pobj|Rest], GraphId) :-

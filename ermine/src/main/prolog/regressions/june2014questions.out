@@ -360,50 +360,7 @@ english(rule2, "a decomposer is an organism[a decomposer] that hunts and eats an
 pretty(rule2, "isa(decomposer, 'a decomposer') -> EXAMPLE_OF(decomposer, organism), Q=hunt('an organism[a decomposer]', 'animals').").
 rule2:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-hunt, "hunt"), agent(E7S1-hunt, A5S1-organism), object(E7S1-hunt, A10S1-animal), isa(A10S1-animal, "animals"), isa(E9S1-eat, "eat"), agent(E9S1-eat, A5S1-organism).
 % "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
-% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "migrate" "" [ "for the winter" ] )
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"the winter\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa <http://aristo.allenai.org/id#1.5> ,
-		 "\"a decomposer\"" .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"an organism[a decomposer]\"" .
-
-<http://aristo.allenai.org/id#1.7>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:for <http://aristo.allenai.org/id#1.10> ;
-	pred:isa "\"migrate\"" .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"the winter\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	rel:example <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.7>
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:for <http://aristo.allenai.org/id#1.10> ;
-	pred:isa "\"migrate\"" .
-english(rule1, "a decomposer is an organism[a decomposer] that migrates for the winter").
-pretty(rule1, "isa(decomposer, 'a decomposer') -> EXAMPLE_OF(decomposer, organism), Q=migrate('an organism[a decomposer]', for('the winter')).").
-rule1:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-migrate, "migrate"), agent(E7S1-migrate, A5S1-organism), for(E7S1-migrate, A10S1-winter), isa(A10S1-winter, "the winter").
-% "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
+% ("a decomposer" "be" "" [ "an organism" ] )
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "break" "")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -794,7 +751,7 @@ QUESTION: A student drops a ball. Which force causes the ball to fall to the gro
 english(rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
 pretty(rule1, "drop('A student', 'a ball'), fall('a ball', to('the ground')) -> CAUSES(Q, fall), Q='electricity'.").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-electricity, E6S2-fall), isa(A1S2-electricity, "electricity").
-% ("A student" "drop" "" [ "a ball" ] )
+% ("A student" "drop" "a ball")
 % "friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -809,8 +766,8 @@ rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:arg <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"drop\"" .
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
 
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -839,7 +796,7 @@ rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
 pretty(rule1, "drop('A student', 'a ball'), fall('a ball', to('the ground')) -> CAUSES(Q, fall), Q='friction'.").
-rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), arg(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-friction, E6S2-fall), isa(A1S2-friction, "friction").
+rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-friction, E6S2-fall), isa(A1S2-friction, "friction").
 % ("A student" "drop" "a ball")
 % "gravity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
@@ -938,15 +895,23 @@ QUESTION: What is the main source of energy for the water cycle? (A) electricity
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"electricity\"" .
 
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"the water cycle\"" .
+
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"the main source of energy for the water cycle\"" .
+	pred:isa "\"the main source\"" ;
+	pred:of <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"energy\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -957,22 +922,30 @@ QUESTION: What is the main source of energy for the water cycle? (A) electricity
 	pred:isa "\"electricity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "electricity is the main source of energy for the water cycle").
-pretty(rule1, "isa(source, 'the main source of energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='electricity'.").
-rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-electricity, A5S1-source), isa(A1S1-electricity, "electricity").
+pretty(rule1, "isa(energy, 'energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='electricity'.").
+rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-electricity, A5S1-source), isa(A1S1-electricity, "electricity").
 % "erosion"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"erosion\"" .
 
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"the water cycle\"" .
+
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"the main source of energy for the water cycle\"" .
+	pred:isa "\"the main source\"" ;
+	pred:of <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"energy\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -983,22 +956,30 @@ rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> exa
 	pred:isa "\"erosion\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "erosion is the main source of energy for the water cycle").
-pretty(rule1, "isa(source, 'the main source of energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='erosion'.").
-rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-erosion, A5S1-source), isa(A1S1-erosion, "erosion").
+pretty(rule1, "isa(energy, 'energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='erosion'.").
+rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-erosion, A5S1-source), isa(A1S1-erosion, "erosion").
 % "gravity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"gravity\"" .
 
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"the water cycle\"" .
+
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"the main source of energy for the water cycle\"" .
+	pred:isa "\"the main source\"" ;
+	pred:of <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"energy\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -1009,22 +990,30 @@ rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> exa
 	pred:isa "\"gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "gravity is the main source of energy for the water cycle").
-pretty(rule1, "isa(source, 'the main source of energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='gravity'.").
-rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-gravity, A5S1-source), isa(A1S1-gravity, "gravity").
+pretty(rule1, "isa(energy, 'energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='gravity'.").
+rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-gravity, A5S1-source), isa(A1S1-gravity, "gravity").
 % "sunlight"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"sunlight\"" .
 
+<http://aristo.allenai.org/id#1.11>
+	pred:isa "\"the water cycle\"" .
+
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
-	pred:isa "\"the main source of energy for the water cycle\"" .
+	pred:isa "\"the main source\"" ;
+	pred:of <http://aristo.allenai.org/id#1.7> .
+
+<http://aristo.allenai.org/id#1.7>
+	pred:for <http://aristo.allenai.org/id#1.11> ;
+	pred:isa "\"energy\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -1035,19 +1024,23 @@ rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> exa
 	pred:isa "\"sunlight\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "sunlight is the main source of energy for the water cycle").
-pretty(rule1, "isa(source, 'the main source of energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='sunlight'.").
-rule1:: isa(A5S1-source, "the main source of energy for the water cycle") -> example(A1S1-sunlight, A5S1-source), isa(A1S1-sunlight, "sunlight").
+pretty(rule1, "isa(energy, 'energy for the water cycle') -> EXAMPLE_OF(Q, source), Q='sunlight'.").
+rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-sunlight, A5S1-source), isa(A1S1-sunlight, "sunlight").
 QUESTION: Which instrument should a student use to measure exactly 10 milliliters (mL) of water? (A) graduated cylinder (B) pan balance (C) ruler (D) thermometer
 % ("a student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
+# Named toplevel resources (6)
 
 <http://aristo.allenai.org/id#1.12>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.17> .
+
+<http://aristo.allenai.org/id#1.17>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1084,15 +1077,19 @@ QUESTION: Which instrument should a student use to measure exactly 10 milliliter
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (7)
 
 <http://aristo.allenai.org/id#1.12>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.17> .
 
 <http://aristo.allenai.org/id#1.14>
 	a <entity> ;
 	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.17>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1127,20 +1124,24 @@ QUESTION: Which instrument should a student use to measure exactly 10 milliliter
 	pred:isa "\"a graduated cylinder\"" .
 english(rule1, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 pretty(rule1, "use('a student', Q), measure('a student', '10 milliliters of water') -> HAS_EFFECT(use, measure), Q='a graduated cylinder'.").
-rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters of water") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
+rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), of(A12S1-milliliter, A17S1-water), isa(A17S1-water, "water"), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
 english(rule2, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
 pretty(rule2, "use('a student', Q), measure('a student', '10 milliliters of water', 'mL') -> HAS_EFFECT(use, measure), Q='a graduated cylinder'.").
-rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters of water"), object(E9S1-measure, A14S1-ml), isa(A14S1-ml, "mL") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
+rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), of(A12S1-milliliter, A17S1-water), isa(A17S1-water, "water"), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters"), object(E9S1-measure, A14S1-ml), isa(A14S1-ml, "mL") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
 % ("a student"/?x "use" "pan balance")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
+# Named toplevel resources (6)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1177,15 +1178,19 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (7)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
 
 <http://aristo.allenai.org/id#1.13>
 	a <entity> ;
 	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1220,20 +1225,24 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 	pred:isa "\"pan balance\"" .
 english(rule1, "a student should use pan balance to measure exactly 10 milliliters mL of water").
 pretty(rule1, "use('a student', Q), measure('a student', '10 milliliters of water') -> HAS_EFFECT(use, measure), Q='pan balance'.").
-rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
+rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
 english(rule2, "a student should use pan balance to measure exactly 10 milliliters mL of water").
 pretty(rule2, "use('a student', Q), measure('a student', '10 milliliters of water', 'mL') -> HAS_EFFECT(use, measure), Q='pan balance'.").
-rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
+rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
 % ("a student"/?x "use" "a ruler")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
+# Named toplevel resources (6)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1270,15 +1279,19 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (7)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
 
 <http://aristo.allenai.org/id#1.13>
 	a <entity> ;
 	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1313,20 +1326,24 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 	pred:isa "\"a ruler\"" .
 english(rule1, "a student should use a ruler to measure exactly 10 milliliters mL of water").
 pretty(rule1, "use('a student', Q), measure('a student', '10 milliliters of water') -> HAS_EFFECT(use, measure), Q='a ruler'.").
-rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
+rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
 english(rule2, "a student should use a ruler to measure exactly 10 milliliters mL of water").
 pretty(rule2, "use('a student', Q), measure('a student', '10 milliliters of water', 'mL') -> HAS_EFFECT(use, measure), Q='a ruler'.").
-rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
+rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
 % ("a student"/?x "use" "a thermometer")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
+# Named toplevel resources (6)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1363,15 +1380,19 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (7)
 
 <http://aristo.allenai.org/id#1.11>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#1.16> .
 
 <http://aristo.allenai.org/id#1.13>
 	a <entity> ;
 	pred:isa "\"mL\"" .
+
+<http://aristo.allenai.org/id#1.16>
+	pred:isa "\"water\"" .
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -1406,10 +1427,10 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 	pred:isa "\"a thermometer\"" .
 english(rule1, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
 pretty(rule1, "use('a student', Q), measure('a student', '10 milliliters of water') -> HAS_EFFECT(use, measure), Q='a thermometer'.").
-rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
+rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
 english(rule2, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
 pretty(rule2, "use('a student', Q), measure('a student', '10 milliliters of water', 'mL') -> HAS_EFFECT(use, measure), Q='a thermometer'.").
-rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters of water"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
+rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
 QUESTION: Which activity is necessary for humans to maintain good health? (A) reading (B) resting (C) driving (D) talking
 % ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
 
@@ -2652,16 +2673,20 @@ rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment)
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (2)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#1.1>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.7> ;
 	pred:isa "\"grow\"" .
 
+<http://aristo.allenai.org/id#1.10>
+	pred:isa "\"the environment\"" .
+
 <http://aristo.allenai.org/id#1.7>
 	a <entity> ;
-	pred:isa "\"a harmful effect on the environment\"" .
+	pred:isa "\"a harmful effect\"" ;
+	pred:on <http://aristo.allenai.org/id#1.10> .
 
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
@@ -2672,10 +2697,10 @@ rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment)
 	pred:isa "\"grow\"" .
 
 <http://aristo.allenai.org/id#1.7>
-	pred:isa "\"a harmful effect on the environment\"" .
+	pred:isa "\"a harmful effect\"" .
 english(rule1, "growing most often has a harmful effect on the environment").
-pretty(rule1, " -> , Q=grow('a harmful effect on the environment').").
-rule1::  -> isa(E1S1-grow, "grow"), agent(E1S1-grow, A7S1-effect), isa(A7S1-effect, "a harmful effect on the environment").
+pretty(rule1, "isa(effect, 'a harmful effect on the environment') -> , Q=grow('a harmful effect on the environment').").
+rule1:: on(A7S1-effect, A10S1-environment), isa(A10S1-environment, "the environment") -> isa(E1S1-grow, "grow"), agent(E1S1-grow, A7S1-effect), isa(A7S1-effect, "a harmful effect").
 % ("" "plant" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -3016,7 +3041,7 @@ english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A 
 pretty(rule2, "open('A dog', 'its mouth'), produce('A human ’s body', 'sweat'), adjust('organisms', 'these', 'two ways[these]', to(Q)) -> EXAMPLE_OF(these, adjust), Q='hot temperatures'.").
 rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "hot temperatures").
 % ("A dog" "open" "its mouth")
-% ("A human 's body" "produce" "" [ "sweat" ] )
+% ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of food" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -3045,10 +3070,11 @@ rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 <http://aristo.allenai.org/id#2.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
 
 <http://aristo.allenai.org/id#2.6>
+	a <entity> ;
 	pred:isa "\"sweat\"" .
 
 <http://aristo.allenai.org/id#3.1>
@@ -3081,7 +3107,7 @@ rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 	pred:isa "\"a shortage of food\"" .
 english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
 pretty(rule1, "open('A dog', 'its mouth'), produce('A human ’s body', 'sweat'), adjust('organisms', 'these', to(Q)) -> EXAMPLE_OF(these, adjust), Q='a shortage of food'.").
-rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage) -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage) -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of food" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -3110,10 +3136,11 @@ rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 <http://aristo.allenai.org/id#2.5>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.4> ;
-	pred:arg <http://aristo.allenai.org/id#2.6> ;
-	pred:isa "\"produce\"" .
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
 
 <http://aristo.allenai.org/id#2.6>
+	a <entity> ;
 	pred:isa "\"sweat\"" .
 
 <http://aristo.allenai.org/id#3.1>
@@ -3151,7 +3178,7 @@ rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 	pred:isa "\"a shortage of food\"" .
 english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
 pretty(rule2, "open('A dog', 'its mouth'), produce('A human ’s body', 'sweat'), adjust('organisms', 'these', 'two ways[these]', to(Q)) -> EXAMPLE_OF(these, adjust), Q='a shortage of food'.").
-rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), arg(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of drinking water" ] )
@@ -3294,12 +3321,12 @@ rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 QUESTION: A student is growing some plants for an experiment. She notices small white spots on the leaves. Which tool should she use to get a better look at the spots? (A) thermometer (B) hand lens (C) graduated cylinder (D) balance
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
+% ("She"/?x "use" "a thermometer")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (12)
+# Named toplevel resources (13)
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -3338,7 +3365,12 @@ QUESTION: A student is growing some plants for an experiment. She notices small 
 	pred:isa "\"the leaves\"" .
 
 <http://aristo.allenai.org/id#3.10>
-	pred:isa "\"a better look at the spots[small white spots]\"" .
+	a <entity> ;
+	pred:at <http://aristo.allenai.org/id#3.13> ;
+	pred:isa "\"a better look\"" .
+
+<http://aristo.allenai.org/id#3.13>
+	pred:isa "\"the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -3353,8 +3385,8 @@ QUESTION: A student is growing some plants for an experiment. She notices small 
 <http://aristo.allenai.org/id#3.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:arg <http://aristo.allenai.org/id#3.10> ;
-	pred:isa "\"get\"" .
+	pred:isa "\"get\"" ;
+	pred:object <http://aristo.allenai.org/id#3.10> .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3368,7 +3400,7 @@ QUESTION: A student is growing some plants for an experiment. She notices small 
 	pred:isa "\"a thermometer\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a thermometer to get a better look at the spots[small white spots]").
 pretty(rule1, "grow('A student', 'some plants', for('an experiment')), notify('She', 'small white spots', on('the leaves')), use('She', Q), get('She', 'a better look at the spots[small white spots]') -> HAS_EFFECT(use, get), Q='a thermometer'.").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-thermometer), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), arg(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E7S3-get), isa(A5S3-thermometer, "a thermometer").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-thermometer), at(A10S3-look, A13S3-spot), isa(A13S3-spot, "the spots[small white spots]"), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look") -> effect(E3S3-use, E7S3-get), isa(A5S3-thermometer, "a thermometer").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a hand lens")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
@@ -3376,7 +3408,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (12)
+# Named toplevel resources (13)
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -3416,7 +3448,11 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 
 <http://aristo.allenai.org/id#3.11>
 	a <entity> ;
-	pred:isa "\"a better look at the spots[small white spots]\"" .
+	pred:at <http://aristo.allenai.org/id#3.14> ;
+	pred:isa "\"a better look\"" .
+
+<http://aristo.allenai.org/id#3.14>
+	pred:isa "\"the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -3446,10 +3482,10 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"a hand lens\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
 pretty(rule1, "grow('A student', 'some plants', for('an experiment')), notify('She', 'small white spots', on('the leaves')), use('She', Q), get('She', 'a better look at the spots[small white spots]') -> HAS_EFFECT(use, get), Q='a hand lens'.").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-lens, "a hand lens").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), at(A11S3-look, A14S3-spot), isa(A14S3-spot, "the spots[small white spots]"), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look") -> effect(E3S3-use, E8S3-get), isa(A6S3-lens, "a hand lens").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3493,7 +3529,6 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"the leaves\"" .
 
 <http://aristo.allenai.org/id#3.11>
-	a <entity> ;
 	pred:isa "\"a better look at the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
@@ -3509,8 +3544,8 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#3.11> .
+	pred:arg <http://aristo.allenai.org/id#3.11> ;
+	pred:isa "\"get\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3524,7 +3559,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"a graduated cylinder\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
 pretty(rule1, "grow('A student', 'some plants', for('an experiment')), notify('She', 'small white spots', on('the leaves')), use('She', Q), get('She', 'a better look at the spots[small white spots]') -> HAS_EFFECT(use, get), Q='a graduated cylinder'.").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), arg(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
@@ -3532,7 +3567,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (12)
+# Named toplevel resources (13)
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -3572,7 +3607,11 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 
 <http://aristo.allenai.org/id#3.10>
 	a <entity> ;
-	pred:isa "\"a better look at the spots[small white spots]\"" .
+	pred:at <http://aristo.allenai.org/id#3.13> ;
+	pred:isa "\"a better look\"" .
+
+<http://aristo.allenai.org/id#3.13>
+	pred:isa "\"the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -3602,7 +3641,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"a balance\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
 pretty(rule1, "grow('A student', 'some plants', for('an experiment')), notify('She', 'small white spots', on('the leaves')), use('She', Q), get('She', 'a better look at the spots[small white spots]') -> HAS_EFFECT(use, get), Q='a balance'.").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-balance), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E7S3-get), isa(A5S3-balance, "a balance").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-balance), at(A10S3-look, A13S3-spot), isa(A13S3-spot, "the spots[small white spots]"), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look") -> effect(E3S3-use, E7S3-get), isa(A5S3-balance, "a balance").
 QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the fox to (A) find food(B) keep warmer(C) grow stronger(D) escape from predators
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
 % ("A fox"/?x "adapt" "")	"helps"/PURPOSE	("A fox"/?x "find" "food")
@@ -4146,11 +4185,19 @@ QUESTION: A car skids along the road and smoke appears to be coming from under t
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (8)
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
-	pred:isa "\"A car skids along the road and smoke\"" .
+	pred:along <http://aristo.allenai.org/id#1.6> ,
+		   <http://aristo.allenai.org/id#1.8> ;
+	pred:isa "\"A car skids\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"the road\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"smoke\"" .
 
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -4185,18 +4232,26 @@ QUESTION: A car skids along the road and smoke appears to be coming from under t
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by magnetism").
 pretty(rule1, "appear('A car skids along the road and smoke'), produce('the heat', 'the smoke') -> CAUSES(Q, produce), Q='magnetism'.").
-rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-magnetism, E4S2-produce), isa(A10S2-magnetism, "magnetism").
+rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-magnetism, E4S2-produce), isa(A10S2-magnetism, "magnetism").
 % ("A car skids along the road and smoke" "appear" "")
 % "sound"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (8)
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
-	pred:isa "\"A car skids along the road and smoke\"" .
+	pred:along <http://aristo.allenai.org/id#1.6> ,
+		   <http://aristo.allenai.org/id#1.8> ;
+	pred:isa "\"A car skids\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"the road\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"smoke\"" .
 
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -4231,18 +4286,26 @@ rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by sound").
 pretty(rule1, "appear('A car skids along the road and smoke'), produce('the heat', 'the smoke') -> CAUSES(Q, produce), Q='sound'.").
-rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-sound, E4S2-produce), isa(A10S2-sound, "sound").
+rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-sound, E4S2-produce), isa(A10S2-sound, "sound").
 % ("A car skids along the road and smoke" "appear" "")
 % "light"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (8)
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
-	pred:isa "\"A car skids along the road and smoke\"" .
+	pred:along <http://aristo.allenai.org/id#1.6> ,
+		   <http://aristo.allenai.org/id#1.8> ;
+	pred:isa "\"A car skids\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"the road\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"smoke\"" .
 
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -4277,18 +4340,26 @@ rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by light").
 pretty(rule1, "appear('A car skids along the road and smoke'), produce('the heat', 'the smoke') -> CAUSES(Q, produce), Q='light'.").
-rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-light, E4S2-produce), isa(A10S2-light, "light").
+rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-light, E4S2-produce), isa(A10S2-light, "light").
 % ("A car skids along the road and smoke" "appear" "")
 % "friction"	"caused"/CAUSE	("the heat" "produce" "the smoke")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (6)
+# Named toplevel resources (8)
 
 <http://aristo.allenai.org/id#1.3>
 	a <entity> ;
-	pred:isa "\"A car skids along the road and smoke\"" .
+	pred:along <http://aristo.allenai.org/id#1.6> ,
+		   <http://aristo.allenai.org/id#1.8> ;
+	pred:isa "\"A car skids\"" .
+
+<http://aristo.allenai.org/id#1.6>
+	pred:isa "\"the road\"" .
+
+<http://aristo.allenai.org/id#1.8>
+	pred:isa "\"smoke\"" .
 
 <http://aristo.allenai.org/id#1.9>
 	a <event> ;
@@ -4323,4 +4394,4 @@ rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by friction").
 pretty(rule1, "appear('A car skids along the road and smoke'), produce('the heat', 'the smoke') -> CAUSES(Q, produce), Q='friction'.").
-rule1:: isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids along the road and smoke"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-friction, E4S2-produce), isa(A10S2-friction, "friction").
+rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-friction, E4S2-produce), isa(A10S2-friction, "friction").

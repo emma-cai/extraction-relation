@@ -155,7 +155,10 @@
 	pred:isa "\"heat\"" .
 <http://aristo.allenai.org/id#6.2>
 	a <entity> ;
-	pred:isa "\"The friction between the two surfaces\"" .
+	pred:between <http://aristo.allenai.org/id#6.6> ;
+	pred:isa "\"The friction\"" .
+<http://aristo.allenai.org/id#6.6>
+	pred:isa "\"the two surfaces\"" .
 <http://aristo.allenai.org/id#6.7>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#6.2> ;
@@ -227,6 +230,11 @@
 	pred:isa <http://aristo.allenai.org/id#11.4> ,
 		 "\"Gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#11.4> .
+<http://aristo.allenai.org/id#11.11>
+	pred:isa "\"the center\"" ;
+	pred:of <http://aristo.allenai.org/id#11.14> .
+<http://aristo.allenai.org/id#11.14>
+	pred:isa "\"the Earth\"" .
 <http://aristo.allenai.org/id#11.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -237,7 +245,8 @@
 	pred:object <http://aristo.allenai.org/id#11.8> .
 <http://aristo.allenai.org/id#11.8>
 	a <entity> ;
-	pred:isa "\"an object toward the center of the Earth\"" .
+	pred:isa "\"an object\"" ;
+	pred:toward <http://aristo.allenai.org/id#11.11> .
 <http://aristo.allenai.org/id#11.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
@@ -411,7 +420,10 @@
 	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#19.12>
 	a <entity> ;
-	pred:isa "\"10 milliliters of water\"" .
+	pred:isa "\"10 milliliters\"" ;
+	pred:of <http://aristo.allenai.org/id#19.17> .
+<http://aristo.allenai.org/id#19.17>
+	pred:isa "\"water\"" .
 <http://aristo.allenai.org/id#19.2>
 	a <entity> ;
 	pred:isa "\"A student\"" .
@@ -445,8 +457,11 @@
 	pred:object <http://aristo.allenai.org/id#19.14> .
 <http://aristo.allenai.org/id#20.3>
 	a <entity> ;
-	pred:isa "\"The white fur of an arctic fox blends\"" ;
+	pred:isa "\"The white fur\"" ;
+	pred:of <http://aristo.allenai.org/id#20.8> ;
 	rel:example <http://aristo.allenai.org/id#20.15> .
+<http://aristo.allenai.org/id#20.8>
+	pred:isa "\"an arctic fox blends\"" .
 <http://aristo.allenai.org/id#20.15>
 	a <entity> ;
 	pred:isa "\"camouflage\"" .

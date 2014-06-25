@@ -1,7 +1,7 @@
 english(june2014.rule1, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule1:: example(gravity, force), agent(pull, force), object(pull, object).
+june2014.rule1:: example(gravity, force), of(center, Earth), toward(object, center), agent(pull, force), object(pull, object).
 english(june2014.rule2, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule2:: agent(pull, force), object(pull, object) -> example(gravity, force).
+june2014.rule2:: of(center, Earth), toward(object, center), agent(pull, force), object(pull, object) -> example(gravity, force).
 english(june2014.rule3, "Gravity is the force that pulls an object toward the center of the Earth").
 june2014.rule3:: example(gravity, force).
 english(june2014.rule4, "Gravity is the force that pulls an object toward the center of the Earth").
@@ -71,9 +71,9 @@ june2014.rule35:: example(gravity, force).
 english(june2014.rule36, "Gravity is the force that pulls an object toward the center of the Earth").
 june2014.rule36:: example(gravity, force).
 english(june2014.rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-june2014.rule37:: agent(use, scientist), object(use, cylinder) -> effect(use, measure), agent(measure, scientist), object(measure, volume).
+june2014.rule37:: agent(use, scientist), object(use, cylinder) -> effect(use, measure), of(volume, liquid), agent(measure, scientist), object(measure, volume).
 english(june2014.rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
-june2014.rule38:: agent(measure, scientist), object(measure, volume) -> effect(use, measure), agent(use, scientist), object(use, cylinder).
+june2014.rule38:: of(volume, liquid), agent(measure, scientist), object(measure, volume) -> effect(use, measure), agent(use, scientist), object(use, cylinder).
 english(june2014.rule39, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
 june2014.rule39:: agent(eat, human), object(eat, exercise) -> effect(eat, grow), agent(grow, human).
 english(june2014.rule40, "In order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest").
@@ -165,9 +165,9 @@ june2014.rule82:: purpose(lens, view), agent(view, lens), object(view, object), 
 english(june2014.rule83, "A hand lens is used to view objects in more detail").
 june2014.rule83:: agent(view, lens), object(view, object), in(view, detail) -> purpose(lens, view).
 english(june2014.rule84, "Some animals grow thick fur in winter to stay warm").
-june2014.rule84:: agent(grow, animal), object(grow, fur) -> effect(grow, stay), agent(stay, animal), object(stay, warm).
+june2014.rule84:: in(fur, winter), agent(grow, animal), object(grow, fur) -> effect(grow, stay), agent(stay, animal), object(stay, warm).
 english(june2014.rule85, "Some animals grow thick fur in winter to stay warm").
-june2014.rule85:: agent(stay, animal), object(stay, warm) -> effect(grow, stay), agent(grow, animal), object(grow, fur).
+june2014.rule85:: agent(stay, animal), object(stay, warm) -> effect(grow, stay), in(fur, winter), agent(grow, animal), object(grow, fur).
 english(june2014.rule86, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
 june2014.rule86:: agent(take, animal), object(take, food), as(take, nutrient) -> effect(take, grow), agent(grow, animal).
 english(june2014.rule87, "Animals take in food as a nutrient to give them[Some animals] energy and help them[Some animals] grow").
