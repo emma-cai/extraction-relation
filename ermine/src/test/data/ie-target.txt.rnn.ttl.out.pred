@@ -65,4 +65,5 @@
 <http://aristo.allenai.org/id#18_7> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#18_5> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#18_9> .
 
-<http://aristo.allenai.org/id#21_5> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#21_2> , <http://aristo.allenai.org/id#21_4> .
+<http://aristo.allenai.org/id#21_5> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#21_2> , <http://aristo.allenai.org/id#21_4> ;
+	<http://aristo.allenai.org/pred/arg> <http://aristo.allenai.org/id#21_1> .

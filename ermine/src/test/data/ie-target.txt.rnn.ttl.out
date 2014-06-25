@@ -3118,7 +3118,8 @@
 <http://aristo.allenai.org/id#18_7> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#18_5> ;
 	<http://aristo.allenai.org/pred/object> <http://aristo.allenai.org/id#18_9> .
 
-<http://aristo.allenai.org/id#21_5> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#21_2> , <http://aristo.allenai.org/id#21_4> .
+<http://aristo.allenai.org/id#21_5> <http://aristo.allenai.org/pred/agent> <http://aristo.allenai.org/id#21_2> , <http://aristo.allenai.org/id#21_4> ;
+	<http://aristo.allenai.org/pred/arg> <http://aristo.allenai.org/id#21_1> .
 
 <http://aristo.allenai.org/id#4_18> <http://www.w3.org/2000/01/rdf-schema#label> "removal" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "the removal" .
@@ -3322,6 +3323,9 @@
 
 <http://aristo.allenai.org/id#21_4> <http://www.w3.org/2000/01/rdf-schema#label> "animal" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "animals" .
+
+<http://aristo.allenai.org/id#21_1> <http://www.w3.org/2000/01/rdf-schema#label> "when" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "When" .
 
 <http://aristo.allenai.org/id#1_7> <http://www.w3.org/2000/01/rdf-schema#comment> "In the hot weather sweat" .
 

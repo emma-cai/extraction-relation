@@ -202,6 +202,9 @@
 <http://aristo.allenai.org/id#21_4> <http://www.w3.org/2000/01/rdf-schema#label> "animal" ;
 	<http://www.w3.org/2000/01/rdf-schema#comment> "animals" .
 
+<http://aristo.allenai.org/id#21_1> <http://www.w3.org/2000/01/rdf-schema#label> "when" ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "When" .
+
 <http://aristo.allenai.org/id#1_7> <http://www.w3.org/2000/01/rdf-schema#comment> "In the hot weather sweat" .
 
 <http://aristo.allenai.org/id#2_13> <http://www.w3.org/2000/01/rdf-schema#label> "go" ;
