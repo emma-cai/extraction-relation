@@ -71,6 +71,7 @@ object ExtractionRoles extends TextProcessor {
       ("nsubjpass", "pred:object"),
       ("dobj", "pred:object"),
       ("iobj", "pred:arg"),
+      ("advmod", "pred:arg"),
       ("tmod", "pred:arg"))
     for ((dep, role) <- roles) {
       addArg(node, dep, role)
