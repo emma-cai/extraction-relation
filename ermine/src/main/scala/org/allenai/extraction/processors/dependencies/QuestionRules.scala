@@ -1,5 +1,6 @@
 package org.allenai.extraction.processors.dependencies
 
+import org.allenai.extraction.ErmineException
 import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
@@ -56,14 +57,17 @@ object QuestionRules extends TextProcessor {
         tokens += map("token")
       }
     }
+    if (tokens.isEmpty) {
+      throw new ErmineException(s"Focus string '${focus}' not found in input text.")
+    }
 
     // find longest sequence of focus tokens
     val focusTokens: Array[Vertex] = longestSequence(tokens.toArray)
-    println(focusTokens.toList)
-
     // find parent node of focus
     val focusNode: Option[Vertex] = parentNode(focusTokens)
-    println(focusNode)
+    if (focusTokens.isEmpty) {
+      throw new ErmineException(s"Parent node for focus string '${focus}' not found in parse.")
+    }
 
     // rule id
     var ruleId: Int = 0
