@@ -9,6 +9,14 @@ object VertexWrapper {
   val SentenceTokenIds = """(\d+)_(\d+)""".r
   val LastPath = """/([^/]+)/?$""".r
   implicit class VertexRdf(val v: Vertex) extends AnyVal {
+    /** Returns the string value, if a literal; or the String form of the ID, if a URI. Useful for
+      * adding edges when you're unsure of the starting type.
+      */
+    def toIdString: String = v.getProperty[String]("kind") match {
+      case "literal" => v.getProperty[String]("value")
+      case "uri" => v.getId.toString
+      case _ => throw new ErmineException(s"attempted to get a string id from a blank node: ${v}")
+    }
 
     // format vertex name for use in SPARQL queries
     def toUri: String = v.getProperty[String]("kind") match {
