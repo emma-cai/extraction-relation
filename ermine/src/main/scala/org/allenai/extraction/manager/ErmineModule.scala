@@ -37,6 +37,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
       processor <- Seq(
         CatProcessor,
         ClearSrl,
+        CorpusSplitter,
         ExtractionDenominalize,
         ExtractionLabels,
         ExtractionRoles,

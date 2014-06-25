@@ -34,20 +34,20 @@ class ErminePipeline(val name: String, val description: String,
   }
 
   /** Run this pipeline, using the given inputs and output.
-    * @param namedInputs the named inputs to this pipeline
-    * @param unnamedInputs the unnamed inputs to the first stage of this pipeline
+    * @param namedSources the named inputs to this pipeline
+    * @param unnamedSources the unnamed inputs to the first stage of this pipeline
     * @param defaultOutputs the default outputs for the last stage of the pipeline
     * @throws ErmineException if the provided inputs don't satisfy the pipeline's requirements
     */
-  def run(namedInputs: Map[String, Source], unnamedInputs: Seq[Source],
+  def run(namedSources: Map[String, Source], unnamedSources: Seq[Source],
     defaultOutputs: Seq[Writer]): Unit = {
     // Validate that the inputs match what we need (we aren't missing any).
     val firstProcessor = processors.head
-    if (requiredUnnamedCount > unnamedInputs.size) {
+    if (requiredUnnamedCount > unnamedSources.size) {
       throw new ErmineException(s"Pipeline '${name}' requires ${requiredUnnamedCount} unnamed " +
-        s"streams; got ${unnamedInputs.size}")
+        s"streams; got ${unnamedSources.size}")
     } else {
-      val missingInputs = requiredNamedInputs diff namedInputs.keySet
+      val missingInputs = requiredNamedInputs diff namedSources.keySet
       if (missingInputs.size > 0) {
         throw new ErmineException(s"Pipeline '${name}' missing required named inputs. Missing " +
           s"""inputs: ${missingInputs.mkString(", ")}""")
@@ -63,6 +63,10 @@ class ErminePipeline(val name: String, val description: String,
     }
 
     // Run.
+    val namedInputs = for {
+      (name, source) <- namedSources
+    } yield (name -> new Processor.SourceInput(source))
+    val unnamedInputs = unnamedSources map { new Processor.SourceInput(_) }
     runProcessors(initializedProcessors, namedInputs, unnamedInputs, defaultOutputs)
 
     // Finalize all inputs & outputs.
@@ -76,8 +80,8 @@ class ErminePipeline(val name: String, val description: String,
     } yield output.commit()
     for (f: Future[Unit] <- cleanupFutures ++ commitFutures) Await.result(f, Duration.Inf)
 
-    namedInputs.values foreach { _.close }
-    unnamedInputs foreach { _.close }
+    namedSources.values foreach { _.close }
+    unnamedSources foreach { _.close }
     defaultOutputs foreach { output =>
       output.flush
       output.close
@@ -85,24 +89,27 @@ class ErminePipeline(val name: String, val description: String,
   }
 
   /** Recursive function to run a pipeline. The first processor in the list will be run, then its
-    * outputs will be added to the `namedSources` map for the next run.
+    * outputs will be added to the `namedInputs` map for the next run.
     * @param processors the processors to run. Each call runs the first processor in the Seq.
-    * @param namedSources existing named sources. All named outputs from the current run will be
+    * @param namedInputs existing named inputs. All named outputs from the current run will be
     * added to this map for the next run.
-    * @param unnamedSources the unnamed sources for the current processor run. Populated with the
+    * @param unnamedInputs the unnamed inputs for the current processor run. Populated with the
     * outputs of the previous processor run.
     */
   @tailrec final def runProcessors(processors: Seq[ProcessorConfig],
-    namedSources: Map[String, Source], unnamedSources: Seq[Source],
+    namedInputs: Map[String, Processor.Input], unnamedInputs: Seq[Processor.Input],
     defaultOutputs: Seq[Writer]): Unit = {
 
     processors match {
       // Base case: We've run all the processors; now, if there was an unnamed out from the last
       // step, pipe to the default output.
       case Seq() => {
-        if (unnamedSources.size <= defaultOutputs.size) {
+        // TODO(jkinkead): This *always* uses the default output, since the present of unnamed
+        // inputs no longer implies no named output. Fix.
+        if (unnamedInputs.size <= defaultOutputs.size) {
           for {
-            (source, output) <- unnamedSources zip defaultOutputs
+            (input, output) <- unnamedInputs zip defaultOutputs
+            source <- input.getSources
             line <- source.getLines
           } {
             output.write(line)
@@ -116,10 +123,8 @@ class ErminePipeline(val name: String, val description: String,
         val inputs = next.inputs.zipWithIndex map {
           case (input, index) => {
             input match {
-              // TODO(jkinkead): The below 'reset' calls are needed in order to be able to reuse
-              // inputs to multiple pipeline stages - but they are fragile and should be fixed.
-              case UnnamedInput() => new Processor.SourceInput(unnamedSources(index).reset)
-              case NamedInput(name) => new Processor.SourceInput(namedSources(name).reset)
+              case UnnamedInput() => unnamedInputs(index)
+              case NamedInput(name) => namedInputs(name)
               case uriInput: UriInput => uriInput
             }
           }
@@ -128,21 +133,18 @@ class ErminePipeline(val name: String, val description: String,
         // Run the processor.
         next.processor.process(inputs, next.outputs)
 
-        // Build up the new sources for the next round of iteration.
+        // Build up the new inputs for the next round of iteration.
         val newUnnamed = for {
           output <- next.outputs
           file = output.getOutputFile
-          // TODO(jkinkead): Refactor processor inputs to allow us to send directories as input, and
-          // remove the below call.
-          if !file.isDirectory
-        } yield Source.fromFile(file)
+        } yield new FileInput(file)
         val newNamed = for {
-          (output, source) <- next.outputs zip newUnnamed
+          (output, input) <- next.outputs zip newUnnamed
           name <- output.name
-        } yield (name -> source)
+        } yield (name -> input)
 
         runProcessors(rest,
-          namedSources ++ newNamed,
+          namedInputs ++ newNamed,
           newUnnamed,
           defaultOutputs)
       }
