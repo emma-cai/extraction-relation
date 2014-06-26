@@ -3,7 +3,7 @@ package org.allenai.extraction.rdf
 import org.allenai.common.SourceInputStream
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
-import com.tinkerpop.blueprints.Vertex
+import com.tinkerpop.blueprints.{ Direction, Vertex }
 import com.tinkerpop.blueprints.impls.sail.SailGraph
 
 import scala.io.Source
@@ -24,6 +24,19 @@ object DependencyGraph {
   def toTurtle(graph: SailGraph, sink: Writer) = {
     val sinkStream = new WriterOutputStream(sink, StandardCharsets.UTF_8)
     graph.saveRDF(sinkStream, "turtle")
+  }
+
+  /** Copies one RDF graph into another.
+    * @param source the input graph
+    * @param dest the destination graph to copy into
+    * @return a reference to `dest`
+    */
+  def copy(source: SailGraph, dest: SailGraph): SailGraph = {
+    for (edge <- source.getEdges.asScala) {
+      dest.addEdge(edge.getId, edge.getVertex(Direction.OUT), edge.getVertex(Direction.IN),
+        edge.getLabel)
+    }
+    dest
   }
 
   /** Executes the given sparql query, returning the results as scala objects. */
@@ -98,6 +111,4 @@ object DependencyGraph {
     val result: Map[String, Vertex] = executeSparql(graph, query).head
     result("prop").toStringLiteral
   }
-
 }
-
