@@ -157,14 +157,11 @@ simplified_string(Arg,_,Lemma) :-
 
 %%% simplified form of basic sentence (no relation)
 
-write_simplified_inf_simple_tuple(Entity,Root,Id,Pretty) :-
-	( (rdf(Entity,rdf:type,event),
-	   verb_tokens(Entity,Tokens))
-	; entity_tokens(Entity,Tokens) ),
-	tokens_text_single_quoted(Tokens,Text),
-	simplified_lemma(Entity,null,Lemma),
-	simplified_inf_pred(Root,Pred,null,'',_),
-	format(atom(Pretty), 'pretty(~w, "isa(~w, ~w) -> ~w.")', [Id,Lemma,Text,Pred]),
+write_simplified_inf_simple_tuple(_Entity,Root,Id,Pretty) :-
+	simplified_inf_pred(Root,Pred,null,'',ArgsList),
+	list_to_set(ArgsList,Args),
+	arg_definitions(Args,null,ArgsText),
+	format(atom(Pretty), 'pretty(~w, "~w~w.")', [Id,Pred,ArgsText]),
 	!.
 write_simplified_inf_simple_tuple(_,_,Id,Pretty) :- % failed
 	format(atom(Pretty), 'pretty(~w, "")', [Id]).

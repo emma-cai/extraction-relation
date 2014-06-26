@@ -1265,13 +1265,13 @@ rule58:: isa(A18S12-hibernation, "hibernation") -> example(E4S12-prepare, A18S12
 	pred:object <http://aristo.allenai.org/id#13.12> .
 
 english(rule59, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule59, "isa(push, 'push') -> push(Energy, Object).").
+pretty(rule59, "push(Energy, Object), Energy = 'Mechanical energy', Object = 'another object'.").
 rule59:: isa(E8S13-push, "push") -> agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(rule60, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule60, "isa(Energy, 'Mechanical energy') -> push(Energy, Object).").
+pretty(rule60, "push(Energy, Object), Energy = 'Mechanical energy', Object = 'another object'.").
 rule60:: isa(A2S13-energy, "Mechanical energy") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), object(E8S13-push, A12S13-object), isa(A12S13-object, "another object").
 english(rule61, "Mechanical energy exerted by one object can push or pull another object").
-pretty(rule61, "isa(Object, 'another object') -> push(Energy, Object).").
+pretty(rule61, "push(Energy, Object), Energy = 'Mechanical energy', Object = 'another object'.").
 rule61:: isa(A12S13-object, "another object") -> isa(E8S13-push, "push"), agent(E8S13-push, A2S13-energy), isa(A2S13-energy, "Mechanical energy"), object(E8S13-push, A12S13-object).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:13.1", "text":"Mechanical"},  {"token":"id:13.2", "text":"energy"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:13.8", "text":"push"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:13.11", "text":"another"},  {"token":"id:13.12", "text":"object"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "consequents": [], "confidence":1.0}
 
@@ -1922,19 +1922,19 @@ rule91:: isa(E15S20-grow, "grow"), agent(E15S20-grow, A2S19-animal), isa(A2S19-a
 	pred:isa "\"gases oxygen that their[Green plants] bodies need to grow breathe and make energy\"" .
 
 english(rule92, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule92, "isa(provide, 'provide') -> provide_with(Plant, Animal, Food, with(Oxygen)).").
+pretty(rule92, "provide_with(Plant, Animal, Food, with(Oxygen)), Plant = 'Plants', Animal = 'animals', Food = 'food', Oxygen = 'gases oxygen'.").
 rule92:: isa(E2S21-provide, "provide") -> agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule93, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule93, "isa(Plant, 'Plants') -> provide_with(Plant, Animal, Food, with(Oxygen)).").
+pretty(rule93, "provide_with(Plant, Animal, Food, with(Oxygen)), Plant = 'Plants', Animal = 'animals', Food = 'food', Oxygen = 'gases oxygen'.").
 rule93:: isa(A1S21-plant, "Plants") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule94, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule94, "isa(Animal, 'animals') -> provide_with(Plant, Animal, Food, with(Oxygen)).").
+pretty(rule94, "provide_with(Plant, Animal, Food, with(Oxygen)), Plant = 'Plants', Animal = 'animals', Food = 'food', Oxygen = 'gases oxygen'.").
 rule94:: isa(A3S21-animal, "animals") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule95, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule95, "isa(Food, 'food') -> provide_with(Plant, Animal, Food, with(Oxygen)).").
+pretty(rule95, "provide_with(Plant, Animal, Food, with(Oxygen)), Plant = 'Plants', Animal = 'animals', Food = 'food', Oxygen = 'gases oxygen'.").
 rule95:: isa(A5S21-food, "food") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), with(E2S21-provide, A8S21-oxygen), isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
 english(rule96, "Plants provide animals with food and gases oxygen that their[Green plants] bodies need to grow breathe and make energy").
-pretty(rule96, "isa(Oxygen, 'gases oxygen that their[Green plants] bodies need to grow breathe and make energy') -> provide_with(Plant, Animal, Food, with(Oxygen)).").
+pretty(rule96, "provide_with(Plant, Animal, Food, with(Oxygen)), Plant = 'Plants', Animal = 'animals', Food = 'food', Oxygen = 'gases oxygen'.").
 rule96:: isa(A8S21-oxygen, "gases oxygen that their[Green plants] bodies need to grow breathe and make energy") -> isa(E2S21-provide, "provide"), agent(E2S21-provide, A1S21-plant), isa(A1S21-plant, "Plants"), object(E2S21-provide, A3S21-animal), isa(A3S21-animal, "animals"), with(E2S21-provide, A5S21-food), isa(A5S21-food, "food"), with(E2S21-provide, A8S21-oxygen).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:21.1", "text":"Plants"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:21.2", "text":"provide"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:21.3", "text":"animals"} ], "isInferred":false, "coreferences": []}, "extraPhrases": [ [ {"token":"id:21.4", "text":"with"},  {"token":"id:21.5", "text":"food"} ],  [ {"token":"id:21.4", "text":"with"},  {"token":"id:21.7", "text":"gases"},  {"token":"id:21.8", "text":"oxygen"},  {"token":"id:21.9", "text":"that"},  {"token":"id:21.10", "text":"their[Green plants]"},  {"token":"id:21.11", "text":"bodies"},  {"token":"id:21.12", "text":"need"},  {"token":"id:21.13", "text":"to"},  {"token":"id:21.14", "text":"grow"},  {"token":"id:21.15", "text":"breathe"},  {"token":"id:21.16", "text":"and"},  {"token":"id:21.17", "text":"make"},  {"token":"id:21.18", "text":"energy"} ] ]} ], "consequents": [], "confidence":1.0}
 
