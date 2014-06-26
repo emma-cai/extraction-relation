@@ -42,6 +42,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
         ExtractionLabels,
         ExtractionRoles,
         InferenceRules,
+        InferenceRuleDisplay,
         OtterJsonToReadableOutputProcessor,
         QuestionRules,
         StanfordExtractor,

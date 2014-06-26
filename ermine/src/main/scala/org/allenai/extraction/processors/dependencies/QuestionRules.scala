@@ -13,7 +13,9 @@ import scala.io.Source
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-/** processor to add labels and string descriptions to extracted nodes */
+/** processor to generate Arilog inference rule format of questions
+  * - requires a focus string as a second input
+  */
 object QuestionRules extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 1

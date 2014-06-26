@@ -11,8 +11,8 @@ import scala.io.Source
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-/** processor to generate Arilog inference rule format */
-object InferenceRules extends TextProcessor {
+/** processor to generate pretty print version of inference rules */
+object InferenceRuleDisplay extends TextProcessor {
   override val numInputs = 1
   override val numOutputs = 1
 
@@ -29,6 +29,14 @@ object InferenceRules extends TextProcessor {
 
   val separator = ", "
 
+  def separator(string: StringBuilder, prefix: String = ""): String = {
+    if (string.isEmpty) {
+      prefix
+    } else {
+      separator
+    }
+  }
+
   override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
     val source = sources(0)
     DependencyGraph.fromTurtle(inputGraph, source)
@@ -39,76 +47,77 @@ object InferenceRules extends TextProcessor {
     for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       val x: Vertex = map("x")
       val y: Vertex = map("y")
-      val relation: String = nodeRel(x, map("r"), y)
-      // left -> relation, right
+      // rule id
+      sink.write(s"display(rule${ruleId}, ")
       ruleId += 1
-      sink.write(relationRule(x, relation, y, ruleId))
-      // right -> relation, left
-      ruleId += 1
-      sink.write(relationRule(y, relation, x, ruleId))
+
+      val relation: String = nodeRelation(x, map("r"), y)
+      sink.write(relation)
+
+      sink.write('\n')
     }
 
     inputGraph.shutdown()
   }
 
-  def relationRule(left: Vertex, relation: String, right: Vertex, ruleId: Int): String = {
-    val rule = new StringBuilder()
-    // rule id
-    rule ++= s"rule${ruleId}:: "
-    // LHS
-    rule ++= nodeIsa(left)
-    rule ++= nodeArgs(left, separator)
-    // relation
-    rule ++= " -> " + relation
-    // RHS
-    rule ++= nodeIsa(right, separator)
-    rule ++= nodeArgs(right, separator)
+  //TODO: collect list of vars, add var string definitions
 
-    rule ++= ".\n"
-    rule.toString
-  }
-
-  def nodeRel(x: Vertex, r: Vertex, y: Vertex): String = {
-    val xlabel: String = nodeLabel(x)
-    val rel: String = r.toStringLiteral
-    val ylabel: String = nodeLabel(y)
+  def nodeRelation(x: Vertex, r: Vertex, y: Vertex): String = {
+    val xlabel: String = nodeArgs(x)
+    val rel: String = r.toStringLiteral.toUpperCase
+    val ylabel: String = nodeArgs(y)
     s"$rel($xlabel, $ylabel)"
   }
 
   def nodeArgs(node: Vertex, prefix: String = ""): String = {
     val uri: String = node.toUri
-    val label: String = nodeLabel(node)
-    val query: String = s"""
+    val args = new StringBuilder()
+    // add args
+    for (role <- Seq("agent", "object", "arg")) {
+      val argQuery: String = s"""
+        SELECT ?arg WHERE {
+          <$uri> pred:$role ?arg .
+        }"""
+      for (map <- DependencyGraph.executeSparql(inputGraph, argQuery)) {
+        val arg: Vertex = map("arg")
+        args ++= separator(args, prefix)
+        args ++= nodeLabel(arg)
+      }
+    }
+    // add PPs
+    val prepQuery: String = s"""
       SELECT ?pred ?arg WHERE {
         <$uri> ?rel ?arg .
         FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/pred/")) .
         BIND(STRAFTER(str(?rel), "http://aristo.allenai.org/pred/") AS ?pred) .
+        FILTER(?pred != "agent") .
+        FILTER(?pred != "object") .
+        FILTER(?pred != "arg") .
       }"""
-    val args = new StringBuilder()
-    for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
+    var firstPrep: String = ""
+    for (map <- DependencyGraph.executeSparql(inputGraph, prepQuery)) {
       val pred = map("pred").toStringLiteral
       val arg: Vertex = map("arg")
       val argLabel = nodeLabel(arg)
       val argString = nodeString(arg)
-      if (args.isEmpty) {
-        args ++= prefix
+      args ++= separator(args, prefix)
+      if (firstPrep == "") {
+        // attach first prep to verb
+        firstPrep = '_' + pred
+        args ++= argLabel
       } else {
-        args ++= separator
+        args ++= s"$pred($argLabel)"
       }
-      args.append(s"$pred($label, $argLabel)")
-      args ++= separator
-      args.append(s"""isa($argLabel, "$argString")""")
     }
-    args.toString
+
+    if (args.nonEmpty) {
+      nodeLabel(node, false) + firstPrep + '(' + args.toString + ')'
+    } else {
+      nodeLabel(node)
+    }
   }
 
-  def nodeIsa(node: Vertex, prefix: String = ""): String = {
-    val label: String = nodeLabel(node)
-    val string: String = nodeString(node)
-    s"""${prefix}isa($label, "$string")"""
-  }
-
-  def nodeLabel(node: Vertex): String = {
+  def nodeLabel(node: Vertex, initcap: Boolean = true): String = {
     val uri: String = node.toUri
     val id: String = uri.split("http://aristo.allenai.org/id#").last
     val query: String = s"""
@@ -117,17 +126,23 @@ object InferenceRules extends TextProcessor {
       }"""
     val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
     val label = result.get("label").map(_.toStringLiteral).getOrElse("")
-    s"E$id-$label"
+    if (initcap) {
+      Character.toUpperCase(label.charAt(0)) + label.substring(1)
+    } else {
+      label
+    }
   }
 
-  def nodeString(node: Vertex): String = {
+  def nodeString(node: Vertex, prefix: String = ""): String = {
     val uri: String = node.toUri
     val query: String = s"""
       SELECT ?string WHERE {
         <$uri> rdfs:comment ?string .
       }"""
     val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
-    result.get("string").map(_.toStringLiteral).getOrElse("")
+    val label: String = nodeLabel(node)
+    val string = result.get("string").map(_.toStringLiteral).getOrElse("")
+    s"""${prefix}$label = "$string""""
   }
 
 }
