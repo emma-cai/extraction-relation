@@ -89,12 +89,12 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
 
     // Configure the OtterDefinitionDBWriter and OtterDefinitionDBWriter.
     val dbPathOption = config.get[String]("otterDB.dbPath")
-    val dbUserOption = config.get[String]("otterDB.dbUsername")
-    val dbPasswordOption = config.get[String]("otterDB.dbPassword")
     dbPathOption match {
       case (Some(dbPath)) =>
+        val dbUserOption = config.get[String]("otterDB.dbUsername")
+        val dbPasswordOption = config.get[String]("otterDB.dbPassword")
         addProcessor(new OtterDefinitionDBWriter(dbPath, dbUserOption, dbPasswordOption))
-      case _ => log.error("dbPath is missing for OtterDefinitionDBWriter." +
+      case _ => log.error("dbPath is missing for OtterDefinitionDBWriter. " +
         "The processor failed to start up.")
     }
 

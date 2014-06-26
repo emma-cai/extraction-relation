@@ -1,4 +1,6 @@
-package org.allenai.extraction.api
+package org.allenai.extraction.api.definition
+
+import org.allenai.common.Logging
 
 import java.io.Writer
 
@@ -16,7 +18,7 @@ import spray.json._
 class DefinitionDBReader(
     dbDir: String,
     userOption: Option[String] = None,
-    passwordOption: Option[String] = None) {
+    passwordOption: Option[String] = None) extends Logging {
 
   val extractionsDb: DefinitionExtractionsDB =
     new DefinitionExtractionsDB(dbDir, userOption, passwordOption)
@@ -78,24 +80,30 @@ class DefinitionDBReader(
     try {
       extractionsDb.getNumberOfDistinctTerms
     } catch {
-      // Return 0 if an Exception was encountered
-      case e: Exception => 0
+      // Log and Return 0 if an Exception was encountered
+      case e: Exception =>
+        logger.debug("Caught Exception: " + e.getMessage)
+        0
     }
   }
   def getNumberOfDistinctDefinitions: Int = {
     try {
       extractionsDb.getNumberOfDistinctDefinitions
     } catch {
-      // Return 0 if an Exception was encountered
-      case e: Exception => 0
+      // Log and Return 0 if an Exception was encountered
+      case e: Exception =>
+        logger.debug("Caught Exception: " + e.getMessage)
+        0
     }
   }
   def getNumberOfDistinctSources: Int = {
     try {
       extractionsDb.getNumberOfDistinctSources
     } catch {
-      // Return 0 if an Exception was encountered
-      case e: Exception => 0
+      // Log and Return 0 if an Exception was encountered
+      case e: Exception =>
+        logger.debug("Caught Exception: " + e.getMessage)
+        0
     }
   }
 }

@@ -1,4 +1,4 @@
-package org.allenai.extraction.api
+package org.allenai.extraction.api.definition
 
 import scala.slick.driver.H2Driver.simple._
 
@@ -68,11 +68,7 @@ class DefinitionExtractionsDB(
     */
   def getNumberOfDistinctTerms: Int = {
     db.withSession { implicit session =>
-      val terms = for {
-        de <- definitionExtractions
-      } yield {
-        de.definedTerm // project query result to tuple
-      }
+      val terms = definitionExtractions map { _.definedTerm }
       // execute query
       val termList: List[String] = terms.list
       termList.toSet[String].size
@@ -83,11 +79,7 @@ class DefinitionExtractionsDB(
     */
   def getNumberOfDistinctDefinitions: Int = {
     db.withSession { implicit session =>
-      val definitions = for {
-        de <- definitionExtractions
-      } yield {
-        de.alternateDefinition // project query result to tuple
-      }
+      val definitions = definitionExtractions map { _.alternateDefinition }
       // execute query
       val definitionList: List[String] = definitions.list
       (definitionList map { x => x.toLowerCase }).toSet[String].size
@@ -98,11 +90,7 @@ class DefinitionExtractionsDB(
     */
   def getNumberOfDistinctSources: Int = {
     db.withSession { implicit session =>
-      val sources = for {
-        de <- definitionExtractions
-      } yield {
-        de.source // project query result to tuple
-      }
+      val sources = definitionExtractions map { _.source }
       // execute query
       val sourceList: List[String] = sources.list
       (sourceList map { x => x.toLowerCase }).toSet[String].size

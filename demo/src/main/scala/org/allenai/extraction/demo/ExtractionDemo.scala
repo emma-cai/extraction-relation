@@ -2,7 +2,7 @@ package org.allenai.extraction.demo
 
 import org.allenai.common.Resource.using
 import org.allenai.common.Logging
-import org.allenai.extraction.api.DefinitionDBReader
+import org.allenai.extraction.api.definition.DefinitionDBReader
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 
 import akka.actor._
@@ -258,15 +258,12 @@ class OtterDBLookup(val otterDBpath: String) extends Processor with SprayJsonSup
   val numDefinitions = dbReader.getNumberOfDistinctDefinitions
   val numSources = dbReader.getNumberOfDistinctSources
 
-  private val dbStatisticsSb: StringBuilder = new StringBuilder
-  if ((numTerms > 0) && (numDefinitions > 0) && (numSources > 0)) {
-    dbStatisticsSb ++=
+  val dbStatistics: String =
+    if ((numTerms > 0) && (numDefinitions > 0) && (numSources > 0)) {
       numTerms + " unique terms and " +
-      numDefinitions + " unique definitions from " +
-      numSources + " different sources."
-  }
-
-  val dbStatistics = dbStatisticsSb.toString
+        numDefinitions + " unique definitions from " +
+        numSources + " different sources."
+    } else ""
 
   logger.info(dbStatistics)
 
@@ -315,50 +312,49 @@ class ExtractionDemoApp(
           ctx.complete((InternalServerError, e.toJson.prettyPrint))
       }
 
-    // format: OFF
     implicit val actorSystem = ActorSystem("extraction-demo")
-        // format: OFF
-        startServer(interface = "0.0.0.0", port = port) {
-          handleExceptions(exceptionHandler) {
-            respondWithHeader(cacheControlMaxAge) {
-              // Go to General demo home page if there is no additional path prefix, i.e., 
-              // it is empty or has a '/'.
+      // format: OFF
+      startServer(interface = "0.0.0.0", port = port) {
+        handleExceptions(exceptionHandler) {
+          respondWithHeader(cacheControlMaxAge) {
+            // Go to General demo home page if there is no additional path prefix, i.e., 
+            // it is empty or has a '/'.
+            pathEndOrSingleSlash {
+              generalDemo.indexRoute 
+            } ~
+            // Go to General demo if the path has a '/general' prefix specified -
+            // so there are two ways to get to the General extraction demo: one is by
+            // using '/general' and the other is by not specifying a prefix (as above).
+            pathPrefix("general") {
               pathEndOrSingleSlash {
-                generalDemo.indexRoute 
+                generalDemo.indexRoute
               } ~
-              // Go to General demo if the path has a '/general' prefix specified -
-              // so there are two ways to get to the General extraction demo: one is by
-              // using '/general' and the other is by not specifying a prefix (as above).
-              pathPrefix("general") {
-                pathEndOrSingleSlash {
-                  generalDemo.indexRoute
-                } ~
-                generalDemo.route 
-              } ~
-              // Go to Otter demo if the path has a '/otter' prefix specified.
-              pathPrefix("otter") {
-                path("statistics") {
-                  get {
-                    complete {
-                      otterDemo.processors.headOption match {
-                        case Some(processor: OtterDBLookup) =>
-                          processor.dbStatistics
-                        case _ => ""
-                      }
+              generalDemo.route 
+            } ~
+            // Go to Otter demo if the path has a '/otter' prefix specified.
+            pathPrefix("otter") {
+              path("statistics") {
+                get {
+                  complete {
+                    otterDemo.processors.headOption match {
+                      case Some(processor: OtterDBLookup) =>
+                        "from a database of " + processor.dbStatistics
+                      case _ => ""
                     }
                   }
-                } ~
-                pathEndOrSingleSlash {
-                  otterDemo.indexRoute
-                } ~
-                otterDemo.route 
-              } ~             
-              unmatchedPath { p => getFromFile(staticContentRoot + p) }
-            }
+                }
+              } ~
+              pathEndOrSingleSlash {
+                otterDemo.indexRoute
+              } ~
+              otterDemo.route 
+            } ~             
+            unmatchedPath { p => getFromFile(staticContentRoot + p) }
           }
-       }
-    }
-  // format: ON
+        }
+      }
+    // format: ON
+  }
 }
 
 /** Companion object to above ExtractionDemoApp class. Creates the General demo and Otter demo

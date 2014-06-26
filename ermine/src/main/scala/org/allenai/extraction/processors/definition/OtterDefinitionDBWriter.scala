@@ -1,7 +1,6 @@
 package org.allenai.extraction.processors.definition
 
-import org.allenai.extraction.api.DefinitionExtractionsDB
-import org.allenai.extraction.api.DefinitionExtraction
+import org.allenai.extraction.api.definition.{ DefinitionExtraction, DefinitionExtractionsDB }
 import org.allenai.extraction.FlatProcessor
 
 import java.io.Writer
