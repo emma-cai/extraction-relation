@@ -91,12 +91,14 @@ abstract class TextProcessor extends Processor {
       outputFile = destination.getOutputFile
     } yield {
       if (outputFile.isDirectory) {
-        throw new ErmineException("TextProcessor requires all outputs to be non-directories!")
+        throw new ErmineException(
+          s"${name} > TextProcessor requires all outputs to be non-directories!")
       }
       new FileWriter(outputFile)
     }
     if (sourceInstances.size != sources.size) {
-      throw new ErmineException("TextProcessor requires all inputs to be non-directories!")
+      throw new ErmineException(
+        s"${name} > TextProcessor requires all inputs to be non-directories!")
     }
 
     processText(sourceInstances, destinationWriters)
