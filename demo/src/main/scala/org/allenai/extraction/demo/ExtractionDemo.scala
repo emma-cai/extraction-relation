@@ -2,6 +2,7 @@ package org.allenai.extraction.demo
 
 import org.allenai.common.Resource.using
 import org.allenai.common.Logging
+import org.allenai.extraction.api.definition.DefinitionDBReader
 import org.allenai.extraction.api.JsonProtocol.{ PipelineRequest, PipelineResponse }
 
 import akka.actor._
@@ -20,6 +21,7 @@ import spray.json._
 import spray.routing._
 
 import java.io.File
+import java.io.StringWriter
 import java.net.URL
 import scala.collection.JavaConverters._
 import scala.concurrent._
@@ -28,31 +30,49 @@ import scala.io.Source
 import scala.util.{ Try, Success, Failure }
 import scala.util.control.NonFatal
 
-class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
+/** Class to handle various routes for the General demo and Otter demo.
+  * @param staticContentRoot Path of the directory with the required html and related resources.
+  * @param defaultContent Home page for the demo: different values for the General and the Otter demos.
+  * Defaults to the one for the General demo.
+  */
+class ExtractionDemo(val processors: Seq[Processor],
+    val staticContentRoot: String = "public",
+    val defaultContent: String = "index.html") extends Directives with SprayJsonSupport with Logging {
+
+  import org.allenai.common.JsonFormats._
+  import org.allenai.common.Config._
+
+  val config = ConfigFactory.load().getConfig("extraction")
+  val staticContentRootFile = new File(staticContentRoot)
+  val defaultContentRootFile = new File(staticContentRootFile, defaultContent)
+
+  require(staticContentRootFile.exists, "Static content root not found: " + staticContentRootFile.getAbsolutePath)
+  require(defaultContentRootFile.exists, "Static default content not found: " + defaultContentRootFile.getAbsolutePath)
+
   val timeout = 1.minute
 
-  def extractSentences(sentences: Seq[String]): Future[Response] = {
-    val processed: Seq[Future[(ExtractedSentence, Seq[Throwable])]] = for (sentence <- sentences) yield {
-      logger.debug(s"Processing sentence with ${extractors.size} extractors: " + sentence)
+  def processInput(input: Seq[String]): Future[Response] = {
+    val processed: Seq[Future[(ProcessedInput, Seq[Throwable])]] = for (inputLine <- input) yield {
+      logger.debug(s"Processing input with ${processors.size} processors: " + inputLine)
 
-      case class ExtractorResponse(extractor: String, response: String)
+      case class ProcessorResponse(processor: String, response: String)
 
       // Fire off requests to all extractors for the particular sentence.
       // We use a Try so that we can keep all failures, instead of failing
       // the whole future for a single failure.
-      val extractionFutures: Seq[Future[Try[ExtractorResponse]]] =
-        for (extractor <- extractors) yield {
+      val extractionFutures: Seq[Future[Try[ProcessorResponse]]] =
+        for (processor <- processors) yield {
           // Run the extractor
-          val attempt: Future[String] = extractor(sentence)
+          val attempt: Future[String] = processor(inputLine)
 
           // Wrap with a cleaner exception
           val wrapped: Future[String] = attempt.transform(x => x, throwable =>
-            new ExtractorException(
-              s"Exception with ${extractor.name} at: ${extractor.url}", throwable))
+            new ProcessorException(
+              s"Exception with ${processor.name}", throwable))
 
           // Convert future value to Try.
-          wrapped map { extractions =>
-            Success(ExtractorResponse(extractor.name, extractions))
+          wrapped map { results =>
+            Success(ProcessorResponse(processor.name, results))
           } recover {
             case NonFatal(e) =>
               logger.error(e.getMessage, e)
@@ -60,150 +80,125 @@ class ExtractionDemo(extractors: Seq[Extractor])(port: Int) extends SimpleRoutin
           }
         }
 
-      // Change responses into an ExtractedSentence and failures.
-      Future.sequence(extractionFutures) map { seq: Seq[Try[ExtractorResponse]] =>
+      // Change responses into an ProcessedInput and failures.
+      Future.sequence(extractionFutures) map { seq: Seq[Try[ProcessorResponse]] =>
         val successfulExtractions = for {
           tryValue <- seq
           success <- tryValue.toOption
-          ExtractorResponse(extractor, response) = success
-          extractions = (response split "\n")
-        } yield ExtractorResults(extractor, extractions)
+          ProcessorResponse(processor, response) = success
+          results = (response split "\n")
+        } yield ProcessorResults(processor, results)
 
         val exceptions = seq collect { case fail: Failure[_] => fail.exception }
 
-        (ExtractedSentence(sentence, successfulExtractions), exceptions)
+        (ProcessedInput(inputLine, successfulExtractions), exceptions)
       }
     }
 
-    val extractorMap = extractors.map { extractor: Extractor =>
-      extractor.name -> extractor.description.getOrElse("")
+    val processorMap = processors.map { processor: Processor =>
+      processor.name -> processor.description.getOrElse("")
     }.toMap
 
     Future.sequence(processed) map { seq =>
-      val successes: Seq[ExtractedSentence] = seq map (_._1)
+      val successes: Seq[ProcessedInput] = seq map (_._1)
       val exceptions: Seq[Throwable] = seq flatMap (_._2)
-      Response(successes, extractorMap, exceptions)
+      Response(successes, processorMap, exceptions)
     }
   }
 
-  case class Response(sentences: Seq[ExtractedSentence], extractors: Map[String, String], failures: Seq[Throwable])
-  case class ExtractedSentence(text: String, extractors: Seq[ExtractorResults])
-  case class ExtractorResults(name: String, extractions: Seq[String])
+  case class Response(input: Seq[ProcessedInput], processors: Map[String, String], failures: Seq[Throwable])
+  case class ProcessedInput(text: String, processors: Seq[ProcessorResults])
+  case class ProcessorResults(name: String, results: Seq[String])
 
-  implicit val throwableWriter = new RootJsonFormat[Throwable] {
-    def read(v: JsValue): Throwable = throw new UnsupportedOperationException
-    /** Write a throwable as an object with 'message' and 'stackTrace' fields. */
-    def write(t: Throwable) = {
-      def getMessageChain(throwable: Throwable): List[String] = {
-        Option(throwable) match {
-          case Some(throwable) => Option(throwable.getMessage) match {
-            case Some(message) => (throwable.getClass + ": " + message) :: getMessageChain(throwable.getCause)
-            case None => getMessageChain(throwable.getCause)
-          }
-          case None => Nil
-        }
-      }
-      val stackTrace = {
-        val stackTraceWriter = new java.io.StringWriter()
-        t.printStackTrace(new java.io.PrintWriter(stackTraceWriter))
-        stackTraceWriter.toString
-      }
+  implicit val processorResults = jsonFormat2(ProcessorResults)
+  implicit val processedSentenceFormat = jsonFormat2(ProcessedInput)
+
+  // Not defining a JsonFormat, but just the Writer here: this is a special case 
+  // because Response contains a Seq[Throwable] and Throwable has just Writer 
+  // defined (in org.allenai.common.JsonFormats).
+  implicit object ResponseWriter extends RootJsonWriter[Response] {
+
+    def write(response: Response): JsValue = {
       JsObject(
-        "messages" -> JsArray(getMessageChain(t) map (JsString(_))),
-        "stackTrace" -> JsString(stackTrace))
+        "input" -> response.input.toJson,
+        "processors" -> response.processors.toJson,
+        "failures" -> JsArray(response.failures.toList map { x => x.toJson }))
     }
   }
-  implicit val extractorResults = jsonFormat2(ExtractorResults)
-  implicit val extractedSentenceFormat = jsonFormat2(ExtractedSentence)
-  implicit val responseFormat = jsonFormat3(Response)
 
-  def run() {
-    val config = ConfigFactory.load().getConfig("extraction")
+  implicit val actorSystem = ActorSystem("extraction-demo")
 
-    val staticContentRoot = "public"
-    val staticContentRootFile = new File(staticContentRoot)
-    val defaultContent = "index.html"
-    val defaultContentRootFile = new File(staticContentRootFile, defaultContent)
-
-    require(staticContentRootFile.exists, "Static content root not found: " + staticContentRootFile.getAbsolutePath)
-    require(defaultContentRootFile.exists, "Static default content not found: " + defaultContentRootFile.getAbsolutePath)
-
-    val cacheControlMaxAge = HttpHeaders.`Cache-Control`(CacheDirectives.`max-age`(60))
-
-    implicit val system = ActorSystem("extraction-demo")
-
-    implicit def exceptionHandler(implicit log: spray.util.LoggingContext) =
-      ExceptionHandler {
-        case e: Throwable => ctx =>
-          // log in akka, which is configured to use slf4j
-          log.error(e, "Unexpected Error.")
-
-          // return the error formatted as json
-          ctx.complete((InternalServerError, e.toJson.prettyPrint))
-      }
-
-    // format: OFF
-    startServer(interface = "0.0.0.0", port = port) {
-      handleExceptions(exceptionHandler) {
-        respondWithHeader(cacheControlMaxAge) {
-          path ("") {
-            get {
-              getFromFile(staticContentRoot + "/index.html")
-            }
-          } ~
-          path("config") {
-            get {
-              val asJsonOptions = ConfigRenderOptions.defaults().setJson(true)
-              complete(config.root.render(asJsonOptions))
-            }
-          } ~
-          post {
-            path ("text") {
-              entity(as[String]) { text =>
-                val sentences = text split "\n"
-                val sampleText = (sentences.headOption map (s => (s take 32) + "...")).getOrElse("")
-                logger.info(s"Request to extract ${sentences.size} sentences: " + sampleText)
-                complete {
-                  extractSentences(text split "\n")
-                }
-              }
-            } ~
-            path ("file") {
-              entity(as[String]) { fileString =>
-                val file = new File(fileString)
-                logger.info("Request to extract file: " + file)
-                using(Source.fromFile(file)) { source =>
-                  complete {
-                    extractSentences(source.getLines.toSeq)
-                  }
-                }
-              }
-            } ~
-            path ("url") {
-              entity(as[String]) { urlString =>
-                logger.info("Request to extract url: " + urlString)
-                val url = new URL(urlString)
-                val text = ArticleExtractor.INSTANCE.getText(url)
-                complete {
-                  extractSentences(text split "\n")
-                }
-              }
-            }
-          } ~
-          unmatchedPath { p => getFromFile(staticContentRoot + p) }
-        }
-      }
+  // format: OFF
+  // Index route: Handles the home page url, i.e., without any path prefixes.
+  val indexRoute =
+    get {
+      logger.info(s"Request for main page")
+      getFromFile(defaultContentRootFile)
     }
-    // format: ON
-  }
+
+  // Route: Handles all possible paths that can follow the urls for the General demo
+  // and Otter demo (/general/... and /otter/... respectively).
+  val route =
+    path("config") {
+      get {
+        complete(config.toJson.compactPrint)
+      }
+    } ~
+      post {
+        path("text") {
+          entity(as[String]) { text =>
+            val sentences = text split "\n"
+            val sampleText = (sentences.headOption map (s => (s take 32) + "...")).getOrElse("")
+            logger.info(s"Request to extract ${sentences.size} sentences: " + sampleText)
+            complete {
+              processInput(text split "\n")
+            }
+          }
+        } ~
+          path("file") {
+            entity(as[String]) { fileString =>
+              val file = new File(fileString)
+              logger.info("Request to extract file: " + file)
+              using(Source.fromFile(file)) { source =>
+                complete {
+                  processInput(source.getLines.toSeq)
+                }
+              }
+            }
+          } ~
+          path("url") {
+            entity(as[String]) { urlString =>
+              logger.info("Request to extract url: " + urlString)
+              val url = new URL(urlString)
+              val text = ArticleExtractor.INSTANCE.getText(url)
+              complete {
+                processInput(text split "\n")
+              }
+            }
+          }
+      }
+  // format: ON
 }
 
-class ExtractorException(message: String, cause: Throwable = null) extends Exception(message, cause)
+class ProcessorException(message: String, cause: Throwable = null) extends Exception(message, cause)
 
-abstract class Extractor(val url: URL) extends (String => Future[String]) with Logging {
+/** Trait for a Processor: could be an Extractor or in the case of Otter,
+  * a DB lookup class.
+  */
+trait Processor extends (String => Future[String]) with Logging {
+  val name: String
+  val description: Option[String]
+}
+
+/** Abstract class for an Extractor, which can be an old style extractor or
+  * an extractor running in Ermine.
+  * @param url Path of the processor we are requesting extraction/other processing
+  * from. These come from the config file.
+  */
+abstract class Extractor(val url: URL) extends Processor {
   override def toString = s"$name($url)"
 
-  val name: String = {
+  override val name: String = {
     val svc = dispatch.url(url.toString) / "info" / "name"
     try {
       Await.result(Http(svc OK as.String), 10.seconds).trim
@@ -214,13 +209,14 @@ abstract class Extractor(val url: URL) extends (String => Future[String]) with L
     }
   }
 
-  val description: Option[String] = {
+  override val description: Option[String] = {
     val svc = dispatch.url(url.toString) / "info" / "description"
     Try(Await.result(Http(svc OK as.String), 10.seconds)).toOption map (_.trim)
   }
 }
 
-/** Old-style extractor which accepts a POST on the root path and returns a string. */
+/** Old-style extractor which accepts a POST on the root path and returns a string.
+  */
 class SimpleExtractor(url: URL) extends Extractor(url) {
   override def apply(sentence: String): Future[String] = {
     val svc = dispatch.url(url.toString) << sentence
@@ -228,7 +224,8 @@ class SimpleExtractor(url: URL) extends Extractor(url) {
   }
 }
 
-/** Extractor run through the Ermine service. */
+/** Extractor run through the Ermine service.
+  */
 class ErmineExtractor(url: URL) extends Extractor(url) {
   override def apply(sentence: String): Future[String] = {
     // TODO(jkinkead): This is hard-coded to use a "text" input, which doesn't work for the
@@ -244,27 +241,156 @@ class ErmineExtractor(url: URL) extends Extractor(url) {
           body.parseJson.convertTo[PipelineResponse].output
         case responseCode =>
           val body = response.getResponseBody
-          throw new ExtractorException(s"Bad response ($responseCode) from Ermine at $url: $body")
+          throw new ProcessorException(s"Bad response ($responseCode) from Ermine at $url: $body")
       }
     }
   }
 }
 
-object ExtractionDemoMain extends App with Logging {
-  val config = ConfigFactory.load().getConfig("extraction.demo")
+/** Otter DB Lookup Processor.
+  */
+class OtterDBLookup(val otterDBpath: String) extends Processor with SprayJsonSupport {
+  // Construct the DB Reader object 
+  private val dbReader = new DefinitionDBReader(otterDBpath)
 
+  // Get statistics for display
+  val numTerms = dbReader.getNumberOfDistinctTerms
+  val numDefinitions = dbReader.getNumberOfDistinctDefinitions
+  val numSources = dbReader.getNumberOfDistinctSources
+
+  val dbStatistics: String =
+    if ((numTerms > 0) && (numDefinitions > 0) && (numSources > 0)) {
+      numTerms + " unique terms and " +
+        numDefinitions + " unique definitions from " +
+        numSources + " different sources."
+    } else ""
+
+  logger.info(dbStatistics)
+
+  override def apply(term: String): Future[String] = {
+    val results = new StringWriter()
+    try {
+      dbReader.lookupTerm(term, results)
+    } catch {
+      case dbException: org.h2.jdbc.JdbcSQLException =>
+        throw new ProcessorException(s"Problem accessing Otter Extractions database : $dbException.getMessage")
+      case exception: Exception =>
+        throw new ProcessorException(s"Problem servicing your lookup request : $exception.getMessage")
+    }
+    results.close()
+    Future {
+      results.toString()
+    }
+  }
+
+  override val name: String = "OtterLookup"
+  override val description: Option[String] = Option("Otter Extraction DB Lookup by Term")
+}
+
+/** The main app class. Since we now have both the (old) General demo and the (new) Otter demo,
+  * this takes both objects and composes the overall routes using the routes defined within each
+  * of the demo objects.
+  * @param generalDemo ExtractionDemo object representing the "general" extraction demo: old demo.
+  * @param otterDemo ExtractionDemo object representing the new Otter extraction demo.
+  */
+class ExtractionDemoApp(
+    generalDemo: ExtractionDemo,
+    otterDemo: ExtractionDemo,
+    staticContentRoot: String = "public")(port: Int) extends SimpleRoutingApp with SprayJsonSupport with Logging {
+  import org.allenai.common.JsonFormats.throwableWriter
+
+  def run() {
+    val cacheControlMaxAge = HttpHeaders.`Cache-Control`(CacheDirectives.`max-age`(60))
+
+    implicit def exceptionHandler(implicit log: spray.util.LoggingContext) =
+      ExceptionHandler {
+        case e: Throwable => ctx =>
+          // log in akka, which is configured to use slf4j
+          log.error(e, "Unexpected Error.")
+
+          // return the error formatted as json
+          ctx.complete((InternalServerError, e.toJson.prettyPrint))
+      }
+
+    implicit val actorSystem = ActorSystem("extraction-demo")
+      // format: OFF
+      startServer(interface = "0.0.0.0", port = port) {
+        handleExceptions(exceptionHandler) {
+          respondWithHeader(cacheControlMaxAge) {
+            // Go to General demo home page if there is no additional path prefix, i.e., 
+            // it is empty or has a '/'.
+            pathEndOrSingleSlash {
+              generalDemo.indexRoute 
+            } ~
+            // Go to General demo if the path has a '/general' prefix specified -
+            // so there are two ways to get to the General extraction demo: one is by
+            // using '/general' and the other is by not specifying a prefix (as above).
+            pathPrefix("general") {
+              pathEndOrSingleSlash {
+                generalDemo.indexRoute
+              } ~
+              generalDemo.route 
+            } ~
+            // Go to Otter demo if the path has a '/otter' prefix specified.
+            pathPrefix("otter") {
+              path("statistics") {
+                get {
+                  complete {
+                    otterDemo.processors.headOption match {
+                      case Some(processor: OtterDBLookup) =>
+                        "from a database of " + processor.dbStatistics
+                      case _ => ""
+                    }
+                  }
+                }
+              } ~
+              pathEndOrSingleSlash {
+                otterDemo.indexRoute
+              } ~
+              otterDemo.route 
+            } ~             
+            unmatchedPath { p => getFromFile(staticContentRoot + p) }
+          }
+        }
+      }
+    // format: ON
+  }
+}
+
+/** Companion object to above ExtractionDemoApp class. Creates the General demo and Otter demo
+  * objects based on their specific config information from the application config. The required
+  * processors for each demo are created and each demo is initialized with its set of processors.
+  */
+object ExtractionDemoApp extends App with Logging {
+  // Read the application conf file, get the config info for the General and Otter demos, create
+  // and initialize those demo objects. This App object then contains both those demo objects.
+  val config = ConfigFactory.load().getConfig("extraction.demo")
   val port = config.getInt("port")
-  val simpleExtractors = config.getStringList("extractors").iterator().asScala.map { url =>
+
+  // Read the "general" extraction demo config
+  val generalExtractionDemoconfig = ConfigFactory.load().getConfig("general.extraction.demo")
+  val simpleExtractors = generalExtractionDemoconfig.getStringList("extractors").iterator().asScala.map { url =>
     new SimpleExtractor(new URL(url))
   }.toSeq
-  val ermineExtractors = config.getStringList("ermine-extractors").iterator().asScala.map { url =>
+  val ermineProcessors = generalExtractionDemoconfig.getStringList("ermine-extractors").iterator().asScala.map { url =>
     new ErmineExtractor(new URL(url))
   }.toSeq
+  val processors = simpleExtractors ++ ermineProcessors
+  logger.info("Configured with extractors: " + processors.mkString(", "))
+  val generalDemoDefaultContent = generalExtractionDemoconfig.getString("defaultContent")
+  val generalDemo = new ExtractionDemo(processors, "public", generalDemoDefaultContent)
 
-  val extractors = simpleExtractors ++ ermineExtractors
+  // Read the "Otter" extraction demo config
+  val otterExtractionDemoconfig = ConfigFactory.load().getConfig("otter.extraction.demo")
+  // NOTE: Otter Demo will work only if the below database is present on the machine on which it is run.
+  // If not, the Demo will start up fine but Lookup will NOT work: An error message with Exception 
+  // details will be shown.
+  val otterDBpath = otterExtractionDemoconfig.getString("dbPath")
+  val otterDemoDefaultContent = otterExtractionDemoconfig.getString("defaultContent")
 
-  logger.info("Configured with extractors: " + extractors.mkString(", "))
+  val otterDemo = new ExtractionDemo(Seq[Processor](new OtterDBLookup(otterDBpath)), "public", otterDemoDefaultContent)
 
-  val server = new ExtractionDemo(extractors)(config.getInt("port"))
-  server.run()
+  // Initialize App with the General Demo and the Otter Demo
+  val server = new ExtractionDemoApp(generalDemo, otterDemo)(config.getInt("port"))
+  server.run
 }

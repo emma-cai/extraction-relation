@@ -45,7 +45,7 @@ object Dependencies {
   def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-${id}" % "2.3.2"
   val AkkaLibraries = Seq(akkaModule("actor"),
     akkaModule("slf4j"),
-    "ch.qos.logback" % "logback-classic" % "1.0.13") ++ H2DatabaseLibraries
+    "ch.qos.logback" % "logback-classic" % "1.0.13")
 
   // Clear libraries, for use in SRL.
   val clearNlp = "com.clearnlp" % "clearnlp" % "2.0.2"

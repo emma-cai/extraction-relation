@@ -85,17 +85,17 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     val multipleDictionarySources: Set[String] =
       (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
     addProcessor(new MultipleDictionarySourcePreprocessor(
-      multipleDictionaryWordClasses, multipleDictionaryWordClasses))
+      multipleDictionaryWordClasses, multipleDictionarySources))
 
-    // Configure the OtterDefinitionDBWriter.
-    val dbPathOption = config.get[String]("otterDBwriter.dbPath")
-    val dbUserOption = config.get[String]("otterDBwriter.dbUsername")
-    val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
-    (dbPathOption, dbUserOption, dbPasswordOption) match {
-      case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
-        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
-      case _ => log.error("Either dbPath or some part of the database credentials is missing " +
-        "for OtterDefinitionDBWriter. The processor failed to start up.")
+    // Configure the OtterDefinitionDBWriter and OtterDefinitionDBWriter.
+    val dbPathOption = config.get[String]("otterDB.dbPath")
+    dbPathOption match {
+      case (Some(dbPath)) =>
+        val dbUserOption = config.get[String]("otterDB.dbUsername")
+        val dbPasswordOption = config.get[String]("otterDB.dbPassword")
+        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUserOption, dbPasswordOption))
+      case _ => log.error("dbPath is missing for OtterDefinitionDBWriter. " +
+        "The processor failed to start up.")
     }
 
     // Bind the extractor map we built.
