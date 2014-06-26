@@ -82,25 +82,18 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     val multipleDictionarySources: Set[String] =
       (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
     addProcessor(new MultipleDictionarySourcePreprocessor(
-      multipleDictionaryWordClasses, multipleDictionaryWordClasses))
+      multipleDictionaryWordClasses, multipleDictionarySources))
 
     // Configure the OtterDefinitionDBWriter and OtterDefinitionDBWriter.
     val dbPathOption = config.get[String]("otterDB.dbPath")
     val dbUserOption = config.get[String]("otterDB.dbUsername")
     val dbPasswordOption = config.get[String]("otterDB.dbPassword")
-    (dbPathOption, dbUserOption, dbPasswordOption) match {
-      case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
-        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
-        addProcessor(new OtterDefinitionDBReader(dbPath, dbUser, dbPassword))
-      case _ => log.error("Either dbPath or some part of the database credentials is missing " +
-        "for OtterDefinitionDBWriter. The processor failed to start up.")
+    dbPathOption match {
+      case (Some(dbPath)) =>
+        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUserOption, dbPasswordOption))
+      case _ => log.error("dbPath is missing for OtterDefinitionDBWriter." +
+        "The processor failed to start up.")
     }
-
-    // Configure the DefinitionTextPreprocessor. This is used to clean up definitions entered by user
-    // in the web demo. The processor needs to construct a PreprocessedDefinition structure, which
-    // has a wordClass. 
-    val wordClassForDefinitionTextPreprocessor: Option[String] = config.get[String]("definitionTextProcessor.wordClass")
-    addProcessor(new DefinitionTextPreprocessor(wordClassForDefinitionTextPreprocessor))
 
     // Bind the extractor map we built.
     processors.toMap

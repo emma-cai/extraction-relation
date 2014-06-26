@@ -1,16 +1,26 @@
-package org.allenai.extraction.processors.definition
+package org.allenai.extraction.api
 
 import scala.slick.driver.H2Driver.simple._
 
 /** A minimal Slick-based shim over an h2 definition extraction database on the local filesystem.
   * @param dbPath path of the required database in the file system
   */
-class DefinitionExtractionsDB(dbPath: String, username: String, password: String) {
+class DefinitionExtractionsDB(
+    dbPath: String,
+    usernameOption: Option[String],
+    passwordOption: Option[String]) {
 
   // H2 embedded db on filesystem. IFEXISTS=TRUE causes h2 to fail if the db files aren't present
   private val DatabaseUrl = s"jdbc:h2:file:${dbPath};IFEXISTS=TRUE";
 
-  private val db = Database.forURL(DatabaseUrl, driver = "org.h2.Driver", user = username, password = password)
+  private val db = (usernameOption, passwordOption) match {
+    case (Some(username), Some(password)) =>
+      Database.forURL(DatabaseUrl, driver = "org.h2.Driver", user = username, password = password)
+    case (Some(username), None) =>
+      Database.forURL(DatabaseUrl, driver = "org.h2.Driver", user = username)
+    case _ =>
+      Database.forURL(DatabaseUrl, driver = "org.h2.Driver")
+  }
 
   private class DefinitionExtractionsDBtable(tag: Tag) extends Table[(String, String, String, String, String)](tag, "EXTRACTIONS") {
     def definedTerm = column[String]("TERM")
@@ -51,6 +61,51 @@ class DefinitionExtractionsDB(dbPath: String, username: String, password: String
           flatDefinitionExtraction.source,
           flatDefinitionExtraction.alternateDefinition,
           flatDefinitionExtraction.extraction))
+    }
+  }
+
+  /** Get number of unique terms.
+    */
+  def getNumberOfDistinctTerms: Int = {
+    db.withSession { implicit session =>
+      val terms = for {
+        de <- definitionExtractions
+      } yield {
+        de.definedTerm // project query result to tuple
+      }
+      // execute query
+      val termList: List[String] = terms.list
+      termList.toSet[String].size
+    }
+  }
+
+  /** Get number of unique definitions.
+    */
+  def getNumberOfDistinctDefinitions: Int = {
+    db.withSession { implicit session =>
+      val definitions = for {
+        de <- definitionExtractions
+      } yield {
+        de.alternateDefinition // project query result to tuple
+      }
+      // execute query
+      val definitionList: List[String] = definitions.list
+      (definitionList map { x => x.toLowerCase }).toSet[String].size
+    }
+  }
+
+  /** Get number of unique sources.
+    */
+  def getNumberOfDistinctSources: Int = {
+    db.withSession { implicit session =>
+      val sources = for {
+        de <- definitionExtractions
+      } yield {
+        de.source // project query result to tuple
+      }
+      // execute query
+      val sourceList: List[String] = sources.list
+      (sourceList map { x => x.toLowerCase }).toSet[String].size
     }
   }
 }

@@ -60,20 +60,20 @@
             <p><pre>{{ errorResponse.stackTrace }}</pre></p>
           </details>
         </div>
-        <div ng-show='response' ng-repeat="sentence in response.sentences track by $index" class="panel">
+        <div ng-show='response' ng-repeat="inputLine in response.input track by $index" class="panel">
           <div ng-show="response.failures.length">
             <h3>There were problems with your request.</h3>
-            <h3>Some extractions can not be shown.</h3>
+            <h3>Some results can not be shown.</h3>
             <div ng-repeat="failure in response.failures" class="alert alert-danger">
               {{ failure.messages.join("\n") }}
             </div>
           </div>
-          <h3>{{ sentence.text }}</h3>
+          <h3>{{ inputLine.text }}</h3>
            <accordion close-others="never">
-             <accordion-group ng-repeat="extractor in sentence.extractors"  heading="{{ extractor.name }} : {{ response.extractors[extractor.name] }}" is-open="{{ $first }}" class="pointer">
+             <accordion-group ng-repeat="processor in inputLine.processors"  heading="{{ processor.name }} : {{ response.processors[processor.name] }}" is-open="{{ $first }}" class="pointer">
                  <dl>
-                   <ul ng-repeat="extraction in extractor.extractions">
-                     {{ extraction }}
+                   <ul ng-repeat="result in processor.results">
+                     {{ result }}
                    </ul>
                  </dl>
              </accordion-group>

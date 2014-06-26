@@ -2,7 +2,12 @@ angular.module('otter-extraction', ['ui.bootstrap']);
 
 var SearchCtrl = function($scope, $http) {
   $scope.model = { };
-  $scope.working = false
+  $scope.working = false;
+
+  $http.get("/otter/statistics")
+    .success(function(data) {
+        $scope.statistics = data;
+      });
 
   $scope.examples = [ "acid",
     "mercury",
