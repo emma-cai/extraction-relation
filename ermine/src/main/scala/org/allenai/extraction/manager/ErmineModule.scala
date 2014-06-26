@@ -33,24 +33,19 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     def addProcessor(processor: Processor) = processors += processor.configMapping
 
     // Initialize with processors requiring no external configuration.
-    for (
-      processor <- Seq(
-        CatProcessor,
-        ClearSrl,
-        CorpusSplitter,
-        ExtractionLabels,
-        ExtractionRoles,
-        InferenceRules,
-        OtterJsonToReadableOutputProcessor,
-        StanfordExtractor,
-        StanfordFixProcessor,
-        StanfordParser,
-        StanfordTtl,
-        StanfordXmlToTtl,
-        TurtleProcessor)
-    ) {
-      addProcessor(processor)
-    }
+    addProcessor(CatProcessor)
+    addProcessor(ClearSrl)
+    addProcessor(CorpusSplitter)
+    addProcessor(ExtractionLabels)
+    addProcessor(ExtractionRoles)
+    addProcessor(InferenceRules)
+    addProcessor(OtterJsonToReadableOutputProcessor)
+    addProcessor(StanfordExtractor)
+    addProcessor(StanfordFixProcessor)
+    addProcessor(StanfordParser)
+    addProcessor(StanfordTtl)
+    addProcessor(StanfordXmlToTtl)
+    addProcessor(TurtleProcessor)
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.
     config.get[String]("ferret.directory") match {
