@@ -1,6 +1,34 @@
 
 %%% simplified form of rules
 
+% relative clause case
+write_simplified_inf_relation(Left,Right,[example,LId,_RId],Id,Pretty) :-
+	stripped_id(Left,LId),
+	( dependency(Subj,dep:partmod,Right)
+	; dependency(Subj,dep:rcmod,Right) ),
+	rdf(Left,pred:isa,Subj),
+	simplified_inf_pred(Left,LPred,null,'',LArgs), % LHS
+	simplified_inf_pred(Subj,Pred,null,'',Args), % RHS
+	simplified_inf_pred(Right,RPred,null,'',RArgs), % RHS
+	append([LArgs,Args,RArgs],ArgsList),
+	list_to_set(ArgsList,ArgsSet),
+	arg_definitions(ArgsSet,null,ArgsText),
+	format(atom(Pretty), 'pretty(~w, "EXAMPLE(~w, ~w) & ~w~w.")', [Id,LPred,Pred,RPred,ArgsText]),
+	!.
+write_simplified_inf_relation(Right,Left,[example,LId,_RId],Id,Pretty) :-
+	stripped_id(Left,LId),
+	( dependency(Subj,dep:partmod,Right)
+	; dependency(Subj,dep:rcmod,Right) ),
+	rdf(Left,pred:isa,Subj),
+	simplified_inf_pred(Left,LPred,null,'',LArgs), % LHS
+	simplified_inf_pred(Subj,Pred,null,'',Args), % RHS
+	simplified_inf_pred(Right,RPred,null,'',RArgs), % RHS
+	append([LArgs,Args,RArgs],ArgsList),
+	list_to_set(ArgsList,ArgsSet),
+	arg_definitions(ArgsSet,null,ArgsText),
+	format(atom(Pretty), 'pretty(~w, "EXAMPLE(~w, ~w) & ~w~w.")', [Id,LPred,Pred,RPred,ArgsText]),
+	!.
+
 write_simplified_inf_relation(Left,Right,[Rel,LId,_RId],Id,Pretty) :-
 	stripped_id(Left,LId),
 	simplified_inf_pred(Left,LPred,null,'',LArgs), % LHS
@@ -82,7 +110,14 @@ simplified_inf_args(Root,Focus,ArgStringOut,Args) :-
 simplified_inf_args(_,_,'',[]).
 
 simplified_inf_arg(Root,Arg) :-
-	rdf(Root,pred:agent,Arg).
+	( dependency(Subj,dep:partmod,Root)
+	; dependency(Subj,dep:rcmod,Root) ),
+	rdf(Arg,pred:isa,Subj).
+simplified_inf_arg(Root,Arg) :-
+	rdf(Root,pred:agent,Arg),
+	\+ ( ( dependency(Subj,dep:partmod,Root)
+	     ; dependency(Subj,dep:rcmod,Root) ),
+	     rdf(_,pred:isa,Subj) ).
 simplified_inf_arg(Root,Arg) :-
 	rdf(Root,pred:object,Arg),
 	\+ rdf(Root,pred:agent,Arg). % TODO: track down fly(bat, bat)
