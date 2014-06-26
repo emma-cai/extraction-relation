@@ -130,6 +130,7 @@ simplified_inf_arg(Root,[Prep,Arg]) :-
 
 format_simplified_inf_args([],_,_,'','') :- !.
 format_simplified_inf_args([],_,_,'',_Prep) :- !.
+/*
 format_simplified_inf_args([[Prep,Arg]|Rest],Focus,Prefix,ArgString,PrepOut) :-
 	var(PrepOut), % first PP
 	atomic_list_concat(['_',Prep],PrepOut),
@@ -137,11 +138,11 @@ format_simplified_inf_args([[Prep,Arg]|Rest],Focus,Prefix,ArgString,PrepOut) :-
 	simplified_lemma(Arg,Focus,ArgText),
 	format_simplified_inf_args(Rest,Focus,', ',RestArgString,PrepOut),
 	atomic_list_concat([Prefix,ArgText,RestArgString],ArgString).
-format_simplified_inf_args([[Prep,Arg]|Rest],Focus,Prefix,ArgString,PrepOut) :-
-	nonvar(PrepOut), % non-initial PPs
+*/
+format_simplified_inf_args([[Prep,Arg]|Rest],Focus,Prefix,ArgString,'') :-
 %	simplified_inf_pred(Arg,ArgText,Focus,'',_SubArgs),
 	simplified_lemma(Arg,Focus,ArgText),
-	format_simplified_inf_args(Rest,Focus,', ',RestArgString,PrepOut),
+	format_simplified_inf_args(Rest,Focus,', ',RestArgString,_PrepOut),
 	atomic_list_concat([Prefix,Prep,'(',ArgText,')',RestArgString],ArgString).
 format_simplified_inf_args([Arg|Rest],Focus,Prefix,ArgString,Prep) :-
 %	simplified_inf_pred(Arg,ArgText,Focus,'',_SubArgs),
