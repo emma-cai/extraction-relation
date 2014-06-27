@@ -281,7 +281,7 @@ inf_tuple(Ent-_,EntId,GraphId) :- !,
 inf_tuple(Ent,Ent,GraphId) :-
 	atom(Ent), !,
 	( nonvar(GraphId) ; GraphId = Ent ), !,
-	inf_arg(Ent,Text,GraphId),
+	text_arg(Ent,Text),
 	rdf_assert(Ent,pred:isa,literal(Text),GraphId),
 	rdf_assert(Ent,rdf:type,entity,GraphId).
 inf_tuple([S,V,O-_|Rest],TupleId,GraphId) :- !, % ignore vars
@@ -293,10 +293,10 @@ inf_tuple([S,V],TupleId,GraphId) :-
 inf_tuple([S,Verb,Arg|Mods],V,GraphId) :-
 	text_verb(Verb,VerbText,V),
 	( nonvar(GraphId) ; GraphId = V), !,
-	inf_arg(S,SubjText,GraphId),
+	text_arg(S,SubjText),
 	( (rdf(_,basic:cop,V),
 	   text_verb(Arg,ObjText,_)) % copula
-	; inf_arg(Arg,ObjText,GraphId) ), % dobj
+	; text_arg(Arg,ObjText) ), % dobj
 	rdf_assert(V,pred:isa,literal(VerbText),GraphId),
 	rdf_assert(V,rdf:type,event,GraphId),
 	(S = []
@@ -363,12 +363,12 @@ inf_mods(V, [Prep|Rest], GraphId) :-
 	   NewP = PC) ),
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
-	inf_mod(Mod,Text,GraphId),
+	text_mod(Mod,Text),
 	rdf_assert(V,NewPrepRel,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).
 inf_mods(V, [Mod|Rest], GraphId) :-
-	inf_mod(Mod,Text,GraphId),
+	text_mod(Mod,Text),
 	rdf_assert(V,pred:arg,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).

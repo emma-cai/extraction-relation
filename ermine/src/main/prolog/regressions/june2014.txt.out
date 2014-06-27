@@ -15,14 +15,7 @@
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
-
-<http://aristo.allenai.org/id#1.11>
-	pred:isa "\"the center\"" ;
-	pred:of <http://aristo.allenai.org/id#1.14> .
-
-<http://aristo.allenai.org/id#1.14>
-	pred:isa "\"the Earth\"" .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#1.4>
 	a <entity> ;
@@ -36,14 +29,13 @@
 
 <http://aristo.allenai.org/id#1.8>
 	a <entity> ;
-	pred:isa "\"an object\"" ;
-	pred:toward <http://aristo.allenai.org/id#1.11> .
+	pred:isa "\"an object toward the center of the Earth\"" .
 english(rule1, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule1, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule1:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), of(A11S1-center, A14S1-Earth), isa(A14S1-Earth, "the Earth"), toward(A8S1-object, A11S1-center), isa(A11S1-center, "the center"), isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object"), isa(A1S1-gravity, A4S1-force).
+rule1:: isa(A1S1-gravity, "Gravity") -> example(A1S1-gravity, A4S1-force), isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth"), isa(A1S1-gravity, A4S1-force).
 english(rule2, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule2, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule2:: of(A11S1-center, A14S1-Earth), isa(A14S1-Earth, "the Earth"), toward(A8S1-object, A11S1-center), isa(A11S1-center, "the center"), isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity"), isa(A1S1-gravity, A4S1-force).
+rule2:: isa(E6S1-pull, "pull"), agent(E6S1-pull, A4S1-force), isa(A4S1-force, "the force"), object(E6S1-pull, A8S1-object), isa(A8S1-object, "an object toward the center of the Earth") -> example(A1S1-gravity, A4S1-force), isa(A1S1-gravity, "Gravity"), isa(A1S1-gravity, A4S1-force).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:1.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:1.3", "text":"the"},  {"token":"id:1.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:1.6", "text":"pull"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:1.7", "text":"an"},  {"token":"id:1.8", "text":"object"},  {"token":"id:1.9", "text":"toward"},  {"token":"id:1.10", "text":"the"},  {"token":"id:1.11", "text":"center"},  {"token":"id:1.12", "text":"of"},  {"token":"id:1.13", "text":"the"},  {"token":"id:1.14", "text":"Earth"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
 % "Gravity"	"is"/EXAMPLE	"the force"
@@ -702,14 +694,7 @@ rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (5)
-
-<http://aristo.allenai.org/id#7.11>
-	pred:isa "\"the center\"" ;
-	pred:of <http://aristo.allenai.org/id#7.14> .
-
-<http://aristo.allenai.org/id#7.14>
-	pred:isa "\"the Earth\"" .
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
@@ -722,14 +707,13 @@ rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5
 	pred:isa "\"pull\"" .
 
 <http://aristo.allenai.org/id#7.8>
-	pred:isa "\"an object\"" ;
-	pred:toward <http://aristo.allenai.org/id#7.11> .
+	pred:isa "\"an object toward the center of the Earth\"" .
 english(rule33, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule33, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), of(A11S7-center, A14S7-Earth), isa(A14S7-Earth, "the Earth"), toward(A8S7-object, A11S7-center), isa(A11S7-center, "the center"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object"), isa(A1S7-gravity, A4S7-force).
+rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth"), isa(A1S7-gravity, A4S7-force).
 english(rule34, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule34, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), of(A11S7-center, A14S7-Earth), isa(A14S7-Earth, "the Earth"), toward(A8S7-object, A11S7-center), isa(A11S7-center, "the center"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
+rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"the"},  {"token":"id:7.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.6", "text":"pull"} ], "extraPhrases": [ [ {"token":"id:7.7", "text":"an"},  {"token":"id:7.8", "text":"object"},  {"token":"id:7.9", "text":"toward"},  {"token":"id:7.10", "text":"the"},  {"token":"id:7.11", "text":"center"},  {"token":"id:7.12", "text":"of"},  {"token":"id:7.13", "text":"the"},  {"token":"id:7.14", "text":"Earth"} ] ]} ], "confidence":1.0}
 
 % "Gravity"	"is"/EXAMPLE	"the force"
@@ -787,15 +771,11 @@ rule36:: isa(A4S7-force, "the force") -> example(A1S7-gravity, A4S7-force), isa(
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#8.11>
 	a <entity> ;
-	pred:isa "\"the volume\"" ;
-	pred:of <http://aristo.allenai.org/id#8.14> .
-
-<http://aristo.allenai.org/id#8.14>
-	pred:isa "\"a liquid\"" .
+	pred:isa "\"the volume of a liquid\"" .
 
 <http://aristo.allenai.org/id#8.2>
 	a <entity> ;
@@ -808,10 +788,10 @@ rule36:: isa(A4S7-force, "the force") -> example(A1S7-gravity, A4S7-force), isa(
 	pred:object <http://aristo.allenai.org/id#8.11> .
 english(rule37, "A scientist would use a graduated cylinder to measure the volume of a liquid").
 pretty(rule37, "EFFECT(use(Scientist, Cylinder), measure(Scientist, Volume)), Scientist = 'A scientist', Cylinder = 'a graduated cylinder', Volume = 'the volume of a liquid'.").
-rule37:: isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder") -> effect(E4S8-use, E9S8-measure), of(A11S8-volume, A14S8-liquid), isa(A14S8-liquid, "a liquid"), isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume").
+rule37:: isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder") -> effect(E4S8-use, E9S8-measure), isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid").
 english(rule38, "A scientist would use a graduated cylinder to measure the volume of a liquid").
 pretty(rule38, "EFFECT(use(Scientist, Cylinder), measure(Scientist, Volume)), Scientist = 'A scientist', Cylinder = 'a graduated cylinder', Volume = 'the volume of a liquid'.").
-rule38:: of(A11S8-volume, A14S8-liquid), isa(A14S8-liquid, "a liquid"), isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume") -> effect(E4S8-use, E9S8-measure), isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder").
+rule38:: isa(E9S8-measure, "measure"), agent(E9S8-measure, A2S8-scientist), isa(A2S8-scientist, "A scientist"), object(E9S8-measure, A11S8-volume), isa(A11S8-volume, "the volume of a liquid") -> effect(E4S8-use, E9S8-measure), isa(E4S8-use, "use"), agent(E4S8-use, A2S8-scientist), object(E4S8-use, A7S8-cylinder), isa(A7S8-cylinder, "a graduated cylinder").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ]} ]}, "verbPhrase": [ {"token":"id:8.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:8.5", "text":"a"},  {"token":"id:8.6", "text":"graduated"},  {"token":"id:8.7", "text":"cylinder"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:8.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:8.1", "text":"A"},  {"token":"id:8.2", "text":"scientist"} ]} ]}, "verbPhrase": [ {"token":"id:8.9", "text":"measure"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:8.10", "text":"the"},  {"token":"id:8.11", "text":"volume"},  {"token":"id:8.12", "text":"of"},  {"token":"id:8.13", "text":"a"},  {"token":"id:8.14", "text":"liquid"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "confidence":1.0}
 
 % ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "grow" "")
@@ -1710,7 +1690,7 @@ rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens,
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (4)
+# Named toplevel resources (3)
 
 <http://aristo.allenai.org/id#19.2>
 	a <entity> ;
@@ -1725,11 +1705,7 @@ rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens,
 
 <http://aristo.allenai.org/id#19.5>
 	a <entity> ;
-	pred:in <http://aristo.allenai.org/id#19.7> ;
 	pred:isa "\"fur\"" .
-
-<http://aristo.allenai.org/id#19.7>
-	pred:isa "\"winter\"" .
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -1751,10 +1727,10 @@ rule83:: isa(E7S18-view, "view"), agent(E7S18-view, A3S18-lens), isa(A3S18-lens,
 	pred:object <http://aristo.allenai.org/id#19.10> .
 english(rule84, "Some animals grow thick fur in winter to stay warm").
 pretty(rule84, "EFFECT(grow(Animal, Fur), stay(Animal, Warm)), Animal = 'Some animals', Fur = 'fur', Warm = 'warm'.").
-rule84:: in(A5S19-fur, A7S19-winter), isa(A7S19-winter, "winter"), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur") -> effect(E3S19-grow, E9S19-stay), isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm").
+rule84:: isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur") -> effect(E3S19-grow, E9S19-stay), isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm").
 english(rule85, "Some animals grow thick fur in winter to stay warm").
 pretty(rule85, "EFFECT(grow(Animal, Fur), stay(Animal, Warm)), Animal = 'Some animals', Fur = 'fur', Warm = 'warm'.").
-rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm") -> effect(E3S19-grow, E9S19-stay), in(A5S19-fur, A7S19-winter), isa(A7S19-winter, "winter"), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur").
+rule85:: isa(E9S19-stay, "stay"), agent(E9S19-stay, A2S19-animal), isa(A2S19-animal, "Some animals"), object(E9S19-stay, A10S19-warm), isa(A10S19-warm, "warm") -> effect(E3S19-grow, E9S19-stay), isa(E3S19-grow, "grow"), agent(E3S19-grow, A2S19-animal), object(E3S19-grow, A5S19-fur), isa(A5S19-fur, "fur").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:19.3", "text":"grow"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:19.5", "text":"fur"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:19.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:19.1", "text":"Some"},  {"token":"id:19.2", "text":"animals"} ]} ]}, "verbPhrase": [ {"token":"id:19.9", "text":"stay"} ], "directObject": {"class":"Other", "string": [ {"token":"id:19.10", "text":"warm"} ]}, "extraPhrases": []} ], "confidence":1.0}
 
 % ("Animals" "take in" "food" [ "as a nutrient" ] )	"to help"/EFFECT	("Some animals" "grow" "")

@@ -6,11 +6,6 @@
 	pred:isa <http://aristo.allenai.org/id#1.4> ,
 		 "\"Gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.4> .
-<http://aristo.allenai.org/id#1.11>
-	pred:isa "\"the center\"" ;
-	pred:of <http://aristo.allenai.org/id#1.14> .
-<http://aristo.allenai.org/id#1.14>
-	pred:isa "\"the Earth\"" .
 <http://aristo.allenai.org/id#1.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -21,8 +16,7 @@
 	pred:object <http://aristo.allenai.org/id#1.8> .
 <http://aristo.allenai.org/id#1.8>
 	a <entity> ;
-	pred:isa "\"an object\"" ;
-	pred:toward <http://aristo.allenai.org/id#1.11> .
+	pred:isa "\"an object toward the center of the Earth\"" .
 <http://aristo.allenai.org/id#1.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
@@ -296,11 +290,6 @@
 	pred:isa <http://aristo.allenai.org/id#7.4> ,
 		 "\"Gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#7.4> .
-<http://aristo.allenai.org/id#7.11>
-	pred:isa "\"the center\"" ;
-	pred:of <http://aristo.allenai.org/id#7.14> .
-<http://aristo.allenai.org/id#7.14>
-	pred:isa "\"the Earth\"" .
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -310,8 +299,7 @@
 	pred:arg <http://aristo.allenai.org/id#7.8> ;
 	pred:isa "\"pull\"" .
 <http://aristo.allenai.org/id#7.8>
-	pred:isa "\"an object\"" ;
-	pred:toward <http://aristo.allenai.org/id#7.11> .
+	pred:isa "\"an object toward the center of the Earth\"" .
 <http://aristo.allenai.org/id#7.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;
@@ -333,10 +321,7 @@
 	pred:isa "\"a graduated cylinder\"" .
 <http://aristo.allenai.org/id#8.11>
 	a <entity> ;
-	pred:isa "\"the volume\"" ;
-	pred:of <http://aristo.allenai.org/id#8.14> .
-<http://aristo.allenai.org/id#8.14>
-	pred:isa "\"a liquid\"" .
+	pred:isa "\"the volume of a liquid\"" .
 <http://aristo.allenai.org/id#8.2>
 	a <entity> ;
 	pred:isa "\"A scientist\"" .
@@ -711,10 +696,7 @@
 	rel:effect <http://aristo.allenai.org/id#19.9> .
 <http://aristo.allenai.org/id#19.5>
 	a <entity> ;
-	pred:in <http://aristo.allenai.org/id#19.7> ;
 	pred:isa "\"fur\"" .
-<http://aristo.allenai.org/id#19.7>
-	pred:isa "\"winter\"" .
 <http://aristo.allenai.org/id#19.10>
 	a <entity> ;
 	pred:isa "\"warm\"" .
