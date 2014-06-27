@@ -21,7 +21,7 @@ import spray.json.pimpString
   * @param wordClass word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
   * for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
   * @param glossaryTerms a set of required terms- anything outside of this set has to be filtered
-  * from processing.
+  * from processing. Empty set means "no filters", so all terms will be included in that case.
   */
 abstract class OtterDefinitionExtractor(
   dataPath: String, val wordClass: String, glossaryTerms: Set[String] = Set.empty[String])

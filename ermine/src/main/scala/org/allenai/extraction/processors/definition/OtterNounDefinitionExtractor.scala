@@ -14,7 +14,8 @@ import scala.Option.option2Iterable
   * Cascade file for Definition Extraction on Nouns.
   * @param dataPath path to the noun definition data- mainly the required OpenRegex rule files.
   * @param glossaryTerms a set of required terms- anything outside of this set has to be filtered
-  * from processing. Defaults to empty set if unspecified.
+  * from processing. Defaults to empty set if unspecified. Empty set means "no filters", so all terms
+  * will be included in that case.
   */
 class OtterNounDefinitionExtractor(dataPath: String, glossaryTerms: Set[String] = Set.empty[String])
     extends OtterDefinitionExtractor(dataPath, "noun", glossaryTerms) {
