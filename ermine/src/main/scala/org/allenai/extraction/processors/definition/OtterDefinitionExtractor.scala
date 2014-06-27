@@ -63,29 +63,31 @@ abstract class OtterDefinitionExtractor(
         for {
            preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
            termWordClass <- preprocessedDefinitionAlts.wordClass
-           if (termWordClass.equalsIgnoreCase(wordClass) &&
+           if (preprocessedDefinition.trim.length > 0 &&
+               termWordClass.equalsIgnoreCase(wordClass) &&
                (glossaryTerms.isEmpty || 
                 glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)))
         }  {
           val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
           otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
-                                             preprocessedDefinition,
+                                             preprocessedDefinition.trim,
                                              OtterToken.makeTokenSeq(result._2),
                                              result._1)
-        }
-        // Compose the OtterExtraction overall result per raw definition to be written out as json.
-        val extractionOp = OtterExtraction(
+        
+          // Compose the OtterExtraction overall result per raw definition to be written out as json.
+          val extractionOp = OtterExtraction(
                              preprocessedDefinitionAlts.definitionCorpusName,
                              preprocessedDefinitionAlts.rawDefinitionId,
                              preprocessedDefinitionAlts.rawDefinition,
                              preprocessedDefinitionAlts.definedTerm,
                              preprocessedDefinitionAlts.wordClass,
                              otterExtractionsForDefinitionAlternates)
-        if (!beginning) {
-          destination.write(",\n")
+          if (!beginning) {
+            destination.write(",\n")
+          }
+          destination.write(extractionOp.toJson.compactPrint + "\n")
+          beginning = false
         }
-        destination.write(extractionOp.toJson.compactPrint + "\n")
-        beginning = false
       }
     }    
     // End output Json
