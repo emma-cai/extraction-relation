@@ -95,10 +95,7 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     val defMetaInfoClusterPattern = s"""(${defMetaInfoPattern})((\\s*[,;]\\s*${defMetaInfoPattern})*)""".r
     val defPoundMetaStripped: String = defMetaInfoClusterPattern replaceAllIn (defBeginningPoundStripped, "")
 
-    val defCleanedUp = DefinitionCleanupUtility.cleanUp(defPoundMetaStripped)
-
-    // Break the line up into multiple definitions if separated by semicolons
-    val multipleDefs = defCleanedUp.split(";").toSeq map { x => x.trim }
+    val multipleDefs = DefinitionCleanupUtility.cleanUp(defPoundMetaStripped)
 
     (multipleDefs, metaData)
   }

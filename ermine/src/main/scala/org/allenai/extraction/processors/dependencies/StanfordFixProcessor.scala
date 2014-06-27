@@ -75,9 +75,12 @@ object StanfordFixProcessor extends TextProcessor {
     for {
       query <- queries
       map <- DependencyGraph.executeSparql(inputGraph, query)
+      head = map("subject")
+      tail = map("object")
+      edge = map("predicate")
     } {
       // add results
-      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toStringLiteral)
+      outputGraph.addEdge(edge, head, tail, edge.toIdString)
     }
 
     val sink: Writer = destinations(0)
