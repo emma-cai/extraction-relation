@@ -325,7 +325,10 @@
 	a <entity> ;
 	pred:isa "\"a hand lens\"" .
 <http://aristo.allenai.org/id#14.12>
-	pred:isa "\"a better look at the spots\"" .
+	pred:at <http://aristo.allenai.org/id#14.15> ;
+	pred:isa "\"a better look\"" .
+<http://aristo.allenai.org/id#14.15>
+	pred:isa "\"the spots\"" .
 <http://aristo.allenai.org/id#14.2>
 	a <entity> ;
 	pred:isa "\"A student\"" .

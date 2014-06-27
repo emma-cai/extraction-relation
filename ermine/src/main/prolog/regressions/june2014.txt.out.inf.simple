@@ -63,9 +63,9 @@ june2014.rule31:: agent(removal, freezing), object(removal, heat) -> enable(remo
 english(june2014.rule32, "Freezing involves changing water from its[the soil] liquid state to its[its liquid state] solid state ice by the removal of heat").
 june2014.rule32:: agent(change, freezing), object(change, water), from(change, state), to(change, state) -> enable(removal, change), agent(removal, freezing), object(removal, heat).
 english(june2014.rule33, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule33:: example(gravity, force), agent(pull, force), arg(pull, object).
+june2014.rule33:: example(gravity, force), agent(pull, force), of(center, Earth), toward(object, center), arg(pull, object).
 english(june2014.rule34, "Gravity is the force that pulls an object toward the center of the Earth").
-june2014.rule34:: agent(pull, force), arg(pull, object) -> example(gravity, force).
+june2014.rule34:: agent(pull, force), of(center, Earth), toward(object, center), arg(pull, object) -> example(gravity, force).
 english(june2014.rule35, "Gravity is the force that pulls an object toward the center of the Earth").
 june2014.rule35:: example(gravity, force).
 english(june2014.rule36, "Gravity is the force that pulls an object toward the center of the Earth").

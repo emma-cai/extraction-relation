@@ -764,10 +764,14 @@ rule37:: isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), is
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (4)
 
 <http://aristo.allenai.org/id#14.12>
-	pred:isa "\"a better look at the spots\"" .
+	pred:at <http://aristo.allenai.org/id#14.15> ;
+	pred:isa "\"a better look\"" .
+
+<http://aristo.allenai.org/id#14.15>
+	pred:isa "\"the spots\"" .
 
 <http://aristo.allenai.org/id#14.2>
 	a <entity> ;
@@ -780,10 +784,10 @@ rule37:: isa(E6S13-prepare, "prepare"), agent(E6S13-prepare, A2S13-squirrel), is
 	pred:isa "\"get\"" .
 english(rule38, "A student should use a hand lens to get a better look at the spots").
 pretty(rule38, "EFFECT(use(Student, Lens), get(Student, Look)), Student = 'A student', Lens = 'a hand lens', Look = 'a better look at the spots'.").
-rule38:: isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), isa(A2S14-student, "A student"), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens") -> effect(E4S14-use, E9S14-get), isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots").
+rule38:: isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), isa(A2S14-student, "A student"), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens") -> effect(E4S14-use, E9S14-get), isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), at(A12S14-look, A15S14-spot), isa(A15S14-spot, "the spots"), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look").
 english(rule39, "A student should use a hand lens to get a better look at the spots").
 pretty(rule39, "EFFECT(use(Student, Lens), get(Student, Look)), Student = 'A student', Lens = 'a hand lens', Look = 'a better look at the spots'.").
-rule39:: isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), isa(A2S14-student, "A student"), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look at the spots") -> effect(E4S14-use, E9S14-get), isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens").
+rule39:: isa(E9S14-get, "get"), agent(E9S14-get, A2S14-student), isa(A2S14-student, "A student"), at(A12S14-look, A15S14-spot), isa(A15S14-spot, "the spots"), arg(E9S14-get, A12S14-look), isa(A12S14-look, "a better look") -> effect(E4S14-use, E9S14-get), isa(E4S14-use, "use"), agent(E4S14-use, A2S14-student), object(E4S14-use, A7S14-lens), isa(A7S14-lens, "a hand lens").
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:14.4", "text":"use"} ], "directObject": {"class":"NounPhrase", "string": [ {"token":"id:14.5", "text":"a"},  {"token":"id:14.6", "text":"hand"},  {"token":"id:14.7", "text":"lens"} ], "isInferred":false, "coreferences": []}, "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:14.8", "text":"to"} ], "normalizedRelation":"EFFECT"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ], "isInferred":false, "coreferences": [ {"class":"Coreference", "label":"x", "sourceTokens": [ {"token":"id:14.1", "text":"A"},  {"token":"id:14.2", "text":"student"} ]} ]}, "verbPhrase": [ {"token":"id:14.9", "text":"get"} ], "extraPhrases": [ [ {"token":"id:14.10", "text":"a"},  {"token":"id:14.11", "text":"better"},  {"token":"id:14.12", "text":"look"},  {"token":"id:14.13", "text":"at"},  {"token":"id:14.14", "text":"the"},  {"token":"id:14.15", "text":"spots"} ] ]} ], "confidence":1.0}
 
 % ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )

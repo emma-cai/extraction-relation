@@ -363,15 +363,48 @@ inf_mods(V, [Prep|Rest], GraphId) :-
 	   NewP = PC) ),
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
-	text_mod(Mod, Text),
+	inf_mod(Mod,Text,GraphId),
 	rdf_assert(V,NewPrepRel,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).
 inf_mods(V, [Mod|Rest], GraphId) :-
-	text_mod(Mod, Text),
+	inf_mod(Mod,Text,GraphId),
 	rdf_assert(V,pred:arg,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).
+
+inf_mod([],'""',_) :- !.
+inf_mod(Arg-Var-true,Text,GraphId) :- !,
+	inf_mod(Arg-Var,Text,GraphId).
+inf_mod(Arg-Var,Text,GraphId) :- !,
+	inf_mod(Arg,ArgText,GraphId),
+	format(atom(Text), '~w/?~w', [ArgText, Var]).
+inf_mod(Arg,Text,GraphId) :-
+	inf_mod_tokens(Arg,Tokens,GraphId),
+	tokens_text_quoted(Tokens,Text).
+
+% special case for prep to apply exclusion list to pobj
+inf_mod_tokens(Arg,[Arg|Tokens],_GraphId) :-
+	rdf(_,basic:prep,Arg),
+	( rdf(Arg,basic:pobj,Obj)
+	; rdf(Arg,basic:pcomp,Obj)), !,
+	mod_tokens(Obj,Tokens).
+inf_mod_tokens(Arg,Tokens,GraphId) :-
+	tokens(Arg,Tokens,[conj,cc,appos,xcomp,infmod,rcmod,prep]),
+	inf_mod_prep(Arg,GraphId).
+
+inf_mod_prep(Arg,GraphId) :-
+	rdf(Arg,PrepRel,PObj),
+	( (atom_concat('http://nlp.stanford.edu/dep/prep_',P,PrepRel),
+	   NewP = P)
+	; (atom_concat('http://nlp.stanford.edu/dep/prepc_',PC,PrepRel),
+	   NewP = PC) ),
+	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
+	inf_mod(PObj,Text,GraphId),
+	rdf_assert(Arg,NewPrepRel,PObj,GraphId),
+	rdf_assert(PObj,pred:isa,literal(Text),GraphId),
+	fail.
+inf_mod_prep(_,_).	
 
 text_tuple(Ent,Text) :-
 	(atom(Ent) ; Ent = _-_), !,

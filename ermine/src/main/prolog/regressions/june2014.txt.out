@@ -702,7 +702,14 @@ rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (3)
+# Named toplevel resources (5)
+
+<http://aristo.allenai.org/id#7.11>
+	pred:isa "\"the center\"" ;
+	pred:of <http://aristo.allenai.org/id#7.14> .
+
+<http://aristo.allenai.org/id#7.14>
+	pred:isa "\"the Earth\"" .
 
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
@@ -715,13 +722,14 @@ rule32:: isa(E3S5-change, "change"), agent(E3S5-change, A1S5-freezing), isa(A1S5
 	pred:isa "\"pull\"" .
 
 <http://aristo.allenai.org/id#7.8>
-	pred:isa "\"an object toward the center of the Earth\"" .
+	pred:isa "\"an object\"" ;
+	pred:toward <http://aristo.allenai.org/id#7.11> .
 english(rule33, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule33, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth"), isa(A1S7-gravity, A4S7-force).
+rule33:: isa(A1S7-gravity, "Gravity") -> example(A1S7-gravity, A4S7-force), isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), of(A11S7-center, A14S7-Earth), isa(A14S7-Earth, "the Earth"), toward(A8S7-object, A11S7-center), isa(A11S7-center, "the center"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object"), isa(A1S7-gravity, A4S7-force).
 english(rule34, "Gravity is the force that pulls an object toward the center of the Earth").
 pretty(rule34, "EXAMPLE(Gravity, Force) & pull(Gravity, Object), Gravity = 'Gravity', Force = 'the force', Object = 'an object toward the center of the Earth'.").
-rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object toward the center of the Earth") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
+rule34:: isa(E6S7-pull, "pull"), agent(E6S7-pull, A4S7-force), isa(A4S7-force, "the force"), of(A11S7-center, A14S7-Earth), isa(A14S7-Earth, "the Earth"), toward(A8S7-object, A11S7-center), isa(A11S7-center, "the center"), arg(E6S7-pull, A8S7-object), isa(A8S7-object, "an object") -> example(A1S7-gravity, A4S7-force), isa(A1S7-gravity, "Gravity"), isa(A1S7-gravity, A4S7-force).
 {"class":"ExtractionRule", "antecedents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.1", "text":"Gravity"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [], "extraPhrases": []} ], "relation": {"class":"Relation", "string": [ {"token":"id:7.2", "text":"is"} ], "normalizedRelation":"EXAMPLE"}, "consequents": [ {"class":"ExtractionTuple", "subject": {"class":"NounPhrase", "string": [ {"token":"id:7.3", "text":"the"},  {"token":"id:7.4", "text":"force"} ], "isInferred":false, "coreferences": []}, "verbPhrase": [ {"token":"id:7.6", "text":"pull"} ], "extraPhrases": [ [ {"token":"id:7.7", "text":"an"},  {"token":"id:7.8", "text":"object"},  {"token":"id:7.9", "text":"toward"},  {"token":"id:7.10", "text":"the"},  {"token":"id:7.11", "text":"center"},  {"token":"id:7.12", "text":"of"},  {"token":"id:7.13", "text":"the"},  {"token":"id:7.14", "text":"Earth"} ] ]} ], "confidence":1.0}
 
 % "Gravity"	"is"/EXAMPLE	"the force"

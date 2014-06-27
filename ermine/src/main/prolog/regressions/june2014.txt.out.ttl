@@ -296,6 +296,11 @@
 	pred:isa <http://aristo.allenai.org/id#7.4> ,
 		 "\"Gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#7.4> .
+<http://aristo.allenai.org/id#7.11>
+	pred:isa "\"the center\"" ;
+	pred:of <http://aristo.allenai.org/id#7.14> .
+<http://aristo.allenai.org/id#7.14>
+	pred:isa "\"the Earth\"" .
 <http://aristo.allenai.org/id#7.4>
 	a <entity> ;
 	pred:isa "\"the force\"" .
@@ -305,7 +310,8 @@
 	pred:arg <http://aristo.allenai.org/id#7.8> ;
 	pred:isa "\"pull\"" .
 <http://aristo.allenai.org/id#7.8>
-	pred:isa "\"an object toward the center of the Earth\"" .
+	pred:isa "\"an object\"" ;
+	pred:toward <http://aristo.allenai.org/id#7.11> .
 <http://aristo.allenai.org/id#7.1>
 	a <entity> ;
 	pred:isa "\"Gravity\"" ;

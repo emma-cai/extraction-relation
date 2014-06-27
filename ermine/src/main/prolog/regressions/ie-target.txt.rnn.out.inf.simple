@@ -73,9 +73,9 @@ ie-target.rule36:: agent(store, squirrel), object(store, nut) -> effect(store, p
 english(ie-target.rule37, "A squirrel storing nuts is preparing for a seasonal change in the environment").
 ie-target.rule37:: agent(prepare, squirrel), for(prepare, change) -> effect(store, prepare), agent(store, squirrel), object(store, nut).
 english(ie-target.rule38, "A student should use a hand lens to get a better look at the spots").
-ie-target.rule38:: agent(use, student), object(use, lens) -> effect(use, get), agent(get, student), arg(get, look).
+ie-target.rule38:: agent(use, student), object(use, lens) -> effect(use, get), agent(get, student), at(look, spot), arg(get, look).
 english(ie-target.rule39, "A student should use a hand lens to get a better look at the spots").
-ie-target.rule39:: agent(get, student), arg(get, look) -> effect(use, get), agent(use, student), object(use, lens).
+ie-target.rule39:: agent(get, student), at(look, spot), arg(get, look) -> effect(use, get), agent(use, student), object(use, lens).
 english(ie-target.rule40, "Decreasing the temperature is one way to change water from a liquid to a solid").
 ie-target.rule40:: object(decrease, temperature) -> effect(decrease, change), object(change, water), from(change, liquid), to(change, solid).
 english(ie-target.rule41, "Decreasing the temperature is one way to change water from a liquid to a solid").
