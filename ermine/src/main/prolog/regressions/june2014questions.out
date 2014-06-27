@@ -32,7 +32,7 @@ QUESTION: Which force causes rocks to roll downhill? (A) gravity(B) friction(C) 
 	pred:isa "\"gravity\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 english(rule1, "gravity causes rocks to roll downhill").
-pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = Gravity, Rock = 'rocks', Downhill = 'downhill', Gravity = 'gravity'.").
+pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = 'gravity', Rock = 'rocks', Downhill = 'downhill'.").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill") -> cause(A1S1-gravity, E5S1-roll), isa(A1S1-gravity, "gravity").
 % "friction"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 
@@ -67,7 +67,7 @@ rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "roc
 	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 english(rule1, "friction causes rocks to roll downhill").
-pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = Friction, Rock = 'rocks', Downhill = 'downhill', Friction = 'friction'.").
+pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = 'friction', Rock = 'rocks', Downhill = 'downhill'.").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill") -> cause(A1S1-friction, E5S1-roll), isa(A1S1-friction, "friction").
 % "erosion"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 
@@ -102,7 +102,7 @@ rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "roc
 	pred:isa "\"erosion\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 english(rule1, "erosion causes rocks to roll downhill").
-pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = Erosion, Rock = 'rocks', Downhill = 'downhill', Erosion = 'erosion'.").
+pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = 'erosion', Rock = 'rocks', Downhill = 'downhill'.").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill") -> cause(A1S1-erosion, E5S1-roll), isa(A1S1-erosion, "erosion").
 % "magnetism"	"causes"/CAUSE	("rocks" "roll" "" [ "downhill" ] )
 
@@ -137,7 +137,7 @@ rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "roc
 	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#1.5> .
 english(rule1, "magnetism causes rocks to roll downhill").
-pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = Magnetism, Rock = 'rocks', Downhill = 'downhill', Magnetism = 'magnetism'.").
+pretty(rule1, "CAUSE(U, roll(Rock, Downhill)), U = 'magnetism', Rock = 'rocks', Downhill = 'downhill'.").
 rule1:: isa(E5S1-roll, "roll"), agent(E5S1-roll, A3S1-rock), isa(A3S1-rock, "rocks"), arg(E5S1-roll, A6S1-downhill), isa(A6S1-downhill, "downhill") -> cause(A1S1-magnetism, E5S1-roll), isa(A1S1-magnetism, "magnetism").
 QUESTION: Which activity is an example of a good health habit? (A) watching television(B) smoking cigarettes(C) eating candy(D) exercising every day
 % "watching television"	"example[watching television] of"/EXAMPLE	"a good health habit"
@@ -164,7 +164,7 @@ QUESTION: Which activity is an example of a good health habit? (A) watching tele
 	pred:isa "\"watching television\"" ;
 	rel:example <http://aristo.allenai.org/id#1.10> .
 english(rule1, "watching television is an example[watching television] of a good health habit").
-pretty(rule1, "EXAMPLE(U, Habit), U = Television, Habit = 'a good health habit', Television = 'watching television'.").
+pretty(rule1, "EXAMPLE(U, Habit), U = 'watching television', Habit = 'a good health habit'.").
 rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-television, A10S1-habit), isa(A2S1-television, "watching television").
 % "smoking cigarettes"	"example of"/EXAMPLE	"a good health habit"
 
@@ -190,7 +190,7 @@ rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-television, A10S
 	pred:isa "\"smoking cigarettes\"" ;
 	rel:example <http://aristo.allenai.org/id#1.10> .
 english(rule1, "smoking cigarettes is an example of a good health habit").
-pretty(rule1, "EXAMPLE(U, Habit), U = Cigarette, Habit = 'a good health habit', Cigarette = 'smoking cigarettes'.").
+pretty(rule1, "EXAMPLE(U, Habit), U = 'smoking cigarettes', Habit = 'a good health habit'.").
 rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-cigarette, A10S1-habit), isa(A2S1-cigarette, "smoking cigarettes").
 % ("" "eat" "candy")	"example of"/EXAMPLE	"a good health habit"
 
@@ -227,183 +227,10 @@ rule1:: isa(A10S1-habit, "a good health habit") -> example(A2S1-cigarette, A10S1
 english(rule1, "eating candy is an example of a good health habit").
 pretty(rule1, "EXAMPLE(U, Habit), U = eat(Candy), Habit = 'a good health habit', Candy = 'candy'.").
 rule1:: isa(A10S1-habit, "a good health habit") -> example(E1S1-eat, A10S1-habit), isa(E1S1-eat, "eat"), object(E1S1-eat, A2S1-candy), isa(A2S1-candy, "candy").
-% ("" "exercise" "" [ "every day" ] )	"example of"/EXAMPLE	"a good health habit"
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#1.1>
-	a <event> ;
-	pred:arg <http://aristo.allenai.org/id#1.3> ;
-	pred:isa "\"exercise\"" .
-
-<http://aristo.allenai.org/id#1.11>
-	a <entity> ;
-	pred:isa "\"a good health habit\"" .
-
-<http://aristo.allenai.org/id#1.3>
-	pred:isa "\"every day\"" .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (2)
-
-<http://aristo.allenai.org/id#1.1>
-	pred:arg <http://aristo.allenai.org/id#1.3> ;
-	pred:isa "\"exercise\"" ;
-	rel:example <http://aristo.allenai.org/id#1.11> .
-
-<http://aristo.allenai.org/id#1.3>
-	pred:isa "\"every day\"" .
-english(rule1, "exercising every day is an example of a good health habit").
-pretty(rule1, "EXAMPLE(U, Habit), U = exercise(Day), Habit = 'a good health habit', Day = 'every day'.").
-rule1:: isa(A11S1-habit, "a good health habit") -> example(E1S1-exercise, A11S1-habit), isa(E1S1-exercise, "exercise"), arg(E1S1-exercise, A3S1-day), isa(A3S1-day, "every day").
+% ("" "be" "" [ "an example of a good health habit" ] )
 QUESTION: A decomposer is an organism that (A) hunts and eats animals(B) migrates for the winter(C) breaks down dead plants and animals(D) uses water and sunlight to make food
-% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "hunt" "animals")
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#1.10>
-	a <entity> ;
-	pred:isa "\"animals\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa <http://aristo.allenai.org/id#1.5> ,
-		 "\"a decomposer\"" .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"an organism[a decomposer]\"" .
-
-<http://aristo.allenai.org/id#1.7>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"hunt\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"animals\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	rel:example <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.7>
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"hunt\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-english(rule1, "a decomposer is an organism[a decomposer] that hunts and eats animals").
-pretty(rule1, "EXAMPLE(Decomposer, Organism), U = hunt(Decomposer, Animal), Decomposer = 'a decomposer', Organism = 'an organism[a decomposer]', Animal = 'animals'.").
-rule1:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-hunt, "hunt"), agent(E7S1-hunt, A5S1-organism), object(E7S1-hunt, A10S1-animal), isa(A10S1-animal, "animals").
-% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "eat" "")
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (5)
-
-<http://aristo.allenai.org/id#1.10>
-	a <entity> ;
-	pred:isa "\"animals\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa <http://aristo.allenai.org/id#1.5> ,
-		 "\"a decomposer\"" .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"an organism[a decomposer]\"" .
-
-<http://aristo.allenai.org/id#1.7>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"hunt\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-
-<http://aristo.allenai.org/id#1.9>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"eat\"" .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"animals\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	rel:example <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.7>
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"hunt\"" ;
-	pred:object <http://aristo.allenai.org/id#1.10> .
-
-<http://aristo.allenai.org/id#1.9>
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"eat\"" .
-english(rule2, "a decomposer is an organism[a decomposer] that hunts and eats animals").
-pretty(rule2, "EXAMPLE(Decomposer, Organism), U = hunt(Decomposer, Animal), Decomposer = 'a decomposer', Organism = 'an organism[a decomposer]', Animal = 'animals'.").
-rule2:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-hunt, "hunt"), agent(E7S1-hunt, A5S1-organism), object(E7S1-hunt, A10S1-animal), isa(A10S1-animal, "animals"), isa(E9S1-eat, "eat"), agent(E9S1-eat, A5S1-organism).
-% "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
-% "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "migrate" "" [ "for the winter" ] )
-
-@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (4)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"the winter\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	a <entity> ;
-	pred:isa <http://aristo.allenai.org/id#1.5> ,
-		 "\"a decomposer\"" .
-
-<http://aristo.allenai.org/id#1.5>
-	a <entity> ;
-	pred:isa "\"an organism[a decomposer]\"" .
-
-<http://aristo.allenai.org/id#1.7>
-	a <event> ;
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:for <http://aristo.allenai.org/id#1.10> ;
-	pred:isa "\"migrate\"" .
-
-@prefix  rel: <http://aristo.allenai.org/rel/> .
-@prefix pred: <http://aristo.allenai.org/pred/> .
-
-# Named toplevel resources (3)
-
-<http://aristo.allenai.org/id#1.10>
-	pred:isa "\"the winter\"" .
-
-<http://aristo.allenai.org/id#1.2>
-	rel:example <http://aristo.allenai.org/id#1.5> .
-
-<http://aristo.allenai.org/id#1.7>
-	pred:agent <http://aristo.allenai.org/id#1.5> ;
-	pred:for <http://aristo.allenai.org/id#1.10> ;
-	pred:isa "\"migrate\"" .
-english(rule1, "a decomposer is an organism[a decomposer] that migrates for the winter").
-pretty(rule1, "EXAMPLE(Decomposer, Organism), U = migrate(Decomposer, for(Winter)), Decomposer = 'a decomposer', Organism = 'an organism[a decomposer]', Winter = 'the winter'.").
-rule1:: isa(A2S1-decomposer, "a decomposer"), isa(A5S1-organism, "an organism[a decomposer]"), isa(A2S1-decomposer, A5S1-organism) -> example(A2S1-decomposer, A5S1-organism), isa(E7S1-migrate, "migrate"), agent(E7S1-migrate, A5S1-organism), for(E7S1-migrate, A10S1-winter), isa(A10S1-winter, "the winter").
-% "a decomposer"	"is"/EXAMPLE	"an organism[a decomposer]"
+% ("a decomposer" "be" "" [ "an organism" ] )
+% ("a decomposer" "be" "" [ "an organism" ] )
 % "a decomposer"	"is"/EXAMPLE	("an organism[a decomposer]" "break" "")
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -748,7 +575,7 @@ english(rule1, "increasing the mass is one way to change water from a liquid to 
 pretty(rule1, "EFFECT(U, change(Water, from(Liquid), to(Solid))), U = increase(Mass), Water = 'water', Liquid = 'a liquid', Solid = 'a solid', Mass = 'the mass'.").
 rule1:: isa(E8S1-change, "change"), object(E8S1-change, A9S1-water), isa(A9S1-water, "water"), from(E8S1-change, A12S1-liquid), isa(A12S1-liquid, "a liquid"), to(E8S1-change, A15S1-solid), isa(A15S1-solid, "a solid") -> effect(E1S1-increase, E8S1-change), isa(E1S1-increase, "increase"), object(E1S1-increase, A3S1-mass), isa(A3S1-mass, "the mass").
 QUESTION: A student drops a ball. Which force causes the ball to fall to the ground? (A) electricity (B) friction (C) gravity (D) magnetism
-% ("A student" "drop" "" [ "a ball" ] )
+% ("A student" "drop" "a ball")
 % "electricity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -763,8 +590,8 @@ QUESTION: A student drops a ball. Which force causes the ball to fall to the gro
 <http://aristo.allenai.org/id#1.3>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#1.2> ;
-	pred:arg <http://aristo.allenai.org/id#1.5> ;
-	pred:isa "\"drop\"" .
+	pred:isa "\"drop\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
 
 <http://aristo.allenai.org/id#1.5>
 	a <entity> ;
@@ -792,8 +619,8 @@ QUESTION: A student drops a ball. Which force causes the ball to fall to the gro
 	pred:isa "\"electricity\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
-pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = Electricity, Ball = 'a ball', Ground = 'the ground', Student = 'A student', Electricity = 'electricity'.").
-rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), arg(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-electricity, E6S2-fall), isa(A1S2-electricity, "electricity").
+pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = 'electricity', Ball = 'a ball', Ground = 'the ground', Student = 'A student'.").
+rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-electricity, E6S2-fall), isa(A1S2-electricity, "electricity").
 % ("A student" "drop" "a ball")
 % "friction"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
 
@@ -838,7 +665,7 @@ rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student
 	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
-pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = Friction, Ball = 'a ball', Ground = 'the ground', Student = 'A student', Friction = 'friction'.").
+pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = 'friction', Ball = 'a ball', Ground = 'the ground', Student = 'A student'.").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-friction, E6S2-fall), isa(A1S2-friction, "friction").
 % ("A student" "drop" "a ball")
 % "gravity"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
@@ -884,7 +711,7 @@ rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student
 	pred:isa "\"gravity\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
-pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = Gravity, Ball = 'a ball', Ground = 'the ground', Student = 'A student', Gravity = 'gravity'.").
+pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = 'gravity', Ball = 'a ball', Ground = 'the ground', Student = 'A student'.").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), object(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-gravity, E6S2-fall), isa(A1S2-gravity, "gravity").
 % ("A student" "drop" "" [ "a ball" ] )
 % "magnetism"	"causes"/CAUSE	("a ball" "fall" "" [ "to the ground" ] )
@@ -930,7 +757,7 @@ rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student
 	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.6> .
 english(rule1, "A student drops a ball magnetism causes the ball[a ball] to fall to the ground").
-pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = Magnetism, Ball = 'a ball', Ground = 'the ground', Student = 'A student', Magnetism = 'magnetism'.").
+pretty(rule1, "drop(Student, Ball) & CAUSE(U, fall(Ball, to(Ground))), U = 'magnetism', Ball = 'a ball', Ground = 'the ground', Student = 'A student'.").
 rule1:: isa(E3S1-drop, "drop"), agent(E3S1-drop, A2S1-student), isa(A2S1-student, "A student"), arg(E3S1-drop, A5S1-ball), isa(A5S1-ball, "a ball"), isa(E6S2-fall, "fall"), agent(E6S2-fall, A5S1-ball), to(E6S2-fall, A9S2-ground), isa(A9S2-ground, "the ground") -> cause(A1S2-magnetism, E6S2-fall), isa(A1S2-magnetism, "magnetism").
 QUESTION: What is the main source of energy for the water cycle? (A) electricity(B) erosion(C) gravity(D) sunlight
 % "electricity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
@@ -965,7 +792,7 @@ QUESTION: What is the main source of energy for the water cycle? (A) electricity
 	pred:isa "\"electricity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "electricity is the main source of energy for the water cycle").
-pretty(rule1, "EXAMPLE(U, Source), U = Electricity, Source = 'the main source of energy for the water cycle', Electricity = 'electricity'.").
+pretty(rule1, "EXAMPLE(U, Source), U = 'electricity', Source = 'the main source of energy for the water cycle'.").
 rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-electricity, A5S1-source), isa(A1S1-electricity, "electricity").
 % "erosion"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
@@ -999,7 +826,7 @@ rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A
 	pred:isa "\"erosion\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "erosion is the main source of energy for the water cycle").
-pretty(rule1, "EXAMPLE(U, Source), U = Erosion, Source = 'the main source of energy for the water cycle', Erosion = 'erosion'.").
+pretty(rule1, "EXAMPLE(U, Source), U = 'erosion', Source = 'the main source of energy for the water cycle'.").
 rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-erosion, A5S1-source), isa(A1S1-erosion, "erosion").
 % "gravity"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
@@ -1033,7 +860,7 @@ rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A
 	pred:isa "\"gravity\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "gravity is the main source of energy for the water cycle").
-pretty(rule1, "EXAMPLE(U, Source), U = Gravity, Source = 'the main source of energy for the water cycle', Gravity = 'gravity'.").
+pretty(rule1, "EXAMPLE(U, Source), U = 'gravity', Source = 'the main source of energy for the water cycle'.").
 rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-gravity, A5S1-source), isa(A1S1-gravity, "gravity").
 % "sunlight"	"is"/EXAMPLE	"the main source of energy for the water cycle"
 
@@ -1067,7 +894,7 @@ rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A
 	pred:isa "\"sunlight\"" ;
 	rel:example <http://aristo.allenai.org/id#1.5> .
 english(rule1, "sunlight is the main source of energy for the water cycle").
-pretty(rule1, "EXAMPLE(U, Source), U = Sunlight, Source = 'the main source of energy for the water cycle', Sunlight = 'sunlight'.").
+pretty(rule1, "EXAMPLE(U, Source), U = 'sunlight', Source = 'the main source of energy for the water cycle'.").
 rule1:: for(A7S1-energy, A11S1-cycle), isa(A11S1-cycle, "the water cycle"), of(A5S1-source, A7S1-energy), isa(A7S1-energy, "energy"), isa(A5S1-source, "the main source") -> example(A1S1-sunlight, A5S1-source), isa(A1S1-sunlight, "sunlight").
 QUESTION: Which instrument should a student use to measure exactly 10 milliliters (mL) of water? (A) graduated cylinder (B) pan balance (C) ruler (D) thermometer
 % ("a student"/?x "use" "a graduated cylinder")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
@@ -1166,10 +993,10 @@ QUESTION: Which instrument should a student use to measure exactly 10 milliliter
 <http://aristo.allenai.org/id#1.7>
 	pred:isa "\"a graduated cylinder\"" .
 english(rule1, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-pretty(rule1, "EFFECT(use(Student, Cylinder), measure(Student, Milliliter)), U = Cylinder, Student = 'a student', Cylinder = 'a graduated cylinder', Milliliter = '10 milliliters of water'.").
+pretty(rule1, "EFFECT(use(Student, U), measure(Student, Milliliter)), U = 'a graduated cylinder', Student = 'a student', Cylinder = 'a graduated cylinder', Milliliter = '10 milliliters of water'.").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), of(A12S1-milliliter, A17S1-water), isa(A17S1-water, "water"), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
 english(rule2, "a student should use a graduated cylinder to measure exactly 10 milliliters mL of water").
-pretty(rule2, "EFFECT(use(Student, Cylinder), measure(Student, Milliliter, Ml)), U = Cylinder, Student = 'a student', Cylinder = 'a graduated cylinder', Milliliter = '10 milliliters of water', Ml = 'mL'.").
+pretty(rule2, "EFFECT(use(Student, U), measure(Student, Milliliter, Ml)), U = 'a graduated cylinder', Student = 'a student', Cylinder = 'a graduated cylinder', Milliliter = '10 milliliters of water', Ml = 'mL'.").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A7S1-cylinder), of(A12S1-milliliter, A17S1-water), isa(A17S1-water, "water"), isa(E9S1-measure, "measure"), agent(E9S1-measure, A2S1-student), object(E9S1-measure, A12S1-milliliter), isa(A12S1-milliliter, "10 milliliters"), object(E9S1-measure, A14S1-ml), isa(A14S1-ml, "mL") -> effect(E4S1-use, E9S1-measure), isa(A7S1-cylinder, "a graduated cylinder").
 % ("a student"/?x "use" "pan balance")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
@@ -1267,10 +1094,10 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 <http://aristo.allenai.org/id#1.6>
 	pred:isa "\"pan balance\"" .
 english(rule1, "a student should use pan balance to measure exactly 10 milliliters mL of water").
-pretty(rule1, "EFFECT(use(Student, Balance), measure(Student, Milliliter)), U = Balance, Student = 'a student', Balance = 'pan balance', Milliliter = '10 milliliters of water'.").
+pretty(rule1, "EFFECT(use(Student, U), measure(Student, Milliliter)), U = 'pan balance', Student = 'a student', Balance = 'pan balance', Milliliter = '10 milliliters of water'.").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
 english(rule2, "a student should use pan balance to measure exactly 10 milliliters mL of water").
-pretty(rule2, "EFFECT(use(Student, Balance), measure(Student, Milliliter, Ml)), U = Balance, Student = 'a student', Balance = 'pan balance', Milliliter = '10 milliliters of water', Ml = 'mL'.").
+pretty(rule2, "EFFECT(use(Student, U), measure(Student, Milliliter, Ml)), U = 'pan balance', Student = 'a student', Balance = 'pan balance', Milliliter = '10 milliliters of water', Ml = 'mL'.").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-balance), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-balance, "pan balance").
 % ("a student"/?x "use" "a ruler")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
@@ -1368,10 +1195,10 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 <http://aristo.allenai.org/id#1.6>
 	pred:isa "\"a ruler\"" .
 english(rule1, "a student should use a ruler to measure exactly 10 milliliters mL of water").
-pretty(rule1, "EFFECT(use(Student, Ruler), measure(Student, Milliliter)), U = Ruler, Student = 'a student', Ruler = 'a ruler', Milliliter = '10 milliliters of water'.").
+pretty(rule1, "EFFECT(use(Student, U), measure(Student, Milliliter)), U = 'a ruler', Student = 'a student', Ruler = 'a ruler', Milliliter = '10 milliliters of water'.").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
 english(rule2, "a student should use a ruler to measure exactly 10 milliliters mL of water").
-pretty(rule2, "EFFECT(use(Student, Ruler), measure(Student, Milliliter, Ml)), U = Ruler, Student = 'a student', Ruler = 'a ruler', Milliliter = '10 milliliters of water', Ml = 'mL'.").
+pretty(rule2, "EFFECT(use(Student, U), measure(Student, Milliliter, Ml)), U = 'a ruler', Student = 'a student', Ruler = 'a ruler', Milliliter = '10 milliliters of water', Ml = 'mL'.").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-ruler), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-ruler, "a ruler").
 % ("a student"/?x "use" "a thermometer")	"to"/EFFECT	("a student"/?x "measure" "10 milliliters of water")
 
@@ -1469,10 +1296,10 @@ rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "
 <http://aristo.allenai.org/id#1.6>
 	pred:isa "\"a thermometer\"" .
 english(rule1, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
-pretty(rule1, "EFFECT(use(Student, Thermometer), measure(Student, Milliliter)), U = Thermometer, Student = 'a student', Thermometer = 'a thermometer', Milliliter = '10 milliliters of water'.").
+pretty(rule1, "EFFECT(use(Student, U), measure(Student, Milliliter)), U = 'a thermometer', Student = 'a student', Thermometer = 'a thermometer', Milliliter = '10 milliliters of water'.").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
 english(rule2, "a student should use a thermometer to measure exactly 10 milliliters mL of water").
-pretty(rule2, "EFFECT(use(Student, Thermometer), measure(Student, Milliliter, Ml)), U = Thermometer, Student = 'a student', Thermometer = 'a thermometer', Milliliter = '10 milliliters of water', Ml = 'mL'.").
+pretty(rule2, "EFFECT(use(Student, U), measure(Student, Milliliter, Ml)), U = 'a thermometer', Student = 'a student', Thermometer = 'a thermometer', Milliliter = '10 milliliters of water', Ml = 'mL'.").
 rule2:: isa(E4S1-use, "use"), agent(E4S1-use, A2S1-student), isa(A2S1-student, "a student"), object(E4S1-use, A6S1-thermometer), of(A11S1-milliliter, A16S1-water), isa(A16S1-water, "water"), isa(E8S1-measure, "measure"), agent(E8S1-measure, A2S1-student), object(E8S1-measure, A11S1-milliliter), isa(A11S1-milliliter, "10 milliliters"), object(E8S1-measure, A13S1-ml), isa(A13S1-ml, "mL") -> effect(E4S1-use, E8S1-measure), isa(A6S1-thermometer, "a thermometer").
 QUESTION: Which activity is necessary for humans to maintain good health? (A) reading (B) resting (C) driving (D) talking
 % ("humans"/?x "read" "")	"necessary"/REQUIREMENT	("humans"/?x "maintain" "good health")
@@ -1593,7 +1420,7 @@ QUESTION: Green plants get the energy they need to make food from (A) air (B) su
 <http://aristo.allenai.org/id#1.3>
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 english(rule1, "green plants get the energy they[green plants] need to make food from air").
-pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = Air, Plant = 'green plants', Energy = 'the energy', Food = 'food from air', Air = 'air'.").
+pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = 'air', Plant = 'green plants', Energy = 'the energy', Food = 'food from air'.").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), arg(E9S1-make, A10S1-food) -> effect(E3S1-get, E9S1-make), isa(A10S1-food, "food from air").
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "food" [ "from sunlight" ] )
 
@@ -1641,7 +1468,7 @@ rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "gree
 <http://aristo.allenai.org/id#1.3>
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 english(rule1, "green plants get the energy they[green plants] need to make food from sunlight").
-pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food, from(Sunlight))), U = Sunlight, Plant = 'green plants', Energy = 'the energy', Food = 'food', Sunlight = 'sunlight', Sunlight = 'sunlight'.").
+pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food, from(U))), U = 'sunlight', Plant = 'green plants', Energy = 'the energy', Food = 'food', Sunlight = 'sunlight'.").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), object(E9S1-make, A10S1-food), isa(A10S1-food, "food"), from(E9S1-make, A12S1-sunlight) -> effect(E3S1-get, E9S1-make), isa(A12S1-sunlight, "sunlight").
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from water" ] )
 
@@ -1684,7 +1511,7 @@ rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "gree
 <http://aristo.allenai.org/id#1.3>
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 english(rule1, "green plants get the energy they[green plants] need to make food from water").
-pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = Water, Plant = 'green plants', Energy = 'the energy', Food = 'food from water', Water = 'water'.").
+pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = 'water', Plant = 'green plants', Energy = 'the energy', Food = 'food from water'.").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), arg(E9S1-make, A10S1-food) -> effect(E3S1-get, E9S1-make), isa(A10S1-food, "food from water").
 % ("green plants"/?x "get" "the energy")	"need to"/EFFECT	("green plants"/?x "make" "" [ "food from soil" ] )
 
@@ -1727,7 +1554,7 @@ rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "gree
 <http://aristo.allenai.org/id#1.3>
 	rel:effect <http://aristo.allenai.org/id#1.9> .
 english(rule1, "green plants get the energy they[green plants] need to make food from soil").
-pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = Soil, Plant = 'green plants', Energy = 'the energy', Food = 'food from soil', Soil = 'soil'.").
+pretty(rule1, "EFFECT(get(Plant, Energy), make(Plant, Food)), U = 'soil', Plant = 'green plants', Energy = 'the energy', Food = 'food from soil'.").
 rule1:: isa(E3S1-get, "get"), agent(E3S1-get, A2S1-plant), isa(A2S1-plant, "green plants"), object(E3S1-get, A5S1-energy), isa(A5S1-energy, "the energy"), isa(E9S1-make, "make"), agent(E9S1-make, A2S1-plant), arg(E9S1-make, A10S1-food) -> effect(E3S1-get, E9S1-make), isa(A10S1-food, "food from soil").
 QUESTION: When plants and animals die, which organisms help return nutrients to the food chain? (A) decomposers (B) predators (C) prey (D) producers
 % "decomposers"	"help"/PURPOSE	("decomposers" "return" "nutrients" [ "to the food chain" ] )
@@ -1764,7 +1591,7 @@ QUESTION: When plants and animals die, which organisms help return nutrients to 
 	pred:isa "\"decomposers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 english(rule1, "when plants and animals die decomposers help return nutrients to the food chain").
-pretty(rule1, "PURPOSE(U, return(Decomposer, Nutrient, to(Chain))), U = Decomposer, Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule1, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'decomposers', Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain") -> purpose(A7S1-decomposer, E9S1-return), isa(A7S1-decomposer, "decomposers").
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 
@@ -1812,7 +1639,7 @@ rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule2, "when plants and animals die decomposers help return nutrients to the food chain").
-pretty(rule2, "PURPOSE(U, return(Decomposer, Nutrient, to(Chain))), U = Decomposer, Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule2, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'decomposers', Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants") -> purpose(A7S1-decomposer, E9S1-return), isa(A7S1-decomposer, "decomposers"), when(E9S1-return, E5S1-die).
 % ("decomposers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 
@@ -1865,7 +1692,7 @@ rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule3, "when plants and animals die decomposers help return nutrients to the food chain").
-pretty(rule3, "PURPOSE(U, return(Decomposer, Nutrient, to(Chain))), U = Decomposer, Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule3, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'decomposers', Decomposer = 'decomposers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> purpose(A7S1-decomposer, E9S1-return), isa(A7S1-decomposer, "decomposers"), when(E9S1-return, E5S1-die).
 % "predators"	"help"/PURPOSE	("predators" "return" "nutrients" [ "to the food chain" ] )
 
@@ -1901,7 +1728,7 @@ rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-decomposer), object(
 	pred:isa "\"predators\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 english(rule1, "when plants and animals die predators help return nutrients to the food chain").
-pretty(rule1, "PURPOSE(U, return(Predator, Nutrient, to(Chain))), U = Predator, Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule1, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'predators', Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain") -> purpose(A7S1-predator, E9S1-return), isa(A7S1-predator, "predators").
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 
@@ -1949,7 +1776,7 @@ rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule2, "when plants and animals die predators help return nutrients to the food chain").
-pretty(rule2, "PURPOSE(U, return(Predator, Nutrient, to(Chain))), U = Predator, Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule2, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'predators', Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants") -> purpose(A7S1-predator, E9S1-return), isa(A7S1-predator, "predators"), when(E9S1-return, E5S1-die).
 % ("predators" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 
@@ -2002,7 +1829,7 @@ rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule3, "when plants and animals die predators help return nutrients to the food chain").
-pretty(rule3, "PURPOSE(U, return(Predator, Nutrient, to(Chain))), U = Predator, Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule3, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'predators', Predator = 'predators', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-predator), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> purpose(A7S1-predator, E9S1-return), isa(A7S1-predator, "predators"), when(E9S1-return, E5S1-die).
 % ("plants"/?x "prey" "help")	"when"/WHEN	("plants"/?x "die" "")
 
@@ -2129,7 +1956,7 @@ rule2:: isa(A2S1-plant, "plants"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-pl
 	pred:isa "\"producers\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.9> .
 english(rule1, "when plants and animals die producers help return nutrients to the food chain").
-pretty(rule1, "PURPOSE(U, return(Producer, Nutrient, to(Chain))), U = Producer, Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule1, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'producers', Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain") -> purpose(A7S1-producer, E9S1-return), isa(A7S1-producer, "producers").
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("plants" "die" "")
 
@@ -2177,7 +2004,7 @@ rule1:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule2, "when plants and animals die producers help return nutrients to the food chain").
-pretty(rule2, "PURPOSE(U, return(Producer, Nutrient, to(Chain))), U = Producer, Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule2, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'producers', Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants") -> purpose(A7S1-producer, E9S1-return), isa(A7S1-producer, "producers"), when(E9S1-return, E5S1-die).
 % ("producers" "return" "nutrients" [ "to the food chain" ] )	"when"/WHEN	("animals" "die" "")
 
@@ -2230,7 +2057,7 @@ rule2:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9
 <http://aristo.allenai.org/id#1.9>
 	rel:when <http://aristo.allenai.org/id#1.5> .
 english(rule3, "when plants and animals die producers help return nutrients to the food chain").
-pretty(rule3, "PURPOSE(U, return(Producer, Nutrient, to(Chain))), U = Producer, Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
+pretty(rule3, "PURPOSE(U, return(U, Nutrient, to(Chain))), U = 'producers', Producer = 'producers', Nutrient = 'nutrients', Chain = 'the food chain'.").
 rule3:: isa(E9S1-return, "return"), agent(E9S1-return, A7S1-producer), object(E9S1-return, A10S1-nutrient), isa(A10S1-nutrient, "nutrients"), to(E9S1-return, A14S1-chain), isa(A14S1-chain, "the food chain"), isa(E5S1-die, "die"), agent(E5S1-die, A2S1-plant), isa(A2S1-plant, "plants"), agent(E5S1-die, A4S1-animal), isa(A4S1-animal, "animals") -> purpose(A7S1-producer, E9S1-return), isa(A7S1-producer, "producers"), when(E9S1-return, E5S1-die).
 QUESTION: Which animal is preparing for a seasonal change in the environment? (A) a bat flying at night (B) a deer drinking water (C) an owl eating a mouse (D) a squirrel storing nuts
 % ("a bat"/?x "fly" "" [ "at night" ] )	""/EFFECT	("a bat"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
@@ -2276,7 +2103,7 @@ QUESTION: Which animal is preparing for a seasonal change in the environment? (A
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"night\"" .
 english(rule1, "a bat flying at night is preparing for a seasonal change in the environment").
-pretty(rule1, "EFFECT(U, prepare(Bat, for(Change))), U = fly(Bat, at(Night)), Bat = 'a bat', Change = 'a seasonal change in the environment', Night = 'night'.").
+pretty(rule1, "EFFECT(U, prepare(U, for(Change))), U = fly(Bat, at(Night)), Bat = 'a bat', Change = 'a seasonal change in the environment', Night = 'night'.").
 rule1:: isa(A2S1-bat, "a bat"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare, A2S1-bat), for(E7S1-prepare, A11S1-change), isa(A11S1-change, "a seasonal change in the environment") -> effect(E3S1-fly, E7S1-prepare), isa(E3S1-fly, "fly"), agent(E3S1-fly, A2S1-bat), at(E3S1-fly, A5S1-night), isa(A5S1-night, "night").
 % ("" "prepare" "" [ "for a seasonal change in the environment" ] )
 % ("an owl"/?x "eat" "a mouse")	""/EFFECT	("an owl"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
@@ -2323,7 +2150,7 @@ rule1:: isa(A2S1-bat, "a bat"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"a mouse\"" .
 english(rule1, "an owl eating a mouse is preparing for a seasonal change in the environment").
-pretty(rule1, "EFFECT(U, prepare(Owl, for(Change))), U = eat(Owl, Mouse), Owl = 'an owl', Change = 'a seasonal change in the environment', Mouse = 'a mouse'.").
+pretty(rule1, "EFFECT(U, prepare(U, for(Change))), U = eat(Owl, Mouse), Owl = 'an owl', Change = 'a seasonal change in the environment', Mouse = 'a mouse'.").
 rule1:: isa(A2S1-owl, "an owl"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepare, A2S1-owl), for(E7S1-prepare, A11S1-change), isa(A11S1-change, "a seasonal change in the environment") -> effect(E3S1-eat, E7S1-prepare), isa(E3S1-eat, "eat"), agent(E3S1-eat, A2S1-owl), object(E3S1-eat, A5S1-mouse), isa(A5S1-mouse, "a mouse").
 % ("a squirrel"/?x "store" "nuts")	""/EFFECT	("a squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
 
@@ -2369,7 +2196,7 @@ rule1:: isa(A2S1-owl, "an owl"), isa(E7S1-prepare, "prepare"), agent(E7S1-prepar
 <http://aristo.allenai.org/id#1.4>
 	pred:isa "\"nuts\"" .
 english(rule1, "a squirrel storing nuts is preparing for a seasonal change in the environment").
-pretty(rule1, "EFFECT(U, prepare(Squirrel, for(Change))), U = store(Squirrel, Nut), Squirrel = 'a squirrel', Change = 'a seasonal change in the environment', Nut = 'nuts'.").
+pretty(rule1, "EFFECT(U, prepare(U, for(Change))), U = store(Squirrel, Nut), Squirrel = 'a squirrel', Change = 'a seasonal change in the environment', Nut = 'nuts'.").
 rule1:: isa(A2S1-squirrel, "a squirrel"), isa(E6S1-prepare, "prepare"), agent(E6S1-prepare, A2S1-squirrel), for(E6S1-prepare, A10S1-change), isa(A10S1-change, "a seasonal change in the environment") -> effect(E3S1-store, E6S1-prepare), isa(E3S1-store, "store"), agent(E3S1-store, A2S1-squirrel), object(E3S1-store, A4S1-nut), isa(A4S1-nut, "nuts").
 QUESTION: What form of energy is being used when a person pushes a wooden block across the floor? (A) mechanical (B) magnetic (C) sound (D) electrical
 % ("a person"/?x "use" "mechanical energy")	"when"/WHEN	("a person"/?x "push" "a wooden block" [ "across the floor" ] )
@@ -2418,7 +2245,7 @@ QUESTION: What form of energy is being used when a person pushes a wooden block 
 <http://aristo.allenai.org/id#1.5>
 	rel:when <http://aristo.allenai.org/id#1.9> .
 english(rule1, "mechanical energy is being used when a person pushes a wooden block across the floor").
-pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = Mechanical, Person = 'a person', Energy = 'mechanical energy', Block = 'a wooden block', Floor = 'the floor', Mechanical = 'mechanical'.").
+pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = 'mechanical', Person = 'a person', Energy = 'mechanical energy', Block = 'a wooden block', Floor = 'the floor'.").
 rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a person"), object(E5S1-use, A2S1-energy), isa(E9S1-push, "push"), agent(E9S1-push, A8S1-person), object(E9S1-push, A12S1-block), isa(A12S1-block, "a wooden block"), across(E9S1-push, A15S1-floor), isa(A15S1-floor, "the floor") -> when(E5S1-use, E9S1-push), isa(A2S1-energy, "mechanical energy").
 % ("a person"/?x "use" "magnetic energy")	"when"/WHEN	("a person"/?x "push" "a wooden block" [ "across the floor" ] )
 
@@ -2466,7 +2293,7 @@ rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a 
 <http://aristo.allenai.org/id#1.5>
 	rel:when <http://aristo.allenai.org/id#1.9> .
 english(rule1, "magnetic energy is being used when a person pushes a wooden block across the floor").
-pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = Magnetic, Person = 'a person', Energy = 'magnetic energy', Block = 'a wooden block', Floor = 'the floor', Magnetic = 'magnetic'.").
+pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = 'magnetic', Person = 'a person', Energy = 'magnetic energy', Block = 'a wooden block', Floor = 'the floor'.").
 rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a person"), object(E5S1-use, A2S1-energy), isa(E9S1-push, "push"), agent(E9S1-push, A8S1-person), object(E9S1-push, A12S1-block), isa(A12S1-block, "a wooden block"), across(E9S1-push, A15S1-floor), isa(A15S1-floor, "the floor") -> when(E5S1-use, E9S1-push), isa(A2S1-energy, "magnetic energy").
 % ("a person"/?x "use" "sound")	"when"/WHEN	("a person"/?x "push" "a wooden block" [ "across the floor" ] )
 
@@ -2514,7 +2341,7 @@ rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a 
 <http://aristo.allenai.org/id#1.4>
 	rel:when <http://aristo.allenai.org/id#1.8> .
 english(rule1, "sound is being used when a person pushes a wooden block across the floor").
-pretty(rule1, "WHEN(use(Person, Sound), push(Person, Block, across(Floor))), U = Sound, Person = 'a person', Sound = 'sound', Block = 'a wooden block', Floor = 'the floor'.").
+pretty(rule1, "WHEN(use(Person, U), push(Person, Block, across(Floor))), U = 'sound', Person = 'a person', Sound = 'sound', Block = 'a wooden block', Floor = 'the floor'.").
 rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A7S1-person), isa(A7S1-person, "a person"), object(E4S1-use, A1S1-sound), isa(E8S1-push, "push"), agent(E8S1-push, A7S1-person), object(E8S1-push, A11S1-block), isa(A11S1-block, "a wooden block"), across(E8S1-push, A14S1-floor), isa(A14S1-floor, "the floor") -> when(E4S1-use, E8S1-push), isa(A1S1-sound, "sound").
 % ("a person"/?x "use" "electrical energy")	"when"/WHEN	("a person"/?x "push" "a wooden block" [ "across the floor" ] )
 
@@ -2562,7 +2389,7 @@ rule1:: isa(E4S1-use, "use"), agent(E4S1-use, A7S1-person), isa(A7S1-person, "a 
 <http://aristo.allenai.org/id#1.5>
 	rel:when <http://aristo.allenai.org/id#1.9> .
 english(rule1, "electrical energy is being used when a person pushes a wooden block across the floor").
-pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = Electrical, Person = 'a person', Energy = 'electrical energy', Block = 'a wooden block', Floor = 'the floor', Electrical = 'electrical'.").
+pretty(rule1, "WHEN(use(Person, Energy), push(Person, Block, across(Floor))), U = 'electrical', Person = 'a person', Energy = 'electrical energy', Block = 'a wooden block', Floor = 'the floor'.").
 rule1:: isa(E5S1-use, "use"), agent(E5S1-use, A8S1-person), isa(A8S1-person, "a person"), object(E5S1-use, A2S1-energy), isa(E9S1-push, "push"), agent(E9S1-push, A8S1-person), object(E9S1-push, A12S1-block), isa(A12S1-block, "a wooden block"), across(E9S1-push, A15S1-floor), isa(A15S1-floor, "the floor") -> when(E5S1-use, E9S1-push), isa(A2S1-energy, "electrical energy").
 QUESTION: Since green plants make their own food, they are called (A) predators (B) prey (C) decomposers (D) producers
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"predators"
@@ -2601,7 +2428,7 @@ QUESTION: Since green plants make their own food, they are called (A) predators 
 <http://aristo.allenai.org/id#1.4>
 	rel:example <http://aristo.allenai.org/id#1.12> .
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called predators").
-pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = Predator, Plant = 'green plants', Food = 'their[green plants] own food', Predator = 'predators'.").
+pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = 'predators', Plant = 'green plants', Food = 'their[green plants] own food'.").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food") -> example(E4S1-make, A12S1-predator), isa(A12S1-predator, "predators").
 % ("" "call" "green plants" [ "since green plants make their[green plants] own food" ] )
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"decomposers"
@@ -2640,7 +2467,7 @@ rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "g
 <http://aristo.allenai.org/id#1.4>
 	rel:example <http://aristo.allenai.org/id#1.12> .
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called decomposers").
-pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = Decomposer, Plant = 'green plants', Food = 'their[green plants] own food', Decomposer = 'decomposers'.").
+pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = 'decomposers', Plant = 'green plants', Food = 'their[green plants] own food'.").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food") -> example(E4S1-make, A12S1-decomposer), isa(A12S1-decomposer, "decomposers").
 % ("green plants" "make" "their[green plants] own food")	"are called"/EXAMPLE	"producers"
 
@@ -2678,7 +2505,7 @@ rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "g
 <http://aristo.allenai.org/id#1.4>
 	rel:example <http://aristo.allenai.org/id#1.12> .
 english(rule1, "since green plants make their[green plants] own food they[green plants] are called producers").
-pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = Producer, Plant = 'green plants', Food = 'their[green plants] own food', Producer = 'producers'.").
+pretty(rule1, "EXAMPLE(make(Plant, Food), U), U = 'producers', Plant = 'green plants', Food = 'their[green plants] own food'.").
 rule1:: isa(E4S1-make, "make"), agent(E4S1-make, A3S1-plant), isa(A3S1-plant, "green plants"), object(E4S1-make, A7S1-food), isa(A7S1-food, "their[green plants] own food") -> example(E4S1-make, A12S1-producer), isa(A12S1-producer, "producers").
 QUESTION: Which human activity most often has a harmful effect on the environment? (A) breathing (B) growing (C) planting (D) polluting
 % ("" "breathe" "")	"has effect"/EFFECT	("" "a harmful effect" "" [ "on the environment" ] )
@@ -2807,7 +2634,143 @@ rule1:: isa(E7S1-effect, "a harmful effect"), on(E7S1-effect, A10S1-environment)
 QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body produces sweat. These are two ways that organisms may adjust to (A) cold temperatures (B) hot temperatures (C) a shortage of food (D) a shortage of drinking water
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
-% ("these" "be" "" [ "two ways" ] )
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to cold temperatures" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (10)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#3.1>
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
+english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+pretty(rule1, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(U))), U = 'cold temperatures', These = 'these', Organism = 'organisms', Temperature = 'cold temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature) -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "cold temperatures").
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to cold temperatures" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (11)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
+
+<http://aristo.allenai.org/id#3.4>
+	a <entity> ;
+	pred:isa "\"two ways[these]\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ,
+		    <http://aristo.allenai.org/id#3.4> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#3.1>
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"cold temperatures\"" .
+english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+pretty(rule2, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(U))), U = 'cold temperatures', These = 'these', Organism = 'organisms', Way = 'two ways[these]', Temperature = 'cold temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "cold temperatures").
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to hot temperatures" ] )
@@ -2874,7 +2837,7 @@ QUESTION: A dog opens its mouth and lets its tongue hang out. A human's body pro
 <http://aristo.allenai.org/id#3.11>
 	pred:isa "\"hot temperatures\"" .
 english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
-pretty(rule1, "open(Dog, Mouth)produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(Temperature))), U = Temperature, These = 'these', Organism = 'organisms', Temperature = 'hot temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat', Temperature = 'hot temperatures'.").
+pretty(rule1, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(U))), U = 'hot temperatures', These = 'these', Organism = 'organisms', Temperature = 'hot temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
 rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature) -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "hot temperatures").
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to hot temperatures" ] )
 
@@ -2945,11 +2908,147 @@ rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 <http://aristo.allenai.org/id#3.11>
 	pred:isa "\"hot temperatures\"" .
 english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
-pretty(rule2, "open(Dog, Mouth)produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(Temperature))), U = Temperature, These = 'these', Organism = 'organisms', Way = 'two ways[these]', Temperature = 'hot temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat', Temperature = 'hot temperatures'.").
+pretty(rule2, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(U))), U = 'hot temperatures', These = 'these', Organism = 'organisms', Way = 'two ways[these]', Temperature = 'hot temperatures', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
 rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-temperature), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-temperature, "hot temperatures").
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
-% ("these" "be" "" [ "two ways" ] )
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of food" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (10)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#3.1>
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+pretty(rule1, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(U))), U = 'a shortage of food', These = 'these', Organism = 'organisms', Shortage = 'a shortage of food', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
+rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage) -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
+% "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of food" ] )
+
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (11)
+
+<http://aristo.allenai.org/id#1.2>
+	a <entity> ;
+	pred:isa "\"A dog\"" .
+
+<http://aristo.allenai.org/id#1.3>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#1.2> ;
+	pred:isa "\"open\"" ;
+	pred:object <http://aristo.allenai.org/id#1.5> .
+
+<http://aristo.allenai.org/id#1.5>
+	a <entity> ;
+	pred:isa "\"its mouth\"" .
+
+<http://aristo.allenai.org/id#2.4>
+	a <entity> ;
+	pred:isa "\"A human 's body\"" .
+
+<http://aristo.allenai.org/id#2.5>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#2.4> ;
+	pred:isa "\"produce\"" ;
+	pred:object <http://aristo.allenai.org/id#2.6> .
+
+<http://aristo.allenai.org/id#2.6>
+	a <entity> ;
+	pred:isa "\"sweat\"" .
+
+<http://aristo.allenai.org/id#3.1>
+	a <entity> ;
+	pred:isa "\"these\"" .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+
+<http://aristo.allenai.org/id#3.4>
+	a <entity> ;
+	pred:isa "\"two ways[these]\"" .
+
+<http://aristo.allenai.org/id#3.6>
+	a <entity> ;
+	pred:isa "\"organisms\"" .
+
+<http://aristo.allenai.org/id#3.8>
+	a <event> ;
+	pred:agent <http://aristo.allenai.org/id#3.6> ;
+	pred:isa "\"adjust\"" ;
+	pred:object <http://aristo.allenai.org/id#3.1> ,
+		    <http://aristo.allenai.org/id#3.4> ;
+	pred:to <http://aristo.allenai.org/id#3.11> .
+
+@prefix  rel: <http://aristo.allenai.org/rel/> .
+@prefix pred: <http://aristo.allenai.org/pred/> .
+
+# Named toplevel resources (2)
+
+<http://aristo.allenai.org/id#3.1>
+	rel:example <http://aristo.allenai.org/id#3.8> .
+
+<http://aristo.allenai.org/id#3.11>
+	pred:isa "\"a shortage of food\"" .
+english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+pretty(rule2, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(U))), U = 'a shortage of food', These = 'these', Organism = 'organisms', Way = 'two ways[these]', Shortage = 'a shortage of food', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
+rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of food").
 % ("A dog" "open" "its mouth")
 % ("A human 's body" "produce" "sweat")
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "these" [ "to a shortage of drinking water" ] )
@@ -3016,7 +3115,7 @@ rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 <http://aristo.allenai.org/id#3.11>
 	pred:isa "\"a shortage of drinking water\"" .
 english(rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
-pretty(rule1, "open(Dog, Mouth)produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(Shortage))), U = Shortage, These = 'these', Organism = 'organisms', Shortage = 'a shortage of drinking water', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat', Shortage = 'a shortage of drinking water'.").
+pretty(rule1, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, to(U))), U = 'a shortage of drinking water', These = 'these', Organism = 'organisms', Shortage = 'a shortage of drinking water', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
 rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage) -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of drinking water").
 % "these"	"are ways[these]"/EXAMPLE	("organisms" "adjust" "two ways[these]" [ "to a shortage of drinking water" ] )
 
@@ -3087,7 +3186,7 @@ rule1:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog
 <http://aristo.allenai.org/id#3.11>
 	pred:isa "\"a shortage of drinking water\"" .
 english(rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
-pretty(rule2, "open(Dog, Mouth)produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(Shortage))), U = Shortage, These = 'these', Organism = 'organisms', Way = 'two ways[these]', Shortage = 'a shortage of drinking water', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat', Shortage = 'a shortage of drinking water'.").
+pretty(rule2, "open(Dog, Mouth) & produce(Body, Sweat) & EXAMPLE(These, adjust(Organism, These, Way, to(U))), U = 'a shortage of drinking water', These = 'these', Organism = 'organisms', Way = 'two ways[these]', Shortage = 'a shortage of drinking water', Dog = 'A dog', Mouth = 'its mouth', Body = 'A human ’s body', Sweat = 'sweat'.").
 rule2:: isa(E3S1-open, "open"), agent(E3S1-open, A2S1-dog), isa(A2S1-dog, "A dog"), object(E3S1-open, A5S1-mouth), isa(A5S1-mouth, "its mouth"), isa(E5S2-produce, "produce"), agent(E5S2-produce, A4S2-body), isa(A4S2-body, "A human 's body"), object(E5S2-produce, A6S2-sweat), isa(A6S2-sweat, "sweat"), isa(A1S3-these, "these"), isa(E8S3-adjust, "adjust"), agent(E8S3-adjust, A6S3-organism), isa(A6S3-organism, "organisms"), object(E8S3-adjust, A1S3-these), to(E8S3-adjust, A11S3-shortage), object(E8S3-adjust, A4S3-way), isa(A4S3-way, "two ways[these]") -> example(A1S3-these, E8S3-adjust), isa(A11S3-shortage, "a shortage of drinking water").
 QUESTION: A student is growing some plants for an experiment. She notices small white spots on the leaves. Which tool should she use to get a better look at the spots? (A) thermometer (B) hand lens (C) graduated cylinder (D) balance
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
@@ -3170,7 +3269,7 @@ QUESTION: A student is growing some plants for an experiment. She notices small 
 <http://aristo.allenai.org/id#3.5>
 	pred:isa "\"a thermometer\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a thermometer to get a better look at the spots[small white spots]").
-pretty(rule1, "grow(Student, Plant, for(Experiment))notify(She, Spot, on(Leaf)) & EFFECT(use(She, Thermometer), get(She, Look)), U = Thermometer, She = 'She', Thermometer = 'a thermometer', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
+pretty(rule1, "grow(Student, Plant, for(Experiment)) & notify(She, Spot, on(Leaf)) & EFFECT(use(She, U), get(She, Look)), U = 'a thermometer', She = 'She', Thermometer = 'a thermometer', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-thermometer), at(A10S3-look, A13S3-spot), isa(A13S3-spot, "the spots[small white spots]"), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look") -> effect(E3S3-use, E7S3-get), isa(A5S3-thermometer, "a thermometer").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
@@ -3252,16 +3351,16 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.6>
 	pred:isa "\"a hand lens\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
-pretty(rule1, "grow(Student, Plant, for(Experiment))notify(She, Spot, on(Leaf)) & EFFECT(use(She, Lens), get(She, Look)), U = Lens, She = 'She', Lens = 'a hand lens', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
+pretty(rule1, "grow(Student, Plant, for(Experiment)) & notify(She, Spot, on(Leaf)) & EFFECT(use(She, U), get(She, Look)), U = 'a hand lens', She = 'She', Lens = 'a hand lens', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-lens), at(A11S3-look, A14S3-spot), isa(A14S3-spot, "the spots[small white spots]"), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look") -> effect(E3S3-use, E8S3-get), isa(A6S3-lens, "a hand lens").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
-% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
+% ("She"/?x "use" "a graduated cylinder")	"to"/EFFECT	("She"/?x "get" "" [ "a better look at the spots[small white spots]" ] )
 
 @prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
 
-# Named toplevel resources (13)
+# Named toplevel resources (12)
 
 <http://aristo.allenai.org/id#1.2>
 	a <entity> ;
@@ -3300,12 +3399,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 	pred:isa "\"the leaves\"" .
 
 <http://aristo.allenai.org/id#3.11>
-	a <entity> ;
-	pred:at <http://aristo.allenai.org/id#3.14> ;
-	pred:isa "\"a better look\"" .
-
-<http://aristo.allenai.org/id#3.14>
-	pred:isa "\"the spots[small white spots]\"" .
+	pred:isa "\"a better look at the spots[small white spots]\"" .
 
 <http://aristo.allenai.org/id#3.3>
 	a <event> ;
@@ -3320,8 +3414,8 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.8>
 	a <event> ;
 	pred:agent <http://aristo.allenai.org/id#2.1> ;
-	pred:isa "\"get\"" ;
-	pred:object <http://aristo.allenai.org/id#3.11> .
+	pred:arg <http://aristo.allenai.org/id#3.11> ;
+	pred:isa "\"get\"" .
 
 @prefix  rel: <http://aristo.allenai.org/rel/> .
 @prefix pred: <http://aristo.allenai.org/pred/> .
@@ -3334,8 +3428,8 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.6>
 	pred:isa "\"a graduated cylinder\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
-pretty(rule1, "grow(Student, Plant, for(Experiment))notify(She, Spot, on(Leaf)) & EFFECT(use(She, Cylinder), get(She, Look)), U = Cylinder, She = 'She', Cylinder = 'a graduated cylinder', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
-rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), at(A11S3-look, A14S3-spot), isa(A14S3-spot, "the spots[small white spots]"), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), object(E8S3-get, A11S3-look), isa(A11S3-look, "a better look") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
+pretty(rule1, "grow(Student, Plant, for(Experiment)) & notify(She, Spot, on(Leaf)) & EFFECT(use(She, U), get(She, Look)), U = 'a graduated cylinder', She = 'She', Cylinder = 'a graduated cylinder', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
+rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A6S3-cylinder), isa(E8S3-get, "get"), agent(E8S3-get, A1S2-she), arg(E8S3-get, A11S3-look), isa(A11S3-look, "a better look at the spots[small white spots]") -> effect(E3S3-use, E8S3-get), isa(A6S3-cylinder, "a graduated cylinder").
 % ("A student" "grow" "some plants" [ "for an experiment" ] )
 % ("She" "notify" "small white spots" [ "on the leaves" ] )
 % ("She"/?x "use" "a balance")	"to"/EFFECT	("She"/?x "get" "a better look at the spots[small white spots]")
@@ -3416,7 +3510,7 @@ rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student
 <http://aristo.allenai.org/id#3.5>
 	pred:isa "\"a balance\"" .
 english(rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
-pretty(rule1, "grow(Student, Plant, for(Experiment))notify(She, Spot, on(Leaf)) & EFFECT(use(She, Balance), get(She, Look)), U = Balance, She = 'She', Balance = 'a balance', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
+pretty(rule1, "grow(Student, Plant, for(Experiment)) & notify(She, Spot, on(Leaf)) & EFFECT(use(She, U), get(She, Look)), U = 'a balance', She = 'She', Balance = 'a balance', Look = 'a better look at the spots[small white spots]', Student = 'A student', Plant = 'some plants', Experiment = 'an experiment', Spot = 'small white spots', Leaf = 'the leaves'.").
 rule1:: isa(E4S1-grow, "grow"), agent(E4S1-grow, A2S1-student), isa(A2S1-student, "A student"), object(E4S1-grow, A6S1-plant), isa(A6S1-plant, "some plants"), for(E4S1-grow, A9S1-experiment), isa(A9S1-experiment, "an experiment"), isa(E2S2-notice, "notify"), agent(E2S2-notice, A1S2-she), isa(A1S2-she, "She"), object(E2S2-notice, A5S2-spot), isa(A5S2-spot, "small white spots"), on(E2S2-notice, A8S2-leaf), isa(A8S2-leaf, "the leaves"), isa(E3S3-use, "use"), agent(E3S3-use, A1S2-she), object(E3S3-use, A5S3-balance), at(A10S3-look, A13S3-spot), isa(A13S3-spot, "the spots[small white spots]"), isa(E7S3-get, "get"), agent(E7S3-get, A1S2-she), object(E7S3-get, A10S3-look), isa(A10S3-look, "a better look") -> effect(E3S3-use, E7S3-get), isa(A5S3-balance, "a balance").
 QUESTION: A fox grows thicker fur as a season changes. This adaptation helps the fox to (A) find food(B) keep warmer(C) grow stronger(D) escape from predators
 % ("A fox" "grow" "thicker fur" [ "as a season changes" ] )
@@ -3725,7 +3819,7 @@ rule1:: agent(E1S1-hibernation, A5S1-animal), isa(A5S1-animal, "an animal"), isa
 	pred:isa "\"camouflage\"" ;
 	rel:purpose <http://aristo.allenai.org/id#1.6> .
 english(rule1, "camouflage often helps an animal attract a mate").
-pretty(rule1, "PURPOSE(U, attract(Animal, Mate)), U = Camouflage, Animal = 'an animal', Mate = 'a mate', Camouflage = 'camouflage'.").
+pretty(rule1, "PURPOSE(U, attract(Animal, Mate)), U = 'camouflage', Animal = 'an animal', Mate = 'a mate'.").
 rule1:: isa(E6S1-attract, "attract"), agent(E6S1-attract, A5S1-animal), isa(A5S1-animal, "an animal"), object(E6S1-attract, A8S1-mate), isa(A8S1-mate, "a mate") -> purpose(A1S1-camouflage, E6S1-attract), isa(A1S1-camouflage, "camouflage").
 % ("an animal"/?x "color" "")	"helps"/PURPOSE	("an animal"/?x "attract" "a mate")
 
@@ -3838,7 +3932,7 @@ QUESTION: Animals get energy for growth and repair from (A) soil (B) food (C) wa
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"growth from soil\"" .
 english(rule1, "animals get energy for growth and repair from soil").
-pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)) & , U = Soil, Animal = 'animals', Energy = 'energy', Growth = 'growth from soil', Repair = 'repair', Soil = 'soil'.").
+pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)), U = 'soil', Animal = 'animals', Energy = 'energy', Growth = 'growth from soil', Repair = 'repair'.").
 rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "animals"), object(E2S1-get, A3S1-energy), isa(A3S1-energy, "energy"), for(E2S1-get, A5S1-growth), for(E2S1-get, A7S1-repair), isa(A7S1-repair, "repair") -> isa(A5S1-growth, "growth from soil").
 % ("animals" "get" "energy" [ "for growth from food", "for repair" ] )
 
@@ -3876,7 +3970,7 @@ rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "an
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"growth from food\"" .
 english(rule1, "animals get energy for growth and repair from food").
-pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)) & , U = Food, Animal = 'animals', Energy = 'energy', Growth = 'growth from food', Repair = 'repair', Food = 'food'.").
+pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)), U = 'food', Animal = 'animals', Energy = 'energy', Growth = 'growth from food', Repair = 'repair'.").
 rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "animals"), object(E2S1-get, A3S1-energy), isa(A3S1-energy, "energy"), for(E2S1-get, A5S1-growth), for(E2S1-get, A7S1-repair), isa(A7S1-repair, "repair") -> isa(A5S1-growth, "growth from food").
 % ("animals" "get" "energy" [ "for growth from water", "for repair" ] )
 
@@ -3914,7 +4008,7 @@ rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "an
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"growth from water\"" .
 english(rule1, "animals get energy for growth and repair from water").
-pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)) & , U = Water, Animal = 'animals', Energy = 'energy', Growth = 'growth from water', Repair = 'repair', Water = 'water'.").
+pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)), U = 'water', Animal = 'animals', Energy = 'energy', Growth = 'growth from water', Repair = 'repair'.").
 rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "animals"), object(E2S1-get, A3S1-energy), isa(A3S1-energy, "energy"), for(E2S1-get, A5S1-growth), for(E2S1-get, A7S1-repair), isa(A7S1-repair, "repair") -> isa(A5S1-growth, "growth from water").
 % ("animals" "get" "energy" [ "for growth from air", "for repair" ] )
 
@@ -3952,7 +4046,7 @@ rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "an
 <http://aristo.allenai.org/id#1.5>
 	pred:isa "\"growth from air\"" .
 english(rule1, "animals get energy for growth and repair from air").
-pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)) & , U = Air, Animal = 'animals', Energy = 'energy', Growth = 'growth from air', Repair = 'repair', Air = 'air'.").
+pretty(rule1, "get(Animal, Energy, for(Growth), for(Repair)), U = 'air', Animal = 'animals', Energy = 'energy', Growth = 'growth from air', Repair = 'repair'.").
 rule1:: isa(E2S1-get, "get"), agent(E2S1-get, A1S1-animal), isa(A1S1-animal, "animals"), object(E2S1-get, A3S1-energy), isa(A3S1-energy, "energy"), for(E2S1-get, A5S1-growth), for(E2S1-get, A7S1-repair), isa(A7S1-repair, "repair") -> isa(A5S1-growth, "growth from air").
 QUESTION: A car skids along the road and smoke appears to be coming from under the tires. The heat that produces the smoke is caused by (A) magnetism (B) sound (C) light (D) friction
 % ("A car skids along the road and smoke" "appear" "")
@@ -4007,7 +4101,7 @@ QUESTION: A car skids along the road and smoke appears to be coming from under t
 	pred:isa "\"magnetism\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by magnetism").
-pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = Magnetism, Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke', Magnetism = 'magnetism'.").
+pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = 'magnetism', Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke'.").
 rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-magnetism, E4S2-produce), isa(A10S2-magnetism, "magnetism").
 % ("A car skids along the road and smoke" "appear" "")
 % "sound"	"caused"/CAUSE	("the heat" "produce" "the smoke")
@@ -4061,7 +4155,7 @@ rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid
 	pred:isa "\"sound\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by sound").
-pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = Sound, Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke', Sound = 'sound'.").
+pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = 'sound', Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke'.").
 rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-sound, E4S2-produce), isa(A10S2-sound, "sound").
 % ("A car skids along the road and smoke" "appear" "")
 % "light"	"caused"/CAUSE	("the heat" "produce" "the smoke")
@@ -4115,7 +4209,7 @@ rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid
 	pred:isa "\"light\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by light").
-pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = Light, Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke', Light = 'light'.").
+pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = 'light', Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke'.").
 rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-light, E4S2-produce), isa(A10S2-light, "light").
 % ("A car skids along the road and smoke" "appear" "")
 % "friction"	"caused"/CAUSE	("the heat" "produce" "the smoke")
@@ -4169,5 +4263,5 @@ rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid
 	pred:isa "\"friction\"" ;
 	rel:cause <http://aristo.allenai.org/id#2.4> .
 english(rule1, "A car skids along the road and smoke appears to be coming from under the tires the heat that produces the smoke is caused by friction").
-pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = Friction, Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke', Friction = 'friction'.").
+pretty(rule1, "appear(Skid) & CAUSE(U, produce(Heat, Smoke)), U = 'friction', Heat = 'the heat', Smoke = 'the smoke', Skid = 'A car skids along the road and smoke'.").
 rule1:: along(A3S1-skid, A6S1-road), isa(A6S1-road, "the road"), along(A3S1-skid, A8S1-smoke), isa(A8S1-smoke, "smoke"), isa(E9S1-appear, "appear"), agent(E9S1-appear, A3S1-skid), isa(A3S1-skid, "A car skids"), isa(E4S2-produce, "produce"), agent(E4S2-produce, A2S2-heat), isa(A2S2-heat, "the heat"), object(E4S2-produce, A6S2-smoke), isa(A6S2-smoke, "the smoke") -> cause(A10S2-friction, E4S2-produce), isa(A10S2-friction, "friction").

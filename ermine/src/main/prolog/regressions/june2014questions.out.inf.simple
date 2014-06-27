@@ -12,14 +12,6 @@ english(june2014questions.out.rule1, "smoking cigarettes is an example of a good
 june2014questions.out.rule1:: example(cigarette, habit).
 english(june2014questions.out.rule1, "eating candy is an example of a good health habit").
 june2014questions.out.rule1:: example(eat, habit), object(eat, candy).
-english(june2014questions.out.rule1, "exercising every day is an example of a good health habit").
-june2014questions.out.rule1:: example(exercise, habit), arg(exercise, day).
-english(june2014questions.out.rule1, "a decomposer is an organism[a decomposer] that hunts and eats animals").
-june2014questions.out.rule1:: example(decomposer, organism), agent(hunt, organism), object(hunt, animal).
-english(june2014questions.out.rule2, "a decomposer is an organism[a decomposer] that hunts and eats animals").
-june2014questions.out.rule2:: example(decomposer, organism), agent(hunt, organism), object(hunt, animal), agent(eat, organism).
-english(june2014questions.out.rule1, "a decomposer is an organism[a decomposer] that migrates for the winter").
-june2014questions.out.rule1:: example(decomposer, organism), agent(migrate, organism), for(migrate, winter).
 english(june2014questions.out.rule1, "a decomposer is an organism[a decomposer] that breaks down dead plants and animals").
 june2014questions.out.rule1:: example(decomposer, organism), agent(break, organism).
 english(june2014questions.out.rule1, "a decomposer is an organism[a decomposer] that uses water and sunlight to make food").
@@ -35,7 +27,7 @@ june2014questions.out.rule1:: object(change, water), from(change, liquid), to(ch
 english(june2014questions.out.rule1, "increasing the mass is one way to change water from a liquid to a solid").
 june2014questions.out.rule1:: object(change, water), from(change, liquid), to(change, solid) -> effect(increase, change), object(increase, mass).
 english(june2014questions.out.rule1, "A student drops a ball electricity causes the ball[a ball] to fall to the ground").
-june2014questions.out.rule1:: agent(drop, student), arg(drop, ball), agent(fall, ball), to(fall, ground) -> cause(electricity, fall).
+june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(electricity, fall).
 english(june2014questions.out.rule1, "A student drops a ball friction causes the ball[a ball] to fall to the ground").
 june2014questions.out.rule1:: agent(drop, student), object(drop, ball), agent(fall, ball), to(fall, ground) -> cause(friction, fall).
 english(june2014questions.out.rule1, "A student drops a ball gravity causes the ball[a ball] to fall to the ground").
@@ -128,10 +120,18 @@ english(june2014questions.out.rule1, "planting most often has a harmful effect o
 june2014questions.out.rule1:: on(effect, environment) -> effect(plant, effect).
 english(june2014questions.out.rule1, "polluting most often has a harmful effect on the environment").
 june2014questions.out.rule1:: on(effect, environment) -> effect(pollute, effect).
+english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature) -> example(these, adjust).
+english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to cold temperatures").
+june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature), object(adjust, way) -> example(these, adjust).
 english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
 june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature) -> example(these, adjust).
 english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to hot temperatures").
 june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, temperature), object(adjust, way) -> example(these, adjust).
+english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage) -> example(these, adjust).
+english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of food").
+june2014questions.out.rule2:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage), object(adjust, way) -> example(these, adjust).
 english(june2014questions.out.rule1, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
 june2014questions.out.rule1:: agent(open, dog), object(open, mouth), agent(produce, body), object(produce, sweat), agent(adjust, organism), object(adjust, these), to(adjust, shortage) -> example(these, adjust).
 english(june2014questions.out.rule2, "A dog opens its mouth and lets its[its mouth] tongue hang out A human 's body produces sweat these are two ways[these] that organisms may adjust to a shortage of drinking water").
@@ -141,7 +141,7 @@ june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(gro
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a hand lens to get a better look at the spots[small white spots]").
 june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, lens), at(look, spot), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a graduated cylinder to get a better look at the spots[small white spots]").
-june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, cylinder), at(look, spot), agent(get, she), object(get, look) -> effect(use, get).
+june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, cylinder), agent(get, she), arg(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A student is growing some plants for an experiment She notices small white spots on the leaves she[She] should use a balance to get a better look at the spots[small white spots]").
 june2014questions.out.rule1:: agent(grow, student), object(grow, plant), for(grow, experiment), agent(notice, she), object(notice, spot), on(notice, leaf), agent(use, she), object(use, balance), at(look, spot), agent(get, she), object(get, look) -> effect(use, get).
 english(june2014questions.out.rule1, "A fox grows thicker fur as a season changes this adaptation helps the fox[A fox] to find food").

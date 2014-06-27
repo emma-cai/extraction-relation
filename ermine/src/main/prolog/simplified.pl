@@ -7,12 +7,12 @@ write_simplified_inf_relation(Left,Right,[example,LId,_RId],Id,Pretty) :-
 	( dependency(Subj,dep:partmod,Right)
 	; dependency(Subj,dep:rcmod,Right) ),
 	rdf(Left,pred:isa,Subj),
-	simplified_inf_pred(Left,nofocus,LPred,LArgs), % LHS
-	simplified_inf_pred(Subj,nofocus,Pred,Args), % RHS
-	simplified_inf_pred(Right,nofocus,RPred,RArgs), % RHS
+	simplified_inf_pred(Left,null,LPred,LArgs), % LHS
+	simplified_inf_pred(Subj,null,Pred,Args), % RHS
+	simplified_inf_pred(Right,null,RPred,RArgs), % RHS
 	append([LArgs,Args,RArgs],ArgsList),
 	list_to_set(ArgsList,ArgsSet),
-	arg_definitions(ArgsSet,nofocus,ArgsText),
+	arg_definitions(ArgsSet,null,ArgsText),
 	format(atom(Pretty), 'pretty(~w, "EXAMPLE(~w, ~w) & ~w~w.")', [Id,LPred,Pred,RPred,ArgsText]),
 	!.
 write_simplified_inf_relation(Right,Left,[example,LId,_RId],Id,Pretty) :-
@@ -20,33 +20,33 @@ write_simplified_inf_relation(Right,Left,[example,LId,_RId],Id,Pretty) :-
 	( dependency(Subj,dep:partmod,Right)
 	; dependency(Subj,dep:rcmod,Right) ),
 	rdf(Left,pred:isa,Subj),
-	simplified_inf_pred(Left,nofocus,LPred,LArgs), % LHS
-	simplified_inf_pred(Subj,nofocus,Pred,Args), % RHS
-	simplified_inf_pred(Right,nofocus,RPred,RArgs), % RHS
+	simplified_inf_pred(Left,null,LPred,LArgs), % LHS
+	simplified_inf_pred(Subj,null,Pred,Args), % RHS
+	simplified_inf_pred(Right,null,RPred,RArgs), % RHS
 	append([LArgs,Args,RArgs],ArgsList),
 	list_to_set(ArgsList,ArgsSet),
-	arg_definitions(ArgsSet,nofocus,ArgsText),
+	arg_definitions(ArgsSet,null,ArgsText),
 	format(atom(Pretty), 'pretty(~w, "EXAMPLE(~w, ~w) & ~w~w.")', [Id,LPred,Pred,RPred,ArgsText]),
 	!.
 
 write_simplified_inf_relation(Left,Right,[Rel,LId,_RId],Id,Pretty) :-
 	stripped_id(Left,LId),
-	simplified_inf_pred(Left,nofocus,LPred,LArgs), % LHS
+	simplified_inf_pred(Left,null,LPred,LArgs), % LHS
 	upcase_atom(Rel,Relation),
-	simplified_inf_pred(Right,nofocus,RPred,RArgs), % RHS
+	simplified_inf_pred(Right,null,RPred,RArgs), % RHS
 	append([LArgs,RArgs],ArgsList),
 	list_to_set(ArgsList,Args),
-	arg_definitions(Args,nofocus,ArgsText),
+	arg_definitions(Args,null,ArgsText),
 	format(atom(Pretty), 'pretty(~w, "~w(~w, ~w)~w.")', [Id,Relation,LPred,RPred,ArgsText]),
 	!.
 write_simplified_inf_relation(Right,Left,[Rel,LId,_RId],Id,Pretty) :-
 	stripped_id(Left,LId),
-	simplified_inf_pred(Left,nofocus,LPred,LArgs), % LHS
+	simplified_inf_pred(Left,null,LPred,LArgs), % LHS
 	upcase_atom(Rel,Relation),
-	simplified_inf_pred(Right,nofocus,RPred,RArgs), % RHS
+	simplified_inf_pred(Right,null,RPred,RArgs), % RHS
 	append([LArgs,RArgs],ArgsList),
 	list_to_set(ArgsList,Args),
-	arg_definitions(Args,nofocus,ArgsText),
+	arg_definitions(Args,null,ArgsText),
 	format(atom(Pretty), 'pretty(~w, "~w(~w, ~w)~w.")', [Id,Relation,LPred,RPred,ArgsText]),
 	!.
 write_simplified_inf_relation(_,_,_,Id,Pretty) :- % failed
@@ -119,6 +119,7 @@ simplified_lemma(Arg,_,Lemma) :- % non-question
 	simplified_verb_tokens(Arg,Tokens),
 	lemmas_text(Tokens,Lemma),
 	!.
+simplified_lemma(Focus,Focus,'U').
 simplified_lemma(Arg,nofocus,Lemma) :-
 	simplified_string(Arg,nofocus,Lemma).
 simplified_lemma(Arg,_,Lemma) :-
@@ -160,9 +161,9 @@ simplified_string(Arg,_,Lemma) :-
 %%% simplified form of basic sentence (no relation)
 
 write_simplified_inf_simple_tuple(_Entity,Root,Id,Pretty) :-
-	simplified_inf_pred(Root,nofocus,Pred,ArgsList),
+	simplified_inf_pred(Root,null,Pred,ArgsList),
 	list_to_set(ArgsList,Args),
-	arg_definitions(Args,nofocus,ArgsText),
+	arg_definitions(Args,null,ArgsText),
 	format(atom(Pretty), 'pretty(~w, "~w~w.")', [Id,Pred,ArgsText]),
 	!.
 write_simplified_inf_simple_tuple(_,_,Id,Pretty) :- % failed
@@ -175,8 +176,10 @@ write_simplified_inf_question(LeftTriples,RightTriples,Id,Pretty) :-
 	current_question_focus(Focus),
 	% setup
 	write_simplified_triples(LeftTriples,Focus,LeftPred,LeftArgs),
+	( (LeftPred = '', Prefix = '')
+	; Prefix = ' & '),
 	% relation
-	write_simplified_question_relation(RightTriples,Focus,'',Relation,RelArgs),
+	write_simplified_question_relation(RightTriples,Focus,Prefix,Relation,RelArgs),
 	% focus
 	simplified_focus_pred(Focus,FocusText,FocusArgs),
 	% variable values
@@ -190,21 +193,24 @@ write_simplified_inf_question(_,_,Id,Pretty) :- % failed
 
 simplified_focus_pred(Focus,FocusText,FocusArgs) :-
 	dependency(Focus,dep:partmod,Verb),
-	simplified_inf_pred(Verb,Focus,FocusText,FocusArgs).
+	simplified_inf_pred(Verb,null,FocusText,FocusArgs).
 simplified_focus_pred(Focus,FocusText,FocusArgs) :-
 	dependency(Focus,dep:rcmod,Verb),
-	simplified_inf_pred(Verb,Focus,FocusText,FocusArgs).
+	simplified_inf_pred(Verb,null,FocusText,FocusArgs).
 simplified_focus_pred(Focus,FocusText,FocusArgs) :-
-	simplified_inf_pred(Focus,Focus,FocusText,FocusArgs).
+	rdf(Focus,rdf:type,event),
+	simplified_inf_pred(Focus,null,FocusText,FocusArgs).
+simplified_focus_pred(Focus,Lemma,[]) :-
+	simplified_lemma(Focus,nofocus,Lemma).
 
-write_simplified_question_relation(Triples,Focus,_Prev,Relation,Args) :-
+write_simplified_question_relation(Triples,Focus,Prefix,Relation,Args) :-
 	member([Left,R,Right],Triples),
 	rdf_global_id(rel:Rel,R), !,
 	focus_lemma(Left,Focus,LeftLemma,LArgs),
 	focus_lemma(Right,Focus,RightLemma,RArgs),
 	append([LArgs,RArgs],Args),
 	upcase_atom(Rel,RelName),
-	format(atom(Relation), '~w(~w, ~w)', [RelName,LeftLemma,RightLemma]).
+	format(atom(Relation), '~w~w(~w, ~w)', [Prefix,RelName,LeftLemma,RightLemma]).
 write_simplified_question_relation(_,_,_,'',[]).
 
 write_simplified_triples(Triples,Focus,EventPreds,EventArgs) :-
@@ -223,13 +229,12 @@ write_simplified_triples(Triples,Focus,EventPreds,EventArgs) :-
 write_simplified_triples(_,_,'',[]).
 
 write_simplified_events([],_Focus,'',[]).
-write_simplified_events([Event],Focus,Preds,Args) :- !,
-	simplified_inf_pred(Event,Focus,Pred,Args),
-	atomic_list_concat([Pred,' & '],Preds).
+write_simplified_events([Event],Focus,Pred,Args) :- !,
+	simplified_inf_pred(Event,Focus,Pred,Args).
 write_simplified_events([Event|Rest],Focus,Preds,Args) :-
 	simplified_inf_pred(Event,Focus,Pred,EventArgs),
 	write_simplified_events(Rest,Focus,RestPreds,RestArgs),
-	atomic_list_concat([Pred,RestPreds],Preds),
+	atomic_list_concat([Pred,' & ',RestPreds],Preds),
 	append([EventArgs,RestArgs],Args).
 
 focus_lemma(Focus,Focus,'U',[]) :- !.
