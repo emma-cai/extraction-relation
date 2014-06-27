@@ -20,8 +20,12 @@ import spray.json.pimpString
   * @param dataPath  path of the data directory that will contain OpenRegex rule files to be used for the definition extraction.
   * @param wordClass word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
   * for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
+  * @param glossaryTerms a set of required terms- anything outside of this set has to be filtered
+  * from processing.
   */
-abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String) extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade") {
+abstract class OtterDefinitionExtractor(
+  dataPath: String, val wordClass: String, glossaryTerms: Set[String] = Set.empty[String])
+    extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade") {
   
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed into the format
     * represented by the PreprocessedDefinition structure. The preprocessed output serialized into JSONs,
@@ -59,7 +63,9 @@ abstract class OtterDefinitionExtractor(dataPath: String, val wordClass: String)
         for {
            preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
            termWordClass <- preprocessedDefinitionAlts.wordClass
-           if (termWordClass.equalsIgnoreCase(wordClass))
+           if (termWordClass.equalsIgnoreCase(wordClass) &&
+               (glossaryTerms.isEmpty || 
+                glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)))
         }  {
           val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
           otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(

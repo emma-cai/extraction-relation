@@ -12,9 +12,12 @@ import scala.Option.option2Iterable
 /** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
-  * @param dataPath Path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param dataPath path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param glossaryTerms a set of required terms- anything outside of this set has to be filtered
+  * from processing. Defaults to empty set if unspecified.
   */
-class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtractor(dataPath, "noun") {
+class OtterNounDefinitionExtractor(dataPath: String, glossaryTerms: Set[String] = Set.empty[String])
+    extends OtterDefinitionExtractor(dataPath, "noun", glossaryTerms) {
 
   /** The input definition will match one of these high level definition types, or none at all.
     * This is the list of top level Types we will consider to start mining for the constituent
