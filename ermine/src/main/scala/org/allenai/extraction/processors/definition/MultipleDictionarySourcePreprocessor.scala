@@ -113,9 +113,6 @@ class MultipleDictionarySourcePreprocessor(
     * ("Repute", "public character") will be produced/returned.
     */
   def cleanUp(rawDefinition: String): Seq[String] = {
-    val defCleanedUp = DefinitionCleanupUtility.cleanUp(rawDefinition)
-
-    // Break the line up into multiple definitions if separated by semicolons
-    defCleanedUp.split(";").toSeq map { x => x.trim }
+    DefinitionCleanupUtility.cleanUp(rawDefinition)
   }
 }

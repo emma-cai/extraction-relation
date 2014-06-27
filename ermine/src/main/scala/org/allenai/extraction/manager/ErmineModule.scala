@@ -33,24 +33,19 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     def addProcessor(processor: Processor) = processors += processor.configMapping
 
     // Initialize with processors requiring no external configuration.
-    for (
-      processor <- Seq(
-        CatProcessor,
-        ClearSrl,
-        CorpusSplitter,
-        ExtractionLabels,
-        ExtractionRoles,
-        InferenceRules,
-        OtterJsonToReadableOutputProcessor,
-        StanfordExtractor,
-        StanfordFixProcessor,
-        StanfordParser,
-        StanfordTtl,
-        StanfordXmlToTtl,
-        TurtleProcessor)
-    ) {
-      addProcessor(processor)
-    }
+    addProcessor(CatProcessor)
+    addProcessor(ClearSrl)
+    addProcessor(CorpusSplitter)
+    addProcessor(ExtractionLabels)
+    addProcessor(ExtractionRoles)
+    addProcessor(InferenceRules)
+    addProcessor(OtterJsonToReadableOutputProcessor)
+    addProcessor(StanfordExtractor)
+    addProcessor(StanfordFixProcessor)
+    addProcessor(StanfordParser)
+    addProcessor(StanfordTtl)
+    addProcessor(StanfordXmlToTtl)
+    addProcessor(TurtleProcessor)
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.
     config.get[String]("ferret.directory") match {
@@ -93,17 +88,17 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     val multipleDictionarySources: Set[String] =
       (config.get[Seq[String]]("multipleDictionaries.dictionarySources") getOrElse { Seq.empty }).toSet
     addProcessor(new MultipleDictionarySourcePreprocessor(
-      multipleDictionaryWordClasses, multipleDictionaryWordClasses))
+      multipleDictionaryWordClasses, multipleDictionarySources))
 
-    // Configure the OtterDefinitionDBWriter.
-    val dbPathOption = config.get[String]("otterDBwriter.dbPath")
-    val dbUserOption = config.get[String]("otterDBwriter.dbUsername")
-    val dbPasswordOption = config.get[String]("otterDBwriter.dbPassword")
-    (dbPathOption, dbUserOption, dbPasswordOption) match {
-      case (Some(dbPath), Some(dbUser), Some(dbPassword)) =>
-        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUser, dbPassword))
-      case _ => log.error("Either dbPath or some part of the database credentials is missing " +
-        "for OtterDefinitionDBWriter. The processor failed to start up.")
+    // Configure the OtterDefinitionDBWriter and OtterDefinitionDBWriter.
+    val dbPathOption = config.get[String]("otterDB.dbPath")
+    dbPathOption match {
+      case (Some(dbPath)) =>
+        val dbUserOption = config.get[String]("otterDB.dbUsername")
+        val dbPasswordOption = config.get[String]("otterDB.dbPassword")
+        addProcessor(new OtterDefinitionDBWriter(dbPath, dbUserOption, dbPasswordOption))
+      case _ => log.error("dbPath is missing for OtterDefinitionDBWriter. " +
+        "The processor failed to start up.")
     }
 
     // Bind the extractor map we built.

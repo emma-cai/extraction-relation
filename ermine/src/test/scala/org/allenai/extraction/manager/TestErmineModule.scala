@@ -4,7 +4,6 @@ import org.allenai.extraction.{ FlatProcessor, Processor, TextProcessor }
 import org.allenai.extraction.processors.CatProcessor
 import org.allenai.extraction.processors.TurtleProcessor
 
-
 import com.escalatesoft.subcut.inject.NewBindingModule
 
 import scala.io.Source

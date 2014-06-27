@@ -36,8 +36,9 @@ object OtterJsonToReadableOutputProcessor extends FlatProcessor {
         // Iterate over the definition alternates and process, i.e., write out each one.
         for (otterExtractionForDefinitionAlt <- otterExtraction.extractions) {
           // First write out the input line.
-          destination.write("DEFINITION:   " + otterExtraction.definedTerm + "\t" + otterExtraction.wordClass.getOrElse ("") 
-            + "\t" + otterExtractionForDefinitionAlt.preprocessedDefinition + "\n")
+          destination.write("DEFINITION: " + otterExtractionForDefinitionAlt.preprocessedDefinition + "\n")
+          destination.write("WORD CLASS: " + otterExtraction.wordClass.getOrElse ("") + "\n")
+          destination.write("EXTRACTIONS:\n") 
           // Then write out the extraction results.
           for (tuple <- otterExtractionForDefinitionAlt.extractions) {
             // Prefix output extraction with "<RelationType>: "
@@ -45,7 +46,7 @@ object OtterJsonToReadableOutputProcessor extends FlatProcessor {
               case Some(x) => x.toString
               case _ => "Fact"
             }
-            destination.write(relTypeStr)
+            destination.write("   " + relTypeStr)
             destination.write(": ")
             // Now write out the actual tuple in friendly format (all tuple classes have overridden toString)
             destination.write(tuple.toString)
