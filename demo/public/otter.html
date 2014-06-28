@@ -1,51 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="extraction">
+<html ng-app="otter-extraction">
 <head>
-<title>Extraction Demo</title>
+<title>Otter Extraction Demo</title>
 <link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">
 <link rel="stylesheet" media="screen" href="/css/style.css">
 <script src="/js/angular.min.js" type="text/javascript"></script>
 <script src="/js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/otter-main.js" type="text/javascript"></script>
 </head>
-<body ng-controller='ExtractionCtrl'>
+<body ng-app>
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Extraction Demo</h1>
+  <div class="col">
+    <h1>Otter Definition Extraction Demo</h1>
+    <div ng-controller='SearchCtrl' class="row">
+      <div class="col-md-6">
+      <h2>Dictionary Term Lookup</h2>
+      <h5>{{ statistics }}</h5>
       <tabset>
-      <tab heading='Text input'>
+      <tab heading='Enter Search Term'>
       <form>
         <dl>
           <dt>Examples:</dt>
           <dd ng-repeat="example in examples">
-            <a href="#" ng-click="showExample(example)">{{ example.substring(0, 40) }}...</a>
+            <a href="#" ng-click="showExample(example)">{{ example.substring(0, 20) }}...</a>
           </dd>
         </dl>
         <dl class=" " id="text_field">
-          <dt><label for="text">Text:</label></dt>
+          <dt><label for="text">Term:</label></dt>
           <dd>
-          <textarea ng-model="model.text" id="text" name="text" rows="20" class="field span8"></textarea>
+          <textarea ng-model="model.text" id="text" name="text" rows="5" class="field span8"></textarea>
           </dd>
           <dd class="info">Required</dd>
         </dl>
         <button ng-click="submitText()" class="btn btn-default">Submit</button>
       </form>
       </tab>
-      <tab heading='Web URL'>
-      <form>
-        <dl class=" " id="url_field">
-          <dt><label for="url">URL:</label></dt>
-          <dd>
-          <input ng-model="model.url" type="text" id="url" name="url" value="" placeholder="http://www.google.com/">
-          </dd>
-        </dl>
-        <button ng-click="submitUrl()" class="btn btn-default">Submit</button>
-      </form>
-      </tab>
       </tabset>
-    </div>
-    <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
       <div ng-show='working' class="spinner">
         <img src="/img/spinner.gif" />
       </div>
@@ -69,22 +61,23 @@
             </div>
           </div>
           <h3>{{ inputLine.text }}</h3>
-           <accordion close-others="never">
-             <accordion-group ng-repeat="processor in inputLine.processors"  heading="{{ processor.name }} : {{ response.processors[processor.name] }}" is-open="{{ $first }}" class="pointer">
+             <accordion close-others="never">
+             <accordion-group ng-repeat="processor in inputLine.processors"  heading="{{ processor.name }} : {{ response.processors[processor.name] }}" is-open="{{ $first }}">
                  <dl>
-                   <ul ng-repeat="result in processor.results">
+                   <ul ng-repeat="result in processor.results track by $index">
                      {{ result }}
                    </ul>
                  </dl>
              </accordion-group>
-          </accordion>
+             </accordion>
         </div>
       </div>
     </div>
-    <details ng-show="response">
-      <summary>Json Response</summary>
-      <p><pre>{{ response | json }}</pre></p>
-    </details>
+      <details ng-show="response">
+        <summary>Json Response</summary>
+        <p><pre>{{ response | json }}</pre></p>
+      </details>
+    </div>
   </div>
 </div>
 </body>

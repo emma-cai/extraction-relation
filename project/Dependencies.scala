@@ -36,6 +36,11 @@ object Dependencies {
   // For extracting text from URLs.
   val boilerpipe = "com.syncthemall" % "boilerpipe" % "1.2.2"
 
+  // Dependencies for using H2 (database)
+  val H2DatabaseLibraries = Seq(
+    "com.h2database" % "h2" % "1.3.175",
+    "com.typesafe.slick" %% "slick" % "2.0.0")
+
   // Akka actors, logging, and backend for logging.
   def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-${id}" % "2.3.2"
   val AkkaLibraries = Seq(akkaModule("actor"),

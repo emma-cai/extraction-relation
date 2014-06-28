@@ -27,7 +27,7 @@ import spray.json._
 case class OtterExtraction(
   corpusName: Option[String],
   rawDefinitionId: Int,
-  rawDefinitionLine: String,
+  rawDefinition: String,
   definedTerm: String,
   wordClass: Option[String],
   extractions: Seq[OtterExtractionForDefinitionAlternate])
@@ -92,7 +92,12 @@ object RelationTypeEnum extends EnumCompanion[RelationTypeEnum] {
   case object Quality extends RelationTypeEnum("Quality")
   case object Property extends RelationTypeEnum("Property")
   case object Describes extends RelationTypeEnum("Describes")
-  register(Context, DefinedTerm, IsA, Quality, Property, Describes)
+  case object Effect extends RelationTypeEnum("Effect")
+  case object Cause extends RelationTypeEnum("Cause")
+  case object Function extends RelationTypeEnum("Function")
+  case object Example extends RelationTypeEnum("Example")
+  case object Require extends RelationTypeEnum("Require")
+  register(Context, DefinedTerm, IsA, Quality, Property, Describes, Effect, Cause, Function, Example, Require)
 }
 
 /** A Case Class to represent a Relation.
@@ -158,27 +163,39 @@ case class SimpleOtterExtractionTuple(
       { if (pps.size > 0) pps.map(_.string).mkString(" | [pps: ", " | ", " ]") else "" } + " ]"
   }
   override def toString() = {
-    val agentStr = agent match {
-      case Some(y) => y.string
-      case _ => ""
-    }
-    val reStrl = relation.relationPhrase.string
-    val relObjStr = relObj match {
-      case Some(y) => y.string
-      case _ => ""
-    }
-    val advpsStrBuilder = new StringBuilder()
-    for (advp <- advps) {
-      if (advp.string.length > 0)
-        advpsStrBuilder ++= ", " + advp.string
-    }
-    val ppsStrBuilder = new StringBuilder()
-    for (pp <- pps) {
-      if (pp.string.length > 0)
-        ppsStrBuilder ++= ", " + pp.string
-    }
+    val relationStrBldr = new StringBuilder()
+    if (relation.relationType.isDefined &&
+      ((relation.relationType.get == RelationTypeEnum.Context)
+        || (relation.relationType.get == RelationTypeEnum.DefinedTerm))) {
+      if (relObj.isDefined)
+        relationStrBldr ++= relObj.get.string
+    } else {
+      val agentStr = agent match {
+        case Some(y) => y.string
+        case _ => ""
+      }
+      val reStrl = relation.relationType match {
+        case Some(relType) if (relType == RelationTypeEnum.IsA) => "isa"
+        case _ => relation.relationPhrase.string
+      }
+      val relObjStr = relObj match {
+        case Some(y) => y.string
+        case _ => ""
+      }
+      val advpsStrBuilder = new StringBuilder()
+      for (advp <- advps) {
+        if (advp.string.length > 0)
+          advpsStrBuilder ++= ", " + advp.string
+      }
+      val ppsStrBuilder = new StringBuilder()
+      for (pp <- pps) {
+        if (pp.string.length > 0)
+          ppsStrBuilder ++= ", " + pp.string
+      }
 
-    "(" + agentStr + ", " + reStrl + ", " + relObjStr + ", " + advpsStrBuilder.toString + ppsStrBuilder.toString + ")"
+      relationStrBldr ++= "(" + agentStr + ", " + reStrl + ", " + relObjStr + ", " + advpsStrBuilder.toString + ppsStrBuilder.toString + ")"
+    }
+    relationStrBldr.toString
   }
 }
 

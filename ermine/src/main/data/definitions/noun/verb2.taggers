@@ -4,7 +4,7 @@ VP1 := TypedOpenRegex {
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) ((<Arg2>:@NP5) (<Arg3>: @VG)?)? @AP1?)))
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@AP1) (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg4>:@AVP1)? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
-  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>: (@Rel | @RelTo | @RelFor) @V2?) (<Arg2>:@NP)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*))))
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>: (@EffectRel | @EffectRelTo | @CauseRel | @FunctionRel | @FunctionRelTo | @ExampleRel | @RequiredRel | @RequiredRelTo)) (<Arg2>: @V2)? (<Arg3>:@NP)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*))))
 }
 
 VP := TypedOpenRegex {

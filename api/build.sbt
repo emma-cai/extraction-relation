@@ -4,4 +4,4 @@ name := "extraction-api"
 
 description := "API for Ermine extraction"
 
-libraryDependencies ++= Seq(sprayJson)
+libraryDependencies ++= Seq(allenaiCommon, sprayJson) ++ H2DatabaseLibraries

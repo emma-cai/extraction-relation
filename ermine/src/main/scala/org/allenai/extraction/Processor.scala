@@ -6,6 +6,22 @@ import java.io.{ File, FileWriter, Writer }
 
 /** A processor that converts data from one format into another. */
 abstract class Processor {
+  /** The name of this processor, as it should appear in pipeline configs. The default name is the
+    * class name, cleaned up for objects. Not guaranteed to look nice for inner classes, case
+    * classes, or other unusual constructs.
+    */
+  def name: String = {
+    val className = this.getClass.getSimpleName
+    // Scala objects use a trailing $ for the class name.
+    if (className.endsWith("$")) {
+      className.substring(0, className.length - 1)
+    } else {
+      className
+    }
+  }
+
+  /** @return the mapping of name to processor for this processor. */
+  def configMapping: (String, Processor) = (name -> this)
 
   /** @return the number of sources this processor expects */
   def numInputs: Int
@@ -47,7 +63,7 @@ object Processor {
 
   /** An input using a predefined Source. Used for passing input directly into a pipeline. */
   class SourceInput(val source: Source) extends SingleInput {
-    override def getSource() = source
+    override def getSource() = source.reset()
   }
 
   /** An output for a processor. This will provide either a single file to write to, or a directory
@@ -75,12 +91,14 @@ abstract class TextProcessor extends Processor {
       outputFile = destination.getOutputFile
     } yield {
       if (outputFile.isDirectory) {
-        throw new ErmineException("TextProcessor requires all outputs to be non-directories!")
+        throw new ErmineException(
+          s"${name} > TextProcessor requires all outputs to be non-directories!")
       }
       new FileWriter(outputFile)
     }
     if (sourceInstances.size != sources.size) {
-      throw new ErmineException("TextProcessor requires all inputs to be non-directories!")
+      throw new ErmineException(
+        s"${name} > TextProcessor requires all inputs to be non-directories!")
     }
 
     processText(sourceInstances, destinationWriters)
