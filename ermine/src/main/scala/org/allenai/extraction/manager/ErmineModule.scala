@@ -38,6 +38,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(CorpusSplitter)
     addProcessor(ExtractionLabels)
     addProcessor(ExtractionRoles)
+    addProcessor(FerretScoreHelper)
     addProcessor(InferenceRules)
     addProcessor(OtterJsonToReadableOutputProcessor)
     addProcessor(StanfordExtractor)
