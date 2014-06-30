@@ -330,12 +330,12 @@ inf_mods(V, [Prep|Rest], GraphId) :-
 	   NewP = PC) ),
 	!,
 	atom_concat('http://aristo.allenai.org/pred/',NewP,NewPrepRel),
-	text_mod(Mod, Text),
+	text_mod(Mod,Text),
 	rdf_assert(V,NewPrepRel,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).
 inf_mods(V, [Mod|Rest], GraphId) :-
-	text_mod(Mod, Text),
+	text_mod(Mod,Text),
 	rdf_assert(V,pred:arg,Mod,GraphId),
 	rdf_assert(Mod,pred:isa,literal(Text),GraphId),
 	inf_mods(V,Rest,GraphId).
