@@ -63,14 +63,14 @@ abstract class OtterDefinitionExtractor(
         for {
            preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
            termWordClass <- preprocessedDefinitionAlts.wordClass
-           if (preprocessedDefinition.trim.length > 0 &&
+           if (preprocessedDefinition.length > 0 &&
                termWordClass.equalsIgnoreCase(wordClass) &&
                (glossaryTerms.isEmpty || 
                 glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)))
         }  {
           val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
           otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
-                                             preprocessedDefinition.trim,
+                                             preprocessedDefinition,
                                              OtterToken.makeTokenSeq(result._2),
                                              result._1)
         
