@@ -41,7 +41,7 @@ token_number(E1,N1) :-
 
 token_id(E1,N1) :-
 	atom_concat('http://aristo.allenai.org/id#', S1, E1),
-	sub_atom(S1,B1,_,_,'.'), BS1 is B1 + 1,
+	sub_atom(S1,B1,_,_,'_'), BS1 is B1 + 1,
 	sub_atom(S1,BS1,_,0,TokenId),
 	sub_atom(S1,0,B1,_,SentId),
 	atomic_list_concat([TokenId,'S',SentId],N1).
