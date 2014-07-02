@@ -36,14 +36,30 @@ constit(Node,Constit,Exclude) :-
 
 token_number(E1,N1) :-
 	atom_concat('http://aristo.allenai.org/id#', S1, E1),
-	sub_atom(S1,B1,_,_,'.'), BS1 is B1 + 1, sub_atom(S1,BS1,_,0,T1),
+	sub_atom(S1,B1,_,_,'_'),
+	BS1 is B1 + 1,
+	sub_atom(S1,BS1,_,0,T1),
 	atom_number(T1,N1).
 
-token_id(E1,N1) :-
+corpus_name(E1,N1) :-
 	atom_concat('http://aristo.allenai.org/id#', S1, E1),
+	% Find '/' in S1, put start at Slash.
+	sub_atom(S1,Slash,_,_,'/'),
+	sub_atom(S1,0,Slash,_,N1).
+
+% E1 - the full token URL
+% N1 - the token identifier, of the form {TokenId}S{SentenceId}
+token_id(E1,N1) :-
+	% Prefix S1 with our ID string?
+	atom_concat('http://aristo.allenai.org/id#', S1, E1),
+	% Find '_' in S1, put start at B1.
 	sub_atom(S1,B1,_,_,'_'), BS1 is B1 + 1,
+	% Find '/' in S1, put start at Slash.
+	sub_atom(S1,Slash,_,_,'/'), AfterSlash is Slash + 1, SentIdLength is B1 - AfterSlash,
+	% Find token ID (starts immediately after '_' in S1)
 	sub_atom(S1,BS1,_,0,TokenId),
-	sub_atom(S1,0,B1,_,SentId),
+	% Find sentence ID (text after '/' up to '_' in S1)
+	sub_atom(S1,AfterSlash,SentIdLength,_,SentId),
 	atomic_list_concat([TokenId,'S',SentId],N1).
 
 compare_offsets(Delta,E1,E2) :-

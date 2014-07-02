@@ -10,12 +10,12 @@
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 % "Decomposers"	"are"/EXAMPLE	"living things"
-% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "" [ "an object toward the center of the Earth" ] )
 % "Gravity"	"is"/EXAMPLE	"the force"
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "sweat" [ "to hot temperatures" ] )
 % "sweat"	"is way"/EXAMPLE	("an organism" "adjust" "a way" [ "to hot temperatures" ] )
 % ("A squirrel"/?x "store" "nuts")	""/EFFECT	("A squirrel"/?x "prepare" "" [ "for a seasonal change in the environment" ] )
-% ("A student"/?x "use" "a hand lens")	"to"/EFFECT	("A student"/?x "get" "" [ "a better look at the spots" ] )
+% ("A student"/?x "use" "a hand lens")	"to"/EFFECT	("A student"/?x "get" "a better look at the spots")
 % ("" "decrease" "the temperature")	"is way"/EFFECT	("" "change" "water" [ "from a liquid", "to a solid" ] )
 % ("Animals" "get" "energy" [ "for growth from food", "for repair" ] )
 % "friction"	"caused"/CAUSE	("The heat" "produce" "the smoke")
