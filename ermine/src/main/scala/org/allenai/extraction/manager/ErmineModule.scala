@@ -58,12 +58,14 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
         log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
     }
 
-    // Get the data directory for extractors that need it.
+    // Get the data directory for extractors that need it and configure those extractors.
     config.get[String]("ermine.dataDirectory") match {
       case Some(dataDir) => {
         addProcessor(
           new ExtractionDenominalize(Source.fromFile(s"${dataDir}/wordnet-nominalizations.ttl")))
-        addProcessor(new OtterNounDefinitionExtractor(s"${dataDir}/definitions"))
+        val definitionDataDir = dataDir + "/" + "definitions"
+        val glossary = config.get[String]("glossaryOfTerms")
+        addProcessor(new OtterNounDefinitionExtractor(definitionDataDir, glossary))
       }
       case None => log.error("ermine.dataDirectory not found in config - " +
         "some extractors won't be initialized!")

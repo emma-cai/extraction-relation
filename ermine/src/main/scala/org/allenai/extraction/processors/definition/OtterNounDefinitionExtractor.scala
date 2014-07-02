@@ -2,19 +2,29 @@ package org.allenai.extraction.processors.definition
 
 import org.allenai.taggers.{ Extractor, NamedGroupType }
 
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
+
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.typer.Type
+
+import scala.concurrent.{ Await, Future }
 
 import scala.Option.option2Iterable
 
 /** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
-  * @param dataPath Path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param dataPath path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param glossary optional path to aristore file containing the set of required terms- anything
+  * outside of this set has to be filtered from processing. None implies Empty set, which means
+  * "no filters", so all terms will be included in that case. The file is currently at
+  * aristore://file/Otter/BarronsGlossaryNouns_txt. Run pipeline with application.conf containing
+  * 'glossaryOfTerms = "aristore://file/Otter/BarronsGlossaryNouns_txt"' to turn filtering on.
   */
-class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtractor(dataPath, "noun") {
+class OtterNounDefinitionExtractor(dataPath: String, glossary: Option[String] = None)(override implicit val bindingModule: BindingModule)
+    extends OtterDefinitionExtractor(dataPath, "noun", glossary) {
 
   /** The input definition will match one of these high level definition types, or none at all.
     * This is the list of top level Types we will consider to start mining for the constituent
