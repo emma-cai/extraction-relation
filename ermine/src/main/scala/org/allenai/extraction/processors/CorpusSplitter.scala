@@ -29,9 +29,7 @@ object CorpusSplitter extends Processor {
     } else {
       ""
     }
-    val destinationDir = destinations(0).getOutputFile
-
-    require(destinationDir.isDirectory, "Non-directory output given to CorpusSplitter")
+    val destinationDir = destinations(0).getOutputDirectory
 
     var sectionIndex = 0
     var currSectionId = "-1"
