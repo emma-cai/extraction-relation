@@ -1,18 +1,19 @@
 package org.allenai.extraction.confidence
 
+import org.allenai.extraction.ActorSystemModule
+import org.allenai.extraction.manager.ErmineModule
 import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
 import org.allenai.extraction.processors.definition.OtterToken
-import com.escalatesoft.subcut.inject.NewBindingModule
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigFactory
+
+import akka.actor.ActorSystem
+import com.typesafe.config.{ Config, ConfigFactory }
 import edu.knowitall.common.Resource
 import org.slf4j.LoggerFactory
+
 import scala.io.Source
 import scala.util.control.Exception
+
 import java.io.File
-import org.allenai.extraction.manager.ErmineModule
-import akka.actor.ActorSystem
-import org.allenai.extraction.ActorSystemModule
 
 /* Helper function for dumping definition extractions and features
  * for use in confidence function tagging and training.
