@@ -1,11 +1,22 @@
 package org.allenai.extraction.processors.definition
 
+import org.allenai.ari.datastore.client.AriDatastoreClient
+import org.allenai.ari.datastore.interface.{ Dataset, DocumentType, FileDocument, TextFile }
+import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors.OpenRegexExtractor
+
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable, NewBindingModule }
 
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 
+import java.io.File
 import java.io.Writer
+import java.net.URI
+import java.nio.file.Files
+
+import scala.concurrent.{ Await, ExecutionContext, Future }
+import scala.concurrent.duration._
 
 import scala.io.Source
 
@@ -15,17 +26,52 @@ import spray.json.pimpString
 /** An extractor that processes definitions for a given class of terms using OpenRegex.
   * A directory is expected per word class, with the cascade file in it being called defn.cascade.
   * wordClass can take different values like Noun, Adjective, Verb, Expression etc.
-  * Definitions have different formats depending on the word class of the term being defined. This will
-  * impact the rules defined in OpenRegex, so we will have a set of rules and a cascade file for each word class.
-  * @param dataPath  path of the data directory that will contain OpenRegex rule files to be used for the definition extraction.
-  * @param wordClass word class, for e.g., noun/verb/adjective to be processed. A subdirectory is expected under the specified dataPath,
-  * for each word class. So the specified wordClass here is appended to the dataPath to get to the necessary rule files.
-  * @param glossaryTerms a set of required terms- anything outside of this set has to be filtered
-  * from processing. Empty set means "no filters", so all terms will be included in that case.
+  * Definitions have different formats depending on the word class of the term being defined.
+  * This will impact the rules defined in OpenRegex, so we will have a set of rules and a cascade file
+  * for each word class.
+  * @param dataPath  path of the data directory that will contain OpenRegex rule files to be used for
+  * the definition extraction.
+  * @param wordClass word class, for e.g., noun/verb/adjective to be processed. A subdirectory is
+  * expected under the specified dataPath, for each word class. So the specified wordClass here is
+  * appended to the dataPath to get to the necessary rule files.
+  * @param glossary optional path to aristore file containing the set of required terms- anything
+  * outside of this set has to be filtered from processing. None implies Empty set, which means
+  * "no filters", so all terms will be included in that case.
   */
 abstract class OtterDefinitionExtractor(
-  dataPath: String, val wordClass: String, glossaryTerms: Set[String] = Set.empty[String])
-    extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade") {
+  dataPath: String, val wordClass: String, glossaryOption: Option[String] = None)(implicit val bindingModule: BindingModule, implicit val ec: ExecutionContext)
+    extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade")
+    with Injectable {
+
+  // Get glossary of terms from the glossary file (if specified), in Aristore.
+  val aristoreClient = inject[AriDatastoreClient]
+  val aristoreTimeout = 10.minutes
+
+  val glossaryTerms = (for {
+    glossary <- glossaryOption
+    (datasetId, documentId) <- aristoreDataSetDocument(glossary)
+  } yield {
+    val tempDirectory = Files.createTempDirectory(datasetId).toFile
+    tempDirectory.deleteOnExit
+    for {
+      dataset <- aristoreClient.getDataset(datasetId)
+      document <- aristoreClient.getFileDocument[TextFile](dataset.id, documentId, tempDirectory)
+    } yield {
+      Source.fromFile(document.file).getLines
+    }
+  }) match {
+    case Some(lines) => Await.result(lines, aristoreTimeout).toSet
+    case _ => Set.empty[String]
+  }
+
+  /** Helper Method that returns None if the UriInput object being checked is not an AristoreFileInput
+    */
+  def aristoreDataSetDocument(path: String): Option[(String, String)] = {
+    URI.create(path).getPath.stripPrefix("/").split("/") match {
+      case Array(datasetId, documentId) => Some((datasetId, documentId))
+      case _ => None
+    }
+  }
   
   /** The main extraction method: Input Source contains a bunch of definitions preprocessed into the format
     * represented by the PreprocessedDefinition structure. The preprocessed output serialized into JSONs,
@@ -85,7 +131,7 @@ abstract class OtterDefinitionExtractor(
           if (!beginning) {
             destination.write(",\n")
           }
-          destination.write(extractionOp.toJson.compactPrint + "\n")
+          destination.write(extractionOp.toJson.prettyPrint + "\n")
           beginning = false
         }
       }

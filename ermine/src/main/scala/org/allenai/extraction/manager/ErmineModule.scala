@@ -21,6 +21,7 @@ import scala.io.Source
   */
 class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => {
   import module._
+  import scala.concurrent.ExecutionContext.Implicits.global
 
   val log = Logging(actorSystem, classOf[ErmineModule])
 
@@ -64,13 +65,8 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
         addProcessor(
           new ExtractionDenominalize(Source.fromFile(s"${dataDir}/wordnet-nominalizations.ttl")))
         val definitionDataDir = dataDir + "/" + "definitions"
-        val glossaryTerms = config.get[String]("glossaryOfTerms") match {
-          case Some(glossary) =>
-            (Source.fromFile(definitionDataDir + "/" + glossary).getLines map { x => x.trim.toLowerCase }).toSet
-          case _ =>
-            Set.empty[String]
-        }
-        addProcessor(new OtterNounDefinitionExtractor(definitionDataDir, glossaryTerms))
+        val glossary = config.get[String]("glossaryOfTerms")
+        addProcessor(new OtterNounDefinitionExtractor(definitionDataDir, glossary))
       }
       case None => log.error("ermine.dataDirectory not found in config - " +
         "some extractors won't be initialized!")

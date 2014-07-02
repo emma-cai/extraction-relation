@@ -1,10 +1,13 @@
 package org.allenai.extraction.confidence
 
-import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
+import org.allenai.extraction.processors.definition.{ OtterNounDefinitionExtractor, OtterNounDefinitionExtractorModule }
 import org.allenai.extraction.processors.definition.OtterToken
+
+import com.escalatesoft.subcut.inject.NewBindingModule
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
+
 import edu.knowitall.common.Resource
 import org.slf4j.LoggerFactory
 
@@ -19,6 +22,7 @@ import java.io.File
  * TODO: Update to read JSON preprocessor output.
  */
 object DumpExtractionsAndFeatures {
+
   val logger = LoggerFactory.getLogger(this.getClass)
 
   case class Settings(
@@ -63,7 +67,8 @@ object DumpExtractionsAndFeatures {
 
     println("dataDirectory = " + dataDirectory)
 
-    val myOtterExtractor = new OtterNounDefinitionExtractor(dataDirectory)
+    import scala.concurrent.ExecutionContext.Implicits.global
+    val myOtterExtractor = (new OtterNounDefinitionExtractorModule(dataDirectory)).inject[OtterNounDefinitionExtractor](None)
 
     logger.info("Reading input from " + settings.inputFile + "...")
     val input =
