@@ -131,7 +131,7 @@ abstract class OtterDefinitionExtractor(
           if (!beginning) {
             destination.write(",\n")
           }
-          destination.write(extractionOp.toJson.prettyPrint + "\n")
+          destination.write(extractionOp.toJson.compactPrint + "\n")
           beginning = false
         }
       }
