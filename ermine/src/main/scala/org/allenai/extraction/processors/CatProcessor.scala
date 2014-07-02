@@ -6,7 +6,7 @@ import scala.io.Source
 
 import java.io.Writer
 
-/** A demo extractor that writes its input to its output (like the commandline tool `cat`). */
+/** A demo processor that writes its input to its output (like the commandline tool `cat`). */
 object CatProcessor extends TextProcessor {
   // Processors must override these two fields. These are used for error-checking of pipeline
   // configurations - processText will not be called except with `sources` and `destinations` of
