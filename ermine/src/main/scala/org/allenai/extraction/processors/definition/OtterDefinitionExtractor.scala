@@ -5,23 +5,20 @@ import org.allenai.ari.datastore.interface.{ Dataset, DocumentType, FileDocument
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors.OpenRegexExtractor
 
+import akka.actor.ActorSystem
 import com.escalatesoft.subcut.inject.{ BindingModule, Injectable, NewBindingModule }
-
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
+import spray.json._
+
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.duration._
+import scala.io.Source
 
 import java.io.File
 import java.io.Writer
 import java.net.URI
 import java.nio.file.Files
-
-import scala.concurrent.{ Await, ExecutionContext, Future }
-import scala.concurrent.duration._
-
-import scala.io.Source
-
-import spray.json.pimpAny
-import spray.json.pimpString
 
 /** An extractor that processes definitions for a given class of terms using OpenRegex.
   * A directory is expected per word class, with the cascade file in it being called defn.cascade.
@@ -39,13 +36,18 @@ import spray.json.pimpString
   * "no filters", so all terms will be included in that case.
   */
 abstract class OtterDefinitionExtractor(
-  dataPath: String, val wordClass: String, glossaryOption: Option[String] = None)(implicit val bindingModule: BindingModule, implicit val ec: ExecutionContext)
+  dataPath: String, val wordClass: String, glossaryOption: Option[String] = None)(implicit val bindingModule: BindingModule)
     extends OpenRegexExtractor[OtterExtractionTuple](dataPath + "//" + wordClass + "//defn.cascade")
     with Injectable {
 
   // Get glossary of terms from the glossary file (if specified), in Aristore.
   val aristoreClient = inject[AriDatastoreClient]
   val aristoreTimeout = 10.minutes
+
+  // The actor system to pull an execution context out of.
+  val actorSystem = inject[ActorSystem]
+  // Import the actor system's execution context.
+  import actorSystem.dispatcher
 
   val glossaryTerms = (for {
     glossary <- glossaryOption

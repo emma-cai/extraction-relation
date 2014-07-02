@@ -9,7 +9,7 @@ import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.typer.Type
 
-import scala.concurrent.{ Await, ExecutionContext, Future }
+import scala.concurrent.{ Await, Future }
 
 import scala.Option.option2Iterable
 
@@ -23,7 +23,7 @@ import scala.Option.option2Iterable
   * aristore://file/Otter/BarronsGlossaryNouns_txt. Run pipeline with application.conf containing
   * 'glossaryOfTerms = "aristore://file/Otter/BarronsGlossaryNouns_txt"' to turn filtering on.
   */
-class OtterNounDefinitionExtractor(dataPath: String, glossary: Option[String] = None)(override implicit val bindingModule: BindingModule, override implicit val ec: ExecutionContext)
+class OtterNounDefinitionExtractor(dataPath: String, glossary: Option[String] = None)(override implicit val bindingModule: BindingModule)
     extends OtterDefinitionExtractor(dataPath, "noun", glossary) {
 
   /** The input definition will match one of these high level definition types, or none at all.

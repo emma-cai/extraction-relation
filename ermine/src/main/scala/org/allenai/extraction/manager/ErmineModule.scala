@@ -21,7 +21,6 @@ import scala.io.Source
   */
 class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => {
   import module._
-  import scala.concurrent.ExecutionContext.Implicits.global
 
   val log = Logging(actorSystem, classOf[ErmineModule])
 

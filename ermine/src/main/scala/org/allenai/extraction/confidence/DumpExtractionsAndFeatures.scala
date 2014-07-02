@@ -1,20 +1,18 @@
 package org.allenai.extraction.confidence
 
-import org.allenai.extraction.processors.definition.{ OtterNounDefinitionExtractor, OtterNounDefinitionExtractorModule }
+import org.allenai.extraction.processors.definition.OtterNounDefinitionExtractor
 import org.allenai.extraction.processors.definition.OtterToken
-
 import com.escalatesoft.subcut.inject.NewBindingModule
-
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
-
 import edu.knowitall.common.Resource
 import org.slf4j.LoggerFactory
-
 import scala.io.Source
 import scala.util.control.Exception
-
 import java.io.File
+import org.allenai.extraction.manager.ErmineModule
+import akka.actor.ActorSystem
+import org.allenai.extraction.ActorSystemModule
 
 /* Helper function for dumping definition extractions and features
  * for use in confidence function tagging and training.
@@ -67,8 +65,10 @@ object DumpExtractionsAndFeatures {
 
     println("dataDirectory = " + dataDirectory)
 
-    import scala.concurrent.ExecutionContext.Implicits.global
-    val myOtterExtractor = (new OtterNounDefinitionExtractorModule(dataDirectory)).inject[OtterNounDefinitionExtractor](None)
+    val actorSystem = ActorSystem("confidence")
+    // Generate bindings needed for OtterNounDefinitionExtractor
+    implicit val bindingModule = new ErmineModule(actorSystem) ~ new ActorSystemModule(actorSystem)
+    val myOtterExtractor = new OtterNounDefinitionExtractor(dataDirectory, None)
 
     logger.info("Reading input from " + settings.inputFile + "...")
     val input =
