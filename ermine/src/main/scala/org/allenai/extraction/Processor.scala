@@ -74,6 +74,17 @@ object Processor {
       * processors require it. This may point to either a regular file or a directory.
       */
     def getOutputFile(): File
+
+    /** @return a directory to write output to
+      * @throws ErmineException if the output instance isn't configured to return directories
+      */
+    def getOutputDirectory(): File = {
+      val outputFile = getOutputFile()
+      if (!outputFile.isDirectory) {
+        throw new ErmineException("Directory requested from non-directory output")
+      }
+      outputFile
+    }
   }
 }
 
@@ -138,12 +149,12 @@ abstract class MultiTextProcessor extends Processor {
     destinations: Seq[Processor.Output]): Unit = {
 
     val sourceInstances = sources(0).getSources()
-    val destinationFile = destinations(0).getOutputFile()
     // Verify that, if we were given multiple sources, we can create enough outputs to satisfy them
     // all.
-    if (sourceInstances.size > 1 && !destinationFile.isDirectory()) {
-      throw new ErmineException(
-        "MultiTextProcessor given multiple inputs, but a non-directory output!")
+    val destinationFile = if (sourceInstances.size > 1) {
+      destinations(0).getOutputDirectory()
+    } else {
+      destinations(0).getOutputFile()
     }
     val destinationWriters = if (destinationFile.isDirectory()) {
       sourceInstances map { source => new FileWriter(new File(destinationFile, source.descr)) }
