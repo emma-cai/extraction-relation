@@ -94,9 +94,9 @@ class SimpleWiktionaryDefinitionPreprocessorTest extends UnitSpec {
         Seq.empty[String])))
   }
 
-  it should "return a Seq with a single empty string if there is no definition (just meta info)" in {
+  it should "return an empty Seq if there is no definition (just meta info)" in {
     assert(testPreprocessor.cleanUp("#{{plural of|khaki}}")
-      === ((Seq[String](""), Seq[String]("plural of|khaki"))))
+      === ((Seq.empty[String], Seq[String]("plural of|khaki"))))
   }
 
   it should "remove any empty (single/double) quoted strings that appear in the definition" in {

@@ -24,14 +24,18 @@ object CorpusSplitter extends Processor {
     destinations: Seq[Processor.Output]): Unit = {
 
     val text = sources(0).getSources()(0)
-    val prefix = if (text.descr != "") {
-      s"${text.descr}-"
+    val (prefix, suffix) = if (text.descr != "") {
+      val suffixStart = text.descr.lastIndexOf('.')
+      val (descrPrefix, descrSuffix) = if (suffixStart > 0) {
+        (text.descr.substring(0, suffixStart), text.descr.substring(suffixStart))
+      } else {
+        (text.descr, "")
+      }
+      (s"${descrPrefix}-", descrSuffix)
     } else {
-      ""
+      ("", "")
     }
-    val destinationDir = destinations(0).getOutputFile
-
-    require(destinationDir.isDirectory, "Non-directory output given to CorpusSplitter")
+    val destinationDir = destinations(0).getOutputDirectory
 
     var sectionIndex = 0
     var currSectionId = "-1"
@@ -48,7 +52,7 @@ object CorpusSplitter extends Processor {
             }
             sectionIndex += 1
             currOutput = new FileWriter(
-              new File(destinationDir, f"${prefix}${sectionIndex}%02d.txt"))
+              new File(destinationDir, f"${prefix}${sectionIndex}%d${suffix}"))
             currSectionId = sectionId
           }
           currOutput.write(sentence)

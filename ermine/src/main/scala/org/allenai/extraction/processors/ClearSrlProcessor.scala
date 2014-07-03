@@ -28,6 +28,7 @@ object ClearSrl extends MultiTextProcessor {
     // Load the stanford dependency tree.
     val graph = new MemoryStoreSailGraph()
     DependencyGraph.fromTurtle(graph, source)
+    DependencyGraph.setNamespaces(graph)
 
     // Select all of the tokens in the tree.
     val query = """SELECT ?id ?text ?pos ?begin WHERE {

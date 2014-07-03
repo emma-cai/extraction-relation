@@ -14,6 +14,7 @@ import scala.concurrent.duration._
 
 import java.io.File
 import java.net.URI
+import java.nio.file.Files
 
 /** An output from a pipeline. */
 sealed abstract class PipelineOutput extends Processor.Output {
@@ -73,20 +74,33 @@ object PipelineOutput {
 
 /** Output that is written to a temp file and discarded after the end of the pipeline run. */
 case class EphemeralOutput(override val name: Option[String]) extends PipelineOutput {
-  /** Temp file to write output to. Lazy to avoid creating extra empty files until they're needed.
-    */
-  private lazy val tempFile: File = {
+  /** Temp file to write output to. Initialized in createTempFile. */
+  private var tempFile: File = null
+
+  private def createTempFile(isDirectory: Boolean): File = {
     // Prefix must be of at least length 3, or File.createTempFile will fail.
     val prefix = name match {
       case Some(value) => value + "-erm-"
       case None => "erm-"
     }
-    val file = File.createTempFile(prefix, ".out")
-    file.deleteOnExit()
-    file
+    tempFile = if (isDirectory) {
+      Files.createTempDirectory(prefix).toFile
+    } else {
+      File.createTempFile(prefix, ".out")
+    }
+    tempFile.deleteOnExit()
+    tempFile
   }
 
-  override def getOutputFile(): File = tempFile
+  override def getOutputFile(): File = Option(tempFile) getOrElse { createTempFile(false) }
+
+  override def getOutputDirectory(): File = {
+    if (tempFile == null) {
+      createTempFile(true)
+    }
+    // Call to super to enforce isDirectory.
+    super.getOutputDirectory()
+  }
 
   /** Creates a new ephemeral output, which will use a fresh temp file for output. */
   override def initialize()(implicit bindingModule: BindingModule): PipelineOutput = {

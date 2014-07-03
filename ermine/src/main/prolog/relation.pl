@@ -25,11 +25,9 @@ relation(Root,Inf,Json) :- % question-specific
 	write_simple_tuple(Root,Inf,Json).
 
 % top level to call from JPL and backtrack for all values
-relation(InfString,JsonString) :-
+relation(InfString) :-
 	rdf(_Sentence,dep:root,Root),
-	relation(Root,InfString,Json),
-	with_output_to(atom(JsonString),
-		       json_write(current_output,Json,[width(0)])).
+	relation(Root,InfString,_).
 
 current_question_focus(Focus) :-
 	nb_current(current_question_focus,Focus).

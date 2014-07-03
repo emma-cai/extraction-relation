@@ -2,19 +2,29 @@ package org.allenai.extraction.processors.definition
 
 import org.allenai.taggers.{ Extractor, NamedGroupType }
 
+import com.escalatesoft.subcut.inject.{ BindingModule, Injectable }
+
 import edu.knowitall.collection.immutable.Interval
 import edu.knowitall.tool.chunk.ChunkedToken
 import edu.knowitall.tool.stem.Lemmatized
 import edu.knowitall.tool.typer.Type
+
+import scala.concurrent.{ Await, Future }
 
 import scala.Option.option2Iterable
 
 /** A Definition Extractor to process Noun definitions.
   * All processing that happens here is intimately tied to the specific rules defined in the
   * Cascade file for Definition Extraction on Nouns.
-  * @param dataPath Path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param dataPath path to the noun definition data- mainly the required OpenRegex rule files.
+  * @param glossary optional path to aristore file containing the set of required terms- anything
+  * outside of this set has to be filtered from processing. None implies Empty set, which means
+  * "no filters", so all terms will be included in that case. The file is currently at
+  * aristore://file/Otter/BarronsGlossaryNouns_txt. Run pipeline with application.conf containing
+  * 'glossaryOfTerms = "aristore://file/Otter/BarronsGlossaryNouns_txt"' to turn filtering on.
   */
-class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtractor(dataPath, "noun") {
+class OtterNounDefinitionExtractor(dataPath: String, glossary: Option[String] = None)(override implicit val bindingModule: BindingModule)
+    extends OtterDefinitionExtractor(dataPath, "noun", glossary) {
 
   /** The input definition will match one of these high level definition types, or none at all.
     * This is the list of top level Types we will consider to start mining for the constituent
@@ -116,7 +126,7 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     var definedTermArgOption: Option[Argument] = None
     val isaOption = Extractor.findSubtypesWithName(types)(typ, "Isa").headOption
     val (definedTermOption, isaRelOption, defnIsaOption) = nounDefinitionGetDefinedTermAndIsaRel(isaOption, types)
-    val isaRelArgOption = isaRelOption map { x => Argument("isa", OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
+    val isaRelArgOption = isaRelOption map { x => Argument(x.text, OtterToken.makeTokenSeq(defnChunkedTokens, x.tokenInterval), Option(x.tokenInterval)) }
     (definedTermOption, defnIsaOption) match {
       case (Some(definedTerm), Some(defnIsa)) => {
         val (definedTermArg, definedTermTuple) = processNounDefinitionDefinedTerm(definedTerm, types, defnChunkedTokens)
@@ -127,8 +137,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
           val result = typName match {
             case "DefnIsa.Context" => Seq[OtterExtractionTuple](processNounDefinitionContext(definedTermArg, typContent, types, defnChunkedTokens))
             case "DefnIsa.IsaWhat" => processNounDefinitionIsaWhat(definedTermArg, isaRelArgOption, typContent, types, defnChunkedTokens)
-            case "DefnIsa.Qualities" => processNounDefinitionQualities(definedTermArg, typContent, types, defnChunkedTokens)
-            case "DefnIsa.Properties" => processNounDefinitionProperties(definedTermArg, typContent, types, defnChunkedTokens)
+            case "DefnIsa.Qualities" => processNounDefinitionQualities(definedTermArg, isaRelArgOption, typContent, types, defnChunkedTokens)
+            case "DefnIsa.Properties" => processNounDefinitionProperties(definedTermArg, isaRelArgOption, typContent, types, defnChunkedTokens)
             case _ => Seq.empty[OtterExtractionTuple]
           }
           results ++= result
@@ -259,6 +269,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     val adjs = nounDefinitionGetAdjsFromNGSingle(typ, types)
 
     val isaRelArg: Argument = isaRelArgOption getOrElse (Argument("isa", Seq.empty[OtterToken], None))
+    val isaRelIntervalSeq = isaRelArg.tokenInterval match {
+      case Some(isaRelInterval) => Seq(isaRelInterval)
+      case _ => Seq.empty[Interval]
+    }
+    val isaRelTokens = isaRelArg.tokens
 
     if (nounOption.isDefined) {
       // Process the "nouns"-only part of the noun phrase.
@@ -269,12 +284,23 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
 
       // Construct the tokens and relation object out of the extracted "nouns" part to make the
       // resultant IsA tuple.
+      val definedTermTokens = definedTermArg.tokenInterval match {
+        case Some(definedTermInterval) => OtterToken.makeTokenSeq(defnChunkedTokens, definedTermInterval)
+        case _ => Seq.empty[OtterToken]
+      }
       val nounTokens = OtterToken.makeTokenSeq(defnChunkedTokens, noun.tokenInterval)
+      val allTokens = definedTermTokens ++ isaRelTokens ++ nounTokens
+
+      val totalInterval1 = definedTermArg.tokenInterval match {
+        case Some(definedTermInterval) => Interval.span(definedTermInterval +: isaRelIntervalSeq :+ noun.tokenInterval)
+        case _ => noun.tokenInterval
+      }
+
       val nounArg = Argument(noun.text, nounTokens, Some(noun.tokenInterval))
       val relObj = Option(nounArg)
       results :+= SimpleOtterExtractionTuple(
-        nounTokens,
-        noun.tokenInterval,
+        allTokens,
+        totalInterval1,
         Some(definedTermArg),
         Relation(Some(RelationTypeEnum.IsA), isaRelArg),
         relObj,
@@ -297,61 +323,100 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         // (span).
         if (auxOption.isDefined) {
           val aux = auxOption.get
-          npText ++= " " + aux.text
-          val auxIntervalOption = Option(aux.tokenInterval)
-          if (auxIntervalOption.isDefined) {
-            val auxInterval = auxIntervalOption.get
-            npIntervalOption = npIntervalOption map { npInterval => Interval.span(Seq(npInterval, auxInterval)) }
+          // This check is required because the Aux group in the rule is Optional with a Kleene star.
+          // Due to a bug in OpenRegex, when there is no Aux, we still get back something in auxOption,
+          // not a None, but the interval comes out invalid: {-1}
+          if ((aux.tokenInterval.start >= 0) && (aux.tokenInterval.end <= defnChunkedTokens.length)) {
+            npText ++= " " + aux.text
+            val auxIntervalOption = Option(aux.tokenInterval)
+            if (auxIntervalOption.isDefined) {
+              val auxInterval = auxIntervalOption.get
+              npIntervalOption = npIntervalOption map { npInterval => Interval.span(Seq(npInterval, auxInterval)) }
+            }
           }
         }
 
         // If prepositions were present, generate the 'pps' Arguments field of the tuple (OtterExtractionTupleSimple)
+        var prepTokens = Seq.empty[OtterToken]
         if (prepOption.isDefined) {
           val prep = prepOption.get
           val prepIntervalOption = Option(prep.tokenInterval)
-          val prepTokens = prepIntervalOption match {
+          prepTokens = prepIntervalOption match {
             case Some(prepInterval) => OtterToken.makeTokenSeq(defnChunkedTokens, prepInterval)
             case _ => Seq.empty[OtterToken]
           }
           if (prep.text != "") preps :+= Argument(prep.text, prepTokens, prepIntervalOption)
         }
 
-        if (npIntervalOption.isDefined) {
-          val npInterval = npIntervalOption.get
-          // We need to produce an Extraction Tuple only if this interval does not completely
-          // overlap, i.e., is not the same as the interval covered by just the Nouns (handled earlier).
-          if (!npInterval.equals(noun.tokenInterval)) {
-            val npTokens = OtterToken.makeTokenSeq(defnChunkedTokens, npInterval)
-            val npArg = Argument(npText.toString, npTokens, Option(npInterval))
-            val relObj = Option(npArg)
-            results :+= SimpleOtterExtractionTuple(
-              npTokens,
-              npInterval,
-              Some(definedTermArg),
-              Relation(Some(RelationTypeEnum.IsA), isaRelArg),
-              relObj,
-              advps = advs,
-              pps = preps)
+        // We need to produce an Extraction Tuple only if this interval does not completely
+        // overlap, i.e., is not the same as the interval covered by just the Nouns (handled earlier).
+        if (!typ.tokenInterval.equals(noun.tokenInterval) &&
+          (!npText.equals(np.text) || (advs.length > 0) || (preps.length > 0))) {
+          val interval = (for {
+            npInterval <- npIntervalOption
+            if (!npInterval.equals(noun.tokenInterval))
+          } yield npInterval) getOrElse noun.tokenInterval
+
+          val intervalTokens = OtterToken.makeTokenSeq(defnChunkedTokens, interval)
+
+          val intervalWithDefinedTerm = definedTermArg.tokenInterval match {
+            case Some(definedTermInterval) => Interval.span(definedTermInterval +: isaRelIntervalSeq :+ interval)
+            case _ => interval
           }
+          val advTokenIntervals = for {
+            adv <- advs
+            advTokenInterval <- adv.tokenInterval
+          } yield advTokenInterval
+
+          val advTokenInterval = Interval.span(advTokenIntervals)
+          val advTokens = OtterToken.makeTokenSeq(defnChunkedTokens, advTokenInterval)
+
+          val intervalWithAdvs = Interval.span(intervalWithDefinedTerm +: advTokenIntervals)
+
+          val ppTokenIntervals = for {
+            pp <- preps
+            ppTokenInterval <- pp.tokenInterval
+          } yield ppTokenInterval
+          val totalInterval2 = Interval.span(intervalWithAdvs +: ppTokenIntervals)
+
+          val allTokens = definedTermTokens ++ isaRelTokens ++ intervalTokens ++ advTokens ++ prepTokens
+
+          val npTokens = OtterToken.makeTokenSeq(defnChunkedTokens, interval)
+          val npArg = Argument(npText.toString, npTokens, Option(interval))
+          val relObj = Option(npArg)
+          results :+= SimpleOtterExtractionTuple(
+            allTokens,
+            totalInterval2,
+            Some(definedTermArg),
+            Relation(Some(RelationTypeEnum.IsA), isaRelArg),
+            relObj,
+            advps = advs,
+            pps = preps)
         }
       }
     }
 
     // Iterate over the adjectives and generate a Quality tuple for each.
     for (adj <- adjs) {
+      val (totalInterval3, definedTermTokens) = definedTermArg.tokenInterval match {
+        case Some(definedTermInterval) =>
+          (Interval.span(definedTermInterval +: isaRelIntervalSeq :+ adj.tokenInterval),
+            OtterToken.makeTokenSeq(defnChunkedTokens, definedTermInterval))
+        case _ => (adj.tokenInterval, Seq.empty[OtterToken])
+      }
       val adjTokens = OtterToken.makeTokenSeq(defnChunkedTokens, adj.tokenInterval)
       val adjArg = Argument(adj.text, adjTokens, Some(adj.tokenInterval))
       val relObj = Option(adjArg)
+      val allTokens = definedTermTokens ++ isaRelTokens ++ adjTokens
       results :+= SimpleOtterExtractionTuple(
-        adjTokens,
-        adj.tokenInterval,
+        allTokens,
+        totalInterval3,
         Some(definedTermArg),
-        Relation(Some(RelationTypeEnum.Quality), Argument("is", Seq.empty[OtterToken], None)),
+        Relation(Some(RelationTypeEnum.Quality), Argument("is", isaRelArg.tokens, isaRelArg.tokenInterval)),
         relObj,
         Seq.empty[Argument],
         Seq.empty[Argument])
     }
-
     results
   }
 
@@ -465,7 +530,13 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
 
   /** Get the Qualities from a DefnIsa output Type and construct an OtterExtractionTuple for each
     */
-  private def processNounDefinitionQualities(definedTermArg: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
+  private def processNounDefinitionQualities(definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
+    val isaRelArg: Argument = isaRelArgOption getOrElse (Argument("is", Seq.empty[OtterToken], None))
+    val isaRelIntervalSeq = isaRelArg.tokenInterval match {
+      case Some(isaRelInterval) => Seq(isaRelInterval)
+      case _ => Seq.empty[Interval]
+    }
+    val isaRelTokens = isaRelArg.tokens
     var results = Seq.empty[OtterExtractionTuple]
     val alignedTypes = Extractor.findAlignedTypes(types)(typ)
     for (alignedType <- alignedTypes) {
@@ -479,11 +550,16 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
                 val adjTokens = OtterToken.makeTokenSeq(defnChunkedTokens, adj.tokenInterval)
                 val adjArg = Argument(adj.text, adjTokens, Some(adj.tokenInterval))
                 val relObj = Option(adjArg)
+                val totalInterval = definedTermArg.tokenInterval match {
+                  case Some(definedTermInterval) =>
+                    Interval.span(definedTermInterval +: isaRelIntervalSeq :+ adj.tokenInterval)
+                  case _ => adj.tokenInterval
+                }
                 results :+= SimpleOtterExtractionTuple(
-                  adjTokens,
-                  adj.tokenInterval,
+                  definedTermArg.tokens ++ isaRelTokens ++ adjTokens,
+                  totalInterval,
                   Some(definedTermArg),
-                  Relation(Some(RelationTypeEnum.Quality), Argument("is", Seq.empty[OtterToken], None)),
+                  Relation(Some(RelationTypeEnum.Quality), Argument("is", isaRelArg.tokens, isaRelArg.tokenInterval)),
                   relObj,
                   Seq.empty[Argument],
                   Seq.empty[Argument])
@@ -498,7 +574,13 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
 
   /** Get the Properties from a DefnIsa output Type and construct an OtterExtractionTuple for each
     */
-  private def processNounDefinitionProperties(definedTermArg: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
+  private def processNounDefinitionProperties(definedTermArg: Argument, isaRelArgOption: Option[Argument], typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]]): Seq[OtterExtractionTuple] = {
+    val isaRelArg: Argument = isaRelArgOption getOrElse (Argument("is", Seq.empty[OtterToken], None))
+    val isaRelIntervalSeq = isaRelArg.tokenInterval match {
+      case Some(isaRelInterval) => Seq(isaRelInterval)
+      case _ => Seq.empty[Interval]
+    }
+    val isaRelTokens = isaRelArg.tokens
     var results = Seq.empty[OtterExtractionTuple]
     val alignedTypes = Extractor.findAlignedTypes(types)(typ)
     for (alignedType <- alignedTypes) {
@@ -512,9 +594,14 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
                 val ngTokens = OtterToken.makeTokenSeq(defnChunkedTokens, ng.tokenInterval)
                 val ngArg = Argument(ng.text, ngTokens, Some(ng.tokenInterval))
                 val relObj = Option(ngArg)
+                val totalInterval = definedTermArg.tokenInterval match {
+                  case Some(definedTermInterval) =>
+                    Interval.span(definedTermInterval +: isaRelIntervalSeq :+ ng.tokenInterval)
+                  case _ => ng.tokenInterval
+                }
                 results :+= SimpleOtterExtractionTuple(
-                  ngTokens,
-                  ng.tokenInterval,
+                  definedTermArg.tokens ++ isaRelTokens ++ ngTokens,
+                  totalInterval,
                   Some(definedTermArg),
                   Relation(Some(RelationTypeEnum.Property), Argument("has", Seq.empty[OtterToken], None)),
                   relObj,
@@ -567,9 +654,14 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
     for (tuple <- tuples) {
       tuple match {
         case x: SimpleOtterExtractionTuple =>
+          val totalInterval = agent.tokenInterval match {
+            case Some(agentInterval) =>
+              Interval.span(Seq(agentInterval, x.tokenInterval))
+            case _ => x.tokenInterval
+          }
           results :+= OtterExtractionTupleWithTupleRelObject(
-            x.tupleTokens,
-            x.tokenInterval,
+            agent.tokens ++ x.tupleTokens,
+            totalInterval,
             Option(agent),
             Relation(Option(RelationTypeEnum.Describes), Argument("describes", Seq.empty[OtterToken], None)),
             x,
@@ -602,6 +694,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Get a sequence of OtterExtractionTuples representing a match on the 'VP3' rule
     */
   private def getExtractionTuplesForRuleVP3(agent: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], pp: Option[Type]): Seq[OtterExtractionTuple] = {
+    val totalInterval = agent.tokenInterval match {
+      case Some(agentInterval) =>
+        Interval.span(Seq(agentInterval, typ.tokenInterval))
+      case _ => typ.tokenInterval
+    }
     val antecedentVPOption: Option[SimpleOtterExtractionTuple] =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
@@ -641,8 +738,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
         consequentS match {
           case consequentSTuple: SimpleOtterExtractionTuple =>
             results :+= ComplexOtterExtractionTuple(
-              OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-              typ.tokenInterval,
+              agent.tokens ++ OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
+              totalInterval,
               antecedentVP,
               rel,
               consequentSTuple)
@@ -657,6 +754,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Get an OtterExtractionTuple representing a match on the 'VP2' rule
     */
   private def getExtractionTuplesForRuleVP2(agent: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], pp: Option[Type]): Option[OtterExtractionTuple] = {
+    val totalInterval = agent.tokenInterval match {
+      case Some(agentInterval) =>
+        Interval.span(Seq(agentInterval, typ.tokenInterval))
+      case _ => typ.tokenInterval
+    }
     val antecedentVPOption: Option[SimpleOtterExtractionTuple] =
       Extractor.findSubtypesWithName(types)(typ, "AntecedentVP").headOption match {
         case Some(antecedent) =>
@@ -694,8 +796,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       consequentVP <- consequentVPOption
     } yield {
       ComplexOtterExtractionTuple(
-        OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-        typ.tokenInterval,
+        agent.tokens ++ OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
+        totalInterval,
         antecedentVP,
         rel,
         consequentVP)
@@ -707,6 +809,11 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
   /** Get an OtterExtractionTuple representing a match on the 'VP1' rule
     */
   def getExtractionTuplesForRuleVP1(agent: Argument, typ: Type, types: Seq[Type], defnChunkedTokens: Seq[Lemmatized[ChunkedToken]], pp: Option[Type]): Option[SimpleOtterExtractionTuple] = {
+    val totalInterval = agent.tokenInterval match {
+      case Some(agentInterval) =>
+        Interval.span(Seq(agentInterval, typ.tokenInterval))
+      case _ => typ.tokenInterval
+    }
     val relOption: Option[Relation] = Extractor.findSubtypesWithName(types)(typ, "Rel").headOption match {
       case Some(rl) =>
         {
@@ -774,8 +881,8 @@ class OtterNounDefinitionExtractor(dataPath: String) extends OtterDefinitionExtr
       rel <- relOption
     } yield {
       SimpleOtterExtractionTuple(
-        OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
-        typ.tokenInterval,
+        agent.tokens ++ OtterToken.makeTokenSeq(defnChunkedTokens, typ.tokenInterval),
+        totalInterval,
         Option(agent),
         rel,
         relObjOption,
