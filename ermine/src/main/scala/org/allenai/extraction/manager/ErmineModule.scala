@@ -42,9 +42,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(OtterJsonToReadableOutputProcessor)
     addProcessor(StanfordExtractor)
     addProcessor(StanfordFixProcessor)
-    addProcessor(StanfordParser)
     addProcessor(StanfordTtl)
-    addProcessor(StanfordXmlToTtl)
     addProcessor(TurtleProcessor)
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.

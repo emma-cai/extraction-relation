@@ -38,8 +38,8 @@ question?
 
 As a first step, you should decompose your problem into useful substeps with
 I/O, and map each of these steps to a processor.  For example, we have
-(a processor that runs the Stanford dependency parser)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordParser.scala], and streams out the
-dependency parse as XML - and [a separate processor to convert that XML](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordXmltoTtl.scala) to the TTL graph
+(a processor that runs the Stanford dependency parser)[https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/StanfordTtl.scala], and streams out the
+dependency parse as TTL - and [a separate processor to run Clear SRL](https://github.com/allenai/extraction/blob/master/ermine/src/main/scala/org/allenai/extraction/processors/ClearSrl.scala) on the TTL graph
 format. This way, we both have two smaller problems to solve - and someone
 could reuse the Stanford processor down the line.
 
