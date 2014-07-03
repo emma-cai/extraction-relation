@@ -52,7 +52,7 @@ case class OtterExtraction(
 case class OtterExtractionForDefinitionAlternate(
   preprocessedDefinition: String,
   preprocessedDefinitionTokens: Seq[OtterToken],
-  extractions: Seq[OtterExtractionTuple])
+  extractions: Seq[ScoredOtterExtractionTuple])
 
 /** A Case Class to represent a token - derived from Lemmatized[ChunkedToken].
   * @param id id based on the index of the token in the seq of tokens for original sentence
@@ -120,6 +120,8 @@ sealed abstract class OtterExtractionTuple {
   def relation: Relation
   def toSimpleString: String
 }
+
+case class ScoredOtterExtractionTuple(tuple: OtterExtractionTuple, confidence: Option[Double])
 
 /** A Case Class to represent a simple extraction tuple.
   * E.g.: In "Tom lifted the book carefully off the table", the fields in OtterExtractionTupleSimple will
@@ -400,6 +402,10 @@ object OtterExtractionTuple {
           }
      }
    }
+} 
+
+object ScoredOtterExtractionTuple {
+  implicit val scoredOtterExtractionTupleJsonFormat = jsonFormat2(ScoredOtterExtractionTuple.apply)
 } 
 
 object OtterExtractionForDefinitionAlternate {

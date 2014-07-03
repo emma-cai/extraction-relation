@@ -2,6 +2,7 @@ package org.allenai.extraction.processors.definition
 
 import org.allenai.ari.datastore.client.AriDatastoreClient
 import org.allenai.ari.datastore.interface.{ Dataset, DocumentType, FileDocument, TextFile }
+import org.allenai.extraction.confidence.{ ExtractionConfidenceFunction, OtterExtractionTupleAnnotated }
 import org.allenai.extraction.manager.io._
 import org.allenai.extraction.processors.OpenRegexExtractor
 
@@ -96,6 +97,7 @@ abstract class OtterDefinitionExtractor(
     * Output will be written out to the specified destination.
     */
   override def processText(defnInputSource: Source, destination: Writer): Unit = {
+    val confidenceFun = ExtractionConfidenceFunction.loadDefaultOtterClassifier()
     //Start output Json 
     destination.write("[\n")
     var beginning = true
@@ -116,11 +118,23 @@ abstract class OtterDefinitionExtractor(
                (glossaryTerms.isEmpty || 
                 glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)))
         }  {
-          val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
+          val (tuples, tokensIn) = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
+          val otterTokens = OtterToken.makeTokenSeq(tokensIn)
+          val scoredResults = for {
+            extr <- tuples
+            rel = (extr.relation.relationType map (x => x.toString.toLowerCase)).getOrElse("")
+            } yield {
+              val score: Option[Double] = if (rel != "isa") 
+                  None 
+                else 
+                  Some(confidenceFun(rel)(OtterExtractionTupleAnnotated(extr, otterTokens)))
+              ScoredOtterExtractionTuple(extr, score)
+          }
+
           otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
                                              preprocessedDefinition,
-                                             OtterToken.makeTokenSeq(result._2),
-                                             result._1)
+                                             otterTokens,
+                                             scoredResults)
         
           // Compose the OtterExtraction overall result per raw definition to be written out as json.
           val extractionOp = OtterExtraction(
