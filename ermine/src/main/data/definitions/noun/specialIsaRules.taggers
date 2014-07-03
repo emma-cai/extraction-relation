@@ -2,7 +2,8 @@
 // We want to capture these patterns so that we don't emit vacuous IsA relations like (foo, isa, type) or (foo, isa, word) 
 consume TypeOf := TypedOpenRegex {
     (?: <pos="DT"> <string=/kind|type|sort|variety|way|manner|group|set|class|category/> <string=/of/>) |
-    (?: <string=/A|a|An|an/> <string=/example/> <string=/of/>)
+    (?: <string=/A|a|An|an/> <string=/example/> <string=/of/>) |
+    (?: <string=/One|one/> <string=/of/>)
 }
 
 consume WordFor := TypedOpenRegex {

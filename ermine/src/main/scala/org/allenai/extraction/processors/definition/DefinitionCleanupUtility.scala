@@ -30,6 +30,6 @@ object DefinitionCleanupUtility {
     val defParenEmptyQuotedStringsStripped = defParenDQuotesStripped.replaceAll("''", "").replaceAll("\"\"", "")
 
     // Break the line up into multiple definitions if separated by semicolons
-    (defParenEmptyQuotedStringsStripped.split(";").toSeq map { x => x.trim }).filter(y => y.length > 0)
+    (defParenEmptyQuotedStringsStripped.split(";").toSeq map { x => x.trim }).filter(y => (y.length > 0))
   }
 }
