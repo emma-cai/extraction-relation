@@ -4,6 +4,7 @@ INFILES=(sample/sample.ttl regressions/ie-target.txt.rnn.ttl
   regressions/june2014.txt.ttl regressions/barrons.txt.rnn.ttl)
 
 for INFILE in ${INFILES[@]}; do
+  # Raw output from the extractions. Shell pattern is to replace the .ttl suffix with .out .
   RAW_OUT="${INFILE%.*}.out"
   swipl -q -l relation.pl -g "consult('patterns-stanford.pl'),rdf_load('$INFILE'),findall(_,(relation(I),write(I),nl,nl),_),halt" > $RAW_OUT
   # Textual representation of extraction tuples. Lines start with %.
