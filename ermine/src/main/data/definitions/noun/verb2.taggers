@@ -1,7 +1,8 @@
 VP1 := TypedOpenRegex {
 // e.g. for Arg3: "makes you laugh" - "makes": Rel,"you": Arg2, "laugh" : Arg3, any PPs/Adverbial phrases that follow: Arg
-  (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) ((<Arg2>:@NP4)(<Arg3>: @VG)?)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG @NP4)))*))))
-  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) ((<Arg2>:@NP5) (<Arg3>: @VG)?)? @AP1?)))
+// also, "makes you drunk" - "makes": Rel,"you": Arg2, "drunk" : Arg3, any PPs/Adverbial phrases that follow: Arg
+ (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) ((<Arg2>:@NP4)(<Arg3>: ((@AP1 | (@VG) @AVP1?)))?)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG @NP4)))*))))
+  | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) ((<Arg2>:@NP5) (<Arg3>: ((@AP1 | (@VG) @AVP1?)))?)? @AP1?)))
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg2>:@AP1) (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>:@VG) (<Arg4>:@AVP1)? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*) )))
   | (?: (@RelClause? @PPWithVerbGerund? (<MainVP>: (<Rel>: (@EffectRel | @EffectRelTo | @CauseRel | @FunctionRel | @FunctionRelTo | @ExampleRel | @RequiredRel | @RequiredRelTo)) (<Arg2>: @V2)? (<Arg3>:@NP)? @AP1? (<Arg>:((<string=",">?) (@PP|(<pos="TO"> @VG)))*))))

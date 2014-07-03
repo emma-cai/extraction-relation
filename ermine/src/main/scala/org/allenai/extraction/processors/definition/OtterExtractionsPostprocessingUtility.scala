@@ -6,7 +6,9 @@ object OtterExtractionsPostprocessingUtility {
     * with no other information present, do not make useful extractions. Such
     * extractions should be removed from the results.
     */
-  val relObjBlacklist = Set("part", "piece", "thing", "something")
+  val relObjBlacklist = Set("part", "piece", "thing", "something", "kind", "type", "sort",
+    "variety", "way", "manner", "style", "form", "group", "set", "class", "category", "means",
+    "mode", "format", "word", "term")
   val relObjPersonlist = Set("someone", "anyone", "somebody", "anybody", "one")
 
   /** This is a semantic postprocessing method to

@@ -13,8 +13,8 @@
 % "Decomposers"	"are"/EXAMPLE	("living things" "break down" "dead organisms")
 % "Decomposers"	"are"/EXAMPLE	("living things" "recycle" "their[dead organisms] nutrients" [ "into the soil" ] )
 % "Decomposers"	"are"/EXAMPLE	"living things"
-% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its[the soil] liquid state", "to its[its liquid state] solid state" ] )
-% "Gravity"	"is"/EXAMPLE	("the force" "pull" "" [ "an object toward the center of the Earth" ] )
+% ("Freezing"/?x "remove" "heat")	"by"/ENABLE	("Freezing"/?x "change" "water" [ "from its liquid state", "to its[its liquid state] solid state" ] )
+% "Gravity"	"is"/EXAMPLE	("the force" "pull" "an object toward the center of the Earth")
 % "Gravity"	"is"/EXAMPLE	"the force"
 % ("A scientist"/?x "use" "a graduated cylinder")	"to"/EFFECT	("A scientist"/?x "measure" "the volume of a liquid")
 % ("humans" "eat" "healthy foods exercise")	"In order for"/EFFECT	("humans" "grow" "")

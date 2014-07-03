@@ -51,9 +51,9 @@ ie-target.rule25:: example(decomposer, thing).
 english(ie-target.rule26, "Decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil").
 ie-target.rule26:: example(decomposer, thing).
 english(ie-target.rule27, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule27:: example(gravity, force), agent(pull, force), object(pull, object).
+ie-target.rule27:: example(gravity, force), agent(pull, force), arg(pull, object).
 english(ie-target.rule28, "Gravity is the force that pulls an object toward the center of the Earth").
-ie-target.rule28:: agent(pull, force), object(pull, object) -> example(gravity, force).
+ie-target.rule28:: agent(pull, force), arg(pull, object) -> example(gravity, force).
 english(ie-target.rule29, "Gravity is the force that pulls an object toward the center of the Earth").
 ie-target.rule29:: example(gravity, force).
 english(ie-target.rule30, "Gravity is the force that pulls an object toward the center of the Earth").
@@ -71,9 +71,9 @@ ie-target.rule35:: agent(store, squirrel), object(store, nut) -> effect(store, p
 english(ie-target.rule36, "A squirrel storing nuts is preparing for a seasonal change in the environment").
 ie-target.rule36:: agent(prepare, squirrel), for(prepare, change) -> effect(store, prepare), agent(store, squirrel), object(store, nut).
 english(ie-target.rule37, "A student should use a hand lens to get a better look at the spots").
-ie-target.rule37:: agent(use, student), object(use, lens) -> effect(use, get), agent(get, student), arg(get, look).
+ie-target.rule37:: agent(use, student), object(use, lens) -> effect(use, get), agent(get, student), object(get, look).
 english(ie-target.rule38, "A student should use a hand lens to get a better look at the spots").
-ie-target.rule38:: agent(get, student), arg(get, look) -> effect(use, get), agent(use, student), object(use, lens).
+ie-target.rule38:: agent(get, student), object(get, look) -> effect(use, get), agent(use, student), object(use, lens).
 english(ie-target.rule39, "Decreasing the temperature is one way to change water from a liquid to a solid").
 ie-target.rule39:: object(decrease, temperature) -> effect(decrease, change), object(change, water), from(change, liquid), to(change, solid).
 english(ie-target.rule40, "Decreasing the temperature is one way to change water from a liquid to a solid").
