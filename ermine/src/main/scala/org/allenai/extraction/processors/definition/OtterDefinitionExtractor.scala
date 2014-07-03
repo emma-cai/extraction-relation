@@ -107,29 +107,29 @@ abstract class OtterDefinitionExtractor(
       if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
         val preprocessedDefinitionsAst = line.parseJson
         val preprocessedDefinitionAlts = preprocessedDefinitionsAst.convertTo[PreprocessedDefinition]
-        var otterExtractionsForDefinitionAlternates = Seq.empty[OtterExtractionForDefinitionAlternate]
-        for {
-           preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
-           termWordClass <- preprocessedDefinitionAlts.wordClass
-           if (preprocessedDefinition.length > 0 &&
-               termWordClass.equalsIgnoreCase(wordClass) &&
-               (glossaryTerms.isEmpty || 
-                glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)))
-        }  {
-          val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
-          otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
-                                             preprocessedDefinition,
-                                             OtterToken.makeTokenSeq(result._2),
-                                             result._1)
-        
+        if (glossaryTerms.isEmpty || 
+                glossaryTerms.contains(preprocessedDefinitionAlts.definedTerm.trim.toLowerCase)) {
+          var otterExtractionsForDefinitionAlternates = Seq.empty[OtterExtractionForDefinitionAlternate]
+          for {
+             preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
+             termWordClass <- preprocessedDefinitionAlts.wordClass
+             if (preprocessedDefinition.length > 0 &&
+               termWordClass.equalsIgnoreCase(wordClass))
+          }  {
+            val result = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
+            otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
+                                               preprocessedDefinition,
+                                               OtterToken.makeTokenSeq(result._2),
+                                               result._1)
+          }
           // Compose the OtterExtraction overall result per raw definition to be written out as json.
           val extractionOp = OtterExtraction(
-                             preprocessedDefinitionAlts.definitionCorpusName,
-                             preprocessedDefinitionAlts.rawDefinitionId,
-                             preprocessedDefinitionAlts.rawDefinition,
-                             preprocessedDefinitionAlts.definedTerm,
-                             preprocessedDefinitionAlts.wordClass,
-                             otterExtractionsForDefinitionAlternates)
+                               preprocessedDefinitionAlts.definitionCorpusName,
+                               preprocessedDefinitionAlts.rawDefinitionId,
+                               preprocessedDefinitionAlts.rawDefinition,
+                               preprocessedDefinitionAlts.definedTerm,
+                               preprocessedDefinitionAlts.wordClass,
+                               otterExtractionsForDefinitionAlternates)
           if (!beginning) {
             destination.write(",\n")
           }

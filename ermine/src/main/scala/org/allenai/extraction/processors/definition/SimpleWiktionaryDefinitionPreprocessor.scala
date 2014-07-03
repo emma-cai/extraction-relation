@@ -81,9 +81,16 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * be normalized to.
     */
   def cleanUp(definitionRawLine: String): (Seq[String], Seq[String]) = {
+    val noiseWordsBlackList = Seq("&amp".r, "mdash".r, "nbsp".r)
+
+    var defNoiseWordsStripped = definitionRawLine
+    for (noiseWord <- noiseWordsBlackList) {
+      defNoiseWordsStripped = noiseWord replaceAllIn (defNoiseWordsStripped, "")
+    }
+
     // Remove leading '#' character 
     val defPoundAtBeginningPattern = "^#".r
-    val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (definitionRawLine, "")
+    val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (defNoiseWordsStripped, "")
 
     // Capture meta info - stuff in curly braces  if present in metaData seq - to be returned.
     val defMetaInfoPattern = """\{\{([^}]*)\}\}""".r
