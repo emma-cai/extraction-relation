@@ -9,8 +9,7 @@ import scala.io.Source
 
 import java.io.Writer
 
-/** Turtle processor. Takes as input any number of turtle files, and loads all into a single graph,
-  * which is then passed to `processGraph`.
+/** Turtle processor. Takes as input a turtle file, which is loaded and passed to `processGraph`.
   */
 abstract class TurtleProcessor extends FlatProcessor {
   override def processText(source: Source, destination: Writer): Unit = {
