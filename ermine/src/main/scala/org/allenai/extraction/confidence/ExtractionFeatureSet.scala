@@ -24,6 +24,11 @@ case class ExtractionInstance(sourceText: String, tokenMap: Map[(Int, Int), Otte
       case t: ExtractionTuple => t.agent.get.prettyPrint + " --" + t.relation.semanticLabel.toUpperCase + "-> " + t.dObject.get.prettyPrint
     }
   }
+  
+  val sentenceNumber = tokenMap.keys.map(_._1).max
+  val maxTokenId = tokenMap.keys.filter(_._1 == sentenceNumber).map(_._2).max
+  
+  def getToken(index:Int): Option[OtterToken] = tokenMap.get((sentenceNumber, index))
 }
 
 sealed abstract class ExtractionNodeOrTuple {
@@ -32,18 +37,28 @@ sealed abstract class ExtractionNodeOrTuple {
   def isTuple: Boolean
 }
 
-case class ExtractionNode(nodeId: String, string: String, tokens: Seq[OtterToken], semanticLabel: String = "") extends ExtractionNodeOrTuple {
-  //def lifted: ExtractionNodeOrTuple = ExtractionNodeOrTuple(node = Some(this), semanticLabel = semanticLabel)
+case class ExtractionNode(
+    nodeId: String, 
+    string: String, 
+    tokens: Seq[OtterToken], 
+    semanticLabel: String = "") extends ExtractionNodeOrTuple {
+
+  val isTuple = false
+  
   def prettyPrint: String = {
     val prefix = if (semanticLabel == "") "" else semanticLabel.toUpperCase + ":"
     prefix + "\"" + string + "\""
   }
-  val isTuple = false
+  
 }
 
-case class ExtractionTuple(agent: Option[ExtractionNodeOrTuple], relation: ExtractionNodeOrTuple, dObject: Option[ExtractionNodeOrTuple],
-    args: Seq[ExtractionNodeOrTuple] = Seq(), semanticLabel: String = "") extends ExtractionNodeOrTuple {
-  //def lifted: ExtractionNodeOrTuple = ExtractionNodeOrTuple(tuple = Some(this), semanticLabel = semanticLabel)
+case class ExtractionTuple(
+    agent: Option[ExtractionNodeOrTuple], 
+    relation: ExtractionNodeOrTuple, 
+    dObject: Option[ExtractionNodeOrTuple],
+    args: Seq[ExtractionNodeOrTuple] = Seq(), 
+    semanticLabel: String = "") extends ExtractionNodeOrTuple {
+  
   val isTuple = true
 
   def prettyPrint: String = {
@@ -82,15 +97,15 @@ object FerretFeatures {
       }
     }
   }
-/*
+  
   object arg1ContainsPronoun extends FerretFeature("arg1 contains a pronoun or EX") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").exists(tok => isPronoun(tok.posTag) || tok.posTag == "EX")
     }
   }
 
   object arg2sContainsPronoun extends FerretFeature("arg2s contains a pronoun or EX") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg2s").exists(tok => isPronoun(tok.posTag) || tok.posTag == "EX")
     }
   }
@@ -98,74 +113,74 @@ object FerretFeatures {
   val blacklistArg2 = Set("word", "something", "piece", "part", "kind", "number", "way", "type", "form")
 
   object blacklistedArg2s extends FerretFeature("arg2s consists of blacklisted words") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg2s").forall(tok => blacklistArg2 contains tok.string)
     }
   }
 
   object arg1Noun extends FerretFeature("arg1 contains noun") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").exists(tok => isNoun(tok.posTag) || isPronoun(tok.posTag))
     }
   }
 
   object arg2sNoun extends FerretFeature("arg2s contains noun") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg2s").exists(tok => isNoun(tok.posTag) || isPronoun(tok.posTag))
     }
   }
 
   object arg1Proper extends FerretFeature("arg1 contains proper noun") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").exists(tok => isProperNoun(tok.posTag))
     }
   }
 
   object arg2sProper extends FerretFeature("arg2s contains proper noun") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg2s").exists(tok => isProperNoun(tok.posTag))
     }
   }
 
   object arg1BeforeRel extends FerretFeature("arg1 appears before rel in sentence") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenSpanInPart(extr, "arg1") leftOf getTokenSpanInPart(extr, "rel")
     }
   }
 
   object arg2sAfterRel extends FerretFeature("arg2s appears after rel in sentence") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenSpanInPart(extr, "arg2s") rightOf getTokenSpanInPart(extr, "rel")
     }
   }
 
   object arg1BordersRel extends FerretFeature("arg1 borders rel") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenSpanInPart(extr, "arg1") borders getTokenSpanInPart(extr, "rel")
     }
   }
 
   object arg2sBordersRel extends FerretFeature("arg2s borders rel") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenSpanInPart(extr, "arg2s") borders getTokenSpanInPart(extr, "rel")
     }
   }
 
   object relContainsVerb extends FerretFeature("rel contains verb") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "rel") exists (tok => isVerb(tok.posTag))
     }
   }
 
   object relIsSingleVerb extends FerretFeature("rel is single verb") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       val tokens = getTokensInPart(extr, "rel")
       (tokens.length == 1) && isVerb(tokens.head.posTag)
     }
   }
 
   object relStartWithVerbEndsWithPrep extends FerretFeature("rel matches VW+P") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       val tokens = getTokensInPart(extr, "rel")
       ((tokens.length > 2) &&
         isVerb(tokens.head.posTag) &&
@@ -174,43 +189,43 @@ object FerretFeatures {
   }
 
   object relContiguous extends FerretFeature("rel contiguous") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenSpanInPart(extr, "rel").length == getTokensInPart(extr, "rel").size
     }
   }
 
   object longArg1 extends FerretFeature("arg1 contains >= 10 tokens") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").length >= 10
     }
   }
 
   object shortArg1 extends FerretFeature("arg1 contains < 3 tokens") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").length < 3
     }
   }
 
   object longArg2s extends FerretFeature("arg2s contains >= 10 tokens") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg2s").length >= 10
     }
   }
 
   object shortSentence extends FerretFeature("sentence contains < 10 tokens") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
-      extr.allTokens.length < 10
+    override def apply(extr: ExtractionInstance): Double = {
+      extr.tokenMap.size < 10
     }
   }
 
   object longSentence extends FerretFeature("sentence contains >= 20 tokens") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
-      extr.allTokens.length >= 20
+    override def apply(extr: ExtractionInstance): Double = {
+      extr.tokenMap.size >= 20
     }
   }
 
   object conjBeforeRel extends FerretFeature("conj right before rel") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenRightBefore(extr, "rel") match {
         case Some(t) => t.posTag == "CC"
         case None => 0.0
@@ -219,33 +234,33 @@ object FerretFeatures {
   }
 
   object arg1EqualsArg2s extends FerretFeature("arg1 equals arg2s") {
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").map(_.string).mkString(" ").toLowerCase ==
         getTokensInPart(extr, "arg2s").map(_.string).mkString(" ").toLowerCase
     }
   }
 
-  def getTokenRightBefore(extr: OtterExtractionTupleAnnotated, part: String): Option[OtterToken] = {
-    val min = getTokenSpanInPart(extr, part).min
-    if (min < 1 || min > extr.allTokens.length) None else Some(extr.allTokens(min - 1))
+  def getTokenRightBefore(extr: ExtractionInstance, part: String): Option[OtterToken] = {
+    val tokens = getTokensInPart(extr, part).map(_.id)
+    if (tokens.isEmpty) None else extr.getToken(tokens.min - 1)
   }
 
-  def getAllTokensBefore(extr: OtterExtractionTupleAnnotated, part: String): Seq[OtterToken] = {
-    val min = getTokenSpanInPart(extr, part).min
-    if (min < 0 || min > extr.allTokens.length) Seq() else extr.allTokens.take(min)
+  def getAllTokensBefore(extr: ExtractionInstance, part: String): Seq[OtterToken] = {
+    val tokens = getTokensInPart(extr, part).map(_.id)
+    if (tokens.isEmpty) Seq() else (0 to tokens.min - 1) flatMap extr.getToken
   }
 
-  def getTokenRightAfter(extr: OtterExtractionTupleAnnotated, part: String): Option[OtterToken] = {
-    val max = getTokenSpanInPart(extr, part).max
-    if ((max >= extr.allTokens.length - 1) || (max < 0)) None else Some(extr.allTokens(max + 1))
+  def getTokenRightAfter(extr: ExtractionInstance, part: String): Option[OtterToken] = {
+    val tokens = getTokensInPart(extr, part).map(_.id)
+    if (tokens.isEmpty) None else extr.getToken(tokens.max + 1)
   }
 
-  def getAllTokensAfter(extr: OtterExtractionTupleAnnotated, part: String): Seq[OtterToken] = {
-    val max = getTokenSpanInPart(extr, part).max
-    if ((max >= extr.allTokens.length - 1) || (max < 0)) Seq() else extr.allTokens.drop(max + 1)
-  }
-
-  def getTokenSpanInPart(extr: OtterExtractionTupleAnnotated, part: String): Interval = {
+  def getAllTokensAfter(extr: ExtractionInstance, part: String): Seq[OtterToken] = {
+    val tokens = getTokensInPart(extr, part).map(_.id)
+    if (tokens.isEmpty) Seq() else (tokens.max + 1 to extr.maxTokenId) flatMap extr.getToken
+  }   
+  
+  def getTokenSpanInPart(extr: ExtractionInstance, part: String): Interval = {
     val tokens = getTokensInPart(extr, part)
     if (tokens.isEmpty) Interval.empty
     else {
@@ -253,36 +268,36 @@ object FerretFeatures {
       Interval.open(ids.min, ids.max + 1)
     }
   }
-
-  def optionalArgumentTokens(arg: Option[Argument]): Seq[OtterToken] = arg match {
-    case Some(arg) => arg.tokens
+  
+  def getTokensInNode(extr: ExtractionNodeOrTuple): Seq[OtterToken] = extr match {
+    case node: ExtractionNode => node.tokens
     case _ => Seq()
   }
-
-  def getTokensInPart(extr: OtterExtractionTupleAnnotated, part: String): Seq[OtterToken] = {
-    extr.tuple match {
-      case extr1: SimpleOtterExtractionTuple => part match {
-        case "arg1" => optionalArgumentTokens(extr1.agent)
-        case "rel" => extr1.relation.relationPhrase.tokens
-        case "arg2s" => optionalArgumentTokens(extr1.relObj) ++ extr1.advps.flatMap(_.tokens) ++ extr1.pps.flatMap(_.tokens)
-        case _ => Seq()
-      }
-      case extr1: OtterExtractionTupleWithTupleRelObject => part match {
-        case "arg1" => optionalArgumentTokens(extr1.agent)
-        case "rel" => extr1.relation.relationPhrase.tokens
-        case "arg2s" => getTokensInPart(OtterExtractionTupleAnnotated(extr1.relObj, extr.allTokens), part) ++ extr1.advps.flatMap(_.tokens) ++ extr1.pps.flatMap(_.tokens)
-        case _ => Seq()
-      }
-      case extr1: ComplexOtterExtractionTuple => getTokensInPart(OtterExtractionTupleAnnotated(extr1.antecedent, extr.allTokens), part) ++
-        { if (part == "rel") extr1.relation.relationPhrase.tokens else Seq() } ++
-        getTokensInPart(OtterExtractionTupleAnnotated(extr1.consequent, extr.allTokens), part)
-    }
+  
+  def getTokensInPart(tuple: ExtractionTuple, part: String): Seq[OtterToken] = {
+    val allTuples = (tuple.agent.toSeq ++ Seq(tuple.relation) ++ tuple.dObject.toSeq ++ 
+          tuple.args) filter (_.isInstanceOf[ExtractionTuple])
+          
+    val direct = part match {
+      case "arg1" => (tuple.agent map getTokensInNode).getOrElse(Seq())
+      case "rel" => getTokensInNode(tuple.relation)
+      case "arg2s" => (tuple.dObject.toSeq ++ tuple.args) flatMap getTokensInNode
+    }   
+    (direct ++ (allTuples flatMap (t => getTokensInPart(t, part)))).distinct  
   }
+  
+  def getTokensInPart(extr: ExtractionNodeOrTuple, part: String): Seq[OtterToken] = extr match {
+    case tuple: ExtractionTuple => getTokensInPart(tuple, part)
+    case _ => Seq()
+  }
+  
+  def getTokensInPart(extr: ExtractionInstance, part: String): Seq[OtterToken] = getTokensInPart(extr.extraction, part)
+ 
 
   class MatchWordRightBefore(part: String, wordPattern: String,
       labelOverride: String) extends FerretFeature(labelOverride + " right before " + part) {
     def this(part: String, wordPattern: String) = this(part, wordPattern, wordPattern)
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenRightBefore(extr, part) match {
         case Some(t) => t.string.toLowerCase.matches(wordPattern)
         case None => 0.0
@@ -293,7 +308,7 @@ object FerretFeatures {
   class MatchWordRightAfter(part: String, wordPattern: String,
       labelOverride: String) extends FerretFeature(labelOverride + " right after " + part) {
     def this(part: String, wordPattern: String) = this(part, wordPattern, wordPattern)
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getTokenRightAfter(extr, part) match {
         case Some(t) => t.string.toLowerCase.matches(wordPattern)
         case None => 0.0
@@ -304,7 +319,7 @@ object FerretFeatures {
   class MatchWordAnywhereBefore(part: String, wordPattern: String,
       labelOverride: String) extends FerretFeature(labelOverride + " anywhere before " + part) {
     def this(part: String, wordPattern: String) = this(part, wordPattern, wordPattern)
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getAllTokensBefore(extr, part) exists (_.string.toLowerCase.matches(wordPattern))
     }
   }
@@ -312,7 +327,7 @@ object FerretFeatures {
   class MatchWordAnywherAfter(part: String, wordPattern: String,
       labelOverride: String) extends FerretFeature(labelOverride + " anywhere after " + part) {
     def this(part: String, wordPattern: String) = this(part, wordPattern, wordPattern)
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       getAllTokensAfter(extr, part) exists (_.string.toLowerCase.matches(wordPattern))
     }
   }
@@ -322,12 +337,15 @@ object FerretFeatures {
 
     def this(part: String, postagPattern: String) = this(part, postagPattern, postagPattern)
 
-    override def apply(extr: OtterExtractionTupleAnnotated): Double = {
+    override def apply(extr: ExtractionInstance): Double = {
       val tokens = getTokensInPart(extr, part)
       tokens.exists(_.posTag.matches(postagPattern))
     }
   }
-*/
+
+  
+  
+
   /* the following two lists are copied from ReVerb */
   val comWords = List("acknowledge",
     "add", "address", "admit", "advertise", "advise", "agree",
@@ -351,7 +369,7 @@ object FerretFeatures {
     "theorize", "think", "understand", "verify", "wish", "worry")
 
   def features: Seq[FerretFeature] = Seq(
-    antecedentIsTuple/*,
+    antecedentIsTuple,
     arg1ContainsPronoun,
     arg2sContainsPronoun,
     blacklistedArg2s,
@@ -391,7 +409,7 @@ object FerretFeatures {
     new PartContainsPostag("rel", "VBD"),
     new PartContainsPostag("rel", "VBN"),
     new PartContainsPostag("rel", "VBP"),
-    new PartContainsPostag("rel", "VB")*/
+    new PartContainsPostag("rel", "VB")
     )
 
   def featureMap: SortedMap[String, FerretFeature] = {
