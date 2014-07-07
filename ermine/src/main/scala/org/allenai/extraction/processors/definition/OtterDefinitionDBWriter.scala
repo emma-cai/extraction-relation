@@ -51,11 +51,11 @@ class OtterDefinitionDBWriter(
           val source = otterExtraction.corpusName.getOrElse("")
           val altDefinition = otterExtractionForDefinitionAlt.preprocessedDefinition
           // Prefix output extraction with "<RelationType>: "
-          val relTypeStr = (tuple.relation.relationType match {
+          val relTypeStr = (tuple.tuple.relation.relationType match {
             case Some(x) => x.toString
             case _ => "Fact"
           }) + ": "
-          new DefinitionExtraction(term, wordClass, source, altDefinition, relTypeStr + tuple.toString)
+          new DefinitionExtraction(term, wordClass, source, altDefinition, relTypeStr + tuple.tuple.toString)
         }
         for (extraction <- extractions) {
           extractionsDb.insertDefinitionExtraction(extraction)
