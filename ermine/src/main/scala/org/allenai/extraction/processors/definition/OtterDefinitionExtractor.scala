@@ -114,8 +114,9 @@ abstract class OtterDefinitionExtractor(
           var otterExtractionsForDefinitionAlternates = Seq.empty[OtterExtractionForDefinitionAlternate]
           for {
              preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
+             if preprocessedDefinition.length > 0
              termWordClass <- preprocessedDefinitionAlts.wordClass
-             if (preprocessedDefinition.length > 0 && termWordClass.equalsIgnoreCase(wordClass))
+             if termWordClass.equalsIgnoreCase(wordClass)
           }  {
             val (tuples, tokensIn) = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
             val otterTokens = OtterToken.makeTokenSeq(tokensIn)
