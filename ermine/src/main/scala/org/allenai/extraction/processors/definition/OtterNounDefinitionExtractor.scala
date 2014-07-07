@@ -542,7 +542,11 @@ class OtterNounDefinitionExtractor(dataPath: String, glossary: Option[String] = 
     for (alignedType <- alignedTypes) {
       if (results.length == 0) {
         alignedType.name match {
-          case "AP3" =>
+          // Although in the rules, adverbs are also captured here (matches from the 'AVP1'rule)
+          // we do not consider them here. Tuples built from just adverbs are mostly noise, because
+          // this is usually adverbs like "usually", "generally", "mostly", etc. which don't make
+          // sense by themselves as qualities.
+          case ("AP3NoVb") =>
             {
               val ap3Types = getElementsOfCompositeType(alignedType, types)
               // Iterate over all the returned Types and construct Quality tuples out of them.
