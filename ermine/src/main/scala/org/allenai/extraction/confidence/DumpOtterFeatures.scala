@@ -12,7 +12,16 @@ import java.io.Writer
 
 /** This processor takes as input the JSON output from Otter and produces a file
   * with extractions formatted for tagging and feature values for training
-  * confidence scoring functions
+  * confidence scoring functions.
+  *
+  * In the output file a sample extraction will look like
+  *
+  * ;;; DEFINITION:   abacus | Noun | An abacus is an ancient calculating device. It is made of a frame with beads on various rods.
+  * ;;; [ abacus | isa/ISA | calculating device ]<TAB>0.8535462065874246<TAB>[0|An|an|DT|B-NP] [1|abacus|abacus|NN|I-NP] [2|is|be|VBZ|B-VP] [3|an|an|DT|B-NP] [4|ancient|ancient|JJ|I-NP] [5|calculating|calculate|NN|I-NP] [6|device|device|NN|I-NP] [7|.||.|O] [8|It|it|PRP|B-NP] [9|is|be|VBZ|B-VP] [10|made|make|VBN|I-VP] [11|of|of|IN|B-PP] [12|a|a|DT|B-NP] [13|frame|frame|NN|I-NP] [14|with|with|IN|B-PP] [15|beads|bead|NNS|B-NP] [16|on|on|IN|B-PP] [17|various|various|JJ|B-NP] [18|rods|rod|NNS|I-NP] [19|.||.|O]<TAB>0.0<TAB>0.0<TAB>1.0<TAB>1.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>1.0<TAB>1.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>0.0<TAB>0.0<TAB>0.0
+  *
+  * where the tab separated fields are:
+  * Pretty-printed extraction<TAB>confidence<TAB>annotated tokens<TAB>tab-separated feature values
+  *
   */
 object DumpOtterFeatures extends FlatProcessor {
 
@@ -20,23 +29,21 @@ object DumpOtterFeatures extends FlatProcessor {
     sink.write("*** Otter Dump for " + source.descr + " ***\n")
     val conf = ExtractionConfidenceFunction.loadDefaultOtterClassifier()
     sink.write("\n*** FEATURES ***\n")
-    for { (name, feature) <- OtterFeatures.featureMap }
-      sink.write("::: " + name + "\n")
+    OtterFeatures.featureMap.keys.foreach { name => sink.write("::: " + name + "\n") }
     sink.write("\n*** EXTRACTIONS ***\n")
     // Iterate over input JSONs and process definitions.
     for (rawLine <- source.getLines) {
-      val line = rawLine.trim()
+      val line = rawLine.trim
       // Skip over first line- it is expected to contain a "[",  the last line which is expected 
       // to contain a "]" and lines in the middle that have just a ",". 
       if (!(line.length == 0) && !line.equals("[") && !line.equals("]") && !line.equals(",")) {
-        val extrs0 = line.parseJson
-        val extrs = extrs0.convertTo[OtterExtraction]
+        val otterExtraction = line.parseJson.convertTo[OtterExtraction]
         for {
-          extrAlts <- extrs.extractions
+          extrAlts <- otterExtraction.extractions
           otterTokens = extrAlts.preprocessedDefinitionTokens
         } {
-          sink.write(";;; DEFINITION:   " + extrs.definedTerm + " | " +
-            extrs.wordClass.getOrElse("NONE") + " | " + extrAlts.preprocessedDefinition + "\n")
+          sink.write(";;; DEFINITION:   " + otterExtraction.definedTerm + " | " +
+            otterExtraction.wordClass.getOrElse("NONE") + " | " + extrAlts.preprocessedDefinition + "\n")
           for {
             extr <- extrAlts.extractions
             extrAnno = OtterExtractionTupleAnnotated(extr.tuple, otterTokens)

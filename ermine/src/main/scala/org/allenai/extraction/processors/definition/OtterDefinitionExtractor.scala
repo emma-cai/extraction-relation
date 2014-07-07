@@ -115,8 +115,7 @@ abstract class OtterDefinitionExtractor(
           for {
              preprocessedDefinition <- preprocessedDefinitionAlts.preprocessedDefinitions
              termWordClass <- preprocessedDefinitionAlts.wordClass
-             if (preprocessedDefinition.length > 0 &&
-                 termWordClass.equalsIgnoreCase(wordClass))
+             if (preprocessedDefinition.length > 0 && termWordClass.equalsIgnoreCase(wordClass))
           }  {
             val (tuples, tokensIn) = extract(preprocessedDefinitionAlts.definedTerm, preprocessedDefinition)
             val otterTokens = OtterToken.makeTokenSeq(tokensIn)
@@ -124,10 +123,11 @@ abstract class OtterDefinitionExtractor(
               extr <- tuples
               rel = (extr.relation.relationType map (x => x.toString.toLowerCase)).getOrElse("")
               } yield {
-                val score: Option[Double] = if (rel != "isa") 
-                    None 
-                  else 
-                    Some(confidenceFun(rel)(OtterExtractionTupleAnnotated(extr, otterTokens)))
+                val score: Option[Double] = if (rel != "isa") {
+                  None 
+                } else {
+                  Some(confidenceFun(rel)(OtterExtractionTupleAnnotated(extr, otterTokens)))
+                }
                 ScoredOtterExtractionTuple(extr, score)
             }
             otterExtractionsForDefinitionAlternates :+= OtterExtractionForDefinitionAlternate(
