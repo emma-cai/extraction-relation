@@ -99,7 +99,7 @@ class PrologProcessor(val ferret: Ferret, val prologGoal: String)(
 
 /** Processor for text. */
 class FerretTextProcessor(ferret: Ferret)(implicit bindingModule: BindingModule)
-  extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName}, _)")
+  extends PrologProcessor(ferret, s"relation(${PrologProcessor.VariableName})")
 
 /** Processor for questions. Takes one stream for the question and one for the focus. */
 class FerretQuestionProcessor(val ferret: Ferret)(implicit val bindingModule: BindingModule)
