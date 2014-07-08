@@ -48,6 +48,12 @@ object FerretScoreHelper extends TextProcessor {
     DependencyGraph.fromTurtle(inputGraph, source)
 
     val sink: Writer = destinations(0)
+    
+    sink.write("*** Ferret Dump for " + source.descr + " ***\n")
+    sink.write("\n*** FEATURES ***\n")
+    FerretFeatures.featureMap.keys.foreach { name => sink.write("::: " + name + "\n") }
+    
+    sink.write("\n*** EXTRACTIONS ***\n")
     // match patterns
     for (map <- DependencyGraph.executeSparql(inputGraph, relQuery)) {
       val x: Vertex = map("x")
@@ -71,12 +77,10 @@ object FerretScoreHelper extends TextProcessor {
       sink.write("$$SentenceNum$$ = " + sentenceNumbers.max + "\n")
       sink.write(sentences.mkString("\n"))
       sink.write("\n")
-      sink.write("  :: ")
-      sink.write(extractionInstance.prettyPrint)
-      sink.write("\n$$FEATURES$$ = ")
-      sink.write((FerretFeatures.featureMap.map { case (name, feature) => feature(extractionInstance) }).mkString("\t"))
-      //sink.write("\n !ExtractionInstance! ")
-      //sink.write(extractionInstance.toString)
+      sink.write(";;; " + extractionInstance.prettyPrint + "\t" + 0.0 + "\t" +
+          tokenMap.values.toSeq.sortBy(_.id).map(_.toFullString).mkString(" ") + "\t" +
+          (FerretFeatures.featureMap.map { case (name, feature) => feature(extractionInstance) }).mkString("\t")
+      )
       sink.write("\n\n")
     }
 
