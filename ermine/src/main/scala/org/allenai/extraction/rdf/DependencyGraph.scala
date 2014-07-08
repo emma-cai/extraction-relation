@@ -111,4 +111,15 @@ object DependencyGraph {
     val result: Map[String, Vertex] = executeSparql(graph, query).head
     result("prop").toStringLiteral
   }
+
+  /** Wrapper to add helper methods. */
+  implicit class GraphRdf(val graph: SailGraph) extends AnyVal {
+    /** Adds a string literal vertex to this graph. */
+    def addStringLiteralVertex(string: String): Vertex = graph.addVertex('"' + string + '"')
+
+    /** Adds an integer literal vertex to this graph. */
+    def addIntLiteralVertex(int: Int): Vertex = {
+      graph.addVertex(s""""${int}"^^<http://www.w3.org/2001/XMLSchema#integer>""")
+    }
+  }
 }
