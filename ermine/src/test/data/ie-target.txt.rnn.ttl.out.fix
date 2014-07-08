@@ -1,2 +1,4 @@
 
-<http://aristo.allenai.org/id#2_8> <http://nlp.stanford.edu/dep/prepc_by> <http://aristo.allenai.org/id#2_10> , <http://aristo.allenai.org/id#2_13> .
+<http://aristo.allenai.org/id#ie-target/7_8> <http://nlp.stanford.edu/dep/prepc_of> <http://aristo.allenai.org/id#ie-target/7_10> .
+
+<http://aristo.allenai.org/id#ie-target/11_6> <http://nlp.stanford.edu/dep/dobj> <http://aristo.allenai.org/id#ie-target/11_8> .

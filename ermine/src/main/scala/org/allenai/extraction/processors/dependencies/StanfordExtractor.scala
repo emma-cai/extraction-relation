@@ -1,26 +1,13 @@
 package org.allenai.extraction.processors.dependencies
 
-import org.allenai.extraction.TextProcessor
-import org.allenai.extraction.rdf.DependencyGraph
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
-import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
-
-import scala.io.Source
-
 import com.tinkerpop.blueprints.Vertex
-import java.io.Writer
+import com.tinkerpop.blueprints.impls.sail.SailGraph
 
 /** processor to match dependency patterns */
-object StanfordExtractor extends TextProcessor {
-  override val numInputs = 1
-  override val numOutputs = 2
-
-  val inputGraph = new MemoryStoreSailGraph()
-  DependencyGraph.setNamespaces(inputGraph)
-  val outputGraph = new MemoryStoreSailGraph()
-  DependencyGraph.setNamespaces(outputGraph)
-
+object StanfordExtractor extends TurtleProcessor {
   // SPARQL queries
   val queries: Seq[(String, String)] = Seq(
     // (id, query) where id is for logging rule matches 
@@ -217,37 +204,24 @@ object StanfordExtractor extends TextProcessor {
       { ?cause dep:nsubj ?comp . }
     }"""))
 
-  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
-    DependencyGraph.fromTurtle(inputGraph, source)
-
+  override def processGraph(graph: SailGraph): Unit = {
     // match patterns
     for {
       (id, query) <- queries
-      map <- DependencyGraph.executeSparql(inputGraph, query)
+      map <- DependencyGraph.executeSparql(graph, query)
     } {
       val subj: Vertex = map("subject")
-      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(inputGraph, subj) :+ subj
+      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, subj) :+ subj
       val obj: Vertex = map("object")
-      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(inputGraph, obj) :+ obj
+      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, obj) :+ obj
       // add relation for each combination of conjuncts
       for {
         subjConj <- subjs
         objConj <- objs
       } {
         // record id for logging
-        outputGraph.addEdge(id, subjConj, objConj, map("predicate").toUri)
+        graph.addEdge(id, subjConj, objConj, map("predicate").toUri)
       }
     }
-
-    val sink: Writer = destinations(0)
-    DependencyGraph.toTurtle(inputGraph, sink)
-    DependencyGraph.toTurtle(outputGraph, sink)
-
-    val debugSink: Writer = destinations(1)
-    DependencyGraph.toTurtle(outputGraph, debugSink)
-
-    inputGraph.shutdown()
-    outputGraph.shutdown()
   }
 }

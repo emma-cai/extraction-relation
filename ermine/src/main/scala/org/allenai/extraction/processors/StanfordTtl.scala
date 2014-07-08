@@ -40,7 +40,12 @@ object StanfordTtl extends MultiTextProcessor {
   /** Outputs the Stanford parse as TTL from the given source. */
   override def processText(source: Source, destination: Writer): Unit = {
     // Use the filename, sans extension, for the corpus.
-    val corpus = source.descr.substring(0, source.descr.lastIndexOf("."))
+    val lastDot = source.descr.lastIndexOf(".")
+    val corpus = if (lastDot > 0) {
+      source.descr.substring(0, lastDot)
+    } else {
+      source.descr
+    }
 
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)

@@ -8,6 +8,7 @@ import org.allenai.extraction.processors._
 import org.allenai.extraction.confidence.DumpOtterFeatures
 import org.allenai.extraction.processors.definition._
 import org.allenai.extraction.processors.dependencies._
+import org.allenai.extraction.rdf.TurtleGraphDiff
 
 import akka.actor.ActorSystem
 import akka.event.Logging
@@ -46,7 +47,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(StanfordExtractor)
     addProcessor(StanfordFixProcessor)
     addProcessor(StanfordTtl)
-    addProcessor(TurtleProcessor)
+    addProcessor(TurtleGraphDiff)
 
     // Create the Ferret instance to use in our extractors, if we have a config key for it.
     config.get[String]("ferret.directory") match {

@@ -1,3 +1,7 @@
 
-<http://aristo.allenai.org/id#4_18> <http://wordnet.princeton.edu/deriv> "remove" ;
-	<http://www.w3.org/2000/01/rdf-schema#label> "remove" .
+<http://aristo.allenai.org/id#ie-target/4_18> <http://www.w3.org/2000/01/rdf-schema#label> "remove" .
+
+<http://aristo.allenai.org/id#ie-target/2_18> <http://www.w3.org/2000/01/rdf-schema#label> "hibernate" ;
+	<http://wordnet.princeton.edu/deriv> "hibernate" .
+
+<http://aristo.allenai.org/id#ie-target/4_18> <http://wordnet.princeton.edu/deriv> "remove" .
