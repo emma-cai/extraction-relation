@@ -4,9 +4,9 @@ import org.allenai.extraction.FlatProcessor
 import org.allenai.extraction.rdf.{ DependencyGraph, Token }
 import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
 import org.allenai.nlpstack.lemmatize.{ Lemmatized, MorphaStemmer }
-import org.allenai.nlpstack.parse.FactorieParser
-import org.allenai.nlpstack.postag.FactoriePostagger
-import org.allenai.nlpstack.tokenize.FactorieTokenizer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.tokenize.defaultTokenizer
 
 import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
 
@@ -14,8 +14,10 @@ import scala.io.Source
 
 import java.io.Writer
 
-/** Dependency parser running through nlpstack. Currently hardcoded to use the factorie parser. */
+/** Dependency parser running through nlpstack. Currently hardcoded to use the polytree parser. */
 object NlpstackParser extends FlatProcessor {
+  val parseFunction = new PolytreeParser().dependencyGraph(defaultTokenizer, defaultPostagger)_
+
   override def processText(source: Source, destination: Writer): Unit = {
     val corpus = Token.corpus(source)
     // The output graph we're generating.
@@ -23,8 +25,6 @@ object NlpstackParser extends FlatProcessor {
     DependencyGraph.setNamespaces(outputGraph)
 
     // Run the text through the NLP stack linewise.
-    val parser = new FactorieParser()
-    val parseFunction = parser.dependencyGraph(new FactorieTokenizer(), new FactoriePostagger())_
     val stemmer = new MorphaStemmer()
     for ((line, sentenceId) <- source.getLines().zipWithIndex) {
       // First pass crease an ID-based graph.
