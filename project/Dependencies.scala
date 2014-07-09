@@ -25,8 +25,7 @@ object Dependencies {
     exclude("com.clearnlp", "clearnlp")
     exclude("com.github.scopt", "scopt_2.10"))
   def nlpstackModule(id: String) = {
-    ("org.allenai.nlpstack" %% s"nlpstack-${id}" % "2014.6.23-1-SNAPSHOT"
-      exclude("junit", "junit"))
+    ("org.allenai.nlpstack" %% s"nlpstack-${id}" % "0.2" exclude("junit", "junit"))
   }
   val nlpstackCore = nlpstackModule("core")
   val nlpstackParse = nlpstackModule("parse")
