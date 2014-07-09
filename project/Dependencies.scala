@@ -7,6 +7,8 @@ object Dependencies {
     "AllenAI Releases" at "http://utility.allenai.org:8081/nexus/content/repositories/releases",
     "Restlet repo" at "http://maven.restlet.org",
     "spray repo" at "http://repo.spray.io",
+    // Factorie resolver.
+    "IESL Releases" at "http://dev-iesl.cs.umass.edu/nexus/content/groups/public",
     Resolver.sonatypeRepo("snapshots"))
 
   def sprayModule(id: String) = "io.spray" % s"spray-${id}" % "1.3.1"
