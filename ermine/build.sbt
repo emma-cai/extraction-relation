@@ -13,6 +13,9 @@ packageArchetype.java_application
 libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ TestLibraries ++ ferretDeps ++ Seq(
   allenaiCommon,
   aristore,
+  nlpstackCore,
+  nlpstackLemmatize,
+  nlpstackParse,
   scopt,
   sprayJson,
   subcut,

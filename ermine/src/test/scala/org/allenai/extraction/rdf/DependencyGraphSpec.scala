@@ -23,6 +23,7 @@ id:1 rel:three id:3 .
   }
   override def afterAll() = {
     super.afterAll()
+    graph.rollback()
     graph.shutdown()
   }
 
