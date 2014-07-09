@@ -2,6 +2,8 @@
 
 This project is meant to contain glue code that integrates our various extraction processes into a single pipeline.
 
+Some demos are at [extraction.allenai.org](http://extraction.allenai.org/).
+
 ## Project layout
 
 There are three subprojects:
