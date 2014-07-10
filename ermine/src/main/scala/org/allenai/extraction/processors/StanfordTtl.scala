@@ -1,6 +1,7 @@
 package org.allenai.extraction.processors
 
 import org.allenai.extraction.MultiTextProcessor
+import org.allenai.extraction.rdf.{ Token => RdfToken }
 
 import edu.stanford.nlp.dcoref.{ CorefChain, CorefCoreAnnotations }
 import edu.stanford.nlp.ling.{ CoreAnnotations, CoreLabel }
@@ -39,13 +40,7 @@ object StanfordTtl extends MultiTextProcessor {
 
   /** Outputs the Stanford parse as TTL from the given source. */
   override def processText(source: Source, destination: Writer): Unit = {
-    // Use the filename, sans extension, for the corpus.
-    val lastDot = source.descr.lastIndexOf(".")
-    val corpus = if (lastDot > 0) {
-      source.descr.substring(0, lastDot)
-    } else {
-      source.descr
-    }
+    val corpus = RdfToken.corpus(source)
 
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)
@@ -150,7 +145,7 @@ object StanfordTtl extends MultiTextProcessor {
   object Token {
     /** @return the full ID string for a token with the given numerical ids */
     def buildId(corpus: String, sentenceId: Int, tokenId: Int): String =
-      s"<http://aristo.allenai.org/id#${corpus}/${sentenceId}_${tokenId}>"
+      '<' + RdfToken.id(corpus, sentenceId, tokenId) + '>'
 
     /** Create a Token from a Stanford annotation.
       * @param sentenceId ID of the sentence in the source document.

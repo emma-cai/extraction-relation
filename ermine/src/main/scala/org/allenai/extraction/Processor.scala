@@ -63,7 +63,11 @@ object Processor {
 
   /** An input using a predefined Source. Used for passing input directly into a pipeline. */
   class SourceInput(val source: Source) extends SingleInput {
-    override def getSource() = source.reset()
+    override def getSource() = {
+      // Resetting sources also resets their descriptions - correct this!
+      val descr = source.descr
+      source.reset().withDescription(descr)
+    }
   }
 
   /** An output for a processor. This will provide either a single file to write to, or a directory

@@ -1,6 +1,7 @@
 package org.allenai.extraction.processors.dependencies
 
 import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
+import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import com.tinkerpop.blueprints.{ Edge, Vertex }
@@ -44,7 +45,7 @@ object ExtractionLabels extends TurtleProcessor {
     /** use token lemma as label */
     def addLabel(node: Vertex): Edge = {
       val label: String = DependencyGraph.tokenInfo(graph, node, "lemma")
-      val v: Vertex = graph.addVertex('"' + label + '"')
+      val v: Vertex = graph.addStringLiteralVertex(label)
       graph.addEdge(label, node, v, "rdfs:label")
     }
 
@@ -53,7 +54,7 @@ object ExtractionLabels extends TurtleProcessor {
       val constits: Seq[Vertex] = (DependencyGraph.nodeConstits(graph, node, exclude) :+ node).sortBy(_.tokenId)
       val tokens: Seq[String] = constits.map(x => DependencyGraph.tokenInfo(graph, x, "text"))
       val text: String = tokens.mkString(" ")
-      val v: Vertex = graph.addVertex('"' + text + '"')
+      val v: Vertex = graph.addStringLiteralVertex(text)
       graph.addEdge(text, node, v, "rdfs:comment")
     }
 
