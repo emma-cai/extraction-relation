@@ -1,14 +1,10 @@
-package org.allenai.extraction.processors
+package org.allenai.extraction.confidence
 
-import org.allenai.extraction.confidence.ExtractionInstance
-import org.allenai.extraction.confidence.ExtractionNodeOrTuple
-import org.allenai.extraction.confidence.ExtractionNode
-import org.allenai.extraction.confidence.ExtractionTuple
-import org.allenai.extraction.confidence.FerretFeatures
+import org.allenai.extraction.confidence.ExtractionInstance.TokenMap
 import org.allenai.extraction.processors.definition.OtterToken
 import org.allenai.extraction.processors.definition.Argument
 import org.allenai.extraction.processors.dependencies.ExtractionLabels
-import org.allenai.extraction.TextProcessor
+import org.allenai.extraction.FlatProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.DependencyGraph.tokenInfo
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
@@ -21,12 +17,21 @@ import scala.io.Source
 import com.tinkerpop.blueprints.Vertex
 import java.io.Writer
 
-/** processor to add labels and string descriptions to extracted nodes */
-object FerretScoreHelper extends TextProcessor {
-  override val numInputs = 1
-  override val numOutputs = 1
-
-  type TokenMap = Map[(Int, Int), OtterToken]
+/** This processor takes at input the *.ttl.out file (as processed by TurtleProcessor)
+ *  which has the fully processed RDF graph. The output is a dump of extractions in
+ *  a pretty print format suitable for tagging along with features to be used for
+ *  classifier training. A sample entry looks like
+ *  
+ *  $$SentenceNum$$ = 63
+ *  Some offspring are born looking like their parents .
+ *  ;;; "Some offspring are born" --EFFECT-> [ - "looking" - LIKE:"their parents" ]<TAB>0.0<TAB>[1|Some|some|DT|] [2|offspring|offspring|NN|]...<TAB>0.0<TAB>0.0<TAB>0.0<TAB>1.0<TAB>...
+ *   
+ *  where the sentence numbers are used to order the extractions for tagging, and the tab-separated
+ *  fields are:
+ *  extraction<TAB>score<TAB>tokens<TAB>tab-separated features  
+ *    
+ **/
+object DumpFerretFeatures extends FlatProcessor {
 
   val inputGraph = new MemoryStoreSailGraph()
   /* for each sentence number, store the sentence string and the full sequence of tokens */
@@ -43,11 +48,11 @@ object FerretScoreHelper extends TextProcessor {
 
   val separator = ", "
 
-  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
-    DependencyGraph.fromTurtle(inputGraph, source)
+  /* This code traverse the RDF graph picking up the salient information, many of the
+   * sparql queries have been copied from the main pipeline for producing inference rules */
+  override def processText(source: Source, sink: Writer): Unit = {
 
-    val sink: Writer = destinations(0)
+    DependencyGraph.fromTurtle(inputGraph, source)
     
     sink.write("*** Ferret Dump for " + source.descr + " ***\n")
     sink.write("\n*** FEATURES ***\n")
@@ -94,6 +99,7 @@ object FerretScoreHelper extends TextProcessor {
     }
 
   def getExtractionNodeForVertex(v: Vertex, isRelation: Boolean, tokenMap: TokenMap, semanticLabel: String = "") = {
+    // The list of exclusion labels gotten from ExtractionLabels processor, to ensure consistency
     val exclude = if (isRelation) ExtractionLabels.VerbExcludeString else ExtractionLabels.ArgExcludeString
     val nodes = (v +: DependencyGraph.nodeConstits(inputGraph, v, exclude)).sortBy(_.tokenId)
     val tokens = nodes map (node => VertexToToken(node, tokenMap))
@@ -126,6 +132,7 @@ object FerretScoreHelper extends TextProcessor {
       dObject = Some(getExtractionNodesForArgument(yElements, tokenMap)))
   }
 
+  /* get token information associated with a sentence ID */
   def getSentenceInfo(sentenceNum: Int) = {
     val query: String = s"""
       SELECT ?uri ?text ?begin ?pos ?lemma WHERE {
@@ -163,7 +170,7 @@ object FerretScoreHelper extends TextProcessor {
       map <- DependencyGraph.executeSparql(inputGraph, query)
       pred = map("pred").toStringLiteral
     } yield pred -> map("arg")
-    res.toVector :+ ("self" -> node)
+    res.toVector :+ ("self" -> node)  // use "self" to disinguish from other "isa" edges
   }
 
   def nodeArgs(node: Vertex, prefix: String = ""): String = {
