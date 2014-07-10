@@ -12,6 +12,18 @@ object ExtractionLabels extends TurtleProcessor {
     new InternalProcessor(graph).process()
   }
 
+  val VerbExcludeString: Option[String] = Some(
+    // list of dependencies to exclude when building verb string
+    Set("aux", "auxpass", "nsubj", "nsubjpass", "csubj", "csubjpass", "dobj", "iobj", "xcomp",
+      "prep", "conj", "cc", "mark", "advcl", "advmod", "npadvmod", "tmod", "acomp", "dep",
+      "ccomp", "cop", "expl", "attr", "xsubj", "purpcl", "vmod", "rcmod",
+      "partmod").mkString("|"))
+
+  val ArgExcludeString: Option[String] = Some(
+    // list of dependencies to exclude when building arg string
+    Set("conj", "cc", "appos", "dep", "xcomp", "infmod", "rcmod", "partmod", "advmod", "cop",
+      "nsubj", "aux", "ref", "vmod").mkString("|"))
+
   /** Helper class, holding a reference to the IO graph. */
   class InternalProcessor(graph: SailGraph) {
     // SPARQL query for nodes with added pred: relations
@@ -28,18 +40,6 @@ object ExtractionLabels extends TurtleProcessor {
         FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/")) .
         FILTER NOT EXISTS { ?x rdfs:label ?l . }
       }"""
-
-    val VerbExcludeString: Option[String] = Some(
-      // list of dependencies to exclude when building verb string
-      Set("aux", "auxpass", "nsubj", "nsubjpass", "csubj", "csubjpass", "dobj", "iobj", "xcomp",
-        "prep", "conj", "cc", "mark", "advcl", "advmod", "npadvmod", "tmod", "acomp", "dep",
-        "ccomp", "cop", "expl", "attr", "xsubj", "purpcl", "vmod", "rcmod",
-        "partmod").mkString("|"))
-
-    val ArgExcludeString: Option[String] = Some(
-      // list of dependencies to exclude when building arg string
-      Set("conj", "cc", "appos", "dep", "xcomp", "infmod", "rcmod", "partmod", "advmod", "cop",
-        "nsubj", "aux", "ref", "vmod").mkString("|"))
 
     /** use token lemma as label */
     def addLabel(node: Vertex): Edge = {
