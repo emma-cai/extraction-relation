@@ -3,7 +3,7 @@ package org.allenai.extraction.processors
 import org.allenai.extraction.FlatProcessor
 import org.allenai.extraction.rdf.{ DependencyGraph, Token }
 import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
-import org.allenai.nlpstack.lemmatize.{ Lemmatized, MorphaStemmer }
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
 import org.allenai.nlpstack.parse.PolytreeParser
 import org.allenai.nlpstack.postag.defaultPostagger
 import org.allenai.nlpstack.tokenize.defaultTokenizer
