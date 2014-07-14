@@ -261,10 +261,7 @@ object QuestionRules extends TextProcessor {
         FILTER(STRSTARTS(str(?rel), "http://nlp.stanford.edu/basic/")) .
       }"""
     val results: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, nodeQuery)
-    results match {
-      case Nil => None
-      case head :: _ => Some(head("parent"))
-    }
+    results.headOption map { head => head("parent") }
   }
 
 }

@@ -6,7 +6,6 @@ import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
 import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
 
-import util.control.Breaks._
 import scala.io.Source
 
 import com.tinkerpop.blueprints.Edge
@@ -85,7 +84,7 @@ object ExtractionRoles extends TextProcessor {
     val uri: String = node.toUri
     // add filter to exclude that/which/etc as rcmod subject
     // TODO: declare filters in dep-role table?
-    val filter: String = dep match {
+    val extraFilter: String = dep match {
       case "nsubj" => s"""FILTER NOT EXISTS { ?rcmod dep:rcmod <$uri> . 
                                               ?nsubj token:pos "WDT" . }"""
       case _ => "" // no filter
@@ -95,7 +94,7 @@ object ExtractionRoles extends TextProcessor {
       SELECT ?$dep WHERE {
         <$uri> dep:$dep ?$dep .
         FILTER NOT EXISTS { <$uri> dep:cop ?cop . }
-        $filter
+        $extraFilter
       }"""
     val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(inputGraph, query)
     for (map <- result) {
@@ -137,18 +136,20 @@ object ExtractionRoles extends TextProcessor {
       val rcmod: Vertex = map("rcmod")
       val rcmodUri: String = rcmod.toUri
       addArgs(rcmod)
-      breakable {
-        // find first missing pred
-        for (role <- Seq("pred:agent", "pred:object", "pred:arg")) {
-          val predQuery: String = s"""
+      // find first missing pred
+      Seq("pred:agent", "pred:object", "pred:arg").find { role =>
+        val predQuery: String = s"""
           SELECT ?node WHERE {
             <$rcmodUri> $role ?node .
           }"""
-          val predResult: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(outputGraph, predQuery)
-          if (predResult.isEmpty) {
-            outputGraph.addEdge(rcmod, rcmod, node, role)
-            break
-          }
+        val predResult: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(outputGraph, predQuery)
+        if (predResult.isEmpty) {
+          outputGraph.addEdge(rcmod, rcmod, node, role)
+          // Found, stop
+          true
+        } else {
+          // Not found, continue
+          false
         }
       }
     }
