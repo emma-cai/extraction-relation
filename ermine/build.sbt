@@ -26,6 +26,10 @@ libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ TestLibraries ++ ferr
 
 fork in run := true
 
+// Set the config file.
+javaOptions += s"-Dconfig.file=${baseDirectory.value}/conf/application.conf"
+
+// Set the `baseDirectory` value, used in the config file.
 javaOptions += s"-DbaseDirectory=${baseDirectory.value}"
 
 // Don't create windows startup script.
@@ -39,6 +43,6 @@ NativePackagerKeys.bashScriptExtraDefines ++=
 eval `swipl --dump-runtime-variables`
 addJava "-Djava.library.path=${PLBASE}/lib/${PLARCH}"
 addJava "-Dlogback.configurationFile=${app_home}/../conf/logback.xml"
-addJava "-Dconfig.file=${app_home}/../conf/application.conf"
+addJava "-Dconfig.file=${app_home}/../../../../conf/application.conf"
 addJava "-DbaseDirectory=${app_home}/../../../.."
 """)
