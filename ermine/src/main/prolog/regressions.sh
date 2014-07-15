@@ -1,6 +1,6 @@
 # Parsed TTL files.
 # Should be generated from the Ermine pipeline regression_inputs.conf.
-INFILES=(sample/sample.ttl regressions/ie-target.txt.rnn.ttl
+INFILES=(sample/sample.ttl ../test/data/ie-target.txt.rnn.ttl
   regressions/june2014.txt.ttl regressions/barrons.txt.rnn.ttl)
 
 for INFILE in ${INFILES[@]}; do
