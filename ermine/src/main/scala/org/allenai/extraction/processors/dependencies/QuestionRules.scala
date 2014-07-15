@@ -212,7 +212,7 @@ object QuestionRules extends TextProcessor {
   }
 
   /** find longest sequence of contiguous tokens */
-  private def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
+  private[dependencies] def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
     // sort by sentence and token position
     val sortedTokens: Array[Vertex] = tokens.sortBy(t => (t.sentenceId, t.tokenId)).toArray
     // TODO: cleaner way with filter?
