@@ -1,25 +1,12 @@
 package org.allenai.extraction.processors.dependencies
 
-import org.allenai.extraction.TextProcessor
-import org.allenai.extraction.rdf.DependencyGraph
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
-import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
-
-import scala.io.Source
-
-import java.io.Writer
+import com.tinkerpop.blueprints.impls.sail.SailGraph
 
 /** processor to fix common dependency-parse errors */
-object StanfordFixProcessor extends TextProcessor {
-  override val numInputs = 1
-  override val numOutputs = 2
-
-  val inputGraph = new MemoryStoreSailGraph()
-  DependencyGraph.setNamespaces(inputGraph)
-  val outputGraph = new MemoryStoreSailGraph()
-  DependencyGraph.setNamespaces(outputGraph)
-
+object StanfordFixProcessor extends TurtleProcessor {
   // SPARQL queries
   val queries: Seq[String] = Seq(
     // broken PP: X prep Y, Y dep Z -> X prepc_Y Z
@@ -67,27 +54,17 @@ object StanfordFixProcessor extends TextProcessor {
       FILTER NOT EXISTS { ?x dep:dobj ?z . }
     }""")
 
-  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
-    val source = sources(0)
-    DependencyGraph.fromTurtle(inputGraph, source)
-
+  override def processGraph(graph: SailGraph): Unit = {
     // match patterns
     for {
       query <- queries
-      map <- DependencyGraph.executeSparql(inputGraph, query)
+      map <- DependencyGraph.executeSparql(graph, query)
+      head = map("subject")
+      tail = map("object")
+      edge = map("predicate")
     } {
       // add results
-      outputGraph.addEdge(map("predicate"), map("subject"), map("object"), map("predicate").toStringLiteral)
+      graph.addEdge(edge, head, tail, edge.toIdString)
     }
-
-    val sink: Writer = destinations(0)
-    DependencyGraph.toTurtle(inputGraph, sink)
-    DependencyGraph.toTurtle(outputGraph, sink)
-
-    val debugSink: Writer = destinations(1)
-    DependencyGraph.toTurtle(outputGraph, debugSink)
-
-    inputGraph.shutdown()
-    outputGraph.shutdown()
   }
 }

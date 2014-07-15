@@ -53,7 +53,7 @@ class AristoreActor(val client: AriDatastoreClient) extends Actor with ActorLogg
       val tempDirectory = Files.createTempDirectory(datasetId).toFile
       tempDirectory.deleteOnExit
 
-      log.debug("Downloading full dataset ${datasetId} for read")
+      log.debug(s"Downloading full dataset ${datasetId} for read")
       val location: Future[File] = for {
         dataset <- client.getDataset(datasetId)
         _ <- client.readFileDocuments[TextFile](dataset.id, 0, Int.MaxValue, tempDirectory)

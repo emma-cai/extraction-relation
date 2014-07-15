@@ -1,6 +1,6 @@
 package org.allenai.extraction.processors.dependencies
 
-import org.allenai.extraction.TextProcessor
+import org.allenai.extraction.{ ErmineException, TextProcessor }
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
@@ -110,14 +110,18 @@ object InferenceRules extends TextProcessor {
 
   def nodeLabel(node: Vertex): String = {
     val uri: String = node.toUri
-    val id: String = uri.split("http://aristo.allenai.org/id#").last
     val query: String = s"""
       SELECT ?label WHERE {
         <$uri> rdfs:label ?label .
       }"""
-    val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
-    val label = result.get("label").map(_.toStringLiteral).getOrElse("")
-    s"E$id-$label"
+    val labelOption: Option[String] = for {
+      result <- DependencyGraph.executeSparql(inputGraph, query).headOption
+      vertex <- result.get("label")
+    } yield vertex.toStringLiteral
+    labelOption match {
+      case Some(label) => s"E${node.sentenceId}S${node.tokenId}-$label"
+      case None => throw new ErmineException(s"Couldn't find rdfs:label for $uri")
+    }
   }
 
   def nodeString(node: Vertex): String = {
@@ -126,8 +130,10 @@ object InferenceRules extends TextProcessor {
       SELECT ?string WHERE {
         <$uri> rdfs:comment ?string .
       }"""
-    val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
-    result.get("string").map(_.toStringLiteral).getOrElse("")
+    val string: Option[String] = for {
+      result <- DependencyGraph.executeSparql(inputGraph, query).headOption
+      vertex <- result.get("string")
+    } yield vertex.toStringLiteral
+    string getOrElse { "" }
   }
-
 }

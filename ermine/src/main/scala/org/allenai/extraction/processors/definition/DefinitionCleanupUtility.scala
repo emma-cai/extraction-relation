@@ -13,7 +13,7 @@ object DefinitionCleanupUtility {
     * - removing parenthesized expressions
     * - removing quoted expressions
     */
-  def cleanUp(rawDefinition: String): String = {
+  def cleanUp(rawDefinition: String): Seq[String] = {
     // Remove all bracketed expressions
     val parenPattern = """\([^)]*\)""".r
     val defParenStripped = parenPattern replaceAllIn (rawDefinition, "")
@@ -26,6 +26,10 @@ object DefinitionCleanupUtility {
     val defDoubleQuotedWordPattern = """(\W|^)\"([^\"]+)\"(\W|$)""".r
     val defParenDQuotesStripped = defDoubleQuotedWordPattern replaceAllIn (defParenSQuotesStripped, m => m.group(1) + m.group(2) + m.group(3))
 
-    defParenDQuotesStripped
+    // Remove empty quoted strings if any
+    val defParenEmptyQuotedStringsStripped = defParenDQuotesStripped.replaceAll("''", "").replaceAll("\"\"", "")
+
+    // Break the line up into multiple definitions if separated by semicolons
+    (defParenEmptyQuotedStringsStripped.split(";").toSeq map { x => x.trim }).filter(y => (y.length > 0))
   }
 }

@@ -24,28 +24,35 @@ object CorpusSplitter extends Processor {
     destinations: Seq[Processor.Output]): Unit = {
 
     val text = sources(0).getSources()(0)
-    val prefix = if (text.descr != "") {
-      s"${text.descr}-"
+    val (prefix, suffix) = if (text.descr != "") {
+      val suffixStart = text.descr.lastIndexOf('.')
+      val (descrPrefix, descrSuffix) = if (suffixStart > 0) {
+        (text.descr.substring(0, suffixStart), text.descr.substring(suffixStart))
+      } else {
+        (text.descr, "")
+      }
+      (s"${descrPrefix}-", descrSuffix)
     } else {
-      ""
+      ("", "")
     }
-    val destinationDir = destinations(0).getOutputFile
+    val destinationDir = destinations(0).getOutputDirectory
 
-    require(destinationDir.isDirectory, "Non-directory given to CorpusSplitter")
-
-    var currSectionId = -1
+    var sectionIndex = 0
+    var currSectionId = "-1"
     var currOutput = null: Writer
 
     for (line <- text.getLines) {
       line match {
         case SectionSentence(sectionString, sentence) => {
-          val sectionId = sectionString.toInt
+          val sectionId = sectionString
           if (sectionId != currSectionId) {
             if (currOutput != null) {
               currOutput.flush()
               currOutput.close()
             }
-            currOutput = new FileWriter(new File(destinationDir, f"${prefix}${sectionId}%02d.txt"))
+            sectionIndex += 1
+            currOutput = new FileWriter(
+              new File(destinationDir, f"${prefix}${sectionIndex}%d${suffix}"))
             currSectionId = sectionId
           }
           currOutput.write(sentence)

@@ -3,6 +3,6 @@ AVP0 := OpenRegex {
 }
 
 AVP1 := TypedOpenRegex {
-   (?:@AVP0 (?: (?:<string="," | string="or">? @AVP0)* (<string=",">? <string=/and|or|but|and\/or/>? @AVP0)? )? )
+   (?: (<First>: @AVP0) (?: (<string="," | string="or">? (<Middle>: @AVP0))* <string=",">? <string=/and|or|but|and\/or/>? (<Last>: @AVP0) )? )
 }
 

@@ -2,6 +2,8 @@ package org.allenai.extraction.processors.definition
 
 import org.allenai.extraction.FlatProcessor
 
+import org.apache.commons.lang.StringEscapeUtils
+
 import java.io.Writer
 
 import scala.io.Source
@@ -81,25 +83,32 @@ class SimpleWiktionaryDefinitionPreprocessor(wordClasses: Set[String] = Set.empt
     * be normalized to.
     */
   def cleanUp(definitionRawLine: String): (Seq[String], Seq[String]) = {
+    var defNoiseWordsStripped = definitionRawLine
+    var prevDefNoiseWordsStripped = definitionRawLine
+    do {
+      prevDefNoiseWordsStripped = defNoiseWordsStripped
+      defNoiseWordsStripped = StringEscapeUtils.unescapeHtml(prevDefNoiseWordsStripped)
+    } while (!defNoiseWordsStripped.equals(prevDefNoiseWordsStripped))
+
+    // Removing noun-breaking spaces if any, resulting from parsed html.
+    val nonBreakingSpacesPattern = "\\xa0".r
+    val defNonBreakingSpaceStripped = nonBreakingSpacesPattern replaceAllIn (defNoiseWordsStripped, " ")
+
     // Remove leading '#' character 
     val defPoundAtBeginningPattern = "^#".r
-    val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (definitionRawLine, "")
+    val defBeginningPoundStripped: String = defPoundAtBeginningPattern replaceFirstIn (defNonBreakingSpaceStripped, "")
 
     // Capture meta info - stuff in curly braces  if present in metaData seq - to be returned.
     val defMetaInfoPattern = """\{\{([^}]*)\}\}""".r
     val matches = defMetaInfoPattern findAllMatchIn (defBeginningPoundStripped)
-    val metaData = (matches map { m => m.group(1) }).toSeq
+    val metaData = (for (mtch <- matches) yield mtch.group(1)).toSeq
 
     // Remove meta info - there could be a cluster of multiple of these
     // separated by semicolon or comma like the last e.g. in above documentation.
     val defMetaInfoClusterPattern = s"""(${defMetaInfoPattern})((\\s*[,;]\\s*${defMetaInfoPattern})*)""".r
     val defPoundMetaStripped: String = defMetaInfoClusterPattern replaceAllIn (defBeginningPoundStripped, "")
 
-    val defCleanedUp = DefinitionCleanupUtility.cleanUp(defPoundMetaStripped)
-
-    // Break the line up into multiple definitions if separated by semicolons
-    val multipleDefs = defCleanedUp.split(";").toSeq map { x => x.trim }
-
+    val multipleDefs = DefinitionCleanupUtility.cleanUp(defPoundMetaStripped)
     (multipleDefs, metaData)
   }
 }

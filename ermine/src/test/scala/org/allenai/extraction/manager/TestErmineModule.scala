@@ -2,7 +2,6 @@ package org.allenai.extraction.manager
 
 import org.allenai.extraction.{ FlatProcessor, Processor, TextProcessor }
 import org.allenai.extraction.processors.CatProcessor
-import org.allenai.extraction.processors.TurtleProcessor
 
 
 import com.escalatesoft.subcut.inject.NewBindingModule
@@ -38,6 +37,5 @@ object TestErmineModule extends NewBindingModule(module => {
   module.bind[Map[String, Processor]] toSingle Map[String, Processor](
     "NoOpProcessor" -> NoOpProcessor,
     "CatProcessor" -> CatProcessor,
-    "TwoByCatProcessor" -> TwoByCatProcessor,
-    "TurtleProcessor" -> TurtleProcessor)
+    "TwoByCatProcessor" -> TwoByCatProcessor)
 })

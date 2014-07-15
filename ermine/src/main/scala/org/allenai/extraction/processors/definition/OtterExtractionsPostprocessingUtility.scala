@@ -6,7 +6,10 @@ object OtterExtractionsPostprocessingUtility {
     * with no other information present, do not make useful extractions. Such
     * extractions should be removed from the results.
     */
-  val relObjBlacklist = Set("part", "piece", "thing", "something")
+  val relObjBlacklist = Set("part", "piece", "thing", "something", "kind", "type", "sort",
+    "variety", "way", "manner", "style", "form", "group", "set", "class", "category", "means",
+    "mode", "format", "word", "term")
+  val relObjPersonlist = Set("someone", "anyone", "somebody", "anybody", "one")
 
   /** This is a semantic postprocessing method to
     * remove low-quality extraction tuples from a given
@@ -30,17 +33,14 @@ object OtterExtractionsPostprocessingUtility {
     */
   def processExtraction(extraction: OtterExtractionTuple): Option[OtterExtractionTuple] = {
     extraction match {
-      // Invalid tuples: (x, isa, part), (x, isa, something), (x, isa, thing)
-      case SimpleOtterExtractionTuple(_, _, _, relation, Some(relObj), advps, pps) if (relation.relationType.isDefined && (relation.relationType.get == RelationTypeEnum.IsA)
-        && (advps.size == 0) && (pps.size == 0) && (relObjBlacklist.contains(relObj.string.toLowerCase))) =>
+      // Invalid tuples: (x, isa, x), (x, isa, part), (x, isa, something), (x, isa, thing)
+      case SimpleOtterExtractionTuple(_, _, Some(agent), relation, Some(relObj), advps, pps) if (relation.relationType.isDefined && (relation.relationType.get == RelationTypeEnum.IsA)
+        && (advps.size == 0) && (pps.size == 0) &&
+        (agent.string.trim.equalsIgnoreCase(relObj.string) || (relObjBlacklist.contains(relObj.string.toLowerCase)))) =>
         None
       // Tuples to be modified: (x, isa, somebody), etc: to be modified to (x, isa, person)
       case SimpleOtterExtractionTuple(tokens, interval, agent, relation, Some(relObj), advps, pps) if (relation.relationType.isDefined && (relation.relationType.get == RelationTypeEnum.IsA)
-        && (advps.size == 0) && (pps.size == 0) && (relObj.string.equalsIgnoreCase("someone")
-          || relObj.string.equalsIgnoreCase("anyone")
-          || relObj.string.equalsIgnoreCase("somebody")
-          || relObj.string.equalsIgnoreCase("anybody")
-          || relObj.string.equalsIgnoreCase("one"))) =>
+        && (advps.size == 0) && (pps.size == 0) && relObjPersonlist.contains(relObj.string.toLowerCase)) =>
         Option(SimpleOtterExtractionTuple(tokens,
           interval,
           agent,

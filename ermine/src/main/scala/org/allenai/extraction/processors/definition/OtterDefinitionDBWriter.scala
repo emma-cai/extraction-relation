@@ -1,11 +1,11 @@
 package org.allenai.extraction.processors.definition
 
+import org.allenai.extraction.api.definition.{ DefinitionExtraction, DefinitionExtractionsDB }
 import org.allenai.extraction.FlatProcessor
 
 import java.io.Writer
 
 import scala.io.Source
-import scala.slick.driver.H2Driver.simple._
 
 import spray.json._
 
@@ -24,8 +24,13 @@ import spray.json._
   * @param user username to connect to the database
   * @param password password to connect to the database
   */
-class OtterDefinitionDBWriter(dbDir: String, user: String, password: String) extends FlatProcessor {
-  val extractionsDb: DefinitionExtractionsDB = new DefinitionExtractionsDB(dbDir, user, password)
+class OtterDefinitionDBWriter(
+    dbDir: String, 
+    userOption: Option[String], 
+    passwordOption: Option[String]) extends FlatProcessor {
+  
+  val extractionsDb: DefinitionExtractionsDB = 
+    new DefinitionExtractionsDB(dbDir, userOption, passwordOption)
 
   override def processText(jsonInputSource: Source, destination: Writer): Unit = {
     // Iterate over input JSONs and write definition extractions to DB.
@@ -46,11 +51,11 @@ class OtterDefinitionDBWriter(dbDir: String, user: String, password: String) ext
           val source = otterExtraction.corpusName.getOrElse("")
           val altDefinition = otterExtractionForDefinitionAlt.preprocessedDefinition
           // Prefix output extraction with "<RelationType>: "
-          val relTypeStr = (tuple.relation.relationType match {
+          val relTypeStr = (tuple.tuple.relation.relationType match {
             case Some(x) => x.toString
             case _ => "Fact"
           }) + ": "
-          new DefinitionExtraction(term, wordClass, source, altDefinition, relTypeStr + tuple.toString)
+          new DefinitionExtraction(term, wordClass, source, altDefinition, relTypeStr + tuple.tuple.toString)
         }
         for (extraction <- extractions) {
           extractionsDb.insertDefinitionExtraction(extraction)

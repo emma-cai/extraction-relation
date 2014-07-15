@@ -23,7 +23,9 @@ import java.io.Writer
 case class ErmineOptions(configFile: File = new File("."), pipelineName: String = "ermine.pipeline",
     inputs: Seq[File] = Seq.empty, outputs: Seq[File] = Seq.empty) {
   /** Use the file option(s) as input(s). */
-  def defaultInputs: Seq[Source] = inputs map Source.fromFile
+  def defaultInputs: Seq[Source] = inputs map { input =>
+    Source.fromFile(input).withDescription(input.getName)
+  }
 
   /** Use the file option as output, default to STDOUT. */
   def defaultOutputs: Seq[Writer] = outputs match {
@@ -61,6 +63,9 @@ object Ermine {
         val actorSystem = ActorSystem("ermine")
         try {
           implicit val module = new ErmineModule(actorSystem) ~ new ActorSystemModule(actorSystem)
+          if (!options.configFile.exists()) {
+            throw new ErmineException(s"config file ${options.configFile} does not exist")
+          }
 
           // Load up a config file, using the default overrides (system properties).
           val rawConfig = ConfigFactory.parseFile(options.configFile)
@@ -77,7 +82,7 @@ object Ermine {
             // If the first pipeline stage wants a single unnamed input, use STDIN.
             case Seq() if pipeline.requiredUnnamedCount == 1 => {
               println("Using input from STDIN (press CTRL-D to end stream)")
-              Seq(Source.fromInputStream(System.in))
+              Seq(Source.fromInputStream(System.in).withDescription("stdin"))
             }
             case inputs => inputs
           }

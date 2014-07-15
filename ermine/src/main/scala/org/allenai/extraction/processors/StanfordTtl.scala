@@ -1,6 +1,7 @@
 package org.allenai.extraction.processors
 
 import org.allenai.extraction.MultiTextProcessor
+import org.allenai.extraction.rdf.{ Token => RdfToken }
 
 import edu.stanford.nlp.dcoref.{ CorefChain, CorefCoreAnnotations }
 import edu.stanford.nlp.ling.{ CoreAnnotations, CoreLabel }
@@ -39,6 +40,8 @@ object StanfordTtl extends MultiTextProcessor {
 
   /** Outputs the Stanford parse as TTL from the given source. */
   override def processText(source: Source, destination: Writer): Unit = {
+    val corpus = RdfToken.corpus(source)
+
     // Print the TTL namespace headers.
     destination.write(Ttl.NamespaceHeaders)
 
@@ -59,7 +62,7 @@ object StanfordTtl extends MultiTextProcessor {
         val tokenId = tokenIndex + 1
 
         // Convert to TTL.
-        val ttlToken = Token.fromStanfordToken(sentenceId, tokenId, sentenceOffset, token)
+        val ttlToken = Token.fromStanfordToken(corpus, sentenceId, tokenId, sentenceOffset, token)
         destination.write(ttlToken.ttl)
         destination.write('\n')
       }
@@ -67,7 +70,9 @@ object StanfordTtl extends MultiTextProcessor {
       // Print out basic dependency info.
       val basicDependencyGraph =
         sentence.get(classOf[SemanticGraphCoreAnnotations.BasicDependenciesAnnotation])
-      for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "basic", basicDependencyGraph)) {
+      for (
+        ttlDep <- Dependency.fromStanfordGraph(corpus, sentenceId, "basic", basicDependencyGraph)
+      ) {
         destination.write(ttlDep.ttl)
       }
       destination.write('\n')
@@ -75,7 +80,9 @@ object StanfordTtl extends MultiTextProcessor {
       // Print out collapsed dependency info.
       val collapsedDependencyGraph = sentence.get(
         classOf[SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation])
-      for (ttlDep <- Dependency.fromStanfordGraph(sentenceId, "dep", collapsedDependencyGraph)) {
+      for (
+        ttlDep <- Dependency.fromStanfordGraph(corpus, sentenceId, "dep", collapsedDependencyGraph)
+      ) {
         destination.write(ttlDep.ttl)
       }
       destination.write('\n')
@@ -89,10 +96,10 @@ object StanfordTtl extends MultiTextProcessor {
       if mentions.size > 1
     } yield {
       val source = chain.getRepresentativeMention
-      val sourceCoref = Coreference.fromStanfordSourceMention(source)
+      val sourceCoref = Coreference.fromStanfordSourceMention(corpus, source)
       val childCorefs = for {
         mention <- mentions if mention != source
-      } yield Coreference.fromStanfordMention(sourceCoref.rootId, mention)
+      } yield Coreference.fromStanfordMention(corpus, sourceCoref.rootId, mention)
 
       sourceCoref +: childCorefs
     }
@@ -114,20 +121,20 @@ object StanfordTtl extends MultiTextProcessor {
       val escapedText = escapeString(text)
       val escapedLemma = escapeString(lemma)
       val escapedPartOfSpeech = escapeString(partOfSpeech)
-      ttlBuilder.append(s"""id:${id} token:text "${escapedText}" .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:lemma "${escapedLemma}" .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:pos "${escapedPartOfSpeech}" .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:begin ${begin} .""").append('\n')
-      ttlBuilder.append(s"""id:${id} token:end ${end} .""").append('\n')
+      ttlBuilder.append(s"""${id} token:text "${escapedText}" .""").append('\n')
+      ttlBuilder.append(s"""${id} token:lemma "${escapedLemma}" .""").append('\n')
+      ttlBuilder.append(s"""${id} token:pos "${escapedPartOfSpeech}" .""").append('\n')
+      ttlBuilder.append(s"""${id} token:begin ${begin} .""").append('\n')
+      ttlBuilder.append(s"""${id} token:end ${end} .""").append('\n')
       namedEntityType match {
         // Skip output of default entity type O ("Other").
         case Some("O") =>
         case Some(neType) => {
           val escapedType = escapeString(neType)
-          ttlBuilder.append(s"""id:${id} ne:type "${escapedType}" .""").append('\n')
+          ttlBuilder.append(s"""${id} ne:type "${escapedType}" .""").append('\n')
           namedEntityTag map { neTag =>
             val escapedTag = escapeString(neTag)
-            ttlBuilder.append(s"""id:${id} ne:norm "${escapedTag}" .""").append('\n')
+            ttlBuilder.append(s"""${id} ne:norm "${escapedTag}" .""").append('\n')
           }
         }
         case None =>
@@ -137,7 +144,8 @@ object StanfordTtl extends MultiTextProcessor {
   }
   object Token {
     /** @return the full ID string for a token with the given numerical ids */
-    def buildId(sentenceId: Int, tokenId: Int): String = s"${sentenceId}_${tokenId}"
+    def buildId(corpus: String, sentenceId: Int, tokenId: Int): String =
+      '<' + RdfToken.id(corpus, sentenceId, tokenId) + '>'
 
     /** Create a Token from a Stanford annotation.
       * @param sentenceId ID of the sentence in the source document.
@@ -145,10 +153,10 @@ object StanfordTtl extends MultiTextProcessor {
       * @param sentenceOffset the offset of the sentence into the document. Used to adjust begin and
       * end values for tokens.
       */
-    def fromStanfordToken(sentenceId: Int, tokenId: Int, sentenceOffset: Int,
+    def fromStanfordToken(corpus: String, sentenceId: Int, tokenId: Int, sentenceOffset: Int,
       token: CoreLabel): Token = {
 
-      val id = buildId(sentenceId, tokenId)
+      val id = buildId(corpus, sentenceId, tokenId)
       val text = token.get(classOf[CoreAnnotations.TextAnnotation])
       val lemma = token.get(classOf[CoreAnnotations.LemmaAnnotation])
       val begin = token.get(classOf[CoreAnnotations.CharacterOffsetBeginAnnotation]) - sentenceOffset
@@ -167,23 +175,23 @@ object StanfordTtl extends MultiTextProcessor {
     * @param label the label for the dependency
     */
   case class Dependency(sourceId: String, targetId: String, name: String, label: String) {
-    val ttl: String = s"id:${sourceId} ${name}:${label} id:${targetId} .\n"
+    val ttl: String = s"${sourceId} ${name}:${label} ${targetId} .\n"
   }
   object Dependency {
-    def fromStanfordGraph(sentenceId: Int, name: String,
+    def fromStanfordGraph(corpus: String, sentenceId: Int, name: String,
       graph: SemanticGraph): Iterable[Dependency] = {
 
       // Root dependenc(y|ies).
       val roots = for (root <- graph.getRoots.asScala) yield {
-        val sourceId = Token.buildId(sentenceId, 0)
-        val targetId = Token.buildId(sentenceId, root.index)
+        val sourceId = Token.buildId(corpus, sentenceId, 0)
+        val targetId = Token.buildId(corpus, sentenceId, root.index)
         val label = GrammaticalRelation.ROOT.getLongName.replaceAll("\\s+", "")
         Dependency(sourceId, targetId, name, label)
       }
       // Graph edges.
       val edges = for (edge <- graph.edgeListSorted.asScala) yield {
-        val sourceId = Token.buildId(sentenceId, edge.getSource.index)
-        val targetId = Token.buildId(sentenceId, edge.getTarget.index)
+        val sourceId = Token.buildId(corpus, sentenceId, edge.getSource.index)
+        val targetId = Token.buildId(corpus, sentenceId, edge.getTarget.index)
         val label = edge.getRelation.toString.replaceAll("\\s+", "")
         Dependency(sourceId, targetId, name, label)
       }
@@ -194,18 +202,20 @@ object StanfordTtl extends MultiTextProcessor {
 
   /** A coreference from token `referenceId` to `rootId`. */
   case class Coreference(rootId: String, referenceId: String) {
-    val ttl: String = s"id:${rootId} coref:ref id:${referenceId} .\n"
+    val ttl: String = s"${rootId} coref:ref ${referenceId} .\n"
   }
   object Coreference {
     /** Builds a source reference ("representative mention") from a mention instance. */
-    def fromStanfordSourceMention(mention: CorefChain.CorefMention): Coreference = {
-      val rootId = Token.buildId(mention.sentNum, mention.headIndex)
+    def fromStanfordSourceMention(corpus: String, mention: CorefChain.CorefMention): Coreference = {
+      val rootId = Token.buildId(corpus, mention.sentNum, mention.headIndex)
       // Root is self-referential.
       Coreference(rootId, rootId)
     }
     /** Builds a coreference from a mention using a given root. */
-    def fromStanfordMention(rootId: String, mention: CorefChain.CorefMention): Coreference = {
-      Coreference(rootId, Token.buildId(mention.sentNum, mention.headIndex))
+    def fromStanfordMention(corpus: String, rootId: String,
+      mention: CorefChain.CorefMention): Coreference = {
+
+      Coreference(rootId, Token.buildId(corpus, mention.sentNum, mention.headIndex))
     }
   }
 }
