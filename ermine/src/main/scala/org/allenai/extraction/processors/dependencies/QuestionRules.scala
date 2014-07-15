@@ -1,41 +1,42 @@
 package org.allenai.extraction.processors.dependencies
 
 import org.allenai.extraction.ErmineException
-import org.allenai.extraction.Processor
+import org.allenai.extraction.TextProcessor
 import org.allenai.extraction.rdf.DependencyGraph
 import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
 
+import com.tinkerpop.blueprints.Vertex
 import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
 
 import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 
-import com.tinkerpop.blueprints.Vertex
-import java.io.FileWriter
+import java.io.Writer
 
 /** processor to generate Arilog inference rule format of questions
   * - requires a focus string as a second input
   */
-object QuestionRules extends Processor {
+object QuestionRules extends TextProcessor {
   override val numInputs = 2
   override val numOutputs = 1
 
-  override protected def processInternal(sources: Seq[Processor.Input], destinations: Seq[Processor.Output]): Unit = {
-    new InternalProcessor(sources, destinations).process()
-  }
+  override def processText(sources: Seq[Source], destinations: Seq[Writer]): Unit = {
+    val graphSource = sources(0)
 
-  /** Helper class, holding a reference to the IO graph. */
-  class InternalProcessor(sources: Seq[Processor.Input], destinations: Seq[Processor.Output]) {
-    val graphSource = sources(0).getSources()(0)
-    val graph = new MemoryStoreSailGraph()
-    DependencyGraph.fromTurtle(graph, graphSource)
-    DependencyGraph.setNamespaces(graph)
-
-    val focusSource = sources(1).getSources()(0)
+    val focusSource = sources(1)
     val focus = focusSource.getLines.mkString("\n")
     focusSource.close()
 
-    val destination: FileWriter = new FileWriter(destinations.head.getOutputFile)
+    val destination = destinations(0)
+
+    new InternalProcessor(graphSource, focus, destination).process()
+  }
+
+  /** Helper class, holding a reference to the IO graph. */
+  class InternalProcessor(source: Source, focus: String, destination: Writer) {
+    val graph = new MemoryStoreSailGraph()
+    DependencyGraph.fromTurtle(graph, source)
+    DependencyGraph.setNamespaces(graph)
 
     // SPARQL query for nodes with added rel: relation
     val relQuery =
