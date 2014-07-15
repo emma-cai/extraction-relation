@@ -63,6 +63,9 @@ object Ermine {
         val actorSystem = ActorSystem("ermine")
         try {
           implicit val module = new ErmineModule(actorSystem) ~ new ActorSystemModule(actorSystem)
+          if (!options.configFile.exists()) {
+            throw new ErmineException(s"config file ${options.configFile} does not exist")
+          }
 
           // Load up a config file, using the default overrides (system properties).
           val rawConfig = ConfigFactory.parseFile(options.configFile)
