@@ -112,7 +112,6 @@ object InferenceRuleDisplay extends FlatProcessor {
 
     def nodeLabel(node: Vertex, initcap: Boolean = true): String = {
       val uri: String = node.toUri
-      val id: String = uri.split("http://aristo.allenai.org/id#").last
       val query: String = s"""
         SELECT ?label WHERE {
           <$uri> rdfs:label ?label .
