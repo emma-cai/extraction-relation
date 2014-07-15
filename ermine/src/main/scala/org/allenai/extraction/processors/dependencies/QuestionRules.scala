@@ -218,31 +218,6 @@ object QuestionRules extends TextProcessor {
       result.get("string").map(_.toStringLiteral).getOrElse("")
     }
 
-    /** find longest sequence of contiguous tokens */
-    private[dependencies] def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
-      // sort by sentence and token position
-      val sortedTokens: Array[Vertex] = tokens.sortBy(t => (t.sentenceId, t.tokenId)).toArray
-      // TODO: cleaner way with filter?
-      var maxStart: Int = 0
-      var maxLength: Int = 1
-      var currentStart: Int = 0
-      var currentLength: Int = 1
-      for (i <- 0 to sortedTokens.length - 2) {
-        if (sortedTokens(i).sentenceId == sortedTokens(i + 1).sentenceId
-          && sortedTokens(i).tokenId + 1 == sortedTokens(i + 1).tokenId) {
-          currentLength += 1
-        } else {
-          currentStart = i + 1
-          currentLength = 1
-        }
-        if (currentLength > maxLength) {
-          maxLength = currentLength
-          maxStart = currentStart
-        }
-      }
-      sortedTokens.slice(maxStart, maxStart + maxLength)
-    }
-
     /** walk up the tree to find the lowest node covering all focus tokens */
     def parentNode(tokens: Array[Vertex]): Option[Vertex] = {
       var top: Option[Vertex] = None
@@ -272,4 +247,30 @@ object QuestionRules extends TextProcessor {
     }
 
   }
+
+  /** find longest sequence of contiguous tokens */
+  private[dependencies] def longestSequence(tokens: Array[Vertex]): Array[Vertex] = {
+    // sort by sentence and token position
+    val sortedTokens: Array[Vertex] = tokens.sortBy(t => (t.sentenceId, t.tokenId)).toArray
+    // TODO: cleaner way with filter?
+    var maxStart: Int = 0
+    var maxLength: Int = 1
+    var currentStart: Int = 0
+    var currentLength: Int = 1
+    for (i <- 0 to sortedTokens.length - 2) {
+      if (sortedTokens(i).sentenceId == sortedTokens(i + 1).sentenceId
+        && sortedTokens(i).tokenId + 1 == sortedTokens(i + 1).tokenId) {
+        currentLength += 1
+      } else {
+        currentStart = i + 1
+        currentLength = 1
+      }
+      if (currentLength > maxLength) {
+        maxLength = currentLength
+        maxStart = currentStart
+      }
+    }
+    sortedTokens.slice(maxStart, maxStart + maxLength)
+  }
+
 }
