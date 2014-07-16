@@ -5,7 +5,13 @@
 
 <http://aristo.allenai.org/id#ie-target/12_10> <http://www.w3.org/2000/01/rdf-schema#label> "that" .
 
+<http://aristo.allenai.org/id#ie-target/10_6> <http://www.w3.org/2000/01/rdf-schema#label> "break" .
+
+<http://aristo.allenai.org/id#ie-target/11_8> <http://www.w3.org/2000/01/rdf-schema#comment> "an object toward the center of the Earth" .
+
 <http://aristo.allenai.org/id#ie-target/3_5> <http://www.w3.org/2000/01/rdf-schema#label> "use" .
+
+<http://aristo.allenai.org/id#ie-target/10_16> <http://www.w3.org/2000/01/rdf-schema#comment> "the soil" .
 
 <http://aristo.allenai.org/id#ie-target/22_1> <http://www.w3.org/2000/01/rdf-schema#comment> "Gravity" ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "gravity" .
@@ -28,7 +34,11 @@
 
 <http://aristo.allenai.org/id#ie-target/2_11> <http://www.w3.org/2000/01/rdf-schema#label> "food" .
 
+<http://aristo.allenai.org/id#ie-target/11_6> <http://www.w3.org/2000/01/rdf-schema#comment> "pulls" .
+
 <http://aristo.allenai.org/id#ie-target/19_7> <http://www.w3.org/2000/01/rdf-schema#label> "cylinder" .
+
+<http://aristo.allenai.org/id#ie-target/10_6> <http://www.w3.org/2000/01/rdf-schema#comment> "break down" .
 
 <http://aristo.allenai.org/id#ie-target/2_4> <http://www.w3.org/2000/01/rdf-schema#label> "prepare" .
 
@@ -42,8 +52,6 @@
 
 <http://aristo.allenai.org/id#ie-target/5_14> <http://www.w3.org/2000/01/rdf-schema#comment> "nutrients" .
 
-<http://aristo.allenai.org/id#ie-target/3_5> <http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens is used" .
-
 <http://aristo.allenai.org/id#ie-target/1_16> <http://www.w3.org/2000/01/rdf-schema#label> "skin" .
 
 <http://aristo.allenai.org/id#ie-target/2_13> <http://www.w3.org/2000/01/rdf-schema#label> "go" .
@@ -55,6 +63,8 @@
 <http://aristo.allenai.org/id#ie-target/15_15> <http://www.w3.org/2000/01/rdf-schema#comment> "a solid" .
 
 <http://aristo.allenai.org/id#ie-target/1_4> <http://www.w3.org/2000/01/rdf-schema#comment> "the hot weather" .
+
+<http://aristo.allenai.org/id#ie-target/10_11> <http://www.w3.org/2000/01/rdf-schema#label> "recycle" .
 
 <http://aristo.allenai.org/id#ie-target/1_6> <http://www.w3.org/2000/01/rdf-schema#label> "body" .
 
@@ -72,6 +82,8 @@
 
 <http://aristo.allenai.org/id#ie-target/13_3> <http://www.w3.org/2000/01/rdf-schema#label> "store" .
 
+<http://aristo.allenai.org/id#ie-target/20_9> <http://www.w3.org/2000/01/rdf-schema#label> "in" .
+
 <http://aristo.allenai.org/id#ie-target/15_12> <http://www.w3.org/2000/01/rdf-schema#label> "liquid" .
 
 <http://aristo.allenai.org/id#ie-target/4_2> <http://www.w3.org/2000/01/rdf-schema#comment> "involves" .
@@ -80,15 +92,16 @@
 
 <http://aristo.allenai.org/id#ie-target/3_3> <http://www.w3.org/2000/01/rdf-schema#label> "lens" .
 
-<http://aristo.allenai.org/id#ie-target/13_6> <http://www.w3.org/2000/01/rdf-schema#label> "prepare" .
+<http://aristo.allenai.org/id#ie-target/2_15> <http://www.w3.org/2000/01/rdf-schema#comment> "it" ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "it" .
 
-<http://aristo.allenai.org/id#ie-target/17_3> <http://www.w3.org/2000/01/rdf-schema#label> "that" .
+<http://aristo.allenai.org/id#ie-target/13_6> <http://www.w3.org/2000/01/rdf-schema#label> "prepare" .
 
 <http://aristo.allenai.org/id#ie-target/12_12> <http://www.w3.org/2000/01/rdf-schema#label> "organism" .
 
-<http://aristo.allenai.org/id#ie-target/21_7> <http://www.w3.org/2000/01/rdf-schema#label> "decomposer" .
+<http://aristo.allenai.org/id#ie-target/2_17> <http://www.w3.org/2000/01/rdf-schema#comment> "called" .
 
-<http://aristo.allenai.org/id#ie-target/2_17> <http://www.w3.org/2000/01/rdf-schema#comment> "When some animals prepare for the long winters by storing food and going dormant it is called" .
+<http://aristo.allenai.org/id#ie-target/21_7> <http://www.w3.org/2000/01/rdf-schema#label> "decomposer" .
 
 <http://aristo.allenai.org/id#ie-target/4_1> <http://www.w3.org/2000/01/rdf-schema#comment> "Freezing" .
 
@@ -102,19 +115,23 @@
 
 <http://aristo.allenai.org/id#ie-target/15_3> <http://www.w3.org/2000/01/rdf-schema#comment> "the temperature" .
 
+<http://aristo.allenai.org/id#ie-target/10_16> <http://www.w3.org/2000/01/rdf-schema#label> "soil" .
+
 <http://aristo.allenai.org/id#ie-target/13_3> <http://www.w3.org/2000/01/rdf-schema#comment> "storing" .
 
 <http://aristo.allenai.org/id#ie-target/3_8> <http://www.w3.org/2000/01/rdf-schema#label> "object" .
 
 <http://aristo.allenai.org/id#ie-target/4_18> <http://www.w3.org/2000/01/rdf-schema#comment> "the removal" .
 
-<http://aristo.allenai.org/id#ie-target/17_3> <http://www.w3.org/2000/01/rdf-schema#comment> "that" .
+<http://aristo.allenai.org/id#ie-target/10_9> <http://www.w3.org/2000/01/rdf-schema#label> "organism" .
 
 <http://aristo.allenai.org/id#ie-target/2_8> <http://www.w3.org/2000/01/rdf-schema#label> "winter" .
 
 <http://aristo.allenai.org/id#ie-target/7_3> <http://www.w3.org/2000/01/rdf-schema#comment> "rest" .
 
 <http://aristo.allenai.org/id#ie-target/2_3> <http://www.w3.org/2000/01/rdf-schema#label> "animal" .
+
+<http://aristo.allenai.org/id#ie-target/11_8> <http://www.w3.org/2000/01/rdf-schema#label> "object" .
 
 <http://aristo.allenai.org/id#ie-target/3_3> <http://www.w3.org/2000/01/rdf-schema#comment> "A hand lens" .
 
@@ -130,11 +147,15 @@
 
 <http://aristo.allenai.org/id#ie-target/15_9> <http://www.w3.org/2000/01/rdf-schema#comment> "water" .
 
+<http://aristo.allenai.org/id#ie-target/2_1> <http://www.w3.org/2000/01/rdf-schema#comment> "When" .
+
 <http://aristo.allenai.org/id#ie-target/1_6> <http://www.w3.org/2000/01/rdf-schema#comment> "our bodies" .
 
 <http://aristo.allenai.org/id#ie-target/18_1> <http://www.w3.org/2000/01/rdf-schema#label> "rest" .
 
 <http://aristo.allenai.org/id#ie-target/14_12> <http://www.w3.org/2000/01/rdf-schema#comment> "a better look at the spots" .
+
+<http://aristo.allenai.org/id#ie-target/10_11> <http://www.w3.org/2000/01/rdf-schema#comment> "recycle" .
 
 <http://aristo.allenai.org/id#ie-target/4_20> <http://www.w3.org/2000/01/rdf-schema#label> "heat" .
 
@@ -148,11 +169,15 @@
 
 <http://aristo.allenai.org/id#ie-target/4_8> <http://www.w3.org/2000/01/rdf-schema#label> "state" .
 
+<http://aristo.allenai.org/id#ie-target/10_13> <http://www.w3.org/2000/01/rdf-schema#comment> "their nutrients" .
+
 <http://aristo.allenai.org/id#ie-target/20_15> <http://www.w3.org/2000/01/rdf-schema#label> "camouflage" .
 
 <http://aristo.allenai.org/id#ie-target/13_4> <http://www.w3.org/2000/01/rdf-schema#label> "nut" .
 
 <http://aristo.allenai.org/id#ie-target/20_3> <http://www.w3.org/2000/01/rdf-schema#comment> "The white fur" .
+
+<http://aristo.allenai.org/id#ie-target/20_14> <http://www.w3.org/2000/01/rdf-schema#comment> "called" .
 
 <http://aristo.allenai.org/id#ie-target/3_11> <http://www.w3.org/2000/01/rdf-schema#label> "detail" .
 
@@ -176,7 +201,11 @@
 
 <http://aristo.allenai.org/id#ie-target/19_4> <http://www.w3.org/2000/01/rdf-schema#label> "use" .
 
+<http://aristo.allenai.org/id#ie-target/21_1> <http://www.w3.org/2000/01/rdf-schema#comment> "When" .
+
 <http://aristo.allenai.org/id#ie-target/21_10> <http://www.w3.org/2000/01/rdf-schema#label> "nutrient" .
+
+<http://aristo.allenai.org/id#ie-target/20_3> <http://www.w3.org/2000/01/rdf-schema#comment> "The white fur of an arctic fox blends" .
 
 <http://aristo.allenai.org/id#ie-target/18_1> <http://www.w3.org/2000/01/rdf-schema#comment> "Resting" .
 
@@ -197,6 +226,8 @@
 <http://aristo.allenai.org/id#ie-target/5_1> <http://www.w3.org/2000/01/rdf-schema#label> "animal" .
 
 <http://aristo.allenai.org/id#ie-target/12_17> <http://www.w3.org/2000/01/rdf-schema#comment> "hot temperatures" .
+
+<http://aristo.allenai.org/id#ie-target/2_1> <http://www.w3.org/2000/01/rdf-schema#label> "when" .
 
 <http://aristo.allenai.org/id#ie-target/22_4> <http://www.w3.org/2000/01/rdf-schema#label> "ball" .
 
@@ -248,6 +279,8 @@
 
 <http://aristo.allenai.org/id#ie-target/2_4> <http://www.w3.org/2000/01/rdf-schema#comment> "prepare" .
 
+<http://aristo.allenai.org/id#ie-target/10_13> <http://www.w3.org/2000/01/rdf-schema#label> "nutrient" .
+
 <http://aristo.allenai.org/id#ie-target/21_2> <http://www.w3.org/2000/01/rdf-schema#comment> "plants" .
 
 <http://aristo.allenai.org/id#ie-target/1_12> <http://www.w3.org/2000/01/rdf-schema#comment> "bringing" .
@@ -255,6 +288,8 @@
 <http://aristo.allenai.org/id#ie-target/4_3> <http://www.w3.org/2000/01/rdf-schema#label> "change" .
 
 <http://aristo.allenai.org/id#ie-target/5_11> <http://www.w3.org/2000/01/rdf-schema#comment> "eat" .
+
+<http://aristo.allenai.org/id#ie-target/3_5> <http://www.w3.org/2000/01/rdf-schema#comment> "used" .
 
 <http://aristo.allenai.org/id#ie-target/3_7> <http://www.w3.org/2000/01/rdf-schema#comment> "view" .
 
@@ -272,6 +307,8 @@
 
 <http://aristo.allenai.org/id#ie-target/7_1> <http://www.w3.org/2000/01/rdf-schema#label> "get" .
 
+<http://aristo.allenai.org/id#ie-target/11_6> <http://www.w3.org/2000/01/rdf-schema#label> "pull" .
+
 <http://aristo.allenai.org/id#ie-target/15_8> <http://www.w3.org/2000/01/rdf-schema#label> "change" .
 
 <http://aristo.allenai.org/id#ie-target/20_3> <http://www.w3.org/2000/01/rdf-schema#label> "fur" .
@@ -284,6 +321,8 @@
 
 <http://aristo.allenai.org/id#ie-target/13_2> <http://www.w3.org/2000/01/rdf-schema#label> "squirrel" .
 
+<http://aristo.allenai.org/id#ie-target/20_9> <http://www.w3.org/2000/01/rdf-schema#comment> "in with the snow" .
+
 <http://aristo.allenai.org/id#ie-target/15_15> <http://www.w3.org/2000/01/rdf-schema#label> "solid" .
 
 <http://aristo.allenai.org/id#ie-target/19_12> <http://www.w3.org/2000/01/rdf-schema#comment> "10 milliliters of water" .
@@ -291,6 +330,8 @@
 <http://aristo.allenai.org/id#ie-target/14_7> <http://www.w3.org/2000/01/rdf-schema#label> "lens" .
 
 <http://aristo.allenai.org/id#ie-target/21_14> <http://www.w3.org/2000/01/rdf-schema#label> "chain" .
+
+<http://aristo.allenai.org/id#ie-target/21_1> <http://www.w3.org/2000/01/rdf-schema#label> "when" .
 
 <http://aristo.allenai.org/id#ie-target/17_4> <http://www.w3.org/2000/01/rdf-schema#comment> "produces" .
 
@@ -311,6 +352,8 @@
 <http://aristo.allenai.org/id#ie-target/13_6> <http://www.w3.org/2000/01/rdf-schema#comment> "preparing" .
 
 <http://aristo.allenai.org/id#ie-target/2_17> <http://www.w3.org/2000/01/rdf-schema#label> "call" .
+
+<http://aristo.allenai.org/id#ie-target/10_9> <http://www.w3.org/2000/01/rdf-schema#comment> "dead organisms" .
 
 <http://aristo.allenai.org/id#ie-target/13_4> <http://www.w3.org/2000/01/rdf-schema#comment> "nuts" .
 
@@ -363,7 +406,5 @@
 <http://aristo.allenai.org/id#ie-target/4_18> <http://www.w3.org/2000/01/rdf-schema#label> "removal" .
 
 <http://aristo.allenai.org/id#ie-target/12_6> <http://www.w3.org/2000/01/rdf-schema#comment> "sweat" .
-
-<http://aristo.allenai.org/id#ie-target/20_14> <http://www.w3.org/2000/01/rdf-schema#comment> "The white fur of an arctic fox blends is called" .
 
 <http://aristo.allenai.org/id#ie-target/5_11> <http://www.w3.org/2000/01/rdf-schema#label> "eat" .
