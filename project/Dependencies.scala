@@ -36,12 +36,13 @@ object Dependencies {
       }
     }
     // Now, add the logging libraries.
-    val logbackDeps = deps ++= Seq(slf4jApi,
-        // Bridge log4j logging to slf4j.
-        "org.slf4j" % "log4j-over-slf4j" % slf4jVersion,
-        // Use logback for the implementation.
-        "ch.qos.logback" % "logback-core" % "1.1.2",
-        "ch.qos.logback" % "logback-classic" % "1.1.2")
+    val logbackDeps = deps ++= Seq(
+      slf4jApi,
+      // Bridge log4j logging to slf4j.
+      "org.slf4j" % "log4j-over-slf4j" % slf4jVersion,
+      // Use logback for the implementation.
+      "ch.qos.logback" % "logback-core" % "1.1.2",
+      "ch.qos.logback" % "logback-classic" % "1.1.2")
     Seq(cleanedDeps, logbackDeps)
   }
 
