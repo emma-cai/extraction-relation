@@ -11,6 +11,41 @@ object Dependencies {
     "IESL Releases" at "http://dev-iesl.cs.umass.edu/nexus/content/groups/public",
     Resolver.sonatypeRepo("snapshots"))
 
+  val slf4jVersion = "1.7.7"
+  // The logging API to use. This should be the only logging dependency of any API artifact
+  // (anything that's going to be depended on outside of this SBT project).
+  val slf4jApi = "org.slf4j" % "slf4j-api" % slf4jVersion
+  // Removes all unneeded log4j & slf4j implementations from the given modules. Adds in a single
+  // slf4j implementation (logback), and the log4j -> slf4j bridge.
+  // This should be called on libraryDependencies like:
+  // addLoggingDependencies(libraryDependencies)
+  def addLoggingDependencies(deps: SettingKey[Seq[ModuleID]]): Seq[Setting[Seq[ModuleID]]] = {
+    val cleanedDeps = deps ~= { seq =>
+      seq map { module =>
+        // Exclude the transitive dependencies that might mess things up for us.
+        // slf4j replaces log4j.
+        (module exclude("log4j", "log4j")
+           // We're using logback as the slf4j implementation, and we're providing it below.
+           exclude("org.slf4j", "slf4j-log4j12")
+           exclude("org.slf4j", "slf4j-jdk14")
+           exclude("org.slf4j", "slf4j-jcl")
+           exclude("org.slf4j", "slf4j-simple")
+           // We'll explicitly provide the logback version; this avoids having to do an override.
+           exclude("ch.qos.logback", "logback-core")
+           exclude("ch.qos.logback", "logback-classic"))
+      }
+    }
+    // Now, add the logging libraries.
+    val logbackDeps = deps ++= Seq(
+      slf4jApi,
+      // Bridge log4j logging to slf4j.
+      "org.slf4j" % "log4j-over-slf4j" % slf4jVersion,
+      // Use logback for the implementation.
+      "ch.qos.logback" % "logback-core" % "1.1.2",
+      "ch.qos.logback" % "logback-classic" % "1.1.2")
+    Seq(cleanedDeps, logbackDeps)
+  }
+
   def sprayModule(id: String) = "io.spray" % s"spray-${id}" % "1.3.1"
   // spray-json uses a separate version number.
   val sprayJson = "io.spray" %% "spray-json" % "1.2.6"
@@ -52,11 +87,9 @@ object Dependencies {
     "com.h2database" % "h2" % "1.3.175",
     "com.typesafe.slick" %% "slick" % "2.0.0")
 
-  // Akka actors, logging, and backend for logging.
+  // Akka actors & logging.
   def akkaModule(id: String) = "com.typesafe.akka" %% s"akka-${id}" % "2.3.2"
-  val AkkaLibraries = Seq(akkaModule("actor"),
-    akkaModule("slf4j"),
-    "ch.qos.logback" % "logback-classic" % "1.0.13")
+  val AkkaLibraries = Seq(akkaModule("actor"), akkaModule("slf4j"))
 
   // Clear libraries, for use in SRL.
   val clearNlp = "com.clearnlp" % "clearnlp" % "2.0.2"
@@ -78,9 +111,7 @@ object Dependencies {
     "org.scala-lang" % "scala-reflect" % "2.10.4",
     // Various things depend transitively on different versions of slf4j. Override to the version
     // Akka wants.
-    "org.slf4j" % "slf4j-api" % "1.7.5",
-    // Similarly, log4j is depended on by lots of stuff. Override to the newest requested version.
-    "log4j" % "log4j" % "1.2.17",
+    "org.slf4j" % "slf4j-api" % "1.7.7",
     // Somehow we get two versions of commons-io through ari-datastore-client - use the most recent
     // one.
     "commons-io" % "commons-io" % "2.4",

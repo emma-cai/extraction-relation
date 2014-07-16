@@ -17,6 +17,8 @@ libraryDependencies ++= AkkaLibraries ++ Seq(
     sprayModule("routing"),
     sprayJson)
 
+addLoggingDependencies(libraryDependencies)
+
 javaOptions ++= Seq("-Xmx1G", "-XX:+UseConcMarkSweepGC")
 
 fork in run := true

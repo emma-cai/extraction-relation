@@ -24,6 +24,8 @@ libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ TestLibraries ++ ferr
   tinkerpop,
   typesafeConfig)
 
+addLoggingDependencies(libraryDependencies)
+
 fork in run := true
 
 // Set the config file.

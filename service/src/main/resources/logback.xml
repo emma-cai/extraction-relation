@@ -11,19 +11,12 @@
     </rollingPolicy>
 
     <encoder>
-      <pattern>%-5level [%date] %logger{35}: %msg%n</pattern>
-    </encoder>
-  </appender>
-
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <encoder>
-      <pattern>%date{ISO8601} %-5level %logger{36} %X{sourceThread} - %msg%n</pattern>
+      <pattern>%-5level [%date][%X{sourceThread}] %logger{35}: %msg%n</pattern>
     </encoder>
   </appender>
 
   <root level="INFO">
     <appender-ref ref="FILE" />
-    <appender-ref ref="STDOUT" />
   </root>
 
   <logger name="org.allenai" level="INFO" />

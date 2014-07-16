@@ -19,6 +19,8 @@ libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ Seq(
   subcut,
   typesafeConfig)
 
+addLoggingDependencies(libraryDependencies)
+
 // Make sure we get the javaOptions we've set when we run.
 fork in run := true
 
