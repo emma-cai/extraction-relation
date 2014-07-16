@@ -28,26 +28,38 @@ object ExtractionRoles extends TurtleProcessor {
       }"""
 
     /** map input dependencies to output args */
-    def addArgs(node: Vertex) = {
+    def addArgs(node: Vertex): Unit = {
       // define input dependency to output role relations
       val roles: Seq[(String, String)] = Seq(
         ("nsubj", "pred:agent"),
+        ("nsubjpass", "pred:object"),
         ("dobj", "pred:object"),
         ("iobj", "pred:arg"),
+        ("advmod", "pred:arg"),
         ("tmod", "pred:arg"))
       for ((dep, role) <- roles) {
         addArg(node, dep, role)
       }
       addPreps(node)
+      addRelClause(node)
     }
 
-    /** query for arg values and add to graph */
+    /** query for arg values and add to outputGraph */
     def addArg(node: Vertex, dep: String, role: String) = {
       val uri: String = node.toUri
+      // add filter to exclude that/which/etc as rcmod subject
+      // TODO: declare filters in dep-role table?
+      val extraFilter: String = dep match {
+        case "nsubj" => s"""FILTER NOT EXISTS { ?rcmod dep:rcmod <$uri> .
+                                                ?nsubj token:pos "WDT" . }"""
+        case _ => "" // no filter
+      }
       val query: String = s"""
         # find dep relation
         SELECT ?$dep WHERE {
           <$uri> dep:$dep ?$dep .
+          FILTER NOT EXISTS { <$uri> dep:cop ?cop . }
+          $extraFilter
         }"""
       val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(graph, query)
       for (map <- result) {
@@ -76,6 +88,38 @@ object ExtractionRoles extends TurtleProcessor {
       }
     }
 
+    /** query for relative clauses add to outputGraph */
+    def addRelClause(node: Vertex) = {
+      val uri: String = node.toUri
+      val query: String = s"""
+        # find rcmod head
+        SELECT ?rcmod WHERE {
+          <$uri> dep:rcmod ?rcmod .
+        }"""
+      val result: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(graph, query)
+      for (map <- result) {
+        val rcmod: Vertex = map("rcmod")
+        val rcmodUri: String = rcmod.toUri
+        addArgs(rcmod)
+        // find first missing pred
+        Seq("pred:agent", "pred:object", "pred:arg").find { role =>
+          val predQuery: String = s"""
+            SELECT ?node WHERE {
+              <$rcmodUri> $role ?node .
+            }"""
+          val predResult: Seq[Map[String, Vertex]] = DependencyGraph.executeSparql(graph, predQuery)
+          if (predResult.isEmpty) {
+            graph.addEdge(rcmod, rcmod, node, role)
+            // Found, stop
+            true
+          } else {
+            // Not found, continue
+            false
+          }
+        }
+      }
+    }
+
     def process(): Unit = {
       // match patterns
       for (map <- DependencyGraph.executeSparql(graph, denomQuery)) {
@@ -87,5 +131,6 @@ object ExtractionRoles extends TurtleProcessor {
         addArgs(map("node"))
       }
     }
+
   }
 }

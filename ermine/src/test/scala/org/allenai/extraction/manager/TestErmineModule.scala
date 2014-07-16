@@ -3,6 +3,7 @@ package org.allenai.extraction.manager
 import org.allenai.extraction.{ FlatProcessor, Processor, TextProcessor }
 import org.allenai.extraction.processors.CatProcessor
 
+
 import com.escalatesoft.subcut.inject.NewBindingModule
 
 import scala.io.Source
