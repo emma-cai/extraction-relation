@@ -97,6 +97,15 @@ object Dependencies {
       "com.clearnlp" % "clearnlp-dictionary" % "1.0",
       "com.clearnlp" % "clearnlp-general-en-srl" % "1.1")
 
+  // Stanford parser dependencies.
+  val StanfordLibraries = Seq(
+    // Kevin's patches of the Stanford parser.
+    "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1",
+    // Dependency that the Stanford parser relies on. This also pulls in the
+    // other dependencies the parser needs.
+    "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
+  )
+
   // Collection of libraries used in test only.
   val TestLibraries = Seq(
     // Mockito for test mocks.
