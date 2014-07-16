@@ -14,9 +14,8 @@ import org.allenai.extraction.processors.definition.{
  * which is geared towards feature extraction for confidence functions */
 case class ExtractionInstance(sourceText: String, tokenMap: TokenMap, extraction: ExtractionTuple) {
   def prettyPrint = {
-    extraction match {
-      case t: ExtractionTuple => t.agent.get.prettyPrint + " --" + t.relation.semanticLabel.toUpperCase + "-> " + t.dObject.get.prettyPrint
-    }
+    extraction.agent.get.prettyPrint + " --" + extraction.relation.semanticLabel.toUpperCase + "-> " +
+      extraction.dObject.get.prettyPrint
   }
   val sentenceNumber = tokenMap.keys.map(_._1).max
   val maxTokenId = tokenMap.keys.filter(_._1 == sentenceNumber).map(_._2).max

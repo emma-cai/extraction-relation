@@ -74,25 +74,16 @@ object DumpFerretFeatures extends FlatProcessor {
         val xElements: Seq[(String, Vertex)] = nodeElements(x)
         val yElements: Seq[(String, Vertex)] = nodeElements(y)
         val nodes = (for ((id, node) <- xElements ++ yElements) yield node).toSet
-        println("x = " + x)
-        println("y = " + y)
-        println("xElements = " + xElements)
-        println("yElements = " + yElements)
-        println("nodes = " + nodes)
-        println(1)
+
         val sentenceIds = (nodes map nodeSentenceId).toList.sorted
-        println(2)
         val sentences: List[String] = for (sid <- sentenceIds) yield sentenceInfoCache.getOrElseUpdate(sid, getSentenceInfo(sid))._1
-println(3)
+
         /* TODO: the tokenMap should also carry around the corpus part of the sentenceId, but assume single
          * corpus for now until it's settled more */
         val tokenMap: TokenMap = (sentenceIds flatMap { sid =>
           for (token <- sentenceInfoCache.getOrElseUpdate(sid, getSentenceInfo(sid))._2)
             yield (sid._2, token.id) -> token
         }).toMap
-        
-        println("sentenceIds = " + sentenceIds)
-        println("tokenMap = " + tokenMap)
 
         val rel = map("r")
 
@@ -153,8 +144,8 @@ println(3)
         dObject = Some(getExtractionNodesForArgument(yElements, tokenMap)))
     }
 
-    /* get token information associated with a sentence ID */
-    def getSentenceInfo(sentenceId: (String, Int)) = {
+    /* get the text a full token sequence associated with a sentence ID */
+    def getSentenceInfo(sentenceId: (String, Int)): (String, Seq[OtterToken]) = {
       val query: String = s"""
       SELECT ?uri ?text ?begin ?pos ?lemma WHERE {
         ?uri <http://nlp.stanford.edu/token/text> ?text .
@@ -175,7 +166,7 @@ println(3)
     }
 
     def nodeSentenceId(node: Vertex): (String, Int) =
-      """http://aristo.allenai.org/id#(.*/)?(\d+)_""".r.findFirstMatchIn(node.toUri).map(s =>
+      """http://aristo.allenai.org/id#([^/]*?/?)(\d+)_\d""".r.findFirstMatchIn(node.toUri).map(s =>
         (s.group(1), s.group(2).toInt)).getOrElse(("", 0))
 
     /* Gives Seq("isa" -> vertex1, "agent" -> vertex2, ...) */
@@ -193,46 +184,6 @@ println(3)
         pred = map("pred").toStringLiteral
       } yield pred -> map("arg")
       res.toSeq :+ ("self" -> node) // use "self" to disinguish from other "isa" edges
-    }
-
-    def nodeArgs(node: Vertex, prefix: String = ""): String = {
-      val uri: String = node.toUri
-      val label: String = nodeLabel(node)
-      val query: String = s"""
-      SELECT ?pred ?arg WHERE {
-        <$uri> ?rel ?arg .
-        FILTER(STRSTARTS(str(?rel), "http://aristo.allenai.org/pred/")) .
-        BIND(STRAFTER(str(?rel), "http://aristo.allenai.org/pred/") AS ?pred) .
-      }"""
-      val args = new StringBuilder()
-      for (map <- DependencyGraph.executeSparql(inputGraph, query)) {
-        val pred = map("pred").toStringLiteral
-        val argString = nodeString(map("arg"))
-        if (args.isEmpty)
-          args ++= prefix
-        else
-          args ++= separator
-        args.append(s"""$pred($label, "$argString")""")
-      }
-      args.toString
-    }
-
-    def nodeIsa(node: Vertex, prefix: String = ""): String = {
-      val label: String = nodeLabel(node)
-      val string: String = nodeString(node)
-      s"""${prefix}isa($label, "$string")"""
-    }
-
-    def nodeLabel(node: Vertex): String = {
-      val uri: String = node.toUri
-      val id: String = uri.split("http://aristo.allenai.org/id#").last
-      val query: String = s"""
-      SELECT ?label WHERE {
-        <$uri> rdfs:label ?label .
-      }"""
-      val result: Map[String, Vertex] = DependencyGraph.executeSparql(inputGraph, query).head
-      val label = result.get("label").map(_.toStringLiteral).getOrElse("")
-      s"E$id-$label"
     }
 
     def nodeString(node: Vertex): String = {
