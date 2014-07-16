@@ -37,7 +37,7 @@ object FerretFeatures {
       }
     }
   }
-  
+
   object consequentIsTuple extends FerretFeature("consequent is a tuple") {
     override def apply(extr: ExtractionInstance): Double = {
       extr.extraction.dObject match {
@@ -46,7 +46,7 @@ object FerretFeatures {
       }
     }
   }
-  
+
   object arg1ContainsPronoun extends FerretFeature("arg1 contains a pronoun or EX") {
     override def apply(extr: ExtractionInstance): Double = {
       getTokensInPart(extr, "arg1").exists(tok => isPronoun(tok.posTag) || tok.posTag == "EX")
@@ -207,8 +207,8 @@ object FerretFeatures {
   def getAllTokensAfter(extr: ExtractionInstance, part: String): Seq[OtterToken] = {
     val tokens = getTokensInPart(extr, part).map(_.id)
     if (tokens.isEmpty) Seq() else (tokens.max + 1 to extr.maxTokenId) flatMap extr.getToken
-  }   
-  
+  }
+
   def getTokenSpanInPart(extr: ExtractionInstance, part: String): Interval = {
     val tokens = getTokensInPart(extr, part)
     if (tokens.isEmpty) Interval.empty
@@ -217,31 +217,30 @@ object FerretFeatures {
       Interval.open(ids.min, ids.max + 1)
     }
   }
-  
+
   def getTokensInNode(extr: ExtractionNodeOrTuple): Seq[OtterToken] = extr match {
     case node: ExtractionNode => node.tokens
     case _ => Seq()
   }
-  
+
   def getTokensInPart(tuple: ExtractionTuple, part: String): Seq[OtterToken] = {
-    val allTuples = (tuple.agent.toSeq ++ Seq(tuple.relation) ++ tuple.dObject.toSeq ++ 
-          tuple.args) filter (_.isInstanceOf[ExtractionTuple])
-          
+    val allTuples = (tuple.agent.toSeq ++ Seq(tuple.relation) ++ tuple.dObject.toSeq ++
+      tuple.args) filter (_.isInstanceOf[ExtractionTuple])
+
     val direct = part match {
       case "arg1" => (tuple.agent map getTokensInNode).getOrElse(Seq())
       case "rel" => getTokensInNode(tuple.relation)
       case "arg2s" => (tuple.dObject.toSeq ++ tuple.args) flatMap getTokensInNode
-    }   
-    (direct ++ (allTuples flatMap (t => getTokensInPart(t, part)))).distinct  
+    }
+    (direct ++ (allTuples flatMap (t => getTokensInPart(t, part)))).distinct
   }
-  
+
   def getTokensInPart(extr: ExtractionNodeOrTuple, part: String): Seq[OtterToken] = extr match {
     case tuple: ExtractionTuple => getTokensInPart(tuple, part)
     case _ => Seq()
   }
-  
+
   def getTokensInPart(extr: ExtractionInstance, part: String): Seq[OtterToken] = getTokensInPart(extr.extraction, part)
- 
 
   class MatchWordRightBefore(part: String, wordPattern: String,
       labelOverride: String) extends FerretFeature(labelOverride + " right before " + part) {
@@ -291,9 +290,6 @@ object FerretFeatures {
       tokens.exists(_.posTag.matches(postagPattern))
     }
   }
-
-  
-  
 
   /* the following two lists are copied from ReVerb */
   val comWords = List("acknowledge",
@@ -359,8 +355,7 @@ object FerretFeatures {
     new PartContainsPostag("rel", "VBD"),
     new PartContainsPostag("rel", "VBN"),
     new PartContainsPostag("rel", "VBP"),
-    new PartContainsPostag("rel", "VB")
-    )
+    new PartContainsPostag("rel", "VB"))
 
   def featureMap: SortedMap[String, FerretFeature] = {
     (for (f <- features) yield (f.name -> Feature.from(f.name, f.apply _)))(scala.collection.breakOut)

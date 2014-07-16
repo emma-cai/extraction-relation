@@ -20,8 +20,8 @@ case class ExtractionInstance(sourceText: String, tokenMap: TokenMap, extraction
   }
   val sentenceNumber = tokenMap.keys.map(_._1).max
   val maxTokenId = tokenMap.keys.filter(_._1 == sentenceNumber).map(_._2).max
-  
-  def getToken(index:Int): Option[OtterToken] = tokenMap.get((sentenceNumber, index))
+
+  def getToken(index: Int): Option[OtterToken] = tokenMap.get((sentenceNumber, index))
 }
 
 sealed abstract class ExtractionNodeOrTuple {
@@ -31,27 +31,27 @@ sealed abstract class ExtractionNodeOrTuple {
 }
 
 case class ExtractionNode(
-    nodeId: String, 
-    string: String, 
-    tokens: Seq[OtterToken], 
+    nodeId: String,
+    string: String,
+    tokens: Seq[OtterToken],
     semanticLabel: String = "") extends ExtractionNodeOrTuple {
 
   val isTuple = false
-  
+
   def prettyPrint: String = {
     val prefix = if (semanticLabel == "") "" else semanticLabel.toUpperCase + ":"
     prefix + "\"" + string + "\""
   }
-  
+
 }
 
 case class ExtractionTuple(
-    agent: Option[ExtractionNodeOrTuple], 
-    relation: ExtractionNodeOrTuple, 
+    agent: Option[ExtractionNodeOrTuple],
+    relation: ExtractionNodeOrTuple,
     dObject: Option[ExtractionNodeOrTuple],
-    args: Seq[ExtractionNodeOrTuple] = Seq(), 
+    args: Seq[ExtractionNodeOrTuple] = Seq(),
     semanticLabel: String = "") extends ExtractionNodeOrTuple {
-  
+
   val isTuple = true
 
   def prettyPrint: String = {
