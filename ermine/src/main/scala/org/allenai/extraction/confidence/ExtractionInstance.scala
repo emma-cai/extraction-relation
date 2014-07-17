@@ -17,10 +17,11 @@ case class ExtractionInstance(sourceText: String, tokenMap: TokenMap, extraction
     extraction.agent.get.prettyPrint + " --" + extraction.relation.semanticLabel.toUpperCase + "-> " +
       extraction.dObject.get.prettyPrint
   }
-  val sentenceNumber = tokenMap.keys.map(_._1).max
-  val maxTokenId = tokenMap.keys.filter(_._1 == sentenceNumber).map(_._2).max
+  val corpus = tokenMap.keys.head._1
+  val sentenceNumber = tokenMap.keys.map(_._2).max
+  val maxTokenId = tokenMap.keys.filter(_._2 == sentenceNumber).map(_._3).max
 
-  def getToken(index: Int): Option[OtterToken] = tokenMap.get((sentenceNumber, index))
+  def getToken(index: Int): Option[OtterToken] = tokenMap.get((corpus, sentenceNumber, index))
 }
 
 sealed abstract class ExtractionNodeOrTuple {
@@ -64,5 +65,5 @@ case class ExtractionTuple(
 }
 
 object ExtractionInstance {
-  type TokenMap = Map[(Int, Int), OtterToken]
+  type TokenMap = Map[(String, Int, Int), OtterToken]
 }

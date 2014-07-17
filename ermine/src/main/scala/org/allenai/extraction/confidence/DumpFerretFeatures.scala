@@ -82,7 +82,7 @@ object DumpFerretFeatures extends FlatProcessor {
          * corpus for now until it's settled more */
         val tokenMap: TokenMap = (sentenceIds flatMap { sid =>
           for (token <- sentenceInfoCache.getOrElseUpdate(sid, getSentenceInfo(sid))._2)
-            yield (sid._2, token.id) -> token
+            yield (sid._1, sid._2, token.id) -> token
         }).toMap
 
         val rel = map("r")
@@ -104,7 +104,7 @@ object DumpFerretFeatures extends FlatProcessor {
     }
 
     def vertexToToken(v: Vertex, tokenMap: TokenMap): OtterToken =
-      tokenMap.get(v.ids) match {
+      tokenMap.get(v.idsWithCorpus) match {
         case Some(token) => token
         case None => throw new IllegalArgumentException(s"TokenMap lookup failed for token ${v.ids}")
       }
@@ -146,10 +146,14 @@ object DumpFerretFeatures extends FlatProcessor {
 
     /* get the text a full token sequence associated with a sentence ID */
     def getSentenceInfo(sentenceId: (String, Int)): (String, Seq[OtterToken]) = {
+      val uriPrefix = sentenceId match {
+        case ("", id) => id
+        case (corpus, id) => corpus + "/" + id
+      }
       val query: String = s"""
       SELECT ?uri ?text ?begin ?pos ?lemma WHERE {
         ?uri <http://nlp.stanford.edu/token/text> ?text .
-        FILTER(STRSTARTS(str(?uri), "http://aristo.allenai.org/id#${sentenceId._1}${sentenceId._2}_"))
+        FILTER(STRSTARTS(str(?uri), "http://aristo.allenai.org/id#${uriPrefix}_"))
         ?uri <http://nlp.stanford.edu/token/begin> ?begin ;
              <http://nlp.stanford.edu/token/pos> ?pos ;
              <http://nlp.stanford.edu/token/lemma> ?lemma .
@@ -165,10 +169,11 @@ object DumpFerretFeatures extends FlatProcessor {
       (sortedRes.map(_._2).mkString(" "), sortedRes.map(_._3))
     }
 
-    def nodeSentenceId(node: Vertex): (String, Int) =
-      """http://aristo.allenai.org/id#([^/]*?/?)(\d+)_\d""".r.findFirstMatchIn(node.toUri).map(s =>
-        (s.group(1), s.group(2).toInt)).getOrElse(("", 0))
-
+    def nodeSentenceId(node: Vertex): (String, Int) = node.idsWithCorpus match {
+      case (corpus, sentence, _) => (corpus, sentence)
+      case _ => ("", 0)
+    }
+      
     /* Gives Seq("isa" -> vertex1, "agent" -> vertex2, ...) */
     def nodeElements(node: Vertex): Seq[(String, Vertex)] = {
       val uri: String = node.toUri
