@@ -6,7 +6,7 @@ import com.tinkerpop.blueprints.Vertex
 
 /** Wrap Vertex to add helper methods. */
 object VertexWrapper {
-  val SentenceTokenIds = """(\d+)_(\d+)""".r
+  val SentenceTokenIds = """/id#([^/]+)/(\d+)_(\d+)""".r
   val LastPath = """/([^/]+)/?$""".r
   implicit class VertexRdf(val v: Vertex) extends AnyVal {
     /** Returns the string value, if a literal; or the String form of the ID, if a URI. Useful for
@@ -44,14 +44,16 @@ object VertexWrapper {
         throw new ErmineException(s"attempted to get a literal from a non-literal vertex ${v}")
     }
 
-    def ids: (Int, Int) = SentenceTokenIds findFirstIn v.toUri match {
-      case Some(SentenceTokenIds(sentenceId, tokenId)) => (sentenceId.toInt, tokenId.toInt)
+    def allIds: (String, Int, Int) = SentenceTokenIds findFirstIn v.toUri match {
+      case Some(SentenceTokenIds(corpusId, sentenceId, tokenId)) => (corpusId, sentenceId.toInt, tokenId.toInt)
       case _ => throw new ErmineException(s"malformed uri in vertex ${v}")
     }
 
-    def sentenceId: Int = v.ids._1
+    def corpusId: String = v.allIds._1
 
-    def tokenId: Int = v.ids._2
+    def sentenceId: Int = v.allIds._2
+
+    def tokenId: Int = v.allIds._3
 
     // for sorting by token number
     def <(v2: Vertex): Boolean = {

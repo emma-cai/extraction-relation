@@ -5,7 +5,7 @@ import org.allenai.common.Config.EnhancedConfig
 import org.allenai.extraction.ConfigModule
 import org.allenai.extraction.Processor
 import org.allenai.extraction.processors._
-import org.allenai.extraction.confidence.DumpOtterFeatures
+import org.allenai.extraction.confidence.{ DumpFerretFeatures, DumpOtterFeatures }
 import org.allenai.extraction.processors.definition._
 import org.allenai.extraction.processors.dependencies._
 import org.allenai.extraction.rdf.TurtleGraphDiff
@@ -38,6 +38,7 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(CatProcessor)
     addProcessor(ClearSrl)
     addProcessor(CorpusSplitter)
+    addProcessor(DumpFerretFeatures)
     addProcessor(DumpOtterFeatures)
     addProcessor(ExtractionLabels)
     addProcessor(ExtractionRoles)

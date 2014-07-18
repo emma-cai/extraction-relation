@@ -15,7 +15,7 @@ class QuestionRulesTest extends UnitSpec {
 
   it should "handle single node input" in {
     val graph = new MemoryStoreSailGraph()
-    val v1: Vertex = graph.addVertex("http://1_1")
+    val v1: Vertex = graph.addVertex("http://id#test/1_1")
     val input = Array[Vertex](v1)
     val result: Array[Vertex] = QuestionRules.longestSequence(input)
     assert(result === input)
@@ -24,9 +24,9 @@ class QuestionRulesTest extends UnitSpec {
 
   it should "handle ordered input" in {
     val graph = new MemoryStoreSailGraph()
-    val v1: Vertex = graph.addVertex("http://1_1")
-    val v2: Vertex = graph.addVertex("http://1_2")
-    val v3: Vertex = graph.addVertex("http://1_3")
+    val v1: Vertex = graph.addVertex("http://id#test/1_1")
+    val v2: Vertex = graph.addVertex("http://id#test/1_2")
+    val v3: Vertex = graph.addVertex("http://id#test/1_3")
     val input = Array[Vertex](v1, v2, v3)
     val result: Array[Vertex] = QuestionRules.longestSequence(input)
     assert(result === input)
@@ -35,9 +35,9 @@ class QuestionRulesTest extends UnitSpec {
 
   it should "handle unordered input" in {
     val graph = new MemoryStoreSailGraph()
-    val v1: Vertex = graph.addVertex("http://1_1")
-    val v2: Vertex = graph.addVertex("http://2_2")
-    val v3: Vertex = graph.addVertex("http://3_3")
+    val v1: Vertex = graph.addVertex("http://id#test/1_1")
+    val v2: Vertex = graph.addVertex("http://id#test/2_2")
+    val v3: Vertex = graph.addVertex("http://id#test/3_3")
     val input = Array[Vertex](v1, v2, v3)
     val result: Array[Vertex] = QuestionRules.longestSequence(input)
     assert(result === Array[Vertex](v1))
@@ -46,9 +46,9 @@ class QuestionRulesTest extends UnitSpec {
 
   it should "handle partially ordered input" in {
     val graph = new MemoryStoreSailGraph()
-    val v1: Vertex = graph.addVertex("http://1_1")
-    val v2: Vertex = graph.addVertex("http://2_2")
-    val v3: Vertex = graph.addVertex("http://2_3")
+    val v1: Vertex = graph.addVertex("http://id#test/1_1")
+    val v2: Vertex = graph.addVertex("http://id#test/2_2")
+    val v3: Vertex = graph.addVertex("http://id#test/2_3")
     val input = Array[Vertex](v1, v2, v3)
     val result: Array[Vertex] = QuestionRules.longestSequence(input)
     assert(result === Array[Vertex](v2, v3))
