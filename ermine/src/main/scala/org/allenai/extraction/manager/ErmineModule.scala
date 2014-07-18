@@ -53,17 +53,6 @@ class ErmineModule(actorSystem: ActorSystem) extends NewBindingModule(module => 
     addProcessor(StanfordTtl)
     addProcessor(TurtleGraphDiff)
 
-    // Create the Ferret instance to use in our extractors, if we have a config key for it.
-    config.get[String]("ferret.directory") match {
-      case Some(ferretDir) => {
-        val ferret = new Ferret(ferretDir)
-        addProcessor(new FerretTextProcessor(ferret))
-        addProcessor(new FerretQuestionProcessor(ferret))
-      }
-      case None =>
-        log.error("ferret.directory not found in config - Ferret extractors won't be initialized")
-    }
-
     // Get the data directory for extractors that need it and configure those extractors.
     config.get[String]("ermine.dataDirectory") match {
       case Some(dataDir) => {

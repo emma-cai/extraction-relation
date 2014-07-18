@@ -1,0 +1,2644 @@
+
+@prefix id: <http://aristo.allenai.org/id#> .
+
+@prefix token: <http://nlp.stanford.edu/token/> .
+@prefix ne: <http://nlp.stanford.edu/ne/> .
+@prefix basic: <http://nlp.stanford.edu/basic/> .
+@prefix dep: <http://nlp.stanford.edu/dep/> .
+@prefix coref: <http://nlp.stanford.edu/coref/> .
+
+<http://aristo.allenai.org/id#ie-target/1_1> token:text "In" .
+<http://aristo.allenai.org/id#ie-target/1_1> token:lemma "in" .
+<http://aristo.allenai.org/id#ie-target/1_1> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/1_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/1_1> token:end 2 .
+
+<http://aristo.allenai.org/id#ie-target/1_2> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/1_2> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/1_2> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/1_2> token:begin 3 .
+<http://aristo.allenai.org/id#ie-target/1_2> token:end 6 .
+
+<http://aristo.allenai.org/id#ie-target/1_3> token:text "hot" .
+<http://aristo.allenai.org/id#ie-target/1_3> token:lemma "hot" .
+<http://aristo.allenai.org/id#ie-target/1_3> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/1_3> token:begin 7 .
+<http://aristo.allenai.org/id#ie-target/1_3> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/1_4> token:text "weather" .
+<http://aristo.allenai.org/id#ie-target/1_4> token:lemma "weather" .
+<http://aristo.allenai.org/id#ie-target/1_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/1_4> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/1_4> token:end 18 .
+
+<http://aristo.allenai.org/id#ie-target/1_5> token:text "our" .
+<http://aristo.allenai.org/id#ie-target/1_5> token:lemma "we" .
+<http://aristo.allenai.org/id#ie-target/1_5> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/1_5> token:begin 19 .
+<http://aristo.allenai.org/id#ie-target/1_5> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/1_6> token:text "bodies" .
+<http://aristo.allenai.org/id#ie-target/1_6> token:lemma "body" .
+<http://aristo.allenai.org/id#ie-target/1_6> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/1_6> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/1_6> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/1_7> token:text "sweat" .
+<http://aristo.allenai.org/id#ie-target/1_7> token:lemma "sweat" .
+<http://aristo.allenai.org/id#ie-target/1_7> token:pos "VBP" .
+<http://aristo.allenai.org/id#ie-target/1_7> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/1_7> token:end 35 .
+
+<http://aristo.allenai.org/id#ie-target/1_8> token:text "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/1_8> token:lemma "-lrb-" .
+<http://aristo.allenai.org/id#ie-target/1_8> token:pos "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/1_8> token:begin 36 .
+<http://aristo.allenai.org/id#ie-target/1_8> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/1_9> token:text "perspiration" .
+<http://aristo.allenai.org/id#ie-target/1_9> token:lemma "perspiration" .
+<http://aristo.allenai.org/id#ie-target/1_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/1_9> token:begin 37 .
+<http://aristo.allenai.org/id#ie-target/1_9> token:end 49 .
+
+<http://aristo.allenai.org/id#ie-target/1_10> token:text "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/1_10> token:lemma "-rrb-" .
+<http://aristo.allenai.org/id#ie-target/1_10> token:pos "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/1_10> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/1_10> token:end 50 .
+
+<http://aristo.allenai.org/id#ie-target/1_11> token:text "," .
+<http://aristo.allenai.org/id#ie-target/1_11> token:lemma "," .
+<http://aristo.allenai.org/id#ie-target/1_11> token:pos "," .
+<http://aristo.allenai.org/id#ie-target/1_11> token:begin 50 .
+<http://aristo.allenai.org/id#ie-target/1_11> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/1_12> token:text "bringing" .
+<http://aristo.allenai.org/id#ie-target/1_12> token:lemma "bring" .
+<http://aristo.allenai.org/id#ie-target/1_12> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/1_12> token:begin 52 .
+<http://aristo.allenai.org/id#ie-target/1_12> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/1_13> token:text "water" .
+<http://aristo.allenai.org/id#ie-target/1_13> token:lemma "water" .
+<http://aristo.allenai.org/id#ie-target/1_13> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/1_13> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/1_13> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/1_14> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/1_14> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/1_14> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/1_14> token:begin 67 .
+<http://aristo.allenai.org/id#ie-target/1_14> token:end 69 .
+
+<http://aristo.allenai.org/id#ie-target/1_15> token:text "our" .
+<http://aristo.allenai.org/id#ie-target/1_15> token:lemma "we" .
+<http://aristo.allenai.org/id#ie-target/1_15> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/1_15> token:begin 70 .
+<http://aristo.allenai.org/id#ie-target/1_15> token:end 73 .
+
+<http://aristo.allenai.org/id#ie-target/1_16> token:text "skin" .
+<http://aristo.allenai.org/id#ie-target/1_16> token:lemma "skin" .
+<http://aristo.allenai.org/id#ie-target/1_16> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/1_16> token:begin 74 .
+<http://aristo.allenai.org/id#ie-target/1_16> token:end 78 .
+
+<http://aristo.allenai.org/id#ie-target/1_17> token:text "." .
+<http://aristo.allenai.org/id#ie-target/1_17> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/1_17> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/1_17> token:begin 78 .
+<http://aristo.allenai.org/id#ie-target/1_17> token:end 79 .
+
+<http://aristo.allenai.org/id#ie-target/1_0> basic:root <http://aristo.allenai.org/id#ie-target/1_7> .
+<http://aristo.allenai.org/id#ie-target/1_7> basic:prep <http://aristo.allenai.org/id#ie-target/1_1> .
+<http://aristo.allenai.org/id#ie-target/1_4> basic:det <http://aristo.allenai.org/id#ie-target/1_2> .
+<http://aristo.allenai.org/id#ie-target/1_4> basic:amod <http://aristo.allenai.org/id#ie-target/1_3> .
+<http://aristo.allenai.org/id#ie-target/1_1> basic:pobj <http://aristo.allenai.org/id#ie-target/1_4> .
+<http://aristo.allenai.org/id#ie-target/1_6> basic:poss <http://aristo.allenai.org/id#ie-target/1_5> .
+<http://aristo.allenai.org/id#ie-target/1_7> basic:nsubj <http://aristo.allenai.org/id#ie-target/1_6> .
+<http://aristo.allenai.org/id#ie-target/1_7> basic:dobj <http://aristo.allenai.org/id#ie-target/1_9> .
+<http://aristo.allenai.org/id#ie-target/1_7> basic:xcomp <http://aristo.allenai.org/id#ie-target/1_12> .
+<http://aristo.allenai.org/id#ie-target/1_12> basic:dobj <http://aristo.allenai.org/id#ie-target/1_13> .
+<http://aristo.allenai.org/id#ie-target/1_12> basic:prep <http://aristo.allenai.org/id#ie-target/1_14> .
+<http://aristo.allenai.org/id#ie-target/1_16> basic:poss <http://aristo.allenai.org/id#ie-target/1_15> .
+<http://aristo.allenai.org/id#ie-target/1_14> basic:pobj <http://aristo.allenai.org/id#ie-target/1_16> .
+
+<http://aristo.allenai.org/id#ie-target/1_0> dep:root <http://aristo.allenai.org/id#ie-target/1_7> .
+<http://aristo.allenai.org/id#ie-target/1_4> dep:det <http://aristo.allenai.org/id#ie-target/1_2> .
+<http://aristo.allenai.org/id#ie-target/1_4> dep:amod <http://aristo.allenai.org/id#ie-target/1_3> .
+<http://aristo.allenai.org/id#ie-target/1_7> dep:prep_in <http://aristo.allenai.org/id#ie-target/1_4> .
+<http://aristo.allenai.org/id#ie-target/1_6> dep:poss <http://aristo.allenai.org/id#ie-target/1_5> .
+<http://aristo.allenai.org/id#ie-target/1_7> dep:nsubj <http://aristo.allenai.org/id#ie-target/1_6> .
+<http://aristo.allenai.org/id#ie-target/1_7> dep:dobj <http://aristo.allenai.org/id#ie-target/1_9> .
+<http://aristo.allenai.org/id#ie-target/1_7> dep:xcomp <http://aristo.allenai.org/id#ie-target/1_12> .
+<http://aristo.allenai.org/id#ie-target/1_12> dep:dobj <http://aristo.allenai.org/id#ie-target/1_13> .
+<http://aristo.allenai.org/id#ie-target/1_16> dep:poss <http://aristo.allenai.org/id#ie-target/1_15> .
+<http://aristo.allenai.org/id#ie-target/1_12> dep:prep_to <http://aristo.allenai.org/id#ie-target/1_16> .
+
+<http://aristo.allenai.org/id#ie-target/2_1> token:text "When" .
+<http://aristo.allenai.org/id#ie-target/2_1> token:lemma "when" .
+<http://aristo.allenai.org/id#ie-target/2_1> token:pos "WRB" .
+<http://aristo.allenai.org/id#ie-target/2_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/2_1> token:end 4 .
+
+<http://aristo.allenai.org/id#ie-target/2_2> token:text "some" .
+<http://aristo.allenai.org/id#ie-target/2_2> token:lemma "some" .
+<http://aristo.allenai.org/id#ie-target/2_2> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/2_2> token:begin 5 .
+<http://aristo.allenai.org/id#ie-target/2_2> token:end 9 .
+
+<http://aristo.allenai.org/id#ie-target/2_3> token:text "animals" .
+<http://aristo.allenai.org/id#ie-target/2_3> token:lemma "animal" .
+<http://aristo.allenai.org/id#ie-target/2_3> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/2_3> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/2_3> token:end 17 .
+
+<http://aristo.allenai.org/id#ie-target/2_4> token:text "prepare" .
+<http://aristo.allenai.org/id#ie-target/2_4> token:lemma "prepare" .
+<http://aristo.allenai.org/id#ie-target/2_4> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/2_4> token:begin 18 .
+<http://aristo.allenai.org/id#ie-target/2_4> token:end 25 .
+
+<http://aristo.allenai.org/id#ie-target/2_5> token:text "for" .
+<http://aristo.allenai.org/id#ie-target/2_5> token:lemma "for" .
+<http://aristo.allenai.org/id#ie-target/2_5> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/2_5> token:begin 26 .
+<http://aristo.allenai.org/id#ie-target/2_5> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/2_6> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/2_6> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/2_6> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/2_6> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/2_6> token:end 33 .
+
+<http://aristo.allenai.org/id#ie-target/2_7> token:text "long" .
+<http://aristo.allenai.org/id#ie-target/2_7> token:lemma "long" .
+<http://aristo.allenai.org/id#ie-target/2_7> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/2_7> token:begin 34 .
+<http://aristo.allenai.org/id#ie-target/2_7> token:end 38 .
+
+<http://aristo.allenai.org/id#ie-target/2_8> token:text "winters" .
+<http://aristo.allenai.org/id#ie-target/2_8> token:lemma "winter" .
+<http://aristo.allenai.org/id#ie-target/2_8> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/2_8> token:begin 39 .
+<http://aristo.allenai.org/id#ie-target/2_8> token:end 46 .
+<http://aristo.allenai.org/id#ie-target/2_8> ne:type "SET" .
+
+<http://aristo.allenai.org/id#ie-target/2_9> token:text "by" .
+<http://aristo.allenai.org/id#ie-target/2_9> token:lemma "by" .
+<http://aristo.allenai.org/id#ie-target/2_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/2_9> token:begin 47 .
+<http://aristo.allenai.org/id#ie-target/2_9> token:end 49 .
+
+<http://aristo.allenai.org/id#ie-target/2_10> token:text "storing" .
+<http://aristo.allenai.org/id#ie-target/2_10> token:lemma "store" .
+<http://aristo.allenai.org/id#ie-target/2_10> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/2_10> token:begin 50 .
+<http://aristo.allenai.org/id#ie-target/2_10> token:end 57 .
+
+<http://aristo.allenai.org/id#ie-target/2_11> token:text "food" .
+<http://aristo.allenai.org/id#ie-target/2_11> token:lemma "food" .
+<http://aristo.allenai.org/id#ie-target/2_11> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/2_11> token:begin 58 .
+<http://aristo.allenai.org/id#ie-target/2_11> token:end 62 .
+
+<http://aristo.allenai.org/id#ie-target/2_12> token:text "and" .
+<http://aristo.allenai.org/id#ie-target/2_12> token:lemma "and" .
+<http://aristo.allenai.org/id#ie-target/2_12> token:pos "CC" .
+<http://aristo.allenai.org/id#ie-target/2_12> token:begin 63 .
+<http://aristo.allenai.org/id#ie-target/2_12> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/2_13> token:text "going" .
+<http://aristo.allenai.org/id#ie-target/2_13> token:lemma "go" .
+<http://aristo.allenai.org/id#ie-target/2_13> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/2_13> token:begin 67 .
+<http://aristo.allenai.org/id#ie-target/2_13> token:end 72 .
+
+<http://aristo.allenai.org/id#ie-target/2_14> token:text "dormant" .
+<http://aristo.allenai.org/id#ie-target/2_14> token:lemma "dormant" .
+<http://aristo.allenai.org/id#ie-target/2_14> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/2_14> token:begin 73 .
+<http://aristo.allenai.org/id#ie-target/2_14> token:end 80 .
+
+<http://aristo.allenai.org/id#ie-target/2_15> token:text "it" .
+<http://aristo.allenai.org/id#ie-target/2_15> token:lemma "it" .
+<http://aristo.allenai.org/id#ie-target/2_15> token:pos "PRP" .
+<http://aristo.allenai.org/id#ie-target/2_15> token:begin 81 .
+<http://aristo.allenai.org/id#ie-target/2_15> token:end 83 .
+
+<http://aristo.allenai.org/id#ie-target/2_16> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/2_16> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/2_16> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/2_16> token:begin 84 .
+<http://aristo.allenai.org/id#ie-target/2_16> token:end 86 .
+
+<http://aristo.allenai.org/id#ie-target/2_17> token:text "called" .
+<http://aristo.allenai.org/id#ie-target/2_17> token:lemma "call" .
+<http://aristo.allenai.org/id#ie-target/2_17> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/2_17> token:begin 87 .
+<http://aristo.allenai.org/id#ie-target/2_17> token:end 93 .
+
+<http://aristo.allenai.org/id#ie-target/2_18> token:text "hibernation" .
+<http://aristo.allenai.org/id#ie-target/2_18> token:lemma "hibernation" .
+<http://aristo.allenai.org/id#ie-target/2_18> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/2_18> token:begin 94 .
+<http://aristo.allenai.org/id#ie-target/2_18> token:end 105 .
+
+<http://aristo.allenai.org/id#ie-target/2_19> token:text "." .
+<http://aristo.allenai.org/id#ie-target/2_19> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/2_19> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/2_19> token:begin 105 .
+<http://aristo.allenai.org/id#ie-target/2_19> token:end 106 .
+
+<http://aristo.allenai.org/id#ie-target/2_0> basic:root <http://aristo.allenai.org/id#ie-target/2_17> .
+<http://aristo.allenai.org/id#ie-target/2_4> basic:advmod <http://aristo.allenai.org/id#ie-target/2_1> .
+<http://aristo.allenai.org/id#ie-target/2_3> basic:det <http://aristo.allenai.org/id#ie-target/2_2> .
+<http://aristo.allenai.org/id#ie-target/2_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/2_3> .
+<http://aristo.allenai.org/id#ie-target/2_17> basic:advcl <http://aristo.allenai.org/id#ie-target/2_4> .
+<http://aristo.allenai.org/id#ie-target/2_4> basic:prep <http://aristo.allenai.org/id#ie-target/2_5> .
+<http://aristo.allenai.org/id#ie-target/2_8> basic:det <http://aristo.allenai.org/id#ie-target/2_6> .
+<http://aristo.allenai.org/id#ie-target/2_8> basic:amod <http://aristo.allenai.org/id#ie-target/2_7> .
+<http://aristo.allenai.org/id#ie-target/2_5> basic:pobj <http://aristo.allenai.org/id#ie-target/2_8> .
+<http://aristo.allenai.org/id#ie-target/2_4> basic:prep <http://aristo.allenai.org/id#ie-target/2_9> .
+<http://aristo.allenai.org/id#ie-target/2_9> basic:pcomp <http://aristo.allenai.org/id#ie-target/2_10> .
+<http://aristo.allenai.org/id#ie-target/2_10> basic:dobj <http://aristo.allenai.org/id#ie-target/2_11> .
+<http://aristo.allenai.org/id#ie-target/2_10> basic:cc <http://aristo.allenai.org/id#ie-target/2_12> .
+<http://aristo.allenai.org/id#ie-target/2_10> basic:conj <http://aristo.allenai.org/id#ie-target/2_13> .
+<http://aristo.allenai.org/id#ie-target/2_13> basic:acomp <http://aristo.allenai.org/id#ie-target/2_14> .
+<http://aristo.allenai.org/id#ie-target/2_17> basic:nsubjpass <http://aristo.allenai.org/id#ie-target/2_15> .
+<http://aristo.allenai.org/id#ie-target/2_17> basic:auxpass <http://aristo.allenai.org/id#ie-target/2_16> .
+<http://aristo.allenai.org/id#ie-target/2_17> basic:xcomp <http://aristo.allenai.org/id#ie-target/2_18> .
+
+<http://aristo.allenai.org/id#ie-target/2_0> dep:root <http://aristo.allenai.org/id#ie-target/2_17> .
+<http://aristo.allenai.org/id#ie-target/2_4> dep:advmod <http://aristo.allenai.org/id#ie-target/2_1> .
+<http://aristo.allenai.org/id#ie-target/2_3> dep:det <http://aristo.allenai.org/id#ie-target/2_2> .
+<http://aristo.allenai.org/id#ie-target/2_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/2_3> .
+<http://aristo.allenai.org/id#ie-target/2_17> dep:advcl <http://aristo.allenai.org/id#ie-target/2_4> .
+<http://aristo.allenai.org/id#ie-target/2_8> dep:det <http://aristo.allenai.org/id#ie-target/2_6> .
+<http://aristo.allenai.org/id#ie-target/2_8> dep:amod <http://aristo.allenai.org/id#ie-target/2_7> .
+<http://aristo.allenai.org/id#ie-target/2_4> dep:prep_for <http://aristo.allenai.org/id#ie-target/2_8> .
+<http://aristo.allenai.org/id#ie-target/2_4> dep:prepc_by <http://aristo.allenai.org/id#ie-target/2_10> .
+<http://aristo.allenai.org/id#ie-target/2_10> dep:dobj <http://aristo.allenai.org/id#ie-target/2_11> .
+<http://aristo.allenai.org/id#ie-target/2_4> dep:prepc_by <http://aristo.allenai.org/id#ie-target/2_13> .
+<http://aristo.allenai.org/id#ie-target/2_10> dep:conj_and <http://aristo.allenai.org/id#ie-target/2_13> .
+<http://aristo.allenai.org/id#ie-target/2_13> dep:acomp <http://aristo.allenai.org/id#ie-target/2_14> .
+<http://aristo.allenai.org/id#ie-target/2_17> dep:nsubjpass <http://aristo.allenai.org/id#ie-target/2_15> .
+<http://aristo.allenai.org/id#ie-target/2_17> dep:auxpass <http://aristo.allenai.org/id#ie-target/2_16> .
+<http://aristo.allenai.org/id#ie-target/2_17> dep:xcomp <http://aristo.allenai.org/id#ie-target/2_18> .
+
+<http://aristo.allenai.org/id#ie-target/3_1> token:text "A" .
+<http://aristo.allenai.org/id#ie-target/3_1> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/3_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/3_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/3_1> token:end 1 .
+
+<http://aristo.allenai.org/id#ie-target/3_2> token:text "hand" .
+<http://aristo.allenai.org/id#ie-target/3_2> token:lemma "hand" .
+<http://aristo.allenai.org/id#ie-target/3_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/3_2> token:begin 2 .
+<http://aristo.allenai.org/id#ie-target/3_2> token:end 6 .
+
+<http://aristo.allenai.org/id#ie-target/3_3> token:text "lens" .
+<http://aristo.allenai.org/id#ie-target/3_3> token:lemma "lens" .
+<http://aristo.allenai.org/id#ie-target/3_3> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/3_3> token:begin 7 .
+<http://aristo.allenai.org/id#ie-target/3_3> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/3_4> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/3_4> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/3_4> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/3_4> token:begin 12 .
+<http://aristo.allenai.org/id#ie-target/3_4> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/3_5> token:text "used" .
+<http://aristo.allenai.org/id#ie-target/3_5> token:lemma "use" .
+<http://aristo.allenai.org/id#ie-target/3_5> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/3_5> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/3_5> token:end 19 .
+
+<http://aristo.allenai.org/id#ie-target/3_6> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/3_6> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/3_6> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/3_6> token:begin 20 .
+<http://aristo.allenai.org/id#ie-target/3_6> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/3_7> token:text "view" .
+<http://aristo.allenai.org/id#ie-target/3_7> token:lemma "view" .
+<http://aristo.allenai.org/id#ie-target/3_7> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/3_7> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/3_7> token:end 27 .
+
+<http://aristo.allenai.org/id#ie-target/3_8> token:text "objects" .
+<http://aristo.allenai.org/id#ie-target/3_8> token:lemma "object" .
+<http://aristo.allenai.org/id#ie-target/3_8> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/3_8> token:begin 28 .
+<http://aristo.allenai.org/id#ie-target/3_8> token:end 35 .
+
+<http://aristo.allenai.org/id#ie-target/3_9> token:text "in" .
+<http://aristo.allenai.org/id#ie-target/3_9> token:lemma "in" .
+<http://aristo.allenai.org/id#ie-target/3_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/3_9> token:begin 36 .
+<http://aristo.allenai.org/id#ie-target/3_9> token:end 38 .
+
+<http://aristo.allenai.org/id#ie-target/3_10> token:text "more" .
+<http://aristo.allenai.org/id#ie-target/3_10> token:lemma "more" .
+<http://aristo.allenai.org/id#ie-target/3_10> token:pos "JJR" .
+<http://aristo.allenai.org/id#ie-target/3_10> token:begin 39 .
+<http://aristo.allenai.org/id#ie-target/3_10> token:end 43 .
+
+<http://aristo.allenai.org/id#ie-target/3_11> token:text "detail" .
+<http://aristo.allenai.org/id#ie-target/3_11> token:lemma "detail" .
+<http://aristo.allenai.org/id#ie-target/3_11> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/3_11> token:begin 44 .
+<http://aristo.allenai.org/id#ie-target/3_11> token:end 50 .
+
+<http://aristo.allenai.org/id#ie-target/3_12> token:text "." .
+<http://aristo.allenai.org/id#ie-target/3_12> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/3_12> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/3_12> token:begin 50 .
+<http://aristo.allenai.org/id#ie-target/3_12> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/3_0> basic:root <http://aristo.allenai.org/id#ie-target/3_5> .
+<http://aristo.allenai.org/id#ie-target/3_3> basic:det <http://aristo.allenai.org/id#ie-target/3_1> .
+<http://aristo.allenai.org/id#ie-target/3_3> basic:nn <http://aristo.allenai.org/id#ie-target/3_2> .
+<http://aristo.allenai.org/id#ie-target/3_5> basic:nsubjpass <http://aristo.allenai.org/id#ie-target/3_3> .
+<http://aristo.allenai.org/id#ie-target/3_5> basic:auxpass <http://aristo.allenai.org/id#ie-target/3_4> .
+<http://aristo.allenai.org/id#ie-target/3_7> basic:aux <http://aristo.allenai.org/id#ie-target/3_6> .
+<http://aristo.allenai.org/id#ie-target/3_5> basic:xcomp <http://aristo.allenai.org/id#ie-target/3_7> .
+<http://aristo.allenai.org/id#ie-target/3_7> basic:dobj <http://aristo.allenai.org/id#ie-target/3_8> .
+<http://aristo.allenai.org/id#ie-target/3_7> basic:prep <http://aristo.allenai.org/id#ie-target/3_9> .
+<http://aristo.allenai.org/id#ie-target/3_11> basic:amod <http://aristo.allenai.org/id#ie-target/3_10> .
+<http://aristo.allenai.org/id#ie-target/3_9> basic:pobj <http://aristo.allenai.org/id#ie-target/3_11> .
+
+<http://aristo.allenai.org/id#ie-target/3_0> dep:root <http://aristo.allenai.org/id#ie-target/3_5> .
+<http://aristo.allenai.org/id#ie-target/3_3> dep:det <http://aristo.allenai.org/id#ie-target/3_1> .
+<http://aristo.allenai.org/id#ie-target/3_3> dep:nn <http://aristo.allenai.org/id#ie-target/3_2> .
+<http://aristo.allenai.org/id#ie-target/3_5> dep:nsubjpass <http://aristo.allenai.org/id#ie-target/3_3> .
+<http://aristo.allenai.org/id#ie-target/3_5> dep:auxpass <http://aristo.allenai.org/id#ie-target/3_4> .
+<http://aristo.allenai.org/id#ie-target/3_7> dep:aux <http://aristo.allenai.org/id#ie-target/3_6> .
+<http://aristo.allenai.org/id#ie-target/3_5> dep:xcomp <http://aristo.allenai.org/id#ie-target/3_7> .
+<http://aristo.allenai.org/id#ie-target/3_7> dep:dobj <http://aristo.allenai.org/id#ie-target/3_8> .
+<http://aristo.allenai.org/id#ie-target/3_11> dep:amod <http://aristo.allenai.org/id#ie-target/3_10> .
+<http://aristo.allenai.org/id#ie-target/3_7> dep:prep_in <http://aristo.allenai.org/id#ie-target/3_11> .
+
+<http://aristo.allenai.org/id#ie-target/4_1> token:text "Freezing" .
+<http://aristo.allenai.org/id#ie-target/4_1> token:lemma "freezing" .
+<http://aristo.allenai.org/id#ie-target/4_1> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/4_1> token:end 8 .
+
+<http://aristo.allenai.org/id#ie-target/4_2> token:text "involves" .
+<http://aristo.allenai.org/id#ie-target/4_2> token:lemma "involve" .
+<http://aristo.allenai.org/id#ie-target/4_2> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/4_2> token:begin 9 .
+<http://aristo.allenai.org/id#ie-target/4_2> token:end 17 .
+
+<http://aristo.allenai.org/id#ie-target/4_3> token:text "changing" .
+<http://aristo.allenai.org/id#ie-target/4_3> token:lemma "change" .
+<http://aristo.allenai.org/id#ie-target/4_3> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/4_3> token:begin 18 .
+<http://aristo.allenai.org/id#ie-target/4_3> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/4_4> token:text "water" .
+<http://aristo.allenai.org/id#ie-target/4_4> token:lemma "water" .
+<http://aristo.allenai.org/id#ie-target/4_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_4> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/4_4> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/4_5> token:text "from" .
+<http://aristo.allenai.org/id#ie-target/4_5> token:lemma "from" .
+<http://aristo.allenai.org/id#ie-target/4_5> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/4_5> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/4_5> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/4_6> token:text "its" .
+<http://aristo.allenai.org/id#ie-target/4_6> token:lemma "its" .
+<http://aristo.allenai.org/id#ie-target/4_6> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/4_6> token:begin 38 .
+<http://aristo.allenai.org/id#ie-target/4_6> token:end 41 .
+
+<http://aristo.allenai.org/id#ie-target/4_7> token:text "liquid" .
+<http://aristo.allenai.org/id#ie-target/4_7> token:lemma "liquid" .
+<http://aristo.allenai.org/id#ie-target/4_7> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/4_7> token:begin 42 .
+<http://aristo.allenai.org/id#ie-target/4_7> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/4_8> token:text "state" .
+<http://aristo.allenai.org/id#ie-target/4_8> token:lemma "state" .
+<http://aristo.allenai.org/id#ie-target/4_8> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_8> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/4_8> token:end 54 .
+
+<http://aristo.allenai.org/id#ie-target/4_9> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/4_9> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/4_9> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/4_9> token:begin 55 .
+<http://aristo.allenai.org/id#ie-target/4_9> token:end 57 .
+
+<http://aristo.allenai.org/id#ie-target/4_10> token:text "its" .
+<http://aristo.allenai.org/id#ie-target/4_10> token:lemma "its" .
+<http://aristo.allenai.org/id#ie-target/4_10> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/4_10> token:begin 58 .
+<http://aristo.allenai.org/id#ie-target/4_10> token:end 61 .
+
+<http://aristo.allenai.org/id#ie-target/4_11> token:text "solid" .
+<http://aristo.allenai.org/id#ie-target/4_11> token:lemma "solid" .
+<http://aristo.allenai.org/id#ie-target/4_11> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/4_11> token:begin 62 .
+<http://aristo.allenai.org/id#ie-target/4_11> token:end 67 .
+
+<http://aristo.allenai.org/id#ie-target/4_12> token:text "state" .
+<http://aristo.allenai.org/id#ie-target/4_12> token:lemma "state" .
+<http://aristo.allenai.org/id#ie-target/4_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_12> token:begin 68 .
+<http://aristo.allenai.org/id#ie-target/4_12> token:end 73 .
+
+<http://aristo.allenai.org/id#ie-target/4_13> token:text "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/4_13> token:lemma "-lrb-" .
+<http://aristo.allenai.org/id#ie-target/4_13> token:pos "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/4_13> token:begin 74 .
+<http://aristo.allenai.org/id#ie-target/4_13> token:end 75 .
+
+<http://aristo.allenai.org/id#ie-target/4_14> token:text "ice" .
+<http://aristo.allenai.org/id#ie-target/4_14> token:lemma "ice" .
+<http://aristo.allenai.org/id#ie-target/4_14> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_14> token:begin 75 .
+<http://aristo.allenai.org/id#ie-target/4_14> token:end 78 .
+
+<http://aristo.allenai.org/id#ie-target/4_15> token:text "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/4_15> token:lemma "-rrb-" .
+<http://aristo.allenai.org/id#ie-target/4_15> token:pos "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/4_15> token:begin 78 .
+<http://aristo.allenai.org/id#ie-target/4_15> token:end 79 .
+
+<http://aristo.allenai.org/id#ie-target/4_16> token:text "by" .
+<http://aristo.allenai.org/id#ie-target/4_16> token:lemma "by" .
+<http://aristo.allenai.org/id#ie-target/4_16> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/4_16> token:begin 80 .
+<http://aristo.allenai.org/id#ie-target/4_16> token:end 82 .
+
+<http://aristo.allenai.org/id#ie-target/4_17> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/4_17> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/4_17> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/4_17> token:begin 83 .
+<http://aristo.allenai.org/id#ie-target/4_17> token:end 86 .
+
+<http://aristo.allenai.org/id#ie-target/4_18> token:text "removal" .
+<http://aristo.allenai.org/id#ie-target/4_18> token:lemma "removal" .
+<http://aristo.allenai.org/id#ie-target/4_18> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_18> token:begin 87 .
+<http://aristo.allenai.org/id#ie-target/4_18> token:end 94 .
+
+<http://aristo.allenai.org/id#ie-target/4_19> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/4_19> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/4_19> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/4_19> token:begin 95 .
+<http://aristo.allenai.org/id#ie-target/4_19> token:end 97 .
+
+<http://aristo.allenai.org/id#ie-target/4_20> token:text "heat" .
+<http://aristo.allenai.org/id#ie-target/4_20> token:lemma "heat" .
+<http://aristo.allenai.org/id#ie-target/4_20> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/4_20> token:begin 98 .
+<http://aristo.allenai.org/id#ie-target/4_20> token:end 102 .
+
+<http://aristo.allenai.org/id#ie-target/4_21> token:text "." .
+<http://aristo.allenai.org/id#ie-target/4_21> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/4_21> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/4_21> token:begin 102 .
+<http://aristo.allenai.org/id#ie-target/4_21> token:end 103 .
+
+<http://aristo.allenai.org/id#ie-target/4_0> basic:root <http://aristo.allenai.org/id#ie-target/4_2> .
+<http://aristo.allenai.org/id#ie-target/4_2> basic:nsubj <http://aristo.allenai.org/id#ie-target/4_1> .
+<http://aristo.allenai.org/id#ie-target/4_2> basic:xcomp <http://aristo.allenai.org/id#ie-target/4_3> .
+<http://aristo.allenai.org/id#ie-target/4_3> basic:dobj <http://aristo.allenai.org/id#ie-target/4_4> .
+<http://aristo.allenai.org/id#ie-target/4_3> basic:prep <http://aristo.allenai.org/id#ie-target/4_5> .
+<http://aristo.allenai.org/id#ie-target/4_8> basic:poss <http://aristo.allenai.org/id#ie-target/4_6> .
+<http://aristo.allenai.org/id#ie-target/4_8> basic:amod <http://aristo.allenai.org/id#ie-target/4_7> .
+<http://aristo.allenai.org/id#ie-target/4_5> basic:pobj <http://aristo.allenai.org/id#ie-target/4_8> .
+<http://aristo.allenai.org/id#ie-target/4_5> basic:prep <http://aristo.allenai.org/id#ie-target/4_9> .
+<http://aristo.allenai.org/id#ie-target/4_12> basic:poss <http://aristo.allenai.org/id#ie-target/4_10> .
+<http://aristo.allenai.org/id#ie-target/4_12> basic:amod <http://aristo.allenai.org/id#ie-target/4_11> .
+<http://aristo.allenai.org/id#ie-target/4_9> basic:pobj <http://aristo.allenai.org/id#ie-target/4_12> .
+<http://aristo.allenai.org/id#ie-target/4_12> basic:appos <http://aristo.allenai.org/id#ie-target/4_14> .
+<http://aristo.allenai.org/id#ie-target/4_3> basic:prep <http://aristo.allenai.org/id#ie-target/4_16> .
+<http://aristo.allenai.org/id#ie-target/4_18> basic:det <http://aristo.allenai.org/id#ie-target/4_17> .
+<http://aristo.allenai.org/id#ie-target/4_16> basic:pobj <http://aristo.allenai.org/id#ie-target/4_18> .
+<http://aristo.allenai.org/id#ie-target/4_18> basic:prep <http://aristo.allenai.org/id#ie-target/4_19> .
+<http://aristo.allenai.org/id#ie-target/4_19> basic:pobj <http://aristo.allenai.org/id#ie-target/4_20> .
+
+<http://aristo.allenai.org/id#ie-target/4_0> dep:root <http://aristo.allenai.org/id#ie-target/4_2> .
+<http://aristo.allenai.org/id#ie-target/4_2> dep:nsubj <http://aristo.allenai.org/id#ie-target/4_1> .
+<http://aristo.allenai.org/id#ie-target/4_2> dep:xcomp <http://aristo.allenai.org/id#ie-target/4_3> .
+<http://aristo.allenai.org/id#ie-target/4_3> dep:dobj <http://aristo.allenai.org/id#ie-target/4_4> .
+<http://aristo.allenai.org/id#ie-target/4_8> dep:poss <http://aristo.allenai.org/id#ie-target/4_6> .
+<http://aristo.allenai.org/id#ie-target/4_8> dep:amod <http://aristo.allenai.org/id#ie-target/4_7> .
+<http://aristo.allenai.org/id#ie-target/4_3> dep:prep_from <http://aristo.allenai.org/id#ie-target/4_8> .
+<http://aristo.allenai.org/id#ie-target/4_12> dep:poss <http://aristo.allenai.org/id#ie-target/4_10> .
+<http://aristo.allenai.org/id#ie-target/4_12> dep:amod <http://aristo.allenai.org/id#ie-target/4_11> .
+<http://aristo.allenai.org/id#ie-target/4_3> dep:prep_to <http://aristo.allenai.org/id#ie-target/4_12> .
+<http://aristo.allenai.org/id#ie-target/4_12> dep:appos <http://aristo.allenai.org/id#ie-target/4_14> .
+<http://aristo.allenai.org/id#ie-target/4_18> dep:det <http://aristo.allenai.org/id#ie-target/4_17> .
+<http://aristo.allenai.org/id#ie-target/4_3> dep:prep_by <http://aristo.allenai.org/id#ie-target/4_18> .
+<http://aristo.allenai.org/id#ie-target/4_18> dep:prep_of <http://aristo.allenai.org/id#ie-target/4_20> .
+
+<http://aristo.allenai.org/id#ie-target/5_1> token:text "Animals" .
+<http://aristo.allenai.org/id#ie-target/5_1> token:lemma "animal" .
+<http://aristo.allenai.org/id#ie-target/5_1> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/5_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/5_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/5_2> token:text "can" .
+<http://aristo.allenai.org/id#ie-target/5_2> token:lemma "can" .
+<http://aristo.allenai.org/id#ie-target/5_2> token:pos "MD" .
+<http://aristo.allenai.org/id#ie-target/5_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/5_2> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/5_3> token:text "not" .
+<http://aristo.allenai.org/id#ie-target/5_3> token:lemma "not" .
+<http://aristo.allenai.org/id#ie-target/5_3> token:pos "RB" .
+<http://aristo.allenai.org/id#ie-target/5_3> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/5_3> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/5_4> token:text "make" .
+<http://aristo.allenai.org/id#ie-target/5_4> token:lemma "make" .
+<http://aristo.allenai.org/id#ie-target/5_4> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/5_4> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/5_4> token:end 19 .
+
+<http://aristo.allenai.org/id#ie-target/5_5> token:text "their" .
+<http://aristo.allenai.org/id#ie-target/5_5> token:lemma "they" .
+<http://aristo.allenai.org/id#ie-target/5_5> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/5_5> token:begin 20 .
+<http://aristo.allenai.org/id#ie-target/5_5> token:end 25 .
+
+<http://aristo.allenai.org/id#ie-target/5_6> token:text "own" .
+<http://aristo.allenai.org/id#ie-target/5_6> token:lemma "own" .
+<http://aristo.allenai.org/id#ie-target/5_6> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/5_6> token:begin 26 .
+<http://aristo.allenai.org/id#ie-target/5_6> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/5_7> token:text "food" .
+<http://aristo.allenai.org/id#ie-target/5_7> token:lemma "food" .
+<http://aristo.allenai.org/id#ie-target/5_7> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/5_7> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/5_7> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/5_8> token:text "so" .
+<http://aristo.allenai.org/id#ie-target/5_8> token:lemma "so" .
+<http://aristo.allenai.org/id#ie-target/5_8> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/5_8> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/5_8> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/5_9> token:text "they" .
+<http://aristo.allenai.org/id#ie-target/5_9> token:lemma "they" .
+<http://aristo.allenai.org/id#ie-target/5_9> token:pos "PRP" .
+<http://aristo.allenai.org/id#ie-target/5_9> token:begin 38 .
+<http://aristo.allenai.org/id#ie-target/5_9> token:end 42 .
+
+<http://aristo.allenai.org/id#ie-target/5_10> token:text "must" .
+<http://aristo.allenai.org/id#ie-target/5_10> token:lemma "must" .
+<http://aristo.allenai.org/id#ie-target/5_10> token:pos "MD" .
+<http://aristo.allenai.org/id#ie-target/5_10> token:begin 43 .
+<http://aristo.allenai.org/id#ie-target/5_10> token:end 47 .
+
+<http://aristo.allenai.org/id#ie-target/5_11> token:text "eat" .
+<http://aristo.allenai.org/id#ie-target/5_11> token:lemma "eat" .
+<http://aristo.allenai.org/id#ie-target/5_11> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/5_11> token:begin 48 .
+<http://aristo.allenai.org/id#ie-target/5_11> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/5_12> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/5_12> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/5_12> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/5_12> token:begin 52 .
+<http://aristo.allenai.org/id#ie-target/5_12> token:end 54 .
+
+<http://aristo.allenai.org/id#ie-target/5_13> token:text "get" .
+<http://aristo.allenai.org/id#ie-target/5_13> token:lemma "get" .
+<http://aristo.allenai.org/id#ie-target/5_13> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/5_13> token:begin 55 .
+<http://aristo.allenai.org/id#ie-target/5_13> token:end 58 .
+
+<http://aristo.allenai.org/id#ie-target/5_14> token:text "nutrients" .
+<http://aristo.allenai.org/id#ie-target/5_14> token:lemma "nutrient" .
+<http://aristo.allenai.org/id#ie-target/5_14> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/5_14> token:begin 59 .
+<http://aristo.allenai.org/id#ie-target/5_14> token:end 68 .
+
+<http://aristo.allenai.org/id#ie-target/5_15> token:text "." .
+<http://aristo.allenai.org/id#ie-target/5_15> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/5_15> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/5_15> token:begin 68 .
+<http://aristo.allenai.org/id#ie-target/5_15> token:end 69 .
+
+<http://aristo.allenai.org/id#ie-target/5_0> basic:root <http://aristo.allenai.org/id#ie-target/5_4> .
+<http://aristo.allenai.org/id#ie-target/5_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/5_1> .
+<http://aristo.allenai.org/id#ie-target/5_4> basic:aux <http://aristo.allenai.org/id#ie-target/5_2> .
+<http://aristo.allenai.org/id#ie-target/5_4> basic:neg <http://aristo.allenai.org/id#ie-target/5_3> .
+<http://aristo.allenai.org/id#ie-target/5_7> basic:poss <http://aristo.allenai.org/id#ie-target/5_5> .
+<http://aristo.allenai.org/id#ie-target/5_7> basic:amod <http://aristo.allenai.org/id#ie-target/5_6> .
+<http://aristo.allenai.org/id#ie-target/5_4> basic:dobj <http://aristo.allenai.org/id#ie-target/5_7> .
+<http://aristo.allenai.org/id#ie-target/5_11> basic:mark <http://aristo.allenai.org/id#ie-target/5_8> .
+<http://aristo.allenai.org/id#ie-target/5_11> basic:nsubj <http://aristo.allenai.org/id#ie-target/5_9> .
+<http://aristo.allenai.org/id#ie-target/5_11> basic:aux <http://aristo.allenai.org/id#ie-target/5_10> .
+<http://aristo.allenai.org/id#ie-target/5_4> basic:advcl <http://aristo.allenai.org/id#ie-target/5_11> .
+<http://aristo.allenai.org/id#ie-target/5_13> basic:aux <http://aristo.allenai.org/id#ie-target/5_12> .
+<http://aristo.allenai.org/id#ie-target/5_11> basic:xcomp <http://aristo.allenai.org/id#ie-target/5_13> .
+<http://aristo.allenai.org/id#ie-target/5_13> basic:dobj <http://aristo.allenai.org/id#ie-target/5_14> .
+
+<http://aristo.allenai.org/id#ie-target/5_0> dep:root <http://aristo.allenai.org/id#ie-target/5_4> .
+<http://aristo.allenai.org/id#ie-target/5_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/5_1> .
+<http://aristo.allenai.org/id#ie-target/5_4> dep:aux <http://aristo.allenai.org/id#ie-target/5_2> .
+<http://aristo.allenai.org/id#ie-target/5_4> dep:neg <http://aristo.allenai.org/id#ie-target/5_3> .
+<http://aristo.allenai.org/id#ie-target/5_7> dep:poss <http://aristo.allenai.org/id#ie-target/5_5> .
+<http://aristo.allenai.org/id#ie-target/5_7> dep:amod <http://aristo.allenai.org/id#ie-target/5_6> .
+<http://aristo.allenai.org/id#ie-target/5_4> dep:dobj <http://aristo.allenai.org/id#ie-target/5_7> .
+<http://aristo.allenai.org/id#ie-target/5_11> dep:mark <http://aristo.allenai.org/id#ie-target/5_8> .
+<http://aristo.allenai.org/id#ie-target/5_11> dep:nsubj <http://aristo.allenai.org/id#ie-target/5_9> .
+<http://aristo.allenai.org/id#ie-target/5_11> dep:aux <http://aristo.allenai.org/id#ie-target/5_10> .
+<http://aristo.allenai.org/id#ie-target/5_4> dep:advcl <http://aristo.allenai.org/id#ie-target/5_11> .
+<http://aristo.allenai.org/id#ie-target/5_13> dep:aux <http://aristo.allenai.org/id#ie-target/5_12> .
+<http://aristo.allenai.org/id#ie-target/5_11> dep:xcomp <http://aristo.allenai.org/id#ie-target/5_13> .
+<http://aristo.allenai.org/id#ie-target/5_13> dep:dobj <http://aristo.allenai.org/id#ie-target/5_14> .
+
+<http://aristo.allenai.org/id#ie-target/6_1> token:text "The" .
+<http://aristo.allenai.org/id#ie-target/6_1> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/6_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/6_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/6_1> token:end 3 .
+
+<http://aristo.allenai.org/id#ie-target/6_2> token:text "friction" .
+<http://aristo.allenai.org/id#ie-target/6_2> token:lemma "friction" .
+<http://aristo.allenai.org/id#ie-target/6_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/6_2> token:begin 4 .
+<http://aristo.allenai.org/id#ie-target/6_2> token:end 12 .
+
+<http://aristo.allenai.org/id#ie-target/6_3> token:text "between" .
+<http://aristo.allenai.org/id#ie-target/6_3> token:lemma "between" .
+<http://aristo.allenai.org/id#ie-target/6_3> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/6_3> token:begin 13 .
+<http://aristo.allenai.org/id#ie-target/6_3> token:end 20 .
+
+<http://aristo.allenai.org/id#ie-target/6_4> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/6_4> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/6_4> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/6_4> token:begin 21 .
+<http://aristo.allenai.org/id#ie-target/6_4> token:end 24 .
+
+<http://aristo.allenai.org/id#ie-target/6_5> token:text "two" .
+<http://aristo.allenai.org/id#ie-target/6_5> token:lemma "two" .
+<http://aristo.allenai.org/id#ie-target/6_5> token:pos "CD" .
+<http://aristo.allenai.org/id#ie-target/6_5> token:begin 25 .
+<http://aristo.allenai.org/id#ie-target/6_5> token:end 28 .
+<http://aristo.allenai.org/id#ie-target/6_5> ne:type "NUMBER" .
+<http://aristo.allenai.org/id#ie-target/6_5> ne:norm "2.0" .
+
+<http://aristo.allenai.org/id#ie-target/6_6> token:text "surfaces" .
+<http://aristo.allenai.org/id#ie-target/6_6> token:lemma "surface" .
+<http://aristo.allenai.org/id#ie-target/6_6> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/6_6> token:begin 29 .
+<http://aristo.allenai.org/id#ie-target/6_6> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/6_7> token:text "converts" .
+<http://aristo.allenai.org/id#ie-target/6_7> token:lemma "convert" .
+<http://aristo.allenai.org/id#ie-target/6_7> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/6_7> token:begin 38 .
+<http://aristo.allenai.org/id#ie-target/6_7> token:end 46 .
+
+<http://aristo.allenai.org/id#ie-target/6_8> token:text "kinetic" .
+<http://aristo.allenai.org/id#ie-target/6_8> token:lemma "kinetic" .
+<http://aristo.allenai.org/id#ie-target/6_8> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/6_8> token:begin 47 .
+<http://aristo.allenai.org/id#ie-target/6_8> token:end 54 .
+
+<http://aristo.allenai.org/id#ie-target/6_9> token:text "energy" .
+<http://aristo.allenai.org/id#ie-target/6_9> token:lemma "energy" .
+<http://aristo.allenai.org/id#ie-target/6_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/6_9> token:begin 55 .
+<http://aristo.allenai.org/id#ie-target/6_9> token:end 61 .
+
+<http://aristo.allenai.org/id#ie-target/6_10> token:text "into" .
+<http://aristo.allenai.org/id#ie-target/6_10> token:lemma "into" .
+<http://aristo.allenai.org/id#ie-target/6_10> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/6_10> token:begin 62 .
+<http://aristo.allenai.org/id#ie-target/6_10> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/6_11> token:text "heat" .
+<http://aristo.allenai.org/id#ie-target/6_11> token:lemma "heat" .
+<http://aristo.allenai.org/id#ie-target/6_11> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/6_11> token:begin 67 .
+<http://aristo.allenai.org/id#ie-target/6_11> token:end 71 .
+
+<http://aristo.allenai.org/id#ie-target/6_12> token:text "." .
+<http://aristo.allenai.org/id#ie-target/6_12> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/6_12> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/6_12> token:begin 71 .
+<http://aristo.allenai.org/id#ie-target/6_12> token:end 72 .
+
+<http://aristo.allenai.org/id#ie-target/6_0> basic:root <http://aristo.allenai.org/id#ie-target/6_7> .
+<http://aristo.allenai.org/id#ie-target/6_2> basic:det <http://aristo.allenai.org/id#ie-target/6_1> .
+<http://aristo.allenai.org/id#ie-target/6_7> basic:nsubj <http://aristo.allenai.org/id#ie-target/6_2> .
+<http://aristo.allenai.org/id#ie-target/6_2> basic:prep <http://aristo.allenai.org/id#ie-target/6_3> .
+<http://aristo.allenai.org/id#ie-target/6_6> basic:det <http://aristo.allenai.org/id#ie-target/6_4> .
+<http://aristo.allenai.org/id#ie-target/6_6> basic:num <http://aristo.allenai.org/id#ie-target/6_5> .
+<http://aristo.allenai.org/id#ie-target/6_3> basic:pobj <http://aristo.allenai.org/id#ie-target/6_6> .
+<http://aristo.allenai.org/id#ie-target/6_9> basic:amod <http://aristo.allenai.org/id#ie-target/6_8> .
+<http://aristo.allenai.org/id#ie-target/6_7> basic:dobj <http://aristo.allenai.org/id#ie-target/6_9> .
+<http://aristo.allenai.org/id#ie-target/6_7> basic:prep <http://aristo.allenai.org/id#ie-target/6_10> .
+<http://aristo.allenai.org/id#ie-target/6_10> basic:pobj <http://aristo.allenai.org/id#ie-target/6_11> .
+
+<http://aristo.allenai.org/id#ie-target/6_0> dep:root <http://aristo.allenai.org/id#ie-target/6_7> .
+<http://aristo.allenai.org/id#ie-target/6_2> dep:det <http://aristo.allenai.org/id#ie-target/6_1> .
+<http://aristo.allenai.org/id#ie-target/6_7> dep:nsubj <http://aristo.allenai.org/id#ie-target/6_2> .
+<http://aristo.allenai.org/id#ie-target/6_6> dep:det <http://aristo.allenai.org/id#ie-target/6_4> .
+<http://aristo.allenai.org/id#ie-target/6_6> dep:num <http://aristo.allenai.org/id#ie-target/6_5> .
+<http://aristo.allenai.org/id#ie-target/6_2> dep:prep_between <http://aristo.allenai.org/id#ie-target/6_6> .
+<http://aristo.allenai.org/id#ie-target/6_9> dep:amod <http://aristo.allenai.org/id#ie-target/6_8> .
+<http://aristo.allenai.org/id#ie-target/6_7> dep:dobj <http://aristo.allenai.org/id#ie-target/6_9> .
+<http://aristo.allenai.org/id#ie-target/6_7> dep:prep_into <http://aristo.allenai.org/id#ie-target/6_11> .
+
+<http://aristo.allenai.org/id#ie-target/7_1> token:text "Getting" .
+<http://aristo.allenai.org/id#ie-target/7_1> token:lemma "get" .
+<http://aristo.allenai.org/id#ie-target/7_1> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/7_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/7_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/7_2> token:text "enough" .
+<http://aristo.allenai.org/id#ie-target/7_2> token:lemma "enough" .
+<http://aristo.allenai.org/id#ie-target/7_2> token:pos "RB" .
+<http://aristo.allenai.org/id#ie-target/7_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/7_2> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/7_3> token:text "rest" .
+<http://aristo.allenai.org/id#ie-target/7_3> token:lemma "rest" .
+<http://aristo.allenai.org/id#ie-target/7_3> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/7_3> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/7_3> token:end 19 .
+
+<http://aristo.allenai.org/id#ie-target/7_4> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/7_4> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/7_4> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/7_4> token:begin 20 .
+<http://aristo.allenai.org/id#ie-target/7_4> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/7_5> token:text "also" .
+<http://aristo.allenai.org/id#ie-target/7_5> token:lemma "also" .
+<http://aristo.allenai.org/id#ie-target/7_5> token:pos "RB" .
+<http://aristo.allenai.org/id#ie-target/7_5> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/7_5> token:end 27 .
+
+<http://aristo.allenai.org/id#ie-target/7_6> token:text "an" .
+<http://aristo.allenai.org/id#ie-target/7_6> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/7_6> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/7_6> token:begin 28 .
+<http://aristo.allenai.org/id#ie-target/7_6> token:end 30 .
+
+<http://aristo.allenai.org/id#ie-target/7_7> token:text "important" .
+<http://aristo.allenai.org/id#ie-target/7_7> token:lemma "important" .
+<http://aristo.allenai.org/id#ie-target/7_7> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/7_7> token:begin 31 .
+<http://aristo.allenai.org/id#ie-target/7_7> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/7_8> token:text "part" .
+<http://aristo.allenai.org/id#ie-target/7_8> token:lemma "part" .
+<http://aristo.allenai.org/id#ie-target/7_8> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/7_8> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/7_8> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/7_9> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/7_9> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/7_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/7_9> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/7_9> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/7_10> token:text "living" .
+<http://aristo.allenai.org/id#ie-target/7_10> token:lemma "live" .
+<http://aristo.allenai.org/id#ie-target/7_10> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/7_10> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/7_10> token:end 55 .
+
+<http://aristo.allenai.org/id#ie-target/7_11> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/7_11> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/7_11> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/7_11> token:begin 56 .
+<http://aristo.allenai.org/id#ie-target/7_11> token:end 57 .
+
+<http://aristo.allenai.org/id#ie-target/7_12> token:text "healthy" .
+<http://aristo.allenai.org/id#ie-target/7_12> token:lemma "healthy" .
+<http://aristo.allenai.org/id#ie-target/7_12> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/7_12> token:begin 58 .
+<http://aristo.allenai.org/id#ie-target/7_12> token:end 65 .
+
+<http://aristo.allenai.org/id#ie-target/7_13> token:text "life" .
+<http://aristo.allenai.org/id#ie-target/7_13> token:lemma "life" .
+<http://aristo.allenai.org/id#ie-target/7_13> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/7_13> token:begin 66 .
+<http://aristo.allenai.org/id#ie-target/7_13> token:end 70 .
+
+<http://aristo.allenai.org/id#ie-target/7_14> token:text "." .
+<http://aristo.allenai.org/id#ie-target/7_14> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/7_14> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/7_14> token:begin 70 .
+<http://aristo.allenai.org/id#ie-target/7_14> token:end 71 .
+
+<http://aristo.allenai.org/id#ie-target/7_0> basic:root <http://aristo.allenai.org/id#ie-target/7_8> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:csubj <http://aristo.allenai.org/id#ie-target/7_1> .
+<http://aristo.allenai.org/id#ie-target/7_3> basic:advmod <http://aristo.allenai.org/id#ie-target/7_2> .
+<http://aristo.allenai.org/id#ie-target/7_1> basic:dobj <http://aristo.allenai.org/id#ie-target/7_3> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:cop <http://aristo.allenai.org/id#ie-target/7_4> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:advmod <http://aristo.allenai.org/id#ie-target/7_5> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:det <http://aristo.allenai.org/id#ie-target/7_6> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:amod <http://aristo.allenai.org/id#ie-target/7_7> .
+<http://aristo.allenai.org/id#ie-target/7_8> basic:prep <http://aristo.allenai.org/id#ie-target/7_9> .
+<http://aristo.allenai.org/id#ie-target/7_9> basic:dep <http://aristo.allenai.org/id#ie-target/7_10> .
+<http://aristo.allenai.org/id#ie-target/7_13> basic:det <http://aristo.allenai.org/id#ie-target/7_11> .
+<http://aristo.allenai.org/id#ie-target/7_13> basic:amod <http://aristo.allenai.org/id#ie-target/7_12> .
+<http://aristo.allenai.org/id#ie-target/7_10> basic:dobj <http://aristo.allenai.org/id#ie-target/7_13> .
+
+<http://aristo.allenai.org/id#ie-target/7_0> dep:root <http://aristo.allenai.org/id#ie-target/7_8> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:csubj <http://aristo.allenai.org/id#ie-target/7_1> .
+<http://aristo.allenai.org/id#ie-target/7_3> dep:advmod <http://aristo.allenai.org/id#ie-target/7_2> .
+<http://aristo.allenai.org/id#ie-target/7_1> dep:dobj <http://aristo.allenai.org/id#ie-target/7_3> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:cop <http://aristo.allenai.org/id#ie-target/7_4> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:advmod <http://aristo.allenai.org/id#ie-target/7_5> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:det <http://aristo.allenai.org/id#ie-target/7_6> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:amod <http://aristo.allenai.org/id#ie-target/7_7> .
+<http://aristo.allenai.org/id#ie-target/7_8> dep:prep <http://aristo.allenai.org/id#ie-target/7_9> .
+<http://aristo.allenai.org/id#ie-target/7_9> dep:dep <http://aristo.allenai.org/id#ie-target/7_10> .
+<http://aristo.allenai.org/id#ie-target/7_13> dep:det <http://aristo.allenai.org/id#ie-target/7_11> .
+<http://aristo.allenai.org/id#ie-target/7_13> dep:amod <http://aristo.allenai.org/id#ie-target/7_12> .
+<http://aristo.allenai.org/id#ie-target/7_10> dep:dobj <http://aristo.allenai.org/id#ie-target/7_13> .
+
+<http://aristo.allenai.org/id#ie-target/8_1> token:text "The" .
+<http://aristo.allenai.org/id#ie-target/8_1> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/8_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/8_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/8_1> token:end 3 .
+
+<http://aristo.allenai.org/id#ie-target/8_2> token:text "tool" .
+<http://aristo.allenai.org/id#ie-target/8_2> token:lemma "tool" .
+<http://aristo.allenai.org/id#ie-target/8_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/8_2> token:begin 4 .
+<http://aristo.allenai.org/id#ie-target/8_2> token:end 8 .
+
+<http://aristo.allenai.org/id#ie-target/8_3> token:text "that" .
+<http://aristo.allenai.org/id#ie-target/8_3> token:lemma "that" .
+<http://aristo.allenai.org/id#ie-target/8_3> token:pos "WDT" .
+<http://aristo.allenai.org/id#ie-target/8_3> token:begin 9 .
+<http://aristo.allenai.org/id#ie-target/8_3> token:end 13 .
+
+<http://aristo.allenai.org/id#ie-target/8_4> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/8_4> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/8_4> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/8_4> token:begin 14 .
+<http://aristo.allenai.org/id#ie-target/8_4> token:end 16 .
+
+<http://aristo.allenai.org/id#ie-target/8_5> token:text "used" .
+<http://aristo.allenai.org/id#ie-target/8_5> token:lemma "use" .
+<http://aristo.allenai.org/id#ie-target/8_5> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/8_5> token:begin 17 .
+<http://aristo.allenai.org/id#ie-target/8_5> token:end 21 .
+
+<http://aristo.allenai.org/id#ie-target/8_6> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/8_6> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/8_6> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/8_6> token:begin 22 .
+<http://aristo.allenai.org/id#ie-target/8_6> token:end 24 .
+
+<http://aristo.allenai.org/id#ie-target/8_7> token:text "measure" .
+<http://aristo.allenai.org/id#ie-target/8_7> token:lemma "measure" .
+<http://aristo.allenai.org/id#ie-target/8_7> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/8_7> token:begin 25 .
+<http://aristo.allenai.org/id#ie-target/8_7> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/8_8> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/8_8> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/8_8> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/8_8> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/8_8> token:end 36 .
+
+<http://aristo.allenai.org/id#ie-target/8_9> token:text "volume" .
+<http://aristo.allenai.org/id#ie-target/8_9> token:lemma "volume" .
+<http://aristo.allenai.org/id#ie-target/8_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/8_9> token:begin 37 .
+<http://aristo.allenai.org/id#ie-target/8_9> token:end 43 .
+
+<http://aristo.allenai.org/id#ie-target/8_10> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/8_10> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/8_10> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/8_10> token:begin 44 .
+<http://aristo.allenai.org/id#ie-target/8_10> token:end 46 .
+
+<http://aristo.allenai.org/id#ie-target/8_11> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/8_11> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/8_11> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/8_11> token:begin 47 .
+<http://aristo.allenai.org/id#ie-target/8_11> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/8_12> token:text "liquid" .
+<http://aristo.allenai.org/id#ie-target/8_12> token:lemma "liquid" .
+<http://aristo.allenai.org/id#ie-target/8_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/8_12> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/8_12> token:end 55 .
+
+<http://aristo.allenai.org/id#ie-target/8_13> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/8_13> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/8_13> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/8_13> token:begin 56 .
+<http://aristo.allenai.org/id#ie-target/8_13> token:end 58 .
+
+<http://aristo.allenai.org/id#ie-target/8_14> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/8_14> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/8_14> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/8_14> token:begin 59 .
+<http://aristo.allenai.org/id#ie-target/8_14> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/8_15> token:text "graduated" .
+<http://aristo.allenai.org/id#ie-target/8_15> token:lemma "graduate" .
+<http://aristo.allenai.org/id#ie-target/8_15> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/8_15> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/8_15> token:end 70 .
+
+<http://aristo.allenai.org/id#ie-target/8_16> token:text "cylinder" .
+<http://aristo.allenai.org/id#ie-target/8_16> token:lemma "cylinder" .
+<http://aristo.allenai.org/id#ie-target/8_16> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/8_16> token:begin 71 .
+<http://aristo.allenai.org/id#ie-target/8_16> token:end 79 .
+
+<http://aristo.allenai.org/id#ie-target/8_17> token:text "." .
+<http://aristo.allenai.org/id#ie-target/8_17> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/8_17> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/8_17> token:begin 79 .
+<http://aristo.allenai.org/id#ie-target/8_17> token:end 80 .
+
+<http://aristo.allenai.org/id#ie-target/8_0> basic:root <http://aristo.allenai.org/id#ie-target/8_16> .
+<http://aristo.allenai.org/id#ie-target/8_2> basic:det <http://aristo.allenai.org/id#ie-target/8_1> .
+<http://aristo.allenai.org/id#ie-target/8_16> basic:nsubj <http://aristo.allenai.org/id#ie-target/8_2> .
+<http://aristo.allenai.org/id#ie-target/8_5> basic:nsubjpass <http://aristo.allenai.org/id#ie-target/8_3> .
+<http://aristo.allenai.org/id#ie-target/8_5> basic:auxpass <http://aristo.allenai.org/id#ie-target/8_4> .
+<http://aristo.allenai.org/id#ie-target/8_2> basic:rcmod <http://aristo.allenai.org/id#ie-target/8_5> .
+<http://aristo.allenai.org/id#ie-target/8_7> basic:aux <http://aristo.allenai.org/id#ie-target/8_6> .
+<http://aristo.allenai.org/id#ie-target/8_5> basic:xcomp <http://aristo.allenai.org/id#ie-target/8_7> .
+<http://aristo.allenai.org/id#ie-target/8_9> basic:det <http://aristo.allenai.org/id#ie-target/8_8> .
+<http://aristo.allenai.org/id#ie-target/8_7> basic:dobj <http://aristo.allenai.org/id#ie-target/8_9> .
+<http://aristo.allenai.org/id#ie-target/8_9> basic:prep <http://aristo.allenai.org/id#ie-target/8_10> .
+<http://aristo.allenai.org/id#ie-target/8_12> basic:det <http://aristo.allenai.org/id#ie-target/8_11> .
+<http://aristo.allenai.org/id#ie-target/8_10> basic:pobj <http://aristo.allenai.org/id#ie-target/8_12> .
+<http://aristo.allenai.org/id#ie-target/8_16> basic:dep <http://aristo.allenai.org/id#ie-target/8_13> .
+<http://aristo.allenai.org/id#ie-target/8_16> basic:det <http://aristo.allenai.org/id#ie-target/8_14> .
+<http://aristo.allenai.org/id#ie-target/8_16> basic:amod <http://aristo.allenai.org/id#ie-target/8_15> .
+
+<http://aristo.allenai.org/id#ie-target/8_0> dep:root <http://aristo.allenai.org/id#ie-target/8_16> .
+<http://aristo.allenai.org/id#ie-target/8_2> dep:det <http://aristo.allenai.org/id#ie-target/8_1> .
+<http://aristo.allenai.org/id#ie-target/8_16> dep:nsubj <http://aristo.allenai.org/id#ie-target/8_2> .
+<http://aristo.allenai.org/id#ie-target/8_5> dep:nsubjpass <http://aristo.allenai.org/id#ie-target/8_3> .
+<http://aristo.allenai.org/id#ie-target/8_5> dep:auxpass <http://aristo.allenai.org/id#ie-target/8_4> .
+<http://aristo.allenai.org/id#ie-target/8_2> dep:rcmod <http://aristo.allenai.org/id#ie-target/8_5> .
+<http://aristo.allenai.org/id#ie-target/8_7> dep:aux <http://aristo.allenai.org/id#ie-target/8_6> .
+<http://aristo.allenai.org/id#ie-target/8_5> dep:xcomp <http://aristo.allenai.org/id#ie-target/8_7> .
+<http://aristo.allenai.org/id#ie-target/8_9> dep:det <http://aristo.allenai.org/id#ie-target/8_8> .
+<http://aristo.allenai.org/id#ie-target/8_7> dep:dobj <http://aristo.allenai.org/id#ie-target/8_9> .
+<http://aristo.allenai.org/id#ie-target/8_12> dep:det <http://aristo.allenai.org/id#ie-target/8_11> .
+<http://aristo.allenai.org/id#ie-target/8_9> dep:prep_of <http://aristo.allenai.org/id#ie-target/8_12> .
+<http://aristo.allenai.org/id#ie-target/8_16> dep:dep <http://aristo.allenai.org/id#ie-target/8_13> .
+<http://aristo.allenai.org/id#ie-target/8_16> dep:det <http://aristo.allenai.org/id#ie-target/8_14> .
+<http://aristo.allenai.org/id#ie-target/8_16> dep:amod <http://aristo.allenai.org/id#ie-target/8_15> .
+
+<http://aristo.allenai.org/id#ie-target/9_1> token:text "camouflage" .
+<http://aristo.allenai.org/id#ie-target/9_1> token:lemma "camouflage" .
+<http://aristo.allenai.org/id#ie-target/9_1> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/9_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/9_1> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/9_2> token:text ":" .
+<http://aristo.allenai.org/id#ie-target/9_2> token:lemma ":" .
+<http://aristo.allenai.org/id#ie-target/9_2> token:pos ":" .
+<http://aristo.allenai.org/id#ie-target/9_2> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/9_2> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/9_3> token:text "The" .
+<http://aristo.allenai.org/id#ie-target/9_3> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/9_3> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/9_3> token:begin 12 .
+<http://aristo.allenai.org/id#ie-target/9_3> token:end 15 .
+
+<http://aristo.allenai.org/id#ie-target/9_4> token:text "disguising" .
+<http://aristo.allenai.org/id#ie-target/9_4> token:lemma "disguising" .
+<http://aristo.allenai.org/id#ie-target/9_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/9_4> token:begin 16 .
+<http://aristo.allenai.org/id#ie-target/9_4> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/9_5> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/9_5> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/9_5> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/9_5> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/9_5> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/9_6> token:text "military" .
+<http://aristo.allenai.org/id#ie-target/9_6> token:lemma "military" .
+<http://aristo.allenai.org/id#ie-target/9_6> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/9_6> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/9_6> token:end 38 .
+
+<http://aristo.allenai.org/id#ie-target/9_7> token:text "personnel" .
+<http://aristo.allenai.org/id#ie-target/9_7> token:lemma "personnel" .
+<http://aristo.allenai.org/id#ie-target/9_7> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/9_7> token:begin 39 .
+<http://aristo.allenai.org/id#ie-target/9_7> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/9_8> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/9_8> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/9_8> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/9_8> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/9_8> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/9_9> token:text "make" .
+<http://aristo.allenai.org/id#ie-target/9_9> token:lemma "make" .
+<http://aristo.allenai.org/id#ie-target/9_9> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/9_9> token:begin 52 .
+<http://aristo.allenai.org/id#ie-target/9_9> token:end 56 .
+
+<http://aristo.allenai.org/id#ie-target/9_10> token:text "them" .
+<http://aristo.allenai.org/id#ie-target/9_10> token:lemma "they" .
+<http://aristo.allenai.org/id#ie-target/9_10> token:pos "PRP" .
+<http://aristo.allenai.org/id#ie-target/9_10> token:begin 57 .
+<http://aristo.allenai.org/id#ie-target/9_10> token:end 61 .
+
+<http://aristo.allenai.org/id#ie-target/9_11> token:text "blend" .
+<http://aristo.allenai.org/id#ie-target/9_11> token:lemma "blend" .
+<http://aristo.allenai.org/id#ie-target/9_11> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/9_11> token:begin 62 .
+<http://aristo.allenai.org/id#ie-target/9_11> token:end 67 .
+
+<http://aristo.allenai.org/id#ie-target/9_12> token:text "in" .
+<http://aristo.allenai.org/id#ie-target/9_12> token:lemma "in" .
+<http://aristo.allenai.org/id#ie-target/9_12> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/9_12> token:begin 68 .
+<http://aristo.allenai.org/id#ie-target/9_12> token:end 70 .
+
+<http://aristo.allenai.org/id#ie-target/9_13> token:text "with" .
+<http://aristo.allenai.org/id#ie-target/9_13> token:lemma "with" .
+<http://aristo.allenai.org/id#ie-target/9_13> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/9_13> token:begin 71 .
+<http://aristo.allenai.org/id#ie-target/9_13> token:end 75 .
+
+<http://aristo.allenai.org/id#ie-target/9_14> token:text "their" .
+<http://aristo.allenai.org/id#ie-target/9_14> token:lemma "they" .
+<http://aristo.allenai.org/id#ie-target/9_14> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/9_14> token:begin 76 .
+<http://aristo.allenai.org/id#ie-target/9_14> token:end 81 .
+
+<http://aristo.allenai.org/id#ie-target/9_15> token:text "surroundings" .
+<http://aristo.allenai.org/id#ie-target/9_15> token:lemma "surroundings" .
+<http://aristo.allenai.org/id#ie-target/9_15> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/9_15> token:begin 82 .
+<http://aristo.allenai.org/id#ie-target/9_15> token:end 94 .
+
+<http://aristo.allenai.org/id#ie-target/9_16> token:text "." .
+<http://aristo.allenai.org/id#ie-target/9_16> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/9_16> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/9_16> token:begin 94 .
+<http://aristo.allenai.org/id#ie-target/9_16> token:end 95 .
+
+<http://aristo.allenai.org/id#ie-target/9_0> basic:root <http://aristo.allenai.org/id#ie-target/9_1> .
+<http://aristo.allenai.org/id#ie-target/9_4> basic:det <http://aristo.allenai.org/id#ie-target/9_3> .
+<http://aristo.allenai.org/id#ie-target/9_1> basic:dep <http://aristo.allenai.org/id#ie-target/9_4> .
+<http://aristo.allenai.org/id#ie-target/9_4> basic:prep <http://aristo.allenai.org/id#ie-target/9_5> .
+<http://aristo.allenai.org/id#ie-target/9_7> basic:amod <http://aristo.allenai.org/id#ie-target/9_6> .
+<http://aristo.allenai.org/id#ie-target/9_5> basic:pobj <http://aristo.allenai.org/id#ie-target/9_7> .
+<http://aristo.allenai.org/id#ie-target/9_9> basic:aux <http://aristo.allenai.org/id#ie-target/9_8> .
+<http://aristo.allenai.org/id#ie-target/9_4> basic:infmod <http://aristo.allenai.org/id#ie-target/9_9> .
+<http://aristo.allenai.org/id#ie-target/9_11> basic:nsubj <http://aristo.allenai.org/id#ie-target/9_10> .
+<http://aristo.allenai.org/id#ie-target/9_9> basic:ccomp <http://aristo.allenai.org/id#ie-target/9_11> .
+<http://aristo.allenai.org/id#ie-target/9_11> basic:advmod <http://aristo.allenai.org/id#ie-target/9_12> .
+<http://aristo.allenai.org/id#ie-target/9_11> basic:prep <http://aristo.allenai.org/id#ie-target/9_13> .
+<http://aristo.allenai.org/id#ie-target/9_15> basic:poss <http://aristo.allenai.org/id#ie-target/9_14> .
+<http://aristo.allenai.org/id#ie-target/9_13> basic:pobj <http://aristo.allenai.org/id#ie-target/9_15> .
+
+<http://aristo.allenai.org/id#ie-target/9_0> dep:root <http://aristo.allenai.org/id#ie-target/9_1> .
+<http://aristo.allenai.org/id#ie-target/9_4> dep:det <http://aristo.allenai.org/id#ie-target/9_3> .
+<http://aristo.allenai.org/id#ie-target/9_1> dep:dep <http://aristo.allenai.org/id#ie-target/9_4> .
+<http://aristo.allenai.org/id#ie-target/9_7> dep:amod <http://aristo.allenai.org/id#ie-target/9_6> .
+<http://aristo.allenai.org/id#ie-target/9_4> dep:prep_of <http://aristo.allenai.org/id#ie-target/9_7> .
+<http://aristo.allenai.org/id#ie-target/9_9> dep:aux <http://aristo.allenai.org/id#ie-target/9_8> .
+<http://aristo.allenai.org/id#ie-target/9_4> dep:infmod <http://aristo.allenai.org/id#ie-target/9_9> .
+<http://aristo.allenai.org/id#ie-target/9_11> dep:nsubj <http://aristo.allenai.org/id#ie-target/9_10> .
+<http://aristo.allenai.org/id#ie-target/9_9> dep:ccomp <http://aristo.allenai.org/id#ie-target/9_11> .
+<http://aristo.allenai.org/id#ie-target/9_11> dep:advmod <http://aristo.allenai.org/id#ie-target/9_12> .
+<http://aristo.allenai.org/id#ie-target/9_15> dep:poss <http://aristo.allenai.org/id#ie-target/9_14> .
+<http://aristo.allenai.org/id#ie-target/9_11> dep:prep_with <http://aristo.allenai.org/id#ie-target/9_15> .
+
+<http://aristo.allenai.org/id#ie-target/10_1> token:text "Decomposers" .
+<http://aristo.allenai.org/id#ie-target/10_1> token:lemma "decomposer" .
+<http://aristo.allenai.org/id#ie-target/10_1> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/10_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/10_1> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/10_2> token:text "are" .
+<http://aristo.allenai.org/id#ie-target/10_2> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/10_2> token:pos "VBP" .
+<http://aristo.allenai.org/id#ie-target/10_2> token:begin 12 .
+<http://aristo.allenai.org/id#ie-target/10_2> token:end 15 .
+
+<http://aristo.allenai.org/id#ie-target/10_3> token:text "living" .
+<http://aristo.allenai.org/id#ie-target/10_3> token:lemma "live" .
+<http://aristo.allenai.org/id#ie-target/10_3> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/10_3> token:begin 16 .
+<http://aristo.allenai.org/id#ie-target/10_3> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/10_4> token:text "things" .
+<http://aristo.allenai.org/id#ie-target/10_4> token:lemma "thing" .
+<http://aristo.allenai.org/id#ie-target/10_4> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/10_4> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/10_4> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/10_5> token:text "that" .
+<http://aristo.allenai.org/id#ie-target/10_5> token:lemma "that" .
+<http://aristo.allenai.org/id#ie-target/10_5> token:pos "WDT" .
+<http://aristo.allenai.org/id#ie-target/10_5> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/10_5> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/10_6> token:text "break" .
+<http://aristo.allenai.org/id#ie-target/10_6> token:lemma "break" .
+<http://aristo.allenai.org/id#ie-target/10_6> token:pos "VBP" .
+<http://aristo.allenai.org/id#ie-target/10_6> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/10_6> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/10_7> token:text "down" .
+<http://aristo.allenai.org/id#ie-target/10_7> token:lemma "down" .
+<http://aristo.allenai.org/id#ie-target/10_7> token:pos "RP" .
+<http://aristo.allenai.org/id#ie-target/10_7> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/10_7> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/10_8> token:text "dead" .
+<http://aristo.allenai.org/id#ie-target/10_8> token:lemma "dead" .
+<http://aristo.allenai.org/id#ie-target/10_8> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/10_8> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/10_8> token:end 50 .
+
+<http://aristo.allenai.org/id#ie-target/10_9> token:text "organisms" .
+<http://aristo.allenai.org/id#ie-target/10_9> token:lemma "organism" .
+<http://aristo.allenai.org/id#ie-target/10_9> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/10_9> token:begin 51 .
+<http://aristo.allenai.org/id#ie-target/10_9> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/10_10> token:text "and" .
+<http://aristo.allenai.org/id#ie-target/10_10> token:lemma "and" .
+<http://aristo.allenai.org/id#ie-target/10_10> token:pos "CC" .
+<http://aristo.allenai.org/id#ie-target/10_10> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/10_10> token:end 64 .
+
+<http://aristo.allenai.org/id#ie-target/10_11> token:text "recycle" .
+<http://aristo.allenai.org/id#ie-target/10_11> token:lemma "recycle" .
+<http://aristo.allenai.org/id#ie-target/10_11> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/10_11> token:begin 65 .
+<http://aristo.allenai.org/id#ie-target/10_11> token:end 72 .
+
+<http://aristo.allenai.org/id#ie-target/10_12> token:text "their" .
+<http://aristo.allenai.org/id#ie-target/10_12> token:lemma "they" .
+<http://aristo.allenai.org/id#ie-target/10_12> token:pos "PRP$" .
+<http://aristo.allenai.org/id#ie-target/10_12> token:begin 73 .
+<http://aristo.allenai.org/id#ie-target/10_12> token:end 78 .
+
+<http://aristo.allenai.org/id#ie-target/10_13> token:text "nutrients" .
+<http://aristo.allenai.org/id#ie-target/10_13> token:lemma "nutrient" .
+<http://aristo.allenai.org/id#ie-target/10_13> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/10_13> token:begin 79 .
+<http://aristo.allenai.org/id#ie-target/10_13> token:end 88 .
+
+<http://aristo.allenai.org/id#ie-target/10_14> token:text "into" .
+<http://aristo.allenai.org/id#ie-target/10_14> token:lemma "into" .
+<http://aristo.allenai.org/id#ie-target/10_14> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/10_14> token:begin 89 .
+<http://aristo.allenai.org/id#ie-target/10_14> token:end 93 .
+
+<http://aristo.allenai.org/id#ie-target/10_15> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/10_15> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/10_15> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/10_15> token:begin 94 .
+<http://aristo.allenai.org/id#ie-target/10_15> token:end 97 .
+
+<http://aristo.allenai.org/id#ie-target/10_16> token:text "soil" .
+<http://aristo.allenai.org/id#ie-target/10_16> token:lemma "soil" .
+<http://aristo.allenai.org/id#ie-target/10_16> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/10_16> token:begin 98 .
+<http://aristo.allenai.org/id#ie-target/10_16> token:end 102 .
+
+<http://aristo.allenai.org/id#ie-target/10_17> token:text "." .
+<http://aristo.allenai.org/id#ie-target/10_17> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/10_17> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/10_17> token:begin 102 .
+<http://aristo.allenai.org/id#ie-target/10_17> token:end 103 .
+
+<http://aristo.allenai.org/id#ie-target/10_0> basic:root <http://aristo.allenai.org/id#ie-target/10_4> .
+<http://aristo.allenai.org/id#ie-target/10_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/10_1> .
+<http://aristo.allenai.org/id#ie-target/10_4> basic:cop <http://aristo.allenai.org/id#ie-target/10_2> .
+<http://aristo.allenai.org/id#ie-target/10_4> basic:amod <http://aristo.allenai.org/id#ie-target/10_3> .
+<http://aristo.allenai.org/id#ie-target/10_6> basic:nsubj <http://aristo.allenai.org/id#ie-target/10_5> .
+<http://aristo.allenai.org/id#ie-target/10_4> basic:rcmod <http://aristo.allenai.org/id#ie-target/10_6> .
+<http://aristo.allenai.org/id#ie-target/10_6> basic:prt <http://aristo.allenai.org/id#ie-target/10_7> .
+<http://aristo.allenai.org/id#ie-target/10_9> basic:amod <http://aristo.allenai.org/id#ie-target/10_8> .
+<http://aristo.allenai.org/id#ie-target/10_6> basic:dobj <http://aristo.allenai.org/id#ie-target/10_9> .
+<http://aristo.allenai.org/id#ie-target/10_6> basic:cc <http://aristo.allenai.org/id#ie-target/10_10> .
+<http://aristo.allenai.org/id#ie-target/10_6> basic:conj <http://aristo.allenai.org/id#ie-target/10_11> .
+<http://aristo.allenai.org/id#ie-target/10_13> basic:poss <http://aristo.allenai.org/id#ie-target/10_12> .
+<http://aristo.allenai.org/id#ie-target/10_11> basic:dobj <http://aristo.allenai.org/id#ie-target/10_13> .
+<http://aristo.allenai.org/id#ie-target/10_11> basic:prep <http://aristo.allenai.org/id#ie-target/10_14> .
+<http://aristo.allenai.org/id#ie-target/10_16> basic:det <http://aristo.allenai.org/id#ie-target/10_15> .
+<http://aristo.allenai.org/id#ie-target/10_14> basic:pobj <http://aristo.allenai.org/id#ie-target/10_16> .
+
+<http://aristo.allenai.org/id#ie-target/10_0> dep:root <http://aristo.allenai.org/id#ie-target/10_4> .
+<http://aristo.allenai.org/id#ie-target/10_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/10_1> .
+<http://aristo.allenai.org/id#ie-target/10_4> dep:cop <http://aristo.allenai.org/id#ie-target/10_2> .
+<http://aristo.allenai.org/id#ie-target/10_4> dep:amod <http://aristo.allenai.org/id#ie-target/10_3> .
+<http://aristo.allenai.org/id#ie-target/10_6> dep:nsubj <http://aristo.allenai.org/id#ie-target/10_5> .
+<http://aristo.allenai.org/id#ie-target/10_11> dep:nsubj <http://aristo.allenai.org/id#ie-target/10_5> .
+<http://aristo.allenai.org/id#ie-target/10_4> dep:rcmod <http://aristo.allenai.org/id#ie-target/10_6> .
+<http://aristo.allenai.org/id#ie-target/10_6> dep:prt <http://aristo.allenai.org/id#ie-target/10_7> .
+<http://aristo.allenai.org/id#ie-target/10_9> dep:amod <http://aristo.allenai.org/id#ie-target/10_8> .
+<http://aristo.allenai.org/id#ie-target/10_6> dep:dobj <http://aristo.allenai.org/id#ie-target/10_9> .
+<http://aristo.allenai.org/id#ie-target/10_4> dep:rcmod <http://aristo.allenai.org/id#ie-target/10_11> .
+<http://aristo.allenai.org/id#ie-target/10_6> dep:conj_and <http://aristo.allenai.org/id#ie-target/10_11> .
+<http://aristo.allenai.org/id#ie-target/10_13> dep:poss <http://aristo.allenai.org/id#ie-target/10_12> .
+<http://aristo.allenai.org/id#ie-target/10_11> dep:dobj <http://aristo.allenai.org/id#ie-target/10_13> .
+<http://aristo.allenai.org/id#ie-target/10_16> dep:det <http://aristo.allenai.org/id#ie-target/10_15> .
+<http://aristo.allenai.org/id#ie-target/10_11> dep:prep_into <http://aristo.allenai.org/id#ie-target/10_16> .
+
+<http://aristo.allenai.org/id#ie-target/11_1> token:text "Gravity" .
+<http://aristo.allenai.org/id#ie-target/11_1> token:lemma "gravity" .
+<http://aristo.allenai.org/id#ie-target/11_1> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/11_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/11_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/11_2> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/11_2> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/11_2> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/11_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/11_2> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/11_3> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/11_3> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/11_3> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/11_3> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/11_3> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/11_4> token:text "force" .
+<http://aristo.allenai.org/id#ie-target/11_4> token:lemma "force" .
+<http://aristo.allenai.org/id#ie-target/11_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/11_4> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/11_4> token:end 20 .
+
+<http://aristo.allenai.org/id#ie-target/11_5> token:text "that" .
+<http://aristo.allenai.org/id#ie-target/11_5> token:lemma "that" .
+<http://aristo.allenai.org/id#ie-target/11_5> token:pos "WDT" .
+<http://aristo.allenai.org/id#ie-target/11_5> token:begin 21 .
+<http://aristo.allenai.org/id#ie-target/11_5> token:end 25 .
+
+<http://aristo.allenai.org/id#ie-target/11_6> token:text "pulls" .
+<http://aristo.allenai.org/id#ie-target/11_6> token:lemma "pull" .
+<http://aristo.allenai.org/id#ie-target/11_6> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/11_6> token:begin 26 .
+<http://aristo.allenai.org/id#ie-target/11_6> token:end 31 .
+
+<http://aristo.allenai.org/id#ie-target/11_7> token:text "an" .
+<http://aristo.allenai.org/id#ie-target/11_7> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/11_7> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/11_7> token:begin 32 .
+<http://aristo.allenai.org/id#ie-target/11_7> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/11_8> token:text "object" .
+<http://aristo.allenai.org/id#ie-target/11_8> token:lemma "object" .
+<http://aristo.allenai.org/id#ie-target/11_8> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/11_8> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/11_8> token:end 41 .
+
+<http://aristo.allenai.org/id#ie-target/11_9> token:text "toward" .
+<http://aristo.allenai.org/id#ie-target/11_9> token:lemma "toward" .
+<http://aristo.allenai.org/id#ie-target/11_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/11_9> token:begin 42 .
+<http://aristo.allenai.org/id#ie-target/11_9> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/11_10> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/11_10> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/11_10> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/11_10> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/11_10> token:end 52 .
+
+<http://aristo.allenai.org/id#ie-target/11_11> token:text "center" .
+<http://aristo.allenai.org/id#ie-target/11_11> token:lemma "center" .
+<http://aristo.allenai.org/id#ie-target/11_11> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/11_11> token:begin 53 .
+<http://aristo.allenai.org/id#ie-target/11_11> token:end 59 .
+
+<http://aristo.allenai.org/id#ie-target/11_12> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/11_12> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/11_12> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/11_12> token:begin 60 .
+<http://aristo.allenai.org/id#ie-target/11_12> token:end 62 .
+
+<http://aristo.allenai.org/id#ie-target/11_13> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/11_13> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/11_13> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/11_13> token:begin 63 .
+<http://aristo.allenai.org/id#ie-target/11_13> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/11_14> token:text "Earth" .
+<http://aristo.allenai.org/id#ie-target/11_14> token:lemma "Earth" .
+<http://aristo.allenai.org/id#ie-target/11_14> token:pos "NNP" .
+<http://aristo.allenai.org/id#ie-target/11_14> token:begin 67 .
+<http://aristo.allenai.org/id#ie-target/11_14> token:end 72 .
+<http://aristo.allenai.org/id#ie-target/11_14> ne:type "LOCATION" .
+
+<http://aristo.allenai.org/id#ie-target/11_15> token:text "." .
+<http://aristo.allenai.org/id#ie-target/11_15> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/11_15> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/11_15> token:begin 72 .
+<http://aristo.allenai.org/id#ie-target/11_15> token:end 73 .
+
+<http://aristo.allenai.org/id#ie-target/11_0> basic:root <http://aristo.allenai.org/id#ie-target/11_4> .
+<http://aristo.allenai.org/id#ie-target/11_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/11_1> .
+<http://aristo.allenai.org/id#ie-target/11_4> basic:cop <http://aristo.allenai.org/id#ie-target/11_2> .
+<http://aristo.allenai.org/id#ie-target/11_4> basic:det <http://aristo.allenai.org/id#ie-target/11_3> .
+<http://aristo.allenai.org/id#ie-target/11_6> basic:nsubj <http://aristo.allenai.org/id#ie-target/11_5> .
+<http://aristo.allenai.org/id#ie-target/11_4> basic:rcmod <http://aristo.allenai.org/id#ie-target/11_6> .
+<http://aristo.allenai.org/id#ie-target/11_8> basic:det <http://aristo.allenai.org/id#ie-target/11_7> .
+<http://aristo.allenai.org/id#ie-target/11_6> basic:tmod <http://aristo.allenai.org/id#ie-target/11_8> .
+<http://aristo.allenai.org/id#ie-target/11_8> basic:prep <http://aristo.allenai.org/id#ie-target/11_9> .
+<http://aristo.allenai.org/id#ie-target/11_11> basic:det <http://aristo.allenai.org/id#ie-target/11_10> .
+<http://aristo.allenai.org/id#ie-target/11_9> basic:pobj <http://aristo.allenai.org/id#ie-target/11_11> .
+<http://aristo.allenai.org/id#ie-target/11_11> basic:prep <http://aristo.allenai.org/id#ie-target/11_12> .
+<http://aristo.allenai.org/id#ie-target/11_14> basic:det <http://aristo.allenai.org/id#ie-target/11_13> .
+<http://aristo.allenai.org/id#ie-target/11_12> basic:pobj <http://aristo.allenai.org/id#ie-target/11_14> .
+
+<http://aristo.allenai.org/id#ie-target/11_0> dep:root <http://aristo.allenai.org/id#ie-target/11_4> .
+<http://aristo.allenai.org/id#ie-target/11_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/11_1> .
+<http://aristo.allenai.org/id#ie-target/11_4> dep:cop <http://aristo.allenai.org/id#ie-target/11_2> .
+<http://aristo.allenai.org/id#ie-target/11_4> dep:det <http://aristo.allenai.org/id#ie-target/11_3> .
+<http://aristo.allenai.org/id#ie-target/11_6> dep:nsubj <http://aristo.allenai.org/id#ie-target/11_5> .
+<http://aristo.allenai.org/id#ie-target/11_4> dep:rcmod <http://aristo.allenai.org/id#ie-target/11_6> .
+<http://aristo.allenai.org/id#ie-target/11_8> dep:det <http://aristo.allenai.org/id#ie-target/11_7> .
+<http://aristo.allenai.org/id#ie-target/11_6> dep:tmod <http://aristo.allenai.org/id#ie-target/11_8> .
+<http://aristo.allenai.org/id#ie-target/11_11> dep:det <http://aristo.allenai.org/id#ie-target/11_10> .
+<http://aristo.allenai.org/id#ie-target/11_8> dep:prep_toward <http://aristo.allenai.org/id#ie-target/11_11> .
+<http://aristo.allenai.org/id#ie-target/11_14> dep:det <http://aristo.allenai.org/id#ie-target/11_13> .
+<http://aristo.allenai.org/id#ie-target/11_11> dep:prep_of <http://aristo.allenai.org/id#ie-target/11_14> .
+
+<http://aristo.allenai.org/id#ie-target/12_1> token:text "A" .
+<http://aristo.allenai.org/id#ie-target/12_1> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/12_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/12_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/12_1> token:end 1 .
+
+<http://aristo.allenai.org/id#ie-target/12_2> token:text "human" .
+<http://aristo.allenai.org/id#ie-target/12_2> token:lemma "human" .
+<http://aristo.allenai.org/id#ie-target/12_2> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/12_2> token:begin 2 .
+<http://aristo.allenai.org/id#ie-target/12_2> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/12_3> token:text "'s" .
+<http://aristo.allenai.org/id#ie-target/12_3> token:lemma "'s" .
+<http://aristo.allenai.org/id#ie-target/12_3> token:pos "POS" .
+<http://aristo.allenai.org/id#ie-target/12_3> token:begin 7 .
+<http://aristo.allenai.org/id#ie-target/12_3> token:end 9 .
+
+<http://aristo.allenai.org/id#ie-target/12_4> token:text "body" .
+<http://aristo.allenai.org/id#ie-target/12_4> token:lemma "body" .
+<http://aristo.allenai.org/id#ie-target/12_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/12_4> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/12_4> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/12_5> token:text "produces" .
+<http://aristo.allenai.org/id#ie-target/12_5> token:lemma "produce" .
+<http://aristo.allenai.org/id#ie-target/12_5> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/12_5> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/12_5> token:end 23 .
+
+<http://aristo.allenai.org/id#ie-target/12_6> token:text "sweat" .
+<http://aristo.allenai.org/id#ie-target/12_6> token:lemma "sweat" .
+<http://aristo.allenai.org/id#ie-target/12_6> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/12_6> token:begin 24 .
+<http://aristo.allenai.org/id#ie-target/12_6> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/12_7> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/12_7> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/12_7> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/12_7> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/12_7> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/12_8> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/12_8> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/12_8> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/12_8> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/12_8> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/12_9> token:text "way" .
+<http://aristo.allenai.org/id#ie-target/12_9> token:lemma "way" .
+<http://aristo.allenai.org/id#ie-target/12_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/12_9> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/12_9> token:end 38 .
+
+<http://aristo.allenai.org/id#ie-target/12_10> token:text "that" .
+<http://aristo.allenai.org/id#ie-target/12_10> token:lemma "that" .
+<http://aristo.allenai.org/id#ie-target/12_10> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/12_10> token:begin 39 .
+<http://aristo.allenai.org/id#ie-target/12_10> token:end 43 .
+
+<http://aristo.allenai.org/id#ie-target/12_11> token:text "an" .
+<http://aristo.allenai.org/id#ie-target/12_11> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/12_11> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/12_11> token:begin 44 .
+<http://aristo.allenai.org/id#ie-target/12_11> token:end 46 .
+
+<http://aristo.allenai.org/id#ie-target/12_12> token:text "organism" .
+<http://aristo.allenai.org/id#ie-target/12_12> token:lemma "organism" .
+<http://aristo.allenai.org/id#ie-target/12_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/12_12> token:begin 47 .
+<http://aristo.allenai.org/id#ie-target/12_12> token:end 55 .
+
+<http://aristo.allenai.org/id#ie-target/12_13> token:text "may" .
+<http://aristo.allenai.org/id#ie-target/12_13> token:lemma "may" .
+<http://aristo.allenai.org/id#ie-target/12_13> token:pos "MD" .
+<http://aristo.allenai.org/id#ie-target/12_13> token:begin 56 .
+<http://aristo.allenai.org/id#ie-target/12_13> token:end 59 .
+
+<http://aristo.allenai.org/id#ie-target/12_14> token:text "adjust" .
+<http://aristo.allenai.org/id#ie-target/12_14> token:lemma "adjust" .
+<http://aristo.allenai.org/id#ie-target/12_14> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/12_14> token:begin 60 .
+<http://aristo.allenai.org/id#ie-target/12_14> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/12_15> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/12_15> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/12_15> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/12_15> token:begin 67 .
+<http://aristo.allenai.org/id#ie-target/12_15> token:end 69 .
+
+<http://aristo.allenai.org/id#ie-target/12_16> token:text "hot" .
+<http://aristo.allenai.org/id#ie-target/12_16> token:lemma "hot" .
+<http://aristo.allenai.org/id#ie-target/12_16> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/12_16> token:begin 70 .
+<http://aristo.allenai.org/id#ie-target/12_16> token:end 73 .
+
+<http://aristo.allenai.org/id#ie-target/12_17> token:text "temperatures" .
+<http://aristo.allenai.org/id#ie-target/12_17> token:lemma "temperature" .
+<http://aristo.allenai.org/id#ie-target/12_17> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/12_17> token:begin 74 .
+<http://aristo.allenai.org/id#ie-target/12_17> token:end 86 .
+
+<http://aristo.allenai.org/id#ie-target/12_18> token:text "." .
+<http://aristo.allenai.org/id#ie-target/12_18> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/12_18> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/12_18> token:begin 86 .
+<http://aristo.allenai.org/id#ie-target/12_18> token:end 87 .
+
+<http://aristo.allenai.org/id#ie-target/12_0> basic:root <http://aristo.allenai.org/id#ie-target/12_5> .
+<http://aristo.allenai.org/id#ie-target/12_2> basic:det <http://aristo.allenai.org/id#ie-target/12_1> .
+<http://aristo.allenai.org/id#ie-target/12_4> basic:poss <http://aristo.allenai.org/id#ie-target/12_2> .
+<http://aristo.allenai.org/id#ie-target/12_2> basic:possessive <http://aristo.allenai.org/id#ie-target/12_3> .
+<http://aristo.allenai.org/id#ie-target/12_5> basic:nsubj <http://aristo.allenai.org/id#ie-target/12_4> .
+<http://aristo.allenai.org/id#ie-target/12_9> basic:nsubj <http://aristo.allenai.org/id#ie-target/12_6> .
+<http://aristo.allenai.org/id#ie-target/12_9> basic:cop <http://aristo.allenai.org/id#ie-target/12_7> .
+<http://aristo.allenai.org/id#ie-target/12_9> basic:det <http://aristo.allenai.org/id#ie-target/12_8> .
+<http://aristo.allenai.org/id#ie-target/12_5> basic:ccomp <http://aristo.allenai.org/id#ie-target/12_9> .
+<http://aristo.allenai.org/id#ie-target/12_14> basic:dobj <http://aristo.allenai.org/id#ie-target/12_10> .
+<http://aristo.allenai.org/id#ie-target/12_12> basic:det <http://aristo.allenai.org/id#ie-target/12_11> .
+<http://aristo.allenai.org/id#ie-target/12_14> basic:nsubj <http://aristo.allenai.org/id#ie-target/12_12> .
+<http://aristo.allenai.org/id#ie-target/12_14> basic:aux <http://aristo.allenai.org/id#ie-target/12_13> .
+<http://aristo.allenai.org/id#ie-target/12_9> basic:rcmod <http://aristo.allenai.org/id#ie-target/12_14> .
+<http://aristo.allenai.org/id#ie-target/12_14> basic:prep <http://aristo.allenai.org/id#ie-target/12_15> .
+<http://aristo.allenai.org/id#ie-target/12_17> basic:amod <http://aristo.allenai.org/id#ie-target/12_16> .
+<http://aristo.allenai.org/id#ie-target/12_15> basic:pobj <http://aristo.allenai.org/id#ie-target/12_17> .
+
+<http://aristo.allenai.org/id#ie-target/12_0> dep:root <http://aristo.allenai.org/id#ie-target/12_5> .
+<http://aristo.allenai.org/id#ie-target/12_2> dep:det <http://aristo.allenai.org/id#ie-target/12_1> .
+<http://aristo.allenai.org/id#ie-target/12_4> dep:poss <http://aristo.allenai.org/id#ie-target/12_2> .
+<http://aristo.allenai.org/id#ie-target/12_5> dep:nsubj <http://aristo.allenai.org/id#ie-target/12_4> .
+<http://aristo.allenai.org/id#ie-target/12_9> dep:nsubj <http://aristo.allenai.org/id#ie-target/12_6> .
+<http://aristo.allenai.org/id#ie-target/12_9> dep:cop <http://aristo.allenai.org/id#ie-target/12_7> .
+<http://aristo.allenai.org/id#ie-target/12_9> dep:det <http://aristo.allenai.org/id#ie-target/12_8> .
+<http://aristo.allenai.org/id#ie-target/12_5> dep:ccomp <http://aristo.allenai.org/id#ie-target/12_9> .
+<http://aristo.allenai.org/id#ie-target/12_14> dep:dobj <http://aristo.allenai.org/id#ie-target/12_10> .
+<http://aristo.allenai.org/id#ie-target/12_12> dep:det <http://aristo.allenai.org/id#ie-target/12_11> .
+<http://aristo.allenai.org/id#ie-target/12_14> dep:nsubj <http://aristo.allenai.org/id#ie-target/12_12> .
+<http://aristo.allenai.org/id#ie-target/12_14> dep:aux <http://aristo.allenai.org/id#ie-target/12_13> .
+<http://aristo.allenai.org/id#ie-target/12_9> dep:rcmod <http://aristo.allenai.org/id#ie-target/12_14> .
+<http://aristo.allenai.org/id#ie-target/12_17> dep:amod <http://aristo.allenai.org/id#ie-target/12_16> .
+<http://aristo.allenai.org/id#ie-target/12_14> dep:prep_to <http://aristo.allenai.org/id#ie-target/12_17> .
+
+<http://aristo.allenai.org/id#ie-target/13_1> token:text "A" .
+<http://aristo.allenai.org/id#ie-target/13_1> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/13_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/13_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/13_1> token:end 1 .
+
+<http://aristo.allenai.org/id#ie-target/13_2> token:text "squirrel" .
+<http://aristo.allenai.org/id#ie-target/13_2> token:lemma "squirrel" .
+<http://aristo.allenai.org/id#ie-target/13_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/13_2> token:begin 2 .
+<http://aristo.allenai.org/id#ie-target/13_2> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/13_3> token:text "storing" .
+<http://aristo.allenai.org/id#ie-target/13_3> token:lemma "store" .
+<http://aristo.allenai.org/id#ie-target/13_3> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/13_3> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/13_3> token:end 18 .
+
+<http://aristo.allenai.org/id#ie-target/13_4> token:text "nuts" .
+<http://aristo.allenai.org/id#ie-target/13_4> token:lemma "nut" .
+<http://aristo.allenai.org/id#ie-target/13_4> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/13_4> token:begin 19 .
+<http://aristo.allenai.org/id#ie-target/13_4> token:end 23 .
+
+<http://aristo.allenai.org/id#ie-target/13_5> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/13_5> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/13_5> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/13_5> token:begin 24 .
+<http://aristo.allenai.org/id#ie-target/13_5> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/13_6> token:text "preparing" .
+<http://aristo.allenai.org/id#ie-target/13_6> token:lemma "prepare" .
+<http://aristo.allenai.org/id#ie-target/13_6> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/13_6> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/13_6> token:end 36 .
+
+<http://aristo.allenai.org/id#ie-target/13_7> token:text "for" .
+<http://aristo.allenai.org/id#ie-target/13_7> token:lemma "for" .
+<http://aristo.allenai.org/id#ie-target/13_7> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/13_7> token:begin 37 .
+<http://aristo.allenai.org/id#ie-target/13_7> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/13_8> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/13_8> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/13_8> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/13_8> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/13_8> token:end 42 .
+
+<http://aristo.allenai.org/id#ie-target/13_9> token:text "seasonal" .
+<http://aristo.allenai.org/id#ie-target/13_9> token:lemma "seasonal" .
+<http://aristo.allenai.org/id#ie-target/13_9> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/13_9> token:begin 43 .
+<http://aristo.allenai.org/id#ie-target/13_9> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/13_10> token:text "change" .
+<http://aristo.allenai.org/id#ie-target/13_10> token:lemma "change" .
+<http://aristo.allenai.org/id#ie-target/13_10> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/13_10> token:begin 52 .
+<http://aristo.allenai.org/id#ie-target/13_10> token:end 58 .
+
+<http://aristo.allenai.org/id#ie-target/13_11> token:text "in" .
+<http://aristo.allenai.org/id#ie-target/13_11> token:lemma "in" .
+<http://aristo.allenai.org/id#ie-target/13_11> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/13_11> token:begin 59 .
+<http://aristo.allenai.org/id#ie-target/13_11> token:end 61 .
+
+<http://aristo.allenai.org/id#ie-target/13_12> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/13_12> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/13_12> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/13_12> token:begin 62 .
+<http://aristo.allenai.org/id#ie-target/13_12> token:end 65 .
+
+<http://aristo.allenai.org/id#ie-target/13_13> token:text "environment" .
+<http://aristo.allenai.org/id#ie-target/13_13> token:lemma "environment" .
+<http://aristo.allenai.org/id#ie-target/13_13> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/13_13> token:begin 66 .
+<http://aristo.allenai.org/id#ie-target/13_13> token:end 77 .
+
+<http://aristo.allenai.org/id#ie-target/13_14> token:text "." .
+<http://aristo.allenai.org/id#ie-target/13_14> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/13_14> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/13_14> token:begin 77 .
+<http://aristo.allenai.org/id#ie-target/13_14> token:end 78 .
+
+<http://aristo.allenai.org/id#ie-target/13_0> basic:root <http://aristo.allenai.org/id#ie-target/13_6> .
+<http://aristo.allenai.org/id#ie-target/13_2> basic:det <http://aristo.allenai.org/id#ie-target/13_1> .
+<http://aristo.allenai.org/id#ie-target/13_6> basic:nsubj <http://aristo.allenai.org/id#ie-target/13_2> .
+<http://aristo.allenai.org/id#ie-target/13_2> basic:partmod <http://aristo.allenai.org/id#ie-target/13_3> .
+<http://aristo.allenai.org/id#ie-target/13_3> basic:dobj <http://aristo.allenai.org/id#ie-target/13_4> .
+<http://aristo.allenai.org/id#ie-target/13_6> basic:aux <http://aristo.allenai.org/id#ie-target/13_5> .
+<http://aristo.allenai.org/id#ie-target/13_6> basic:prep <http://aristo.allenai.org/id#ie-target/13_7> .
+<http://aristo.allenai.org/id#ie-target/13_10> basic:det <http://aristo.allenai.org/id#ie-target/13_8> .
+<http://aristo.allenai.org/id#ie-target/13_10> basic:amod <http://aristo.allenai.org/id#ie-target/13_9> .
+<http://aristo.allenai.org/id#ie-target/13_7> basic:pobj <http://aristo.allenai.org/id#ie-target/13_10> .
+<http://aristo.allenai.org/id#ie-target/13_10> basic:prep <http://aristo.allenai.org/id#ie-target/13_11> .
+<http://aristo.allenai.org/id#ie-target/13_13> basic:det <http://aristo.allenai.org/id#ie-target/13_12> .
+<http://aristo.allenai.org/id#ie-target/13_11> basic:pobj <http://aristo.allenai.org/id#ie-target/13_13> .
+
+<http://aristo.allenai.org/id#ie-target/13_0> dep:root <http://aristo.allenai.org/id#ie-target/13_6> .
+<http://aristo.allenai.org/id#ie-target/13_2> dep:det <http://aristo.allenai.org/id#ie-target/13_1> .
+<http://aristo.allenai.org/id#ie-target/13_6> dep:nsubj <http://aristo.allenai.org/id#ie-target/13_2> .
+<http://aristo.allenai.org/id#ie-target/13_2> dep:partmod <http://aristo.allenai.org/id#ie-target/13_3> .
+<http://aristo.allenai.org/id#ie-target/13_3> dep:dobj <http://aristo.allenai.org/id#ie-target/13_4> .
+<http://aristo.allenai.org/id#ie-target/13_6> dep:aux <http://aristo.allenai.org/id#ie-target/13_5> .
+<http://aristo.allenai.org/id#ie-target/13_10> dep:det <http://aristo.allenai.org/id#ie-target/13_8> .
+<http://aristo.allenai.org/id#ie-target/13_10> dep:amod <http://aristo.allenai.org/id#ie-target/13_9> .
+<http://aristo.allenai.org/id#ie-target/13_6> dep:prep_for <http://aristo.allenai.org/id#ie-target/13_10> .
+<http://aristo.allenai.org/id#ie-target/13_13> dep:det <http://aristo.allenai.org/id#ie-target/13_12> .
+<http://aristo.allenai.org/id#ie-target/13_10> dep:prep_in <http://aristo.allenai.org/id#ie-target/13_13> .
+
+<http://aristo.allenai.org/id#ie-target/14_1> token:text "A" .
+<http://aristo.allenai.org/id#ie-target/14_1> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/14_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/14_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/14_1> token:end 1 .
+
+<http://aristo.allenai.org/id#ie-target/14_2> token:text "student" .
+<http://aristo.allenai.org/id#ie-target/14_2> token:lemma "student" .
+<http://aristo.allenai.org/id#ie-target/14_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/14_2> token:begin 2 .
+<http://aristo.allenai.org/id#ie-target/14_2> token:end 9 .
+
+<http://aristo.allenai.org/id#ie-target/14_3> token:text "should" .
+<http://aristo.allenai.org/id#ie-target/14_3> token:lemma "should" .
+<http://aristo.allenai.org/id#ie-target/14_3> token:pos "MD" .
+<http://aristo.allenai.org/id#ie-target/14_3> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/14_3> token:end 16 .
+
+<http://aristo.allenai.org/id#ie-target/14_4> token:text "use" .
+<http://aristo.allenai.org/id#ie-target/14_4> token:lemma "use" .
+<http://aristo.allenai.org/id#ie-target/14_4> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/14_4> token:begin 17 .
+<http://aristo.allenai.org/id#ie-target/14_4> token:end 20 .
+
+<http://aristo.allenai.org/id#ie-target/14_5> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/14_5> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/14_5> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/14_5> token:begin 21 .
+<http://aristo.allenai.org/id#ie-target/14_5> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/14_6> token:text "hand" .
+<http://aristo.allenai.org/id#ie-target/14_6> token:lemma "hand" .
+<http://aristo.allenai.org/id#ie-target/14_6> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/14_6> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/14_6> token:end 27 .
+
+<http://aristo.allenai.org/id#ie-target/14_7> token:text "lens" .
+<http://aristo.allenai.org/id#ie-target/14_7> token:lemma "lens" .
+<http://aristo.allenai.org/id#ie-target/14_7> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/14_7> token:begin 28 .
+<http://aristo.allenai.org/id#ie-target/14_7> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/14_8> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/14_8> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/14_8> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/14_8> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/14_8> token:end 35 .
+
+<http://aristo.allenai.org/id#ie-target/14_9> token:text "get" .
+<http://aristo.allenai.org/id#ie-target/14_9> token:lemma "get" .
+<http://aristo.allenai.org/id#ie-target/14_9> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/14_9> token:begin 36 .
+<http://aristo.allenai.org/id#ie-target/14_9> token:end 39 .
+
+<http://aristo.allenai.org/id#ie-target/14_10> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/14_10> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/14_10> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/14_10> token:begin 40 .
+<http://aristo.allenai.org/id#ie-target/14_10> token:end 41 .
+
+<http://aristo.allenai.org/id#ie-target/14_11> token:text "better" .
+<http://aristo.allenai.org/id#ie-target/14_11> token:lemma "better" .
+<http://aristo.allenai.org/id#ie-target/14_11> token:pos "JJR" .
+<http://aristo.allenai.org/id#ie-target/14_11> token:begin 42 .
+<http://aristo.allenai.org/id#ie-target/14_11> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/14_12> token:text "look" .
+<http://aristo.allenai.org/id#ie-target/14_12> token:lemma "look" .
+<http://aristo.allenai.org/id#ie-target/14_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/14_12> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/14_12> token:end 53 .
+
+<http://aristo.allenai.org/id#ie-target/14_13> token:text "at" .
+<http://aristo.allenai.org/id#ie-target/14_13> token:lemma "at" .
+<http://aristo.allenai.org/id#ie-target/14_13> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/14_13> token:begin 54 .
+<http://aristo.allenai.org/id#ie-target/14_13> token:end 56 .
+
+<http://aristo.allenai.org/id#ie-target/14_14> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/14_14> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/14_14> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/14_14> token:begin 57 .
+<http://aristo.allenai.org/id#ie-target/14_14> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/14_15> token:text "spots" .
+<http://aristo.allenai.org/id#ie-target/14_15> token:lemma "spot" .
+<http://aristo.allenai.org/id#ie-target/14_15> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/14_15> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/14_15> token:end 66 .
+
+<http://aristo.allenai.org/id#ie-target/14_16> token:text "." .
+<http://aristo.allenai.org/id#ie-target/14_16> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/14_16> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/14_16> token:begin 66 .
+<http://aristo.allenai.org/id#ie-target/14_16> token:end 67 .
+
+<http://aristo.allenai.org/id#ie-target/14_0> basic:root <http://aristo.allenai.org/id#ie-target/14_4> .
+<http://aristo.allenai.org/id#ie-target/14_2> basic:det <http://aristo.allenai.org/id#ie-target/14_1> .
+<http://aristo.allenai.org/id#ie-target/14_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/14_2> .
+<http://aristo.allenai.org/id#ie-target/14_4> basic:aux <http://aristo.allenai.org/id#ie-target/14_3> .
+<http://aristo.allenai.org/id#ie-target/14_7> basic:det <http://aristo.allenai.org/id#ie-target/14_5> .
+<http://aristo.allenai.org/id#ie-target/14_7> basic:nn <http://aristo.allenai.org/id#ie-target/14_6> .
+<http://aristo.allenai.org/id#ie-target/14_4> basic:dobj <http://aristo.allenai.org/id#ie-target/14_7> .
+<http://aristo.allenai.org/id#ie-target/14_9> basic:aux <http://aristo.allenai.org/id#ie-target/14_8> .
+<http://aristo.allenai.org/id#ie-target/14_4> basic:xcomp <http://aristo.allenai.org/id#ie-target/14_9> .
+<http://aristo.allenai.org/id#ie-target/14_12> basic:det <http://aristo.allenai.org/id#ie-target/14_10> .
+<http://aristo.allenai.org/id#ie-target/14_12> basic:amod <http://aristo.allenai.org/id#ie-target/14_11> .
+<http://aristo.allenai.org/id#ie-target/14_9> basic:dobj <http://aristo.allenai.org/id#ie-target/14_12> .
+<http://aristo.allenai.org/id#ie-target/14_12> basic:prep <http://aristo.allenai.org/id#ie-target/14_13> .
+<http://aristo.allenai.org/id#ie-target/14_15> basic:det <http://aristo.allenai.org/id#ie-target/14_14> .
+<http://aristo.allenai.org/id#ie-target/14_13> basic:pobj <http://aristo.allenai.org/id#ie-target/14_15> .
+
+<http://aristo.allenai.org/id#ie-target/14_0> dep:root <http://aristo.allenai.org/id#ie-target/14_4> .
+<http://aristo.allenai.org/id#ie-target/14_2> dep:det <http://aristo.allenai.org/id#ie-target/14_1> .
+<http://aristo.allenai.org/id#ie-target/14_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/14_2> .
+<http://aristo.allenai.org/id#ie-target/14_4> dep:aux <http://aristo.allenai.org/id#ie-target/14_3> .
+<http://aristo.allenai.org/id#ie-target/14_7> dep:det <http://aristo.allenai.org/id#ie-target/14_5> .
+<http://aristo.allenai.org/id#ie-target/14_7> dep:nn <http://aristo.allenai.org/id#ie-target/14_6> .
+<http://aristo.allenai.org/id#ie-target/14_4> dep:dobj <http://aristo.allenai.org/id#ie-target/14_7> .
+<http://aristo.allenai.org/id#ie-target/14_9> dep:aux <http://aristo.allenai.org/id#ie-target/14_8> .
+<http://aristo.allenai.org/id#ie-target/14_4> dep:xcomp <http://aristo.allenai.org/id#ie-target/14_9> .
+<http://aristo.allenai.org/id#ie-target/14_12> dep:det <http://aristo.allenai.org/id#ie-target/14_10> .
+<http://aristo.allenai.org/id#ie-target/14_12> dep:amod <http://aristo.allenai.org/id#ie-target/14_11> .
+<http://aristo.allenai.org/id#ie-target/14_9> dep:dobj <http://aristo.allenai.org/id#ie-target/14_12> .
+<http://aristo.allenai.org/id#ie-target/14_15> dep:det <http://aristo.allenai.org/id#ie-target/14_14> .
+<http://aristo.allenai.org/id#ie-target/14_12> dep:prep_at <http://aristo.allenai.org/id#ie-target/14_15> .
+
+<http://aristo.allenai.org/id#ie-target/15_1> token:text "Decreasing" .
+<http://aristo.allenai.org/id#ie-target/15_1> token:lemma "decrease" .
+<http://aristo.allenai.org/id#ie-target/15_1> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/15_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/15_1> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/15_2> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/15_2> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/15_2> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/15_2> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/15_2> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/15_3> token:text "temperature" .
+<http://aristo.allenai.org/id#ie-target/15_3> token:lemma "temperature" .
+<http://aristo.allenai.org/id#ie-target/15_3> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/15_3> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/15_3> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/15_4> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/15_4> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/15_4> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/15_4> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/15_4> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/15_5> token:text "one" .
+<http://aristo.allenai.org/id#ie-target/15_5> token:lemma "one" .
+<http://aristo.allenai.org/id#ie-target/15_5> token:pos "CD" .
+<http://aristo.allenai.org/id#ie-target/15_5> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/15_5> token:end 33 .
+<http://aristo.allenai.org/id#ie-target/15_5> ne:type "NUMBER" .
+<http://aristo.allenai.org/id#ie-target/15_5> ne:norm "1.0" .
+
+<http://aristo.allenai.org/id#ie-target/15_6> token:text "way" .
+<http://aristo.allenai.org/id#ie-target/15_6> token:lemma "way" .
+<http://aristo.allenai.org/id#ie-target/15_6> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/15_6> token:begin 34 .
+<http://aristo.allenai.org/id#ie-target/15_6> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/15_7> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/15_7> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/15_7> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/15_7> token:begin 38 .
+<http://aristo.allenai.org/id#ie-target/15_7> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/15_8> token:text "change" .
+<http://aristo.allenai.org/id#ie-target/15_8> token:lemma "change" .
+<http://aristo.allenai.org/id#ie-target/15_8> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/15_8> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/15_8> token:end 47 .
+
+<http://aristo.allenai.org/id#ie-target/15_9> token:text "water" .
+<http://aristo.allenai.org/id#ie-target/15_9> token:lemma "water" .
+<http://aristo.allenai.org/id#ie-target/15_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/15_9> token:begin 48 .
+<http://aristo.allenai.org/id#ie-target/15_9> token:end 53 .
+
+<http://aristo.allenai.org/id#ie-target/15_10> token:text "from" .
+<http://aristo.allenai.org/id#ie-target/15_10> token:lemma "from" .
+<http://aristo.allenai.org/id#ie-target/15_10> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/15_10> token:begin 54 .
+<http://aristo.allenai.org/id#ie-target/15_10> token:end 58 .
+
+<http://aristo.allenai.org/id#ie-target/15_11> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/15_11> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/15_11> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/15_11> token:begin 59 .
+<http://aristo.allenai.org/id#ie-target/15_11> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/15_12> token:text "liquid" .
+<http://aristo.allenai.org/id#ie-target/15_12> token:lemma "liquid" .
+<http://aristo.allenai.org/id#ie-target/15_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/15_12> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/15_12> token:end 67 .
+
+<http://aristo.allenai.org/id#ie-target/15_13> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/15_13> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/15_13> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/15_13> token:begin 68 .
+<http://aristo.allenai.org/id#ie-target/15_13> token:end 70 .
+
+<http://aristo.allenai.org/id#ie-target/15_14> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/15_14> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/15_14> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/15_14> token:begin 71 .
+<http://aristo.allenai.org/id#ie-target/15_14> token:end 72 .
+
+<http://aristo.allenai.org/id#ie-target/15_15> token:text "solid" .
+<http://aristo.allenai.org/id#ie-target/15_15> token:lemma "solid" .
+<http://aristo.allenai.org/id#ie-target/15_15> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/15_15> token:begin 73 .
+<http://aristo.allenai.org/id#ie-target/15_15> token:end 78 .
+
+<http://aristo.allenai.org/id#ie-target/15_16> token:text "." .
+<http://aristo.allenai.org/id#ie-target/15_16> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/15_16> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/15_16> token:begin 78 .
+<http://aristo.allenai.org/id#ie-target/15_16> token:end 79 .
+
+<http://aristo.allenai.org/id#ie-target/15_0> basic:root <http://aristo.allenai.org/id#ie-target/15_6> .
+<http://aristo.allenai.org/id#ie-target/15_6> basic:csubj <http://aristo.allenai.org/id#ie-target/15_1> .
+<http://aristo.allenai.org/id#ie-target/15_3> basic:det <http://aristo.allenai.org/id#ie-target/15_2> .
+<http://aristo.allenai.org/id#ie-target/15_1> basic:dobj <http://aristo.allenai.org/id#ie-target/15_3> .
+<http://aristo.allenai.org/id#ie-target/15_6> basic:cop <http://aristo.allenai.org/id#ie-target/15_4> .
+<http://aristo.allenai.org/id#ie-target/15_6> basic:num <http://aristo.allenai.org/id#ie-target/15_5> .
+<http://aristo.allenai.org/id#ie-target/15_8> basic:aux <http://aristo.allenai.org/id#ie-target/15_7> .
+<http://aristo.allenai.org/id#ie-target/15_6> basic:infmod <http://aristo.allenai.org/id#ie-target/15_8> .
+<http://aristo.allenai.org/id#ie-target/15_8> basic:dobj <http://aristo.allenai.org/id#ie-target/15_9> .
+<http://aristo.allenai.org/id#ie-target/15_8> basic:prep <http://aristo.allenai.org/id#ie-target/15_10> .
+<http://aristo.allenai.org/id#ie-target/15_12> basic:det <http://aristo.allenai.org/id#ie-target/15_11> .
+<http://aristo.allenai.org/id#ie-target/15_10> basic:pobj <http://aristo.allenai.org/id#ie-target/15_12> .
+<http://aristo.allenai.org/id#ie-target/15_10> basic:prep <http://aristo.allenai.org/id#ie-target/15_13> .
+<http://aristo.allenai.org/id#ie-target/15_15> basic:det <http://aristo.allenai.org/id#ie-target/15_14> .
+<http://aristo.allenai.org/id#ie-target/15_13> basic:pobj <http://aristo.allenai.org/id#ie-target/15_15> .
+
+<http://aristo.allenai.org/id#ie-target/15_0> dep:root <http://aristo.allenai.org/id#ie-target/15_6> .
+<http://aristo.allenai.org/id#ie-target/15_6> dep:csubj <http://aristo.allenai.org/id#ie-target/15_1> .
+<http://aristo.allenai.org/id#ie-target/15_3> dep:det <http://aristo.allenai.org/id#ie-target/15_2> .
+<http://aristo.allenai.org/id#ie-target/15_1> dep:dobj <http://aristo.allenai.org/id#ie-target/15_3> .
+<http://aristo.allenai.org/id#ie-target/15_6> dep:cop <http://aristo.allenai.org/id#ie-target/15_4> .
+<http://aristo.allenai.org/id#ie-target/15_6> dep:num <http://aristo.allenai.org/id#ie-target/15_5> .
+<http://aristo.allenai.org/id#ie-target/15_8> dep:aux <http://aristo.allenai.org/id#ie-target/15_7> .
+<http://aristo.allenai.org/id#ie-target/15_6> dep:infmod <http://aristo.allenai.org/id#ie-target/15_8> .
+<http://aristo.allenai.org/id#ie-target/15_8> dep:dobj <http://aristo.allenai.org/id#ie-target/15_9> .
+<http://aristo.allenai.org/id#ie-target/15_12> dep:det <http://aristo.allenai.org/id#ie-target/15_11> .
+<http://aristo.allenai.org/id#ie-target/15_8> dep:prep_from <http://aristo.allenai.org/id#ie-target/15_12> .
+<http://aristo.allenai.org/id#ie-target/15_15> dep:det <http://aristo.allenai.org/id#ie-target/15_14> .
+<http://aristo.allenai.org/id#ie-target/15_8> dep:prep_to <http://aristo.allenai.org/id#ie-target/15_15> .
+
+<http://aristo.allenai.org/id#ie-target/16_1> token:text "Animals" .
+<http://aristo.allenai.org/id#ie-target/16_1> token:lemma "animal" .
+<http://aristo.allenai.org/id#ie-target/16_1> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/16_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/16_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/16_2> token:text "get" .
+<http://aristo.allenai.org/id#ie-target/16_2> token:lemma "get" .
+<http://aristo.allenai.org/id#ie-target/16_2> token:pos "VBP" .
+<http://aristo.allenai.org/id#ie-target/16_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/16_2> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/16_3> token:text "energy" .
+<http://aristo.allenai.org/id#ie-target/16_3> token:lemma "energy" .
+<http://aristo.allenai.org/id#ie-target/16_3> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/16_3> token:begin 12 .
+<http://aristo.allenai.org/id#ie-target/16_3> token:end 18 .
+
+<http://aristo.allenai.org/id#ie-target/16_4> token:text "for" .
+<http://aristo.allenai.org/id#ie-target/16_4> token:lemma "for" .
+<http://aristo.allenai.org/id#ie-target/16_4> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/16_4> token:begin 19 .
+<http://aristo.allenai.org/id#ie-target/16_4> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/16_5> token:text "growth" .
+<http://aristo.allenai.org/id#ie-target/16_5> token:lemma "growth" .
+<http://aristo.allenai.org/id#ie-target/16_5> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/16_5> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/16_5> token:end 29 .
+
+<http://aristo.allenai.org/id#ie-target/16_6> token:text "and" .
+<http://aristo.allenai.org/id#ie-target/16_6> token:lemma "and" .
+<http://aristo.allenai.org/id#ie-target/16_6> token:pos "CC" .
+<http://aristo.allenai.org/id#ie-target/16_6> token:begin 30 .
+<http://aristo.allenai.org/id#ie-target/16_6> token:end 33 .
+
+<http://aristo.allenai.org/id#ie-target/16_7> token:text "repair" .
+<http://aristo.allenai.org/id#ie-target/16_7> token:lemma "repair" .
+<http://aristo.allenai.org/id#ie-target/16_7> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/16_7> token:begin 34 .
+<http://aristo.allenai.org/id#ie-target/16_7> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/16_8> token:text "from" .
+<http://aristo.allenai.org/id#ie-target/16_8> token:lemma "from" .
+<http://aristo.allenai.org/id#ie-target/16_8> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/16_8> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/16_8> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/16_9> token:text "food" .
+<http://aristo.allenai.org/id#ie-target/16_9> token:lemma "food" .
+<http://aristo.allenai.org/id#ie-target/16_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/16_9> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/16_9> token:end 50 .
+
+<http://aristo.allenai.org/id#ie-target/16_10> token:text "." .
+<http://aristo.allenai.org/id#ie-target/16_10> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/16_10> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/16_10> token:begin 50 .
+<http://aristo.allenai.org/id#ie-target/16_10> token:end 51 .
+
+<http://aristo.allenai.org/id#ie-target/16_0> basic:root <http://aristo.allenai.org/id#ie-target/16_2> .
+<http://aristo.allenai.org/id#ie-target/16_2> basic:nsubj <http://aristo.allenai.org/id#ie-target/16_1> .
+<http://aristo.allenai.org/id#ie-target/16_2> basic:dobj <http://aristo.allenai.org/id#ie-target/16_3> .
+<http://aristo.allenai.org/id#ie-target/16_2> basic:prep <http://aristo.allenai.org/id#ie-target/16_4> .
+<http://aristo.allenai.org/id#ie-target/16_4> basic:pobj <http://aristo.allenai.org/id#ie-target/16_5> .
+<http://aristo.allenai.org/id#ie-target/16_5> basic:cc <http://aristo.allenai.org/id#ie-target/16_6> .
+<http://aristo.allenai.org/id#ie-target/16_5> basic:conj <http://aristo.allenai.org/id#ie-target/16_7> .
+<http://aristo.allenai.org/id#ie-target/16_5> basic:prep <http://aristo.allenai.org/id#ie-target/16_8> .
+<http://aristo.allenai.org/id#ie-target/16_8> basic:pobj <http://aristo.allenai.org/id#ie-target/16_9> .
+
+<http://aristo.allenai.org/id#ie-target/16_0> dep:root <http://aristo.allenai.org/id#ie-target/16_2> .
+<http://aristo.allenai.org/id#ie-target/16_2> dep:nsubj <http://aristo.allenai.org/id#ie-target/16_1> .
+<http://aristo.allenai.org/id#ie-target/16_2> dep:dobj <http://aristo.allenai.org/id#ie-target/16_3> .
+<http://aristo.allenai.org/id#ie-target/16_2> dep:prep_for <http://aristo.allenai.org/id#ie-target/16_5> .
+<http://aristo.allenai.org/id#ie-target/16_2> dep:prep_for <http://aristo.allenai.org/id#ie-target/16_7> .
+<http://aristo.allenai.org/id#ie-target/16_5> dep:conj_and <http://aristo.allenai.org/id#ie-target/16_7> .
+<http://aristo.allenai.org/id#ie-target/16_5> dep:prep_from <http://aristo.allenai.org/id#ie-target/16_9> .
+
+<http://aristo.allenai.org/id#ie-target/17_1> token:text "The" .
+<http://aristo.allenai.org/id#ie-target/17_1> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/17_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/17_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/17_1> token:end 3 .
+
+<http://aristo.allenai.org/id#ie-target/17_2> token:text "heat" .
+<http://aristo.allenai.org/id#ie-target/17_2> token:lemma "heat" .
+<http://aristo.allenai.org/id#ie-target/17_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/17_2> token:begin 4 .
+<http://aristo.allenai.org/id#ie-target/17_2> token:end 8 .
+
+<http://aristo.allenai.org/id#ie-target/17_3> token:text "that" .
+<http://aristo.allenai.org/id#ie-target/17_3> token:lemma "that" .
+<http://aristo.allenai.org/id#ie-target/17_3> token:pos "WDT" .
+<http://aristo.allenai.org/id#ie-target/17_3> token:begin 9 .
+<http://aristo.allenai.org/id#ie-target/17_3> token:end 13 .
+
+<http://aristo.allenai.org/id#ie-target/17_4> token:text "produces" .
+<http://aristo.allenai.org/id#ie-target/17_4> token:lemma "produce" .
+<http://aristo.allenai.org/id#ie-target/17_4> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/17_4> token:begin 14 .
+<http://aristo.allenai.org/id#ie-target/17_4> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/17_5> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/17_5> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/17_5> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/17_5> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/17_5> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/17_6> token:text "smoke" .
+<http://aristo.allenai.org/id#ie-target/17_6> token:lemma "smoke" .
+<http://aristo.allenai.org/id#ie-target/17_6> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/17_6> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/17_6> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/17_7> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/17_7> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/17_7> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/17_7> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/17_7> token:end 35 .
+
+<http://aristo.allenai.org/id#ie-target/17_8> token:text "caused" .
+<http://aristo.allenai.org/id#ie-target/17_8> token:lemma "cause" .
+<http://aristo.allenai.org/id#ie-target/17_8> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/17_8> token:begin 36 .
+<http://aristo.allenai.org/id#ie-target/17_8> token:end 42 .
+
+<http://aristo.allenai.org/id#ie-target/17_9> token:text "by" .
+<http://aristo.allenai.org/id#ie-target/17_9> token:lemma "by" .
+<http://aristo.allenai.org/id#ie-target/17_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/17_9> token:begin 43 .
+<http://aristo.allenai.org/id#ie-target/17_9> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/17_10> token:text "friction" .
+<http://aristo.allenai.org/id#ie-target/17_10> token:lemma "friction" .
+<http://aristo.allenai.org/id#ie-target/17_10> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/17_10> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/17_10> token:end 54 .
+
+<http://aristo.allenai.org/id#ie-target/17_11> token:text "." .
+<http://aristo.allenai.org/id#ie-target/17_11> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/17_11> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/17_11> token:begin 54 .
+<http://aristo.allenai.org/id#ie-target/17_11> token:end 55 .
+
+<http://aristo.allenai.org/id#ie-target/17_0> basic:root <http://aristo.allenai.org/id#ie-target/17_8> .
+<http://aristo.allenai.org/id#ie-target/17_2> basic:det <http://aristo.allenai.org/id#ie-target/17_1> .
+<http://aristo.allenai.org/id#ie-target/17_8> basic:nsubjpass <http://aristo.allenai.org/id#ie-target/17_2> .
+<http://aristo.allenai.org/id#ie-target/17_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/17_3> .
+<http://aristo.allenai.org/id#ie-target/17_2> basic:rcmod <http://aristo.allenai.org/id#ie-target/17_4> .
+<http://aristo.allenai.org/id#ie-target/17_6> basic:det <http://aristo.allenai.org/id#ie-target/17_5> .
+<http://aristo.allenai.org/id#ie-target/17_4> basic:dobj <http://aristo.allenai.org/id#ie-target/17_6> .
+<http://aristo.allenai.org/id#ie-target/17_8> basic:auxpass <http://aristo.allenai.org/id#ie-target/17_7> .
+<http://aristo.allenai.org/id#ie-target/17_8> basic:prep <http://aristo.allenai.org/id#ie-target/17_9> .
+<http://aristo.allenai.org/id#ie-target/17_9> basic:pobj <http://aristo.allenai.org/id#ie-target/17_10> .
+
+<http://aristo.allenai.org/id#ie-target/17_0> dep:root <http://aristo.allenai.org/id#ie-target/17_8> .
+<http://aristo.allenai.org/id#ie-target/17_2> dep:det <http://aristo.allenai.org/id#ie-target/17_1> .
+<http://aristo.allenai.org/id#ie-target/17_8> dep:nsubjpass <http://aristo.allenai.org/id#ie-target/17_2> .
+<http://aristo.allenai.org/id#ie-target/17_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/17_3> .
+<http://aristo.allenai.org/id#ie-target/17_2> dep:rcmod <http://aristo.allenai.org/id#ie-target/17_4> .
+<http://aristo.allenai.org/id#ie-target/17_6> dep:det <http://aristo.allenai.org/id#ie-target/17_5> .
+<http://aristo.allenai.org/id#ie-target/17_4> dep:dobj <http://aristo.allenai.org/id#ie-target/17_6> .
+<http://aristo.allenai.org/id#ie-target/17_8> dep:auxpass <http://aristo.allenai.org/id#ie-target/17_7> .
+<http://aristo.allenai.org/id#ie-target/17_8> dep:agent <http://aristo.allenai.org/id#ie-target/17_10> .
+
+<http://aristo.allenai.org/id#ie-target/18_1> token:text "Resting" .
+<http://aristo.allenai.org/id#ie-target/18_1> token:lemma "rest" .
+<http://aristo.allenai.org/id#ie-target/18_1> token:pos "VBG" .
+<http://aristo.allenai.org/id#ie-target/18_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/18_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/18_2> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/18_2> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/18_2> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/18_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/18_2> token:end 10 .
+
+<http://aristo.allenai.org/id#ie-target/18_3> token:text "necessary" .
+<http://aristo.allenai.org/id#ie-target/18_3> token:lemma "necessary" .
+<http://aristo.allenai.org/id#ie-target/18_3> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/18_3> token:begin 11 .
+<http://aristo.allenai.org/id#ie-target/18_3> token:end 20 .
+
+<http://aristo.allenai.org/id#ie-target/18_4> token:text "for" .
+<http://aristo.allenai.org/id#ie-target/18_4> token:lemma "for" .
+<http://aristo.allenai.org/id#ie-target/18_4> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/18_4> token:begin 21 .
+<http://aristo.allenai.org/id#ie-target/18_4> token:end 24 .
+
+<http://aristo.allenai.org/id#ie-target/18_5> token:text "humans" .
+<http://aristo.allenai.org/id#ie-target/18_5> token:lemma "human" .
+<http://aristo.allenai.org/id#ie-target/18_5> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/18_5> token:begin 25 .
+<http://aristo.allenai.org/id#ie-target/18_5> token:end 31 .
+
+<http://aristo.allenai.org/id#ie-target/18_6> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/18_6> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/18_6> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/18_6> token:begin 32 .
+<http://aristo.allenai.org/id#ie-target/18_6> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/18_7> token:text "maintain" .
+<http://aristo.allenai.org/id#ie-target/18_7> token:lemma "maintain" .
+<http://aristo.allenai.org/id#ie-target/18_7> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/18_7> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/18_7> token:end 43 .
+
+<http://aristo.allenai.org/id#ie-target/18_8> token:text "good" .
+<http://aristo.allenai.org/id#ie-target/18_8> token:lemma "good" .
+<http://aristo.allenai.org/id#ie-target/18_8> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/18_8> token:begin 44 .
+<http://aristo.allenai.org/id#ie-target/18_8> token:end 48 .
+
+<http://aristo.allenai.org/id#ie-target/18_9> token:text "health" .
+<http://aristo.allenai.org/id#ie-target/18_9> token:lemma "health" .
+<http://aristo.allenai.org/id#ie-target/18_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/18_9> token:begin 49 .
+<http://aristo.allenai.org/id#ie-target/18_9> token:end 55 .
+
+<http://aristo.allenai.org/id#ie-target/18_10> token:text "." .
+<http://aristo.allenai.org/id#ie-target/18_10> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/18_10> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/18_10> token:begin 55 .
+<http://aristo.allenai.org/id#ie-target/18_10> token:end 56 .
+
+<http://aristo.allenai.org/id#ie-target/18_0> basic:root <http://aristo.allenai.org/id#ie-target/18_3> .
+<http://aristo.allenai.org/id#ie-target/18_3> basic:nsubj <http://aristo.allenai.org/id#ie-target/18_1> .
+<http://aristo.allenai.org/id#ie-target/18_3> basic:cop <http://aristo.allenai.org/id#ie-target/18_2> .
+<http://aristo.allenai.org/id#ie-target/18_7> basic:mark <http://aristo.allenai.org/id#ie-target/18_4> .
+<http://aristo.allenai.org/id#ie-target/18_7> basic:nsubj <http://aristo.allenai.org/id#ie-target/18_5> .
+<http://aristo.allenai.org/id#ie-target/18_7> basic:aux <http://aristo.allenai.org/id#ie-target/18_6> .
+<http://aristo.allenai.org/id#ie-target/18_3> basic:advcl <http://aristo.allenai.org/id#ie-target/18_7> .
+<http://aristo.allenai.org/id#ie-target/18_9> basic:amod <http://aristo.allenai.org/id#ie-target/18_8> .
+<http://aristo.allenai.org/id#ie-target/18_7> basic:dobj <http://aristo.allenai.org/id#ie-target/18_9> .
+
+<http://aristo.allenai.org/id#ie-target/18_0> dep:root <http://aristo.allenai.org/id#ie-target/18_3> .
+<http://aristo.allenai.org/id#ie-target/18_3> dep:nsubj <http://aristo.allenai.org/id#ie-target/18_1> .
+<http://aristo.allenai.org/id#ie-target/18_3> dep:cop <http://aristo.allenai.org/id#ie-target/18_2> .
+<http://aristo.allenai.org/id#ie-target/18_7> dep:mark <http://aristo.allenai.org/id#ie-target/18_4> .
+<http://aristo.allenai.org/id#ie-target/18_7> dep:nsubj <http://aristo.allenai.org/id#ie-target/18_5> .
+<http://aristo.allenai.org/id#ie-target/18_7> dep:aux <http://aristo.allenai.org/id#ie-target/18_6> .
+<http://aristo.allenai.org/id#ie-target/18_3> dep:advcl <http://aristo.allenai.org/id#ie-target/18_7> .
+<http://aristo.allenai.org/id#ie-target/18_9> dep:amod <http://aristo.allenai.org/id#ie-target/18_8> .
+<http://aristo.allenai.org/id#ie-target/18_7> dep:dobj <http://aristo.allenai.org/id#ie-target/18_9> .
+
+<http://aristo.allenai.org/id#ie-target/19_1> token:text "A" .
+<http://aristo.allenai.org/id#ie-target/19_1> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/19_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/19_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/19_1> token:end 1 .
+
+<http://aristo.allenai.org/id#ie-target/19_2> token:text "student" .
+<http://aristo.allenai.org/id#ie-target/19_2> token:lemma "student" .
+<http://aristo.allenai.org/id#ie-target/19_2> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/19_2> token:begin 2 .
+<http://aristo.allenai.org/id#ie-target/19_2> token:end 9 .
+
+<http://aristo.allenai.org/id#ie-target/19_3> token:text "should" .
+<http://aristo.allenai.org/id#ie-target/19_3> token:lemma "should" .
+<http://aristo.allenai.org/id#ie-target/19_3> token:pos "MD" .
+<http://aristo.allenai.org/id#ie-target/19_3> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/19_3> token:end 16 .
+
+<http://aristo.allenai.org/id#ie-target/19_4> token:text "use" .
+<http://aristo.allenai.org/id#ie-target/19_4> token:lemma "use" .
+<http://aristo.allenai.org/id#ie-target/19_4> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/19_4> token:begin 17 .
+<http://aristo.allenai.org/id#ie-target/19_4> token:end 20 .
+
+<http://aristo.allenai.org/id#ie-target/19_5> token:text "a" .
+<http://aristo.allenai.org/id#ie-target/19_5> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/19_5> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/19_5> token:begin 21 .
+<http://aristo.allenai.org/id#ie-target/19_5> token:end 22 .
+
+<http://aristo.allenai.org/id#ie-target/19_6> token:text "graduated" .
+<http://aristo.allenai.org/id#ie-target/19_6> token:lemma "graduate" .
+<http://aristo.allenai.org/id#ie-target/19_6> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/19_6> token:begin 23 .
+<http://aristo.allenai.org/id#ie-target/19_6> token:end 32 .
+
+<http://aristo.allenai.org/id#ie-target/19_7> token:text "cylinder" .
+<http://aristo.allenai.org/id#ie-target/19_7> token:lemma "cylinder" .
+<http://aristo.allenai.org/id#ie-target/19_7> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/19_7> token:begin 33 .
+<http://aristo.allenai.org/id#ie-target/19_7> token:end 41 .
+
+<http://aristo.allenai.org/id#ie-target/19_8> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/19_8> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/19_8> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/19_8> token:begin 42 .
+<http://aristo.allenai.org/id#ie-target/19_8> token:end 44 .
+
+<http://aristo.allenai.org/id#ie-target/19_9> token:text "measure" .
+<http://aristo.allenai.org/id#ie-target/19_9> token:lemma "measure" .
+<http://aristo.allenai.org/id#ie-target/19_9> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/19_9> token:begin 45 .
+<http://aristo.allenai.org/id#ie-target/19_9> token:end 52 .
+
+<http://aristo.allenai.org/id#ie-target/19_10> token:text "exactly" .
+<http://aristo.allenai.org/id#ie-target/19_10> token:lemma "exactly" .
+<http://aristo.allenai.org/id#ie-target/19_10> token:pos "RB" .
+<http://aristo.allenai.org/id#ie-target/19_10> token:begin 53 .
+<http://aristo.allenai.org/id#ie-target/19_10> token:end 60 .
+
+<http://aristo.allenai.org/id#ie-target/19_11> token:text "10" .
+<http://aristo.allenai.org/id#ie-target/19_11> token:lemma "10" .
+<http://aristo.allenai.org/id#ie-target/19_11> token:pos "CD" .
+<http://aristo.allenai.org/id#ie-target/19_11> token:begin 61 .
+<http://aristo.allenai.org/id#ie-target/19_11> token:end 63 .
+<http://aristo.allenai.org/id#ie-target/19_11> ne:type "NUMBER" .
+<http://aristo.allenai.org/id#ie-target/19_11> ne:norm "10.0" .
+
+<http://aristo.allenai.org/id#ie-target/19_12> token:text "milliliters" .
+<http://aristo.allenai.org/id#ie-target/19_12> token:lemma "milliliter" .
+<http://aristo.allenai.org/id#ie-target/19_12> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/19_12> token:begin 64 .
+<http://aristo.allenai.org/id#ie-target/19_12> token:end 75 .
+
+<http://aristo.allenai.org/id#ie-target/19_13> token:text "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/19_13> token:lemma "-lrb-" .
+<http://aristo.allenai.org/id#ie-target/19_13> token:pos "-LRB-" .
+<http://aristo.allenai.org/id#ie-target/19_13> token:begin 76 .
+<http://aristo.allenai.org/id#ie-target/19_13> token:end 77 .
+
+<http://aristo.allenai.org/id#ie-target/19_14> token:text "mL" .
+<http://aristo.allenai.org/id#ie-target/19_14> token:lemma "ml" .
+<http://aristo.allenai.org/id#ie-target/19_14> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/19_14> token:begin 77 .
+<http://aristo.allenai.org/id#ie-target/19_14> token:end 79 .
+
+<http://aristo.allenai.org/id#ie-target/19_15> token:text "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/19_15> token:lemma "-rrb-" .
+<http://aristo.allenai.org/id#ie-target/19_15> token:pos "-RRB-" .
+<http://aristo.allenai.org/id#ie-target/19_15> token:begin 79 .
+<http://aristo.allenai.org/id#ie-target/19_15> token:end 80 .
+
+<http://aristo.allenai.org/id#ie-target/19_16> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/19_16> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/19_16> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/19_16> token:begin 81 .
+<http://aristo.allenai.org/id#ie-target/19_16> token:end 83 .
+
+<http://aristo.allenai.org/id#ie-target/19_17> token:text "water" .
+<http://aristo.allenai.org/id#ie-target/19_17> token:lemma "water" .
+<http://aristo.allenai.org/id#ie-target/19_17> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/19_17> token:begin 84 .
+<http://aristo.allenai.org/id#ie-target/19_17> token:end 89 .
+
+<http://aristo.allenai.org/id#ie-target/19_18> token:text "." .
+<http://aristo.allenai.org/id#ie-target/19_18> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/19_18> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/19_18> token:begin 89 .
+<http://aristo.allenai.org/id#ie-target/19_18> token:end 90 .
+
+<http://aristo.allenai.org/id#ie-target/19_0> basic:root <http://aristo.allenai.org/id#ie-target/19_4> .
+<http://aristo.allenai.org/id#ie-target/19_2> basic:det <http://aristo.allenai.org/id#ie-target/19_1> .
+<http://aristo.allenai.org/id#ie-target/19_4> basic:nsubj <http://aristo.allenai.org/id#ie-target/19_2> .
+<http://aristo.allenai.org/id#ie-target/19_4> basic:aux <http://aristo.allenai.org/id#ie-target/19_3> .
+<http://aristo.allenai.org/id#ie-target/19_7> basic:det <http://aristo.allenai.org/id#ie-target/19_5> .
+<http://aristo.allenai.org/id#ie-target/19_7> basic:amod <http://aristo.allenai.org/id#ie-target/19_6> .
+<http://aristo.allenai.org/id#ie-target/19_4> basic:dobj <http://aristo.allenai.org/id#ie-target/19_7> .
+<http://aristo.allenai.org/id#ie-target/19_9> basic:aux <http://aristo.allenai.org/id#ie-target/19_8> .
+<http://aristo.allenai.org/id#ie-target/19_4> basic:xcomp <http://aristo.allenai.org/id#ie-target/19_9> .
+<http://aristo.allenai.org/id#ie-target/19_12> basic:advmod <http://aristo.allenai.org/id#ie-target/19_10> .
+<http://aristo.allenai.org/id#ie-target/19_12> basic:num <http://aristo.allenai.org/id#ie-target/19_11> .
+<http://aristo.allenai.org/id#ie-target/19_9> basic:dobj <http://aristo.allenai.org/id#ie-target/19_12> .
+<http://aristo.allenai.org/id#ie-target/19_12> basic:appos <http://aristo.allenai.org/id#ie-target/19_14> .
+<http://aristo.allenai.org/id#ie-target/19_12> basic:prep <http://aristo.allenai.org/id#ie-target/19_16> .
+<http://aristo.allenai.org/id#ie-target/19_16> basic:pobj <http://aristo.allenai.org/id#ie-target/19_17> .
+
+<http://aristo.allenai.org/id#ie-target/19_0> dep:root <http://aristo.allenai.org/id#ie-target/19_4> .
+<http://aristo.allenai.org/id#ie-target/19_2> dep:det <http://aristo.allenai.org/id#ie-target/19_1> .
+<http://aristo.allenai.org/id#ie-target/19_4> dep:nsubj <http://aristo.allenai.org/id#ie-target/19_2> .
+<http://aristo.allenai.org/id#ie-target/19_4> dep:aux <http://aristo.allenai.org/id#ie-target/19_3> .
+<http://aristo.allenai.org/id#ie-target/19_7> dep:det <http://aristo.allenai.org/id#ie-target/19_5> .
+<http://aristo.allenai.org/id#ie-target/19_7> dep:amod <http://aristo.allenai.org/id#ie-target/19_6> .
+<http://aristo.allenai.org/id#ie-target/19_4> dep:dobj <http://aristo.allenai.org/id#ie-target/19_7> .
+<http://aristo.allenai.org/id#ie-target/19_9> dep:aux <http://aristo.allenai.org/id#ie-target/19_8> .
+<http://aristo.allenai.org/id#ie-target/19_4> dep:xcomp <http://aristo.allenai.org/id#ie-target/19_9> .
+<http://aristo.allenai.org/id#ie-target/19_12> dep:advmod <http://aristo.allenai.org/id#ie-target/19_10> .
+<http://aristo.allenai.org/id#ie-target/19_12> dep:num <http://aristo.allenai.org/id#ie-target/19_11> .
+<http://aristo.allenai.org/id#ie-target/19_9> dep:dobj <http://aristo.allenai.org/id#ie-target/19_12> .
+<http://aristo.allenai.org/id#ie-target/19_12> dep:appos <http://aristo.allenai.org/id#ie-target/19_14> .
+<http://aristo.allenai.org/id#ie-target/19_12> dep:prep_of <http://aristo.allenai.org/id#ie-target/19_17> .
+
+<http://aristo.allenai.org/id#ie-target/20_1> token:text "The" .
+<http://aristo.allenai.org/id#ie-target/20_1> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/20_1> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/20_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/20_1> token:end 3 .
+
+<http://aristo.allenai.org/id#ie-target/20_2> token:text "white" .
+<http://aristo.allenai.org/id#ie-target/20_2> token:lemma "white" .
+<http://aristo.allenai.org/id#ie-target/20_2> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/20_2> token:begin 4 .
+<http://aristo.allenai.org/id#ie-target/20_2> token:end 9 .
+
+<http://aristo.allenai.org/id#ie-target/20_3> token:text "fur" .
+<http://aristo.allenai.org/id#ie-target/20_3> token:lemma "fur" .
+<http://aristo.allenai.org/id#ie-target/20_3> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/20_3> token:begin 10 .
+<http://aristo.allenai.org/id#ie-target/20_3> token:end 13 .
+
+<http://aristo.allenai.org/id#ie-target/20_4> token:text "of" .
+<http://aristo.allenai.org/id#ie-target/20_4> token:lemma "of" .
+<http://aristo.allenai.org/id#ie-target/20_4> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/20_4> token:begin 14 .
+<http://aristo.allenai.org/id#ie-target/20_4> token:end 16 .
+
+<http://aristo.allenai.org/id#ie-target/20_5> token:text "an" .
+<http://aristo.allenai.org/id#ie-target/20_5> token:lemma "a" .
+<http://aristo.allenai.org/id#ie-target/20_5> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/20_5> token:begin 17 .
+<http://aristo.allenai.org/id#ie-target/20_5> token:end 19 .
+
+<http://aristo.allenai.org/id#ie-target/20_6> token:text "arctic" .
+<http://aristo.allenai.org/id#ie-target/20_6> token:lemma "arctic" .
+<http://aristo.allenai.org/id#ie-target/20_6> token:pos "JJ" .
+<http://aristo.allenai.org/id#ie-target/20_6> token:begin 20 .
+<http://aristo.allenai.org/id#ie-target/20_6> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/20_7> token:text "fox" .
+<http://aristo.allenai.org/id#ie-target/20_7> token:lemma "fox" .
+<http://aristo.allenai.org/id#ie-target/20_7> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/20_7> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/20_7> token:end 30 .
+
+<http://aristo.allenai.org/id#ie-target/20_8> token:text "blends" .
+<http://aristo.allenai.org/id#ie-target/20_8> token:lemma "blend" .
+<http://aristo.allenai.org/id#ie-target/20_8> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/20_8> token:begin 31 .
+<http://aristo.allenai.org/id#ie-target/20_8> token:end 37 .
+
+<http://aristo.allenai.org/id#ie-target/20_9> token:text "in" .
+<http://aristo.allenai.org/id#ie-target/20_9> token:lemma "in" .
+<http://aristo.allenai.org/id#ie-target/20_9> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/20_9> token:begin 38 .
+<http://aristo.allenai.org/id#ie-target/20_9> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/20_10> token:text "with" .
+<http://aristo.allenai.org/id#ie-target/20_10> token:lemma "with" .
+<http://aristo.allenai.org/id#ie-target/20_10> token:pos "IN" .
+<http://aristo.allenai.org/id#ie-target/20_10> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/20_10> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/20_11> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/20_11> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/20_11> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/20_11> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/20_11> token:end 49 .
+
+<http://aristo.allenai.org/id#ie-target/20_12> token:text "snow" .
+<http://aristo.allenai.org/id#ie-target/20_12> token:lemma "snow" .
+<http://aristo.allenai.org/id#ie-target/20_12> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/20_12> token:begin 50 .
+<http://aristo.allenai.org/id#ie-target/20_12> token:end 54 .
+
+<http://aristo.allenai.org/id#ie-target/20_13> token:text "is" .
+<http://aristo.allenai.org/id#ie-target/20_13> token:lemma "be" .
+<http://aristo.allenai.org/id#ie-target/20_13> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/20_13> token:begin 55 .
+<http://aristo.allenai.org/id#ie-target/20_13> token:end 57 .
+
+<http://aristo.allenai.org/id#ie-target/20_14> token:text "called" .
+<http://aristo.allenai.org/id#ie-target/20_14> token:lemma "call" .
+<http://aristo.allenai.org/id#ie-target/20_14> token:pos "VBN" .
+<http://aristo.allenai.org/id#ie-target/20_14> token:begin 58 .
+<http://aristo.allenai.org/id#ie-target/20_14> token:end 64 .
+
+<http://aristo.allenai.org/id#ie-target/20_15> token:text "camouflage" .
+<http://aristo.allenai.org/id#ie-target/20_15> token:lemma "camouflage" .
+<http://aristo.allenai.org/id#ie-target/20_15> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/20_15> token:begin 65 .
+<http://aristo.allenai.org/id#ie-target/20_15> token:end 75 .
+
+<http://aristo.allenai.org/id#ie-target/20_16> token:text "." .
+<http://aristo.allenai.org/id#ie-target/20_16> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/20_16> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/20_16> token:begin 75 .
+<http://aristo.allenai.org/id#ie-target/20_16> token:end 76 .
+
+<http://aristo.allenai.org/id#ie-target/20_0> basic:root <http://aristo.allenai.org/id#ie-target/20_14> .
+<http://aristo.allenai.org/id#ie-target/20_3> basic:det <http://aristo.allenai.org/id#ie-target/20_1> .
+<http://aristo.allenai.org/id#ie-target/20_3> basic:amod <http://aristo.allenai.org/id#ie-target/20_2> .
+<http://aristo.allenai.org/id#ie-target/20_14> basic:nsubjpass <http://aristo.allenai.org/id#ie-target/20_3> .
+<http://aristo.allenai.org/id#ie-target/20_3> basic:prep <http://aristo.allenai.org/id#ie-target/20_4> .
+<http://aristo.allenai.org/id#ie-target/20_8> basic:det <http://aristo.allenai.org/id#ie-target/20_5> .
+<http://aristo.allenai.org/id#ie-target/20_8> basic:amod <http://aristo.allenai.org/id#ie-target/20_6> .
+<http://aristo.allenai.org/id#ie-target/20_8> basic:nn <http://aristo.allenai.org/id#ie-target/20_7> .
+<http://aristo.allenai.org/id#ie-target/20_4> basic:pobj <http://aristo.allenai.org/id#ie-target/20_8> .
+<http://aristo.allenai.org/id#ie-target/20_14> basic:advmod <http://aristo.allenai.org/id#ie-target/20_9> .
+<http://aristo.allenai.org/id#ie-target/20_9> basic:prep <http://aristo.allenai.org/id#ie-target/20_10> .
+<http://aristo.allenai.org/id#ie-target/20_12> basic:det <http://aristo.allenai.org/id#ie-target/20_11> .
+<http://aristo.allenai.org/id#ie-target/20_10> basic:pobj <http://aristo.allenai.org/id#ie-target/20_12> .
+<http://aristo.allenai.org/id#ie-target/20_14> basic:auxpass <http://aristo.allenai.org/id#ie-target/20_13> .
+<http://aristo.allenai.org/id#ie-target/20_14> basic:xcomp <http://aristo.allenai.org/id#ie-target/20_15> .
+
+<http://aristo.allenai.org/id#ie-target/20_0> dep:root <http://aristo.allenai.org/id#ie-target/20_14> .
+<http://aristo.allenai.org/id#ie-target/20_3> dep:det <http://aristo.allenai.org/id#ie-target/20_1> .
+<http://aristo.allenai.org/id#ie-target/20_3> dep:amod <http://aristo.allenai.org/id#ie-target/20_2> .
+<http://aristo.allenai.org/id#ie-target/20_14> dep:nsubjpass <http://aristo.allenai.org/id#ie-target/20_3> .
+<http://aristo.allenai.org/id#ie-target/20_8> dep:det <http://aristo.allenai.org/id#ie-target/20_5> .
+<http://aristo.allenai.org/id#ie-target/20_8> dep:amod <http://aristo.allenai.org/id#ie-target/20_6> .
+<http://aristo.allenai.org/id#ie-target/20_8> dep:nn <http://aristo.allenai.org/id#ie-target/20_7> .
+<http://aristo.allenai.org/id#ie-target/20_3> dep:prep_of <http://aristo.allenai.org/id#ie-target/20_8> .
+<http://aristo.allenai.org/id#ie-target/20_14> dep:advmod <http://aristo.allenai.org/id#ie-target/20_9> .
+<http://aristo.allenai.org/id#ie-target/20_12> dep:det <http://aristo.allenai.org/id#ie-target/20_11> .
+<http://aristo.allenai.org/id#ie-target/20_9> dep:prep_with <http://aristo.allenai.org/id#ie-target/20_12> .
+<http://aristo.allenai.org/id#ie-target/20_14> dep:auxpass <http://aristo.allenai.org/id#ie-target/20_13> .
+<http://aristo.allenai.org/id#ie-target/20_14> dep:xcomp <http://aristo.allenai.org/id#ie-target/20_15> .
+
+<http://aristo.allenai.org/id#ie-target/21_1> token:text "When" .
+<http://aristo.allenai.org/id#ie-target/21_1> token:lemma "when" .
+<http://aristo.allenai.org/id#ie-target/21_1> token:pos "WRB" .
+<http://aristo.allenai.org/id#ie-target/21_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/21_1> token:end 4 .
+
+<http://aristo.allenai.org/id#ie-target/21_2> token:text "plants" .
+<http://aristo.allenai.org/id#ie-target/21_2> token:lemma "plant" .
+<http://aristo.allenai.org/id#ie-target/21_2> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/21_2> token:begin 5 .
+<http://aristo.allenai.org/id#ie-target/21_2> token:end 11 .
+
+<http://aristo.allenai.org/id#ie-target/21_3> token:text "and" .
+<http://aristo.allenai.org/id#ie-target/21_3> token:lemma "and" .
+<http://aristo.allenai.org/id#ie-target/21_3> token:pos "CC" .
+<http://aristo.allenai.org/id#ie-target/21_3> token:begin 12 .
+<http://aristo.allenai.org/id#ie-target/21_3> token:end 15 .
+
+<http://aristo.allenai.org/id#ie-target/21_4> token:text "animals" .
+<http://aristo.allenai.org/id#ie-target/21_4> token:lemma "animal" .
+<http://aristo.allenai.org/id#ie-target/21_4> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/21_4> token:begin 16 .
+<http://aristo.allenai.org/id#ie-target/21_4> token:end 23 .
+
+<http://aristo.allenai.org/id#ie-target/21_5> token:text "die" .
+<http://aristo.allenai.org/id#ie-target/21_5> token:lemma "die" .
+<http://aristo.allenai.org/id#ie-target/21_5> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/21_5> token:begin 24 .
+<http://aristo.allenai.org/id#ie-target/21_5> token:end 27 .
+
+<http://aristo.allenai.org/id#ie-target/21_6> token:text "," .
+<http://aristo.allenai.org/id#ie-target/21_6> token:lemma "," .
+<http://aristo.allenai.org/id#ie-target/21_6> token:pos "," .
+<http://aristo.allenai.org/id#ie-target/21_6> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/21_6> token:end 28 .
+
+<http://aristo.allenai.org/id#ie-target/21_7> token:text "decomposers" .
+<http://aristo.allenai.org/id#ie-target/21_7> token:lemma "decomposer" .
+<http://aristo.allenai.org/id#ie-target/21_7> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/21_7> token:begin 29 .
+<http://aristo.allenai.org/id#ie-target/21_7> token:end 40 .
+
+<http://aristo.allenai.org/id#ie-target/21_8> token:text "help" .
+<http://aristo.allenai.org/id#ie-target/21_8> token:lemma "help" .
+<http://aristo.allenai.org/id#ie-target/21_8> token:pos "VBP" .
+<http://aristo.allenai.org/id#ie-target/21_8> token:begin 41 .
+<http://aristo.allenai.org/id#ie-target/21_8> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/21_9> token:text "return" .
+<http://aristo.allenai.org/id#ie-target/21_9> token:lemma "return" .
+<http://aristo.allenai.org/id#ie-target/21_9> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/21_9> token:begin 46 .
+<http://aristo.allenai.org/id#ie-target/21_9> token:end 52 .
+
+<http://aristo.allenai.org/id#ie-target/21_10> token:text "nutrients" .
+<http://aristo.allenai.org/id#ie-target/21_10> token:lemma "nutrient" .
+<http://aristo.allenai.org/id#ie-target/21_10> token:pos "NNS" .
+<http://aristo.allenai.org/id#ie-target/21_10> token:begin 53 .
+<http://aristo.allenai.org/id#ie-target/21_10> token:end 62 .
+
+<http://aristo.allenai.org/id#ie-target/21_11> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/21_11> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/21_11> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/21_11> token:begin 63 .
+<http://aristo.allenai.org/id#ie-target/21_11> token:end 65 .
+
+<http://aristo.allenai.org/id#ie-target/21_12> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/21_12> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/21_12> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/21_12> token:begin 66 .
+<http://aristo.allenai.org/id#ie-target/21_12> token:end 69 .
+
+<http://aristo.allenai.org/id#ie-target/21_13> token:text "food" .
+<http://aristo.allenai.org/id#ie-target/21_13> token:lemma "food" .
+<http://aristo.allenai.org/id#ie-target/21_13> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/21_13> token:begin 70 .
+<http://aristo.allenai.org/id#ie-target/21_13> token:end 74 .
+
+<http://aristo.allenai.org/id#ie-target/21_14> token:text "chain" .
+<http://aristo.allenai.org/id#ie-target/21_14> token:lemma "chain" .
+<http://aristo.allenai.org/id#ie-target/21_14> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/21_14> token:begin 75 .
+<http://aristo.allenai.org/id#ie-target/21_14> token:end 80 .
+
+<http://aristo.allenai.org/id#ie-target/21_15> token:text "." .
+<http://aristo.allenai.org/id#ie-target/21_15> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/21_15> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/21_15> token:begin 80 .
+<http://aristo.allenai.org/id#ie-target/21_15> token:end 81 .
+
+<http://aristo.allenai.org/id#ie-target/21_0> basic:root <http://aristo.allenai.org/id#ie-target/21_8> .
+<http://aristo.allenai.org/id#ie-target/21_5> basic:advmod <http://aristo.allenai.org/id#ie-target/21_1> .
+<http://aristo.allenai.org/id#ie-target/21_5> basic:nsubj <http://aristo.allenai.org/id#ie-target/21_2> .
+<http://aristo.allenai.org/id#ie-target/21_2> basic:cc <http://aristo.allenai.org/id#ie-target/21_3> .
+<http://aristo.allenai.org/id#ie-target/21_2> basic:conj <http://aristo.allenai.org/id#ie-target/21_4> .
+<http://aristo.allenai.org/id#ie-target/21_8> basic:advcl <http://aristo.allenai.org/id#ie-target/21_5> .
+<http://aristo.allenai.org/id#ie-target/21_8> basic:nsubj <http://aristo.allenai.org/id#ie-target/21_7> .
+<http://aristo.allenai.org/id#ie-target/21_8> basic:ccomp <http://aristo.allenai.org/id#ie-target/21_9> .
+<http://aristo.allenai.org/id#ie-target/21_9> basic:dobj <http://aristo.allenai.org/id#ie-target/21_10> .
+<http://aristo.allenai.org/id#ie-target/21_9> basic:prep <http://aristo.allenai.org/id#ie-target/21_11> .
+<http://aristo.allenai.org/id#ie-target/21_14> basic:det <http://aristo.allenai.org/id#ie-target/21_12> .
+<http://aristo.allenai.org/id#ie-target/21_14> basic:nn <http://aristo.allenai.org/id#ie-target/21_13> .
+<http://aristo.allenai.org/id#ie-target/21_11> basic:pobj <http://aristo.allenai.org/id#ie-target/21_14> .
+
+<http://aristo.allenai.org/id#ie-target/21_0> dep:root <http://aristo.allenai.org/id#ie-target/21_8> .
+<http://aristo.allenai.org/id#ie-target/21_5> dep:advmod <http://aristo.allenai.org/id#ie-target/21_1> .
+<http://aristo.allenai.org/id#ie-target/21_5> dep:nsubj <http://aristo.allenai.org/id#ie-target/21_2> .
+<http://aristo.allenai.org/id#ie-target/21_2> dep:conj_and <http://aristo.allenai.org/id#ie-target/21_4> .
+<http://aristo.allenai.org/id#ie-target/21_5> dep:nsubj <http://aristo.allenai.org/id#ie-target/21_4> .
+<http://aristo.allenai.org/id#ie-target/21_8> dep:advcl <http://aristo.allenai.org/id#ie-target/21_5> .
+<http://aristo.allenai.org/id#ie-target/21_8> dep:nsubj <http://aristo.allenai.org/id#ie-target/21_7> .
+<http://aristo.allenai.org/id#ie-target/21_8> dep:ccomp <http://aristo.allenai.org/id#ie-target/21_9> .
+<http://aristo.allenai.org/id#ie-target/21_9> dep:dobj <http://aristo.allenai.org/id#ie-target/21_10> .
+<http://aristo.allenai.org/id#ie-target/21_14> dep:det <http://aristo.allenai.org/id#ie-target/21_12> .
+<http://aristo.allenai.org/id#ie-target/21_14> dep:nn <http://aristo.allenai.org/id#ie-target/21_13> .
+<http://aristo.allenai.org/id#ie-target/21_9> dep:prep_to <http://aristo.allenai.org/id#ie-target/21_14> .
+
+<http://aristo.allenai.org/id#ie-target/22_1> token:text "Gravity" .
+<http://aristo.allenai.org/id#ie-target/22_1> token:lemma "gravity" .
+<http://aristo.allenai.org/id#ie-target/22_1> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/22_1> token:begin 0 .
+<http://aristo.allenai.org/id#ie-target/22_1> token:end 7 .
+
+<http://aristo.allenai.org/id#ie-target/22_2> token:text "causes" .
+<http://aristo.allenai.org/id#ie-target/22_2> token:lemma "cause" .
+<http://aristo.allenai.org/id#ie-target/22_2> token:pos "VBZ" .
+<http://aristo.allenai.org/id#ie-target/22_2> token:begin 8 .
+<http://aristo.allenai.org/id#ie-target/22_2> token:end 14 .
+
+<http://aristo.allenai.org/id#ie-target/22_3> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/22_3> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/22_3> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/22_3> token:begin 15 .
+<http://aristo.allenai.org/id#ie-target/22_3> token:end 18 .
+
+<http://aristo.allenai.org/id#ie-target/22_4> token:text "ball" .
+<http://aristo.allenai.org/id#ie-target/22_4> token:lemma "ball" .
+<http://aristo.allenai.org/id#ie-target/22_4> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/22_4> token:begin 19 .
+<http://aristo.allenai.org/id#ie-target/22_4> token:end 23 .
+
+<http://aristo.allenai.org/id#ie-target/22_5> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/22_5> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/22_5> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/22_5> token:begin 24 .
+<http://aristo.allenai.org/id#ie-target/22_5> token:end 26 .
+
+<http://aristo.allenai.org/id#ie-target/22_6> token:text "fall" .
+<http://aristo.allenai.org/id#ie-target/22_6> token:lemma "fall" .
+<http://aristo.allenai.org/id#ie-target/22_6> token:pos "VB" .
+<http://aristo.allenai.org/id#ie-target/22_6> token:begin 27 .
+<http://aristo.allenai.org/id#ie-target/22_6> token:end 31 .
+
+<http://aristo.allenai.org/id#ie-target/22_7> token:text "to" .
+<http://aristo.allenai.org/id#ie-target/22_7> token:lemma "to" .
+<http://aristo.allenai.org/id#ie-target/22_7> token:pos "TO" .
+<http://aristo.allenai.org/id#ie-target/22_7> token:begin 32 .
+<http://aristo.allenai.org/id#ie-target/22_7> token:end 34 .
+
+<http://aristo.allenai.org/id#ie-target/22_8> token:text "the" .
+<http://aristo.allenai.org/id#ie-target/22_8> token:lemma "the" .
+<http://aristo.allenai.org/id#ie-target/22_8> token:pos "DT" .
+<http://aristo.allenai.org/id#ie-target/22_8> token:begin 35 .
+<http://aristo.allenai.org/id#ie-target/22_8> token:end 38 .
+
+<http://aristo.allenai.org/id#ie-target/22_9> token:text "ground" .
+<http://aristo.allenai.org/id#ie-target/22_9> token:lemma "ground" .
+<http://aristo.allenai.org/id#ie-target/22_9> token:pos "NN" .
+<http://aristo.allenai.org/id#ie-target/22_9> token:begin 39 .
+<http://aristo.allenai.org/id#ie-target/22_9> token:end 45 .
+
+<http://aristo.allenai.org/id#ie-target/22_10> token:text "." .
+<http://aristo.allenai.org/id#ie-target/22_10> token:lemma "." .
+<http://aristo.allenai.org/id#ie-target/22_10> token:pos "." .
+<http://aristo.allenai.org/id#ie-target/22_10> token:begin 45 .
+<http://aristo.allenai.org/id#ie-target/22_10> token:end 46 .
+
+<http://aristo.allenai.org/id#ie-target/22_0> basic:root <http://aristo.allenai.org/id#ie-target/22_2> .
+<http://aristo.allenai.org/id#ie-target/22_2> basic:nsubj <http://aristo.allenai.org/id#ie-target/22_1> .
+<http://aristo.allenai.org/id#ie-target/22_4> basic:det <http://aristo.allenai.org/id#ie-target/22_3> .
+<http://aristo.allenai.org/id#ie-target/22_6> basic:nsubj <http://aristo.allenai.org/id#ie-target/22_4> .
+<http://aristo.allenai.org/id#ie-target/22_6> basic:aux <http://aristo.allenai.org/id#ie-target/22_5> .
+<http://aristo.allenai.org/id#ie-target/22_2> basic:xcomp <http://aristo.allenai.org/id#ie-target/22_6> .
+<http://aristo.allenai.org/id#ie-target/22_6> basic:prep <http://aristo.allenai.org/id#ie-target/22_7> .
+<http://aristo.allenai.org/id#ie-target/22_9> basic:det <http://aristo.allenai.org/id#ie-target/22_8> .
+<http://aristo.allenai.org/id#ie-target/22_7> basic:pobj <http://aristo.allenai.org/id#ie-target/22_9> .
+
+<http://aristo.allenai.org/id#ie-target/22_0> dep:root <http://aristo.allenai.org/id#ie-target/22_2> .
+<http://aristo.allenai.org/id#ie-target/22_2> dep:nsubj <http://aristo.allenai.org/id#ie-target/22_1> .
+<http://aristo.allenai.org/id#ie-target/22_4> dep:det <http://aristo.allenai.org/id#ie-target/22_3> .
+<http://aristo.allenai.org/id#ie-target/22_6> dep:nsubj <http://aristo.allenai.org/id#ie-target/22_4> .
+<http://aristo.allenai.org/id#ie-target/22_6> dep:aux <http://aristo.allenai.org/id#ie-target/22_5> .
+<http://aristo.allenai.org/id#ie-target/22_2> dep:xcomp <http://aristo.allenai.org/id#ie-target/22_6> .
+<http://aristo.allenai.org/id#ie-target/22_9> dep:det <http://aristo.allenai.org/id#ie-target/22_8> .
+<http://aristo.allenai.org/id#ie-target/22_6> dep:prep_to <http://aristo.allenai.org/id#ie-target/22_9> .
+
+<http://aristo.allenai.org/id#ie-target/1_5> coref:ref <http://aristo.allenai.org/id#ie-target/1_5> .
+<http://aristo.allenai.org/id#ie-target/1_5> coref:ref <http://aristo.allenai.org/id#ie-target/1_15> .
+
+<http://aristo.allenai.org/id#ie-target/1_9> coref:ref <http://aristo.allenai.org/id#ie-target/1_9> .
+<http://aristo.allenai.org/id#ie-target/1_9> coref:ref <http://aristo.allenai.org/id#ie-target/1_9> .
+
+<http://aristo.allenai.org/id#ie-target/2_3> coref:ref <http://aristo.allenai.org/id#ie-target/2_3> .
+<http://aristo.allenai.org/id#ie-target/2_3> coref:ref <http://aristo.allenai.org/id#ie-target/5_1> .
+<http://aristo.allenai.org/id#ie-target/2_3> coref:ref <http://aristo.allenai.org/id#ie-target/5_5> .
+<http://aristo.allenai.org/id#ie-target/2_3> coref:ref <http://aristo.allenai.org/id#ie-target/5_9> .
+<http://aristo.allenai.org/id#ie-target/2_3> coref:ref <http://aristo.allenai.org/id#ie-target/16_1> .
+
+<http://aristo.allenai.org/id#ie-target/3_3> coref:ref <http://aristo.allenai.org/id#ie-target/3_3> .
+<http://aristo.allenai.org/id#ie-target/3_3> coref:ref <http://aristo.allenai.org/id#ie-target/4_6> .
+<http://aristo.allenai.org/id#ie-target/3_3> coref:ref <http://aristo.allenai.org/id#ie-target/14_7> .
+
+<http://aristo.allenai.org/id#ie-target/4_8> coref:ref <http://aristo.allenai.org/id#ie-target/4_8> .
+<http://aristo.allenai.org/id#ie-target/4_8> coref:ref <http://aristo.allenai.org/id#ie-target/4_10> .
+
+<http://aristo.allenai.org/id#ie-target/10_13> coref:ref <http://aristo.allenai.org/id#ie-target/10_13> .
+<http://aristo.allenai.org/id#ie-target/10_13> coref:ref <http://aristo.allenai.org/id#ie-target/5_14> .
+<http://aristo.allenai.org/id#ie-target/10_13> coref:ref <http://aristo.allenai.org/id#ie-target/21_10> .
+
+<http://aristo.allenai.org/id#ie-target/8_16> coref:ref <http://aristo.allenai.org/id#ie-target/8_16> .
+<http://aristo.allenai.org/id#ie-target/8_16> coref:ref <http://aristo.allenai.org/id#ie-target/8_2> .
+<http://aristo.allenai.org/id#ie-target/8_16> coref:ref <http://aristo.allenai.org/id#ie-target/19_7> .
+
+<http://aristo.allenai.org/id#ie-target/8_12> coref:ref <http://aristo.allenai.org/id#ie-target/8_12> .
+<http://aristo.allenai.org/id#ie-target/8_12> coref:ref <http://aristo.allenai.org/id#ie-target/15_12> .
+
+<http://aristo.allenai.org/id#ie-target/9_7> coref:ref <http://aristo.allenai.org/id#ie-target/9_7> .
+<http://aristo.allenai.org/id#ie-target/9_7> coref:ref <http://aristo.allenai.org/id#ie-target/9_10> .
+<http://aristo.allenai.org/id#ie-target/9_7> coref:ref <http://aristo.allenai.org/id#ie-target/9_14> .
+
+<http://aristo.allenai.org/id#ie-target/10_4> coref:ref <http://aristo.allenai.org/id#ie-target/10_4> .
+<http://aristo.allenai.org/id#ie-target/10_4> coref:ref <http://aristo.allenai.org/id#ie-target/10_1> .
+<http://aristo.allenai.org/id#ie-target/10_4> coref:ref <http://aristo.allenai.org/id#ie-target/21_7> .
+
+<http://aristo.allenai.org/id#ie-target/10_9> coref:ref <http://aristo.allenai.org/id#ie-target/10_9> .
+<http://aristo.allenai.org/id#ie-target/10_9> coref:ref <http://aristo.allenai.org/id#ie-target/10_12> .
+
+<http://aristo.allenai.org/id#ie-target/14_2> coref:ref <http://aristo.allenai.org/id#ie-target/14_2> .
+<http://aristo.allenai.org/id#ie-target/14_2> coref:ref <http://aristo.allenai.org/id#ie-target/19_2> .
+

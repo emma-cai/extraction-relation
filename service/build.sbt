@@ -5,7 +5,7 @@ name := "extraction-manager-service"
 
 description := "Http service for Ermine"
 
-mainClass in Revolver.reStart := Some("org.allenai.extraction.service.HttpServer")
+mainClass := Some("org.allenai.extraction.service.HttpServer")
 
 Deploy.settings
 
@@ -25,19 +25,24 @@ addLoggingDependencies(libraryDependencies)
 fork in run := true
 
 // Set java options for run & re-start.
-javaOptions ++= ErmineMemory ++ Prolog.LibraryFlags ++
-  Seq("-Dlogback.configurationFile=src/main/resources/logback.xml",
-    "-Dferret.directory=../ermine/src/main/prolog")
+javaOptions ++= ErmineMemory ++ Seq(
+  s"-Dermine.dataDirectory=${(sourceDirectory in ermine).value}/main/data",
+  s"-Dlogback.configurationFile=${baseDirectory.value}/conf/local_logback.xml",
+  s"-Dconfig.file=${baseDirectory.value}/conf/local_application.conf"
+  )
 
 // Don't create windows or linux startup scripts.
 NativePackagerKeys.makeBatScript := None
 
 NativePackagerKeys.makeBashScript := None
 
-// Copy the prolog scripts & tagger config files to the universal staging directory.
-mappings in Universal ++= directory((sourceDirectory in ermine).value / "main" / "prolog")
-
+// Copy the tagger config files to the universal staging directory.
 mappings in Universal ++= directory((sourceDirectory in ermine).value / "main" / "data")
 
-// Copy the prolog scripts & tagger data files to EC2.
-Deploy.deployDirs ++= Seq("prolog", "data")
+// Copy the ferret pipeline to the conf directory.
+mappings in Universal += {
+  ((baseDirectory in ermine).value / "pipelines" / "ferret.conf") -> "conf/ferret.conf"
+}
+
+// Copy the tagger data files to EC2.
+Deploy.deployDirs ++= Seq("data")

@@ -115,25 +115,8 @@ For output, Ermine will collect all documents written by dataset, and commit the
 
 ## Running ermine
 
-The main ermine project can be built without any special configuration, although you do need Prolog
-installed to run the Ferret pipelines - see below.
+Ermine is run with the sbt `run` command. You can run a pipeline like:
 
-After installing prolog, you can run `sbt 'project ermine' stage` to build ermine.
-
-The auto-generated script `ermine/target/universal/stage/bin/extraction-manager` can then be used to run a pipeline:
-
-`./ermine/target/universal/stage/bin/extraction-manager -c ermine/examples/ferret.conf -i some-sentences-file.txt -o output.ttl`
+`sbt "ermine/run -c examples/ferret.conf -i some-sentences-file.txt -o output.ttl"`
 
 The `-c` flag is the only required one, and it specifies the configuration file for the pipeline you're running. the `-i` and `-o` flags are only used if your pipeline doesn't specify a first-stage input or a last-stage output (respectively). `-i` can be repeated if you have multiple inputs to the start of your pipeline.
-
-
-### Installing Prolog
-
-The Ferret processors currently depend on having swipl Prolog installed with the JPL library.
-
-You can install this easily on OS X with [homebrew](http://brew.sh/):
-
-`brew install swi-prolog --with-jpl`
-
-Don't forget the `--with-jpl` flag! The root project's `Build.scala` will check for a valid swipl install at load time, and will print out a warning if one is missing.
-

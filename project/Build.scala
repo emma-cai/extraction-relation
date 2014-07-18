@@ -7,21 +7,6 @@ object ExtractionBuild extends Build {
   /** Increased memory to handle Stanford parser. */
   val ErmineMemory = Seq("-Xmx3G", "-Xms3G")
 
-  // Full requirements for Stanford + Prolog extractions.
-  val ferretDeps = {
-    // Prolog interface jar. This also requires having prolog installed to work -
-    // see http://www.swi-prolog.org/build/macos.html
-    val jpl = "org.allenai.jpl" % "jpl" % "6.6.4"
-
-    // Kevin's patches of the Stanford parser.
-    val stanfordPatched = "org.allenai.corenlp" % "stanford-corenlp" % "3.2.0.1"
-    // Dependency that the Stanford parser relies on. This also pulls in the
-    // other dependencies the parser needs.
-    val stanfordModels = "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0" classifier("models")
-
-    Seq(jpl, stanfordPatched, stanfordModels)
-  }
-
   val inheritedSettings = Defaults.defaultSettings ++ Format.settings ++ Revolver.settings ++
     Publish.settings ++ TravisPublisher.settings ++ VersionInjector.settings
 
