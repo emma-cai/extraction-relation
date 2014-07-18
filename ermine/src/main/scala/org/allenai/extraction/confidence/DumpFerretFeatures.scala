@@ -104,9 +104,9 @@ object DumpFerretFeatures extends FlatProcessor {
     }
 
     def vertexToToken(v: Vertex, tokenMap: TokenMap): OtterToken =
-      tokenMap.get(v.idsWithCorpus) match {
+      tokenMap.get(v.allIds) match {
         case Some(token) => token
-        case None => throw new IllegalArgumentException(s"TokenMap lookup failed for token ${v.ids}")
+        case None => throw new IllegalArgumentException(s"TokenMap lookup failed for token ${v.allIds}")
       }
 
     def getExtractionNodeForVertex(v: Vertex, isRelation: Boolean, tokenMap: TokenMap, semanticLabel: String = "") = {
@@ -169,11 +169,11 @@ object DumpFerretFeatures extends FlatProcessor {
       (sortedRes.map(_._2).mkString(" "), sortedRes.map(_._3))
     }
 
-    def nodeSentenceId(node: Vertex): (String, Int) = node.idsWithCorpus match {
+    def nodeSentenceId(node: Vertex): (String, Int) = node.allIds match {
       case (corpus, sentence, _) => (corpus, sentence)
       case _ => ("", 0)
     }
-      
+
     /* Gives Seq("isa" -> vertex1, "agent" -> vertex2, ...) */
     def nodeElements(node: Vertex): Seq[(String, Vertex)] = {
       val uri: String = node.toUri
