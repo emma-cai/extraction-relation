@@ -1,6 +1,6 @@
 package org.allenai.extraction.processors
 
-import org.allenai.extraction.FlatProcessor
+import org.allenai.extraction.{ ErmineException, FlatProcessor }
 import org.allenai.extraction.rdf.{ DependencyGraph, Token }
 import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
 import org.allenai.nlpstack.lemmatize.MorphaStemmer
@@ -45,6 +45,9 @@ object NlpstackParser extends FlatProcessor {
           outputGraph.addIntLiteralVertex(begin + node.string.length))
       }
 
+      // The fake token we'll draw an edge from to the root node.
+      val fakeRootToken = outputGraph.addVertex(Token.id(corpus, sentenceId, 0))
+
       // Add all of the basic (non-collapsed) dependencies.
       for (edge <- parseGraph.edges) {
         val headId = Token.id(corpus, sentenceId, edge.source.id + 1)
@@ -54,9 +57,19 @@ object NlpstackParser extends FlatProcessor {
         val label = "basic:" + edge.label
         outputGraph.addEdge(label, head, tail, label)
       }
+      // Add the root of the basic graph.
+      rawGraph.root match {
+        case Some(node) => {
+          val rootNode = outputGraph.getVertex(Token.id(corpus, sentenceId, node.id + 1))
+          val label = "basic:root"
+          outputGraph.addEdge(label, fakeRootToken, rootNode, label)
+        }
+        case None => throw new ErmineException("basic dependency graph has no roots!")
+      }
 
       // Create the collapsed "dep" graph.
-      val collapsedGraph = rawGraph.collapse.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+      val rawCollapsedGraph = rawGraph.collapse
+      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
       for (edge <- collapsedGraph.edges) {
         val headId = Token.id(corpus, sentenceId, edge.source.id + 1)
         val head = outputGraph.getVertex(headId)
@@ -64,6 +77,15 @@ object NlpstackParser extends FlatProcessor {
         val tail = outputGraph.getVertex(tailId)
         val label = "dep:" + edge.label
         outputGraph.addEdge(label, head, tail, label)
+      }
+      // Add the root of the collapsed graph.
+      rawCollapsedGraph.root match {
+        case Some(node) => {
+          val rootNode = outputGraph.getVertex(Token.id(corpus, sentenceId, node.id + 1))
+          val label = "dep:root"
+          outputGraph.addEdge(label, fakeRootToken, rootNode, label)
+        }
+        case None => throw new ErmineException("collapsed dependency graph has no roots!")
       }
     }
 
