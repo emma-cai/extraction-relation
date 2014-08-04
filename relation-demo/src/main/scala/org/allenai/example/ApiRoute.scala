@@ -20,12 +20,6 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 
     // format: OFF
     val route =
-      path("config") {
-        complete("TODO")
-      } ~
-      path("items") {
-        complete(List(1, 2, 3, 4, 5).toJson.asInstanceOf[JsArray])
-      } ~
       path("submit") {
         post {
           entity(as[Submit]) { submit =>

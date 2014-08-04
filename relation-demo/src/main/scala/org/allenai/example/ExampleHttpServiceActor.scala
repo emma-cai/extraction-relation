@@ -21,7 +21,7 @@ class ExampleHttpServiceActor
   override def receive = runRoute(route)
 
   val accessControlAllowAll =
-    HttpHeaders.RawHeader("Access-Control-Allow-Origin", "*")
+    HttpHeaders.RawHeader("Access-Control-Allow-Origin", "http://localhost:4000")
 
   val accessControlAllowHeadersAll =
     HttpHeaders.RawHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
