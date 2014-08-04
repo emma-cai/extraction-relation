@@ -16,13 +16,15 @@ resolvers += "allenai nexus repository snapshots" at "http://utility.allenai.org
 credentials += Credentials("Sonatype Nexus Repository Manager", "utility.allenai.org", "deployment", "answermyquery")
 
 // Provides 'deploy' command to push to EC2.
-addSbtPlugin("org.allenai.plugins" % "sbt-deploy" % "2014.4.14-1")
+addSbtPlugin("org.allenai.plugins" % "allenai-sbt-deploy" % "2014.07.03-0")
 
 // Provides 'format' command & auto-checks formatting of files on compile.
-addSbtPlugin("org.allenai.plugins" % "sbt-format" % "2014.5.9-1")
+addSbtPlugin("org.allenai.plugins" % "allenai-sbt-format" % "2014.07.03-0")
 
 // Publishes artifacts when Travis builds complete on master.
-addSbtPlugin("org.allenai.plugins" % "sbt-travis-publisher" % "2014.2.24-1")
+addSbtPlugin("org.allenai.plugins" % "allenai-sbt-travis-publisher" % "2014.07.03-0")
 
 // Automates injection of artifact / git version info.
-addSbtPlugin("org.allenai.plugins" % "sbt-version-injector" % "2014.5.08-1")
+addSbtPlugin("org.allenai.plugins" % "allenai-sbt-version-injector" % "2014.07.03-0")
+
+addSbtPlugin("org.allenai.plugins" % "allenai-sbt-webapp" % "2014.07.03-0")
