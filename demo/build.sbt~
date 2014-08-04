@@ -25,3 +25,4 @@ fork in run := true
 
 mappings in Universal ++= directory(baseDirectory.value / "public")
 
+Revolver.reStart <<= (Revolver.reStart).dependsOn(NodeKeys.build in Npm)

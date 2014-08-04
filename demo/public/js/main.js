@@ -4,16 +4,15 @@ var ExtractionCtrl = function($scope, $http) {
   $scope.model = { };
   $scope.working = false
 
-  $scope.examples = ["When some animals prepare for the long winters by storing food and going dormant it is called hibernation.",
-    "A hand lens is used to view objects in more detail.",
-    "Freezing involves changing water from its liquid state to its solid state ice by the removal of heat.",
-    "Animals can not make their own food so they must eat to get nutrients."];
+  $scope.examples1 = ["cause"];
+  $scope.examples2 = ["function of"]
 
   $scope.submitText = function() {
     $scope.working = true
     $http.post("/general/text", $scope.model.text)
       .success(function(data, status, headers, config) {
         $scope.response = data;
+    	//  $scope.response = ["result1", "result2", "result3"];
         $scope.errorResponse = undefined;
         $scope.working = false
       })
@@ -33,9 +32,14 @@ var ExtractionCtrl = function($scope, $http) {
         $scope.working = false
       });
   };
-
+  
   $scope.showExample = function(example) {
-    $scope.model.text = example;
-    $scope.submitText();
+	  $scope.model.text = example;
+	  $scope.submitText();
+  };
+  
+  $scope.submitExample = function(example) {
+	  $scope.model.text = example;
+	  $scope.submitText();
   };
 };

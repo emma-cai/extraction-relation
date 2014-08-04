@@ -19,7 +19,8 @@ libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ StanfordLibraries ++ 
     subcut,
     taggers,
     tinkerpop,
-    typesafeConfig)
+    typesafeConfig,
+    "org.apache.lucene" % "lucene-core" % "2.9.4")
 
 addLoggingDependencies(libraryDependencies)
 

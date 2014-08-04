@@ -1,2 +1,15 @@
 logs/
 target/
+api/.classpath
+api/.project
+api/.settings/
+demo/.classpath
+demo/.project
+demo/.settings/
+ermine/.classpath
+ermine/.project
+ermine/.settings/
+service/.classpath
+service/.project
+service/.settings/
+/data
