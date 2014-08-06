@@ -58,7 +58,7 @@ class Indexing {
     indexWriter.optimize()
     indexWriter.close()
   }
-  
+
   def CK12Index(source: String, indexPath: String) = {
     //build index
     var mergeFactor = 1000
@@ -73,7 +73,7 @@ class Indexing {
     for (line <- scala.io.Source.fromFile(source).getLines) { //for each line
       val arr = line.split("\t")
       val arrlen = arr.length
-      if (arrlen >=2 ) { //for each sentence
+      if (arrlen >= 2) { //for each sentence
         val id = arr(0)
         val sen = arr(1)
         var document: Document = new Document()

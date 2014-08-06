@@ -20,27 +20,27 @@ object DemoSentenceSearch {
     var arg2 = Console.readLine("second argument> ")
     while (!discourse.equals("-1") && !arg1.equals("-1") && !arg2.equals("-1")) {
       var kp_sen: List[List[String]] = search.runSearch(indexPath, "\"" + arg1 + "\"", "\"" + arg2 + "\"", "arg1", "arg2", List("kp", "sen"), 100)
-        var kp_num: Map[String, Int] = collection.mutable.Map.empty[String, Int]
-        var kp_sen_reduced: List[List[String]] = List()
-        kp_sen.foreach {
-          case p => {
-            val kp = p(0)
-            val sen = p(1)
-            if (kpcheck(kp, kp_num)) {
-              kp_sen_reduced = kp_sen_reduced :::kp_sen_reduced ::: List(List(kp, sen))
-            }
+      var kp_num: Map[String, Int] = collection.mutable.Map.empty[String, Int]
+      var kp_sen_reduced: List[List[String]] = List()
+      kp_sen.foreach {
+        case p => {
+          val kp = p(0)
+          val sen = p(1)
+          if (kpcheck(kp, kp_num)) {
+            kp_sen_reduced = kp_sen_reduced ::: kp_sen_reduced ::: List(List(kp, sen))
           }
         }
+      }
 
-        println("results for \"" + arg1 + "\" and \"" + arg2 + "\":")
-        kp_sen_reduced.foreach(p => println("\"" + p(0) + "\"" + "\t\t" + p(1)))
-        println()
-        println()
-        println()
-        
-        discourse = Console.readLine("Discouse relation (FUNCTION; CAUSE; EXAMPLE; ENABLE; PURPOSE): ")
-        arg1 = Console.readLine("\n\nfirst argument> ")
-        arg2 = Console.readLine("second argument> ")
+      println("results for \"" + arg1 + "\" and \"" + arg2 + "\":")
+      kp_sen_reduced.foreach(p => println("\"" + p(0) + "\"" + "\t\t" + p(1)))
+      println()
+      println()
+      println()
+
+      discourse = Console.readLine("Discouse relation (FUNCTION; CAUSE; EXAMPLE; ENABLE; PURPOSE): ")
+      arg1 = Console.readLine("\n\nfirst argument> ")
+      arg2 = Console.readLine("second argument> ")
     }
   }
 

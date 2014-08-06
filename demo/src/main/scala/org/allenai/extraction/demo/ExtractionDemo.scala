@@ -238,8 +238,8 @@ class ErmineExtractor(url: URL) extends Extractor(url) {
     Http(svc) map { response =>
       response.getStatusCode match {
         case 200 =>
-//        	val body = response.getResponseBody("test")
-//        	body.parseJson.convertTo[PipelineResponse].output
+          //        	val body = response.getResponseBody("test")
+          //        	body.parseJson.convertTo[PipelineResponse].output
           val body = response.getResponseBody
           body.parseJson.convertTo[PipelineResponse].output
         case responseCode =>
