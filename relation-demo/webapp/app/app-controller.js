@@ -23,8 +23,13 @@
       arg2: null
     };
     
+//    scope.judge = [{"content":null, "istrue":'Y'}];
+    scope.judge = null;
+    
     scope.sensResponse = [];
     scope.submitResponse = [];
+    scope.dependencyResponse = [];
+    scope.processor = 'search';
     
 
     scope.submitToServer = function() {
@@ -44,56 +49,34 @@
   	    scope.sensResponse = response.data;
       });
     };
+    
+    
+    scope.showDependency = function(x) {
+    	scope.processor = 'dependency';
+    	scope.submit.disrel = x;
+        //TODO: search learned dependency patterns
+    	scope.dependencyResponse = [];
+//    	http.post(API_ROOT + '/submitdep', scope.submit.disrel).then(function(response) {
+//     	   scope.dependencyResponse = response.data;
+//        });
+    	 http.post(API_ROOT + '/submitdep', scope.submit).then(function(response) {
+             scope.dependencyResponse = response.data;
+         });
+      };
+    
+    /**
+     * Judge the sentence, but it's not working now
+     */
+//    scope.confirm = function(sen, prejudge) {
+//    	scope.judge = sen;
+//    	if(prejudge == 'Y') {
+//    		scope.judge[istrue] = 'N';
+//    	}else {
+//        	scope.judge[istrue] = 'Y';	
+//    	}
+//      };
   };
 
   module.exports = ['$scope', '$http', '$window', AppController];
 })();
-
-
-
-
-//(function() {
-//	  'use strict';
-//
-//	  var AppController = function(scope, http, window) {
-//
-//	    var API_ROOT = window.appConfig.apiHost;
-//
-//	    // Model mirroring Submit model defined in ApiRoute.scala
-//	    // Used for data binding and will be submitted as JSON when
-//	    // user clicke ths 'Submit' button.
-////	    scope.submit = {
-////	      kp: null
-////	    };
-//	    
-//	    scope.submit = {
-//	      kp: null,
-//	      disrel: null, 
-//	      arg1: null, 
-//	      arg2: null
-//	    };
-////	    scope.submit = {
-////	      disrel: null
-////	    }
-//	    
-//
-//	    scope.submitToServer = function() {
-//	      scope.insResponse = [];
-//	      http.post(API_ROOT + '/submit', scope.submit).then(function(response) {
-//	          scope.insResponse = response.data;
-//	      });
-//	    };
-//	    
-//	    scope.sumitToSearchSens = function(a1, a2) {
-//	      scope.submit.arg1 = a1;
-//	      scope.submit.arg2 = a2;
-//	      scope.sensResponse = [];
-//	      http.post(API_ROOT + '/submitins', scope.submit).then(function(response) {
-//	    	scope.sensResponse = response.data;
-//	      });
-//	    };
-//	  };
-//
-//	  module.exports = ['$scope', '$http', '$window', AppController];
-//	})();
 

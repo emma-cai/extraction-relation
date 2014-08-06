@@ -1,56 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <script src="app.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="main.css">
-  </head>
-  <body ng-app="app" ng-controller="AppController">
-    <div class="container">
-
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Relation Demo</a>
-          </div>
-        </div>
-      </nav>
-
-      <form name="exampleForm">
-        <div class="form-group">
-          <label>Input</label>
-          <input
-            class="form-control"
-            ng-model="submit.text"
-            required>
-        </div>
-        <button
-          class="btn btn-default"
-          ng-disabled="exampleForm.$invalid"
-          ng-click="submitToServer()">Submit</button>
-      </form>
-      <div class="well submit-response" ng-if="submitResponse">
-      {{submitResponse}}
-        {{submitResponse}}
-        {{submitResponse.kp}}
-        {{submitResponse.sen}}
-        <table>
-        	<tr>
-        		<th>Relation-Phrase</th>
-        		<th>Sentence</th>
-        	</tr>
-        	<tr ng-repeat="res in submitResponse.sen">
-        		<td>{{res}}</td>
-        		<td>{{res.sen}}</td>
-        	</tr>
-        </table>
-      </div>
-    </div>
-  </body>
-</html>
- -->
- 
- 
- 
 <!DOCTYPE html>
 <html>
   <head>
@@ -69,7 +16,27 @@
       </nav>
 
 <!--  Given discouse-relation and a lexical seed, search associated instances; -->
-      <form name="exampleForm">
+	  <nav class="navbar navbar-default" role="navigation">
+	    <div class="container-fluid">
+          <table  width=700>
+          	<tr>
+	          	<th width=140 style="text-align:center"><a href="#" ng-click="showDependency('CAUSE')">CAUSE</a></th>
+	          	<th width=140 style="text-align:center"><a href="#" ng-click="showDependency('FUNCTION')">FUNCTION</th>
+	          	<th width=140 style="text-align:center"><a href="#" ng-click="showDependency('ENABLE')">ENABLE</th>
+	          	<th width=140 style="text-align:center"><a href="#" ng-click="showDependency('EXAMPLE')">EXAMPLE</th>
+	          	<th width=140 style="text-align:center"><a href="#" ng-click="showDependency('PURPOSE')">PURPOSE</th>
+          	</tr>
+          	<tr>
+          		<td style="text-align:center">caused by</td>
+          		<td style="text-align:center">used to</td>
+          		<td style="text-align:center">need</td>
+          		<td style="text-align:center">an example of</td>
+          		<td style="text-align:center">purpose</td>
+          	</tr>
+          </table>
+        </div>
+	  </nav>
+      <form name="exampleForm" ng-if="processor == 'search'">
         <div class="form-group">
           <label>discourse-relation</label>
           <input
@@ -88,7 +55,7 @@
           ng-disabled="exampleForm.$invalid"
           ng-click="submitToServer()">Submit</button>
       </form>
-      <div class="well" ng-if="submitResponse">
+      <div class="col-md-6" class="well submit-response" ng-if="processor=='search' && submitResponse">
 	  	<table class="table table-striped table-bordered table-hover table-condensed">
 		 	<tr>
 		 		<th>First Argument</th><th>Second Argument</th><th>Search Arguments</th>
@@ -96,36 +63,57 @@
 		 			<td><a href="">{{res[0]}}</a></td>
 		 			<td><a href="">{{res[1]}}</a></td>
 		 			<td><button ng-click="sumitToSearchSens(res[0], res[1])">Submit</button></td>
-		 			<!-- <td>
-		 				<table>
-		 					<tr>
-		 						<th>relation-phrase</th><th>sentence</th>
-		 						<tr ng-repeat="kp_sen in sensResponse">
-		 							<td>{{kp_sen[0]}}</td>
-		 							<td>{{kp_sen[1]}}</td>
-		 						</tr>
-		 					</tr>
-		 				</table>
-		 			</td> -->
 		 		</tr>
 		 	</tr>
 		 </table>
       </div>
       
-      <div class="well" ng-if="sensResponse">
+      <div class="col-md-6" class="well" ng-if="processor=='search' && sensResponse">
       	<table class="table table-striped table-bordered table-hover table-condensed">
 	      	<tr><th width="50%" style="text-align:center">first-argument</th><th width="50%" style="text-align:center">second-argument</th></tr>
 		  	<tr><td align="center">{{argsubmit.arg1}}</td><td align="center">{{argsubmit.arg2}}</td></tr>
 		</table>
 	  	<table class="table table-striped table-bordered table-hover table-condensed">
-	  		<tr><th style="text-align:center">relation-phrase</th><th style="text-align:center">sentence</th></tr>
+	  		<tr>
+	  			<th style="text-align:center">relation-phrase</th>
+	  			<th style="text-align:center">sentence</th>
+	  			<th style="text-align:center">judge</th>
+	  		</tr>
 			<tr ng-repeat="kp_sen in sensResponse">
-				<td width="30%" align="center">{{kp_sen[0]}}</td>
+				<td width="20%" align="center">{{kp_sen[0]}}</td>
 				<td width="70%">{{kp_sen[1]}}</td>
+				<td width="10%" align="center">
+					<!-- <button ng-click="confirm(res[1]), res[1]">{{judge[1]}}</button> -->
+				</td>
 			</tr>
 			
 		 </table>
       </div>
+      
+      
+<!--       <div class="well" ng-if="processor=='dependency'">
+      	<p>show dependencies</p></br>
+      	<p>{{processor}}</p></br>
+      	<p>{{submit.disrel}}</p></br>
+      	<p>{{dependencyResponse}}</p>
+      </div> -->
+      
+      
+      
+      <div class="col-md-6" class="well submit-response" ng-if="processor=='dependency' && dependencyResponse">
+	  	<table class="table table-striped table-bordered table-hover table-condensed">
+		 	<tr>
+		 		<th width=70% style="text-align:center">Dependency Pattern</th>
+		 		<th width=30% style="text-align:center">Occurrence</th>
+		 		<tr ng-repeat="res in dependencyResponse">
+		 			<td>{{res[0]}}</a></td>
+		 			<td style="text-align:center">{{res[1]}}</a></td>
+		 		</tr>
+		 	</tr>
+		 </table>
+      </div>
+      
+      
       
     </div>
   </body>

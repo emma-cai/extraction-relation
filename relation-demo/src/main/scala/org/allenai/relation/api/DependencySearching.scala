@@ -1,72 +1,59 @@
-package org.allenai.relation.processors
+package org.allenai.relation.api
 
 import scala.collection.mutable.Map
 
-object FreOfDependencyPath {
-  def main(args: Array[String]) = {
-    val source = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp"
-//    val source = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples_dp"
-    var disrel_dps_num = readFromFile(source)
-    disrel_dps_num.foreach {
-      case (disrel, dps_num) => {
-        println(disrel)
-        //       println(dps_num)
-        val sum = dps_num.foldLeft(0)(_ + _._2)
-        val dps_num_sorted = dps_num.toList.sortWith((x, y) => x._2 > y._2)
-        dps_num_sorted.foreach {
-          case (dp, num) => {
-            var dpstr: String = dp.head
-
-            for (e <- dp) {
-              if (!e.equals(dp.head))
-                dpstr = dpstr + " & " + e
-            }
-
-            println(dpstr + "\t" + num /** + "\t" + ((num*0.1)/(sum*0.1))**/ )
-          }
+class DependencySearching {
+  def runSearch(dir:String, disrel:String):List[List[String]] = {
+    var source = dir+"/"+disrel+".txt"
+    var rapdps_num:List[List[String]] = List()
+    val dps_num = readFromFile(source)
+    val sum = dps_num.foldLeft(0)(_ + _._2)
+    val dps_num_sorted = dps_num.toList.sortWith((x, y) => x._2 > y._2)
+    dps_num_sorted.foreach {
+      case (dp, num) => {
+        var dpstr: String = dp.head
+        for (e <- dp) {
+          if (!e.equals(dp.head)) {
+            dpstr = dpstr + " & " + e
+          } 
         }
-        println()
+        var tmp:List[String] = List()
+        tmp = tmp ::: List(dpstr)
+        tmp = tmp ::: List(Integer.toString(num))
+        
+        rapdps_num = rapdps_num ::: List(tmp)
       }
     }
+    return rapdps_num
   }
-
+  
   /** Store tuples in a file, and get frequency from the file (considering the efficiency)
     */
-  def readFromFile(source: String): Map[String, Map[Set[String], Int]] = {
-    var disrel_dps_num: Map[String, Map[Set[String], Int]] = collection.mutable.Map.empty[String, Map[Set[String], Int]]
-    val files = new java.io.File(source).listFiles.filter(_.getName.endsWith(".txt"))
-    for (file <- files) {
-      // process the file
-      var filename = file.getName()
-      for (line <- scala.io.Source.fromFile(file).getLines()) {
-        //for each line, get two columns(disrel, dpslist)
-        var tuple = getDPsList(line)
-        var disrel = tuple._1
-        var dpslist = tuple._2
-        var rahformat = convertRaphaelFormat(dpslist)
-        //update the hashmap
-        if (rahformat != null)
-          rahformat.foreach(dp => update(disrel_dps_num, disrel, dp))
-      }
+  def readFromFile(source:String): Map[Set[String], Int] = {
+    var dps_num: Map[Set[String], Int] = collection.mutable.Map.empty[Set[String], Int]
+    for (line <- scala.io.Source.fromFile(source).getLines()) {
+      //for each line, get two columns(disrel, dpslist)
+      var tuple = getDPsList(line)
+     // var disrel = tuple._1
+      var dpslist = tuple._2
+      var rahformat = convertRaphaelFormat(dpslist)
+      //update the hashmap
+      if (rahformat != null)
+        rahformat.foreach(dp => update(dps_num, dp))
     }
 
-    return disrel_dps_num
+    return dps_num
   }
 
   /** If disrel never appears in map, add it, and (dp, num) is initialized to be 1;
     * If disrel appears before, check dp in (dp, num)
     */
-  def update(disrel_dps_num: Map[String, Map[Set[String], Int]], disrel: String, dp: Set[String]) = {
-    if (disrel_dps_num.contains(disrel)) {
-      val dps_num: Map[Set[String], Int] = disrel_dps_num(disrel)
-      if (dps_num.contains(dp)) {
+  def update(dps_num: Map[Set[String], Int], dp: Set[String]) = {
+    if (dps_num.contains(dp)) {
         val tmp = dps_num(dp)
         dps_num.put(dp, tmp + 1)
       } else {
         dps_num.put(dp, 1)
-      }
-    } else {
-      disrel_dps_num.put(disrel, Map(dp -> 1))
     }
   }
 

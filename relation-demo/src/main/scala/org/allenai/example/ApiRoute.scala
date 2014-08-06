@@ -124,6 +124,9 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
       def write(response: Response): JsValue = response.toTuples.toJson
     }
     
+    /**
+     * Given lexical seed, search instances
+     */
     import scala.concurrent.Future
     def runInstanceSearch(disrel:String, query:String):Future[Response] = {
       val insSearch:InstanceSearching = new InstanceSearching()
@@ -141,7 +144,9 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
     }
     
     
-    
+    /**
+     * Given instances, search relevant sentences
+     */
     def runSentenceSearch(disrel:String, arg1:String, arg2:String):Future[Response] = {
       val search:SentenceSearching = new SentenceSearching()
 //      val searchres = search.runSearch("/Users/qingqingcai/Documents/Data/Reverb/Index", 
@@ -160,6 +165,22 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
     }
     
     
+    def runDependencySearch(disrel:String):Future[Response] = {
+      val dir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp"
+      val MYDep:DependencySearching = new DependencySearching()
+      val searchres = MYDep.runSearch(dir, disrel)
+      var dependency:List[String] = List()
+      var confidence:List[String] = List()
+      searchres.foreach {
+        case per => {
+          dependency = dependency :+ per(0)
+          confidence = confidence :+ per(1)
+        }
+      }
+      Future(Response(dependency, confidence))
+    }
+    
+    
     
     // API data transfer object
     // Note that the field name matches the 'text' field name
@@ -169,6 +190,10 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 
     case class ArgSubmit(disrel:String, arg1:String, arg2:String)
     implicit val argsubmitFormat = jsonFormat3(ArgSubmit.apply)
+    
+//    case class DepSubmit(disrel:String, kp:String)
+////    implicit val depsubmitFormat = jsonFormat1(DepSubmit.apply)
+//    implicit val depsubmitFormat = jsonFormat2(DepSubmit.apply)
     // format: OFF
     val route =
       path("submit") {
@@ -185,6 +210,15 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
           entity(as[ArgSubmit]) { argsubmit =>
           	complete{
           		Future(runSentenceSearch(argsubmit.disrel, argsubmit.arg1, argsubmit.arg2))
+          	}
+          }
+        }
+      } ~ 
+      path("submitdep") {
+        post {
+          entity(as[Submit]) { submit =>
+          	complete{
+          		Future(runDependencySearch(submit.disrel))
           	}
           }
         }
