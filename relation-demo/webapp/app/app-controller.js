@@ -13,8 +13,13 @@
 //    };
     
     scope.submit = {
+      kp: 'caused by',
+      disrel: 'CAUSE'
+    };
+    
+    scope.savedData = {
       kp: null,
-      disrel: null
+      sens: null
     };
     
     scope.argsubmit = {
@@ -23,13 +28,19 @@
       arg2: null
     };
     
-//    scope.judge = [{"content":null, "istrue":'Y'}];
-    scope.judge = null;
-    
+    scope.confirmed = false;
+    scope.rejected = false;
+    scope.isshow = false;
+    scope.confirmednum = 0;
+    scope.rejectedItems = 0;
     scope.sensResponse = [];
+//    var inputSubmitString = stringFromScala;
+//    var submitObject = angular.fromJson(inputSubmitString);
+//    // submitObject has keys "disrel" & "kp". submitObject.disrel / submitObject.kp.
+    scope.judge = [];
     scope.submitResponse = [];
     scope.dependencyResponse = [];
-    scope.processor = 'search';
+    scope.processor = 'search';		//'search' or 'dependency'
     
 
     scope.submitToServer = function() {
@@ -40,6 +51,10 @@
       });
     };
     
+    scope.setProcessors = function(x) {
+        scope.processor = x;
+      };
+    
   	scope.sumitToSearchSens = function(a1, a2) {
   	  scope.argsubmit.disrel = scope.submit.disrel;
       scope.argsubmit.arg1 = a1;
@@ -47,9 +62,9 @@
       scope.sensResponse = [];
       http.post(API_ROOT + '/submitins', scope.argsubmit).then(function(response) {
   	    scope.sensResponse = response.data;
+  	    
       });
     };
-    
     
     scope.showDependency = function(x) {
     	scope.processor = 'dependency';
@@ -63,20 +78,38 @@
              scope.dependencyResponse = response.data;
          });
       };
+   
     
-    /**
-     * Judge the sentence, but it's not working now
-     */
-//    scope.confirm = function(sen, prejudge) {
-//    	scope.judge = sen;
-//    	if(prejudge == 'Y') {
-//    		scope.judge[istrue] = 'N';
-//    	}else {
-//        	scope.judge[istrue] = 'Y';	
-//    	}
-//      };
+    scope.isChecked = function(id) {
+    	var match = false;
+    	for(var i=0; i<scope.judge.length; i++) {
+    		if(scope.judge[i] === id) {
+    			match = true;
+    		}
+    	}
+    	return match;
+    };
+    
+    scope.sync = function(bool, x) {
+    	if(bool) {
+    		scope.judge.splice(0,0,x);
+    	}else{
+    		for(var i=0; i<scope.judge.length; i++) {
+    			if(scope.judge[i] === x) {
+    				scope.judge.splice(i, 1);
+    			}
+    		}
+    	}
+    };
+    
+    scope.savePositive = function() {
+//    	scope.savedData.disrel = scope.submit.disrel;	//disrel is String
+//    	scope.savedData.sens = document.write(scope.judge); //sens is Array[String]
+
+    	scope.isshow = true;
+    };
+    
   };
 
   module.exports = ['$scope', '$http', '$window', AppController];
 })();
-

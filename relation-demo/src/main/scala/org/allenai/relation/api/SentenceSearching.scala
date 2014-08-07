@@ -1,8 +1,6 @@
 package org.allenai.relation.api
 
 class SentenceSearching {
-//  val searchres = search.runSearch("/Users/qingqingcai/Documents/Data/Reverb/Index", 
-//          "\""+arg1+"\"", "\""+arg2+"\"", "arg1", "arg2", List("kp", "sen"), 100)
   /**
    * Input file: CAUSE	is caused by	gas	bacteria	Odor in gas is caused by bacteria
    * Query: disrel, arg1, arg2
