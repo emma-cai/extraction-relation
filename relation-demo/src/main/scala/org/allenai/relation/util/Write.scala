@@ -97,6 +97,30 @@ class Write {
     fw.close()
   }
   
+  def rewrite_3(output: String, data: List[(String, String, String, String, String, String)]) = {
+    val outputfile = new File(output)
+    val fw = new BufferedWriter(new FileWriter(outputfile, false))
+
+    data.foreach {
+      case tuple => {
+        fw.write(tuple._1)
+        fw.write("\t")
+        fw.write(tuple._2)
+        fw.write("\t")
+        fw.write(tuple._3)
+        fw.write("\t")
+        fw.write(tuple._4)
+        fw.write("\t")
+        fw.write(tuple._5)
+        fw.write("\t")
+        fw.write(tuple._6)
+        fw.newLine()
+      }
+    }
+    fw.flush()
+    fw.close()
+  }
+  
   def rewrite_version1(outputname: String,
     data: List[(String, String, String, String, String, Set[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.DependencyNode]]])]) = {
     val outputfile = new File(outputname)

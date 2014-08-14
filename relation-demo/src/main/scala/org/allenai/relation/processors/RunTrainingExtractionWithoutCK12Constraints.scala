@@ -4,7 +4,7 @@ import org.allenai.relation.util.Searching
 import org.allenai.relation.util.Write
 import scala.collection.mutable.Map
 
-object RunTrainingExtraction {
+object RunTrainingExtractionWithoutCK12Constraints {
   private val disrel_seeds = collection.immutable.HashMap(
     ("PURPOSE", List("purpose", "used to", "responsible")),
     ("CAUSE", List("caused", "so that", "because", "result in", "effect on")),
@@ -21,31 +21,21 @@ object RunTrainingExtraction {
       "he", "his", "him", "she", "her", "they", "their", "them", "one", "two", "three", "all", "every", "each", 
       "go", "going", "went", "gone", "some", "any")
 
-  private val maxinsres = 10000
-  private val maxkpres = 10000
+  private val maxinsres = 1000
+  private val maxkpres = 100
   private val maxkptime = 5
-  private val maxNumOfGood = 300
-  private val minimumInCK12ForRP = 10
-  private val minimumInCK12ForArg1 = 10
-  private val minimumInCK12ForArg2 = 10
   
   private val ReverbIndexPath = "/Users/qingqingcai/Documents/Data/Reverb/Index"
-  private val disrel_sen_dir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_sens_v3"
-  private val entity_countInCK12_path = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/entity_counts_ck12/entity_countsInCK12.txt"
-  private val relpha_countInReverbAndCK12_path = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/relationphrase_counts_frequency"
+  private val disrel_sen_dir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_v3"
   def main(args: Array[String]) = {
 
-    // Read pre-knowledge
-    val disrel_goodRelationPhrase = selectGoodRelationPhrase(relpha_countInReverbAndCK12_path, maxNumOfGood, minimumInCK12ForRP)
-    val entity_countInCK12 = readMap(entity_countInCK12_path)
-    
     // given key-phrase-seed, search instance
-    val disrel_insList = insSearch(ReverbIndexPath, entity_countInCK12)
+    val disrel_insList = insSearch(ReverbIndexPath)
     val MYWrite:Write = new Write()
     MYWrite.rewrite_map1("", disrel_insList)
     
     // given an instance (entity pairs), search relation-phrase and sentences
-    var disrel_tuples = sensSearch(ReverbIndexPath, disrel_insList, disrel_goodRelationPhrase)
+    var disrel_tuples = sensSearch(ReverbIndexPath, disrel_insList)
   }
   
 //  def test() = {
@@ -57,7 +47,7 @@ object RunTrainingExtraction {
   /** The discouse-relation lexical cue seeds are defined here;
     * for each discourse relation, find all instances which are connected by the lexical-cue-seed
     */
-  def insSearch(indexPath: String, entity_countInCK12: Map[String, Int]): Map[String, List[List[String]]] = {
+  def insSearch(indexPath: String): Map[String, List[List[String]]] = {
     println("start running instance searching ...")
     val MYSearch: Searching = new Searching()
     //search for instances given a disrel
@@ -70,7 +60,7 @@ object RunTrainingExtraction {
             var perres = MYSearch.runSearch(indexPath, "\"" + seed + "\"", "kp", List("arg1", "arg2"), maxinsres)
             perres.foreach {
               case p => {
-                if(inscheck(entity_countInCK12, p(0), minimumInCK12ForArg1, p(1), minimumInCK12ForArg2)==true && !insList.contains(perres))
+                if(!insList.contains(perres))
                   insList = insList ::: List(p)
               }
             }
@@ -84,7 +74,7 @@ object RunTrainingExtraction {
     return disrel_insList
   }
 
-  def sensSearch(indexPath: String, disrel_insList: Map[String, List[List[String]]], disrel_goodRelationPhrase:Map[String, List[String]])
+  def sensSearch(indexPath: String, disrel_insList: Map[String, List[List[String]]])
     : Map[String, List[(String, String, String, String, String)]] = {
     println("start sentence searching ...")
     var MYSearch: Searching = new Searching()
@@ -92,7 +82,6 @@ object RunTrainingExtraction {
     disrel_insList.foreach {
       case (disrel, insList) => {
         println("searching relation: \t " + disrel)
-        var goodRelationPhrase = disrel_goodRelationPhrase(disrel)
         var tuples: List[(String, String, String, String, String)] = List()
         var kp_num: Map[String, Int] = collection.mutable.Map.empty[String, Int]
         //search for sentences given an instance
@@ -110,7 +99,7 @@ object RunTrainingExtraction {
                     val kp = p(0)
                     var sen = p(1)
                     val tup = sencheck(sen, arg1, arg2)
-                    if (kpcheck(kp, kp_num, goodRelationPhrase) && tup._1==true) {
+                    if (tup._1==true) {
                       sen = tup._2
                       val tuple = (disrel, kp, arg1, arg2, sen)
                       if (!tuples.contains(tuple))
@@ -119,18 +108,8 @@ object RunTrainingExtraction {
                   }
                 }
               }
-
-              //          println("===================================================")
-              //          println(disrel)
-              //          println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-              //          println(ins)
-              //          println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-              //          println(tuples)
             }
         }
-//        println(disrel)
-//        println(tuples)
-//        println()
         disrel_tuples.put(disrel, tuples)        
         var MYData: Write = new Write()
         MYData.rewrite_1(disrel_sen_dir + "/" + disrel + ".txt", tuples)
@@ -218,32 +197,23 @@ object RunTrainingExtraction {
     return entity_countInCK12
   }
   
-  def inscheck(entity_countInCK12:Map[String, Int], arg1:String, minimumNumForArg1:Int, 
-      arg2:String, minimumNumForArg2:Int): Boolean = {
-    if(!entity_countInCK12.contains(arg1) || !entity_countInCK12.contains(arg2))
-      return false;
-    val arg1NumInCK12 = entity_countInCK12(arg1)
-    val arg2NumInCK12 = entity_countInCK12(arg2)
-    if(arg1NumInCK12>=minimumNumForArg1 
-        && arg2NumInCK12>=minimumNumForArg2 
-        && !stopwordsList.contains(arg1.toLowerCase()) 
-        && !stopwordsList.contains(arg2.toLowerCase())) {
-      return true
-    }
-    return false
-  }
   
   def sencheck(sen:String, arg1:String, arg2:String): (Boolean, String) = {
-    if(sen.matches(".*"+arg1+".*")==false || sen.matches(".*"+arg2+".*")==false)
-      return (false, null)
-    val index = sen.lastIndexOf(":")
-    if(index != -1) {
-      val newsen = sen.substring(index+1, sen.length())
-      if(newsen.matches(".*"+arg1+".*") && newsen.matches(".*"+arg2+".*"))
-        return (true, newsen)
-      else
+    try {
+      if(sen.matches(".*"+arg1+".*")==false || sen.matches(".*"+arg2+".*")==false)
         return (false, null)
-    }
-    return (true, sen)
+      val index = sen.lastIndexOf(":")
+      if(index != -1) {
+        val newsen = sen.substring(index+1, sen.length())
+        if(newsen.matches(".*"+arg1+".*") && newsen.matches(".*"+arg2+".*"))
+          return (true, newsen)
+        else
+          return (false, null)
+      }
+      return (true, sen)
+      } catch {
+        case p => p.printStackTrace()
+      }
+    return (false, null)
   }
 }

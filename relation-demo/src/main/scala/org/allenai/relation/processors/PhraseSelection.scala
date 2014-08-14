@@ -15,18 +15,29 @@ object PhraseSelection {
   private var rp_isInCK12 = collection.mutable.Map.empty[String, Int]
   private var ins_isInReverb = collection.mutable.Map.empty[String, List[List[String]]]
   
+  private val disrel_seeds = collection.immutable.HashMap(
+    ("PURPOSE", List("purpose", "used to", "responsible")),
+    ("CAUSE", List("caused", "so that", "because", "result in", "effect on")),
+    /**("FUNCTION", List("used to")),**/
+    ("EXAMPLE", List("an example of", "called", "a way to", "include", "such as")),
+    ("ENABLE", List("to help", "by")), 
+    ("PART", List("part of")), 
+    ("REQUIREMENT", List("necessary", "needed")), 
+    ("CONDITION", List("when", "if")))
+    
   def main(args:Array[String]) = {
     version2()
   }
   def version2() = {
-    val disrel_keyphrase = Map("FUNCTION"->"used to", 
-        "PURPOSE"->"purpose", 
-        "ENABLE"->"need", 
-        "EXAMPLE"->"an example of"
-        , "CAUSE"->"caused")
+    
+//    val disrel_keyphrase = Map("FUNCTION"->"used to", 
+//        "PURPOSE"->"purpose", 
+//        "ENABLE"->"need", 
+//        "EXAMPLE"->"an example of"
+//        , "CAUSE"->"caused")
         
     
-    disrel_keyphrase.foreach {
+    disrel_seeds.foreach {
       case (discourse, keyphrase) => {
         println("----------------------------------------------------")
         println(discourse + "\t" + keyphrase)

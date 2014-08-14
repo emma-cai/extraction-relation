@@ -17,12 +17,7 @@
       path: ""
     };
     
-    
-    
     scope.searchtype = "";
-    scope.confirmed = false;
-    scope.judge = [];
-    scope.isshow = false;
     
     scope.submitResponseInit = [];
     scope.submitResponseClassifier = [];
@@ -40,45 +35,9 @@
               scope.submitResponseInit = response.data;
           });
       }
+
     };
     
-    scope.isChecked = function(id) {
-    	var match = false;
-    	for(var i=0; i<scope.judge.length; i++) {
-    		if(scope.judge[i] === id) {
-    			match = true;
-    		}
-    	}
-    	return match;
-    };
-    
-    scope.sync = function(bool, x) {
-    	if(bool) {
-    		scope.judge.splice(0,0,x);
-    	}else{
-    		for(var i=0; i<scope.judge.length; i++) {
-    			if(scope.judge[i] === x) {
-    				scope.judge.splice(i, 1);
-    			}
-    		}
-    	}
-    };
-    
-    scope.judgesubmit = {
-    	qid: "",
-    	positive: []
-    };
-    
-    scope.savePositive = function() {
-    	console.log(scope.judge);
-    	scope.judgesubmit.qid = scope.submit.qid;
-    	scope.judgesubmit.positive = scope.judge;
-    	http.post(API_ROOT + '/submitjudge', scope.judgesubmit).then(function(response){
-    		scope.judgeResp = response.data;
-    	});
- //   	(String, Array[String])
-    	scope.isshow = true;
-    };
     
   };
 

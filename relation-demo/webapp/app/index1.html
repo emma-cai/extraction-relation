@@ -55,17 +55,11 @@
 		 		<tr ng-repeat="res in submitResponseInit">
 		 			<td width="85%"><a href="">{{res[1]}}</a></td>
 		 			<td width="15%" align="center">
-						<input type="checkbox" ng-model="confirmed" ng-change="sync(confirmed, res[1])" ng-checked="isChecked(res[1])">
+						<input type="checkbox" ng-model="confirmed" ng-change="sync(confirmed, kp_sen[1])" ng-checked="isChecked(res[1])">
 				    </td>
 		 		</tr>
 		 	</tr>
 		 </table>
-		 <button ng-click="savePositive()">save</button>
-		 <div ng-if="isshow == true" ng-repeat="res in judge">
-		 	<ul >
-		 		<li>{{res}}</li>
-		 	</ul>
-		 </div>
       </div>
       
       <div class="col-md-6" class="well" ng-if="submitResponseClassifier">
@@ -88,14 +82,13 @@
 				</td>
 			</tr>
 		 </table>
-		 </table>
 		 <button ng-click="savePositive()">save</button>
 		 <div ng-if="isshow == true" ng-repeat="res in judge">
 		 	<ul >
 		 		<li>{{res}}</li>
 		 	</ul>
 		 </div>
-		 
+      </div>
       
       
       

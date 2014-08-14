@@ -6,14 +6,21 @@ import org.allenai.relation.util.Write
 import scala.collection.mutable.Map
 object InstanceSelection {
   private val disrel_seeds = collection.immutable.HashMap(
-    ("PURPOSE", List("purpose")),
-    ("CAUSE", List("caused")),
-    ("FUNCTION", List("used to")),
-    ("EXAMPLE", List("an example of")),
-    ("ENABLE", List("need")))
+    ("PURPOSE", List("purpose", "used to", "responsible")),
+    ("CAUSE", List("caused", "so that", "because", "result in", "effect on")),
+    /**("FUNCTION", List("used to")),**/
+    ("EXAMPLE", List("an example of", "called", "a way to", "include", "such as")),
+    ("ENABLE", List("to help", "by")), 
+    ("PART", List("part of")), 
+    ("REQUIREMENT", List("necessary", "needed")), 
+    ("CONDITION", List("when", "if")))
   
     
-  private val stopwordsList = List("is", "am", "are", "was", "were", "be", "has", "have", "had", "the", "a", "an", "having", "being", "do", "did", "done", "doing", "does")
+  private val stopwordsList = List("is", "am", "are", "was", "were", "be", "has", "have", "had", "the", 
+      "a", "an", "having", "being", "do", "did", "done", "doing", "does", "your", "you", "me", "my", "mine", "me", 
+      "he", "his", "him", "she", "her", "they", "their", "them", "one", "two", "three", "all", "every", "each", 
+      "go", "going", "went", "gone", "some", "any")
+      
   private val maxinsres = 10000
   private val CK12IndexPath = "/Users/qingqingcai/Documents/Data/CK12/Index"
   private val output = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/entity_counts_ck12/entity_countsInCK12.txt"
