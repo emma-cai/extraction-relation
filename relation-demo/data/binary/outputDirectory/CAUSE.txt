@@ -1,0 +1,1000 @@
+sid	sentence	disrel	relphrase	arg1	arg2	annotationOpt
+2	1 . Essentially all problems are caused by population growth .	CAUSE	are caused by	all problems	population growth	?	1	0.8708
+3	Today , my husband lit a fire in the woodstove and caused a chimney fire and my house is a blackened mass of lumber flat on the ground with a warped tin roof nearby .	CAUSE	caused	a fire	a chimney fire	?	1	0.8708
+4	Originally Posted by mash107 The problem was caused -by- government intervention in the markets .	CAUSE	was caused	The problem	-by- government intervention	?	1	0.8708
+5	The problem was caused -by- government intervention in the markets .	CAUSE	was caused	The problem	-by- government intervention	?	1	0.8708
+6	Trichomoniasis Is Caused by a Protozoan , pp .	CAUSE	Is Caused by	Trichomoniasis	a Protozoan , pp	?	1	0.8708
+7	547–550 ; Trichomoniasis Is Caused by a Protozoan , pp .	CAUSE	Is Caused by	Trichomoniasis	a Protozoan , pp	?	1	0.8708
+8	The verdict also is the first against Wyeth since a state court jury in Reno , Nevada , ordered the drugmaker to pay more than $ 134 million in damages to three women who contend the company ’s menopause drug caused their breast cancers .	CAUSE	caused	menopause drug	their breast cancers	?	1	0.8000
+9	Comments Quoted from By Patricia Hurtado Dec. 16 ( Bloomberg ) -- Pfizer Inc. ’s Wyeth and Pharmacia & Upjohn units and Teva Pharmaceutical Industries Ltd. won dismissal of at least 23 lawsuits filed by women who claimed menopause drugs caused their breast cancer , a New York judge ruled .	CAUSE	caused	menopause drugs	their breast cancer	?	1	0.8000
+10	I don’t believe these disasters are caused by God , though judgments may occur when God removes His protection .	CAUSE	are caused by	these disasters	God	?	1	0.8708
+11	In like manner , the people of Pharaoh rejected submitting to God and His messenger , despite their acknowledgement of the fact that these disasters came from God , who they dared to refer to the " Lord of Musa . "	CAUSE	came from	these disasters	God	?	0	0.5865
+12	One of the most distressing things about these tragedies is that within 24 hours of the event taking place there were website postings and emails circulating from Christians , concluding that these disasters were the judgment of God upon those communities because of their sins .	CAUSE	were the judgment of	these disasters	God	?	0	0.5865
+13	Loan default caused by financial hardship also wo n't be covered , that 's a completely different subject with it 's own solutions .	CAUSE	caused by	Loan default	financial hardship	?	1	0.8708
+14	Loan default caused by financial hardship also will not be covered , that s a a home loan is a contract between a lender and borrower which will normally that s a big unknown which will depend on the lender , state laws and whether .	CAUSE	caused by	Loan default	financial hardship	?	1	0.8708
+15	Yellow fever , like some other neglected diseases , is caused by a flavivirus .	CAUSE	is caused by	Yellow fever	a flavivirus	?	1	0.8708
+16	Yellow fever is caused by a flavivirus , and spreads from one human to another by the bite of mosquitos .	CAUSE	is caused by	Yellow fever	a flavivirus	?	1	0.8708
+17	Lack of sleep causes headaches , lack of sleep causes depression , lack of sleep causes lack of energy , lack of sleep causes a lot more .	CAUSE	causes	sleep	headaches	?	1	0.8000
+18	The lack of sleep caused headaches , remedied by washing acacetylsalicylic acid ( aspirin ) down with lots of coffee .	CAUSE	caused	sleep	headaches	?	1	0.8000
+19	Marginal lack of sleep can cause headaches , daytime tiredness and irritability , and leave you functioning below par .	CAUSE	can cause	sleep	headaches	?	1	0.8000
+20	3. Lack of sleep can cause headaches by inhibiting the body from relaxing muscles in the head and from reducing blood pressure .	CAUSE	can cause	sleep	headaches	?	1	0.8000
+21	Too much or too small sleep can cause headaches , low power , mood swings , sleep deprivation , along with other difficulties as the hormone levels aren’t balanced .	CAUSE	can cause	sleep	headaches	?	1	0.8000
+22	Depression Depression can result from a lack of sleep and poor nutrition and may be associated with headaches .	CAUSE	may be associated with	sleep	headaches	?	1	0.8708
+23	Some of us are not going to get sunburned , poison ivy , sleep in an airport , get headaches .	CAUSE	get	sleep	headaches	?	0	0.5865
+24	No wonder people lack vitality , need a lot of sleep , catch colds and get headaches , but these are only minor signs of the troubles that lie ahead if the toxemia is allowed to persist .	CAUSE	get	sleep	headaches	?	0	0.5865
+25	Chamomile ( anthemis nobilis ) Used in tea to relax and induce sleep , aid digestion , relieve headaches and treat allergies .	CAUSE	relieve	sleep	headaches	?	0	0.5865
+26	Natural Menopause Relief Cell Signal Enhancers Relieves hot flashes , improve sleep , balance hormones , relieve headaches , improve focus .	CAUSE	relieve	sleep	headaches	?	0	0.5865
+27	Reiki also reportedly aids sleep , reduces blood pressure , relieves headaches and general pain , can help the body to cleanse itself of toxins and thus further enhance the immune system .	CAUSE	relieves	sleep	headaches	?	0	0.5865
+28	Too much or too little sleep can contribute to headaches .	CAUSE	can contribute to	sleep	headaches	?	0	0.5865
+29	Physical and emotional stress and lack of sleep are common triggers for headaches but there can be an array of reasons why you’re constantly getting headaches .	CAUSE	are common triggers for	sleep	headaches	?	1	0.8708
+30	Lack of sleep is a common trigger for headaches .	CAUSE	is a common trigger for	sleep	headaches	?	1	0.8708
+31	Making an effort to relax , exercising regularly and getting enough sleep will often reduce the number of headaches .	CAUSE	will often reduce the number of	sleep	headaches	?	0	0.5865
+32	JET LAG – 60 minutes Using essential oils selected to regulate sleep , hydrate skin , relieve tension headaches and restore energy depleted through travel , this medium pressure massage focuses on all the areas affected by frequent travel - legs , neck , back , shoulders and feet .	CAUSE	relieve	sleep	headaches	?	0	0.5865
+33	The essential oils in this Aromatherapy bath and massage are selected to regulate sleep , recover skin dryness and dehydration , relieve tension headaches and restore your energy .	CAUSE	relieve	sleep	headaches	?	0	0.5865
+34	Focusing on the areas affected by frequent travel—legs , neck , back , shoulders and feet—this treatment helps to regulate sleep , hydrate skin , relieve tension headaches and restore energy .	CAUSE	relieve	sleep	headaches	?	0	0.5865
+35	Too a lot or too little sleep can trigger headaches , low energy , mood swings , sleep deprivation , along with other challenges as the hormone levels are not balanced .	CAUSE	can trigger	sleep	headaches	?	0	0.6667
+36	Wake up and go to bed at regular times , either too much or too little sleep can cause headaches .	CAUSE	can cause	sleep	headaches	?	1	0.8000
+37	Third , sleep habits , too little sleep can cause headaches , as will too much sleep.	CAUSE	can cause	sleep	headaches	?	1	0.8708
+38	On a side-note I also found out that getting too much sleep can cause headaches as well as getting too little sleep.	CAUSE	can cause	sleep	headaches	?	1	0.8000
+39	The resulting loss of sleep often results in daytime drowsiness and headaches and has been shown to increase your risk of trauma due to drowsiness .	CAUSE	often results in	sleep	headaches	?	1	0.8708
+40	Even one cup of coffee in the morning can disrupt sleep at night and may directly increase muscle pain and headaches .	CAUSE	may directly increase	sleep	headaches	?	0	0.5865
+41	Even one cup in the morning can sometimes disrupt sleep at night and may directly increase muscle pain and headaches .	CAUSE	may directly increase	sleep	headaches	?	0	0.5865
+42	ACHE Newsletter Regular , adequate sleep leads to fewer headaches .	CAUSE	leads to	sleep	headaches	?	1	0.8708
+43	Together with feeling sleepy in the morning , sleep apnea can cause morning headaches , a dry mouth and sore throat .	CAUSE	can cause	sleep	headaches	?	1	0.8708
+44	Frequent interuptions of deep , restorative sleep often lead to early morning headaches and the most common symptom seen , excessive daytime sleepiness .	CAUSE	often lead to	sleep	headaches	?	1	0.8708
+45	The frequent interruptions of deep , restorative sleep often lead to early morning headaches and excessive daytime sleepiness .	CAUSE	often lead to	sleep	headaches	?	1	0.8708
+46	The POMS clarifies a frequent misunderstanding in terminology caused by the statute which caused problems in meeting the “legal authority ” requirement .	CAUSE	caused	the statute	problems	?	1	0.8708
+47	The Court of Appeals defined constitutional avoidance as "where an otherwise acceptable construction of a statute would raises serious constitutional problems , the Cour will construe the statute to avoid such problems unless such construction is plainly contrary to the intent of Congress " .	CAUSE	would raises	the statute	problems	?	0	0.5865
+48	Where an administrative interpretation of a statute would raise serious constitutional problems , the Court will construe the statute to avoid such problems unless the construction is plainly contrary to Congress � intent .	CAUSE	would raise	the statute	problems	?	0	0.5865
+49	It is a hoary one that , in a case of statutory ambiguity , "where an otherwise acceptable construction of 629 a statute would raise serious constitutional problems , the Court will construe the statute to avoid such problems unless such construction is plainly contrary to the intent of Congress . "	CAUSE	would raise	the statute	problems	?	0	0.5865
+50	See , e.g. , Buckland , 289 F.3d at 564 ( A[ I]f an otherwise acceptable construction of a statute would raise serious constitutional problems , and where an alternative interpretation of the statute is >fairly possible , = we are obligated to construe the statute to avoid such problems .@ )	CAUSE	would raise	the statute	problems	?	0	0.5865
+51	These statutes caused problems and the stewardship view of Presidential authority began to be argued before the U.S. supreme court .	CAUSE	caused	These statutes	problems	?	1	0.8000
+52	The dilemma was caused by the fact that the 68000 , being a true new generation 16 bit processor , was ten to twenty times the speed of the machines from which their ( substantial ) income derived .	CAUSE	was caused by	The dilemma	the fact	?	1	0.8708
+53	The dilemma is caused by the fact that Art . 10 of the Charter on Democracy , Elections , and Governance entrenched the supremacy of the Constitution and Art .	CAUSE	is caused by	The dilemma	the fact	?	1	0.8708
+54	The dilemma was caused by the fact that the Reason application did not have any commands .	CAUSE	was caused by	The dilemma	the fact	?	1	0.8708
+55	The dilemma is compounded by the fact that approximately 40 percent of illegal workers are paid in cash , off books .	CAUSE	is compounded by	The dilemma	the fact	?	0	0.5865
+56	The dilemma is compounded by the fact that approximately 40 % of illegal workers are paid in cash , off the books .	CAUSE	is compounded by	The dilemma	the fact	?	0	0.5865
+57	The dilemma is compounded by the fact that teacher pensions represent a mammoth unfunded liabilityat least $ 330 billion nationally , according to a recent Manhattan Institute study , and perhaps as much as $ 900 billion if calculated conservatively .	CAUSE	is compounded by	The dilemma	the fact	?	0	0.5865
+58	The dilemma is complicated by the fact that such labels can backfire on the recipient and damage his reputation and self-esteem far more than any criminal record , despite our nationwide pretense of being modern and open-minded about "mental illness " ( 2 ) .	CAUSE	is complicated by	The dilemma	the fact	?	0	0.5865
+59	The dilemma is complicated by the fact that corticosteroids , a necessary component of chemotherapy and some new hormonal therapies , abrogates the effect of immunotherapy .	CAUSE	is complicated by	The dilemma	the fact	?	0	0.5865
+60	The dilemma is the fact our natural resources are used up quicker than previously and there is no strategy to replenish it , which explains why the values are constantly increasing .	CAUSE	is	The dilemma	the fact	?	0	0.5865
+61	The dilemma is exacerbated by the fact that Beijing relies heavily on the local and provincial cadres to consolidate state authority and protect the party �s interests .	CAUSE	is exacerbated by	The dilemma	the fact	?	0	0.5865
+62	The dilemma is made more difficult by the fact that we had to teach Jack how to stand up for himself .	CAUSE	is made more difficult by	The dilemma	the fact	?	1	0.8708
+63	The dilemma is made more difficult by the fact that most synagogues require non-members to purchase tickets for High Holiday services .	CAUSE	is made more difficult by	The dilemma	the fact	?	1	0.8708
+64	The dilemma is made more difficult by the fact that the Japanese government recently has expunged references to the suicides from school textbooks and is attempting to suppress any evidence of this shameful incident from Japanese history .	CAUSE	is made more difficult by	The dilemma	the fact	?	1	0.8708
+65	The dilemma is further complicated by the fact that African states have never been as integrated as their European counterparts .	CAUSE	is further complicated by	The dilemma	the fact	?	0	0.5865
+66	This dilemma is caused by the fact that each person has a unique or specific body type that responds differently to exercise .	CAUSE	is caused by	This dilemma	the fact	?	1	0.8708
+67	This dilemma is caused by the fact that Newton 's Law of Gravity does not give the correct ( observed ) results in most cases involving galaxy rotation .	CAUSE	is caused by	This dilemma	the fact	?	1	0.8708
+68	This dilemma is compounded by the fact that the cooperative financial sector in Colombia went bankrupt in the 1990s and thus there do not exist favorable sources of credit .	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+69	This dilemma is compounded by the fact that the building is going up very rapidly .	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+70	This dilemma was compounded by the fact that the Husky 's stay in the Trail Rider stables would be short , only a month or so .	CAUSE	was compounded by	This dilemma	the fact	?	0	0.5865
+71	This dilemma was compounded by the fact that when I went searching for a " Host " I was overwhelmed by the number of " we 're better than they are because .. . " companies who were in the hosting business looking for my business ( or was it my money ? ) .	CAUSE	was compounded by	This dilemma	the fact	?	0	0.5865
+72	This dilemma is compounded by the fact that these children 's life prospects would be clouded by the action of others over whom they have no control !	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+73	This dilemma is compounded by the fact that University administration has seen significant funding cuts , in "real " dollars , over the past decade .	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+74	This dilemma is compounded by the fact that 3G is n’t going away— I recently learned Apple plans to bypass LTE in 2011 , instead opting to wait for “4G” to mature .	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+75	This dilemma is compounded by the fact that county residents also have a strong belief in individual freedom .	CAUSE	is compounded by	This dilemma	the fact	?	0	0.5865
+76	This dilemma is complicated by the fact that the main sources of information on the drugs ( national MS societies , neurologists , MS nurses ) usually supply only one-sided information on the drugs .	CAUSE	is complicated by	This dilemma	the fact	?	0	0.5865
+77	This dilemma is complicated by the fact that most of us are not equipped with a level of knowledge , or the correct training to understand its context , to be able to decide upon points at issue in some very complex sciences .	CAUSE	is complicated by	This dilemma	the fact	?	0	0.5865
+78	This dilemma is complicated by the fact that their platforms are far more similar than dissimilar , and I find myself agreeing with most of what they all tend to say .	CAUSE	is complicated by	This dilemma	the fact	?	0	0.5865
+79	This dilemma was exacerbated by the fact Simon liked to ride across the occasional river and in British weather - which usually involves lots of rain and mud .	CAUSE	was exacerbated by	This dilemma	the fact	?	0	0.5865
+80	This dilemma is exacerbated by the fact they don’t have their top sniper , Daniel Sedin , who is out with a concussion .	CAUSE	is exacerbated by	This dilemma	the fact	?	0	0.5865
+81	This dilemma is exacerbated by the fact that no country can act in isolation , as the present and potential effects on trade flows obviously need to be taken into consideration .	CAUSE	is exacerbated by	This dilemma	the fact	?	0	0.5865
+82	This dilemma is exacerbated by the fact that we are unable to understand the full meaning of our predicament .	CAUSE	is exacerbated by	This dilemma	the fact	?	0	0.5865
+83	This dilemma is further complicated by the fact that the gains from any new initiative , even if it were to benefit many , would remain only a promise until the project was fully implemented and successful .	CAUSE	is further complicated by	This dilemma	the fact	?	0	0.5865
+84	It costs a thousand dollars ( OF YOUR OWN MONEY ) , and there’s only one in 10,000 chance that your headaches are caused by a brain tumor . ”	CAUSE	are caused by	your headaches	a brain tumor	?	1	0.8708
+85	It’s like taking Tylenol to deal with your headache when that headache is caused by a brain tumor .	CAUSE	is caused by	your headache	a brain tumor	?	1	0.8708
+86	Could your headache be caused by a brain tumor ?	CAUSE	be caused by	your headache	a brain tumor	?	1	0.8708
+87	As this eMedTV segment explains , chickenpox is caused by the varicella zoster virus .	CAUSE	is caused by	chickenpox	the varicella zoster virus	?	1	0.8708
+88	Causes of chickenpox Chickenpox is caused by the varicella zoster virus and is very contagious .	CAUSE	is caused by	chickenpox	the varicella zoster virus	?	1	0.8708
+89	Causes of chickenpox Chickenpox is caused by the varicella zoster virus , which is very contagious .	CAUSE	is caused by	chickenpox	the varicella zoster virus	?	1	0.8708
+90	Chickenpox is caused by the varicella zoster virus .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+91	. ? Chickenpox , which is known by the clinical name varicella , is caused by the varicella zoster virus .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+92	Chickenpox is caused by the varicella zoster virus , which is a member of the herpesvirus family and is associated with herpes zoster ( shingles ) .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+93	Causes Chickenpox is caused by the varicella zoster virus .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+94	Chickenpox is caused by the varicella zoster virus , a member of the herpes virus family .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+95	Chickenpox is caused by the varicella zoster virus and is spread by droplet or airborne transmission .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+96	Chickenpox , a blistering rash , is caused by the varicella zoster virus and is highly contagious .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+97	Chickenpox is caused by the varicella zoster virus , and can be serious -- even fatal -- to pregnant women , especially when contracted in the third trimester .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+98	Chickenpox is caused by the varicella zoster virus and occurs most commonly in late winter or early spring .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+99	Causes of chickenpox Chickenpox is caused by the varicella zoster virus and is very contagious .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+100	Causes of chickenpox Chickenpox is caused by the varicella zoster virus , which is very contagious .	CAUSE	is caused by	Chickenpox	the varicella zoster virus	?	1	0.8708
+101	For more information click on Articles to the right The Menopause Profile identifies deficiencies ( or excesses ) of important sex hormones estradiol , estrone , estriol , progesterone , and testosterone .	CAUSE	identifies	Menopause	deficiencies	?	0	0.5865
+102	To order this test click here The Menopause Profile identifies deficiencies ( or excesses ) of important sex hormones estradiol , estrone , estriol , progesterone , and testosterone .	CAUSE	identifies	Menopause	deficiencies	?	0	0.5865
+103	The Menopause Profile identifies deficiencies ( or excesses ) of important sex hormones estradiol , estrone , estriol , progesterone , and testosterone .	CAUSE	identifies	Menopause	deficiencies	?	0	0.5865
+104	A wrongful death lawsuit arises from the death of a loved one , and that death was caused by conduct of another person or business entity .	CAUSE	was caused by	death	conduct	?	1	0.8708
+105	the death was caused by the conduct of a another , that the person was negligent/liable for the death , that there is a surviving spouse and other dependents and monetary damages have arisen due to the death .	CAUSE	was caused by	death	conduct	?	1	0.8708
+106	Admitting how the major reason behind avoidable morbidity as well as death has been dangerous conduct life-style , the particular You .	CAUSE	has been	death	conduct	?	1	0.8708
+107	Admitting the major reason behind avoidable morbidity and also death has been dangerous conduct life-style , the particular You .	CAUSE	has been	death	conduct	?	1	0.8708
+108	the death was caused by the conduct of a another , that the person was negligent/liable for the death , that there is a surviving spouse and other dependents and monetary damages have arisen due to the death .	CAUSE	was caused by	the death	the conduct	?	1	0.8708
+109	The gas is caused by bacteria in your gut fermenting sugars .	CAUSE	is caused by	gas	bacteria	?	1	0.8708
+110	The gas is caused by the bacteria in a rabbit 's stomach multiplying excessively as a result of incorrect feeding .	CAUSE	is caused by	gas	bacteria	?	1	0.8708
+111	The lactose then passes , undigested , into the large intestine where gas is produced by the bacteria trying to break it down .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+112	The gas is produced by bacteria in their digestive tracts .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+113	There are many reasons for becoming gassy , such as eating foods that do n't agree with you , not properly combining foods , or gulping air while you are eating , but the vast majority of gas is produced by bacteria in your gut .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+114	Cows emit the gas , which is produced by bacteria in their stomachs .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+115	The majority of the gas is produced by bacteria in the small intestine and most of it is eventually absorbed by the lining and then taken up in the blood stream , and then expelled through the lungs .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+116	This gas is produced by bacteria in the colon .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+117	The gas , which is produced by bacteria in the large intestine reacting with the milk sugar , will increase when you do n't have enough lactase enzyme to break down the lactose .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+118	And we know that gas is produced by bacteria , ” he said at a recent conference at the South Tyrol Archaeological Museum in Bolzano , Italy , where the mummy is kept .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+119	• Ozone is a very reactive gas that can oxidize bacteria , moulds , organic material and other pollutants found in water .	CAUSE	can oxidize	gas	bacteria	?	0	0.5865
+120	This gas is produced by symbiotic bacteria and yeasts found in the gastrointestinal tract .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+121	In the animal digestive tract , the gas is produced by symbiotic bacteria and yeasts .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+122	This gas is produced by symbiotic bacteria and yeasts ... Log In Here Password Top Searched Keywords	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+123	This gas is produced by symbiotic bacteria and yeasts ... Gas home remedies Gas is a result to two or three main problems .	CAUSE	is produced by	gas	bacteria	?	0	0.5865
+124	The gas is caused by bacteria in your gut fermenting sugars .	CAUSE	is caused by	The gas	bacteria	?	1	0.8708
+125	The gas is caused by the bacteria in a rabbit 's stomach multiplying excessively as a result of incorrect feeding .	CAUSE	is caused by	The gas	bacteria	?	1	0.8708
+126	The gas is produced by bacteria in their digestive tracts .	CAUSE	is produced by	The gas	bacteria	?	0	0.5865
+127	The gas is produced by bacteria .	CAUSE	is produced by	The gas	bacteria	?	0	0.5865
+128	The gas , which is produced by bacteria in the large intestine reacting with the milk sugar , will increase when you do n't have enough lactase enzyme to break down the lactose .	CAUSE	is produced by	The gas	bacteria	?	0	0.5865
+129	The gas is created by bacteria , which produce "biogas " .	CAUSE	is created by	The gas	bacteria	?	0	0.5865
+130	The gas is caused by the bacteria in a rabbit 's stomach multiplying excessively as a result of incorrect feeding .	CAUSE	is caused by	The gas	the bacteria	?	1	0.8708
+131	In the first stages after my son 's accident , I had no interest in who caused the accident and how it happened .	CAUSE	caused	no interest	the accident	?	1	0.8708
+132	This study shows that this defect is caused by a loss of OMB expression from giant glial cells within the larval inner optic chiasm ( ICg-glia ) .	CAUSE	is caused by	this defect	a loss	?	1	0.8708
+133	This defect is caused by the loss of presenilin function in two cholinergic interneurons that display neurite morphology defects in presenilin mutants .	CAUSE	is caused by	This defect	the loss	?	1	0.8708
+134	Only pages 11 and 12 discuss the authors ' theory that "oxygen in the tank " caused the explosion .	CAUSE	caused	the tank	the explosion	?	1	0.8708
+135	The cooling system for the tank failed and caused the explosion .	CAUSE	caused	the tank	the explosion	?	1	0.8708
+136	Air trapped in the tank  caused the the explosion ?	CAUSE	caused	the tank	the explosion	?	1	0.8708
+137	An investigation conducted by the CSB and OSHA revealed that the condensation inside the tanks caused the explosion and the source of ignition was the truck engines , which were still running .	CAUSE	caused	the tanks	the explosion	?	1	0.8000
+138	Air trapped in the tank  caused the the explosion ?	CAUSE	caused	the tank	the the explosion	?	1	0.8000
+139	At Kīlauea 's summit , a series of collapses in the vent within Halema`uma`u Crater on Tuesday , June 30 , caused a significant widening of the vent .	CAUSE	caused	Tuesday	a significant widening	?	1	0.8708
+140	At Kilauea’s summit , a series of collapses in the vent within Halemaumau Crater on Tuesday caused a significant widening of the vent .	CAUSE	caused	Tuesday	a significant widening	?	1	0.8000
+141	Quadriplegia is caused by damage to the brain and spinal cord at a high level .	CAUSE	is caused by	Quadriplegia	damage	?	1	0.8708
+142	Quadriplegia is caused by damage to the cervical spinal cord segments at levels C1-C7 .	CAUSE	is caused by	Quadriplegia	damage	?	1	0.8708
+143	Quadriplegia Quadriplegia is caused by damage to the spinal cord at a high level ( e .g .	CAUSE	is caused by	Quadriplegia	damage	?	1	0.8708
+144	Quadriplegia Quadriplegia is caused by damage to the brainor to the spinal cordat a high level ( e .g . the cervical spine ) .	CAUSE	is caused by	Quadriplegia	damage	?	1	0.8708
+145	After these actions caused an uproar , they then coerced Chen Xiaofeng’s relatives to dismiss the lawyer and the lawsuit “out of their own volition . ”	CAUSE	caused	these actions	an uproar	?	1	0.8000
+146	The action caused uproar , but was an effective deterrent to prospective scabs and a setback to the bosses ’ strikebreaking efforts .	CAUSE	caused	The action	uproar	?	1	0.8000
+147	Overuse injuries Overuse injuries are caused by repetitive movements - they’re basically lots of mini traumas that build up over time .	CAUSE	are caused by	injuries	repetitive movements	?	1	0.8708
+148	These types of injuries are caused by repetitive movements over a long period of time , causing damage to muscles , tendons , nerves and joints .	CAUSE	are caused by	injuries	repetitive movements	?	1	0.8708
+149	Many musicians ’ injuries are caused by repetitive movements in uncomfortable positions .	CAUSE	are caused by	injuries	repetitive movements	?	1	0.8708
+150	These injuries are caused by repetitive movement of a particular part of the body .	CAUSE	are caused by	These injuries	repetitive movement	?	1	0.8708
+151	Repetitive strain injuries�These injuries are caused by repetitive movement , often of the hands .	CAUSE	are caused by	These injuries	repetitive movement	?	1	0.8708
+152	• Repetitive strain injuries These injuries are caused by repetitive movement , often of the hands .	CAUSE	are caused by	These injuries	repetitive movement	?	1	0.8708
+153	Some of these injuries are caused by repetitive movement in the workplace otherwise known as repetitive movement injuries and this is a big problem .	CAUSE	are caused by	these injuries	repetitive movement	?	1	0.8708
+154	These injuries are caused by repetitive movement of a particular part of the body .	CAUSE	are caused by	injuries	repetitive movement	?	1	0.8708
+155	Some of these injuries are caused by repetitive movement in the workplace otherwise known as repetitive movement injuries and this is a big problem .	CAUSE	are caused by	injuries	repetitive movement	?	1	0.8708
+156	Repetitive strain injuries�These injuries are caused by repetitive movement , often of the hands .	CAUSE	are caused by	injuries	repetitive movement	?	1	0.8708
+157	• Repetitive strain injuries These injuries are caused by repetitive movement , often of the hands .	CAUSE	are caused by	injuries	repetitive movement	?	1	0.8708
+158	Genetics About 5 % of mental retardation is caused by hereditary factors .	CAUSE	is caused by	mental retardation	hereditary factors	?	1	0.8708
+159	Genetics About 5 percent of mental retardation is caused by hereditary factors .	CAUSE	is caused by	mental retardation	hereditary factors	?	1	0.8708
+160	Genetic factors About 30 % of cases of mental retardation is caused by hereditary factors .	CAUSE	is caused by	mental retardation	hereditary factors	?	1	0.8708
+161	Most of this decline was caused by the decrease in loans of 8.7 % over the last year .	CAUSE	was caused by	this decline	the decrease	?	1	0.8708
+162	“Aside from a failure of vestibular processing , this decline is caused by the decrease in sensory feedback from our feet .	CAUSE	is caused by	this decline	the decrease	?	1	0.8708
+163	This decline was caused by a decrease in the number of different Germanic names that were used .	CAUSE	was caused by	This decline	a decrease	?	1	0.8708
+164	This decline is primarily attributable to a decrease in returning undergraduates and new graduate student enrollment .	CAUSE	is primarily attributable to	This decline	a decrease	?	0	0.5865
+165	3 This decline was due to a decrease in the rate of disease caused by the 7 vaccine serotypes , from 81.9 cases/100,000 to 0.4 cases/100,000 .	CAUSE	was due to	This decline	a decrease	?	0	0.5865
+166	This decline was due to a decrease of 10,881 in the number of state prisoners , which fell to just under 1.4 million persons and was the largest yearly decrease since 1977 .	CAUSE	was due to	This decline	a decrease	?	0	0.5865
+167	This decline is due to a decrease in comparable premium retail store sales of 8.5 % in the retail segment and a decrease of 2.9 % in the direct segment sales .	CAUSE	is due to	This decline	a decrease	?	0	0.5865
+168	This decline is largely due to a decrease in cases among IDUs for reasons that are unclear and , to a lesser extent , to testing of blood donors for HCV.	CAUSE	is largely due to	This decline	a decrease	?	0	0.5865
+169	This decline was driven by a decrease in specialty treatment for an illicit drug problem among adults aged 26 or older , from 1.0 million in 2002 to 0.6 million in 2003 .	CAUSE	was driven by	This decline	a decrease	?	1	0.8708
+170	This decline was driven by a decrease in the rate of illicit drug dependence or abuse among youths aged 12 to 17 ( 5.3 to 4.7 percent ) .	CAUSE	was driven by	This decline	a decrease	?	1	0.8708
+171	This decline was driven by a decrease in treatment among adults aged 26 or older , from 1.7 million in 2002 to 1.2 million in 2003 .	CAUSE	was driven by	This decline	a decrease	?	1	0.8708
+172	This decline was primarily due to a decrease in comparable store sales of 5.9 % partially offset by the operation of two additional stores compared to the second quarter of last year .	CAUSE	was primarily due to	This decline	a decrease	?	0	0.5865
+173	This decline was primarily due to a decrease in print advertising revenue of $ 19.8 million ( down 11.7 % ) with approximately 75 % of the print advertising decline due to weakness in the national category .	CAUSE	was primarily due to	This decline	a decrease	?	0	0.5865
+174	This decline was primarily due to a decrease of $ 1.4 million in total revenues , an increase of $ 3.4 million in expenses and a decline in the equity in net income ( loss ) in joint ventures of $ 749,000 .	CAUSE	was primarily due to	This decline	a decrease	?	0	0.5865
+175	Scours are caused by bacteria ( E.	CAUSE	are caused by	Scours	bacteria	?	1	0.8708
+176	Scours are caused by bacteria ( E.	CAUSE	are caused by	Scours	bacteria	?	1	0.8708
+177	Scours are caused by bacteria , viruses , and protozoa in the intestines .	CAUSE	are caused by	Scours	bacteria	?	1	0.8708
+178	This disability can be a natural occurrence or can result from an accident which caused bodily harm .	CAUSE	caused	an accident	bodily harm	?	1	0.8708
+179	Many states do not have a minimum requirement that would cover an accident which involved bodily harm or major property damage .	CAUSE	involved	an accident	bodily harm	?	0	0.5865
+180	If you disagree and believe the misconduct was caused by the disability , you may request a due process review to appeal the PPT decision .	CAUSE	was caused by	the misconduct	the disability	?	1	0.8708
+181	The ADA does n’t protect employees from the consequences of violating conduct requirements even though the misconduct was caused by a disability .	CAUSE	was caused by	the misconduct	a disability	?	1	0.8708
+182	The ADA does n’t protect employees from the consequences of violating conduct requirements even though the misconduct was caused by a disability .	CAUSE	was caused by	misconduct	a disability	?	1	0.8708
+183	Total Renal Care , in which that court interpreted the Americans With Disabilities Act to prevent employers from disciplining an employee for misconduct if that misconduct is caused by a disability .	CAUSE	is caused by	misconduct	a disability	?	1	0.8708
+184	Eventually an elaborate reply to Pushkin explained that the war was caused by German aggression , and therefore the Hungarian government intended to attribute war damage to the Germans .	CAUSE	was caused by	the war	German aggression	?	1	0.8708
+185	The original view in the West was that the war was caused by German aggression .	CAUSE	was caused by	the war	German aggression	?	1	0.8708
+186	- The flu is caused by three types ( strains ) of viruses - influenza A , B and C. Influenza A is responsible for the deadly influenza pandemics .	CAUSE	is caused by	The flu	three types	?	1	0.8708
+187	puppy potty training The flu is caused by three types ( strains ) of viruses – influenza A , B and C. Type A is responsible for the deadly influenza pandemics ( worldwide epidemics ) that strike every 10 to 40 years , whereas type B causes smaller , more localized outbreaks .	CAUSE	is caused by	The flu	three types	?	1	0.8708
+188	Flu cause The flu is caused by three types ( strains ) of viruses - influenza A , B and C. Type A is responsible for the deadly influenza pandemics ( worldwide epidemics ) that strike every 10 to 40 years , whereas type B causes smaller , more localized outbreaks .	CAUSE	is caused by	The flu	three types	?	1	0.8708
+189	Flu cause The flu is caused by three types ( strains ) of viruses - influenza A , B and C. Type A is responsible for the deadly influenza pandemics ( worldwide epidemics ) that strike every 10 to 40 years , whereas type B causes smaller , more localized outbreaks .	CAUSE	is caused by	Flu	three types	?	1	0.8708
+190	Flu is caused by three types of influenza viruses , Types A , B , or C. The A and B viruses cause epidemics ( widespread outbreaks in a country ) of injection in people every year in the United States .	CAUSE	is caused by	Flu	three types	?	1	0.8708
+191	He also accept an apology from the man who caused the injury .	CAUSE	caused	the man	the injury	?	1	0.8708
+192	Speaking to the media , he mostly refrained from lashing out at the man who caused the injury , staff assistant Ino Guerrero , though Beckett did say it was a “very stupid mistake , ” which is hard to argue .	CAUSE	caused	the man	the injury	?	1	0.8708
+193	When it is the decoration of the man , but does the injury of the knife misunderstand it ?	CAUSE	does	the man	the injury	?	1	0.8708
+194	UC Police officials said Wednesday morning that the man had died from the injury .	CAUSE	had died from	the man	the injury	?	1	0.8708
+195	He hit the man over the head and the man died of the injury .	CAUSE	died of	the man	the injury	?	0	0.5865
+196	Blossom End Rot is caused by uneven watering and/or a lack of calcium in the soil .	CAUSE	is caused by	Blossom End Rot	uneven watering	?	1	0.8708
+197	Blossom End Rot is caused by uneven watering and/or a lack of calcium in the soil .	CAUSE	is caused by	Blossom End Rot	uneven watering	?	1	0.8708
+198	Whose sin caused this man 's blindness ?	CAUSE	caused	Whose sin	this man	?	1	0.8000
+199	Whose sin caused this man 's blindness , his or his parents ?	CAUSE	caused	Whose sin	this man	?	1	0.8000
+200	Only 10 percent of cancers are caused by genetics .	CAUSE	are caused by	cancers	genetics	?	1	0.8708
+201	For example , C-Change , a high level group of the nation�s cancer experts has made health promotion the center piece of their efforts , citing their conclusions that only 5 % of cancers are caused by genetics , one-third are caused by tobacco , and one-third by nutrition.6	CAUSE	are caused by	cancers	genetics	?	1	0.8708
+202	A small number of cancers are caused by genetics , however the majority develop due to DNA damage that builds up over a lifetime .	CAUSE	are caused by	cancers	genetics	?	1	0.8708
+203	Cancer is caused by genetics just as much as by environmental factors .	CAUSE	is caused by	Cancer	genetics	?	1	0.8708
+204	Cancer is caused by genetics , smoking , and other less well understood or known environmental causes .	CAUSE	is caused by	Cancer	genetics	?	1	0.8708
+205	----- Prostate Cancer Found in 2,200-Year-Old Mummy The discovery of prostate cancer in a 2,200-year-old Egyptian mummy suggests that the cancer was caused by genetics and not environmental factors , a researcher says .	CAUSE	was caused by	Cancer	genetics	?	1	0.8708
+206	Cancer can be cause by genetics , exposure to environmental toxins , or even from enduring viruses or possibly even germs .	CAUSE	can be cause by	Cancer	genetics	?	1	0.8708
+207	Cancer , for instance , can be caused by genetics , smoking , exposure to certain foods or chemicals , improper healing after an injury , or any number of other factors .	CAUSE	can be caused by	Cancer	genetics	?	1	0.8708
+208	----- Prostate Cancer Found in 2,200-Year-Old Mummy The discovery of prostate cancer in a 2,200-year-old Egyptian mummy suggests that the cancer was caused by genetics and not environmental factors , a researcher says .	CAUSE	was caused by	the cancer	genetics	?	1	0.8708
+209	Roundworms and hookworms Toxoplasmosis Toxoplasmosis is caused by a parasitic protozoan , Toxoplasma gondii .	CAUSE	is caused by	Toxoplasmosis Toxoplasmosis	a parasitic protozoan	?	1	0.8708
+210	Toxoplasmosis Toxoplasmosis is caused by a parasitic protozoan , Toxoplasma gondii .	CAUSE	is caused by	Toxoplasmosis Toxoplasmosis	a parasitic protozoan	?	1	0.8708
+211	Typically the video game is caused by end up launched relating to the 25th associated with January in the us and additionally 28th connected with Present cards in the united kingdom .	CAUSE	is caused by	the video game	end	?	1	0.8708
+212	Some predict that the video game "fad " has come to an end .	CAUSE	has come to	the video game	end	?	1	0.8708
+213	If the players is unable to get rid of the distinctive line of bricks and the bricks became high enough to make it to the top of the display screen , then the video game has come to an end .	CAUSE	has come to	the video game	end	?	1	0.8708
+214	That video game is caused by end up being released over the 25th connected with January the united states and 28th from Economy is shown within the uk .	CAUSE	is caused by	That video game	end	?	1	0.8708
+215	Unlike canker sores , cold sores are caused by a virus and are extremely contagious .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+216	Since the cold sores are caused by a virus , this can be a huge help .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+217	The two kinds of sores have different causes ; cold sores are caused by a virus , while canker sores are usually caused by irritation in the mouth .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+218	Because cold sores are caused by a virus ( not bacteria ) , there is no cure for this skin problem .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+219	The tannic acid found in tea has antiviral properties , and since cold sores are caused by a virus , this can be an effective treatment .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+220	While cold sores are caused by a virus , canker sores are caused by bacteria .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+221	Anti-biotics are useless against viruses and cold sores are caused by a virus .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+222	Since cold sores are caused by a virus , they are treatable but not curable .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+223	Unlike cold sores , which are caused by a virus , canker sores are not contagious .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+224	( For practical ways to manage cold sores , which are caused by a virus and affect the lips only , see page 131 .)	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+225	Since cold sores are caused by a virus , once you have it , it does n’t go away which means the sores will come back .	CAUSE	are caused by	cold sores	a virus	?	1	0.8708
+226	My dearest , most practical readers are probably frantically waving their arms right about now , trying desperately to get my focused attention and point out that fever blisters or cold sores are actually caused by a virus not a stuper .	CAUSE	are actually caused by	cold sores	a virus	?	1	0.8708
+227	Since the main cause of cold sores is a virus , using antiviral treatments can give much needed relief .	CAUSE	is	cold sores	a virus	?	0	0.5865
+228	Cold sores are caused by a virus ( herpes simplex ) .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+229	Cold sores are caused by a virus , either the herpes simplex virus type 1 , or herpes simplex virus type 2. The type of virus does not affect the treatment .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+230	Cold sores are caused by a virus called herpes ( pronounced hur-peez ) .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+231	Cold sores are caused by a virus ; however often only occur when they are triggered .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+232	Cold sores are caused by a virus and are spread by kissing or by clothing .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+233	Cold sores are very contagious and are caused by a virus , which is different from what causes canker sores .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+234	Cold sores are caused by a virus and a virus can’t be remedied or cured .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+235	Cold sores are caused by a virus and are very contagious .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+236	Cold sores are caused by a virus , unlike canker sores , and they are contagious .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+237	Cold sores are caused by a virus , the herpes simplex virus or HSV.	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+238	Cold sores are caused by a virus and appear on the outside of the mouth - usually on the lips .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+239	Cold sores are caused by a virus .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+240	Cold sores are caused by a virus , Herpes Simplex .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+241	Cold sores are cause by a virus and are considered a medical condition .	CAUSE	are cause by	Cold sores	a virus	?	1	0.8708
+242	Cold sores are caused by a virus ; the virus can attack people of any age , including children and infants .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+243	Cold sores are caused by a virus , thus , boosting your immune system by eating healthy foods and proper exercise can be a great help .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+244	Cold sores are caused by a virus .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+245	Cold sores are caused by a virus called herpes simplex ; it can be treated but not cured .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+246	Cold sores are caused by a virus and therefore can be passed from person to person .	CAUSE	are caused by	Cold sores	a virus	?	1	0.8708
+247	Cold sores are actually caused by a virus called herpes simplex virus 1 ( HSV-1 ) .	CAUSE	are actually caused by	Cold sores	a virus	?	1	0.8708
+248	Cold sores are the result of a virus in our system .	CAUSE	are the result of	Cold sores	a virus	?	1	0.8708
+249	Cold sores are the result of a virus , which causes painful lesions that range from mere redness , to pimple-like sores , Acyclovir cream to blisters .	CAUSE	are the result of	Cold sores	a virus	?	1	0.8708
+250	Cold sores are a virus , and garlic is antiviral .	CAUSE	are	Cold sores	a virus	?	0	0.5865
+251	Cold sores are infections caused by a virus known as Herpes simplex type I. What do they look like ?	CAUSE	are infections caused by	Cold sores	a virus	?	1	0.8708
+252	Cold sores are an infection caused by a virus called herpes simplex type 1 ( HSV-1 ) .	CAUSE	are an infection caused by	Cold sores	a virus	?	1	0.8708
+253	Since the cold sores are caused by a virus , this can be a huge help .	CAUSE	are caused by	the cold sores	a virus	?	1	0.8708
+254	Because cold sores are caused by viruses , home remedies will not eliminate a cold sore .	CAUSE	are caused by	cold sores	viruses	?	1	0.8708
+255	Canker sores are not like cold sores , which are caused by viruses and can spread through physical contact .	CAUSE	are caused by	cold sores	viruses	?	1	0.8708
+256	Genital herpes , shingles and cold sores are caused by viruses .	CAUSE	are caused by	cold sores	viruses	?	1	0.8708
+257	COMPLICATIONS OF HERPES INFECTION Apart from cold sores and genital disease , herpes simplex viruses can also cause more serious infections , although fortunately these are relatively rare .	CAUSE	herpes	cold sores	viruses	?	1	0.8708
+258	Cold sores are caused by viruses -- specifically , the herpes simplex virus ( HSV) .	CAUSE	are caused by	Cold sores	viruses	?	1	0.8708
+259	Cold sores are one of our most contagious viruses – and among our oldest .	CAUSE	are one of	Cold sores	viruses	?	0	0.5865
+260	Cold sores are one of our most contagious viruses - and one of our oldest .	CAUSE	are one of	Cold sores	viruses	?	0	0.5865
+261	A cold sore is caused by a virus commonly known as the herpes simplex virus ( HSV) .	CAUSE	is caused by	A cold sore	a virus	?	1	0.8708
+262	A cold sore is caused by a virus and will most likely always appear on the outside of your mouth .	CAUSE	is caused by	A cold sore	a virus	?	1	0.8708
+263	Cold sores are caused by a virus ; the virus can attack people of any age , including children and infants .	CAUSE	are caused by	Cold sores	the virus	?	1	0.8708
+264	Cold sores are caused by the virus Herpes simplex type I ( only subtly different from type II , "genital " Herpes , although both viruses can cause peri-oral as well as peri-anal/genital disease ) .	CAUSE	are caused by	Cold sores	the virus	?	1	0.8708
+265	Cold sores are also known as fever blisters and are caused by the virus herpes simplex one .	CAUSE	are caused by	Cold sores	the virus	?	1	0.8708
+266	Cold sores are fairly common and are caused by the virus herpes labialis , most people get the virus as a young child .	CAUSE	are caused by	Cold sores	the virus	?	1	0.8708
+267	Second , aphthous ulcers come from bacterial growth , whereas a cold sore is caused by a virus .	CAUSE	is caused by	a cold sore	a virus	?	1	0.8708
+268	The source of a cold sore is a virus , so using remedies with anti-viral properties is the best way to treat cold sores .	CAUSE	is	a cold sore	a virus	?	0	0.5865
+269	Greetings , Angi from Germany ” Dear Angi , As you probably know , a cold sore is a virus .	CAUSE	is	a cold sore	a virus	?	0	0.5865
+270	Unlike a cold sore , which is a virus , this type of sore is strictly a bacterial infection .	CAUSE	is	a cold sore	a virus	?	0	0.5865
+271	Clownie 's happy to hear from you ! It 's…it 's getting bad all over Tokyo and Clownie do n't know what to do . " " Allegro , the violence is caused by people .	CAUSE	is caused by	the violence	people	?	1	0.8708
+272	Simplistically the violence is caused by people with fears , prejudices and insecurities finding shelter and comfort , clustered with like minded souls , under the ancient umbrella of ' Religion ' .	CAUSE	is caused by	the violence	people	?	1	0.8708
+273	From the humiliation visited upon Palestinians at the dozens of checkpoints throughout the occupied areas , to the violence visited on the people of Gaza , there is no accounting , and thus nothing to prevent this oppression from continuing into the future .<<	CAUSE	visited on	the violence	people	?	0	0.5865
+274	They are not bomb throwers or fire starters , they do n't use intimidation the way SHAC does , and they "do n't condone " the violence visited on people and property by their thuggish kin ( but neither do they condemn it ) .	CAUSE	visited on	the violence	people	?	0	0.5865
+275	Smith does n't shy away from the violence visited on people , especially in Somalia .	CAUSE	visited on	the violence	people	?	0	0.5865
+276	Many people do not realize the violence that was perpetrated on the people of El Salvador .	CAUSE	was perpetrated on	the violence	people	?	0	0.5865
+277	We don’t have disaggregated data , but according to the reports received , the shocking thing is that in most cases , the violence is perpetrated by people with a very close relationship with the child , people he or she trusts implicitly .	CAUSE	is perpetrated by	the violence	people	?	0	0.5865
+278	It had further submitted that weapons were distributed by the accused in the run-up to the incident , who , however claimed that they were being falsely implicated and the violence was perpetrated by people , who had come from outside .	CAUSE	was perpetrated by	the violence	people	?	0	0.5865
+279	For the most part the violence is directed at people in the drug game – rival drug gangs , informants , etc .	CAUSE	is directed at	the violence	people	?	0	0.5865
+280	And he went heavily armed , having seen the violence that had been visited upon people might have been able to survive , if left alone .	CAUSE	had been visited upon	the violence	people	?	1	0.8708
+281	And finally , it ’s different when the violence affects people I know .	CAUSE	affects	the violence	people	?	0	0.5865
+282	Not in the sense that the violence is n’t real , but in the sense that of how the violence affects people .	CAUSE	affects	the violence	people	?	0	0.5865
+283	Subsequently , they only want criminal ... CriminalBackgroundRecords.com Releases Historical Criminal-Records-Found Statistics New Orleans police say revealing a victim 's rap sheet lets the public know that much of the violence is happening between people with similar criminal ... to find solutions .	CAUSE	is happening between	the violence	people	?	0	0.5865
+284	( AP Image ) New Orleans police say revealing a victim 's rap sheet lets the public know that much of the violence is happening between people with similar criminal backgrounds .	CAUSE	is happening between	the violence	people	?	0	0.5865
+285	So how do we , this day , " Stand Our Ground " against the violence directed toward people of color ?	CAUSE	directed toward	the violence	people	?	0	0.5865
+286	The violence was caused by the people who " stole " the vote in the first place !	CAUSE	was caused by	The violence	the people	?	1	0.8708
+287	In 1999 , researchers discovered that Rett syndrome in people was caused by mutations of the methyl-CpG binding protein 2 ( MECP2 ) gene .	CAUSE	was caused by	people	mutations	?	1	0.8708
+288	Hemophilia B in people is caused by mutations in the F9 gene .	CAUSE	is caused by	people	mutations	?	1	0.8708
+289	In addition , there are other forms of hereditary sensory and autonomic neuropathy ( HSAN ) that are not limited to people with Ashkenazi Jewish ancestry and are caused by mutations in different genes .	CAUSE	are caused by	people	mutations	?	1	0.8708
+290	The investigators were able to identify age ranges that were associated with an increased risk of death among people who had the mutations but had not yet been diagnosed or treated for the condition .	CAUSE	had	people	mutations	?	1	0.8708
+291	Researchers identified age ranges during which the risk of death increased for people who had the mutations ( and their family members ) but had not yet been diagnosed or treated for the condition .	CAUSE	had	people	mutations	?	1	0.8708
+292	53 PM In the future , some people have mutations ( and superpowers ) and are called NEXT.	CAUSE	have	people	mutations	?	0	0.6667
+293	Ten percent to 16 percent of people have both mutations , and must watch both carbs and fat , Kornman said .	CAUSE	have	people	mutations	?	0	0.6667
+294	About 10 % to 16 % of people have both mutations , and must watch both carbs and fat , Kornman said .	CAUSE	have	people	mutations	?	0	0.6667
+295	Likewise , people who inherited genetic mutations such as familial adenomatous polyposis ( FAP ) and hereditary non-polyposis colorectal cancer ( HNPCC ) are also at a greater risk of being affected with colon cancer .	CAUSE	inherited	people	mutations	?	0	0.5865
+296	You dont make new species by mutating the species .... Thats a common idea people have ; that evolution is due to random mutations .	CAUSE	is due to	people	mutations	?	0	0.5865
+297	You don’t make a new species by mutating the species .... That’s a common idea people have ; that evolution is due to random mutations .	CAUSE	is due to	people	mutations	?	0	0.5865
+298	That’s a common idea people have ; that evolution is due to random mutations .	CAUSE	is due to	people	mutations	?	0	0.5865
+299	You do n't make a new species by mutating the species ... That 's a common idea people have ; that evolution is due to random mutations .	CAUSE	is due to	people	mutations	?	0	0.5865
+300	You don�t make a new species by mutating the species .... That�s a common idea people have ; that evolution is due to random mutations .	CAUSE	is due to	people	mutations	?	0	0.5865
+301	HIF Activation in Sickle Cell Disease Sickle cell disease (SCD ) , an inherited blood disorder affecting millions of people worldwide , is caused by a mutation in adult hemoglobin .	CAUSE	is caused by	people	a mutation	?	1	0.8708
+302	Many of these people have a mutation , or permanent change , in one of three genes that they inherited from a parent .	CAUSE	have	people	a mutation	?	0	0.6667
+303	Using genetic testing to detect carriers — people who have a mutation , but do n't develop the disease — is especially tricky .	CAUSE	have	people	a mutation	?	0	0.6667
+304	A small number of people have a mutation , or misspelling of the gene that makes CYP2D6 .	CAUSE	have	people	a mutation	?	0	0.6667
+305	These people have a mutation , or permanent change , in one of three genes that they inherited from a parent .	CAUSE	have	people	a mutation	?	0	0.6667
+306	( It is important to note that only 5 % of breast cancer is considered hereditary , where people have inherited a mutation . )	CAUSE	have inherited	people	a mutation	?	0	0.6667
+307	However , when people are born with a mutation or an abnormality in the BRCA1 gene , there’s a high risk of developing basal-like breast cancer .	CAUSE	are born with	people	a mutation	?	1	0.8708
+308	Vemurafenib is a BRAF inhibitor that blocks the function of the V600E-mutated BRAF protein and should be used only in people whose inoperable or metastatic melanoma carries a mutation .	CAUSE	carries	people	a mutation	?	1	0.8708
+309	However , some people are born with a mutation in a particular gene in every cell of the body , and this makes the person much more likely to develop one or more cancers over their lifetime .	CAUSE	are born with	people	a mutation	?	1	0.8708
+310	Unfortunately , some people are born with a mutation in the Fred gene .	CAUSE	are born with	people	a mutation	?	1	0.8708
+311	Some people are born with a mutation of the G6PD gene , which , when reacting to certain triggers , such as infection ( or some foods such as fava beans ) , can cause anemia , itself a serious and even deadly condition .	CAUSE	are born with	people	a mutation	?	1	0.8708
+312	Browning is caused by the oxidation of phenolic compounds , released from the cut ends of the explants , by polyphenoloxidases , peroxidases or air ( Bhat and Chandel , 1991 ; Laukkanen et al . 1999 ) .	CAUSE	is caused by	Browning	the oxidation	?	1	0.8708
+313	He was getting a clot forming in an artery and that is what caused the chest pain .	CAUSE	caused	an artery	the chest pain	?	1	0.8708
+314	The incident at Chernobyl was caused by design flaws and large amounts of human error .	CAUSE	was caused by	Chernobyl	design flaws	?	1	0.8708
+315	Chernobyl was caused by design flaws and a series of operator errors which destroyed a reactor , spewing radioactive graphite and clouds over Ukraine and Belarus , with fallout reaching as far as Sweden .	CAUSE	was caused by	Chernobyl	design flaws	?	1	0.8708
+316	Sociopaths who wield as much power but do so behind locked doors , away from the public 's sight - ala the ones who caused the financial crisis - are the dangerous kind .	CAUSE	caused	the ones	the financial crisis	?	1	0.8708
+317	They are the ones who deregulated and created the financial crisis and allowed greedy bankers - at the tax-payers expense - to continue to profit from their blunders .	CAUSE	created	the ones	the financial crisis	?	0	0.5865
+318	Union workers are tired of being scapegoats for the dismal state of the economy while Wall Street executives , bankers and their corporate allies — the ones who actually caused the financial crisis — go unscathed , raking in billions in profits and bonuses .	CAUSE	actually caused	the ones	the financial crisis	?	1	0.8708
+319	Union workers are tired of being scapegoats for the dismal state of the economy while Wall Street executives , bankers and their corporate allies “the ones who actually caused the financial crisis ” go unscathed , raking in billions in profits and bonuses .	CAUSE	actually caused	the ones	the financial crisis	?	1	0.8708
+320	The ones who caused the financial crisis can not be found in Germany .	CAUSE	caused	The ones	the financial crisis	?	1	0.8708
+321	I also caution because you are faced now with a double trend -- one is the financial crisis which will put pressure on aid budgets ... but the other pressure ... is on the smaller and smaller tolerance of mismanagement and corruption .	CAUSE	is	one	the financial crisis	?	0	0.5865
+322	one is the financial crisis under the movement of people desire decline ; The second is a significant expansion drive up costs .	CAUSE	is	one	the financial crisis	?	0	0.5865
+323	Speaking at the National Association of Hispanic Real Estate Professionals policy conference in Washington , D.C. , Donovan said no one has been hit harder by the financial crisis than the Hispanic community .	CAUSE	has been hit harder by	one	the financial crisis	?	1	0.8708
+324	Speaking at the National Association of Hispanic Real Estate Professionals policy conference in Washington , D.C. , the Donovan said no one has been hit harder by the financial crisis than the Hispanic community .	CAUSE	has been hit harder by	one	the financial crisis	?	1	0.8708
+325	To help restore services , 400 employees were brought to the area , he said , and many of the local staff even came in to work to help restore the call centre , despite the devastation caused in the region .	CAUSE	caused in	the devastation	the region	?	1	0.8708
+326	Irish Life & Permanent plc has announced that it will donate EURO 100,000 to support relief efforts in Asia following the devastation caused in the region by this week’s earthquake and tsunami .	CAUSE	caused in	the devastation	the region	?	1	0.8708
+327	The "growth " recorded since 1999 merely reflects a very gradual recovery from the devastation wrought on the region by the Unites States and its European allies in the Kosovo crisis .	CAUSE	wrought on	the devastation	the region	?	0	0.5865
+328	Like bursitis , tendonitis is caused by repetitive movement either through sports e.g. , tennis elbow or as an occupational hazard .	CAUSE	is caused by	tendonitis	repetitive movement	?	1	0.8708
+329	Causes Tendonitis is caused by repetitive movement or repetitive stress injury .	CAUSE	is caused by	Tendonitis	repetitive movement	?	1	0.8708
+330	Whilst the team wait for progress on insurance claims , as well as the criminal investigation into the people who caused the damage , the Croydon Loan team have been offering advice on negotiating with banks and insurers , and other funding options available to the business .	CAUSE	caused	the people	the damage	?	1	0.8708
+331	Unfortunately the people who caused the damage can’t be found so the Council will have to foot the bill .	CAUSE	caused	the people	the damage	?	1	0.8708
+332	Subrogation was developed to prevent insured people (victims ) from collecting twice , once from their own insurance company , and second from the people who caused the damage or their insurer .	CAUSE	caused	the people	the damage	?	1	0.8708
+333	You 'll likely still be paying costs unless you can get it out of the people who did the damage .	CAUSE	did	the people	the damage	?	1	0.8708
+334	“We are targeting the people who do the damage , not the organizations .	CAUSE	do	the people	the damage	?	0	0.5865
+335	“They’re not actually doing an investigation and getting the people who did the damage , ” says Allen , whose day job as a substitute teacher has suffered since being charged .	CAUSE	did	the people	the damage	?	1	0.8708
+336	Mafuu Because odds are the people who did the damage will not be doing things like reading newspapers .	CAUSE	did	the people	the damage	?	1	0.8708
+337	Better the people who did the damage and made the profits in good times than poor people who will really suffer ( even die in Africa and other poor places ) .	CAUSE	did	the people	the damage	?	1	0.8708
+338	That wants to lash out at the people who did the damage ?	CAUSE	did	the people	the damage	?	1	0.8708
+339	60 % of damaged wetlands were being replaced on-site by the people who did the damage , and the remaining 10 % was being handled through in-lieu fee payments , which allowed developers to pay non-profits to perform the restoration – either before or after the damage had taken place .	CAUSE	did	the people	the damage	?	1	0.8708
+340	Urges the Administration to assist in coordinating international humanitarian assistance to help the people of the Caribbean region , assess the damage , and provide relief to affected communities , particularly in the Dominican Republic , Haiti , Jamaica , the Bahamas , Cuba , and Turks and Caicos .	CAUSE	assess	the people	the damage	?	0	0.5865
+341	Whilst the team wait for progress on insurance claims , as well as the criminal investigation into the people who caused the damage , the Croydon Loan team have been offering advice on negotiating with banks and insurers , and other funding options available to the business .	CAUSE	caused	people	damage	?	1	0.8708
+342	Heroes often risk the lives of people they’ve never met , and cause damage .	CAUSE	cause	people	damage	?	1	0.8708
+343	Unfortunately the people who caused the damage can’t be found so the Council will have to foot the bill .	CAUSE	caused	people	damage	?	1	0.8708
+344	[“On account of their savage nature , ( the Arabs ) are people who plunder and cause damage .	CAUSE	cause	people	damage	?	1	0.8708
+345	" As well as the upset from trespassing , people dropped litter and caused damage .	CAUSE	caused	people	damage	?	1	0.8708
+346	Loose dogs also can get frightened , bite or knock over people , attack other animals and cause damage .	CAUSE	cause	people	damage	?	1	0.8708
+347	The general rule of law in every state in the United States , including here in Wisconsin , is that tavern owners ( or social hosts , or really , anyone serving alcohol to another person ) are not liable for serving drinks to people who then go out and cause damage .	CAUSE	cause	people	damage	?	1	0.8708
+348	Subrogation was developed to prevent insured people (victims ) from collecting twice , once from their own insurance company , and second from the people who caused the damage or their insurer .	CAUSE	caused	people	damage	?	1	0.8708
+349	EVENTS OF SPECIAL INTEREST Above we have reproduced those events which were either caused by human activities or felt by people or caused damage .	CAUSE	caused	people	damage	?	1	0.8000
+350	The terrorists win when they successfully kill people or cause damage , thereby increasing fear .	CAUSE	cause	people	damage	?	1	0.8000
+351	These people have done a lot of damage to modern anarchism .	CAUSE	have done a lot of	people	damage	?	1	0.8708
+352	These people have done a lot of damage , and they 're not paying to fix it .	CAUSE	have done a lot of	people	damage	?	1	0.8708
+353	A lot of people inflict the damage .	CAUSE	inflict	people	damage	?	0	0.5865
+354	It is necessary that our society becomes aware of what psychopathy is , how these people inflict damage and how their attempts can be made unsuccessful .	CAUSE	inflict	people	damage	?	0	0.5865
+355	Some healers are afraid of running out of mana and won’t heal until people start taking damage .	CAUSE	start taking	people	damage	?	0	0.5865
+356	What I have been doing is throwing tranq out as soon as people start taking damage and when tranq is over pop ToL and RG spam the raid .	CAUSE	start taking	people	damage	?	0	0.5865
+357	Even in the most heavily contaminated areas there is absolutely no scientific justification for not allowing people to at least make extended visits to recover property and survey the damage .	CAUSE	survey	people	damage	?	0	0.5865
+358	The ‘broom army ’ of local people volunteering to clean up was frequently larger than the small number of people who had caused the damage .	CAUSE	had caused	people	damage	?	1	0.8708
+359	Another interesting angle was how this incident came on the heels of the riots in Vancouver in which social media was used to put the spotlight on people who had caused damage , acted in an uncivil way , or looted from stores .	CAUSE	had caused	people	damage	?	1	0.8708
+360	These people have caused damage and still do .	CAUSE	have caused	people	damage	?	1	0.8000
+361	In the area of Mineral , people were assessing the damage the freakish trembler did to homes and businesses .	CAUSE	were assessing	people	damage	?	0	0.5865
+362	This time interval included some of the worst winds and flooding , and continued some hours into the aftermath period where people were assessing the damage and beginning the recovery efforts .	CAUSE	were assessing	people	damage	?	0	0.5865
+363	It is certainly true that there can be enormously contingent events where a small number of people can do a lot of damage , and those uncommon but consequential events can blindside you .	CAUSE	can do a lot of	people	damage	?	1	0.8708
+364	A small number of people can do a lot of damage in this world .	CAUSE	can do a lot of	people	damage	?	1	0.8708
+365	they have attacked people who get too close , and can do a lot of damage with their hefty hooves , antlers or horns .	CAUSE	can do a lot of	people	damage	?	1	0.8708
+366	The point was people can do a lot of damage in 2 years .	CAUSE	can do a lot of	people	damage	?	1	0.8708
+367	But depending on how far away they roam , some people are finding they’d rather fly close to their destination and make their driving time shorter — or save on the maintenance and piles of People can do a lot of damage with their cell phones these days .	CAUSE	can do a lot of	people	damage	?	1	0.8708
+368	£187,200 Most types of cancer occur in people over 60 and are caused by damage to their genes ( made up of the genetic material DNA ) during the course of their lifetime .	CAUSE	are caused by	people	damage	?	1	0.8708
+369	Has B.C. Housing provided the societies with a form that can be faxed in to identify people who have moved out of one project and left damage behind , so that it can go immediately onto the registry at the commission ?	CAUSE	left	people	damage	?	0	0.5865
+370	Sure we have had people miss payments , leave damage but in all cases they have fixed up the problem or the deposit has covered the damage .	CAUSE	leave	people	damage	?	0	0.5865
+371	You 'll likely still be paying costs unless you can get it out of the people who did the damage .	CAUSE	did	people	damage	?	1	0.8708
+372	“We are targeting the people who do the damage , not the organizations .	CAUSE	do	people	damage	?	0	0.5865
+373	Can still be used to hit people in the face and do damage .	CAUSE	do	people	damage	?	0	0.5865
+374	rules help us to negotiate our differences with less misunderstanding , and give us some structured recourse when people do damage .	CAUSE	do	people	damage	?	0	0.5865
+375	Sometimes people do damage where it did n’t need to be done . ”	CAUSE	do	people	damage	?	0	0.5865
+376	“They’re not actually doing an investigation and getting the people who did the damage , ” says Allen , whose day job as a substitute teacher has suffered since being charged .	CAUSE	did	people	damage	?	1	0.8708
+377	As Powell notes , they can potentially kill people , destroy buildings , and do damage -- perhaps with the stunning visuals and dramatic effect as 9-11 .	CAUSE	do	people	damage	?	0	0.5865
+378	One bomb can hurt people and kill people and do damage .	CAUSE	do	people	damage	?	0	0.5865
+379	Summary Companies need to control the access to their buildings and certain areas from people who want to steal or do damage .	CAUSE	do	people	damage	?	0	0.5865
+380	They’re not the enemy per se ; they’re the people who did damage by failing to stand up to the enemy .	CAUSE	did	people	damage	?	0	0.6667
+381	Mafuu Because odds are the people who did the damage will not be doing things like reading newspapers .	CAUSE	did	people	damage	?	1	0.8708
+382	( This is usually the case with people who do damage , by the way .	CAUSE	do	people	damage	?	0	0.5865
+383	Yes , these people did damage , and they were wrong .	CAUSE	did	people	damage	?	0	0.6667
+384	Are the people who intentionally break things , do damage or have few skills hackers ?	CAUSE	do	people	damage	?	0	0.5865
+385	For us , it ’s really keeping the campus secure , and not having people come in and do damage , because in the long run , it’ll cost the taxpayers there , too , if we have to keep repairing things .	CAUSE	do	people	damage	?	0	0.5865
+386	amylong I hate it when people do damage and do n't apologize .	CAUSE	do	people	damage	?	0	0.5865
+387	Better the people who did the damage and made the profits in good times than poor people who will really suffer ( even die in Africa and other poor places ) .	CAUSE	did	people	damage	?	1	0.8708
+388	That wants to lash out at the people who did the damage ?	CAUSE	did	people	damage	?	1	0.8708
+389	60 % of damaged wetlands were being replaced on-site by the people who did the damage , and the remaining 10 % was being handled through in-lieu fee payments , which allowed developers to pay non-profits to perform the restoration – either before or after the damage had taken place .	CAUSE	did	people	damage	?	1	0.8708
+390	These people do damage , but it ’s not irreparable .	CAUSE	do	people	damage	?	0	0.5865
+391	The donations will be sending to the Red Cross for people who suffered damage of the earthquake in East Japan .	CAUSE	suffered	people	damage	?	0	0.5865
+392	These are claims where people suffer damage from using vibrating tools over a period of time .	CAUSE	suffer	people	damage	?	0	0.5865
+393	The halacha requires me to reimburse the people who suffered damage .	CAUSE	suffered	people	damage	?	0	0.5865
+394	Generally these people suffer damage within moderate thunder storms a smaller amount hurricane pressure wind gusts .	CAUSE	suffer	people	damage	?	0	0.5865
+395	From Texas to Pensacola , people well inland suffered damage greater than we in Florida , from corner to corner , almost can claim .	CAUSE	suffered	people	damage	?	0	0.5865
+396	Murphy credited former county commissioner Arch Lamb for the idea of clearing a path around the destroyed area so people could drive by and view the damage .	CAUSE	view	people	damage	?	0	0.5865
+397	And the emotional strain will likely grow as people view the damage - some for the second time in about three weeks .	CAUSE	view	people	damage	?	0	0.5865
+398	Today with the point and click n00b ' environment and not so many shell console utilities , users with basic knowledge can break into legitimate services of people on servers and cause lots of damage .	CAUSE	cause lots of	people	damage	?	1	0.8708
+399	A suicide bomber can get anywhere , and these people could come back at any time and cause lots of damage .	CAUSE	cause lots of	people	damage	?	1	0.8708
+400	All these people caused a lot of damage with their cars until the government stepped in and closed public access .	CAUSE	caused a lot of	people	damage	?	1	0.8708
+401	The people who pay for the damage these rules hide are the Taxpayers .	CAUSE	pay for	people	damage	?	0	0.5865
+402	Enforce litter and graffiti laws and make these people pay for the damage they cost .	CAUSE	pay for	people	damage	?	0	0.5865
+403	In the event of an accident caused by these abusive drivers and you sustain injuries , immediately seek the assistance of Los Angeles pedestrian accident vehicle claim lawyers who will make these people pay for the damage they have caused .	CAUSE	pay for	people	damage	?	0	0.5865
+404	The damage has already been done , so it does n’t make sense to have people pay for that damage but then get it back .	CAUSE	pay for	people	damage	?	0	0.5865
+405	The remedy is very clear , to make people pay for the damage they cause .	CAUSE	pay for	people	damage	?	0	0.5865
+406	It was no problem getting people to help and pay for the damage after the tsunami had hit.You don’t need to look at something as explicit as our scenarios .	CAUSE	pay for	people	damage	?	0	0.5865
+407	All over the southern Willamette Valley on Thursday , people assessed damage and continued cleanup from the unexpected early-spring thrashing , the biggest snowstorm to hit Eugene this late in the year since records have been kept .	CAUSE	assessed	people	damage	?	0	0.5865
+408	There was confusion everywhere as people were trying to explain what had happened and assess the damage , but Maggie�s world was entirely silent .	CAUSE	assess	people	damage	?	0	0.5865
+409	Now that the flood waters are beginning to recede , people are able to get in and assess damage .	CAUSE	assess	people	damage	?	0	0.5865
+410	Now that the sun is up , people are starting to come out , assess the damage .	CAUSE	assess	people	damage	?	0	0.5865
+411	Urges the Administration to assist in coordinating international humanitarian assistance to help the people of the Caribbean region , assess the damage , and provide relief to affected communities , particularly in the Dominican Republic , Haiti , Jamaica , the Bahamas , Cuba , and Turks and Caicos .	CAUSE	assess	people	damage	?	0	0.5865
+412	People slowly got up and assessed the damage ; someone helped me figure out what was wrong with my bike and someone else drove up in a van to transport injured people and bikes back to the start line .	CAUSE	assessed	people	damage	?	0	0.5865
+413	Such taxation is manifestly just , for it ensures that people are responsible for the damage they inflict , rather than offloading the costly consequences of their actions on to others ( including future generations ) .	CAUSE	are responsible for	people	damage	?	0	0.5865
+414	There is a local arbitration process that the company ’s operational documents provide for , but in its present form , it will necessarily have limited power to shape remedies for people who have suffered damage . ”	CAUSE	have suffered	people	damage	?	1	0.8708
+415	Where someone holds themselves out as having a specialist skill or kn ... 10th March 2011 According to the law , people who have suffered damage , whether it is financial or otherwise , do not have an endless time frame to make a claim against the person who caused the damage .	CAUSE	have suffered	people	damage	?	1	0.8708
+416	I came to know painfully well the feelings of people who had suffered damage , including people I had known .	CAUSE	had suffered	people	damage	?	1	0.8708
+417	And while flooded roads and flood-damaged bridges are a hazard we have learnt to live with , one could only imagine the plight of people whose homes and farms have suffered damage .	CAUSE	have suffered	people	damage	?	1	0.8708
+418	Payment is effected to people who have suffered damage or a disaster .	CAUSE	have suffered	people	damage	?	1	0.8708
+419	Peculiar sound They consulted doctors and plastic surgeons to learn about the movements and behavior of people whose limbs have suffered damage and been restored to use .	CAUSE	have suffered	people	damage	?	1	0.8708
+420	It is intended to cover the costs of returning essential items to pre-disaster condition for people who have suffered damage in designated disaster areas .	CAUSE	have suffered	people	damage	?	1	0.8708
+421	But a constant among people who have suffered damage , for whatever reason -- Alzheimer 's , Down 's syndrome , head injury , too many drugs , too much sex -- is a powerful aversion to change .	CAUSE	have suffered	people	damage	?	1	0.8708
+422	( 127.0.0.2 ) System has sent mail to SpamCop spam traps in the past week ( It appears this listing is caused by misdirected bounces .	CAUSE	is caused by	this listing	misdirected bounces	?	1	0.8708
+423	days , it has been listed 33 times for a total of 36.3 days It appears this listing is caused by misdirected bounces .	CAUSE	is caused by	this listing	misdirected bounces	?	1	0.8708
+424	This has in turn caused the downward spiral of the events that have caused the crisis over here in the UK.	CAUSE	caused	turn	the downward spiral	?	1	0.8000
+425	The key is to see the thoughts , which in turn lead to the downward spiral of creating nightmares in our head .	CAUSE	lead to	turn	the downward spiral	?	0	0.6667
+426	by James Brink Our nation 's big financial hardship has created hundreds of thousands of people to no longer be employed which has in turn caused a downward spiral into a "mortgage financial crisis " .	CAUSE	caused	turn	a downward spiral	?	1	0.8000
+427	Our nation 's big financial hardship has created hundreds of thousands of people to no longer be employed that has in turn caused a downward spiral into a " mortgage financial crisis " .	CAUSE	caused	turn	a downward spiral	?	1	0.8000
+428	The fact is that akdamenajaud ( Closest I could spell the name according to the sound ) is an extremist and has fashioned this way of coupling extremist mentality with religion which in turn creates a downward spiral of nutbaggery for lack of better terms .	CAUSE	creates	turn	a downward spiral	?	0	0.5865
+429	The Derg 's political crackdown , the red terror , together with civil war and famine triggered a mass flight of people to neighboring countries as refugees , a fact that in turn created a downward spiral in Ethiopia 's long-term socio-cultural development .	CAUSE	created	turn	a downward spiral	?	0	0.5865
+430	As more companies stopped contributing to the plans , the remaining contributors were forced to shoulder more of the costs , which in turn led to even more defections and created a downward spiral .	CAUSE	created	turn	a downward spiral	?	0	0.5865
+431	This in turn began a downward spiral in the relationship between Britain and the Province of Massachusetts .	CAUSE	began	turn	a downward spiral	?	0	0.6667
+432	The Keynes school saw the trouble in a ‘psychological law ’ by which people don’t increase their spending as fast as their incomes go up during a prosperity ; this leads to a growing gap which investment fails to bridge , and this in turn leads to a downward spiral .	CAUSE	leads to	turn	a downward spiral	?	0	0.6667
+433	cancer , and nearly 90 % of lung cancer cases are caused by cigarette smoking .	CAUSE	are caused by	lung cancer cases	cigarette smoking	?	1	0.8708
+434	The majority of lung cancer cases are caused by cigarette smoking , killing upwards of 162,500 people in the U.S. alone in 2006 .	CAUSE	are caused by	lung cancer cases	cigarette smoking	?	1	0.8708
+435	4 By editor on January 29 , 2011 C. A. Haiman et al . , NEJM , January 26 2006 , Vol 354 ( 4 ) 80-90 % of lung cancer cases are attributable to cigarette smoking .	CAUSE	are attributable to	lung cancer cases	cigarette smoking	?	0	0.5865
+436	About 85 % of lung cancer cases are due to cigarette smoking .	CAUSE	are due to	lung cancer cases	cigarette smoking	?	0	0.5865
+437	Medical experts , including your own American Cancer Society , say that three-fourths of all lung cancer cases are caused by cigarette smoking .	CAUSE	are caused by	lung cancer cases	cigarette smoking	?	1	0.8708
+438	Though 90 % of all lung cancer cases are caused by cigarette smoking , exposure to any of the above risk factors , paired with a genetic susceptibility , can lead to lung cancer .	CAUSE	are caused by	lung cancer cases	cigarette smoking	?	1	0.8708
+439	Persons harmed by the acts of a multinational corporation are not in a position to isolate which unit of the enterprise caused the harm , yet it is evident that the multinational enterprise that caused the harm is liable for such harm .	CAUSE	caused	the enterprise	the harm	?	1	0.8000
+440	Consequently , victims of such daily actions are unable to identify which unit of the enterprise caused the harm .	CAUSE	caused	the enterprise	the harm	?	1	0.8000
+441	In this model , the disease - caries , which is caused by bacteria - is addressed , and there are recommendations made to help the patient reduce/eliminate the bacteria , address dietary concerns , evaluate saliva quality and quantity , and provide remineralization strategies when necessary .	CAUSE	is caused by	caries	bacteria	?	1	0.8708
+442	Dental caries are caused by bacteria which metabolize carbohydrates ( sugars ) to form organic acids which dissolve tooth enamel .	CAUSE	are caused by	caries	bacteria	?	1	0.8708
+443	Tooth decay , or dental caries is caused by bacteria .	CAUSE	is caused by	caries	bacteria	?	1	0.8708
+444	Caries is caused by bacteria .	CAUSE	is caused by	Caries	bacteria	?	1	0.8708
+445	Caries are caused by bacteria which produce acids in the mouth area .	CAUSE	are caused by	Caries	bacteria	?	1	0.8708
+446	British Airways is not liable for damage to unchecked baggage ( other than damage caused by delay which is covered by clause 15e4 below ) , unless the damage was caused by British Airways ' negligence or the negligence of British Airways ' agents .	CAUSE	was caused by	the damage	British Airways	?	1	0.8708
+447	Not liable for damage to uncheckedbaggage ( other than damage caused by delay ) unless the damage was caused by British Airways or their agents .	CAUSE	was caused by	the damage	British Airways	?	1	0.8708
+448	Fixed bug# 12355 that selecting homonyms format for feature caused crash .	CAUSE	caused	feature	crash	?	1	0.8000
+449	This feature caused a crash when used together with Expect_tk .	CAUSE	caused	feature	crash	?	1	0.8000
+450	This feature caused a crash when used together with Expect_tk .	CAUSE	caused	This feature	a crash	?	1	0.8000
+451	Present cancer research is working on the supposition that cancer is caused by toxins of various kinds which one way or another find their way into the body and in some locations cause damage to the nucleus of a cell , turning it into a cancer cell .	CAUSE	is caused by	cancer	toxins	?	1	0.8708
+452	The belief of alternative medicine practitioners is that cancer is caused by toxins in the body .	CAUSE	is caused by	cancer	toxins	?	1	0.8708
+453	This is due to the fact that cancer is caused by toxins in the body .	CAUSE	is caused by	cancer	toxins	?	1	0.8708
+454	Forty percent of cancers are caused by toxins and therefore preventable .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+455	( See www.ewg .org ) Researchers from MD Anderson , the University of Texas Cancer Center in Houston , claim that over 75 % of cancers are caused by toxins .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+456	February 8th , 2011 97 % of cancers are caused by toxins , only 3 % are DNA or heredity .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+457	It is estimated that over 80 % of cancers are caused by environmental toxins .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+458	The World Health Organization estimates that 90 percent of cancers are caused by environmental toxins .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+459	The World Health Organization has found that 90 per cent of cancers are caused by environmental toxins , most of which originate in industrial activity .	CAUSE	are caused by	cancers	toxins	?	1	0.8708
+460	“Up to two thirds of all cancers may be attributed to these low level toxins .... once contaminated our ground water will remain so for tens of thousands of years … if not geologic time ! ”	CAUSE	may be attributed to	cancers	toxins	?	0	0.5865
+461	20 pm [ ...] subsequently posted that the outage was caused by corruption in an Oracle database which stored user profiles .	CAUSE	was caused by	the outage	corruption	?	1	0.8708
+462	The outage was caused by a corruption on the ISA server that caused the Firewall Service to poo its pants ( that 's a technical term ) .	CAUSE	was caused by	The outage	a corruption	?	1	0.8708
+463	Therefore , it may be necessary to document that water damage was caused by the wind and rain , rather than floodwater , to receive insurance compensation for the clean-up .	CAUSE	was caused by	water damage	the wind and rain	?	1	0.8708
+464	Therefore , it was necessary to document that the water damage was caused by the wind and rain , rather than flood water , to receive insurance compensation for the clean-up .	CAUSE	was caused by	water damage	the wind and rain	?	1	0.8708
+465	Therefore , it was necessary to document that the water damage was caused by the wind and rain , rather than flood water , to receive insurance compensation for the clean-up .	CAUSE	was caused by	the water damage	the wind and rain	?	1	0.8708
+466	Both legs were cut off and were lying some 40 or 50 feet west of his body and it is supposed the accident was caused by a train going west .	CAUSE	was caused by	the accident	a train	?	1	0.8708
+467	This investigation develops the following facts ; The accident was caused by train attempting to pass over a No. 10 cross-over from one track to another at a high rate of speed , probably about 65 miles per hour .	CAUSE	was caused by	The accident	train	?	1	0.8708
+468	This is great news for ischaemic stroke studies , since ischemic stroke is caused by obstructions in the artery , such as blood clots .	CAUSE	is caused by	ischemic stroke	obstructions	?	1	0.8708
+469	An ischemic stroke is caused by an obstruction in the blood flow to the brain , usually a blood clot .	CAUSE	is caused by	An ischemic stroke	an obstruction	?	1	0.8708
+470	But 44 per cent was caused by the fall in the interest rate , which was 10 per cent in 1991 , according to Baxter .	CAUSE	was caused by	cent	the fall	?	1	0.8708
+471	Tarsal tunnel syndrome is caused by compression of a nerve in the foot and may cause pain along the bottom of the foot .	CAUSE	is caused by	Tarsal tunnel syndrome	compression	?	1	0.8708
+472	Tarsal tunnel syndrome is caused by compression of the tibial nerve as it passes under a ligament through a space or tunnel made by the ligament crossing the bones in the ankle .	CAUSE	is caused by	Tarsal tunnel syndrome	compression	?	1	0.8708
+473	Tarsal tunnel syndrome is caused by compression of the posterior tibial nerve where it enters the foot .	CAUSE	is caused by	Tarsal tunnel syndrome	compression	?	1	0.8708
+474	Tarsal tunnel syndrome is caused by a compression of the posterior tibial nerve , which travels from the back of the leg , through the inside of the ankle , and into the foot within a narrow space called the tarsal tunnel .	CAUSE	is caused by	Tarsal tunnel syndrome	compression	?	1	0.8708
+475	Tarsal tunnel syndrome is a compression , or squeezing , on the posterior tibial nerve that produces symptoms anywhere along the path of the nerve running from the inside of the ankle into the foot .	CAUSE	is	Tarsal tunnel syndrome	compression	?	0	0.5865
+476	Medial midfoot heel pain , particularly with continued weight bearing , may be due to tarsal tunnel syndrome , which is caused by compression of the posterior tibial nerve as it courses through the flexor retinaculum , medial calcaneus , posterior talus , and medial malleolus .	CAUSE	is caused by	tarsal tunnel syndrome	compression	?	1	0.8708
+477	A PRELIMINARY REPORT A. VANNINEUSE , J.L. RAMANDROSOMANA M�decine et chirurgie du pied , June 2002,Volume 18-Number 2 , pages 93-98 The tarsal tunnel syndrome is caused by compression of the tibial nerve behind the medial malleolus .	CAUSE	is caused by	tarsal tunnel syndrome	compression	?	1	0.8708
+478	Tarsal tunnel syndrome is caused by a compression of the posterior tibial nerve , which travels from the back of the leg , through the inside of the ankle , and into the foot within a narrow space called the tarsal tunnel .	CAUSE	is caused by	Tarsal tunnel syndrome	a compression	?	1	0.8708
+479	Tarsal tunnel syndrome is a compression , or squeezing , on the posterior tibial nerve that produces symptoms anywhere along the path of the nerve running from the inside of the ankle into the foot .	CAUSE	is	Tarsal tunnel syndrome	a compression	?	0	0.5865
+480	A PRELIMINARY REPORT A. VANNINEUSE , J.L. RAMANDROSOMANA M�decine et chirurgie du pied , June 2002,Volume 18-Number 2 , pages 93-98 The tarsal tunnel syndrome is caused by compression of the tibial nerve behind the medial malleolus .	CAUSE	is caused by	The tarsal tunnel syndrome	compression	?	1	0.8708
+481	Heartburn is caused by the hormone progesterone which relaxes the valves that separate the esophagus from the stomach .	CAUSE	is caused by	Heartburn	the hormone progesterone	?	1	0.8708
+482	Heartburn Heartburn is caused by the hormone progesterone which also contributes to constipation .	CAUSE	is caused by	Heartburn	the hormone progesterone	?	1	0.8708
+483	Heartburn is caused by the hormone progesterone .	CAUSE	is caused by	Heartburn	the hormone progesterone	?	1	0.8708
+484	Additionally , the starter caused problems again and Lukas had to race after the other drivers with half a lap deficit .	CAUSE	caused	the starter	problems	?	1	0.8000
+485	The starter got wet and caused the problem , it did not do it again after this .	CAUSE	caused	The starter	the problem	?	1	0.8708
+486	The starter was indeed the problem , and I ended up writing a check to the mechanic for that one .	CAUSE	was indeed	The starter	the problem	?	0	0.5865
+487	This situation caused serious obstacles for Iran and in the process of Agency 's professional and impartial task .	CAUSE	caused	This situation	serious obstacles	?	1	0.8000
+488	The work caused controversy because of its minimalist design .	CAUSE	caused	The work	controversy	?	1	0.8000
+489	The work aroused controversy at first because some thought it irreverent to sing religious text in the concert hall .	CAUSE	aroused	The work	controversy	?	0	0.5865
+490	The work led to a controversy in the French press about whether or not Sturtevant had plagiarized Raysse , though her way of working was no more than a logical extension of the work of her male Pop-Art and Nouveaux-Réaliste colleagues who were re-using images taken from the media .	CAUSE	led to	The work	controversy	?	1	0.8708
+491	The work caused considerable controversy , and was eventually removed , but no legal charges were ever brought .	CAUSE	caused	The work	controversy	?	1	0.8708
+492	This work caused controversy and was his music was banned by the Icelandic national radio , but Megas became a cult figure in the growing alternative scene .	CAUSE	caused	This work	controversy	?	1	0.8000
+493	This work aroused controversy because of its extreme realism and provoked accusations that Rodin had made plaster casts from living models .	CAUSE	aroused	This work	controversy	?	0	0.5865
+494	Thatch is caused by excessive growth from over-fertilizing , by allowing grass to get too high before mowing , or by incorrect watering .	CAUSE	is caused by	Thatch	excessive growth	?	1	0.8708
+495	Thatch is caused by excessive growth from overfertilizing , by allowing grass to get too high before mowing , or by incorrect watering .	CAUSE	is caused by	Thatch	excessive growth	?	1	0.8708
+496	Alternative Names Causes , incidence , and risk factors An epidural abscess is caused by infection in the area between the bones of the skull or spine , and the outer meninges ( the membranes covering the brain and spinal cord ) .	CAUSE	is caused by	An epidural abscess	infection	?	1	0.8708
+497	Causes , incidence , and risk factors Return to top An epidural abscess is caused by infection in the area between the bones of the skull or spine , and the outer meninges ( the membranes covering the brain and spinal cord ) .	CAUSE	is caused by	An epidural abscess	infection	?	1	0.8708
+498	An epidural abscess is caused by infection in the area between the bones of the skull or spine , and the outer meninges ( the membranes covering the brain and spinal cord ) .	CAUSE	is caused by	An epidural abscess	infection	?	1	0.8708
+499	If a property owner is found to have been negligent , and their negligence caused an injury , the property owner is liable .	CAUSE	caused	their negligence	an injury	?	1	0.8000
+500	Interpretation and analysis of the telemetered data indicated that the crash was caused by a change in the inertial reference .	CAUSE	was caused by	the crash	a change	?	1	0.8708
+501	Possibly the crash is caused by a change in how the current extension system spawns processes ( ? ) and the script has to use pipes for system commands which have to be closed after each call .	CAUSE	is caused by	the crash	a change	?	1	0.8708
+502	On 15 January 1934 , an earthquake hit [[Bihar] ] and caused extensive damage and loss of life .	CAUSE	caused	an earthquake	extensive damage	?	1	0.8708
+503	In 1612 an earthquake caused extensive damage here .	CAUSE	caused	an earthquake	extensive damage	?	1	0.8000
+504	On 15 JANUARY 1934 an earthquake shook Bihar and caused extensive damage .	CAUSE	caused	an earthquake	extensive damage	?	1	0.8708
+505	According to on-the-spot report , the earthquake caused extensive damage , and PWJ decided to send its staff members for emergency relief .	CAUSE	caused	the earthquake	extensive damage	?	1	0.8000
+506	A spokesman for the Foundation said , the flooding and the earthquake have caused extensive damage and the victims require a great amount of food and provisions to help them through this difficult period .	CAUSE	have caused	the earthquake	extensive damage	?	1	0.8708
+507	This earthquake caused extensive damage and was felt in most of the eastern United States .	CAUSE	caused	This earthquake	extensive damage	?	1	0.8000
+508	Fire officials say they 're still working to figure out where in the home and what caused the blaze .	CAUSE	caused	the home	the blaze	?	1	0.8708
+509	Police found multiple heating sources inside the home , but could not immediately determine what caused the blaze , Burden said .	CAUSE	caused	the home	the blaze	?	1	0.8708
+510	There were no injuries , but the home was destroyed in the blaze .	CAUSE	was destroyed in	the home	the blaze	?	0	0.5865
+511	There is now little left of the home that was destroyed by the blaze and one tenant , Vatina Smith , 24 , died in the disaster .	CAUSE	was destroyed by	the home	the blaze	?	0	0.5865
+512	Despite the efforts of Hilham Volunteer Fire Department , the home was destroyed by the blaze .	CAUSE	was destroyed by	the home	the blaze	?	0	0.5865
+513	The residents of the home , a mother and son , were able to escape the blaze .	CAUSE	were able to escape	the home	the blaze	?	0	0.5865
+514	Charles " Chucky " Davenport , Gregory Davenport 's brother , was also in the home but was able to escape the blaze .	CAUSE	was able to escape	the home	the blaze	?	0	0.5865
+515	or that the error was caused by factors beyond a players control ( e .g. , " It was a tough ball to catch , though , cause the backboard was causing some problems . " ) ;	CAUSE	was caused by	the error	factors	?	1	0.8708
+516	That results in the sensor reading a falsely high temperature ( the magnitude of the error depends on several factors , not the least of which is the reflectivity of the object and the difference in temperature between the object and its surroundings ) even with the emissivity control set at 1.00 !	CAUSE	depends on	the error	factors	?	0	0.5865
+517	Sometimes the error could have more factors in Kb971778 format .The further hexadecimal code will be the address of the memory sections where the instructions are stored at the time of the error message .	CAUSE	could have	the error	factors	?	1	0.8708
+518	Often the error could have more factors in 0x800708B3 formatting .This further numerical code will be the address of the system regions in which the instructions are filled during the time of the error .	CAUSE	could have	the error	factors	?	1	0.8708
+519	Often the error message might have more factors in 10057 Error format .The additional numerical code will be the address of the storage sections where the guidelines are stored during the time of the error code .	CAUSE	might have	the error	factors	?	1	0.8708
+520	Occasionally the error message might have more factors in 0x06B1 format .This further hexadecimal code are the address of the system sections where the directions are filled during the time of the error .	CAUSE	might have	the error	factors	?	1	0.8708
+521	Sometimes the error message could have more factors in 0x800709B2 data format .The additional hexadecimal code will be the address of your system sections where the instructions are loaded during the time of the error .	CAUSE	could have	the error	factors	?	1	0.8708
+522	Occasionally the error message could have more factors in 0x800709CF formatting .This additional numerical code will be the location of your system sections in which the instructions are stored at the time of the error code .	CAUSE	could have	the error	factors	?	1	0.8708
+523	Occasionally the error code may have more factors in 0x000a88f0 data format .This further numerical code will be the location of the storage locations where the guidelines are stored during the time of the error message .	CAUSE	may have	the error	factors	?	1	0.8708
+524	Sometimes the error code may have more factors in 0x4000004194304PASSWORD data format .This additional hexadecimal code will be the address of your storage regions in which the guidelines are filled during the time of the error code .	CAUSE	may have	the error	factors	?	1	0.8708
+525	Sometimes the error code may have more factors in 0xC0C01B16 formatting .This further hexadecimal code are the location of the memory regions where the guidelines are loaded during the time of the error .	CAUSE	may have	the error	factors	?	1	0.8708
+526	Occasionally the error code might have more factors in Error Http 500 data format .This further number and letter code will be the location of your storage locations in which the directions are filled at the time of the error .	CAUSE	might have	the error	factors	?	1	0.8708
+527	Occasionally the error code might have more factors in 0x4000003F data format .The additional number and letter code are the address of the storage regions in which the instructions are loaded at the time of the error code .	CAUSE	might have	the error	factors	?	1	0.8708
+528	Often the error code might have more factors in 0x81e7 format .The additional numerical code are the location of the memory regions where the guidelines are loaded at the time of the error code .	CAUSE	might have	the error	factors	?	1	0.8708
+529	Occasionally the error message could possibly have more factors in Error 1038 format .This further numerical code are the address of your system sections where the directions are filled at the time of the error code .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+530	Often the error message could possibly have more factors in 0xFFFFFF9C formatting .This additional number and letter code will be the address of your system regions in which the guidelines are loaded at the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+531	Sometimes the error message could possibly have more factors in 0x000036BE data format .The further numerical code will be the address of your system locations in which the instructions are loaded during the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+532	Occasionally the error code could possibly have more factors in 0x0500185E format .This further hexadecimal code will be the location of the storage sections where the guidelines are loaded at the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+533	Often the error code could possibly have more factors in 0x000013D9 data format .This additional numerical code are the location of your system locations in which the instructions are filled during the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+534	Sometimes the error code could possibly have more factors in 0x7800153D formatting .The additional hexadecimal code are the address of the memory locations where the guidelines are filled during the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+535	Sometimes the error code could possibly have more factors in 0x800401f6 data format .This further hexadecimal code are the address of your storage locations where the instructions are filled at the time of the error message .	CAUSE	could possibly have	the error	factors	?	1	0.8708
+536	or that the error was caused by factors beyond a players control ( e .g. , " It was a tough ball to catch , though , cause the backboard was causing some problems . " ) ;	CAUSE	was caused by	error	factors	?	1	0.8708
+537	Another type of error is caused by factors which do not change .	CAUSE	is caused by	error	factors	?	1	0.8708
+538	System area corruption accounts for 60 percent of SSD/Flash data loss , but physical damage , file system corruption , electronics failure and human error are also factors ,  said Troy Hegr , Ontrack Data Recovery technology manager , Kroll Ontrack .	CAUSE	are also	error	factors	?	0	0.5865
+539	“System area corruption accounts for 60 percent of SSD/Flash data loss , but physical damage , file system corruption , electronics failure and human error are also factors , ” said Adrian Briscoe , General Manager – APAC , Kroll Ontrack .	CAUSE	are also	error	factors	?	0	0.5865
+540	We may never know the exact details of the accident , but a report by the U.S. investigator indicated that deteriorating weather conditions , poor visibility , and pilot error were factors .	CAUSE	were	error	factors	?	0	0.5865
+541	That results in the sensor reading a falsely high temperature ( the magnitude of the error depends on several factors , not the least of which is the reflectivity of the object and the difference in temperature between the object and its surroundings ) even with the emissivity control set at 1.00 !	CAUSE	depends on	error	factors	?	0	0.5865
+542	The error depends on several factors such as the frequency of update , the frequency of reading from the sensors , and the desired trajectory ( for example , if we want to move through a angle in a very small time interval , the error will be large ) .	CAUSE	depends on	error	factors	?	0	0.5865
+543	Sometimes the error could have more factors in Kb971778 format .The further hexadecimal code will be the address of the memory sections where the instructions are stored at the time of the error message .	CAUSE	could have	error	factors	?	1	0.8708
+544	Often the error could have more factors in 0x800708B3 formatting .This further numerical code will be the address of the system regions in which the instructions are filled during the time of the error .	CAUSE	could have	error	factors	?	1	0.8708
+545	The degree of error depends on many factors including the time of day ( do n't measure it right after exercise ) and the person who takes the measurements .	CAUSE	depends on	error	factors	?	0	0.5865
+546	The magnitude of error depends on many factors , including the exposure frequency , exposure magnitude , exposure duration , baseline biomarker value , and exposure inference duration .	CAUSE	depends on	error	factors	?	0	0.5865
+547	Solution This error can be caused by several factors .	CAUSE	can be caused by	error	factors	?	1	0.8708
+548	This type of error can be caused by several factors such as a corrupted or outdated Windows , registry errors , and damaged applications .	CAUSE	can be caused by	error	factors	?	1	0.8708
+549	This error can be caused by several factors .	CAUSE	can be caused by	error	factors	?	1	0.8708
+550	This error can be caused by many factors and requires you to contact Technical Support directly at 503-624-1951 for a remedy .	CAUSE	can be caused by	error	factors	?	1	0.8708
+551	This error can be caused by many factors ; for more information , see SQL Server Books Online .	CAUSE	can be caused by	error	factors	?	1	0.8708
+552	This error can be caused by many factors . ”	CAUSE	can be caused by	error	factors	?	1	0.8708
+553	Often the error message might have more factors in 10057 Error format .The additional numerical code will be the address of the storage sections where the guidelines are stored during the time of the error code .	CAUSE	might have	error	factors	?	1	0.8708
+554	Occasionally the error message might have more factors in 0x06B1 format .This further hexadecimal code are the address of the system sections where the directions are filled during the time of the error .	CAUSE	might have	error	factors	?	1	0.8708
+555	Sometimes the error message could have more factors in 0x800709B2 data format .The additional hexadecimal code will be the address of your system sections where the instructions are loaded during the time of the error .	CAUSE	could have	error	factors	?	1	0.8708
+556	Occasionally the error message could have more factors in 0x800709CF formatting .This additional numerical code will be the location of your system sections in which the instructions are stored at the time of the error code .	CAUSE	could have	error	factors	?	1	0.8708
+557	Occasionally the error code may have more factors in 0x000a88f0 data format .This further numerical code will be the location of the storage locations where the guidelines are stored during the time of the error message .	CAUSE	may have	error	factors	?	1	0.8708
+558	Sometimes the error code may have more factors in 0x4000004194304PASSWORD data format .This additional hexadecimal code will be the address of your storage regions in which the guidelines are filled during the time of the error code .	CAUSE	may have	error	factors	?	1	0.8708
+559	Sometimes the error code may have more factors in 0xC0C01B16 formatting .This further hexadecimal code are the location of the memory regions where the guidelines are loaded during the time of the error .	CAUSE	may have	error	factors	?	1	0.8708
+560	Occasionally the error code might have more factors in Error Http 500 data format .This further number and letter code will be the location of your storage locations in which the directions are filled at the time of the error .	CAUSE	might have	error	factors	?	1	0.8708
+561	Occasionally the error code might have more factors in 0x4000003F data format .The additional number and letter code are the address of the storage regions in which the instructions are loaded at the time of the error code .	CAUSE	might have	error	factors	?	1	0.8708
+562	Often the error code might have more factors in 0x81e7 format .The additional numerical code are the location of the memory regions where the guidelines are loaded at the time of the error code .	CAUSE	might have	error	factors	?	1	0.8708
+563	Occasionally the error message could possibly have more factors in Error 1038 format .This further numerical code are the address of your system sections where the directions are filled at the time of the error code .	CAUSE	could possibly have	error	factors	?	1	0.8708
+564	Often the error message could possibly have more factors in 0xFFFFFF9C formatting .This additional number and letter code will be the address of your system regions in which the guidelines are loaded at the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+565	Sometimes the error message could possibly have more factors in 0x000036BE data format .The further numerical code will be the address of your system locations in which the instructions are loaded during the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+566	Occasionally the error code could possibly have more factors in 0x0500185E format .This further hexadecimal code will be the location of the storage sections where the guidelines are loaded at the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+567	Often the error code could possibly have more factors in 0x000013D9 data format .This additional numerical code are the location of your system locations in which the instructions are filled during the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+568	Sometimes the error code could possibly have more factors in 0x7800153D formatting .The additional hexadecimal code are the address of the memory locations where the guidelines are filled during the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+569	Sometimes the error code could possibly have more factors in 0x800401f6 data format .This further hexadecimal code are the address of your storage locations where the instructions are filled at the time of the error message .	CAUSE	could possibly have	error	factors	?	1	0.8708
+570	- utilization of error information of the measured data matrix - implementation of strict non-negativity constraints for the factor matrices - production of meaningful error estimates for the computed factors .	CAUSE	estimates for	error	factors	?	0	0.5865
+571	utilization of error information of the measured data matrix implementation of strict non-negativity constraints for the factor matrices production of meaningful error estimates for the computed factors .	CAUSE	estimates for	error	factors	?	0	0.5865
+572	I’ve tried a ton of different resolution and display combos with it and none caused crashes or incompatibility .	CAUSE	caused	none	crashes	?	1	0.8000
+573	Police have interviewed witness , but none could explain what caused the crash ... The cottage and lakefront show is being held in Grand Rapids this weekend and ... CEDAR RAPIDS , Iowa ( AP ) - A federal grand jury has indicted a Cedar Rapids man accused of failing to register as a sex offender .	CAUSE	caused	none	the crash	?	1	0.8708
+574	Photographic evidence would later show that at least one of the crew attempted to eject , but none survived the crash .	CAUSE	survived	none	the crash	?	0	0.5865
+575	On board were 248 soldiers of the 101st Airborne Division returning home from a peace-keeping mission in the Sinai ; none survived the crash .	CAUSE	survived	none	the crash	?	0	0.5865
+576	\n Courtesy John Odegard February 3—A Seattle Fire Investigator determined combustibles piled too close to a baseboard heater caused an early morning fire on Queen Anne .	CAUSE	caused	a baseboard heater	an early morning fire	?	1	0.8708
+577	41 PM A Seattle Fire Investigator determined combustibles piled too close to a baseboard heater caused an early morning fire on Queen Anne on February 4th , 2012 .	CAUSE	caused	a baseboard heater	an early morning fire	?	1	0.8708
+578	In fact Cambridge are so confident in their products that they will guarantee every one against structural damage caused by wind and snow .	CAUSE	caused by	structural damage	wind and snow	?	1	0.8708
+579	In fact , they 're so confident in the Varsity product that they guarantee against structural damage caused by wind and snow for a lifetime !	CAUSE	caused by	structural damage	wind and snow	?	1	0.8708
+580	Therefore , in a legally sufficient sense , the failure of the defendant to warn of the risk caused the harm .	CAUSE	caused	the risk	the harm	?	1	0.8000
+581	Bovine Tuberculosis , sometimes found in cattle is caused by the bacterium Mycobacterium bovis . .	CAUSE	is caused by	cattle	the bacterium Mycobacterium	?	1	0.8708
+582	TB in cattle is caused by the bacterium Mycobacterium bovis and badgers represent a significant reservoir of infection .	CAUSE	is caused by	cattle	the bacterium Mycobacterium	?	1	0.8708
+583	Infectious diseases The German scientist Robert Koch used guinea pigs to discover that TB was caused by the bacterium Mycobacterium tuberculosis , in 1882 .	CAUSE	was caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+584	TB , which is caused by the bacterium Mycobacterium tuberculosis , kills over 2 million people each year .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+585	TB is caused by the bacterium Mycobacterium tuberculosis and in its infective stage spreads through droplet infection in air .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+586	TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+587	Causes TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+588	Cause TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+589	The most common form of TB is caused by the bacterium Mycobacterium tuberculosis , although there are various other species and subspecies of Mycobacterium that can cause different forms of TB.	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+590	TB , which kills over 2 million people each year , is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+591	TB is caused by the bacterium Mycobacterium tuberculosis and is primarily an infection of the lungs .	CAUSE	is caused by	TB	the bacterium Mycobacterium tuberculosis	?	1	0.8708
+592	TB is caused by the bacteria Mycobacterium tuberculosis , which spreads most commonly by airborne transmission .	CAUSE	is caused by	TB	the bacteria Mycobacterium tuberculosis	?	1	0.8708
+593	Tip of The Week - Tuberculosis Review Tuberculosis or TB is caused by the bacteria Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacteria Mycobacterium tuberculosis	?	1	0.8708
+594	TB is caused by the bacteria Mycobacterium tuberculosis .	CAUSE	is caused by	TB	the bacteria Mycobacterium tuberculosis	?	1	0.8708
+595	Infectious diseases The German scientist Robert Koch used guinea pigs to discover that TB was caused by the bacterium Mycobacterium tuberculosis , in 1882 .	CAUSE	was caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+596	TB , which is caused by the bacterium Mycobacterium tuberculosis , kills over 2 million people each year .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+597	TB is caused by the bacterium Mycobacterium tuberculosis and in its infective stage spreads through droplet infection in air .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+598	TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+599	Causes TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+600	Cause TB is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+601	The most common form of TB is caused by the bacterium Mycobacterium tuberculosis , although there are various other species and subspecies of Mycobacterium that can cause different forms of TB.	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+602	TB , which kills over 2 million people each year , is caused by the bacterium Mycobacterium tuberculosis .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+603	TB is caused by the bacterium Mycobacterium tuberculosis and is primarily an infection of the lungs .	CAUSE	is caused by	TB	bacterium Mycobacterium tuberculosis	?	1	0.8708
+604	Winds are caused by uneven heat causing differences in high and low pressures and pressure differences are caused by differences in temperature .	CAUSE	are caused by	pressure differences	differences	?	1	0.8708
+605	These pressure differences are caused by differences in temperatures .	CAUSE	are caused by	pressure differences	differences	?	1	0.8000
+606	These pressure differences were caused by differences in air density , and air density is related to temperature .	CAUSE	were caused by	pressure differences	differences	?	1	0.8000
+607	These pressure differences are caused by differences in temperatures .	CAUSE	are caused by	These pressure differences	differences	?	1	0.8000
+608	These pressure differences were caused by differences in air density , and air density is related to temperature .	CAUSE	were caused by	These pressure differences	differences	?	1	0.8000
+609	and The first suspicion was caused by a video where Berg was wearing an orange American jail suit .	CAUSE	was caused by	The first suspicion	a video	?	1	0.8708
+610	The first suspicion was caused by a video where Berg was wearing an orange American jail suit .	CAUSE	was caused by	The first suspicion	a video	?	1	0.8708
+611	The most common and severe food allergies are caused by milk , eggs , peanuts , walnuts , almonds , cashews , fish , shellfish , wheat and soy .	CAUSE	are caused by	The most common and severe food allergies	milk	?	1	0.8708
+612	The most common and severe food allergies are caused by milk , eggs , walnuts , almonds , cashews , wheat , fish , shellfish , and peanuts ( including peanut butter ) .	CAUSE	are caused by	The most common and severe food allergies	milk	?	1	0.8708
+613	Is it sexist to say the financial crisis was caused by men ?  Well , maybe it was , but only in the sense that western civilization was " caused " by men .	CAUSE	was caused by	the financial crisis	men	?	1	0.8708
+614	Why ? Semi-prominent progressive blogger Matt Yglesias draws deeply from the well of his Harvard educated intellect and asks ... " Is it sexist to say the financial crisis was caused by men ? "	CAUSE	was caused by	the financial crisis	men	?	1	0.8708
+615	This causes a pressure in the head that may make the brain to compress and cause the damage .	CAUSE	cause	the brain	the damage	?	1	0.8708
+616	There is a lot of research being carried out to try and discover which parts of the brain are affected and what caused the damage .	CAUSE	caused	the brain	the damage	?	1	0.8708
+617	Investigators are examining how much mitochondrial DNA damage occurs in specific parts of the body such as the brain , what causes the damage , and whether it can be prevented .	CAUSE	causes	the brain	the damage	?	1	0.8708
+618	Can the brain recover or is the damage permanent ?	CAUSE	is	the brain	the damage	?	0	0.5865
+619	Sometimes , special pictures of the brain may be needed to find out more about the damage .	CAUSE	may be needed to find out more about	the brain	the damage	?	1	0.8708
+620	Sometimes , special x-rays of the brain may be needed to find out more about the damage .	CAUSE	may be needed to find out more about	the brain	the damage	?	1	0.8708
+621	Symptoms The symptoms of obesity and stroke all depends on which part of the brain has the damage .	CAUSE	has	the brain	the damage	?	0	0.6667
+622	Matsumoto’s research aims to treat the harmful changes that have occurred in the brain to stop and reverse the damage .	CAUSE	reverse	the brain	the damage	?	0	0.5865
+623	And Increased levels of BDNF improves cognitive ability and the brain is better protected from Alzheimer’s and Parkinson’s Diseases Fasting after a brain injury lessens the damage of the injury .	CAUSE	lessens	the brain	the damage	?	0	0.5865
+624	The epidemic of influenza , which caused the death but a few years ago of five thousand persons in Paris alone , made very little impression on the popular imagination .	CAUSE	caused	influenza	the death	?	1	0.8708
+625	I have no idea what caused the delay ; at first I wondered if the distributor wanted to hold the release until the next movie ( see my review of the Essential Spectacular Spider-Man for a similar gripe ) .	CAUSE	caused	no idea	the delay	?	1	0.8708
+626	The test for human papillomavirus , which causes cervical cancer , is frequently done as part of the Pap test evaluation .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+627	While some cancers may be caused by microbes ( the human papillomavirus , which causes cervical cancer , is a prime example ) , breast cancer is not one of them .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+628	thinkSPAIN , Monday , February 9 , 2009 The two girls , who were taken ill after receiving the vaccine against human papillomavirus , which causes cervical cancer , are still in Valencia 's Hospital Cl�nico .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+629	But the 70-year history behind the creation of a vaccine against human papillomavirus , which causes cervical cancer , is more fraught than most with blind alleys , delicate moments , humor and triumph .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+630	Key products include APTIMA assays to detect Chlamydia and gonorrhea , the two most common bacterial STDs ; human papillomavirus , which causes cervical cancer ; and trichomonas , a parasitic STD.	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+631	First , vaccines that prevent cancer-causing infections -- such as human papillomavirus , which causes cervical cancer -- need to be made available to low-income countries .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+632	Simply answered to "what is a pap smear ? " , it is an early screen for human papillomavirus caused cervical cancer .	CAUSE	caused	human papillomavirus	cervical cancer	?	1	0.8000
+633	WASHINGTON – A quarter of girls aged 13-17 in the United States received Merck & Co’s Gardasil vaccine last year to protect against the human papillomavirus , which causes cervical cancer , the U.S. government said on Thursday .	CAUSE	causes	human papillomavirus	cervical cancer	?	1	0.8708
+634	Other STDs , including herpes , chlamydia , and human papillomavirus , which is linked to cervical cancer , are also on the rise .	CAUSE	is linked to	human papillomavirus	cervical cancer	?	0	0.5865
+635	His research team is one of several groups throughout the world which identified that human papillomavirus is linked to cervical cancer .	CAUSE	is linked to	human papillomavirus	cervical cancer	?	0	0.5865
+636	HPV - to protect females from human papillomavirus , which is linked to cervical cancer .	CAUSE	is linked to	human papillomavirus	cervical cancer	?	0	0.5865
+637	The pharmaceutical-supported mainstream media , and the Merck-supported Public Broadcasting Service uncritically accept the claim that human papillomavirus is the cause of cervical cancer in women , despite the absence of supporting medical evidence .	CAUSE	is the cause of	human papillomavirus	cervical cancer	?	1	0.8708
+638	Test identifies 14 high-risk types associated with the development of cervical cancer Persistent infection with human papillomavirus is the cause of cervical cancer in women , with HPV being found in 99.7 per cent of cervical cancers worldwide .	CAUSE	is the cause of	human papillomavirus	cervical cancer	?	1	0.8708
+639	The human papillomavirus , or HPV , is a cause of cervical cancer .	CAUSE	is a cause of	human papillomavirus	cervical cancer	?	1	0.8708
+640	Oral sex has been associated in clinical studies with gonorrhea , syphilis , herpes and the human papillomavirus , which has been linked to cervical cancer .	CAUSE	has been linked to	human papillomavirus	cervical cancer	?	1	0.8708
+641	Great Sex Comes Naturally – MYTH In the past , the human papillomavirus , the most commonly spread STD , has been linked to cervical cancer .	CAUSE	has been linked to	human papillomavirus	cervical cancer	?	1	0.8708
+642	These protein motors play pivotal roles in gene expression and replication , and are vital to the survival of all biological cells , as well as infectious agents , such as the human papillomavirus , which has been linked to cervical cancer .	CAUSE	has been linked to	human papillomavirus	cervical cancer	?	1	0.8708
+643	HPV , or human papillomavirus , is a very common virus and is the primary cause of cervical cancer .	CAUSE	is the primary cause of	human papillomavirus	cervical cancer	?	1	0.8708
+644	the human papillomavirus , which can cause cervical cancer , is also linked to head and neck cancer , including one form called oropharyngeal squamous cell carcinoma , or OSCC , which is spread by oral sex , according to a piece in BMJ .	CAUSE	can cause	human papillomavirus	cervical cancer	?	1	0.8708
+645	August is Immunization Awareness Month — meningitis and human papillomavirus vaccinations available Meningitis can lead to loss of a limb , neurological impairment and even death ; human papillomavirus can cause cervical cancer and other diseases in females .	CAUSE	can cause	human papillomavirus	cervical cancer	?	1	0.8708
+646	Infection for a long time with certain types of human papillomavirus can cause cervical cancer .	CAUSE	can cause	human papillomavirus	cervical cancer	?	1	0.8708
+647	HPV is the human papillomavirus that causes vaginal genital warts and can cause cervical cancer .	CAUSE	can cause	human papillomavirus	cervical cancer	?	1	0.8708
+648	The human papillomavirus can cause cervical cancer The cervical cancer screening programme has been around since 1988 .	CAUSE	can cause	human papillomavirus	cervical cancer	?	1	0.8708
+649	According to drug manufacturer Merck & Co. , the vaccine , Gardasil , is effective in preventing most of the strains of the human papillomavirus , which causes most cases of cervical cancer .	CAUSE	causes most cases of	human papillomavirus	cervical cancer	?	1	0.8708
+650	And for girls , there is the HPV vaccine that protects against the human papillomavirus , which causes most cases of cervical cancer .	CAUSE	causes most cases of	human papillomavirus	cervical cancer	?	1	0.8708
+651	-- One-in-25 cancers is linked to work-related exposure to chemicals or asbestos , while one in 33 is linked to infections , such as the human papillomavirus , which causes most cases of cervical cancer .	CAUSE	causes most cases of	human papillomavirus	cervical cancer	?	1	0.8708
+652	HPV tests detect the human papillomavirus , which causes most cases of cervical cancer .	CAUSE	causes most cases of	human papillomavirus	cervical cancer	?	1	0.8708
+653	human papillomavirus , or HPV , is known to cause cervical cancer .	CAUSE	is known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+654	Arguably his worst decision was to issue an executive order requiring that pre-teen girls in Texas get a vaccine against the human papillomavirus , which is known to cause cervical cancer .	CAUSE	is known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+655	The committee also signed off on another conservative priority , one that would repeal a mandate that young girls receive a vaccination to prevent the human papillomavirus , which is known to cause cervical cancer , instead making it an “opt-in” provision .	CAUSE	is known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+656	Cancer causing viruses such as human papillomavirus are known to cause cervical cancer .	CAUSE	are known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+657	Genital Warts - Genital warts is caused by HPV , or the human papillomavirus , which is known to cause cervical cancer .	CAUSE	is known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+658	Texans tussle Perry came under fire from Paul , who is making his third presidential bid , for the 2007 order requiring girls to be vaccinated against human papillomavirus , which is known to cause cervical cancer .	CAUSE	is known to cause	human papillomavirus	cervical cancer	?	1	0.8708
+659	Testing for the human papillomavirus , which is associated with cervical cancer , is an option for women age 30 and older .	CAUSE	is associated with	human papillomavirus	cervical cancer	?	1	0.8708
+660	Major ongoing projects include a preventive vaccine to rabies virus , a therapeutic cancer vaccine targeting human papillomavirus which is associated with cervical cancer , vaccines to prevent human immunodeficiency virus ( HIV ) infection , and a universal vaccine against influenza A virus .	CAUSE	is associated with	human papillomavirus	cervical cancer	?	1	0.8708
+661	Genital herpes is becoming a major cause of genital ulcer , and subtypes of the human papillomavirus are associated with cervical cancer .	CAUSE	are associated with	human papillomavirus	cervical cancer	?	1	0.8708
+662	For example , hepatitis B and hepatitis C are associated with the development of hepatocellular cancer ; HIV is associated with Hodgkin 's and non-Hodgkin 's lymphomas ; human papillomavirus is associated with cervical cancer ; and Ebstein-Barr virus is associated with nasopharyngeal cancer .	CAUSE	is associated with	human papillomavirus	cervical cancer	?	1	0.8708
+663	There is no evidence that condoms prevent transmission of human papillomavirus , which is the leading cause of cervical cancer ( AP/Yahoo!	CAUSE	is the leading cause of	human papillomavirus	cervical cancer	?	1	0.8708
+664	Although infection with human papillomavirus , or HPV , is the leading cause of cervical cancer , until now , an influential government group has been reluctant to recommend using the HPV test to screen for the disease .	CAUSE	is the leading cause of	human papillomavirus	cervical cancer	?	1	0.8708
+665	Gardasil protects against the human papillomavirus , which causes genital warts and can lead to cervical cancer .	CAUSE	can lead to	human papillomavirus	cervical cancer	?	1	0.8708
+666	National Cancer Institute Key Point 1 There are certain types of human papillomavirus that are spread through sexual contact , and can lead to cervical cancer .	CAUSE	can lead to	human papillomavirus	cervical cancer	?	1	0.8708
+667	There is also a vaccine for young women to prevent them from getting the human papillomavirus which is the main cause of cervical cancer .	CAUSE	is the main cause of	human papillomavirus	cervical cancer	?	1	0.8708
+668	The human papillomavirus , which is a common sexually transmitted infection , is the main cause of cervical cancer .	CAUSE	is the main cause of	human papillomavirus	cervical cancer	?	1	0.8708
+669	It helps guard against the human papillomavirus , which is the major cause of cervical cancer .	CAUSE	is the major cause of	human papillomavirus	cervical cancer	?	1	0.8708
+670	There were serious infections of midwestern corn in recent years with Fusarium graminearum which caused stalk and ear rots .	CAUSE	caused	Fusarium graminearum	stalk and ear rots	?	1	0.8708
+671	According to the outlet , ' Instead , the flotsam caused problems near the beaches where it originated , creating hazards for ships and disrupting commercial fishing . '	CAUSE	caused	the flotsam	problems	?	1	0.8000
+672	Instead , the flotsam caused problems near the beaches where it originated , creating hazards for ships and disrupting commercial fishing .	CAUSE	caused	the flotsam	problems	?	1	0.8000
+673	The swelling is not the disease itself , but rather a symptom , which is caused by a build-up of fluids in the body cavity due to internal organ failure .	CAUSE	is caused by	a symptom	a build-up	?	1	0.8708
+674	Sometimes the symptoms are caused by the build-up of all the different vaccines and medicines that our pets have been taking .	CAUSE	are caused by	the symptoms	the build-up	?	1	0.8708
+675	These symptoms are caused by a build-up of sugar in the tissues .	CAUSE	are caused by	These symptoms	a build-up	?	1	0.8708
+676	Another illustration occurs when a plaintiff falls from a bridge as a result of a sudden unexpected gust of wind and the defense contends that this accident was caused by an act of God or at least by an unforeseen event beyond their control .	CAUSE	was caused by	this accident	an act	?	1	0.8708
+677	Many of those accidents are caused by acts of utter stupidity .	CAUSE	are caused by	those accidents	acts	?	1	0.8708
+678	When an accident is caused by an act of negligence , injured travelers have the right to seek fair compensation .	CAUSE	is caused by	an accident	an act	?	1	0.8708
+679	It also found that hangovers were mostly classified to light or moderate drinkers in terms of societal costs ( loss in job productivity , absenteeism , etc. ) and that the symptoms were caused by dehydration , the toxic effects of alcohol , hormonal changes and deregulated signaling of cells .	CAUSE	were caused by	the symptoms	dehydration	?	1	0.8708
+680	Most of the symptoms are caused by dehydration from sweating .	CAUSE	are caused by	the symptoms	dehydration	?	1	0.8708
+681	The illness is not usually serious or life-threatening , but the symptoms can be uncomfortable and unpleasant and can cause dehydration .	CAUSE	can cause	the symptoms	dehydration	?	1	0.8708
+682	Even in the event you got burns , the water will facilitate your quick recovery since one of the symptoms is dehydration .	CAUSE	is	the symptoms	dehydration	?	0	0.5865
+683	There are many rumored remedies for a hangover , but in reality , all or most of these symptoms are caused by dehydration , so knowing when dehydration happens and how to prevent it will help alleviate your hangover symptoms .	CAUSE	are caused by	these symptoms	dehydration	?	1	0.8708
+684	“People who experience vomiting and diarrhea should drink lot of fluids because these symptoms can lead to dehydration . ”	CAUSE	can lead to	these symptoms	dehydration	?	1	0.8708
+685	Because these symptoms can lead to dehydration , they are capable of influencing kidney function .	CAUSE	can lead to	these symptoms	dehydration	?	1	0.8708
+686	The reason being that many of these symptoms are signs of dehydration .	CAUSE	are signs of	these symptoms	dehydration	?	0	0.5865
+687	The major reason for these symptoms is dehydration .	CAUSE	is	these symptoms	dehydration	?	0	0.5865
+688	* headache * sensitivity to light and noise According to research , some of the possible causes of these symptoms are dehydration , loss of mineral and essential salts and hypoglycemia .	CAUSE	are	these symptoms	dehydration	?	0	0.5865
+689	Death was caused by kidney trouble .	CAUSE	was caused by	Death	kidney trouble	?	1	0.8708
+690	Death was caused by kidney trouble , resultant from a previous case of scarlet fever .	CAUSE	was caused by	Death	kidney trouble	?	1	0.8708
+691	Death was caused by kidney trouble , of which she had been troubled for some time .	CAUSE	was caused by	Death	kidney trouble	?	1	0.8708
+692	Death was due to kidney trouble .	CAUSE	was due to	Death	kidney trouble	?	0	0.5865
+693	Death was due to kidney trouble with which he had been suffering for about a year .	CAUSE	was due to	Death	kidney trouble	?	0	0.5865
+694	Death was due to kidney trouble and followed an illness of several months .	CAUSE	was due to	Death	kidney trouble	?	0	0.5865
+695	Death was due to kidney trouble and uremic poisoning .	CAUSE	was due to	Death	kidney trouble	?	0	0.5865
+696	Death was due to kidney trouble and other complications .	CAUSE	was due to	Death	kidney trouble	?	0	0.5865
+697	You can argue that some of the current problem is caused by a lack of proper government regulation of drilling , but I think that 's really just trying to move the blame around .	CAUSE	is caused by	the current problem	a lack	?	1	0.8708
+698	The current problem is caused by the lack of prior information on driver status .	CAUSE	is caused by	The current problem	the lack	?	1	0.8708
+699	These documents were drafted by his attorney son , who had little or no experience drafting such instruments , and the inartful language caused problems .	CAUSE	caused	the inartful language	problems	?	1	0.8708
+700	In the words of Judge Manion , " the inartful language caused problems . "	CAUSE	caused	the inartful language	problems	?	1	0.8708
+701	And we all remember how Reagan caused the Clinton boom .	CAUSE	caused	Reagan	the Clinton boom	?	1	0.8000
+702	Just like Reagan caused the Clinton boom , but not the HW Bush recession .	CAUSE	caused	Reagan	the Clinton boom	?	1	0.8000
+703	The UFO caused EM effects including the disruption of all telecommunications and the malfunction of the pumping station electrical equipment .	CAUSE	caused	The UFO	EM effects	?	1	0.8000
+704	The UFO caused EM effects on the car 's engine and lights .	CAUSE	caused	The UFO	EM effects	?	1	0.8000
+705	Do you realise that probably three quarters of the sufferings in the world are caused by human beings ?	CAUSE	are caused by	the world	human beings	?	1	0.8708
+706	He returns to the problem of evil – not all suffering in the world is caused by human beings , there is disease and natural disasters .	CAUSE	is caused by	the world	human beings	?	1	0.8708
+707	00 a.m and went on to change the way the nation and the world saw human beings .	CAUSE	saw	the world	human beings	?	0	0.5865
+708	The current business climate of the world sees human beings , and everything else this world has to offer , as mere commodities to be exploited in the name of their personal profits .	CAUSE	sees	the world	human beings	?	0	0.5865
+709	Belief that the destiny of the world depends upon human beings .	CAUSE	depends upon	the world	human beings	?	0	0.5865
+710	[2 ] In other words , the salvation of the world depends upon human beings .	CAUSE	depends upon	the world	human beings	?	0	0.5865
+711	every human being is subject to sin , and the world is made up of human beings .	CAUSE	is made up of	the world	human beings	?	1	0.8708
+712	the world is filled with human beings like me .	CAUSE	is filled with	the world	human beings	?	0	0.5865
+713	Naturally I do n't see this happening , mainly since the world is filled with human beings .	CAUSE	is filled with	the world	human beings	?	0	0.5865
+714	We read in Psalms 8 and 115 that the task of sustaining the world is given to human beings .	CAUSE	is given to	the world	human beings	?	0	0.5865
+715	As Hall sees it , meaning in a text is constructed by society , and the world is created by human beings for the purpose of that meaning .	CAUSE	is created by	the world	human beings	?	0	0.5865
+716	Since the problems of the world are created by human beings they can only be corrected by human beings , by properly following the fundamental principles of human values , taught and practiced by wise men and women of the world .	CAUSE	are created by	the world	human beings	?	0	0.5865
+717	All the evils that exist in the world are created by human beings , and while these evils cannot all be eradicated entirely , they need not be as great and prevalent are they are and have been .	CAUSE	are created by	the world	human beings	?	0	0.5865
+718	In the movie The Matrix , the world needs human beings . . .	CAUSE	needs	the world	human beings	?	0	0.5865
+719	You are blessed , Lord our G-d , the sovereign of the world , who created human beings ( “the Adam” ) in your image , in the pattern of your own likeness , and provided for the perpetuation of humankind .	CAUSE	created	the world	human beings	?	0	0.5865
+720	The world moves on … As the world moves on , so does human beings .	CAUSE	so does	the world	human beings	?	1	0.8708
+721	LaRouche is a part of the world that is shaped by human beings , which he is determined to shape for good .	CAUSE	is shaped by	the world	human beings	?	1	0.8708
+722	11 , 33 ) The most precious pieces in the diving mosaic of the world are human beings .	CAUSE	are	the world	human beings	?	0	0.5865
+723	Privative Definition Alive in the world are human beings , plants , and bacteria .	CAUSE	are	the world	human beings	?	0	0.5865
+724	Even our enemies in the terrorist organizations of the world are human beings .	CAUSE	are	the world	human beings	?	0	0.5865
+725	When a student sees that those who do the writing of the world are human beings , and great writers in proportion as they are human beings – not in proportion to their freedom from grammatical errors – he begins to examine his own experiences and reactions as possible material .	CAUSE	are	the world	human beings	?	0	0.5865
+726	In the course of your life , you surely have had such questions as " What in the world are human beings ? " or " What has become of me ? " Right ?	CAUSE	are	the world	human beings	?	0	0.5865
+727	It just so happens , incidentally , that all the rational agents we encounter in the world are human beings , but that 's just a contingent fact .	CAUSE	are	the world	human beings	?	0	0.5865
+728	The greatest CO2-making machines in the world are human beings , which breathe out CO2 after each breath of air .	CAUSE	are	the world	human beings	?	0	0.5865
+729	Where in the world do they find human beings as disordered as Larry King�s pundits ?	CAUSE	find	the world	human beings	?	0	0.5865
+730	Therapeutic inequalities Thomas Mann once said that we must behave as though the world was created for human beings ( Mann cited in Lown , 1996 ) .	CAUSE	was created for	the world	human beings	?	0	0.5865
+731	That majority of increasingly fundamentalist people who still insist that the world was created for human beings .	CAUSE	was created for	the world	human beings	?	0	0.5865
+732	Mind power basics One of the greatest powers in the world belongs to human beings .	CAUSE	belongs to	the world	human beings	?	0	0.5865
+733	" In a way , art is about the way the world looks to human beings .	CAUSE	looks to	the world	human beings	?	0	0.5865
+734	Not only philosophy , but also all of science , is a story about how the world looks to human beings .	CAUSE	looks to	the world	human beings	?	0	0.5865
+735	I have no record of what was used INTRODUCTION Labelling the world is a primary need for human beings .	CAUSE	is a primary need for	the world	human beings	?	0	0.5865
+736	INTRODUCTION Labelling the world is a primary need for human beings .	CAUSE	is a primary need for	the world	human beings	?	0	0.5865
+737	There are countless examples of natural places all over the world that would no longer exist , had human beings not engaged in political action to save them from other human beings .	CAUSE	had	the world	human beings	?	1	0.8708
+738	Traditional stories take place at the Time of Beginnings in the world , back when animals were like human beings .	CAUSE	were like	the world	human beings	?	0	0.5865
+739	Being in the World , presented by Alive Mind Cinema , is a celebration of human beings and our ability to find meaning in the world around us .	CAUSE	is a celebration of	the world	human beings	?	0	0.5865
+740	Being in the World is a celebration of human beings and our ability , through the mastery of physical , intellectual and creative skills , to find meaning in the world around us .	CAUSE	is a celebration of	the world	human beings	?	0	0.5865
+741	This AFSC community works to transform conditions and relationships both in the world and in ourselves , which threaten to overwhelm what is precious in human beings .	CAUSE	is precious in	the world	human beings	?	0	0.5865
+742	.To transform conditions and relationships , both in the world and in ourselves , which threaten to overwhelm what is precious in human beings . . .	CAUSE	is precious in	the world	human beings	?	0	0.5865
+743	The reason why the Ptolemaic system of astronomy is geocentric is not that the pagans assumed the world revolved around human beings .	CAUSE	revolved around	the world	human beings	?	0	0.5865
+744	" Paul tells us [that ] the world cannot be renewed without new human beings , " he said .	CAUSE	cannot be renewed without	the world	human beings	?	0	0.5865
+745	“Paul tells us [that ] the world cannot be renewed without new human beings , ” Benedict said .	CAUSE	cannot be renewed without	the world	human beings	?	0	0.5865
+746	The Apostle Paul “tells us ( that ) the world cannot be renewed without new human beings , ” Pope Benedict said over the weekend in a preview of the encyclical .	CAUSE	cannot be renewed without	the world	human beings	?	0	0.5865
+747	The world belongs to nearly seven billion human beings of the world and not to kings or religious heads , and not to a few Lamas .	CAUSE	belongs to nearly	the world	human beings	?	0	0.5865
+748	I learned later that eczema was caused by vaccines and k baby formula allergy the mostly likely culprits are cows milk , eggs , blues clues ckae soy , wheat .	CAUSE	was caused by	eczema	vaccines	?	1	0.8708
+749	But the evidence does not indicate that bleeding eczema is caused by vaccines , so I am not sure why you bring it up .	CAUSE	is caused by	eczema	vaccines	?	1	0.8708
+750	The report , issued in 1988 , concluded that lifestyle choices — having children late in life or not at all , eating a high-fat diet , taking high-dose birth control pills , etc . — caused cancer .	CAUSE	caused	etc	cancer	?	1	0.8708
+751	Widely used in hair products , moisturizers , etc . Formaldehyde causes cancer .	CAUSE	causes	etc	cancer	?	1	0.8708
+752	There is such a vast amount of data that points to the fact that the eating of meat , dairy , processed sugars , etc . causes cancer , heart disease , coronary artery disease , diabetes , allergies , etc. , that I just could not ignore the parallels .	CAUSE	causes	etc	cancer	?	1	0.8000
+753	Impetigo is caused by psychological or physical stress increases ulcer pain .	CAUSE	is caused by	Impetigo	psychological or physical stress	?	1	0.8708
+754	Impetigo is caused by psychological or physical stress increases very nicely .	CAUSE	is caused by	Impetigo	psychological or physical stress	?	1	0.8708
+755	Herpes Herpes is caused by the herpes simplex virus and is usually a sexually transmitted disease .	CAUSE	is caused by	Herpes Herpes	the herpes	?	1	0.8708
+756	Herpes Herpes is caused by the herpes simplex virus .	CAUSE	is caused by	Herpes Herpes	the herpes	?	1	0.8708
+757	The sad investigator determines that the mishap was caused by human error and a lack of technology to prevent such errors .	CAUSE	was caused by	the mishap	human error	?	1	0.8708
+758	Six months after the crash , the Marine Corps investigation into the cause of the crash concluded the mishap was caused by human error , stating that the helicopter was flying too low and too fast when it approached the landing pad on the Pecos .	CAUSE	was caused by	the mishap	human error	?	1	0.8708
+759	Something like 95 % of fatal accidents are caused by male drivers , the overwhelming majority of whom are under 30 .	CAUSE	are caused by	fatal accidents	male drivers	?	1	0.8708
+760	Wednesday 's statement said the conference was postponed because of organizational snags , denying what it said were Western and Arab media reports suggesting the delay was caused by disputes over the gathering .	CAUSE	was caused by	the delay	disputes	?	1	0.8708
+761	County officials denied the allegation , saying the delay was due to disputes over some rates that the state auditor needed to resolve .	CAUSE	was due to	the delay	disputes	?	0	0.5865
+762	Also , similar to our case , the delay was caused by a dispute .	CAUSE	was caused by	the delay	a dispute	?	1	0.8708
+763	According to Binghalib , the delay has been caused by a dispute over land with TECOM , where Ivory Tower is located .	CAUSE	has been caused by	the delay	a dispute	?	1	0.8708
+764	However , according to EBD , the delay was due to a dispute with the DTT multiplex operator Czech Digital Group ( CDG) .	CAUSE	was due to	the delay	a dispute	?	0	0.5865
+765	The delay was caused by a dispute between Maier and his contractor partner .	CAUSE	was caused by	The delay	a dispute	?	1	0.8708
+766	The delay was caused by a dispute with my web hosting company .	CAUSE	was caused by	The delay	a dispute	?	1	0.8708
+767	The delay is due to a dispute over whether Bechtel or the power plant itself is responsible for installing the air conditioners .	CAUSE	is due to	The delay	a dispute	?	0	0.5865
+768	The delay was due to a dispute over the cost of the damage , which determines whether criminal cases can go to Crown Court .	CAUSE	was due to	The delay	a dispute	?	0	0.5865
+769	The reports caused a sensation and sent the circulation of the Sun to then-unprecedented levels .	CAUSE	caused	The reports	a sensation	?	1	0.8000
+770	This report caused a sensation when it was released .	CAUSE	caused	This report	a sensation	?	1	0.8000
+771	Partly due to the continuing sightings , the report caused a sensation and was widely publicized and treated seriously by national and international news media ( See Appendix 2.) .	CAUSE	caused	the report	a sensation	?	1	0.8000
+772	The publication of the report caused a sensation .	CAUSE	caused	the report	a sensation	?	1	0.8000
+773	The appearance of the report caused a sensation when it came out at the onset of the Vietnam War .	CAUSE	caused	the report	a sensation	?	1	0.8000
+774	Virtually from its moment of publication , the report , entitled Re-Thinking Missions , created a sensation .	CAUSE	created	the report	a sensation	?	0	0.5865
+775	In the wake of General Singh 's bitter row with the government over his date of birth , the report created a sensation .	CAUSE	created	the report	a sensation	?	0	0.5865
+776	THE MEDIA The release of the report created a media sensation , with nearly every major news outlet declaring , once again , that the scientific �consensus � on global warming had been reaffirmed .	CAUSE	created	the report	a sensation	?	0	0.5865
+777	David Kiersey Problems in dental offices are caused by a breakdown in communications due to different personality styles .	CAUSE	are caused by	dental offices	a breakdown	?	1	0.8708
+778	Maximize Practice Performance Understanding How Personality Types Can Affect Practice Success Problems in dental offices are caused by a breakdown in communications due to different personality styles .	CAUSE	are caused by	dental offices	a breakdown	?	1	0.8708
+779	Pneumonia is caused by a viral or bacterial infection that fills your lungs with mucus .	CAUSE	is caused by	Pneumonia	a viral or bacterial infection	?	1	0.8708
+780	The symptoms experienced in walking pneumonia is caused by viral or bacterial infection due to an organism called mycoplasma pneumoniae or may sometimes be brought about by harmful chemical substances .	CAUSE	is caused by	pneumonia	viral or bacterial infection	?	1	0.8708
+781	Switzerland Toilet cistern took over one hour to refill after flushing - caused great inconvenience Not what you 're looking for ?	CAUSE	caused	flushing	great inconvenience	?	1	0.8000
+782	Toilet cistern took over one hour to refill after flushing - caused great inconvenience - posted Friday , February 17 , 2012 Not what you 're looking for ?	CAUSE	caused	flushing	great inconvenience	?	1	0.8000
+783	It is a continuation of the work I started a couple of months ago in response to challenges concerning whether Christianity caused the Dark Ages and what Christianity , as a faith , has contributed to science .	CAUSE	caused	Christianity	the Dark Ages	?	1	0.8000
+784	Did Christianity Cause the Dark Ages ? 2. What has Christianity , as a body of beliefs , contributed to science ?	CAUSE	Cause	Christianity	the Dark Ages	?	1	0.8000
+785	Here 's something else I disagree with .... Still , the myth of a Christian mob destroying the " Great Library of Alexandria " is too juicy for some to resist , so this myth is still a mainstay for arguments that " Christianity caused the Dark Ages " despite the fact it is without foundation .	CAUSE	caused	Christianity	the Dark Ages	?	1	0.8000
+786	Is it any wonder that Christianity led to the Dark Ages ?	CAUSE	led to	Christianity	the Dark Ages	?	0	0.6667
+787	Yet stigmatics bleed from the middle of their palms in accord with the false icons and imagery created by the same folks whose theocratic dogma perverted " Christianity " and led to the Dark Ages when knowledge and science were heretical .	CAUSE	led to	Christianity	the Dark Ages	?	1	0.8708
+788	The Roman Empire ran for about 900 years before the passivity and social irresponsibility spread by the Jewish creation known as Christianity eventually killed it and brought on the Dark Ages ( which continue today ) .	CAUSE	brought on	Christianity	the Dark Ages	?	0	0.5865
+789	Christianity destroyed Rome and brought on the Dark Ages .	CAUSE	brought on	Christianity	the Dark Ages	?	0	0.5865
+790	As a corollary to the perception that theirmisbehavior caused the divorce or caused a separation , preschoolchildren often believe that if they are really good , everythingwill be okay again .	CAUSE	caused	the divorce	a separation	?	1	0.8708
+791	As a corollary to the perception that their misbehavior caused the divorce or caused a separation , preschool children often believe that if they are really good , everything will be okay again .	CAUSE	caused	the divorce	a separation	?	1	0.8708
+792	The redness is caused by an inflammation of the clear membrane that covers the white areas of the eye and the inside lining of the eyelids .	CAUSE	is caused by	The redness	an inflammation	?	1	0.8708
+793	The redness comes from an inflammation of the outer layers of the skin , generally taking days to go away on its own .	CAUSE	comes from	The redness	an inflammation	?	0	0.5865
+794	The redness is caused by an inflammation of the clear membrane that covers the white areas of the eye and the inside lining of the eyelids .	CAUSE	is caused by	The redness	inflammation	?	1	0.8708
+795	The redness is caused by inflammation and swelling .	CAUSE	is caused by	The redness	inflammation	?	1	0.8708
+796	The redness comes from an inflammation of the outer layers of the skin , generally taking days to go away on its own .	CAUSE	comes from	The redness	inflammation	?	0	0.5865
+797	In America East conference games , she was the leader in both goals per game ( 3.67 ) and caused turnovers per game ( 1.50 ) .	CAUSE	caused	game	turnovers	?	1	0.8708
+798	Dawidjan ranked second in the league in groundballs per game ( 6.7 ) and caused turnovers per game ( 2.9 ) as he helped to lead the Babson defense .	CAUSE	caused	game	turnovers	?	1	0.8708
+799	Romo will show potential in this game , but cause turnovers with risks , allowing the Panthers offense to take advantage of short fields .	CAUSE	cause	game	turnovers	?	1	0.8708
+800	In 2008 , Merrimack led the conference in goals per game , ground balls and caused turnovers , and finished second assists , fewest turnovers and draw controls .	CAUSE	caused	game	turnovers	?	1	0.8708
+801	She coached one of her charges to lead the country in goals per game ( 2010 , 2008 ) , assists per game ( 2010 ) and caused turnovers per game ( 2008 ) .	CAUSE	caused	game	turnovers	?	1	0.8708
+802	Loyola ( Md . ) ranks fourth in the country in man-up offense ( 0.517 ) , ground balls per game ( 34.9 ) and caused turnovers per game ( 9.7 ) .	CAUSE	caused	game	turnovers	?	1	0.8708
+803	The Owls last two possessions of the game resulted in turnovers .	CAUSE	resulted in	game	turnovers	?	0	0.6667
+804	3. The 49ers defense did everything in the game but create turnovers The 49ers ’ defense kept the Giants ’ running game under control , only allowing 85 yards on 26 carries .	CAUSE	create	game	turnovers	?	0	0.5865
+805	It a game that was plagued by turnovers , fouls , poor foul shooting , and limited offense , Middlesex , had six players get into the scoring column while Highland Park had only five .	CAUSE	was plagued by	game	turnovers	?	0	0.5865
+806	The game was plagued by turnovers with the two teams combining for 64 miscues , including 34 by W&L .	CAUSE	was plagued by	game	turnovers	?	0	0.5865
+807	The game was riddled with turnovers by both teams .	CAUSE	was riddled with	game	turnovers	?	0	0.5865
+808	The game was riddled with turnovers -- two by Pittsburgh in the first half , and three by Baltimore in the second -- and there was very little flow as a result of frequent penalties (6-74 by Baltimore , 9-95 by Pittsburgh ) .	CAUSE	was riddled with	game	turnovers	?	0	0.5865
+809	This game will come down to turnovers and red zone efficiency .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+810	This being a rivalry almost all of this means nothing but I was just giving my view , this game will come down to turnovers and who makes the fewest .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+811	This game will come down to turnovers .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+812	But I do believe the game will come down to turnovers , and for all the points and yards the Tigers have surrendered , the D has done a solid job this year of getting turnovers and stops when they really needed them .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+813	No one can dispute that this game will come down to turnovers , our number one rating in creating these will be a need we must create and exploit all in one .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+814	Ultimately , though , the game will come down to turnovers .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+815	Thus , in my opionion , assuming neither teams offense stops itself ( poor execution , dropped balls ) then this game will come down to turnovers .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+816	3 BAL DEN Baltimore will be in a dog fight with the Bronco 's and this game will come down to turnovers .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+817	Anyways , this game will come down to turnovers , once again .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+818	The difference in this game will come down to turnovers .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+819	58 PM The game will come down to turnovers ...as most games do , but this game will be a prime example of it .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+820	This game will come down to turnovers , and the Jets re-commitment to the running game works in their favor .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+821	This game will come down to turnovers again , but statistically there 's not a huge difference between what the Eagles and Cowboys have defensively .	CAUSE	will come down to	game	turnovers	?	0	0.5865
+822	The key to this game could be turnovers .	CAUSE	could be	game	turnovers	?	0	0.5865
+823	The game within the game could be turnovers because while San Diego is approaching prolific levels with Rivers slinging it around , the Chargers have 22 giveaways .	CAUSE	could be	game	turnovers	?	0	0.5865
+824	Sims also contributed with six assists and two blocks , while freshman Otto Porter recorded 10 boards to go with eight points The game was all about turnovers with the Hoyas letting themselves go a little bit in the first half , committing seven turnovers .	CAUSE	was all about	game	turnovers	?	0	0.5865
+825	Lowest efficiency vs season-to-date KU - Reed , Marcus Morris Opp - Richardson , Dagunduro Keys to Watch For Edge ( Comments ) For Nebraska , this game is all about turnovers .	CAUSE	is all about	game	turnovers	?	0	0.5865
+826	This game is all about turnovers .	CAUSE	is all about	game	turnovers	?	0	0.5865
+827	This game was all about turnovers .	CAUSE	was all about	game	turnovers	?	0	0.5865
+828	The game will be decided by turnovers , and the kicking game ,  Royal would say .	CAUSE	will be decided by	game	turnovers	?	1	0.8708
+829	This game will be decided by turnovers , and it will be the Colts who are the victims .	CAUSE	will be decided by	game	turnovers	?	1	0.8708
+830	The game will be decided by turnovers , just as it was on Oct. 3 ." - Vic Ketchman ( 12/14/10 ) Around SB Nation nice work .	CAUSE	will be decided by	game	turnovers	?	1	0.8708
+831	The problem this game had is the turnovers on offense and the 2nd half disappearing act of Brady and company .	CAUSE	had is	game	turnovers	?	1	0.8708
+832	This game swung on turnovers in the fourth quarter , and now Denver must figure out how to stay in the playoff chase at 7-5 .	CAUSE	swung on	game	turnovers	?	0	0.5865
+833	The game swung on turnovers with Baltimore building a 21-7 halftime lead thanks to two Pittsburgh miscues .	CAUSE	swung on	game	turnovers	?	0	0.5865
+834	This game could hinge on turnovers .	CAUSE	could hinge on	game	turnovers	?	0	0.5865
+835	This game could hinge on turnovers , an area the Tigers have the advantage ( second in the GPAC at +6 ) as Morningside is last with -3 on the year .	CAUSE	could hinge on	game	turnovers	?	0	0.5865
+836	On Wednesday night , the Lakers pulled off an 87-78 win over the Hornets in a game that was filled with turnovers , a lot of missed free throws , and plenty of bad calls by the referees .	CAUSE	was filled with	game	turnovers	?	0	0.5865
+837	The game was filled with turnovers , with both teams committing 23 apiece , as Albion converted on 22 points while the Thunder turned them into 14 points .	CAUSE	was filled with	game	turnovers	?	0	0.5865
+838	This game was just filled with turnovers – way too many of them committed by the pens .	CAUSE	was just filled with	game	turnovers	?	0	0.5865
+839	The game , however , came down to turnovers .	CAUSE	came down to	game	turnovers	?	0	0.5865
+840	the game came down to turnovers .	CAUSE	came down to	game	turnovers	?	0	0.5865
+841	OK , in all seriousness , this game comes down to turnovers .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+842	--If this game comes down to turnovers , Army could be in trouble .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+843	I think this game comes down to turnovers , big plays , and who can stop the run .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+844	This game comes down to turnovers .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+845	Fumbles play pivotal role in loss In the end , the game came down to turnovers .	CAUSE	came down to	game	turnovers	?	0	0.5865
+846	The game comes down to turnovers ( who makes the critical mistakes ) and whether the UT Defense gives up big plays again .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+847	While the Monarchs ended up outrebounding the Rams 35-31 , the story of the game came down to turnovers .	CAUSE	came down to	game	turnovers	?	0	0.5865
+848	The special teams play of the Patriots got all the coverage , but the difference in the game came down to turnovers , with Miami losing that battle 4-0 .	CAUSE	came down to	game	turnovers	?	0	0.5865
+849	However this game came down to turnovers , we had 2 costly ones and did n't force one .	CAUSE	came down to	game	turnovers	?	0	0.5865
+850	As far as the Kean vs. Salisbury game , I believe this game comes down to turnovers and special teams .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+851	So this game comes down to turnovers .	CAUSE	comes down to	game	turnovers	?	0	0.5865
+852	We’ll see but this game is going to come down to turnovers .	CAUSE	is going to come down to	game	turnovers	?	1	0.8708
+853	I’m guessing this game is going to come down to turnovers ( Duh ! ) and who makes the best adjustments at halftime .	CAUSE	is going to come down to	game	turnovers	?	1	0.8708
+854	Other than the rebounding , this game is going to come down to turnovers .	CAUSE	is going to come down to	game	turnovers	?	1	0.8708
+855	this game is going to come down to turnovers .	CAUSE	is going to come down to	game	turnovers	?	1	0.8708
+856	Kelly Williams JAPAN 63-57 CHINESE TAIPEI In a game that featured 13 lead changes and five ties , the game was determined by turnovers as Chinese Taipei had 15 compared to 8 by Japan .	CAUSE	was determined by	game	turnovers	?	1	0.8708
+857	The last time thee two played the game was determined by turnovers .	CAUSE	was determined by	game	turnovers	?	1	0.8708
+858	However , the ultimate difference in the game turned out to be turnovers .	CAUSE	turned out to be	game	turnovers	?	0	0.5865
+859	The difference in the game turned out to be turnovers — and there were a lot of them .	CAUSE	turned out to be	game	turnovers	?	0	0.5865
+860	One of the things keeping the Lakers in this game is points off turnovers .	CAUSE	is points off	game	turnovers	?	0	0.5865
+861	The most telling stat of the game was points off turnovers .	CAUSE	was points off	game	turnovers	?	0	0.5865
+862	The difference in the game was turnovers ; while the home team gave it up 16 times , Tech had 25 miscues in the loss .	CAUSE	was	game	turnovers	?	0	0.5865
+863	The storyline for this game is turnovers .	CAUSE	is	game	turnovers	?	0	0.5865
+864	The one stat that changed the game was turnovers .	CAUSE	was	game	turnovers	?	0	0.5865
+865	The big difference in the game was turnovers , as Timberline held a 2-to-1 advantage , forcing 28 while only giving up the ball 14 times .	CAUSE	was	game	turnovers	?	0	0.5865
+866	The wild card in this game is turnovers .	CAUSE	is	game	turnovers	?	0	0.5865
+867	The main difference in the game was turnovers .	CAUSE	was	game	turnovers	?	0	0.5865
+868	My key to the game is turnovers .	CAUSE	is	game	turnovers	?	0	0.5865
+869	46 pm About the only advantage PSU takes into this game is turnovers .	CAUSE	is	game	turnovers	?	0	0.5865
+870	The statistic of the game was turnovers , where Villanova did not commit a turnover in the entire second half .	CAUSE	was	game	turnovers	?	0	0.5865
+871	But the biggest difference in the game was turnovers .	CAUSE	was	game	turnovers	?	0	0.5865
+872	The reason for Bury 's downfall in this game were the turnovers and missed tackles that led to Diss taking a 10 – 0 half-time lead .	CAUSE	were	game	turnovers	?	0	0.5865
+873	That was a big part of the game for them , was the turnovers . ”	CAUSE	was	game	turnovers	?	0	0.5865
+874	One of the major statistics in the game was turnovers , with Minnesota having 18 for the game and Virginia only half of that with nine .	CAUSE	was	game	turnovers	?	0	0.5865
+875	The Poets showed they can bang inside with anyone as they only were outshot in the paint 38-36 on the game , but what hurt Whittier throughout the game were turnovers as Bakersfield turned 24 Poet giveaways into 31 points that ended up being the difference in the final .	CAUSE	were	game	turnovers	?	0	0.5865
+876	In my opinion the keys to the game are the turnovers and the play of special teams .	CAUSE	are	game	turnovers	?	0	0.5865
+877	“The tale of the game is the turnovers , ” Addazio said .	CAUSE	is	game	turnovers	?	0	0.5865
+878	Two of the main reasons the Raiders lost this game were turnovers and field position and he was almost solely responsible for those two problems .	CAUSE	were	game	turnovers	?	0	0.5865
+879	The Courier Electronic Edition Cory-Rawson stalled by eight turnovers BLUFFTON--The name of the game was turnovers for Cory-Rawson in a 20-14 season-opening non-conference loss to Bluffton Friday night .	CAUSE	was	game	turnovers	?	0	0.5865
+880	“The name of the game is turnovers and those were costly , ” said Georgetown head coach Mark Bouchard .	CAUSE	is	game	turnovers	?	0	0.5865
+881	My big issue this game was turnovers ,  Pittsburg head coach Kim Peterson said .	CAUSE	was	game	turnovers	?	0	0.5865
+882	Another key to winning the game was turnovers , going into the game the Jets were an NFL leading +23 today they were -3 as Testerverde threw two interceptions and the Jets turned it over on a kick return .	CAUSE	was	game	turnovers	?	0	0.5865
+883	The only reason I was still in the game was turnovers and 3 missed 2nd qtr FGs from the Bears ( 45 , 45 and 53 ) .	CAUSE	was	game	turnovers	?	0	0.5865
+884	Both teams shot poorly from behind the arc ( 9 % for Goshen , 18 % for Grace ) and while the Lancers had a small 41 to 39 % shooting advantage overall , the real difference in the game was turnovers and offensive rebounds .	CAUSE	was	game	turnovers	?	0	0.5865
+885	The only way the Giants lose this game is turnovers .	CAUSE	is	game	turnovers	?	0	0.5865
+886	but the problem with this game was turnovers .	CAUSE	was	game	turnovers	?	0	0.5865
+887	The difference maker in this game was turnovers .	CAUSE	was	game	turnovers	?	0	0.5865
+888	The big factors of the game were turnovers , field goals , and efficiency .	CAUSE	were	game	turnovers	?	0	0.5865
+889	Luckily for Buckeyes , their poor special teams play did n’t cost them , and the difference in the game was turnovers and the play of Pryor .	CAUSE	was	game	turnovers	?	0	0.5865
+890	The difference in the game will be turnovers ( as it always is ) .	CAUSE	will be	game	turnovers	?	0	0.5865
+891	The commission has not answered the question of what caused the tragedy .	CAUSE	caused	the question	the tragedy	?	1	0.8708
+892	27 AM i am currently writing an essay on the question - Who or what is responsible for the tragedy in romeo and juliet ?	CAUSE	is responsible for	the question	the tragedy	?	0	0.5865
+893	We ask the question , " What caused this tragedy ?	CAUSE	caused	the question	this tragedy	?	1	0.8708
+894	But most often , in a manner that Rabbi Harold Kushner helped many of us to realize through his best-selling book , When Bad Things Happen to [Good ] People , the question , “ Where was God in this tragedy ? ” is not really a question .	CAUSE	was God in	the question	this tragedy	?	1	0.8708
+895	There are other questions as we examine the question of what could have been done to avert this tragedy .	CAUSE	could have been done to avert	the question	this tragedy	?	1	0.8708
+896	The question of whether someone’s negligence caused these tragedies and what damages should be recovered in the vain effort to compensate families for the loss of loved ones and the injured for their injuries should appropriately be a question for jurors after hearing all the relevant evidence .	CAUSE	caused	The question	these tragedies	?	1	0.8708
+897	WNHO said aspartame caused headache , memory loss , seizures , vision loss , coma and cancer .	CAUSE	caused	aspartame	headache	?	1	0.8000
+898	The bad effects of taking in aspartame are headache , memory loss , nausea , vision changes and depression .	CAUSE	are	aspartame	headache	?	0	0.5865
+899	* The # 1 symptom in FDA files from aspartame use is the migraine headache .	CAUSE	is	aspartame	headache	?	0	0.5865
+900	Hult DESCRIPTION Are female office holders most acceptable when they most resemble men ?	CAUSE	resemble	most	men	?	0	0.5865
+901	Notable Desire demons Pride Demon One of the most powerful Demons yet encountered are the pride demons , perhaps because they , among all their kind , most resemble men .	CAUSE	resemble	most	men	?	0	0.5865
+902	Rolling Stones Tour , Rolling Stones Concert News Mick Jagger may be one of the most listened to men in the world .	CAUSE	listened to	most	men	?	0	0.5865
+903	My ratio is sadly skewed by my nonfiction reading , most of which is required , most of which is by men , and I 'm not minded to do the work of breaking down fiction vs. nonfiction numbers .	CAUSE	is by	most	men	?	0	0.5865
+904	Also , most are by men and I don’t tend to find novels by men very interesting – too much sex , violence , war – too little human relationship .	CAUSE	are by	most	men	?	0	0.5865
+905	I read over a 1,000 books a year and most are by men , but I can’t help it if the majority of the quality books in the fields I read are by men .	CAUSE	are by	most	men	?	0	0.5865
+906	Jock Itch is a chronic and recurrent dermatophyte infection which affects the upper , inner thighs and sometimes extends to the groin and the pubic area ; the condition most frequently occurs in men , but may also occur in women .	CAUSE	frequently occurs in	most	men	?	0	0.5865
+907	Although every clinical trial is different , most are open to men , women , and/or children of all ethnic , racial , and socioeconomic backgrounds .	CAUSE	are open to	most	men	?	0	0.5865
+908	We have in the United States about 16,500 permanent deacons , most of whom are married men .	CAUSE	are married	most	men	?	0	0.5865
+909	And this innate pith and power are just the very thing we most admire in men , for it is the one gift which the gods have dealt out to us with a less liberal hand than to men .	CAUSE	admire in	most	men	?	0	0.5865
+910	Since the turn of the millennium there has been another steady rise in diagnoses of primary and secondary syphilis , most of which have been among men .	CAUSE	have been among	most	men	?	1	0.8708
+911	There was a time during the boom-years in Argentina when large immigrant populations arrived , most of which were men , and for most of whom the brothel offered the only avenue to have access to female sex .	CAUSE	were	most	men	?	0	0.5865
+912	The CDC argues that it is not surprising that a majority of AIDS cases in the United States were among men , because HIV first appeared mostly among homosexual men and injection-drug users , most of whom were men , based on 1999 census statistics .	CAUSE	were	most	men	?	0	0.5865
+913	One female ( most were men , but women made up for it in silliness ) had a long list she wanted made permanent laws--about private matters .	CAUSE	were	most	men	?	0	0.5865
+914	The advice came primarily from mentors or other presidents , most of whom were men .	CAUSE	were	most	men	?	0	0.5865
+915	lawyers profit most from divorce - and most are men !	CAUSE	are	most	men	?	0	0.5865
+916	These are the kinds of abuses most often directed at suspects and defendants , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+917	Predictably , most are men , though Dragoman makes a point of recruiting women , on the assumption that they are less likely to adopt the "macho man " image often associated with the job .	CAUSE	are	most	men	?	0	0.5865
+918	When a vet visits a school , he – most are men – gives a brief account of what he did in wartime , shows photos , a uniform and maybe medals , and then – the best part – answers questions .	CAUSE	are	most	men	?	0	0.5865
+919	20-23 In one of these studies , which involved U.S. veterans , most of whom were men , meniscal tears were also noted in 37 of 49 control subjects without knee pain ( mean age , 67 years ) who were seeking health care for another condition .	CAUSE	were	most	men	?	0	0.5865
+920	Of the Americans who are HIV+ , most are men ; and of those with AIDS , most are men .	CAUSE	are	most	men	?	0	0.5865
+921	And , we were surprised to learn that what they liked most was the men .	CAUSE	was	most	men	?	0	0.5865
+922	These gentlemen ( most are men ) are learned in the dark art of pedigrees and have ‘the eye’ for a good horse , and most if not all will be gushingly called ‘a good judge ’ by the auctioneer , when said agent gives the imperceptible wink for a bid .	CAUSE	are	most	men	?	0	0.5865
+923	Most are men , most are scientifically minded or engineers , and most are actually dismayed at weight loss , not excited about it .	CAUSE	are	most	men	?	0	0.5865
+924	Of these , most were men and most were older than forty-five .	CAUSE	were	most	men	?	0	0.5865
+925	Rubbing elbows with other scientists , most of whom were men , was nothing new , and she was no stranger to roughing it , but she had n’t socialized , much less dated , in ages .	CAUSE	were	most	men	?	0	0.5865
+926	Central Bankers are nothing but prostitutes � and since most are men , that means male prostitutes -- of their money systems .	CAUSE	are	most	men	?	0	0.5865
+927	STUTTERING CAN BE STOPPED Fifty-five million people around the world stutter , and most are men .	CAUSE	are	most	men	?	0	0.5865
+928	— – Friends of Whitworth House – Volunteering Opportunity Homelessness is a big problem in Cambridge , visible in the form of Big Issue sellers and rough sleepers , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+929	Again , most were men and 85 % were on ART.	CAUSE	were	most	men	?	0	0.5865
+930	Estimates of the number of marchers , most of whom were men , ranged from 400,000 to nearly 1.1 million , making it the largest gathering of its kind in American history .	CAUSE	were	most	men	?	0	0.5865
+931	Many times the errant followers , most of whom were men , were kicked out of the church with little if any forewarning .	CAUSE	were	most	men	?	0	0.5865
+932	Of the study patients who remained in the trial , most were men and two thirds were Caucasian .	CAUSE	were	most	men	?	0	0.5865
+933	Most were men , and almost half of those 45 to 54 .	CAUSE	were	most	men	?	0	0.5865
+934	Around a third are from ethnic minorities and most are men , though female gambling appears to be on the increase .	CAUSE	are	most	men	?	0	0.5865
+935	A separate companion report examines findings for long-term unemployed customers ( most of whom are men ) .	CAUSE	are	most	men	?	0	0.5865
+936	And lately , I 've had a lot of conversations about babies with coworkers , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+937	Most were men , most older than me .	CAUSE	were	most	men	?	0	0.5865
+938	I work for one of the large Investment Banks and these guys (yes , most are men ) dedicate millions of dollars and tons of hours to researching stocks .	CAUSE	are	most	men	?	0	0.5865
+939	Most are men 's USA sizes The TUK women 's dress shoes are made in whole and half sizes and women 's USA sizes Anarchics are mostly whole sizes depending on TUK stock and style .	CAUSE	are	most	men	?	0	0.5865
+940	Doctors , most of whom were men , cited heart health .	CAUSE	were	most	men	?	0	0.5865
+941	The average age of study participants was 69 years and most were men .	CAUSE	were	most	men	?	0	0.5865
+942	Virtually all residents – most of whom were men – lived on the Indianapolis medical campus .	CAUSE	were	most	men	?	0	0.5865
+943	Hairdressers , most of whom are men , earn a pretty good living , making around USD$ 1,000 a month .	CAUSE	are	most	men	?	0	0.5865
+944	Committee chairmen ( and yes , most are men ) control the order and pace of meetings .	CAUSE	are	most	men	?	0	0.5865
+945	Of that slight percentage , most are men .	CAUSE	are	most	men	?	0	0.5865
+946	About 17,000 Americans have hemophilia , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+947	The studies included nearly 200 patients , most of whom were men .	CAUSE	were	most	men	?	0	0.5865
+948	Most were nominally members of one of the traditional churches in their part of the country ... and most were men who could take their religion or leave it alone .	CAUSE	were	most	men	?	0	0.5865
+949	Color blindness LEDs have a more narrow spectrum than filtered incandescent light , and there has been some concern that this would result in reduced visibility for color-blind people , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+950	7. FRIENDS OF WHITWORTH HOUSE – VOLUNTEERING OPPORTUNITY Homelessness is a big problem in Cambridge , visible in the form of Big Issue sellers , rough sleepers and people begging , most of whom are men .	CAUSE	are	most	men	?	0	0.5865
+951	It is a pitiable litany of "defective " fathers ( "weak , dead , or abusive " ) and of the men ( most are men ) who rebelled against God as a way of getting back at them .	CAUSE	are	most	men	?	0	0.5865
+952	What she hates most are the men who use her , ...	CAUSE	are	most	men	?	0	0.5865
+953	He never has any serious relationships and accepted many people who wanted to sleep with him , and most are men .	CAUSE	are	most	men	?	0	0.5865
+954	Carpentering is a toilsome business and greatly fatigues the workers , but those who suffer most are the men who with a saw cut up trees into boards .	CAUSE	are	most	men	?	0	0.5865
+955	While David’s affair with Bathsheba is probably the second most famous Bible story , after David and Goliath , Michal’s role in David’s life has been diminished by Bible scholars , most of whom were men .	CAUSE	were	most	men	?	0	0.5865
+956	Above the director level , most are men .	CAUSE	are	most	men	?	0	0.5865
+957	Band Councils , most of whom are men , some of which are abusers themselves , need to be culled from the herd and replaced with forward thinking , unthreatened males , if such people exist , and new enlightened laws created and enforced on reserve .	CAUSE	are	most	men	?	0	0.5865
+958	Besides nurturing charismatic ministers , most of whom were men , black churches also helped instill cooperative values in nonclerical leaders , emphasizing democracy , equality , and caring for others .	CAUSE	were	most	men	?	0	0.5865
+959	Most were men , most were knights or other soldiers , and many were feudatories , effectively constituting the earliest medieval Sicilian landed aristocracy .	CAUSE	were	most	men	?	0	0.5865
+960	Endocrinologists tend to be somewhat conservative in their approaches to diagnosis and treatment , most are men .	CAUSE	are	most	men	?	0	0.5865
+961	Most are caused by man 's irresponsible and/or illegal use of pesticides .	CAUSE	are caused by	Most	man	?	1	0.8708
+962	Most prefer to avoid man , but males during breeding season and females with calves may charge with little provocation .	CAUSE	prefer to avoid	Most	man	?	0	0.5865
+963	Most prefer to avoid man , but males , particularly bad-tempered during the breeding season , and females with calves may charge with little provocation .	CAUSE	prefer to avoid	Most	man	?	0	0.5865
+964	Most want a man who can flow easily between traditional and non-traditional responsibilities .	CAUSE	want	Most	man	?	0	0.5865
+965	Most of all , be a man ( or woman ) and have the courage to do things right when it comes to evaluating the performance of this company .	CAUSE	be	Most	man	?	0	0.5865
+966	Most is a man whose considerable abilities as a smash himeister has earned him consistent scorn from the jealous and the snobbish .	CAUSE	is	Most	man	?	0	0.5865
+967	Most of all , male or female , be a man .	CAUSE	be	Most	man	?	0	0.5865
+968	Most recently was a man who particularly enjoys staring at buttons on small children - there was nothing overtly sexual about his post , but it was definitely creepy .	CAUSE	recently was	Most	man	?	0	0.5865
+969	After all , he was the “Most trusted man in America” .	CAUSE	trusted	Most	man	?	0	0.5865
+970	Most were like this man , in a state of disbelief and too stunned to do anything about their loss .	CAUSE	were like	Most	man	?	0	0.5865
+971	) Kungfoolss , Joke of the theory-based stylists , Most laughed at man at Bullshido.com ,	CAUSE	laughed at	Most	man	?	0	0.5865
+972	Most women cannot compete physically with a man 's strength .	CAUSE	cannot compete physically with	Most	man	?	0	0.5865
+973	Most women perceive a man who uses too much cologne or aftershave as untrustworthy .	CAUSE	perceive	Most	man	?	0	0.5865
+974	" Most women set out to change a man , and when they have changed him they do not like him . "	CAUSE	set out to change	Most	man	?	1	0.8708
+975	Most women set out to change a man , and when they have changed him they do not like him .	CAUSE	set out to change	Most	man	?	1	0.8708
+976	To turn aside the justice due a man Before the face of the Most High , Or subvert a man in his cause � The Lord does not approve .	CAUSE	subvert	Most	man	?	0	0.5865
+977	To crush under one 's feet All the prisoners of the earth , To turn aside the justice due a man Before the face of the Most High , Or subvert a man in his cause -- The Lord does not approve .	CAUSE	subvert	Most	man	?	0	0.5865
+978	For He does not afflict willingly , Nor grieve the children of men.To crush under one 's feet All the prisoners of the earth , To turn aside the justice due a man Before the face of the Most High , Or subvert a man in his cause-- The Lord does not approve .	CAUSE	subvert	Most	man	?	0	0.5865
+979	To crush under one’s feet All the prisoners of the earth , To turn aside the justice due a man Before the face of the Most High , Or subvert a man in his cause — The Lord does not approve .	CAUSE	subvert	Most	man	?	0	0.5865
+980	Most striking were the man 's eyes , dark brown and sleepy-lidded , what Carolyn used to describe as 'bedroom eyes ' .	CAUSE	were	Most	man	?	0	0.5865
+981	( 1 ) when the Most High has given final sentence for a man to die , the spirit leaves the body to return to the One who gave it , and first of all to adore the glory of the Most High .	CAUSE	has given final sentence for	Most	man	?	1	0.8708
+982	when the Most High has given final sentence for a man to die , the spirit leaves the body to return to the One who gave it , and first of all to adore the glory of the Most High .	CAUSE	has given final sentence for	Most	man	?	1	0.8708
+983	Most people who meet the man or woman of their dreams are not financially able to marry without going into debt .	CAUSE	meet	Most	man	?	0	0.5865
+984	There are also several different species of the canary , most of which have been created by man through breeding , mutation or genetic manipulation .	CAUSE	have been created by	most	man	?	1	0.8708
+985	He 's the tallest and slimmest and most resembles the man I saw in your wedding photos .	CAUSE	resembles	most	man	?	0	0.5865
+986	A lot of cruel things happen in the world , most are caused by man , some by what we call nature .	CAUSE	are caused by	most	man	?	1	0.8708
+987	Radio Pioneer Paul Harvey Dies at Age 90” “Paul Harvey , once known as the most listened to man in radio , has died at the age of 90 at a hospital near his winter home in Phoenix” .	CAUSE	listened to	most	man	?	0	0.5865
+988	Paul Harvey is often referred to as " the most listened to man in radio . "	CAUSE	listened to	most	man	?	0	0.5865
+989	.All the qualities that I most admire in a man [ ...] “Everything much the same .	CAUSE	admire in	most	man	?	0	0.5865
+990	The notion that a woman most wants a man , admirable or not , has been scoffed at .	CAUSE	wants	most	man	?	0	0.5865
+991	One of them who he depended on most was the man who did the special effects , Bill Abbott .	CAUSE	was	most	man	?	0	0.5865
+992	The man she loves the most is the man she mistrusts .	CAUSE	is	most	man	?	0	0.5865
+993	She does n't care about physical looks , and what matters most is a man 's character .	CAUSE	is	most	man	?	0	0.5865
+994	But what caught her off guard the most was the man .	CAUSE	was	most	man	?	0	0.5865
+995	In a word , what matters most is a man 's behaviour , not as an admiral , or a discoverer , or a viceroy , or a courtier , but as a man .	CAUSE	is	most	man	?	0	0.5865
+996	What the majority of women want most is a man who knows how to make mad passionate love to her .	CAUSE	is	most	man	?	0	0.5865
+997	7 , really love you , man , not easily make a commitment , because he wants to talk to yourself in your mind the most is a man , just wanted to give you the most reliable and secure happiness .	CAUSE	is	most	man	?	0	0.5865
+998	The thing that amazes me most is the man can be out for months and months , but when he comes back , he throws a gem .	CAUSE	is	most	man	?	0	0.5865
+999	For socialism , what matters the most is the man , because socialism tries to meet the increasingly growing needs of man , both material and spiritual .	CAUSE	is	most	man	?	0	0.5865
+1000	One I recall the most was a man who managed one of the buildings in the area .	CAUSE	was	most	man	?	0	0.5865

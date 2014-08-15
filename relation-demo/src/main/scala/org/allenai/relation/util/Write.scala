@@ -25,26 +25,52 @@ class Write {
     fw.flush()
     fw.close()
   }
+
+  def rewrite_map1(output: String, data: Map[String, List[List[String]]]) = {
+    //    data.foreach {
+    //      case (disrel, LL) => {
+    //        val outputname = output + "/" + disrel + ".txt"
+    //        val outputfile = new File(outputname)
+    //        val fw = new BufferedWriter(new FileWriter(outputfile, false))
+    //        LL.foreach {
+    //          case tuple => {
+    //            fw.write(tuple._1)
+    //            fw.write("\t")
+    //            fw.write(tuple._2)
+    //            fw.newLine()
+    //          }
+    //        }
+    //        
+    //        fw.flush()
+    //        fw.close()
+    //      }
+    //    }
+  }
   
-  def rewrite_map1(output:String, data: Map[String, List[List[String]]]) = {
-//    data.foreach {
-//      case (disrel, LL) => {
-//        val outputname = output + "/" + disrel + ".txt"
-//        val outputfile = new File(outputname)
-//        val fw = new BufferedWriter(new FileWriter(outputfile, false))
-//        LL.foreach {
-//          case tuple => {
-//            fw.write(tuple._1)
-//            fw.write("\t")
-//            fw.write(tuple._2)
-//            fw.newLine()
-//          }
-//        }
-//        
-//        fw.flush()
-//        fw.close()
-//      }
-//    }
+  def rewrite_4(output: String, data: List[(String, String, String, String, String, String, String)]) = {
+    val outputfile = new File(output)
+    val fw = new BufferedWriter(new FileWriter(outputfile, false))
+
+    data.foreach {
+      case tuple => {
+        fw.write(tuple._1)
+        fw.write("\t")
+        fw.write(tuple._2)
+        fw.write("\t")
+        fw.write(tuple._3)
+        fw.write("\t")
+        fw.write(tuple._4)
+        fw.write("\t")
+        fw.write(tuple._5)
+        fw.write("\t")
+        fw.write(tuple._6)
+        fw.write("\t")
+        fw.write(tuple._7)
+        fw.newLine()
+      }
+    }
+    fw.flush()
+    fw.close()
   }
 
   def rewrite_map2(output: String, data: Map[String, List[(String, String, String, String, String)]]) = {
@@ -74,7 +100,6 @@ class Write {
     }
   }
 
-  
   def rewrite_1(output: String, data: List[(String, String, String, String, String)]) = {
     val outputfile = new File(output)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
@@ -96,7 +121,7 @@ class Write {
     fw.flush()
     fw.close()
   }
-  
+
   def rewrite_3(output: String, data: List[(String, String, String, String, String, String)]) = {
     val outputfile = new File(output)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
@@ -120,7 +145,7 @@ class Write {
     fw.flush()
     fw.close()
   }
-  
+
   def rewrite_version1(outputname: String,
     data: List[(String, String, String, String, String, Set[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.DependencyNode]]])]) = {
     val outputfile = new File(outputname)
@@ -145,14 +170,14 @@ class Write {
     fw.flush()
     fw.close()
   }
-  
+
   def rewrite_3(outputname: String, data: Map[String, Int]) = {
     val outputfile = new File(outputname)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
 
     data.foreach {
       case (entity, count) => {
-        println("---"+entity)
+        println("---" + entity)
         println("====" + count)
         fw.write(entity)
         fw.write("\t")

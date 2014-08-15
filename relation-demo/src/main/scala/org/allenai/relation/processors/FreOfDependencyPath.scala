@@ -5,7 +5,7 @@ import scala.collection.mutable.Map
 object FreOfDependencyPath {
   def main(args: Array[String]) = {
     val source = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp"
-//    val source = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples_dp"
+    //    val source = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples_dp"
     var disrel_dps_num = readFromFile(source)
     disrel_dps_num.foreach {
       case (disrel, dps_num) => {

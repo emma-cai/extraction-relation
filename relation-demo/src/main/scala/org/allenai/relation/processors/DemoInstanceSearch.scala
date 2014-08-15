@@ -4,7 +4,6 @@ import org.allenai.relation.util.Searching
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-
 object DemoInstanceSearch {
   private val indexPath: String = "/Users/qingqingcai/Documents/scala/workspace/relationextractionbasedermine/data/test/Index"
   private val search: Searching = new Searching()
@@ -17,19 +16,18 @@ object DemoInstanceSearch {
     println("Input: discourse-relation and lexical-cue-seed (relation-phrase)")
     println("Output: Instances (entity pairs)")
     println()
-    
-//    var scanner = new Scanner(System.in)
-//    var discourse = scanner.nextLine()
-//    try{
-//      println(discourse)
-//    } catch {
-//      
-//      case ioe: IOException => print("here")
-//    }
-//    println("done")
-    var br:BufferedReader = new BufferedReader(new InputStreamReader(System.in))
-    
-    
+
+    //    var scanner = new Scanner(System.in)
+    //    var discourse = scanner.nextLine()
+    //    try{
+    //      println(discourse)
+    //    } catch {
+    //      
+    //      case ioe: IOException => print("here")
+    //    }
+    //    println("done")
+    var br: BufferedReader = new BufferedReader(new InputStreamReader(System.in))
+
     var discourse = Console.readLine("Discouse relation (FUNCTION; CAUSE; EXAMPLE; ENABLE; PURPOSE): ")
     var relationphrase = Console.readLine("relation phrase> ")
     while (!discourse.equals("-1") && !relationphrase.equals("-1")) {
@@ -40,7 +38,7 @@ object DemoInstanceSearch {
       println()
       println()
       discourse = Console.readLine("Discouse relation (FUNCTION; CAUSE; EXAMPLE; ENABLE; PURPOSE): ")
-      relationphrase = Console.readLine("key phrase> ")       
+      relationphrase = Console.readLine("key phrase> ")
     }
   }
 }

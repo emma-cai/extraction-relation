@@ -8,8 +8,8 @@ object RunDependencyPath {
   private val MAXLEN = 4 //the maximum denpendency-path length we considered here is 4
   def main(args: Array[String]) = {
     //    test()
-//    var source = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_v2"
-//    var outdir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp"
+    //    var source = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_v2"
+    //    var outdir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp"
     var source = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples"
     var outdir = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples_dp"
     var MYWrite = new Write()

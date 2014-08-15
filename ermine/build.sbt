@@ -20,7 +20,9 @@ libraryDependencies ++= AkkaLibraries ++ ClearLibraries ++ StanfordLibraries ++ 
     taggers,
     tinkerpop,
     typesafeConfig,
-    "org.apache.lucene" % "lucene-core" % "2.9.4")
+    "org.apache.lucene" % "lucene-core" % "2.9.4",
+    "nz.ac.waikato.cms.weka" % "weka-stable" % "3.6.6"
+    )
 
 addLoggingDependencies(libraryDependencies)
 

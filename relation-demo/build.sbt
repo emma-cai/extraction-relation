@@ -14,7 +14,22 @@ libraryDependencies ++= AkkaLibraries ++ TestLibraries ++ Seq(
   sprayModule("can"),
   sprayModule("client"),
   sprayModule("routing"),
-  typesafeConfig, 
+  typesafeConfig,
+  dom4j,
+  poiFinal,
+  poiOoxml,
+  poiOoxmlSchema,
+  xmlBeans, 
+  weka, 
+  solvers, 
+  textualEntailment,  
+  ari, 
+  //ermineApi,
+  //gremlin,
+  //"com.googlecode.aima-java" % "aima-core" % "0.10.5",
+  //morpha,
+  //datastoreCommon,
+  //datastoreClient,
   "org.apache.lucene" % "lucene-core" % "2.9.4")
 
 addLoggingDependencies(libraryDependencies)

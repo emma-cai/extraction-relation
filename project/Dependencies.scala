@@ -75,6 +75,27 @@ object Dependencies {
   // Tinkerpop for RDF graph manipulation.
   val tinkerpop = "com.tinkerpop.blueprints" % "blueprints-sail-graph" % "2.5.0"
 
+  // Classification libraries
+  //val weka = "nz.ac.waikato.cms.weka" % "weka-stable" % "3.6.6"
+  //val solvers = "org.allenai.ari.solvers" %% "solvers-inference" % "0.0.2-SNAPSHOT"
+  //val textualEntailment = ("org.allenai.textual-entailment" %% "interface" % "2013.03.05-0-SNAPSHOT")
+	//.exclude("org.allenai.nlptools", "core_2.10")
+  val dom4j = "dom4j" % "dom4j" % "1.6.1"
+  val poiFinal = "org.apache.poi" % "poi" % "3.10-FINAL"
+  val poiOoxml = "org.apache.poi" % "poi-ooxml" % "3.10-FINAL"
+  val poiOoxmlSchema = "org.apache.poi" % "poi-ooxml-schemas" % "3.10-FINAL"
+  val xmlBeans = "org.apache.xmlbeans" % "xmlbeans" % "2.3.0"
+  val weka = "nz.ac.waikato.cms.weka" % "weka-stable" % "3.6.6"
+  val solvers = "org.allenai.ari.solvers" %% "solvers-inference" % "0.0.2-SNAPSHOT"
+  val textualEntailment = ("org.allenai.textual-entailment" %% "interface" % "2013.03.05-0-SNAPSHOT")
+    .exclude("org.allenai.nlptools", "core_2.10")  
+  val ari = "org.allenai.ari" %% "ari-interface" % "2014.06.10-0-SNAPSHOT"
+  //val ermineApi = "org.allenai.extraction" %% "extraction-api" % "2014.5.14-0-SNAPSHOT"
+  //val gremlin = "com.michaelpollmeier" %% "gremlin-scala" % "2.5.0"
+  //val datastoreCommon = "org.allenai.ari-datastore" %% "interface" % "2014.5.16-0-SNAPSHOT"
+  //val datastoreClient = "org.allenai.ari-datastore" %% "client" % "2014.5.16-0-SNAPSHOT"
+  //val morpha = "edu.washington.cs.knowitall.nlptools" %% "nlptools-stem-morpha" % "2.4.4"
+
   // Demo-only libraries.
 
   // For http calls.
@@ -115,6 +136,11 @@ object Dependencies {
 
   val Overrides = Set(
     // Base version of the scala core libraries; minor override.
+    "com.carrotsearch" % "hppc" % "0.4.1", 
+    "args4j" % "args4j" % "2.0.16", 
+    //"com.github.scopt" % "scopt_2.10" % "2.1.0", 
+    "com.github.scopt" % "scopt_2.10" % "3.2.0", 
+    "commons-codec" % "commons-codec" % "1.5",
     "org.scala-lang" % "scala-library" % "2.10.4",
     "org.scala-lang" % "scala-compiler" % "2.10.4",
     "org.scala-lang" % "scala-reflect" % "2.10.4",

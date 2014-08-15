@@ -3,9 +3,9 @@ package org.allenai.relation.api
 import scala.collection.mutable.Map
 
 class DependencySearching {
-  def runSearch(dir:String, disrel:String):List[List[String]] = {
-    var source = dir+"/"+disrel+".txt"
-    var rapdps_num:List[List[String]] = List()
+  def runSearch(dir: String, disrel: String): List[List[String]] = {
+    var source = dir + "/" + disrel + ".txt"
+    var rapdps_num: List[List[String]] = List()
     val dps_num = readFromFile(source)
     val sum = dps_num.foldLeft(0)(_ + _._2)
     val dps_num_sorted = dps_num.toList.sortWith((x, y) => x._2 > y._2)
@@ -15,26 +15,26 @@ class DependencySearching {
         for (e <- dp) {
           if (!e.equals(dp.head)) {
             dpstr = dpstr + " & " + e
-          } 
+          }
         }
-        var tmp:List[String] = List()
+        var tmp: List[String] = List()
         tmp = tmp ::: List(dpstr)
         tmp = tmp ::: List(Integer.toString(num))
-        
+
         rapdps_num = rapdps_num ::: List(tmp)
       }
     }
     return rapdps_num
   }
-  
+
   /** Store tuples in a file, and get frequency from the file (considering the efficiency)
     */
-  def readFromFile(source:String): Map[Set[String], Int] = {
+  def readFromFile(source: String): Map[Set[String], Int] = {
     var dps_num: Map[Set[String], Int] = collection.mutable.Map.empty[Set[String], Int]
     for (line <- scala.io.Source.fromFile(source).getLines()) {
       //for each line, get two columns(disrel, dpslist)
       var tuple = getDPsList(line)
-     // var disrel = tuple._1
+      // var disrel = tuple._1
       var dpslist = tuple._2
       var rahformat = convertRaphaelFormat(dpslist)
       //update the hashmap
@@ -50,10 +50,10 @@ class DependencySearching {
     */
   def update(dps_num: Map[Set[String], Int], dp: Set[String]) = {
     if (dps_num.contains(dp)) {
-        val tmp = dps_num(dp)
-        dps_num.put(dp, tmp + 1)
-      } else {
-        dps_num.put(dp, 1)
+      val tmp = dps_num(dp)
+      dps_num.put(dp, tmp + 1)
+    } else {
+      dps_num.put(dp, 1)
     }
   }
 
