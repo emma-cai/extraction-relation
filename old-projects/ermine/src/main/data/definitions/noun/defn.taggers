@@ -1,0 +1,39 @@
+RelClause := TypedOpenRegex {
+   (?: <string=",">? <string=/that|which|who|whom/>)
+}
+
+DefnPronoun := CaseInsensitiveKeywordTagger {
+    it
+    one
+}
+
+consume DefnIsa := TypedOpenRegex {
+// Defined Term for nouns can sometimes come out as other POS tags, for e.g., "Western :  A movie set in the historic American West." where 'Western' is tagged as an adjective from the POS Tagger.
+// Or "melting : The process whereby heat change something from a solid to a liquid" where 'melting' is tagged as a verb.
+// Here we allow up to 3-word phrases before the colon and all of them should be of the same chunk type.
+    (?: ^(<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>:(@NGNoDetSingle|(<chunk=/B-NP/> (<chunk=/I-NP/>? <chunk=/I-NP/>)?)|(<chunk=/B-VP/> (<chunk=/I-VP/>? <chunk=/I-VP/>)?)|(<chunk=/B-ADJP/> (<chunk=/I-ADJP/>? <chunk=/I-ADJP/>)?))) <string="'">?) (<IsaRel>: (<string=/refers/> <string=/to/>) | (<pos="MD">? <lemma=/be/> <string=/defined/> <string=/as/>) | (<string=/is/> <string=/a/> @TypeOf) | (<string=/is/> @WordFor) | (<string=/is|was|are|were|describes/>)) @Det? (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: (@AP3NoVb | @AVP1)))? (<string=",">? <string="with"> (<Properties>: @NGMultiple))?)
+ |  (?: ^(<DefinedTerm>:(@NGNoDetSingle|(<chunk=/B-NP/> (<chunk=/I-NP/>? <chunk=/I-NP/>)?)|(<chunk=/B-VP/> (<chunk=/I-VP/>? <chunk=/I-VP/>)?)|(<chunk=/B-ADJP/> (<chunk=/I-ADJP/>? <chunk=/I-ADJP/>)?))) <string=":"> (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? ((@DefnPronoun | (@Det? <string="'">? @NGNoDetSingle <string="'">?)) (<IsaRel>: (<string=/refers/> <string=/to/>) | (<pos="MD">? <lemma=/be/> <string=/defined/> <string=/as/>) | (<string=/is/> @TypeOf) | (<string=/is/> @WordFor) | (<string=/is|was|are|were|describes/>)))? @Det? (<IsaWhat>:@NGNoDetSingle) (<string=",">? (<Qualities>: (@AP3NoVb | @AVP1)))? (<string=","> <string="with"> (<Properties>: @NGMultiple))?)
+ |  (?: ^(<DefinedTerm>:(@NGNoDetSingle|(<chunk=/B-NP/> (<chunk=/I-NP/>? <chunk=/I-NP/>)?)|(<chunk=/B-VP/> (<chunk=/I-VP/>? <chunk=/I-VP/>)?)|(<chunk=/B-ADJP/> (<chunk=/I-ADJP/>? <chunk=/I-ADJP/>)?))) (<IsaRel>: <string=":">) (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? (@TypeOf | @WordFor)? @Det? (<IsaWhat>:@NGNoDetMultiple))
+ |  (?: ^(<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,/>)?)? @Det? (<string="'">? (<DefinedTerm>:(@NGNoDetSingle|(<chunk=/B-NP/> (<chunk=/I-NP/>? <chunk=/I-NP/>)?)|(<chunk=/B-VP/> (<chunk=/I-VP/>? <chunk=/I-VP/>)?)|(<chunk=/B-ADJP/> (<chunk=/I-ADJP/>? <chunk=/I-ADJP/>)?))) <string="'">?) (<IsaRel>: ((<string=/refers/> <string=/to/>) | (<pos="MD">? <lemma=/be/> <string=/defined/> <string=/as/>) | (<string=/is/> @TypeOf) | (<string=/is/> @WordFor) | (<string=/is|was|are|were|describes/>))) @Det? (<IsaWhat>: @NGNoDetMultiple))
+}
+
+// E.g.: The ear is the organ that hears sound.
+consume DefnRelClausePattern := TypedOpenRegex {
+  (?:  (<DefnIsaPart>: @DefnIsa) <string=/,/>? @RelClause)
+}
+
+// E.g.: A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
+consume DefnWhenWherePattern := TypedOpenRegex {
+   (?: (<DefnIsaPart>: @DefnIsa) (<string=/,/>? <string=/when|where|whereby/>))
+}
+
+// E.g.: Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
+consume DefnWhichWhomPattern := TypedOpenRegex {
+   (?: (<DefnIsaPart>: @DefnIsa) ((<Prep>: <pos="IN">) <string=/which|whom/>))
+}
+
+// E.g.: An 'agreement' is where everybody has the same feelings about something.
+consume DefnIsWherePattern := TypedOpenRegex {
+  (?: (<string=/In/>?  (<Context>: <pos=/NN.*/>) (<string=/,|:/>)?)? @Det? (<string="'">? (<DefinedTerm>: @NGNoDetSingle) <string="'">?) (<string="is"> (<string="where"> | <string="when">)))
+ | (?: ((<DefinedTerm>:@NGNoDetSingle) <string=":">) (<string=/In/>  (<Context>: <pos=/NN.*/>) (<string=/,|:/>)?)? @Det? (<string="'">? @NGNoDetSingle <string="'">?) (<string="is"> <string="where" | string="when">))
+}

@@ -10,7 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import scala.collection.mutable.Map
 import org.allenai.relation.util.Write
 
-class TrainingDataExtraction {
+class SentenceDisrelLabelExtraction {
 
   /** inputpath: NY Training data
     * outputpathdata: id, sen, disrel, arg1, arg2, label
@@ -76,22 +76,6 @@ class TrainingDataExtraction {
   }
 
   def getInfo(rule: String): List[(String, String, String)] = {
-    //    barrons.rule1874:: 
-    //    isa(E9S786-change, "change"), 
-    //    agent(E9S786-change, A1S786-melt), 
-    //    isa(A1S786-melt, "Melting"), 
-    //    object(E9S786-change, A10S786-water), 
-    //    isa(A10S786-water, "water"), 
-    //    from(E9S786-change, A14S786-state), 
-    //    isa(A14S786-state, "its[Melting] solid state"), 
-    //    to(E9S786-change, A21S786-state), 
-    //    isa(A21S786-state, "a liquid state") 
-    //    -> 
-    //    enable(E24S786-addition, E9S786-change), 
-    //    isa(E24S786-addition, "add"), 
-    //    agent(E24S786-addition, A1S786-melt), 
-    //    object(E24S786-addition, A26S786-heat), 
-    //    isa(A26S786-heat, "heat").
     var tuplelist: List[(String, String, String)] = List()
     var rel_arg1_arg2: Map[String, Map[String, String]] = collection.mutable.Map.empty[String, Map[String, String]]
 

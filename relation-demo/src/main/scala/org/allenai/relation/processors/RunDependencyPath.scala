@@ -14,7 +14,6 @@ object RunDependencyPath {
     var outdir = "/Users/qingqingcai/Documents/Data/Barrons/experiments/disrel_tuples_dp"
     var MYWrite = new Write()
     var disrel_tuples_dp: Map[String, (String, String, String, String, String, Set[Set[String]])] = collection.mutable.Map.empty[String, (String, String, String, String, String, Set[Set[String]])]
-    val MYPolyparser = new Polyparser()
     val files = new java.io.File(source).listFiles.filter(_.getName.endsWith(".txt"))
     for (file <- files) {
       // process the file
@@ -32,13 +31,13 @@ object RunDependencyPath {
         println("==================")
         println("sen = " + sen)
 
-        val tree = MYPolyparser.processText(sen)
+        val (root, tree) = Polyparser.processText(sen)
         if (tree != null) {
 
           //          val arg1list = MYPolyparser.getid(tree.vertices.toList, arg1name)
           //          val arg2list = MYPolyparser.getid(tree.vertices.toList, arg2name)
-          val arg1list = findHeadW(MYPolyparser, tree.vertices.toList, arg1name, tree.edges.toList)
-          val arg2list = findHeadW(MYPolyparser, tree.vertices.toList, arg2name, tree.edges.toList)
+          val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1name, tree.edges.toList)
+          val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2name, tree.edges.toList)
           //	  println("arg1list = " + arg1list + "\t arg2list = " + arg2list)
           arg1list.foreach(arg1 => arg2list.foreach(arg2 => {
             //	    println("arg1id = " + arg1 +"\t arg2 = " + arg2)
@@ -61,11 +60,11 @@ object RunDependencyPath {
 
   def test() = {
     println("here")
-    var MYPolyparser = new Polyparser()
+    
 
     val text = "A cancerous tumor is an example of a lesion,however the surrounding tissue damaged by a tumor is also a lesion."
     println(text)
-    var tree = MYPolyparser.processText(text)
+    var (root, tree) = Polyparser.processText(text)
 
     if (tree != null) {
       println("polyparser:")
@@ -74,20 +73,20 @@ object RunDependencyPath {
       }
     }
 
-    val res1 = findHeadW(MYPolyparser, tree.vertices.toList, "A cancerous tumor", tree.edges.toList)
+    val res1 = Polyparser.findHeadW(tree.vertices.toList, "A cancerous tumor", tree.edges.toList)
     println("arg1 = " + res1)
-    val res2 = findHeadW(MYPolyparser, tree.vertices.toList, "a lesion", tree.edges.toList)
+    val res2 = Polyparser.findHeadW(tree.vertices.toList, "a lesion", tree.edges.toList)
     println("arg2 = " + res2)
   }
 
   /** Given nodes-set(tree.nodes), dependencies-set(tree.dependencies), arg1-id and arg2-id
     * find all dependency-paths connecting arg1-id and arg2-id
     */
-  def findDepPath(arg1: Int, arg2: Int, ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode],
-    ds: Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]): (Boolean, Set[Set[String]]) = {
-    var dependencypaths: List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]] = List()
+  def findDepPath(arg1: Int, arg2: Int, ns: List[Polyparser.Mytokennode],
+    ds: Set[Polyparser.Myedge]): (Boolean, Set[Set[String]]) = {
+    var dependencypaths: List[Set[Polyparser.Myedge]] = List()
     for (pl <- 0 to MAXLEN) {
-      var forspelen = findDepPathWithSpeLen(ns, ds, arg1, arg2, pl)
+      var forspelen = Polyparser.findDepPathWithSpeLen(ns, ds, arg1, arg2, pl)
       if (forspelen._1 == true && forspelen._2 != null) {
         forspelen._2.foreach(p => if (!dependencypaths.contains(p)) dependencypaths = dependencypaths ::: List(p))
       }
@@ -101,133 +100,133 @@ object RunDependencyPath {
     }
   }
 
-  /** Following findDepPath, with specific dependency-path-length
-    */
-  def findDepPathWithSpeLen(ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode],
-    ds: Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]],
-    arg1: Int, arg2: Int, pl: Int): (Boolean, List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]]) = {
+//  /** Following findDepPath, with specific dependency-path-length
+//    */
+//  def findDepPathWithSpeLen(ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode],
+//    ds: Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]],
+//    arg1: Int, arg2: Int, pl: Int): (Boolean, List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]]) = {
+//
+//    var deppathlist: List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]] = List()
+//
+//    //pl = 0, special case
+//    if (pl == 0) return (true, null)
+//
+//    //pl = 1, just check whether there's a link between "from" and "to"
+//    if (pl == 1) {
+//      val checkres = checkpath(ds, arg1, arg2)
+//      if (checkres._1 == true)
+//        return (true, List(Set(checkres._2)))
+//      else return (false, null)
+//    }
+//
+//    //pl = 2, only check one other node
+//    if (pl == 2) {
+//      val posconnodes = findConnectNodes(ns, List(arg1, arg2), 1)
+//      posconnodes.foreach {
+//        case pcn => {
+//          val checkres_arg1 = checkpath(ds, arg1, pcn.head.id)
+//          val checkres_arg2 = checkpath(ds, arg2, pcn.head.id)
+//          if (checkres_arg1._1 == true && checkres_arg2._1 == true) {
+//            //add result list
+//            deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2))
+//          }
+//        }
+//      }
+//
+//      if (deppathlist.size > 0)
+//        return (true, deppathlist)
+//      else
+//        return (false, null)
+//    }
+//
+//    //pl > 2, general case
+//    if (pl > 2) {
+//      val posconnodes = findConnectNodes(ns, List(arg1, arg2), pl - 1) //find all possible sets that could connect arg1 and arg2
+//      posconnodes.foreach {
+//        case pcn => { //for each set
+//          val pcnsize = pcn.size
+//          for (i <- 0 to pcnsize - 1) {
+//            val node1 = pcn(i) //for node1
+//            for (j <- 0 to pcnsize - 1) {
+//              val node2 = pcn(j)
+//              if (!node1.id.equals(node2.id)) { //for node2, distinguish from node1
+//                val checkres_arg1 = checkpath(ds, arg1, node1.id) //is arg1 connected with node1
+//                val checkres_arg2 = checkpath(ds, arg2, node2.id) //is arg2 connected with node1
+//                var newns = ns.filter(x => !x.id.equals(arg1) && !x.id.equals(arg2)) //new nodes, removing arg1 and arg2
+//                var recursivechecker = findDepPathWithSpeLen(newns, ds, node1.id, node2.id, pl - 2) //is node1 connected with node2, this is recursive version
+//                if (checkres_arg1._1 == true && checkres_arg2._1 == true
+//                  && recursivechecker._1 == true) { //if arg1<-->node1 && arg2<-->node2 && node1<-->node2
+//                  var recursivepath = recursivechecker._2 //get the path between node1 and node2
+//                  recursivepath.foreach {
+//                    case f => { //add each possible previous path (between node1 and node2) to the new path, adding arg1 and arg2
+//                      deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2) ++ f)
+//                    }
+//                  }
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
+//
+//      //if results is not empty, return
+//      if (deppathlist.size > 0)
+//        return (true, deppathlist)
+//      else
+//        return (false, null)
+//    }
+//
+//    return (false, null)
+//  }
 
-    var deppathlist: List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]] = List()
-
-    //pl = 0, special case
-    if (pl == 0) return (true, null)
-
-    //pl = 1, just check whether there's a link between "from" and "to"
-    if (pl == 1) {
-      val checkres = checkpath(ds, arg1, arg2)
-      if (checkres._1 == true)
-        return (true, List(Set(checkres._2)))
-      else return (false, null)
-    }
-
-    //pl = 2, only check one other node
-    if (pl == 2) {
-      val posconnodes = findConnectNodes(ns, List(arg1, arg2), 1)
-      posconnodes.foreach {
-        case pcn => {
-          val checkres_arg1 = checkpath(ds, arg1, pcn.head.id)
-          val checkres_arg2 = checkpath(ds, arg2, pcn.head.id)
-          if (checkres_arg1._1 == true && checkres_arg2._1 == true) {
-            //add result list
-            deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2))
-          }
-        }
-      }
-
-      if (deppathlist.size > 0)
-        return (true, deppathlist)
-      else
-        return (false, null)
-    }
-
-    //pl > 2, general case
-    if (pl > 2) {
-      val posconnodes = findConnectNodes(ns, List(arg1, arg2), pl - 1) //find all possible sets that could connect arg1 and arg2
-      posconnodes.foreach {
-        case pcn => { //for each set
-          val pcnsize = pcn.size
-          for (i <- 0 to pcnsize - 1) {
-            val node1 = pcn(i) //for node1
-            for (j <- 0 to pcnsize - 1) {
-              val node2 = pcn(j)
-              if (!node1.id.equals(node2.id)) { //for node2, distinguish from node1
-                val checkres_arg1 = checkpath(ds, arg1, node1.id) //is arg1 connected with node1
-                val checkres_arg2 = checkpath(ds, arg2, node2.id) //is arg2 connected with node1
-                var newns = ns.filter(x => !x.id.equals(arg1) && !x.id.equals(arg2)) //new nodes, removing arg1 and arg2
-                var recursivechecker = findDepPathWithSpeLen(newns, ds, node1.id, node2.id, pl - 2) //is node1 connected with node2, this is recursive version
-                if (checkres_arg1._1 == true && checkres_arg2._1 == true
-                  && recursivechecker._1 == true) { //if arg1<-->node1 && arg2<-->node2 && node1<-->node2
-                  var recursivepath = recursivechecker._2 //get the path between node1 and node2
-                  recursivepath.foreach {
-                    case f => { //add each possible previous path (between node1 and node2) to the new path, adding arg1 and arg2
-                      deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2) ++ f)
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-
-      //if results is not empty, return
-      if (deppathlist.size > 0)
-        return (true, deppathlist)
-      else
-        return (false, null)
-    }
-
-    return (false, null)
-  }
-
-  /** find subsets of ns
-    * restriction1: the subsets cannot contain any node in "notconsider"
-    * restriction2: the size of the subsets == num
-    */
-  def findConnectNodes(ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode],
-    notconsider: List[Int], num: Int): List[List[org.allenai.nlpstack.parse.graph.TokenDependencyNode]] = {
-    var connectNodeslist: List[List[org.allenai.nlpstack.parse.graph.TokenDependencyNode]] = List()
-
-    var newns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode] = List()
-    ns.foreach(x => if (!notconsider.contains(x.id)) newns = newns ::: List(x))
-
-    subsetswithn(newns, num).foreach {
-      case p => {
-        //     var l = p.filter(x => (!notconsider.contains(x.string)))
-        //        var l:List[org.allenai.nlpstack.core.parse.graph.DependencyNode] = List()
-        //        p.foreach(x => if(!notconsider.contains(x.id)) l=l:::List(x))
-        //        if(l.size == num){
-        //          connectNodeslist = connectNodeslist ::: List(l)
-        //        }
-        connectNodeslist = connectNodeslist ::: List(p)
-      }
-    }
-    return connectNodeslist
-  }
-
-  /** permutation of xs, return all possibilities (without any restriction)
-    */
-  def subsetswithn(xs: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode], num: Int) = {
-    (num to num flatMap (x => xs.combinations(x))) map (x => x)
-  }
-
-  //  def subsets3(xs:List[Int], num:Int) = {
-  //    (num to num flatMap (x => xs.combinations(x))) map ( x => x)
-  //  }
-
-  /** check: if arg1 and arg2 are connected or not?
-    */
-  def checkpath(ds: Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]],
-    arg1: Int, arg2: Int): (Boolean, org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]) = {
-    ds.foreach {
-      case edge => {
-        if ((edge.source.id.equals(arg1) && edge.dest.id.equals(arg2))
-          || (edge.source.id.equals(arg2) && edge.dest.id.equals(arg1)))
-          return (true, edge)
-      }
-    }
-    return (false, null)
-  }
+//  /** find subsets of ns
+//    * restriction1: the subsets cannot contain any node in "notconsider"
+//    * restriction2: the size of the subsets == num
+//    */
+//  def findConnectNodes(ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode],
+//    notconsider: List[Int], num: Int): List[List[org.allenai.nlpstack.parse.graph.TokenDependencyNode]] = {
+//    var connectNodeslist: List[List[org.allenai.nlpstack.parse.graph.TokenDependencyNode]] = List()
+//
+//    var newns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode] = List()
+//    ns.foreach(x => if (!notconsider.contains(x.id)) newns = newns ::: List(x))
+//
+//    subsetswithn(newns, num).foreach {
+//      case p => {
+//        //     var l = p.filter(x => (!notconsider.contains(x.string)))
+//        //        var l:List[org.allenai.nlpstack.core.parse.graph.DependencyNode] = List()
+//        //        p.foreach(x => if(!notconsider.contains(x.id)) l=l:::List(x))
+//        //        if(l.size == num){
+//        //          connectNodeslist = connectNodeslist ::: List(l)
+//        //        }
+//        connectNodeslist = connectNodeslist ::: List(p)
+//      }
+//    }
+//    return connectNodeslist
+//  }
+//
+//  /** permutation of xs, return all possibilities (without any restriction)
+//    */
+//  def subsetswithn(xs: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode], num: Int) = {
+//    (num to num flatMap (x => xs.combinations(x))) map (x => x)
+//  }
+//
+//  //  def subsets3(xs:List[Int], num:Int) = {
+//  //    (num to num flatMap (x => xs.combinations(x))) map ( x => x)
+//  //  }
+//
+//  /** check: if arg1 and arg2 are connected or not?
+//    */
+//  def checkpath(ds: Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]],
+//    arg1: Int, arg2: Int): (Boolean, org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]) = {
+//    ds.foreach {
+//      case edge => {
+//        if ((edge.source.id.equals(arg1) && edge.dest.id.equals(arg2))
+//          || (edge.source.id.equals(arg2) && edge.dest.id.equals(arg1)))
+//          return (true, edge)
+//      }
+//    }
+//    return (false, null)
+//  }
 
   /** add pos features
     */
@@ -241,7 +240,7 @@ object RunDependencyPath {
   /**
     */
   def generalizeDependencypaths(arg1: Int, arg2: Int,
-    ori: List[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]]): Set[Set[String]] = {
+    ori: List[Set[Polyparser.Myedge]]): Set[Set[String]] = {
     //    println("===========================")
     //    println("ori" + ori)
     var generalized: List[Set[String]] = List()
@@ -312,7 +311,7 @@ object RunDependencyPath {
     return generalized.toSet
   }
 
-  def addposfea(node: org.allenai.nlpstack.parse.graph.TokenDependencyNode,
+  def addposfea(node: Polyparser.Mytokennode,
     argname: String, posfeaslist: List[String]): List[String] = {
     var posfeaslist_updated: List[String] = List()
     var posfea = "token:pos(" + argname + ", " + node.postag + ")"
@@ -323,7 +322,7 @@ object RunDependencyPath {
     return posfeaslist_updated
   }
 
-  def addlexfea(node: org.allenai.nlpstack.parse.graph.TokenDependencyNode,
+  def addlexfea(node: Polyparser.Mytokennode,
     argname: String, lexfeaslist: List[String]): List[String] = {
     var lexfeaslist_updated: List[String] = List()
     var lexfea = "token:lemma(" + argname + ", " + node.lemma + ")"
@@ -334,27 +333,27 @@ object RunDependencyPath {
     return lexfeaslist_updated
   }
 
-  def findHeadW(MYPolyparser: Polyparser, ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode], arg1name: String,
-    ds: List[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]): List[Int] = {
-    var res: List[Int] = List()
-    val words = arg1name.toString().split(" ").toList
-    val wlen = words.length
-    for (w1 <- words) {
-      val w1ids = MYPolyparser.getid(ns, w1)
-      for (w1id <- w1ids) {
-        val destnames: List[String] = MYPolyparser.getDestNodes(w1id, ds)
-        var flag = true
-        for (w2 <- words) {
-          if (!w1.equals(w2)) {
-            if (!destnames.contains(w2))
-              flag = false
-          }
-        }
-        if (flag == true)
-          res = res ::: List(w1id)
-      }
-    }
-
-    return res
-  }
+//  def findHeadW(MYPolyparser: Polyparser, ns: List[org.allenai.nlpstack.parse.graph.TokenDependencyNode], arg1name: String,
+//    ds: List[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]]): List[Int] = {
+//    var res: List[Int] = List()
+//    val words = arg1name.toString().split(" ").toList
+//    val wlen = words.length
+//    for (w1 <- words) {
+//      val w1ids = MYPolyparser.getid(ns, w1)
+//      for (w1id <- w1ids) {
+//        val destnames: List[String] = MYPolyparser.getDestNodes(w1id, ds)
+//        var flag = true
+//        for (w2 <- words) {
+//          if (!w1.equals(w2)) {
+//            if (!destnames.contains(w2))
+//              flag = false
+//          }
+//        }
+//        if (flag == true)
+//          res = res ::: List(w1id)
+//      }
+//    }
+//
+//    return res
+//  }
 }

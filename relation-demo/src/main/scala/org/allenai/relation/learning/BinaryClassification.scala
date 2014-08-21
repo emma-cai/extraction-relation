@@ -2,6 +2,8 @@ package org.allenai.relation.learning
 
 import java.io.{ File, PrintWriter }
 import java.util.Random
+import scala.collection.mutable.Map
+import scala.collection.immutable
 import org.allenai.ari.solvers.inference.matching.{ EntailmentService, EntailmentWrapper }
 import org.allenai.ari.solvers.utils.Tokenizer
 import org.allenai.common.Logging
@@ -16,6 +18,8 @@ import weka.core.converters.ConverterUtils.DataSource
 import scala.io.Source
 import scala.collection.immutable.IndexedSeq
 import weka.core.Utils
+import org.allenai.relation.util.Polyparser
+import scala.collection.immutable.SortedMap
 
 object BinaryClassification extends App with Logging {
   private val disrelSeeds = collection.immutable.HashMap(
@@ -29,52 +33,112 @@ object BinaryClassification extends App with Logging {
     ("requirement", List("necessary", "needed")),
     ("condition", List("when", "if")))
 
+  // training and testing files
+//    case "J48" => new J48()
+//      case "RandomForest" => new RandomForest()
+//      case "DecisionTable" => new DecisionTable()
+//      case "REPTree" => new REPTree()
+//      case "Logistic" => new Logistic()
+//      case "SMO" => new SMO()
+//      case "NaiveBayes" => new NaiveBayes()
+//      case "JRip" => new JRip()
   val configClassifierName = "J48"
-  val configTrainingFile = "data/binary/all.txt"
-  val inputDirectory = "data/binary/inputDirectory"
-  val outputDirectory = "data/binary/outputDirectory"
+  val configFeature = "lexical-dependency-length"
+//  val configFeature = "lexical"
+  val configTrainingFile = "data/binary/train.txt"
+//  val configTestingFile = "data/binary/inputDirectory/barrons.txt"
+//  val configTestingLabeledFile = "data/binary/outputDirectory/barrons.txt"
+  val configTestingFile = "data/binary/inputDirectory/108Q_sentence_arg1_arg2_mini_211.txt"
+  val configTestingLabeledFile = "data/binary/outputDirectory/108Q_sentence_arg1_arg2_mini_211-" + configFeature + ".txt"
   val arffDir = "data/binary/arff"
-  val configArffTrain = arffDir + File.separator + "train.arff"
+  val mapDir = "data/binary/map"
+  val configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff" 
+  val configArffTest = arffDir + File.separator + "test-" + configFeature + ".arff"
+  val configMapTrain = mapDir + File.separator + "train-" + configFeature + ".map"
+  val configMapTest = mapDir + File.separator + "test-" + configFeature + ".map"
 
+  // extract training sentences and features
   logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
   val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
   logger.info("Computing training sentence features")
-  val featureMapTrain = sentenceDisrelTrain.map {
-    sentenceDisrel => (sentenceDisrel, features(sentenceDisrel))
+  val featureDoubleMapTrain = sentenceDisrelTrain.map {
+    sentenceDisrel => (sentenceDisrel, featuresDouble(sentenceDisrel))
+  }.toMap
+  val featureStringMapTrain = sentenceDisrelTrain.map {
+    sentenceDisrel => (sentenceDisrel, featuresString(sentenceDisrel))
+  }.toMap
+  
+  // extract testing sentences and features
+  logger.info(s"Extracting testing sentences+disrel from $configTestingFile")
+  val sentenceDisrelTest = BinarySentenceDisrel.fromTrainingFile(configTestingFile, 1)
+  logger.info("Computing testing sentence features")
+  val featureDoubleMapTest = sentenceDisrelTest.map {
+    sentenceDisrel => (sentenceDisrel, featuresDouble(sentenceDisrel))
+  }.toMap
+  val featureStringMapTest = sentenceDisrelTest.map {
+    sentenceDisrel => (sentenceDisrel, featuresString(sentenceDisrel))
   }.toMap
 
+  // combine nominal features
+  val nominalTitlesFromTrain = featureStringMapTrain.values
+  val nominalTitlesFromTest = featureStringMapTest.values
+  var nominalmapsUnsorted:Map[String, String] = collection.mutable.Map.empty[String, String]
+  val featuresize = nominalTitlesFromTrain.toList(0).size
+  for(i <- 0 to featuresize-1) {
+    var nominals:Set[String] = Set()
+    nominalTitlesFromTrain.foreach(p => nominals += p(i))
+    nominalTitlesFromTest.foreach(p => nominals += p(i))
+    nominalmapsUnsorted.put(i.toString, nominals.mkString(","))
+  }
+  val nominalmaps = SortedMap(nominalmapsUnsorted.toSeq:_*)
+  
+  // write training arff
   logger.info(s"Writing training ARFF to file $configArffTrain")
-  toARFF(sentenceDisrelTrain, featureMapTrain, configArffTrain)
+  toARFF(sentenceDisrelTrain, featureDoubleMapTrain, featureStringMapTrain, nominalmaps, configArffTrain)
+  toMAP(sentenceDisrelTrain, featureDoubleMapTrain, featureStringMapTrain, configMapTrain)
+  
 
 //  runEvaluation(configClassifierName, configArffTrain, configArffTrain, true, Some(List()))
-  runLabeling(configClassifierName, configArffTrain)
+  runLabeling(configClassifierName, configArffTrain, featureDoubleMapTest, featureStringMapTest)
   System.exit(0)
   
-  def runLabeling(configClassifierName:String, configArffTrain:String) = {
-    val classifier: Classifier = buildClassifier(configClassifierName, configArffTrain)
-    classify(classifier, inputDirectory, outputDirectory)
+  // 
+  def runLabeling(configClassifierName:String, configArffTrain:String, 
+      featureDoubleMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[Double]], 
+      featureStringMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[String]]) = {
+        val (classifier, eval) = buildClassifier(configClassifierName, configArffTrain)
+        classify(classifier, eval, configArffTest, configTestingLabeledFile, sentenceDisrelTest, 
+        featureDoubleMapTest, featureStringMapTest, nominalmaps)
   }
 
-  def toInstances(file: File, arffDir: String): (Instances, Seq[BinarySentenceDisrel]) = {
-    logger.info(s"Extracting test sentence+disrel from $file")
-    //val questionSentences: List[QuestionSentence] = QuestionSentence.fromFileWithSids(file.getAbsolutePath, 0)
-    val sentenceDisrel: List[BinarySentenceDisrel] = BinarySentenceDisrel.fromTrainingFile(file.getAbsolutePath, 1)
-    //val questionSentences: List[QuestionSentence] = QuestionSentence.fromFileWithSidsLASTMINUTE(file.getAbsolutePath, 0)
-    val featureMap: Map[BinarySentenceDisrel, Seq[Double]] = (sentenceDisrel map {
-      sentenceDisrel =>
-        (sentenceDisrel, features(sentenceDisrel))
-    }).toMap
-    val arffFile = arffDir + File.separator + file.getName + ".arff"
-    toARFF(sentenceDisrel, featureMap, arffFile)
+  def toInstances(arffFile: String, sentenceDisrelTest: List[BinarySentenceDisrel], 
+      featureDoubleMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[Double]], 
+      featureStringMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[String]], 
+      nominalmaps: collection.immutable.Map[String, String]): (Instances, Seq[BinarySentenceDisrel]) = {
+    toARFF(sentenceDisrelTest, featureDoubleMapTest, featureStringMapTest, nominalmaps, arffFile)
+    toMAP(sentenceDisrelTest, featureDoubleMapTest, featureStringMapTest, configMapTest)
+    
     logger.info(s"WEKA: reading test data from $arffFile")
     val sourceTest: DataSource = new DataSource(arffFile)
     val dataTest: Instances = sourceTest.getDataSet
     if (dataTest.classIndex == -1)
       dataTest.setClassIndex(dataTest.numAttributes - 1)
-    (dataTest, sentenceDisrel)
+    (dataTest, sentenceDisrelTest)
   }
 
-  def classify(classifier: Classifier, testInstances: Instances) = {
+  def classify(classifier: Classifier, eval: Evaluation, testInstances: Instances) = {
+    logger.info(s"WEKA: evaluating -- computing evaluation summary and matrix for ${testInstances.numInstances} test instances")
+    eval.evaluateModel(classifier, testInstances)
+    logger.info(s"Weka: Summary of Classification")
+    println(eval.toSummaryString)
+    logger.info(s"Weka: Confusion Matrix for Classification")
+    println(eval.toMatrixString())
+    logger.info(s"Weka: Precision / Recall")
+    println("Precision for ClassIndex=0:\t" + eval.precision(0))
+    println("Recall for ClassIndex=0:\t" + eval.recall(0))
+    println("Precision for ClassIndex=1:\t" + eval.precision(1))
+    println("Recall for ClassIndex=1:\t" + eval.recall(1))
+    
     logger.info(s"WEKA: scoring -- computing class probability distribution for ${testInstances.numInstances} test instances")
     (0 to testInstances.numInstances - 1).map { i =>
       try {
@@ -84,92 +148,195 @@ object BinaryClassification extends App with Logging {
         (preValue, preConfidence)
       } catch {
         case e: Exception =>
-          e.printStackTrace()
+   //       e.printStackTrace()
           println(s"Caught exception classifying test instance $i")
           (-1d, -1d)
       }
     }
   }
 
-  def classify(classifier: Classifier, inputDirectory: String, outputDirectory: String): Unit = {
-    val files = {
-      new File(inputDirectory).listFiles().filter(_.getName.endsWith(".txt"))
-    }
+  def classify(classifier: Classifier, eval: Evaluation, arffFile: String, outputFile: String, 
+      sentenceDisrelTest: List[BinarySentenceDisrel], 
+      featureDoubleMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[Double]], 
+      featureStringMapTest: collection.immutable.Map[BinarySentenceDisrel, Seq[String]], 
+      nominalmaps: collection.immutable.Map[String, String]): Unit = {
 
-    files.take(1).foreach {
-      file =>
         try {
-          logger.info(s"Processing ${file.getName}")
-          val outputFile = outputDirectory + File.separator + file.getName
+          logger.info(s"Processing ${configTestingFile}")
           val writer = new PrintWriter(outputFile, "utf-8")
           writer.println(BinarySentenceDisrel.header)
-          toInstances(file, arffDir) match {
+          var numPositiveExamples: Int = 0
+          var numAllExamples: Int = 0
+          toInstances(arffFile, sentenceDisrelTest, featureDoubleMapTest, featureStringMapTest, nominalmaps) match {
             case (testInstances, testSentenceDisrel) =>
 
               // compute prediction and confidence value
-              val classProbabilities = classify(classifier, testInstances)
+              val classProbabilities = classify(classifier, eval, testInstances)
               //  classProbabilities.foreach(p => println(p._1 + "\t" + p._2))
               val testSentenceDisrelWithClassProb = (testSentenceDisrel zip classProbabilities)
+ 
               testSentenceDisrelWithClassProb.foreach {
                 x => writer.println(f"${x._1.toString}\t${x._2._1}\t${x._2._2}%.4f")
+                if(x._1.annotationOpt.toList(0).toString().equals(x._2._1))
+                  numPositiveExamples = numPositiveExamples+1
+                numAllExamples = numAllExamples+1
               }
-
-              // compute average precision if the data is annotated
-//              var numPositiveExamples: Int = 0
-//              var averagePrecision: Double = 0d
-//              (0 to testSentenceDisrelWithClassProb.size - 1) map {
-//                i =>
-//                  if (testSentenceDisrelWithClassProb(i)._2._1.equals(testSentenceDisrelWithClassProb(i)._1.annotationOpt.get)) {
-//                    numPositiveExamples += 1
-//                    averagePrecision += (numPositiveExamples.toDouble / (i + 1) * 100d)
-//                  }
-//              }
-//              averagePrecision /= numPositiveExamples
-//              logger.info(s"${numPositiveExamples} positive examples out of ${testSentenceDisrelWithClassProb.size} test instances")
-//              logger.info(f"AVERAGE PRECISION = ${averagePrecision}%.4f")
-            case _ =>
-              logger.info("")
+              println("correctly classified instance # = " + numPositiveExamples + " over " + numAllExamples)
+              println("percentage of correct prediction = " + (numPositiveExamples*0.1)/(numAllExamples*0.1))
           }
           writer.close()
         } catch {
           case e: Exception =>
             e.printStackTrace()
-            println(s"Caught exception processing input file ${file.getName}")
+            println(s"Caught exception processing input file ${configTestingFile}")
         }
-    }
-  }
 
-  def features(sentenceDisrel: BinarySentenceDisrel) = {
+  }
+  
+  def featuresString(sentenceDisrel: BinarySentenceDisrel) = {
+    import FeatureWrapper._
+    var features = Seq[String]()
+    
+    try {
+      val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+      val ns = tree.vertices
+      val ds = tree.edges    
+      val arg1list = Polyparser.findHeadW(ns.toList, sentenceDisrel.arg1, ds.toList)
+      val arg2list = Polyparser.findHeadW(ns.toList, sentenceDisrel.arg2, ds.toList)
+      val rootstring = getrootstring(root)
+      val shortestpathone = getshortestpath(root, tree, arg1list, arg2list, 1)
+      val shortestpathtwo = getshortestpath(root, tree, arg1list, arg2list, 2)
+      val shortestpaththree = getshortestpath(root, tree, arg1list, arg2list, 3)
+      
+//      features :+= rootstring
+      if(configFeature.contains("-detail")) {
+    	features :+= shortestpathone
+        features :+= shortestpathtwo
+        features :+= shortestpaththree        
+      }
+      if(configFeature.contains("-length")) {
+        if(shortestpathone.equals("null")) features :+= "0"
+        else features :+= "1"     
+        if(shortestpathtwo.equals("null")) features :+= "0"
+        else features :+= "1"
+        if(shortestpaththree.equals("null")) features :+= "0"
+        else features :+= "1"
+      }
+    } catch {
+      case p => p.printStackTrace()
+//      features :+= "null"
+      if(configFeature.contains("-detail")) {
+        features :+= "null"
+        features :+= "null"
+        features :+= "null"
+      }
+      
+      if(configFeature.contains("-length")) {
+        features :+= "0"
+        features :+= "0"
+        features :+= "0"
+      }
+    }
+    
+    features
+  }
+  
+//  def featuresString(sentenceDisrel: BinarySentenceDisrel) = {
+//    import FeatureWrapper._
+//    var features = Seq[String]()
+//    
+////    try {
+////      val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+////      val ns = tree.vertices
+////      val ds = tree.edges    
+////      val arg1list = Polyparser.findHeadW(ns.toList, sentenceDisrel.arg1, ds.toList)
+////      val arg2list = Polyparser.findHeadW(ns.toList, sentenceDisrel.arg2, ds.toList)
+////      
+////      if(getshortestpath(root, tree, arg1list, arg2list, 1).equals("null")) features :+= "0"
+////      else features :+= "1"
+////      
+////      if(getshortestpath(root, tree, arg1list, arg2list, 2).equals("null")) features :+= "0"
+////      else features :+= "1"
+////
+////      if(getshortestpath(root, tree, arg1list, arg2list, 3).equals("null")) features :+= "0"
+////      else features :+= "1"
+////      
+////    } catch {
+////      case p => p.printStackTrace()
+////      features :+= "0"
+////      features :+= "0"
+////      features :+= "0"
+////        
+////    }
+//    
+//    features
+//  }
+
+  def featuresDouble(sentenceDisrel: BinarySentenceDisrel) = {
     import FeatureWrapper._
 
     val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet
     val relphraseSet = Tokenizer.toKeywords(sentenceDisrel.relphrase).toSet
+//    println(sentenceDisrel.disrel.toLowerCase())
+//    println(sentenceDisrel.sentence)
     val disrelSet = Tokenizer.toKeywords(disrelSeeds(sentenceDisrel.disrel.toLowerCase()).mkString(" ")).toSet
-
+    val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+    
     var features = Seq[Double]()
     // number of words in the sentence
-    features :+= Math.log(sentenceDisrel.sentence.split("\\s+").size.toDouble)
+    features :+= Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble
 
     // distance between arg1 and arg2
-    features :+= Math.log(distance(sentenceDisrel.sentence, sentenceDisrel.arg1, sentenceDisrel.arg2))
+    features :+= Math.log(distance(sentenceDisrel.sentence, sentenceDisrel.arg1, sentenceDisrel.arg2)).toDouble
 
     // overlap between sentenceDisrel.relphrase and lexical-cue-seeds for "requirement"
     features :+= overlap(sentenceSet, disrelSet).toDouble
 
-    // entailment between relphrase and "requirement" lexical seeds
-    features :+= wordnetEntailment(sentenceDisrel.sentence, disrelSet.mkString(" "))
-
+    // entailment between relphrase and disrel-lexical-seeds
+    var entailmentscore = 0.0
+    try { entailmentscore = wordnetEntailment(sentenceDisrel.sentence, disrelSet.mkString(" ")).toDouble
+    } catch { case e:Exception => sentenceDisrel.sentence }
+    features :+= entailmentscore
+    
+    // entailment between root and lexical seeds
+    var entailmentroot = 0.0
+    if(root != null) { 
+      entailmentroot = wordnetEntailment(root.string, disrelSet.mkString(" ")).toDouble
+    }
+    features :+= entailmentroot
+    
     features
   }
+  
+  def toMAP(sentenceDisrels: List[BinarySentenceDisrel], 
+      featureDoubleMap: collection.immutable.Map[BinarySentenceDisrel, Seq[Double]], 
+      featureStringMap: collection.immutable.Map[BinarySentenceDisrel, Seq[String]], 
+      mapFile: String) = {
+    val writer = new PrintWriter(mapFile)
+    sentenceDisrels.foreach {
+        sentenceDisrel =>
+          writer.print(sentenceDisrel.toString + "\t")
+          writer.print(featureDoubleMap(sentenceDisrel).mkString(",")+",")
+          writer.println(featureStringMap(sentenceDisrel).mkString(",") + "," + sentenceDisrel.annotationOpt.toList(0)(0))
+    }
+    writer.close()
+  }
 
-  def toARFF(sentenceDisrels: List[BinarySentenceDisrel], featureMap: Map[BinarySentenceDisrel, Seq[Double]], arffFile: String) = {
+  def toARFF(sentenceDisrels: List[BinarySentenceDisrel], 
+      featureDoubleMap: collection.immutable.Map[BinarySentenceDisrel, Seq[Double]], 
+      featureStringMap: collection.immutable.Map[BinarySentenceDisrel, Seq[String]], 
+      nominalmap: collection.immutable.Map[String, String], 
+      arffFile: String) = {
+    
     val writer = new PrintWriter(arffFile)
     // add ARFF header
     writer.println("@relation SENTENCE_DISREL")
     writer.println("  @attribute sentence-length         numeric         % length of the sentence")
     writer.println("  @attribute distance-arg1-arg2      numeric         % distance between arg1 and arg2")
-    writer.println("  @attribute overlap-disrel          numeric         % word overlap between relphrase and disrel lexical cue seeds")
-    writer.println("  @attribute entailment-disrel      numeric         % word entailment for relphrase in disrel lexical cue seeds")
+    writer.println("  @attribute overlap-sen-disrel      numeric         % word overlap between sentence and disrel-lexical-cue-seeds")
+    writer.println("  @attribute entailment-sen-seeds    numeric         % word entailment for sentence and disrel-lexical-cue-seeds")
+    writer.println("  @attribute entailment-root-seeds   numeric         % word entailment for root-string and disrel-lexiccal-cue-seeds")
+    nominalmap.foreach(p => writer.println("  @attribute "+p._1 + "  {"+p._2+"}    % " + p._1))
     writer.println("  @attribute class                   {1,0}           % MULTI-CLASS LABEL: describe the discourse relation in the sentence")
     writer.println("")
     // add ARFF data
@@ -180,7 +347,8 @@ object BinaryClassification extends App with Logging {
           case Some(label: String) => if (Integer.parseInt(label) > 0) "1" else "0"
           case None => "?"
         }
-        writer.println(featureMap(sentenceDisrel).mkString(",") + "," + annotation)
+        writer.print(featureDoubleMap(sentenceDisrel).mkString(",") + ",")
+        writer.println(featureStringMap(sentenceDisrel).mkString(",") + "," + annotation)
     }
     writer.close()
   }
@@ -210,7 +378,8 @@ object BinaryClassification extends App with Logging {
     }
     logger.info(s"WEKA: training the classifier on $arffTrain")
     classifier.buildClassifier(dataTrain)
-    classifier
+    val eval = new Evaluation(dataTrain)
+    (classifier, eval)
   }
   
   def runEvaluation(classifierName: String, arffTrain: String, arffValidation: String,

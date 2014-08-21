@@ -1,0 +1,473 @@
+DEFINITION:   Chlorophyll	noun	Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
+Defined Term: Chlorophyll
+Isa: (Chlorophyll, is, pigment)
+Isa: (Chlorophyll, is, green pigment)
+Quality: (Chlorophyll, is, green)
+Fact: (Chlorophyll, found in, almost all plants, algae, and cyanobacteria, , )
+
+DEFINITION:   Acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
+Defined Term: acceleration
+Context:physics
+Isa: (acceleration, is the, rate)
+Isa: (acceleration, is the, rate of change of velocity)
+Property: (acceleration, has, time)
+
+DEFINITION:   Contest	noun	A contest is where people do a quiz or play a game to win a prize.
+Defined Term: contest
+Fact: (contest, describes, ((people, do, a quiz, , ), (people, play, a game, , to win a prize)))
+
+DEFINITION:   Chlorophyll	noun	Chlorophyll is an extremely important biomolecule, critical in photosynthesis, which allows plants to absorb energy from light.
+Defined Term: Chlorophyll
+Isa: (Chlorophyll, is an, biomolecule)
+Isa: (Chlorophyll, is an, extremely important biomolecule)
+Quality: (Chlorophyll, is, extremely important)
+Quality: (Chlorophyll, is, critical in photosynthesis)
+Fact: (Chlorophyll, allows, plants, , to absorb energy from light)
+
+DEFINITION:   Ear	noun	The ear is the organ that hears sound.
+Defined Term: ear
+Isa: (ear, is, organ)
+Fact: (ear, hears, sound, , )
+
+DEFINITION:   Mercury	noun	Mercury: Mercury is a silvery-colored, toxic, metallic chemical element, liquid at room temperature, with atomic number 80 and symbol Hg.
+Defined Term: Mercury
+Isa: (Mercury, is, chemical element)
+Isa: (Mercury, is, silvery-colored, toxic, metallic chemical element)
+Quality: (Mercury, is, silvery-colored)
+Quality: (Mercury, is, toxic)
+Quality: (Mercury, is, metallic)
+Quality: (Mercury, is, liquid at room temperature)
+Property: (Mercury, has, atomic number 80)
+Property: (Mercury, has, symbol Hg)
+
+DEFINITION:   Esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
+Defined Term: esophagus
+Isa: (esophagus, is, organ)
+Isa: (esophagus, is, organ, in vertebrates)
+Fact: (esophagus, consists of, a muscular tube, , )
+
+DEFINITION:   Erosion	noun	Erosion is the process by which soil and rock are removed from the Earth's surface by natural processes such as wind or water flow, and then transported and deposited in other locations.
+Defined Term: Erosion
+Isa: (Erosion, is, process)
+Fact: (Erosion, describes, (soil and rock, are removed from, the Earth's surface, , ))
+
+DEFINITION:   Earthquake	noun	An earthquake is the result of a sudden release of energy in the Earth's crust that creates seismic waves.
+Defined Term: earthquake
+Isa: (earthquake, is, result)
+Isa: (earthquake, is, result of a sudden release of energy, in the Earth's crust)
+Fact: (earthquake, creates, seismic waves, , )
+
+DEFINITION:   Embryo	noun	Embryo is the germ of the plant, which is enclosed in the seed and which is developed by germination.
+Defined Term: Embryo
+Isa: (Embryo, is, germ)
+Isa: (Embryo, is, germ of the plant)
+Fact: (Embryo, is enclosed in, the seed, , )
+Fact: (Embryo, is developed by, germination, , )
+
+DEFINITION:   embryo	noun	embryo :  the germ of the plant, which is enclosed in the seed and which is developed by germination.
+Defined Term: embryo
+Isa: (embryo, isa, germ)
+Isa: (embryo, isa, germ of the plant)
+Fact: (embryo, is enclosed in, the seed, , )
+Fact: (embryo, is developed by, germination, , )
+
+DEFINITION:   tendon	noun	Tendon: A fibrous connective tissue that joins muscle to bone.
+Defined Term: Tendon
+Isa: (Tendon, isa, tissue)
+Isa: (Tendon, isa, fibrous connective tissue)
+Quality: (Tendon, is, fibrous)
+Quality: (Tendon, is, connective)
+Fact: (Tendon, joins, muscle to bone, , )
+
+DEFINITION:   cellulase	noun	Cellulase refers to a suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+Defined Term: Cellulase
+Isa: (Cellulase, refers to, suite)
+Isa: (Cellulase, refers to, suite of enzymes)
+Fact: (Cellulase, produced chiefly by, fungi, bacteria, and protozoans that catalyze cellulolysis, , )
+
+DEFINITION:   cellulase	noun	Cellulase : A suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+Defined Term: Cellulase
+Isa: (Cellulase, isa, suite)
+Isa: (Cellulase, isa, suite of enzymes)
+Fact: (Cellulase, produced chiefly by, fungi, bacteria, and protozoans that catalyze cellulolysis, , )
+
+DEFINITION:   germination	noun	Germination is the process in which a plant or fungus emerges from a seed or spore, respectively, and begins growth.
+Defined Term: Germination
+Isa: (Germination, is, process)
+Fact: (Germination, describes, (a plant or fungus, emerges from, a seed or spore, , ))
+
+DEFINITION:   freezing	noun	Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
+Defined Term: Freezing
+Isa: (Freezing, is, phase change)
+Fact: (Freezing, describes, ((a liquid, turns into, a solid, , ), when, (its temperature, is lowered below, its freezing point, , )))
+
+DEFINITION:   drought	noun	A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
+Defined Term: drought
+Isa: (drought, is, period)
+Isa: (drought, is, extended period of months)
+Quality: (drought, is, extended)
+Isa: (drought, is, years)
+Fact: (drought, describes, (a region, notes, a deficiency in its water supply whether surface, , ))
+
+DEFINITION:   vibration	noun	Vibration is a mechanical phenomenon whereby oscillations occur about an equilibrium point.
+Defined Term: Vibration
+Isa: (Vibration, is, phenomenon)
+Isa: (Vibration, is, mechanical phenomenon)
+Quality: (Vibration, is, mechanical)
+Fact: (Vibration, describes, (oscillations, occur about, an equilibrium point, , ))
+
+DEFINITION:   active site	noun	Active site is the part of an enzyme where substrates bind and undergo a chemical reaction.
+Defined Term: Active site
+Isa: (Active site, is, part)
+Isa: (Active site, is, part of an enzyme)
+Fact: (Active site, describes, (substrates, bind and undergo, a chemical reaction, , ))
+
+DEFINITION:   earth	noun	Earth is the third planet from the Sun, and the densest and fifth largest of the eight planets in the Solar System.
+Defined Term: Earth
+Isa: (Earth, is, planet)
+Isa: (Earth, is, third planet, from the Sun)
+Quality: (Earth, is, third)
+Quality: (Earth, is, densest)
+Quality: (Earth, is, fifth largest)
+
+DEFINITION:   mass	noun	Mass : Amount of material in an object.
+Defined Term: Mass
+Isa: (Mass, isa, Amount)
+Isa: (Mass, isa, Amount of material, in an object)
+
+DEFINITION:   ecosystem	noun	Ecosystem : Living and nonliving organisms in an environment
+Defined Term: Ecosystem
+Isa: (Ecosystem, isa, organisms)
+Isa: (Ecosystem, isa, Living and nonliving organisms, in an environment)
+Quality: (Ecosystem, is, Living)
+Quality: (Ecosystem, is, nonliving)
+
+DEFINITION:   abortion	noun	Abortion is defined as the termination of pregnancy by the removal or expulsion from the uterus of a fetus or embryo prior to viability.
+Defined Term: Abortion
+Isa: (Abortion, is defined as, termination)
+Isa: (Abortion, is defined as, termination of pregnancy, by the removal)
+Isa: (Abortion, is defined as, expulsion)
+Isa: (Abortion, is defined as, expulsion, from the uterus of a fetus)
+Isa: (Abortion, is defined as, embryo)
+
+DEFINITION:   thermoregulation	noun	thermoregulation: The maintenance of internal body temperature within a tolerable range.
+Defined Term: thermoregulation
+Isa: (thermoregulation, isa, maintenance)
+Isa: (thermoregulation, isa, maintenance of internal body temperature, within a tolerable range)
+
+DEFINITION:   termination	noun	termination: The ending phase of a cellular process.
+Defined Term: termination
+Isa: (termination, isa, phase)
+Isa: (termination, isa, ending phase of a cellular process)
+Quality: (termination, is, ending)
+
+DEFINITION:   taste	noun	taste : It refers to the ability to detect the flavor of substances such as food, certain minerals, poisons, etc.
+Defined Term: taste
+Isa: (taste, refers to, ability)
+Fact: (taste, detect, the flavor of substances, , as food)
+
+DEFINITION:   esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
+Defined Term: esophagus
+Isa: (esophagus, is, organ)
+Isa: (esophagus, is, organ, in vertebrates)
+Fact: (esophagus, consists of, a muscular tube, , )
+
+DEFINITION:   acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
+Defined Term: acceleration
+Context:physics
+Isa: (acceleration, is the, rate)
+Isa: (acceleration, is the, rate of change of velocity)
+Property: (acceleration, has, time)
+
+DEFINITION:   acid	noun	An acid is a substance which reacts with a base.
+Defined Term: acid
+Isa: (acid, is, substance)
+Fact: (acid, reacts with, a base, , )
+
+DEFINITION:   mitosis	noun	Mitosis is the process by which a eukaryotic cell separates the chromosomes in its cell nucleus into two identical sets, in two separate nuclei.
+Defined Term: Mitosis
+Isa: (Mitosis, is, process)
+Fact: (Mitosis, describes, (a eukaryotic cell, separates, the chromosomes, , in its cell nucleus into two identical sets, in two separate nuclei))
+
+DEFINITION:   monomer	noun	A monomer is a molecule that may combine chemically to other molecules to form a polymer.
+Defined Term: monomer
+Isa: (monomer, is, molecule)
+Fact: (monomer, may combine, chemically, , to other molecules to form)
+
+DEFINITION:   nicotinamide	noun	Nicotinamide is the amide of nicotinic acid.
+Defined Term: Nicotinamide
+Isa: (Nicotinamide, is, amide)
+Isa: (Nicotinamide, is, amide of nicotinic acid)
+
+DEFINITION:   nitrification	noun	Nitrification is the biological oxidation of ammonia with oxygen into nitrite followed by the oxidation of these nitrites into nitrates.
+Defined Term: Nitrification
+Isa: (Nitrification, is the, oxidation)
+Isa: (Nitrification, is the, biological oxidation of ammonia)
+Quality: (Nitrification, is, biological)
+Property: (Nitrification, has, oxygen)
+
+DEFINITION:   oncogene	noun	An oncogene is a gene that has the potential to cause cancer.
+Defined Term: oncogene
+Isa: (oncogene, is, gene)
+Fact: ((oncogene, has, the potential, , ), to, ( , cause, cancer, , ))
+
+DEFINITION:   AV valve	noun	valves connecting the atria and ventricles of the heart
+Defined Term: AV valve
+Isa: (AV valve, isa, valves connecting)
+Isa: (AV valve, isa, atria)
+
+DEFINITION:   absolute dating	noun	A process used to determine that approximate age of materials such as rocks and other geological materials and also archaeological materials.
+Defined Term: absolute dating
+Isa: (absolute dating, isa, process)
+Fact: (absolute dating, used, , , to determine that approximate age of materials)
+
+DEFINITION:   absorption	noun	The third stage of food processing in animals: the uptake of small nutrient molecules by an organism's body.
+Defined Term: third stage of food processing in animals
+Isa: (third stage of food processing in animals, isa, uptake)
+Isa: (third stage of food processing in animals, isa, uptake of small nutrient molecules, by an organism's body)
+
+DEFINITION:   acid	noun	A substance that increases the hydrogen ion concentration of a solution.
+Defined Term: acid
+Isa: (acid, isa, substance)
+Fact: (acid, increases, the hydrogen ion concentration of a solution, , )
+
+DEFINITION:   aggregate fruit	noun	A fruit derived from a single flower that has more than one carpel.
+Defined Term: aggregate fruit
+Isa: (aggregate fruit, isa, fruit)
+Fact: (aggregate fruit, derived from, a single flower, , )
+Fact: (aggregate fruit, has, more, , than one carpel)
+
+DEFINITION:   agonistic behavior	noun	In animals, an often ritualized contest that determines which competitor gains access to a resource, such as food or mates.
+
+DEFINITION:   bile	noun	A mixture of substances that is produced in the liver but stored in the gallbladder and that enables formation of fat droplets in water as an aid in the digestion and absorption of fats.
+Defined Term: bile
+Isa: (bile, isa, mixture)
+Isa: (bile, isa, mixture of substances)
+Fact: (bile, is produced in, the liver, , )
+Fact: (bile, stored in, the gallbladder, , )
+Fact: (bile, that enables, , , )
+
+DEFINITION:   bile salt	noun	Emulsifying agents present in bile which aid in digestion and absorption of lipids.
+Defined Term: bile salt
+Isa: (bile salt, isa, agents)
+Isa: (bile salt, isa, Emulsifying agents)
+Quality: (bile salt, is, Emulsifying)
+
+DEFINITION:   vapor	noun	A substance that is usually a solid or liquid suspended in air.
+Defined Term: vapor
+Isa: (vapor, isa, substance)
+Fact: (vapor, is, usually a solid or liquid suspended in air, , )
+
+DEFINITION:   vascular plant	noun	A plant with vascular tissue.
+
+DEFINITION:   yeast	noun	Single-celled fungus that reproduces asexually by binary fission or by the pinching of small buds off a parent cell
+Defined Term: yeast
+Isa: (yeast, isa, fungus)
+Isa: (yeast, isa, Single-celled fungus)
+Quality: (yeast, is, Single-celled)
+Fact: (yeast, reproduces, asexually, , by binary fission or by the pinching of small buds off a parent cell)
+
+DEFINITION:   yeast	noun	some species exhibit cell fusion between different mating types.
+Defined Term: yeast
+Isa: (yeast, isa, species)
+Fact: (yeast, exhibit, cell fusion between different mating types, , )
+
+DEFINITION:   zebra	noun	African equids best known for their distinctive black and white stripes.
+Defined Term: zebra
+Isa: (zebra, isa, equids)
+Isa: (zebra, isa, African equids)
+Quality: (zebra, is, African)
+Fact: (zebra, best known for, their distinctive black and white stripes, , )
+
+DEFINITION:   xylem	noun	Vascular plant tissue consisting mainly of tubular dead cells that conduct most of the water and minerals upward from the roots to the rest of the plant.
+Defined Term: xylem
+Isa: (xylem, isa, plant tissue consisting)
+Isa: (xylem, isa, Vascular plant tissue consisting)
+Quality: (xylem, is, Vascular)
+
+DEFINITION:   acceleration	noun	The act of accelerating.
+Defined Term: acceleration
+Isa: (acceleration, isa, act)
+Isa: (acceleration, isa, act of accelerating)
+
+DEFINITION:   agglutination	noun	In bacteriology, the clumping or coalescence of red blood-corpuscles or bacteria brought about by the action of special agglutinating substances .
+
+DEFINITION:   base	noun	base: In Morphology: a morpheme is regarded as a form to which affixes or other bases may be added.
+Defined Term: Morphology
+Isa: (Morphology, isa, morpheme)
+Fact: (Morphology, is regarded as, a form to which affixes or other bases may be added, , )
+
+DEFINITION:   allele	noun	allele: One member of a pair or series of genes that occupy a specific position on a specific chromosome.
+Defined Term: allele
+Isa: (allele, isa, One member)
+Isa: (allele, isa, One member of a pair)
+Isa: (allele, isa, series)
+Isa: (allele, isa, series of genes)
+Fact: (allele, occupy, a specific position on a specific chromosome, , )
+
+DEFINITION:   weathering	noun	Weathering is the process that breaks down rocks into small pieces.
+Defined Term: Weathering
+Isa: (Weathering, is, process)
+Fact: (Weathering, breaks, down rocks into small pieces, , )
+
+DEFINITION:   growth	noun	Growth is a process by which plants and animals expand in size.
+Defined Term: Growth
+Isa: (Growth, is, process)
+Fact: (Growth, describes, (plants and animals, expand in, size, , ))
+
+DEFINITION:   barrel	noun	barrel: A  barrel  is a solid metal tube that may be part of some machines.
+Defined Term: barrel
+Isa: (barrel, is, metal tube)
+Isa: (barrel, is, solid metal tube)
+Quality: (barrel, is, solid)
+Fact: (barrel, may be, part of some machines, , )
+
+DEFINITION:   barrel	noun	A  barrel  is a tall and round container.
+Defined Term: barrel
+Isa: (barrel, is, container)
+Isa: (barrel, is, tall and round container)
+Quality: (barrel, is, tall)
+Quality: (barrel, is, round)
+
+DEFINITION:   base	noun	base: The lower part of anything
+Defined Term: base
+Isa: (base, isa, part)
+Isa: (base, isa, lower part of anything)
+Quality: (base, is, lower)
+
+DEFINITION:   base	noun	the solid part that is touching the floor or is touching the earth and keeps the other parts of the thing up.
+Defined Term: base
+Isa: (base, isa, part)
+Isa: (base, isa, solid part)
+Quality: (base, is, solid)
+Fact: (base, is touching, , , )
+
+DEFINITION:   base	noun	base: The simplest and most important part of something.
+Defined Term: base
+Isa: (base, isa, part)
+Isa: (base, isa, simplest and most important part of something)
+Quality: (base, is, simplest)
+Quality: (base, is, most important)
+
+DEFINITION:   beauty	noun	A beauty is  something or someone that is good to look at.
+Defined Term: beauty
+Isa: (beauty, is, something)
+Isa: (beauty, is, someone)
+Fact: (beauty, is good to look at, , , )
+
+DEFINITION:   beaver	noun	An animal that lives near water and has a wide flat tail and webbed feet.
+Defined Term: beaver
+Isa: (beaver, isa, animal)
+Fact: (beaver, lives near, water, , )
+Fact: (beaver, has, a wide flat tail and webbed feet, , )
+
+DEFINITION:   bike	noun	A short form of ' bicycle ’.
+Defined Term: bike
+Isa: (bike, isa, form)
+Isa: (bike, isa, short form)
+Quality: (bike, is, short)
+
+DEFINITION:   room	noun	A  room  is a place which is part of a building.  Someone is able to see other people who are in the same  room .
+Defined Term: room
+Isa: (room, is, place)
+Fact: (room, is, part of a building, , )
+
+DEFINITION:   room	noun	room:  Room  can mean some space
+Defined Term: room
+Isa: (room, isa, Room)
+Fact: (room, can mean, some space, , )
+
+DEFINITION:   room	noun	a place with nothing, only air.
+
+DEFINITION:   schedule	noun	A  schedule  is a list, usually one with prices.
+Defined Term: schedule
+Isa: (schedule, is, list)
+
+DEFINITION:   schedule	noun	A  schedule  is a plan of things that are happening and the times when they happen.
+Defined Term: schedule
+Isa: (schedule, is, plan)
+Isa: (schedule, is, plan of things)
+Fact: (schedule, are happening, , , )
+
+DEFINITION:   scream	noun	A  scream  is a loud noise made by a person.
+Defined Term: scream
+Isa: (scream, is, noise)
+Isa: (scream, is, loud noise)
+Quality: (scream, is, loud)
+Fact: (scream, made by, a person, , )
+
+DEFINITION:   sewer	noun	A  sewer  in medieval times was a person who served food at meals.
+Defined Term: sewer  in medieval times
+Isa: (sewer  in medieval times, was, person)
+Fact: (sewer  in medieval times, served, , , )
+
+DEFINITION:   sewer	noun	A  sewer  is a person who sews with needle and thread.
+Defined Term: sewer
+Isa: (sewer, is, person)
+Fact: (sewer, sews with, needle and thread, , )
+
+DEFINITION:   sewer	noun	A  sewer  is a pipe, or system of pipes, that removes wastes from buildings.
+Defined Term: sewer
+Isa: (sewer, is, pipe)
+Isa: (sewer, is, system)
+Isa: (sewer, is, system of pipes)
+Fact: (sewer, removes, wastes from buildings, , )
+
+DEFINITION:   shades	noun	Shades  are sunglasses.
+Defined Term: Shades
+Isa: (Shades, are, sunglasses)
+
+DEFINITION:   shine	noun	Shine  is the light from a reflection, or from a source of light.
+Defined Term: Shine
+Isa: (Shine, is, light)
+Isa: (Shine, is, light, from a reflection)
+
+DEFINITION:   shine	noun	A  shine  is when someone shines your shoes.
+Defined Term: shine
+Fact: (shine, describes, (someone, shines, your shoes, , ))
+
+DEFINITION:   shock	noun	Shock  is the way a person is when the person has lost some blood or has been hurt, and their heart is beating very fast and weakly.
+Defined Term: Shock
+Isa: (Shock, is, way)
+Isa: (Shock, is, person)
+Fact: (((Shock , is, , , ), when, ((the person, has lost, some blood, , ), (the person, has been hurt, , , ))))
+
+DEFINITION:   shock	noun	A  shock  is some electricity that suddenly hurts someone.
+Defined Term: shock
+Isa: (shock, is, electricity)
+Fact: (shock, suddenly hurts, someone, , )
+
+DEFINITION:   xenophobe	noun	A  xenophobe  is someone who has the fear of strangers or foreigners.
+Defined Term: xenophobe
+Isa: (xenophobe, is, someone)
+Fact: (xenophobe, has, the fear of strangers or foreigners, , )
+
+DEFINITION:   xenophobe	noun	A  xenophobe  is someone who has xenophobia.
+Defined Term: xenophobe
+Isa: (xenophobe, is, someone)
+Fact: (xenophobe, has, xenophobia, , )
+
+DEFINITION:   waistcoat	noun	A  waistcoat  is a special type of sleeveless garment.
+Defined Term: waistcoat
+Isa: (waistcoat, is, type)
+Isa: (waistcoat, is, special type of sleeveless garment)
+Quality: (waistcoat, is, special)
+
+DEFINITION:   ward	noun	A  ward  is an area in a hospital that focused on one kind of medicine.
+Defined Term: ward
+Isa: (ward, is, area)
+Isa: (ward, is, area, in a hospital)
+Fact: (ward, focused on, one kind of medicine, , )
+
+DEFINITION:   ward	noun	A  ward  is someone, usually a child, who is under the legal care of someone else.
+Defined Term: ward
+Isa: (ward, is, someone)
+Isa: (ward, is, child)
+Fact: (ward, is under, the legal care of someone, , )
+
+DEFINITION:   yo-yo	noun	A  yo-yo  is a toy that goes up and down, hanging from a string.
+Defined Term: yo-yo
+Isa: (yo-yo, is, toy)
+Fact: (yo-yo, goes, up and down, , )
+Fact: (yo-yo, hanging from, a string, , )
+

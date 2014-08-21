@@ -1,0 +1,80 @@
+Chlorophyll	noun	Chlorophyll is a green pigment found in almost all plants, algae, and cyanobacteria.
+Acid	noun	An acid is a liquid with a high number of hydrogen ions in it that can burn things.
+Acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
+Contest	noun	A contest is where people do a quiz or play a game to win a prize.
+Chlorophyll	noun	Chlorophyll is an extremely important biomolecule, critical in photosynthesis, which allows plants to absorb energy from light.
+Ear	noun	The ear is the organ that hears sound.
+Mercury	noun	Mercury: Mercury is a silvery-colored, toxic, metallic chemical element, liquid at room temperature, with atomic number 80 and symbol Hg.
+Esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
+Erosion	noun	Erosion is the process by which soil and rock are removed from the Earth's surface by natural processes such as wind or water flow, and then transported and deposited in other locations.
+Earthquake	noun	An earthquake is the result of a sudden release of energy in the Earth's crust that creates seismic waves.
+Embryo	noun	Embryo is the germ of the plant, which is enclosed in the seed and which is developed by germination.
+embryo	noun	embryo :  the germ of the plant, which is enclosed in the seed and which is developed by germination.
+tendon	noun	Tendon: A fibrous connective tissue that joins muscle to bone.
+cellulase	noun	Cellulase refers to a suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+cellulase	noun	Cellulase : A suite of enzymes produced chiefly by fungi, bacteria, and protozoans that catalyze cellulolysis.
+germination	noun	Germination is the process in which a plant or fungus emerges from a seed or spore, respectively, and begins growth.
+freezing	noun	Freezing is a phase change in which a liquid turns into a solid when its temperature is lowered below its freezing point.
+drought	noun	A drought is an extended period of months or years when a region notes a deficiency in its water supply whether surface or underground water.
+vibration	noun	Vibration is a mechanical phenomenon whereby oscillations occur about an equilibrium point.
+active site	noun	Active site is the part of an enzyme where substrates bind and undergo a chemical reaction.
+earth	noun	Earth is the third planet from the Sun, and the densest and fifth largest of the eight planets in the Solar System.
+mass	noun	Mass : Amount of material in an object.
+ecosystem	noun	Ecosystem : Living and nonliving organisms in an environment
+abortion	noun	Abortion is defined as the termination of pregnancy by the removal or expulsion from the uterus of a fetus or embryo prior to viability.
+thermoregulation	noun	thermoregulation: The maintenance of internal body temperature within a tolerable range.
+termination	noun	termination: The ending phase of a cellular process.
+taste	noun	taste : It refers to the ability to detect the flavor of substances such as food, certain minerals, poisons, etc.
+esophagus	noun	The esophagus is an organ in vertebrates which consists of a muscular tube through which food passes from the pharynx to the stomach.
+acceleration	noun	In physics, acceleration is the rate of change of velocity with time.
+acid	noun	An acid is a substance which reacts with a base.
+mitosis	noun	Mitosis is the process by which a eukaryotic cell separates the chromosomes in its cell nucleus into two identical sets, in two separate nuclei.
+monomer	noun	A monomer is a molecule that may combine chemically to other molecules to form a polymer.
+nicotinamide	noun	Nicotinamide is the amide of nicotinic acid.
+nitrification	noun	Nitrification is the biological oxidation of ammonia with oxygen into nitrite followed by the oxidation of these nitrites into nitrates.
+oncogene	noun	An oncogene is a gene that has the potential to cause cancer.
+AV valve	noun	valves connecting the atria and ventricles of the heart
+absolute dating	noun	A process used to determine that approximate age of materials such as rocks and other geological materials and also archaeological materials.
+absorption	noun	 The third stage of food processing in animals: the uptake of small nutrient molecules by an organism's body.
+acid	noun	 A substance that increases the hydrogen ion concentration of a solution.
+aggregate fruit	noun	A fruit derived from a single flower that has more than one carpel.
+agonistic behavior	noun	In animals, an often ritualized contest that determines which competitor gains access to a resource, such as food or mates.
+bile	noun	A mixture of substances that is produced in the liver but stored in the gallbladder and that enables formation of fat droplets in water as an aid in the digestion and absorption of fats.
+bile salt	noun	Emulsifying agents present in bile which aid in digestion and absorption of lipids.
+vapor	noun	A substance that is usually a solid or liquid suspended in air.
+vascular plant	noun	A plant with vascular tissue.
+yeast	noun	Single-celled fungus that reproduces asexually by binary fission or by the pinching of small buds off a parent cell; some species exhibit cell fusion between different mating types.
+zebra	noun	African equids best known for their distinctive black and white stripes.
+xylem	noun	Vascular plant tissue consisting mainly of tubular dead cells that conduct most of the water and minerals upward from the roots to the rest of the plant.
+acceleration	noun	The act of accelerating.
+agglutination	noun	In bacteriology, the clumping or coalescence of red blood-corpuscles or bacteria brought about by the action of special agglutinating substances (agglutinins).
+base	noun	base: In Morphology: a morpheme is regarded as a form to which affixes or other bases may be added.
+allele	noun	allele: One member of a pair or series of genes that occupy a specific position on a specific chromosome.
+weathering	noun	Weathering is the process that breaks down rocks into small pieces.
+growth	noun	Growth is a process by which plants and animals expand in size.
+barrel	noun	barrel: A ' barrel ' is a solid metal tube that may be part of some machines.
+barrel	noun	 A ' barrel ' is a tall and round container.
+base	noun	base: The lower part of anything;  the solid part that is touching the floor or is touching the earth and keeps the other parts of the thing up. 
+base	noun	base: The simplest and most important part of something.
+beauty	noun	A beauty is  something or someone that is good to look at.
+beaver	noun	An animal that lives near water and has a wide flat tail and webbed feet.
+bike	noun	 A short form of ' bicycle ’.
+room	noun	 A ' room ' is a place which is part of a building.  Someone is able to see other people who are in the same ' room '.
+room	noun	room: ' Room ' can mean some space; a place with nothing, only air.
+schedule	noun	 A ' schedule ' is a list, usually one with prices.
+schedule	noun	 A ' schedule ' is a plan of things that are happening and the times when they happen.
+scream	noun	 A ' scream ' is a loud noise made by a person.
+sewer	noun	A ' sewer ' in medieval times was a person who served food at meals.
+sewer	noun	A ' sewer ' is a person who sews with needle and thread.
+sewer	noun	 A ' sewer ' is a pipe, or system of pipes, that removes wastes from buildings.
+shades	noun	 ' Shades ' are sunglasses.
+shine	noun	 ' Shine ' is the light from a reflection, or from a source of light.
+shine	noun	 A ' shine ' is when someone shines your shoes.
+shock	noun	 ' Shock ' is the way a person is when the person has lost some blood or has been hurt, and their heart is beating very fast and weakly.
+shock	noun	 A ' shock ' is some electricity that suddenly hurts someone.
+xenophobe	noun	 A ' xenophobe ' is someone who has the fear of strangers or foreigners.
+xenophobe	noun	 A ' xenophobe ' is someone who has xenophobia.
+waistcoat	noun	 A ' waistcoat ' is a special type of sleeveless garment.
+ward	noun	 A ' ward ' is an area in a hospital that focused on one kind of medicine.
+ward	noun	 A ' ward ' is someone, usually a child, who is under the legal care of someone else.
+yo-yo	noun	 A ' yo-yo ' is a toy that goes up and down, hanging from a string.

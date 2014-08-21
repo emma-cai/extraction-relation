@@ -1,0 +1,7 @@
+NGSingle := TypedOpenRegex {
+  (?:(<NounPart>: @NG1) (<PrepPart>: @PP0NoWithNoOfNoRelClause @PP0NoWithNoRelClause*)?)
+}
+
+NGMultiple := TypedOpenRegex {
+   (?:(<First>: @NGSingle) (?: (?:<string="," | string="or"> (<Middle>: @NGSingle))* (<string=",">? <string=/and|or|and\/or/>? (<Last>: @NGSingle))? )? )
+}

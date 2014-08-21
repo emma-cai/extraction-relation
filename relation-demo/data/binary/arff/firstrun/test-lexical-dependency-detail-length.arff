@@ -1,0 +1,227 @@
+@relation SENTENCE_DISREL
+  @attribute sentence-length         numeric         % length of the sentence
+  @attribute distance-arg1-arg2      numeric         % distance between arg1 and arg2
+  @attribute overlap-sen-disrel      numeric         % word overlap between sentence and disrel-lexical-cue-seeds
+  @attribute entailment-sen-seeds    numeric         % word entailment for sentence and disrel-lexical-cue-seeds
+  @attribute entailment-root-seeds   numeric         % word entailment for root-string and disrel-lexiccal-cue-seeds
+  @attribute 0  {breaks,snow,looks,unity,used,enable,able,s,find,support,signifies,aims,involved,works,grounded,due,lead,admits,provided,based,have,learned,needed,delay,offered,proven,are,is,source,caused,absence,contributor,claim,god,directed,agree,fruit,plays,enjoys,refers,likely,said,exercising,examples,path,acknowledge,given,am,cutting,produced,crumples,puts,favorite,depend,want,join,thought,.,rained,],sure,dropped,touch,tripled,enhance,best,differed,becomes,unable,essential,spend,would,causes,giving,professionals,owned,harbor,chicks,fortified,drops,polluting,handles,good,suggested,tool,covers,designed,blocks,going,uses,clear,expected,limited,play,led,do,serve,scored,’s,growth,confirmed,responsible,equipped,played,re,signals,present,financed,effect,necessary,result,held,set,came,gift,replaced,intended,focuses,branch,tossed,runs,collected,brings,create,applies,provides,described,receive,became,build,bunch,unbinding,indicated,has,goal,signed,continued,changes,inhibit,conducted,linked,country,comes,scanning,promotes,partnership,come,argued,null,such,affect,trying,exacerbated,season,stand,way,growing,webbed,trained,open,gas,ticket,permeated,molded,bane,work,central,conductor,cannot,wounded,mainstay,object,hughes,element,purpose,getting,sentenced,accomplishes,�,base,key,triggered,compounded,know,presented,unsuitable,driven,caught,sign,operate,planning,describes,making,alluded,help,was,symbol,granted,found,inherit,negotiate,gives,classified,die,doing,proclaimed,depends,points,redistributes,consist,afflicted,leads,destroy,offers,results,wave,someone,backed,remain,distributed,need,can,being,transferred,reports,black,focus,click,successful,appears,involves,vital,gotten,happens,member,gargling,live,take,takes,easy,sufficient,contribute,occurs,integral,discusses,allow,grow,shakes,wondering,knocking,satisfied,ve,raised,helpful,think,belongs,race,believed,improve,vuitton,’m,helps,resist,stored,few,called,covered,emphasizes,produces,says,cause,decrease,argue,environment,dedicated,crucial,preserved,means,?,suspect,person,forms,instructs,give,s,formed,eating,funded,true,include,life,failing,judged,‘,use,picture,make,put,sent,done,available,deadly,retire,establishes,speaks,treat,percent,tight,say,established,happening,attributed,brought,offer,organism,absolute,struggled,enlarging,be,attached,opens,shows,reflected,protect,considered,pointed,get,supported,...,measured,harm,changing,time,part,undecided,attractive,self-gratification,more,fundamental,recommended,harmful,religion,comprised,form,benefit,required,identified,piracy,treated,matured,hated,act,authored,opposes,demands,joined,example,according,becoming,see,removes,basis,drug,fly,slaves,add,having,nonliving,respond,characterized,does,centerpiece,introduced,disobeyed,known,cl2,continue,study,possible,assist,like,listed,born,resting,asks,received,one,high,increase,right,located,prefer,posted,created,living,attracts,affects,died,trigger,extension}    % 0
+  @attribute 1  {"prep_for(_1, _2)","nn(_2, _1)","dobj(_1, _2)","prep_from(_2, _1)","conj_and(_2, _1)","conj(_1, _2)","nn(_1, _2)",null,"vmod(_1, _2)","prep_which_is_due_to(_1, _2)","prepc_for(_1, _2)","prep_of(_2, _1)","nsubj(_2, _1)"}    % 1
+  @attribute 2  {"nsubjpass(_3, _1), prep_on(_3, _2)","prep_from(_3, _1), aux(_2, _3)","mark(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), nn(_3, _2)","det(_3, _1), prep_in(_3, _2)","prep_of(_3, _1), conj_or(_2, _3)","rcmod(_1, _3), prep_for(_3, _2)","vmod(_1, _3), dobj(_3, _2)","nn(_3, _1), nsubj(_2, _3)","prep_on(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), prep_for(_3, _2)","auxpass(_3, _1), advcl(_2, _3)","nsubj(_3, _1), prep_from(_3, _2)","rcmod(_1, _3), dobj(_3, _2)","prepc_of(_1, _3), prep_for(_3, _2)","nsubj(_3, _1), xcomp(_3, _2)","rcmod(_1, _3), prep_from(_3, _2)","nsubjpass(_3, _1), prep_out_of(_3, _2)","dep(_3, _1), nsubj(_3, _2)","nsubjpass(_3, _1), prep_about(_3, _2)","prep_for(_3, _1), nsubj(_3, _2)","vmod(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_3, _2)","conj_and(_3, _1), prep_of(_3, _2)","dobj(_3, _1), vmod(_2, _3)","nsubjpass(_3, _1), dobj(_3, _2)","rcmod(_1, _3), prep_with(_3, _2)","mark(_3, _1), prep_of(_3, _2)","nsubjpass(_3, _1), prep_before(_3, _2)","vmod(_1, _3), prep_by(_3, _2)","rcmod(_1, _3), prep_on(_3, _2)","nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), tmod(_3, _2)","nsubjpass(_3, _1), prep_with(_3, _2)","ccomp(_1, _3), xcomp(_3, _2)","nsubj(_3, _1), appos(_3, _2)","nsubj(_3, _1), prep_with(_3, _2)",null,"nsubj(_3, _1), prep_in(_3, _2)","nsubjpass(_3, _1), prep_by(_3, _2)","nsubj(_3, _1), prep_whether(_3, _2)","vmod(_1, _3), prep_in(_3, _2)","nsubj(_3, _1), prep_about(_3, _2)","rcmod(_1, _3), prep_to(_3, _2)","nsubjpass(_3, _1), prep_at(_3, _2)","rcmod(_1, _3), prep_in(_3, _2)","nsubjpass(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), ccomp(_3, _2)","nsubjpass(_3, _1), prep_in(_3, _2)","nsubj(_3, _1), rcmod(_3, _2)","nsubj(_3, _1), prepc_of(_3, _2)","prep_of(_3, _1), conj_and(_2, _3)","prep_in(_3, _1), prep_to(_3, _2)","rcmod(_1, _3), prep_after(_3, _2)","nsubjpass(_3, _1), tmod(_3, _2)","prep_from(_3, _1), nsubj(_3, _2)","prep_of(_3, _1), prep_of(_2, _3)","nsubjpass(_3, _1), xcomp(_3, _2)","prep_of(_3, _1), nsubj(_2, _3)","prepc_of(_1, _3), prep_to(_3, _2)","nsubjpass(_3, _1), prep_into(_3, _2)","rcmod(_1, _3), prep_by(_3, _2)","nsubj(_3, _1), prep_as(_3, _2)","nsubj(_3, _1), prep_back_to(_3, _2)","nsubj(_3, _1), prep_ahead_of(_3, _2)","nsubj(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), vmod(_3, _2)","nsubj(_3, _1), prep_on(_3, _2)","nsubjpass(_3, _1), prep_as(_3, _2)","nsubj(_3, _1), prep_between(_3, _2)","nsubj(_3, _1), prep_than(_3, _2)","nsubjpass(_3, _1), prep_of(_3, _2)","dobj(_3, _1), nsubj(_3, _2)","prep_for(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), prep_among(_3, _2)","dobj(_1, _3), vmod(_3, _2)","vmod(_1, _3), prep_for(_3, _2)","nsubj(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), prep_into(_3, _2)","nsubjpass(_3, _1), prep_to(_3, _2)","rcmod(_1, _3), prep_of(_3, _2)"}    % 2
+  @attribute 3  {"nsubj(_3, _1), nsubj(_2, _4), ccomp(_4, _3)","nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)","dobj(_3, _1), prep_for(_4, _2), parataxis(_3, _4)","conj_&(_3, _1), prep_with(_4, _2), nsubj(_4, _3)","prep_with(_3, _1), dobj(_4, _2), xcomp(_3, _4)","prep_in(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)","nsubj(_3, _1), cop(_4, _2), ccomp(_3, _4)","prep_for(_3, _1), prep_with(_4, _2), nsubjpass(_4, _3)","prep_of(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)","conj_or(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), det(_4, _2), dobj(_3, _4)","nsubjpass(_3, _1), amod(_4, _2), prep_in(_3, _4)","nsubjpass(_3, _1), prep_on(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_to(_4, _2), dobj(_3, _4)","ccomp(_1, _3), prep_on(_4, _2), dobj(_3, _4)","prep_in(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_as(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)","prep_of(_3, _1), nsubj(_4, _2), nsubj(_4, _3)","conj_and(_3, _1), prep_for(_4, _2), nsubj(_4, _3)","prep_of(_3, _1), dobj(_4, _2), dobj(_4, _3)","det(_3, _1), prep_to(_4, _2), punct(_4, _3)","nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), amod(_4, _2), prep_of(_3, _4)","prep_with(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","dobj(_3, _1), prep_of(_4, _2), csubj(_4, _3)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), nsubj(_4, _2), appos(_3, _4)","det(_3, _1), dobj(_4, _2), prep_to(_4, _3)","num(_3, _1), prep_on(_4, _2), prep_as(_4, _3)","dobj(_3, _1), prep_on(_4, _2), nsubj(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), punct(_4, _3)","conj_and(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","prep_on(_3, _1), prep_over(_4, _2), ccomp(_4, _3)","prep_of(_3, _1), xcomp(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), nn(_4, _2), prep_for(_3, _4)","nn(_3, _1), prep_of(_4, _2), nsubj(_4, _3)","nsubj(_1, _3), prep_because_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), advcl(_3, _4)","rcmod(_1, _3), conj_and(_2, _4), dobj(_3, _4)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_4, _3)","dobj(_3, _1), nsubj(_4, _2), xcomp(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), prep_of(_3, _4)","dobj(_3, _1), dobj(_4, _2), conj_or(_3, _4)","nsubj(_3, _1), prep_of(_4, _2), conj_or(_3, _4)","prep_to(_3, _1), dobj(_4, _2), conj_and(_3, _4)","prep_for(_3, _1), dobj(_4, _2), vmod(_3, _4)","prep_on(_3, _1), dobj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), amod(_4, _2), prep_for(_3, _4)","dobj(_3, _1), ccomp(_4, _2), ccomp(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), conj_and(_4, _3)","nn(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), aux(_3, _4)","nsubj(_3, _1), dobj(_4, _2), ccomp(_3, _4)","dobj(_3, _1), prep_for(_4, _2), advcl(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), punct(_3, _4)","prep_for(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","nn(_3, _1), prep_for(_4, _2), vmod(_3, _4)","conj_plus(_3, _1), dobj(_4, _2), prep_in(_4, _3)","prep_with(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",null,"prep_on(_3, _1), prep_with(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_to(_4, _2), dep(_3, _4)","det(_3, _1), nsubj(_4, _2), rcmod(_3, _4)","dep(_3, _1), prep_of(_4, _2), dep(_3, _4)","xcomp(_3, _1), ccomp(_4, _2), advcl(_4, _3)","nsubjpass(_3, _1), prep_in(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj_but(_3, _4)","dobj(_3, _1), prep_out_of(_4, _2), conj_or(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_3, _4)","nn(_3, _1), prep_as(_4, _2), nsubjpass(_4, _3)","prep_during(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)","nsubjpass(_3, _1), nsubj(_4, _2), punct(_3, _4)","nsubjpass(_3, _1), prep_by(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), predet(_4, _2), dobj(_3, _4)","prep_to(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","prep_in(_3, _1), dobj(_4, _2), conj_or(_3, _4)","prep_of(_3, _1), prep_at(_4, _2), nsubjpass(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), dobj(_4, _2), auxpass(_3, _4)","prep_of(_3, _1), prep_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), parataxis(_3, _4)","nsubj(_3, _1), nsubjpass(_4, _2), advcl(_3, _4)","nsubj(_3, _1), prep_with(_4, _2), prep_out_of(_3, _4)","prep_with(_3, _1), prep_in(_4, _2), xcomp(_4, _3)","nsubj(_3, _1), nn(_4, _2), prep_in(_3, _4)","dobj(_3, _1), prep_over(_4, _2), vmod(_3, _4)","dobj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), prep_of(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj(_3, _4)","aux(_1, _3), prep_of(_4, _2), aux(_4, _3)","prep_about(_3, _1), prep_for(_4, _2), conj_yet(_4, _3)","prep_for(_3, _1), nsubj(_4, _2), conj_and(_3, _4)","nsubjpass(_3, _1), amod(_4, _2), dobj(_3, _4)","prep_of(_3, _1), conj_and(_2, _4), nsubj(_4, _3)","conj_and(_3, _1), dobj(_4, _2), nsubj(_4, _3)","prep_in(_3, _1), prep_on(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)","conj_and(_3, _1), prep_for(_4, _2), nsubjpass(_4, _3)","prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","dobj(_3, _1), dobj(_4, _2), conj_and(_3, _4)","prep_of(_3, _1), prep_to(_4, _2), prep_over(_4, _3)","nsubj(_3, _1), prep_about(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_4, _3)","nn(_3, _1), prep_upon(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_4, _3)","prep_to(_3, _1), prep_out_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","det(_3, _1), prep_on(_4, _2), dobj(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), xcomp(_3, _4)","nsubj(_3, _1), aux(_2, _4), aux(_3, _4)","nsubjpass(_3, _1), prep_with(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), dobj(_3, _4)","nsubj(_3, _1), cop(_4, _2), prepc_for(_3, _4)","prep_to(_3, _1), prep_in(_4, _2), nsubjpass(_4, _3)","predet(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","prep_of(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), nn(_4, _2), prep_on(_3, _4)","nsubj(_3, _1), xcomp(_4, _2), ccomp(_3, _4)","prep_of(_3, _1), prep_for(_4, _2), nsubj(_4, _3)","prep_with(_3, _1), prep_for(_4, _2), advmod(_3, _4)","nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), dobj(_4, _2), vmod(_3, _4)","prep_in(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)","advcl(_3, _1), parataxis(_4, _2), advcl(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), prepc_to(_3, _4)","rcmod(_1, _3), prep_of(_4, _2), advmod(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), prepc_for(_3, _4)","amod(_3, _1), nsubj(_4, _2), prep_while(_4, _3)","det(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_by(_4, _2), advcl(_3, _4)","nsubj(_3, _1), prep_as(_4, _2), conj_and(_3, _4)","tmod(_3, _1), prep_of(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), prep_from(_4, _2), conj_and(_4, _3)","conj(_3, _1), prep_to(_4, _2), nsubjpass(_4, _3)","conj_and(_1, _3), prep_of(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_to(_4, _2), advcl(_4, _3)","dobj(_3, _1), prep_for(_4, _2), parataxis(_4, _3)","nn(_3, _1), prep_in(_2, _4), conj_and(_4, _3)"}    % 3
+  @attribute 4  {0,1}    % 4
+  @attribute 5  {1,0}    % 5
+  @attribute 6  {0,1}    % 6
+  @attribute class                   {1,0}           % MULTI-CLASS LABEL: describe the discourse relation in the sentence
+
+@data
+2.1972245773362196,0.0,0.0,0.35714285714285715,0.35714285714285715,resting,null,"ccomp(_1, _3), xcomp(_3, _2)",null,0,1,0,0
+3.332204510175204,1.3862943611198906,0.0,0.0,0.0,chicks,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,0
+2.0794415416798357,0.0,1.0,0.14694444444444446,0.14694444444444446,helps,null,null,null,0,0,0,1
+2.772588722239781,-Infinity,0.0,0.0,0.0,.,null,null,null,0,0,0,1
+2.9444389791664403,2.772588722239781,0.0,0.0,0.0,.,null,null,null,0,0,0,0
+2.4849066497880004,0.6931471805599453,0.0,0.01599228079528582,0.0,organism,null,null,null,0,0,0,1
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,examples,null,null,null,0,0,0,0
+2.70805020110221,1.6094379124341003,0.0,0.27186877351985894,0.0,use,"vmod(_1, _2)",null,null,1,0,0,0
+3.871201010907891,3.713572066704308,0.0,0.0,0.0,puts,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,1
+2.772588722239781,-Infinity,0.0,0.5,0.0,likely,null,null,null,0,0,0,0
+2.1972245773362196,0.6931471805599453,0.0,0.0,0.0,conductor,null,null,null,0,0,0,0
+3.332204510175204,0.0,0.0,0.009709599054280676,0.0,used,null,null,null,0,0,0,0
+2.4849066497880004,0.6931471805599453,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+2.833213344056216,0.0,0.0,0.0,0.0,would,null,null,null,0,0,0,0
+2.0794415416798357,0.0,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,1
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,get,null,null,null,0,0,0,1
+1.791759469228055,0.0,0.0,0.12962962962962962,0.0,causes,null,"nsubj(_3, _1), vmod(_3, _2)",null,0,1,0,0
+2.4849066497880004,0.0,0.0,0.05048991508225952,0.0,found,null,null,null,0,0,0,0
+1.791759469228055,0.6931471805599453,0.0,0.0,0.0,describes,null,null,null,0,0,0,1
+2.1972245773362196,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,1
+3.2188758248682006,2.9444389791664403,0.0,0.0,0.0,has,"conj(_1, _2)","dobj(_1, _3), vmod(_3, _2)",null,1,1,0,1
+2.772588722239781,1.9459101490553132,0.0,0.009361395069418884,0.0,expected,null,null,null,0,0,0,0
+2.3978952727983707,0.6931471805599453,0.0,0.006756051071339334,0.0,.,"prepc_for(_1, _2)",null,null,1,0,0,1
+2.5649493574615367,1.3862943611198906,1.0,0.2650351289898269,0.0,eating,null,null,null,0,0,0,1
+2.3978952727983707,0.0,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+2.70805020110221,0.0,0.0,0.0,0.0,decrease,null,"dobj(_1, _3), vmod(_3, _2)",null,0,1,0,0
+2.0794415416798357,0.0,0.0,0.2727723737168101,0.01874957058757648,helps,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,0
+2.5649493574615367,1.0986122886681098,0.0,0.0,0.0,takes,null,"vmod(_3, _1), dobj(_3, _2)",null,0,1,0,0
+2.6390573296152584,0.0,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,0
+2.4849066497880004,0.0,0.0,0.013349328038085796,0.0,needed,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.3978952727983707,0.6931471805599453,0.0,0.0,0.0,called,null,null,null,0,0,0,0
+1.9459101490553132,0.0,0.0,0.01599228079528582,0.0,produces,null,null,null,0,0,0,0
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,occurs,null,null,null,0,0,0,0
+2.5649493574615367,1.3862943611198906,0.0,0.00733540894192285,0.0,eating,null,null,null,0,0,0,0
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,occurs,null,null,null,0,0,0,0
+2.302585092994046,0.0,0.0,0.0,0.0,polluting,null,null,"ccomp(_1, _3), prep_on(_4, _2), dobj(_3, _4)",0,0,1,0
+1.791759469228055,0.6931471805599453,0.0,0.018867924528301886,0.0,describes,null,null,null,0,0,0,0
+2.1972245773362196,0.6931471805599453,0.0,0.20390158013989423,0.20390158013989423,conductor,null,null,null,0,0,0,0
+3.4339872044851463,3.044522437723423,0.0,0.2720355103846566,0.0,growing,"vmod(_1, _2)",null,null,1,0,0,0
+2.1972245773362196,0.0,0.0,0.0,0.0,snow,null,null,null,0,0,0,0
+2.0794415416798357,0.0,0.0,0.03286325833756537,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.9444389791664403,0.0,0.0,0.0,0.0,dropped,null,null,null,0,0,0,0
+2.833213344056216,-Infinity,0.0,0.1322919164530241,0.0,shakes,null,null,null,0,0,0,1
+2.70805020110221,0.0,0.0,0.0,0.0,.,null,null,null,0,0,0,0
+2.3978952727983707,-Infinity,0.0,0.1962025316455696,0.0,crumples,null,null,null,0,0,0,0
+2.70805020110221,0.0,0.0,0.013349328038085796,0.0,decrease,null,"dobj(_1, _3), vmod(_3, _2)",null,0,1,0,0
+2.3978952727983707,0.0,1.0,0.2650351289898269,1.473508871329653E-4,exercising,null,null,null,0,0,0,1
+2.70805020110221,0.0,0.0,0.018867924528301886,0.0,.,null,null,null,0,0,0,0
+2.302585092994046,2.0794415416798357,0.0,0.0,0.0,used,null,null,null,0,0,0,0
+3.332204510175204,2.8903717578961645,0.0,0.009361395069418884,0.009361395069418884,covered,null,null,null,0,0,0,0
+3.258096538021482,2.8903717578961645,1.0,0.03445247984822309,0.0,appears,null,null,null,0,0,0,1
+2.3978952727983707,0.0,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+2.6390573296152584,0.0,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1
+2.3978952727983707,0.6931471805599453,0.0,0.0,0.0,called,null,null,null,0,0,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,exercising,null,null,null,0,0,0,0
+2.0794415416798357,0.0,0.0,0.0,0.0,living,null,"prep_from(_3, _1), aux(_2, _3)",null,0,1,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,source,null,null,"nsubj(_3, _1), prep_for(_4, _2), prep_of(_3, _4)",0,0,1,1
+3.4339872044851463,3.044522437723423,0.0,0.2720355103846566,0.0,growing,"vmod(_1, _2)",null,null,1,0,0,0
+1.9459101490553132,0.0,0.0,0.10679611650485438,0.0,causes,null,null,null,0,0,0,0
+2.1972245773362196,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.70805020110221,0.0,0.0,0.0,0.0,used,null,null,null,0,0,0,0
+2.0794415416798357,1.3862943611198906,0.0,0.0,0.0,having,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,0
+2.0794415416798357,0.6931471805599453,0.0,0.0,0.0,organism,null,"nsubj(_3, _1), rcmod(_3, _2)",null,0,1,0,0
+1.9459101490553132,0.0,0.0,0.022727272727272728,0.0,produces,null,null,null,0,0,0,0
+3.332204510175204,2.8903717578961645,0.0,6.112840784935707E-4,0.0,covered,null,null,null,0,0,0,0
+3.5263605246161616,2.3978952727983707,0.0,0.0,0.0,measured,null,null,null,0,0,0,1
+2.833213344056216,-Infinity,0.0,0.08333333333333333,0.0,shakes,null,null,null,0,0,0,0
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,examples,null,null,null,0,0,0,1
+2.4849066497880004,0.0,1.0,0.2650351289898269,0.2650351289898269,example,null,null,null,0,0,0,1
+3.044522437723423,2.70805020110221,0.0,0.0,0.0,tossed,null,null,"nsubj(_1, _3), prep_because_of(_4, _2), nsubj(_4, _3)",0,0,1,0
+2.3978952727983707,0.0,0.0,0.014215908802176064,0.0,example,null,null,null,0,0,0,0
+2.772588722239781,1.6094379124341003,0.0,0.0,0.0,webbed,null,null,null,0,0,0,0
+2.3978952727983707,-Infinity,0.0,0.0,0.0,called,null,null,null,0,0,0,0
+2.833213344056216,0.0,0.0,0.17204301075268819,0.0,would,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.01874957058757648,0.0,growing,null,null,null,0,0,0,0
+2.1972245773362196,1.0986122886681098,0.0,0.24372198326286196,2.074370286278117E-4,get,null,null,null,0,0,0,1
+2.302585092994046,1.6094379124341003,0.0,0.0,0.0,does,"vmod(_1, _2)",null,null,1,0,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+2.5649493574615367,1.0986122886681098,0.0,0.014215908802176064,0.014215908802176064,takes,null,"vmod(_3, _1), dobj(_3, _2)",null,0,1,0,0
+1.9459101490553132,1.0986122886681098,0.0,0.0,0.0,depend,null,"prep_on(_3, _1), nsubj(_3, _2)",null,0,1,0,0
+2.833213344056216,0.6931471805599453,0.0,0.0,0.0,environment,null,null,"nsubj(_3, _1), cop(_4, _2), ccomp(_3, _4)",0,0,1,1
+2.772588722239781,0.6931471805599453,0.0,0.0,0.0,would,null,null,null,0,0,0,1
+2.70805020110221,2.0794415416798357,0.0,0.0,0.0,planning,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0,1,0,0
+1.791759469228055,0.6931471805599453,0.0,0.0,0.0,describes,null,null,null,0,0,0,0
+2.6390573296152584,1.6094379124341003,0.0,0.0,0.0,respond,null,null,null,0,0,0,0
+3.258096538021482,2.8903717578961645,0.0,0.0,0.0,appears,null,null,null,0,0,0,0
+1.9459101490553132,0.0,0.0,0.0,0.0,forms,null,null,null,0,0,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,exercising,null,null,null,0,0,0,0
+2.302585092994046,0.0,1.0,0.03397394578419187,0.03397394578419187,causes,null,"nsubj(_3, _1), vmod(_3, _2)",null,0,1,0,0
+2.4849066497880004,-Infinity,0.0,0.0,0.0,do,null,null,null,0,0,0,0
+2.4849066497880004,0.6931471805599453,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+2.833213344056216,1.791759469228055,0.0,0.0209719598735154,0.0,support,null,"prep_of(_3, _1), nsubj(_2, _3)","prep_of(_3, _1), conj_and(_2, _4), nsubj(_4, _3)",0,1,1,1
+2.772588722239781,0.0,0.0,0.75,0.0,season,null,null,null,0,0,0,0
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,examples,null,null,null,0,0,0,0
+2.3978952727983707,0.0,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,1
+2.5649493574615367,-Infinity,0.0,0.013593438675992948,0.0,is,null,null,null,0,0,0,0
+3.4339872044851463,3.044522437723423,0.0,0.0,0.0,growing,"vmod(_1, _2)",null,null,1,0,0,0
+2.772588722239781,0.0,0.0,0.0,0.0,season,null,null,null,0,0,0,0
+2.3978952727983707,-Infinity,0.0,0.2289421250693549,0.0,called,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.09062292450661966,0.0,cutting,null,null,null,0,0,0,0
+3.1354942159291497,2.833213344056216,0.0,0.42105263157894735,0.0,reports,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0,1,0,0
+2.4849066497880004,2.1972245773362196,0.0,0.0,0.0,get,"prep_from(_2, _1)",null,null,1,0,0,0
+2.4849066497880004,0.6931471805599453,0.0,0.016233766233766232,0.0,organism,null,null,null,0,0,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+3.258096538021482,2.8903717578961645,0.0,0.5,0.0,appears,null,null,null,0,0,0,0
+2.6390573296152584,0.0,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1
+2.9444389791664403,2.772588722239781,0.0,0.08253159196138575,0.0,.,null,null,null,0,0,0,0
+2.833213344056216,-Infinity,0.0,0.0,0.0,shakes,null,null,null,0,0,0,0
+2.70805020110221,-Infinity,0.0,0.008978855308699144,0.0,speaks,null,null,null,0,0,0,0
+2.4849066497880004,2.1972245773362196,0.0,0.0,0.0,get,"prep_from(_2, _1)",null,null,1,0,0,1
+2.0794415416798357,0.0,0.0,0.0,0.0,living,null,"prep_from(_3, _1), aux(_2, _3)",null,0,1,0,1
+2.1972245773362196,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+3.332204510175204,2.8903717578961645,1.0,0.14694444444444446,0.0,covered,null,null,null,0,0,0,1
+2.4849066497880004,-Infinity,0.0,0.0,0.0,fly,null,null,null,0,0,0,0
+2.3978952727983707,-Infinity,0.0,0.2289421250693549,0.0,called,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,0
+1.791759469228055,0.0,0.0,0.0,0.0,causes,null,"nsubj(_3, _1), vmod(_3, _2)",null,0,1,0,0
+2.1972245773362196,0.0,0.0,0.0,0.0,conductor,null,null,null,0,0,0,0
+3.258096538021482,2.8903717578961645,0.0,0.0,0.0,appears,null,null,null,0,0,0,0
+2.5649493574615367,0.0,0.0,0.0,0.0,best,null,"nsubj(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.6390573296152584,1.791759469228055,0.0,0.0,0.0,drops,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1
+3.2188758248682006,2.9444389791664403,0.0,0.0,0.0,has,"conj(_1, _2)","dobj(_1, _3), vmod(_3, _2)",null,1,1,0,0
+2.4849066497880004,0.6931471805599453,0.0,0.13593438675992947,0.0,example,null,null,null,0,0,0,0
+3.871201010907891,3.713572066704308,0.0,0.5024770318757887,0.0,puts,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.0,0.0,needed,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.5649493574615367,-Infinity,0.0,0.0,0.0,is,null,null,null,0,0,0,1
+3.044522437723423,2.70805020110221,0.0,0.0,0.0,tossed,null,null,"nsubj(_1, _3), prep_because_of(_4, _2), nsubj(_4, _3)",0,0,1,0
+2.3978952727983707,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.6390573296152584,0.0,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,0
+4.0943445622221,3.828641396489095,0.0,0.0,0.0,base,null,null,"advcl(_3, _1), parataxis(_4, _2), advcl(_4, _3)",0,0,1,0
+3.1354942159291497,2.833213344056216,0.0,0.0,0.0,reports,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0,1,0,0
+2.9444389791664403,2.772588722239781,0.0,0.0,0.0,.,null,null,null,0,0,0,0
+1.791759469228055,0.0,0.0,0.0,0.0,causes,null,"nsubj(_3, _1), vmod(_3, _2)",null,0,1,0,1
+2.302585092994046,2.0794415416798357,0.0,0.0,0.0,used,null,null,null,0,0,0,0
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,get,null,null,null,0,0,0,0
+2.6390573296152584,1.6094379124341003,1.0,0.21931655466373728,0.0,respond,null,null,null,0,0,0,0
+2.302585092994046,1.0986122886681098,1.0,0.1112506115735913,0.1112506115735913,examples,null,null,null,0,0,0,1
+2.3978952727983707,0.0,0.0,0.2718687735198589,0.0,describes,null,null,null,0,0,0,0
+2.0794415416798357,0.0,0.0,0.0,0.0,living,null,"prep_from(_3, _1), aux(_2, _3)",null,0,1,0,1
+3.332204510175204,1.3862943611198906,0.0,0.14660554610697965,0.06796719337996474,chicks,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.0,0.0,cutting,null,null,null,0,0,0,0
+2.70805020110221,2.0794415416798357,0.0,0.27186877351985894,0.0,planning,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0,1,0,0
+1.6094379124341003,0.6931471805599453,0.0,0.0,0.0,fruit,"nsubj(_2, _1)",null,null,1,0,0,1
+1.791759469228055,0.6931471805599453,0.0,0.0,0.0,describes,null,null,null,0,0,0,0
+2.6390573296152584,0.0,0.0,0.0,0.0,fly,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.001802562362200186,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,1
+2.5649493574615367,-Infinity,0.0,0.0,0.0,is,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.05048991508225952,0.0,found,null,null,null,0,0,0,0
+2.3978952727983707,0.0,0.0,0.0,0.0,source,null,null,"nsubj(_3, _1), prep_for(_4, _2), prep_of(_3, _4)",0,0,1,0
+2.772588722239781,1.6094379124341003,0.0,0.26281246855385476,0.0,webbed,null,null,null,0,0,0,1
+2.70805020110221,2.0794415416798357,0.0,0.00456909488882786,0.0,planning,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0,1,0,0
+2.4849066497880004,0.0,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+4.0943445622221,3.828641396489095,0.0,1.0,0.05,base,null,null,"advcl(_3, _1), parataxis(_4, _2), advcl(_4, _3)",0,0,1,0
+2.1972245773362196,0.6931471805599453,0.0,0.20390158013989423,0.20390158013989423,conductor,null,null,null,0,0,0,0
+2.9444389791664403,2.772588722239781,0.0,0.08253159196138575,0.0,.,null,null,null,0,0,0,0
+3.332204510175204,2.8903717578961645,0.0,0.0,0.0,covered,null,null,null,0,0,0,1
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,examples,null,null,null,0,0,0,0
+3.044522437723423,2.70805020110221,0.0,0.0,0.0,tossed,null,null,"nsubj(_1, _3), prep_because_of(_4, _2), nsubj(_4, _3)",0,0,1,1
+2.772588722239781,-Infinity,0.0,0.0,0.0,likely,null,null,null,0,0,0,0
+2.4849066497880004,-Infinity,0.0,0.0,0.0,fly,null,null,null,0,0,0,0
+2.772588722239781,1.6094379124341003,1.0,1.0,0.0,webbed,null,null,null,0,0,0,1
+2.6390573296152584,0.0,0.0,0.0038838396217122707,0.0,fly,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.0,0.0,grow,null,null,null,0,0,0,0
+2.1972245773362196,0.6931471805599453,0.0,0.0,0.0,inherit,null,null,null,0,0,0,0
+2.0794415416798357,0.0,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1
+2.0794415416798357,0.0,0.0,0.004315377357458078,0.0,living,null,"prep_from(_3, _1), aux(_2, _3)",null,0,1,0,0
+2.833213344056216,0.0,0.0,0.0,0.0,example,null,null,null,0,0,0,0
+3.332204510175204,0.0,0.0,0.0,0.0,used,null,null,null,0,0,0,0
+2.3978952727983707,0.6931471805599453,0.0,0.0,0.0,.,"prepc_for(_1, _2)",null,null,1,0,0,1
+2.833213344056216,-Infinity,0.0,0.0,0.0,shakes,null,null,null,0,0,0,0
+2.0794415416798357,1.3862943611198906,0.0,0.0,0.0,having,null,null,null,0,0,0,0
+2.1972245773362196,0.0,0.0,0.21209080568453567,0.0,resting,null,"ccomp(_1, _3), xcomp(_3, _2)",null,0,1,0,0
+3.871201010907891,3.713572066704308,0.0,0.37967914438502676,0.0,puts,null,null,null,0,0,0,0
+2.6390573296152584,1.791759469228055,1.0,0.293416357676914,0.293416357676914,use,"vmod(_1, _2)",null,null,1,0,0,1
+2.0794415416798357,0.6931471805599453,0.0,0.0,0.0,organism,null,"nsubj(_3, _1), rcmod(_3, _2)",null,0,1,0,0
+2.833213344056216,-Infinity,0.0,0.02091298257845069,0.0,live,null,null,null,0,0,0,0
+3.295836866004329,-Infinity,0.0,0.008877347706770905,0.0,opens,null,null,null,0,0,0,0
+1.791759469228055,0.0,0.0,0.0,0.0,causes,null,"nsubj(_3, _1), vmod(_3, _2)",null,0,1,0,0
+2.833213344056216,1.791759469228055,0.0,0.09259259259259259,0.09259259259259259,support,null,"prep_of(_3, _1), nsubj(_2, _3)","prep_of(_3, _1), conj_and(_2, _4), nsubj(_4, _3)",0,1,1,1
+3.367295829986474,2.772588722239781,0.0,0.023793823181042457,0.023793823181042457,signals,null,"auxpass(_3, _1), advcl(_2, _3)",null,0,1,0,1
+2.6390573296152584,1.791759469228055,0.0,0.0,0.0,use,"vmod(_1, _2)",null,null,1,0,0,0
+3.2188758248682006,2.9444389791664403,0.0,0.0,0.0,has,"conj(_1, _2)","dobj(_1, _3), vmod(_3, _2)",null,1,1,0,1
+3.295836866004329,2.9444389791664403,0.0,0.0,0.0,live,null,null,null,0,0,0,0
+2.5649493574615367,1.0986122886681098,0.0,0.0018444824171350738,0.0018444824171350738,takes,null,"vmod(_3, _1), dobj(_3, _2)",null,0,1,0,0
+2.833213344056216,0.6931471805599453,0.0,0.0,0.0,environment,null,null,"nsubj(_3, _1), cop(_4, _2), ccomp(_3, _4)",0,0,1,1
+2.5649493574615367,0.0,0.0,0.42105263157894735,0.0,best,null,"nsubj(_3, _1), xcomp(_3, _2)",null,0,1,0,0
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,occurs,null,null,null,0,0,0,0
+2.3978952727983707,1.3862943611198906,0.0,0.0,0.0,able,null,null,"prep_of(_3, _1), xcomp(_4, _2), nsubj(_4, _3)",0,0,1,0
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,occurs,null,null,null,0,0,0,0
+1.3862943611198906,0.6931471805599453,0.0,0.0,0.0,nonliving,"nsubj(_2, _1)",null,null,1,0,0,1
+2.772588722239781,-Infinity,0.0,0.5227431741527647,0.0,likely,null,null,null,0,0,0,0
+2.6390573296152584,1.791759469228055,0.0,0.0,0.0,use,"vmod(_1, _2)",null,null,1,0,0,1
+4.0943445622221,3.828641396489095,0.0,0.0,0.0,base,null,null,"advcl(_3, _1), parataxis(_4, _2), advcl(_4, _3)",0,0,1,0
+2.6390573296152584,0.0,1.0,0.03397394578419187,0.03397394578419187,causes,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1
+1.9459101490553132,0.0,0.0,0.46808510638297873,0.0,inherit,null,"nsubj(_3, _1), dobj(_3, _2)",null,0,1,0,0
+3.332204510175204,2.8903717578961645,0.0,0.14660554610697965,0.0,covered,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.0,0.0,used,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,0,1,0,1
+2.1972245773362196,0.6931471805599453,0.0,0.0,0.0,inherit,null,null,null,0,0,0,0
+2.772588722239781,1.6094379124341003,0.0,0.01874957058757648,0.0,webbed,null,null,null,0,0,0,0
+2.4849066497880004,0.0,0.0,0.75,0.0,growing,null,null,null,0,0,0,0
+2.4849066497880004,-Infinity,0.0,0.0,0.0,fly,null,null,null,0,0,0,1
+2.772588722239781,0.0,0.0,0.0,0.0,season,null,null,null,0,0,0,0
+3.367295829986474,2.9444389791664403,0.0,8.063108627343282E-4,0.0,rained,null,null,null,0,0,0,0
+2.833213344056216,-Infinity,0.0,0.02091298257845069,0.0,live,null,null,null,0,0,0,0
+3.332204510175204,0.0,0.0,0.0,0.0,used,null,null,null,0,0,0,0
+2.0794415416798357,0.6931471805599453,0.0,0.0,0.0,organism,null,"nsubj(_3, _1), rcmod(_3, _2)",null,0,1,0,1
+2.6390573296152584,1.791759469228055,1.0,0.27186877351985894,0.0,drops,null,null,"nsubj(_3, _1), vmod(_4, _2), dobj(_3, _4)",0,0,1,1

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="extraction">
+<head>
+<title>Extraction Demo</title>
+<link rel="stylesheet" media="screen" href="/css/bootstrap.min.css">
+<link rel="stylesheet" media="screen" href="/css/style.css">
+<script src="/js/angular.min.js" type="text/javascript"></script>
+<script src="/js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+</head>
+<body ng-controller='ExtractionCtrl'>
+<div class="container">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div><img height="50px" src="img/ai2-full-logo.png"></div>
+        <h1 style="margin-top: 0px; margin-bottom: 5px">Extraction Demo</h1>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-md-6">
+      <tabset>
+      <tab heading='Text input'>
+      <form>
+        <dl>
+          <dt>Examples:</dt>
+          <dd ng-repeat="example in examples">
+            <a href="#" ng-click="showExample(example)">{{ example.substring(0, 40) }}...</a>
+          </dd>
+        </dl>
+        <dl class=" " id="text_field">
+          <dt><label for="text">Text:</label></dt>
+          <dd>
+          <textarea ng-model="model.text" id="text" name="text" rows="20" class="field span8"></textarea>
+          </dd>
+          <dd class="info">Required</dd>
+        </dl>
+        <button ng-click="submitText()" class="btn btn-default">Submit</button>
+      </form>
+      </tab>
+      <tab heading='Web URL'>
+      <form>
+        <dl class=" " id="url_field">
+          <dt><label for="url">URL:</label></dt>
+          <dd>
+          <input ng-model="model.url" type="text" id="url" name="url" value="" placeholder="http://www.google.com/">
+          </dd>
+        </dl>
+        <button ng-click="submitUrl()" class="btn btn-default">Submit</button>
+      </form>
+      </tab>
+      </tabset>
+    </div>
+    <div class="col-md-6">
+      <div ng-show='working' class="spinner">
+        <img src="/img/spinner.gif" />
+      </div>
+      <div ng-hide='working'>
+        <div ng-show='errorResponse'>
+          <h3>There was a problem serving your request ({{ errorResponse.status }}).</h3>
+          <div class="alert alert-danger">
+            {{ errorResponse.messages.join("\n") }}
+          </div>
+          <details>
+            <summary>Stack Trace</summary>
+            <p><pre>{{ errorResponse.stackTrace }}</pre></p>
+          </details>
+        </div>
+        <div ng-show='response' ng-repeat="inputLine in response.input track by $index" class="panel">
+          <div ng-show="response.failures.length">
+            <h3>There were problems with your request.</h3>
+            <h3>Some results can not be shown.</h3>
+            <div ng-repeat="failure in response.failures" class="alert alert-danger">
+              {{ failure.messages.join("\n") }}
+            </div>
+          </div>
+          <h3>{{ inputLine.text }}</h3>
+           <accordion close-others="never">
+             <accordion-group ng-repeat="processor in inputLine.processors"  heading="{{ processor.name }} : {{ response.processors[processor.name] }}" is-open="{{ $first }}" class="pointer">
+                 <dl>
+                   <ul ng-repeat="result in processor.results">
+                     {{ result }}
+                   </ul>
+                 </dl>
+             </accordion-group>
+          </accordion>
+        </div>
+      </div>
+    </div>
+    <details ng-show="response">
+      <summary>Json Response</summary>
+      <p><pre>{{ response | json }}</pre></p>
+    </details>
+  </div>
+</div>
+</body>
+</html>

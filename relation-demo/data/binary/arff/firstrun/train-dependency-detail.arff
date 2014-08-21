@@ -1,0 +1,631 @@
+@relation SENTENCE_DISREL
+  @attribute sentence-length         numeric         % length of the sentence
+  @attribute distance-arg1-arg2      numeric         % distance between arg1 and arg2
+  @attribute overlap-sen-disrel      numeric         % word overlap between sentence and disrel-lexical-cue-seeds
+  @attribute entailment-sen-seeds    numeric         % word entailment for sentence and disrel-lexical-cue-seeds
+  @attribute entailment-root-seeds   numeric         % word entailment for root-string and disrel-lexiccal-cue-seeds
+  @attribute 0  {breaks,snow,looks,unity,used,enable,able,s,find,support,signifies,aims,involved,works,grounded,due,lead,admits,provided,based,have,learned,needed,delay,offered,proven,are,is,source,caused,absence,contributor,claim,god,directed,agree,fruit,plays,enjoys,refers,likely,said,exercising,examples,path,acknowledge,given,am,cutting,produced,crumples,puts,favorite,depend,want,join,thought,.,rained,],sure,dropped,touch,tripled,enhance,best,differed,becomes,unable,essential,spend,would,causes,giving,professionals,owned,harbor,chicks,fortified,drops,polluting,handles,good,suggested,tool,covers,designed,blocks,going,uses,clear,expected,limited,play,led,do,serve,scored,’s,growth,confirmed,responsible,equipped,played,re,signals,present,financed,effect,necessary,result,held,set,came,gift,replaced,intended,focuses,branch,tossed,runs,collected,brings,create,applies,provides,described,receive,became,build,bunch,unbinding,indicated,has,goal,signed,continued,changes,inhibit,conducted,linked,country,comes,scanning,promotes,partnership,come,argued,null,such,affect,trying,exacerbated,season,stand,way,growing,webbed,trained,open,gas,ticket,permeated,molded,bane,work,central,conductor,cannot,wounded,mainstay,object,hughes,element,purpose,getting,sentenced,accomplishes,�,base,key,triggered,compounded,know,presented,unsuitable,driven,caught,sign,operate,planning,describes,making,alluded,help,was,symbol,granted,found,inherit,negotiate,gives,classified,die,doing,proclaimed,depends,points,redistributes,consist,afflicted,leads,destroy,offers,results,wave,someone,backed,remain,distributed,need,can,being,transferred,reports,black,focus,click,successful,appears,involves,vital,gotten,happens,member,gargling,live,take,takes,easy,sufficient,contribute,occurs,integral,discusses,allow,grow,shakes,wondering,knocking,satisfied,ve,raised,helpful,think,belongs,race,believed,improve,vuitton,’m,helps,resist,stored,few,called,covered,emphasizes,produces,says,cause,decrease,argue,environment,dedicated,crucial,preserved,means,?,suspect,person,forms,instructs,give,s,formed,eating,funded,true,include,life,failing,judged,‘,use,picture,make,put,sent,done,available,deadly,retire,establishes,speaks,treat,percent,tight,say,established,happening,attributed,brought,offer,organism,absolute,struggled,enlarging,be,attached,opens,shows,reflected,protect,considered,pointed,get,supported,...,measured,harm,changing,time,part,undecided,attractive,self-gratification,more,fundamental,recommended,harmful,religion,comprised,form,benefit,required,identified,piracy,treated,matured,hated,act,authored,opposes,demands,joined,example,according,becoming,see,removes,basis,drug,fly,slaves,add,having,nonliving,respond,characterized,does,centerpiece,introduced,disobeyed,known,cl2,continue,study,possible,assist,like,listed,born,resting,asks,received,one,high,increase,right,located,prefer,posted,created,living,attracts,affects,died,trigger,extension}    % 0
+  @attribute 1  {"prep_for(_1, _2)","nn(_2, _1)","dobj(_1, _2)","prep_from(_2, _1)","conj_and(_2, _1)","nn(_1, _2)",null,"prep_which_is_due_to(_1, _2)","prepc_for(_1, _2)","prep_of(_2, _1)","nsubj(_2, _1)"}    % 1
+  @attribute 2  {"nsubjpass(_3, _1), prep_on(_3, _2)","prep_from(_3, _1), aux(_2, _3)","mark(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), nn(_3, _2)","det(_3, _1), prep_in(_3, _2)","prep_of(_3, _1), conj_or(_2, _3)","rcmod(_1, _3), prep_for(_3, _2)","vmod(_1, _3), dobj(_3, _2)","nn(_3, _1), nsubj(_2, _3)","prep_on(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), prep_from(_3, _2)","rcmod(_1, _3), dobj(_3, _2)","prepc_of(_1, _3), prep_for(_3, _2)","nsubj(_3, _1), xcomp(_3, _2)","rcmod(_1, _3), prep_from(_3, _2)","nsubjpass(_3, _1), prep_out_of(_3, _2)","dep(_3, _1), nsubj(_3, _2)","nsubjpass(_3, _1), prep_about(_3, _2)","prep_for(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), dobj(_3, _2)","conj_and(_3, _1), prep_of(_3, _2)","dobj(_3, _1), vmod(_2, _3)","nsubjpass(_3, _1), dobj(_3, _2)","rcmod(_1, _3), prep_with(_3, _2)","mark(_3, _1), prep_of(_3, _2)","nsubjpass(_3, _1), prep_before(_3, _2)","vmod(_1, _3), prep_by(_3, _2)","rcmod(_1, _3), prep_on(_3, _2)","nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), tmod(_3, _2)","nsubjpass(_3, _1), prep_with(_3, _2)","nsubj(_3, _1), appos(_3, _2)","nsubj(_3, _1), prep_with(_3, _2)",null,"nsubj(_3, _1), prep_in(_3, _2)","nsubjpass(_3, _1), prep_by(_3, _2)","nsubj(_3, _1), prep_whether(_3, _2)","vmod(_1, _3), prep_in(_3, _2)","nsubj(_3, _1), prep_about(_3, _2)","rcmod(_1, _3), prep_to(_3, _2)","nsubjpass(_3, _1), prep_at(_3, _2)","rcmod(_1, _3), prep_in(_3, _2)","nsubjpass(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), ccomp(_3, _2)","nsubjpass(_3, _1), prep_in(_3, _2)","nsubj(_3, _1), rcmod(_3, _2)","nsubj(_3, _1), prepc_of(_3, _2)","prep_of(_3, _1), conj_and(_2, _3)","prep_in(_3, _1), prep_to(_3, _2)","rcmod(_1, _3), prep_after(_3, _2)","nsubjpass(_3, _1), tmod(_3, _2)","prep_from(_3, _1), nsubj(_3, _2)","prep_of(_3, _1), prep_of(_2, _3)","nsubjpass(_3, _1), xcomp(_3, _2)","prepc_of(_1, _3), prep_to(_3, _2)","nsubjpass(_3, _1), prep_into(_3, _2)","rcmod(_1, _3), prep_by(_3, _2)","nsubj(_3, _1), prep_as(_3, _2)","nsubj(_3, _1), prep_back_to(_3, _2)","nsubj(_3, _1), prep_ahead_of(_3, _2)","nsubj(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), vmod(_3, _2)","nsubj(_3, _1), prep_on(_3, _2)","nsubjpass(_3, _1), prep_as(_3, _2)","nsubj(_3, _1), prep_between(_3, _2)","nsubj(_3, _1), prep_than(_3, _2)","nsubjpass(_3, _1), prep_of(_3, _2)","dobj(_3, _1), nsubj(_3, _2)","prep_for(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), prep_among(_3, _2)","vmod(_1, _3), prep_for(_3, _2)","nsubj(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), prep_into(_3, _2)","nsubjpass(_3, _1), prep_to(_3, _2)","rcmod(_1, _3), prep_of(_3, _2)"}    % 2
+  @attribute 3  {"nsubj(_3, _1), nsubj(_2, _4), ccomp(_4, _3)","nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)","dobj(_3, _1), prep_for(_4, _2), parataxis(_3, _4)","conj_&(_3, _1), prep_with(_4, _2), nsubj(_4, _3)","prep_with(_3, _1), dobj(_4, _2), xcomp(_3, _4)","prep_in(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)","prep_for(_3, _1), prep_with(_4, _2), nsubjpass(_4, _3)","prep_of(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)","conj_or(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), det(_4, _2), dobj(_3, _4)","nsubjpass(_3, _1), amod(_4, _2), prep_in(_3, _4)","nsubjpass(_3, _1), prep_on(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_to(_4, _2), dobj(_3, _4)","ccomp(_1, _3), prep_on(_4, _2), dobj(_3, _4)","prep_in(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_as(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)","prep_of(_3, _1), nsubj(_4, _2), nsubj(_4, _3)","conj_and(_3, _1), prep_for(_4, _2), nsubj(_4, _3)","prep_of(_3, _1), dobj(_4, _2), dobj(_4, _3)","det(_3, _1), prep_to(_4, _2), punct(_4, _3)","nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), amod(_4, _2), prep_of(_3, _4)","prep_with(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","dobj(_3, _1), prep_of(_4, _2), csubj(_4, _3)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), nsubj(_4, _2), appos(_3, _4)","det(_3, _1), dobj(_4, _2), prep_to(_4, _3)","num(_3, _1), prep_on(_4, _2), prep_as(_4, _3)","dobj(_3, _1), prep_on(_4, _2), nsubj(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), punct(_4, _3)","conj_and(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","prep_on(_3, _1), prep_over(_4, _2), ccomp(_4, _3)","nsubj(_3, _1), nn(_4, _2), prep_for(_3, _4)","nn(_3, _1), prep_of(_4, _2), nsubj(_4, _3)","nsubj(_1, _3), prep_because_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), advcl(_3, _4)","rcmod(_1, _3), conj_and(_2, _4), dobj(_3, _4)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_4, _3)","dobj(_3, _1), nsubj(_4, _2), xcomp(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), prep_of(_3, _4)","dobj(_3, _1), dobj(_4, _2), conj_or(_3, _4)","nsubj(_3, _1), prep_of(_4, _2), conj_or(_3, _4)","prep_to(_3, _1), dobj(_4, _2), conj_and(_3, _4)","prep_for(_3, _1), dobj(_4, _2), vmod(_3, _4)","prep_on(_3, _1), dobj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), amod(_4, _2), prep_for(_3, _4)","dobj(_3, _1), ccomp(_4, _2), ccomp(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), conj_and(_4, _3)","nn(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), aux(_3, _4)","nsubj(_3, _1), dobj(_4, _2), ccomp(_3, _4)","dobj(_3, _1), prep_for(_4, _2), advcl(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), punct(_3, _4)","prep_for(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","nn(_3, _1), prep_for(_4, _2), vmod(_3, _4)","conj_plus(_3, _1), dobj(_4, _2), prep_in(_4, _3)","prep_with(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",null,"prep_on(_3, _1), prep_with(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_to(_4, _2), dep(_3, _4)","det(_3, _1), nsubj(_4, _2), rcmod(_3, _4)","dep(_3, _1), prep_of(_4, _2), dep(_3, _4)","xcomp(_3, _1), ccomp(_4, _2), advcl(_4, _3)","nsubjpass(_3, _1), prep_in(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj_but(_3, _4)","dobj(_3, _1), prep_out_of(_4, _2), conj_or(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_3, _4)","nn(_3, _1), prep_as(_4, _2), nsubjpass(_4, _3)","prep_during(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)","nsubjpass(_3, _1), nsubj(_4, _2), punct(_3, _4)","nsubjpass(_3, _1), prep_by(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), predet(_4, _2), dobj(_3, _4)","prep_to(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","prep_in(_3, _1), dobj(_4, _2), conj_or(_3, _4)","prep_of(_3, _1), prep_at(_4, _2), nsubjpass(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), dobj(_4, _2), auxpass(_3, _4)","prep_of(_3, _1), prep_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), parataxis(_3, _4)","nsubj(_3, _1), nsubjpass(_4, _2), advcl(_3, _4)","nsubj(_3, _1), prep_with(_4, _2), prep_out_of(_3, _4)","prep_with(_3, _1), prep_in(_4, _2), xcomp(_4, _3)","nsubj(_3, _1), nn(_4, _2), prep_in(_3, _4)","dobj(_3, _1), prep_over(_4, _2), vmod(_3, _4)","dobj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), prep_of(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), dobj(_4, _2), conj(_3, _4)","aux(_1, _3), prep_of(_4, _2), aux(_4, _3)","prep_about(_3, _1), prep_for(_4, _2), conj_yet(_4, _3)","prep_for(_3, _1), nsubj(_4, _2), conj_and(_3, _4)","nsubjpass(_3, _1), amod(_4, _2), dobj(_3, _4)","conj_and(_3, _1), dobj(_4, _2), nsubj(_4, _3)","prep_in(_3, _1), prep_on(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)","conj_and(_3, _1), prep_for(_4, _2), nsubjpass(_4, _3)","prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)","dobj(_3, _1), dobj(_4, _2), conj_and(_3, _4)","prep_of(_3, _1), prep_to(_4, _2), prep_over(_4, _3)","nsubj(_3, _1), prep_about(_4, _2), conj_and(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_4, _3)","nn(_3, _1), prep_upon(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_4, _3)","prep_to(_3, _1), prep_out_of(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_4, _3)","det(_3, _1), prep_on(_4, _2), dobj(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), xcomp(_3, _4)","nsubj(_3, _1), aux(_2, _4), aux(_3, _4)","nsubjpass(_3, _1), prep_with(_4, _2), conj_and(_4, _3)","nsubj(_3, _1), prep_for(_4, _2), dobj(_3, _4)","nsubj(_3, _1), cop(_4, _2), prepc_for(_3, _4)","prep_to(_3, _1), prep_in(_4, _2), nsubjpass(_4, _3)","predet(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","prep_of(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), nn(_4, _2), prep_on(_3, _4)","nsubj(_3, _1), xcomp(_4, _2), ccomp(_3, _4)","prep_of(_3, _1), prep_for(_4, _2), nsubj(_4, _3)","prep_with(_3, _1), prep_for(_4, _2), advmod(_3, _4)","nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)","nsubj(_3, _1), prep_for(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), dobj(_4, _2), vmod(_3, _4)","prep_in(_3, _1), prep_in(_4, _2), nsubj(_4, _3)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)","advcl(_3, _1), parataxis(_4, _2), advcl(_4, _3)","nsubjpass(_3, _1), dobj(_4, _2), prepc_to(_3, _4)","rcmod(_1, _3), prep_of(_4, _2), advmod(_3, _4)","nsubj(_3, _1), nsubj(_4, _2), prepc_for(_3, _4)","amod(_3, _1), nsubj(_4, _2), prep_while(_4, _3)","det(_3, _1), dobj(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_by(_4, _2), advcl(_3, _4)","nsubj(_3, _1), prep_as(_4, _2), conj_and(_3, _4)","tmod(_3, _1), prep_of(_4, _2), ccomp(_3, _4)","nsubj(_3, _1), prep_from(_4, _2), conj_and(_4, _3)","conj(_3, _1), prep_to(_4, _2), nsubjpass(_4, _3)","conj_and(_1, _3), prep_of(_4, _2), nsubj(_4, _3)","nsubjpass(_3, _1), prep_to(_4, _2), advcl(_4, _3)","dobj(_3, _1), prep_for(_4, _2), parataxis(_4, _3)","nn(_3, _1), prep_in(_2, _4), conj_and(_4, _3)"}    % 3
+  @attribute class                   {1,0}           % MULTI-CLASS LABEL: describe the discourse relation in the sentence
+
+@data
+2.6390573296152584,1.791759469228055,1.0,0.524123536379151,0.0,do,null,"nsubj(_3, _1), xcomp(_3, _2)",null,0
+2.8903717578961645,1.791759469228055,1.0,0.524123536379151,0.0,’m,null,null,null,0
+2.70805020110221,1.3862943611198906,1.0,0.7620617681895755,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_to(_3, _2)","conj_and(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",0
+2.70805020110221,1.3862943611198906,1.0,0.7620617681895755,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_to(_3, _2)","conj_and(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",0
+2.6390573296152584,1.0986122886681098,0.0,0.0035250108416359192,0.0,comes,null,"nsubj(_3, _1), prep_from(_3, _2)","nsubj(_3, _1), prep_from(_4, _2), conj_and(_4, _3)",0
+3.1354942159291497,2.302585092994046,0.0,0.0035250108416359192,0.0,.,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+2.995732273553991,1.3862943611198906,0.0,0.0035250108416359192,0.0,come,null,"det(_3, _1), prep_in(_3, _2)",null,0
+2.5649493574615367,1.3862943611198906,0.0,0.0035250108416359192,0.0,come,null,"det(_3, _1), prep_in(_3, _2)",null,0
+2.1972245773362196,1.6094379124341003,0.0,0.0035250108416359192,0.0,becomes,null,null,null,0
+3.6888794541139363,1.6094379124341003,0.0,0.0035250108416359192,0.0,retire,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",0
+2.833213344056216,0.6931471805599453,0.0,0.0035250108416359192,0.0,successful,null,"dobj(_3, _1), nsubj(_3, _2)",null,0
+2.772588722239781,2.0794415416798357,0.0,0.0035250108416359192,0.0,find,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+2.70805020110221,2.1972245773362196,0.0,0.0035250108416359192,0.0,.,null,"mark(_3, _1), nsubj(_3, _2)","det(_3, _1), nsubj(_4, _2), rcmod(_3, _4)",0
+3.091042453358316,2.302585092994046,0.0,0.0035250108416359192,0.0,be,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+3.1354942159291497,1.0986122886681098,0.0,0.05287516262453878,0.0,find,"nsubj(_2, _1)",null,"det(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+2.5649493574615367,0.6931471805599453,0.0,0.0035250108416359192,0.0035250108416359192,life,"nsubj(_2, _1)",null,null,0
+2.9444389791664403,1.0986122886681098,0.0,0.0035250108416359192,0.0,...,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+3.7612001156935624,2.302585092994046,0.0,0.05593736447955103,0.052412353637915104,want,null,null,"dobj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+3.9512437185814275,1.6094379124341003,0.0,0.0035250108416359192,0.0,thought,null,null,"predet(_3, _1), prep_in(_4, _2), nsubj(_4, _3)",0
+3.4657359027997265,1.791759469228055,0.0,0.0035250108416359192,0.0,spend,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",0
+3.784189633918261,2.4849066497880004,0.0,0.0035250108416359192,0.0018444824171350738,take,null,null,null,0
+2.1972245773362196,1.791759469228055,0.0,0.0035250108416359192,0.0,grow,null,null,null,0
+2.302585092994046,1.9459101490553132,0.0,0.0035250108416359192,0.0,get,null,null,"det(_3, _1), dobj(_4, _2), prep_to(_4, _3)",0
+3.367295829986474,2.3978952727983707,0.0,0.15862548787361636,0.0,get,"nsubj(_2, _1)",null,"nsubj(_3, _1), prep_of(_4, _2), conj_or(_3, _4)",0
+2.833213344056216,1.791759469228055,0.0,0.0035250108416359192,0.0,know,null,null,null,0
+3.1354942159291497,1.0986122886681098,0.0,0.0035250108416359192,0.0,.,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_3, _4)",0
+3.5263605246161616,1.0986122886681098,0.0,0.0035250108416359192,0.0,click,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+2.9444389791664403,1.0986122886681098,0.0,0.0035250108416359192,0.0,happens,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.4849066497880004,1.3862943611198906,0.0,0.0035250108416359192,0.0,continue,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+3.258096538021482,1.3862943611198906,0.0,0.0035250108416359192,0.0,add,null,null,null,0
+2.9444389791664403,1.3862943611198906,0.0,0.0035250108416359192,0.0,do,null,null,null,0
+3.4011973816621555,1.6094379124341003,0.0,0.0035250108416359192,0.0,believed,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,0
+3.4011973816621555,1.9459101490553132,0.0,0.0035250108416359192,0.0,spend,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,0
+3.091042453358316,1.3862943611198906,0.0,0.0035250108416359192,0.0,wounded,null,"rcmod(_1, _3), dobj(_3, _2)","rcmod(_1, _3), conj_and(_2, _4), dobj(_3, _4)",0
+3.367295829986474,1.0986122886681098,0.0,0.0035250108416359192,0.0,am,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+2.995732273553991,1.0986122886681098,0.0,0.0035250108416359192,0.0,sent,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+3.871201010907891,1.791759469228055,0.0,0.0035250108416359192,0.0,brought,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,0
+3.091042453358316,1.3862943611198906,0.0,0.0035250108416359192,0.0,confirmed,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,0
+3.5553480614894135,2.70805020110221,0.0,0.0035250108416359192,0.0,matured,null,"mark(_3, _1), prep_of(_3, _2)",null,0
+2.995732273553991,2.5649493574615367,0.0,0.0035250108416359192,0.0,present,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+3.1780538303479458,1.0986122886681098,0.0,0.0035250108416359192,0.0,doing,null,"nsubjpass(_3, _1), dobj(_3, _2)","nsubjpass(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+3.1780538303479458,1.3862943611198906,0.0,0.47587646362084907,0.0,admits,null,null,null,0
+2.70805020110221,1.3862943611198906,1.0,0.47587646362084907,0.47587646362084907,need,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+2.4849066497880004,1.6094379124341003,0.0,0.0035250108416359192,0.0,die,null,"nsubj(_3, _1), prep_back_to(_3, _2)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_3, _4)",0
+3.6109179126442243,1.6094379124341003,0.0,0.0035250108416359192,0.0,is,null,"nsubj(_3, _1), prep_back_to(_3, _2)","nsubj(_3, _1), prep_back_to(_4, _2), conj_and(_4, _3)",0
+3.4339872044851463,1.6094379124341003,0.0,0.0035250108416359192,0.0,proclaimed,null,null,null,0
+4.110873864173311,1.0986122886681098,0.0,0.024197108319704192,0.024197108319704192,grounded,null,"nsubj(_3, _1), prep_on(_3, _2)",null,0
+2.995732273553991,1.791759469228055,0.0,0.0035250108416359192,0.0,.,null,null,null,0
+2.5649493574615367,1.6094379124341003,0.0,0.0035250108416359192,0.0,prefer,null,"nsubj(_3, _1), prep_to(_3, _2)",null,0
+2.302585092994046,1.6094379124341003,0.0,0.0035250108416359192,0.0,prefer,null,null,"nsubj(_3, _1), prep_to(_4, _2), dobj(_3, _4)",0
+3.091042453358316,2.0794415416798357,0.0,0.0035250108416359192,0.0,’s,null,null,null,0
+3.2188758248682006,1.3862943611198906,0.0,0.0035250108416359192,0.0,played,null,null,"det(_3, _1), prep_on(_4, _2), dobj(_4, _3)",0
+2.833213344056216,1.6094379124341003,0.0,0.0035250108416359192,0.0,.,null,"rcmod(_1, _3), prep_on(_3, _2)",null,0
+2.995732273553991,2.5649493574615367,0.0,0.0035250108416359192,0.0,.,null,null,"nsubj(_3, _1), dobj(_4, _2), conj(_3, _4)",0
+3.258096538021482,2.3978952727983707,0.0,0.0035250108416359192,0.0,.,null,null,null,0
+2.3978952727983707,1.6094379124341003,0.0,0.0035250108416359192,0.0,sentenced,null,"nsubjpass(_3, _1), prep_to(_3, _2)","det(_3, _1), prep_to(_4, _2), punct(_4, _3)",0
+3.6888794541139363,2.1972245773362196,0.0,0.1782328563013529,0.0,argue,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+3.4965075614664802,1.0986122886681098,0.0,0.1782328563013529,0.0,have,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), prep_with(_4, _2), prep_out_of(_3, _4)",0
+4.02535169073515,2.5649493574615367,0.0,0.0035250108416359192,0.0,alluded,null,"nsubj(_3, _1), prep_in(_3, _2)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_4, _3)",0
+2.995732273553991,0.6931471805599453,0.0,0.0,0.0,.,null,"rcmod(_1, _3), prep_on(_3, _2)",null,0
+3.713572066704308,1.6094379124341003,0.0,0.0,0.0,used,"nn(_1, _2)",null,null,0
+4.02535169073515,3.4657359027997265,1.0,0.5276485472207869,0.0,‘,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0
+3.1354942159291497,0.6931471805599453,0.0,0.0,0.0,growth,"nsubj(_2, _1)","nsubj(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), nsubj(_2, _4), ccomp(_4, _3)",0
+3.2188758248682006,2.0794415416798357,0.0,0.0,0.0,harbor,"nsubj(_2, _1)",null,"xcomp(_3, _1), ccomp(_4, _2), advcl(_4, _3)",0
+1.9459101490553132,1.3862943611198906,0.0,0.0,0.0,driven,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.9318256327243257,3.091042453358316,0.0,0.0,0.0,is,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+2.8903717578961645,1.6094379124341003,0.0,0.0,0.0,caused,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.5263605246161616,1.791759469228055,0.0,0.0,0.0,due,null,"nsubj(_3, _1), prep_to(_3, _2)",null,0
+1.9459101490553132,1.6094379124341003,0.0,0.0,0.0,result,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.2188758248682006,1.0986122886681098,0.0,0.03965637196840409,0.0,replaced,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)",0
+2.1972245773362196,0.6931471805599453,0.0,0.0,0.0,unity,"nsubj(_2, _1)",null,null,0
+3.8066624897703196,1.791759469228055,0.0,0.0,0.0,done,null,"nsubjpass(_3, _1), prep_with(_3, _2)",null,0
+3.295836866004329,1.791759469228055,0.0,0.0,0.0,study,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+3.4011973816621555,1.6094379124341003,0.0,0.0,0.0,right,null,"nsubjpass(_3, _1), prep_on(_3, _2)",null,0
+3.2188758248682006,1.791759469228055,0.0,0.0,0.0,done,null,"nsubjpass(_3, _1), prep_with(_3, _2)","nsubjpass(_3, _1), prep_with(_4, _2), conj_and(_4, _3)",0
+3.7376696182833684,1.3862943611198906,0.0,0.0,0.0,reflected,null,null,"nn(_3, _1), prep_in(_2, _4), conj_and(_4, _3)",0
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,depends,null,"nsubj(_3, _1), prep_on(_3, _2)",null,0
+3.4657359027997265,1.6094379124341003,0.0,0.0,0.0,conducted,null,null,"prep_for(_3, _1), prep_with(_4, _2), nsubjpass(_4, _3)",0
+2.70805020110221,1.6094379124341003,0.0,0.0,0.0,conducted,null,"nsubjpass(_3, _1), prep_with(_3, _2)",null,0
+3.4965075614664802,3.044522437723423,0.0,0.0,0.0,treated,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+3.8501476017100584,2.4849066497880004,0.0,0.0,0.0,re,null,null,null,0
+3.044522437723423,1.6094379124341003,0.0,0.0,0.0,depends,null,"nsubj(_3, _1), prep_on(_3, _2)",null,0
+2.772588722239781,1.3862943611198906,0.0,0.0,0.0,focuses,null,"nsubj(_3, _1), prep_on(_3, _2)",null,0
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,include,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+3.4339872044851463,1.6094379124341003,0.0,0.0,0.0,focus,null,null,"nn(_3, _1), prep_upon(_4, _2), nsubj(_4, _3)",0
+1.9459101490553132,1.0986122886681098,0.0,0.0,0.0,thought,"nsubj(_2, _1)",null,null,0
+3.044522437723423,1.6094379124341003,0.0,0.0,0.0,limited,null,"rcmod(_1, _3), prep_by(_3, _2)","nsubj(_3, _1), nsubjpass(_4, _2), advcl(_3, _4)",0
+2.0794415416798357,1.6094379124341003,0.0,0.0,0.0,put,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.091042453358316,1.6094379124341003,0.0,0.10000000000000002,0.0,have,null,null,null,0
+2.3978952727983707,1.3862943611198906,0.0,0.0,0.0,knocking,null,"nsubj(_3, _1), prep_on(_3, _2)",null,0
+3.367295829986474,1.0986122886681098,0.0,0.0,0.0,],null,"vmod(_1, _3), prep_for(_3, _2)",null,0
+3.5263605246161616,1.6094379124341003,0.0,0.07631981020334372,0.0,granted,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,0
+2.302585092994046,1.791759469228055,0.0,0.0,0.0,?,null,null,"nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)",0
+2.995732273553991,0.6931471805599453,0.0,0.0,0.0,accomplishes,null,null,"nsubj(_3, _1), predet(_4, _2), dobj(_3, _4)",0
+2.1972245773362196,1.3862943611198906,0.0,0.0,0.0,given,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,0
+2.772588722239781,1.6094379124341003,0.0,0.0,0.0,sign,null,"nsubj(_3, _1), prep_to(_3, _2)",null,0
+3.2188758248682006,1.0986122886681098,0.0,0.0,0.0,offered,null,"nsubjpass(_3, _1), prep_to(_3, _2)","nsubjpass(_3, _1), prep_to(_4, _2), advcl(_4, _3)",0
+3.2188758248682006,1.9459101490553132,0.0,0.0,0.0,instructs,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_3, _4)",0
+2.70805020110221,0.6931471805599453,0.0,0.0,0.0,removes,null,null,"nsubj(_3, _1), det(_4, _2), dobj(_3, _4)",0
+2.995732273553991,1.0986122886681098,0.0,0.0,0.0,.,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0
+1.6094379124341003,1.0986122886681098,0.0,0.0,0.0,came,null,"nsubj(_3, _1), prep_into(_3, _2)",null,0
+3.091042453358316,2.302585092994046,0.0,0.0035250108416359192,0.0,died,null,null,null,0
+2.9444389791664403,1.3862943611198906,0.0,0.0035250108416359192,0.0,cannot,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.044522437723423,1.791759469228055,0.0,0.0035250108416359192,0.0,.,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0
+2.6390573296152584,1.3862943611198906,0.0,0.0035250108416359192,0.0,thought,null,"nsubj(_3, _1), prep_for(_3, _2)",null,0
+3.2188758248682006,2.8903717578961645,0.0,0.0035250108416359192,0.0,comes,null,"prep_from(_3, _1), nsubj(_3, _2)",null,0
+2.6390573296152584,1.3862943611198906,0.0,0.0035250108416359192,0.0,became,null,"prep_for(_3, _1), nsubj(_3, _2)",null,0
+2.3978952727983707,1.3862943611198906,0.0,0.0035250108416359192,0.0,comes,null,"nsubj(_3, _1), prep_back_to(_3, _2)",null,0
+3.044522437723423,1.3862943611198906,0.0,0.0035250108416359192,0.0,does,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+1.791759469228055,1.0986122886681098,0.0,0.0,0.0,tool,null,"nsubj(_3, _1), nn(_3, _2)",null,0
+2.3978952727983707,2.1972245773362196,0.0,0.0035250108416359192,0.0,blocks,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.1354942159291497,1.791759469228055,0.0,0.0,0.0,works,null,null,null,0
+2.833213344056216,2.5649493574615367,0.0,0.0,0.0,is,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), advcl(_3, _4)",0
+2.4849066497880004,1.0986122886681098,0.0,0.0,0.0,do,null,null,"dobj(_3, _1), dobj(_4, _2), conj_or(_3, _4)",0
+3.6375861597263857,1.3862943611198906,0.0,0.0,0.0,enjoys,"conj_and(_2, _1)","nsubj(_3, _1), prep_with(_3, _2)","conj_&(_3, _1), prep_with(_4, _2), nsubj(_4, _3)",0
+2.70805020110221,1.791759469228055,0.0,0.0,0.0,mainstay,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.833213344056216,1.791759469228055,0.0,0.0,0.0,favorite,null,null,"nsubj(_3, _1), nsubj(_4, _2), punct(_3, _4)",0
+2.1972245773362196,1.6094379124341003,0.0,0.0,0.0,recommended,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+2.8903717578961645,1.9459101490553132,0.0,0.0,0.0,’s,null,null,"prep_on(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+2.772588722239781,1.6094379124341003,0.0,0.0035250108416359192,0.0,unsuitable,null,"nsubj(_3, _1), prep_for(_3, _2)","conj_and(_3, _1), prep_for(_4, _2), nsubj(_4, _3)",0
+3.2188758248682006,2.302585092994046,0.0,0.0,0.0,treat,null,null,null,0
+3.5263605246161616,1.6094379124341003,0.0,0.0,0.0,delay,null,null,null,0
+2.995732273553991,1.6094379124341003,0.0,0.0035250108416359192,0.0,make,null,null,null,0
+3.6888794541139363,1.791759469228055,0.0,0.0035250108416359192,0.0,.,null,"rcmod(_1, _3), prep_to(_3, _2)",null,0
+2.1972245773362196,1.3862943611198906,0.0,0.0035250108416359192,0.0,harm,null,null,null,0
+2.4849066497880004,1.0986122886681098,0.0,0.0035250108416359192,0.0,affects,null,"prep_of(_3, _1), conj_and(_2, _3)","prep_of(_3, _1), dobj(_4, _2), dobj(_4, _3)",0
+2.3978952727983707,2.1972245773362196,0.0,0.0,0.0,used,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+3.091042453358316,1.6094379124341003,0.0,0.0,0.0,presented,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+3.6635616461296463,1.6094379124341003,0.0,0.0,0.0,collected,null,"nsubjpass(_3, _1), prep_in(_3, _2)","nsubjpass(_3, _1), prep_in(_4, _2), conj_and(_4, _3)",0
+2.995732273553991,1.791759469228055,0.0,0.0,0.0,collected,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+2.3978952727983707,1.791759469228055,0.0,0.0,0.0,listed,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+2.6390573296152584,1.6094379124341003,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.302585092994046,1.791759469228055,0.0,0.0,0.0,available,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.995732273553991,1.9459101490553132,0.0,0.09711949282280338,0.09711949282280338,required,null,null,"prep_with(_3, _1), prep_in(_4, _2), xcomp(_4, _3)",0
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,time,null,null,null,0
+2.3978952727983707,2.0794415416798357,0.0,0.0,0.0,used,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+2.302585092994046,1.6094379124341003,0.0,0.0,0.0,available,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.9444389791664403,1.3862943611198906,0.0,0.0,0.0,time,null,null,null,0
+2.6390573296152584,1.3862943611198906,0.0,0.13103088409478775,0.13103088409478775,essential,null,"nsubj(_3, _1), prep_for(_3, _2)","conj_and(_3, _1), prep_for(_4, _2), nsubj(_4, _3)",0
+3.2188758248682006,1.3862943611198906,0.0,0.0,0.0,found,null,null,"nsubjpass(_3, _1), amod(_4, _2), prep_in(_3, _4)",0
+2.4849066497880004,1.3862943611198906,0.0,0.13103088409478775,0.13103088409478775,essential,null,null,"nsubj(_3, _1), amod(_4, _2), prep_for(_3, _4)",0
+3.258096538021482,1.9459101490553132,0.0,0.0,0.0,undecided,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.6390573296152584,1.9459101490553132,0.0,0.0,0.0,ticket,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.4339872044851463,1.791759469228055,0.0,0.0035250108416359192,0.0,likely,null,null,null,1
+3.8501476017100584,1.791759469228055,1.0,0.524123536379151,0.0,according,null,null,null,1
+3.332204510175204,1.791759469228055,1.0,0.524123536379151,0.0,know,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+3.6109179126442243,1.791759469228055,1.0,0.524123536379151,0.0,�,null,null,null,1
+3.9318256327243257,1.791759469228055,1.0,0.6004433465824947,0.0,.,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.8903717578961645,1.791759469228055,1.0,0.524123536379151,0.0,percent,null,null,null,1
+2.833213344056216,1.9459101490553132,0.0,0.0,0.0,giving,null,null,null,1
+2.5649493574615367,1.9459101490553132,0.0,0.0,0.0,key,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.1780538303479458,1.9459101490553132,0.0,0.0,0.0,key,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.4011973816621555,1.791759469228055,1.0,0.5276485472207869,0.0,unbinding,null,"prepc_of(_1, _3), prep_for(_3, _2)",null,1
+3.4657359027997265,1.791759469228055,1.0,0.5276485472207869,0.0,play,null,"prepc_of(_1, _3), prep_for(_3, _2)",null,1
+3.5553480614894135,1.791759469228055,1.0,0.5276485472207869,0.0,cl2,null,"prepc_of(_1, _3), prep_for(_3, _2)",null,1
+3.044522437723423,2.9444389791664403,1.0,0.5276485472207869,0.0,deadly,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+3.4011973816621555,2.1972245773362196,0.0,0.0035250108416359192,0.0,receive,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.302585092994046,1.3862943611198906,0.0,0.13455589493642367,0.13103088409478775,essential,null,"nsubj(_3, _1), prep_to(_3, _2)","det(_3, _1), prep_to(_4, _2), punct(_4, _3)",1
+3.4965075614664802,2.70805020110221,0.0,0.13455589493642367,0.0,harmful,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), dep(_3, _4)",1
+2.6390573296152584,2.4849066497880004,0.0,0.13455589493642367,0.0,good,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), dep(_3, _4)",1
+3.367295829986474,1.3862943611198906,0.0,0.13455589493642367,0.0,include,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.1780538303479458,1.791759469228055,0.0,0.13455589493642367,0.0,form,null,"prepc_of(_1, _3), prep_to(_3, _2)",null,1
+3.091042453358316,2.3978952727983707,0.0,0.0035250108416359192,0.0,brought,null,null,"conj(_3, _1), prep_to(_4, _2), nsubjpass(_4, _3)",1
+2.5649493574615367,1.6094379124341003,1.0,0.524123536379151,0.524123536379151,necessary,null,null,"nsubj(_3, _1), cop(_4, _2), prepc_for(_3, _4)",1
+2.1972245773362196,1.6094379124341003,1.0,0.524123536379151,0.524123536379151,necessary,null,null,"nsubj(_3, _1), cop(_4, _2), prepc_for(_3, _4)",1
+3.4011973816621555,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_in(_3, _2)",null,1
+3.4011973816621555,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_in(_3, _2)",null,1
+3.7612001156935624,1.791759469228055,1.0,0.47587646362084907,0.0,does,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.784189633918261,1.791759469228055,0.0,0.0018444824171350738,0.0,s,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.70805020110221,2.302585092994046,1.0,0.524123536379151,0.0,said,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.995732273553991,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), prep_for(_4, _2), punct(_4, _3)",1
+2.4849066497880004,1.3862943611198906,1.0,0.524123536379151,0.0,resist,null,"nsubj(_3, _1), prep_for(_3, _2)","dobj(_3, _1), prep_for(_4, _2), advcl(_3, _4)",1
+2.8903717578961645,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,1.0,0.5259680187962861,0.0018444824171350738,takes,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,1.0,0.524123536379151,0.0,create,null,"rcmod(_1, _3), prep_for(_3, _2)",null,1
+2.9444389791664403,1.3862943611198906,1.0,0.524123536379151,0.0,said,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.8903717578961645,1.3862943611198906,1.0,0.5276485472207869,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)",1
+2.833213344056216,1.3862943611198906,1.0,0.524123536379151,0.0,failing,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.833213344056216,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.0794415416798357,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+3.4339872044851463,1.3862943611198906,1.0,0.524123536379151,0.0,gotten,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.5649493574615367,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)","dobj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)",1
+3.258096538021482,1.791759469228055,0.0,0.13103088409478775,0.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.258096538021482,1.6094379124341003,1.0,0.47587646362084907,0.0,discusses,null,"vmod(_1, _3), prep_by(_3, _2)",null,1
+3.1354942159291497,1.9459101490553132,0.0,0.0,0.0,like,null,"nsubj(_3, _1), prep_about(_3, _2)","nsubj(_3, _1), prep_about(_4, _2), conj_and(_3, _4)",1
+3.1780538303479458,1.0986122886681098,2.0,0.5612756564844984,0.0,build,null,"vmod(_1, _3), prep_for(_3, _2)",null,1
+3.295836866004329,1.791759469228055,1.0,0.524123536379151,0.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",1
+2.995732273553991,1.791759469228055,2.0,1.0,0.0,part,null,"conj_and(_3, _1), prep_of(_3, _2)","aux(_1, _3), prep_of(_4, _2), aux(_4, _3)",1
+2.6390573296152584,1.6094379124341003,1.0,0.07707699064399279,0.0,happening,null,"vmod(_1, _3), prep_for(_3, _2)",null,1
+1.9459101490553132,1.3862943611198906,1.0,0.07707699064399279,0.07707699064399279,needed,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.833213344056216,1.791759469228055,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_but(_3, _4)",1
+2.5649493574615367,0.6931471805599453,0.0,0.0,0.0,know,null,null,"nsubj(_3, _1), dobj(_4, _2), auxpass(_3, _4)",1
+2.4849066497880004,0.6931471805599453,0.0,0.0,0.0,brings,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",1
+2.4849066497880004,1.791759469228055,1.0,0.524123536379151,0.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.8903717578961645,1.6094379124341003,1.0,0.524123536379151,0.0,such,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,1.6094379124341003,0.0,0.0,0.0,path,null,"nsubj(_3, _1), vmod(_3, _2)",null,1
+1.9459101490553132,1.6094379124341003,0.0,0.0,0.0,key,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.833213344056216,1.9459101490553132,1.0,0.5276485472207869,0.0,.,null,null,null,1
+3.4011973816621555,1.6094379124341003,1.0,0.6212430292019544,0.09711949282280338,required,null,"nsubjpass(_3, _1), prep_for(_3, _2)","conj_and(_3, _1), prep_for(_4, _2), nsubjpass(_4, _3)",1
+2.4849066497880004,1.6094379124341003,0.0,0.09711949282280338,0.09711949282280338,required,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+3.5553480614894135,1.791759469228055,0.0,0.0,0.0,plays,null,null,"nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)",1
+2.772588722239781,1.3862943611198906,0.0,0.0,0.0,.,null,null,null,1
+3.367295829986474,2.5649493574615367,0.0,0.0,0.0,.,null,null,null,1
+3.4965075614664802,3.044522437723423,0.0,0.0,0.0,treated,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.091042453358316,1.3862943611198906,0.0,0.0,0.0,tripled,null,null,"prep_for(_3, _1), prep_in(_4, _2), nsubj(_4, _3)",1
+3.5553480614894135,1.0986122886681098,0.0,0.0,0.0,led,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,is,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,suspect,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.6390573296152584,1.791759469228055,0.0,0.0,0.0,given,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.995732273553991,1.3862943611198906,0.0,0.15794175732243698,0.0,have,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.8903717578961645,1.3862943611198906,0.0,0.0,0.0,enhance,null,null,null,1
+3.044522437723423,2.1972245773362196,0.0,0.0035250108416359192,0.0,vital,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.995732273553991,1.3862943611198906,0.0,0.13103088409478775,0.0,.,null,"prep_in(_3, _1), prep_to(_3, _2)",null,1
+2.70805020110221,1.6094379124341003,0.0,0.13455589493642367,0.0,considered,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.1972245773362196,1.3862943611198906,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.1972245773362196,1.6094379124341003,1.0,0.524123536379151,0.524123536379151,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.3978952727983707,1.6094379124341003,0.0,0.13455589493642367,0.13103088409478775,essential,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.4849066497880004,0.6931471805599453,0.0,0.0035250108416359192,0.0,signifies,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)",1
+3.044522437723423,2.1972245773362196,0.0,0.0,0.0,element,null,"nsubj(_3, _1), prep_for(_3, _2)","prep_about(_3, _1), prep_for(_4, _2), conj_yet(_4, _3)",1
+2.0794415416798357,1.791759469228055,0.0,0.0,0.0,basis,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+1.9459101490553132,1.6094379124341003,0.0,0.0,0.0,vital,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.367295829986474,1.9459101490553132,1.0,0.47587646362084907,0.0,posted,null,null,"dep(_3, _1), prep_of(_4, _2), dep(_3, _4)",1
+2.0794415416798357,1.791759469228055,0.0,0.0,0.0,integral,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.1972245773362196,1.9459101490553132,0.0,0.0,0.0,bane,null,null,"nn(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+2.833213344056216,1.6094379124341003,0.0,0.024197108319704192,0.0,fundamental,null,null,"prep_in(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.772588722239781,1.6094379124341003,0.0,0.0,0.0,few,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.995732273553991,1.3862943611198906,1.0,0.07707699064399279,0.0,is,null,null,"nn(_3, _1), prep_for(_4, _2), vmod(_3, _4)",1
+3.091042453358316,1.3862943611198906,0.0,0.0035250108416359192,0.0,judged,null,"nsubjpass(_3, _1), prep_with(_3, _2)",null,1
+2.3978952727983707,1.6094379124341003,0.0,0.0035250108416359192,0.0,symbol,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.0794415416798357,1.791759469228055,0.0,0.0035250108416359192,0.0,has,null,null,"nsubj(_3, _1), prep_for(_4, _2), dobj(_3, _4)",1
+2.6390573296152584,1.6094379124341003,0.0,0.0035250108416359192,0.0,are,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.0794415416798357,1.6094379124341003,0.0,0.0035250108416359192,0.0,created,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,0.0,0.0035250108416359192,0.0,.,null,null,null,1
+2.8903717578961645,1.3862943611198906,0.0,0.0035250108416359192,0.0,was,null,null,null,1
+3.4011973816621555,1.3862943611198906,0.0,0.0035250108416359192,0.0,see,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.1972245773362196,0.6931471805599453,0.0,0.0035250108416359192,0.0,black,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",1
+2.9444389791664403,1.6094379124341003,0.0,0.0035250108416359192,0.0,designed,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.1780538303479458,1.3862943611198906,0.0,0.0,0.0,learned,null,null,null,1
+2.5649493574615367,1.6094379124341003,0.0,0.0,0.0,key,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.6390573296152584,1.6094379124341003,0.0,0.0035250108416359192,0.0,play,null,null,null,1
+1.9459101490553132,1.6094379124341003,0.0,0.13455589493642367,0.0,.,null,null,null,1
+3.8501476017100584,1.3862943611198906,0.0,0.0,0.0,leads,null,null,"prep_with(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.833213344056216,1.9459101490553132,0.0,0.052412353637915104,0.0,attached,null,null,null,1
+3.4011973816621555,1.791759469228055,0.0,0.052412353637915104,0.0,person,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.8903717578961645,1.6094379124341003,0.0,0.13103088409478775,0.0,clear,null,null,null,1
+2.9444389791664403,1.6094379124341003,0.0,0.0035250108416359192,0.0,says,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+2.8903717578961645,1.6094379124341003,0.0,0.0035250108416359192,0.0,covers,null,null,"nsubj(_3, _1), prep_for(_4, _2), ccomp(_3, _4)",1
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,.,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.1972245773362196,1.791759469228055,0.0,0.0,0.0,sufficient,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.70805020110221,1.6094379124341003,0.0,0.013384721210916993,0.013384721210916993,involves,null,"rcmod(_1, _3), prep_to(_3, _2)",null,1
+3.258096538021482,1.6094379124341003,0.0,0.0,0.0,fortified,null,null,"prep_with(_3, _1), prep_for(_4, _2), advmod(_3, _4)",1
+3.5553480614894135,1.6094379124341003,0.0,0.0,0.0,is,null,null,null,1
+3.2188758248682006,1.0986122886681098,1.0,0.47587646362084907,0.0,promotes,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.8903717578961645,1.3862943611198906,0.0,0.0,0.0,increase,null,null,"conj_plus(_3, _1), dobj(_4, _2), prep_in(_4, _3)",1
+2.6390573296152584,1.6094379124341003,0.0,0.0,0.0,crucial,null,null,"prep_of(_3, _1), prep_for(_4, _2), nsubj(_4, _3)",1
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,helps,null,null,"prep_of(_3, _1), dobj(_4, _2), nsubj(_4, _3)",1
+2.4849066497880004,1.0986122886681098,1.0,0.07707699064399279,0.0,promotes,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.302585092994046,0.6931471805599453,0.0,0.0,0.0,.,null,"nsubj(_3, _1), tmod(_3, _2)",null,0
+3.8066624897703196,0.6931471805599453,0.0,0.00943446192828271,0.0,someone,"nsubj(_2, _1)",null,null,0
+2.6390573296152584,1.3862943611198906,0.0,0.0,0.0,have,null,null,"nsubj(_3, _1), prep_for(_4, _2), dobj(_3, _4)",0
+2.833213344056216,1.6094379124341003,0.0,0.0,0.0,set,null,null,null,0
+3.1780538303479458,1.9459101490553132,0.0,0.0,0.0,lead,null,"nsubj(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_3, _4)",0
+3.5263605246161616,1.0986122886681098,0.0,0.029225953006965077,0.0,.,null,null,"prep_of(_3, _1), nsubj(_4, _2), nsubj(_4, _3)",0
+2.9444389791664403,1.3862943611198906,0.0,0.0,0.0,molded,null,null,"prep_on(_3, _1), prep_over(_4, _2), ccomp(_4, _3)",0
+3.4965075614664802,1.791759469228055,0.0,0.0,0.0,trained,null,null,"dobj(_3, _1), nsubj(_4, _2), xcomp(_4, _3)",0
+2.302585092994046,1.6094379124341003,0.0,0.0,0.0,stored,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,caused,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.091042453358316,1.6094379124341003,0.0,0.0,0.0,inhibit,null,null,null,0
+3.784189633918261,1.6094379124341003,0.0,0.0313309363805339,0.0,brings,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+2.8903717578961645,1.3862943611198906,0.0,0.0,0.0,piracy,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+3.4657359027997265,2.833213344056216,0.0,0.0,0.0,emphasizes,null,"nsubj(_3, _1), prep_in(_3, _2)","nsubj(_3, _1), prep_in(_4, _2), conj_and(_3, _4)",0
+2.5649493574615367,1.3862943611198906,0.0,0.0,0.0,help,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.5649493574615367,1.791759469228055,0.0,0.01093207197221269,0.0,hated,null,"nsubjpass(_3, _1), prep_of(_3, _2)",null,0
+2.1972245773362196,1.0986122886681098,1.0,0.006984379315580329,0.0,points,null,null,null,0
+2.70805020110221,1.0986122886681098,1.0,0.006984379315580329,0.006984379315580329,called,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+3.091042453358316,1.791759469228055,0.0,0.0,0.0,is,null,null,"prep_to(_3, _1), prep_out_of(_4, _2), nsubj(_4, _3)",0
+3.2188758248682006,1.791759469228055,0.0,0.0,0.0,differed,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,need,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.6390573296152584,0.6931471805599453,0.0,0.0,0.0,became,null,"dep(_3, _1), nsubj(_3, _2)",null,0
+3.091042453358316,1.0986122886681098,0.0,0.0015666670613677684,0.0015666670613677684,demands,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+3.258096538021482,1.6094379124341003,1.0,0.21931655466373728,0.21931655466373728,way,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",0
+2.833213344056216,1.791759469228055,0.0,0.0,0.0,s,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,0
+3.1354942159291497,2.302585092994046,0.0,0.0,0.0,is,null,null,null,0
+3.2188758248682006,2.0794415416798357,0.0,0.0,0.0,possible,null,null,null,0
+3.6635616461296463,2.4849066497880004,0.0,6.45190715676852E-4,0.0,null,null,null,null,0
+2.3978952727983707,1.791759469228055,0.0,0.0,0.0,wave,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.1354942159291497,1.0986122886681098,0.0,0.013820929245988866,0.0,runs,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+3.295836866004329,1.3862943611198906,0.0,0.016126217254686565,0.0,struggled,null,null,null,0
+2.772588722239781,1.791759469228055,0.0,0.02741456933296716,0.0,.,null,null,null,0
+3.258096538021482,1.0986122886681098,1.0,0.38718161731427886,0.25871491828212184,include,null,null,null,0
+2.9444389791664403,1.791759469228055,1.0,0.22203272178480943,0.0027161671210721456,held,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.4965075614664802,1.791759469228055,1.0,0.21931655466373728,0.21931655466373728,way,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",0
+2.3978952727983707,1.6094379124341003,1.0,0.1112506115735913,0.0,need,null,"rcmod(_1, _3), prep_to(_3, _2)",null,1
+2.833213344056216,1.6094379124341003,1.0,0.2650351289898269,0.2650351289898269,example,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), nsubj(_4, _2), appos(_3, _4)",1
+2.8903717578961645,1.6094379124341003,0.0,0.0,0.0,.,null,null,"nn(_3, _1), prep_as(_4, _2), nsubjpass(_4, _3)",1
+2.772588722239781,1.3862943611198906,0.0,0.0,0.0,described,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+2.3978952727983707,1.0986122886681098,1.0,0.006984379315580329,0.006984379315580329,called,null,"nsubjpass(_3, _1), tmod(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,classified,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+1.9459101490553132,1.3862943611198906,0.0,0.0,0.0,classified,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,said,null,"nsubjpass(_3, _1), xcomp(_3, _2)",null,1
+3.4657359027997265,3.1354942159291497,0.0,7.364889385708933E-4,0.0,getting,null,null,"nsubjpass(_3, _1), amod(_4, _2), dobj(_3, _4)",1
+2.0794415416798357,1.6094379124341003,1.0,0.2650351289898269,0.2650351289898269,example,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,became,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.995732273553991,1.6094379124341003,0.0,0.0,0.0,established,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+3.044522437723423,1.6094379124341003,0.0,1.081369520472702E-4,0.0,religion,null,"nn(_3, _1), nsubj(_2, _3)",null,1
+2.1972245773362196,1.3862943611198906,0.0,0.0036187802544269576,0.0036187802544269576,refers,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.258096538021482,1.6094379124341003,0.0,0.0,0.0,true,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+2.1972245773362196,1.6094379124341003,0.0,0.0,0.0,more,null,"nsubj(_3, _1), prep_than(_3, _2)",null,1
+2.6390573296152584,1.3862943611198906,0.0,0.0,0.0,known,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+2.4849066497880004,1.3862943611198906,0.0,0.0,0.0,is,null,"nsubj(_3, _1), prep_ahead_of(_3, _2)",null,1
+3.044522437723423,1.6094379124341003,0.0,0.0,0.0,joined,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",1
+3.1354942159291497,1.3862943611198906,0.0,0.002808583703537036,0.0,is,null,"nsubj(_3, _1), prep_among(_3, _2)",null,1
+2.8903717578961645,1.6094379124341003,0.0,0.0,0.0,one,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.833213344056216,2.6390573296152584,0.0,0.0,0.0,runs,null,"nsubj(_3, _1), xcomp(_3, _2)","nsubj(_3, _1), xcomp(_4, _2), ccomp(_3, _4)",1
+2.1972245773362196,1.791759469228055,1.0,0.2650351289898269,0.2650351289898269,example,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.091042453358316,1.0986122886681098,0.0,0.0,0.0,considered,null,"nsubjpass(_3, _1), tmod(_3, _2)",null,1
+2.0794415416798357,1.6094379124341003,1.0,0.2650351289898269,0.2650351289898269,example,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.70805020110221,1.6094379124341003,0.0,0.017545324373098983,8.063108627343282E-4,form,null,"nsubj(_3, _1), prepc_of(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,0.0,0.0036187802544269576,0.0036187802544269576,refers,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), dobj(_4, _2), parataxis(_3, _4)",1
+2.833213344056216,1.3862943611198906,0.0,0.013820929245988866,0.013820929245988866,means,"nn(_2, _1)","nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), nsubj(_4, _2), punct(_3, _4)",1
+1.791759469228055,1.3862943611198906,1.0,0.006984379315580329,0.006984379315580329,called,null,"nsubjpass(_3, _1), tmod(_3, _2)",null,1
+2.995732273553991,2.1972245773362196,0.0,1.081369520472702E-4,0.0,pointed,null,null,null,1
+2.8903717578961645,1.791759469228055,1.0,0.2650351289898269,0.2650351289898269,example,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.332204510175204,2.302585092994046,0.0,6.351091288204523E-5,0.0,scored,null,"nsubj(_3, _1), prep_as(_3, _2)","nsubj(_3, _1), prep_as(_4, _2), conj_and(_3, _4)",1
+2.70805020110221,1.0986122886681098,0.0,0.0,0.0,considered,null,"nsubjpass(_3, _1), tmod(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,1.0,0.011553474204408191,0.00456909488882786,race,null,"vmod(_1, _3), dobj(_3, _2)",null,1
+2.4849066497880004,1.3862943611198906,1.0,0.25871491828212184,0.25871491828212184,include,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)",1
+2.70805020110221,0.6931471805599453,1.0,1.0,0.0,can,"dobj(_1, _2)",null,null,0
+2.1972245773362196,1.6094379124341003,0.0,0.0,0.0,professionals,null,"rcmod(_1, _3), prep_with(_3, _2)",null,0
+2.6390573296152584,1.0986122886681098,1.0,1.0,0.16666666666666666,benefit,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.0794415416798357,1.0986122886681098,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.1972245773362196,1.3862943611198906,0.0,0.0,0.0,open,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",0
+3.1780538303479458,1.0986122886681098,0.0,0.0,0.0,work,null,"nsubj(_3, _1), prep_with(_3, _2)",null,0
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,scanning,null,"rcmod(_1, _3), prep_for(_3, _2)",null,0
+2.1972245773362196,1.791759469228055,0.0,0.0,0.0,is,null,"nsubj(_3, _1), ccomp(_3, _2)",null,0
+2.833213344056216,1.6094379124341003,0.0,0.0,0.0,funded,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.1354942159291497,1.9459101490553132,0.0,0.09259259259259259,0.0,has,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",0
+2.70805020110221,1.791759469228055,0.0,0.09259259259259259,0.09259259259259259,supported,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.1780538303479458,1.791759469228055,0.0,0.0,0.0,partnership,null,"nsubj(_3, _1), prep_between(_3, _2)",null,0
+3.1354942159291497,1.791759469228055,0.0,0.0,0.0,financed,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.5553480614894135,1.791759469228055,0.0,0.0032388663967611335,0.0,backed,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+2.6390573296152584,1.9459101490553132,0.0,0.09259259259259259,0.0,has,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",0
+3.1780538303479458,1.6094379124341003,0.0,0.09259259259259259,0.0,work,null,"nsubj(_3, _1), prep_with(_3, _2)",null,0
+2.8903717578961645,1.791759469228055,0.0,0.002237136465324385,0.002237136465324385,looks,null,null,null,0
+2.1972245773362196,1.0986122886681098,0.0,0.0,0.0,enlarging,null,null,"nsubj(_3, _1), dobj(_4, _2), aux(_3, _4)",0
+3.091042453358316,1.791759469228055,0.0,0.0,0.0,.,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+2.0794415416798357,1.791759469228055,0.0,0.0,0.0,unable,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+3.2188758248682006,2.0794415416798357,0.0,0.0,0.0,easy,null,null,null,0
+2.3978952727983707,1.791759469228055,0.0,0.0,0.0,introduced,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+2.3978952727983707,2.0794415416798357,0.0,0.0,0.0,equipped,null,null,null,0
+2.1972245773362196,1.6094379124341003,0.0,0.0,0.0,based,null,"nsubjpass(_3, _1), prep_on(_3, _2)",null,0
+2.8903717578961645,1.0986122886681098,0.0,0.05555555555555555,0.0,offers,"prep_for(_1, _2)",null,null,0
+2.995732273553991,1.3862943611198906,0.0,0.0,0.0,give,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.8903717578961645,0.6931471805599453,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.772588722239781,1.6094379124341003,1.0,0.14694444444444446,0.0,dedicated,null,null,"nsubjpass(_3, _1), dobj(_4, _2), prepc_to(_3, _4)",1
+3.044522437723423,1.6094379124341003,0.0,0.15059523809523812,0.0,provides,null,null,"prep_for(_3, _1), dobj(_4, _2), vmod(_3, _4)",1
+2.1972245773362196,1.3862943611198906,0.0,0.09259259259259259,0.09259259259259259,support,null,"rcmod(_1, _3), dobj(_3, _2)",null,1
+3.044522437723423,1.6094379124341003,1.0,1.0,0.0,dedicated,null,null,"nsubjpass(_3, _1), dobj(_4, _2), prepc_to(_3, _4)",1
+3.58351893845611,1.3862943611198906,0.0,0.09259259259259259,0.0,enable,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)",1
+3.8918202981106265,1.3862943611198906,0.0,0.0020325203252032522,0.0,is,null,null,"nsubj(_3, _1), nn(_4, _2), prep_for(_3, _4)",1
+2.4849066497880004,1.791759469228055,0.0,0.0,0.0,available,null,null,null,1
+2.772588722239781,1.0986122886681098,0.0,0.0,0.0,establishes,null,null,"nsubj(_3, _1), nsubj(_4, _2), prepc_for(_3, _4)",1
+3.6109179126442243,1.0986122886681098,0.0,0.0819672131147541,0.0,enable,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), conj_and(_2, _4), dobj(_3, _4)",1
+2.772588722239781,1.791759469228055,1.0,1.0,0.0,give,null,null,"prep_to(_3, _1), dobj(_4, _2), conj_and(_3, _4)",1
+2.3978952727983707,1.0986122886681098,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.367295829986474,1.6094379124341003,0.0,0.0,0.0,indicated,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.833213344056216,1.791759469228055,1.0,1.0,0.0,are,null,null,"dobj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",1
+2.0794415416798357,1.0986122886681098,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.5649493574615367,1.6094379124341003,1.0,1.0,1.0,help,null,null,null,1
+2.772588722239781,1.3862943611198906,1.0,1.0,0.0,gargling,null,null,"prep_with(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.3978952727983707,1.0986122886681098,0.0,0.0,0.0,increase,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.1354942159291497,1.0986122886681098,1.0,1.0,0.0,improve,null,null,null,1
+2.833213344056216,2.1972245773362196,1.0,1.0,1.0,help,null,null,null,1
+2.3978952727983707,1.6094379124341003,0.0,0.0819672131147541,0.0,available,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.302585092994046,1.6094379124341003,0.0,0.0819672131147541,0.0,offered,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,1
+3.091042453358316,1.6094379124341003,1.0,1.0,0.0,was,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.091042453358316,1.9459101490553132,0.0,0.15059523809523812,0.0,designed,null,null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.4339872044851463,1.6094379124341003,0.0,0.15059523809523812,0.15059523809523812,assist,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.295836866004329,1.6094379124341003,0.0,0.15059523809523812,0.0,aims,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.995732273553991,1.0986122886681098,0.0,0.0,0.0,possible,null,"vmod(_1, _3), dobj(_3, _2)",null,1
+3.295836866004329,1.791759469228055,0.0,0.0,0.0,wondering,null,null,null,1
+3.4011973816621555,1.3862943611198906,0.0,0.0,0.0,allow,null,null,"nn(_3, _1), dobj(_4, _2), nsubj(_4, _3)",1
+2.995732273553991,1.0986122886681098,0.0,0.0,0.0,offer,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.332204510175204,1.6094379124341003,0.0,0.0,0.0,tight,null,"nsubj(_3, _1), prep_for(_3, _2)","dobj(_3, _1), prep_for(_4, _2), parataxis(_4, _3)",1
+3.044522437723423,1.3862943611198906,0.0,0.0,0.0,high,null,null,"dobj(_3, _1), prep_for(_4, _2), conj_and(_4, _3)",1
+3.091042453358316,1.3862943611198906,0.0,0.0,0.0,being,null,null,"dobj(_3, _1), prep_for(_4, _2), parataxis(_3, _4)",1
+3.7376696182833684,1.0986122886681098,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.6635616461296463,1.6094379124341003,0.0,1.0,1.0,helpful,null,null,"prep_of(_3, _1), prep_for(_4, _2), nsubj(_4, _3)",1
+2.772588722239781,1.6094379124341003,1.0,1.0,0.0,is,null,null,null,1
+2.302585092994046,1.6094379124341003,1.0,1.0,1.0,help,null,null,"prep_on(_3, _1), prep_with(_4, _2), nsubj(_4, _3)",1
+2.833213344056216,2.1972245773362196,0.0,0.0,0.0,redistributes,null,null,null,1
+2.8903717578961645,1.3862943611198906,0.0,0.15059523809523812,0.0,include,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.044522437723423,0.6931471805599453,0.0,0.0,0.0,offers,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+3.091042453358316,1.791759469228055,1.0,1.0,0.0,is,null,null,null,1
+2.9444389791664403,1.3862943611198906,0.0,0.0,0.0,say,null,"nsubjpass(_3, _1), prep_before(_3, _2)",null,1
+3.6109179126442243,1.6094379124341003,1.0,1.0,0.0,was,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+2.4849066497880004,1.791759469228055,0.0,0.0,0.0,available,null,null,null,1
+2.3978952727983707,1.3862943611198906,1.0,0.14694444444444446,0.0,make,null,"vmod(_1, _3), dobj(_3, _2)",null,1
+3.091042453358316,0.6931471805599453,1.0,1.0,1.0,help,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,1.0,0.03397394578419187,0.0,agree,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,0
+3.044522437723423,1.9459101490553132,0.0,0.0024522310561907305,0.0022854941913930706,making,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",0
+2.772588722239781,1.3862943611198906,0.0,0.288826008487544,0.04531146225330983,born,null,"nsubjpass(_3, _1), prep_with(_3, _2)",null,0
+2.302585092994046,1.6094379124341003,0.0,4.7853406403122213E-4,4.7853406403122213E-4,come,null,"nsubj(_3, _1), prep_to(_3, _2)",null,0
+3.5553480614894135,1.6094379124341003,0.0,0.5553592209409467,0.0,sure,null,"nsubjpass(_3, _1), dobj(_3, _2)",null,0
+2.6390573296152584,1.791759469228055,0.0,0.0,0.0,involved,null,"nsubjpass(_3, _1), prep_in(_3, _2)","nsubjpass(_3, _1), prep_in(_4, _2), conj_and(_4, _3)",0
+2.995732273553991,1.3862943611198906,0.0,0.0,0.0,refers,null,"nsubj(_3, _1), prep_to(_3, _2)",null,0
+2.70805020110221,0.6931471805599453,0.0,0.27186877351985894,0.0,continued,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.772588722239781,1.791759469228055,0.0,0.2745933248425101,0.0,picture,null,"rcmod(_1, _3), prep_in(_3, _2)",null,0
+3.367295829986474,1.791759469228055,0.0,0.27186877351985894,0.0,think,null,null,"rcmod(_1, _3), prep_of(_4, _2), advmod(_3, _4)",0
+2.772588722239781,1.3862943611198906,0.0,0.0,0.0,found,null,"nsubj(_3, _1), prep_whether(_3, _2)",null,0
+2.3978952727983707,1.3862943611198906,2.0,0.5279765978490637,0.0,part,null,null,null,0
+2.772588722239781,1.3862943611198906,0.0,0.007551910375551638,0.0,claim,null,null,null,0
+2.0794415416798357,1.6094379124341003,1.0,0.27186877351985894,0.03397394578419187,caused,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+2.772588722239781,1.0986122886681098,1.0,0.27186877351985894,0.27186877351985894,cause,null,null,"prep_during(_3, _1), dobj(_4, _2), nsubj(_4, _3)",1
+2.0794415416798357,1.3862943611198906,0.0,0.0,0.0,contribute,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.3978952727983707,1.791759469228055,0.0,0.09709599054280676,0.0,is,null,null,null,1
+3.1780538303479458,1.6094379124341003,0.0,0.14849580950998073,0.0170820785321477,lead,null,null,"nn(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.4849066497880004,2.0794415416798357,0.0,0.27186877351985894,0.27186877351985894,contributor,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+2.70805020110221,1.9459101490553132,0.0,0.09709599054280676,0.09709599054280676,trigger,null,"nsubj(_3, _1), dobj(_3, _2)","conj_or(_3, _1), dobj(_4, _2), nsubj(_4, _3)",1
+2.4849066497880004,1.9459101490553132,1.0,0.27186877351985894,0.27186877351985894,cause,null,"nsubj(_3, _1), dobj(_3, _2)","conj_and(_3, _1), dobj(_4, _2), nsubj(_4, _3)",1
+2.4849066497880004,1.9459101490553132,1.0,0.031028447947576736,0.031028447947576736,results,null,null,null,1
+2.1972245773362196,1.3862943611198906,0.0,0.2345770973480349,0.0170820785321477,leads,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.2188758248682006,1.6094379124341003,1.0,0.2718778104931945,0.03397394578419187,caused,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.1354942159291497,1.6094379124341003,0.0,0.2387140450418274,0.0,compounded,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.044522437723423,1.6094379124341003,1.0,0.26946629391632154,0.03397394578419187,caused,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+4.04305126783455,1.6094379124341003,0.0,0.27186877351985894,0.0,exacerbated,null,"nsubjpass(_3, _1), prep_by(_3, _2)","nsubjpass(_3, _1), prep_by(_4, _2), advcl(_3, _4)",1
+2.0794415416798357,1.3862943611198906,1.0,0.03397394578419187,0.03397394578419187,caused,null,null,"prep_in(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)",1
+1.9459101490553132,1.3862943611198906,0.0,0.0,0.0,produced,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.2188758248682006,1.3862943611198906,0.0,0.0,0.0,formed,null,null,"prep_of(_3, _1), prep_by(_4, _2), nsubjpass(_4, _3)",1
+2.4849066497880004,1.3862943611198906,0.0,0.0,0.0,created,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.091042453358316,1.3862943611198906,0.0,0.012357671523629954,0.0,gas,null,"rcmod(_1, _3), dobj(_3, _2)","rcmod(_1, _3), conj_and(_2, _4), dobj(_3, _4)",1
+2.8903717578961645,1.791759469228055,0.0,0.27186877351985894,0.0,attributed,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,1
+3.5553480614894135,1.6094379124341003,0.0,0.27186877351985894,0.0,due,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.6109179126442243,1.791759469228055,0.0,0.5036613591497784,0.0,due,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.258096538021482,1.6094379124341003,0.0,0.01973550728184087,0.0063861792437550765,driven,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.2188758248682006,1.791759469228055,0.0,0.27186877351985894,0.0,due,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,directed,null,null,"prep_of(_3, _1), prep_at(_4, _2), nsubjpass(_4, _3)",1
+2.5649493574615367,1.791759469228055,0.0,0.27186877351985894,0.0,.,null,null,"prep_of(_3, _1), prep_to(_4, _2), prep_over(_4, _3)",1
+2.4849066497880004,1.791759469228055,0.0,0.27186877351985894,0.0,due,null,null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",1
+3.9318256327243257,1.6094379124341003,0.0,0.08529216424152437,0.0,depends,null,"nsubj(_3, _1), prep_on(_3, _2)",null,1
+2.8903717578961645,1.9459101490553132,0.0,0.27186877351985894,0.0,protect,null,"rcmod(_1, _3), prep_to(_3, _2)",null,1
+2.8903717578961645,2.1972245773362196,0.0,0.13593438675992947,0.0,.,null,"nsubjpass(_3, _1), prep_to(_3, _2)","nsubjpass(_3, _1), prep_to(_4, _2), conj_and(_4, _3)",1
+2.5649493574615367,1.9459101490553132,1.0,0.28895085205200666,0.27186877351985894,cause,null,null,"prep_with(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+2.70805020110221,1.3862943611198906,1.0,0.2746370673526417,0.27186877351985894,cause,null,null,"amod(_3, _1), nsubj(_4, _2), prep_while(_4, _3)",1
+3.091042453358316,1.3862943611198906,0.0,0.013593438675992948,0.0,due,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,linked,null,"nsubjpass(_3, _1), prep_to(_3, _2)",null,1
+2.995732273553991,1.3862943611198906,0.0,0.11327865563327455,0.0,opposes,null,"nsubjpass(_3, _1), prep_with(_3, _2)",null,1
+3.044522437723423,1.791759469228055,1.0,0.25745132644879754,0.25745132644879754,result,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",1
+3.4657359027997265,1.6094379124341003,0.0,0.09709599054280676,0.0,proven,null,null,null,1
+2.9444389791664403,1.6094379124341003,0.0,0.09709599054280676,0.09709599054280676,triggered,null,null,"nsubjpass(_3, _1), nsubj(_4, _2), punct(_3, _4)",1
+2.772588722239781,1.6094379124341003,0.0,0.12547789547070415,0.09709599054280676,triggered,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+2.8903717578961645,1.791759469228055,0.0,0.13593438675992947,0.13593438675992947,slaves,null,"nsubj(_3, _1), prep_to(_3, _2)","prep_to(_3, _1), prep_to(_4, _2), conj_and(_4, _3)",1
+2.302585092994046,1.9459101490553132,0.0,0.0588372718811635,0.0588372718811635,established,null,null,"nsubj(_3, _1), dobj(_4, _2), ccomp(_3, _4)",1
+3.1780538303479458,2.70805020110221,1.0,0.29823164247677636,0.0,preserved,null,"nsubj(_3, _1), prep_of(_3, _2)","tmod(_3, _1), prep_of(_4, _2), ccomp(_3, _4)",1
+2.3978952727983707,1.791759469228055,1.0,0.3427434906903219,0.25745132644879754,result,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.833213344056216,1.6094379124341003,0.0,0.02091298257845069,0.0,characterized,null,"nsubjpass(_3, _1), prep_by(_3, _2)",null,1
+3.332204510175204,2.3978952727983707,1.0,0.5046047569213966,0.25745132644879754,result,null,"prep_of(_3, _1), conj_or(_2, _3)",null,1
+3.4011973816621555,1.9459101490553132,1.0,0.5065132736238117,0.0,involves,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",1
+2.9444389791664403,1.6094379124341003,1.0,0.25716567947908753,0.2561078243292048,effect,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.8918202981106265,1.6094379124341003,0.0,0.25806373818041706,0.0022655731126654914,god,null,"rcmod(_1, _3), prep_of(_3, _2)","prep_in(_3, _1), dobj(_4, _2), conj_or(_3, _4)",1
+3.295836866004329,1.791759469228055,0.0,0.12212935142048757,0.0,absolute,null,"rcmod(_1, _3), prep_of(_3, _2)",null,1
+2.70805020110221,1.6094379124341003,0.0,0.0,0.0,afflicted,"prep_which_is_due_to(_1, _2)",null,null,1
+3.258096538021482,1.0986122886681098,0.0,0.27186877351985894,3.299378319415764E-4,given,null,null,null,1
+2.302585092994046,1.0986122886681098,0.0,0.0,0.0,affect,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.70805020110221,1.0986122886681098,0.0,0.07729602384388146,0.0,destroy,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",1
+3.332204510175204,1.0986122886681098,0.0,0.13593438675992947,0.0,act,null,"nsubj(_3, _1), prep_on(_3, _2)",null,1
+3.091042453358316,0.6931471805599453,0.0,0.13593438675992947,0.0,affect,null,"nsubj(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_4, _3)",1
+2.302585092994046,0.6931471805599453,0.0,0.13593438675992947,0.0,.,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.1972245773362196,1.9459101490553132,1.0,0.25745132644879754,0.25745132644879754,result,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.6635616461296463,1.791759469228055,1.0,0.529329136941992,0.0,attracts,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.5649493574615367,1.791759469228055,1.0,0.5293200999686565,0.0,said,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.3978952727983707,2.0794415416798357,0.0,0.47,0.0,help,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_3, _4)",0
+2.5649493574615367,2.302585092994046,0.0,0.47,0.0,designed,null,null,null,0
+2.3978952727983707,1.0986122886681098,0.0,0.47857142857142854,0.0,touch,null,null,"dobj(_3, _1), dobj(_4, _2), conj_or(_3, _4)",0
+1.9459101490553132,1.0986122886681098,0.0,0.0,0.0,has,null,"vmod(_1, _3), dobj(_3, _2)",null,0
+2.302585092994046,1.3862943611198906,0.0,0.010708978057522512,0.0,has,null,"vmod(_1, _3), prep_in(_3, _2)",null,0
+3.713572066704308,0.6931471805599453,0.0,1.0,0.0,make,null,null,"prep_of(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+3.970291913552122,1.6094379124341003,0.0,0.5,0.0,null,null,null,null,0
+2.9444389791664403,2.302585092994046,0.0,0.8,0.0,uses,null,null,null,0
+3.258096538021482,0.6931471805599453,0.0,0.14444444444444443,0.0,changes,null,null,null,0
+2.9444389791664403,1.3862943611198906,0.0,0.0,0.0,ve,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.995732273553991,-Infinity,0.0,0.0,0.0,know,"nn(_1, _2)",null,"nsubjpass(_3, _1), dobj(_4, _2), xcomp(_3, _4)",0
+2.772588722239781,-Infinity,0.0,0.0,0.0,stand,"nn(_1, _2)",null,"nsubj(_3, _1), prep_for(_4, _2), xcomp(_3, _4)",0
+2.4849066497880004,0.0,0.0,0.0,0.0,put,"nn(_1, _2)",null,"nsubjpass(_3, _1), nn(_4, _2), prep_on(_3, _4)",0
+2.9444389791664403,1.0986122886681098,0.0,1.0,0.0,is,null,null,"nsubj(_3, _1), dobj(_4, _2), vmod(_3, _4)",0
+2.70805020110221,1.3862943611198906,0.0,0.5,0.5,come,null,"nsubj(_3, _1), prep_into(_3, _2)",null,0
+2.772588722239781,1.6094379124341003,0.0,0.0,0.99,?,null,"nsubjpass(_3, _1), prep_out_of(_3, _2)",null,0
+2.70805020110221,1.6094379124341003,0.0,0.0,0.0,.,null,"nsubjpass(_3, _1), prep_out_of(_3, _2)",null,0
+2.0794415416798357,1.3862943611198906,0.0,1.0,0.0,brought,null,"nsubjpass(_3, _1), prep_into(_3, _2)",null,0
+2.833213344056216,0.6931471805599453,0.0,0.0,0.0,disobeyed,null,"nsubj(_3, _1), dobj(_3, _2)",null,0
+2.833213344056216,1.791759469228055,0.0,0.0,0.0,have,null,null,null,0
+2.6390573296152584,2.0794415416798357,0.0,0.06611570247933884,0.0,authored,null,"nsubjpass(_3, _1), prep_by(_3, _2)","nsubjpass(_3, _1), prep_by(_4, _2), conj_and(_3, _4)",0
+3.295836866004329,2.5649493574615367,0.0,0.025,0.0,owned,null,"nsubjpass(_3, _1), prep_by(_3, _2)","nsubjpass(_3, _1), prep_by(_4, _2), conj_and(_3, _4)",0
+2.5649493574615367,0.6931471805599453,0.0,1.0,0.0,gives,null,null,null,0
+3.4657359027997265,1.0986122886681098,0.0,1.0,0.0,says,null,null,"prep_in(_3, _1), prep_on(_4, _2), nsubj(_4, _3)",0
+2.833213344056216,0.6931471805599453,0.0,0.6666666666666666,0.0,attractive,null,null,null,0
+1.9459101490553132,1.6094379124341003,0.0,0.0,0.0,causes,null,null,"nsubj(_3, _1), prep_to(_4, _2), dobj(_3, _4)",0
+2.833213344056216,1.791759469228055,1.0,1.0,0.0,.,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.4849066497880004,1.9459101490553132,1.0,1.0,0.0,vuitton,null,null,"nn(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+3.091042453358316,1.6094379124341003,1.0,1.0,0.0,null,null,null,null,1
+2.3978952727983707,1.6094379124341003,1.0,1.0,1.0,part,null,null,null,1
+3.1780538303479458,1.6094379124341003,1.0,1.0,0.0,s,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.258096538021482,1.791759469228055,0.0,1.0,0.05128205128205128,extension,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.258096538021482,3.044522437723423,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)","conj_and(_1, _3), prep_of(_4, _2), nsubj(_4, _3)",1
+2.3978952727983707,1.791759469228055,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.9318256327243257,3.4011973816621555,0.0,1.0,0.08433734939759036,member,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.772588722239781,1.0986122886681098,0.0,0.5,0.0,am,null,null,null,1
+2.772588722239781,1.9459101490553132,1.0,1.0,0.0,.,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.0794415416798357,1.6094379124341003,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.833213344056216,1.3862943611198906,0.0,0.0,0.0,takes,null,null,"dobj(_3, _1), prep_over(_4, _2), vmod(_3, _4)",1
+2.5649493574615367,1.6094379124341003,1.0,1.0,1.0,part,null,"nsubj(_3, _1), appos(_3, _2)",null,1
+2.5649493574615367,1.6094379124341003,0.0,0.08433734939759036,0.0,became,null,null,"nsubj(_3, _1), prep_of(_4, _2), dobj(_3, _4)",1
+3.091042453358316,1.791759469228055,0.0,0.1,0.031914893617021274,signed,null,"nsubj(_3, _1), prep_with(_3, _2)",null,1
+2.995732273553991,1.0986122886681098,0.0,1.0,0.0,join,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",1
+2.70805020110221,0.6931471805599453,1.0,1.0,0.0,emphasizes,null,null,"nsubj(_3, _1), amod(_4, _2), prep_of(_3, _4)",1
+2.4849066497880004,1.791759469228055,1.0,1.0,0.0,.,null,null,"dobj(_3, _1), prep_of(_4, _2), csubj(_4, _3)",1
+2.5649493574615367,1.3862943611198906,0.0,0.0,0.0,appears,null,null,"prep_in(_3, _1), prep_in(_4, _2), nsubj(_4, _3)",1
+2.302585092994046,-Infinity,0.0,0.0,0.0,symbol,"nn(_1, _2)","nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,0.0,1.0,0.5,came,null,"nsubj(_3, _1), prep_from(_3, _2)",null,1
+2.70805020110221,1.6094379124341003,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.4849066497880004,1.791759469228055,0.0,0.08433734939759036,0.08433734939759036,member,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.5649493574615367,1.791759469228055,0.0,0.08433734939759036,0.08433734939759036,member,null,null,"prep_of(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+3.1780538303479458,1.9459101490553132,1.0,1.0,1.0,part,"nsubj(_2, _1)","nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",1
+3.091042453358316,1.6094379124341003,0.0,0.0,0.0,consist,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.995732273553991,1.3862943611198906,0.0,0.04761904761904762,0.0,belongs,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_4, _3)",1
+3.258096538021482,1.3862943611198906,0.0,0.0,0.0,belongs,null,"nsubj(_3, _1), prep_to(_3, _2)","nsubj(_3, _1), prep_to(_4, _2), conj_and(_4, _3)",1
+2.70805020110221,1.9459101490553132,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.58351893845611,1.3862943611198906,0.0,0.5,0.0,.,null,null,null,1
+3.4339872044851463,1.791759469228055,0.0,0.6666666666666666,0.0,centerpiece,null,null,null,1
+2.302585092994046,1.6094379124341003,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,1.0,1.0,1.0,part,null,"prep_of(_3, _1), prep_of(_2, _3)","prep_of(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+2.772588722239781,1.791759469228055,0.0,1.0,0.0,hughes,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.995732273553991,2.1972245773362196,0.0,1.0,0.0,becoming,null,null,"nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)",1
+2.302585092994046,1.9459101490553132,0.0,0.07792207792207792,0.0,country,null,null,"nsubj(_3, _1), nn(_4, _2), prep_in(_3, _4)",1
+2.9444389791664403,2.0794415416798357,0.0,0.5,0.0,caught,null,null,null,1
+3.044522437723423,1.6094379124341003,1.0,1.0,1.0,part,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.1354942159291497,1.9459101490553132,1.0,1.0,0.0,became,null,null,"nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)",1
+3.367295829986474,1.9459101490553132,0.0,1.0,0.0,branch,null,null,null,1
+2.70805020110221,1.6094379124341003,0.0,0.0,0.0,comprised,null,"nsubjpass(_3, _1), prep_of(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,0.0,0.0,0.0,null,null,null,null,1
+2.70805020110221,1.791759469228055,0.0,0.0,0.0,one,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.772588722239781,0.6931471805599453,0.0,0.0,0.0,received,null,"nsubj(_3, _1), dobj(_3, _2)",null,1
+2.5649493574615367,1.791759469228055,0.0,1.0,0.0,located,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,1
+2.995732273553991,2.0794415416798357,1.0,0.35507898720969006,0.0016023951572161563,given,null,null,"nsubj(_3, _1), prep_of(_4, _2), ccomp(_3, _4)",0
+3.2188758248682006,2.0794415416798357,1.0,0.35507898720969006,0.0,acknowledge,null,null,"nsubj(_3, _1), prep_of(_4, _2), ccomp(_3, _4)",0
+2.3978952727983707,1.6094379124341003,0.0,0.0,0.0,.,null,"nsubj(_3, _1), prep_with(_3, _2)",null,0
+2.5649493574615367,2.0794415416798357,0.0,0.0,0.0,self-gratification,null,null,null,0
+3.044522437723423,2.3978952727983707,0.0,0.0,0.0,way,null,null,null,0
+2.8903717578961645,1.9459101490553132,1.0,0.35347659205247395,0.0,?,null,"rcmod(_1, _3), prep_of(_3, _2)",null,0
+2.1972245773362196,1.791759469228055,0.0,0.0,0.0,done,null,null,"nsubj(_3, _1), prep_in(_4, _2), dobj(_3, _4)",0
+2.772588722239781,1.791759469228055,0.0,0.0,0.0,am,null,null,null,0
+3.6888794541139363,2.0794415416798357,0.0,2.6386363100441903E-5,0.0,find,null,null,null,0
+2.8903717578961645,1.791759469228055,0.0,0.0,0.0,suggested,null,null,"dobj(_3, _1), ccomp(_4, _2), ccomp(_4, _3)",0
+2.9444389791664403,1.6094379124341003,0.0,0.0,0.0,came,null,"nsubj(_3, _1), prep_in(_3, _2)",null,0
+2.0794415416798357,1.6094379124341003,0.0,0.0,0.0,bunch,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+3.6375861597263857,1.9459101490553132,0.0,0.0,0.0,going,null,"prep_for(_3, _1), conj_and(_2, _3)",null,0
+2.995732273553991,1.791759469228055,0.0,0.0,0.0,trying,null,null,null,0
+3.4011973816621555,1.6094379124341003,0.0,0.25999737918408383,0.0,s,null,"rcmod(_1, _3), prep_from(_3, _2)",null,0
+2.1972245773362196,1.3862943611198906,0.0,0.0,0.0,is,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+2.70805020110221,2.3978952727983707,0.0,2.6386363100441903E-5,0.0,identified,null,"nsubjpass(_3, _1), prep_on(_3, _2)","nsubjpass(_3, _1), prep_on(_4, _2), conj_and(_3, _4)",0
+2.772588722239781,1.6094379124341003,0.0,0.264173182364906,0.0,raised,null,"nsubjpass(_3, _1), prep_about(_3, _2)",null,0
+2.8903717578961645,0.6931471805599453,0.0,0.0,0.0,receive,null,null,"det(_3, _1), dobj(_4, _2), nsubj(_4, _3)",0
+2.1972245773362196,1.6094379124341003,0.0,0.0,0.0,distributed,null,"nsubjpass(_3, _1), prep_at(_3, _2)",null,0
+3.2188758248682006,1.791759469228055,0.0,0.2680519458654109,0.0,satisfied,null,"nsubj(_3, _1), prep_with(_3, _2)",null,0
+2.9444389791664403,2.0794415416798357,0.0,0.3372192540302751,0.0,person,null,null,null,0
+2.9444389791664403,1.0986122886681098,0.0,0.0,0.0,argued,"prep_of(_2, _1)",null,"prep_of(_3, _1), prep_to(_4, _2), nsubj(_4, _3)",0
+2.6390573296152584,1.6094379124341003,0.0,0.0,0.0,get,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+3.4965075614664802,1.3862943611198906,0.0,0.0,0.0,permeated,null,"nsubj(_3, _1), dobj(_3, _2)","nsubj(_3, _1), dobj(_4, _2), conj_and(_4, _3)",0
+2.6390573296152584,1.0986122886681098,0.0,0.3051980767665245,0.0,breaks,null,null,"num(_3, _1), prep_on(_4, _2), prep_as(_4, _3)",0
+2.302585092994046,0.6931471805599453,0.0,0.0,0.0,life,"nsubj(_2, _1)","nsubj(_3, _1), conj_and(_2, _3)","nsubj(_3, _1), aux(_2, _4), aux(_3, _4)",0
+1.9459101490553132,1.0986122886681098,0.0,0.0,0.0,changing,null,null,"nsubj(_3, _1), dobj(_4, _2), aux(_3, _4)",0
+3.1780538303479458,1.791759469228055,0.0,0.0,0.0,absence,null,"nsubj(_3, _1), prep_of(_3, _2)",null,0
+2.3978952727983707,1.3862943611198906,0.0,0.0,0.0,found,null,null,"prep_to(_3, _1), prep_in(_4, _2), nsubjpass(_4, _3)",0
+3.4657359027997265,1.6094379124341003,1.0,0.3531070502706122,0.0,negotiate,null,null,"dobj(_3, _1), prep_out_of(_4, _2), conj_or(_3, _4)",0
+2.833213344056216,1.6094379124341003,1.0,0.61764977441738,0.0,born,null,null,null,0
+2.772588722239781,1.3862943611198906,0.0,0.0,0.0,central,null,null,"prep_in(_3, _1), prep_in(_4, _2), nsubj(_4, _3)",0
+3.1354942159291497,0.6931471805599453,0.0,0.0,0.0,asks,null,null,"dobj(_3, _1), prep_on(_4, _2), nsubj(_3, _4)",0
+3.6109179126442243,1.791759469228055,0.0,0.0,0.0,.,null,"rcmod(_1, _3), prep_after(_3, _2)",null,0
+2.6390573296152584,1.791759469228055,0.0,0.3051980767665245,0.0,way,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,way,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.302585092994046,1.6094379124341003,1.0,0.35347659205247395,0.35347659205247395,purpose,null,null,"prep_of(_3, _1), prep_of(_4, _2), nsubj(_4, _3)",1
+3.332204510175204,1.791759469228055,0.0,0.0,0.0,goal,null,"nsubj(_3, _1), nsubj(_3, _2)","nsubj(_3, _1), nsubj(_4, _2), conj_and(_3, _4)",1
+2.5649493574615367,1.791759469228055,0.0,0.0,0.0,is,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.1972245773362196,1.6094379124341003,1.0,0.35347659205247395,0.35347659205247395,purpose,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+2.772588722239781,1.0986122886681098,1.0,0.35347659205247395,0.0,goal,null,"dobj(_3, _1), vmod(_2, _3)",null,1
+3.713572066704308,1.3862943611198906,1.0,0.3042687091872969,0.0,operate,null,"prep_for(_3, _1), nsubj(_3, _2)","prep_for(_3, _1), nsubj(_4, _2), conj_and(_3, _4)",1
+3.1354942159291497,1.791759469228055,0.0,0.0,0.0,shows,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+1.9459101490553132,1.6094379124341003,0.0,0.29759181036283244,0.29759181036283244,object,null,"nsubj(_3, _1), prep_of(_3, _2)",null,1
+3.044522437723423,1.6094379124341003,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_as(_3, _2)","nsubjpass(_3, _1), prep_as(_4, _2), conj_and(_4, _3)",1
+2.8903717578961645,1.9459101490553132,1.0,0.24172801064410582,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.1972245773362196,1.791759469228055,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.772588722239781,1.791759469228055,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+3.367295829986474,1.791759469228055,1.0,0.293416357676914,0.0,is,null,null,"nsubj(_3, _1), dobj(_4, _2), xcomp(_3, _4)",1
+3.091042453358316,1.6094379124341003,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,2.1972245773362196,1.0,0.06763895927258616,0.0,drug,null,"nsubj(_3, _1), prep_for(_3, _2)","nsubj(_3, _1), prep_for(_4, _2), conj_and(_3, _4)",1
+2.3978952727983707,1.3862943611198906,0.0,0.05538760535441806,0.05538760535441806,applies,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+3.5553480614894135,1.6094379124341003,0.0,0.0,0.0,allow,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.833213344056216,1.6094379124341003,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.3978952727983707,1.0986122886681098,0.0,0.05538760535441806,0.05538760535441806,applies,null,"nsubj(_3, _1), prep_to(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,necessary,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.302585092994046,1.3862943611198906,0.0,0.0,0.0,required,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,1.0,0.3531070502706122,0.3531070502706122,responsible,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.8903717578961645,1.3862943611198906,0.0,0.0,0.0,essential,null,"nsubj(_3, _1), prep_for(_3, _2)",null,1
+2.70805020110221,1.3862943611198906,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)","nsubjpass(_3, _1), prep_for(_4, _2), conj_and(_4, _3)",1
+2.6390573296152584,1.6094379124341003,1.0,0.32763633845667,0.0,.,null,null,null,1
+3.044522437723423,2.70805020110221,0.0,2.6386363100441903E-5,0.0,remain,null,null,null,1
+2.0794415416798357,1.0986122886681098,1.0,0.06763895927258616,0.0,handles,null,"vmod(_1, _3), prep_in(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,1.0,0.26752935986954746,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_in(_3, _2)",null,1
+3.091042453358316,1.6094379124341003,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+3.9512437185814275,1.6094379124341003,1.0,0.29674357770852716,0.0,transferred,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.1972245773362196,1.6094379124341003,1.0,0.06763895927258616,0.06763895927258616,used,null,"nsubjpass(_3, _1), prep_for(_3, _2)",null,1
+2.4849066497880004,1.6094379124341003,0.0,0.0,0.0,serve,null,"nsubj(_3, _1), prep_as(_3, _2)",null,1
+2.8903717578961645,1.6094379124341003,1.0,0.293416357676914,0.0,provided,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+3.6888794541139363,1.6094379124341003,0.0,0.0,0.0,intended,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+3.295836866004329,1.6094379124341003,0.0,0.25937116559344653,0.0,intended,null,"nsubjpass(_3, _1), prep_as(_3, _2)",null,1
+2.302585092994046,1.6094379124341003,0.0,0.0,0.0,.,null,null,null,1
+2.9444389791664403,1.791759469228055,0.0,0.0,0.0,gift,null,"nsubj(_3, _1), prep_of(_3, _2)","nsubj(_3, _1), prep_of(_4, _2), conj_and(_4, _3)",1

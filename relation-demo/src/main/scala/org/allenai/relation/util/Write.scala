@@ -47,7 +47,8 @@ class Write {
     //    }
   }
   
-  def rewrite_4(output: String, data: List[(String, String, String, String, String, String, String)]) = {
+  def rewrite_4(output: String, 
+      data: List[(String, String, String, String, String, String, String)]) = {
     val outputfile = new File(output)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
 
@@ -145,9 +146,55 @@ class Write {
     fw.flush()
     fw.close()
   }
+  
+  def rewrite_4(output: String, 
+      headline: (String, String, String, String, String, String, String), 
+      data: Set[(Int, String, String, String, String, String, String)]) = {
+    val outputfile = new File(output)
+    val fw = new BufferedWriter(new FileWriter(outputfile, false))
+    
+    fw.write(headline._1)
+    fw.write("\t")
+    fw.write(headline._2)
+    fw.write("\t")
+    fw.write(headline._3)
+    fw.write("\t")
+    fw.write(headline._4)
+    fw.write("\t")
+    fw.write(headline._5)
+    fw.write("\t")
+    fw.write(headline._6)
+    fw.write("\t")
+    fw.write(headline._7)
+    fw.newLine()
+    
+    
+    var id = 0
+    data.foreach {
+      case tuple => {
+        id = id+1
+        fw.write(id.toString)
+        fw.write("\t")
+        fw.write(tuple._2)
+        fw.write("\t")
+        fw.write(tuple._3)
+        fw.write("\t")
+        fw.write(tuple._4)
+        fw.write("\t")
+        fw.write(tuple._5)
+        fw.write("\t")
+        fw.write(tuple._6)
+        fw.write("\t")
+        fw.write(tuple._7)
+        fw.newLine()
+      }
+    }
+    fw.flush()
+    fw.close()
+  }
 
   def rewrite_version1(outputname: String,
-    data: List[(String, String, String, String, String, Set[Set[org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.DependencyNode]]])]) = {
+    data: List[(String, String, String, String, String, Set[Set[Polyparser.Myedge]])]) = {
     val outputfile = new File(outputname)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
 

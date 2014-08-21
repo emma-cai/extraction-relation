@@ -5,9 +5,11 @@ import scala.io.Source
 import org.allenai.common.Resource
 import org.allenai.ari.solvers.inference.matching.{ EntailmentWrapper, EntailmentService }
 import org.allenai.ari.solvers.utils.Tokenizer
+import org.allenai.relation.util.Polyparser
 
 object FeatureWrapper {
-
+  
+  
   private def getResourceAsStream(name: String): InputStream =
     getClass.getClassLoader.getResourceAsStream(name)
 
@@ -78,6 +80,28 @@ object FeatureWrapper {
     val word2vecEntailmentUrl = "???"
     val wrapper = new EntailmentWrapper(word2vecEntailmentUrl)
     wrapper.CachedEntails
+  }
+    
+  def getrootstring(root: Polyparser.Mytokennode): String = {
+    var rootstring = "null"
+    if(root != null) rootstring = root.string	//cannot contain any " " or some special characters
+    rootstring
+  }
+  
+  
+  def getshortestpath(root: Polyparser.Mytokennode, tree: Polyparser.Mygraph, 
+	  arg1list: List[Int], arg2list: List[Int], pathlength:Int):String = {
+    //org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]
+
+    arg1list.foreach(arg1 => arg2list.foreach(arg2 => {
+        val (flag, pathsets) = Polyparser.findDepPathWithSpeLen(tree.vertices.toList, tree.edges, arg1, arg2, pathlength)
+        if(flag == true) {
+          return "\""+Polyparser.generalizeDependencypaths(arg1, arg2, pathsets.toList)(0).mkString(", ")+"\""
+        }
+      //    return pathsets.toList(0).toString
+          
+    }))
+    return "null"
   }
   //
   //  //GregJ

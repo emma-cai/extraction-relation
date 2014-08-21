@@ -1,0 +1,229 @@
+sid	sentence	disrel	relphrase	arg1	arg2	annotationOpt
+1	a bicycle is nonliving.	purpose		bicycle	nonliving	0	0	1.0000
+2	sense of smell helps a fox find food.	enable		sense of smell	find food	1	1	0.8516
+3	when an ice cube melts, its state of matter changes from a solid to a liquid.	requirement		an ice cube melts	state of matter changes from a solid to a liquid	1	0	0.5464
+4	an objects hardness, taste, and texture are examples of properties.	cause		hardness, taste, and texture	properties	0	0	0.5822
+5	a bicycle is nonliving.	example		bicycle	nonliving	1	0	1.0000
+6	an iron nail is the best conductor of electricity.	requirement		iron nail	conductor of electricity	1	0	0.5464
+7	a stove is used to boil water in a pan is an example in which a thermometer could be used to show that heat energy is being transferred.	cause		a stove is used to boil water in a pan	a thermometer could be used to show that heat energy is being transferred	0	0	0.5822
+8	a puddle drying in the sun is the best example of evaporation.	purpose		puddle drying in the sun	evaporation	0	0	0.7333
+9	a decrease in air temperature from 60¬∞f to 35¬∞f would most likely cause a person to shiver.	enable		a decrease in air temperature	a person to shiver	0	1	1.0000
+10	touch is used to determine an objects texture.	purpose		touch	determine an objects texture	1	1	0.8516
+11	animals get energy for growth and repair from food.	purpose		get energy	growth and repair from food	1	0	0.5464
+12	water is usually found in nature as a liquid, solid, and gas.	cause		water	liquid, solid, and gas	0	1	1.0000
+13	a meter describes an objects length.	purpose		meter	describes an objects length	1	1	1.0000
+14	a student has a ball of clay that sinks when placed in a pan of water. he should change shape to make the clay float.	purpose		change shape	make the clay float	1	0	0.5464
+15	temperatures below freezing are expected overnight. covering them might be done to protect plants growing outside.	example		covering them	protect plants growing outside	0	0	0.5822
+16	a claws for obtaining food is correctly paired with its function.	purpose		claws	obtaining food	1	0	0.5464
+17	an example of a poor health habit is eating candy instead of lunch.	example		eating candy instead of lunch	a poor health habit	1	1	0.8516
+18	sense of smell helps a fox find food.	cause		sense of smell	find food	0	0	0.5464
+19	gravity causes a marble to sink to the bottom of a glass of water.	purpose		gravity	a marble to sink to the bottom of a glass of water	0	0	0.8571
+20	in new york state, the longest period of daylight occurs during june.	purpose		the longest period of daylight	during june	0	1	0.6154
+21	an example of a poor health habit is eating candy instead of lunch.	purpose		eating candy instead of lunch	a poor health habit	0	0	0.5822
+22	in new york state, the shortest period of daylight occurs during december.	requirement		the shortest period of daylight	during december	0	1	0.6154
+23	polluting most often has a harmful effect on the environment.	purpose		polluting	environment	0	0	0.5822
+24	an iron nail is the best conductor of electricity.	cause		iron nail	conductor of electricity	0	0	0.5464
+25	a student is growing some plants for an experiment. she notices small white spots on the leaves. she should use a hand lens to get a better look at the spots.	cause		a hand lens	get a better look at the spots	0	0	0.5464
+26	sleet, rain, snow, and hail are forms of precipitation.	requirement		sleet, rain, snow, and hail	precipitation	0	0	0.5822
+27	a marble is dropped in a glass of water. gravity pulls the marble to the bottom of the glass.	requirement		gravity	pulls the marble to the bottom	0	0	0.5822
+28	when a baby shakes a rattle, it makes a noise. mechanical energy was changed to sound energy.	cause		a baby shakes a rattle	mechanical energy was changed to sound energy	1	0	0.5822
+29	the length of daylight in new york state changes from summer to fall by decreasing.	enable		the length of daylight	changes from summer to fall by decreasing	0	0	1.0000
+30	exercising every day is an example of a good health habit.	example		exercising every day	good health habit	1	1	0.8516
+31	a ducks feathers are covered with a natural oil that keeps the duck dry. this is a special feature ducks have that helps them adapt to their environment.	example		special feature	adapt to their environment	0	0	0.5822
+32	a car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by friction.	cause		heat that produces the smoke	friction	1	1	0.8516
+33	a turtle eating worms is an example of taking in nutrients.	enable		a turtle eating worms	taking in nutrients	0	0	0.5822
+34	gravity causes a marble to sink to the bottom of a glass of water.	enable		gravity	a marble to sink to the bottom of a glass of water	1	0	0.8571
+35	the movement of soil by wind or water is called erosion.	purpose		movement of soil by wind or water	erosion	0	1	1.0000
+36	living things depend on energy from the sun.	example		sun	living things	0	0	0.5464
+37	sunlight is the main source of energy for the water cycle.	requirement		sunlight	the water cycle	1	0	0.5822
+38	meters can be used to describe an objects length.	cause		meters	describe an objects length	0	0	0.6667
+39	mechanical energy is being used when a person pushes a wooden block across the floor.	example		mechanical energy	pushes a wooden block across the floor	0	0	0.5464
+40	having blue eyes is inherited rather than learned.	purpose		having blue eyes	inherited	0	0	0.5722
+41	a bicycle is nonliving.	requirement		bicycle	nonliving	0	0	1.0000
+42	a ducks feathers are covered with a natural oil that keeps the duck dry. this is a special feature ducks have that helps them adapt to their environment.	purpose		special feature	adapt to their environment	0	0	0.5822
+43	water freezing is an example of a liquid changing to a solid.	example		water freezing	a liquid changing to a solid	1	1	0.8516
+44	a turtle eating worms is an example of taking in nutrients.	purpose		a turtle eating worms	taking in nutrients	0	0	0.5822
+45	since green plants make their own food, they are called producers.	purpose		green plants make their own food	producers	0	0	0.5464
+46	animals get energy for growth and repair from food.	cause		energy	growth and repair from food	1	0	0.5464
+47	it takes one week for earth to rotate on its axis seven times.	purpose		earth to rotate	one week	0	0	0.5464
+48	humans depend on water from the environment.	example		water	humans	0	0	1.0000
+49	a thick fur would best help a bear to survive a winter in new york state.	requirement		thick fur	survive in winter	1	0	0.5822
+50	a meter describes an objects length.	example		meter	describes an objects length	0	1	1.0000
+51	a car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by friction.	enable		heat that produces the smoke	friction	0	0	1.0000
+52	sleet and hail are forms of precipitation.	cause		sleet and hail	precipitation	0	1	1.0000
+53	all animals do need water, air, and food in order to survive.	cause		water, air and food	survive	0	0	0.5722
+54	the functions of a plants roots are to support the plant and take in water and nutrients.	purpose		roots	support the plant and take in water and nutrients	1	0	0.5822
+55	an objects hardness, taste, and texture are examples of properties.	purpose		hardness, taste, and texture	properties	0	0	0.5822
+56	centimeters can be used to describe the length of a desk.	purpose		centimeters	describe the length of a desk	1	1	0.8516
+57	the main function of scales on a fish is to protect the fish.	cause		scales of a fish	protect the fish	0	0	0.5722
+58	a student is growing some plants for an experiment. she notices small white spots on the leaves. she should use a hand lens to get a better look at the spots.	example		a hand lens	get a better look at the spots	0	0	0.5464
+59	winter season is a season of the year during which a rabbits fur would be thickest.	purpose		winter season	a rabbits fur would be thickest	0	0	0.5822
+60	green plants get the energy they need to make food from sunlight.	example		sunlight	make food	0	0	0.5464
+61	gravity causes a marble to sink to the bottom of a glass of water.	requirement		gravity	a marble to sink to the bottom of a glass of water	1	0	0.8571
+62	during winter, the white fur of an arctic fox blends in with the snow. this adaptation is called camouflage.	cause		adaptation	camouflag	0	0	0.5822
+63	when a baby shakes a rattle, it makes a noise. mechanical energy was changed to sound energy.	requirement		a baby shakes a rattle	mechanical energy was changed to sound energy	0	0	0.5822
+64	when a person speaks into a telephone, sound energy is changed mostly into electrical energy.	example		speaks into a telephone	sound energy is changed into electricity energy	0	0	0.5822
+65	green plants get the energy they need to make food from sunlight.	enable		sunlight	make food	1	0	0.5464
+66	living things depend on energy from the sun.	requirement		sun	living things	1	0	0.5464
+67	a ducks feathers are covered with a natural oil that keeps the duck dry. this is a special feature ducks have that helps them adapt to their environment.	enable		special feature	adapt to their environment	1	1	0.8516
+68	many birds fly south for the winter. this adaptation is called migration.	purpose		many birds fly south for the winter	migration	0	0	0.5464
+69	since green plants make their own food, they are called producers.	cause		green plants make their own food	producers	0	0	0.5464
+70	gravity causes rocks to roll downhill.	example		gravity	rocks to roll downhill	0	1	1.0000
+71	a car skids along the road and smoke appears to be coming from under the tires. the heat that produces the smoke is caused by friction.	purpose		heat that produces the smoke	friction	0	0	1.0000
+72	a graduated cylinder would be best to measure the volume of a liquid.	example		a graduated cylinder	measure the volume of a liquid	0	0	0.7500
+73	a student drops a ball. gravity causes the ball to fall to the ground.	requirement		gravity	the ball to fall to the ground	1	0	0.5464
+74	a student has a ball of clay that sinks when placed in a pan of water. he should change shape to make the clay float.	example		change shape	make the clay float	0	0	0.5464
+75	heat is needed to change water from a liquid to a gas.	example		heat	change water from a liquid to a gas	0	0	0.6667
+76	the main function of scales on a fish is to protect the fish.	requirement		scales of a fish	protect the fish	1	0	0.5722
+77	a ball is tossed up in the air and it comes back down. the ball comes back down because of gravity.	requirement		ball comes back down	gravity	0	1	0.6154
+78	base your answers on the information below. one hot, summer day it rained very heavily. after the rain, a plastic pan on a picnic table had 2 cm of rainwater in it. four hours later, all the rainwater in the pan was gone. if the day were cool instead of hot, the rainwater in the pan would have disappeared slower.	requirement		day were cool	disappeared slower	0	0	0.5464
+79	during an experiment, a student reports that a liquid turned green when mixed with another liquid. this is an example of an observation.	enable		this	observation	0	1	0.6154
+80	during winter, the white fur of an arctic fox blends in with the snow. this adaptation is called camouflage.	enable		adaptation	camouflag	0	0	0.5822
+81	gravity causes rocks to roll downhill.	enable		gravity	rocks to roll downhill	1	1	1.0000
+82	temperature and sky conditions are both used to describe weather.	cause		temperature and sky conditions	describe	0	0	0.5464
+83	one way animals usually respond to a sudden drop in temperature is by shivering.	example		shivering	respond to a sudden drop in temperature	0	1	0.8516
+84	an objects hardness, taste, and texture are examples of properties.	example		hardness, taste, and texture	properties	1	1	0.8516
+85	a girl eating an apple describes an organism taking in nutrients.	cause		a girl eating an apple	an organism taking in nutrients	0	1	1.0000
+86	living things depend on energy from the sun.	enable		sun	living things	1	0	0.5464
+87	some birds fly south before winter each year. this is an example of migration.	purpose		some birds fly south before winter	migration	0	0	0.5822
+88	sight can be used to determine an objects ability to reflect light.	requirement		sight	determine an objects ability to reflect light	1	1	1.0000
+89	sunlight is the main source of energy for the water cycle.	purpose		sunlight	the water cycle	0	0	0.5822
+90	the main function of a ducks webbed feet is to help the duck swim in water.	purpose		a ducks webbed feet	swim in water	1	0	0.5822
+91	fourth graders are planning a roller-skate race. blacktop would be the best for this race.	example		blacktop	this race	0	1	0.8788
+92	water freezing is an example of a liquid changing to a solid.	enable		water freezing	a liquid changing to a solid	0	0	0.7333
+93	a ducks feathers are covered with a natural oil that keeps the duck dry. this is a special feature ducks have that helps them adapt to their environment.	requirement		special feature	adapt to their environment	1	0	0.5822
+94	a ball is tossed up in the air and it comes back down. the ball comes back down because of gravity.	enable		ball comes back down	gravity	1	1	0.6154
+95	if an object is attracted to a magnet, the object is most likely made of metal.	enable		an object is attracted to a magnet	the object is most likely made of metal	0	0	0.5464
+96	many birds fly south for the winter. this adaptation is called migration.	requirement		many birds fly south for the winter	migration	0	0	0.5464
+97	the main function of a ducks webbed feet is to help the duck swim in water.	enable		a ducks webbed feet	swim in water	1	1	0.8516
+98	some birds fly south before winter each year. this is an example of migration.	cause		some birds fly south before winter	migration	0	0	0.5822
+99	heat energy causes an ice cube to melt.	requirement		heat energy	an ice cube to melt	1	0	0.8333
+100	living things depend on energy from the sun.	cause		sun	living things	0	0	0.5464
+101	a stove is used to boil water in a pan is an example in which a thermometer could be used to show that heat energy is being transferred.	requirement		a stove is used to boil water in a pan	a thermometer could be used to show that heat energy is being transferred	0	0	0.5822
+102	a claws for obtaining food is correctly paired with its function.	enable		claws	obtaining food	1	0	0.5464
+103	when a baby shakes a rattle, it makes a noise. mechanical energy was changed to sound energy.	purpose		a baby shakes a rattle	mechanical energy was changed to sound energy	0	0	0.5822
+104	having blue eyes is inherited rather than learned.	requirement		having blue eyes	inherited	0	0	0.5722
+105	resting is necessary for humans to maintain good health.	cause		resting	maintain good health	0	0	0.5464
+106	a student should use a balance to compare the masses of two small rocks.	purpose		balance	compare the masses of two small rocks	1	1	0.8516
+107	a decomposer is an organism that recycles nutrients.	cause		decomposer	recycles nutrients	0	0	0.5464
+108	a dog opens its mouth and lets its tongue hang out. a humans body produces sweat. these are two ways that organisms may adjust to hot temperatures.	cause		opens its mouth and lets its tongue hang out	adjust to hot temperatures	0	0	0.5822
+109	gravity causes rocks to roll downhill.	purpose		gravity	rocks to roll downhill	0	1	1.0000
+110	the functions of a plants roots are to support the plant and take in water and nutrients.	enable		roots	support the plant and take in water and nutrients	1	0	0.5822
+111	a girl signals her friend by shining a flashlight on a mirror. her friend can see the signal because light energy can be reflected from one object to another.	requirement		light energy can be reflected from one object to another	see the signal	1	0	0.5464
+112	a student has a ball of clay that sinks when placed in a pan of water. he should change shape to make the clay float.	requirement		change shape	make the clay float	1	0	0.5464
+113	apple trees can live for many years, but bean plants usually live for only a few months. this statement suggests that different plants have different life spans.	enable		statement	different plants have different life spans	0	0	0.5464
+114	it takes one week for earth to rotate on its axis seven times.	requirement		earth to rotate	one week	0	0	0.5464
+115	a snowy field is an environment in which a white rabbit would be best protected from predators.	requirement		snowy field	be best protected from predators	1	0	0.5822
+116	in new york state, the shortest period of daylight occurs during december.	purpose		the shortest period of daylight	during december	0	1	0.6154
+117	an example of a learned trait is being able to read.	cause		a learned trait	being able to read	0	0	0.5822
+118	in new york state, the longest period of daylight occurs during june.	cause		the longest period of daylight	during june	0	1	0.6154
+119	if an object is attracted to a magnet, the object is most likely made of metal.	purpose		an object is attracted to a magnet	the object is most likely made of metal	0	0	0.5464
+120	a student should use a balance to compare the masses of two small rocks.	requirement		balance	compare the masses of two small rocks	1	1	1.0000
+121	base your answers on the information below. one hot, summer day it rained very heavily. after the rain, a plastic pan on a picnic table had 2 cm of rainwater in it. four hours later, all the rainwater in the pan was gone. if the day were cool instead of hot, the rainwater in the pan would have disappeared slower.	purpose		day were cool	disappeared slower	0	0	0.5464
+122	gravity causes a marble to sink to the bottom of a glass of water.	cause		gravity	a marble to sink to the bottom of a glass of water	1	1	0.8516
+123	a ducks feathers are covered with a natural oil that keeps the duck dry. this is a special feature ducks have that helps them adapt to their environment.	cause		special feature	adapt to their environment	0	0	0.5822
+124	sight can be used to determine an objects ability to reflect light.	enable		sight	determine an objects ability to reflect light	1	0	0.6667
+125	a puppy can inherit spotted fur from its parents.	enable		puppy	spotted fur from its parents	0	1	1.0000
+126	the main function of a ducks webbed feet is to help the duck swim in water.	cause		a ducks webbed feet	swim in water	0	0	0.5822
+127	winter season is a season of the year during which a rabbits fur would be thickest.	requirement		winter season	a rabbits fur would be thickest	0	0	0.5822
+128	it rained on a hot summer afternoon and a puddle formed. after several hours, the puddle was gone. precipitation followed by evaporation made the puddle form and then disappear.	example		precipitation followed by evaporation	form and then disappear	0	0	1.0000
+129	some butterflies live an average of two weeks. this period of time is called a life span.	cause		live a average of two weeks	life span	0	0	0.5464
+130	a decomposer is an organism that recycles nutrients.	enable		decomposer	recycles nutrients	1	0	0.5464
+131	a student drops a ball. gravity causes the ball to fall to the ground.	cause		gravity	the ball to fall to the ground	1	1	0.8516
+132	a student measured the volume of water in a pan. the student boiled the water for thirty minutes and then measured the volume of the water again. the volume of water most likely decreased.	purpose		the student boiled the water	decreased	0	0	0.5464
+133	if an object is attracted to a magnet, the object is most likely made of metal.	requirement		an object is attracted to a magnet	the object is most likely made of metal	0	0	0.5464
+134	rotation of earth causes day and night.	example		rotation of earth	day and night	0	0	0.5464
+135	an iron nail is the best conductor of electricity.	enable		iron nail	conductor of electricity	0	0	0.5464
+136	sight can be used to determine an objects ability to reflect light.	example		sight	determine an objects ability to reflect light	0	0	0.6667
+137	a pumpkin is a fruit.	enable		pumpkin	a fruit	0	0	1.0000
+138	frogs lay eggs that develop into tadpoles and then into adult frogs. this sequence of changes is an example of how living things go through a life cycle.	enable		sequence of changes	how living things go through a life cycle	0	0	0.5822
+139	a student should use a graduated cylinder to measure exactly 10 milliliters (ml) of water.	example		a graduated cylinder	measure the volume of a liquid	0	0	0.5822
+140	animals get energy for growth and repair from food.	example		energy	growth and repair from food	0	0	0.5464
+141	a metal fork is the best conductor of electricity.	requirement		a metal fork	conductor of electricity	1	0	0.5722
+142	a girl eating an apple describes an organism taking in nutrients.	example		a girl eating an apple	an organism taking in nutrients	1	1	1.0000
+143	windy, cloudy, rainy, and cold are words that help describe weather.	purpose		windy, cloudy, rainy, and cold	describe weather	0	0	0.5822
+144	it takes one week for earth to rotate on its axis seven times.	cause		earth to rotate	one week	0	0	0.5464
+145	a simple machine that helps move a flag up a flagpole is a pulley.	cause		pulley	move a flag up a flagpole	0	0	0.5464
+146	temperature and sky conditions are both used to describe weather.	requirement		temperature and sky conditions	describe	1	0	0.5464
+147	a student should use a balance to compare the masses of two small rocks.	enable		balance	compare the masses of two small rocks	1	1	1.0000
+148	polluting most often has a harmful effect on the environment.	example		polluting	environment	0	0	0.5822
+149	humans depend on water from the environment.	purpose		water	humans	0	0	1.0000
+150	apple trees can live for many years, but bean plants usually live for only a few months. this statement suggests that different plants have different life spans.	purpose		statement	different plants have different life spans	0	0	0.5464
+151	frogs lay eggs that develop into tadpoles and then into adult frogs. this sequence of changes is an example of how living things go through a life cycle.	purpose		sequence of changes	how living things go through a life cycle	0	0	0.5822
+152	an objects hardness, taste, and texture are examples of properties.	enable		hardness, taste, and texture	properties	0	0	0.5822
+153	a thick fur would best help a bear to survive a winter in new york state.	purpose		thick fur	survive in winter	1	0	0.5822
+154	apple trees can live for many years, but bean plants usually live for only a few months. this statement suggests that different plants have different life spans.	cause		statement	different plants have different life spans	0	0	0.5464
+155	a meter describes an objects length.	requirement		meter	describes an objects length	1	1	1.0000
+156	frogs lay eggs that develop into tadpoles and then into adult frogs. this sequence of changes is an example of how living things go through a life cycle.	example		sequence of changes	how living things go through a life cycle	1	1	0.8516
+157	coloration often helps an animal attract a mate.	requirement		coloration	attract a mate	1	1	1.0000
+158	a puddle drying in the sun is the best example of evaporation.	cause		puddle drying in the sun	evaporation	0	1	0.8788
+159	water freezing is an example of a liquid changing to a solid.	requirement		water freezing	a liquid changing to a solid	0	0	0.7333
+160	a fox grows thicker fur as a season changes. this adaptation helps the fox to keep warmer.	cause		a fox grows thicker fur	keep warmer	1	0	1.0000
+161	the length of daylight in new york state changes from summer to fall by decreasing.	example		the length of daylight	changes from summer to fall by decreasing	0	0	1.0000
+162	a decomposer is an organism that breaks down dead plants and animals.	enable		decomposer	breaks down dead plants and animals	1	0	0.5464
+163	base your answers on the information below. one hot, summer day it rained very heavily. after the rain, a plastic pan on a picnic table had 2 cm of rainwater in it. four hours later, all the rainwater in the pan was gone. if the day were cool instead of hot, the rainwater in the pan would have disappeared slower.	enable		day were cool	disappeared slower	1	0	0.5464
+164	a snowy field is an environment in which a white rabbit would be best protected from predators.	purpose		snowy field	be best protected from predators	1	0	0.5822
+165	if an object is attracted to a magnet, the object is most likely made of metal.	cause		an object is attracted to a magnet	the object is most likely made of metal	0	0	0.5464
+166	one way animals usually respond to a sudden drop in temperature is by shivering.	purpose		shivering	respond to a sudden drop in temperature	1	0	0.5822
+167	growth causes the leaves of a plant to become larger.	enable		growth	leaves of a plant to become larger	1	1	1.0000
+168	when a person speaks into a telephone, sound energy is changed mostly into electrical energy.	enable		speaks into a telephone	sound energy is changed into electricity energy	1	0	0.5822
+169	a student should use a graduated cylinder to measure exactly 10 milliliters (ml) of water.	purpose		a graduated cylinder	measure the volume of a liquid	1	1	0.8516
+170	in new york state, the shortest period of daylight occurs during december.	example		the shortest period of daylight	during december	0	1	0.6154
+171	fourth graders are planning a roller-skate race. blacktop would be the best for this race.	purpose		blacktop	this race	0	1	0.6154
+172	an example of a poor health habit is eating candy instead of lunch.	enable		eating candy instead of lunch	a poor health habit	0	0	0.5822
+173	a mother hen clucks loudly when danger is near and her chicks quickly gather around her. sound helps the chicks receive this warning about danger from their mother.	enable		sound	receive this warning about danger	1	1	0.8516
+174	a student puts two identical plants in the same type and amount of soil. she gives them the same amount of water. she puts one of these plants near a sunny window and the other in a dark room. this experiment tests how the plants respond to light.	example		experiment tests	how the plants respond to light	1	1	0.6154
+175	chemical energy is found in food.	purpose		chemical energy	found in food	0	0	0.5464
+176	a student drops a ball. gravity causes the ball to fall to the ground.	example		gravity	the ball to fall to the ground	0	0	0.5464
+177	water is usually found in nature as a liquid, solid, and gas.	purpose		water	liquid, solid, and gas	0	1	1.0000
+178	temperature and sky conditions are both used to describe weather.	purpose		temperature and sky conditions	describe	1	1	0.8516
+179	a person does use mechanical energy to pedal a bicycle.	enable		mechanical energy	pedal a bicycle	1	0	1.0000
+180	cutting down a rain forest is most harmful to the natural environment.	example		cutting down a rain forest	natural environment	0	0	0.5822
+181	a meter describes an objects length.	cause		meter	describes an objects length	0	1	1.0000
+182	the functions of a plants roots are to support the plant and take in water and nutrients.	cause		roots	support the plant and take in water and nutrients	0	0	0.5822
+183	a person does use mechanical energy to pedal a bicycle.	purpose		mechanical energy	pedal a bicycle	0	1	0.8516
+184	a metal fork is the best conductor of electricity.	purpose		a metal fork	conductor of electricity	1	0	0.5722
+185	meters can be used to describe an objects length.	requirement		meters	describe an objects length	1	0	0.6667
+186	the movement of soil by wind or water is called erosion.	cause		movement of soil by wind or water	erosion	0	1	1.0000
+187	sleet and hail are forms of precipitation.	example		sleet and hail	precipitation	1	1	1.0000
+188	fourth graders are planning a roller-skate race. blacktop would be the best for this race.	enable		blacktop	this race	1	1	0.6154
+189	centimeters can be used to describe the length of a desk.	example		centimeters	describe the length of a desk	0	0	0.6667
+190	an example of a learned trait is being able to read.	example		a learned trait	being able to read	1	1	0.8516
+191	a human offspring can inherit blue eyes.	requirement		a human offspring	blue eyes	0	0	1.0000
+192	grow and reproduce are carried out by all species of living things.	cause		grow and reproduce	carried by all species of living things	0	0	0.5822
+193	windy, cloudy, rainy, and cold are words that help describe weather.	example		windy, cloudy, rainy, and cold	describe weather	0	0	0.5822
+194	having blue eyes is inherited rather than learned.	cause		having blue eyes	inherited	0	0	0.5722
+195	a girl eating an apple describes an organism taking in nutrients.	purpose		a girl eating an apple	an organism taking in nutrients	1	1	1.0000
+196	decrease the temperature is one way to change water from a liquid to a solid.	enable		decrease the temperature	change water from a liquid to a solid	1	0	0.5822
+197	resting is necessary for humans to maintain good health.	purpose		resting	maintain good health	1	0	0.5464
+198	some butterflies live an average of two weeks. this period of time is called a life span.	enable		live a average of two weeks	life span	0	0	0.5464
+199	a bicycle is nonliving.	enable		bicycle	nonliving	0	0	1.0000
+200	a puddle drying in the sun is the best example of evaporation.	example		puddle drying in the sun	evaporation	1	1	0.8516
+201	a bird migrating south is an example of an animal adapting to a change in the environment.	purpose		a bird migrating south	adapting to a change in the environment	1	0	0.5822
+202	apple trees can live for many years, but bean plants usually live for only a few months. this statement suggests that different plants have different life spans.	requirement		statement	different plants have different life spans	0	0	0.5464
+203	a person does use mechanical energy to pedal a bicycle.	example		mechanical energy	pedal a bicycle	0	0	1.0000
+204	a puppy can inherit spotted fur from its parents.	purpose		puppy	spotted fur from its parents	0	1	1.0000
+205	a puddle drying in the sun is the best example of evaporation.	requirement		puddle drying in the sun	evaporation	0	0	0.7333
+206	it rained on a hot summer afternoon and a puddle formed. after several hours, the puddle was gone. precipitation followed by evaporation made the puddle form and then disappear.	purpose		precipitation followed by evaporation	form and then disappear	1	0	1.0000
+207	a student should use a graduated cylinder to measure exactly 10 milliliters (ml) of water.	enable		a graduated cylinder	measure the volume of a liquid	1	0	0.5822
+208	some birds fly south before winter each year. this is an example of migration.	enable		some birds fly south before winter	migration	0	0	0.5822
+209	a student should use a balance to compare the masses of two small rocks.	cause		balance	compare the masses of two small rocks	0	1	1.0000
+210	chemical energy is found in food.	enable		chemical energy	found in food	0	0	0.5464
+211	an iron nail is the best conductor of electricity.	purpose		iron nail	conductor of electricity	1	0	0.5464
+212	a student riding a bicycle observes that it moves faster on a smooth road than on a rough road. this happens because the smooth road has less friction.	cause		this	smooth road has less friction	1	0	1.0000
+213	a metal fork is the best conductor of electricity.	enable		a metal fork	conductor of electricity	1	0	0.5722
+214	resting is necessary for humans to maintain good health.	enable		resting	maintain good health	1	0	0.5464
+215	sleet, rain, snow, and hail are forms of precipitation.	example		sleet, rain, snow, and hail	precipitation	1	0	0.5822
+216	a turtle eating worms is an example of taking in nutrients.	example		a turtle eating worms	taking in nutrients	1	1	0.8516
+217	base your answers on the information below. one hot, summer day it rained very heavily. after the rain, a plastic pan on a picnic table had 2 cm of rainwater in it. four hours later, all the rainwater in the pan was gone. evaporation caused the rainwater in the pan to disappear as it sat outside in the hot air.	cause		evaporation	disappear	1	1	0.8516
+218	a student puts two identical plants in the same type and amount of soil. she gives them the same amount of water. she puts one of these plants near a sunny window and the other in a dark room. this experiment tests how the plants respond to light.	cause		experiment tests	how the plants respond to light	0	1	0.8788
+219	a squirrel storing nuts is preparing for a seasonal change in the environment.	requirement		storing nuts	preparing for a seasonal change	1	0	0.5822
+220	touch is used to determine an objects texture.	requirement		touch	determine an objects texture	1	0	0.6667
+221	in new york state, the shortest period of daylight occurs during december.	enable		the shortest period of daylight	during december	0	1	0.6154
+222	a squirrel storing nuts is preparing for a seasonal change in the environment.	example		storing nuts	preparing for a seasonal change	0	0	0.5822
+223	a decomposer is an organism that recycles nutrients.	purpose		decomposer	recycles nutrients	1	0	0.5464
+224	chemical energy is found in food.	requirement		chemical energy	found in food	0	0	0.5464
+225	a graduated cylinder would be best to measure the volume of a liquid.	enable		a graduated cylinder	measure the volume of a liquid	1	0	0.7500
+226	a bird migrating south is an example of an animal adapting to a change in the environment.	enable		a bird migrating south	adapting to a change in the environment	1	0	0.5822
+227	exercising every day is an example of a good health habit.	requirement		exercising every day	good health habit	1	0	0.5822
+228	coloration often helps an animal attract a mate.	enable		coloration	attract a mate	1	1	0.8516

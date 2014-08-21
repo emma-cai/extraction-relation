@@ -1,0 +1,20 @@
+PP0 := TypedOpenRegex {
+  <pos="IN" | pos="TO" | pos="RP"> <pos="RB">? @NG1
+}
+
+PP := TypedOpenRegex {
+   (?:@PP0 (?: (?:<string="," | string="or"> @PP0)* <string=",">? <string=/and|or|but|and\/or/>? @PP0 )? )
+}
+
+PP0NoWithNoRelClause := TypedOpenRegex {
+  <(pos='IN' | pos='TO' | pos='RP') & !string="with" & !string="that" & !string="which" & !string="who"> <pos="RB">? @NG1
+}
+
+PP0NoWithNoOfNoRelClause := TypedOpenRegex {
+  <(pos='IN' | pos='TO' | pos='RP') & !string="with" & !string="of" & !string="that" & !string="which" & !string="who"> <pos="RB">? @NG1
+}
+
+// for e.g.: "in doing so"
+consume PPWithVerbGerund := TypedOpenRegex {
+   (<pos="RB">? <pos="IN" | pos="TO" | pos="RP"> <pos="RB">? <pos="VBG">  <pos="RB" | pos="IN" | pos="DT" | pos="WDT">)
+}

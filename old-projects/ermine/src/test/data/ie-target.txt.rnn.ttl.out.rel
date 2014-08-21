@@ -1,0 +1,54 @@
+
+<http://aristo.allenai.org/id#ie-target/11_1> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#ie-target/11_4> .
+
+<http://aristo.allenai.org/id#ie-target/14_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/14_9> .
+
+<http://aristo.allenai.org/id#ie-target/21_9> <http://aristo.allenai.org/rel/when> <http://aristo.allenai.org/id#ie-target/21_5> .
+
+<http://aristo.allenai.org/id#ie-target/7_1> <http://aristo.allenai.org/rel/part> <http://aristo.allenai.org/id#ie-target/7_10> .
+
+<http://aristo.allenai.org/id#ie-target/22_6> <http://aristo.allenai.org/rel/cause> <http://aristo.allenai.org/id#ie-target/22_1> .
+
+<http://aristo.allenai.org/id#ie-target/4_2> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/4_3> .
+
+<http://aristo.allenai.org/id#ie-target/15_1> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/15_8> .
+
+<http://aristo.allenai.org/id#ie-target/2_17> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/2_18> .
+
+<http://aristo.allenai.org/id#ie-target/18_1> <http://aristo.allenai.org/rel/requirement> <http://aristo.allenai.org/id#ie-target/18_7> .
+
+<http://aristo.allenai.org/id#ie-target/10_1> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#ie-target/10_4> .
+
+<http://aristo.allenai.org/id#ie-target/2_18> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#ie-target/2_4> .
+
+<http://aristo.allenai.org/id#ie-target/5_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/5_11> .
+
+<http://aristo.allenai.org/id#ie-target/22_2> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/22_6> .
+
+<http://aristo.allenai.org/id#ie-target/19_4> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/19_9> .
+
+<http://aristo.allenai.org/id#ie-target/2_10> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#ie-target/2_4> .
+
+<http://aristo.allenai.org/id#ie-target/17_10> <http://aristo.allenai.org/rel/cause> <http://aristo.allenai.org/id#ie-target/17_4> .
+
+<http://aristo.allenai.org/id#ie-target/3_3> <http://aristo.allenai.org/rel/purpose> <http://aristo.allenai.org/id#ie-target/3_7> .
+
+<http://aristo.allenai.org/id#ie-target/12_6> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#ie-target/12_14> .
+
+<http://aristo.allenai.org/id#ie-target/20_14> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/20_15> .
+
+<http://aristo.allenai.org/id#ie-target/3_5> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/3_7> .
+
+<http://aristo.allenai.org/id#ie-target/1_7> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/1_12> .
+
+<http://aristo.allenai.org/id#ie-target/21_7> <http://aristo.allenai.org/rel/purpose> <http://aristo.allenai.org/id#ie-target/21_9> .
+
+<http://aristo.allenai.org/id#ie-target/20_15> <http://aristo.allenai.org/rel/example> <http://aristo.allenai.org/id#ie-target/20_3> .
+
+<http://aristo.allenai.org/id#ie-target/13_3> <http://aristo.allenai.org/rel/effect> <http://aristo.allenai.org/id#ie-target/13_6> .
+
+<http://aristo.allenai.org/id#ie-target/5_11> <http://aristo.allenai.org/rel/requirement> <http://aristo.allenai.org/id#ie-target/5_13> .
+
+<http://aristo.allenai.org/id#ie-target/2_13> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#ie-target/2_4> .
+
+<http://aristo.allenai.org/id#ie-target/4_18> <http://aristo.allenai.org/rel/enable> <http://aristo.allenai.org/id#ie-target/4_3> .

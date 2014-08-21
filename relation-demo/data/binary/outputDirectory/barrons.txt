@@ -1,0 +1,37 @@
+sid	sentence	disrel	relphrase	arg1	arg2	annotationOpt
+1	some animals grow thick fur in winter to stay warm.	effect		grow	stay	1	0	0.5789
+2	in the hot weather our[we] bodies sweat perspiration bringing water to our[we] skin.	effect		sweat	bring	1	1	0.7000
+3	a balance measures mass.	purpose		a balance	measure	1	0	0.5789
+4	a scientist would use a graduated cylinder to measure the volume of a liquid.	effect		use	measure	1	1	0.7561
+5	animals need air, water, and food to survive.	effect		need	survive	1	0	0.5789
+6	growth, taking in nutrients, breathing, and reproduction are the life processes of all living things.	example		reproduction	the life processes of all living things	1	0	0.5789
+7	the flower is the part of the plant responsible for the production of seeds.	example		the flower	the part of the plant responsible for the production of seeds	1	0	0.5789
+8	in order for humans to grow and be healthy they[humans] need to eat healthy foods exercise and get regular rest.	effect		exercise	be	1	0	0.8000
+9	a snowball melting in your hand is an example of heat energy.	example		a snowball melting in your hand	heat energy	1	1	0.8516
+10	freezing involves changing water from its liquid state to its solid state (ice) by the removal of heat.	enable		remove	change	1	0	0.5789
+11	lobsters and crabs protect themselves with their claws, turtles have shells, porcupines have spines, birds use their feathers, and others have fur or scales to help protect them from predators.	purpose		have	to help protect them from predators	1	1	0.8516
+12	lobsters and crabs protect themselves with their claws, turtles have shells, porcupines have spines, birds use their feathers, and others have fur or scales to help protect them from predators.	effect		have	protect	1	1	0.7561
+13	the sun is the ultimate source of energy for all life and physical cycles on earth.	example		the sun	the ultimate source of energy for all life and physical cycles on earth	1	0	0.5789
+14	freezing involves changing water from its liquid state to its solid state (ice) by the removal of heat.	enable		remove	change	1	0	0.5789
+15	melting is the opposite of freezing and involves changing water from its solid state (ice) to a liquid state by the addition of heat.	enable		add	change	1	0	0.5789
+16	a magnet is an object that attracts metals.	example		a magnet	an object	1	0	0.5789
+17	for example some metal objects allow heat and electricity to transfer better than do plastic or rubber objects.	purpose		some metal objects	transfer	1	0	0.5789
+18	the sun is the ultimate source of energy for all life and physical cycles on earth.	example		the sun	the ultimate source of energy for all life and physical cycles on earth	1	0	0.5789
+19	erosion is the process by which soil and or other earth materials are moved from one place to another.	example		erosion	move	1	0	0.5789
+20	cutting down too many trees has resulted in many forest animals no longer having homes.	effect		cut	have	1	1	0.8516
+21	a pulley is a simple machine that moves a sail up the mast of a ship.	example		a pulley	a simple machine	1	0	0.5789
+22	the length of time from an animal s birth to its[an animal s birth] death is called its[the length of time from an animal s birth to its death] life span.	example		the length of time from an animal s birth to its[an animal s birth] death	its[the length of time from an animal s birth to its death] life span	1	1	0.8516
+23	animals that change color or are of a color similar to their environment can camouflage themselves so that they cannot be easily seen.	effect		camouflage	not see	1	1	0.8516
+24	a scientist would use a graduated cylinder to measure the volume of a liquid.	effect		use	measure	1	1	0.7561
+25	building homes stores factories growing food crops and pollution are some causes of ecosystem failure.	cause		pollution	ecosystem failure	1	1	0.8516
+26	decomposers are living things that break down dead organisms and recycle their[dead organisms] nutrients into the soil.	example		decomposers	living things	1	0	0.5789
+27	gravity is the force that brings objects toward the earth.	example		gravity	the force	1	0	0.5789
+28	green plants are called producers because they[green plants] provide the basic food supply for themselves[producers] and animals.	example		provide	producers	1	1	0.8516
+29	growth is a process by which plants and animals increase in size.	example		growth	increase	1	0	0.5789
+30	in order for humans to grow have energy and be healthy they[humans] need to eat healthy foods exercise and get regular rest.	effect		get	be	1	0	0.8000
+31	the plant gets the energy to go through photosynthesis from sunlight.	effect		get	go	1	0	1.0000
+32	using your eyes to see that a banana is yellow is an example of using your senses to make an observation.	effect		use	make	1	0	0.7640
+33	animals also need water to survive.	effect		animals need water	survive	1	0	0.5789
+34	gravity is the force that brings objects toward the earth	example		gravity	the force	1	0	0.5789
+35	some animals gather food in preparation for the long winter.	effect		gather	prepare	1	0	0.5789
+36	for example some metal objects allow heat and electricity to transfer better than do plastic or rubber objects.	purpose		some metal objects	transfer	1	0	0.5789

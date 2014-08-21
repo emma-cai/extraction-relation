@@ -1,0 +1,14 @@
+<configuration>
+  <!-- Development logback config with a STDOUT appender and no file appender. -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5level [%date][%X{sourceThread}] %logger{35}: %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+  <logger name="org.allenai" level="INFO" />
+</configuration>
