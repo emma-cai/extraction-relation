@@ -20,6 +20,10 @@ import scala.collection.immutable.IndexedSeq
 import weka.core.Utils
 import org.allenai.relation.util.Polyparser
 import scala.collection.immutable.SortedMap
+import java.io.ObjectOutputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.FileInputStream
 
 object BinaryClassification extends App with Logging {
   private var numericnum = 0
@@ -53,11 +57,13 @@ object BinaryClassification extends App with Logging {
   val configTestingLabeledFile = "data/binary/outputDirectory/108Q_sentence_arg1_arg2_mini_211-" + configFeature + ".txt"
   val arffDir = "data/binary/arff"
   val mapDir = "data/binary/map"
+  val modelDir = "data/binary/model"
   val configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff"
   val configArffTest = arffDir + File.separator + "test-" + configFeature + ".arff"
   val configMapTrain = mapDir + File.separator + "train-" + configFeature + ".map"
   val configMapTest = mapDir + File.separator + "test-" + configFeature + ".map"
-
+  val configClassifierModel = modelDir + File.separator + configClassifierName + "-classifier-" + configFeature + ".classifier"
+  val configEvalModel = modelDir + File.separator + configClassifierName + "-eval-" + configFeature + ".eval"
   // extract training sentences and features
   logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
   val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
@@ -117,22 +123,86 @@ object BinaryClassification extends App with Logging {
   toARFF(sentenceDisrelTrain, featureDoubleMapTrain, featureStringMapTrain, nominalmaps, configArffTrain)
   toMAP(sentenceDisrelTrain, featureDoubleMapTrain, featureStringMapTrain, configMapTrain)
 
+  /**
+   * Different ways for testing
+   */
   // save training-model
+  saveModel(configClassifierName, configArffTrain)
+  runLabelingLoad(configClassifierModel, configEvalModel, featureDoubleMapTest, featureStringMapTest)
+  
+//  // runEvaluation(configClassifierName, configArffTrain, configArffTrain, true, Some(List()))
+//  runLabelingRetrain(configClassifierName, configArffTrain, featureDoubleMapTest, featureStringMapTest)
   
   
-  //  runEvaluation(configClassifierName, configArffTrain, configArffTrain, true, Some(List()))
-  runLabeling(configClassifierName, configArffTrain, featureDoubleMapTest, featureStringMapTest)
   System.exit(0)
-
-  // 
-  def runLabeling(configClassifierName: String, configArffTrain: String,
+  
+  /**
+   * Build a classifier (configClassifierName) using training-data (configArffTrain)
+   * Save classifier-model to configClassifierModel
+   * Save evaluation-model to configEvalModel
+   */
+  def saveModel(configClassifierName: String, configArffTrain: String) = {
+    val (classifier, eval) = buildClassifier()
+    try {
+      val oosclas = new ObjectOutputStream(new FileOutputStream(configClassifierModel))
+      oosclas.writeObject(classifier)
+      oosclas.flush()
+      oosclas.close()
+      
+      val ooseval = new ObjectOutputStream(new FileOutputStream(configEvalModel))
+      ooseval.writeObject(eval)
+      ooseval.flush()
+      ooseval.close()
+    } catch {
+      case e: Throwable => e.printStackTrace()
+    }
+  }
+  
+  /**
+   * Load classifier-model from "configClassifierModel"
+   * Load evaluation-model from "configEvalModel"
+   */
+  def loadModel(configClassifierModel: String, configEvalModel: String) = {
+    try {
+      val oisclas = new ObjectInputStream(new FileInputStream(configClassifierModel))
+      val classifier = oisclas.readObject().asInstanceOf[Classifier]
+      oisclas.close()
+      
+      val oiseval = new ObjectInputStream(new FileInputStream(configEvalModel))
+      val eval = oiseval.readObject().asInstanceOf[Evaluation]
+      oiseval.close()
+      (classifier, eval)
+    } catch {
+      case e: Throwable => e.printStackTrace()
+      (null, null)
+    }
+  }
+  
+  /**
+   * Run testing, load pre-trained model in disk
+   */
+  def runLabelingLoad(configClassifierModel: String, configEvalModel: String, 
+    featureDoubleMapTest: Map[BinarySentenceDisrel, Seq[Double]],
+    featureStringMapTest: Map[BinarySentenceDisrel, Seq[String]]) {
+    val (classifier, eval) = loadModel(configClassifierModel, configEvalModel)
+    classify(classifier, eval, configArffTest, configTestingLabeledFile, sentenceDisrelTest,
+      featureDoubleMapTest, featureStringMapTest, nominalmaps)
+  }
+  
+  /**
+   * Run testing, using the trained model at the same time
+   */
+  def runLabelingRetrain(configClassifierName: String, configArffTrain: String,
     featureDoubleMapTest: Map[BinarySentenceDisrel, Seq[Double]],
     featureStringMapTest: Map[BinarySentenceDisrel, Seq[String]]) = {
-    val (classifier, eval) = buildClassifier(configClassifierName, configArffTrain)
+    val (classifier, eval) = buildClassifier()
     classify(classifier, eval, configArffTest, configTestingLabeledFile, sentenceDisrelTest,
       featureDoubleMapTest, featureStringMapTest, nominalmaps)
   }
 
+  /**
+   * Convert data to instances
+   */
   def toInstances(arffFile: String, sentenceDisrelTest: List[BinarySentenceDisrel],
     featureDoubleMapTest: Map[BinarySentenceDisrel, Seq[Double]],
     featureStringMapTest: Map[BinarySentenceDisrel, Seq[String]],
@@ -383,14 +453,14 @@ object BinaryClassification extends App with Logging {
     writer.close()
   }
 
-  def buildClassifier(classifierName: String, arffTrain: String) = {
-    logger.info(s"WEKA: reading training data from $arffTrain")
-    val sourceTrain: DataSource = new DataSource(arffTrain)
+  def buildClassifier() = {
+    logger.info(s"WEKA: reading training data from $configArffTrain")
+    val sourceTrain: DataSource = new DataSource(configArffTrain)
     val dataTrain: Instances = sourceTrain.getDataSet
     if (dataTrain.classIndex == -1)
       dataTrain.setClassIndex(dataTrain.numAttributes - 1)
-    logger.info(s"WEKA: creating classifier $classifierName")
-    val classifier: Classifier = classifierName match {
+    logger.info(s"WEKA: creating classifier $configClassifierName")
+    val classifier: Classifier = configClassifierName match {
       case "J48" => new J48()
       case "RandomForest" => new RandomForest()
       case "DecisionTable" => new DecisionTable()
@@ -406,7 +476,7 @@ object BinaryClassification extends App with Logging {
       //      case "RandomCommittee" => new RandomCommittee()
       //      case "LibSVM" => new LibSVM()
     }
-    logger.info(s"WEKA: training the classifier on $arffTrain")
+    logger.info(s"WEKA: training the classifier on $configArffTrain")
     classifier.buildClassifier(dataTrain)
     val eval = new Evaluation(dataTrain)
     (classifier, eval)
