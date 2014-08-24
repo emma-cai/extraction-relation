@@ -17,7 +17,7 @@ import scala.io.Source
 import scala.collection.immutable.IndexedSeq
 import weka.core.Utils
 
-class ArffConverting extends App with Logging  {
+class ArffConverting extends App with Logging {
   private val disrelSeeds = collection.immutable.HashMap(
     ("purpose", List("purpose", "used to", "responsible")),
     ("cause", List("caused", "so that", "because", "result in", "effect on")),
@@ -28,10 +28,10 @@ class ArffConverting extends App with Logging  {
     ("part", List("part of")),
     ("requirement", List("necessary", "needed")),
     ("condition", List("when", "if")))
-  
+
   private var textfile = ""
   private var arfffile = ""
-  
+
   def ArffConverting(textfile: String, arfffile: String) = {
     this.textfile = textfile
     this.arfffile = arfffile
@@ -39,7 +39,7 @@ class ArffConverting extends App with Logging  {
 
   logger.info(s"Extracting training sentences+disrel from $textfile")
   val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(textfile, 1)
-  
+
   logger.info("Computing training sentence features")
   val featureMapTrain = sentenceDisrelTrain.map {
     sentenceDisrel => (sentenceDisrel, features(sentenceDisrel))
@@ -47,10 +47,9 @@ class ArffConverting extends App with Logging  {
 
   logger.info(s"Writing training ARFF to file $arfffile")
   toARFF(sentenceDisrelTrain, featureMapTrain, arfffile)
-  
-  /**
-   * Feature collecting
-   */
+
+  /** Feature collecting
+    */
   def features(sentenceDisrel: BinarySentenceDisrel) = {
     import FeatureWrapper._
 
@@ -70,18 +69,18 @@ class ArffConverting extends App with Logging  {
 
     // entailment between relphrase and "requirement" lexical seeds
     var entailmentscore = 0.0
-    try { entailmentscore = wordnetEntailment(sentenceDisrel.sentence, disrelSet.mkString(" "))
-    } catch { case e:Exception => sentenceDisrel.sentence }
+    try {
+      entailmentscore = wordnetEntailment(sentenceDisrel.sentence, disrelSet.mkString(" "))
+    } catch { case e: Exception => sentenceDisrel.sentence }
     features :+= entailmentscore
-    
+
     // dependency-path features
 
     features
   }
-  
-  /**
-   * Write to arff file
-   */
+
+  /** Write to arff file
+    */
   def toARFF(sentenceDisrels: List[BinarySentenceDisrel], featureMap: Map[BinarySentenceDisrel, Seq[Double]], arffFile: String) = {
     val writer = new PrintWriter(arffFile)
     // add ARFF header

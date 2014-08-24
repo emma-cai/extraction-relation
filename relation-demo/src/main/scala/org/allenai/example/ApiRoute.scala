@@ -1,18 +1,14 @@
 package org.allenai.example
 
 import akka.event.LoggingAdapter
-import akka.actor.ActorLogging
 import spray.httpx.SprayJsonSupport
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 import spray.routing.HttpServiceActor
 import scala.concurrent._
 import scala.collection.mutable.Seq
-import java.io.File
-import java.io.BufferedWriter
-import java.io.FileWriter
 
-trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor with ActorLogging =>
+trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 
   import context._
   import scala.collection.mutable.Map
@@ -30,108 +26,93 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor with ActorLoggi
     }
 
     import scala.concurrent.Future
-    def runInit(qid: String, path: String): Future[Response] = {
-      val inputpath = "/Users/qingqingcai/Documents/java/workspace/Hackthon/data/query-urls-sens-cleaned" + "/" + qid + ".txt"
-      println(inputpath)
-      var qidList: List[String] = List()
-      var senList: List[String] = List()
-      for (line <- scala.io.Source.fromFile(inputpath).getLines) {
-        val arr = line.split("\t")
-        val que = arr(2)
-        val sen = arr(6)
-        qidList = qidList ::: List(que)
-        senList = senList ::: List(sen)
+    def runInstanceSearch(disrel: String, query: String): Future[Response] = {
+      val insSearch: InstanceSearching = new InstanceSearching()
+      val searchres = insSearch.insSearch("/Users/qingqingcai/Documents/Data/Reverb/Index",
+        disrel, "\"" + query + "\"")
+      var kpset: List[String] = List()
+      var senset: List[String] = List()
+      searchres.foreach {
+        case per => {
+          kpset = kpset :+ per(0)
+          senset = senset :+ per(1)
+        }
       }
-      Future(Response(qidList, senList))
+      Future(Response(kpset, senset))
     }
 
-    def runClassifier(qid: String, path: String): Future[Response] = {
-      val inputpath = "/Users/qingqingcai/Documents/java/workspace/Hackthon/data/query-urls-sens-classifier" + "/" + qid + ".txt"
-      println(inputpath)
-      var qidList: List[String] = List()
-      var senList: List[String] = List()
-      for (line <- scala.io.Source.fromFile(inputpath).getLines) {
-        val arr = line.split("\t")
-        val que = arr(2)
-        val sen = arr(6)
-        qidList = qidList ::: List(que)
-        senList = senList ::: List(sen)
+    def runSentenceSearch(disrel: String, arg1: String, arg2: String): Future[Response] = {
+      val search: SentenceSearching = new SentenceSearching()
+      //      val searchres = search.runSearch("/Users/qingqingcai/Documents/Data/Reverb/Index", 
+      //          "\""+arg1+"\"", "\""+arg2+"\"", "arg1", "arg2", List("kp", "sen"), 100)
+      val searchres = search.senSearch("/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_v2", disrel, arg1, arg2)
+
+      var kpset: List[String] = List()
+      var senset: List[String] = List()
+      searchres.foreach {
+        case per => {
+          kpset = kpset :+ per(0)
+          senset = senset :+ per(1)
+        }
       }
-      Future(Response(qidList, senList))
+      Future(Response(kpset, senset))
+
+      /** [
+        * ["key":"1", "val":"this"],
+        * ["key":"2", "val":"is"],
+        * ["id":"3", "val":"an"],
+        * ["id":"4", "val":"example"]
+        * ]
+        */
+      //      var pairlist = List(("1", "this"), ("2", "is"), ("3", "an"), ("4", "example"))
+      //      Future(Response2(pairlist))
+
+      /** [String, Array[String]]
+        */
     }
 
-    def savePositiveData(qid: String, positive: Array[String]) = {
-      val outputfile = new File("/Users/qingqingcai/Documents/java/workspace/Hackthon/data/websaved.txt")
-      val fw = new BufferedWriter(new FileWriter(outputfile, true))
+    def saveData(disrel: String, sens: Seq[String]) = {
 
-      positive.foreach {
-        case l =>
-          {
-            fw.write(l)
-            fw.newLine()
-          }
-          fw.newLine()
-      }
-      fw.flush()
-      fw.close()
     }
 
     // API data transfer object
     // Note that the field name matches the 'text' field name
     // in the app-controller.js' scope.submit object.
-    case class Submit(qid: String, path: String)
+    case class Submit(disrel: String, kp: String)
     implicit val submitFormat = jsonFormat2(Submit.apply)
-    //    case class Save(qid:String, positive:Array[String])
-    //    object MyJsonProtocol extends DefaultJsonProtocol {
-    //      implicit object SaveJsonFormat extends RootJsonFormat[Save] {
-    //        def write(save: Save): JsValue = {
-    //          JsObject(
-    //            "input" -> save.qid.toJson,
-    //            "processors" -> save.positive.toSeq.toJson)
-    //          }
-    //      }
-    //    }
 
-    case class Judgesubmit(qid: String, positive: Array[String])
-    implicit val judgesubmitFormat = jsonFormat2(Judgesubmit.apply)
+    case class ArgSubmit(disrel: String, arg1: String, arg2: String)
+    implicit val argsubmitFormat = jsonFormat3(ArgSubmit.apply)
     
+//    case class SaveSubmit(disrel:String, sens:Seq[String])
+//    implicit val savesubmitFormat = jsonFormat2(SaveSubmit)
     // format: OFF
     val route =
-      path("submitinit") {
+      path("submitdisrel") {
         post {
           entity(as[Submit]) { submit =>
           	complete{
-          		Future(runInit(submit.qid, submit.path))
+          		Future(runInstanceSearch(submit.disrel, submit.kp))
           	}
           }
         }
       } ~ 
-      path("submitclassifier") {
+      path("submitins") {
         post {
-          entity(as[Submit]) { submit =>
+          entity(as[ArgSubmit]) { argsubmit =>
           	complete{
-          		Future(runClassifier(submit.qid, submit.path))
-          	}
-          }
-        }
-      } ~ 
-      path("submitjudge") {
-        post {
-          entity(as[Judgesubmit]) { judgesubmit =>
-            log.info("got judge submit: " + judgesubmit.toString)
-          	complete{
-          		"todo"
-         //      savePositiveData(judgesubmit.qid, judgesubmit.positive)
-               savePositiveData(judgesubmit.qid, judgesubmit.positive)
-               "OK"
+          		Future(runSentenceSearch(argsubmit.disrel, argsubmit.arg1, argsubmit.arg2))
           	}
           }
         }
       }
-    //      ~
+    //      ~ 
     //      path("savepositive") {
     //        post {
-    //          
+    //          entity(as[SaveSubmit]) { savesubmit =>
+    //          	complete{
+    //          		Future(saveData(savesubmit.disrel, savesubmit.sens))
+    //          	}
     //          }
     //        }
     //      }

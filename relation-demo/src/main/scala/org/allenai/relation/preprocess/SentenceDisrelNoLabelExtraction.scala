@@ -23,12 +23,13 @@ class SentenceDisrelNoLabelExtraction {
   val arg1Index = 4
   val arg2Index = 5
   var existed: List[String] = List()
-  
-  var distantRels: Set[String] = Set("purpose", "cause", 
-      /**"effect", **/"example", "enable", 
-      /**"part",**/ "requirement"/**, "condition"**/)
-  
-  
+
+  var distantRels: Set[String] = Set("purpose", "cause",
+    /**"effect", **/
+    "example", "enable",
+    /**"part",**/
+    "requirement" /**, "condition"**/ )
+
   def readExcel(inputpath: String, outputpath: String) = {
     var tupleset: Set[(Int, String, String, String, String, String, String)] = Set()
     try {
@@ -37,22 +38,22 @@ class SentenceDisrelNoLabelExtraction {
       val sheet: XSSFSheet = workbook.getSheetAt(0)
 
       val rowIterator = sheet.rowIterator()
-      var id:Int = 0
-      
+      var id: Int = 0
+
       // get distant discourse-relations
-      rowIterator.next()		// drop the headline
+      rowIterator.next() // drop the headline
       while (rowIterator.hasNext()) {
         val row = rowIterator.next()
-        if (row.getCell(senIndex) != null 
-            && !row.getCell(senIndex).toString().equals("") 
-            && !row.getCell(senIndex).toString().equals(" ")) {
+        if (row.getCell(senIndex) != null
+          && !row.getCell(senIndex).toString().equals("")
+          && !row.getCell(senIndex).toString().equals(" ")) {
           val sen = row.getCell(senIndex).toString()
           val arg1 = row.getCell(arg1Index).toString()
           val arg2 = row.getCell(arg2Index).toString()
-          println("\""+sen+"\"" + "\t\t\t" + arg1 + "\t\t\t" + arg2)
-          distantRels.foreach{
+          println("\"" + sen + "\"" + "\t\t\t" + arg1 + "\t\t\t" + arg2)
+          distantRels.foreach {
             case disrel => {
-              id = id+1
+              id = id + 1
               tupleset += ((id, sen, disrel, "", arg1, arg2, ""))
             }
           }

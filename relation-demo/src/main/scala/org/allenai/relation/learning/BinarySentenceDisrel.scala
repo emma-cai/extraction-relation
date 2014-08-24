@@ -22,7 +22,7 @@ object BinarySentenceDisrel {
         BinarySentenceDisrel(splits(0).trim(), splits(1).trim(), splits(2).trim(), splits(3).trim(), splits(4).trim(), splits(5).trim(), annotationOpt)
     }.toList
   }
-  
+
   def fromTrainingSentence(sentence: String) = {
     val splits = sentence.toLowerCase().replaceAll("'", "").split("\t")
     val annotationOpt = if (splits.size > 6) Some(splits(6).toString()) else None

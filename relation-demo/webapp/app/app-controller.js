@@ -13,34 +13,72 @@
 //    };
     
     scope.submit = {
-      qid: "",
-      path: ""
+      kp: 'caused by',
+      disrel: 'CAUSE'
     };
     
+    scope.savedData = {
+      kp: null,
+      sens: null
+    };
     
+    scope.argsubmit = {
+      disrel: null, 
+      arg1: null,
+      arg2: null
+    };
     
-    scope.searchtype = "";
     scope.confirmed = false;
-    scope.judge = [];
+    scope.rejected = false;
     scope.isshow = false;
+    scope.confirmednum = 0;
+    scope.rejectedItems = 0;
+    scope.sensResponse = [];
+//    var inputSubmitString = stringFromScala;
+//    var submitObject = angular.fromJson(inputSubmitString);
+//    // submitObject has keys "disrel" & "kp". submitObject.disrel / submitObject.kp.
+    scope.judge = [];
+    scope.submitResponse = [];
+    scope.dependencyResponse = [];
+    scope.processor = 'search';		//'search' or 'dependency'
     
-    scope.submitResponseInit = [];
-    scope.submitResponseClassifier = [];
-    scope.Submit = function(type) {
-      if(type === "init") {
-    	  scope.path = "/Users/qingqingcai/Documents/java/workspace/Hackthon/data/query-urls-sens-cleaned";
-          scope.submitResponseInit = [];
-          http.post(API_ROOT + '/submitinit', scope.submit).then(function(response) {
-              scope.submitResponseInit = response.data;
-          });  
-      }else if(type === "classifier") {
-    	  scope.path = "/Users/qingqingcai/Documents/java/workspace/Hackthon/data/query-urls-sens-classifier";
-          scope.submitResponseClassifier = [];
-          http.post(API_ROOT + '/submitclassifier', scope.submit).then(function(response) {
-              scope.submitResponseInit = response.data;
-          });
-      }
+
+    scope.submitToServer = function() {
+      scope.submitResponse = [];
+      scope.sensResponse = [];
+      http.post(API_ROOT + '/submit', scope.submit).then(function(response) {
+          scope.submitResponse = response.data;
+      });
     };
+    
+    scope.setProcessors = function(x) {
+        scope.processor = x;
+      };
+    
+  	scope.sumitToSearchSens = function(a1, a2) {
+  	  scope.argsubmit.disrel = scope.submit.disrel;
+      scope.argsubmit.arg1 = a1;
+      scope.argsubmit.arg2 = a2;
+      scope.sensResponse = [];
+      http.post(API_ROOT + '/submitins', scope.argsubmit).then(function(response) {
+  	    scope.sensResponse = response.data;
+  	    
+      });
+    };
+    
+    scope.showDependency = function(x) {
+    	scope.processor = 'dependency';
+    	scope.submit.disrel = x;
+        //TODO: search learned dependency patterns
+    	scope.dependencyResponse = [];
+//    	http.post(API_ROOT + '/submitdep', scope.submit.disrel).then(function(response) {
+//     	   scope.dependencyResponse = response.data;
+//        });
+    	 http.post(API_ROOT + '/submitdep', scope.submit).then(function(response) {
+             scope.dependencyResponse = response.data;
+         });
+      };
+   
     
     scope.isChecked = function(id) {
     	var match = false;
@@ -64,19 +102,10 @@
     	}
     };
     
-    scope.judgesubmit = {
-    	qid: "",
-    	positive: []
-    };
-    
     scope.savePositive = function() {
-    	console.log(scope.judge);
-    	scope.judgesubmit.qid = scope.submit.qid;
-    	scope.judgesubmit.positive = scope.judge;
-    	http.post(API_ROOT + '/submitjudge', scope.judgesubmit).then(function(response){
-    		scope.judgeResp = response.data;
-    	});
- //   	(String, Array[String])
+//    	scope.savedData.disrel = scope.submit.disrel;	//disrel is String
+//    	scope.savedData.sens = document.write(scope.judge); //sens is Array[String]
+
     	scope.isshow = true;
     };
     

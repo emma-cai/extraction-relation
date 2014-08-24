@@ -2,14 +2,14 @@ package org.allenai.relation.learning
 
 import java.io.{ InputStream, File }
 import scala.io.Source
+import scala.collection.mutable.Map
 import org.allenai.common.Resource
 import org.allenai.ari.solvers.inference.matching.{ EntailmentWrapper, EntailmentService }
 import org.allenai.ari.solvers.utils.Tokenizer
 import org.allenai.relation.util.Polyparser
 
 object FeatureWrapper {
-  
-  
+
   private def getResourceAsStream(name: String): InputStream =
     getClass.getClassLoader.getResourceAsStream(name)
 
@@ -81,27 +81,101 @@ object FeatureWrapper {
     val wrapper = new EntailmentWrapper(word2vecEntailmentUrl)
     wrapper.CachedEntails
   }
-    
+
   def getrootstring(root: Polyparser.Mytokennode): String = {
     var rootstring = "null"
-    if(root != null) rootstring = root.string	//cannot contain any " " or some special characters
+    if (root != null) rootstring = root.string //cannot contain any " " or some special characters
     rootstring
   }
   
+  /**
+   * Get the map, where key=dependency-path-length, value=list-of-specific-dependencies
+   */
+  def getLengthDependencies(root: Polyparser.Mytokennode, tree: Polyparser.Mygraph, 
+      arg1list:List[Int], arg2list:List[Int]) = {
+    var lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]] = collection.mutable.Map.empty
+    lengthDependenciesMap.put(1, getpathwithspecificlength(root, tree, arg1list, arg2list, 1))
+    lengthDependenciesMap.put(2, getpathwithspecificlength(root, tree, arg1list, arg2list, 2))
+    lengthDependenciesMap.put(3, getpathwithspecificlength(root, tree, arg1list, arg2list, 3))
+    
+    lengthDependenciesMap
+  }
   
-  def getshortestpath(root: Polyparser.Mytokennode, tree: Polyparser.Mygraph, 
-	  arg1list: List[Int], arg2list: List[Int], pathlength:Int):String = {
-    //org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]
+//  /**
+//   * Input: set of specific dependency-paths
+//   * Output: choose one specific dependency-path, and convert it to a general one
+//   */
+//  def getGeneralDependencyString(dependency: List[Set[Polyparser.Myedge]]) = {
+//
+//  }
+  
+  /**
+   * Input: set of specific dependency-paths
+   * Output: set of general dependency-paths (replace specific-node with "_1, _2, _3, ...")
+   */
+  def getGeneralDependencySets(dependencies: List[(Int, Int, Set[Polyparser.Myedge])]) = {
+    var generalDependencies = Polyparser.generalizeDependencypaths(dependencies)
+    generalDependencies
+  }
 
+  /**
+   * Get dependency-path with specific length defined in the argument
+   * Input: root, tree, arg1list, arg2list, pathlength
+   * Output: List[Set[edges]]
+   */
+  def getpathwithspecificlength(root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
+    arg1list: List[Int], arg2list: List[Int], pathlength: Int) = {
+    //org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]
+    var pathlist: List[(Int, Int, Set[Polyparser.Myedge])] = List()
     arg1list.foreach(arg1 => arg2list.foreach(arg2 => {
-        val (flag, pathsets) = Polyparser.findDepPathWithSpeLen(tree.vertices.toList, tree.edges, arg1, arg2, pathlength)
-        if(flag == true) {
-          return "\""+Polyparser.generalizeDependencypaths(arg1, arg2, pathsets.toList)(0).mkString(", ")+"\""
-        }
-      //    return pathsets.toList(0).toString
-          
+      val (flag, pathsets) = Polyparser.findDepPathWithSpeLen(tree.vertices.toList, tree.edges, arg1, arg2, pathlength)
+      if (flag == true) {
+        pathsets.foreach(p => pathlist = pathlist:::List((arg1, arg2, p)))
+      }
     }))
-    return "null"
+    pathlist
+  }
+  
+  /**
+   * If there exists an edge named as "prep", find the pos of its second argument
+   */
+  def getlemmaofprep(lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]]) = {
+    var lemmaofprep:Set[String] = Set()
+    lengthDependenciesMap.foreach {
+      case (length, dependencies) => {
+        dependencies.foreach {
+          case (arg1, arg2, edges) => {
+            edges.foreach {
+              case edge =>
+                if(edge.label.equals("prep")) {
+                  lemmaofprep = lemmaofprep ++ Set(edge.dest.lemma)
+                }
+            }
+          }
+        }
+      }
+    }
+    lemmaofprep
+  }
+  
+  /** 
+   *  Given all dependencies paths, find the connection-words that connect arguments
+   */
+  def getconnectwords(lengthDependenciesPath: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]]) = {
+    var connectwords: Set[String] = Set()
+    lengthDependenciesPath.foreach {
+      case (length, dependency) => {
+        dependency.foreach {
+          case (arg1, arg2, d) => {
+            d.foreach(edge => {
+              if(edge.source.id!=arg1 && edge.source.id!=arg2) connectwords = connectwords + edge.source.string; 
+              if(edge.dest.id!=arg1 && edge.dest.id!=arg2) connectwords = connectwords + edge.dest.string
+              })
+          }
+        }
+      }
+    }
+    connectwords
   }
   //
   //  //GregJ

@@ -46,9 +46,9 @@ class Write {
     //      }
     //    }
   }
-  
-  def rewrite_4(output: String, 
-      data: List[(String, String, String, String, String, String, String)]) = {
+
+  def rewrite_4(output: String,
+    data: List[(String, String, String, String, String, String, String)]) = {
     val outputfile = new File(output)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
 
@@ -146,13 +146,13 @@ class Write {
     fw.flush()
     fw.close()
   }
-  
-  def rewrite_4(output: String, 
-      headline: (String, String, String, String, String, String, String), 
-      data: Set[(Int, String, String, String, String, String, String)]) = {
+
+  def rewrite_4(output: String,
+    headline: (String, String, String, String, String, String, String),
+    data: Set[(Int, String, String, String, String, String, String)]) = {
     val outputfile = new File(output)
     val fw = new BufferedWriter(new FileWriter(outputfile, false))
-    
+
     fw.write(headline._1)
     fw.write("\t")
     fw.write(headline._2)
@@ -167,12 +167,11 @@ class Write {
     fw.write("\t")
     fw.write(headline._7)
     fw.newLine()
-    
-    
+
     var id = 0
     data.foreach {
       case tuple => {
-        id = id+1
+        id = id + 1
         fw.write(id.toString)
         fw.write("\t")
         fw.write(tuple._2)

@@ -19,44 +19,40 @@ object Polyparser {
   type Mygraph = org.allenai.nlpstack.core.graph.Graph[org.allenai.nlpstack.core.parse.graph.TokenDependencyNode]
   val parseFunction = new PolytreeParser().dependencyGraph(defaultTokenizer, defaultPostagger)_
 
+  //  def processText(text: String): 
+  //  ( Mynode, Mygraph) = {
+  //    val outputGraph = new MemoryStoreSailGraph()
+  //    DependencyGraph.setNamespaces(outputGraph)
+  //
+  //    try {
+  //      //basic graph
+  //      //      // Run the text through the NLP stack linewise.
+  //      //      val stemmer = new MorphaStemmer()
+  //      //      // First pass crease an ID-based graph.
+  //      //      val (tokens, rawGraph) = parseFunction(text)
+  //      //      // Second pass builds a lemmatized graph with edges holding tokens.
+  //      //      val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+  //      //      return parseGraph
+  //
+  //      // The fake token we'll draw an edge from to the root node.
+  //      val corpus = Token.corpus(scala.io.Source.fromString("classifier"))
+  //      val fakeRootToken = outputGraph.addVertex(Token.id(corpus, 0, 0))
+  //      //collapsed graph
+  //      val stemmer = new MorphaStemmer()
+  //      val (tokens, rawGraph) = parseFunction(text)
+  //      val rawCollapsedGraph = rawGraph.collapse
+  //      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
+  //      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+  //      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
+  //
+  //    } catch {
+  //      case e: Exception => None
+  //    }
+  //
+  //    return (null, null)
+  //  }
 
-//  def processText(text: String): 
-//  ( Mynode, Mygraph) = {
-//    val outputGraph = new MemoryStoreSailGraph()
-//    DependencyGraph.setNamespaces(outputGraph)
-//
-//    try {
-//      //basic graph
-//      //      // Run the text through the NLP stack linewise.
-//      //      val stemmer = new MorphaStemmer()
-//      //      // First pass crease an ID-based graph.
-//      //      val (tokens, rawGraph) = parseFunction(text)
-//      //      // Second pass builds a lemmatized graph with edges holding tokens.
-//      //      val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
-//      //      return parseGraph
-//
-//      // The fake token we'll draw an edge from to the root node.
-//      val corpus = Token.corpus(scala.io.Source.fromString("classifier"))
-//      val fakeRootToken = outputGraph.addVertex(Token.id(corpus, 0, 0))
-//      //collapsed graph
-//      val stemmer = new MorphaStemmer()
-//      val (tokens, rawGraph) = parseFunction(text)
-//      val rawCollapsedGraph = rawGraph.collapse
-//      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
-//      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
-//      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
-//
-//    } catch {
-//      case e: Exception => None
-//    }
-//
-//    return (null, null)
-//  }
-  
-  
-  
-  def processText(text: String): 
-  ( Mytokennode, Mygraph) = {
+  def processText(text: String): (Mytokennode, Mygraph) = {
     var root: Mytokennode = null
     try {
       // The fake token we'll draw an edge from to the root node.
@@ -64,19 +60,19 @@ object Polyparser {
       //collapsed graph
       val stemmer = new MorphaStemmer()
       val (tokens, rawGraph) = parseFunction(text)
-      if(tokens.nonEmpty) {
+      if (tokens.nonEmpty) {
         val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
         parseGraph.edges.foreach {
           p =>
-            if(p.label.equals("punct"))
+            if (p.label.equals("punct"))
               root = p.source
         }
-        return(root, parseGraph)
+        return (root, parseGraph)
       }
-//      val rawCollapsedGraph = rawGraph.collapse
-//      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
-//      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
-//      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
+      //      val rawCollapsedGraph = rawGraph.collapse
+      //      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
+      //      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+      //      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
 
     } catch {
       case e: Exception => None
@@ -84,16 +80,12 @@ object Polyparser {
 
     return (null, null)
   }
-  
-  
-  
-  
 
   /** Given a string-name, find the its id in the tree;
     * one string-name may appear multiple times in the tree (with different ids)
     */
   def getid(ns: List[Mytokennode], name: String): List[Int] = {
-	var idlist: List[Int] = List()
+    var idlist: List[Int] = List()
     ns.foreach {
       case p => {
         if (p.string.equals(name) && !idlist.contains(p.id))
@@ -115,15 +107,14 @@ object Polyparser {
     }
     return destNodeNames
   }
-  
-  /** 
-   *  get all source-nodes given a dist-node
-   */
+
+  /** get all source-nodes given a dist-node
+    */
   def getSourceNodes(desNodeID: Int, ds: List[Myedge]): List[String] = {
     var sourceNodeNames: List[String] = List()
-    for(edge <- ds) {
-      if(edge.dest.id == desNodeID) {
-        if(!sourceNodeNames.contains(edge.source.string))
+    for (edge <- ds) {
+      if (edge.dest.id == desNodeID) {
+        if (!sourceNodeNames.contains(edge.source.string))
           sourceNodeNames = sourceNodeNames ::: List(edge.source.string)
       }
     }
@@ -131,8 +122,7 @@ object Polyparser {
   }
   /** Following findDepPath, with specific dependency-path-length
     */
-  def findDepPathWithSpeLen(ns: List[Mytokennode], ds: Set[Myedge], arg1: Int, arg2: Int, pl: Int): 
-  (Boolean, List[Set[Myedge]]) = {
+  def findDepPathWithSpeLen(ns: List[Mytokennode], ds: Set[Myedge], arg1: Int, arg2: Int, pl: Int): (Boolean, List[Set[Myedge]]) = {
 
     var deppathlist: List[Set[Myedge]] = List()
 
@@ -206,8 +196,8 @@ object Polyparser {
 
     return (false, null)
   }
-  
-    /** find subsets of ns
+
+  /** find subsets of ns
     * restriction1: the subsets cannot contain any node in "notconsider"
     * restriction2: the size of the subsets == num
     */
@@ -253,24 +243,24 @@ object Polyparser {
     }
     return (false, null)
   }
-  
+
   def findHeadW(ns: List[Mytokennode], arg1name: String, ds: List[Myedge]): List[Int] = {
-    
+
     // find the word which connects with all other nodes (either the destnode or the sourcenode)
-	// if there's no such nodes, find a node with pos=VB or NN (since reverb arguments are always Nouns, here we set pos starts with NN)
+    // if there's no such nodes, find a node with pos=VB or NN (since reverb arguments are always Nouns, here we set pos starts with NN)
     var res: List[Int] = List()
     val words = arg1name.toString().split(" ").toList
     val wlen = words.length
 
     for (w1 <- words) {
       val w1ids = getid(ns, w1)
-//      println("w1 = " + w1 + "\twiids = " + w1ids)
+      //      println("w1 = " + w1 + "\twiids = " + w1ids)
       for (w1id <- w1ids) {
-//        println("\tw1id = " + w1id)
+        //        println("\tw1id = " + w1id)
         val destnames: List[String] = getDestNodes(w1id, ds)
         val sournames: List[String] = getSourceNodes(w1id, ds)
-//        println("\t\tdestnames = " + destnames)
-//        println("\t\tsournames = " + sournames)
+        //        println("\t\tdestnames = " + destnames)
+        //        println("\t\tsournames = " + sournames)
         var flag = true
         for (w2 <- words) {
           if (!w1.equals(w2)) {
@@ -282,43 +272,45 @@ object Polyparser {
           res = res ::: List(w1id)
       }
     }
-  	
-    if(res.isEmpty) {
-      for(node <- ns) {
-        if(words.contains(node.string) && node.postag.startsWith("NN"))
+
+    if (res.isEmpty) {
+      for (node <- ns) {
+        if (words.contains(node.string) && node.postag.startsWith("NN"))
           res = res ::: List(node.id)
       }
     }
     return res
-    
+
     // simiply assume that the head-node is the first word in the arguments
-//    var res: List[Int] = List()
-//    val words = arg1name.toString().split(" ").toList
-//    val length = words.length
-//    var idset: Set[Int] = Set()
-//    for(w <- words) {
-//      val wids = getid(ns, w).toSet
-//      idset = idset ++ wids
-//    }
-//    val issortedset = collection.immutable.SortedSet[Int]() ++ idset
-//    var subset: Set[Int] = Set()
-//    var i = 0
-//    while(i<issortedset.size && i+length<=issortedset.size) {
-//      val subset = issortedset.slice(i, i+length)
-//      var j = 1
-//      while (j<subset.size) {
-//    	if(subset.slice(j-1, j).toList(0) == subset.slice(j, j+1).toList(0)-1) j = j+1
-//    	else j = Integer.MAX_VALUE
-//      }
-//      if(j==subset.size) res = res ::: List(subset.toList(0))
-//      i = i+1
-//    }
-//    return res
+    //    var res: List[Int] = List()
+    //    val words = arg1name.toString().split(" ").toList
+    //    val length = words.length
+    //    var idset: Set[Int] = Set()
+    //    for(w <- words) {
+    //      val wids = getid(ns, w).toSet
+    //      idset = idset ++ wids
+    //    }
+    //    val issortedset = collection.immutable.SortedSet[Int]() ++ idset
+    //    var subset: Set[Int] = Set()
+    //    var i = 0
+    //    while(i<issortedset.size && i+length<=issortedset.size) {
+    //      val subset = issortedset.slice(i, i+length)
+    //      var j = 1
+    //      while (j<subset.size) {
+    //    	if(subset.slice(j-1, j).toList(0) == subset.slice(j, j+1).toList(0)-1) j = j+1
+    //    	else j = Integer.MAX_VALUE
+    //      }
+    //      if(j==subset.size) res = res ::: List(subset.toList(0))
+    //      i = i+1
+    //    }
+    //    return res
   }
-  
+
   /**
+   * Input: arguments in paths are word-id
+   * Output: arguments in paths are generalized to be _2, _3, ...
     */
-  def generalizeDependencypaths(arg1: Int, arg2: Int, ori: List[Set[Myedge]]): List[Set[String]] = {
+  def generalizeDependencypaths(ori: List[(Int, Int, Set[Myedge])]): List[Set[String]] = {
     //    println("===========================")
     //    println("ori" + ori)
     var generalized: List[Set[String]] = List()
@@ -326,7 +318,7 @@ object Polyparser {
     var otherargs: Map[Int, String] = collection.mutable.Map.empty[Int, String]
 
     ori.foreach {
-      case eachset => { //for each set
+      case (arg1, arg2, eachset) => { //for each set
         var eachset_posfealist: List[String] = List()
         var eachset_lexfealist: List[String] = List()
         var eachsetlist = eachset.toList
@@ -382,13 +374,13 @@ object Polyparser {
         //     generalized = generalized:::List(eachset_strver.toSet ++ eachset_posfealist.toSet)
 
         //dependency-path + lex-features
-     //   generalized = generalized ::: List(eachset_strver.toSet ++ eachset_lexfealist.toSet)
+        //   generalized = generalized ::: List(eachset_strver.toSet ++ eachset_lexfealist.toSet)
       }
     }
 
     return generalized
   }
-  
+
   def addposfea(node: Mytokennode, argname: String, posfeaslist: List[String]): List[String] = {
     var posfeaslist_updated: List[String] = List()
     var posfea = "token:pos(" + argname + ", " + node.postag + ")"
