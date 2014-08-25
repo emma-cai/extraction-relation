@@ -306,9 +306,8 @@ object Polyparser {
     //    return res
   }
 
-  /**
-   * Input: arguments in paths are word-id
-   * Output: arguments in paths are generalized to be _2, _3, ...
+  /** Input: arguments in paths are word-id
+    * Output: arguments in paths are generalized to be _2, _3, ...
     */
   def generalizeDependencypaths(ori: List[(Int, Int, Set[Myedge])]): List[Set[String]] = {
     //    println("===========================")

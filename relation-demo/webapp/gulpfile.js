@@ -25,7 +25,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 var buildDir = process.env.NODE_BUILD_DIR || paths.buildDev;
 
 // change the host to whatever your server will be listening from
-var apiHost = process.env.NODE_API_HOST || 'http://localhost:8080/api';
+var apiHost = process.env.NODE_API_HOST || 'http://localhost:8080';
 
 log("Build environment: " + env);
 log("Build dir: " + buildDir);

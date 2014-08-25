@@ -12,6 +12,17 @@
 //      kp: null
 //    };
     
+    // for Classification.html
+    scope.classifiersubmit = {
+    	sentence: null, 
+    	arg1: null,
+    	arg2: null
+    };
+    scope.ResponseForClassifier = [];
+    
+    
+    
+    // for Bootstrapping.html
     scope.submit = {
       kp: 'caused by',
       disrel: 'CAUSE'
@@ -43,10 +54,20 @@
     scope.processor = 'search';		//'search' or 'dependency'
     
 
-    scope.submitToServer = function() {
+    // functions for classification
+    scope.classifySentence = function() {
+    	scope.ResponseForClassifier = [];
+    	http.post(API_ROOT + '/classifysentence', scope.classifier).then(function(response) {
+    		scope.ResponseForClassifier = response.data;
+    	});
+    };
+    
+    
+    
+    scope.submitDisrel = function() {
       scope.submitResponse = [];
       scope.sensResponse = [];
-      http.post(API_ROOT + '/submit', scope.submit).then(function(response) {
+      http.post(API_ROOT + '/submitdisrel', scope.submit).then(function(response) {
           scope.submitResponse = response.data;
       });
     };
@@ -71,10 +92,7 @@
     	scope.submit.disrel = x;
         //TODO: search learned dependency patterns
     	scope.dependencyResponse = [];
-//    	http.post(API_ROOT + '/submitdep', scope.submit.disrel).then(function(response) {
-//     	   scope.dependencyResponse = response.data;
-//        });
-    	 http.post(API_ROOT + '/submitdep', scope.submit).then(function(response) {
+    	 http.post(API_ROOT + '/submitdisrel', scope.submit).then(function(response) {
              scope.dependencyResponse = response.data;
          });
       };

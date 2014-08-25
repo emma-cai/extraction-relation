@@ -16,8 +16,8 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 
   object apiRoute {
 
-    case class Response(kpset: List[String], senset: List[String]) {
-      def toTuples = kpset.zip(senset)
+    case class Response(col1: List[String], col2: List[String]) {
+      def toTuples = col1.zip(col2)
     }
 
     implicit object ResponseWriter extends RootJsonWriter[Response] {
@@ -56,23 +56,11 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
         }
       }
       Future(Response(kpset, senset))
-
-      /** [
-        * ["key":"1", "val":"this"],
-        * ["key":"2", "val":"is"],
-        * ["id":"3", "val":"an"],
-        * ["id":"4", "val":"example"]
-        * ]
-        */
-      //      var pairlist = List(("1", "this"), ("2", "is"), ("3", "an"), ("4", "example"))
-      //      Future(Response2(pairlist))
-
-      /** [String, Array[String]]
-        */
     }
 
-    def saveData(disrel: String, sens: Seq[String]) = {
-
+    def runClassifier(sentence: String, arg1: String, arg2: String): Future[Response] = {
+      val (predictlist, confidencelist) = Classifier.run(sentence, arg1, arg2)
+      Future(Response(predictlist, confidencelist))
     }
 
     // API data transfer object
@@ -87,6 +75,11 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 //    case class SaveSubmit(disrel:String, sens:Seq[String])
 //    implicit val savesubmitFormat = jsonFormat2(SaveSubmit)
     // format: OFF
+    
+    case class ClassifierSubmit(sentence: String, arg1: String, arg2: String)
+    implicit val classifiersubmit = jsonFormat3(ClassifierSubmit.apply)
+    
+    
     val route =
       path("submitdisrel") {
         post {
@@ -102,6 +95,15 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
           entity(as[ArgSubmit]) { argsubmit =>
           	complete{
           		Future(runSentenceSearch(argsubmit.disrel, argsubmit.arg1, argsubmit.arg2))
+          	}
+          }
+        }
+      } ~ 
+      path("classifysentence") {
+        post {
+          entity(as[ClassifierSubmit]) { classifiersubmit =>
+          	complete{
+          		Future(runClassifier(classifiersubmit.sentence, classifiersubmit.arg1, classifiersubmit.arg2))
           	}
           }
         }

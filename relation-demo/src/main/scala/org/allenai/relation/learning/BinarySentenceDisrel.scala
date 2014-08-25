@@ -23,6 +23,13 @@ object BinarySentenceDisrel {
     }.toList
   }
 
+  /** sentence example:
+    *
+    */
+  def fromSingleInstance(sentence: String, disrel: String, arg1: String, arg2: String, label: String) = {
+    BinarySentenceDisrel("", sentence, disrel, "", arg1, arg2, Some(label))
+  }
+
   def fromTrainingSentence(sentence: String) = {
     val splits = sentence.toLowerCase().replaceAll("'", "").split("\t")
     val annotationOpt = if (splits.size > 6) Some(splits(6).toString()) else None

@@ -11,23 +11,23 @@ object Test {
     //    val configArffTrain = "arff" + File.separator + "train.arff"
     //    println(configArffTrain)
     //    
-        println("\nTest2: list.map")
-        def compfea1(s: String):List[Integer] = {return List(s.length(), s.length()-10)}
-        def compfea2(s: String):List[String] = { return List(s) }
-        val list = List("monday", "tuesday", "wednesday")
-        println(list.map{p => (p, compfea1(p))}.toMap)	//list.map{...}.toMap
-        var map1:Map[String, List[Integer]] = collection.mutable.Map.empty[String, List[Integer]]
-        var map2:Map[String, List[String]] = collection.mutable.Map.empty[String, List[String]]
-        list.foreach {
-          case p => {
-            map1.put(p, compfea1(p))
-            map2.put(p, compfea2(p))
-          }
-        }
-        println("map1 = " + map1)
-        println("map2 = " + map2)
-        println(map1.apply("tuesday"))
-        println(map1.apply("tuesday").size)
+    println("\nTest2: list.map")
+    def compfea1(s: String): List[Integer] = { return List(s.length(), s.length() - 10) }
+    def compfea2(s: String): List[String] = { return List(s) }
+    val list = List("monday", "tuesday", "wednesday")
+    println(list.map { p => (p, compfea1(p)) }.toMap) //list.map{...}.toMap
+    var map1: Map[String, List[Integer]] = collection.mutable.Map.empty[String, List[Integer]]
+    var map2: Map[String, List[String]] = collection.mutable.Map.empty[String, List[String]]
+    list.foreach {
+      case p => {
+        map1.put(p, compfea1(p))
+        map2.put(p, compfea2(p))
+      }
+    }
+    println("map1 = " + map1)
+    println("map2 = " + map2)
+    println(map1.apply("tuesday"))
+    println(map1.apply("tuesday").size)
     //    
     //    println("\nTest3: caseclass")    
     //    SentenceDisrel.fromTrainingFile("/Users/qingqingcai/Documents/Aristo/extraction-new/data/weka/sentence-disrel-labeled.txt", 1).foreach(println)
@@ -107,24 +107,24 @@ object Test {
     //    println(map)
     //    println(SortedMap(map.toSeq:_*))
 
-//    println("\11 Argument Indexing")
-//    val sentence = "sunlight is the main source of energy for the water cycle."
-//    val arg1name = "sunlight"
-//    val arg2name = "the water cycle"
-//    val (root, tree) = Polyparser.processText(sentence)
-//    tree.vertices.toList.foreach {
-//      p => println(p.id + "\t" + p.string + "\t" + p.postag)
-//    }
-//    println("--------------------------------------------")
-//    tree.edges.toList.foreach {
-//      p => println(p.label)
-//    }
-//
-//    println("root = " + root.id + "\t" + root.string)
-//    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1name, tree.edges.toList)
-//    println(arg1list)
-//    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2name, tree.edges.toList)
-//    println(arg2list)
+    //    println("\11 Argument Indexing")
+    //    val sentence = "sunlight is the main source of energy for the water cycle."
+    //    val arg1name = "sunlight"
+    //    val arg2name = "the water cycle"
+    //    val (root, tree) = Polyparser.processText(sentence)
+    //    tree.vertices.toList.foreach {
+    //      p => println(p.id + "\t" + p.string + "\t" + p.postag)
+    //    }
+    //    println("--------------------------------------------")
+    //    tree.edges.toList.foreach {
+    //      p => println(p.label)
+    //    }
+    //
+    //    println("root = " + root.id + "\t" + root.string)
+    //    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1name, tree.edges.toList)
+    //    println(arg1list)
+    //    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2name, tree.edges.toList)
+    //    println(arg2list)
 
     //    var myset: Set[Int] = Set(1,2,4,3,5,1,3,2)
     //    var sorttedmyset = collection.immutable.SortedSet[Int]() ++ myset
