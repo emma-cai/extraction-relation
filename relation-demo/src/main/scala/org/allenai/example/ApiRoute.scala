@@ -1,6 +1,7 @@
 package org.allenai.example
 
 import akka.event.LoggingAdapter
+import akka.actor.ActorLogging
 import spray.httpx.SprayJsonSupport
 import spray.json._
 import spray.json.DefaultJsonProtocol._
@@ -8,7 +9,7 @@ import spray.routing.HttpServiceActor
 import scala.concurrent._
 import scala.collection.mutable.Seq
 
-trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
+trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor with ActorLogging =>
 
   import context._
   import scala.collection.mutable.Map
@@ -43,8 +44,6 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
 
     def runSentenceSearch(disrel: String, arg1: String, arg2: String): Future[Response] = {
       val search: SentenceSearching = new SentenceSearching()
-      //      val searchres = search.runSearch("/Users/qingqingcai/Documents/Data/Reverb/Index", 
-      //          "\""+arg1+"\"", "\""+arg2+"\"", "arg1", "arg2", List("kp", "sen"), 100)
       val searchres = search.senSearch("/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_v2", disrel, arg1, arg2)
 
       var kpset: List[String] = List()
@@ -72,10 +71,6 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
     case class ArgSubmit(disrel: String, arg1: String, arg2: String)
     implicit val argsubmitFormat = jsonFormat3(ArgSubmit.apply)
     
-//    case class SaveSubmit(disrel:String, sens:Seq[String])
-//    implicit val savesubmitFormat = jsonFormat2(SaveSubmit)
-    // format: OFF
-    
     case class ClassifierSubmit(sentence: String, arg1: String, arg2: String)
     implicit val classifiersubmit = jsonFormat3(ClassifierSubmit.apply)
     
@@ -99,26 +94,20 @@ trait BACKApiRoute extends SprayJsonSupport { self: HttpServiceActor =>
           }
         }
       } ~ 
+      path("foo") {
+        complete("bar")
+      }~
       path("classifysentence") {
         post {
+          log.info("got classifysentence request")
           entity(as[ClassifierSubmit]) { classifiersubmit =>
+            log.info("deserialized classifersubmit")
           	complete{
           		Future(runClassifier(classifiersubmit.sentence, classifiersubmit.arg1, classifiersubmit.arg2))
           	}
           }
         }
       }
-    //      ~ 
-    //      path("savepositive") {
-    //        post {
-    //          entity(as[SaveSubmit]) { savesubmit =>
-    //          	complete{
-    //          		Future(saveData(savesubmit.disrel, savesubmit.sens))
-    //          	}
-    //          }
-    //        }
-    //      }
     // format: ON
-
   }
 }

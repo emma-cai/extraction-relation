@@ -22,28 +22,15 @@
         </div>
       </nav>
 
-<!--  Input a sentence, predict the relation and the confidence-score -->
-	  <form>
-        <div class="form-group">
-          <label>sentence</label>
-          <input class="form-control" ng-model="classifier.sentence" required>
-          <input class="form-control" ng-model="classifier.arg1" required>
-          <input class="form-control" ng-model="classifier.arg2" required>
-          <button class="btn btn-default" ng-disabled="exampleForm.$invalid" ng-click="classifySentence()">Predict</button>
-        </div>        
-      </form>
-      
-      <div class="col-md-6" class="well submit-response" ng-if="ResponseForClassifier">
-	  	<table class="table table-striped table-bordered table-hover table-condensed">
-		 	<tr>
-		 		<!-- <th>First Argument</th><th>Second Argument</th><th>Search Arguments</th> -->
-		 		<tr>
-		 			<td>{{ResponseForClassifier[0]}}</td>
-		 		</tr>
-		 	</tr>
-		 </table>
-      </div>
+	  <nav class="navbar navbar-default" role="navigation">
+	    <div class="container-fluid">         
+          <ul>
+          	<li><a href="Bootstrapping.html">Bootstrapping</a></li>
+          	<li><a href="Classification.html">Relation Prediction</a></li>
+          </ul>
+        </div>
+	  </nav>
       
     </div>
   </body>
-</html>
+</html> 

@@ -27,29 +27,38 @@ object Classifier {
     ("requirement", List("necessary", "needed")),
     ("condition", List("when", "if")))
   val configClassifierName = "J48"
-  val configFeature = "lexical-detail-length-new"
+  val configFeature = "lexical-detail-length-version3"
   val modelDir = "data/binary/model"
   val arffDir = "data/binary/arff"
   val configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff"
   val configClassifierModel = modelDir + File.separator + configClassifierName + "-classifier-" + configFeature + ".classifier"
   val configEvalModel = modelDir + File.separator + configClassifierName + "-eval-" + configFeature + ".eval"
 
-  BinaryClassification.init(disrelSeeds, configClassifierName,
-    configFeature, configClassifierModel, configEvalModel, configArffTrain)
+
 
   def run(sentence: String, arg1: String, arg2: String) = {
+    BinaryClassification.init(disrelSeeds, configClassifierName,
+      configFeature, configClassifierModel, configEvalModel, configArffTrain)
     var predictlist: List[String] = List()
-    var confidencelist: List[String] = List()
+    var confidencelist: List[Double] = List()
     disrelSeeds.foreach {
       case p =>
         val (predict, confidence) = testInstance(sentence, p._1, arg1, arg2, "1")
         println(sentence + "\t" + arg1 + "\t" + arg2)
         println(p._1 + "\t" + confidence)
         println()
-        predictlist = predictlist ::: List(predict.toString)
-        confidencelist = confidencelist ::: List(confidence.toString)
+        predictlist = predictlist ::: List(p._1)
+        confidencelist = confidencelist ::: List(confidence)
     }
-    (predictlist, confidencelist)
+    val pair = predictlist.zip(confidencelist)
+    val pairsorted = pair.sortWith(_._2 > _._2)
+    var predictlistsorted:List[String] = List()
+    var confidencelistsorted:List[String] = List()
+    pairsorted.foreach(p => {predictlistsorted = predictlistsorted:::List(p._1); 
+    		confidencelistsorted = confidencelistsorted:::List(p._2.toString)})
+    
+    
+    (predictlistsorted, confidencelistsorted)
   }
 
   def testInstance(sentence: String, disrel: String, arg1: String, arg2: String, label: String) = {

@@ -1,6 +1,7 @@
 package org.allenai.relation.learning
 
 import scala.io.Source
+import java.util.ArrayList
 
 case class BinarySentenceDisrel(sid: String, sentence: String, disrel: String, relphrase: String, arg1: String, arg2: String, annotationOpt: Option[String]) {
   override def toString() = s"$sid\t$sentence\t$disrel\t$relphrase\t$arg1\t$arg2\t${annotationOpt.getOrElse("?")}"

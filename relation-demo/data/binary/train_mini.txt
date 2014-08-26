@@ -1,12 +1,6 @@
-sid	sentence	disrel	relphrase	arg1	arg2	annotationOpt
-1	Don’t imagine that a college education is necessary to success as a writer .	REQUIREMENT	is necessary to	a college education	success	0
-2	Honestly , I’m not the type of person who believes a college education is necessary for success .	REQUIREMENT	is necessary for	a college education	success	0
-3	 ‘War , disease , and famine are necessary to the preservation of mankind . ’”	REQUIREMENT	are necessary to	famine	the preservation	0
-4	 •“War , disease , and famine are necessary to the preservation of mankind . ”	REQUIREMENT	are necessary to	famine	the preservation	0
-5	And some comes from life , making shower room full of culture atmosphere .	REQUIREMENT	comes from	some	life	0
-6	Every 18-year-old is n’t the same and some are more experienced than others and some have had life more difficult than others .	REQUIREMENT	have had	some	life	0
-7	�� � � � � � � How come some get everything in life , while most do n't ?	REQUIREMENT	get everything in	some	life	0
-8	 How come some get everything in life , while most do n't ?	REQUIREMENT	get everything in	some	life	0
-9	Smoking for some becomes a way of life .	REQUIREMENT	becomes a way of	some	life	0
-10	104 I Will Not Be Broke & Bored , I Will Retire Happy £ Travel/Grey Nomads Tourism is a common marker of retirement and for some becomes a way of life , such as for so called grey nomads .	REQUIREMENT	becomes a way of	some	life	0
-11	Many lead happy , successful , satisfying lives ; some find life more of a struggle .	REQUIREMENT	find	some	life	0
+240	-As always , a sense of humor is the key to survival .	REQUIREMENT	is the key to	humor	survival	1
+241	Amino acids are critical to life and play a large role in metabolism .	REQUIREMENT	are critical to	Amino acids	life	1
+242	Amino acids are essential for life .	REQUIREMENT	are essential for	Amino acids	life	1
+286	Let me first of all brief about concept of Cloud Computing and how Mobile Cloud Computing is shortly going to be the future of Communication and of utmost importance to Telecom Operators as a revenue generating business model .	EXAMPLE	is shortly going to be	Cloud Computing	the future	0
+287	Second , cloud computing is the wave of the future .	EXAMPLE	is the wave of	cloud computing	the future	0
+288	The addiction runs their life and they must fuel it by any means necessary , even if it means risking their freedom .	EXAMPLE	runs	addiction	life	0

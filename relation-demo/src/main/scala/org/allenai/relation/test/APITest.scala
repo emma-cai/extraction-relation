@@ -28,10 +28,10 @@ object APITest {
     //    val res = MYAPI.runSearch("/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_tuples_dp", "CAUSE")
     //    res.foreach(println)
 
-    val sen: String = "Your gifts offer children a healthy , successful future - which creates a stronger community for all of us ."
-    val (root, tree) = Polyparser.processText(sen)
-    println("root = " + root.string)
-    println("tree = " + tree.toString)
+//    val sen: String = "Your gifts offer children a healthy , successful future - which creates a stronger community for all of us ."
+//    val (root, tree) = Polyparser.processText(sen)
+//    println("root = " + root.string)
+//    println("tree = " + tree.toString)
 
     //    tree.vertices.foreach(p => println(p.string))
     //    tree.edges.foreach(p => println(p.toString))
@@ -40,5 +40,20 @@ object APITest {
     //    val source = scala.io.Source.fromFile("data/binary/inputDirectory/barrons.txt")
     //    val corpus = Token.corpus(source)
     //    println(corpus)
+    
+    val list1 = List("a", "b", "c", "d")
+    val list2 = List(1,3,2,0)
+    val tmp = list1.zip(list2)
+    println(list1)
+    println(list2)
+    println(tmp)
+    val sorted = tmp.sortWith(_._2 > _._2)
+    println(sorted)
+    var list1sorted:List[String] = List()
+    var list2sorted:List[Int] = List()
+    sorted.foreach(p => {list1sorted = list1sorted:::List(p._1); 
+    		list2sorted = list2sorted:::List(p._2)})
+    println(list1sorted)
+    println(list2sorted)
   }
 }

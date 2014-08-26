@@ -12,7 +12,7 @@ import java.io.File
 import java.io.BufferedWriter
 import java.io.FileWriter
 
-trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor with ActorLogging =>
+trait ApiRouteHack extends SprayJsonSupport { self: HttpServiceActor with ActorLogging =>
 
   import context._
   import scala.collection.mutable.Map
