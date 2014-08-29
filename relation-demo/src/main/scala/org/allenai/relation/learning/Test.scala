@@ -4,6 +4,7 @@ import java.io.File
 import org.allenai.relation.util.Polyparser
 import scala.collection.mutable.Map
 import scala.collection.immutable.SortedMap
+import scala.io.Source
 
 object Test {
   def main(args: Array[String]) = {
@@ -11,23 +12,23 @@ object Test {
     //    val configArffTrain = "arff" + File.separator + "train.arff"
     //    println(configArffTrain)
     //    
-    println("\nTest2: list.map")
-    def compfea1(s: String): List[Integer] = { return List(s.length(), s.length() - 10) }
-    def compfea2(s: String): List[String] = { return List(s) }
-    val list = List("monday", "tuesday", "wednesday")
-    println(list.map { p => (p, compfea1(p)) }.toMap) //list.map{...}.toMap
-    var map1: Map[String, List[Integer]] = collection.mutable.Map.empty[String, List[Integer]]
-    var map2: Map[String, List[String]] = collection.mutable.Map.empty[String, List[String]]
-    list.foreach {
-      case p => {
-        map1.put(p, compfea1(p))
-        map2.put(p, compfea2(p))
-      }
-    }
-    println("map1 = " + map1)
-    println("map2 = " + map2)
-    println(map1.apply("tuesday"))
-    println(map1.apply("tuesday").size)
+//    println("\nTest2: list.map")
+//    def compfea1(s: String): List[Integer] = { return List(s.length(), s.length() - 10) }
+//    def compfea2(s: String): List[String] = { return List(s) }
+//    val list = List("monday", "tuesday", "wednesday")
+//    println(list.map { p => (p, compfea1(p)) }.toMap) //list.map{...}.toMap
+//    var map1: Map[String, List[Integer]] = collection.mutable.Map.empty[String, List[Integer]]
+//    var map2: Map[String, List[String]] = collection.mutable.Map.empty[String, List[String]]
+//    list.foreach {
+//      case p => {
+//        map1.put(p, compfea1(p))
+//        map2.put(p, compfea2(p))
+//      }
+//    }
+//    println("map1 = " + map1)
+//    println("map2 = " + map2)
+//    println(map1.apply("tuesday"))
+//    println(map1.apply("tuesday").size)
     //    
     //    println("\nTest3: caseclass")    
     //    SentenceDisrel.fromTrainingFile("/Users/qingqingcai/Documents/Aristo/extraction-new/data/weka/sentence-disrel-labeled.txt", 1).foreach(println)
@@ -162,5 +163,19 @@ object Test {
     //    }
     //    
     //    println(res)
+    
+//    val str = "str1	str2"
+//    println(str.indexOf("\t"))
+//    println(str.substring(0, str.indexOf("\t")))
+//    println(str.substring(str.indexOf("\t")+1, str.length()))
+    
+    /**
+   * Convert sentences to testing-instances
+   */
+    val file = "data/binary/inputDirectory/108Q.txt"
+  	Source.fromFile(file).getLines().map {
+      line => 
+        
+    }.toList
   }
 }

@@ -1,4 +1,4 @@
-package org.allenai.relation.learning
+package org.allenai.relation.preprocess
 
 import java.io.FileInputStream
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
