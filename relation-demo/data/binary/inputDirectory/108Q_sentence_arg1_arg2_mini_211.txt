@@ -44,7 +44,7 @@ sid	sentence	disrel	relphrase	arg1	arg2	annotationOpt
 43	Water freezing is an example of a liquid changing to a solid.	example		Water freezing	a liquid changing to a solid	1
 44	A turtle eating worms is an example of taking in nutrients.	purpose		A turtle eating worms	taking in nutrients	0
 45	Since green plants make their own food, they are called producers.	purpose		green plants make their own food	producers	0
-46	Animals get energy for growth and repair from food.	cause		energy	growth and repair from food	1
+46	Animals get energy for growth and repair from food.	cause		energy	growth and repair from food	0
 47	It takes one week for Earth to rotate on its axis seven times.	purpose		Earth to rotate	one week	0
 48	Humans depend on water from the environment.	example		water	humans	0
 49	A thick fur would best help a bear to survive a winter in New York State.	requirement		thick fur	survive in winter	1
