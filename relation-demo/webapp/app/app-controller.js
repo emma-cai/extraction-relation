@@ -40,7 +40,7 @@
     	scope.classifiersubmit.sentence = 'water and food are required for animals to get growth.';
     	scope.classifiersubmit.arg1 = 'water and food';
     	scope.classifiersubmit.arg2 = 'get growth';
-    }
+    };
     
     scope.submitDisrel = function() {
       scope.submitResponse = [];
