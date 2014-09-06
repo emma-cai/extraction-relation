@@ -1,0 +1,73 @@
+package org.allenai.relation.learning
+
+import java.io.File
+import org.allenai.relation.util.Polyparser
+import scala.collection.mutable.Map
+import scala.collection.immutable.SortedMap
+import scala.io.Source
+import scala.collection.immutable.ListMap
+
+object Test {
+  def main(args: Array[String]) = {
+	val map = Map("1_1"->0.1, "2_1"->0.01, "3_2"->0.9, "4_3"->0.12, "5_2"->0.21)
+	val mapgroup = map.groupBy(p => p._1.substring(p._1.indexOf("_")+1, p._1.length()))
+	
+	println(map)
+	println(mapgroup)
+	
+	mapgroup.foreach(p => println(ListMap(p._2.toSeq.sortWith(_._2 > _._2): _*)))
+  }
+  
+   /**
+   * Input: nominal-spec-deplength3=purpose => (vmod(_1, _3), pobj(_4, _2), prep(_3, _4))
+   * Output: (disrel_id, sparql) = (purpose_1, """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+      ?_1 dep:pobj ?_3 .
+      ?_4 dep:prep ?_3 .
+      ?_4 dep:nsubj ?_2 .
+    }""")
+   */
+   def parseFeature(featureNameValue: String) = {
+     val disrel = featureNameValue.substring(featureNameValue.indexOf("=")+1, featureNameValue.indexOf(" => "))
+     val depfea = featureNameValue.substring(featureNameValue.indexOf(" => ")+5, featureNameValue.length()-1)
+     val sparql = toSparql(disrel, depfea)
+     (disrel, sparql)
+   }
+   
+   /**
+    * Input: disrel = "purpose"
+    * 		 depfea = "vmod(_1, _3), pobj(_4, _2), prep(_3, _4)"
+    * Output: 
+    * """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+    *  ?_1 dep:pobj ?_3 .
+    *  ?_4 dep:prep ?_3 .
+    *  ?_4 dep:nsubj ?_2 .
+    *  }"""
+    */
+   def toSparql(disrel: String, depfea: String) = {
+     val pathset = toPathSet(depfea, "\\), ")
+     val sparql = "CONSTRUCT { ?_1 rel:" + disrel + " ?_2 . } WHERE { " + 
+    		 ({for(x <- pathset) yield {
+    		   "?" + x._2 + " dep:" + x._1 + " ?" + x._3 + " ."
+    		 }}).mkString(" ") + "}"
+     sparql
+   }
+   
+   /** Convert a String to Set
+    * Input: String = conj(_3, _1), conj(_3, _2), where split = "\\), "
+    * Output: Set[(String, String, String)] = Set((conj, _3, _1), (conj, _3, _2))
+    */
+   
+   def toPathSet(str: String, split: String) = {
+    val strset = Set() ++ {for(x <- str.split(split)) yield {
+      if(!x.endsWith(")")) x + ")"
+      else x
+    }}
+    val pathset = Set() ++ {for(x <- strset) yield {
+      val label = x.substring(0, x.indexOf("("))
+      val source = x.substring(x.indexOf("(") + 1, x.indexOf(", "))
+      val dest = x.substring(x.indexOf(", ") + 2, x.indexOf(")"))
+      (label, source, dest)
+    }}
+    pathset
+  }
+}

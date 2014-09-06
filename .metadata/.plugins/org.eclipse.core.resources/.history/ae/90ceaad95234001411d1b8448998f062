@@ -1,0 +1,753 @@
+package org.allenai.extraction.processors.dependencies
+
+import org.allenai.nlpstack.core.parse.graph.TokenDependencyNode
+import org.allenai.nlpstack.core.graph.Graph
+import java.io.ObjectInputStream
+import java.io.FileInputStream
+import org.allenai.extraction.rdf.Token
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.tokenize.defaultTokenizer
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.core.graph.Graph.Edge
+import org.allenai.nlpstack.core.graph.Graph.Edge
+import scala.collection.mutable.Map
+import org.allenai.ari.solvers.inference.matching.{ EntailmentService, EntailmentWrapper }
+import org.allenai.ari.solvers.utils.Tokenizer
+import weka.classifiers.{ Classifier, Evaluation }
+import weka.core.converters.ConverterUtils.DataSource
+import weka.core.Instances
+import weka.core.Attribute
+import weka.core.FastVector
+import weka.core.DenseInstance
+
+object Classifier {
+  val parseFunction = new PolytreeParser().dependencyGraph(defaultTokenizer, defaultPostagger)_
+  //  val parseFunction1 = new PolytreeParser().dependencyGraph(defaultTokenizer, defaultPostagger)_
+  var disrelseeds: Map[String, List[String]] = collection.mutable.Map.empty
+  var disrellist: List[String] = List()
+  var numericfeaturesHeader: List[String] = List()
+  var nominalfeaturesHeader: Map[String, List[String]] = collection.mutable.Map.empty
+  var configFeature = ""
+  var configClassifierModel = ""
+  var configEvalModel = ""
+  var configArffTrain = ""
+
+  def runPredict(sentence: String, disrel: String, arg1: String, arg2: String) = {
+    // initialize files
+    init();
+
+    // load trained model
+    val (classifier, eval) = loadModel()
+
+    // extract testing sentences and features
+    val sentenceDisrel = fromSingleInstance(sentence, disrel, arg1, arg2)
+    val (root, tree) = processText(sentenceDisrel.sentence)
+    val arg1list = findHeadW(tree.vertices.toList, tree.edges.toList, sentenceDisrel.arg1)
+    val arg2list = findHeadW(tree.vertices.toList, tree.edges.toList, sentenceDisrel.arg2)
+    val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
+
+    val numericfeaturemap = getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list)
+    val nominalfeaturemap = getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list)
+    val doubleFeatures: Seq[Double] = getFeatureValueByName(numericfeaturesHeader, numericfeaturemap)
+    val stringFeatures: Seq[String] = getFeatureValueByName(nominalfeaturesHeader, nominalfeaturemap)
+    val (predict, confidence) = runClassifier(classifier, doubleFeatures, stringFeatures)
+
+    (predict, confidence)
+  }
+
+  def init() = {
+    disrelseeds = collection.mutable.Map(
+      ("purpose", List("purpose", "used to", "responsible")),
+      ("cause", List("caused", "so that", "because", "result in", "effect on")),
+      ("example", List("an example of", "called", "a way to", "include", "such as")),
+      ("enable", List("to help", "by")),
+      ("requirement", List("necessary", "needed")) /**("part", List("part of")),**/ /**("effect", List("caused", "so that", "because", "result in", "effect on")),**/ /**("function", List("used to")),**/ /**("condition", List("when", "if"))**/ )
+    disrellist = List("purpose", "cause", "example", "enable", "requirement")
+    configFeature = "lexical-detail-length.arff"
+    configClassifierModel = "model/classifier.classifier"
+    configEvalModel = "model/evaluation.eval"
+    configArffTrain = "model/train.arff"
+  }
+
+  def runClassifier(classifier: Classifier, doubleFeatures: Seq[Double], stringFeatures: Seq[String]) = {
+    // load header
+    val indexAttrList = readHeader()
+    val attributes: FastVector[Attribute] = new FastVector()
+    indexAttrList.foreach(p => { attributes.addElement(p._2) })
+    val instances = new Instances("testing", attributes, 0)
+
+    // create instances
+    var instance = new DenseInstance(instances.numAttributes())
+    var index = 0
+    var error = ""
+    doubleFeatures.foreach(p => { instance.setValue(index, p); index = index + 1 })
+    try {
+      stringFeatures.foreach(p => { instance.setValue(attributes.elementAt(index), p.replaceAll("\"", "")); index = index + 1; error = p; })
+    } catch {
+      case e: Exception => println("feature value is not defined: " + error)
+    }
+    instances.add(0, instance)
+    instances.setClassIndex(instances.numAttributes() - 1)
+    println(instance.toString())
+    // run classifier
+    try {
+      //    val classindex = classifier.classifyInstance(instances.instance(0)).toInt
+      val classindex: Int = 0
+      val preValue = instances.instance(0).classAttribute().value(classindex) //preValue is the true name of prediction
+      val preConfidence = classifier.distributionForInstance(instances.instance(0)).apply(classindex) //choose the confidence score of the prediction  
+      (preValue, preConfidence)
+    } catch {
+      case e: Exception =>
+        e.printStackTrace()
+        println(s"Caught exception classifying test instance $instances")
+        (-1d, -1d)
+    }
+  }
+
+  def fromSingleInstance(sentence: String, disrel: String, arg1: String, arg2: String) = {
+    SentenceStruct(sentence, disrel, arg1, arg2)
+  }
+
+  def processText(text: String): (TokenDependencyNode, Graph[TokenDependencyNode]) = {
+    try {
+      // The fake token we'll draw an edge from to the root node.
+      val corpus = Token.corpus(scala.io.Source.fromString("classifier"))
+      //collapsed graph
+      val stemmer = new MorphaStemmer()
+      val (tokens, rawGraph) = parseFunction(text)
+      if (tokens.nonEmpty) {
+        val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+        parseGraph.edges.foreach(p => { if (p.label.equals("punct")) return (p.source, parseGraph) })
+        return (null, parseGraph)
+        //        parseGraph.edges.foreach {
+        //          p =>
+        //            if (p.label.equals("punct"))
+        //              return (p.source, parseGraph) //p.source is the root
+        //        }
+      } else {
+        return (null, null)
+      }
+
+    } catch {
+      case e: Exception => None
+    }
+    return (null, null)
+  }
+
+  def findHeadW(ns: List[TokenDependencyNode], ds: List[Edge[TokenDependencyNode]], arg1name: String): List[Int] = {
+
+    // find the word which connects with all other nodes (either the destnode or the sourcenode)
+    // if there's no such nodes, find a node with pos=VB or NN (since reverb arguments are always Nouns, here we set pos starts with NN)
+    var res: List[Int] = List()
+    val words = arg1name.toString().split(" ").toList
+    val wlen = words.length
+
+    for (w1 <- words) {
+      val w1ids = getid(ns, w1)
+      for (w1id <- w1ids) {
+        val destnames: List[String] = getDestNodes(w1id, ds)
+        val sournames: List[String] = getSourceNodes(w1id, ds)
+        var flag = true
+        for (w2 <- words) {
+          if (!w1.equals(w2)) {
+            if (!destnames.contains(w2) && !sournames.contains(w2))
+              flag = false
+          }
+        }
+        if (flag == true)
+          res = res ::: List(w1id)
+      }
+    }
+
+    if (res.isEmpty) {
+      for (node <- ns) {
+        if (words.contains(node.string) && node.postag.startsWith("NN"))
+          res = res ::: List(node.id)
+      }
+    }
+    return res
+  }
+
+  /** Load classifier-model from "configClassifierModel"
+    * Load evaluation-model from "configEvalModel"
+    */
+  def loadModel() = {
+    try {
+      val oisclas = new ObjectInputStream(new FileInputStream(configClassifierModel))
+      val classifier = oisclas.readObject().asInstanceOf[Classifier]
+      oisclas.close()
+
+      val oiseval = new ObjectInputStream(new FileInputStream(configEvalModel))
+      val eval = oiseval.readObject().asInstanceOf[Evaluation]
+      oiseval.close()
+      (classifier, eval)
+    } catch {
+      case e: Throwable =>
+        e.printStackTrace()
+        (null, null)
+    }
+  }
+
+  /** Given a string-name, find the its id in the tree;
+    * one string-name may appear multiple times in the tree (with different ids)
+    */
+  def getid(ns: List[TokenDependencyNode], name: String): List[Int] = {
+    var idlist: List[Int] = List()
+    ns.foreach {
+      case p => {
+        if (p.string.equals(name) && !idlist.contains(p.id))
+          idlist = idlist ::: List(p.id)
+      }
+    }
+    return idlist
+  }
+
+  /** get all dest-nodes given a source-node
+    */
+  def getDestNodes(srcNodeID: Int, ds: List[Edge[TokenDependencyNode]]): List[String] = {
+    var destNodeNames: List[String] = List()
+    for (edge <- ds) {
+      if (edge.source.id == srcNodeID) {
+        if (!destNodeNames.contains(edge.dest.string))
+          destNodeNames = destNodeNames ::: List(edge.dest.string)
+      }
+    }
+    return destNodeNames
+  }
+
+  /** get all source-nodes given a dist-node
+    */
+  def getSourceNodes(desNodeID: Int, ds: List[Edge[TokenDependencyNode]]): List[String] = {
+    var sourceNodeNames: List[String] = List()
+    for (edge <- ds) {
+      if (edge.dest.id == desNodeID) {
+        if (!sourceNodeNames.contains(edge.source.string))
+          sourceNodeNames = sourceNodeNames ::: List(edge.source.string)
+      }
+    }
+    return sourceNodeNames
+  }
+
+  /** Get the map, where key=dependency-path-length, value=list-of-specific-dependencies
+    */
+  def getLengthDependencies(root: TokenDependencyNode, tree: Graph[TokenDependencyNode],
+    arg1list: List[Int], arg2list: List[Int]) = {
+    var lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Edge[TokenDependencyNode]])]] = collection.mutable.Map.empty
+    lengthDependenciesMap.put(1, getpathwithspecificlength(root, tree, arg1list, arg2list, 1))
+    lengthDependenciesMap.put(2, getpathwithspecificlength(root, tree, arg1list, arg2list, 2))
+    lengthDependenciesMap.put(3, getpathwithspecificlength(root, tree, arg1list, arg2list, 3))
+
+    lengthDependenciesMap
+  }
+
+  /** Get dependency-path with specific length defined in the argument
+    * Input: root, tree, arg1list, arg2list, pathlength
+    * Output: List[Set[edges]]
+    */
+  def getpathwithspecificlength(root: TokenDependencyNode, tree: Graph[TokenDependencyNode],
+    arg1list: List[Int], arg2list: List[Int], pathlength: Int) = {
+    //org.allenai.nlpstack.graph.Graph.Edge[org.allenai.nlpstack.parse.graph.TokenDependencyNode]
+    var pathlist: List[(Int, Int, Set[Edge[TokenDependencyNode]])] = List()
+    arg1list.foreach(arg1 => arg2list.foreach(arg2 => {
+      val (flag, pathsets) = findDepPathWithSpeLen(tree.vertices.toList, tree.edges, arg1, arg2, pathlength)
+      if (flag == true) {
+        pathsets.foreach(p => pathlist = pathlist ::: List((arg1, arg2, p)))
+      }
+    }))
+    pathlist
+  }
+
+  /** Following findDepPath, with specific dependency-path-length
+    */
+  def findDepPathWithSpeLen(ns: List[TokenDependencyNode], ds: Set[Edge[TokenDependencyNode]], arg1: Int, arg2: Int, pl: Int): (Boolean, List[Set[Edge[TokenDependencyNode]]]) = {
+
+    var deppathlist: List[Set[Edge[TokenDependencyNode]]] = List()
+
+    //pl = 0, special case
+    if (pl == 0) return (true, null)
+
+    //pl = 1, just check whether there's a link between "from" and "to"
+    if (pl == 1) {
+      val checkres = checkpath(ds, arg1, arg2)
+      if (checkres._1 == true)
+        return (true, List(Set(checkres._2)))
+      else return (false, null)
+    }
+
+    //pl = 2, only check one other node
+    if (pl == 2) {
+      val posconnodes = findConnectNodes(ns, List(arg1, arg2), 1)
+      posconnodes.foreach {
+        case pcn => {
+          val checkres_arg1 = checkpath(ds, arg1, pcn.head.id)
+          val checkres_arg2 = checkpath(ds, arg2, pcn.head.id)
+          if (checkres_arg1._1 == true && checkres_arg2._1 == true) {
+            //add result list
+            deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2))
+          }
+        }
+      }
+
+      if (deppathlist.size > 0)
+        return (true, deppathlist)
+      else
+        return (false, null)
+    }
+
+    //pl > 2, general case
+    if (pl > 2) {
+      val posconnodes = findConnectNodes(ns, List(arg1, arg2), pl - 1) //find all possible sets that could connect arg1 and arg2
+      posconnodes.foreach {
+        case pcn => { //for each set
+          val pcnsize = pcn.size
+          for (i <- 0 to pcnsize - 1) {
+            val node1 = pcn(i) //for node1
+            for (j <- 0 to pcnsize - 1) {
+              val node2 = pcn(j)
+              if (!node1.id.equals(node2.id)) { //for node2, distinguish from node1
+                val checkres_arg1 = checkpath(ds, arg1, node1.id) //is arg1 connected with node1
+                val checkres_arg2 = checkpath(ds, arg2, node2.id) //is arg2 connected with node1
+                var newns = ns.filter(x => !x.id.equals(arg1) && !x.id.equals(arg2)) //new nodes, removing arg1 and arg2
+                var recursivechecker = findDepPathWithSpeLen(newns, ds, node1.id, node2.id, pl - 2) //is node1 connected with node2, this is recursive version
+                if (checkres_arg1._1 == true && checkres_arg2._1 == true
+                  && recursivechecker._1 == true) { //if arg1<-->node1 && arg2<-->node2 && node1<-->node2
+                  var recursivepath = recursivechecker._2 //get the path between node1 and node2
+                  recursivepath.foreach {
+                    case f => { //add each possible previous path (between node1 and node2) to the new path, adding arg1 and arg2
+                      deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2) ++ f)
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      //if results is not empty, return
+      if (deppathlist.size > 0)
+        return (true, deppathlist)
+      else
+        return (false, null)
+    }
+
+    return (false, null)
+  }
+
+  /** check: if arg1 and arg2 are connected or not?
+    */
+  def checkpath(ds: Set[Edge[TokenDependencyNode]], arg1: Int, arg2: Int): (Boolean, Edge[TokenDependencyNode]) = {
+    ds.foreach {
+      case edge => {
+        if ((edge.source.id.equals(arg1) && edge.dest.id.equals(arg2))
+          || (edge.source.id.equals(arg2) && edge.dest.id.equals(arg1)))
+          return (true, edge)
+      }
+    }
+    return (false, null)
+  }
+
+  /** find subsets of ns
+    * restriction1: the subsets cannot contain any node in "notconsider"
+    * restriction2: the size of the subsets == num
+    */
+  def findConnectNodes(ns: List[TokenDependencyNode], notconsider: List[Int], num: Int): List[List[TokenDependencyNode]] = {
+    var connectNodeslist: List[List[TokenDependencyNode]] = List()
+
+    var newns: List[TokenDependencyNode] = List()
+    ns.foreach(x => if (!notconsider.contains(x.id)) newns = newns ::: List(x))
+
+    subsetswithn(newns, num).foreach {
+      case p => {
+        //     var l = p.filter(x => (!notconsider.contains(x.string)))
+        //        var l:List[org.allenai.nlpstack.core.parse.graph.DependencyNode] = List()
+        //        p.foreach(x => if(!notconsider.contains(x.id)) l=l:::List(x))
+        //        if(l.size == num){
+        //          connectNodeslist = connectNodeslist ::: List(l)
+        //        }
+        connectNodeslist = connectNodeslist ::: List(p)
+      }
+    }
+    return connectNodeslist
+  }
+
+  /** permutation of xs, return all possibilities (without any restriction)
+    */
+  def subsetswithn(xs: List[TokenDependencyNode], num: Int) = {
+    (num to num flatMap (x => xs.combinations(x))) map (x => x)
+  }
+
+  //============================================================================
+  /** get numeric features
+    */
+  def getNumericfeatures(sentenceDisrel: SentenceStruct,
+    root: TokenDependencyNode, tree: Graph[TokenDependencyNode],
+    lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Edge[TokenDependencyNode]])]],
+    arg1list: List[Int], arg2list: List[Int]) = {
+
+    val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet
+
+    var numericfeaturesmap: Map[String, Double] = collection.mutable.Map.empty
+    disrellist.foreach {
+      case disrel => {
+        val seedSet = Tokenizer.toKeywords(disrelseeds(disrel.toLowerCase()).mkString(" ")).toSet
+        var numericfeaturename: String = null
+        // number of words in the sentence
+        numericfeaturename = "numeric-senlen-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble)
+        updateNumericfeaturesHeader(numericfeaturename)
+
+        // overlap between sentence-words and lexical-cue-seeds-for-current-disrel
+        numericfeaturename = "numeric-overlap-sen-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename, overlap(sentenceSet, seedSet).toDouble)
+        updateNumericfeaturesHeader(numericfeaturename)
+
+        // entailment between sentence-words and lexical-cue-seeds-for-current-disrel
+        numericfeaturename = "numeric-entail-sen-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          if (root == null) 0.0 else wordnetEntailment(sentenceSet.mkString(" "), seedSet.mkString(" ")))
+        updateNumericfeaturesHeader(numericfeaturename)
+
+        // entailment between root and lexical-cue-seeds-for-current-disrel
+        numericfeaturename = "numeric-entail-root-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          if (root == null) 0.0 else wordnetEntailment(root.string, seedSet.mkString(" ")))
+        updateNumericfeaturesHeader(numericfeaturename)
+
+        // entailment between connection-words and lexical-cue-seeds-for-current-disrel
+        val connectwords = getconnectwords(lengthDependenciesMap)
+        numericfeaturename = "numeric-entail-conn-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          if (connectwords == null) 0.0 else wordnetEntailment(connectwords.mkString(" "), seedSet.mkString(" ")))
+        updateNumericfeaturesHeader(numericfeaturename)
+      }
+    }
+
+    numericfeaturesmap
+  }
+
+  /** get nominal features
+    */
+  def getNominalfeatures(sentenceDisrel: SentenceStruct,
+    root: TokenDependencyNode, tree: Graph[TokenDependencyNode],
+    lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Edge[TokenDependencyNode]])]],
+    arg1list: List[Int], arg2list: List[Int]) = {
+
+    var nominalfeaturesmap: Map[String, String] = collection.mutable.Map.empty
+    var nominalfeaturename: String = "null"
+    var nominalfeaturevalue: String = "null"
+    try {
+      val length1 = lengthDependenciesMap.apply(1).size
+      val length2 = lengthDependenciesMap.apply(2).size
+      val length3 = lengthDependenciesMap.apply(3).size
+
+      // specific dependency path
+      if (configFeature.contains("-detail")) {
+        val generalDependenciesLength1 = getGeneralDependencySets(lengthDependenciesMap.apply(1)) // general-dependency-path = 1
+        val generalDependenciesLength2 = getGeneralDependencySets(lengthDependenciesMap.apply(2)) // general-dependency-path = 2
+        val generalDependenciesLength3 = getGeneralDependencySets(lengthDependenciesMap.apply(3)) // general-dependency-path = 3
+
+        // the specific dependency-path with length=1
+        nominalfeaturename = "nominal-spec-deplength1"
+        if (generalDependenciesLength1.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength1(0).mkString(", ") + ")" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+
+        // the specific dependency-path with length=2
+        nominalfeaturename = "nominal-spec-deplength2"
+        if (generalDependenciesLength2.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength2(0).mkString(", ") + ")" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+
+        // the specific dependency-path with length=3
+        nominalfeaturename = "nominal-spec-deplength3"
+        if (generalDependenciesLength3.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength3(0).mkString(", ") + ")" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+      }
+
+      // only consider dependency length
+      if (configFeature.contains("-length")) {
+        // shortest-dependency-path-length
+        val shortestpath = Math.min(length1, Math.min(length2, length3))
+
+        // shortest-dependency-length == 1? 1 or 0
+        nominalfeaturename = "nominal-shortest-deplength1"
+        if (length1 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+
+        // shortest-dependency-length == 2? 1 or 0
+        nominalfeaturename = "nominal-shortest-deplength2"
+        if (length2 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+
+        // shortest-dependency-length == 3? 1 or 0
+        nominalfeaturename = "nominal-shortest-deplength2"
+        if (length3 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+      }
+
+      // If there exists prep(x, y), what is pos(y)
+      if (configFeature.contains("-prep")) {
+        val lemmaofprep = getlemmaofprep(lengthDependenciesMap)
+        nominalfeaturename = "nominal-arg2posfor-prep"
+        nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("for").toString + ")\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+
+        nominalfeaturename = "nominal-arg2posof-prep"
+        nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("of").toString + ")\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+
+        nominalfeaturename = "nominal-arg2posto-prep"
+        nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("to").toString + ")\""
+        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+      }
+    } catch {
+      case p: Throwable => {
+        p.printStackTrace()
+        // specific dependency path
+        if (configFeature.contains("-detail")) {
+          // the specific dependency-path with length=1
+          nominalfeaturename = "nominal-spec-deplength1"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // the specific dependency-path with length=2
+          nominalfeaturename = "nominal-spec-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // the specific dependency-path with length=3
+          nominalfeaturename = "nominal-spec-deplength3"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
+
+        // only consider dependency length
+        if (configFeature.contains("-length")) {
+          // shortest-dependency-length == 1? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength1"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // shortest-dependency-length == 2? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // shortest-dependency-length == 3? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
+
+        // If there exists prep(x, y), what is pos(y)
+        if (configFeature.contains("-prep")) {
+          val lemmaofprep = getlemmaofprep(lengthDependenciesMap)
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          nominalfeaturename = "nominal-arg2posof-prep"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          nominalfeaturename = "nominal-arg2posto-prep"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
+      }
+    }
+
+    nominalfeaturesmap
+  }
+
+  /** Input: arguments in paths are word-id
+    * Output: arguments in paths are generalized to be _2, _3, ...
+    */
+  def generalizeDependencypaths(ori: List[(Int, Int, Set[Edge[TokenDependencyNode]])]): List[Set[String]] = {
+    //    println("===========================")
+    //    println("ori" + ori)
+    var generalized: List[Set[String]] = List()
+    va init = 3
+    var otherargs: Map[Int, String] = collection.mutable.Map.empty[Int, String]
+
+    ori.foreach {
+      case (arg1, arg2, eachset) => { //for each set
+        var eachset_posfealist: List[String] = List()
+        var eachset_lexfealist: List[String] = List()
+        var eachsetlist = eachset.toList
+        var eachset_strver: List[String] = List()
+        eachsetlist.foreach {
+          case edge => { //for each edge
+            var edgestr, source, dest = ""
+            var label = edge.label
+            if (edge.source.id == arg1 || edge.source.id == arg2) {
+              if (edge.source.id == arg1) {
+                source = "_1"
+                /**eachset_posfealist = addposfea(edge.source, "_1", eachset_posfealist)**/
+              } else if (edge.source.id == arg2) {
+                source = "_2"
+                /**eachset_posfealist = addposfea(edge.source, "_2", eachset_posfealist)**/
+              }
+              var argname = ""
+              if (!otherargs.contains(edge.dest.id)) { argname = "_" + init.toString; otherargs.put(edge.dest.id, argname); init = init + 1 }
+              else { argname = otherargs(edge.dest.id) }
+              eachset_lexfealist = addlexfea(edge.dest, argname, eachset_lexfealist)
+            } else {
+              if (!otherargs.contains(edge.source.id)) { source = "_" + init.toString; otherargs.put(edge.source.id, source); init = init + 1; }
+              else { source = otherargs(edge.source.id) }
+              eachset_posfealist = addposfea(edge.source, source, eachset_posfealist)
+            }
+
+            if (edge.dest.id == arg1 || edge.dest.id == arg2) {
+              if (edge.dest.id == arg1) {
+                dest = "_1";
+                /**eachset_posfealist = addposfea(edge.dest, "_1", eachset_posfealist)**/
+              } else if (edge.dest.id == arg2) {
+                dest = "_2";
+                /**eachset_posfealist = addposfea(edge.dest, "_2", eachset_posfealist)**/
+              }
+              var argname = ""
+              if (!otherargs.contains(edge.source.id)) { argname = "_" + init.toString; otherargs.put(edge.source.id, argname); init = init + 1 }
+              else { argname = otherargs(edge.source.id) }
+              eachset_lexfealist = addlexfea(edge.source, argname, eachset_lexfealist);
+            } else {
+              if (!otherargs.contains(edge.dest.id)) { dest = "_" + init.toString; otherargs.put(edge.dest.id, dest); init = init + 1 }
+              else { dest = otherargs(edge.dest.id) }
+              eachset_posfealist = addposfea(edge.dest, dest, eachset_posfealist)
+            }
+
+            edgestr = label + "(" + source + ", " + dest + ")"
+            eachset_strver = eachset_strver ::: List(edgestr)
+          }
+        }
+        //dependency-path
+        generalized = generalized ::: List(eachset_strver.toSet)
+      }
+    }
+
+    return generalized
+  }
+
+  def addposfea(node: TokenDependencyNode, argname: String, posfeaslist: List[String]) = {
+	val posfea = "token:pos(" + argname + ", " + node.postag + ")"
+    val posfeaslist_updated = posfeaslist.toSet ++ Set(posfea)
+    posfeaslist_updated.toList
+  }
+
+  def addlexfea(node: TokenDependencyNode, argname: String, lexfeaslist: List[String]) = {
+    val lexfea = "token:lemma(" + argname + ", " + node.lemma + ")"
+    val lexfeaslist_updated = lexfeaslist.toSet ++ Set(lexfea)
+    lexfeaslist_updated.toList
+  }
+
+  def updateNumericfeaturesHeader(numericfeaturename: String) = {
+    if (!numericfeaturesHeader.contains(numericfeaturename))
+      numericfeaturesHeader = numericfeaturesHeader ::: List(numericfeaturename)
+  }
+
+  def updateNominalfeaturesmap(nominalfeaturename: String, nominalfeaturevalue: String) = {
+    if (nominalfeaturesHeader.contains(nominalfeaturename)) {
+      var nominalfeaturevalues: List[String] = nominalfeaturesHeader(nominalfeaturename)
+      if (!nominalfeaturevalues.contains(nominalfeaturevalue))
+        nominalfeaturevalues = nominalfeaturevalues ::: List(nominalfeaturevalue)
+      nominalfeaturesHeader.put(nominalfeaturename, nominalfeaturevalues)
+    } else {
+      nominalfeaturesHeader.put(nominalfeaturename, List(nominalfeaturevalue))
+    }
+  }
+
+  def overlap(text: Set[String], hypothesis: Set[String]) =
+    text.intersect(hypothesis).size
+
+  def wordnetEntailment(text: String, hypothesis: String) =
+    wordnetEntailmentService(text, hypothesis) map { _.confidence } getOrElse 0d
+
+  /** Input: set of specific dependency-paths
+    * Output: set of general dependency-paths (replace specific-node with "_1, _2, _3, ...")
+    */
+  def getGeneralDependencySets(dependencies: List[(Int, Int, Set[Edge[TokenDependencyNode]])]) = {
+    generalizeDependencypaths(dependencies)
+  }
+
+  val wordnetEntailmentService: EntailmentService = {
+    val wordnetEntailmentUrl = "http://entailment.dev.allenai.org:8191/api/entails"
+    val wrapper = new EntailmentWrapper(wordnetEntailmentUrl)
+    wrapper.CachedEntails
+  }
+
+  /** If there exists an edge named as "prep", find the pos of its second argument
+    */
+  def getlemmaofprep(lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Edge[TokenDependencyNode]])]]) = {
+    val lemmaofprep = Set() ++ {
+      for {
+        (length, dependencies) <- lengthDependenciesMap
+        (arg1, arg2, edges) <- dependencies
+        edge <- edges
+        if (edge.label.equals("prep"))
+      } yield {
+        edge.dest.lemma
+      }
+    }
+    lemmaofprep
+  }
+
+  def getFeatureValueByName(featurenameList: List[String], featuremap: Map[String, Double]) = {
+    val featurevalueSeq = for { featurename <- featurenameList } yield { featuremap(featurename) }
+    featurevalueSeq
+  }
+
+  def getFeatureValueByName(featurenameMap: Map[String, List[String]], featuremap: Map[String, String]) = {
+    val featurevalueSeq = Seq() ++ {for {p <- featurenameMap} yield featuremap(p._1)}
+    featurevalueSeq
+  }
+
+  /** Given all dependencies paths, find the connection-words that connect arguments
+    */
+  def getconnectwords(lengthDependenciesPath: Map[Integer, List[(Int, Int, Set[Edge[TokenDependencyNode]])]]) = {
+    val connectwords = Set() ++ {
+      for {
+        (length, dependency) <- lengthDependenciesPath
+        (arg1, arg2, d) <- dependency
+        edge <- d
+        if (edge.source.id != arg1 && edge.source.id != arg2) //QINGQING DEBUG: not sure about the double-if
+        if (edge.dest.id != arg1 && edge.dest.id != arg2)
+      } yield {
+        edge.source.string
+        edge.dest.string
+      }
+    }
+    connectwords
+  }
+
+  //-----------------------------------------------------------------------
+  /** read header from arff file
+    */
+  def readHeader() = {
+    val dataSource: DataSource = new DataSource(configArffTrain)
+    val data: Instances = dataSource.getDataSet
+    val indexAttrList = List() ++ {
+      for (a <- 0 to data.numAttributes() - 1) yield {
+        (a, data.attribute(a))
+      }
+    }
+    indexAttrList
+  }
+}
+
+case class SentenceStruct(sentence: String, disrel: String, arg1: String, arg2: String) {
+  override def toString() = s"$sentence\t$disrel\t$arg1\t$arg2}"
+}

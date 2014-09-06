@@ -1,0 +1,131 @@
+package org.allenai.extraction.processors.dependencies
+
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
+import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
+import com.tinkerpop.blueprints.Vertex
+import com.tinkerpop.blueprints.impls.sail.SailGraph
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import org.allenai.extraction.processors.NlpstackParser
+import java.io.Writer
+import org.apache.commons.io.output.WriterOutputStream
+import org.allenai.extraction.{ ErmineException, MultiTextProcessor }
+import org.allenai.extraction.rdf.{ DependencyGraph, Token }
+import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.tokenize.defaultTokenizer
+import scala.language.postfixOps
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import scala.io.Source
+import java.io.Writer
+import java.io.PrintWriter
+
+
+object PolyExtractorTest4 extends TurtleProcessor with App {
+ val queries: Seq[(String, String)] = Seq(
+    // (id, query) where id is for logging rule matches 
+
+    // Animals need air, water, and food to live and survive.
+    // A student should use a hand lens to get a better look at the spots.
+    // A student uses a hand lens, to get a better look at the spots.
+     
+     //purpose => (pobj(_3, _1), nsubj(_4, _2), prep(_4, _3))
+    ("requirement1", """CONSTRUCT { ?_1 rel:requirement ?_2 . } WHERE { ?_3 dep:nsubj ?_1 . ?_4 dep:pobj ?_2 . ?_3 dep:prep ?_4 .}"""),
+    // Our bodies produce sweat, bringing water to our skin.
+    ("example2", """CONSTRUCT { ?_1 rel:example ?_2 . } WHERE { ?_3 dep:conj ?_1 . ?_4 dep:xcomp ?_2 . ?_3 dep:dep ?_4 .}"""), 
+    ("example3", """CONSTRUCT { ?_1 rel:example ?_2 . } WHERE { ?_3 dep:nsubj ?_1 . ?_3 dep:dobj ?_2 .}"""))
+    
+  val txtsource = io.Source.fromFile("ie-target.txt")
+  val indexsentence = (txtsource.getLines().toList zip (Stream from 1)).toMap.map(_ swap)
+  indexsentence.foreach(p => println(p))
+  
+  val extractsource = io.Source.fromFile("ie-target.parse")
+  val graph = new MemoryStoreSailGraph()
+  DependencyGraph.fromTurtle(graph, extractsource)
+  DependencyGraph.setNamespaces(graph)
+  processGraph(graph)
+  
+  val destination: Writer = new PrintWriter("ie-target.extract")
+  DependencyGraph.toTurtle(graph, destination)
+  graph.shutdown()
+  System.exit(0)
+
+  def relTarget(graph: SailGraph, node: Vertex): Vertex = {
+    // check for VBG vmod on NN node and use instead
+    // avoids repeated pattern in many rules
+    val uri = node.toUri
+    val vmodQuery: String = s"""SELECT ?vmod WHERE {
+      <$uri> dep:vmod ?vmod .
+      ?vmod token:pos "VBG" . 
+      <$uri> token:pos ?pos .
+      FILTER STRSTARTS(?pos, "NN") }"""
+    DependencyGraph.executeSparql(graph, vmodQuery).headOption match {
+      case Some(map) => map("vmod")
+      case None => node
+    }
+  }
+
+  override def processGraph(graph: SailGraph): Unit = {
+//    val subj1 = "<http://aristo.allenai.org/id#file:/Users/qingqingcai/Documents/Aristo/internship-project/workspace/extraction-integrate/ermine/src/test/data/barrons-test/1_12>"
+//    val rel = "<http://nlp.stanford.edu/token/text>"
+////      val subjquery1 = s"""
+////      SELECT ?subj_text1 WHERE {
+////      	?subj <http://nlp.stanford.edu/token/text> ?subj_text1 FILTER (?subj = <http://aristo.allenai.org/id#file:/Users/qingqingcai/Documents/Aristo/internship-project/workspace/extraction-integrate/ermine/src/test/data/barrons-test/1_12>)
+////      }"""
+//      
+//    val subjquery1 = "SELECT ?subj_text1 WHERE { ?subj <http://nlp.stanford.edu/token/text> ?subj_text1 FILTER (?subj = " + subj1 +")}"
+//    val result = DependencyGraph.executeSparql(graph, subjquery1)
+//    result.foreach(p => println(p))
+    
+    // match patterns
+    for {
+      (id, query) <- queries
+      map <- DependencyGraph.executeSparql(graph, query)
+    } {
+      val subj = map("subject")
+      val subjstr = "<"+subj.getId().toString()+">"
+      val obj = map("object")
+      val objstr = "<"+obj.getId().toString()+">"
+      val sentence = indexsentence.apply(subjstr.substring(subjstr.lastIndexOf("/")+1, subjstr.lastIndexOf("_")).toInt)
+      val subjquery = "SELECT ?subj_text WHERE { ?subj <http://nlp.stanford.edu/token/text> ?subj_text FILTER (?subj = " + subjstr +")}"
+      val objquery = "SELECT ?obj_text WHERE { ?obj <http://nlp.stanford.edu/token/text> ?obj_text FILTER (?obj = " + objstr +")}"
+      val subjtext = DependencyGraph.executeSparql(graph, subjquery).head("subj_text").getId().toString().replace("\"", "")
+      val objtext = DependencyGraph.executeSparql(graph, objquery).head("obj_text").getId().toString().replace("\"", "")
+      val rel = id.substring(0, id.indexOf("_"))
+      println(sentence + "\t" + rel + "\t" + subjtext + "\t" + objtext)
+      val (pre, conf) = Classifier.runPredict(sentence, rel, subjtext, objtext)
+      println("prediction result")
+      println(pre + "\t" + conf)
+      
+      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, map("subject")) :+ map("subject")
+//      println("subjs = " + subjs.toString)
+//      
+//      val pred: Vertex = map("predicate")
+//      println("pred = " + pred.toString())
+//      
+//      val predString: String = pred.toIdString
+//      println("predString = " + predString) 
+//      
+//      val obj: Vertex = relTarget(graph, map("object"))
+//      println("obj = " + obj.toString())
+//      
+      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, map("object")) :+ map("object")
+//      println("objs = " + objs.toString)
+      
+      // add relation for each combination of conjuncts
+      for {
+        subjConj <- subjs
+        objConj <- objs
+        
+      } {
+        println("subjConj = " + subjConj)
+        println("objConj = " + objConj)
+        if (subjConj != objConj && subjConj != obj && objConj != subj) {
+          graph.addEdge(id, subjConj, objConj, "http://aristo.allenai.org/rel/"+rel)
+        }
+      }
+    }
+  }
+
+}

@@ -30,21 +30,21 @@ import FeatureWrapper._
 import weka.filters.unsupervised.attribute.RemoveUseless
 import weka.filters.Filter
 import weka.filters.unsupervised.attribute.NominalToBinary
+import collection.immutable.ListMap
 
 object BinaryClassification extends App with Logging {
-  /**
-   * Global variables
-   */
+  /** Global variables
+    */
   var numericnum = 0
-  var disrelSeeds:Map[String, List[String]] = collection.mutable.Map.empty
-  var disrelList:List[String] = List()
-  
+  var disrelSeeds: Map[String, List[String]] = collection.mutable.Map.empty
+  var disrelList: List[String] = List()
+
   // headers for Arff file
   var numericfeaturesHeader: List[String] = List()
   var nominalfeaturesHeader: Map[String, List[String]] = collection.mutable.Map.empty
-  
-  
+
   var isPrintFeatureWeight = true
+  var isPrintSparql = true;
   var configClassifierName = ""
   var configFeature = ""
   var inputDir = ""
@@ -53,6 +53,7 @@ object BinaryClassification extends App with Logging {
   var mapDir = ""
   var modelDir = ""
   var featureDir = ""
+  var sparqlDir = ""
   var configTrainingFile = ""
   var configTestingFile = ""
   var configTestingLabeledFile = ""
@@ -63,47 +64,50 @@ object BinaryClassification extends App with Logging {
   var configClassifierModel = ""
   var configEvalModel = ""
   var configFeatureWeightTrain = ""
- 
-  
-  def init(directory: String, configclassifiername: String, configfeature: String, 
-      configtrainingfile: String, configtestingfile: String, 
-      isprintfeatureweight: Boolean, 
-      disrelseeds: Map[String, List[String]], disrellist: List[String]) = {
-	  configClassifierName = configclassifiername
-	  configFeature = configfeature
-	  configTrainingFile = configtrainingfile
-	  configTestingFile = configtestingfile
-	  isPrintFeatureWeight = isprintfeatureweight
-	  
+  var configSparql = ""
+
+  def init(directory: String, configclassifiername: String, configfeature: String,
+    configtrainingfile: String, configtestingfile: String,
+    isprintfeatureweight: Boolean, isprintsparql: Boolean, 
+    disrelseeds: Map[String, List[String]], disrellist: List[String]) = {
+    configClassifierName = configclassifiername
+    configFeature = configfeature
+    configTrainingFile = configtrainingfile
+    configTestingFile = configtestingfile
+    isPrintFeatureWeight = isprintfeatureweight
+    isPrintSparql = isprintsparql
+
     inputDir = directory + File.separator + "inputDirectory"
-	  outputDir = directory + File.separator +configClassifierName+"/outputDirectory"
-	  arffDir = directory + File.separator + configClassifierName+"/arff"
-	  mapDir = directory + File.separator + configClassifierName+"/map"
-	  modelDir = directory + File.separator + configClassifierName+"/model"
-	  featureDir = directory + File.separator + configClassifierName+"/feature"
-	  
-	  configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff"
-	  configArffTest = arffDir + File.separator + "test-" + configFeature + ".arff"
-	  configMapTrain = mapDir + File.separator + "train-" + configFeature + ".map"
-	  configMapTest = mapDir + File.separator + "test-" + configFeature + ".map"
-	  configClassifierModel = modelDir + File.separator + configClassifierName + "-classifier-" + configFeature + ".classifier"
-	  configEvalModel = modelDir + File.separator + configClassifierName + "-eval-" + configFeature + ".eval"
-	  configFeatureWeightTrain = featureDir + File.separator + "train-" + configFeature + ".feature"
-	  configTestingLabeledFile = outputDir + "/108Q_sentence_arg1_arg2_mini_211-" + configFeature + ".txt"
-	 
-	  numericfeaturesHeader = List()
+    outputDir = directory + File.separator + configClassifierName + "/outputDirectory"
+    arffDir = directory + File.separator + configClassifierName + "/arff"
+    mapDir = directory + File.separator + configClassifierName + "/map"
+    modelDir = directory + File.separator + configClassifierName + "/model"
+    featureDir = directory + File.separator + configClassifierName + "/feature"
+    sparqlDir = directory + File.separator + configClassifierName + "/sparql"
+
+    configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff"
+    configArffTest = arffDir + File.separator + "test-" + configFeature + ".arff"
+    configMapTrain = mapDir + File.separator + "train-" + configFeature + ".map"
+    configMapTest = mapDir + File.separator + "test-" + configFeature + ".map"
+    configClassifierModel = modelDir + File.separator + configClassifierName + "-classifier-" + configFeature + ".classifier"
+    configEvalModel = modelDir + File.separator + configClassifierName + "-eval-" + configFeature + ".eval"
+    configFeatureWeightTrain = featureDir + File.separator + "train-" + configFeature + ".feature"
+    configSparql = sparqlDir + File.separator + configFeature + ".sparql"
+    configTestingLabeledFile = outputDir + "/108Q_sentence_arg1_arg2_mini_211-" + configFeature + ".txt"
+
+    numericfeaturesHeader = List()
     nominalfeaturesHeader = collection.mutable.Map.empty
-	  disrelSeeds = disrelseeds
+    disrelSeeds = disrelseeds
     disrelList = disrellist
     numericnum = 0
   }
-  
+
   /** Build a classifier (configClassifierName) using training-data (configArffTrain)
     * Save classifier-model to configClassifierModel
     * Save evaluation-model to configEvalModel
     */
-  def saveModel(configclassifiername: String, configarfftrain: String, 
-      configclassifiermodel:String, configevalmodel: String) = {
+  def saveModel(configclassifiername: String, configarfftrain: String,
+    configclassifiermodel: String, configevalmodel: String) = {
     val (classifier, eval) = buildClassifier(configclassifiername, configarfftrain)
     try {
       val oosclas = new ObjectOutputStream(new FileOutputStream(configclassifiermodel))
@@ -120,9 +124,8 @@ object BinaryClassification extends App with Logging {
     }
   }
 
-  /** 
-   *  read header from arff file
-   */
+  /** read header from arff file
+    */
   def readHeader() = {
     val dataSource: DataSource = new DataSource(configArffTrain)
     val data: Instances = dataSource.getDataSet
@@ -133,10 +136,9 @@ object BinaryClassification extends App with Logging {
     indexAttrList
   }
 
-  /** 
-   *  Load classifier-model from "configClassifierModel"
-   * Load evaluation-model from "configEvalModel"
-   */
+  /** Load classifier-model from "configClassifierModel"
+    * Load evaluation-model from "configEvalModel"
+    */
   def loadModel() = {
     try {
       val oisclas = new ObjectInputStream(new FileInputStream(configClassifierModel))
@@ -156,39 +158,39 @@ object BinaryClassification extends App with Logging {
 
   /** Run testing, load pre-trained model in disk
     */
-  def runLabelingLoad(configClassifierModel: String, configEvalModel: String, 
-    sentencedisreltest: List[BinarySentenceDisrel], 
+  def runLabelingLoad(configClassifierModel: String, configEvalModel: String,
+    sentencedisreltest: List[BinarySentenceDisrel],
     instancenumericfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, Double]],
-    instancenominalfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, String]], 
+    instancenominalfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, String]],
     numericfeaturesheader: List[String], nominalfeaturesheader: Map[String, List[String]]) {
     val (classifier, eval) = loadModel()
-    classify(classifier, eval, configArffTest, configTestingLabeledFile, sentencedisreltest, 
-      instancenumericfeaturesmaptest, instancenominalfeaturesmaptest, 
+    classify(classifier, eval, configArffTest, configTestingLabeledFile, sentencedisreltest,
+      instancenumericfeaturesmaptest, instancenominalfeaturesmaptest,
       numericfeaturesheader, nominalfeaturesheader)
   }
 
   /** Run testing, using the trained model at the same time
     */
-  def runLabelingRetrain(configclassifiername: String, configarfftrain: String, 
-    sentencedisreltest: List[BinarySentenceDisrel], 
+  def runLabelingRetrain(configclassifiername: String, configarfftrain: String,
+    sentencedisreltest: List[BinarySentenceDisrel],
     instancenumeriffeaturesmaptest: Map[BinarySentenceDisrel, Map[String, Double]],
-    instancenominalfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, String]], 
+    instancenominalfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, String]],
     numericfeaturesheader: List[String], nominalfeaturesheader: Map[String, List[String]]) = {
     val (classifier, eval) = buildClassifier(configclassifiername, configarfftrain)
-    classify(classifier, eval, configArffTest, configTestingLabeledFile, sentencedisreltest, 
-        instancenumeriffeaturesmaptest, instancenominalfeaturesmaptest, 
-        numericfeaturesheader, nominalfeaturesheader)
+    classify(classifier, eval, configArffTest, configTestingLabeledFile, sentencedisreltest,
+      instancenumeriffeaturesmaptest, instancenominalfeaturesmaptest,
+      numericfeaturesheader, nominalfeaturesheader)
   }
 
   /** Convert data to instances
     */
-  def toInstances(arffFile: String, sentencedisreltest: List[BinarySentenceDisrel], 
+  def toInstances(arffFile: String, sentencedisreltest: List[BinarySentenceDisrel],
     instancenumericfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, Double]],
     instancenominalfeaturesmaptest: Map[BinarySentenceDisrel, Map[String, String]],
     numericfeaturesheader: List[String], nominalfeaturesheader: Map[String, List[String]]): (Instances, Seq[BinarySentenceDisrel]) = {
-    
-    toARFF(instancenumericfeaturesmaptest, instancenominalfeaturesmaptest, 
-        numericfeaturesheader, nominalfeaturesheader, arffFile)
+
+    toARFF(instancenumericfeaturesmaptest, instancenominalfeaturesmaptest,
+      numericfeaturesheader, nominalfeaturesheader, arffFile)
     toMAP(instancenumericfeaturesmaptest, instancenominalfeaturesmaptest, configMapTest)
 
     logger.info(s"WEKA: reading test data from $arffFile")
@@ -196,7 +198,7 @@ object BinaryClassification extends App with Logging {
     val dataTest: Instances = sourceTest.getDataSet
 
     dataTest.setClassIndex(dataTest.numAttributes - 1)
-      
+
     // data filtering
     val logit_filter = new RemoveUseless()
     logit_filter.setInputFormat(dataTest)
@@ -204,13 +206,12 @@ object BinaryClassification extends App with Logging {
     val nominaltobinary = new NominalToBinary()
     nominaltobinary.setInputFormat(filteredTest)
     filteredTest = Filter.useFilter(filteredTest, nominaltobinary)
-    
+
     (dataTest, sentencedisreltest)
   }
 
-  /**
-   * for testing
-   */
+  /** for testing
+    */
   def classify(classifier: Classifier, eval: Evaluation, testInstances: Instances) = {
     logger.info(s"WEKA: evaluating -- computing evaluation summary and matrix for ${testInstances.numInstances} test instances")
     eval.evaluateModel(classifier, testInstances)
@@ -239,13 +240,11 @@ object BinaryClassification extends App with Logging {
       }
     }
   }
-  
 
-
-   def classify(classifier: Classifier, eval: Evaluation, 
-    arffFile: String, outputFile: String, sentencedisreltest: List[BinarySentenceDisrel], 
-    instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]], 
-    instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]], 
+  def classify(classifier: Classifier, eval: Evaluation,
+    arffFile: String, outputFile: String, sentencedisreltest: List[BinarySentenceDisrel],
+    instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]],
+    instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]],
     numericfeaturesHeader: List[String], nominalfeaturesHeader: Map[String, List[String]]): Unit = {
 
     try {
@@ -254,33 +253,31 @@ object BinaryClassification extends App with Logging {
       writer.println(BinarySentenceDisrel.header)
       var numPositiveExamples: Int = 0
       var numAllExamples: Int = 0
-      
-      toInstances(arffFile, sentencedisreltest, 
-          instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest, 
-          numericfeaturesHeader, nominalfeaturesHeader) match {
-        case (testInstances, testSentenceDisrel) =>
 
-          // compute prediction and confidence value
-          val classProbabilities = classify(classifier, eval, testInstances)
-          
-          
-          //  classProbabilities.foreach(p => println(p._1 + "\t" + p._2))
-          val testSentenceDisrelWithClassProb = (testSentenceDisrel zip classProbabilities)
-          
-         
-          testSentenceDisrelWithClassProb.foreach {
-            x =>
-              writer.println(f"${x._1.toString}\t${x._2._1}\t${x._2._2}%.4f")
-        //      println(x._1.toString + "\t" + x._2._1 + "\t" + x._2._2)
-             
-              if (x._1.annotationOpt.toList(0).toString().equals(x._2._1)){
-                numPositiveExamples = numPositiveExamples + 1
-              }
-              numAllExamples = numAllExamples + 1    
-          }
-          println("correctly classified instance # = " + numPositiveExamples + " over " + numAllExamples)
-          println("percentage of correct prediction = " + (numPositiveExamples * 0.1) / (numAllExamples * 0.1))
-      }
+      toInstances(arffFile, sentencedisreltest,
+        instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest,
+        numericfeaturesHeader, nominalfeaturesHeader) match {
+          case (testInstances, testSentenceDisrel) =>
+
+            // compute prediction and confidence value
+            val classProbabilities = classify(classifier, eval, testInstances)
+
+            //  classProbabilities.foreach(p => println(p._1 + "\t" + p._2))
+            val testSentenceDisrelWithClassProb = (testSentenceDisrel zip classProbabilities)
+
+            testSentenceDisrelWithClassProb.foreach {
+              x =>
+                writer.println(f"${x._1.toString}\t${x._2._1}\t${x._2._2}%.4f")
+                //      println(x._1.toString + "\t" + x._2._1 + "\t" + x._2._2)
+
+                if (x._1.annotationOpt.toList(0).toString().equals(x._2._1)) {
+                  numPositiveExamples = numPositiveExamples + 1
+                }
+                numAllExamples = numAllExamples + 1
+            }
+            println("correctly classified instance # = " + numPositiveExamples + " over " + numAllExamples)
+            println("percentage of correct prediction = " + (numPositiveExamples * 0.1) / (numAllExamples * 0.1))
+        }
       writer.close()
     } catch {
       case e: Exception =>
@@ -289,15 +286,14 @@ object BinaryClassification extends App with Logging {
     }
 
   }
-  
-  /**
-   * get nominal features
-   */
+
+  /** get nominal features
+    */
   def getNominalfeatures(sentenceDisrel: BinarySentenceDisrel,
     root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
     lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]],
     arg1list: List[Int], arg2list: List[Int]) = {
-    
+
     var nominalfeaturesmap: Map[String, String] = collection.mutable.Map.empty
     var nominalfeaturename: String = "null"
     var nominalfeaturevalue: String = "null"
@@ -311,51 +307,51 @@ object BinaryClassification extends App with Logging {
         val generalDependenciesLength1 = getGeneralDependencySets(lengthDependenciesMap.apply(1)) // general-dependency-path = 1
         val generalDependenciesLength2 = getGeneralDependencySets(lengthDependenciesMap.apply(2)) // general-dependency-path = 2
         val generalDependenciesLength3 = getGeneralDependencySets(lengthDependenciesMap.apply(3)) // general-dependency-path = 3
-        
+
         // the specific dependency-path with length=1
         nominalfeaturename = "nominal-spec-deplength1"
-        if(generalDependenciesLength1.size == 0) nominalfeaturevalue = "null"
-        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength1(0).mkString(", ")+")" + "\""
+        if (generalDependenciesLength1.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength1(0).mkString(", ") + ")" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
-        
+
         // the specific dependency-path with length=2
         nominalfeaturename = "nominal-spec-deplength2"
-        if(generalDependenciesLength2.size == 0) nominalfeaturevalue = "null"
-        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength2(0).mkString(", ")+")" + "\""
+        if (generalDependenciesLength2.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength2(0).mkString(", ") + ")" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
-        
+
         // the specific dependency-path with length=3
         nominalfeaturename = "nominal-spec-deplength3"
-        if(generalDependenciesLength3.size == 0) nominalfeaturevalue = "null"
-        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength3(0).mkString(", ")+")" + "\""
+        if (generalDependenciesLength3.size == 0) nominalfeaturevalue = "null"
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength3(0).mkString(", ") + ")" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
       }
-      
+
       // only consider dependency length
       if (configFeature.contains("-length")) {
         // shortest-dependency-path-length
         val shortestpath = Math.min(length1, Math.min(length2, length3))
-        
+
         // shortest-dependency-length == 1? 1 or 0
         nominalfeaturename = "nominal-shortest-deplength1"
-        if(length1 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
-        else nominalfeaturevalue = "\""+sentenceDisrel.disrel + " => 1" + "\"" 
+        if (length1 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
 
         // shortest-dependency-length == 2? 1 or 0
         nominalfeaturename = "nominal-shortest-deplength2"
-        if(length2 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
-        else nominalfeaturevalue = "\""+sentenceDisrel.disrel + " => 1" + "\""
+        if (length2 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
-        
+
         // shortest-dependency-length == 3? 1 or 0
         nominalfeaturename = "nominal-shortest-deplength2"
-        if(length3 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
-        else nominalfeaturevalue = "\""+sentenceDisrel.disrel + " => 1" + "\""
+        if (length3 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
       }
@@ -367,12 +363,12 @@ object BinaryClassification extends App with Logging {
         nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("for").toString + ")\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
-        
+
         nominalfeaturename = "nominal-arg2posof-prep"
         nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("of").toString + ")\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
         updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
-        
+
         nominalfeaturename = "nominal-arg2posto-prep"
         nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + lemmaofprep.apply("to").toString + ")\""
         nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
@@ -381,115 +377,113 @@ object BinaryClassification extends App with Logging {
     } catch {
       case p: Throwable => {
         p.printStackTrace()
-          // specific dependency path
-	      if (configFeature.contains("-detail")) {
-	        // the specific dependency-path with length=1
-	        nominalfeaturename = "nominal-spec-deplength1"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	        
-	        // the specific dependency-path with length=2
-	        nominalfeaturename = "nominal-spec-deplength2"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	        
-	        // the specific dependency-path with length=3
-	        nominalfeaturename = "nominal-spec-deplength3"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	      }
-	      
-	      // only consider dependency length
-	      if (configFeature.contains("-length")) {
-	        // shortest-dependency-length == 1? 1 or 0
-	        nominalfeaturename = "nominal-shortest-deplength1"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	
-	        // shortest-dependency-length == 2? 1 or 0
-	        nominalfeaturename = "nominal-shortest-deplength2"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	        
-	        // shortest-dependency-length == 3? 1 or 0
-	        nominalfeaturename = "nominal-shortest-deplength2"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	      }
-	
-	      // If there exists prep(x, y), what is pos(y)
-	      if (configFeature.contains("-prep")) {
-	        val lemmaofprep = getlemmaofprep(lengthDependenciesMap)
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	        
-	        nominalfeaturename = "nominal-arg2posof-prep"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	        
-	        nominalfeaturename = "nominal-arg2posto-prep"
-	        nominalfeaturesmap.put(nominalfeaturename, "notree")
-	        updateNominalfeaturesmap(nominalfeaturename, "notree")
-	      }
+        // specific dependency path
+        if (configFeature.contains("-detail")) {
+          // the specific dependency-path with length=1
+          nominalfeaturename = "nominal-spec-deplength1"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // the specific dependency-path with length=2
+          nominalfeaturename = "nominal-spec-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // the specific dependency-path with length=3
+          nominalfeaturename = "nominal-spec-deplength3"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
+
+        // only consider dependency length
+        if (configFeature.contains("-length")) {
+          // shortest-dependency-length == 1? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength1"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // shortest-dependency-length == 2? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          // shortest-dependency-length == 3? 1 or 0
+          nominalfeaturename = "nominal-shortest-deplength2"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
+
+        // If there exists prep(x, y), what is pos(y)
+        if (configFeature.contains("-prep")) {
+          val lemmaofprep = getlemmaofprep(lengthDependenciesMap)
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          nominalfeaturename = "nominal-arg2posof-prep"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+
+          nominalfeaturename = "nominal-arg2posto-prep"
+          nominalfeaturesmap.put(nominalfeaturename, "notree")
+          updateNominalfeaturesmap(nominalfeaturename, "notree")
+        }
       }
     }
 
     nominalfeaturesmap
   }
 
-  /**
-   * get numeric features
-   */
+  /** get numeric features
+    */
   def getNumericfeatures(sentenceDisrel: BinarySentenceDisrel,
     root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
     lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]],
     arg1list: List[Int], arg2list: List[Int]) = {
-    
+
     val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet
-    
+
     var numericfeaturesmap: Map[String, Double] = collection.mutable.Map.empty
     disrelList.foreach {
       case disrel => {
         val seedSet = Tokenizer.toKeywords(disrelSeeds(disrel.toLowerCase()).mkString(" ")).toSet
-        var numericfeaturename:String = null
+        var numericfeaturename: String = null
         // number of words in the sentence
-        numericfeaturename = "numeric-senlen-"+disrel
-        numericfeaturesmap.put(numericfeaturename, 
-            Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble)
+        numericfeaturename = "numeric-senlen-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble)
         updateNumericfeaturesHeader(numericfeaturename)
-            
+
         // overlap between sentence-words and lexical-cue-seeds-for-current-disrel
-        numericfeaturename = "numeric-overlap-sen-seeds-"+disrel
+        numericfeaturename = "numeric-overlap-sen-seeds-" + disrel
         numericfeaturesmap.put(numericfeaturename, overlap(sentenceSet, seedSet).toDouble)
         updateNumericfeaturesHeader(numericfeaturename)
-        
+
         // entailment between sentence-words and lexical-cue-seeds-for-current-disrel
-        numericfeaturename = "numeric-entail-sen-seeds-"+disrel
-        numericfeaturesmap.put(numericfeaturename, 
-            if(root==null) 0.0 else wordnetEntailment(sentenceSet.mkString(" "), seedSet.mkString(" ")))
+        numericfeaturename = "numeric-entail-sen-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          if (root == null) 0.0 else wordnetEntailment(sentenceSet.mkString(" "), seedSet.mkString(" ")))
         updateNumericfeaturesHeader(numericfeaturename)
-            
+
         // entailment between root and lexical-cue-seeds-for-current-disrel
-        numericfeaturename = "numeric-entail-root-seeds-"+disrel
-        numericfeaturesmap.put(numericfeaturename, 
-            if(root==null) 0.0 else wordnetEntailment(root.string, seedSet.mkString(" ")))
+        numericfeaturename = "numeric-entail-root-seeds-" + disrel
+        numericfeaturesmap.put(numericfeaturename,
+          if (root == null) 0.0 else wordnetEntailment(root.string, seedSet.mkString(" ")))
         updateNumericfeaturesHeader(numericfeaturename)
-            
+
         // entailment between connection-words and lexical-cue-seeds-for-current-disrel
-        val connectwords: Set[String] = getconnectwords(lengthDependenciesMap)
-        numericfeaturename = "numeric-entail-conn-seeds-"+disrel
-        numericfeaturesmap.put(numericfeaturename, 
-            if(connectwords==null) 0.0 else wordnetEntailment(connectwords.mkString(" "), seedSet.mkString(" ")))
-        updateNumericfeaturesHeader(numericfeaturename)
+//        val connectwords: Set[String] = getconnectwords(lengthDependenciesMap)
+//        numericfeaturename = "numeric-entail-conn-seeds-" + disrel
+//        numericfeaturesmap.put(numericfeaturename,
+//          if (connectwords == null) 0.0 else wordnetEntailment(connectwords.mkString(" "), seedSet.mkString(" ")))
+//        updateNumericfeaturesHeader(numericfeaturename)
       }
     }
 
     numericfeaturesmap
   }
 
-  /**
-   * write data to map(instance, features)
-   */
+  /** write data to map(instance, features)
+    */
   def toMAP(instanceNumericfeaturesmap: Map[BinarySentenceDisrel, Map[String, Double]],
     instanceNominalfeaturesmap: Map[BinarySentenceDisrel, Map[String, String]], mapFile: String) = {
     val writer = new PrintWriter(mapFile)
@@ -502,14 +496,13 @@ object BinaryClassification extends App with Logging {
     writer.close()
   }
 
-  /**
-   * write data to ARFF format
-   */
-  def toARFF(instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]], 
-      instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]], 
-      numericfeaturesHeader: List[String], 
-      nominalfeaturesHeader: Map[String, List[String]], 
-      arffFile: String) = {
+  /** write data to ARFF format
+    */
+  def toARFF(instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]],
+    instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]],
+    numericfeaturesHeader: List[String],
+    nominalfeaturesHeader: Map[String, List[String]],
+    arffFile: String) = {
 
     val writer = new PrintWriter(arffFile)
     // add ARFF header
@@ -536,9 +529,8 @@ object BinaryClassification extends App with Logging {
     writer.close()
   }
 
-  /**
-   * build classifier
-   */
+  /** build classifier
+    */
   def buildClassifier(configclassifiername: String, configarfftrain: String) = {
     logger.info(s"WEKA: reading training data from $configclassifiername")
     val sourceTrain: DataSource = new DataSource(configarfftrain)
@@ -562,7 +554,7 @@ object BinaryClassification extends App with Logging {
       //      case "RandomCommittee" => new RandomCommittee()
       //      case "LibSVM" => new LibSVM()
     }
-    
+
     // data filtering
     val logit_filter = new RemoveUseless()
     logit_filter.setInputFormat(dataTrain)
@@ -570,16 +562,16 @@ object BinaryClassification extends App with Logging {
     val nominaltobinary = new NominalToBinary()
     nominaltobinary.setInputFormat(filteredTrain)
     filteredTrain = Filter.useFilter(filteredTrain, nominaltobinary)
-      
+
     // train the model based on filteredTrain
     logger.info(s"WEKA: training the classifier on filtered datata $configarfftrain")
     classifier.buildClassifier(dataTrain)
     val eval = new Evaluation(dataTrain)
-    
+
     // if isPrintFeatureWeight==true, we print all features combined with the learned weights
-    if(isPrintFeatureWeight) {
+    if (isPrintFeatureWeight && isPrintSparql) {
       logger.info(s"WEKA: writing feature-weights to $configFeatureWeightTrain")
-         
+
       // data filtering
       val logit_filter = new RemoveUseless()
       logit_filter.setInputFormat(dataTrain)
@@ -587,30 +579,63 @@ object BinaryClassification extends App with Logging {
       val nominaltobinary = new NominalToBinary()
       nominaltobinary.setInputFormat(filteredTrain)
       filteredTrain = Filter.useFilter(filteredTrain, nominaltobinary)
-    
-      var featureWeight: Map[String, Double] = collection.mutable.Map.empty
+      
+      // print all features
+ //     var featureWeight: Map[String, Double] = collection.mutable.Map.empty
       val logisticClassifier = classifier.asInstanceOf[Logistic]
       val coeffs = logisticClassifier.coefficients()
-      println("size = " + coeffs.size)
-      println("length = " + coeffs.length)
-      for(i <- 0 to coeffs.length-1) {
-        featureWeight.put(filteredTrain.attribute(i).name(), coeffs.apply(i)(0))
-      }
-      import collection.immutable.ListMap                                          
-   //   val featureWeightSorted = ListMap(featureWeight.toList.sortBy{_._2}:_*)
-      val featureWeightSorted = ListMap(featureWeight.toSeq.sortWith(_._2 > _._2):_*)
+      val featureWeight = for{
+        i <- 0 to coeffs.length-1
+      } yield {filteredTrain.attribute(i).name() -> coeffs.apply(i)(0)}
+      val featureWeightSorted = ListMap(featureWeight.toSeq.sortWith(_._2 > _._2): _*)
       val writer = new PrintWriter(configFeatureWeightTrain)
       featureWeightSorted.foreach(p => writer.println(p._1 + "\t" + p._2))
       writer.close()
-    }
-    
+      
+      // print top features for each relation     
+      val featureWeightGrouped = featureWeight.filter(p=>p._1.startsWith("nominal-spec") && !p._1.contains("=null")).groupBy(p => {
+        p._1.substring(p._1.indexOf("=")+1, p._1.indexOf(" => "))
+      })
+	  val writertop = new PrintWriter(configFeatureWeightTrain+".top")
+      featureWeightGrouped.foreach(p => {
+        ListMap(p._2.toSeq.sortWith(_._2 > _._2): _*).take(10).foreach(q => writertop.println(q._1 + "\t" + q._2))
+      })
+	  writertop.close()
+	  
+      // print sparql features (only considering dependency-features whose weight is greater than 0)
+      val topfeature = for {
+        (group, featureWeight) <- featureWeightGrouped
+        (feature, weight) <- ListMap(featureWeight.toSeq.sortWith(_._2 > _._2): _*).take(10)
+      } yield {
+        feature -> weight
+      }
+      for((x, i) <- topfeature.zipWithIndex) {
+        println(i+" =======> "+x.toString)
+      }
+      val idsparqlList = List() ++ {
+        for((x, i) <- topfeature.zipWithIndex) 
+        	yield {
+        		val feature = x._1
+        		val (disrel, sparql) = parseFeature(feature)
+        		(disrel+"_"+(i+1), sparql)
+        	}
+//        for((x, i) <- featureWeightSorted.filter(p=>p._1.startsWith("nominal-spec") && !p._1.contains("=null") && p._2.toDouble>0).zipWithIndex) 
+//        	yield {
+//        		val feature = x._1
+//        		val (disrel, sparql) = parseFeature(feature)
+//        		(disrel+"_"+(i+1), sparql)
+//        	}
+      }
+      val sparqlwriter = new PrintWriter(configSparql)
+      idsparqlList.foreach(p => sparqlwriter.println(p._1 + "\t" + p._2))
+      sparqlwriter.close()
+	}
+
     (classifier, eval)
   }
-  
-  
-  /**
-   * run 10-folds cross validation
-   */
+
+  /** run 10-folds cross validation
+    */
   def runEvaluation(classifierName: String, arffTrain: String, arffValidation: String,
     isCrossValidation: Boolean, questionSentencesValidationOpt: Option[List[BinarySentenceDisrel]]) = {
     logger.info(s"WEKA: reading training data from $arffTrain")
@@ -670,44 +695,98 @@ object BinaryClassification extends App with Logging {
 
     classProbabilitiesOpt
   }
-  
+
   def updateNumericfeaturesHeader(numericfeaturename: String) = {
-    if(!numericfeaturesHeader.contains(numericfeaturename)) 
-      numericfeaturesHeader = numericfeaturesHeader:::List(numericfeaturename)
+    if (!numericfeaturesHeader.contains(numericfeaturename))
+      numericfeaturesHeader = numericfeaturesHeader ::: List(numericfeaturename)
   }
-  
+
   def updateNominalfeaturesmap(nominalfeaturename: String, nominalfeaturevalue: String) = {
-    if(nominalfeaturesHeader.contains(nominalfeaturename)) {
-     var nominalfeaturevalues:List[String] = nominalfeaturesHeader(nominalfeaturename)
-     if(!nominalfeaturevalues.contains(nominalfeaturevalue))
-       nominalfeaturevalues = nominalfeaturevalues ::: List(nominalfeaturevalue)
-     nominalfeaturesHeader.put(nominalfeaturename, nominalfeaturevalues)
+    if (nominalfeaturesHeader.contains(nominalfeaturename)) {
+      var nominalfeaturevalues: List[String] = nominalfeaturesHeader(nominalfeaturename)
+      if (!nominalfeaturevalues.contains(nominalfeaturevalue))
+        nominalfeaturevalues = nominalfeaturevalues ::: List(nominalfeaturevalue)
+      nominalfeaturesHeader.put(nominalfeaturename, nominalfeaturevalues)
     } else {
       nominalfeaturesHeader.put(nominalfeaturename, List(nominalfeaturevalue))
     }
   }
-  
+
   def getFeatureValueByName(featurenameList: List[String], featuremap: Map[String, Double]) = {
     var featurevalueSeq: Seq[Double] = Seq()
     featurenameList.foreach(featurename => featurevalueSeq :+= featuremap(featurename))
     featurevalueSeq
   }
-  
+
   def getFeatureValueByName(featurenameMap: Map[String, List[String]], featuremap: Map[String, String]) = {
     var featurevalueSeq: Seq[String] = Seq()
-    featurenameMap.foreach(p => featurevalueSeq :+= featuremap(p._1))	// p._1 is featurename
+    featurenameMap.foreach(p => featurevalueSeq :+= featuremap(p._1)) // p._1 is featurename
     featurevalueSeq
   }
-  
+
   def getNumericFeatureValue(featuremap: Map[String, Double]) = {
     var featurevalueSeq: Seq[Double] = Seq()
     featuremap.foreach(p => featurevalueSeq :+= p._2)
     featurevalueSeq
   }
-  
+
   def getNominalFeatureValue(featuremap: Map[String, String]) = {
     var featurevalueSeq: Seq[String] = Seq()
     featuremap.foreach(p => featurevalueSeq :+= p._2)
     featurevalueSeq
+  }
+  
+     /**
+   * Input: nominal-spec-deplength3=purpose => (vmod(_1, _3), pobj(_4, _2), prep(_3, _4))
+   * Output: (disrel_id, sparql) = (purpose_1, """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+      ?_1 dep:pobj ?_3 .
+      ?_4 dep:prep ?_3 .
+      ?_4 dep:nsubj ?_2 .
+    }""")
+   */
+   def parseFeature(featureNameValue: String) = {
+     println("test: \t" + featureNameValue)
+     val disrel = featureNameValue.substring(featureNameValue.indexOf("=")+1, featureNameValue.indexOf(" => "))
+     val depfea = featureNameValue.substring(featureNameValue.indexOf(" => ")+5, featureNameValue.length()-1)
+     val sparql = toSparql(disrel, depfea)
+     (disrel, sparql)
+   }
+   
+   /**
+    * Input: disrel = "purpose"
+    * 		 depfea = "vmod(_1, _3), pobj(_4, _2), prep(_3, _4)"
+    * Output: 
+    * """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+    *  ?_1 dep:pobj ?_3 .
+    *  ?_4 dep:prep ?_3 .
+    *  ?_4 dep:nsubj ?_2 .
+    *  }"""
+    */
+   def toSparql(disrel: String, depfea: String) = {
+     val pathset = toPathSet(depfea, "\\), ")
+     val sparql = "CONSTRUCT { ?_1 rel:" + disrel + " ?_2 . } WHERE { " + 
+    		 ({for(x <- pathset) yield {
+    		   "?" + x._2 + " dep:" + x._1 + " ?" + x._3 + " ."
+    		 }}).mkString(" ") + "}"
+     sparql
+   }
+   
+   /** Convert a String to Set
+    * Input: String = conj(_3, _1), conj(_3, _2), where split = "\\), "
+    * Output: Set[(String, String, String)] = Set((conj, _3, _1), (conj, _3, _2))
+    */
+   
+   def toPathSet(str: String, split: String) = {
+    val strset = Set() ++ {for(x <- str.split(split)) yield {
+      if(!x.endsWith(")")) x + ")"
+      else x
+    }}
+    val pathset = Set() ++ {for(x <- strset) yield {
+      val label = x.substring(0, x.indexOf("("))
+      val source = x.substring(x.indexOf("(") + 1, x.indexOf(", "))
+      val dest = x.substring(x.indexOf(", ") + 2, x.indexOf(")"))
+      (label, source, dest)
+    }}
+    pathset
   }
 }

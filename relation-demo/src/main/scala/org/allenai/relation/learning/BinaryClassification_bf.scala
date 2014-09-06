@@ -44,7 +44,6 @@ object BinaryClassification_bf extends App with Logging {
     ("requirement", List("necessary", "needed")),
     ("condition", List("when", "if")))
 
-
   // training and testing files
   //    case "J48" => new J48()
   //      case "RandomForest" => new RandomForest()
@@ -56,17 +55,17 @@ object BinaryClassification_bf extends App with Logging {
   //      case "JRip" => new JRip()
   var configClassifierName = "Logistic"
   var configFeature = "lexical-prep-detail-length-new"
- // var configFeature = "lexical-version3"
+  // var configFeature = "lexical-version3"
   var configTrainingFile = "data/binary/train_mini.txt"
   //  val configTestingFile = "data/binary/inputDirectory/barrons.txt"
   //  val configTestingLabeledFile = "data/binary/outputDirectory/barrons.txt"
-  val arffDir = "data/binary/"+configClassifierName+"/arff"
-  val mapDir = "data/binary/"+configClassifierName+"/map"
-  var modelDir = "data/binary/"+configClassifierName+"/model"
+  val arffDir = "data/binary/" + configClassifierName + "/arff"
+  val mapDir = "data/binary/" + configClassifierName + "/map"
+  var modelDir = "data/binary/" + configClassifierName + "/model"
   val inputDir = "data/binary/inputDirectory"
-  val outputDir = "data/binary/"+configClassifierName+"/outputDirectory"
-//  val configTestingFile = inputDir+"/108Q_sentence_arg1_arg2_mini_211.txt"
-  val configTestingFile = inputDir+"/barrons.txt"
+  val outputDir = "data/binary/" + configClassifierName + "/outputDirectory"
+  //  val configTestingFile = inputDir+"/108Q_sentence_arg1_arg2_mini_211.txt"
+  val configTestingFile = inputDir + "/barrons.txt"
   val configTestingLabeledFile = outputDir + "/108Q_sentence_arg1_arg2_mini_211-" + configFeature + ".txt"
   var configArffTrain = arffDir + File.separator + "train-" + configFeature + ".arff"
   val configArffTest = arffDir + File.separator + "test-" + configFeature + ".arff"
@@ -75,7 +74,6 @@ object BinaryClassification_bf extends App with Logging {
   var configClassifierModel = modelDir + File.separator + configClassifierName + "-classifier-" + configFeature + ".classifier"
   var configEvalModel = modelDir + File.separator + configClassifierName + "-eval-" + configFeature + ".eval"
 
-  
   // extract training sentences and features
   logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
   val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
@@ -134,7 +132,7 @@ object BinaryClassification_bf extends App with Logging {
 
   // print (write) feature-coefficients
   printFeatureWeight(configClassifierName, configArffTrain)
-  
+
   //Different ways for testing
   // save training-model
   saveModel(configClassifierName, configArffTrain, configClassifierModel, configEvalModel)
@@ -145,12 +143,10 @@ object BinaryClassification_bf extends App with Logging {
 
   System.exit(0)
 
-  
   // ********************************************************************************************************
-  
-  /**
-   * initialize some common values based on different applications
-   */
+
+  /** initialize some common values based on different applications
+    */
   def init(disrelseeds: collection.mutable.Map[String, List[String]], configclassifiername: String,
     configfeature: String, configclassifiermodel: String, configevalmodel: String, configarfftrain: String) = {
     disrelSeeds = disrelseeds
@@ -159,14 +155,14 @@ object BinaryClassification_bf extends App with Logging {
     configClassifierModel = configclassifiermodel
     configEvalModel = configevalmodel
     configArffTrain = configarfftrain
-  }  
-  
+  }
+
   /** Build a classifier (configClassifierName) using training-data (configArffTrain)
     * Save classifier-model to configClassifierModel
     * Save evaluation-model to configEvalModel
     */
-  def saveModel(configclassifiername: String, configarfftrain: String, 
-      configclassifiermodel:String, configevalmodel: String) = {
+  def saveModel(configclassifiername: String, configarfftrain: String,
+    configclassifiermodel: String, configevalmodel: String) = {
     val (classifier, eval) = buildClassifier(configclassifiername, configarfftrain)
     try {
       val oosclas = new ObjectOutputStream(new FileOutputStream(configclassifiermodel))
@@ -252,9 +248,8 @@ object BinaryClassification_bf extends App with Logging {
     (dataTest, sentenceDisrelTest)
   }
 
-  /**
-   * for testing
-   */
+  /** for testing
+    */
   def classify(classifier: Classifier, eval: Evaluation, testInstances: Instances) = {
     logger.info(s"WEKA: evaluating -- computing evaluation summary and matrix for ${testInstances.numInstances} test instances")
     eval.evaluateModel(classifier, testInstances)
@@ -322,10 +317,9 @@ object BinaryClassification_bf extends App with Logging {
     }
 
   }
-  
-  /**
-   * get nominal features
-   */
+
+  /** get nominal features
+    */
   def featuresString(sentenceDisrel: BinarySentenceDisrel,
     root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
     lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]],
@@ -344,11 +338,11 @@ object BinaryClassification_bf extends App with Logging {
         val generalDependenciesLength2 = getGeneralDependencySets(lengthDependenciesMap.apply(2)) // general-dependency-path = 2
         val generalDependenciesLength3 = getGeneralDependencySets(lengthDependenciesMap.apply(3)) // general-dependency-path = 3
         if (generalDependenciesLength1.size == 0) features :+= "null"
-        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength1(0).mkString(", ")+")" + "\""
+        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength1(0).mkString(", ") + ")" + "\""
         if (generalDependenciesLength2.size == 0) features :+= "null"
-        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength2(0).mkString(", ")+")" + "\""
+        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength2(0).mkString(", ") + ")" + "\""
         if (generalDependenciesLength3.size == 0) features :+= "null"
-        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength3(0).mkString(", ")+")" + "\""
+        else features :+= "\"" + sentenceDisrel.disrel + "=>(" + generalDependenciesLength3(0).mkString(", ") + ")" + "\""
       }
 
       if (configFeature.contains("-length")) {
@@ -357,15 +351,15 @@ object BinaryClassification_bf extends App with Logging {
         features :+= shortestpath.toString
 
         // Does exist a path = 1?
-        if (length1 != 0) features :+= "\""+sentenceDisrel.disrel + "=>1" + "\"" 
+        if (length1 != 0) features :+= "\"" + sentenceDisrel.disrel + "=>1" + "\""
         else features :+= "\"" + sentenceDisrel.disrel + "=>0" + "\""
 
         // Does exist a path = 2?
-        if (length2 != 0) features :+= "\""+sentenceDisrel.disrel + "=>1" + "\"" 
+        if (length2 != 0) features :+= "\"" + sentenceDisrel.disrel + "=>1" + "\""
         else features :+= "\"" + sentenceDisrel.disrel + "=>0" + "\""
 
         // Dees exist a path = 3?
-        if (length3 != 0) features :+= "\""+sentenceDisrel.disrel + "=>1" + "\"" 
+        if (length3 != 0) features :+= "\"" + sentenceDisrel.disrel + "=>1" + "\""
         else features :+= "\"" + sentenceDisrel.disrel + "=>0" + "\""
       }
 
@@ -403,9 +397,8 @@ object BinaryClassification_bf extends App with Logging {
     features
   }
 
-  /**
-   * get numeric features
-   */
+  /** get numeric features
+    */
   def featuresDouble(sentenceDisrel: BinarySentenceDisrel,
     root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
     lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]],
@@ -458,9 +451,8 @@ object BinaryClassification_bf extends App with Logging {
     features
   }
 
-  /**
-   * write data to map(instance, features)
-   */
+  /** write data to map(instance, features)
+    */
   def toMAP(sentenceDisrels: List[BinarySentenceDisrel],
     featureDoubleMap: Map[BinarySentenceDisrel, Seq[Double]],
     featureStringMap: Map[BinarySentenceDisrel, Seq[String]],
@@ -475,9 +467,8 @@ object BinaryClassification_bf extends App with Logging {
     writer.close()
   }
 
-  /**
-   * write data to ARFF format
-   */
+  /** write data to ARFF format
+    */
   def toARFF(sentenceDisrels: List[BinarySentenceDisrel],
     featureDoubleMap: Map[BinarySentenceDisrel, Seq[Double]],
     featureStringMap: Map[BinarySentenceDisrel, Seq[String]],
@@ -505,9 +496,8 @@ object BinaryClassification_bf extends App with Logging {
     writer.close()
   }
 
-  /**
-   * build classifier
-   */
+  /** build classifier
+    */
   def buildClassifier(configclassifiername: String, configarfftrain: String) = {
     logger.info(s"WEKA: reading training data from $configclassifiername")
     val sourceTrain: DataSource = new DataSource(configarfftrain)
@@ -531,28 +521,27 @@ object BinaryClassification_bf extends App with Logging {
       //      case "RandomCommittee" => new RandomCommittee()
       //      case "LibSVM" => new LibSVM()
     }
-    
+
     logger.info(s"WEKA: training the classifier on $configarfftrain")
     classifier.buildClassifier(dataTrain)
     val eval = new Evaluation(dataTrain)
     (classifier, eval)
   }
-  
-  /**
-   * print feature-weights
-   */
+
+  /** print feature-weights
+    */
   def printFeatureWeight(configclassifiername: String, configarfftrain: String) = {
-//    val (classifier, eval) = buildClassifier(configclassifiername, configarfftrain)
-//    val tmp = classifier.asInstanceOf[Logistic]
-//    val coeffs = tmp.coefficients()
-    
-//    for(i <- 0 to coeffs.length-1) {
-//      for(j <- 0 to coeffs(0).length-1) {
-//        print("i = " + i + ", j = " + j+ ", coeff = " + coeffs(i)(j) + "\t")
-//      }
-//      println()
-//    }
-    
+    //    val (classifier, eval) = buildClassifier(configclassifiername, configarfftrain)
+    //    val tmp = classifier.asInstanceOf[Logistic]
+    //    val coeffs = tmp.coefficients()
+
+    //    for(i <- 0 to coeffs.length-1) {
+    //      for(j <- 0 to coeffs(0).length-1) {
+    //        print("i = " + i + ", j = " + j+ ", coeff = " + coeffs(i)(j) + "\t")
+    //      }
+    //      println()
+    //    }
+
     logger.info(s"WEKA: compute feature coefficients $configclassifiername");
     logger.info(s"WEKA: reading training data from $configclassifiername")
     val sourceTrain: DataSource = new DataSource(configarfftrain)
@@ -577,32 +566,29 @@ object BinaryClassification_bf extends App with Logging {
       //      case "LibSVM" => new LibSVM()
     }
     // only for logistic regression model
-   
+
     val logit_filter = new RemoveUseless()
     logit_filter.setInputFormat(dataTrain)
     var logit_filtered = Filter.useFilter(dataTrain, logit_filter)
     val nominaltobinary = new NominalToBinary()
     nominaltobinary.setInputFormat(logit_filtered)
     logit_filtered = Filter.useFilter(logit_filtered, nominaltobinary)
-    
+
     logger.info(s"WEKA: training the classifier on filtered datata $configarfftrain")
     classifier.buildClassifier(logit_filtered)
     val eval = new Evaluation(logit_filtered)
-    
-    
-    
+
     val tmp = classifier.asInstanceOf[Logistic]
     val coeffs = tmp.coefficients()
     println("size = " + coeffs.size)
     println("length = " + coeffs.length)
-    for(i <- 0 to coeffs.length-1) {
-      println("i="+i + "\t" + logit_filtered.attribute(i).name + "\t" + coeffs.apply(i)(0))
+    for (i <- 0 to coeffs.length - 1) {
+      println("i=" + i + "\t" + logit_filtered.attribute(i).name + "\t" + coeffs.apply(i)(0))
     }
   }
 
-  /**
-   * run 10-folds cross validation
-   */
+  /** run 10-folds cross validation
+    */
   def runEvaluation(classifierName: String, arffTrain: String, arffValidation: String,
     isCrossValidation: Boolean, questionSentencesValidationOpt: Option[List[BinarySentenceDisrel]]) = {
     logger.info(s"WEKA: reading training data from $arffTrain")

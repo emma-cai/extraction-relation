@@ -70,44 +70,43 @@ trait ApiRoute extends SprayJsonSupport { self: HttpServiceActor with ActorLoggi
 
     case class ArgSubmit(disrel: String, arg1: String, arg2: String)
     implicit val argsubmitFormat = jsonFormat3(ArgSubmit.apply)
-    
+
     case class ClassifierSubmit(sentence: String, arg1: String, arg2: String)
     implicit val classifiersubmit = jsonFormat3(ClassifierSubmit.apply)
-    
-    
+
     val route =
       path("submitdisrel") {
         post {
           entity(as[Submit]) { submit =>
-          	complete{
-          		Future(runInstanceSearch(submit.disrel, submit.kp))
-          	}
+            complete {
+              Future(runInstanceSearch(submit.disrel, submit.kp))
+            }
           }
         }
-      } ~ 
-      path("submitins") {
-        post {
-          entity(as[ArgSubmit]) { argsubmit =>
-          	complete{
-          		Future(runSentenceSearch(argsubmit.disrel, argsubmit.arg1, argsubmit.arg2))
-          	}
+      } ~
+        path("submitins") {
+          post {
+            entity(as[ArgSubmit]) { argsubmit =>
+              complete {
+                Future(runSentenceSearch(argsubmit.disrel, argsubmit.arg1, argsubmit.arg2))
+              }
+            }
+          }
+        } ~
+        path("foo") {
+          complete("bar")
+        } ~
+        path("classifysentence") {
+          post {
+            log.info("got classifysentence request")
+            entity(as[ClassifierSubmit]) { classifiersubmit =>
+              log.info("deserialized classifersubmit")
+              complete {
+                Future(runClassifier(classifiersubmit.sentence, classifiersubmit.arg1, classifiersubmit.arg2))
+              }
+            }
           }
         }
-      } ~ 
-      path("foo") {
-        complete("bar")
-      }~
-      path("classifysentence") {
-        post {
-          log.info("got classifysentence request")
-          entity(as[ClassifierSubmit]) { classifiersubmit =>
-            log.info("deserialized classifersubmit")
-          	complete{
-          		Future(runClassifier(classifiersubmit.sentence, classifiersubmit.arg1, classifiersubmit.arg2))
-          	}
-          }
-        }
-      }
     // format: ON
   }
 }

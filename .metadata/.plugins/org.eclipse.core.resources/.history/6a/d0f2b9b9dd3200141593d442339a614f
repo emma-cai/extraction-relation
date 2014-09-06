@@ -1,0 +1,142 @@
+package org.allenai.relation.learning
+
+import java.io.File
+import org.allenai.relation.util.Polyparser
+import scala.collection.mutable.Map
+import scala.collection.immutable.SortedMap
+import scala.io.Source
+
+object Test {
+  def main(args: Array[String]) = {
+//    def feacoeffList = Map("nominal-spec-deplength3=purpose => (vmod(_1, _3), pobj(_4, _2), prep(_3, _4))"->0.2, 
+//        "nominal-spec-deplength3=example => (test2a(_1, _3), test2b(_4, _2), test2c(_3, _4))"->0.0, 
+//        "nominal-spec-deplength3=requirement => (test3a(_1, _3), test3b(_4, _2), test3c(_3, _4))"->0.12, 
+//        "nominal-spec-deplength3=purpose => (test4a(_1, _3), test4b(_4, _2), test4c(_3, _4))"->0.13, 
+//        "nominal-spec-deplength3=example => (test5a(_1, _3), test5b(_4, _2), test5c(_3, _4))"->(-0.123), 
+//        "nominal-length-deplength3=example => 0"->0.21).toList
+//    
+//    val idsparqlList = List() ++ {for((x, i) <- feacoeffList.filter(p=>p._1.startsWith("nominal-spec") && p._2.toDouble>0).zipWithIndex) 
+//      yield {
+//        val feature = x._1
+//        val (disrel, sparql) = parseFeature(feature)
+//        (disrel+(i+1), sparql)
+//      }}
+//    
+//    val idsparqlMap = Map(idsparqlList: _*)
+//    feacoeffList.foreach(println)
+//    println("======================================================================")
+//    idsparqlList.foreach(println)
+    
+//    val queries = List((1, "a"), (2, "b"), (3, "c"), (4, "d"))
+//    for {
+//      (id, query) <- queries
+//    } {
+//      val subjs = if (id > 2) Seq() ++ (query+"-SB") else Seq()
+//      val objs = if (id > 2) Seq() ++ (query+"ZT") else Seq()
+//      for {
+//        subjConj <- subjs
+//        objConj <- objs
+//      } {
+//        println("subjConj = " + subjConj)
+//        println("objConj = " + objConj)
+//        println()
+//      }
+//    }
+    
+    val lengthDependenciesMap = Map(1 -> List((11, 12, Set("a", "b")), (13, 14, Set("c", "d"))), 
+        2 -> List((21, 22, Set("abc", "opq")), (23, 24, Set("uvw"))))
+    
+//    val lemmaofprep2 = Set() ++ {
+////      for {
+////        p <- lengthDependenciesMap.toMap
+////        (arg1, arg2, edges) <- p._2
+////        edge <- edges
+////      }{
+////        println(p._1+"\t"+arg1+"\t"+arg2+"\t"+edge)
+////      }
+//    }
+        
+    val lemmaofprep1 = Set() ++ {
+      for{
+        (length, dependencies) <- lengthDependenciesMap
+        (arg1, arg2, edges) <- dependencies
+        edge <- edges
+      } yield {
+        if (edge.size>1) 
+          edge
+      }
+    }
+    println(lemmaofprep1)
+    println("================================================================")
+    var lemmaofprep: Set[String] = Set()
+    lengthDependenciesMap.foreach {
+      case (length, dependencies) => {
+        dependencies.foreach {
+          case (arg1, arg2, edges) => {
+            edges.foreach {
+              case edge =>
+                if (edge.size>1) {
+                  lemmaofprep = lemmaofprep ++ Set(edge)
+                }
+              	println(length+"\t"+arg1+"\t"+arg2+"\t"+edge)
+            }
+          }
+        }
+      }
+    }
+   println(lemmaofprep)
+  }
+  
+   /**
+   * Input: nominal-spec-deplength3=purpose => (vmod(_1, _3), pobj(_4, _2), prep(_3, _4))
+   * Output: (disrel_id, sparql) = (purpose_1, """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+      ?_1 dep:pobj ?_3 .
+      ?_4 dep:prep ?_3 .
+      ?_4 dep:nsubj ?_2 .
+    }""")
+   */
+   def parseFeature(featureNameValue: String) = {
+     val disrel = featureNameValue.substring(featureNameValue.indexOf("=")+1, featureNameValue.indexOf(" => "))
+     val depfea = featureNameValue.substring(featureNameValue.indexOf(" => ")+5, featureNameValue.length()-1)
+     val sparql = toSparql(disrel, depfea)
+     (disrel, sparql)
+   }
+   
+   /**
+    * Input: disrel = "purpose"
+    * 		 depfea = "vmod(_1, _3), pobj(_4, _2), prep(_3, _4)"
+    * Output: 
+    * """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
+    *  ?_1 dep:pobj ?_3 .
+    *  ?_4 dep:prep ?_3 .
+    *  ?_4 dep:nsubj ?_2 .
+    *  }"""
+    */
+   def toSparql(disrel: String, depfea: String) = {
+     val pathset = toPathSet(depfea, "\\), ")
+     val sparql = "CONSTRUCT { ?_1 rel:" + disrel + " ?_2 . } WHERE { " + 
+    		 ({for(x <- pathset) yield {
+    		   "?" + x._2 + " dep:" + x._1 + " ?" + x._3 + " ."
+    		 }}).mkString(" ") + "}"
+     sparql
+   }
+   
+   /** Convert a String to Set
+    * Input: String = conj(_3, _1), conj(_3, _2), where split = "\\), "
+    * Output: Set[(String, String, String)] = Set((conj, _3, _1), (conj, _3, _2))
+    */
+   
+   def toPathSet(str: String, split: String) = {
+    val strset = Set() ++ {for(x <- str.split(split)) yield {
+      if(!x.endsWith(")")) x + ")"
+      else x
+    }}
+    val pathset = Set() ++ {for(x <- strset) yield {
+      val label = x.substring(0, x.indexOf("("))
+      val source = x.substring(x.indexOf("(") + 1, x.indexOf(", "))
+      val dest = x.substring(x.indexOf(", ") + 2, x.indexOf(")"))
+      (label, source, dest)
+    }}
+    pathset
+  }
+}

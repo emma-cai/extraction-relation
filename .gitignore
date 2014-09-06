@@ -13,3 +13,4 @@ service/.classpath
 service/.project
 service/.settings/
 /data
+relation-demo/data

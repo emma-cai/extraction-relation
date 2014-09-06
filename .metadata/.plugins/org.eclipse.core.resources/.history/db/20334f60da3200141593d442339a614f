@@ -1,0 +1,58 @@
+package org.allenai.extraction.processors.dependencies
+
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
+import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
+
+import com.tinkerpop.blueprints.Vertex
+import com.tinkerpop.blueprints.impls.sail.SailGraph
+import scala.language.postfixOps
+
+/** processor to match dependency patterns */
+object PolyExtractor extends TurtleProcessor {
+  // SPARQL queries
+  val querysource = io.Source.fromFile("model/dependencypath.fea")
+  val queries = List() ++ { for (x <- querysource.getLines().toList) yield { (x.split("\t").apply(0), x.split("\t").apply(1)) } }
+
+  val txtsource = io.Source.fromFile("ie-target.txt")
+  val indexsentence = (txtsource.getLines().toList.zipWithIndex).toMap.map(_ swap)
+  override def processGraph(graph: SailGraph): Unit = {
+    for {
+      (id, query) <- queries
+      map <- DependencyGraph.executeSparql(graph, query)
+    } {
+      println("using: " + query)
+      val subj = map("subject")
+      val subjstr = "<" + subj.getId().toString() + ">"
+      val obj = map("object")
+      val objstr = "<" + obj.getId().toString() + ">"
+      val sentence = indexsentence.apply(subjstr.substring(subjstr.lastIndexOf("/") + 1, subjstr.lastIndexOf("_")).toInt)
+      val subjquery = "SELECT ?subj_text WHERE { ?subj <http://nlp.stanford.edu/token/text> ?subj_text FILTER (?subj = " + subjstr + ")}"
+      val objquery = "SELECT ?obj_text WHERE { ?obj <http://nlp.stanford.edu/token/text> ?obj_text FILTER (?obj = " + objstr + ")}"
+      val subjtext = DependencyGraph.executeSparql(graph, subjquery).head("subj_text").getId().toString().replace("\"", "")
+      val objtext = DependencyGraph.executeSparql(graph, objquery).head("obj_text").getId().toString().replace("\"", "")
+      val rel = id.substring(0, id.indexOf("_"))
+      println(sentence + "\t" + rel + "\t" + subjtext + "\t" + objtext)
+      val (pre, conf) = Classifier.runPredict(sentence, rel, subjtext, objtext)
+      println("prediction result")
+      println(pre + "\t" + conf)
+
+      //      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, map("subject")) :+ map("subject")
+      //      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, map("object")) :+ map("object")
+      val subjs: Seq[Vertex] = if (conf > 0) DependencyGraph.conjoinedNodes(graph, map("subject")) :+ map("subject") else null
+      val objs: Seq[Vertex] = if (conf > 0) DependencyGraph.conjoinedNodes(graph, map("object")) :+ map("object") else null
+
+      // add relation for each combination of conjuncts
+      for {
+        subjConj <- subjs
+        objConj <- objs
+
+      } {
+        println("subjConj = " + subjConj)
+        println("objConj = " + objConj)
+        if (subjConj != objConj && subjConj != obj && objConj != subj) {
+          graph.addEdge(id, subjConj, objConj, "http://aristo.allenai.org/rel/" + rel)
+        }
+      }
+    }
+  }
+}

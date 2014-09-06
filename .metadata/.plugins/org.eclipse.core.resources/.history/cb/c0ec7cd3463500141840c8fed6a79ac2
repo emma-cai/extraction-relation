@@ -1,0 +1,16 @@
+package org.allenai.extraction.processors.postprocessing
+
+object Zipprocessor {
+  val baseDirectory = "/Users/qingqingcai/Documents/Aristo/internship-project/workspace/extraction-integrate/ermine/src/test/data"
+  val source1 = scala.io.Source.fromFile(baseDirectory + "/barrons-sentences.txt")
+  val source2 = scala.io.Source.fromFile(baseDirectory + "/barrons_sparql.ttl.out.arilog")
+  
+  val lines1 = source1.getLines
+  val lines2 = source2.getLines
+  for ((line1, line2) <- lines1 zip lines2) {
+	sink.write(line1)
+	sink.write("\n")
+	sink.write(line2)
+	sink.write("\n")
+  }
+}

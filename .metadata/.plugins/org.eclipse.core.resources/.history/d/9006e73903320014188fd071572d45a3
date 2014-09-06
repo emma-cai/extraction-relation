@@ -1,0 +1,481 @@
+package org.allenai.extraction.processors.dependencies
+
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
+import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
+import com.tinkerpop.blueprints.Vertex
+import com.tinkerpop.blueprints.impls.sail.SailGraph
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import org.allenai.extraction.processors.NlpstackParser
+import java.io.Writer
+import org.apache.commons.io.output.WriterOutputStream
+import org.allenai.extraction.{ ErmineException, MultiTextProcessor }
+import org.allenai.extraction.rdf.{ DependencyGraph, Token }
+import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.tokenize.defaultTokenizer
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import scala.io.Source
+import java.io.Writer
+import java.io.PrintWriter
+
+
+object PolyExtractorTest3 extends TurtleProcessor with App {
+ val queries: Seq[(String, String)] = Seq(
+    // (id, query) where id is for logging rule matches 
+
+    // Animals need air, water, and food to live and survive.
+    // A student should use a hand lens to get a better look at the spots.
+    // A student uses a hand lens, to get a better look at the spots.
+    ("vmod TO", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:vmod | dep:xcomp ?comp .
+      FILTER NOT EXISTS { ?root dep:cop ?cop . }
+      ?root token:lemma ?lemma .
+      FILTER (!REGEX(?lemma, "^(be|cause)$$"))
+      ?comp dep:aux ?aux .
+      ?aux token:pos "TO" .
+      ?comp token:lemma ?complemma .
+      FILTER (!REGEX(?complemma, "^(help|aid|allow|assist|enable)$$"))
+    }"""),
+    // Our bodies produce sweat, bringing water to our skin.
+    ("vmod VBG", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:vmod ?comp .
+      ?root token:pos ?pos .
+      FILTER REGEX(str(?pos), "^VB")
+      ?comp token:pos "VBG" .
+    }"""),
+    // Oxygen allows the animal to make and use energy
+    // Decomposers help to return nutrients to the food chain.
+    ("help", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?help dep:nsubj | dep:csubj ?root ;
+            dep:vmod | dep:xcomp | dep:ccomp ?comp ;
+            token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(help|aid|allow|assist|enable)$$")
+      FILTER NOT EXISTS { ?parent dep:rcmod ?help . }
+    }"""),
+    // a simple machine that helps move a flag up a flagpole
+    ("help rcmod", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?root dep:rcmod ?help .
+      ?help token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(help|aid|allow|assist|enable)$$")
+      ?help dep:vmod | dep:xcomp | dep:ccomp ?comp ;
+    }"""),
+    // which it needs to survive.
+    ("xcomp", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:xcomp ?comp ;
+            token:lemma ?lemma .
+      FILTER (!REGEX(?lemma, "^(cause|help|aid|allow|assist|enable|necessary|way|need|require)$$"))
+      FILTER NOT EXISTS { ?root dep:nsubj ?nsubj .
+                          ?nsubj token:lemma ?nsubjlemma .
+                          FILTER REGEX(?nsubjlemma, "^(function|purpose)$$") }
+      FILTER NOT EXISTS { ?root dep:nsubjpass ?nsubjpass .
+                          ?root token:text ?text .
+                          FILTER REGEX(?text, "^(needed|required)$$") }
+      ?comp dep:aux ?aux .
+      ?aux token:pos "TO" .
+    }"""),
+    // A hand lens is used to view objects in more detail.
+    ("used", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?used dep:nsubjpass | dep:csubjpass ?root ;
+            dep:auxpass ?auxpass ;
+            token:text "used" ;
+            dep:xcomp ?comp .
+      ?comp dep:aux ?aux .
+      ?aux token:pos "TO" .
+    }"""),
+    // When some animals prepare for the long winters by storing food and going dormant, it is called hibernation.
+    // The white fur of an arctic fox blends in with the snow is called camouflage.
+    ("called", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?called dep:nsubjpass | dep:csubjpass ?root ;
+              dep:auxpass ?auxpass ;
+              token:text "called" ;
+              dep:dobj | dep:tmod ?comp .
+    }"""),
+    // By the removal of heat, freezing changes water from ice to liquid.
+    ("by", """CONSTRUCT { ?root rel:enable ?comp . } WHERE {
+      ?comp dep:prep_by ?root .
+      FILTER NOT EXISTS { ?comp dep:auxpass ?aux . }
+      FILTER NOT EXISTS { ?root token:pos "WDT" . }
+      ?comp token:pos ?pos .
+      FILTER REGEX(str(?pos), "^VB")
+    }"""),
+    // Animals can not make their own food so they must eat to get nutrients.
+    ("so", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:advcl ?comp .
+      ?comp dep:mark ?mark .
+      ?mark token:lemma "so" ;
+    }"""),
+    // Getting enough rest is also an important part of living a healthy life.
+    // Rest is part of a healthy life.
+    ("part", """CONSTRUCT { ?root rel:part ?comp . } WHERE {
+      ?part dep:cop ?cop ;
+            token:lemma "part" ;
+            dep:nsubj | dep:csubj ?root ;
+            dep:prep_of | dep:prepc_of ?comp .
+    }"""),
+    // Decomposers are living things that break down dead organisms
+    // Decomposers are things that break down dead organisms
+    ("hyponym", """CONSTRUCT { ?root rel:hyponym ?comp . } WHERE {
+      ?comp dep:cop ?cop ;
+            dep:nsubj | dep:csubj ?root ;
+            token:lemma ?compLemma .
+      FILTER (!REGEX(str(?compLemma), "^(example|cause|part|way|necessary|responsible|function|purpose)$$"))
+      ?root token:lemma ?rootLemma .
+      FILTER (!REGEX(str(?rootLemma), "^(example|cause|part|way|necessary|responsible|function|purpose)$$"))
+    }"""),
+    // A human's body produces sweat is a way that an organism may adjust to hot temperatures.
+    // temperature is a way to change water from a liquid to a solid.
+    // rusting is a way to change metal.
+    // rusting is a way that metal can change.
+    ("way", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?way dep:cop ?cop .
+      ?way token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(way|example)$$")
+      ?way dep:nsubj | dep:csubj ?root .
+      ?way dep:rcmod | dep:vmod | dep:xcomp ?comp .
+    }"""),
+    // A squirrel storing nuts is preparing for a seasonal change in the environment.
+    ("nsubj vmod", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?subj dep:vmod ?root .
+      ?comp dep:nsubj | dep:csubj ?subj .
+      ?root token:pos "VBG" .
+      FILTER NOT EXISTS { ?comp token:lemma "describe" . }
+    }"""),
+
+    // The heat that produces the smoke is caused by friction.
+    ("caused", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?cause dep:prep_by ?root ;
+             token:lemma "cause" ;
+             dep:nsubjpass | dep:csubjpass ?comp .
+    }"""),
+    // friction causes the heat that produces the smoke.
+    ("cause", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?cause dep:nsubj | dep:csubj ?root ;
+             token:lemma "cause" ;
+             dep:dobj | dep:tmod ?comp .
+      FILTER NOT EXISTS { ?cause dep:vmod ?vmod . }
+    }"""),
+    // Gravity causes the ball to fall to the ground.
+    ("cause", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?cause dep:nsubj | dep:csubj ?root ;
+             token:lemma "cause" ;
+             dep:vmod | dep:ccomp | dep:xcomp ?comp .
+    }"""),
+    // Rest is necessary for humans to maintain good health.
+    ("necessary", """CONSTRUCT { ?root rel:requirement ?comp . } WHERE {
+      ?necessary dep:nsubj | dep:csubj ?root ;
+                 token:lemma "necessary" ;
+                 dep:cop ?cop ;
+                 dep:ccomp | dep:xcomp ?comp .
+    }"""),
+    // Resting is necessary for humans to maintain good health.
+    ("necessary", """CONSTRUCT { ?root rel:requirement ?comp . } WHERE {
+      ?root dep:ccomp ?necessary .
+      ?necessary token:lemma "necessary" ;
+                 dep:cop ?cop ;
+                 dep:ccomp | dep:xcomp ?comp .
+    }"""),
+    // When plants and animals die decomposers help return nutrients to the food chain.
+    ("when", """CONSTRUCT { ?root rel:condition ?comp . } WHERE {
+      ?root dep:advmod ?when .
+      ?when token:lemma "when" .
+      ?root dep:ccomp ?comp .
+    }"""),
+    // mechanical energy is being used when a person pushes a wooden block across the floor.
+    ("when", """CONSTRUCT { ?root rel:condition ?comp . } WHERE {
+      ?root dep:advcl ?comp .
+      ?comp dep:advmod ?when .
+      ?when token:lemma "when" .
+    }"""),
+
+    // If plants and animals die decomposers help return nutrients to the food chain.
+    // If plants die, decomposers return nutrients to the food chain.
+    ("if", """CONSTRUCT { ?root rel:condition ?comp . } WHERE {
+      ?comp dep:advcl ?root .
+      ?root dep:mark ?mark .
+      ?mark token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(if|as)$$")
+    }"""),
+    // An example of a chemical property is rust.
+    // An example of a chemical property is rusting.
+    ("example", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?root dep:nsubj | dep:csubj ?example .
+      ?root dep:cop | dep:aux ?cop .
+      ?example token:lemma "example" .
+      ?example dep:prep_of | dep:prepc_of ?comp .
+    }"""),
+    // Rusting is an example of a chemical property.
+    // Rusting is an example of changing metal.
+    ("example", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?example dep:nsubj | dep:csubj ?root .
+      ?example dep:cop ?cop .
+      ?example token:lemma "example" .
+      ?example dep:prep_of | dep:prepc_of ?comp .
+    }"""),
+    // Physical properties include color, hardness, odor, sound, taste, texture, and size.
+    ("include", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?include dep:nsubj | dep:csubj ?comp .
+      FILTER NOT EXISTS { ?comp token:lemma "example" . }
+      ?include token:lemma "include" .
+      ?include dep:dobj | dep:tmod ?root .
+    }"""),
+    // Examples of physical properties include color, hardness, odor, sound, taste, texture, and size.
+    ("include", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?include dep:nsubj | dep:csubj ?example .
+      ?example token:lemma "example" .
+      ?example dep:prep_of | dep:prepc_of ?comp .
+      ?include token:lemma "include" .
+      ?include dep:dobj | dep:tmod ?root .
+    }"""),
+    // They have physical properties such as color.
+    ("such_as", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?root dep:prep_as ?comp .
+      ?comp dep:mwe ?such .
+      ?such token:lemma "such" .
+    }"""),
+    // Smoking is a major cause of cancer.
+    ("is a cause", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?cause dep:nsubj | dep:csubj ?root .
+      ?cause token:lemma "cause" .
+      ?cause dep:prep_of | dep:prepc_of ?comp .
+    }"""),
+    // This happens because your body is always growing and making new skin cells.
+    // This happens because your body makes new skin cells.
+    ("because", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?comp dep:advcl | dep:ccomp ?root .
+      ?root dep:mark ?mark .
+      ?mark token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(because|since)$$")
+    }"""),
+    // This happens because of new skin cells.
+    ("because_of", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?comp dep:prep_because_of | dep:prepc_because_of ?root .
+    }"""),
+    // Electrical energy results from positive and negative charges.
+    // It results from negative charges.
+    ("results from", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?result dep:nsubj | dep:csubj ?comp .
+      ?result token:lemma "result" .
+      ?result dep:prep_from ?root .
+    }"""),
+    // Parental care results in better chances of the young surviving.
+    // It results in better chances of the young surviving.
+    ("results in", """CONSTRUCT { ?root rel:cause ?comp . } WHERE {
+      ?result dep:nsubj | dep:csubj ?root .
+      ?result token:lemma "result" .
+      ?result dep:prep_in ?comp .
+    }"""),
+    // The mouth helps in digestion and respiration.
+    ("helps in", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?help dep:nsubj | dep:csubj ?root .
+      ?help token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(help|aid|assist)$$")
+      ?help dep:prep_in ?comp .
+    }"""),
+    // The main function of a turtle's shell is to protect the turtle.
+    ("function of", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?be dep:nsubj | dep:csubj ?function .
+      ?function token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(function|purpose)$$")
+      ?function dep:prep_of | dep:prepc_of ?root .
+      ?be dep:xcomp | dep:prep_for ?comp .
+      { ?be dep:xcomp | dep:prepc_for ?comp .
+        ?comp token:lemma ?helplemma .
+        FILTER (!REGEX(?helplemma, "^(help|aid|allow|assist|enable)$$")) }
+      UNION
+      { ?be dep:xcomp | dep:prepc_for ?help .
+        ?help token:lemma ?helplemma .
+        FILTER REGEX(?helplemma, "^(help|aid|allow|assist|enable)$$")
+        ?help dep:ccomp | dep:xcomp ?comp . }
+    }"""),
+    // The purpose of a shell is protection.
+    ("purpose of", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?comp dep:nsubj | dep:csubj ?purpose .
+      ?comp dep:cop ?cop .
+      ?purpose token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(function|purpose)$$")
+      ?purpose dep:prep_of | dep:prepc_of | dep:prep_for ?root .
+    }"""),
+    // to protect the fish is the main function of scales on a fish.
+    ("purpose cop", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?purpose dep:cop ?cop .
+      ?purpose token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(function|purpose)$$")
+      ?purpose dep:prep_of | dep:prepc_of | dep:prep_for ?root .
+      { ?purpose dep:nsubj | dep:csubj ?comp .
+        ?comp token:lemma ?helplemma .
+        FILTER (!REGEX(?helplemma, "^(help|aid|allow|assist|enable)$$")) }
+      UNION
+      { ?purpose dep:nsubj | dep:csubj ?help .
+        ?help token:lemma ?helplemma .
+        FILTER REGEX(?helplemma, "^(help|aid|allow|assist|enable)$$")
+        ?help dep:ccomp | dep:xcomp ?comp . }
+    }"""),
+    // The flower is responsible for reproduction.
+    ("responsible", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?responsible dep:nsubj | dep:csubj ?root .
+      ?responsible token:lemma "responsible" .
+      ?responsible dep:prep_for ?comp .
+    }"""),
+    // Rest is needed for humans to maintain good health.
+    ("needed", """CONSTRUCT { ?root rel:requirement ?comp . } WHERE {
+      ?needed dep:nsubjpass | dep:csubjpass ?root .
+      ?needed token:text ?text .
+      FILTER REGEX(?text, "^(needed|required)$$")
+      ?needed dep:xcomp ?comp .
+    }"""),
+    // The way that humans treat the environment has a large effect on the survival of all living and nonliving things.
+    ("has effect of", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?have dep:dobj | dep:tmod ?effect .
+      ?have token:lemma "have" .
+      ?effect token:lemma "effect" .
+      ?have dep:nsubj | dep:csubj ?root .
+      ?effect dep:prep_of | dep:prepc:of ?comp .
+    }"""),
+    ("has effect", """CONSTRUCT { ?root rel:effect ?effect . } WHERE {
+      ?have dep:dobj | dep:tmod ?effect .
+      ?have token:lemma "have" .
+      ?effect token:lemma "effect" .
+      ?have dep:nsubj | dep:csubj ?root .
+      FILTER NOT EXISTS { ?effect dep:prep_of | dep:prepc_of ?prep . }
+    }"""),
+    // has the purpose of
+    ("has purpose", """CONSTRUCT { ?root rel:purpose ?comp . } WHERE {
+      ?have dep:dobj | dep:tmod ?purpose .
+      ?have token:lemma "have" .
+      ?purpose token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(purpose|function)$$")
+      ?have dep:nsubj | dep:csubj ?root .
+      ?purpose dep:prep_of | dep:prepc_of ?comp .
+    }"""),
+    // in preparation for the long winter, some animals gather food
+    ("in preparation for", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:prep_in ?comp .
+      ?comp token:lemma "preparation" .
+      ?comp dep:prep_for ?prep .
+    }"""),
+    // in order to prepare for the long winter, some animals gather food.
+    ("advcl", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:advcl ?comp .
+      ?comp dep:aux ?aux .
+      ?aux token:pos "TO" .
+    }"""),
+    // by gathering food, some animals prepare for the long winter.
+    ("by VBG", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?comp dep:prepc_by ?root .
+      ?root token:pos "VBG" .
+      FILTER NOT EXISTS { ?root token:text "doing" .
+                          ?root dep:advmod ?so .
+                          ?so token:lemma "so" . }
+    }"""),
+    // We brush our teeth to help keep them strong.
+    ("to help", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:vmod | dep:xcomp | dep:ccomp ?help .
+      ?help token:lemma ?lemma .
+      FILTER REGEX(?lemma, "^(help|aid|allow|assist|enable)$$")
+      ?help dep:vmod | dep:xcomp | dep:ccomp ?comp .
+    }"""),
+    // Animals need to move so that they can find a safe place for shelter.
+    ("so that", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:prepc_so ?comp .
+      ?comp dep:mark ?that .
+      ?that token:lemma "that" .
+    }"""),
+    // humans will shiver and, by doing so, will create more heat.
+    ("and by doing so", """CONSTRUCT { ?root rel:effect ?comp . } WHERE {
+      ?root dep:conj_and ?comp .
+      ?root dep:prepc_by ?doing .
+      ?doing token:text "doing" .
+      ?doing dep:advmod ?so .
+      ?so token:lemma "so" .
+    }"""),
+    // a dog burying a bone describes an organism taking in nutrients.
+    ("describes vmod", """CONSTRUCT { ?root rel:example ?comp . } WHERE {
+      ?describes dep:nsubj | dep:csubj ?root .
+      ?describes token:lemma "describe" .
+      ?describes dep:dobj | dep:tmod ?comp .
+    }"""),
+    // general case to add extra rel to rcmod
+    // LAST PATTERN - run after all other patterns to extend rels to rcmods
+    ("rcmod", """CONSTRUCT { ?root rel:example ?rcmod . } WHERE {
+      ?root rel:hyponym ?comp .
+      ?comp dep:rcmod ?rcmod .
+    }"""),
+
+    // LAST QUERY - add rel:none if no rel edge below root
+    ("dummy", s"""CONSTRUCT { ?root rel:none ?verb . } WHERE {
+      ?root dep:root ?verb .
+      FILTER NOT EXISTS { ?root ( dep:root | ${DependencyGraph.BasicDepsString} )+ ?constit
+                          { ?constit ?rel ?comp . } UNION { ?comp ?rel ?constit . }
+                          FILTER STRSTARTS(str(?rel), "http://aristo.allenai.org/rel/") }
+    }"""))
+    
+    
+  val source = io.Source.fromFile("ie-target.parse")
+  val graph = new MemoryStoreSailGraph()
+  DependencyGraph.fromTurtle(graph, source)
+  DependencyGraph.setNamespaces(graph)
+  processGraph(graph)
+  System.exit(0)
+
+  def relTarget(graph: SailGraph, node: Vertex): Vertex = {
+    // check for VBG vmod on NN node and use instead
+    // avoids repeated pattern in many rules
+    val uri = node.toUri
+    val vmodQuery: String = s"""SELECT ?vmod WHERE {
+      <$uri> dep:vmod ?vmod .
+      ?vmod token:pos "VBG" . 
+      <$uri> token:pos ?pos .
+      FILTER STRSTARTS(?pos, "NN") }"""
+    DependencyGraph.executeSparql(graph, vmodQuery).headOption match {
+      case Some(map) => map("vmod")
+      case None => node
+    }
+  }
+
+  override def processGraph(graph: SailGraph): Unit = {
+    // match patterns
+    for {
+      (id, query) <- queries
+      map <- DependencyGraph.executeSparql(graph, query)
+    } {
+      val subj: Vertex = relTarget(graph, map("subject"))
+      println("subj = " + subj.toString())
+      val subjworeltarget: Vertex = map("subject")
+      println("subjwithoutreltarget = " + subjworeltarget.toString())
+      
+      val subjs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, subj) :+ subj
+      println("subjs = " + subjs.toString)
+      
+      val pred: Vertex = map("predicate")
+      println("pred = " + pred.toString())
+      
+      val predurl = pred.toUri
+      println("predurl = " + predurl)
+      
+      val predString: String = pred.toIdString
+      println("predString = " + predString) 
+      
+      val obj: Vertex = relTarget(graph, map("object"))
+      println("obj = " + obj.toString())
+      
+      val objs: Seq[Vertex] = DependencyGraph.conjoinedNodes(graph, obj) :+ obj
+      println("objs = " + objs.toString)
+      
+      // add relation for each combination of conjuncts
+      for {
+        subjConj <- subjs
+        objConj <- objs
+        
+      } {
+        println("subjConj = " + subjConj)
+        println("objConj = " + objConj)
+        if (subjConj != objConj && subjConj != obj && objConj != subj) {
+          graph.addEdge(id, subjConj, objConj, pred.toUri)
+        }
+      }
+    }
+  }
+
+}

@@ -399,15 +399,14 @@ object Polyparser {
       lexfeaslist_updated = lexfeaslist
     return lexfeaslist_updated
   }
-  
-  /**
-   * In all edges returned by Polyparser, find all edges with a specific name
-   */
+
+  /** In all edges returned by Polyparser, find all edges with a specific name
+    */
   def findEdgeWithName(edges: Set[Myedge], name: String): Set[Myedge] = {
     var edgeswithname: Set[Myedge] = Set()
     edges.foreach {
       case edge => {
-        if(edge.label.equals(name))
+        if (edge.label.equals(name))
           edgeswithname = edgeswithname + edge
       }
     }

@@ -13,158 +13,155 @@ import weka.classifiers.Classifier
 
 object RunClassification extends App with Logging {
   val isprintfeatureweight = true
+  val isprintsparql = true
   val configclassifiername = "Logistic"
-  val configfeature = "lexical-detail-length-new"
+  val configfeature = "lexical-detail-extraction"
   val directory = "data/binary-argument"
   val configtrainingfile = directory + File.separator + "train.txt"
   val configtestingfile = directory + File.separator + "inputDirectory/108Q_Arg.txt"
-  
   val disrelseeds = collection.mutable.Map(
-    ("purpose", List("purpose", "used to", "responsible")),
-    ("cause", List("caused", "so that", "because", "result in", "effect on")),
-    ("effect", List("caused", "so that", "because", "result in", "effect on")),
-    /**("function", List("used to")),**/
-    ("example", List("an example of", "called", "a way to", "include", "such as")),
-    ("enable", List("to help", "by")),
-    ("part", List("part of")),
-    ("requirement", List("necessary", "needed")),
-    ("condition", List("when", "if")))  
+      ("purpose", List("purpose", "used to", "responsible")),
+      ("cause", List("caused", "so that", "because", "result in", "effect on")),
+      ("example", List("an example of", "called", "a way to", "include", "such as")),
+      ("enable", List("to help", "by")),
+      ("requirement", List("necessary", "needed")) /**("part", List("part of")),**/ /**("effect", List("caused", "so that", "because", "result in", "effect on")),**/ /**("function", List("used to")),**/ /**("condition", List("when", "if"))**/ )
   val disrellist = List("purpose", "cause", "example", "enable", "requirement")
-  
-  run_pred()
+
+  run_eval()
   System.exit(0)
-  
+
   // ********************************************************************************************************
-  
+
   def run_pred() = {
-    init(directory, configclassifiername, configfeature, 
-        configtrainingfile, configtestingfile, isprintfeatureweight, 
-        disrelseeds, disrellist)  
-        
-     // extract training sentences and features
-	  logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
-	  val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
-	  logger.info("Computing training sentence features")
-	  var instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
-	  var instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
-	
-	  // read training data
-	  sentenceDisrelTrain.foreach {
-	    sentenceDisrel =>
-	      {
-	        val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
-	        val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
-	        val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
-	        val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
-	        instanceNumericfeaturesmapTrain.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	        instanceNominalfeaturesmapTrain.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	      }
-	  }
-	
-	  // extract testing sentences and features
-	  logger.info(s"Extracting testing sentences+disrel from $configTestingFile")
-	  val sentenceDisrelTest = BinarySentenceDisrel.fromTrainingFile(configTestingFile, 1)
-	  logger.info("Computing testing sentence features")
-	  var instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
-	  var instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
-	  sentenceDisrelTest.foreach {
-	    sentenceDisrel =>
-	      {
-	        val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
-	        val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
-	        val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
-	        val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
-	        instanceNumericfeaturesmapTest.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	        instanceNominalfeaturesmapTest.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	      }
-	  }
-	  
-	  // write training arff
-	  logger.info(s"Writing training ARFF to file $configArffTrain")
-	  toARFF(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, 
-	      numericfeaturesHeader, nominalfeaturesHeader, configArffTrain)
-	  toMAP(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, configMapTrain)
-	
-	  // save training-model
-	  saveModel(configClassifierName, configArffTrain, configClassifierModel, configEvalModel)
-	  
-	  // run labeling
-	  runLabelingLoad(configClassifierModel, configEvalModel, sentenceDisrelTest, 
-	      instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest, 
-	      numericfeaturesHeader, nominalfeaturesHeader)
-	  val (classifier, eval) = loadModel()
-	  predict(classifier, eval,  configArffTest, configTestingLabeledFile, sentenceDisrelTest, 
-	  		instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest, 
-	  		numericfeaturesHeader, nominalfeaturesHeader)
+    init(directory, configclassifiername, configfeature,
+      configtrainingfile, configtestingfile, 
+      isprintfeatureweight, isprintsparql, 
+      disrelseeds, disrellist)
+
+    // extract training sentences and features
+    logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
+    val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
+    logger.info("Computing training sentence features")
+    var instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
+    var instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
+
+    // read training data
+    sentenceDisrelTrain.foreach {
+      sentenceDisrel =>
+        {
+          val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+          val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
+          val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
+          val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
+          instanceNumericfeaturesmapTrain.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+          instanceNominalfeaturesmapTrain.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+        }
+    }
+
+    // extract testing sentences and features
+    logger.info(s"Extracting testing sentences+disrel from $configTestingFile")
+    val sentenceDisrelTest = BinarySentenceDisrel.fromTrainingFile(configTestingFile, 1)
+    logger.info("Computing testing sentence features")
+    var instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
+    var instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
+    sentenceDisrelTest.foreach {
+      sentenceDisrel =>
+        {
+          val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+          val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
+          val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
+          val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
+          instanceNumericfeaturesmapTest.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+          instanceNominalfeaturesmapTest.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+        }
+    }
+
+    // write training arff
+    logger.info(s"Writing training ARFF to file $configArffTrain")
+    toARFF(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain,
+      numericfeaturesHeader, nominalfeaturesHeader, configArffTrain)
+    toMAP(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, configMapTrain)
+
+    // save training-model
+    saveModel(configClassifierName, configArffTrain, configClassifierModel, configEvalModel)
+
+    // run labeling
+    runLabelingLoad(configClassifierModel, configEvalModel, sentenceDisrelTest,
+      instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest,
+      numericfeaturesHeader, nominalfeaturesHeader)
+    val (classifier, eval) = loadModel()
+    predict(classifier, eval, configArffTest, configTestingLabeledFile, sentenceDisrelTest,
+      instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest,
+      numericfeaturesHeader, nominalfeaturesHeader)
   }
-  
+
   def run_eval() = {
-    init(directory, configclassifiername, configfeature, 
-        configtrainingfile, configtestingfile, isprintfeatureweight, 
-        disrelseeds, disrellist)  
-        
-     // extract training sentences and features
-	  logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
-	  val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
-	  logger.info("Computing training sentence features")
-	  var instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
-	  var instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
-	
-	  // read training data
-	  sentenceDisrelTrain.foreach {
-	    sentenceDisrel =>
-	      {
-	        val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
-	        val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
-	        val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
-	        val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
-	        instanceNumericfeaturesmapTrain.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	        instanceNominalfeaturesmapTrain.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	      }
-	  }
-	
-	  // extract testing sentences and features
-	  logger.info(s"Extracting testing sentences+disrel from $configTestingFile")
-	  val sentenceDisrelTest = BinarySentenceDisrel.fromTrainingFile(configTestingFile, 1)
-	  logger.info("Computing testing sentence features")
-	  var instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
-	  var instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
-	  sentenceDisrelTest.foreach {
-	    sentenceDisrel =>
-	      {
-	        val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
-	        val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
-	        val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
-	        val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
-	        instanceNumericfeaturesmapTest.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	        instanceNominalfeaturesmapTest.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
-	      }
-	  }
-	  
-	  // write training arff
-	  logger.info(s"Writing training ARFF to file $configArffTrain")
-	  toARFF(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, 
-	      numericfeaturesHeader, nominalfeaturesHeader, configArffTrain)
-	  toMAP(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, configMapTrain)
-	
-	  //Different ways for testing
-	  // save training-model
-	  saveModel(configClassifierName, configArffTrain, configClassifierModel, configEvalModel)
-	  runLabelingLoad(configClassifierModel, configEvalModel, sentenceDisrelTest, 
-	      instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest, 
-	      numericfeaturesHeader, nominalfeaturesHeader)
-	
-	  //  // runEvaluation(configClassifierName, configArffTrain, configArffTrain, true, Some(List()))
-	  //  runLabelingRetrain(configClassifierName, configArffTrain, featureDoubleMapTest, featureStringMapTest)
+    init(directory, configclassifiername, configfeature,
+      configtrainingfile, configtestingfile, 
+      isprintfeatureweight, isprintsparql, 
+      disrelseeds, disrellist)
+
+    // extract training sentences and features
+    logger.info(s"Extracting training sentences+disrel from $configTrainingFile")
+    val sentenceDisrelTrain = BinarySentenceDisrel.fromTrainingFile(configTrainingFile, 1)
+    logger.info("Computing training sentence features")
+    var instanceNumericfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
+    var instanceNominalfeaturesmapTrain: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
+
+    // read training data
+    sentenceDisrelTrain.foreach {
+      sentenceDisrel =>
+        {
+          val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+          val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
+          val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
+          val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
+          instanceNumericfeaturesmapTrain.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+          instanceNominalfeaturesmapTrain.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+        }
+    }
+
+//    // extract testing sentences and features
+//    logger.info(s"Extracting testing sentences+disrel from $configTestingFile")
+//    val sentenceDisrelTest = BinarySentenceDisrel.fromTrainingFile(configTestingFile, 1)
+//    logger.info("Computing testing sentence features")
+//    var instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]] = collection.mutable.Map.empty
+//    var instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]] = collection.mutable.Map.empty
+//    sentenceDisrelTest.foreach {
+//      sentenceDisrel =>
+//        {
+//          val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+//          val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
+//          val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
+//          val lengthDependenciesMap = getLengthDependencies(root, tree, arg1list, arg2list)
+//          instanceNumericfeaturesmapTest.put(sentenceDisrel, getNumericfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+//          instanceNominalfeaturesmapTest.put(sentenceDisrel, getNominalfeatures(sentenceDisrel, root, tree, lengthDependenciesMap, arg1list, arg2list))
+//        }
+//    }
+
+    // write training arff
+    logger.info(s"Writing training ARFF to file $configArffTrain")
+    toARFF(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain,
+      numericfeaturesHeader, nominalfeaturesHeader, configArffTrain)
+    toMAP(instanceNumericfeaturesmapTrain, instanceNominalfeaturesmapTrain, configMapTrain)
+
+    //Different ways for testing
+    // save training-model
+    saveModel(configClassifierName, configArffTrain, configClassifierModel, configEvalModel)
+//    runLabelingLoad(configClassifierModel, configEvalModel, sentenceDisrelTest,
+//      instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest,
+//      numericfeaturesHeader, nominalfeaturesHeader)
+//  runLabelingRetrain(configClassifierName, configArffTrain, featureDoubleMapTest, featureStringMapTest)
+    
+    runEvaluation(configClassifierName, configArffTrain, configArffTrain, true, Some(List()))
   }
-  
-  /**
-   * Only output the positive prediction
-   */
-  def predict(classifier: Classifier, eval: Evaluation, 
-    arffFile: String, outputFile: String, sentencedisreltest: List[BinarySentenceDisrel], 
-    instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]], 
-    instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]], 
+
+  /** Only output the positive prediction
+    */
+  def predict(classifier: Classifier, eval: Evaluation,
+    arffFile: String, outputFile: String, sentencedisreltest: List[BinarySentenceDisrel],
+    instanceNumericfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, Double]],
+    instanceNominalfeaturesmapTest: Map[BinarySentenceDisrel, Map[String, String]],
     numericfeaturesHeader: List[String], nominalfeaturesHeader: Map[String, List[String]]) = {
     try {
       logger.info(s"Processing ${configTestingFile}")
@@ -172,25 +169,25 @@ object RunClassification extends App with Logging {
       writer.println(BinarySentenceDisrel.header)
       var numPositiveExamples: Int = 0
       var numAllExamples: Int = 0
-      
-      toInstances(arffFile, sentencedisreltest, 
-          instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest, 
-          numericfeaturesHeader, nominalfeaturesHeader) match {
-        case (testInstances, testSentenceDisrel) =>
 
-          // compute prediction and confidence value
-          val classProbabilities = classify(classifier, eval, testInstances)	//classProbabilities=(preValue, preConfidence)
-          
-          //  classProbabilities.foreach(p => println(p._1 + "\t" + p._2))
-          val testSentenceDisrelWithClassProb = (testSentenceDisrel zip classProbabilities)
-          
-          testSentenceDisrelWithClassProb.foreach {
-            x =>
-              if(x._2._1.equals("1")) {
-              	writer.println(f"${x._1.toString}\t${x._2._1}\t${x._2._2}%.4f")
-              }
-          }
-      }
+      toInstances(arffFile, sentencedisreltest,
+        instanceNumericfeaturesmapTest, instanceNominalfeaturesmapTest,
+        numericfeaturesHeader, nominalfeaturesHeader) match {
+          case (testInstances, testSentenceDisrel) =>
+
+            // compute prediction and confidence value
+            val classProbabilities = classify(classifier, eval, testInstances) //classProbabilities=(preValue, preConfidence)
+
+            //  classProbabilities.foreach(p => println(p._1 + "\t" + p._2))
+            val testSentenceDisrelWithClassProb = (testSentenceDisrel zip classProbabilities)
+
+            testSentenceDisrelWithClassProb.foreach {
+              x =>
+                if (x._2._1.equals("1")) {
+                  writer.println(f"${x._1.toString}\t${x._2._1}\t${x._2._2}%.4f")
+                }
+            }
+        }
       writer.close()
     } catch {
       case e: Exception =>

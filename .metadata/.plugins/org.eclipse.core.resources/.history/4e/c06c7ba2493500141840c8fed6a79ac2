@@ -1,0 +1,27 @@
+package org.allenai.extraction.processors.postprocessing
+
+import java.io.PrintWriter
+
+object Zipprocessor extends App {
+  val baseDirectory = "/Users/qingqingcai/Documents/Aristo/internship-project/workspace/extraction-integrate/ermine/src/test/data"
+  val source1 = scala.io.Source.fromFile(baseDirectory + "/barrons-sentences.txt")
+  val source2 = scala.io.Source.fromFile(baseDirectory + "/barrons_sparql.ttl.out.arilog")
+  val outputFile = ""
+  val idsenmap = ((Stream from 1) zip source1.getLines().toList).toMap
+  val lines2 = source2.getLines.toList
+  val writer = new PrintWriter(outputFile, "utf-8")
+  
+  for(i <- 0 until lines2.length by 2) {
+    val pretty = lines2(i)
+    val rule = lines2(i+1)
+    
+    val ruleid = rule.substring(0, rule.indexOf("::"))
+    val senid = getsenid(rule)
+    val sen = idsenmap(senid)
+    
+    writer.println("english(" + ruleid + ", \"" + sen + "\").")
+  }
+  
+  System.exit(0)
+  
+}

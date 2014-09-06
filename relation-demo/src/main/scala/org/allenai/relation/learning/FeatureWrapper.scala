@@ -172,11 +172,4 @@ object FeatureWrapper {
     }
     connectwords
   }
-  //
-  //  //GregJ
-  //  def word2vecEntailment(text: String, hypothesis: String) = ???
-  //
-  //  //Ellie
-  //  def ppdbEntailment(text: String, hypothesis: String) = ???
-
 }
