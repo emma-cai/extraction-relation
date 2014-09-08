@@ -5,8 +5,8 @@ import java.io.PrintWriter
 object Zipprocessor extends App {
   val baseDirectory = "/Users/qingqingcai/Documents/Aristo/internship-project/workspace/extraction-integrate/ermine/src/test/data"
   val source1 = scala.io.Source.fromFile(baseDirectory + "/barrons-sentences.txt")
-  val source2 = scala.io.Source.fromFile(baseDirectory + "/sparql/barrons_sparql.ttl.out.arilogNoEnglish")
-  val outputFile = baseDirectory + "/sparql/barrons_sparql.ttl.out.arilog"
+  val source2 = scala.io.Source.fromFile(baseDirectory + "/barrons.ttl.out.arilogNoEnglish")
+  val outputFile = baseDirectory + "/barrons.ttl.out.arilog"
   val idsenmap = ((Stream from 1) zip source1.getLines().toList).toMap
   val lines2 = source2.getLines.toList
   val writer = new PrintWriter(outputFile, "utf-8")

@@ -16,8 +16,8 @@ object RunClassification extends App with Logging {
   val isprintsparql = true
   val configclassifiername = "Logistic"
   val configfeature = "lexical-detail-extraction"
-  val directory = "data/binary-argument"
-  val configtrainingfile = directory + File.separator + "train.txt"
+  val directory = "data/learning/classifier/binary-argument"
+  val configtrainingfile = "data/learning/train/training.txt"
   val configtestingfile = directory + File.separator + "inputDirectory/108Q_Arg.txt"
   val disrelseeds = collection.mutable.Map(
       ("purpose", List("purpose", "used to", "responsible")),

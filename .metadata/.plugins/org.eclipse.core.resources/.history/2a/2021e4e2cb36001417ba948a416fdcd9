@@ -1,0 +1,64 @@
+package org.allenai.relation.learning
+
+import java.io.File
+import org.allenai.relation.util.Polyparser
+import scala.collection.mutable.Map
+import scala.collection.immutable.SortedMap
+import scala.io.Source
+import scala.collection.immutable.ListMap
+
+object Test {
+  def main(args: Array[String]) = {
+//    val sentence = "This memory is used as temporary storage to hold programs as they are running and it called Random Access Memory or RAM."
+//    val arg1str = "memory"
+//    val arg2str = "is used as storage"
+//    val (root, tree) = Polyparser.processText(sentence)
+//    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1str, tree.edges.toList)
+//    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2str, tree.edges.toList)
+//    
+//    println("vertices: ");
+//    tree.vertices.foreach(p => println(p))
+//    println()
+//    
+//    println("edges: ")
+//    tree.edges.foreach(p => println(p))
+//    println()
+//    
+//    println("arg1list = " + arg1list)
+//    println("arg2list = " + arg2list)
+//    println()
+//    
+//    println("dependency paths = 3")
+//    val res3 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 3)
+//    res3.foreach(p => println(p))
+//    println()
+//    
+//    println("dependency paths = 2")
+//    val res2 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 2)
+//    res2.foreach(p => println(p))
+//    println()
+//    
+//    println("dependency paths = 1")
+//    val res1 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 1)
+//    res1.foreach(p => println(p))
+    
+      import scala.collection.mutable.Map
+      import scala.collection.mutable.Set
+	  val arg1_arg2_paths3set_List:List[(Int, Int, Set[String])] = List((1, 2, Set("a", "b", "c")), (3, 4, Set("e", "f")))
+      val disrel = "key"
+      var map: Map[String, Int] = collection.mutable.Map.empty[String, Int]
+      for {
+    	(arg1, arg2, paths3set) <- arg1_arg2_paths3set_List.toList    	
+      } {
+        val dependency = disrel + " => (" + paths3set.mkString(", ") + ")"
+        map = map.updated(dependency, map.get(dependency).getOrElse(0)+1)
+      }
+      
+      map.foreach(p => println(p))
+  }
+  
+  def updateMap(map: Map[String, Int], key: String) = {
+    val newmap = map.updated(key, map.get(key).getOrElse(0)+1)
+    newmap
+  }
+}

@@ -9,74 +9,76 @@ import scala.collection.immutable.ListMap
 
 object Test {
   def main(args: Array[String]) = {
-    // test zipwith
-    val list1 = List("1", "2", "3", "4")
-    val list2 = List("a", "b", "c", "d")
-    val list3 = List("I", "II", "III", "V")
-    println(list1 zip list2)
-    println(list1 zip list2 zip list3)
+//    val sentence = "Mechanical energy exerted by one object can push or pull another object."
+//    val arg1str = "Mechanical energy"
+//    val arg2str = "push or pull another object"
     
+//    val sentence = "Sound waves and light energy are similar because they move energy from one place to another."
+//    val arg1str = "Sound waves"
+//    val arg2str = "move energy"
+//    val (root, tree) = Polyparser.processText(sentence)
+//    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1str, tree.edges.toList)
+//    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2str, tree.edges.toList)
+//    
+//    println("vertices: ");
+//    tree.vertices.foreach(p => println(p))
+//    println()
+//    
+//    println("edges: ")
+//    tree.edges.foreach(p => println(p))
+//    println()
+//    
+//    println("arg1list = " + arg1list)
+//    println("arg2list = " + arg2list)
+//    println()
+//    
+//    println("dependency paths = 4")
+//    val res4 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 4).toSet
+//    res4.foreach(p => println(p))
+//    println()
+//    
+//    println("dependency paths = 3")
+//    val res3 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 3)
+//    res3.foreach(p => println(p))
+//    println()
+//    
+//    println("dependency paths = 2")
+//    val res2 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 2)
+//    res2.foreach(p => println(p))
+//    println()
+//    
+//    println("dependency paths = 1")
+//    val res1 = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 1)
+//    res1.foreach(p => println(p))
     
-    // test groupby in map
-//	val map = Map("1_1"->0.01, "2_1"->0.1, "3_2"->0.9, "4_3"->0.12, "5_2"->0.21, "6_2"->0.001)
-//	val mapgroup = map.groupBy(p => p._1.substring(p._1.indexOf("_")+1, p._1.length()))
-//	println(map)
-//	println(mapgroup)
-//	mapgroup.foreach(p => println(ListMap(p._2.toSeq.sortWith(_._2 > _._2): _*)))
-//	println("========================")
-//	mapgroup.foreach(p => println(ListMap(p._2.toSeq.sortWith(_._2 > _._2): _*).take(2)))
+	  var map: Map[String, Map[String, Int]] = Map("a" -> Map("b" -> 1, "c"->2), 
+	      ("b" -> Map("c" -> 1)))
+	  map.foreach(p => println(p))
+	  
+	  println("add b to a")
+	  val map1 = updateMap(map, "a", "b")
+	  map1.foreach(p => println(p))
+	  
+	  println("add d to b")
+	  val map2 = updateMap(map, "b", "d")
+	  map2.foreach(p => println(p))
+	  
+	  println("add c to newmap")
+	  val map3 = updateMap(map, "c", "m")
+	  map3.foreach(p => println(p))
   }
   
-   /**
-   * Input: nominal-spec-deplength3=purpose => (vmod(_1, _3), pobj(_4, _2), prep(_3, _4))
-   * Output: (disrel_id, sparql) = (purpose_1, """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
-      ?_1 dep:pobj ?_3 .
-      ?_4 dep:prep ?_3 .
-      ?_4 dep:nsubj ?_2 .
-    }""")
-   */
-   def parseFeature(featureNameValue: String) = {
-     val disrel = featureNameValue.substring(featureNameValue.indexOf("=")+1, featureNameValue.indexOf(" => "))
-     val depfea = featureNameValue.substring(featureNameValue.indexOf(" => ")+5, featureNameValue.length()-1)
-     val sparql = toSparql(disrel, depfea)
-     (disrel, sparql)
-   }
-   
-   /**
-    * Input: disrel = "purpose"
-    * 		 depfea = "vmod(_1, _3), pobj(_4, _2), prep(_3, _4)"
-    * Output: 
-    * """CONSTRUCT { ?_1 rel:purpose ?_2 . } WHERE {
-    *  ?_1 dep:pobj ?_3 .
-    *  ?_4 dep:prep ?_3 .
-    *  ?_4 dep:nsubj ?_2 .
-    *  }"""
-    */
-   def toSparql(disrel: String, depfea: String) = {
-     val pathset = toPathSet(depfea, "\\), ")
-     val sparql = "CONSTRUCT { ?_1 rel:" + disrel + " ?_2 . } WHERE { " + 
-    		 ({for(x <- pathset) yield {
-    		   "?" + x._2 + " dep:" + x._1 + " ?" + x._3 + " ."
-    		 }}).mkString(" ") + "}"
-     sparql
-   }
-   
-   /** Convert a String to Set
-    * Input: String = conj(_3, _1), conj(_3, _2), where split = "\\), "
-    * Output: Set[(String, String, String)] = Set((conj, _3, _1), (conj, _3, _2))
-    */
-   
-   def toPathSet(str: String, split: String) = {
-    val strset = Set() ++ {for(x <- str.split(split)) yield {
-      if(!x.endsWith(")")) x + ")"
-      else x
-    }}
-    val pathset = Set() ++ {for(x <- strset) yield {
-      val label = x.substring(0, x.indexOf("("))
-      val source = x.substring(x.indexOf("(") + 1, x.indexOf(", "))
-      val dest = x.substring(x.indexOf(", ") + 2, x.indexOf(")"))
-      (label, source, dest)
-    }}
-    pathset
+  def updateMap(map: Map[String, Map[String, Int]], key1: String, key2: String) = {
+    var newmap:Map[String, Map[String, Int]] = map
+    if(newmap.contains(key1)) {
+      if(newmap(key1).contains(key2)) {
+        newmap(key1)(key2) = newmap(key1)(key2) + 1
+      } else {
+        newmap(key1).put(key2, 1)
+      }
+    } else {
+      newmap.put(key1, Map(key2 -> 1))
+    }
+    newmap
   }
 }

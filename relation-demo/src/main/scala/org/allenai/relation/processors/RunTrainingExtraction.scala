@@ -6,14 +6,14 @@ import scala.collection.mutable.Map
 
 object RunTrainingExtraction {
   private val disrel_seeds = collection.immutable.HashMap(
-    ("PURPOSE", List("purpose", "used to", "responsible")),
-    ("CAUSE", List("caused", "so that", "because", "result in", "effect on")),
-    /**("FUNCTION", List("used to")),**/
-    ("EXAMPLE", List("an example of", "called", "a way to", "include", "such as")),
-    ("ENABLE", List("to help", "by")),
-    ("PART", List("part of")),
+    ("PURPOSE", List("purpose", "be used to", "responsible")),
+    ("CAUSE", List("caused by", "so that", "because", "result in", "effect on")),
+    ("EXAMPLE", List("an example of", "called", "include", "such as")),
     ("REQUIREMENT", List("necessary", "needed")),
-    ("CONDITION", List("when", "if")))
+    ("ENABLE", List("to help", "enable"))/**,
+    ("FUNCTION", List("used to")),
+    ("PART", List("part of")),
+    ("CONDITION", List("when", "if"))**/)
 
   private val stopwordsList = List("is", "am", "are", "was", "were", "be", "has", "have", "had", "the",
     "a", "an", "having", "being", "do", "did", "done", "doing", "does", "your", "you", "me", "my", "mine", "me",
@@ -29,9 +29,12 @@ object RunTrainingExtraction {
   private val minimumInCK12ForArg2 = 10
 
   private val ReverbIndexPath = "/Users/qingqingcai/Documents/Data/Reverb/Index"
-  private val disrel_sen_dir = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/disrel_sens_v3"
-  private val entity_countInCK12_path = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/entity_counts_ck12/entity_countsInCK12.txt"
-  private val relpha_countInReverbAndCK12_path = "/Users/qingqingcai/Documents/Aristo/extraction-new/data/relationphrase_counts_frequency"
+  private val disrelsen_outputDir = "data/bootstrapping/disrel_tuple"
+  private val entity_countInCK12_path = "data/bootstrapping/entity_counts_ck12/entity_countsInCK12.txt"
+  private val relpha_countInReverbAndCK12_path = "data/bootstrapping/relationphrase_counts_frequency"
+  private val isDoInsCheck = false;
+  private val isDoKPCheck = false;
+  
   def main(args: Array[String]) = {
 
     // Read pre-knowledge
@@ -69,8 +72,13 @@ object RunTrainingExtraction {
             var perres = MYSearch.runSearch(indexPath, "\"" + seed + "\"", "kp", List("arg1", "arg2"), maxinsres)
             perres.foreach {
               case p => {
-                if (inscheck(entity_countInCK12, p(0), minimumInCK12ForArg1, p(1), minimumInCK12ForArg2) == true && !insList.contains(perres))
-                  insList = insList ::: List(p)
+                if(isDoInsCheck==true) {
+                  if (inscheck(entity_countInCK12, p(0), minimumInCK12ForArg1, p(1), minimumInCK12ForArg2) == true && !insList.contains(perres))
+                	insList = insList ::: List(p)
+                } else {
+                  if(!insList.contains(perres))
+                	 insList = insList ::: List(p)
+                }
               }
             }
           }
@@ -83,14 +91,14 @@ object RunTrainingExtraction {
     return disrel_insList
   }
 
-  def sensSearch(indexPath: String, disrel_insList: Map[String, List[List[String]]], disrel_goodRelationPhrase: Map[String, List[String]]): Map[String, List[(String, String, String, String, String)]] = {
+  def sensSearch(indexPath: String, disrel_insList: Map[String, List[List[String]]], 
+      disrel_goodRelationPhrase: Map[String, List[String]]): Map[String, List[(String, String, String, String, String)]] = {
     println("start sentence searching ...")
     var MYSearch: Searching = new Searching()
     var disrel_tuples = collection.mutable.Map.empty[String, List[(String, String, String, String, String)]]
     disrel_insList.foreach {
       case (disrel, insList) => {
         println("searching relation: \t " + disrel)
-        var goodRelationPhrase = disrel_goodRelationPhrase(disrel)
         var tuples: List[(String, String, String, String, String)] = List()
         var kp_num: Map[String, Int] = collection.mutable.Map.empty[String, Int]
         //search for sentences given an instance
@@ -108,30 +116,30 @@ object RunTrainingExtraction {
                     val kp = p(0)
                     var sen = p(1)
                     val tup = sencheck(sen, arg1, arg2)
-                    if (kpcheck(kp, kp_num, goodRelationPhrase) && tup._1 == true) {
-                      sen = tup._2
-                      val tuple = (disrel, kp, arg1, arg2, sen)
-                      if (!tuples.contains(tuple))
-                        tuples = tuples ::: List(tuple)
+                    if(isDoKPCheck == true) {
+                      val goodRelationPhrase = disrel_goodRelationPhrase(disrel)
+                      if (kpcheck(kp, kp_num, goodRelationPhrase) && tup._1 == true) {
+                    	sen = tup._2
+                    	val tuple = (disrel, kp, arg1, arg2, sen)
+                    	if (!tuples.contains(tuple))
+                          tuples = tuples ::: List(tuple)
+                      }
+                    } else {
+                      if (tup._1 == true) {
+                    	sen = tup._2
+                    	val tuple = (disrel, kp, arg1, arg2, sen)
+                    	if (!tuples.contains(tuple))
+                    	  tuples = tuples ::: List(tuple)
+                      }
                     }
                   }
                 }
               }
-
-              //          println("===================================================")
-              //          println(disrel)
-              //          println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-              //          println(ins)
-              //          println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-              //          println(tuples)
             }
         }
-        //        println(disrel)
-        //        println(tuples)
-        //        println()
         disrel_tuples.put(disrel, tuples)
         var MYData: Write = new Write()
-        MYData.rewrite_1(disrel_sen_dir + "/" + disrel + ".txt", tuples)
+        MYData.rewrite_1(disrelsen_outputDir + "/" + disrel + ".txt", tuples)
       }
     }
     println("finish sentence searching!")

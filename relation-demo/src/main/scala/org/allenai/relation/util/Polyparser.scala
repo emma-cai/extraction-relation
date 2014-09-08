@@ -188,7 +188,7 @@ object Polyparser {
       }
 
       //if results is not empty, return
-      if (deppathlist.size > 0)
+      if (deppathlist.toSet.size > 0)
         return (true, deppathlist)
       else
         return (false, null)

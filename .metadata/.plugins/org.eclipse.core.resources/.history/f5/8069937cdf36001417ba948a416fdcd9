@@ -1,0 +1,100 @@
+package org.allenai.relation.learning
+
+import java.io.PrintWriter
+import collection.immutable.ListMap
+import scala.collection.mutable.Map
+import org.allenai.relation.util.Polyparser
+
+object DependencyFrequency extends App {
+  val inputFile = "data/learning/train/training.txt"
+  val outputFile = "data/learning/classifier/binary-argument/logistic/sparql/sparqlqueries.txt"
+  println(inputFile)
+  processText(inputFile, outputFile)
+  System.exit(0)
+  
+  def processText(inputFile: String, outputFile: String) = {
+    val source = scala.io.Source.fromFile(inputFile)
+    val writer = new PrintWriter(outputFile)
+    var map: Map[String, Int] = collection.mutable.Map.empty[String, Int]
+    for(line <- source.getLines.drop(1)) {
+      val (sid, sentence, disrel, relphrase, arg1str, arg2str, annotationOpt) = splitToTuple(line, "\t")
+      if(annotationOpt.equals("1")) {
+    	println(line)
+        val (root, tree) = Polyparser.processText(sentence)
+	    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1str, tree.edges.toList)
+	    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2str, tree.edges.toList)
+
+//	    val arg1_arg2_paths1set_List = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 1)
+	    val arg1_arg2_paths2set_List = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 2)
+	    val arg1_arg2_paths3set_List = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 3)
+	    val arg1_arg2_paths4set_List = FeatureWrapper.getpathwithspecificlength(root, tree, arg1list, arg2list, 4)
+	    
+//	    val generalDependenciesLength1 = Polyparser.generalizeDependencypaths(arg1_arg2_paths1set_List) // general-dependency-path = 1
+        val generalDependenciesLength2 = Polyparser.generalizeDependencypaths(arg1_arg2_paths2set_List) // general-dependency-path = 2
+        val generalDependenciesLength3 = Polyparser.generalizeDependencypaths(arg1_arg2_paths3set_List) // general-dependency-path = 3
+
+//	    map = updateMap(map, disrel, generalDependenciesLength1)
+	    map = updateMap(map, disrel, generalDependenciesLength2)
+	    map = updateMap(map, disrel, generalDependenciesLength3)
+      }
+    }
+    
+    val idsparqlList = toSparql(map)
+    map.foreach(p => println(p._1 + " ====> " + p._2))
+    println()
+    println("==============================================")
+    println()
+    
+    idsparqlList.foreach(p => writer.println(p._1 + "\t" + p._2))
+    writer.close()
+  }
+  
+  /**
+   * Convert Map[dependencyFeature, weight] to Map[disrelid, sparqlquery]
+   */
+  def toSparql(featureWeight: Map[String, Int]) = {
+    val featureWeightGrouped = featureWeight.groupBy(p => {
+        p._1.substring(0, p._1.indexOf(" => "))
+      })
+	  
+    val topfeature = for {
+        (group, featureWeight) <- featureWeightGrouped
+        (feature, weight) <- ListMap(featureWeight.toSeq.sortWith(_._2 > _._2): _*).take(10)
+      } yield {
+        feature -> weight
+    }
+    
+    for((x, i) <- topfeature.zipWithIndex) {
+        println(i+" =======> "+x.toString)
+      }
+      
+    val idsparqlList = List() ++ {
+        for((x, i) <- topfeature.zipWithIndex) 
+        	yield {
+        		val feature = x._1
+        		val (disrel, sparql) = BinaryClassification.parseFeature(feature)
+        		(disrel+"_"+(i+1), sparql)
+        	}
+      }
+      
+    idsparqlList 
+  }
+  
+  def updateMap(map:Map[String, Int], disrel:String, generalDependencies:List[Set[String]]) = {
+    var newmap:Map[String, Int] = map
+    for {
+	      pathsets <- generalDependencies
+    } {
+      val dependency = "=" + disrel + " => (" + pathsets.mkString(", ") + ")"
+      newmap = newmap.updated(dependency, newmap.get(dependency).getOrElse(0)+1)
+    }
+    newmap
+  }
+  
+  def splitToTuple(str: String, regex: String) = {
+    str.split(regex) match {
+      case Array(str1, str2, str3, str4, str5, str6, str7) => (str1, str2, str3, str4, str5, str6, str7)
+      case _ => sys.error("not appropriate colons! should be (sid, sentence, disrel, relphrase, arg1, arg2, annotationOpt)")
+    }
+  }
+}

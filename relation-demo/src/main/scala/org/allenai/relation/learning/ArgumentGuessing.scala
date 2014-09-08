@@ -27,7 +27,7 @@ object ArgumentGuessing extends App with Logging {
 //  }
 
   def run() = {
-    init("data/binary-argument/Logistic/feature/train-lexical-detail-length-new.feature")
+    init("data/learning/classifier/binary-argument/Logistic/feature/train-lexical-detail-length-new.feature")
     printDisrelFeatures()
     val configSentence = "data/binary-argument/inputDirectory/108Q.txt"
     val configTestInstance = "data/binary-argument/inputDirectory/108Q_Arg.txt"

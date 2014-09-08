@@ -309,11 +309,11 @@ object BinaryClassification extends App with Logging {
         val generalDependenciesLength3 = getGeneralDependencySets(lengthDependenciesMap.apply(3)) // general-dependency-path = 3
 
         // the specific dependency-path with length=1
-        nominalfeaturename = "nominal-spec-deplength1"
-        if (generalDependenciesLength1.size == 0) nominalfeaturevalue = "null"
-        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength1(0).mkString(", ") + ")" + "\""
-        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
-        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
+//        nominalfeaturename = "nominal-spec-deplength1"
+//        if (generalDependenciesLength1.size == 0) nominalfeaturevalue = "null"
+//        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => (" + generalDependenciesLength1(0).mkString(", ") + ")" + "\""
+//        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+//        updateNominalfeaturesmap(nominalfeaturename, nominalfeaturevalue)
 
         // the specific dependency-path with length=2
         nominalfeaturename = "nominal-spec-deplength2"
@@ -336,10 +336,10 @@ object BinaryClassification extends App with Logging {
         val shortestpath = Math.min(length1, Math.min(length2, length3))
 
         // shortest-dependency-length == 1? 1 or 0
-        nominalfeaturename = "nominal-shortest-deplength1"
-        if (length1 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
-        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
-        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
+//        nominalfeaturename = "nominal-shortest-deplength1"
+//        if (length1 == 0) nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 0" + "\""
+//        else nominalfeaturevalue = "\"" + sentenceDisrel.disrel + " => 1" + "\""
+//        nominalfeaturesmap.put(nominalfeaturename, nominalfeaturevalue)
 
         // shortest-dependency-length == 2? 1 or 0
         nominalfeaturename = "nominal-shortest-deplength2"
@@ -380,9 +380,9 @@ object BinaryClassification extends App with Logging {
         // specific dependency path
         if (configFeature.contains("-detail")) {
           // the specific dependency-path with length=1
-          nominalfeaturename = "nominal-spec-deplength1"
-          nominalfeaturesmap.put(nominalfeaturename, "notree")
-          updateNominalfeaturesmap(nominalfeaturename, "notree")
+//          nominalfeaturename = "nominal-spec-deplength1"
+//          nominalfeaturesmap.put(nominalfeaturename, "notree")
+//          updateNominalfeaturesmap(nominalfeaturename, "notree")
 
           // the specific dependency-path with length=2
           nominalfeaturename = "nominal-spec-deplength2"
@@ -398,9 +398,9 @@ object BinaryClassification extends App with Logging {
         // only consider dependency length
         if (configFeature.contains("-length")) {
           // shortest-dependency-length == 1? 1 or 0
-          nominalfeaturename = "nominal-shortest-deplength1"
-          nominalfeaturesmap.put(nominalfeaturename, "notree")
-          updateNominalfeaturesmap(nominalfeaturename, "notree")
+//          nominalfeaturename = "nominal-shortest-deplength1"
+//          nominalfeaturesmap.put(nominalfeaturename, "notree")
+//          updateNominalfeaturesmap(nominalfeaturename, "notree")
 
           // shortest-dependency-length == 2? 1 or 0
           nominalfeaturename = "nominal-shortest-deplength2"
@@ -691,8 +691,14 @@ object BinaryClassification extends App with Logging {
         Option(classProbabilities)
     }
     logger.info(eval.toSummaryString("\n======== RESULTS ========\n", false))
-    //logger.info(s"\nf-measure = ${eval.fMeasure(0).toString}")
-
+    logger.info(s"Weka: Confusion Matrix for Classification")
+    println(eval.toMatrixString())
+    logger.info(s"Weka: Precision / Recall")
+    println("Precision for ClassIndex=0:\t" + eval.precision(0))
+    println("Recall for ClassIndex=0:\t" + eval.recall(0))
+    println("Precision for ClassIndex=1:\t" + eval.precision(1))
+    println("Recall for ClassIndex=1:\t" + eval.recall(1))
+    
     classProbabilitiesOpt
   }
 

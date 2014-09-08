@@ -1,0 +1,26 @@
+package org.allenai.relation.learning
+
+import java.io.PrintWriter
+import scala.collection.mutable.Map
+
+object LexicalFrequency {
+  val inputFile = "data/learning/train/training.txt"
+  val outputFile = "data/learning/train/lexicalfrequency.txt"
+  processText(inputFile, outputFile)
+  System.exit(0)
+  
+  def processText(inputFile: String, outputFile: String) = {
+    val source = scala.io.Source.fromFile(inputFile)
+    var map: Map[String, Int] = collection.mutable.Map.empty[String, Int]
+    for(line <- source.getLines.drop(1)) {
+      val (sid, sentence, disrel, relphrase, arg1str, arg2str, annotationOpt) = splitToTuple(line, "\t")
+      if(annotationOpt.equals("1")) {
+    	
+	    map = updateMap(map, disrel, generalDependenciesLength4)
+	    
+      }
+      
+    }
+    val writer = new PrintWriter(outputFile)
+  }
+}

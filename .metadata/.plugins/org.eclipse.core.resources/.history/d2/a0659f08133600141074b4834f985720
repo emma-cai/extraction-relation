@@ -1,0 +1,16 @@
+package org.allenai.relation.learning
+
+import java.io.File
+import org.allenai.relation.util.Polyparser
+import scala.collection.mutable.Map
+import scala.collection.immutable.SortedMap
+import scala.io.Source
+import scala.collection.immutable.ListMap
+
+object Test {
+  def main(args: Array[String]) = {
+     val (root, tree) = Polyparser.processText(sentenceDisrel.sentence)
+     val arg1list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg1, tree.edges.toList)
+     val arg2list = Polyparser.findHeadW(tree.vertices.toList, sentenceDisrel.arg2, tree.edges.toList)
+  }
+}

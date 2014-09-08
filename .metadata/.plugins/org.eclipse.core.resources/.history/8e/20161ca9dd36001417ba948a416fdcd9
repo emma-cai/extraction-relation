@@ -1,0 +1,415 @@
+package org.allenai.relation.util
+import org.allenai.extraction.{ ErmineException, FlatProcessor }
+import org.allenai.extraction.rdf.{ DependencyGraph, Token }
+import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.tokenize.defaultTokenizer
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import scala.collection.mutable.Map
+
+//org.allenai.nlpstack.core.graph.Graph[org.allenai.nlpstack.core.parse.graph.TokenDependencyNode]
+
+/** Dependency parser running through nlpstack. Currently hardcoded to use the polytree parser. */
+object Polyparser {
+  type Mynode = org.allenai.nlpstack.core.parse.graph.DependencyNode
+  type Mytokennode = org.allenai.nlpstack.core.parse.graph.TokenDependencyNode
+  type Myedge = org.allenai.nlpstack.core.graph.Graph.Edge[org.allenai.nlpstack.core.parse.graph.TokenDependencyNode]
+  type Mygraph = org.allenai.nlpstack.core.graph.Graph[org.allenai.nlpstack.core.parse.graph.TokenDependencyNode]
+  val parseFunction = new PolytreeParser().dependencyGraph(defaultTokenizer, defaultPostagger)_
+
+  //  def processText(text: String): 
+  //  ( Mynode, Mygraph) = {
+  //    val outputGraph = new MemoryStoreSailGraph()
+  //    DependencyGraph.setNamespaces(outputGraph)
+  //
+  //    try {
+  //      //basic graph
+  //      //      // Run the text through the NLP stack linewise.
+  //      //      val stemmer = new MorphaStemmer()
+  //      //      // First pass crease an ID-based graph.
+  //      //      val (tokens, rawGraph) = parseFunction(text)
+  //      //      // Second pass builds a lemmatized graph with edges holding tokens.
+  //      //      val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+  //      //      return parseGraph
+  //
+  //      // The fake token we'll draw an edge from to the root node.
+  //      val corpus = Token.corpus(scala.io.Source.fromString("classifier"))
+  //      val fakeRootToken = outputGraph.addVertex(Token.id(corpus, 0, 0))
+  //      //collapsed graph
+  //      val stemmer = new MorphaStemmer()
+  //      val (tokens, rawGraph) = parseFunction(text)
+  //      val rawCollapsedGraph = rawGraph.collapse
+  //      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
+  //      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+  //      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
+  //
+  //    } catch {
+  //      case e: Exception => None
+  //    }
+  //
+  //    return (null, null)
+  //  }
+
+  def processText(text: String): (Mytokennode, Mygraph) = {
+    var root: Mytokennode = null
+    try {
+      // The fake token we'll draw an edge from to the root node.
+      val corpus = Token.corpus(scala.io.Source.fromString("classifier"))
+      //collapsed graph
+      val stemmer = new MorphaStemmer()
+      val (tokens, rawGraph) = parseFunction(text)
+      if (tokens.nonEmpty) {
+        val parseGraph = rawGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+        parseGraph.edges.foreach {
+          p =>
+            if (p.label.equals("punct"))
+              root = p.source
+        }
+        return (root, parseGraph)
+      }
+      //      val rawCollapsedGraph = rawGraph.collapse
+      //      stemmer.stem(rawCollapsedGraph.root.toList(0).string)
+      //      val collapsedGraph = rawCollapsedGraph.tokenized(tokens map stemmer.lemmatizePostaggedToken)
+      //      return (rawCollapsedGraph.root.toList(0), collapsedGraph)
+
+    } catch {
+      case e: Exception => None
+    }
+
+    return (null, null)
+  }
+
+  /** Given a string-name, find the its id in the tree;
+    * one string-name may appear multiple times in the tree (with different ids)
+    */
+  def getid(ns: List[Mytokennode], name: String): List[Int] = {
+    var idlist: List[Int] = List()
+    ns.foreach {
+      case p => {
+        if (p.string.equals(name) && !idlist.contains(p.id))
+          idlist = idlist ::: List(p.id)
+      }
+    }
+    return idlist
+  }
+
+  /** get all dest-nodes given a source-node
+    */
+  def getDestNodes(srcNodeID: Int, ds: List[Myedge]): List[String] = {
+    var destNodeNames: List[String] = List()
+    for (edge <- ds) {
+      if (edge.source.id == srcNodeID) {
+        if (!destNodeNames.contains(edge.dest.string))
+          destNodeNames = destNodeNames ::: List(edge.dest.string)
+      }
+    }
+    return destNodeNames
+  }
+
+  /** get all source-nodes given a dist-node
+    */
+  def getSourceNodes(desNodeID: Int, ds: List[Myedge]): List[String] = {
+    var sourceNodeNames: List[String] = List()
+    for (edge <- ds) {
+      if (edge.dest.id == desNodeID) {
+        if (!sourceNodeNames.contains(edge.source.string))
+          sourceNodeNames = sourceNodeNames ::: List(edge.source.string)
+      }
+    }
+    return sourceNodeNames
+  }
+  /** Following findDepPath, with specific dependency-path-length
+    */
+  def findDepPathWithSpeLen(ns: List[Mytokennode], ds: Set[Myedge], arg1: Int, arg2: Int, pl: Int): (Boolean, List[Set[Myedge]]) = {
+
+    var deppathlist: List[Set[Myedge]] = List()
+
+    //pl = 0, special case
+    if (pl == 0) return (true, null)
+
+    //pl = 1, just check whether there's a link between "from" and "to"
+    if (pl == 1) {
+      val checkres = checkpath(ds, arg1, arg2)
+      if (checkres._1 == true)
+        return (true, List(Set(checkres._2)))
+      else return (false, null)
+    }
+
+    //pl = 2, only check one other node
+    if (pl == 2) {
+      val posconnodes = findConnectNodes(ns, List(arg1, arg2), 1)
+      posconnodes.foreach {
+        case pcn => {
+          val checkres_arg1 = checkpath(ds, arg1, pcn.head.id)
+          val checkres_arg2 = checkpath(ds, arg2, pcn.head.id)
+          if (checkres_arg1._1 == true && checkres_arg2._1 == true) {
+            //add result list
+            deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2))
+          }
+        }
+      }
+
+      if (deppathlist.size > 0)
+        return (true, deppathlist)
+      else
+        return (false, null)
+    }
+
+    //pl > 2, general case
+    if (pl > 2) {
+      val posconnodes = findConnectNodes(ns, List(arg1, arg2), pl - 1) //find all possible sets that could connect arg1 and arg2
+      posconnodes.foreach {
+        case pcn => { //for each set
+          val pcnsize = pcn.size
+          for (i <- 0 to pcnsize - 1) {
+            val node1 = pcn(i) //for node1
+            for (j <- 0 to pcnsize - 1) {
+              val node2 = pcn(j)
+              if (!node1.id.equals(node2.id)) { //for node2, distinguish from node1
+                val checkres_arg1 = checkpath(ds, arg1, node1.id) //is arg1 connected with node1
+                val checkres_arg2 = checkpath(ds, arg2, node2.id) //is arg2 connected with node1
+                var newns = ns.filter(x => !x.id.equals(arg1) && !x.id.equals(arg2)) //new nodes, removing arg1 and arg2
+                var recursivechecker = findDepPathWithSpeLen(newns, ds, node1.id, node2.id, pl - 2) //is node1 connected with node2, this is recursive version
+                if (checkres_arg1._1 == true && checkres_arg2._1 == true
+                  && recursivechecker._1 == true) { //if arg1<-->node1 && arg2<-->node2 && node1<-->node2
+                  var recursivepath = recursivechecker._2 //get the path between node1 and node2
+                  recursivepath.foreach {
+                    case f => { //add each possible previous path (between node1 and node2) to the new path, adding arg1 and arg2
+                      deppathlist = deppathlist ::: List(Set(checkres_arg1._2, checkres_arg2._2) ++ f)
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      //if results is not empty, return
+      if (deppathlist.size > 0)
+        return (true, deppathlist)
+      else
+        return (false, null)
+    }
+
+    return (false, null)
+  }
+
+  /** find subsets of ns
+    * restriction1: the subsets cannot contain any node in "notconsider"
+    * restriction2: the size of the subsets == num
+    */
+  def findConnectNodes(ns: List[Mytokennode], notconsider: List[Int], num: Int): List[List[Mytokennode]] = {
+    var connectNodeslist: List[List[Mytokennode]] = List()
+
+    var newns: List[Mytokennode] = List()
+    ns.foreach(x => if (!notconsider.contains(x.id)) newns = newns ::: List(x))
+
+    subsetswithn(newns, num).foreach {
+      case p => {
+        //     var l = p.filter(x => (!notconsider.contains(x.string)))
+        //        var l:List[org.allenai.nlpstack.core.parse.graph.DependencyNode] = List()
+        //        p.foreach(x => if(!notconsider.contains(x.id)) l=l:::List(x))
+        //        if(l.size == num){
+        //          connectNodeslist = connectNodeslist ::: List(l)
+        //        }
+        connectNodeslist = connectNodeslist ::: List(p)
+      }
+    }
+    return connectNodeslist
+  }
+
+  /** permutation of xs, return all possibilities (without any restriction)
+    */
+  def subsetswithn(xs: List[Mytokennode], num: Int) = {
+    (num to num flatMap (x => xs.combinations(x))) map (x => x)
+  }
+
+  //  def subsets3(xs:List[Int], num:Int) = {
+  //    (num to num flatMap (x => xs.combinations(x))) map ( x => x)
+  //  }
+
+  /** check: if arg1 and arg2 are connected or not?
+    */
+  def checkpath(ds: Set[Myedge], arg1: Int, arg2: Int): (Boolean, Myedge) = {
+    ds.foreach {
+      case edge => {
+        if ((edge.source.id.equals(arg1) && edge.dest.id.equals(arg2))
+          || (edge.source.id.equals(arg2) && edge.dest.id.equals(arg1)))
+          return (true, edge)
+      }
+    }
+    return (false, null)
+  }
+
+  def findHeadW(ns: List[Mytokennode], arg1name: String, ds: List[Myedge]): List[Int] = {
+
+    // find the word which connects with all other nodes (either the destnode or the sourcenode)
+    // if there's no such nodes, find a node with pos=VB or NN (since reverb arguments are always Nouns, here we set pos starts with NN)
+    var res: List[Int] = List()
+    val words = arg1name.toString().split(" ").toList
+    val wlen = words.length
+
+    for (w1 <- words) {
+      val w1ids = getid(ns, w1)
+      //      println("w1 = " + w1 + "\twiids = " + w1ids)
+      for (w1id <- w1ids) {
+        //        println("\tw1id = " + w1id)
+        val destnames: List[String] = getDestNodes(w1id, ds)
+        val sournames: List[String] = getSourceNodes(w1id, ds)
+        //        println("\t\tdestnames = " + destnames)
+        //        println("\t\tsournames = " + sournames)
+        var flag = true
+        for (w2 <- words) {
+          if (!w1.equals(w2)) {
+            if (!destnames.contains(w2) && !sournames.contains(w2))
+              flag = false
+          }
+        }
+        if (flag == true)
+          res = res ::: List(w1id)
+      }
+    }
+
+    if (res.isEmpty) {
+      for (node <- ns) {
+        if (words.contains(node.string) && node.postag.startsWith("NN"))
+          res = res ::: List(node.id)
+      }
+    }
+    return res
+
+    // simiply assume that the head-node is the first word in the arguments
+    //    var res: List[Int] = List()
+    //    val words = arg1name.toString().split(" ").toList
+    //    val length = words.length
+    //    var idset: Set[Int] = Set()
+    //    for(w <- words) {
+    //      val wids = getid(ns, w).toSet
+    //      idset = idset ++ wids
+    //    }
+    //    val issortedset = collection.immutable.SortedSet[Int]() ++ idset
+    //    var subset: Set[Int] = Set()
+    //    var i = 0
+    //    while(i<issortedset.size && i+length<=issortedset.size) {
+    //      val subset = issortedset.slice(i, i+length)
+    //      var j = 1
+    //      while (j<subset.size) {
+    //    	if(subset.slice(j-1, j).toList(0) == subset.slice(j, j+1).toList(0)-1) j = j+1
+    //    	else j = Integer.MAX_VALUE
+    //      }
+    //      if(j==subset.size) res = res ::: List(subset.toList(0))
+    //      i = i+1
+    //    }
+    //    return res
+  }
+
+  /** Input: arguments in paths are word-id
+    * Output: arguments in paths are generalized to be _2, _3, ...
+    */
+  def generalizeDependencypaths(ori: List[(Int, Int, Set[Myedge])]): List[Set[String]] = {
+    //    println("===========================")
+    //    println("ori" + ori)
+    var generalized: List[Set[String]] = List()
+    var init = 3
+    var otherargs: Map[Int, String] = collection.mutable.Map.empty[Int, String]
+
+    ori.foreach {
+      case (arg1, arg2, eachset) => { //for each set
+        var eachset_posfealist: List[String] = List()
+        var eachset_lexfealist: List[String] = List()
+        var eachsetlist = eachset.toList
+        var eachset_strver: List[String] = List()
+        eachsetlist.foreach {
+          case edge => { //for each edge
+            var edgestr, source, dest = ""
+            var label = edge.label
+            if (edge.source.id == arg1 || edge.source.id == arg2) {
+              if (edge.source.id == arg1) {
+                source = "_1"
+                /**eachset_posfealist = addposfea(edge.source, "_1", eachset_posfealist)**/
+              } else if (edge.source.id == arg2) {
+                source = "_2"
+                /**eachset_posfealist = addposfea(edge.source, "_2", eachset_posfealist)**/
+              }
+              var argname = ""
+              if (!otherargs.contains(edge.dest.id)) { argname = "_" + init.toString; otherargs.put(edge.dest.id, argname); init = init + 1 }
+              else { argname = otherargs(edge.dest.id) }
+              eachset_lexfealist = addlexfea(edge.dest, argname, eachset_lexfealist)
+            } else {
+              if (!otherargs.contains(edge.source.id)) { source = "_" + init.toString; otherargs.put(edge.source.id, source); init = init + 1; }
+              else { source = otherargs(edge.source.id) }
+              eachset_posfealist = addposfea(edge.source, source, eachset_posfealist)
+            }
+
+            if (edge.dest.id == arg1 || edge.dest.id == arg2) {
+              if (edge.dest.id == arg1) {
+                dest = "_1";
+                /**eachset_posfealist = addposfea(edge.dest, "_1", eachset_posfealist)**/
+              } else if (edge.dest.id == arg2) {
+                dest = "_2";
+                /**eachset_posfealist = addposfea(edge.dest, "_2", eachset_posfealist)**/
+              }
+              var argname = ""
+              if (!otherargs.contains(edge.source.id)) { argname = "_" + init.toString; otherargs.put(edge.source.id, argname); init = init + 1 }
+              else { argname = otherargs(edge.source.id) }
+              eachset_lexfealist = addlexfea(edge.source, argname, eachset_lexfealist);
+            } else {
+              if (!otherargs.contains(edge.dest.id)) { dest = "_" + init.toString; otherargs.put(edge.dest.id, dest); init = init + 1 }
+              else { dest = otherargs(edge.dest.id) }
+              eachset_posfealist = addposfea(edge.dest, dest, eachset_posfealist)
+            }
+
+            edgestr = label + "(" + source + ", " + dest + ")"
+            eachset_strver = eachset_strver ::: List(edgestr)
+          }
+        }
+        //dependency-path
+        generalized = generalized ::: List(eachset_strver.toSet)
+
+        //dependency-path + pos-features
+        //     generalized = generalized:::List(eachset_strver.toSet ++ eachset_posfealist.toSet)
+
+        //dependency-path + lex-features
+        //   generalized = generalized ::: List(eachset_strver.toSet ++ eachset_lexfealist.toSet)
+      }
+    }
+
+    return generalized
+  }
+
+  def addposfea(node: Mytokennode, argname: String, posfeaslist: List[String]): List[String] = {
+    var posfeaslist_updated: List[String] = List()
+    var posfea = "token:pos(" + argname + ", " + node.postag + ")"
+    if (!posfeaslist.contains(posfea))
+      posfeaslist_updated = posfeaslist ::: List(posfea)
+    else
+      posfeaslist_updated = posfeaslist
+    return posfeaslist_updated
+  }
+
+  def addlexfea(node: Mytokennode, argname: String, lexfeaslist: List[String]): List[String] = {
+    var lexfeaslist_updated: List[String] = List()
+    var lexfea = "token:lemma(" + argname + ", " + node.lemma + ")"
+    if (!lexfeaslist.contains(lexfea))
+      lexfeaslist_updated = lexfeaslist ::: List(lexfea)
+    else
+      lexfeaslist_updated = lexfeaslist
+    return lexfeaslist_updated
+  }
+
+  /** In all edges returned by Polyparser, find all edges with a specific name
+    */
+  def findEdgeWithName(edges: Set[Myedge], name: String): Set[Myedge] = {
+    var edgeswithname: Set[Myedge] = Set()
+    edges.foreach {
+      case edge => {
+        if (edge.label.equals(name))
+          edgeswithname = edgeswithname + edge
+      }
+    }
+    return edgeswithname
+  }
+}

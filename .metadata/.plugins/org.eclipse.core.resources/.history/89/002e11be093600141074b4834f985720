@@ -1,0 +1,24 @@
+package org.allenai.relation.learning
+
+object TrainingData extends App {
+  val inputFile = "data/bootstrapping/disrel_tuple_labeled/disrel_tuple_labeled.txt"
+  val outputFile = "data/classifier/train/training.txt"
+  processText(inputFile, outputFile)
+  
+  def processText(inputFile: String, outputFile: String) = {
+    // Source.fromFile(file).getLines().drop(headerLinesToDrop).map {
+    val source = scala.io.Source.fromFile(inputFile)
+    for(line <- source.getLines.drop(0)) {
+      
+    }
+  }
+  
+  def splitToTuple(regex: String) = {
+    val s = ""
+    s.split(regex) match {
+      case Array(str1, str2) = (str1, str2)
+      case Array(str1) = (str1, "")
+      case _ = error("too many colons")
+    }
+  }
+}

@@ -1,0 +1,21 @@
+package org.allenai.relation.learning
+
+import java.io.File
+import org.allenai.relation.util.Polyparser
+import scala.collection.mutable.Map
+import scala.collection.immutable.SortedMap
+import scala.io.Source
+import scala.collection.immutable.ListMap
+
+object Test {
+  def main(args: Array[String]) = {
+    val sentence = "Low oxygen levels during sleep can cause headaches , heart problems and poor daytime functioning ."
+    val arg1 = "sleep"
+    val arg2 = "can cause headaches"
+    val (root, tree) = Polyparser.processText(sentence)
+    val arg1list = Polyparser.findHeadW(tree.vertices.toList, arg1, tree.edges.toList)
+    val arg2list = Polyparser.findHeadW(tree.vertices.toList, arg2, tree.edges.toList)
+    println("arg1list = " + arg1list)
+    println("arg2list = " + arg2list)
+  }
+}
