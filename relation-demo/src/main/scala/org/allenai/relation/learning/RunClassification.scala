@@ -15,16 +15,17 @@ object RunClassification extends App with Logging {
   val isprintfeatureweight = true
   val isprintsparql = true
   val configclassifiername = "Logistic"
-  val configfeature = "lexical-detail-extraction"
+  val configfeature = "lexical-detail-extraction-newlexicalfeature"
   val directory = "data/learning/classifier/binary-argument"
   val configtrainingfile = "data/learning/train/training.txt"
   val configtestingfile = directory + File.separator + "inputDirectory/108Q_Arg.txt"
-  val disrelseeds = collection.mutable.Map(
-      ("purpose", List("purpose", "used to", "responsible")),
-      ("cause", List("caused", "so that", "because", "result in", "effect on")),
-      ("example", List("an example of", "called", "a way to", "include", "such as")),
-      ("enable", List("to help", "by")),
-      ("requirement", List("necessary", "needed")) /**("part", List("part of")),**/ /**("effect", List("caused", "so that", "because", "result in", "effect on")),**/ /**("function", List("used to")),**/ /**("condition", List("when", "if"))**/ )
+  val disrelseeds: Map[String, List[String]] = collection.mutable.Map() ++ loadLexicalSeeds("data/learning/train/lexical.seed")
+//  val disrelseeds = collection.mutable.Map(
+//      ("purpose", List("purpose", "used to", "responsible")),
+//      ("cause", List("caused", "so that", "because", "result in", "effect on")),
+//      ("example", List("an example of", "called", "a way to", "include", "such as")),
+//      ("enable", List("to help", "by")),
+//      ("requirement", List("necessary", "needed")) /**("part", List("part of")),**/ /**("effect", List("caused", "so that", "because", "result in", "effect on")),**/ /**("function", List("used to")),**/ /**("condition", List("when", "if"))**/ )
   val disrellist = List("purpose", "cause", "example", "enable", "requirement")
 
   run_eval()
@@ -195,4 +196,6 @@ object RunClassification extends App with Logging {
         println(s"Caught exception processing input file ${configTestingFile}")
     }
   }
+  
+  
 }

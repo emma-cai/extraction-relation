@@ -6,6 +6,11 @@ import scala.collection.mutable.Map
 import org.allenai.relation.util.Polyparser
 
 object DependencyFrequency extends App {
+  val baddependencies = List("", 
+      "", 
+      "", 
+      "", 
+      "")
   val inputFile = "data/learning/train/training.txt"
   val outputFile = "data/learning/classifier/binary-argument/logistic/sparql/sparqlqueries.txt"
   println(inputFile)
@@ -56,21 +61,20 @@ object DependencyFrequency extends App {
    * Convert Map[dependencyFeature, weight] to Map[disrelid, sparqlquery]
    */
   def toSparql(featureWeight: Map[String, Int]) = {
+    // group by disrel
     val featureWeightGrouped = featureWeight.groupBy(p => {
         p._1.substring(0, p._1.indexOf(" => "))
       })
-	  
+	
+    // select top features for each disrel
     val topfeature = for {
         (group, featureWeight) <- featureWeightGrouped
-        (feature, weight) <- ListMap(featureWeight.toSeq.sortWith(_._2 > _._2): _*).take(10)
+        (feature, weight) <- ListMap(featureWeight.toSeq.sortWith(_._2 > _._2): _*).filter(p => ???).take(10)
       } yield {
         feature -> weight
     }
     
-    for((x, i) <- topfeature.zipWithIndex) {
-        println(i+" =======> "+x.toString)
-      }
-      
+    // for each selected feature, convert it to sparql query
     val idsparqlList = List() ++ {
         for((x, i) <- topfeature.zipWithIndex) 
         	yield {

@@ -439,13 +439,21 @@ object BinaryClassification extends App with Logging {
     root: Polyparser.Mytokennode, tree: Polyparser.Mygraph,
     lengthDependenciesMap: Map[Integer, List[(Int, Int, Set[Polyparser.Myedge])]],
     arg1list: List[Int], arg2list: List[Int]) = {
-
+	
+    println("qingqing computing numeric features for " + sentenceDisrel.sentence)
     val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet
-
+    
     var numericfeaturesmap: Map[String, Double] = collection.mutable.Map.empty
     disrelList.foreach {
       case disrel => {
-        val seedSet = Tokenizer.toKeywords(disrelSeeds(disrel.toLowerCase()).mkString(" ")).toSet
+        val keywordsSet = Tokenizer.toKeywords(disrelSeeds(disrel.toLowerCase()).mkString(" ")).toSet
+        val lexicallist = for {
+          lexicalseed <- disrelSeeds(disrel.toLowerCase())
+          lexicalseedKeywords = Tokenizer.toKeywords(lexicalseed).toSet.mkString(" ")
+          if(!lexicalseedKeywords.equals(""))
+        } yield {
+          lexicalseedKeywords
+        }
         var numericfeaturename: String = null
         // number of words in the sentence
         numericfeaturename = "numeric-senlen-" + disrel
@@ -455,20 +463,41 @@ object BinaryClassification extends App with Logging {
 
         // overlap between sentence-words and lexical-cue-seeds-for-current-disrel
         numericfeaturename = "numeric-overlap-sen-seeds-" + disrel
-        numericfeaturesmap.put(numericfeaturename, overlap(sentenceSet, seedSet).toDouble)
+        numericfeaturesmap.put(numericfeaturename, overlap(sentenceSet, keywordsSet).toDouble)
         updateNumericfeaturesHeader(numericfeaturename)
 
         // entailment between sentence-words and lexical-cue-seeds-for-current-disrel
+        println("qingqing compute numeric-entail-sen-seeds")
         numericfeaturename = "numeric-entail-sen-seeds-" + disrel
-        numericfeaturesmap.put(numericfeaturename,
-          if (root == null) 0.0 else wordnetEntailment(sentenceSet.mkString(" "), seedSet.mkString(" ")))
+        try {
+          numericfeaturesmap.put(numericfeaturename,
+            wordnetEntailment(sentenceSet.mkString(" "), lexicallist))
+        } catch {
+          case e: Throwable => {
+            numericfeaturesmap.put(numericfeaturename, 0.0)
+          }
+        }
         updateNumericfeaturesHeader(numericfeaturename)
+        println("qingqing after adding entail-sen-seeds = " + numericfeaturesmap)
 
         // entailment between root and lexical-cue-seeds-for-current-disrel
+        println("qingqing compute numeric-entail-root-seeds\t\t\t" + root)
         numericfeaturename = "numeric-entail-root-seeds-" + disrel
-        numericfeaturesmap.put(numericfeaturename,
-          if (root == null) 0.0 else wordnetEntailment(root.string, seedSet.mkString(" ")))
+        try {
+	        if(root == null)
+	          numericfeaturesmap.put(numericfeaturename, 0.0)
+	        else {
+	          val roottoken = Tokenizer.toKeywords(root.string).toSet.mkString(" ")
+	          numericfeaturesmap.put(numericfeaturename, if(roottoken.equals("")) 0.0 else wordnetEntailment(roottoken, lexicallist))
+	        }          
+        } catch {
+          case e: Throwable => {
+            e.printStackTrace()
+            numericfeaturesmap.put(numericfeaturename, 0.0)
+          }
+        }
         updateNumericfeaturesHeader(numericfeaturename)
+        println("qingqing after adding entail-root-seeds = " + numericfeaturesmap)
 
         // entailment between connection-words and lexical-cue-seeds-for-current-disrel
 //        val connectwords: Set[String] = getconnectwords(lengthDependenciesMap)

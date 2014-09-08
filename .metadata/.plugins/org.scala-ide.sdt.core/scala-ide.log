@@ -4239,3 +4239,6 @@ org.eclipse.text.edits.MalformedTreeException: End position lies outside documen
 2014-09-07 15:33:14,817  WARN [Worker-115] - ImplicitHighlightingPresenter - Timeout while waiting for `askLoadedTyped` during implicit highlighting.
 2014-09-07 15:33:19,017  WARN [Worker-123] - ImplicitHighlightingPresenter - Timeout while waiting for `askLoadedTyped` during implicit highlighting.
 2014-09-07 15:33:19,236  WARN [Worker-123] - ImplicitHighlightingPresenter - Timeout while waiting for `askLoadedTyped` during implicit highlighting.
+2014-09-08 08:39:53,807 ERROR [Worker-11] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-08 08:39:53,811 ERROR [Worker-11] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-08 08:39:53,811 ERROR [Worker-11] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.

@@ -6,7 +6,7 @@ import scala.collection.mutable.Map
 
 object LexicalFrequency extends App {
   val inputFile = "data/learning/train/training.txt"
-  val outputFile = "data/learning/train/lexicalfrequency.txt"
+  val outputFile = "data/learning/train/lexical.seed"
   processText(inputFile, outputFile)
   System.exit(0)
   

@@ -12,7 +12,7 @@ object FeatureWrapper {
 
   private def getResourceAsStream(name: String): InputStream =
     getClass.getClassLoader.getResourceAsStream(name)
-
+    
   //  val wordFrequency = loadWordFrequencies("word-frequencies.txt")
   //  val minFreq = wordFrequency.values.min
 
@@ -35,46 +35,25 @@ object FeatureWrapper {
   }
   //  Math.abs(sentence.indexOf(arg1) - sentence.indexOf(arg2)).toDouble
 
-  //  private def frequencyWeight(token: String): Double = {
-  //    // constants were hand-tuned by Peter
-  //    val wordWeightK: Double = 10.0
-  //    val normalizationConstant: Double = 2.3978953
-  //    (1 / math.log(wordFrequency.getOrElse(token, minFreq) + wordWeightK)) * normalizationConstant
-  //  }
-  //
-  //  /** Load word frequency information from a file of frequency<space>term pairs.
-  //    */
-  //  private def loadWordFrequencies(path: String): Map[String, Int] = {
-  //    val wordFrequenciesStream = getResourceAsStream(path)
-  //    val counts = scala.collection.mutable.HashMap[String, Int]()
-  //    Resource.using(Source.fromInputStream(wordFrequenciesStream)) {
-  //      input =>
-  //        for (line <- input.getLines()) {
-  //          line.split("\\s+") match {
-  //            case Array(count, term) => {
-  //              counts.update(term, count.toInt + counts.getOrElse(term, 0))
-  //            }
-  //            case _ => throw new MatchError("Couldn't parse line " + line + " from " + path)
-  //          }
-  //        }
-  //    }
-  //    counts.toMap
-  //  }
-  //
-  //  def tfIdf(text: Set[String], hypothesis: Set[String]) = {
-  //    val hypWeights = hypothesis.map { frequencyWeight(_) }
-  //    val overlapWeights = text.intersect(hypothesis) map { frequencyWeight(_) }
-  //    overlapWeights.sum / hypWeights.sum
-  //  }
-  //
   val wordnetEntailmentService: EntailmentService = {
     val wordnetEntailmentUrl = "http://entailment.dev.allenai.org:8191/api/entails"
     val wrapper = new EntailmentWrapper(wordnetEntailmentUrl)
     wrapper.CachedEntails
   }
 
-  def wordnetEntailment(text: String, hypothesis: String) =
-    wordnetEntailmentService(text, hypothesis) map { _.confidence } getOrElse 0d
+  def wordnetEntailment(text: String, hypothesis: String) = {
+    val entail = wordnetEntailmentService(text, hypothesis) map { _.confidence } getOrElse 0d
+  }
+    
+  def wordnetEntailment(text: String, allhypothesis: List[String]) = {
+      val entaillist = for {
+        hypothesis <- allhypothesis
+      } yield { 
+        wordnetEntailmentService(text, hypothesis) map { _.confidence } getOrElse 0d 
+      }
+      val entailavg = (0.0 /: entaillist) { _ + _ } / entaillist.length
+	  entailavg
+    }
 
   val word2vecEntailmentService: EntailmentService = {
     val word2vecEntailmentUrl = "???"
@@ -99,14 +78,18 @@ object FeatureWrapper {
 
     lengthDependenciesMap
   }
-
-  //  /**
-  //   * Input: set of specific dependency-paths
-  //   * Output: choose one specific dependency-path, and convert it to a general one
-  //   */
-  //  def getGeneralDependencyString(dependency: List[Set[Polyparser.Myedge]]) = {
-  //
-  //  }
+  
+  /**
+   * load lexical-seeds for each disrel from a local file
+   */
+  def loadLexicalSeeds(sourcepath: String) = {
+    val list = scala.io.Source.fromFile(sourcepath).getLines.map(line => {
+      val tuples = line.split("\t")
+      (tuples(0), tuples(1))
+    }).toList
+    val disrel_lexicallist_map = list.groupBy(_._1).mapValues(_.map(_._2))
+    disrel_lexicallist_map
+  }
 
   /** Input: set of specific dependency-paths
     * Output: set of general dependency-paths (replace specific-node with "_1, _2, _3, ...")
