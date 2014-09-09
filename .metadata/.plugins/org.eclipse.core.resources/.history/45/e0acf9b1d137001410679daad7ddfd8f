@@ -1,0 +1,48 @@
+package org.allenai.extraction.processors.dependencies
+
+import org.allenai.extraction.rdf.{ DependencyGraph, TurtleProcessor }
+import org.allenai.extraction.rdf.VertexWrapper.VertexRdf
+import com.tinkerpop.blueprints.Vertex
+import com.tinkerpop.blueprints.impls.sail.SailGraph
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import org.allenai.extraction.processors.NlpstackParser
+import java.io.Writer
+import org.apache.commons.io.output.WriterOutputStream
+import org.allenai.extraction.{ ErmineException, MultiTextProcessor }
+import org.allenai.extraction.rdf.{ DependencyGraph, Token }
+import org.allenai.extraction.rdf.DependencyGraph.GraphRdf
+import org.allenai.nlpstack.lemmatize.MorphaStemmer
+import org.allenai.nlpstack.parse.PolytreeParser
+import org.allenai.nlpstack.postag.defaultPostagger
+import org.allenai.nlpstack.tokenize.defaultTokenizer
+import scala.language.postfixOps
+import com.tinkerpop.blueprints.impls.sail.impls.MemoryStoreSailGraph
+import scala.io.Source
+import java.io.Writer
+import java.io.PrintWriter
+
+
+
+object PolyExtractorTest4 extends TurtleProcessor with App {
+  val textpath = "ie-target.txt"
+  val parserpath = "ie-target.txt.rnn.ttl"
+  NlpstackParser.processText(scala.io.Source.fromFile(textpath),  new PrintWriter(parserpath))
+  val graph = new MemoryStoreSailGraph()
+  DependencyGraph.fromTurtle(graph, scala.io.Source.fromFile(parserpath))
+  processGraph(graph)
+  
+  System.exit(0)
+  
+  override def processGraph(graph: SailGraph): Unit = {
+    val words = List("led", "to", "participation")
+    val obj = "break"
+//    for {
+//      
+//    }
+    val vmodQuery: String = "SELECT ?subj ?rel ?obj WHERE { ?subj <http://nlp.stanford.edu/token/text> " + "\"" + obj + "\"" + " . }"
+    DependencyGraph.executeSparql(graph, vmodQuery).headOption match {
+      case Some(map) => println(map("subj"))
+      case None => println("None")
+    }
+  }
+}

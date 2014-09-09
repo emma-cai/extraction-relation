@@ -441,72 +441,72 @@ object BinaryClassification extends App with Logging {
     arg1list: List[Int], arg2list: List[Int]) = {
 	
     println("qingqing computing numeric features for " + sentenceDisrel.sentence)
-    val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet
-    
+    val sentenceSet = Tokenizer.toKeywords(sentenceDisrel.sentence).toSet    
     var numericfeaturesmap: Map[String, Double] = collection.mutable.Map.empty
-    disrelList.foreach {
-      case disrel => {
-        val keywordsSet = Tokenizer.toKeywords(disrelSeeds(disrel.toLowerCase()).mkString(" ")).toSet
-        val lexicallist = for {
-          lexicalseed <- disrelSeeds(disrel.toLowerCase())
-          lexicalseedKeywords = Tokenizer.toKeywords(lexicalseed).toSet.mkString(" ")
-          if(!lexicalseedKeywords.equals(""))
-        } yield {
-          lexicalseedKeywords
-        }
-        var numericfeaturename: String = null
-        // number of words in the sentence
-        numericfeaturename = "numeric-senlen-" + disrel
-        numericfeaturesmap.put(numericfeaturename,
-          Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble)
-        updateNumericfeaturesHeader(numericfeaturename)
+    
+    val keywordsSet = Tokenizer.toKeywords(disrelSeeds(sentenceDisrel.disrel.toLowerCase()).mkString(" ")).toSet
+    val lexicallist = for {
+      lexicalseed <- disrelSeeds(sentenceDisrel.disrel.toLowerCase())
+      lexicalseedKeywords = Tokenizer.toKeywords(lexicalseed).toSet.mkString(" ")
+      if(!lexicalseedKeywords.equals(""))
+    } yield {
+      lexicalseedKeywords
+    }
+    
+    // number of words in the sentence
+    val numericsenlen = "numeric-senlen"
+    numericfeaturesmap.put(numericsenlen,
+      Math.log(sentenceDisrel.sentence.split("\\s+").size).toDouble)
+    updateNumericfeaturesHeader(numericsenlen)
 
-        // overlap between sentence-words and lexical-cue-seeds-for-current-disrel
-        numericfeaturename = "numeric-overlap-sen-seeds-" + disrel
-        numericfeaturesmap.put(numericfeaturename, overlap(sentenceSet, keywordsSet).toDouble)
-        updateNumericfeaturesHeader(numericfeaturename)
+    // overlap between sentence-words and lexical-cue-seeds-for-current-disrel
+    val numericoverlapsenseeds = "numeric-overlap-sen-seeds-disrel"
+    val overlapval = overlap(sentenceSet, keywordsSet)
+    if(overlapval == 0)
+      numericfeaturesmap.put(numericoverlapsenseeds, 0.0)
+    else
+      numericfeaturesmap.put(numericoverlapsenseeds, Math.log(overlapval).toDouble)
+    updateNumericfeaturesHeader(numericoverlapsenseeds)
 
-        // entailment between sentence-words and lexical-cue-seeds-for-current-disrel
-        println("qingqing compute numeric-entail-sen-seeds")
-        numericfeaturename = "numeric-entail-sen-seeds-" + disrel
-        try {
-          numericfeaturesmap.put(numericfeaturename,
-            wordnetEntailment(sentenceSet.mkString(" "), lexicallist))
-        } catch {
-          case e: Throwable => {
-            numericfeaturesmap.put(numericfeaturename, 0.0)
-          }
-        }
-        updateNumericfeaturesHeader(numericfeaturename)
-        println("qingqing after adding entail-sen-seeds = " + numericfeaturesmap)
+    // entailment between sentence-words and lexical-cue-seeds-for-current-disrel
+    println("qingqing compute numeric-entail-sen-seeds")
+    val numericentailsenseeds = "numeric-entail-sen-seeds-disrel"
+    try {
+      numericfeaturesmap.put(numericentailsenseeds,
+        wordnetEntailment(sentenceSet.mkString(" "), lexicallist))
+    } catch {
+      case e: Throwable => {
+        numericfeaturesmap.put(numericentailsenseeds, 0.0)
+      }
+    }
+    updateNumericfeaturesHeader(numericentailsenseeds)
+    println("qingqing after adding entail-sen-seeds = " + numericfeaturesmap)
 
-        // entailment between root and lexical-cue-seeds-for-current-disrel
-        println("qingqing compute numeric-entail-root-seeds\t\t\t" + root)
-        numericfeaturename = "numeric-entail-root-seeds-" + disrel
-        try {
-	        if(root == null)
-	          numericfeaturesmap.put(numericfeaturename, 0.0)
-	        else {
-	          val roottoken = Tokenizer.toKeywords(root.string).toSet.mkString(" ")
-	          numericfeaturesmap.put(numericfeaturename, if(roottoken.equals("")) 0.0 else wordnetEntailment(roottoken, lexicallist))
-	        }          
-        } catch {
-          case e: Throwable => {
-            e.printStackTrace()
-            numericfeaturesmap.put(numericfeaturename, 0.0)
-          }
-        }
-        updateNumericfeaturesHeader(numericfeaturename)
-        println("qingqing after adding entail-root-seeds = " + numericfeaturesmap)
+    // entailment between root and lexical-cue-seeds-for-current-disrel
+    println("qingqing compute numeric-entail-root-seeds\t\t\t" + root)
+    val numericentailrootseeds = "numeric-entail-root-seeds-disrel"
+    try {
+        if(root == null)
+          numericfeaturesmap.put(numericentailrootseeds, 0.0)
+        else {
+          val roottoken = Tokenizer.toKeywords(root.string).toSet.mkString(" ")
+          numericfeaturesmap.put(numericentailrootseeds, if(roottoken.equals("")) 0.0 else wordnetEntailment(roottoken, lexicallist))
+        }          
+    } catch {
+      case e: Throwable => {
+        e.printStackTrace()
+        numericfeaturesmap.put(numericentailrootseeds, 0.0)
+      }
+    }
+    updateNumericfeaturesHeader(numericentailrootseeds)
+    println("qingqing after adding entail-root-seeds = " + numericfeaturesmap)
 
-        // entailment between connection-words and lexical-cue-seeds-for-current-disrel
+    // entailment between connection-words and lexical-cue-seeds-for-current-disrel
 //        val connectwords: Set[String] = getconnectwords(lengthDependenciesMap)
 //        numericfeaturename = "numeric-entail-conn-seeds-" + disrel
 //        numericfeaturesmap.put(numericfeaturename,
 //          if (connectwords == null) 0.0 else wordnetEntailment(connectwords.mkString(" "), seedSet.mkString(" ")))
 //        updateNumericfeaturesHeader(numericfeaturename)
-      }
-    }
 
     numericfeaturesmap
   }

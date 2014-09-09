@@ -15,7 +15,7 @@ object RunClassification extends App with Logging {
   val isprintfeatureweight = true
   val isprintsparql = true
   val configclassifiername = "Logistic"
-  val configfeature = "lexical-detail-extraction-newlexicalfeature"
+  val configfeature = "lexical-detail-extraction-newlexicalfeature-notAllDisrels"
   val directory = "data/learning/classifier/binary-argument"
   val configtrainingfile = "data/learning/train/training.txt"
   val configtestingfile = directory + File.separator + "inputDirectory/108Q_Arg.txt"
